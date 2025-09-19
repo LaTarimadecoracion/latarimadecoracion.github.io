@@ -233,6 +233,7 @@
         </nav>
         </div>
     <script type="module">
+        import '../js/links-remote-config.js';
         import { ensureStore, getModuleLinks } from './js/modules/links-store.js';
         const moduleId = 'organizadores';
         const whatsapp = 'https://wa.me/5491167007723';
@@ -241,6 +242,17 @@
 
         async function loadPublicLinks(){
             const safeArr = (x) => Array.isArray(x) ? x : [];
+
+            const fetchRemotePreferred = async () => {
+                try{
+                    const raw = (window.LT_LINKS_REMOTE && window.LT_LINKS_REMOTE.rawUrl) ? String(window.LT_LINKS_REMOTE.rawUrl) : '';
+                    if(!raw) throw 0;
+                    const r2 = await fetch(raw, { cache: 'no-store' });
+                    if(!r2.ok) throw 0;
+                    const j2 = await r2.json();
+                    return safeArr(j2 && j2.modules ? j2.modules[moduleId] : null);
+                }catch(_){ return []; }
+            };
 
             const fetchEmbedded = async () => {
                 try {
@@ -277,14 +289,19 @@
                 }catch(_){ return []; }
             };
 
-            const [emb, loc, rem] = await Promise.all([fetchEmbedded(), fetchLocalJson(), fetchRemote()]);
+            const [remPref, emb, loc, rem] = await Promise.all([
+                fetchRemotePreferred(),
+                fetchEmbedded(),
+                fetchLocalJson(),
+                fetchRemote()
+            ]);
             const pick = (a, b) => {
                 const href = (b && typeof b.href === 'string') ? b.href : null;
                 if (href && href !== '#') return { ...a, ...b };
                 return a || b;
             };
             const map = new Map();
-            for (const src of [emb, loc, rem]){
+            for (const src of [remPref, emb, loc, rem]){
                 for (const r of src){
                     const k = keyOf(r.modelo, r.medida, r.tipo);
                     map.set(k, map.has(k) ? pick(map.get(k), r) : r);

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barandas para Sommier | LA TARIMA</title>
     <link rel="stylesheet" href="estilos.css?v=20250918-2">
+    <script src="js/links-remote-config.js" defer></script>
         <link rel="icon" href="img/ico.png" type="image/png">
 </head>
 <body class="barandas">
@@ -170,6 +171,17 @@
                 const moduleId = 'barandasSommier';
                 const safeArr = (x) => Array.isArray(x) ? x : [];
 
+                const fetchRemotePreferred = async () => {
+                    try{
+                        const raw = (window.LT_LINKS_REMOTE && window.LT_LINKS_REMOTE.rawUrl) ? String(window.LT_LINKS_REMOTE.rawUrl) : '';
+                        if(!raw) throw 0;
+                        const r2 = await fetch(raw, { cache: 'no-store' });
+                        if(!r2.ok) throw 0;
+                        const j2 = await r2.json();
+                        return safeArr(j2 && j2.modules ? j2.modules[moduleId] : null);
+                    }catch(_){ return []; }
+                };
+
                 const fetchEmbedded = async () => {
                     try {
                         const page = await fetch('links.html', { cache: 'no-store' });
@@ -206,7 +218,12 @@
                 };
 
                 // Cargamos todas las fuentes en paralelo
-                const [emb, loc, rem] = await Promise.all([fetchEmbedded(), fetchLocalJson(), fetchRemote()]);
+                const [remPref, emb, loc, rem] = await Promise.all([
+                    fetchRemotePreferred(),
+                    fetchEmbedded(),
+                    fetchLocalJson(),
+                    fetchRemote()
+                ]);
 
                 // Combinar: embebido -> local JSON -> remoto; sólo sobreescribir si el nuevo href es no vacío y distinto de '#'
                 const keyOf = (it) => `${String(it.modelo||'').trim()}|${String(it.medida||'').trim()}|${String(it.tipo||'').trim()}`;
@@ -216,7 +233,7 @@
                     return a || b;
                 };
                 const map = new Map();
-                for (const src of [emb, loc, rem]){
+                for (const src of [remPref, emb, loc, rem]){
                     for (const r of src){
                         const k = keyOf(r);
                         map.set(k, map.has(k) ? pick(map.get(k), r) : r);

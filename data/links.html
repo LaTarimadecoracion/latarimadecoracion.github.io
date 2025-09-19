@@ -61,7 +61,9 @@
         <div style="width:100%; max-width:var(--content-max); display:flex; gap:8px; justify-content:flex-end; margin:8px 0 12px; flex-wrap: wrap;">
             <button id="lt-export" type="button" class="buy-btn secondary" style="padding:8px 12px;">Exportar enlaces</button>
             <button id="lt-export-public" type="button" class="buy-btn secondary" style="padding:8px 12px;">Descargar links.json (público)</button>
-            <button id="lt-publish-gist" type="button" class="buy-btn secondary" style="padding:8px 12px;">Publicar (Gist)</button>
+            <input id="lt-remote-url" type="url" placeholder="Pegar URL raw del Gist (links.json)" style="flex:1; min-width:220px; padding:8px 10px; border:1px solid #ccc; border-radius:6px;">
+            <button id="lt-save-remote" type="button" class="buy-btn secondary" style="padding:8px 12px;">Guardar remoto</button>
+            <button id="lt-publish-gist" type="button" class="buy-btn secondary" style="padding:8px 12px;">Publicar/Actualizar Gist</button>
             <button id="lt-download-html" type="button" class="buy-btn secondary" style="padding:8px 12px;">Descargar links.html actualizado</button>
             <label for="lt-import-file" class="buy-btn secondary" style="padding:8px 12px; cursor:pointer;">
                 Importar enlaces
@@ -2662,6 +2664,9 @@
                         const btnExport = document.getElementById('lt-export');
                         const btnExportPublic = document.getElementById('lt-export-public');
                         const btnPublishGist = document.getElementById('lt-publish-gist');
+                        const inpRemote = document.getElementById('lt-remote-url');
+                        const btnSaveRemote = document.getElementById('lt-save-remote');
+                        const LT_REMOTE_KEY = 'LT_LINKS_REMOTE_URL';
                         const btnDownloadHtml = document.getElementById('lt-download-html');
                         const inpImport = document.getElementById('lt-import-file');
 
@@ -2757,6 +2762,18 @@
 
                         if (btnExport) btnExport.addEventListener('click', exportAll);
                         if (btnExportPublic) btnExportPublic.addEventListener('click', exportPublicJson);
+                        // Cargar valor guardado del remoto
+                        try { inpRemote.value = localStorage.getItem(LT_REMOTE_KEY) || ''; } catch(_) {}
+
+                        // Guardar remoto (y opcionalmente escribir en data/links-source.json descargable)
+                        if (btnSaveRemote) btnSaveRemote.addEventListener('click', () => {
+                            try {
+                                const v = String(inpRemote.value || '').trim();
+                                localStorage.setItem(LT_REMOTE_KEY, v);
+                                showSaved('Remoto guardado');
+                            } catch(_) {}
+                        });
+
                         if (btnPublishGist) btnPublishGist.addEventListener('click', async () => {
                             try {
                                 const ghToken = prompt('Pegá tu GitHub Personal Access Token (scopes: gist):');
@@ -2768,8 +2785,15 @@
                                 const payload = { version: 1, updatedAt: new Date().toISOString(), modules: {} };
                                 modules.forEach(id => { payload.modules[id] = getModuleLinks(id) || []; });
 
-                                const res = await fetch('https://api.github.com/gists', {
-                                    method: 'POST',
+                                // Si hay un Gist previo en localStorage, intentamos actualizarlo. Si no, creamos uno nuevo.
+                                const LT_GIST_ID_KEY = 'LT_LINKS_GIST_ID';
+                                const gistId = localStorage.getItem(LT_GIST_ID_KEY);
+                                const isUpdate = !!gistId;
+
+                                const apiUrl = isUpdate ? `https://api.github.com/gists/${gistId}` : 'https://api.github.com/gists';
+                                const method = isUpdate ? 'PATCH' : 'POST';
+                                const res = await fetch(apiUrl, {
+                                    method,
                                     headers: {
                                         'Content-Type': 'application/json',
                                         'Authorization': `Bearer ${ghToken}`,
@@ -2788,19 +2812,22 @@
                                     throw new Error(`Fallo al crear Gist: ${res.status} ${errText}`);
                                 }
                                 const gist = await res.json();
+                                // Persistir ID del Gist para próximas actualizaciones
+                                try{ if (gist && gist.id) localStorage.setItem(LT_GIST_ID_KEY, gist.id); }catch(_){ }
+
                                 const rawUrl = gist.files && gist.files['links.json'] && gist.files['links.json'].raw_url;
                                 if (!rawUrl) throw new Error('No se obtuvo raw_url del Gist');
 
                                 // Ofrecer descarga de links-source.json con la rawUrl para pegar en el server
                                 const src = { remoteRawUrl: rawUrl };
                                 const blob = new Blob([JSON.stringify(src, null, 2)], { type: 'application/json' });
-                                const url = URL.createObjectURL(blob);
+                                const dlUrl = URL.createObjectURL(blob);
                                 const a = document.createElement('a');
-                                a.href = url;
+                                a.href = dlUrl;
                                 a.download = 'links-source.json';
                                 document.body.appendChild(a);
                                 a.click();
-                                URL.revokeObjectURL(url);
+                                URL.revokeObjectURL(dlUrl);
                                 a.remove();
 
                                 showSaved('Publicado en Gist y generado links-source.json');
