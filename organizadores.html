@@ -233,7 +233,7 @@
         </nav>
         </div>
     <script type="module">
-        import '../js/links-remote-config.js';
+        import './js/links-remote-config.js';
         import { ensureStore, getModuleLinks } from './js/modules/links-store.js';
         const moduleId = 'organizadores';
         const whatsapp = 'https://wa.me/5491167007723';
@@ -247,7 +247,7 @@
                 try{
                     const raw = (window.LT_LINKS_REMOTE && window.LT_LINKS_REMOTE.rawUrl) ? String(window.LT_LINKS_REMOTE.rawUrl) : '';
                     if(!raw) throw 0;
-                    const r2 = await fetch(raw, { cache: 'no-store' });
+                    const r2 = await fetch(raw + (raw.includes('?') ? '&' : '?') + 'cb=' + Date.now(), { cache: 'no-store' });
                     if(!r2.ok) throw 0;
                     const j2 = await r2.json();
                     return safeArr(j2 && j2.modules ? j2.modules[moduleId] : null);
@@ -282,7 +282,7 @@
                     const cfg = await cfgRes.json();
                     const url = cfg && cfg.remoteRawUrl ? String(cfg.remoteRawUrl) : '';
                     if(!url) throw 0;
-                    const r2 = await fetch(url, { cache: 'no-store' });
+                    const r2 = await fetch(url + (url.includes('?') ? '&' : '?') + 'cb=' + Date.now(), { cache: 'no-store' });
                     if(!r2.ok) throw 0;
                     const j2 = await r2.json();
                     return safeArr(j2 && j2.modules ? j2.modules[moduleId] : null);

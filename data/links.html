@@ -3824,4 +3824,176 @@
 	}
 	// ]]>
 </script>
+        <script type="module">
+            import { ensureStore, getModuleLinks, setModuleLinks } from "../js/modules/links-store.js";
+
+            const saveStatusEl = document.getElementById("lt-save-status");
+            const storageWarnEl = document.getElementById("lt-storage-warning");
+
+            function canUseLocalStorage(){
+                try{
+                    const k = "__lt_test__";
+                    localStorage.setItem(k, "1");
+                    localStorage.removeItem(k);
+                    return true;
+                }catch(_){ return false; }
+            }
+
+            if(!canUseLocalStorage() && storageWarnEl){
+                storageWarnEl.style.display = "block";
+            }
+
+            function setSaveStatus(msg){
+                if(!saveStatusEl) return;
+                saveStatusEl.textContent = msg;
+                saveStatusEl.style.display = "block";
+                clearTimeout(setSaveStatus._t);
+                setSaveStatus._t = setTimeout(()=>{ saveStatusEl.style.display = "none"; }, 2000);
+            }
+
+            function classify(url){
+                return /wa\.me/.test(url) ? "secondary" : "primary";
+            }
+
+            function updateRowLink(row, url){
+                const a = row?.querySelector("a.buy-btn");
+                if(!a) return;
+                a.href = url;
+                a.classList.remove("primary", "secondary");
+                a.classList.add(classify(url));
+            }
+
+            // Sincroniza el export JSON por módulo (script#lt-links-<mod>) y el mirror global
+            function updateExportForModule(moduleId){
+                try{
+                    const items = getModuleLinks(moduleId) || [];
+                    const exportId = `lt-links-${moduleId}`;
+                    let el = document.getElementById(exportId);
+                    if(!el){
+                        el = document.createElement('script');
+                        el.type = 'application/json';
+                        el.id = exportId;
+                        document.body.appendChild(el);
+                    }
+                    el.textContent = JSON.stringify({ id: moduleId, items });
+                    window.LT_LINKS = window.LT_LINKS || {};
+                    window.LT_LINKS[moduleId] = items;
+                }catch(e){
+                    console.warn('No se pudo actualizar export JSON del módulo', moduleId, e);
+                }
+            }
+
+            function getAllModuleIds(){
+                return [
+                    'barandasDesmontables','barandasFijas','barandasOrtopedicas','barandasSommier',
+                    'deck','estantes','infantiles','organizadores','percheros','stepsCajones','fanales','camas'
+                ];
+            }
+
+            function buildPublicPayload(){
+                const payload = { version: 1, updatedAt: new Date().toISOString(), modules: {} };
+                for(const id of getAllModuleIds()){
+                    payload.modules[id] = getModuleLinks(id) || [];
+                }
+                return payload;
+            }
+
+            function refreshEmbeddedPublicJsonLocal(){
+                try{
+                    const el = document.getElementById('lt-public-links');
+                    if(!el) return;
+                    el.textContent = JSON.stringify(buildPublicPayload());
+                }catch(e){ console.warn('No se pudo refrescar JSON público embebido', e); }
+            }
+
+            async function updateGistWithPayload(payload){
+                const LT_GIST_ID_KEY = 'LT_LINKS_GIST_ID';
+                const gistId = localStorage.getItem(LT_GIST_ID_KEY);
+                if(!gistId){
+                    alert('No hay un Gist guardado aún. Usá "Publicar en Gist" una vez para crearlo.');
+                    return false;
+                }
+                let token = sessionStorage.getItem('LT_GH_TOKEN_SESSION') || '';
+                if(!token){
+                    token = prompt('Pegá tu GitHub Personal Access Token (scopes: gist):') || '';
+                }
+                if(!token) return false;
+                try{ sessionStorage.setItem('LT_GH_TOKEN_SESSION', token); }catch(_){ }
+                const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/vnd.github+json'
+                    },
+                    body: JSON.stringify({ files: { 'links.json': { content: JSON.stringify(payload, null, 2) } } })
+                });
+                if(!res.ok){
+                    const text = await res.text();
+                    throw new Error(`Fallo al actualizar Gist: ${res.status} ${text}`);
+                }
+                const gist = await res.json();
+                const rawUrl = gist?.files?.['links.json']?.raw_url;
+                if(rawUrl){ try{ localStorage.setItem('LT_LINKS_REMOTE_URL', rawUrl); }catch(_){ } }
+                return true;
+            }
+
+            // Manejo de clic en el botón circular verde de edición (captura para evitar doble handler)
+            document.addEventListener("click", async (ev)=>{
+                const btn = ev.target.closest("button.edit-btn");
+                if(!btn) return;
+                // Interceptar antes de que otros listeners del botón se ejecuten
+                ev.preventDefault();
+                ev.stopImmediatePropagation();
+
+                const row = btn.closest("tr");
+                const mod = btn.dataset.mod || "";
+                const modelo = btn.dataset.modelo || "";
+                const medida = btn.dataset.medida || "";
+                const tipo = btn.dataset.tipo || "";
+                const currentHref = row?.querySelector("a.buy-btn")?.getAttribute("href") || "";
+
+                const pasted = prompt(`Pegá el enlace para:\n${modelo} — ${medida} — ${tipo}`, currentHref || "https://");
+                if(pasted === null) return; // Cancelado
+                const newUrl = pasted.trim();
+                if(!newUrl) return;
+
+                const url = newUrl.startsWith("http") ? newUrl : ("https://" + newUrl);
+
+                try{
+                    ensureStore();
+                    const list = (getModuleLinks(mod) || []).slice();
+                    const idx = list.findIndex(it => it && it.modelo === modelo && it.medida === medida && it.tipo === tipo);
+                    if(idx >= 0){
+                        list[idx].href = url;
+                    }else{
+                        list.push({ modelo, medida, tipo, href: url });
+                    }
+                    setModuleLinks(mod, list);
+
+                    // Sincronizar vista/espacios auxiliares
+                    updateRowLink(row, url);
+                    updateExportForModule(mod);
+                    setSaveStatus("Enlace guardado");
+
+                    // Publicar opcionalmente al Gist remoto
+                    const wantsPublish = confirm('¿Publicar ahora este cambio al remoto (Gist) para que el sitio lo tome?');
+                    if(wantsPublish){
+                        // Refrescar JSON embebido y payload completo
+                        refreshEmbeddedPublicJsonLocal();
+                        const payload = buildPublicPayload();
+                        try{
+                            const ok = await updateGistWithPayload(payload);
+                            if(ok) setSaveStatus('Publicado en remoto');
+                        }catch(pubErr){
+                            console.warn('Fallo al publicar en Gist', pubErr);
+                            alert('No se pudo publicar en Gist. Revisá el token/conexión.');
+                        }
+                    }
+                }catch(err){
+                    console.error("No se pudo guardar el enlace:", err);
+                    setSaveStatus("No se pudo guardar (ver consola)");
+                }
+            }, true);
+        </script>
 </body></html>
