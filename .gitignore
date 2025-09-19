@@ -1,0 +1,9 @@
+﻿# Archivos de archivo y backups
+*.rar
+*.zip
+*.7z
+
+# Carpeta VS Code (excepto settings)
+.vscode/*
+!.vscode/settings.json
+
