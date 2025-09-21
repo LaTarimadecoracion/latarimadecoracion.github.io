@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto | La Tarima DEMO</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        .producto-detalle {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            padding: 2.5rem 2rem;
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .producto-img {
+            flex: 1 1 320px;
+            min-width: 280px;
+        }
+        .producto-img img {
+            width: 100%;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .producto-info {
+            flex: 2 1 320px;
+            min-width: 280px;
+        }
+        .variantes {
+            margin: 2rem 0 1.5rem 0;
+        }
+        .variantes label {
+            font-weight: 600;
+            margin-right: 1.2rem;
+        }
+        .variantes .btn-buy {
+            margin-right: 1rem;
+            margin-bottom: 0.7rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">LA TARIMA</div>
+        <nav class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+    <main>
+        <div class="producto-detalle">
+            <div class="producto-img">
+                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Estante Minimalista">
+            </div>
+            <div class="producto-info">
+                <h2>Estante Minimalista</h2>
+                <p>Ideal para cualquier ambiente. Madera natural y acabado premium. Medidas: 80x20cm.</p>
+                <div class="variantes">
+                    <label>Acabado:</label>
+                    <button type="button" class="btn-buy" onclick="selectVariante('Natural')">Natural</button>
+                    <button type="button" class="btn-buy" onclick="selectVariante('Barnizado')">Barnizado</button>
+                    <button type="button" class="btn-buy" onclick="selectVariante('Tintado')">Tintado</button>
+                </div>
+                <div class="variantes">
+                    <label>Tamaño:</label>
+                    <button type="button" class="btn-buy" onclick="selectTamano('Chico')">Chico</button>
+                    <button type="button" class="btn-buy" onclick="selectTamano('Mediano')">Mediano</button>
+                    <button type="button" class="btn-buy" onclick="selectTamano('Grande')">Grande</button>
+                </div>
+                <p><strong>Precio desde:</strong> $8.900</p>
+                <div style="margin:1.2rem 0;">
+                    <label for="cantidad" style="font-weight:600;">Cantidad:</label>
+                    <input type="number" id="cantidad" value="1" min="1" style="width:60px; margin-left:0.7rem;">
+                </div>
+                <div id="resumen" style="margin-bottom:1.2rem; color:#388e3c; font-weight:600;"></div>
+                <a href="#" class="btn-main" id="btnComprar">Comprar ahora</a>
+                <script>
+                let variante = 'Natural';
+                let tamano = 'Chico';
+                function selectVariante(v) {
+                    variante = v;
+                    updateResumen();
+                }
+                function selectTamano(t) {
+                    tamano = t;
+                    updateResumen();
+                }
+                function updateResumen() {
+                    const cantidad = document.getElementById('cantidad').value;
+                    document.getElementById('resumen').textContent = `Seleccionado: ${variante}, ${tamano}, Cantidad: ${cantidad}`;
+                }
+                document.getElementById('cantidad').addEventListener('input', updateResumen);
+                updateResumen();
+                document.getElementById('btnComprar').addEventListener('click', function(e){
+                    e.preventDefault();
+                    alert(`¡Gracias por tu compra!\nProducto: Estante Minimalista\nAcabado: ${variante}\nTamaño: ${tamano}\nCantidad: ${document.getElementById('cantidad').value}`);
+                });
+                </script>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 La Tarima. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

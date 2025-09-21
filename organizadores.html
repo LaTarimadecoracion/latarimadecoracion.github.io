@@ -1,0 +1,291 @@
+<script type="module">
+    import { ensureStore, getModuleLinks } from './js/modules/links-store.js';
+    const moduleId = 'organizadores';
+    const whatsapp = 'https://wa.me/5491167007723';
+    const normalize = (s) => String(s||'').trim().replace(/\s+/g,' ');
+    const keyOf = (modelo, medida, tipo) => `${normalize(modelo)}|${normalize(medida)}|${normalize(tipo)}`.toLowerCase();
+
+    async function loadPublicLinks(){
+        const safeArr = (x) => Array.isArray(x) ? x : [];
+        try {
+            const url = 'Links/links.json' + '?cb=' + Date.now();
+            const res = await fetch(url, { cache: 'no-store' });
+            if(!res.ok) throw 0;
+            const json = await res.json();
+            // Solo usar el módulo 'organizadores' (minúsculas)
+            return safeArr(json && json.modules ? json.modules['organizadores'] : null);
+        } catch(_) {
+            return [];
+        }
+    }
+
+    function applyRows(rows){
+        if(!Array.isArray(rows)) return;
+        const map = new Map();
+        rows.forEach(it => {
+            // Usar solo modelo y tipo como clave
+            map.set(`${normalize(it.modelo)}|${normalize(it.tipo)}`.toLowerCase(), { href: it.href });
+        });
+
+        const whatsapp = 'https://wa.me/5491167007723';
+        document.querySelectorAll('.product-card').forEach(card => {
+            const modelo = normalize(card.querySelector('.product-card-title')?.textContent || '');
+            card.querySelectorAll('table.product-table').forEach(table => {
+                const ths = Array.from(table.querySelectorAll('tr:first-child th'));
+                const tipos = ths.map(th => normalize(th.textContent));
+                // Elimina todas las filas del tbody
+                const tbody = table.querySelector('tbody');
+                if (tbody) {
+                    while (tbody.firstChild) tbody.removeChild(tbody.firstChild);
+                }
+                // Genera una sola fila por producto
+                const tr = document.createElement('tr');
+                tipos.forEach(tipo => {
+                    const td = document.createElement('td');
+                    const k = `${modelo}|${tipo}`.toLowerCase();
+                    const it = map.get(k);
+                    const a = document.createElement('a');
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.classList.add('buy-btn');
+                    a.classList.add('primary');
+                    if(it && typeof it.href === 'string' && it.href.trim() && it.href !== '#'){
+                        a.href = it.href;
+                        a.textContent = 'Comprar';
+                    }else{
+                        a.href = whatsapp;
+                        a.textContent = 'Cargando';
+                        a.style.opacity = '0.6';
+                    }
+                    td.style.textAlign = 'center';
+                    td.appendChild(a);
+                    tr.appendChild(td);
+                });
+                if (tbody) tbody.appendChild(tr);
+            });
+        });
+    }
+
+    (async () => {
+        const publicRows = await loadPublicLinks();
+        ensureStore();
+        const localRows = Array.isArray(getModuleLinks(moduleId)) ? getModuleLinks(moduleId) : [];
+
+        if (publicRows && publicRows.length) {
+            const mergeKey = (it) => keyOf(it.modelo, it.medida, it.tipo);
+            const map = new Map();
+            publicRows.forEach(r => map.set(mergeKey(r), r));
+            localRows.forEach(r => map.set(mergeKey(r), r));
+            applyRows(Array.from(map.values()));
+        } else {
+            applyRows(localRows);
+        }
+    })();
+</script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizadores | LA TARIMA</title>
+        <link rel="icon" href="img/ico.png" type="image/png">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+        <!-- Bloque de redes eliminado -->
+    <!-- BLOQUE DE REDES (FIN) -->
+    <body class="barandas">
+        <div class="container">
+            <a href="index.html" class="web-header-link">
+                <h1>LA TARIMA</h1>
+            </a>
+            <a href="index.html" class="web-header-link">
+                <div class="subtitle">Carpintería Online</div>
+            </a>
+            <div class="socials">
+                <a href="https://www.tiktok.com/@latarimadecoracion" target="_blank" rel="noopener" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M16 3c.3 2 1.7 3.6 3.6 3.9.3 0 .4.2.4.4v2.2c0 .3-.2.5-.5.5-1.7 0-3.3-.6-4.5-1.6v6.6c0 3-2.4 5.5-5.4 5.7-3.2.2-5.9-2.4-5.9-5.6 0-3.1 2.5-5.6 5.6-5.6.4 0 .8 0 1.1.1.2 0 .3.2.3.4v2.3c0 .2-.2.4-.4.4-.3-.1-.6-.1-.9-.1-1.6 0-2.9 1.4-2.8 3 .1 1.5 1.4 2.7 3 2.7 1.6 0 2.9-1.3 2.9-2.9V3.5c0-.3.2-.5.5-.5H16z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/latarimadecoracion" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <circle cx="17" cy="7" r="1.5"></circle>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/latarimadecoracion" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M13 22v-9h3l.5-3H13V8.5c0-.9.3-1.5 1.7-1.5H16V4.3c-.3 0-1.2-.1-2.2-.1-2.2 0-3.8 1.3-3.8 3.9V10H7v3h3v9h3z"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@latarimadecoracion" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M23.5 7.2c-.3-1.2-1.2-2.1-2.4-2.4C19 4.3 12 4.3 12 4.3s-7 0-9.1.5C1.7 5.1.8 6 .5 7.2.1 9.3.1 12 .1 12s0 2.7.4 4.8c.3 1.2 1.2 2.1 2.4 2.4C5 19.7 12 19.7 12 19.7s7 0 9.1-.5c1.2-.3 2.1-1.2 2.4-2.4.4-2.1.4-4.8.4-4.8s0-2.7-.4-4.8zM9.8 15.5V8.5l6 3.5-6 3.5z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="product-stack">
+            <!-- Módulo 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/organizadores/organizador1.jpg" alt="Verdulero x3 con Techito de madera" loading="lazy">
+                </div>
+                <div class="product-card-title">Verdulero x3 con Techito</div>
+                <table class="product-table">
+                    <thead>
+                        <tr>
+                            <th>Natural</th><th>Barnizado</th><th>Tintado</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!-- Módulo 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/organizadores/organizador2.jpg" alt="Verdulero x3 de madera" loading="lazy">
+                </div>
+                <div class="product-card-title">Verdulero x3</div>
+                <table class="product-table">
+                    <thead>
+                        <tr>
+                            <th>Natural</th><th>Barnizado</th><th>Tintado</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <table class="product-table" style="margin-top:8px;"></table>
+                </div>
+            </div>
+            <!-- Módulo 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/organizadores/organizador3.jpg" alt="Verdulero Mediano de madera" loading="lazy">
+                </div>
+                <div class="product-card-title">Verdulero Mediano</div>
+                <table class="product-table">
+                    <thead>
+                        <tr>
+                            <th>Natural</th><th>Barnizado</th><th>Tintado</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <table class="product-table" style="margin-top:8px;">
+                    <!-- Botones generados dinámicamente -->
+                </table>
+            </div>
+            <!-- Módulo 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/organizadores/organizador4.jpg" alt="Verdule para Mesada de madera" loading="lazy">
+                </div>
+                <div class="product-card-title">Verdule para Mesada</div>
+                <table class="product-table">
+                    <tr>
+                        <th>Natural</th><th>Barnizado</th><th>Tintado</th>
+                    </tr>
+                    <!-- Botones generados dinámicamente -->
+                </table>
+                <table class="product-table" style="margin-top:8px;"></table>
+            </div>
+            <!-- Módulo 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/organizadores/organizador5.jpg" alt="Esquinero x3 de madera" loading="lazy">
+                </div>
+                <div class="product-card-title">Esquinero x3</div>
+                <table class="product-table">
+                    <tr>
+                        <th>Natural</th><th>Barnizado</th><th>Tintado</th>
+                    </tr>
+                    <!-- Botones generados dinámicamente -->
+                </table>
+                <table class="product-table" style="margin-top:8px;"></table>
+            </div>
+            <!-- Módulo 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/organizadores/organizador6.jpg" alt="Organizador 6 de madera" loading="lazy">
+                </div>
+                <div class="product-card-title">Organizador 6</div>
+                <table class="product-table">
+                    <tr>
+                        <th>Natural</th><th>Barnizado</th><th>Tintado</th>
+                    </tr>
+                    <!-- Botones generados dinámicamente -->
+                </table>
+                <table class="product-table" style="margin-top:8px;"></table>
+            </div>
+            <!-- Módulo 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/organizadores/organizador7.jpg" alt="Organizador 7 de madera" loading="lazy">
+                </div>
+                <div class="product-card-title">Organizador 7</div>
+                <table class="product-table">
+                    <tr>
+                        <th>Natural</th><th>Barnizado</th><th>Tintado</th>
+                    </tr>
+                    <!-- Botones generados dinámicamente -->
+                </table>
+                <table class="product-table" style="margin-top:8px;"></table>
+            </div>
+            <!-- Módulo 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/organizadores/organizador8.jpg" alt="Organizador 8 de madera" loading="lazy">
+                </div>
+                <div class="product-card-title">Organizador 8</div>
+                <table class="product-table">
+                    <tr>
+                        <th>Natural</th><th>Barnizado</th><th>Tintado</th>
+                    </tr>
+                    <!-- Botones generados dinámicamente -->
+                </table>
+                <table class="product-table" style="margin-top:8px;">
+                    <!-- Botones generados dinámicamente -->
+                </table>
+            </div>
+            <!-- Módulo 9 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/organizadores/organizador9.jpg" alt="Organizador 9 de madera" loading="lazy">
+                </div>
+                <div class="product-card-title">Organizador 9</div>
+                <table class="product-table">
+                    <tr>
+                        <th>Natural</th><th>Barnizado</th><th>Tintado</th>
+                    </tr>
+                    <!-- Botones generados dinámicamente -->
+                </table>
+                <table class="product-table" style="margin-top:8px;">
+                    <!-- Botones generados dinámicamente -->
+                </table>
+            </div>
+            <!-- Módulo 10 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/organizadores/organizador10.jpg" alt="Organizador 10 de madera" loading="lazy">
+                </div>
+                <div class="product-card-title">Organizador 10</div>
+                <table class="product-table">
+                    <tr>
+                        <th>Natural</th><th>Barnizado</th><th>Tintado</th>
+                    </tr>
+                    <!-- Botones generados dinámicamente -->
+                </table>
+                <table class="product-table" style="margin-top:8px;">
+                    <!-- Botones generados dinámicamente -->
+                </table>
+            </div>
+
+        <nav class="split-btn" aria-label="Acciones de navegación y contacto">
+            <a href="index.html" title="Volver al inicio">INICIO</a>
+            <a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener" title="Consultar por WhatsApp">CONSULTAR</a>
+        </nav>
+    </div>
+</body>
+<script src="responsive-tables.js?v=20250918-2"></script>
+</html>

@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "git publish changes",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"--no-pager",
+				"status"
+			],
+			"isBackground": false,
+			"group": "build"
+		}
+	]
+}
