@@ -1,115 +1,1339 @@
-      {
-        "modelo": "Verdulero x3 con Techito",
-        "tipo": "Natural",
-        "href": "https://www.mercadolibre.com.ar/verdulero-x3-con-techito-natural"
-      },
-      {
-        "modelo": "Verdulero x3 con Techito",
-        "tipo": "Barnizado",
-        "href": "https://www.mercadolibre.com.ar/verdulero-x3-con-techito-barnizado"
-      },
-      {
-        "modelo": "Verdulero x3 con Techito",
-        "tipo": "Tintado",
-        "href": "https://www.mercadolibre.com.ar/verdulero-x3-con-techito-tintado"
-      },
-      {
-        "modelo": "Verdulero x3",
-        "tipo": "Natural",
-        "href": "https://www.mercadolibre.com.ar/verdulero-x3-natural"
-      },
-      {
-        "modelo": "Verdulero x3",
-        "tipo": "Barnizado",
-        "href": "https://www.mercadolibre.com.ar/verdulero-x3-barnizado"
-      },
-      {
-        "modelo": "Verdulero x3",
-        "tipo": "Tintado",
-        "href": "https://www.mercadolibre.com.ar/verdulero-x3-tintado"
-      },
-      {
-        "modelo": "Verdulero Mediano",
-        "tipo": "Natural",
-        "href": "https://www.mercadolibre.com.ar/verdulero-mediano-natural"
-      },
-      {
-        "modelo": "Verdulero Mediano",
-        "tipo": "Barnizado",
-        "href": "https://www.mercadolibre.com.ar/verdulero-mediano-barnizado"
-      },
-      {
-        "modelo": "Verdulero Mediano",
-        "tipo": "Tintado",
-        "href": "https://www.mercadolibre.com.ar/verdulero-mediano-tintado"
-      },
-      {
-        "modelo": "Verdule para Mesada",
-        "tipo": "Natural",
-        "href": "https://www.mercadolibre.com.ar/verdule-para-mesada-natural"
-      },
-      {
-        "modelo": "Verdule para Mesada",
-        "tipo": "Barnizado",
-        "href": "https://www.mercadolibre.com.ar/verdule-para-mesada-barnizado"
-      },
-      {
-        "modelo": "Verdule para Mesada",
-        "tipo": "Tintado",
-        "href": "https://www.mercadolibre.com.ar/verdule-para-mesada-tintado"
-      },
-      {
-        "modelo": "Esquinero x3",
-        "tipo": "Natural",
-        "href": "https://www.mercadolibre.com.ar/esquinero-x3-natural"
-      },
-      {
-        "modelo": "Esquinero x3",
-        "tipo": "Barnizado",
-        "href": "https://www.mercadolibre.com.ar/esquinero-x3-barnizado"
-      },
-      {
-        "modelo": "Esquinero x3",
-        "tipo": "Tintado",
-        "href": "https://www.mercadolibre.com.ar/esquinero-x3-tintado"
-      }
-      {
-        "modelo": "Verdulero x3 con Techito",
-        "tipo": "Natural",
-        "href": "https://www.mercadolibre.com.ar/verdulero-grande-natural"
-      },
-      {
-        "modelo": "Verdulero x3 con Techito",
-        "tipo": "Barnizado",
-        "href": "https://www.mercadolibre.com.ar/verdulero-grande-barnizado"
-      },
-      {
-        "modelo": "Verdulero x3",
-        "tipo": "Natural",
-        "href": "https://www.mercadolibre.com.ar/verdulero-mediano-natural"
-      },
-      {
-        "modelo": "Verdulero x3",
-        "tipo": "Barnizado",
-        "href": "https://www.mercadolibre.com.ar/verdulero-mediano-barnizado"
-      },
-      {
-        "modelo": "Verdulero Mediano",
-        "tipo": "Natural",
-        "href": "https://www.mercadolibre.com.ar/verdulero-chico-natural"
-      },
-      {
-        "modelo": "Verdule para Mesada",
-        "tipo": "Natural",
-        "href": "https://www.mercadolibre.com.ar/verdule-mesada-natural"
-      },
-      {
-        "modelo": "Esquinero x3",
-        "tipo": "Barnizado",
-        "href": "https://www.mercadolibre.com.ar/esquinero-combo-barnizado"
-      }
 {
+  "version": 1,
+  "updatedAt": "2025-09-19T00:00:08.102Z",
   "modules": {
+    "barandasDesmontables": [
+      {
+        "modelo": "Clásica",
+        "medida": "110 x 45",
+        "tipo": "Natural",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-932165982-baranda-de-seguridad-para-cama-infantil-adultos-reforzada-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "110 x 45",
+        "tipo": "Blanca",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1137924749-baranda-seguridad-para-cama-ninos-bebes-adultos-blanca-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "100 x 45",
+        "tipo": "Natural",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1370369419-baranda-de-seguridad-para-cama-infantil-adultos-100x45cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "100 x 45",
+        "tipo": "Blanca",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2228815130-baranda-para-cama-color-blanca-100-x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "90 x 45",
+        "tipo": "Natural",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1140300239-baranda-de-seguridad-para-cama-infantil-adultos-90x45-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "90 x 45",
+        "tipo": "Blanca",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2228698300-baranda-para-cama-color-blanca-90-x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "80 x 45",
+        "tipo": "Natural",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1166496084-baranda-de-seguridad-para-cama-infantil-adultos-80x45cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "80 x 45",
+        "tipo": "Blanca",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2228776168-baranda-para-cama-color-blanca-80-x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "70 x 45",
+        "tipo": "Natural",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1511557955-baranda-para-cama-desmontable-70-x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "70 x 45",
+        "tipo": "Blanca",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "60 x 45",
+        "tipo": "Natural",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1372978437-baranda-de-seguridad-para-cama-infantil-adultos-60x45cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "60 x 45",
+        "tipo": "Blanca",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "110 x 45",
+        "tipo": "Barnizada",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2013955994-baranda-para-cama-barnizada-110-x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "100 x 45",
+        "tipo": "Barnizada",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2371339468-baranda-para-cama-barnizada-100-x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "90 x 45",
+        "tipo": "Barnizada",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2371261458-baranda-para-cama-barnizada-90x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "80 x 45",
+        "tipo": "Barnizada",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2371326668-baranda-para-cama-barnizada-80x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "70 x 45",
+        "tipo": "Barnizada",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2371404684-baranda-para-cama-barnizada-70x-45-cm-_JM"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "60 x 45",
+        "tipo": "Barnizada",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2371249088-baranda-para-cama-barnizada-60x-45-cm-_JM"
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "110 x 45",
+        "tipo": "Natural",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1467804894-baranda-para-cama-montessori-110x45-desmontable-_JM"
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "110 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "100 x 45",
+        "tipo": "Natural",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2371249298-baranda-para-cama-montessori-100x45-desmontable-_JM"
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "100 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "90 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "90 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "80 x 45",
+        "tipo": "Natural",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1369581373-baranda-para-cama-montessori-80x45-desmontable-_JM"
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "80 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "70 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "70 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "60 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "60 x 45",
+        "tipo": "Blanca",
+        "href": "#"
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "110 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "100 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "90 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "80 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "70 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "60 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "110 x 60",
+        "tipo": "Natural",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "110 x 60",
+        "tipo": "Blanca",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "70 x 60",
+        "tipo": "Natural",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "70 x 60",
+        "tipo": "Blanca",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "110 x 60",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "70 x 60",
+        "tipo": "Barnizada",
+        "href": ""
+      }
+    ],
+    "barandasFijas": [
+      {
+        "modelo": "Clásica",
+        "medida": "60 x 45",
+        "tipo": "Natural",
+        "href": "#"
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "60 x 45",
+        "tipo": "Natural",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "60 x 45",
+        "tipo": "Natural",
+        "href": "#"
+      }
+    ],
+    "barandasOrtopedicas": [
+      {
+        "modelo": "Clásica",
+        "medida": "110 x 45",
+        "tipo": "Natural",
+        "href": "https://www.google.com/?zx=1758199002487&no_sw_cr=1"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "110 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "100 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "100 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "90 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "90 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "80 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "80 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "70 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "70 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "60 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "60 x 45",
+        "tipo": "Blanca",
+        "href": "#"
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "110 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "110 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "100 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "100 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "90 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "90 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "80 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "80 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "70 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "70 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "60 x 45",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Montessori",
+        "medida": "60 x 45",
+        "tipo": "Blanca",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "110 x 60",
+        "tipo": "Natural",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "110 x 60",
+        "tipo": "Blanca",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "70 x 60",
+        "tipo": "Natural",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "70 x 60",
+        "tipo": "Blanca",
+        "href": "#"
+      }
+    ],
+    "barandasSommier": [
+      {
+        "modelo": "Clásica",
+        "medida": "110 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "100 x 45",
+        "tipo": "Natural",
+        "href": "https://www.google.com/?zx=1758199002487&no_sw_cr=1"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "100 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "90 x 45",
+        "tipo": "Natural",
+        "href": "https://www.google.com/?zx=1758199002487&no_sw_cr=1"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "90 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "80 x 45",
+        "tipo": "Natural",
+        "href": "https://www.google.com/?zx=1758199002487&no_sw_cr=1"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "80 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "70 x 45",
+        "tipo": "Natural",
+        "href": "https://www.google.com/?zx=1758199002487&no_sw_cr=1"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "70 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "60 x 45",
+        "tipo": "Natural",
+        "href": "https://www.google.com/?zx=1758199002487&no_sw_cr=1"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "60 x 45",
+        "tipo": "Blanca",
+        "href": "#"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "110 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "100 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "90 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "80 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "70 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "60 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "110 x 60",
+        "tipo": "Natural",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "110 x 60",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "110 x 60",
+        "tipo": "Blanca",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "70 x 60",
+        "tipo": "Natural",
+        "href": "#"
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "70 x 60",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Triple (extra alta)",
+        "medida": "70 x 60",
+        "tipo": "Blanca",
+        "href": "#"
+      },
+      {
+        "modelo": "Clásica",
+        "medida": "110 x 45",
+        "tipo": "Natural",
+        "href": "https://www.google.com/?zx=1758199002487&no_sw_cr=1"
+      }
+    ],
+    "deck": [
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "20 x 20 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "20 x 20 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "20 x 20 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "30 x 30 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "30 x 30 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "30 x 30 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "40 x 40 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "40 x 40 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "40 x 40 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "20 x 20 cm",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "20 x 20 cm",
+        "tipo": "12un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "20 x 20 cm",
+        "tipo": "24un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "30 x 30 cm",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "30 x 30 cm",
+        "tipo": "12un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "30 x 30 cm",
+        "tipo": "24un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "40 x 40 cm",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "40 x 40 cm",
+        "tipo": "12un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "40 x 40 cm",
+        "tipo": "24un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "25 x 60 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "25 x 60 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "25 x 60 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "35 x 60 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "35 x 60 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "35 x 60 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "45 x 60 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "45 x 60 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "45 x 60 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "25 x 60 cm",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "25 x 60 cm",
+        "tipo": "12un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "25 x 60 cm",
+        "tipo": "24un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "35 x 60 cm",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "35 x 60 cm",
+        "tipo": "12un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "35 x 60 cm",
+        "tipo": "24un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "45 x 60 cm",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "45 x 60 cm",
+        "tipo": "12un",
+        "href": "#"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "45 x 60 cm",
+        "tipo": "24un",
+        "href": "#"
+      }
+    ],
+    "estantes": [
+      {
+        "modelo": "Estantes Montessori",
+        "medida": "40 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Montessori",
+        "medida": "40 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Montessori",
+        "medida": "40 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Montessori",
+        "medida": "60 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Montessori",
+        "medida": "60 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Montessori",
+        "medida": "60 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Montessori",
+        "medida": "80 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Montessori",
+        "medida": "80 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Montessori",
+        "medida": "80 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Librero",
+        "medida": "50 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Librero",
+        "medida": "50 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Librero",
+        "medida": "50 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Librero",
+        "medida": "70 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Librero",
+        "medida": "70 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Librero",
+        "medida": "70 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Librero",
+        "medida": "90 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Librero",
+        "medida": "90 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Librero",
+        "medida": "90 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Set 3Un",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Set 3Un",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Set 3Un",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Chico",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Chico",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Chico",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Mediano",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Mediano",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Mediano",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Grande",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Grande",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Hexagonales",
+        "medida": "Grande",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Triangulares",
+        "medida": "Set 3 un",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Triangulares",
+        "medida": "Set 3 un",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Triangulares",
+        "medida": "Set 3 un",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Set 3 un",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Set 3 un",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Set 3 un",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Chico",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Chico",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Chico",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Mediano",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Mediano",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Mediano",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Grande",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Grande",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cuadrados",
+        "medida": "Grande",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "20 x 20",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "20 x 20",
+        "tipo": "4un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "20 x 20",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "30 x 30",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "30 x 30",
+        "tipo": "4un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "30 x 30",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "40 x 40",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "40 x 40",
+        "tipo": "4un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "40 x 40",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "45 x 45",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "45 x 45",
+        "tipo": "4un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "45 x 45",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "50 x 50",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "50 x 50",
+        "tipo": "4un",
+        "href": "#"
+      },
+      {
+        "modelo": "Mensulas",
+        "medida": "50 x 50",
+        "tipo": "6un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "14 x 60 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "14 x 60 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "14 x 60 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "14 x 80 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "14 x 80 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "14 x 80 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "14 x 100 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "14 x 100 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "14 x 100 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "20 x 60 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "20 x 60 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "20 x 60 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "20 x 80 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "20 x 80 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "20 x 80 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "20 x 100 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "20 x 100 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "20 x 100 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "30 x 60 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "30 x 60 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "30 x 60 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "30 x 80 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "30 x 80 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "30 x 80 cm",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "30 x 100 cm",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "30 x 100 cm",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Estantes Cortes",
+        "medida": "30 x 100 cm",
+        "tipo": "3un",
+        "href": "#"
+      }
+    ],
     "infantiles": [
       {
         "modelo": "Infantil 1",
@@ -292,648 +1516,578 @@
         "href": "#"
       }
     ],
-    "escaleras": [
+    "organizadores": [
       {
-        "modelo": "Escaleras",
-        "medida": "0 a 60 cm",
-        "tipo": "Vertical",
+        "modelo": "Organizador 1",
+        "medida": "Standard",
+        "tipo": "1un",
         "href": "#"
       },
       {
-        "modelo": "Escaleras",
-        "medida": "0 a 60 cm",
-        "tipo": "Inclinada",
+        "modelo": "Organizador 1",
+        "medida": "Standard",
+        "tipo": "2un",
         "href": "#"
       },
       {
-        "modelo": "Escaleras",
-        "medida": "60 a 100 cm",
-        "tipo": "Vertical",
+        "modelo": "Organizador 1",
+        "medida": "Standard",
+        "tipo": "3un",
         "href": "#"
       },
       {
-        "modelo": "Escaleras",
-        "medida": "60 a 100 cm",
-        "tipo": "Inclinada",
+        "modelo": "Organizador 2",
+        "medida": "Standard",
+        "tipo": "1un",
         "href": "#"
       },
       {
-        "modelo": "Escaleras",
-        "medida": "110 a 150 cm",
-        "tipo": "Vertical",
+        "modelo": "Organizador 2",
+        "medida": "Standard",
+        "tipo": "2un",
         "href": "#"
       },
       {
-        "modelo": "Escaleras",
-        "medida": "110 a 150 cm",
-        "tipo": "Inclinada",
+        "modelo": "Organizador 2",
+        "medida": "Standard",
+        "tipo": "3un",
         "href": "#"
       },
       {
-        "modelo": "Escaleras",
-        "medida": "150 a 200 cm",
-        "tipo": "Vertical",
+        "modelo": "Organizador 3",
+        "medida": "Standard",
+        "tipo": "1un",
         "href": "#"
       },
       {
-        "modelo": "Escaleras",
-        "medida": "150 a 200 cm",
-        "tipo": "Inclinada",
+        "modelo": "Organizador 3",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 3",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 4",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 4",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 4",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 5",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 5",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 5",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 6",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 6",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 6",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 7",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 7",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 7",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 8",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 8",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 8",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 9",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 9",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 9",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 10",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 10",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Organizador 10",
+        "medida": "Standard",
+        "tipo": "3un",
         "href": "#"
       }
     ],
-    "estantes": [
+    "percheros": [
       {
-        "modelo": "Estantes Montessori",
-        "medida": "10 x 10 x 60",
-        "tipo": "Comprar",
+        "modelo": "Perchero 1",
+        "medida": "Standard",
+        "tipo": "1un",
         "href": "#"
       },
       {
-        "modelo": "Estantes Montessori",
-        "medida": "10 x 10 x 80",
-        "tipo": "Comprar",
+        "modelo": "Perchero 1",
+        "medida": "Standard",
+        "tipo": "2un",
         "href": "#"
       },
       {
-        "modelo": "Estantes Montessori",
-        "medida": "10 x 10 x 100",
-        "tipo": "Comprar",
+        "modelo": "Perchero 1",
+        "medida": "Standard",
+        "tipo": "3un",
         "href": "#"
       },
       {
-        "modelo": "Librero",
-        "medida": "60",
-        "tipo": "Comprar",
+        "modelo": "Perchero 2",
+        "medida": "Standard",
+        "tipo": "1un",
         "href": "#"
       },
       {
-        "modelo": "Librero",
-        "medida": "80",
-        "tipo": "Comprar",
+        "modelo": "Perchero 2",
+        "medida": "Standard",
+        "tipo": "2un",
         "href": "#"
       },
       {
-        "modelo": "Librero",
-        "medida": "100",
-        "tipo": "Comprar",
+        "modelo": "Perchero 2",
+        "medida": "Standard",
+        "tipo": "3un",
         "href": "#"
       },
       {
-        // Productos con medida distinta a 'Standard' deben agregarse aquí
-        "modelo": "Estantes",
-        "medida": "20 x 60",
-        "tipo": "2 un",
+        "modelo": "Perchero 3",
+        "medida": "Standard",
+        "tipo": "1un",
         "href": "#"
       },
       {
-        "modelo": "Estantes",
-        "medida": "20 x 60",
-        "tipo": "6 un",
+        "modelo": "Perchero 3",
+        "medida": "Standard",
+        "tipo": "2un",
         "href": "#"
       },
       {
-        "modelo": "Estantes",
-        "medida": "20 x 60",
-        "tipo": "12 un",
+        "modelo": "Perchero 3",
+        "medida": "Standard",
+        "tipo": "3un",
         "href": "#"
       },
       {
-        "modelo": "Estantes",
-        "medida": "20 x 80",
-        "tipo": "2 un",
+        "modelo": "Perchero 4",
+        "medida": "Standard",
+        "tipo": "1un",
         "href": "#"
       },
       {
-        "modelo": "Estantes",
-        "medida": "20 x 80",
-        "tipo": "6 un",
+        "modelo": "Perchero 4",
+        "medida": "Standard",
+        "tipo": "2un",
         "href": "#"
       },
       {
-        "modelo": "Estantes",
-        "medida": "20 x 80",
-        "tipo": "12 un",
+        "modelo": "Perchero 4",
+        "medida": "Standard",
+        "tipo": "3un",
         "href": "#"
       },
       {
-        "modelo": "Estantes",
-        "medida": "20 x 100",
-        "tipo": "2 un",
+        "modelo": "Perchero 5",
+        "medida": "Standard",
+        "tipo": "1un",
         "href": "#"
       },
       {
-        "modelo": "Estantes",
-        "medida": "20 x 100",
-        "tipo": "6 un",
+        "modelo": "Perchero 5",
+        "medida": "Standard",
+        "tipo": "2un",
         "href": "#"
       },
       {
-        "modelo": "Estantes",
-        "medida": "20 x 100",
-        "tipo": "12 un",
+        "modelo": "Perchero 5",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 6",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 6",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 6",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 7",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 7",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 7",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 8",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 8",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 8",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 9",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 9",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 9",
+        "medida": "Standard",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 10",
+        "medida": "Standard",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 10",
+        "medida": "Standard",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Perchero 10",
+        "medida": "Standard",
+        "tipo": "3un",
         "href": "#"
       }
     ],
-    "steps_cajones": [
+    "stepsCajones": [
       {
-        "modelo": "Steps / Cajones",
-        "medida": "40x28x9",
-        "tipo": "Comprar",
+        "modelo": "Steps con cajones",
+        "medida": "Medida 1",
+        "tipo": "Natural",
         "href": "#"
       },
       {
-        "modelo": "Steps / Cajones",
-        "medida": "50x28x9",
-        "tipo": "Comprar",
+        "modelo": "Steps con cajones",
+        "medida": "Medida 2",
+        "tipo": "Natural",
         "href": "#"
       },
       {
-        "modelo": "Steps / Cajones",
-        "medida": "60x28x9",
-        "tipo": "Comprar",
+        "modelo": "Steps con cajones",
+        "medida": "Medida 3",
+        "tipo": "Natural",
         "href": "#"
       },
       {
-        "modelo": "Steps / Cajones",
-        "medida": "40x28x16",
-        "tipo": "Comprar",
+        "modelo": "Steps con cajones",
+        "medida": "Medida 4",
+        "tipo": "Natural",
         "href": "#"
       },
       {
-        "modelo": "Steps / Cajones",
-        "medida": "50x28x16",
-        "tipo": "Comprar",
+        "modelo": "Steps con cajones",
+        "medida": "Medida 5",
+        "tipo": "Natural",
         "href": "#"
       },
       {
-        "modelo": "Steps / Cajones",
-        "medida": "60x28x16",
-        "tipo": "Comprar",
+        "modelo": "Steps con cajones",
+        "medida": "Medida 6",
+        "tipo": "Natural",
         "href": "#"
       },
       {
-        "modelo": "Steps / Cajones",
-        "medida": "40x28x23",
-        "tipo": "Comprar",
+        "modelo": "Steps con cajones",
+        "medida": "Medida 7",
+        "tipo": "Natural",
         "href": "#"
       },
       {
-        "modelo": "Steps / Cajones",
-        "medida": "50x28x23",
-        "tipo": "Comprar",
+        "modelo": "Steps con cajones",
+        "medida": "Medida 8",
+        "tipo": "Natural",
         "href": "#"
       },
       {
-        "modelo": "Steps / Cajones",
-        "medida": "60x28x23",
-        "tipo": "Comprar",
+        "modelo": "Steps con cajones",
+        "medida": "Medida 9",
+        "tipo": "Natural",
         "href": "#"
       },
       {
         "modelo": "Podio premiación (3 módulos)",
         "medida": "Único combo",
-        "tipo": "Comprar",
+        "tipo": "Natural",
         "href": "#"
       },
       {
         "modelo": "Podios individuales",
-        "medida": "Módulo 1",
-        "tipo": "Próximamente",
+        "medida": "Modulo 1",
+        "tipo": "Natural",
         "href": "#"
       },
       {
         "modelo": "Podios individuales",
-        "medida": "Módulo 2",
-        "tipo": "Próximamente",
+        "medida": "Modulo 2",
+        "tipo": "Natural",
         "href": "#"
       },
       {
         "modelo": "Podios individuales",
-        "medida": "Módulo 3",
-        "tipo": "Próximamente",
-        "href": "#"
-      }
-    ],
-    "barandas_fijas": [
-      {
-        "modelo": "Baranda Fija Montessori",
-        "medida": "60 x 45",
-        "tipo": "Natural",
-        "href": "#"
-      },
-      {
-        "modelo": "Baranda Fija Montessori II",
-        "medida": "60 x 45",
-        "tipo": "Natural",
-        "href": "#"
-      },
-      {
-        "modelo": "Baranda Fija Simple",
-        "medida": "60 x 45",
+        "medida": "Modulo 3",
         "tipo": "Natural",
         "href": "#"
       }
     ],
-    "barandas_desmontables": [
+    "fanales": [
       {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "110 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "110 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "110 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1137924749-baranda-seguridad-para-cama-ninos-bebes-adultos-blanca-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "100 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1370369419-baranda-de-seguridad-para-cama-infantil-adultos-100x45cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "100 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "100 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228815130-baranda-para-cama-color-blanca-100-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "90 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1140300239-baranda-de-seguridad-para-cama-infantil-adultos-90x45-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "90 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "90 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228698300-baranda-para-cama-color-blanca-90-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "80 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1166496084-baranda-de-seguridad-para-cama-infantil-adultos-80x45cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "80 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "80 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228776168-baranda-para-cama-color-blanca-80-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "70 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1511557955-baranda-para-cama-desmontable-70-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "70 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "70 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "60 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1372978437-baranda-de-seguridad-para-cama-infantil-adultos-60x45cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "60 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "60 x 45 cm",
-        "tipo": "Blancas",
+        "modelo": "Fanales",
+        "medida": "Set x3",
+        "tipo": "1un",
         "href": "#"
       },
       {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "110 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-932165982-baranda-de-seguridad-para-cama-infantil-adultos-reforzada-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "110 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "110 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1137924749-baranda-seguridad-para-cama-ninos-bebes-adultos-blanca-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "100 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1370369419-baranda-de-seguridad-para-cama-infantil-adultos-100x45cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "100 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "100 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228815130-baranda-para-cama-color-blanca-100-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "90 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1140300239-baranda-de-seguridad-para-cama-infantil-adultos-90x45-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "90 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "90 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228698300-baranda-para-cama-color-blanca-90-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "80 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1166496084-baranda-de-seguridad-para-cama-infantil-adultos-80x45cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "80 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "80 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228776168-baranda-para-cama-color-blanca-80-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "70 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1511557955-baranda-para-cama-desmontable-70-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "70 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "70 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "60 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1372978437-baranda-de-seguridad-para-cama-infantil-adultos-60x45cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "60 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Montessori",
-        "medida": "60 x 45 cm",
-        "tipo": "Blancas",
+        "modelo": "Fanales",
+        "medida": "Set x3",
+        "tipo": "2un",
         "href": "#"
       },
       {
-        "modelo": "Baranda desmontable Triple",
-        "medida": "110 x 60 cm",
-        "tipo": "Natural",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Triple",
-        "medida": "110 x 60 cm",
-        "tipo": "Barnizadas",
+        "modelo": "Fanales",
+        "medida": "Set x3",
+        "tipo": "3un",
         "href": "#"
       },
       {
-        "modelo": "Baranda desmontable Triple",
-        "medida": "110 x 60 cm",
-        "tipo": "Blancas",
+        "modelo": "Fanales",
+        "medida": "Chico",
+        "tipo": "1un",
         "href": "#"
       },
       {
-        "modelo": "Baranda desmontable Triple",
-        "medida": "70 x 60 cm",
-        "tipo": "Natural",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda desmontable Triple",
-        "medida": "70 x 60 cm",
-        "tipo": "Barnizadas",
+        "modelo": "Fanales",
+        "medida": "Chico",
+        "tipo": "2un",
         "href": "#"
       },
       {
-        "modelo": "Baranda desmontable Triple",
-        "medida": "70 x 60 cm",
-        "tipo": "Blancas",
+        "modelo": "Fanales",
+        "medida": "Chico",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Mediano",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Mediano",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Mediano",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Grande",
+        "tipo": "1un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Grande",
+        "tipo": "2un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Grande",
+        "tipo": "3un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Chico",
+        "tipo": "10un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Chico",
+        "tipo": "20un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Chico",
+        "tipo": "30un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Mediano",
+        "tipo": "10un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Mediano",
+        "tipo": "20un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Mediano",
+        "tipo": "30un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Grande",
+        "tipo": "10un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Grande",
+        "tipo": "20un",
+        "href": "#"
+      },
+      {
+        "modelo": "Fanales",
+        "medida": "Grande",
+        "tipo": "30un",
         "href": "#"
       }
     ],
-    "barandas_sommier": [
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "110 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-932165982-baranda-de-seguridad-para-cama-infantil-adultos-reforzada-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "110 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "110 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1137924749-baranda-seguridad-para-cama-ninos-bebes-adultos-blanca-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "100 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1370369419-baranda-de-seguridad-para-cama-infantil-adultos-100x45cm-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "100 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "100 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228815130-baranda-para-cama-color-blanca-100-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "90 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1140300239-baranda-de-seguridad-para-cama-infantil-adultos-90x45-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "90 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "90 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228698300-baranda-para-cama-color-blanca-90-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "80 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1166496084-baranda-de-seguridad-para-cama-infantil-adultos-80x45cm-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "80 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "80 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228776168-baranda-para-cama-color-blanca-80-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "70 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1511557955-baranda-para-cama-desmontable-70-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "70 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "70 x 45 cm",
-        "tipo": "Blancas",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "60 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1372978437-baranda-de-seguridad-para-cama-infantil-adultos-60x45cm-_JM"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "60 x 45 cm",
-        "tipo": "Barnizadas",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda sommier Clásica",
-        "medida": "60 x 45 cm",
-        "tipo": "Blancas",
-        "href": "#"
-      },
-      {
-        "modelo": "Baranda sommier Triple",
-        "medida": "110 x 60 cm",
-        "tipo": "Natural",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda sommier Triple",
-        "medida": "110 x 60 cm",
-        "tipo": "Barnizadas",
-        "href": "#"
-      },
-      {
-        "modelo": "Baranda sommier Triple",
-        "medida": "110 x 60 cm",
-        "tipo": "Blancas",
-        "href": "#"
-      },
-      {
-        "modelo": "Baranda sommier Triple",
-        "medida": "70 x 60 cm",
-        "tipo": "Natural",
-        "href": "https://wa.me/5491167007723"
-      },
-      {
-        "modelo": "Baranda sommier Triple",
-        "medida": "70 x 60 cm",
-        "tipo": "Barnizadas",
-        "href": "#"
-      },
-      {
-        "modelo": "Baranda sommier Triple",
-        "medida": "70 x 60 cm",
-        "tipo": "Blancas",
-        "href": "#"
-      }
-    ]
+    "camas": []
   }
 }

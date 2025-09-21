@@ -1,86 +1,3 @@
-<script type="module">
-    import { ensureStore, getModuleLinks } from './js/modules/links-store.js';
-    // ...existing code...
-    // ...existing code...
-    // ...existing code...
-    // ...existing code...
-
-    async function loadPublicLinks(){
-        const safeArr = (x) => Array.isArray(x) ? x : [];
-        try {
-            const url = 'Links/links.json' + '?cb=' + Date.now();
-            const res = await fetch(url, { cache: 'no-store' });
-            if(!res.ok) throw 0;
-            const json = await res.json();
-            return safeArr(json && json.modules ? json.modules[moduleId] : null);
-        } catch(_) {
-            return [];
-        }
-    }
-
-    function applyRows(rows){
-        if(!Array.isArray(rows)) return;
-        const map = new Map();
-        rows.forEach(it => {
-            map.set(keyOf(it.modelo, it.medida, it.tipo), { href: it.href });
-        });
-
-        const setHrefSmart = (a, mapped) => {
-            if (!a) return;
-            const isValid = typeof mapped === 'string' && mapped.trim() && mapped !== '#';
-            if (isValid) {
-                a.href = mapped;
-            } else {
-                const current = a.getAttribute('href') || '';
-                const currentValid = current && current !== '#' && !current.startsWith('javascript:');
-                if (!currentValid) a.href = whatsapp;
-            }
-        };
-
-        document.querySelectorAll('.product-card').forEach(card => {
-            const modelo = normalize(card.querySelector('.product-card-title')?.textContent || '');
-            card.querySelectorAll('table.product-table').forEach(table => {
-                const ths = Array.from(table.querySelectorAll('tr:first-child th'));
-                const tipos = ths.slice(1).map(th => normalize(th.textContent));
-                Array.from(table.querySelectorAll('tr')).slice(1).forEach(tr => {
-                    const tds = Array.from(tr.querySelectorAll('td'));
-                    if (!tds.length) return;
-                    const medida = normalize(tds[0].textContent);
-                    tipos.forEach((tipo, idx) => {
-                        const td = tds[idx+1];
-                        if (!td) return;
-                        const a = td.querySelector('a');
-                        if (!a) return;
-                        const k = keyOf(modelo, medida, tipo);
-                        const it = map.get(k);
-                        const href = it && it.href ? String(it.href) : '';
-                        setHrefSmart(a, href);
-                        a.target = '_blank';
-                        a.rel = 'noopener';
-                        if (!a.classList.contains('buy-btn')) a.classList.add('buy-btn');
-                        if (!a.classList.contains('primary') && !a.classList.contains('secondary')) a.classList.add('primary');
-                    });
-                });
-            });
-        });
-    }
-
-    (async () => {
-        const publicRows = await loadPublicLinks();
-        ensureStore();
-        const localRows = Array.isArray(getModuleLinks(moduleId)) ? getModuleLinks(moduleId) : [];
-
-        if (publicRows && publicRows.length) {
-            const mergeKey = (it) => keyOf(it.modelo, it.medida, it.tipo);
-            const map = new Map();
-            publicRows.forEach(r => map.set(mergeKey(r), r));
-            localRows.forEach(r => map.set(mergeKey(r), r));
-            applyRows(Array.from(map.values()));
-        } else {
-            applyRows(localRows);
-        }
-    })();
-</script>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -93,11 +10,11 @@
 <body class="barandas">
     <div class="container">
         <!-- CABECERA (INICIO) — LA TARIMA / Carpintería Online -->
-        <a href="index.html" class="web-header-link">
-            <h1>LA TARIMA</h1>
+        <a href="index.html" style="text-decoration:none; color:inherit;">
+            <h1 style="cursor:pointer;">LA TARIMA</h1>
         </a>
-        <a href="index.html" class="web-header-link">
-            <div class="subtitle">Carpintería Online</div>
+        <a href="index.html" style="text-decoration:none; color:inherit;">
+            <div class="subtitle" style="cursor:pointer;">Carpintería Online</div>
         </a>
         <!-- BLOQUE DE REDES (INICIO) — botones grises de redes -->
         <div class="socials">

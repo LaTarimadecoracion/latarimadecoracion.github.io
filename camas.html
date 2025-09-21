@@ -1,79 +1,3 @@
-<script type="module">
-    const moduleId = 'camas';
-    async function loadLinks() {
-        try {
-            const url = 'Links/links.json' + '?cb=' + Date.now();
-            const res = await fetch(url, { cache: 'no-store' });
-            if (!res.ok) throw 0;
-            const json = await res.json();
-            return Array.isArray(json?.modules?.camas) ? json.modules.camas : [];
-        } catch {
-            return [];
-        }
-    }
-    function renderButtons(links) {
-        const stack = document.querySelector('.product-stack');
-        stack.innerHTML = '';
-        // Agrupar por modelo
-        const modelos = {};
-        links.forEach(item => {
-            if (!modelos[item.modelo]) modelos[item.modelo] = {};
-            modelos[item.modelo][item.tipo] = item.href;
-        });
-        const whatsapp = 'https://wa.me/5491167007723';
-        Object.keys(modelos).forEach(modelo => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            const img = document.createElement('div');
-            img.className = 'product-image';
-            img.innerHTML = `<img src="img/camas/${modelo.replace(/ /g,'').toLowerCase()}.jpg" alt="${modelo} de madera" loading="lazy">`;
-            card.appendChild(img);
-            const title = document.createElement('div');
-            title.className = 'product-card-title';
-            title.textContent = modelo;
-            card.appendChild(title);
-            const table = document.createElement('table');
-            table.className = 'product-table';
-            table.innerHTML = `<thead><tr><th>1 plaza</th><th>2 plazas</th></tr></thead><tbody></tbody>`;
-            const tr = document.createElement('tr');
-            ['1 plaza','2 plazas'].forEach(tipo => {
-                const td = document.createElement('td');
-                const btn = document.createElement('a');
-                const href = modelos[modelo][tipo];
-                if (href && href.trim()) {
-                    btn.textContent = 'Comprar';
-                    btn.href = href;
-                    btn.target = '_blank';
-                    btn.className = 'buy-btn secondary';
-                } else {
-                    btn.textContent = 'Cargando';
-                    btn.href = whatsapp;
-                    btn.target = '_blank';
-                    btn.className = 'buy-btn secondary';
-                    btn.style.opacity = '0.6';
-                }
-                td.appendChild(btn);
-                tr.appendChild(td);
-            });
-            table.querySelector('tbody').appendChild(tr);
-            card.appendChild(table);
-            stack.appendChild(card);
-        });
-        // Botones de navegación al final
-        const nav = document.createElement('nav');
-        nav.className = 'split-btn';
-        nav.setAttribute('aria-label', 'Acciones de navegación y contacto');
-        nav.innerHTML = `
-            <a href="index.html" title="Volver al inicio">INICIO</a>
-            <a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener" title="Consultar por WhatsApp">CONSULTAR</a>
-        `;
-        stack.appendChild(nav);
-    }
-    (async () => {
-        const links = await loadLinks();
-        renderButtons(links);
-    })();
-</script>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -86,11 +10,11 @@
 <body class="barandas">
     <div class="container">
         <!-- CABECERA (INICIO) — LA TARIMA / Carpintería Online -->
-        <a href="index.html" class="web-header-link">
-            <h1>LA TARIMA</h1>
+        <a href="index.html" style="text-decoration:none; color:inherit;">
+            <h1 style="cursor:pointer;">LA TARIMA</h1>
         </a>
-        <a href="index.html" class="web-header-link">
-            <div class="subtitle">Carpintería Online</div>
+        <a href="index.html" style="text-decoration:none; color:inherit;">
+            <div class="subtitle" style="cursor:pointer;">Carpintería Online</div>
         </a>
         <!-- CABECERA (FIN) -->
         <!-- BLOQUE DE REDES (INICIO) — botones grises de redes -->
@@ -142,8 +66,8 @@
                     </tr>
                     <tr>
                         <td>Standard</td>
-                        <td><a href="#" class="buy-btn primary">Próximamente</a></td>
-                        <td><a href="#" class="buy-btn primary">Próximamente</a></td>
+                        <td><a href="#" class="buy-btn primary">Comprar</a></td>
+                        <td><a href="#" class="buy-btn primary">Comprar</a></td>
                         <td><a href="#" class="buy-btn primary">Comprar</a></td>
                     </tr>
                 </table>
@@ -317,25 +241,70 @@
         </div>
 
         <!-- CTA fusionado: [INICIO | CONSULTAR] -->
+    <nav class="split-btn" aria-label="Acciones de navegación y contacto">
+            <a href="index.html" title="Volver al inicio">INICIO</a>
+            <a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener" title="Consultar por WhatsApp">CONSULTAR</a>
+        </nav>
         </div>
     <script type="module">
         import { ensureStore, getModuleLinks } from './js/modules/links-store.js';
-    // ...existing code...
-    // ...existing code...
-    // ...existing code...
-    // ...existing code...
+        const moduleId = 'camas';
+        const whatsapp = 'https://wa.me/5491167007723';
+        const normalize = (s) => String(s||'').trim().replace(/\s+/g,' ');
+        const keyOf = (modelo, medida, tipo) => `${normalize(modelo)}|${normalize(medida)}|${normalize(tipo)}`.toLowerCase();
 
         async function loadPublicLinks(){
             const safeArr = (x) => Array.isArray(x) ? x : [];
-            try {
-                const url = 'Links/links.json' + '?cb=' + Date.now();
-                const res = await fetch(url, { cache: 'no-store' });
-                if(!res.ok) throw 0;
-                const json = await res.json();
-                return safeArr(json && json.modules ? json.modules[moduleId] : null);
-            } catch(_) {
-                return [];
+
+            const fetchEmbedded = async () => {
+                try {
+                    const page = await fetch('links.html', { cache: 'no-store' });
+                    if (!page.ok) throw 0;
+                    const html = await page.text();
+                    const m = html.match(/<script[^>]*id=["']lt-public-links["'][^>]*>([\s\S]*?)<\/script>/i);
+                    if (!m) throw 0;
+                    const embedded = JSON.parse(m[1]);
+                    return safeArr(embedded && embedded.modules ? embedded.modules[moduleId] : null);
+                } catch(_) { return []; }
+            };
+
+            const fetchLocalJson = async () => {
+                try {
+                    const res = await fetch('data/links.json', { cache: 'no-store' });
+                    if(!res.ok) throw 0;
+                    const json = await res.json();
+                    return safeArr(json && json.modules ? json.modules[moduleId] : null);
+                } catch(_) { return []; }
+            };
+
+            const fetchRemote = async () => {
+                try{
+                    const cfgRes = await fetch('data/links-source.json', { cache: 'no-store' });
+                    if(!cfgRes.ok) throw 0;
+                    const cfg = await cfgRes.json();
+                    const url = cfg && cfg.remoteRawUrl ? String(cfg.remoteRawUrl) : '';
+                    if(!url) throw 0;
+                    const r2 = await fetch(url, { cache: 'no-store' });
+                    if(!r2.ok) throw 0;
+                    const j2 = await r2.json();
+                    return safeArr(j2 && j2.modules ? j2.modules[moduleId] : null);
+                }catch(_){ return []; }
+            };
+
+            const [emb, loc, rem] = await Promise.all([fetchEmbedded(), fetchLocalJson(), fetchRemote()]);
+            const pick = (a, b) => {
+                const href = (b && typeof b.href === 'string') ? b.href : null;
+                if (href && href !== '#') return { ...a, ...b };
+                return a || b;
+            };
+            const map = new Map();
+            for (const src of [emb, loc, rem]){
+                for (const r of src){
+                    const k = keyOf(r.modelo, r.medida, r.tipo);
+                    map.set(k, map.has(k) ? pick(map.get(k), r) : r);
+                }
             }
+            return Array.from(map.values());
         }
 
         function applyRows(rows){
