@@ -1,3 +1,50 @@
+/* --- Botones principales de barandas para cama --- */
+.btn-stack {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	width: 100%;
+	align-items: center;
+	margin-bottom: 24px;
+}
+.btn-product {
+	background: #fff;
+	color: #222;
+	border: 1.5px solid #e0e0e0;
+	border-radius: 14px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+	font-size: 1.1rem;
+	font-weight: 400;
+	width: 100%;
+	max-width: var(--content-max);
+	height: 56px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	cursor: pointer;
+	transition: box-shadow 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
+	gap: 16px;
+	position: relative;
+	padding: 0 18px;
+	line-height: 1;
+	text-decoration: none;
+}
+.btn-product:hover {
+	background: #f5f6fa;
+	color: #007aff;
+	border-color: #b3b3b3;
+	box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+.btn-product:link, .btn-product:visited, .btn-product:active {
+	text-decoration: none;
+	color: inherit;
+}
+.btn-product .chev-right-icon {
+	margin-right: 16px;
+	margin-left: 0;
+	display: flex;
+	align-items: center;
+}
 /* Archivo de estilos para LA TARIMA y Barandas para cama */
 :root { --content-max: 450px; }
 body {
@@ -132,11 +179,11 @@ h1 {
 
 /* --- Botones principales (home y similares) --- */
 .main-btn {
-	background: transparent;
+	background: #fff;
 	color: #222;
-	border: none;
-	border-radius: 0;
-	box-shadow: none;
+	border: 1.5px solid #e0e0e0;
+	border-radius: 14px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 	font-size: 1.1rem;
 	font-weight: 400;
 	width: 100%;
@@ -147,11 +194,11 @@ h1 {
 	align-items: center;
 	justify-content: flex-start;
 	cursor: pointer;
-	transition: background 0.2s, color 0.2s;
+	transition: background 0.2s, color 0.2s, border 0.2s;
 	margin-bottom: 18px;
 	gap: 16px;
 	position: relative;
-	padding: 0;
+	padding: 0 0 0 0;
 	line-height: 1;
 }
 .main-btn:hover {
@@ -369,7 +416,7 @@ body.home { background: #F3F4F6; }
 /* Opciones internas con leve indentado y separación uniforme */
 .home .dropdown .dropdown-content .main-btn { margin: 0 4px 18px; }
 /* Iconos: chevron derecho y flecha rotatoria */
-.home .dropdown .dropdown-content .icon-circle .chev-right-icon { width: 20px; height: 20px; display: block; }
+.chev-right-icon { width: 20px; height: 20px; display: block; stroke: #0074D9 !important; }
 .home .dropdown > summary .icon-circle .arrow-icon { width: 24px; height: 24px; display: block; transform: rotate(0deg); }
 .home .dropdown[open] > summary .icon-circle .arrow-icon { transform: rotate(180deg); }
 /* Estilo de botón blanco para home (unifica a enlaces y botones) */

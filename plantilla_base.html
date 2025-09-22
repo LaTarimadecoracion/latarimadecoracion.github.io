@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steps / Cajones | LA TARIMA</title>
+    <title>LA TARIMA | Página Base</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="icon" href="img/ico.png" type="image/png">
 </head>
 <body class="barandas">
     <div class="container">
-        <!-- CABECERA (INICIO) — LA TARIMA / Carpintería Online -->
+        <!-- CABECERA (INICIO) -->
         <a href="index.html" style="text-decoration:none; color:inherit;">
             <h1 style="cursor:pointer;">LA TARIMA</h1>
         </a>
@@ -36,89 +36,15 @@
             </a>
         </div>
         <!-- BLOQUE DE REDES (FIN) -->
-        <div class="product-stack" id="product-stack"></div>
+        <!-- ZONA DE CONTENIDO PERSONALIZADO -->
+        <div id="contenido-personalizado">
+            <!-- Aquí va tu contenido, productos, módulos, etc. -->
+        </div>
         <!-- CTA fusionado: [INICIO | CONSULTAR] -->
         <nav class="split-btn" aria-label="Acciones de navegación y contacto">
             <a href="index.html" title="Volver al inicio">INICIO</a>
             <a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener" title="Consultar por WhatsApp">CONSULTAR</a>
         </nav>
     </div>
-    <script type="module">
-    const moduleId = 'steps_cajones';
-    const whatsapp = 'https://wa.me/5491167007723';
-    const IMAGES = {
-        'Steps / Cajones': 'img/steps_cajones/stepscajones.jpg',
-        'Podio premiación (3 módulos)': 'img/steps_cajones/podiopremiacion.jpg',
-        'Podios individuales': 'img/steps_cajones/podiosindividuales.jpg'
-    };
-    function getModeloKey(modelo) {
-        if (modelo.toLowerCase().includes('steps')) return 'Steps / Cajones';
-        if (modelo.toLowerCase().includes('premiación')) return 'Podio premiación (3 módulos)';
-        if (modelo.toLowerCase().includes('individuales')) return 'Podios individuales';
-        return modelo;
-    }
-    async function getLinks(){
-        try {
-            const res = await fetch('Links/links.json', { cache: 'no-store' });
-            if(res.ok){
-                const json = await res.json();
-                return Array.isArray(json.modules[moduleId]) ? json.modules[moduleId] : [];
-            }
-        } catch(e){
-            console.error('Error al cargar links.json', e);
-        }
-        return [];
-    }
-    function groupByModelo(rows) {
-        const grupos = {};
-        rows.forEach(row => {
-            const key = getModeloKey(row.modelo);
-            if (!grupos[key]) grupos[key] = [];
-            grupos[key].push(row);
-        });
-        return grupos;
-    }
-    function renderCards(grupos) {
-        const stack = document.getElementById('product-stack');
-        stack.innerHTML = '';
-        Object.entries(grupos).forEach(([modelo, items]) => {
-            // Agrupar por medida
-            const medidas = {};
-            items.forEach(item => {
-                const medida = item.medida || '';
-                if (!medidas[medida]) medidas[medida] = {};
-                medidas[medida][item.tipo] = item.href;
-            });
-            // Crear card
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.innerHTML = `
-                <div class="product-image">
-                    <img src="${IMAGES[modelo]||''}" alt="${modelo}" loading="lazy">
-                </div>
-                <div class="product-card-title">${modelo}</div>
-                <table class="product-table">
-                    <tr>
-                        <th>Medida</th>
-                        <th>Comprar</th>
-                    </tr>
-                    ${Object.entries(medidas).map(([medida, tipos]) => `
-                        <tr>
-                            <td>${medida}</td>
-                            <td><a class="buy-btn primary" href="${tipos['Comprar'] && tipos['Comprar'].trim() && tipos['Comprar'] !== '#' ? tipos['Comprar'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-                        </tr>
-                    `).join('')}
-                </table>
-            `;
-            stack.appendChild(card);
-        });
-    }
-    (async () => {
-        const links = await getLinks();
-        const grupos = groupByModelo(links);
-        renderCards(grupos);
-    })();
-    </script>
 </body>
-<script src="responsive-tables.js?v=20250918-2"></script>
 </html>
