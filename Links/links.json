@@ -1137,6 +1137,12 @@
     "steps_cajones": [
       {
         "modelo": "Steps / Cajones",
+        "medida": "30x28x9",
+        "tipo": "Comprar",
+        "href": "https://www.mercadolibre.com.ar/ventas/omni/listado?filters=&subFilters=&search=&limit=50&offset=0&selectedTab=TAB_TODAY"
+      },
+      {
+        "modelo": "Steps / Cajones",
         "medida": "40x28x9",
         "tipo": "Comprar",
         "href": "https://www.mercadolibre.com.ar/ventas/omni/listado?filters=&subFilters=&search=&limit=50&offset=0&selectedTab=TAB_TODAY"
@@ -1149,7 +1155,7 @@
       },
       {
         "modelo": "Steps / Cajones",
-        "medida": "60x28x9",
+        "medida": "30x28x16",
         "tipo": "Comprar",
         "href": ""
       },
@@ -1167,7 +1173,7 @@
       },
       {
         "modelo": "Steps / Cajones",
-        "medida": "60x28x16",
+        "medida": "30x28x23",
         "tipo": "Comprar",
         "href": ""
       },
@@ -1180,12 +1186,6 @@
       {
         "modelo": "Steps / Cajones",
         "medida": "50x28x23",
-        "tipo": "Comprar",
-        "href": ""
-      },
-      {
-        "modelo": "Steps / Cajones",
-        "medida": "60x28x23",
         "tipo": "Comprar",
         "href": ""
       },
