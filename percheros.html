@@ -101,7 +101,7 @@
                                     const k = keyOf(modelo, medida, tipo);
                                     const it = items.find(i => keyOf(i.modelo, i.medida, i.tipo) === k);
                                     const href = it && it.href && it.href !== '#' ? it.href : whatsapp;
-                                    return `<td><a href="${href}" class="buy-btn primary" target="_blank" rel="noopener">Comprar</a></td>`;
+                                    return `<td><a class="buy-btn${it && it.href && it.href !== '#' ? ' primary' : ' loading-link'}" href="${it && it.href && it.href !== '#' ? it.href : '#'}"${it && it.href && it.href !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${it && it.href && it.href !== '#' ? 'Comprar' : ''}</a></td>`;
                                 }).join('')}
                             </tr>`;
                         }).join('')}

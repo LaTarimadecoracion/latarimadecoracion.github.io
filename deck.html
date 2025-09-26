@@ -111,7 +111,7 @@
                                 ${Object.entries(medidas).map(([medida, tipos]) => `
                                     <tr>
                                         <td>${medida}</td>
-                                        <td><a class="buy-btn primary" href="${tipos['Comprar'] && tipos['Comprar'].trim() && tipos['Comprar'] !== '#' ? tipos['Comprar'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
+                                        <td><a class="buy-btn${tipos['Comprar'] && tipos['Comprar'].trim() && tipos['Comprar'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['Comprar'] && tipos['Comprar'].trim() && tipos['Comprar'] !== '#' ? tipos['Comprar'] : '#'}"${tipos['Comprar'] && tipos['Comprar'].trim() && tipos['Comprar'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['Comprar'] && tipos['Comprar'].trim() && tipos['Comprar'] !== '#' ? 'Comprar' : ''}</a></td>
                                     </tr>
                                 `).join('')}
                             </table>

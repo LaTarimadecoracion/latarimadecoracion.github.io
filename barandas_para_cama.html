@@ -33,6 +33,22 @@
             </a>
         </div>
         <div class="product-stack" id="product-stack"></div>
+                <script type="module">
+                import { crearBotonProducto } from './js/generar-botones.js';
+                const stack = document.getElementById('product-stack');
+                const botones = [
+                    { nombre: 'Barandas desmontables', href: 'barandas_desmontables.html' },
+                    { nombre: 'Barandas para Sommier', href: 'barandas_sommier.html' },
+                    { nombre: 'Barandas Fijas', href: 'barandas_fijas.html' },
+                    { nombre: 'Barandas Ortopédicas', href: 'barandas_ortopedicas.html' },
+                ];
+                const btnStack = document.createElement('div');
+                btnStack.className = 'btn-stack';
+                botones.forEach(b => {
+                    btnStack.appendChild(crearBotonProducto(b.nombre, b.href));
+                });
+                stack.appendChild(btnStack);
+                </script>
         <div class="btn-stack" style="margin-top:2em;">
             <a class="btn-product" href="barandas_desmontables.html">
                 <span class="chev-right-icon" aria-hidden="true">

@@ -48,6 +48,22 @@
             </div>
             <!-- BLOQUE DE REDES (FIN) -->
             <div class="product-stack" id="product-stack"></div>
+                <script type="module">
+                import { crearBotonProducto } from './js/generar-botones.js';
+                const stack = document.getElementById('product-stack');
+                const botones = [
+                    { nombre: 'Barandas desmontables', href: 'barandas_desmontables.html' },
+                    { nombre: 'Barandas para Sommier', href: 'barandas_sommier.html' },
+                    { nombre: 'Barandas Fijas', href: 'barandas_fijas.html' },
+                    { nombre: 'Barandas Ortopédicas', href: 'barandas_ortopedicas.html' },
+                ];
+                const btnStack = document.createElement('div');
+                btnStack.className = 'btn-stack';
+                botones.forEach(b => {
+                    btnStack.appendChild(crearBotonProducto(b.nombre, b.href));
+                });
+                stack.appendChild(btnStack);
+                </script>
             <!-- CTA fusionado: [INICIO | CONSULTAR] -->
             <nav class="split-btn" aria-label="Acciones de navegación y contacto">
                 <a href="index.html" title="Volver al inicio">INICIO</a>
@@ -113,14 +129,19 @@
                             <th>Barnizadas</th>
                             <th>Blancas</th>
                         </tr>
-                        ${Object.entries(medidas).map(([medida, tipos]) => `
-                            <tr>
+                        ${Object.entries(medidas).map(([medida, tipos]) => {
+                            const btn = (tipo, clase) => {
+                                const href = tipos[tipo];
+                                const isActive = href && href.trim() && href !== '#';
+                                return `<a class="buy-btn${isActive ? ' ' + clase : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a>`;
+                            };
+                            return `<tr>
                                 <td>${medida}</td>
-                                <td><a class="buy-btn primary" href="${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? tipos['Natural'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-                                <td><a class="buy-btn secondary" href="${tipos['Barnizadas'] && tipos['Barnizadas'].trim() && tipos['Barnizadas'] !== '#' ? tipos['Barnizadas'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-                                <td><a class="buy-btn secondary" href="${tipos['Blancas'] && tipos['Blancas'].trim() && tipos['Blancas'] !== '#' ? tipos['Blancas'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-                            </tr>
-                        `).join('')}
+                                <td>${btn('Natural','primary')}</td>
+                                <td>${btn('Barnizadas','secondary')}</td>
+                                <td>${btn('Blancas','secondary')}</td>
+                            </tr>`;
+                        }).join('')}
                     </table>
                 `;
                 stack.appendChild(card);

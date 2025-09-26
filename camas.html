@@ -33,6 +33,22 @@
 			</a>
 		</div>
 		<div class="product-stack" id="product-stack"></div>
+				<script type="module">
+				import { crearBotonProducto } from './js/generar-botones.js';
+				const stack = document.getElementById('product-stack');
+				const botones = [
+					{ nombre: 'Barandas desmontables', href: 'barandas_desmontables.html' },
+					{ nombre: 'Barandas para Sommier', href: 'barandas_sommier.html' },
+					{ nombre: 'Barandas Fijas', href: 'barandas_fijas.html' },
+					{ nombre: 'Barandas Ortopédicas', href: 'barandas_ortopedicas.html' },
+				];
+				const btnStack = document.createElement('div');
+				btnStack.className = 'btn-stack';
+				botones.forEach(b => {
+					btnStack.appendChild(crearBotonProducto(b.nombre, b.href));
+				});
+				stack.appendChild(btnStack);
+				</script>
 		<nav class="split-btn" aria-label="Acciones de navegación y contacto">
 			<a href="index.html" title="Volver al inicio">INICIO</a>
 			<a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener" title="Consultar por WhatsApp">CONSULTAR</a>
@@ -95,7 +111,7 @@
 						${tipos.map(tipo => {
 							const item = items.find(i => i.tipo === tipo);
 							const href = item && item.href && item.href.trim() && item.href !== '#' ? item.href : whatsapp;
-							return `<td><a class="buy-btn primary" href="${href}" target="_blank" rel="noopener">Comprar</a></td>`;
+							return `<td><a class="buy-btn${item && item.href && item.href.trim() && item.href !== '#' ? ' primary' : ' loading-link'}" href="${item && item.href && item.href.trim() && item.href !== '#' ? item.href : '#'}"${item && item.href && item.href.trim() && item.href !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${item && item.href && item.href.trim() && item.href !== '#' ? 'Comprar' : ''}</a></td>`;
 						}).join('')}
 					</tr>
 				</table>

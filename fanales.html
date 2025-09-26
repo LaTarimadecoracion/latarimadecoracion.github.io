@@ -114,9 +114,9 @@
 				${Object.entries(modelosInd).map(([modelo, tipos]) => `
 					<tr>
 						<td>${modelo}</td>
-						<td><a class="buy-btn primary" href="${tipos['1un'] && tipos['1un'].trim() && tipos['1un'] !== '#' ? tipos['1un'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-						<td><a class="buy-btn primary" href="${tipos['2un'] && tipos['2un'].trim() && tipos['2un'] !== '#' ? tipos['2un'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-						<td><a class="buy-btn primary" href="${tipos['3un'] && tipos['3un'].trim() && tipos['3un'] !== '#' ? tipos['3un'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
+						<td><a class="buy-btn${tipos['1un'] && tipos['1un'].trim() && tipos['1un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['1un'] && tipos['1un'].trim() && tipos['1un'] !== '#' ? tipos['1un'] : '#'}"${tipos['1un'] && tipos['1un'].trim() && tipos['1un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['1un'] && tipos['1un'].trim() && tipos['1un'] !== '#' ? 'Comprar' : ''}</a></td>
+						<td><a class="buy-btn${tipos['2un'] && tipos['2un'].trim() && tipos['2un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['2un'] && tipos['2un'].trim() && tipos['2un'] !== '#' ? tipos['2un'] : '#'}"${tipos['2un'] && tipos['2un'].trim() && tipos['2un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['2un'] && tipos['2un'].trim() && tipos['2un'] !== '#' ? 'Comprar' : ''}</a></td>
+						<td><a class="buy-btn${tipos['3un'] && tipos['3un'].trim() && tipos['3un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['3un'] && tipos['3un'].trim() && tipos['3un'] !== '#' ? tipos['3un'] : '#'}"${tipos['3un'] && tipos['3un'].trim() && tipos['3un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['3un'] && tipos['3un'].trim() && tipos['3un'] !== '#' ? 'Comprar' : ''}</a></td>
 					</tr>
 				`).join('')}
 			</table>
@@ -131,9 +131,9 @@
 				${Object.entries(modelosCombo).map(([modelo, tipos]) => `
 					<tr>
 						<td>${modelo}</td>
-						<td><a class="buy-btn primary" href="${tipos['10un'] && tipos['10un'].trim() && tipos['10un'] !== '#' ? tipos['10un'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-						<td><a class="buy-btn primary" href="${tipos['20un'] && tipos['20un'].trim() && tipos['20un'] !== '#' ? tipos['20un'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-						<td><a class="buy-btn primary" href="${tipos['30un'] && tipos['30un'].trim() && tipos['30un'] !== '#' ? tipos['30un'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
+						<td><a class="buy-btn${tipos['10un'] && tipos['10un'].trim() && tipos['10un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['10un'] && tipos['10un'].trim() && tipos['10un'] !== '#' ? tipos['10un'] : '#'}"${tipos['10un'] && tipos['10un'].trim() && tipos['10un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['10un'] && tipos['10un'].trim() && tipos['10un'] !== '#' ? 'Comprar' : ''}</a></td>
+						<td><a class="buy-btn${tipos['20un'] && tipos['20un'].trim() && tipos['20un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['20un'] && tipos['20un'].trim() && tipos['20un'] !== '#' ? tipos['20un'] : '#'}"${tipos['20un'] && tipos['20un'].trim() && tipos['20un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['20un'] && tipos['20un'].trim() && tipos['20un'] !== '#' ? 'Comprar' : ''}</a></td>
+						<td><a class="buy-btn${tipos['30un'] && tipos['30un'].trim() && tipos['30un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['30un'] && tipos['30un'].trim() && tipos['30un'] !== '#' ? tipos['30un'] : '#'}"${tipos['30un'] && tipos['30un'].trim() && tipos['30un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['30un'] && tipos['30un'].trim() && tipos['30un'] !== '#' ? 'Comprar' : ''}</a></td>
 					</tr>
 				`).join('')}
 			</table>

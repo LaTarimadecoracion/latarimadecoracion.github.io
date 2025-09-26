@@ -102,12 +102,14 @@
                         <th>Medida</th>
                         <th>Comprar</th>
                     </tr>
-                    ${Object.entries(medidas).map(([medida, tipos]) => `
-                        <tr>
-                            <td>${medida}</td>
-                            <td><a class="buy-btn primary" href="${tipos['Comprar'] && tipos['Comprar'].trim() && tipos['Comprar'] !== '#' ? tipos['Comprar'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-                        </tr>
-                    `).join('')}
+                    ${Object.entries(medidas).map(([medida, tipos]) => {
+                        const href = tipos['Comprar'] && tipos['Comprar'].trim() && tipos['Comprar'] !== '#';
+                        if (href) {
+                            return `<tr><td>${medida}</td><td><a class="buy-btn primary" href="${tipos['Comprar']}" target="_blank" rel="noopener">Comprar</a></td></tr>`;
+                        } else {
+                            return `<tr><td>${medida}</td><td><a class="buy-btn loading-link" tabindex="-1"></a></td></tr>`;
+                        }
+                    }).join('')}
                 </table>
             `;
             stack.appendChild(card);

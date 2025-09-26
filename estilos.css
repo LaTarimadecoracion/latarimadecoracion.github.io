@@ -1,3 +1,42 @@
+/* Icono flotante carpintero TikTok */
+.floating-carpenter {
+	position: fixed;
+	top: 22px;
+	right: 22px;
+	z-index: 1000;
+	background: #fff;
+	border-radius: 50%;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+	width: 48px;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: box-shadow 0.2s, transform 0.2s;
+	border: 2px solid #0074D9;
+}
+.floating-carpenter:hover {
+	box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+	transform: scale(1.08);
+}
+.carpenter-icon svg {
+	display: block;
+}
+/* --- Enlaces en estado de carga --- */
+.loading-link {
+	color: #888;
+	background: #f5f6fa;
+	border: 1.5px dashed #b3b3b3;
+	cursor: wait;
+	pointer-events: none;
+	position: relative;
+}
+.loading-link::after {
+	content: 'Próximamente';
+	font-style: italic;
+	margin-left: 8px;
+	color: #888;
+}
 /* --- Botones principales de barandas para cama --- */
 .btn-stack {
 	display: flex;

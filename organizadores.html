@@ -118,7 +118,7 @@
                         ${Object.keys(tipos).map(tipo => `<th>${tipo}</th>`).join('')}
                     </tr>
                     <tr>
-                        ${Object.entries(tipos).map(([tipo, href]) => `<td><a class="buy-btn primary" href="${href && href.trim() && href !== '#' ? href : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>`).join('')}
+                        ${Object.entries(tipos).map(([tipo, href]) => `<td><a class="buy-btn${href && href.trim() && href !== '#' ? ' primary' : ' loading-link'}" href="${href && href.trim() && href !== '#' ? href : '#'}"${href && href.trim() && href !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${href && href.trim() && href !== '#' ? 'Comprar' : ''}</a></td>`).join('')}
                     </tr>
                 </table>
             `;
