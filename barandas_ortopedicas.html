@@ -107,9 +107,9 @@
                     ${Object.entries(medidas).map(([medida, tipos]) => `
                         <tr>
                             <td>${medida}</td>
-                            <td><a class="buy-btn primary" href="${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? tipos['Natural'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-                            <td><a class="buy-btn secondary" href="${tipos['Barnizadas'] && tipos['Barnizadas'].trim() && tipos['Barnizadas'] !== '#' ? tipos['Barnizadas'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-                            <td><a class="buy-btn secondary" href="${tipos['Blancas'] && tipos['Blancas'].trim() && tipos['Blancas'] !== '#' ? tipos['Blancas'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
+                            <td>${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? `<a class='buy-btn primary' href='${tipos['Natural']}' target='_blank' rel='noopener'>Comprar</a>` : `<a class='buy-btn loading-link' href='#' tabindex='-1'></a>`}</td>
+                            <td>${tipos['Barnizadas'] && tipos['Barnizadas'].trim() && tipos['Barnizadas'] !== '#' ? `<a class='buy-btn secondary' href='${tipos['Barnizadas']}' target='_blank' rel='noopener'>Comprar</a>` : `<a class='buy-btn loading-link' href='#' tabindex='-1'></a>`}</td>
+                            <td>${tipos['Blancas'] && tipos['Blancas'].trim() && tipos['Blancas'] !== '#' ? `<a class='buy-btn secondary' href='${tipos['Blancas']}' target='_blank' rel='noopener'>Comprar</a>` : `<a class='buy-btn loading-link' href='#' tabindex='-1'></a>`}</td>
                         </tr>
                     `).join('')}
                 </table>
