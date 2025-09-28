@@ -59,8 +59,9 @@
                     'Deck Rectangular': 'img/deck/deckrectangular.jpg'
                 };
                 function getModeloKey(modelo) {
-                    if (modelo.toLowerCase().includes('cuadrado')) return 'Deck Cuadrado';
-                    if (modelo.toLowerCase().includes('rectangular')) return 'Deck Rectangular';
+                    const m = modelo ? modelo.toLowerCase() : '';
+                    if (m.includes('cuadrado')) return 'Deck Cuadrado';
+                    if (m.includes('rectangular')) return 'Deck Rectangular';
                     return modelo;
                 }
                 async function getLinks(){
