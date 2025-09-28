@@ -75,27 +75,11 @@
                 function renderCards(grupos) {
                     const stack = document.getElementById('product-stack');
                     stack.innerHTML = '';
-                    // Deck Cuadrado (coincidir con el JSON)
-                    const modeloCuadrado = 'Deck cuadrado';
-                    const itemsCuadrado = (grupos[modeloCuadrado] || []).filter(item => item.modelo && item.modelo.toLowerCase().includes('cuadrado'));
-                    // Obtener todas las medidas y cantidades presentes en el JSON para Deck cuadrado
-                    const medidasCuadradoSet = new Set();
-                    const cantidadesSet = new Set();
-                    itemsCuadrado.forEach(item => {
-                        if(item.medida) medidasCuadradoSet.add(item.medida);
-                        if(item.tipo) cantidadesSet.add(item.tipo);
-                    });
-                    // Ordenar medidas y cantidades según preferencia visual
-                    const medidasCuadrado = Array.from(medidasCuadradoSet);
-                    const cantidades = Array.from(cantidadesSet);
-                    // Ordenar cantidades por número
-                    cantidades.sort((a,b)=>parseInt(a)-parseInt(b));
-                    // Ordenar medidas por ancho x alto (asumiendo formato "N x N cm")
-                    medidasCuadrado.sort((a,b)=>{
-                        const getNum = s => parseInt(s.split('x')[0]);
-                        return getNum(a)-getNum(b);
-                    });
-                    // Construir tabla
+                    // Deck Cuadrado
+                    const modeloCuadrado = 'Deck Cuadrado';
+                    const itemsCuadrado = grupos[modeloCuadrado] || [];
+                    const medidasCuadrado = ['25 x 25 cm', '30 x 30 cm', '40 x 40 cm'];
+                    const cantidades = ['1un','2un','3un','6un','12un','24un'];
                     const dataCuadrado = {};
                     cantidades.forEach(cant => { dataCuadrado[cant] = {}; });
                     itemsCuadrado.forEach(item => {
@@ -111,20 +95,12 @@
                         medidasCuadrado.forEach(medida => {
                             const href = dataCuadrado[cant][medida];
                             const isActive = href && href.trim() && href !== '#';
-                            tds += `<td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td>`;
+                            tds += `<td><a class=\"buy-btn${isActive ? ' primary' : ' loading-link'}\" href=\"${isActive ? href : '#'}\"${isActive ? ' target=\\"_blank\\" rel=\\"noopener\\"' : ' tabindex=\\"-1\\"'}>${isActive ? 'Comprar' : ''}</a></td>`;
                         });
                         return `<tr>${tds}</tr>`;
                     }).join('');
                     cardCuadrado.innerHTML = `
-                        <div class="product-image">
-                            <img src="${IMAGES['Deck Cuadrado']||''}" alt="Deck Cuadrado" loading="lazy">
-                        </div>
-                        <div class="product-card-title">Deck Cuadrado</div>
-                        <table class="product-table">
-                            <tr>${thsCuadrado}</tr>
-                            ${trsCuadrado}
-                        </table>
-                    `;
+                        <div class=\"product-image\">\n                            <img src=\"${IMAGES[modeloCuadrado]||''}\" alt=\"${modeloCuadrado}\" loading=\"lazy\">\n                        </div>\n                        <div class=\"product-card-title\">${modeloCuadrado}</div>\n                        <table class=\"product-table\">\n                            <tr>${thsCuadrado}</tr>\n                            ${trsCuadrado}\n                        </table>\n                    `;
                     stack.appendChild(cardCuadrado);
 
                     // Deck Rectangular
