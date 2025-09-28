@@ -97,11 +97,33 @@
             card.className = 'product-card';
             let tableRows = '';
             Object.entries(medidas).forEach(([medida, productos]) => {
-                tableRows += `<tr><td>${medida}</td>`;
-                productos.forEach(producto => {
-                    const href = producto.href;
+                // Si hay un producto tipo combo, mostrar el botón en la columna 1un
+                const combo = productos.find(p => p.tipo === 'combo');
+                if (combo) {
+                    const href = combo.href;
                     const isActive = href && href.trim() && href !== '#';
-                    tableRows += `<td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td>`;
+                    tableRows += `<tr><td>${medida}</td>`;
+                    tableRows += `<td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>Comprar</a></td>`;
+                    tableRows += `<td></td><td></td></tr>`;
+                    return;
+                }
+                // Buscar productos por tipo
+                const tipos = { '1un': null, '2un': null, '3un': null };
+                productos.forEach(producto => {
+                    if (producto.tipo === '1un') tipos['1un'] = producto;
+                    if (producto.tipo === '2un') tipos['2un'] = producto;
+                    if (producto.tipo === '3un') tipos['3un'] = producto;
+                });
+                tableRows += `<tr><td>${medida}</td>`;
+                ['1un','2un','3un'].forEach(tipo => {
+                    const producto = tipos[tipo];
+                    if (producto) {
+                        const href = producto.href;
+                        const isActive = href && href.trim() && href !== '#';
+                        tableRows += `<td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td>`;
+                    } else {
+                        tableRows += `<td><a class="buy-btn loading-link" href="#" tabindex="-1"></a></td>`;
+                    }
                 });
                 tableRows += '</tr>';
             });
@@ -111,7 +133,7 @@
                 </div>
                 <div class="product-card-title">${modelo}</div>
                 <table class="product-table">
-                    <tr><th>Medida</th><th>Opciones</th></tr>
+                    <tr><th>Medida</th><th>1un</th><th>2un</th><th>3un</th></tr>
                     ${tableRows}
                 </table>
             `;
