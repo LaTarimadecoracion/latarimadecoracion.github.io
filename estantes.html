@@ -62,7 +62,7 @@
     }
     async function getLinks(){
         try {
-            const res = await fetch('Links/Links.json', { cache: 'no-store' });
+            const res = await fetch('Links/links.json', { cache: 'no-store' });
             if(res.ok){
                 const json = await res.json();
                 return Array.isArray(json.modules[moduleId]) ? json.modules[moduleId] : [];
