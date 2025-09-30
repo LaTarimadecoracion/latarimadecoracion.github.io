@@ -123,6 +123,50 @@
 			// Crear card
 			const card = document.createElement('div');
 			card.className = 'product-card';
+
+			// --- SELECT MÓVIL UNIFICADO ---
+			let mobileSelectHTML = '';
+			let mobileOptions = '';
+			let idx = 0;
+			Object.entries(medidas).forEach(([medida, productos]) => {
+				// Si hay un producto tipo combo, mostrar el botón en la columna 1un
+				const combo = productos.find(p => p.tipo === 'combo');
+				if (combo) {
+					const href = combo.href;
+					const isActive = href && href.trim() && href !== '#';
+					mobileOptions += isActive ? `<option value="${href}">${medida} - Comprar</option>` : `<option value="" disabled>${medida} - Comprar (Próximamente)</option>`;
+					idx++;
+					return;
+				}
+				// Si todos los productos son tipo único (por ejemplo, solo 'Comprar'), mostrar una fila por producto
+				const tiposUnicos = productos.every(p => !tiposColumnas.includes(p.tipo));
+				if (tiposUnicos) {
+					productos.forEach((producto) => {
+						const href = producto.href;
+						const isActive = href && href.trim() && href !== '#';
+						mobileOptions += isActive ? `<option value="${href}">${medida || producto.tipo} - Comprar</option>` : `<option value="" disabled>${medida || producto.tipo} - Comprar (Próximamente)</option>`;
+					});
+					idx++;
+					return;
+				}
+				// Buscar productos por tipo columna
+				const tipos = {};
+				tiposColumnas.forEach(tipo => tipos[tipo] = null);
+				productos.forEach(producto => {
+					if (tiposColumnas.includes(producto.tipo)) tipos[producto.tipo] = producto;
+				});
+				tiposColumnas.forEach(tipo => {
+					const producto = tipos[tipo];
+					if (producto && producto.href && producto.href.trim() && producto.href !== '#') {
+						mobileOptions += `<option value="${producto.href}">${medida} - ${tipo}</option>`;
+					} else {
+						mobileOptions += `<option value="" disabled>${medida} - ${tipo} (Próximamente)</option>`;
+					}
+				});
+				idx++;
+			});
+			mobileSelectHTML = `<div class="mobile-select-row" style="display:none;"><select class="dropbtn" id="select-${modelo.replace(/\s/g,'')}"><option value="" selected disabled>Elegir opción</option>${mobileOptions}</select></div>`;
+
 			// --- TABLA DESKTOP ---
 			let tableRows = '';
 			Object.entries(medidas).forEach(([medida, productos], idx) => {
@@ -134,8 +178,6 @@
 					tableRows += `<tr class="desktop-row"><td>${medida}</td><td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>Comprar</a></td>`;
 					for(let i=1;i<tiposColumnas.length;i++) tableRows += '<td></td>';
 					tableRows += `</tr>`;
-					// --- SELECT MÓVIL ---
-					tableRows += `<tr class="mobile-select-row"><td colspan="${tiposColumnas.length+1}"><strong>${medida}</strong><select id="select-${modelo.replace(/\s/g,'')}-${idx}"><option value="" selected disabled>Elegir opción</option>${isActive ? `<option value="${href}">Comprar</option>` : `<option value="" disabled>Comprar (Próximamente)</option>`}</select></td></tr>`;
 					return;
 				}
 				// Si todos los productos son tipo único (por ejemplo, solo 'Comprar'), mostrar una fila por producto
@@ -146,8 +188,6 @@
 						const isActive = href && href.trim() && href !== '#';
 						const colspan = (tiposColumnas.length > 0) ? tiposColumnas.length : 1;
 						tableRows += `<tr class="desktop-row"><td>${medida || producto.tipo}</td><td colspan="${colspan}"><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td></tr>`;
-						// --- SELECT MÓVIL ---
-						tableRows += `<tr class="mobile-select-row"><td colspan="${colspan+1}"><strong>${medida || producto.tipo}</strong><select id="select-${modelo.replace(/\s/g,'')}-${idx}-${j}"><option value="" selected disabled>Elegir opción</option>${isActive ? `<option value="${href}">Comprar</option>` : `<option value="" disabled>Comprar (Próximamente)</option>`}</select></td></tr>`;
 					});
 					return;
 				}
@@ -169,15 +209,6 @@
 					}
 				});
 				tableRows += '</tr>';
-				// --- SELECT MÓVIL ---
-				tableRows += `<tr class="mobile-select-row"><td colspan="${tiposColumnas.length+1}"><strong>${medida}</strong><select id="select-${modelo.replace(/\s/g,'')}-${idx}"><option value="" selected disabled>Elegir opción</option>${tiposColumnas.map(tipo => {
-					const producto = tipos[tipo];
-					if (producto && producto.href && producto.href.trim() && producto.href !== '#') {
-						return `<option value="${producto.href}">${tipo}</option>`;
-					} else {
-						return `<option value="" disabled>${tipo} (Próximamente)</option>`;
-					}
-				}).join('')}</select></td></tr>`;
 			});
 			// Encabezados dinámicos o solo botón si todos son 'Comprar'
 			let ths = '<th>Medida</th>';
@@ -191,21 +222,22 @@
 					<img src="${IMAGES[modelo]||''}" alt="${modelo}" loading="lazy">
 				</div>
 				<div class="product-card-title">${modelo}</div>
+				${mobileSelectHTML}
 				<table class="product-table">
 					<thead><tr>${ths}</tr></thead>
 					<tbody>${tableRows}</tbody>
 				</table>
 			`;
-			// Listeners para selects móviles
+			// Listeners para select móvil
 			setTimeout(() => {
-				const selects = card.querySelectorAll('.mobile-select-row select');
-				selects.forEach(sel => {
-					sel.addEventListener('change', function(e) {
+				const select = card.querySelector('.mobile-select-row select');
+				if (select) {
+					select.addEventListener('change', function(e) {
 						const url = this.value;
 						if(url) window.open(url, '_blank');
 						this.selectedIndex = 0;
 					});
-				});
+				}
 			}, 0);
 			stack.appendChild(card);
 		});

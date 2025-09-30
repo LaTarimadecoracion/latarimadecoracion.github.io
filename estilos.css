@@ -17,11 +17,11 @@
 /* Estilos visuales de .container y .product-card para escritorio y móvil */
 .container {
 	max-width: 700px;
-	margin: 3em auto 2em auto;
-	background: rgba(255,255,255,0.97);
-	border-radius: 22px;
-	box-shadow: 0 4px 32px 0 #0074d91a, 0 1.5px 8px 0 #0001;
-	padding: 2.5em 2em 2em 2em;
+			margin: 0.2em auto 1em auto;
+		background: rgba(255,255,255,0.97);
+		border-radius: 22px;
+		box-shadow: 0 4px 32px 0 #0074d91a, 0 1.5px 8px 0 #0001;
+		padding: 0.1em 2em 2em 2em;
 }
 .product-card {
 	background: linear-gradient(120deg, #f0f6ff 60%, #eaf6ff 100%);
@@ -210,13 +210,18 @@ body.barandas { justify-content: flex-start; }
 h1 {
 	font-size: 2.2rem;
 	font-weight: 700;
-	margin-bottom: 8px;
+	margin-top: 0;
+	margin-bottom: 0;
 	color: #222;
+}
+body {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
 }
 .subtitle {
 	font-size: 1.1rem;
 	color: #888;
-	margin-bottom: 10px;
+	margin-bottom: 0;
 }
 /* Agrega aquí más estilos según necesites */
 /* --- Estilos importados de estilo.html --- */
@@ -747,7 +752,18 @@ table.product-table tr:last-child td { border-bottom:none; }
 /* Pantallas pequeñas (≈360px): ajustar densidad y legibilidad */
 @media (max-width: 450px) {
     .container { padding: 28px 18px; }
-    .split-btn a { padding: 10px 0; font-size: 0.98rem; }
+	.split-btn a {
+		padding: 10px 0.8em;
+		font-size: 0.98rem;
+		min-width: 0;
+		width: 100%;
+		box-sizing: border-box;
+		display: block;
+		text-align: center;
+		border-radius: 10px;
+		margin-bottom: 8px;
+		transition: background 0.2s, color 0.2s;
+	}
     table.product-table th,
     table.product-table td { padding: 6px 0; font-size: 0.95rem; }
     .product-card-title { font-size: 1rem; }
