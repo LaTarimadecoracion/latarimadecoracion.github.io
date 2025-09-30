@@ -107,30 +107,53 @@
     function renderCards(grupos) {
         const stack = document.getElementById('product-stack');
         stack.innerHTML = '';
-        Object.entries(grupos).forEach(([modelo, items]) => {
+        Object.entries(grupos).forEach(([modelo, items], idx) => {
             // Agrupar por tipo
             const tipos = {};
             items.forEach(item => {
                 const tipo = item.tipo || '';
                 tipos[tipo] = item.href;
             });
+            const tiposKeys = Object.keys(tipos);
             // Crear card
             const card = document.createElement('div');
             card.className = 'product-card';
-            card.innerHTML = `
-                <div class="product-image">
-                    <img src="${IMAGES[modelo]||''}" alt="${modelo}" loading="lazy">
-                </div>
-                <div class="product-card-title">${modelo}</div>
-                <table class="product-table">
-                    <tr>
-                        ${Object.keys(tipos).map(tipo => `<th>${tipo}</th>`).join('')}
-                    </tr>
-                    <tr>
-                        ${Object.entries(tipos).map(([tipo, href]) => `<td><a class="buy-btn${href && href.trim() && href !== '#' ? ' primary' : ' loading-link'}" href="${href && href.trim() && href !== '#' ? href : '#'}"${href && href.trim() && href !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${href && href.trim() && href !== '#' ? 'Comprar' : ''}</a></td>`).join('')}
-                    </tr>
-                </table>
-            `;
+            // --- DESKTOP: tabla ---
+            let ths = tiposKeys.map(tipo => `<th>${tipo}</th>`).join('');
+            let tds = tiposKeys.map(tipo => {
+                const href = tipos[tipo];
+                const isActive = href && href.trim() && href !== '#';
+                return `<td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td>`;
+            }).join('');
+            let desktopTable = `<table class=\"product-table\"><thead><tr>${ths}</tr></thead><tbody><tr class=\"desktop-row\">${tds}</tr></tbody></table>`;
+            // --- MÓVIL: solo título y select ---
+            let selectOptions = tiposKeys.map(tipo => {
+                const href = tipos[tipo];
+                if (href && href.trim() && href !== '#') {
+                    return `<option value=\"${href}\">${tipo}</option>`;
+                } else {
+                    return `<option value=\"\" disabled>${tipo} (Próximamente)</option>`;
+                }
+            }).join('');
+            let mobileSelect = `<tr class=\"mobile-select-row\"><td colspan=\"${tiposKeys.length}\"><div class=\"product-card-title\">${modelo}</div><select id=\"select-org-${idx}\" class=\"dropbtn\"><option value=\"\" selected disabled>Elegir opción</option>${selectOptions}</select></td></tr>`;
+            card.innerHTML =
+                `<div class=\"product-image\"><img src=\"${IMAGES[modelo]||''}\" alt=\"${modelo}\" loading=\"lazy\"></div>` +
+                `<div class=\"product-card-title desktop-row\">${modelo}</div>` +
+                `<table class=\"product-table\"><tbody>` +
+                `<tr class=\"desktop-row\">${tds}</tr>` +
+                mobileSelect +
+                `</tbody></table>`;
+            // Mostrar solo el select en móvil
+            setTimeout(() => {
+                const sel = card.querySelector('.mobile-select-row select');
+                if(sel) {
+                    sel.addEventListener('change', function(e) {
+                        const url = this.value;
+                        if(url) window.open(url, '_blank');
+                        this.selectedIndex = 0;
+                    });
+                }
+            }, 0);
             stack.appendChild(card);
         });
     }

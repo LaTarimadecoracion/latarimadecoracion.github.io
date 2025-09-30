@@ -132,30 +132,77 @@
                 </div>
                 <div class="product-card-title">Escaleras</div>
                 <table class="product-table">
-                    <tr>
-                        <th>Medidas</th><th>Vertical</th><th>Inclinada</th>
-                    </tr>
-                    <tr>
-                        <td>0 a 60 cm</td>
-                        <td><a class="buy-btn loading-link" href="#" tabindex="-1"></a></td>
-                        <td><a class="buy-btn loading-link" href="#" tabindex="-1"></a></td>
-                    </tr>
-                    <tr>
-                        <td>60 a 100 cm</td>
-                        <td><a class="buy-btn loading-link" href="#" tabindex="-1"></a></td>
-                        <td><a class="buy-btn loading-link" href="#" tabindex="-1"></a></td>
-                    </tr>
-                    <tr>
-                        <td>110 a 150 cm</td>
-                        <td><a class="buy-btn loading-link" href="#" tabindex="-1"></a></td>
-                        <td><a class="buy-btn loading-link" href="#" tabindex="-1"></a></td>
-                    </tr>
-                    <tr>
-                        <td>150 a 200 cm</td>
-                        <td><a class="buy-btn loading-link" href="#" tabindex="-1"></a></td>
-                        <td><a class="buy-btn loading-link" href="#" tabindex="-1"></a></td>
-                    </tr>
+                    <thead>
+                        <tr class="desktop-row">
+                            <th>Medidas</th><th>Vertical</th><th>Inclinada</th>
+                        </tr>
+                    </thead>
+                    <tbody id="escaleras-tbody">
+                        <!-- Filas desktop y select móvil se generan por JS -->
+                    </tbody>
                 </table>
+                <script type="module">
+                // --- DISEÑO UNIFICADO DESKTOP/MÓVIL ---
+                (async () => {
+                    const tbody = document.getElementById('escaleras-tbody');
+                    tbody.innerHTML = '';
+                    // Cargar datos desde links.json
+                    const url = 'Links/links.json' + '?cb=' + Date.now();
+                    let rows = [];
+                    try {
+                        const res = await fetch(url, { cache: 'no-store' });
+                        if(res.ok){
+                            const json = await res.json();
+                            rows = Array.isArray(json.modules?.escaleras) ? json.modules.escaleras : [];
+                        }
+                    } catch(e) {}
+                    // Agrupar por medida
+                    const medidas = {};
+                    rows.forEach(row => {
+                        if(!medidas[row.medida]) medidas[row.medida] = {};
+                        medidas[row.medida][row.tipo] = row.href;
+                    });
+                    // Render desktop
+                    Object.entries(medidas).forEach(([medida, tipos]) => {
+                        tbody.innerHTML += `
+                        <tr class='desktop-row'>
+                            <td>${medida}</td>
+                            <td><a class="buy-btn${tipos['Vertical'] && tipos['Vertical'].trim() && tipos['Vertical'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['Vertical'] && tipos['Vertical'].trim() && tipos['Vertical'] !== '#' ? tipos['Vertical'] : '#'}"${tipos['Vertical'] && tipos['Vertical'].trim() && tipos['Vertical'] !== '#' ? ' target="_blank" rel="noopener"' : ' tabindex="-1"'}>${tipos['Vertical'] && tipos['Vertical'].trim() && tipos['Vertical'] !== '#' ? 'Comprar' : ''}</a></td>
+                            <td><a class="buy-btn${tipos['Inclinada'] && tipos['Inclinada'].trim() && tipos['Inclinada'] !== '#' ? ' secondary' : ' loading-link'}" href="${tipos['Inclinada'] && tipos['Inclinada'].trim() && tipos['Inclinada'] !== '#' ? tipos['Inclinada'] : '#'}"${tipos['Inclinada'] && tipos['Inclinada'].trim() && tipos['Inclinada'] !== '#' ? ' target="_blank" rel="noopener"' : ' tabindex="-1"'}>${tipos['Inclinada'] && tipos['Inclinada'].trim() && tipos['Inclinada'] !== '#' ? 'Comprar' : ''}</a></td>
+                        </tr>`;
+                    });
+                    // Render móvil: un solo select para todas las combinaciones
+                    const opciones = [];
+                    Object.entries(medidas).forEach(([medida, tipos]) => {
+                        if(tipos['Vertical']){
+                            opciones.push({label:`Vertical - ${medida}`, href:tipos['Vertical']});
+                        }
+                        if(tipos['Inclinada']){
+                            opciones.push({label:`Inclinada - ${medida}`, href:tipos['Inclinada']});
+                        }
+                    });
+                    tbody.innerHTML += `
+                        <tr class="mobile-select-row">
+                            <td colspan="3">
+                                <strong>Elegir medida y tipo:</strong>
+                                <select class="dropbtn" id="select-escalera">
+                                    <option value="" selected disabled>Elegir opción</option>
+                                    ${opciones.map(opt => opt.href && opt.href.trim() && opt.href !== '#' ? `<option value="${opt.href}">${opt.label}</option>` : `<option value="" disabled>${opt.label} (Próximamente)</option>`).join('')}
+                                </select>
+                            </td>
+                        </tr>`;
+                    setTimeout(() => {
+                        const select = document.getElementById('select-escalera');
+                        if(select){
+                            select.addEventListener('change', function(e){
+                                const url = this.value;
+                                if(url) window.open(url, '_blank');
+                                this.selectedIndex = 0;
+                            });
+                        }
+                    }, 0);
+                })();
+                </script>
             </div>
             <!-- Módulo VIA CARGO -->
             <div class="product-card">

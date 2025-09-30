@@ -87,37 +87,38 @@
             const stack = document.getElementById('product-stack');
             stack.innerHTML = '';
             const modelos = groupByModelo(rows);
-            modelos.forEach(([modelo, items]) => {
-                const imgSrc = PRODUCT_IMAGES[modelo] || '';
-                const tipos = ['1un','2un','3un'];
-                const medidas = Array.from(new Set(items.map(i => normalize(i.medida))));
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div class="product-image">
-                        <img src="${imgSrc}" alt="${modelo}" loading="lazy">
-                    </div>
-                    <div class="product-card-title">${modelo}</div>
-                    <table class="product-table">
-                        <tr>
-                            <th>Modelo</th>
-                            ${tipos.map(t => `<th>${t}</th>`).join('')}
-                        </tr>
-                        ${medidas.map(medida => {
-                            return `<tr>
-                                <td>${medida}</td>
-                                ${tipos.map(tipo => {
-                                    const k = keyOf(modelo, medida, tipo);
-                                    const it = items.find(i => keyOf(i.modelo, i.medida, i.tipo) === k);
-                                    const href = it && it.href && it.href !== '#' ? it.href : whatsapp;
-                                    return `<td><a class="buy-btn${it && it.href && it.href !== '#' ? ' primary' : ' loading-link'}" href="${it && it.href && it.href !== '#' ? it.href : '#'}"${it && it.href && it.href !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${it && it.href && it.href !== '#' ? 'Comprar' : ''}</a></td>`;
-                                }).join('')}
-                            </tr>`;
-                        }).join('')}
-                    </table>
-                `;
-                stack.appendChild(card);
-            });
+                modelos.forEach(([modelo, items]) => {
+                    const imgSrc = PRODUCT_IMAGES[modelo] || '';
+                    const tipos = ['1un','2un','3un'];
+                    const medidas = Array.from(new Set(items.map(i => normalize(i.medida))));
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="product-image">
+                            <img src="${imgSrc}" alt="${modelo}" loading="lazy">
+                        </div>
+                        <div class="product-card-title">${modelo}</div>
+                        <table class="product-table">
+                            <tr>
+                                <th>Modelo</th>
+                                ${tipos.map(t => `<th>${t}</th>`).join('')}
+                            </tr>
+                            ${medidas.map((medida, idx) => {
+                                const selectId = `select-perchero-${idx}`;
+                                return `<tr class="mobile-select-row"><td colspan="4"><strong>${medida}</strong><select id="${selectId}" class="dropbtn"><option value="" selected disabled>Elegir opción</option>${tipos.map(tipo => {
+                                        const k = keyOf(modelo, medida, tipo);
+                                        const it = items.find(i => keyOf(i.modelo, i.medida, i.tipo) === k);
+                                        if (it && it.href && it.href !== '#') {
+                                            return `<option value="${it.href}">${tipo}</option>`;
+                                        } else {
+                                            return `<option value="" disabled>${tipo} (Próximamente)</option>`;
+                                        }
+                                    }).join('')}</select></td></tr>`;
+                            }).join('')}
+                        </table>
+                    `;
+                    stack.appendChild(card);
+                });
         }
 
         (async () => {

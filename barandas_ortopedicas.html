@@ -56,15 +56,12 @@
     const moduleId = 'barandas_ortopedicas';
     const whatsapp = 'https://wa.me/5491167007723';
     const IMAGES = {
-        'Clásica': 'img/barandas_ortopedicas/barandaortopedicaclasica.jpg',
-        'Montessori': 'img/barandas_ortopedicas/barandaortopedicamontessori.jpg',
-        'Triple': 'img/barandas_ortopedicas/barandaortopedicatriple.jpg'
+        'Baranda desmontable': 'img/barandas_ortopedicas/barandaortopedicaclasica.jpg',
+        'Baranda Ortopedica': 'img/barandas_ortopedicas/barandaortopedicaclasica.jpg',
+        'Baranda Ortopedica Alta': 'img/barandas_ortopedicas/barandaortopedicaclasica.jpg'
     };
     function getModeloKey(modelo) {
-        if (modelo.toLowerCase().includes('clásica')) return 'Clásica';
-        if (modelo.toLowerCase().includes('montessori')) return 'Montessori';
-        if (modelo.toLowerCase().includes('triple')) return 'Triple';
-        return modelo;
+        return modelo || '';
     }
     async function getLinks(){
         try {
@@ -91,12 +88,15 @@
         const stack = document.getElementById('product-stack');
         stack.innerHTML = '';
         Object.entries(grupos).forEach(([modelo, items]) => {
-            // Agrupar por medida
+            // Agrupar por medida, compactando variantes en columnas
             const medidas = {};
             items.forEach(item => {
                 const medida = item.medida || '';
+                const tipo = item.tipo && item.tipo.trim();
                 if (!medidas[medida]) medidas[medida] = {};
-                medidas[medida][item.tipo] = item.href;
+                if (!medidas[medida][tipo]) {
+                    medidas[medida][tipo] = item.href;
+                }
             });
             // Crear card
             const card = document.createElement('div');
@@ -107,22 +107,71 @@
                 </div>
                 <div class="product-card-title">Baranda ortopédica ${modelo}</div>
                 <table class="product-table">
-                    <tr>
-                        <th>Medida</th>
-                        <th>Natural</th>
-                        <th>Barnizadas</th>
-                        <th>Blancas</th>
-                    </tr>
-                    ${Object.entries(medidas).map(([medida, tipos]) => `
+                    <thead>
                         <tr>
-                            <td>${medida}</td>
-                            <td>${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? `<a class='buy-btn primary' href='${tipos['Natural']}' target='_blank' rel='noopener'>Comprar</a>` : `<a class='buy-btn loading-link' href='#' tabindex='-1'></a>`}</td>
-                            <td>${tipos['Barnizadas'] && tipos['Barnizadas'].trim() && tipos['Barnizadas'] !== '#' ? `<a class='buy-btn secondary' href='${tipos['Barnizadas']}' target='_blank' rel='noopener'>Comprar</a>` : `<a class='buy-btn loading-link' href='#' tabindex='-1'></a>`}</td>
-                            <td>${tipos['Blancas'] && tipos['Blancas'].trim() && tipos['Blancas'] !== '#' ? `<a class='buy-btn secondary' href='${tipos['Blancas']}' target='_blank' rel='noopener'>Comprar</a>` : `<a class='buy-btn loading-link' href='#' tabindex='-1'></a>`}</td>
+                            <th>Medida</th>
+                            <th>Natural</th>
+                            <th>Barnizada</th>
+                            <th>Blanca</th>
                         </tr>
-                    `).join('')}
+                    </thead>
+                    <tbody>
+                    ${Object.entries(medidas).map(([medida, tipos], idx) => {
+                        const opciones = [
+                            { label: 'Natural', tipo: 'Natural', href: tipos['Natural'] },
+                            { label: 'Barnizada', tipo: 'Barnizada', href: tipos['Barnizada'] },
+                            { label: 'Blanca', tipo: 'Blanca', href: tipos['Blanca'] }
+                        ];
+                        const selectId = `select-${modelo.replace(/\s/g,'')}-${idx}`;
+                        // Fila para escritorio (botones)
+                        const desktopRow = `
+                            <tr class="desktop-row">
+                                <td>${medida}</td>
+                                <td>${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? `<a class="buy-btn primary" href="${tipos['Natural']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
+                                <td>${tipos['Barnizada'] && tipos['Barnizada'].trim() && tipos['Barnizada'] !== '#' ? `<a class="buy-btn secondary" href="${tipos['Barnizada']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
+                                <td>${tipos['Blanca'] && tipos['Blanca'].trim() && tipos['Blanca'] !== '#' ? `<a class="buy-btn secondary" href="${tipos['Blanca']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
+                            </tr>
+                        `;
+                        // Fila para móvil (select)
+                        const mobileRow = (() => {
+                            const rendered = new Set();
+                            return `
+                            <tr class="mobile-select-row">
+                                <td colspan="4">
+                                    <strong>${medida}</strong>
+                                    <select id="${selectId}">
+                                        <option value="" selected disabled>Elegir opción</option>
+                                        ${opciones.map(opt => {
+                                            if (opt.href && opt.href.trim() && opt.href !== '#') {
+                                                return `<option value="${opt.href}">${opt.label}</option>`;
+                                            } else if (!rendered.has(opt.label)) {
+                                                rendered.add(opt.label);
+                                                return `<option value="" disabled>${opt.label} (Próximamente)</option>`;
+                                            } else {
+                                                return '';
+                                            }
+                                        }).join('')}
+                                    </select>
+                                </td>
+                            </tr>
+                            `;
+                        })();
+                        return desktopRow + mobileRow;
+                    }).join('')}
+                    </tbody>
                 </table>
             `;
+            // Listeners para selects móviles
+            setTimeout(() => {
+                const selects = card.querySelectorAll('.mobile-select-row select');
+                selects.forEach(sel => {
+                    sel.addEventListener('change', function(e) {
+                        const url = this.value;
+                        if(url) window.open(url, '_blank');
+                        this.selectedIndex = 0;
+                    });
+                });
+            }, 0);
             stack.appendChild(card);
         });
     }

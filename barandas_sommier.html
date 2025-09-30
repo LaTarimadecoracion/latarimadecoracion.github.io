@@ -116,12 +116,17 @@
             const stack = document.getElementById('product-stack');
             stack.innerHTML = '';
             Object.entries(grupos).forEach(([modelo, items]) => {
-                // Agrupar por medida
+                // Agrupar por medida y limpiar duplicados
+                const tiposValidos = ['Natural', 'Barnizadas', 'Blancas'];
                 const medidas = {};
                 items.forEach(item => {
                     const medida = item.medida || '';
+                    const tipo = item.tipo && item.tipo.trim();
+                    if (!tiposValidos.includes(tipo)) return;
                     if (!medidas[medida]) medidas[medida] = {};
-                    medidas[medida][item.tipo] = item.href;
+                    if (!medidas[medida][tipo]) {
+                        medidas[medida][tipo] = item.href;
+                    }
                 });
                 // Crear card
                 const card = document.createElement('div');
@@ -132,27 +137,71 @@
                     </div>
                     <div class="product-card-title">Baranda sommier ${modelo}</div>
                     <table class="product-table">
-                        <tr>
-                            <th>Medida</th>
-                            <th>Natural</th>
-                            <th>Barnizadas</th>
-                            <th>Blancas</th>
-                        </tr>
-                        ${Object.entries(medidas).map(([medida, tipos]) => {
-                            const btn = (tipo, clase) => {
-                                const href = tipos[tipo];
-                                const isActive = href && href.trim() && href !== '#';
-                                return `<a class="buy-btn${isActive ? ' ' + clase : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a>`;
-                            };
-                            return `<tr>
-                                <td>${medida}</td>
-                                <td>${btn('Natural','primary')}</td>
-                                <td>${btn('Barnizadas','secondary')}</td>
-                                <td>${btn('Blancas','secondary')}</td>
-                            </tr>`;
+                        <thead>
+                            <tr>
+                                <th>Medida</th>
+                                <th>Natural</th>
+                                <th>Barnizadas</th>
+                                <th>Blancas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        ${Object.entries(medidas).map(([medida, tipos], idx) => {
+                            const opciones = [
+                                { label: 'Natural', tipo: 'Natural', href: tipos['Natural'] },
+                                { label: 'Barnizadas', tipo: 'Barnizadas', href: tipos['Barnizadas'] },
+                                { label: 'Blancas', tipo: 'Blancas', href: tipos['Blancas'] }
+                            ];
+                            const selectId = `select-${modelo.replace(/\s/g,'')}-${idx}`;
+                            // Fila para escritorio (botones)
+                            const desktopRow = `
+                                <tr class="desktop-row">
+                                    <td>${medida}</td>
+                                    <td>${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? `<a class="buy-btn primary" href="${tipos['Natural']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
+                                    <td>${tipos['Barnizadas'] && tipos['Barnizadas'].trim() && tipos['Barnizadas'] !== '#' ? `<a class="buy-btn secondary" href="${tipos['Barnizadas']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
+                                    <td>${tipos['Blancas'] && tipos['Blancas'].trim() && tipos['Blancas'] !== '#' ? `<a class="buy-btn secondary" href="${tipos['Blancas']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
+                                </tr>
+                            `;
+                            // Fila para móvil (select)
+                            const mobileRow = (() => {
+                                const rendered = new Set();
+                                return `
+                                <tr class="mobile-select-row">
+                                    <td colspan="4">
+                                        <strong>${medida}</strong>
+                                        <select id="${selectId}" class="dropbtn">
+                                            <option value="" selected disabled>Elegir opción</option>
+                                            ${opciones.map(opt => {
+                                                if (opt.href && opt.href.trim() && opt.href !== '#') {
+                                                    return `<option value="${opt.href}">${opt.label}</option>`;
+                                                } else if (!rendered.has(opt.label)) {
+                                                    rendered.add(opt.label);
+                                                    return `<option value="" disabled>${opt.label} (Próximamente)</option>`;
+                                                } else {
+                                                    return '';
+                                                }
+                                            }).join('')}
+                                        </select>
+                                    </td>
+                                </tr>
+                                `;
+                            })();
+                            return desktopRow + mobileRow;
                         }).join('')}
+                        </tbody>
                     </table>
                 `;
+                // Listeners para selects móviles
+                setTimeout(() => {
+                    const selects = card.querySelectorAll('.mobile-select-row select');
+                    selects.forEach(sel => {
+                        sel.addEventListener('change', function(e) {
+                            const url = this.value;
+                            if(url) window.open(url, '_blank');
+                            this.selectedIndex = 0;
+                        });
+                    });
+                }, 0);
                 stack.appendChild(card);
             });
         }

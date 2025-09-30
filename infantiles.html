@@ -111,26 +111,60 @@
 			// Crear card
 			const card = document.createElement('div');
 			card.className = 'product-card';
-			card.innerHTML = `
-				<div class="product-image">
-					<img src="${IMAGES[modelo]||''}" alt="Infantil ${modelo}" loading="lazy">
-				</div>
-				<div class="product-card-title">Infantil ${modelo}</div>
-						<table class="product-table">
-							<tr>
-								<th>Natural</th>
-								<th>Barnizado</th>
-								<th>Tintes</th>
-							</tr>
-							${Object.entries(medidas).map(([medida, tipos]) => `
-								<tr>
-									<td><a class="buy-btn${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? tipos['Natural'] : '#'}"${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? 'Comprar' : ''}</a></td>
-									<td><a class="buy-btn${tipos['Barnizado'] && tipos['Barnizado'].trim() && tipos['Barnizado'] !== '#' ? ' secondary' : ' loading-link'}" href="${tipos['Barnizado'] && tipos['Barnizado'].trim() && tipos['Barnizado'] !== '#' ? tipos['Barnizado'] : '#'}"${tipos['Barnizado'] && tipos['Barnizado'].trim() && tipos['Barnizado'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['Barnizado'] && tipos['Barnizado'].trim() && tipos['Barnizado'] !== '#' ? 'Comprar' : ''}</a></td>
-									<td><a class="buy-btn${tipos['Tintes'] && tipos['Tintes'].trim() && tipos['Tintes'] !== '#' ? ' secondary' : ' loading-link'}" href="${tipos['Tintes'] && tipos['Tintes'].trim() && tipos['Tintes'] !== '#' ? tipos['Tintes'] : '#'}"${tipos['Tintes'] && tipos['Tintes'].trim() && tipos['Tintes'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['Tintes'] && tipos['Tintes'].trim() && tipos['Tintes'] !== '#' ? 'Comprar' : ''}</a></td>
-								</tr>
-							`).join('')}
-						</table>
-			`;
+			   // --- DESKTOP: tabla ---
+			   let desktopRow = Object.entries(medidas).map(([medida, tipos]) => `
+				   <tr class="desktop-row">
+					   <td><a class="buy-btn${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? tipos['Natural'] : '#'}"${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? 'Comprar' : ''}</a></td>
+					   <td><a class="buy-btn${tipos['Barnizado'] && tipos['Barnizado'].trim() && tipos['Barnizado'] !== '#' ? ' secondary' : ' loading-link'}" href="${tipos['Barnizado'] && tipos['Barnizado'].trim() && tipos['Barnizado'] !== '#' ? tipos['Barnizado'] : '#'}"${tipos['Barnizado'] && tipos['Barnizado'].trim() && tipos['Barnizado'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['Barnizado'] && tipos['Barnizado'].trim() && tipos['Barnizado'] !== '#' ? 'Comprar' : ''}</a></td>
+					   <td><a class="buy-btn${tipos['Tintes'] && tipos['Tintes'].trim() && tipos['Tintes'] !== '#' ? ' secondary' : ' loading-link'}" href="${tipos['Tintes'] && tipos['Tintes'].trim() && tipos['Tintes'] !== '#' ? tipos['Tintes'] : '#'}"${tipos['Tintes'] && tipos['Tintes'].trim() && tipos['Tintes'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['Tintes'] && tipos['Tintes'].trim() && tipos['Tintes'] !== '#' ? 'Comprar' : ''}</a></td>
+				   </tr>
+			   `).join('');
+			   // --- MÓVIL: fila select ---
+			   let mobileRows = Object.entries(medidas).map(([medida, tipos], idx) => {
+				   const selectId = `select-infantil-${idx}`;
+				   const opciones = [
+					   { label: 'Natural', href: tipos['Natural'] },
+					   { label: 'Barnizado', href: tipos['Barnizado'] },
+					   { label: 'Tintes', href: tipos['Tintes'] }
+				   ];
+				   const selectOptions = opciones.map(opt => {
+					   if (opt.href && opt.href.trim() && opt.href !== '#') {
+						   return `<option value=\"${opt.href}\">${opt.label}</option>`;
+					   } else {
+						   return `<option value=\"\" disabled>${opt.label} (Próximamente)</option>`;
+					   }
+				   }).join('');
+				   return `<tr class=\"mobile-select-row\"><td colspan=\"4\"><strong>${medida}</strong><select id=\"${selectId}\" class=\"dropbtn\"><option value=\"\" selected disabled>Elegir opción</option>${selectOptions}</select></td></tr>`;
+			   }).join('');
+			   card.innerHTML = `
+				   <div class="product-image">
+					   <img src="${IMAGES[modelo]||''}" alt="Infantil ${modelo}" loading="lazy">
+				   </div>
+				   <div class="product-card-title">Infantil ${modelo}</div>
+				   <table class="product-table">
+					   <thead>
+						   <tr>
+							   <th>Natural</th>
+							   <th>Barnizado</th>
+							   <th>Tintes</th>
+						   </tr>
+					   </thead>
+					   <tbody>
+						   ${desktopRow}
+						   ${mobileRows}
+					   </tbody>
+				   </table>
+			   `;
+			   setTimeout(() => {
+				   const selects = card.querySelectorAll('.mobile-select-row select');
+				   selects.forEach(sel => {
+					   sel.addEventListener('change', function(e) {
+						   const url = this.value;
+						   if(url) window.open(url, '_blank');
+						   this.selectedIndex = 0;
+					   });
+				   });
+			   }, 0);
 			stack.appendChild(card);
 		});
 	}

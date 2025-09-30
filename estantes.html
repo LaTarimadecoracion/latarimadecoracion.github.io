@@ -123,27 +123,31 @@
 			// Crear card
 			const card = document.createElement('div');
 			card.className = 'product-card';
+			// --- TABLA DESKTOP ---
 			let tableRows = '';
-			Object.entries(medidas).forEach(([medida, productos]) => {
+			Object.entries(medidas).forEach(([medida, productos], idx) => {
 				// Si hay un producto tipo combo, mostrar el botón en la columna 1un
 				const combo = productos.find(p => p.tipo === 'combo');
 				if (combo) {
 					const href = combo.href;
 					const isActive = href && href.trim() && href !== '#';
-					tableRows += `<tr><td>${medida}</td><td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target="_blank" rel="noopener"' : ' tabindex="-1"'}>Comprar</a></td>`;
+					tableRows += `<tr class="desktop-row"><td>${medida}</td><td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>Comprar</a></td>`;
 					for(let i=1;i<tiposColumnas.length;i++) tableRows += '<td></td>';
 					tableRows += `</tr>`;
+					// --- SELECT MÓVIL ---
+					tableRows += `<tr class="mobile-select-row"><td colspan="${tiposColumnas.length+1}"><strong>${medida}</strong><select id="select-${modelo.replace(/\s/g,'')}-${idx}"><option value="" selected disabled>Elegir opción</option>${isActive ? `<option value="${href}">Comprar</option>` : `<option value="" disabled>Comprar (Próximamente)</option>`}</select></td></tr>`;
 					return;
 				}
 				// Si todos los productos son tipo único (por ejemplo, solo 'Comprar'), mostrar una fila por producto
 				const tiposUnicos = productos.every(p => !tiposColumnas.includes(p.tipo));
 				if (tiposUnicos) {
-					productos.forEach(producto => {
+					productos.forEach((producto, j) => {
 						const href = producto.href;
 						const isActive = href && href.trim() && href !== '#';
-						// Si solo hay botones Comprar, el colspan debe ser 1
 						const colspan = (tiposColumnas.length > 0) ? tiposColumnas.length : 1;
-						tableRows += `<tr><td>${medida || producto.tipo}</td><td colspan="${colspan}"><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td></tr>`;
+						tableRows += `<tr class="desktop-row"><td>${medida || producto.tipo}</td><td colspan="${colspan}"><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td></tr>`;
+						// --- SELECT MÓVIL ---
+						tableRows += `<tr class="mobile-select-row"><td colspan="${colspan+1}"><strong>${medida || producto.tipo}</strong><select id="select-${modelo.replace(/\s/g,'')}-${idx}-${j}"><option value="" selected disabled>Elegir opción</option>${isActive ? `<option value="${href}">Comprar</option>` : `<option value="" disabled>Comprar (Próximamente)</option>`}</select></td></tr>`;
 					});
 					return;
 				}
@@ -153,18 +157,27 @@
 				productos.forEach(producto => {
 					if (tiposColumnas.includes(producto.tipo)) tipos[producto.tipo] = producto;
 				});
-				tableRows += `<tr><td>${medida}</td>`;
+				tableRows += `<tr class="desktop-row"><td>${medida}</td>`;
 				tiposColumnas.forEach(tipo => {
 					const producto = tipos[tipo];
 					if (producto) {
 						const href = producto.href;
 						const isActive = href && href.trim() && href !== '#';
-						tableRows += `<td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target="_blank" rel="noopener"' : ' tabindex="-1"'}>${isActive ? 'Comprar' : ''}</a></td>`;
+						tableRows += `<td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td>`;
 					} else {
 						tableRows += `<td><a class="buy-btn loading-link" href="#" tabindex="-1"></a></td>`;
 					}
 				});
 				tableRows += '</tr>';
+				// --- SELECT MÓVIL ---
+				tableRows += `<tr class="mobile-select-row"><td colspan="${tiposColumnas.length+1}"><strong>${medida}</strong><select id="select-${modelo.replace(/\s/g,'')}-${idx}"><option value="" selected disabled>Elegir opción</option>${tiposColumnas.map(tipo => {
+					const producto = tipos[tipo];
+					if (producto && producto.href && producto.href.trim() && producto.href !== '#') {
+						return `<option value="${producto.href}">${tipo}</option>`;
+					} else {
+						return `<option value="" disabled>${tipo} (Próximamente)</option>`;
+					}
+				}).join('')}</select></td></tr>`;
 			});
 			// Encabezados dinámicos o solo botón si todos son 'Comprar'
 			let ths = '<th>Medida</th>';
@@ -179,10 +192,21 @@
 				</div>
 				<div class="product-card-title">${modelo}</div>
 				<table class="product-table">
-					<tr>${ths}</tr>
-					${tableRows}
+					<thead><tr>${ths}</tr></thead>
+					<tbody>${tableRows}</tbody>
 				</table>
 			`;
+			// Listeners para selects móviles
+			setTimeout(() => {
+				const selects = card.querySelectorAll('.mobile-select-row select');
+				selects.forEach(sel => {
+					sel.addEventListener('change', function(e) {
+						const url = this.value;
+						if(url) window.open(url, '_blank');
+						this.selectedIndex = 0;
+					});
+				});
+			}, 0);
 			stack.appendChild(card);
 		});
 	}

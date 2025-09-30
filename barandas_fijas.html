@@ -52,12 +52,16 @@
 	</div>
 	<script type="module">
 	const moduleId = 'barandas_fijas';
+	const whatsapp = 'https://wa.me/5491167007723';
 	const IMAGES = {
-	'Baranda Fija Clásica': 'img/barandas_fijas/barandafijaclasica.jpg',
-	'Baranda Fija Montessori': 'img/barandas_fijas/barandafijaclasica.jpg',
-	'Baranda Fija Montessori II': 'img/barandas_fijas/barandafijamontessori.jpg',
-	'Baranda Fija Simple': 'img/barandas_fijas/barandassimplefija.jpg'
+		'Baranda Fija Montessori': 'img/barandas_fijas/barandafijamontessori.jpg',
+		'Baranda Fija Montessori II': 'img/barandas_fijas/barandafijamontessori.jpg',
+		'Baranda Fija Simple': 'img/barandas_fijas/barandassimplefija.jpg',
+		'Baranda Fija Clásica': 'img/barandas_fijas/barandafijaclasica.jpg'
 	};
+	function getModeloKey(modelo) {
+		return modelo || '';
+	}
 	async function getLinks(){
 		try {
 			const res = await fetch('Links/links.json', { cache: 'no-store' });
@@ -70,47 +74,110 @@
 		}
 		return [];
 	}
-	function renderCards(rows) {
-		const stack = document.getElementById('product-stack');
-		stack.innerHTML = '';
-		// Agrupar por modelo
+	function groupByModelo(rows) {
 		const grupos = {};
 		rows.forEach(row => {
-			// Renombrar el primer modelo si es necesario
-			let modelo = row.modelo || '';
-			if (modelo.toLowerCase().includes('simple')) modelo = 'Baranda Fija Clásica';
-			if (!grupos[modelo]) grupos[modelo] = [];
-			grupos[modelo].push({...row, modelo});
+			const key = getModeloKey(row.modelo);
+			if (!grupos[key]) grupos[key] = [];
+			grupos[key].push(row);
 		});
+		return grupos;
+	}
+	function renderCards(grupos) {
+		const stack = document.getElementById('product-stack');
+		stack.innerHTML = '';
 		Object.entries(grupos).forEach(([modelo, items]) => {
+			// Agrupar por medida, compactando variantes en columnas
+			const medidas = {};
+			items.forEach(item => {
+				const medida = item.medida || '';
+				const tipo = item.tipo && item.tipo.trim();
+				if (!medidas[medida]) medidas[medida] = {};
+				if (!medidas[medida][tipo]) {
+					medidas[medida][tipo] = item.href;
+				}
+			});
+			// Crear card
 			const card = document.createElement('div');
 			card.className = 'product-card';
 			card.innerHTML = `
 				<div class="product-image">
-					<img src="${IMAGES[modelo] || 'img/barandas_fijas/barandafijaclasica.jpg'}" alt="${modelo}" loading="lazy">
+					<img src="${IMAGES[modelo]||''}" alt="Baranda fija ${modelo}" loading="lazy">
 				</div>
-				<div class="product-card-title">${modelo}</div>
+				<div class="product-card-title">Baranda fija ${modelo}</div>
 				<table class="product-table">
-					<tr>
-						<th>Medida</th>
-						<th>Tipo</th>
-						<th>Comprar</th>
-					</tr>
-					${items.map(item => `
+					<thead>
 						<tr>
-							<td>${item.medida || ''}</td>
-							<td>${item.tipo || ''}</td>
-							<td><a class="buy-btn${item.href && item.href.trim() && item.href !== '#' ? ' primary' : ' loading-link'}" href="${item.href && item.href.trim() && item.href !== '#' ? item.href : '#'}"${item.href && item.href.trim() && item.href !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${item.href && item.href.trim() && item.href !== '#' ? 'Comprar' : 'Próximamente'}</a></td>
+							<th>Medida</th>
+							<th>Natural</th>
+							<th>Barnizada</th>
+							<th>Blanca</th>
 						</tr>
-					`).join('')}
+					</thead>
+					<tbody>
+					${Object.entries(medidas).map(([medida, tipos], idx) => {
+						const opciones = [
+							{ label: 'Natural', tipo: 'Natural', href: tipos['Natural'] },
+							{ label: 'Barnizada', tipo: 'Barnizada', href: tipos['Barnizada'] },
+							{ label: 'Blanca', tipo: 'Blanca', href: tipos['Blanca'] }
+						];
+						const selectId = `select-${modelo.replace(/\s/g,'')}-${idx}`;
+						// Fila para escritorio (botones)
+						const desktopRow = `
+							<tr class="desktop-row">
+								<td>${medida}</td>
+								<td>${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? `<a class="buy-btn primary" href="${tipos['Natural']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
+								<td>${tipos['Barnizada'] && tipos['Barnizada'].trim() && tipos['Barnizada'] !== '#' ? `<a class="buy-btn secondary" href="${tipos['Barnizada']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
+								<td>${tipos['Blanca'] && tipos['Blanca'].trim() && tipos['Blanca'] !== '#' ? `<a class="buy-btn secondary" href="${tipos['Blanca']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
+							</tr>
+						`;
+						// Fila para móvil (select)
+						const mobileRow = (() => {
+							const rendered = new Set();
+							return `
+							<tr class="mobile-select-row">
+								<td colspan="4">
+									<strong>${medida}</strong>
+									<select id="${selectId}" class="dropbtn">
+										<option value="" selected disabled>Elegir opción</option>
+										${opciones.map(opt => {
+											if (opt.href && opt.href.trim() && opt.href !== '#') {
+												return `<option value="${opt.href}">${opt.label}</option>`;
+											} else if (!rendered.has(opt.label)) {
+												rendered.add(opt.label);
+												return `<option value="" disabled>${opt.label} (Próximamente)</option>`;
+											} else {
+												return '';
+											}
+										}).join('')}
+									</select>
+								</td>
+							</tr>
+							`;
+						})();
+						return desktopRow + mobileRow;
+					}).join('')}
+					</tbody>
 				</table>
 			`;
+			// Listeners para selects móviles
+			setTimeout(() => {
+				const selects = card.querySelectorAll('.mobile-select-row select');
+				selects.forEach(sel => {
+					sel.addEventListener('change', function(e) {
+						const url = this.value;
+						if(url) window.open(url, '_blank');
+						this.selectedIndex = 0;
+					});
+				});
+			}, 0);
 			stack.appendChild(card);
 		});
 	}
 	(async () => {
 		const links = await getLinks();
-		renderCards(links);
+		const grupos = groupByModelo(links);
+		renderCards(grupos);
 	})();
 	</script>
 </body>

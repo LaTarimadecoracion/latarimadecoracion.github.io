@@ -135,14 +135,31 @@
 </head>
 <body>
     <div class="admin-container">
-        <h1>Administrador de enlaces</h1>
-        <label for="modulo-select" style="font-weight:bold;">Módulo:</label>
-        <select id="modulo-select" style="margin-bottom:16px;"></select>
-        <div id="tables"></div>
-        <div id="status"></div>
+    <h1>Administrador de enlaces</h1>
+    <label for="modulo-select" style="font-weight:bold;">Módulo:</label>
+    <select id="modulo-select" style="margin-bottom:16px;"></select>
+    <button id="add-row-btn" class="admin-btn" style="margin-bottom:16px; display:none;">Añadir fila</button>
+    <div id="tables"></div>
+    <div id="status"></div>
     </div>
     <button class="download-btn" onclick="downloadLinks()">Descargar Links</button>
     <script type="module">
+        // Mostrar el botón solo para el módulo 'regalos'
+        const addRowBtn = document.getElementById('add-row-btn');
+        document.getElementById('modulo-select').addEventListener('change', function() {
+            addRowBtn.style.display = this.value === 'regalos' ? '' : 'none';
+        });
+        // Mostrarlo si ya está seleccionado al cargar
+        window.addEventListener('DOMContentLoaded', function() {
+            const select = document.getElementById('modulo-select');
+            addRowBtn.style.display = select.value === 'regalos' ? '' : 'none';
+        });
+        // Acción para añadir fila
+        addRowBtn.addEventListener('click', function() {
+            if (!links['regalos']) links['regalos'] = [];
+            links['regalos'].push({ modelo: '', href: '' });
+            renderTables();
+        });
         // Cargar links reales desde links.json
         let links = {};
         let ordenModulos = [
@@ -158,7 +175,8 @@
             'percheros',
             'camas',
             'escaleras',
-            'infantiles'
+            'infantiles',
+            'regalos'
         ];
         let moduloActual = ordenModulos[0];
         fetch('./links.json')
@@ -195,40 +213,110 @@
             const table = document.createElement('table');
             table.className = 'admin-table';
             const thead = document.createElement('thead');
-            thead.innerHTML = `<tr><th colspan='5' class='mod-title'>${moduloActual.replace(/_/g,' ').toUpperCase()}</th></tr><tr><th>Modelo</th><th>Medida</th><th>Tipo</th><th>Enlace</th><th>Agregar</th></tr>`;
-            table.appendChild(thead);
-            const tbody = document.createElement('tbody');
-            tbody.style.display = '';
-            // Agrupar por modelo dinámicamente según el JSON
-            const modelosUnicos = [...new Set(productos.map(p => p.modelo))].filter(Boolean);
-            modelosUnicos.forEach(modelo => {
-                const grupo = productos.filter(p => p.modelo === modelo);
-                if (grupo.length) {
-                    const trModelo = document.createElement('tr');
-                    trModelo.innerHTML = `<td colspan='5' style='background:#dbeafe;font-weight:bold;'>${modelo.toUpperCase()}</td>`;
-                    tbody.appendChild(trModelo);
-                    // Agrupar por tipo dinámicamente
-                    const tiposUnicos = [...new Set(grupo.map(p => p.tipo))].filter(Boolean);
-                    tiposUnicos.forEach(tipo => {
-                        const subgrupo = grupo.filter(p => p.tipo === tipo);
-                        if (subgrupo.length) {
-                            const trTipo = document.createElement('tr');
-                            trTipo.innerHTML = `<td colspan='5' style='background:#eaeaea;font-weight:bold;'>${tipo.toUpperCase()}</td>`;
-                            tbody.appendChild(trTipo);
-                            subgrupo.forEach((prod, idx) => {
-                                const tr = document.createElement('tr');
-                                // Si el enlace está cargado, resaltar el input
-                                const hasLink = prod.href && prod.href.trim() && prod.href !== '#';
-                                const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
-                                tr.innerHTML = `<td>${prod.modelo}</td><td>${prod.medida}</td><td>${prod.tipo}</td><td><input class='admin-input' type='text' value='${prod.href}' style='${inputStyle}' data-mod='${moduloActual}' data-idx='${productos.indexOf(prod)}'></td><td><button class='admin-btn' onclick='pasteLink(this, \"${moduloActual}\", ${productos.indexOf(prod)})'>Agregar</button> <button class='admin-btn delete' onclick='deleteLink(\"${moduloActual}\", ${productos.indexOf(prod)}, this)'>B</button> ${hasLink ? `<button class='admin-btn' onclick=\"navigator.clipboard.writeText('${prod.href}')\">Copiar</button> <button class='admin-btn' onclick=\"window.open('${prod.href}','_blank')\">Visitar</button>` : ''}</td>`;
-                                tbody.appendChild(tr);
-                            });
-                        }
-                    });
+            if (moduloActual === 'regalos') {
+                // Botón para añadir fila en LINKS UTILES (ahora sobre la tabla)
+                const btnAddLinksUtiles = document.createElement('button');
+                btnAddLinksUtiles.textContent = 'Añadir fila';
+                btnAddLinksUtiles.className = 'admin-btn';
+                btnAddLinksUtiles.style.margin = '8px 0 8px 0';
+                btnAddLinksUtiles.onclick = function() {
+                    if (!Array.isArray(links['links_utiles'])) links['links_utiles'] = [];
+                    links['links_utiles'].push({ modelo: '', href: '' });
+                    renderTables();
+                };
+                container.appendChild(document.createElement('hr'));
+                container.appendChild(btnAddLinksUtiles);
+                // Render principal de REGALOS
+                thead.innerHTML = `<tr><th colspan='4' class='mod-title'>REGALOS</th></tr><tr><th>Recurso</th><th>Enlace</th><th>Agregar</th><th>Eliminar</th></tr>`;
+                table.appendChild(thead);
+                const tbody = document.createElement('tbody');
+                productos.forEach((prod, idx) => {
+                    const hasLink = prod.href && prod.href.trim() && prod.href !== '#';
+                    const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><input class='admin-input' type='text' value='${prod.modelo || ''}' data-mod='${moduloActual}' data-idx='${idx}' data-field='modelo' placeholder='Nombre del recurso'></td>
+                        <td><input class='admin-input' type='text' value='${prod.href || ''}' style='${inputStyle}' data-mod='${moduloActual}' data-idx='${idx}' data-field='href' placeholder='Enlace'></td>
+                        <td><button class='admin-btn' onclick='pasteLink(this, "${moduloActual}", ${idx})'>Agregar</button></td>
+                        <td><button class='admin-btn delete' onclick='deleteRowRegalos(${idx})' title='Eliminar fila'>🗑️</button></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                table.appendChild(tbody);
+                container.appendChild(table);
+                // Eliminar fila en la tabla clásica de regalos
+                window.deleteRowRegalos = function(idx) {
+                    if (Array.isArray(links['regalos'])) {
+                        links['regalos'].splice(idx, 1);
+                        renderTables();
+                    }
                 }
-            });
-            table.appendChild(tbody);
-            container.appendChild(table);
+
+                // Render de LINKS UTILES dentro de REGALOS
+                if (!Array.isArray(links['links_utiles'])) links['links_utiles'] = [];
+                const tableUtiles = document.createElement('table');
+                tableUtiles.className = 'admin-table';
+                const theadUtiles = document.createElement('thead');
+                theadUtiles.innerHTML = `<tr><th colspan='4' class='mod-title'>LINKS UTILES</th></tr><tr><th>Recurso</th><th>Enlace</th><th>Agregar</th><th>Eliminar</th></tr>`;
+                tableUtiles.appendChild(theadUtiles);
+                const tbodyUtiles = document.createElement('tbody');
+                links['links_utiles'].forEach((item, idx) => {
+                    const hasLink = item.href && item.href.trim() && item.href !== '#';
+                    const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><input class='admin-input' type='text' value='${item.modelo || ''}' data-mod='links_utiles' data-idx='${idx}' data-field='modelo' placeholder='Nombre del recurso'></td>
+                        <td><input class='admin-input' type='text' value='${item.href || ''}' style='${inputStyle}' data-mod='links_utiles' data-idx='${idx}' data-field='href' placeholder='Enlace'></td>
+                        <td><button class='admin-btn' onclick='pasteLink(this, "links_utiles", ${idx})'>Agregar</button></td>
+                        <td><button class='admin-btn delete' onclick='deleteRowLinksUtiles(${idx})' title='Eliminar fila'>🗑️</button></td>
+                    `;
+                    tbodyUtiles.appendChild(tr);
+                });
+                tableUtiles.appendChild(tbodyUtiles);
+                container.appendChild(tableUtiles);
+                // Eliminar fila en links_utiles
+                window.deleteRowLinksUtiles = function(idx) {
+                    if (Array.isArray(links['links_utiles'])) {
+                        links['links_utiles'].splice(idx, 1);
+                        renderTables();
+                    }
+                }
+            } else {
+                thead.innerHTML = `<tr><th colspan='5' class='mod-title'>${moduloActual.replace(/_/g,' ').toUpperCase()}</th></tr><tr><th>Modelo</th><th>Medida</th><th>Tipo</th><th>Enlace</th><th>Agregar</th></tr>`;
+                table.appendChild(thead);
+                const tbody = document.createElement('tbody');
+                tbody.style.display = '';
+                // Agrupar por modelo dinámicamente según el JSON
+                const modelosUnicos = [...new Set(productos.map(p => p.modelo))].filter(Boolean);
+                modelosUnicos.forEach(modelo => {
+                    const grupo = productos.filter(p => p.modelo === modelo);
+                    if (grupo.length) {
+                        const trModelo = document.createElement('tr');
+                        trModelo.innerHTML = `<td colspan='5' style='background:#dbeafe;font-weight:bold;'>${modelo.toUpperCase()}</td>`;
+                        tbody.appendChild(trModelo);
+                        // Agrupar por tipo dinámicamente
+                        const tiposUnicos = [...new Set(grupo.map(p => p.tipo))].filter(Boolean);
+                        tiposUnicos.forEach(tipo => {
+                            const subgrupo = grupo.filter(p => p.tipo === tipo);
+                            if (subgrupo.length) {
+                                const trTipo = document.createElement('tr');
+                                trTipo.innerHTML = `<td colspan='5' style='background:#eaeaea;font-weight:bold;'>${tipo.toUpperCase()}</td>`;
+                                tbody.appendChild(trTipo);
+                                subgrupo.forEach((prod, idx) => {
+                                    const tr = document.createElement('tr');
+                                    // Si el enlace está cargado, resaltar el input
+                                    const hasLink = prod.href && prod.href.trim() && prod.href !== '#';
+                                    const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
+                                    tr.innerHTML = `<td>${prod.modelo}</td><td>${prod.medida}</td><td>${prod.tipo}</td><td><input class='admin-input' type='text' value='${prod.href}' style='${inputStyle}' data-mod='${moduloActual}' data-idx='${productos.indexOf(prod)}'></td><td><button class='admin-btn' onclick='pasteLink(this, \"${moduloActual}\", ${productos.indexOf(prod)})'>Agregar</button> <button class='admin-btn delete' onclick='deleteLink(\"${moduloActual}\", ${productos.indexOf(prod)}, this)'>B</button> ${hasLink ? `<button class='admin-btn' onclick=\"navigator.clipboard.writeText('${prod.href}')\">Copiar</button> <button class='admin-btn' onclick=\"window.open('${prod.href}','_blank')\">Visitar</button>` : ''}</td>`;
+                                    tbody.appendChild(tr);
+                                });
+                            }
+                        });
+                    }
+                });
+                table.appendChild(tbody);
+                container.appendChild(table);
+            }
         }
 
         window.deleteLink = function(mod, idx, btn) {

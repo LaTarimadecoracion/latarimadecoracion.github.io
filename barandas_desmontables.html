@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="stylesheet" href="estilos.css">
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXNJV3XERK"></script>
         <script>
@@ -112,23 +113,61 @@
                 </div>
                 <div class="product-card-title">Baranda desmontable ${modelo}</div>
                 <table class="product-table">
-                    <tr>
-                        <th>Medida</th>
-                        <th>Natural</th>
-                        <th>Barnizadas</th>
-                        <th>Blancas</th>
-                    </tr>
-                    ${Object.entries(medidas).map(([medida, tipos]) => `
+                    <thead>
                         <tr>
-                            <td>${medida}</td>
-                            <td><a class="buy-btn primary" href="${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? tipos['Natural'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-                            <td><a class="buy-btn secondary" href="${tipos['Barnizadas'] && tipos['Barnizadas'].trim() && tipos['Barnizadas'] !== '#' ? tipos['Barnizadas'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
-                            <td><a class="buy-btn secondary" href="${tipos['Blancas'] && tipos['Blancas'].trim() && tipos['Blancas'] !== '#' ? tipos['Blancas'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
+                            <th>Medida</th>
+                            <th>Natural</th>
+                            <th>Barnizadas</th>
+                            <th>Blancas</th>
                         </tr>
-                    `).join('')}
+                    </thead>
+                    ${Object.entries(medidas).map(([medida, tipos], idx) => {
+                        // Opciones del select
+                        const opciones = [
+                            { label: 'Natural', tipo: 'Natural', href: tipos['Natural'] },
+                            { label: 'Barnizada', tipo: 'Barnizadas', href: tipos['Barnizadas'] },
+                            { label: 'Blanca', tipo: 'Blancas', href: tipos['Blancas'] }
+                        ];
+                        // Solo mostrar opciones con link válido
+                        const opcionesValidas = opciones.filter(opt => opt.href && opt.href.trim() && opt.href !== '#');
+                        const selectId = `select-${modelo.replace(/\s/g,'')}-${idx}`;
+                        // Fila para escritorio (botones)
+                        const desktopRow = `
+                            <tr class="desktop-row">
+                                <td>${medida}</td>
+                                <td><a class="buy-btn primary" href="${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? tipos['Natural'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
+                                <td><a class="buy-btn secondary" href="${tipos['Barnizadas'] && tipos['Barnizadas'].trim() && tipos['Barnizadas'] !== '#' ? tipos['Barnizadas'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
+                                <td><a class="buy-btn secondary" href="${tipos['Blancas'] && tipos['Blancas'].trim() && tipos['Blancas'] !== '#' ? tipos['Blancas'] : whatsapp}" target="_blank" rel="noopener">Comprar</a></td>
+                            </tr>
+                        `;
+                        // Fila para móvil (select tipo botón grande)
+                            const mobileRow = `
+                                <tr class="mobile-select-row">
+                                    <td colspan="4" style="text-align:center;">
+                                        <div style="font-weight:600;font-size:1.08em;margin-bottom:8px;">${medida}</div>
+                                        <select id="${selectId}" class="dropbtn">
+                                            <option value="" selected disabled>Elegir opción</option>
+                                            ${opcionesValidas.map(opt => `<option value="${opt.href}">${opt.label}</option>`).join('')}
+                                        </select>
+                                    </td>
+                                </tr>
+                            `;
+                        return desktopRow + mobileRow;
+                    }).join('')}
                 </table>
             `;
             stack.appendChild(card);
+            // Agregar listeners a los selects de este card (solo móvil)
+            setTimeout(() => {
+                const selects = card.querySelectorAll('.mobile-select-row select');
+                selects.forEach(sel => {
+                    sel.addEventListener('change', function(e) {
+                        const url = this.value;
+                        if(url) window.open(url, '_blank');
+                        this.selectedIndex = 0;
+                    });
+                });
+            }, 0);
         });
     }
     (async () => {

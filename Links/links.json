@@ -1,5 +1,19 @@
 {
   "modules": {
+    "regalos": [
+      {
+        "modelo": "IA - CHAT GPT",
+        "href": "https://chatgpt.com/"
+      },
+      {
+        "modelo": "IA - ",
+        "href": "https://chat.qwen.ai/"
+      },
+      {
+        "modelo": "",
+        "href": ""
+      }
+    ],
     "camas": [
       {
         "modelo": "Cama Montessori",
@@ -829,7 +843,7 @@
         "modelo": "Escaleras",
         "medida": "60 a 100 cm",
         "tipo": "Vertical",
-        "href": "#"
+        "href": "https://bio.link/latarima"
       },
       {
         "modelo": "Escaleras",
@@ -1300,16 +1314,52 @@
         "href": "https://articulo.mercadolibre.com.ar/MLA-1145213600-baranda-para-cama-barral-seguridad-_JM#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=rk_entity_sameseller&reco_client=vip-seller_items-above&reco_item_pos=1&reco_backend_type=low_level&reco_id=739a45fe-ca2b-4cfb-b46c-4844de2b6468&wid=MLA1145213600&sid=recos"
       },
       {
+        "modelo": "Baranda Fija Montessori",
+        "medida": "60 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda Fija Montessori",
+        "medida": "60 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
         "modelo": "Baranda Fija Montessori II",
         "medida": "60 x 45",
         "tipo": "Natural",
         "href": "https://articulo.mercadolibre.com.ar/MLA-1241768126-baranda-para-cama-montessori-60x45-_JM?searchVariation=180148294133#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=rk_entity_sameseller&reco_client=vip-seller_items-above&reco_item_pos=3&reco_backend_type=low_level&reco_id=739a45fe-ca2b-4cfb-b46c-4844de2b6468"
       },
       {
+        "modelo": "Baranda Fija Montessori II",
+        "medida": "60 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda Fija Montessori II",
+        "medida": "60 x 45",
+        "tipo": "Blanca",
+        "href": ""
+      },
+      {
         "modelo": "Baranda Fija Simple",
         "medida": "60 x 45",
         "tipo": "Natural",
         "href": "https://articulo.mercadolibre.com.ar/MLA-1380333706-baranda-de-seguridad-para-cama-infantil-60x35cm-_JM?searchVariation=177359235387#polycard_client=search-nordic&searchVariation=177359235387&search_layout=grid&position=5&type=item&tracking_id=76e1d9d5-f254-4ee5-a1cf-e17f697f9912"
+      },
+      {
+        "modelo": "Baranda Fija Simple",
+        "medida": "60 x 45",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda Fija Simple",
+        "medida": "60 x 45",
+        "tipo": "Blanca",
+        "href": ""
       }
     ],
     "barandas_desmontables": [
@@ -1595,7 +1645,7 @@
         "modelo": "Baranda sommier Clásica",
         "medida": "100 x 45 cm",
         "tipo": "Barnizadas",
-        "href": ""
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM"
       },
       {
         "modelo": "Baranda sommier Clásica",
@@ -1794,12 +1844,18 @@
         "modelo": "Baranda desmontable",
         "medida": "110 x 45 cm",
         "tipo": "Natural",
+        "href": "https://mail.google.com/mail/u/0/"
+      },
+      {
+        "modelo": "Baranda desmontable",
+        "medida": "110 x 45 cm",
+        "tipo": "Barnizada",
         "href": ""
       },
       {
         "modelo": "Baranda desmontable",
         "medida": "110 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1811,7 +1867,13 @@
       {
         "modelo": "Baranda desmontable",
         "medida": "100 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda desmontable",
+        "medida": "100 x 45 cm",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1823,7 +1885,13 @@
       {
         "modelo": "Baranda desmontable",
         "medida": "90 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda desmontable",
+        "medida": "90 x 45 cm",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1835,7 +1903,13 @@
       {
         "modelo": "Baranda desmontable",
         "medida": "80 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda desmontable",
+        "medida": "80 x 45 cm",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1847,7 +1921,13 @@
       {
         "modelo": "Baranda desmontable",
         "medida": "70 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda desmontable",
+        "medida": "70 x 45 cm",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1859,7 +1939,13 @@
       {
         "modelo": "Baranda desmontable",
         "medida": "60 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda desmontable",
+        "medida": "60 x 45 cm",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1871,7 +1957,13 @@
       {
         "modelo": "Baranda Ortopedica",
         "medida": "110 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda Ortopedica",
+        "medida": "110 x 45 cm",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1883,7 +1975,13 @@
       {
         "modelo": "Baranda Ortopedica",
         "medida": "100 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda Ortopedica",
+        "medida": "100 x 45 cm",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1895,7 +1993,13 @@
       {
         "modelo": "Baranda Ortopedica",
         "medida": "90 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda Ortopedica",
+        "medida": "90 x 45 cm",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1907,7 +2011,13 @@
       {
         "modelo": "Baranda Ortopedica",
         "medida": "80 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda Ortopedica",
+        "medida": "80 x 45 cm",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1919,7 +2029,13 @@
       {
         "modelo": "Baranda Ortopedica",
         "medida": "70 x 45 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
+        "href": ""
+      },
+      {
+        "modelo": "Baranda Ortopedica",
+        "medida": "70 x 45 cm",
+        "tipo": "Blanca",
         "href": ""
       },
       {
@@ -1931,8 +2047,14 @@
       {
         "modelo": "Baranda Ortopedica Alta",
         "medida": "110 x 60 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
         "href": "https://music.youtube.com/watch?v=yD0ogQXFGZU&list=RDAMVM-zPKfjIvAro"
+      },
+      {
+        "modelo": "Baranda Ortopedica Alta",
+        "medida": "110 x 60 cm",
+        "tipo": "Blanca",
+        "href": ""
       },
       {
         "modelo": "Baranda Ortopedica Alta",
@@ -1943,8 +2065,32 @@
       {
         "modelo": "Baranda Ortopedica Alta",
         "medida": "70 x 60 cm",
-        "tipo": "Barnizadas",
+        "tipo": "Barnizada",
         "href": "https://music.youtube.com/watch?v=yD0ogQXFGZU&list=RDAMVM-zPKfjIvAro"
+      },
+      {
+        "modelo": "Baranda Ortopedica Alta",
+        "medida": "70 x 60 cm",
+        "tipo": "Blanca",
+        "href": ""
+      }
+    ],
+    "links_utiles": [
+      {
+        "modelo": "",
+        "href": "https://chat.qwen.ai/"
+      },
+      {
+        "modelo": "",
+        "href": "asdas"
+      },
+      {
+        "modelo": "",
+        "href": "asdasd"
+      },
+      {
+        "modelo": "",
+        "href": ""
       }
     ]
   }

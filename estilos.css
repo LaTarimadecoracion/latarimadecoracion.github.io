@@ -1,3 +1,97 @@
+/* Select móvil ancho completo en tarjetas */
+.mobile-select-row select.dropbtn {
+	width: 100%;
+	box-sizing: border-box;
+}
+/* Solo mostrar el select en móvil, ocultar en escritorio */
+.mobile-select-row { display: none !important; }
+@media (max-width: 450px) {
+	.mobile-select-row { display: table-row !important; }
+	.product-table .desktop-row { display: none !important; }
+}
+@media (min-width: 451px) {
+	.mobile-select-row { display: none !important; }
+}
+/* --- Estilos móviles y personalizados para barandas desmontables (antes en el HTML) --- */
+
+/* Estilos visuales de .container y .product-card para escritorio y móvil */
+.container {
+	max-width: 700px;
+	margin: 3em auto 2em auto;
+	background: rgba(255,255,255,0.97);
+	border-radius: 22px;
+	box-shadow: 0 4px 32px 0 #0074d91a, 0 1.5px 8px 0 #0001;
+	padding: 2.5em 2em 2em 2em;
+}
+.product-card {
+	background: linear-gradient(120deg, #f0f6ff 60%, #eaf6ff 100%);
+	border-radius: 14px;
+	box-shadow: 0 2px 12px 0 #0074d91a;
+	padding: 1.7em 1.1em 1.3em 1.1em;
+	margin-bottom: 2em;
+	border: 1.5px solid #d0eaff;
+}
+@media (max-width: 450px) {
+	.product-table thead { display: none; }
+	.mobile-select-row { display: table-row; }
+	.product-table .desktop-row { display: none; }
+	body {
+		background: linear-gradient(135deg, #e3e9f7 0%, #f7fafc 100%);
+		min-height: 100vh;
+	}
+}
+.btn-label { display: none; }
+@media (max-width: 600px) {
+	.btn-label {
+		display: block;
+		font-size: 0.92em;
+		color: #0074D9;
+		font-weight: 500;
+		margin-bottom: 0.2em;
+	}
+	.product-table td {
+		text-align: left;
+	}
+	.product-table td:before {
+		content: none !important;
+	}
+}
+/* Botón VER en regalos */
+.product-table a.admin-btn {
+	background: #e53935;
+	color: #fff !important;
+	border: none;
+	border-radius: 4px;
+	padding: 6px 18px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background 0.2s;
+	display: inline-block;
+}
+.product-table a.admin-btn:hover {
+	background: #b71c1c;
+}
+/* Botón especial 'Visitar' en rojo */
+.btn-visitar {
+	background: #e53935;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 7px 18px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.18s, box-shadow 0.18s;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+	outline: none;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+}
+.btn-visitar:hover, .btn-visitar:focus {
+	background: #b71c1c;
+	color: #fff;
+}
 /* Icono flotante carpintero TikTok */
 .floating-carpenter {
 	position: fixed;
@@ -391,7 +485,7 @@ table.product-table .buy-btn {
 }
 
 /* Ajustes responsivos para botones de compra en tablas */
-@media (max-width: 400px) {
+@media (max-width: 450px) {
 	/* Móviles pequeños: más compactos */
 	table.product-table .buy-btn {
 		min-width: 88px;
@@ -651,7 +745,7 @@ table.product-table tr:last-child td { border-bottom:none; }
 .split-btn a.consultar:hover { background: inherit; color: inherit; }
 
 /* Pantallas pequeñas (≈360px): ajustar densidad y legibilidad */
-@media (max-width: 400px) {
+@media (max-width: 450px) {
     .container { padding: 28px 18px; }
     .split-btn a { padding: 10px 0; font-size: 0.98rem; }
     table.product-table th,
@@ -667,24 +761,26 @@ table.product-table tr:last-child td { border-bottom:none; }
 	.home .main-btn .btn-text { font-size: 1.02rem; }
 	.home .main-btn .icon-circle { width: 34px; height: 34px; }
 
-	/* Tablas de productos: formato apilado tipo "tarjeta" en móviles */
-	table.product-table tr:first-child { display: none; } /* ocultar encabezados */
-	table.product-table { border-collapse: separate; width: 100%; }
-	table.product-table tr { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #ececec; }
-	/* Apariencia de tarjeta para cada fila */
-	table.product-table tr { background: #fff; border: 1px solid #e9e9e9; border-radius: 10px; padding: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.04); margin: 8px 0; }
-	table.product-table tr:last-child { margin-bottom: 0; }
-	table.product-table td { border: 0; text-align: center; padding: 4px 0; }
-	/* Dos celdas por fila como base; se reacomodan si hay más */
-	table.product-table td { flex: 1 1 calc(50% - 8px); }
-	table.product-table td:only-child { flex: 1 1 100%; }
-	/* Mostrar etiqueta (nombre de columna) antes del contenido, excepto en la primera celda (modelo/título) */
-	table.product-table td:not(:first-child)::before { content: attr(data-label) ": "; font-weight: 600; margin-right: 6px; color: #444; }
-	table.product-table td:not(:first-child) { text-align: left; }
-	/* Filas especiales */
-	.separator-row { display: none !important; }
-	.note-row { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
-	.note-row td { flex: 1 1 100%; text-align: left; }
+	@media (max-width: 450px) {
+		/* Tablas de productos: formato apilado tipo "tarjeta" en móviles */
+		table.product-table tr:first-child { display: none; } /* ocultar encabezados */
+		table.product-table { border-collapse: separate; width: 100%; }
+		table.product-table tr { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #ececec; }
+		/* Apariencia de tarjeta para cada fila */
+		table.product-table tr { background: #fff; border: 1px solid #e9e9e9; border-radius: 10px; padding: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.04); margin: 8px 0; }
+		table.product-table tr:last-child { margin-bottom: 0; }
+		table.product-table td { border: 0; text-align: center; padding: 4px 0; }
+		/* Dos celdas por fila como base; se reacomodan si hay más */
+		table.product-table td { flex: 1 1 calc(50% - 8px); }
+		table.product-table td:only-child { flex: 1 1 100%; }
+		/* Mostrar etiqueta (nombre de columna) antes del contenido, excepto en la primera celda (modelo/título) */
+		table.product-table td:not(:first-child)::before { content: attr(data-label) ": "; font-weight: 600; margin-right: 6px; color: #444; }
+		table.product-table td:not(:first-child) { text-align: left; }
+		/* Filas especiales */
+		.separator-row { display: none !important; }
+		.note-row { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
+		.note-row td { flex: 1 1 100%; text-align: left; }
+	}
 }
 
 /* Dispositivos muy pequeños: relajar mínimos para evitar overflow */

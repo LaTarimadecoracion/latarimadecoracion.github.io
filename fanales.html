@@ -1,15 +1,6 @@
-<!DOCTYPE html>
+
 <html lang="es">
 <head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-JXNJV3XERK"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'G-JXNJV3XERK');
-		</script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Fanales | LA TARIMA</title>
@@ -24,7 +15,6 @@
 		<a href="index.html" style="text-decoration:none; color:inherit;">
 			<div class="subtitle" style="cursor:pointer;">Carpintería Online</div>
 		</a>
-		<!-- BLOQUE DE REDES (INICIO) — botones grises de redes -->
 		<div class="socials">
 			<a href="https://www.tiktok.com/@latarimadecoracion" target="_blank" rel="noopener" aria-label="TikTok">
 				<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3c.3 2 1.7 3.6 3.6 3.9.3 0 .4.2.4.4v2.2c0 .3-.2.5-.5.5-1.7 0-3.3-.6-4.5-1.6v6.6c0 3-2.4 5.5-5.4 5.7-3.2.2-5.9-2.4-5.9-5.6 0-3.1 2.5-5.6 5.6-5.6.4 0 .8 0 1.1.1.2 0 .3.2.3.4v2.3c0 .2-.2.4-.4.4-.3-.1-.6-.1-.9-.1-1.6 0-2.9 1.4-2.8 3 .1 1.5 1.4 2.7 3 2.7 1.6 0 2.9-1.3 2.9-2.9V3.5c0-.3.2-.5.5-.5H16z"/></svg>
@@ -43,117 +33,96 @@
 			</a>
 		</div>
 		<div class="product-stack" id="product-stack"></div>
-		<!-- CTA fusionado: [INICIO | CONSULTAR] -->
 		<nav class="split-btn" aria-label="Acciones de navegación y contacto">
 			<a href="index.html" title="Volver al inicio">INICIO</a>
 			<a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener" title="Consultar por WhatsApp">CONSULTAR</a>
 		</nav>
 	</div>
 	<script type="module">
-	const moduleId = 'fanales';
-	const whatsapp = 'https://wa.me/5491167007723';
-	const IMAGES = {
-		'Fanales': 'img/fanales/fanales.jpg'
-	};
-	function getModeloKey(modelo) {
-		return modelo;
-	}
+	const cantidadesInd = ['1un','2un','3un'];
+	const cantidadesCombo = ['10un','20un','30un'];
 	async function getLinks(){
 		try {
 			const res = await fetch('Links/links.json', { cache: 'no-store' });
 			if(res.ok){
 				const json = await res.json();
-				return Array.isArray(json.modules[moduleId]) ? json.modules[moduleId] : [];
+				return Array.isArray(json.modules.fanales) ? json.modules.fanales : [];
 			}
 		} catch(e){
 			console.error('Error al cargar links.json', e);
 		}
 		return [];
 	}
-	function groupByModelo(rows) {
+	function groupByModelo(rows, cantidades) {
 		const grupos = {};
 		rows.forEach(row => {
-			const key = getModeloKey(row.modelo);
-			if (!grupos[key]) grupos[key] = [];
-			grupos[key].push(row);
+			if(cantidades.includes(row.tipo)){
+				if(!grupos[row.modelo]) grupos[row.modelo] = {};
+				grupos[row.modelo][row.tipo] = row.href;
+			}
 		});
 		return grupos;
 	}
-	function renderCards(grupos) {
-		const stack = document.getElementById('product-stack');
-		stack.innerHTML = '';
-		// Un solo card para todos los fanales
-		let individuales = [];
-		let combos = [];
-		Object.values(grupos).forEach(items => {
-			individuales.push(...items.filter(i => ['1un','2un','3un'].includes((i.tipo||'').toLowerCase())));
-			combos.push(...items.filter(i => ['10un','20un','30un'].includes((i.tipo||'').toLowerCase())));
-		});
-		// Agrupar individuales por modelo
-		const modelosInd = {};
-		individuales.forEach(item => {
-			const modelo = item.modelo || '';
-			const tipo = item.tipo || '';
-			if (!modelosInd[modelo]) modelosInd[modelo] = {};
-			modelosInd[modelo][tipo] = item.href;
-		});
-		// Agrupar combos por modelo
-		const modelosCombo = {};
-		combos.forEach(item => {
-			const modelo = item.modelo || '';
-			const tipo = item.tipo || '';
-			if (!modelosCombo[modelo]) modelosCombo[modelo] = {};
-			modelosCombo[modelo][tipo] = item.href;
-		});
-	// Crear card único con fondo blanco
-	const card = document.createElement('div');
-	card.className = 'product-card';
-	card.innerHTML = `
-			<div class="product-image">
-				<img src="${IMAGES['Fanales']}" alt="Fanales" loading="lazy">
-			</div>
-			<div class="product-card-title">Fanales</div>
-			<table class="product-table">
-				<tr>
-					<th>Modelo</th>
-					<th>1un</th>
-					<th>2un</th>
-					<th>3un</th>
-				</tr>
-				${Object.entries(modelosInd).map(([modelo, tipos]) => `
-					<tr>
-						<td>${modelo}</td>
-						<td><a class="buy-btn${tipos['1un'] && tipos['1un'].trim() && tipos['1un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['1un'] && tipos['1un'].trim() && tipos['1un'] !== '#' ? tipos['1un'] : '#'}"${tipos['1un'] && tipos['1un'].trim() && tipos['1un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['1un'] && tipos['1un'].trim() && tipos['1un'] !== '#' ? 'Comprar' : ''}</a></td>
-						<td><a class="buy-btn${tipos['2un'] && tipos['2un'].trim() && tipos['2un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['2un'] && tipos['2un'].trim() && tipos['2un'] !== '#' ? tipos['2un'] : '#'}"${tipos['2un'] && tipos['2un'].trim() && tipos['2un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['2un'] && tipos['2un'].trim() && tipos['2un'] !== '#' ? 'Comprar' : ''}</a></td>
-						<td><a class="buy-btn${tipos['3un'] && tipos['3un'].trim() && tipos['3un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['3un'] && tipos['3un'].trim() && tipos['3un'] !== '#' ? tipos['3un'] : '#'}"${tipos['3un'] && tipos['3un'].trim() && tipos['3un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['3un'] && tipos['3un'].trim() && tipos['3un'] !== '#' ? 'Comprar' : ''}</a></td>
-					</tr>
-				`).join('')}
-			</table>
-			<div class="product-card-title" style="margin-top:16px; font-size:0.95rem; font-weight:600;">Combos mayoristas</div>
-			<table class="product-table">
-				<tr>
-					<th>Modelo</th>
-					<th>10un</th>
-					<th>20un</th>
-					<th>30un</th>
-				</tr>
-				${Object.entries(modelosCombo).map(([modelo, tipos]) => `
-					<tr>
-						<td>${modelo}</td>
-						<td><a class="buy-btn${tipos['10un'] && tipos['10un'].trim() && tipos['10un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['10un'] && tipos['10un'].trim() && tipos['10un'] !== '#' ? tipos['10un'] : '#'}"${tipos['10un'] && tipos['10un'].trim() && tipos['10un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['10un'] && tipos['10un'].trim() && tipos['10un'] !== '#' ? 'Comprar' : ''}</a></td>
-						<td><a class="buy-btn${tipos['20un'] && tipos['20un'].trim() && tipos['20un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['20un'] && tipos['20un'].trim() && tipos['20un'] !== '#' ? tipos['20un'] : '#'}"${tipos['20un'] && tipos['20un'].trim() && tipos['20un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['20un'] && tipos['20un'].trim() && tipos['20un'] !== '#' ? 'Comprar' : ''}</a></td>
-						<td><a class="buy-btn${tipos['30un'] && tipos['30un'].trim() && tipos['30un'] !== '#' ? ' primary' : ' loading-link'}" href="${tipos['30un'] && tipos['30un'].trim() && tipos['30un'] !== '#' ? tipos['30un'] : '#'}"${tipos['30un'] && tipos['30un'].trim() && tipos['30un'] !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${tipos['30un'] && tipos['30un'].trim() && tipos['30un'] !== '#' ? 'Comprar' : ''}</a></td>
-					</tr>
-				`).join('')}
+	function renderTable(grupos, cantidades, titulo) {
+		let ths = '<th>Modelo</th>' + cantidades.map(c=>`<th>${c}</th>`).join('');
+		let trsDesktop = Object.entries(grupos).map(([modelo, tipos]) => {
+			let tds = `<td>${modelo}</td>`;
+			cantidades.forEach(cant => {
+				const href = tipos[cant];
+				const isActive = href && href.trim() && href !== '#';
+				tds += `<td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td>`;
+			});
+			return `<tr class="desktop-row">${tds}</tr>`;
+		}).join('');
+		// --- MÓVIL: un select por modelo ---
+		let trsMobile = Object.entries(grupos).map(([modelo, tipos], idx) => {
+			const selectId = `select-${titulo.replace(/\s/g,'').toLowerCase()}-${idx}`;
+			const selectOptions = cantidades.map(cant => {
+				const href = tipos[cant];
+				if (href && href.trim() && href !== '#') {
+					return `<option value=\"${href}\">${cant}</option>`;
+				} else {
+					return `<option value=\"\" disabled>${cant} (Próximamente)</option>`;
+				}
+			}).join('');
+			return `<tr class="mobile-select-row"><td colspan=\"${cantidades.length+1}\"><strong>${modelo}</strong><select id=\"${selectId}\" class=\"dropbtn\"><option value=\"\" selected disabled>Elegir opción</option>${selectOptions}</select></td></tr>`;
+		}).join('');
+		return `
+			<div class=\"product-card-title\">${titulo}</div>
+			<table class=\"product-table\">
+				<thead><tr>${ths}</tr></thead>
+				<tbody>${trsDesktop+trsMobile}</tbody>
 			</table>
 		`;
+	}
+	function renderCards(gruposInd, gruposCombo) {
+		const stack = document.getElementById('product-stack');
+		stack.innerHTML = '';
+		const card = document.createElement('div');
+		card.className = 'product-card';
+			  card.innerHTML =
+				  `<div class="product-image"><img src="img/fanales/fanales.jpg" alt="Fanales" loading="lazy"></div>` +
+				  renderTable(gruposInd, cantidadesInd, 'Fanales individuales') +
+				  renderTable(gruposCombo, cantidadesCombo, 'Combos mayoristas');
+		setTimeout(() => {
+			const selects = card.querySelectorAll('.mobile-select-row select');
+			selects.forEach(sel => {
+				sel.addEventListener('change', function(e) {
+					const url = this.value;
+					if(url) window.open(url, '_blank');
+					this.selectedIndex = 0;
+				});
+			});
+		}, 0);
 		stack.appendChild(card);
 	}
 	(async () => {
 		const links = await getLinks();
-		const grupos = groupByModelo(links);
-		renderCards(grupos);
+		const gruposInd = groupByModelo(links, cantidadesInd);
+		const gruposCombo = groupByModelo(links, cantidadesCombo);
+		renderCards(gruposInd, gruposCombo);
 	})();
 	</script>
 </body>
 </html>
+
