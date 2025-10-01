@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://latarimadecoracion.github.io/sitemap.xml
