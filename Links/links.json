@@ -2,16 +2,24 @@
   "modules": {
     "regalos": [
       {
-        "modelo": "IA - CHAT GPT",
-        "href": "https://chatgpt.com/"
+        "modelo": "subir musica",
+        "href": "https://latarimadecoracion.github.io/"
       },
       {
-        "modelo": "IA - ",
-        "href": "https://chat.qwen.ai/"
+        "modelo": "subir tuto",
+        "href": "https://latarimadecoracion.github.io/"
       },
       {
-        "modelo": "",
-        "href": ""
+        "modelo": "programa musica",
+        "href": "https://latarimadecoracion.github.io/"
+      },
+      {
+        "modelo": "mercado https://latarimadecoracion.github.io/",
+        "href": "https://latarimadecoracion.github.io/"
+      },
+      {
+        "modelo": "subir tuto",
+        "href": "https://latarimadecoracion.github.io/"
       }
     ],
     "camas": [
@@ -54,6 +62,14 @@
         "modelo": "Cama Doble",
         "tipo": "2 plazas",
         "href": ""
+      }
+    ],
+    "podios": [
+      {
+        "modelo": "Podio premiación (3 módulos)",
+        "medida": "Único combo",
+        "tipo": "Comprar",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2235353348-podio-de-premiacion-profesional-3-niveles-reforzados-_JM"
       }
     ],
     "percheros": [
@@ -1304,6 +1320,12 @@
         "medida": "Módulo 3",
         "tipo": "Comprar",
         "href": "https://articulo.mercadolibre.com.ar/MLA-2351255318-podio-de-premiacion-profesional-60-x-40-x-40-cm-n-3-_JM"
+      },
+      {
+        "modelo": "Podio premiación (3 módulos)",
+        "medida": "Único combo",
+        "tipo": "Comprar",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2235353348-podio-de-premiacion-profesional-3-niveles-reforzados-_JM"
       }
     ],
     "barandas_fijas": [
@@ -1452,12 +1474,6 @@
         "medida": "70 x 45 cm",
         "tipo": "Blancas",
         "href": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM"
-      },
-      {
-        "modelo": "Baranda desmontable Clásica",
-        "medida": "60 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1372978437-baranda-de-seguridad-para-cama-infantil-adultos-60x45cm-_JM"
       },
       {
         "modelo": "Baranda desmontable Clásica",
@@ -1614,6 +1630,12 @@
         "medida": "70 x 60 cm",
         "tipo": "Blancas",
         "href": "https://articulo.mercadolibre.com.ar/MLA-1393165069-baranda-seguridad-para-cama-blanca-_JM"
+      },
+      {
+        "modelo": "Baranda desmontable Clásica",
+        "medida": "60 x 45 cm",
+        "tipo": "Natural",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1372978437-baranda-de-seguridad-para-cama-infantil-adultos-60x45cm-_JM"
       }
     ],
     "barandas_sommier": [
@@ -2075,23 +2097,6 @@
         "href": ""
       }
     ],
-    "links_utiles": [
-      {
-        "modelo": "",
-        "href": "https://chat.qwen.ai/"
-      },
-      {
-        "modelo": "",
-        "href": "asdas"
-      },
-      {
-        "modelo": "",
-        "href": "asdasd"
-      },
-      {
-        "modelo": "",
-        "href": ""
-      }
-    ]
+    "links_utiles": []
   }
 }

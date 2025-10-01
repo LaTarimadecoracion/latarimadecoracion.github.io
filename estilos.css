@@ -179,7 +179,7 @@
 	align-items: center;
 }
 /* Archivo de estilos para LA TARIMA y Barandas para cama */
-:root { --content-max: 450px; }
+:root { --content-max: clamp(520px, 65vw, 840px); }
 body {
 	font-family: 'Segoe UI', 'Arial', sans-serif;
 	background: #F3F4F6;
@@ -208,10 +208,12 @@ body.barandas { justify-content: flex-start; }
 	align-items: center;
 }
 h1 {
-	font-size: 2.2rem;
+	/* Crece suavemente en desktop y reduce en móvil (un poco más grande) */
+	font-size: clamp(1.9rem, 1.1rem + 2.2vw, 3.4rem);
 	font-weight: 700;
 	margin-top: 0;
-	margin-bottom: 0;
+	/* Espaciado consistente con el subtítulo */
+	margin-bottom: 4px;
 	color: #222;
 }
 body {
@@ -219,9 +221,58 @@ body {
 	padding-top: 0 !important;
 }
 .subtitle {
-	font-size: 1.1rem;
+	/* Ajuste progresivo con base en viewport (un poco más grande) */
+	font-size: clamp(1.05rem, 0.9rem + 1vw, 1.6rem);
 	color: #888;
-	margin-bottom: 0;
+	/* Espaciado uniforme hacia redes */
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+/* Cabecera unificada: título, subtítulo y redes */
+.site-header {
+	width: 100%;
+	max-width: var(--content-max);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* separación entre bloques internos si hubiera más elementos */
+	gap: 0;
+	margin-bottom: 18px;
+}
+.site-header a {
+	text-decoration: none;
+	color: inherit;
+}
+/* Redes sociales unificadas */
+.socials {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin: 8px 0 14px;
+}
+.socials a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: clamp(38px, 26px + 2vw, 56px);
+	height: clamp(38px, 26px + 2vw, 56px);
+	border-radius: 50%;
+	background: #fff;
+	border: 1.5px solid #e0e0e0;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+	transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
+}
+.socials a:hover, .socials a:focus {
+	background: #f5f6fa;
+	border-color: #b3b3b3;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+.socials svg {
+	width: clamp(20px, 14px + 1.2vw, 28px);
+	height: clamp(20px, 14px + 1.2vw, 28px);
+	display: block;
 }
 /* Agrega aquí más estilos según necesites */
 /* --- Estilos importados de estilo.html --- */
@@ -357,6 +408,10 @@ body {
 .main-btn .icon-circle img { width: 20px; height: 20px; display: block; }
 .main-btn .icon-circle svg { width: 20px; height: 20px; display: block; }
 .icon-22 { width:22px; height:22px; display:block; }
+
+.main-btn .icon-circle img { width: 16px; height: 16px; display: block; }
+.main-btn .icon-circle svg { width: 16px; height: 16px; display: block; }
+.icon-22 { width:16px; height:16px; display:block; }
 .main-btn .btn-text {
 	flex: 1;
 	text-align: center;
@@ -391,15 +446,14 @@ a.main-btn:focus-visible,
 a.home-only.social-link { width: 100%; max-width: var(--content-max); display: block; text-decoration: none; }
 
 /* Responsive: ampliar márgenes y anchos en pantallas grandes */
+
 @media (min-width: 768px) {
-	:root { --content-max: 520px; }
 	.container { padding: 40px 28px; }
 	.main-btn { height: 58px; }
 	.product-card { max-width: var(--content-max); }
 	a.home-only.social-link { max-width: var(--content-max); }
 }
 @media (min-width: 1200px) {
-	:root { --content-max: 560px; }
 	.container { padding: 44px 32px; }
 	.main-btn { height: 60px; }
 	.product-card { max-width: var(--content-max); }
@@ -414,8 +468,9 @@ a.home-only.social-link { width: 100%; max-width: var(--content-max); display: b
 	margin-top: 0;
 }
 .socials a {
-	width: 40px;
-	height: 40px;
+	/* Íconos más grandes en PC y más compactos en móvil (ligeramente mayores) */
+	width: clamp(38px, 26px + 2vw, 64px);
+	height: clamp(38px, 26px + 2vw, 64px);
 	border-radius: 50%;
 	background: #f5f6fa;
 	border: 1.5px solid #e0e0e0;
@@ -432,7 +487,7 @@ a.home-only.social-link { width: 100%; max-width: var(--content-max); display: b
 	border-color: #0070e0;
 	box-shadow: 0 4px 12px rgba(0,0,0,0.10);
 }
-.socials svg { width: 20px; height: 20px; fill: currentColor; display: block; }
+.socials svg { width: clamp(20px, 14px + 1.2vw, 30px); height: clamp(20px, 14px + 1.2vw, 30px); fill: currentColor; display: block; }
 
 /* Botón WhatsApp */
 a[href*="wa.me"] button:hover {
@@ -539,8 +594,8 @@ table.product-table .buy-btn {
 /* --- Overrides específicos de la home (index.html) --- */
 body.home { background: #F3F4F6; }
 .home .container { background: transparent; box-shadow:none; border-radius:0; padding:36px 24px 32px; }
-.home h1 { font-size:2.2rem; font-weight:700; margin-bottom:8px; color:#222; }
-.home .subtitle { font-size:1.1rem; color:#888; margin-bottom:10px; }
+.home h1 { font-size: clamp(1.9rem, 1.1rem + 2.2vw, 3.4rem); font-weight:700; margin-bottom:4px; color:#222; }
+.home .subtitle { font-size: clamp(1.05rem, 0.9rem + 1vw, 1.6rem); color:#888; margin-bottom:10px; }
 /* Dropdown de Barandas para cama (home) */
 .home .dropdown { width: 100%; margin-bottom: 0; }
 .home .dropdown > summary > .main-btn { list-style: none; cursor: pointer; width: 100%; }
