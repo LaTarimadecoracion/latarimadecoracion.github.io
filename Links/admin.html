@@ -286,8 +286,12 @@
                         const hasLink = item.href && item.href.trim() && item.href !== '#';
                         const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
                         const tr = document.createElement('tr');
+                        // En REGALOS, el nombre visible de la fila es 'recurso'; 'modelo' queda fijo (se usa como sección)
                         tr.innerHTML = `
-                            <td><input class='admin-input' type='text' value='${item.modelo || ''}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='modelo' placeholder='Nombre del recurso'></td>
+                            <td>
+                                <input class='admin-input' type='text' value='${(item.recurso || '')}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='recurso' placeholder='Nombre del recurso'>
+                                <input type='hidden' value='${item.modelo || ''}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='modelo'>
+                            </td>
                             <td><input class='admin-input' type='text' value='${item.href || ''}' style='${inputStyle}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='href' placeholder='Enlace'></td>
                             <td><button class='admin-btn' onclick='pasteLink(this, "${moduloActual}", ${realIdx})'>Agregar</button></td>
                             <td><button class='admin-btn delete' onclick='deleteRowGeneric("${moduloActual}", ${realIdx})' title='Eliminar fila'>🗑️</button></td>
@@ -324,28 +328,30 @@
                     window.__newRowIndex = null;
                 }
 
-                // Render de LINKS UTILES dentro de REGALOS
-                if (!Array.isArray(links['links_utiles'])) links['links_utiles'] = [];
-                const tableUtiles = document.createElement('table');
-                tableUtiles.className = 'admin-table';
-                const theadUtiles = document.createElement('thead');
-                theadUtiles.innerHTML = `<tr><th colspan='4' class='mod-title'>LINKS UTILES</th></tr><tr><th>Recurso</th><th>Enlace</th><th>Agregar</th><th>Eliminar</th></tr>`;
-                tableUtiles.appendChild(theadUtiles);
-                const tbodyUtiles = document.createElement('tbody');
-                links['links_utiles'].forEach((item, idx) => {
-                    const hasLink = item.href && item.href.trim() && item.href !== '#';
-                    const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td><input class='admin-input' type='text' value='${item.modelo || ''}' data-mod='links_utiles' data-idx='${idx}' data-field='modelo' placeholder='Nombre del recurso'></td>
-                        <td><input class='admin-input' type='text' value='${item.href || ''}' style='${inputStyle}' data-mod='links_utiles' data-idx='${idx}' data-field='href' placeholder='Enlace'></td>
-                        <td><button class='admin-btn' onclick='pasteLink(this, "links_utiles", ${idx})'>Agregar</button></td>
-                        <td><button class='admin-btn delete' onclick='deleteRowGeneric("links_utiles", ${idx})' title='Eliminar fila'>🗑️</button></td>
-                    `;
-                    tbodyUtiles.appendChild(tr);
-                });
-                tableUtiles.appendChild(tbodyUtiles);
-                container.appendChild(tableUtiles);
+                // Render de LINKS UTILES dentro de REGALOS (solo si existe y tiene elementos)
+                const utiles = Array.isArray(links['links_utiles']) ? links['links_utiles'] : null;
+                if (utiles && utiles.length) {
+                    const tableUtiles = document.createElement('table');
+                    tableUtiles.className = 'admin-table';
+                    const theadUtiles = document.createElement('thead');
+                    theadUtiles.innerHTML = `<tr><th colspan='4' class='mod-title'>LINKS UTILES</th></tr><tr><th>Recurso</th><th>Enlace</th><th>Agregar</th><th>Eliminar</th></tr>`;
+                    tableUtiles.appendChild(theadUtiles);
+                    const tbodyUtiles = document.createElement('tbody');
+                    utiles.forEach((item, idx) => {
+                        const hasLink = item.href && item.href.trim() && item.href !== '#';
+                        const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><input class='admin-input' type='text' value='${item.modelo || ''}' data-mod='links_utiles' data-idx='${idx}' data-field='modelo' placeholder='Nombre del recurso'></td>
+                            <td><input class='admin-input' type='text' value='${item.href || ''}' style='${inputStyle}' data-mod='links_utiles' data-idx='${idx}' data-field='href' placeholder='Enlace'></td>
+                            <td><button class='admin-btn' onclick='pasteLink(this, "links_utiles", ${idx})'>Agregar</button></td>
+                            <td><button class='admin-btn delete' onclick='deleteRowGeneric("links_utiles", ${idx})' title='Eliminar fila'>🗑️</button></td>
+                        `;
+                        tbodyUtiles.appendChild(tr);
+                    });
+                    tableUtiles.appendChild(tbodyUtiles);
+                    container.appendChild(tableUtiles);
+                }
             } else {
                 // Encabezado con columna Elimina
                 thead.innerHTML = `<tr><th colspan='6' class='mod-title'>${moduloActual.replace(/_/g,' ').toUpperCase()}</th></tr><tr><th>Modelo</th><th>Medida</th><th>Tipo</th><th>Enlace</th><th>Agregar</th><th>Elimina</th></tr>`;
@@ -491,9 +497,12 @@
 
         window.pasteLink = function(btn, mod, idx) {
             navigator.clipboard.readText().then(text => {
-                const input = btn.parentElement.parentElement.querySelector('input');
-                input.value = text;
-                links[mod][idx].href = text;
+                const row = btn.closest('tr');
+                const inputHref = row && row.querySelector(`input.admin-input[data-field='href'][data-mod='${mod}'][data-idx='${idx}']`);
+                if (inputHref) inputHref.value = text;
+                if (Array.isArray(links[mod]) && links[mod][idx]) {
+                    links[mod][idx].href = text;
+                }
             });
         }
 

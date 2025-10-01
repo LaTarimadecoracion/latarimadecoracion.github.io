@@ -71,27 +71,28 @@ fetch('../Links/links.json')
 		const regalos = modules.regalos || [];
 		const tbody = document.querySelector('.product-table tbody');
 		tbody.innerHTML = '';
-		// Agrupar por 'modelo' para crear secciones
-		const grupos = new Map();
+		// Agrupar únicamente por 'modelo' (sección fija). Si falta, agrupar en 'OTROS RECURSOS'.
+		const grupos = new Map(); // key: modelo normalizado -> { title, items }
 		regalos.forEach(item => {
-			const key = (item.modelo || item.Recurso || '').trim();
-			if (!grupos.has(key)) grupos.set(key, []);
-			grupos.get(key).push(item);
+			const modeloRaw = (item.modelo || '').trim();
+			const key = modeloRaw ? modeloRaw.toLowerCase() : '__otros__';
+			if (!grupos.has(key)) grupos.set(key, { title: modeloRaw || 'OTROS RECURSOS', items: [] });
+			grupos.get(key).items.push(item);
 		});
 		// Render por sección (en orden de aparición)
-		for (const [modelo, items] of grupos.entries()) {
-			const titulo = modelo ? modelo.toUpperCase() : 'OTROS RECURSOS';
+		for (const [, group] of grupos.entries()) {
+			const titulo = group.title ? group.title.toUpperCase() : 'OTROS RECURSOS';
 			const trHeader = document.createElement('tr');
 			trHeader.innerHTML = `<td colspan="2" style="background:#dbeafe;font-weight:bold;">${titulo}</td>`;
 			tbody.appendChild(trHeader);
-			items.forEach(item => {
-				if (!item.modelo && !item.Recurso && !item.href && !item.Visitar) return;
-				const recurso = item.modelo || item.Recurso || '';
-				const href = item.href || item.Visitar || '';
+			group.items.forEach(item => {
+				const recurso = (item.recurso || item.Recurso || item.modelo || '').trim();
+				const href = (item.href || item.Visitar || '').trim();
+				if (!href) return; // no mostrar filas sin link
 				const tr = document.createElement('tr');
 				tr.innerHTML = `
 					<td>${recurso}</td>
-					<td>${href ? `<a class='admin-btn' href='${href}' target='_blank' rel='noopener'>Ver</a>` : ''}</td>
+					<td><a class='admin-btn' href='${href}' target='_blank' rel='noopener'>Ver</a></td>
 				`;
 				tbody.appendChild(tr);
 			});
