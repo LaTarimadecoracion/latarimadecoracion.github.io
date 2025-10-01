@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de enlaces | LA TARIMA</title>
+    <link rel="icon" href="../img/ico.png" type="image/png">
+    <link rel="stylesheet" href="../estilos.css">
+    <style>
+        @media (max-width: 700px) {
+            .admin-container {
+                max-width: 100vw;
+                padding: 0 2vw;
+            }
+            .admin-table {
+                font-size: 0.92em;
+                min-width: 420px;
+                width: 100%;
+                display: block;
+                overflow-x: auto;
+                box-sizing: border-box;
+                border-radius: 8px;
+                background: #fff;
+            }
+            .admin-table thead, .admin-table tbody, .admin-table tr {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+            }
+            .admin-table th, .admin-table td {
+                padding: 6px 2px;
+                font-size: 0.95em;
+                word-break: break-word;
+            }
+            .admin-input {
+                font-size: 0.98em;
+                min-width: 80px;
+                max-width: 100vw;
+            }
+            .download-btn {
+                font-size: 0.98em;
+                padding: 4px 0;
+                top: 8px;
+                right: 0;
+            }
+            .admin-btn {
+                font-size: 0.95em;
+                padding: 3px 6px;
+            }
+            h1 {
+                font-size: 1.1em;
+            }
+            #tables {
+                width: 100vw;
+                overflow-x: auto;
+            }
+        }
+        @media (max-width: 700px) {
+            .admin-container {
+                max-width: 100vw;
+                padding: 0 2vw;
+            }
+            .admin-table {
+                font-size: 0.95em;
+                min-width: 500px;
+                width: 100%;
+                display: block;
+                overflow-x: auto;
+                box-sizing: border-box;
+            }
+            .admin-table th, .admin-table td {
+                padding: 6px 4px;
+                font-size: 0.98em;
+            }
+            .admin-input {
+                font-size: 1em;
+                min-width: 120px;
+                max-width: 100vw;
+            }
+            .download-btn {
+                font-size: 1em;
+                padding: 6px 0;
+                top: 8px;
+                right: 0;
+            }
+            .admin-btn {
+                font-size: 0.98em;
+                padding: 4px 8px;
+            }
+            h1 {
+                font-size: 1.3em;
+            }
+        }
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background: #fff;
+        }
+        .admin-container {
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .admin-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 1em; }
+        .admin-table th, .admin-table td { border: 1px solid #ddd; padding: 5px; text-align: left; }
+        .admin-table th { background: #f5f5f5; }
+        .admin-input { width: 100%; box-sizing: border-box; }
+        .download-btn {
+            background: #2e7d32; color: #fff; border: none; padding: 8px 0; width: 1.2em; border-radius: 4px; cursor: pointer; position: fixed; top: 16px; right: 0; z-index: 1000; font-size: 1.1em; writing-mode: vertical-rl; text-align: center; }
+        .admin-btn {
+            background: #e5e7eb;
+            color: #222;
+            border: 1px solid #ccc;
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-right: 4px;
+        }
+        .admin-btn.delete {
+            background: #ef4444;
+            color: #fff;
+            border: 1px solid #ef4444;
+        }
+        .mod-title { cursor:pointer;background:#bae6fd;padding:12px 0;margin-bottom:8px; }
+        .collapsed { opacity:0.7; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+    <h1>Administrador de enlaces</h1>
+    <label for="modulo-select" style="font-weight:bold;">Módulo:</label>
+    <select id="modulo-select" style="margin-bottom:16px;"></select>
+    <div id="tables"></div>
+    <div id="status"></div>
+    </div>
+    <button class="download-btn" onclick="downloadLinks()">Descargar Links</button>
+    <script type="module">
+        // Eliminada la lógica de botones "Añadir fila" para trabajar módulo por módulo
+        // Cargar links reales desde links.json
+        let links = {};
+        let ordenModulos = [
+            'barandas_desmontables',
+            'barandas_sommier',
+            'barandas_fijas',
+            'barandas_ortopedicas',
+            'steps_cajones',
+            'podios',
+            'estantes',
+            'deck',
+            'fanales',
+            'organizadores',
+            'percheros',
+            'camas',
+            'escaleras',
+            'infantiles',
+            'regalos'
+        ];
+    let moduloActual = ordenModulos[0];
+        // Módulos que usan el patrón de secciones (botón Añadir sección y Añadir fila por sección)
+        const modulosConSecciones = new Set([
+            'barandas_desmontables',
+            'barandas_sommier',
+            'barandas_fijas',
+            'barandas_ortopedicas',
+            'steps_cajones',
+            'podios',
+            'estantes',
+            'deck',
+            'fanales',
+            'organizadores',
+            'percheros',
+            'camas',
+            'escaleras',
+            'infantiles',
+            'regalos'
+        ]);
+    // Módulos con filas de solo {modelo, href}
+    const modulosSoloModelo = new Set(['regalos', 'links_utiles']);
+        fetch('./links.json')
+            .then(res => res.json())
+            .then(data => {
+                links = data.modules || {};
+                renderSelector();
+                renderTables();
+            });
+
+        function renderSelector() {
+            const select = document.getElementById('modulo-select');
+            select.innerHTML = '';
+            ordenModulos.forEach(mod => {
+                if (Array.isArray(links[mod])) {
+                    const opt = document.createElement('option');
+                    opt.value = mod;
+                    opt.textContent = mod.replace(/_/g,' ').toUpperCase();
+                    select.appendChild(opt);
+                }
+            });
+            select.value = moduloActual;
+            select.onchange = function() {
+                moduloActual = this.value;
+                renderTables();
+            };
+        }
+
+        function renderTables() {
+            const container = document.getElementById('tables');
+            container.innerHTML = '';
+            if (!Array.isArray(links[moduloActual])) return;
+            // Botón superior para añadir sección en módulos habilitados
+            if (modulosConSecciones.has(moduloActual)) {
+                const btnAddSeccion = document.createElement('button');
+                btnAddSeccion.textContent = 'Añadir sección';
+                btnAddSeccion.className = 'admin-btn';
+                btnAddSeccion.style.margin = '8px 0 8px 0';
+                btnAddSeccion.onclick = function() {
+                    const nombre = (prompt('Nombre de la sección (Modelo):') || '').trim();
+                    if (!nombre) return;
+                    if (!Array.isArray(links[moduloActual])) links[moduloActual] = [];
+                    const nueva = modulosSoloModelo.has(moduloActual)
+                        ? { modelo: nombre, href: '' }
+                        : { modelo: nombre, medida: '', tipo: '', href: '' };
+                    links[moduloActual].push(nueva);
+                    window.__newRowIndex = links[moduloActual].length - 1;
+                    renderTables();
+                };
+                container.appendChild(document.createElement('hr'));
+                container.appendChild(btnAddSeccion);
+            }
+            const productos = links[moduloActual];
+            const table = document.createElement('table');
+            table.className = 'admin-table';
+            const thead = document.createElement('thead');
+            if (moduloActual === 'regalos') {
+                // Render principal de REGALOS con secciones por 'modelo'
+                thead.innerHTML = `<tr><th colspan='4' class='mod-title'>REGALOS</th></tr><tr><th>Recurso</th><th>Enlace</th><th>Agregar</th><th>Elimina</th></tr>`;
+                table.appendChild(thead);
+                const tbody = document.createElement('tbody');
+                const modelosUnicos = [...new Set(productos.map(p => (p.modelo ?? '')))]
+                modelosUnicos.forEach(modelo => {
+                    const grupo = productos.filter(p => (p.modelo ?? '') === modelo);
+                    if (!grupo.length) return;
+                    // Encabezado de sección con Renombrar
+                    const trHeader = document.createElement('tr');
+                    const tdHeader = document.createElement('td');
+                    tdHeader.colSpan = 4;
+                    tdHeader.style.background = '#dbeafe';
+                    tdHeader.style.fontWeight = 'bold';
+                    tdHeader.style.display = 'flex';
+                    tdHeader.style.justifyContent = 'space-between';
+                    tdHeader.style.alignItems = 'center';
+                    const spanTitulo = document.createElement('span');
+                    spanTitulo.textContent = (modelo ? modelo.toUpperCase() : 'SIN MODELO / NUEVA SECCIÓN');
+                    tdHeader.appendChild(spanTitulo);
+                    if (modulosConSecciones.has(moduloActual)) {
+                        const btnRename = document.createElement('button');
+                        btnRename.textContent = 'Renombrar sección';
+                        btnRename.className = 'admin-btn';
+                        btnRename.onclick = function() {
+                            const nuevo = (prompt('Nuevo nombre de la sección (Modelo):', modelo || '') || '').trim();
+                            if (!nuevo || nuevo === (modelo || '')) return;
+                            if (!Array.isArray(links[moduloActual])) return;
+                            links[moduloActual] = links[moduloActual].map(item => {
+                                const itemModelo = item.modelo ?? '';
+                                if (itemModelo === (modelo ?? '')) {
+                                    return { ...item, modelo: nuevo };
+                                }
+                                return item;
+                            });
+                            renderTables();
+                        };
+                        tdHeader.appendChild(btnRename);
+                    }
+                    trHeader.appendChild(tdHeader);
+                    tbody.appendChild(trHeader);
+                    // Filas de la sección
+                    grupo.forEach(item => {
+                        const realIdx = productos.indexOf(item);
+                        const hasLink = item.href && item.href.trim() && item.href !== '#';
+                        const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><input class='admin-input' type='text' value='${item.modelo || ''}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='modelo' placeholder='Nombre del recurso'></td>
+                            <td><input class='admin-input' type='text' value='${item.href || ''}' style='${inputStyle}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='href' placeholder='Enlace'></td>
+                            <td><button class='admin-btn' onclick='pasteLink(this, "${moduloActual}", ${realIdx})'>Agregar</button></td>
+                            <td><button class='admin-btn delete' onclick='deleteRowGeneric("${moduloActual}", ${realIdx})' title='Eliminar fila'>🗑️</button></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                    // Botón al final de la sección para añadir fila
+                    const trAdd = document.createElement('tr');
+                    const tdAdd = document.createElement('td');
+                    tdAdd.colSpan = 4;
+                    tdAdd.style.textAlign = 'right';
+                    const btnAddFila = document.createElement('button');
+                    btnAddFila.textContent = 'Añadir fila';
+                    btnAddFila.className = 'admin-btn';
+                    btnAddFila.onclick = function() {
+                        if (!Array.isArray(links[moduloActual])) links[moduloActual] = [];
+                        links[moduloActual].push({ modelo: modelo || '', href: '' });
+                        window.__newRowIndex = links[moduloActual].length - 1;
+                        renderTables();
+                    };
+                    tdAdd.appendChild(btnAddFila);
+                    trAdd.appendChild(tdAdd);
+                    tbody.appendChild(trAdd);
+                });
+                table.appendChild(tbody);
+                container.appendChild(table);
+                // Focus a nueva fila si aplica
+                if (modulosConSecciones.has(moduloActual) && typeof window.__newRowIndex === 'number') {
+                    const target = document.querySelector(`input[data-mod='${moduloActual}'][data-idx='${window.__newRowIndex}'][data-field='modelo']`);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        target.focus();
+                    }
+                    window.__newRowIndex = null;
+                }
+
+                // Render de LINKS UTILES dentro de REGALOS
+                if (!Array.isArray(links['links_utiles'])) links['links_utiles'] = [];
+                const tableUtiles = document.createElement('table');
+                tableUtiles.className = 'admin-table';
+                const theadUtiles = document.createElement('thead');
+                theadUtiles.innerHTML = `<tr><th colspan='4' class='mod-title'>LINKS UTILES</th></tr><tr><th>Recurso</th><th>Enlace</th><th>Agregar</th><th>Eliminar</th></tr>`;
+                tableUtiles.appendChild(theadUtiles);
+                const tbodyUtiles = document.createElement('tbody');
+                links['links_utiles'].forEach((item, idx) => {
+                    const hasLink = item.href && item.href.trim() && item.href !== '#';
+                    const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><input class='admin-input' type='text' value='${item.modelo || ''}' data-mod='links_utiles' data-idx='${idx}' data-field='modelo' placeholder='Nombre del recurso'></td>
+                        <td><input class='admin-input' type='text' value='${item.href || ''}' style='${inputStyle}' data-mod='links_utiles' data-idx='${idx}' data-field='href' placeholder='Enlace'></td>
+                        <td><button class='admin-btn' onclick='pasteLink(this, "links_utiles", ${idx})'>Agregar</button></td>
+                        <td><button class='admin-btn delete' onclick='deleteRowGeneric("links_utiles", ${idx})' title='Eliminar fila'>🗑️</button></td>
+                    `;
+                    tbodyUtiles.appendChild(tr);
+                });
+                tableUtiles.appendChild(tbodyUtiles);
+                container.appendChild(tableUtiles);
+            } else {
+                // Encabezado con columna Elimina
+                thead.innerHTML = `<tr><th colspan='6' class='mod-title'>${moduloActual.replace(/_/g,' ').toUpperCase()}</th></tr><tr><th>Modelo</th><th>Medida</th><th>Tipo</th><th>Enlace</th><th>Agregar</th><th>Elimina</th></tr>`;
+                table.appendChild(thead);
+                const tbody = document.createElement('tbody');
+                tbody.style.display = '';
+                // Agrupar por modelo dinámicamente según el JSON, incluyendo filas con modelo vacío
+                const modelosUnicos = [...new Set(productos.map(p => (p.modelo ?? '')))]
+                modelosUnicos.forEach(modelo => {
+                    const grupo = productos.filter(p => (p.modelo ?? '') === modelo);
+                    if (grupo.length) {
+                        const trModelo = document.createElement('tr');
+                        const modeloLabel = modelo ? modelo.toUpperCase() : 'SIN MODELO / NUEVA FILA';
+                        const tdModelo = document.createElement('td');
+                        tdModelo.colSpan = 6;
+                        tdModelo.style.background = '#dbeafe';
+                        tdModelo.style.fontWeight = 'bold';
+                        tdModelo.style.display = 'flex';
+                        tdModelo.style.justifyContent = 'space-between';
+                        tdModelo.style.alignItems = 'center';
+                        const spanModelo = document.createElement('span');
+                        spanModelo.textContent = modeloLabel;
+                        tdModelo.appendChild(spanModelo);
+                        if (modulosConSecciones.has(moduloActual)) {
+                            const btnRenameSection = document.createElement('button');
+                            btnRenameSection.textContent = 'Renombrar sección';
+                            btnRenameSection.className = 'admin-btn';
+                            btnRenameSection.style.marginLeft = '8px';
+                            btnRenameSection.onclick = function() {
+                                const nuevo = (prompt('Nuevo nombre de la sección (Modelo):', modelo || '') || '').trim();
+                                if (!nuevo || nuevo === (modelo || '')) return;
+                                if (!Array.isArray(links[moduloActual])) return;
+                                links[moduloActual] = links[moduloActual].map(item => {
+                                    const itemModelo = item.modelo ?? '';
+                                    if (itemModelo === (modelo ?? '')) {
+                                        return { ...item, modelo: nuevo };
+                                    }
+                                    return item;
+                                });
+                                renderTables();
+                            };
+                            tdModelo.appendChild(btnRenameSection);
+                        }
+                        trModelo.appendChild(tdModelo);
+                        tbody.appendChild(trModelo);
+                        // Agrupar por tipo dinámicamente, incluyendo vacío
+                        const tiposUnicos = [...new Set(grupo.map(p => (p.tipo ?? '')))]
+                        tiposUnicos.forEach(tipo => {
+                            const subgrupo = grupo.filter(p => (p.tipo ?? '') === tipo);
+                            if (subgrupo.length) {
+                                if (tipo) {
+                                    const trTipo = document.createElement('tr');
+                                    const tdTipo = document.createElement('td');
+                                    tdTipo.colSpan = 6;
+                                    tdTipo.style.background = '#eaeaea';
+                                    tdTipo.style.fontWeight = 'bold';
+                                    tdTipo.style.display = 'flex';
+                                    tdTipo.style.justifyContent = 'space-between';
+                                    tdTipo.style.alignItems = 'center';
+                                    const spanTipo = document.createElement('span');
+                                    spanTipo.textContent = tipo.toUpperCase();
+                                    tdTipo.appendChild(spanTipo);
+                                    // Botón para añadir fila dentro de esta variable (tipo)
+                                    if (!modulosSoloModelo.has(moduloActual)) {
+                                        const btnAddInTipo = document.createElement('button');
+                                        btnAddInTipo.textContent = 'Añadir fila en este tipo';
+                                        btnAddInTipo.className = 'admin-btn';
+                                        btnAddInTipo.onclick = function() {
+                                            if (!Array.isArray(links[moduloActual])) links[moduloActual] = [];
+                                            links[moduloActual].push({ modelo: modelo || '', medida: '', tipo: tipo || '', href: '' });
+                                            window.__newRowIndex = links[moduloActual].length - 1;
+                                            renderTables();
+                                        };
+                                        tdTipo.appendChild(btnAddInTipo);
+                                    }
+                                    trTipo.appendChild(tdTipo);
+                                    tbody.appendChild(trTipo);
+                                }
+                                subgrupo.forEach((prod, idx) => {
+                                    const tr = document.createElement('tr');
+                                    // Si el enlace está cargado, resaltar el input
+                                    const hasLink = prod.href && prod.href.trim() && prod.href !== '#';
+                                    const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
+                                    tr.innerHTML = `<td><input class='admin-input' type='text' value='${prod.modelo || ''}' data-mod='${moduloActual}' data-idx='${productos.indexOf(prod)}' data-field='modelo' placeholder='Nombre del producto'></td><td><input class='admin-input' type='text' value='${prod.medida || ''}' data-mod='${moduloActual}' data-idx='${productos.indexOf(prod)}' data-field='medida' placeholder='Medida'></td><td><input class='admin-input' type='text' value='${prod.tipo || ''}' data-mod='${moduloActual}' data-idx='${productos.indexOf(prod)}' data-field='tipo' placeholder='Tipo'></td><td><input class='admin-input' type='text' value='${prod.href || ''}' style='${inputStyle}' data-mod='${moduloActual}' data-idx='${productos.indexOf(prod)}' data-field='href' placeholder='Enlace'></td><td><button class='admin-btn' onclick='pasteLink(this, \"${moduloActual}\", ${productos.indexOf(prod)})'>Agregar</button></td><td><button class='admin-btn delete' onclick='deleteRowGeneric(\"${moduloActual}\", ${productos.indexOf(prod)})' title='Eliminar fila'>🗑️</button></td>`;
+                                    tbody.appendChild(tr);
+                                });
+                            }
+                        });
+                        // Botón al final de la sección para añadir fila dentro de esa sección (módulos habilitados)
+                        if (modulosConSecciones.has(moduloActual)) {
+                            const trAddBottom = document.createElement('tr');
+                            const tdAddBottom = document.createElement('td');
+                            tdAddBottom.colSpan = 6;
+                            tdAddBottom.style.textAlign = 'right';
+                            const btnAddFilaSeccion = document.createElement('button');
+                            btnAddFilaSeccion.textContent = 'Añadir fila';
+                            btnAddFilaSeccion.className = 'admin-btn';
+                            btnAddFilaSeccion.onclick = function() {
+                                if (!Array.isArray(links[moduloActual])) links[moduloActual] = [];
+                                links[moduloActual].push({ modelo: modelo || '', medida: '', tipo: '', href: '' });
+                                window.__newRowIndex = links[moduloActual].length - 1;
+                                renderTables();
+                            };
+                            tdAddBottom.appendChild(btnAddFilaSeccion);
+                            trAddBottom.appendChild(tdAddBottom);
+                            tbody.appendChild(trAddBottom);
+                        }
+                    }
+                });
+                table.appendChild(tbody);
+                container.appendChild(table);
+                // Si se añadió una nueva fila, enfocar y desplazar a esa fila para módulos habilitados
+                if (modulosConSecciones.has(moduloActual) && typeof window.__newRowIndex === 'number') {
+                    const target = document.querySelector(`input[data-mod='${moduloActual}'][data-idx='${window.__newRowIndex}'][data-field='modelo']`);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        target.focus();
+                    }
+                    window.__newRowIndex = null;
+                }
+            }
+        // Eliminar fila genérico por módulo
+        window.deleteRowGeneric = function(mod, idx) {
+            if (Array.isArray(links[mod])) {
+                links[mod].splice(idx, 1);
+                renderTables();
+            }
+        }
+        }
+
+        window.deleteLink = function(mod, idx, btn) {
+            links[mod][idx].href = '';
+            btn.closest('tr').querySelector('.admin-input').value = '';
+            // Guardar estado expandido antes de renderizar
+            expandedModules = {};
+            document.querySelectorAll('.mod-title').forEach((el, i) => {
+                const modName = el.textContent.trim().toLowerCase().replace(/ /g,'_');
+                const tbody = el.closest('table').querySelector('tbody');
+                expandedModules[modName] = tbody && tbody.style.display !== 'none';
+            });
+            renderTables();
+        }
+
+        window.pasteLink = function(btn, mod, idx) {
+            navigator.clipboard.readText().then(text => {
+                const input = btn.parentElement.parentElement.querySelector('input');
+                input.value = text;
+                links[mod][idx].href = text;
+            });
+        }
+
+        window.downloadLinks = function() {
+            const json = JSON.stringify({ modules: links }, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'links.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            document.getElementById('status').textContent = '¡Descarga lista!';
+        }
+
+        document.addEventListener('input', e => {
+            if (e.target.classList.contains('admin-input')) {
+                const mod = e.target.getAttribute('data-mod');
+                const idx = e.target.getAttribute('data-idx');
+                const field = e.target.getAttribute('data-field');
+                if (mod && idx !== null && field) {
+                    links[mod][idx][field] = e.target.value;
+                }
+            }
+        });
+
+        renderTables();
+    </script>
+</body>
+</html>
