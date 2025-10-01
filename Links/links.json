@@ -2,24 +2,19 @@
   "modules": {
     "regalos": [
       {
-        "modelo": "subir musica",
-        "href": "https://latarimadecoracion.github.io/"
+        "modelo": "Links utiles",
+        "href": "https://www.youtube.com/",
+        "recurso": "PC"
       },
       {
-        "modelo": "subir tuto",
-        "href": "https://latarimadecoracion.github.io/"
+        "modelo": "Links utiles",
+        "href": "https://www.youtube.com/",
+        "recurso": "cel"
       },
       {
-        "modelo": "programa musica",
-        "href": "https://latarimadecoracion.github.io/"
-      },
-      {
-        "modelo": "mercado https://latarimadecoracion.github.io/",
-        "href": "https://latarimadecoracion.github.io/"
-      },
-      {
-        "modelo": "subir tuto",
-        "href": "https://latarimadecoracion.github.io/"
+        "modelo": "PC PC",
+        "href": "https://www.youtube.com/",
+        "recurso": "PC"
       }
     ],
     "camas": [
