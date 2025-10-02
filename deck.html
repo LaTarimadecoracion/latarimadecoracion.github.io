@@ -12,6 +12,7 @@
         </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        // Utilidades
     <title>Deck de madera (cuadrado y rectangular) | LA TARIMA</title>
     <!-- SEO -->
     <meta name="description" content="Deck de madera: modelos cuadrado y rectangular. Hechos a medida, ideales para interiores o exteriores.">
@@ -21,6 +22,26 @@
     <!-- Open Graph / Twitter -->
     <meta property="og:title" content="Deck de madera | LA TARIMA">
     <meta property="og:description" content="Modelos cuadrado y rectangular. Madera a medida.">
+                        function parseMedidaToTuple(medida) {
+                            // Intenta extraer números para ordenar, ej: "25 x 50 cm" -> [25,50]
+                            if (typeof medida !== 'string') return [Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
+                            const match = medida.match(/(\d+)\s*x\s*(\d+)/i);
+                            if (match) {
+                                return [parseInt(match[1], 10), parseInt(match[2], 10)];
+                            }
+                            return [Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
+                        }
+                        function uniqueSortedMedidas(items) {
+                            const set = new Set();
+                            items.forEach(it => { if (it && it.medida) set.add(it.medida); });
+                            return Array.from(set).sort((a,b) => {
+                                const [aw, ah] = parseMedidaToTuple(a);
+                                const [bw, bh] = parseMedidaToTuple(b);
+                                if (aw !== bw) return aw - bw;
+                                if (ah !== bh) return ah - bh;
+                                return String(a).localeCompare(String(b));
+                            });
+                        }
     <meta property="og:image" content="https://latarimadecoracion.github.io/img/deck/deckrectangular.jpg">
     <meta property="og:url" content="https://latarimadecoracion.github.io/deck.html">
     <meta property="og:type" content="product.group">
@@ -46,9 +67,10 @@
     "@context": "https://schema.org",
     "@type": "ProductGroup",
     "name": "Deck de madera",
-    "brand": { "@type": "Brand", "name": "LA TARIMA" },
-    "category": "Hogar y Muebles > Exteriores",
-    "url": "https://latarimadecoracion.github.io/deck.html",
+                                const modeloCuadrado = 'Deck Cuadrado';
+                            const itemsCuadrado = grupos[modeloCuadrado] || [];
+                            // Medidas dinámicas según el JSON
+                            const medidasCuadrado = uniqueSortedMedidas(itemsCuadrado);
     "image": [
         "https://latarimadecoracion.github.io/img/deck/deckcuadrado.jpg",
         "https://latarimadecoracion.github.io/img/deck/deckrectangular.jpg"
@@ -65,7 +87,7 @@
             <a href="index.html" aria-label="Ir al inicio"><h1>LA TARIMA</h1></a>
             <a href="index.html" aria-label="Ir al inicio"><div class="subtitle">Carpintería Online</div></a>
             <div class="socials">
-            <a href="https://www.tiktok.com/@latarimadecoracion" target="_blank" rel="noopener" aria-label="TikTok">
+                                    const href = dataCuadrado[cant][medida];
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3c.3 2 1.7 3.6 3.6 3.9.3 0 .4.2.4.4v2.2c0 .3-.2.5-.5.5-1.7 0-3.3-.6-4.5-1.6v6.6c0 3-2.4 5.5-5.4 5.7-3.2.2-5.9-2.4-5.9-5.6 0-3.1 2.5-5.6 5.6-5.6.4 0 .8 0 1.1.1.2 0 .3.2.3.4v2.3c0 .2-.2.4-.4.4-.3-.1-.6-.1-.9-.1-1.6 0-2.9 1.4-2.8 3 .1 1.5 1.4 2.7 3 2.7 1.6 0 2.9-1.3 2.9-2.9V3.5c0-.3.2-.5.5-.5H16z"/></svg>
             </a>
             <a href="https://www.instagram.com/latarimadecoracion" target="_blank" rel="noopener" aria-label="Instagram">
@@ -82,7 +104,7 @@
             </a>
             </div>
         </header>
-        <div class="product-stack" id="product-stack"></div>
+                                    return `<tr class=\"mobile-select-row\"><td colspan=\"${medidasCuadrado.length+1}\"><strong>${medida}</strong><select id=\"${selectId}\" class=\"dropbtn\"><option value=\"\" selected disabled>Elegir opción</option>${selectOptions}</select></td></tr>`;
         <nav class="split-btn" aria-label="Acciones de navegación y contacto">
             <a href="index.html" title="Volver al inicio">INICIO</a>
             <a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener" title="Consultar por WhatsApp">CONSULTAR</a>
@@ -102,7 +124,8 @@
                     const m = normalizeText(modelo);
                     if (m.includes('cuadrado')) return 'Deck Cuadrado';
                     if (m.includes('rectangular')) return 'Deck Rectangular';
-                    return (modelo || 'Otros');
+                            // Medidas dinámicas según el JSON (soporta, por ejemplo, 25 x 50 cm)
+                            const medidasRect = uniqueSortedMedidas(itemsRect);
                 }
                 async function getLinks(){
                     try {
