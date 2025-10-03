@@ -854,6 +854,9 @@ table.product-table tr:last-child td { border-bottom:none; }
 /* Pantallas pequeñas (≈360px): ajustar densidad y legibilidad */
 @media (max-width: 450px) {
     .container { padding: 28px 18px; }
+	/* Colocar el split button en columna y centrado en móviles */
+	.split-btn { display: flex; flex-direction: column; align-items: stretch; grid-template-columns: none; gap: 8px; }
+	.split-btn a:first-child { border-right: 0; }
 	.split-btn a {
 		padding: 10px 0.8em;
 		font-size: 0.98rem;
@@ -863,7 +866,7 @@ table.product-table tr:last-child td { border-bottom:none; }
 		display: block;
 		text-align: center;
 		border-radius: 10px;
-		margin-bottom: 8px;
+		margin-bottom: 0; /* usamos gap del contenedor */
 		transition: background 0.2s, color 0.2s;
 	}
     table.product-table th,
