@@ -192,7 +192,7 @@ a.btn-visitar:focus-visible {
 /* En PC (desktop), usar un ancho visual de ~1000px */
 
 @media (min-width: 1024px) {
-	:root { --content-max: 760px; }
+	:root { --content-max: 580px; }
 	/* Márgenes laterales grandes centrados en desktop (hasta 400px por lado) */
 	.container {
 		padding-left: clamp(0px, calc((100vw - var(--content-max)) / 2), 400px);
