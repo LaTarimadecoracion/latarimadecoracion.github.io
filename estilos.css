@@ -812,12 +812,24 @@ table.product-table tr:last-child td { border-bottom:none; }
 	min-width: 220px;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	align-items: stretch; /* asegurar alturas iguales */
 	background: transparent;
 	border: none;
 	border-radius: 0;
 	overflow: visible;
 	box-shadow: none;
 	margin-top: 12px;
+	position: relative; /* para el divisor central */
+}
+.split-btn::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	width: 1px;
+	background: #e0e0e0; /* divisor central sin afectar anchos */
+	transform: translateX(-0.5px);
 }
 .split-btn a {
 	display: inline-flex;
@@ -832,7 +844,7 @@ table.product-table tr:last-child td { border-bottom:none; }
 	-webkit-tap-highlight-color: transparent;
 	user-select: none;
 }
-.split-btn a:first-child { border-right: 1.5px solid #e0e0e0; }
+.split-btn a:first-child { border-right: 0; }
 .split-btn a:hover { background: inherit; color: inherit; }
 .split-btn a:focus, .split-btn a:focus-visible { outline: none; }
 .split-btn a:link, .split-btn a:visited, .split-btn a:active { color: inherit; text-decoration:none; }
@@ -853,20 +865,18 @@ table.product-table tr:last-child td { border-bottom:none; }
 
 /* Pantallas pequeñas (≈360px): ajustar densidad y legibilidad */
 @media (max-width: 450px) {
-    .container { padding: 28px 18px; }
-	/* Colocar el split button en columna y centrado en móviles */
-	.split-btn { display: flex; flex-direction: column; align-items: stretch; grid-template-columns: none; gap: 8px; }
-	.split-btn a:first-child { border-right: 0; }
+	.container { padding: 28px 18px; }
+	/* Mantener lado a lado en móviles, corrigiendo densidad y centrado */
+	.split-btn { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
 	.split-btn a {
 		padding: 10px 0.8em;
 		font-size: 0.98rem;
 		min-width: 0;
 		width: 100%;
 		box-sizing: border-box;
-		display: block;
+		display: inline-flex;
 		text-align: center;
-		border-radius: 10px;
-		margin-bottom: 0; /* usamos gap del contenedor */
+		border-radius: 0; /* sin radios por botón para barra limpia */
 		transition: background 0.2s, color 0.2s;
 	}
     table.product-table th,
