@@ -275,8 +275,8 @@ body {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: clamp(38px, 26px + 2vw, 56px);
-	height: clamp(38px, 26px + 2vw, 56px);
+	width: clamp(28px, 18px + 1vw, 38px);
+	height: clamp(28px, 18px + 1vw, 38px);
 	border-radius: 50%;
 	background: #fff;
 	border: 1.5px solid #e0e0e0;
@@ -289,8 +289,8 @@ body {
 	box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 .socials svg {
-	width: clamp(20px, 14px + 1.2vw, 28px);
-	height: clamp(20px, 14px + 1.2vw, 28px);
+	width: clamp(14px, 10px + 0.8vw, 22px);
+	height: clamp(14px, 10px + 0.8vw, 22px);
 	display: block;
 }
 /* Agrega aquí más estilos según necesites */
