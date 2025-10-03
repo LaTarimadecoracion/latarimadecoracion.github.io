@@ -189,6 +189,16 @@ a.btn-visitar:focus-visible {
 }
 /* Archivo de estilos para LA TARIMA y Barandas para cama */
 :root { --content-max: clamp(520px, 65vw, 840px); }
+/* En PC (desktop), usar un ancho visual de ~1000px */
+
+@media (min-width: 1024px) {
+	:root { --content-max: 760px; }
+	/* Márgenes laterales grandes centrados en desktop (hasta 400px por lado) */
+	.container {
+		padding-left: clamp(0px, calc((100vw - var(--content-max)) / 2), 400px);
+		padding-right: clamp(0px, calc((100vw - var(--content-max)) / 2), 400px);
+	}
+}
 body {
 	font-family: 'Segoe UI', 'Arial', sans-serif;
 	background: #F3F4F6;
