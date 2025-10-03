@@ -89,156 +89,39 @@
         </nav>
     </div>
     <script type="module">
-    const moduleId = 'deck';
-    const whatsapp = 'https://wa.me/5491167007723';
-    const IMAGES = {
-        'Deck Cuadrado': 'img/deck/deckcuadrado.jpg',
-        'Deck Rectangular': 'img/deck/deckrectangular.jpg'
-    };
-                function normalizeText(s){
-                    return (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-                }
-                function getModeloKey(modelo) {
-                    const m = normalizeText(modelo);
-                    if (m.includes('cuadrado')) return 'Deck Cuadrado';
-                    if (m.includes('rectangular')) return 'Deck Rectangular';
-                    return (modelo || 'Otros');
-                }
-                async function getLinks(){
-                    try {
-                        const res = await fetch('Links/links.json', { cache: 'no-store' });
-                        if(res.ok){
-                            const json = await res.json();
-                            return Array.isArray(json.modules[moduleId]) ? json.modules[moduleId] : [];
-                        }
-                    } catch(e){
-                        console.error('Error al cargar links.json', e);
-                    }
-                    return [];
-                }
-                function groupByModelo(rows) {
-                    const grupos = {};
-                    rows.forEach(row => {
-                        const key = getModeloKey(row && row.modelo);
-                        if (!grupos[key]) grupos[key] = [];
-                        grupos[key].push(row);
-                    });
-                    return grupos;
-                }
-                function renderCards(grupos) {
-                    const stack = document.getElementById('product-stack');
-                    stack.innerHTML = '';
-                    // Deck Cuadrado
-                        const modeloCuadrado = 'Deck Cuadrado';
-                    const itemsCuadrado = grupos[modeloCuadrado] || [];
-                    const medidasCuadrado = ['25 x 25 cm', '30 x 30 cm', '40 x 40 cm'];
-                    const cantidades = ['1un','2un','3un','6un','12un','24un'];
-                    // Desktop: cantidades como filas, medidas como columnas
-                    const dataCuadrado = {};
-                    cantidades.forEach(cant => { dataCuadrado[cant] = {}; });
-                    itemsCuadrado.forEach(item => {
-                        if (cantidades.includes(item.tipo) && medidasCuadrado.includes(item.medida)) {
-                            dataCuadrado[item.tipo][item.medida] = item.href;
-                        }
-                    });
-                    const cardCuadrado = document.createElement('div');
-                    cardCuadrado.className = 'product-card';
-                    let thsCuadrado = '<th>Cantidad</th>' + medidasCuadrado.map(m=>`<th>${m}</th>`).join('');
-                    // --- DESKTOP: cantidades como filas, medidas como columnas ---
-                    let trsCuadradoDesktop = cantidades.map(cant => {
-                        let tds = `<td>${cant}</td>`;
-                        medidasCuadrado.forEach(medida => {
-                            const href = dataCuadrado[cant][medida];
-                            const isActive = href && href.trim() && href !== '#';
-                            tds += `<td>${isActive ? `<a class=\"buy-btn primary\" href=\"${href}\" target=\\"_blank\\" rel=\\"noopener\\">Comprar</a>` : `<span class=\"buy-btn loading-link\" tabindex=\"-1\"></span>`}</td>`;
-                        });
-                        return `<tr class=\"desktop-row\">${tds}</tr>`;
-                    }).join('');
-                    // --- MÓVIL: medidas como filas, cantidades como opciones ---
-                    let trsCuadradoMobile = medidasCuadrado.map((medida, idx) => {
-                        const selectId = `select-cuadrado-${idx}`;
-                        const selectOptions = cantidades.map(cant => {
-                            const href = dataCuadrado[cant][medida];
-                            if (href && href.trim() && href !== '#') {
-                                return `<option value=\"${href}\">${cant}</option>`;
-                            } else {
-                                return `<option value=\"\" disabled>${cant} (Próximamente)</option>`;
-                            }
-                        }).join('');
-                            return `<tr class=\"mobile-select-row\"><td colspan=\"${cantidades.length+1}\"><strong>${medida}</strong><select id=\"${selectId}\" class=\"dropbtn\"><option value=\"\" selected disabled>Elegir opción</option>${selectOptions}</select></td></tr>`;
-                    }).join('');
-                    let trsCuadrado = trsCuadradoDesktop + trsCuadradoMobile;
-                    cardCuadrado.innerHTML = `
-                        <div class=\"product-image\">\n                            <img src=\"${IMAGES[modeloCuadrado] || 'img/base.png'}\" alt=\"${modeloCuadrado}\" loading=\"lazy\">\n                        </div>\n                        <div class=\"product-card-title\">${modeloCuadrado}</div>\n                        <table class=\"product-table\">\n                            <thead><tr>${thsCuadrado}</tr></thead>\n                            <tbody>${trsCuadrado}</tbody>\n                        </table>\n                    `;
-                    setTimeout(() => {
-                        const selects = cardCuadrado.querySelectorAll('.mobile-select-row select');
-                        selects.forEach(sel => {
-                            sel.addEventListener('change', function(e) {
-                                const url = this.value;
-                                if(url) window.open(url, '_blank');
-                                this.selectedIndex = 0;
-                            });
-                        });
-                    }, 0);
-                    stack.appendChild(cardCuadrado);
+    import { renderPivotModule } from './js/modules/pivot.js';
 
-                    // Deck Rectangular
-                    const modeloRect = 'Deck Rectangular';
-                    const itemsRect = grupos[modeloRect] || [];
-                    const medidasRect = ['25 x 60 cm', '35 x 60 cm', '45 x 60 cm'];
-                    const dataRect = {};
-                    cantidades.forEach(cant => { dataRect[cant] = {}; });
-                    itemsRect.forEach(item => {
-                        if (cantidades.includes(item.tipo) && medidasRect.includes(item.medida)) {
-                            dataRect[item.tipo][item.medida] = item.href;
-                        }
-                    });
-                    const cardRect = document.createElement('div');
-                    cardRect.className = 'product-card';
-                    let thsRect = '<th>Cantidad</th>' + medidasRect.map(m=>`<th>${m}</th>`).join('');
-                    // --- DESKTOP: cantidades como filas, medidas como columnas ---
-                    let trsRectDesktop = cantidades.map(cant => {
-                        let tds = `<td>${cant}</td>`;
-                        medidasRect.forEach(medida => {
-                            const href = dataRect[cant][medida];
-                            const isActive = href && href.trim() && href !== '#';
-                            tds += `<td>${isActive ? `<a class=\"buy-btn primary\" href=\"${href}\" target=\\"_blank\\" rel=\\"noopener\\">Comprar</a>` : `<span class=\"buy-btn loading-link\" tabindex=\"-1\"></span>`}</td>`;
-                        });
-                        return `<tr class=\"desktop-row\">${tds}</tr>`;
-                    }).join('');
-                    // --- MÓVIL: medidas como filas, cantidades como opciones ---
-                    let trsRectMobile = medidasRect.map((medida, idx) => {
-                        const selectId = `select-rect-${idx}`;
-                        const selectOptions = cantidades.map(cant => {
-                            const href = dataRect[cant][medida];
-                            if (href && href.trim() && href !== '#') {
-                                return `<option value=\"${href}\">${cant}</option>`;
-                            } else {
-                                return `<option value=\"\" disabled>${cant} (Próximamente)</option>`;
-                            }
-                        }).join('');
-                        return `<tr class=\"mobile-select-row\"><td colspan=\"${medidasRect.length+1}\"><strong>${medida}</strong><select id=\"${selectId}\" class=\"dropbtn\"><option value=\"\" selected disabled>Elegir opción</option>${selectOptions}</select></td></tr>`;
-                    }).join('');
-                    let trsRect = trsRectDesktop + trsRectMobile;
-                    cardRect.innerHTML = `
-                        <div class=\"product-image\">\n                            <img src=\"${IMAGES[modeloRect] || 'img/base.png'}\" alt=\"${modeloRect}\" loading=\"lazy\">\n                        </div>\n                        <div class=\"product-card-title\">${modeloRect}</div>\n                        <table class=\"product-table\">\n                            <thead><tr>${thsRect}</tr></thead>\n                            <tbody>${trsRect}</tbody>\n                        </table>\n                    `;
-                    setTimeout(() => {
-                        const selects = cardRect.querySelectorAll('.mobile-select-row select');
-                        selects.forEach(sel => {
-                            sel.addEventListener('change', function(e) {
-                                const url = this.value;
-                                if(url) window.open(url, '_blank');
-                                this.selectedIndex = 0;
-                            });
-                        });
-                    }, 0);
-                    stack.appendChild(cardRect);
-                }
-                (async () => {
-                    const links = await getLinks();
-                    const grupos = groupByModelo(links);
-                    renderCards(grupos);
-                })();
-                </script>
+    const IMAGES = {
+      'Deck cuadrado': 'img/deck/deckcuadrado.jpg',
+      'Deck rectangular': 'img/deck/deckrectangular.jpg'
+    };
+
+    const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const groupKeyFn = (row) => {
+      const m = normalizeText(row?.modelo||'');
+      if (m.includes('cuadrado')) return 'Deck cuadrado';
+      if (m.includes('rectangular')) return 'Deck rectangular';
+      return (row?.modelo||'Otros');
+    };
+    const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+
+    const selectLabelMap = {
+      '1un':'1 un', '2un':'2 un', '3un':'3 un', '6un':'6 un', '12un':'12 un', '24un':'24 un'
+    };
+    const variantForTipo = (t) => 'primary';
+
+    renderPivotModule({
+      moduleId: 'deck',
+      containerSelector: '#product-stack',
+      medidaLabel: 'Medida',
+      groupKeyFn,
+      imageForModel,
+      // Dejar que el renderer ordene por cantidad automáticamente; opcionalmente podríamos fijar el orden con tiposPriority
+      tiposPriority: ['1un','2un','3un','6un','12un','24un'],
+      selectLabelMap,
+      variantForTipo,
+      includeMobileSelect: true
+    });
+    </script>
             </body>
             </html>

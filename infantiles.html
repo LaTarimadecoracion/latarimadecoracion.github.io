@@ -21,14 +21,14 @@
 	<!-- Open Graph / Twitter -->
 	<meta property="og:title" content="Productos infantiles de madera | LA TARIMA">
 	<meta property="og:description" content="Decoración y funcionales para chicos. Madera artesanal.">
-	<meta property="og:image" content="https://latarimadecoracion.github.io/img/infantiles/infantil1.jpg">
+	<meta property="og:image" content="https://latarimadecoracion.github.io/img/icono-carpintero.jpg">
 	<meta property="og:url" content="https://latarimadecoracion.github.io/infantiles.html">
 	<meta property="og:type" content="product.group">
 	<meta property="og:locale" content="es_AR">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Productos infantiles de madera | LA TARIMA">
 	<meta name="twitter:description" content="Decoración y funcionales para chicos. Madera artesanal.">
-	<meta name="twitter:image" content="https://latarimadecoracion.github.io/img/infantiles/infantil1.jpg">
+	<meta name="twitter:image" content="https://latarimadecoracion.github.io/img/icono-carpintero.jpg">
 		<script type="application/ld+json">
 {
 	"@context": "https://schema.org",
@@ -77,143 +77,31 @@
 			</div>
 		</header>
 		<div class="product-stack" id="product-stack"></div>
-				<script type="module">
-				import { crearBotonProducto } from './js/generar-botones.js';
-				const stack = document.getElementById('product-stack');
-				const botones = [
-					{ nombre: 'Barandas desmontables', href: 'barandas_desmontables.html' },
-					{ nombre: 'Barandas para Sommier', href: 'barandas_sommier.html' },
-					{ nombre: 'Barandas Fijas', href: 'barandas_fijas.html' },
-					{ nombre: 'Barandas Ortopédicas', href: 'barandas_ortopedicas.html' },
-				];
-				const btnStack = document.createElement('div');
-				btnStack.className = 'btn-stack';
-				botones.forEach(b => {
-					btnStack.appendChild(crearBotonProducto(b.nombre, b.href));
-				});
-				stack.appendChild(btnStack);
-				</script>
 		<nav class="split-btn" aria-label="Acciones de navegación y contacto">
 			<a href="index.html" title="Volver al inicio">INICIO</a>
 			<a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener" title="Consultar por WhatsApp">CONSULTAR</a>
 		</nav>
 	</div>
 	<script type="module">
-	const moduleId = 'infantiles';
-	const whatsapp = 'https://wa.me/5491167007723';
-	const IMAGES = {
-		'Infantil 1': 'img/infantiles/infantil1.jpg',
-		'Infantil 2': 'img/infantiles/infantil2.jpg',
-		'Infantil 3': 'img/infantiles/infantil3.jpg',
-		'Infantil 4': 'img/infantiles/infantil4.jpg',
-		'Infantil 5': 'img/infantiles/infantil5.jpg'
-	};
-	function normalizeText(s){
-		return (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-	}
-	function getModeloKey(modelo) {
-		const m = normalizeText(modelo);
-		// Sin reglas específicas aún; devolver nombre o 'Otros'
-		return (modelo || 'Otros');
-	}
-	async function getLinks(){
-		try {
-			const res = await fetch('Links/links.json', { cache: 'no-store' });
-			if(res.ok){
-				const json = await res.json();
-				return Array.isArray(json.modules[moduleId]) ? json.modules[moduleId] : [];
-			}
-		} catch(e){
-			console.error('Error al cargar links.json', e);
-		}
-		return [];
-	}
-	function groupByModelo(rows) {
-		const grupos = {};
-		rows.forEach(row => {
-			const key = getModeloKey(row && row.modelo);
-			if (!grupos[key]) grupos[key] = [];
-			grupos[key].push(row);
-		});
-		return grupos;
-	}
-	function renderCards(grupos) {
-		const stack = document.getElementById('product-stack');
-		stack.innerHTML = '';
-		Object.entries(grupos).forEach(([modelo, items]) => {
-			// Agrupar por medida
-			const medidas = {};
-			items.forEach(item => {
-				const medida = item.medida || '';
-				if (!medidas[medida]) medidas[medida] = {};
-				medidas[medida][item.tipo] = item.href;
-			});
-			// Crear card
-			const card = document.createElement('div');
-			card.className = 'product-card';
-			   // --- DESKTOP: tabla ---
-			   let desktopRow = Object.entries(medidas).map(([medida, tipos]) => `
-				   <tr class="desktop-row">
-					   <td>${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? `<a class="buy-btn primary" href="${tipos['Natural']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
-					   <td>${tipos['Barnizado'] && tipos['Barnizado'].trim() && tipos['Barnizado'] !== '#' ? `<a class="buy-btn secondary" href="${tipos['Barnizado']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
-					   <td>${tipos['Tintes'] && tipos['Tintes'].trim() && tipos['Tintes'] !== '#' ? `<a class="buy-btn secondary" href="${tipos['Tintes']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
-				   </tr>
-			   `).join('');
-			   // --- MÓVIL: fila select ---
-			   let mobileRows = Object.entries(medidas).map(([medida, tipos], idx) => {
-				   const selectId = `select-infantil-${idx}`;
-				   const opciones = [
-					   { label: 'Natural', href: tipos['Natural'] },
-					   { label: 'Barnizado', href: tipos['Barnizado'] },
-					   { label: 'Tintes', href: tipos['Tintes'] }
-				   ];
-				   const selectOptions = opciones.map(opt => {
-					   if (opt.href && opt.href.trim() && opt.href !== '#') {
-						   return `<option value=\"${opt.href}\">${opt.label}</option>`;
-					   } else {
-						   return `<option value=\"\" disabled>${opt.label} (Próximamente)</option>`;
-					   }
-				   }).join('');
-				   return `<tr class=\"mobile-select-row\"><td colspan=\"4\"><strong>${medida}</strong><select id=\"${selectId}\" class=\"dropbtn\"><option value=\"\" selected disabled>Elegir opción</option>${selectOptions}</select></td></tr>`;
-			   }).join('');
-			   card.innerHTML = `
-				   <div class="product-image">
-					   <img src="${IMAGES[modelo] || 'img/base.png'}" alt="Infantil ${modelo}" loading="lazy">
-				   </div>
-				   <div class="product-card-title">Infantil ${modelo}</div>
-				   <table class="product-table">
-					   <thead>
-						   <tr>
-							   <th>Natural</th>
-							   <th>Barnizado</th>
-							   <th>Tintes</th>
-						   </tr>
-					   </thead>
-					   <tbody>
-						   ${desktopRow}
-						   ${mobileRows}
-					   </tbody>
-				   </table>
-			   `;
-			   setTimeout(() => {
-				   const selects = card.querySelectorAll('.mobile-select-row select');
-				   selects.forEach(sel => {
-					   sel.addEventListener('change', function(e) {
-						   const url = this.value;
-						   if(url) window.open(url, '_blank');
-						   this.selectedIndex = 0;
-					   });
-				   });
-			   }, 0);
-			stack.appendChild(card);
-		});
-	}
-	(async () => {
-		const links = await getLinks();
-		const filtrados = links.filter(row => (row && row.medida) !== 'Standard');
-		const grupos = groupByModelo(filtrados);
-		renderCards(grupos);
-	})();
+	import { renderPivotModule } from './js/modules/pivot.js';
+
+	const tiposOrder = ['Natural','Barnizado','Tintes'];
+	const selectLabelMap = { 'Natural':'Natural', 'Barnizado':'Barnizado', 'Tintes':'Tintes' };
+	const normalize = s => (s||'').toString().toLowerCase();
+	const variantForTipo = (t) => (normalize(t)==='natural' ? 'primary' : 'secondary');
+	const imageForModel = () => 'img/base.png';
+
+	renderPivotModule({
+	  moduleId: 'infantiles',
+	  containerSelector: '#product-stack',
+	  medidaLabel: 'Medida',
+	  tiposOrder,
+	  selectLabelMap,
+	  variantForTipo,
+	  imageForModel,
+	  includeMobileSelect: true,
+	  rowFilter: (row) => (row && row.medida) !== 'Standard'
+	});
 	</script>
 </body>
 </html>

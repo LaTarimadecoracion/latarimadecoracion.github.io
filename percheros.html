@@ -5,9 +5,8 @@
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXNJV3XERK"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){dataLayer.push(arguments);} 
             gtag('js', new Date());
-
             gtag('config', 'G-JXNJV3XERK');
         </script>
     <meta charset="UTF-8">
@@ -39,8 +38,8 @@
     ]
 }
         </script>
-    <link rel="icon" href="img/ico.png" type="image/png">
     <link rel="stylesheet" href="estilos.css?v=20251001">
+    <link rel="icon" href="img/ico.png" type="image/png">
         <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -87,83 +86,37 @@
         </nav>
     </div>
     <script type="module">
-        const PRODUCT_IMAGES = {
-            "Perchero 1": "img/percheros/perchero1.jpg",
-            "Perchero 2": "img/percheros/perchero2.jpg",
-            "Perchero 3": "img/percheros/perchero3.jpg",
-            "Perchero 4": "img/percheros/perchero4.jpg",
-            "Perchero 5": "img/percheros/perchero5.jpg",
-            "Perchero 6": "img/percheros/perchero6.jpg",
-            "Perchero 7": "img/percheros/perchero7.jpg",
-            "Perchero 8": "img/percheros/perchero8.jpg",
-            "Perchero 9": "img/percheros/perchero9.jpg",
-            "Perchero 10": "img/percheros/perchero10.jpg"
-        };
-        const whatsapp = 'https://wa.me/5491167007723';
-    const normalize = (s) => String(s||'').trim().replace(/\s+/g,' ');
-        const keyOf = (modelo, medida, tipo) => `${normalize(modelo)}|${normalize(medida)}|${normalize(tipo)}`.toLowerCase();
+      import { renderPivotModule } from './js/modules/pivot.js';
 
-        async function fetchLinks(){
-            try {
-                const res = await fetch('Links/links.json', { cache: 'no-store' });
-                if(!res.ok) throw 0;
-                const json = await res.json();
-                return Array.isArray(json.modules?.percheros) ? json.modules.percheros : [];
-            } catch(_) { return []; }
-        }
+      const IMAGES = {
+        'Perchero 1': 'img/percheros/perchero1.jpg',
+        'Perchero 2': 'img/percheros/perchero2.jpg',
+        'Perchero 3': 'img/percheros/perchero3.jpg',
+        'Perchero 4': 'img/percheros/perchero4.jpg',
+        'Perchero 5': 'img/percheros/perchero5.jpg',
+        'Perchero 6': 'img/percheros/perchero6.jpg',
+        'Perchero 7': 'img/percheros/perchero7.jpg',
+        'Perchero 8': 'img/percheros/perchero8.jpg',
+        'Perchero 9': 'img/percheros/perchero9.jpg',
+        'Perchero 10': 'img/percheros/perchero10.jpg'
+      };
 
-        function groupByModelo(rows) {
-            const map = new Map();
-            for(const r of rows) {
-                const modelo = normalize(r.modelo);
-                if(!map.has(modelo)) map.set(modelo, []);
-                map.get(modelo).push(r);
-            }
-            return Array.from(map.entries());
-        }
+      const normalizeText = (s) => (s||'').toString().toLowerCase();
+      const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+      const tiposPriority = ['1un','2un','3un'];
+      const selectLabelMap = { '1un':'1 un', '2un':'2 un', '3un':'3 un' };
+      const variantForTipo = (t) => (normalizeText(t)==='1un' ? 'primary' : 'secondary');
 
-        function renderProducts(rows) {
-            const stack = document.getElementById('product-stack');
-            stack.innerHTML = '';
-            const modelos = groupByModelo(rows);
-                modelos.forEach(([modelo, items]) => {
-                    const imgSrc = PRODUCT_IMAGES[modelo] || 'img/base.png';
-                    const tipos = ['1un','2un','3un'];
-                    const medidas = Array.from(new Set(items.map(i => normalize(i.medida))));
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = `
-                        <div class="product-image">
-                            <img src="${imgSrc}" alt="${modelo}" loading="lazy">
-                        </div>
-                        <div class="product-card-title">${modelo}</div>
-                        <table class="product-table">
-                            <tr>
-                                <th>Modelo</th>
-                                ${tipos.map(t => `<th>${t}</th>`).join('')}
-                            </tr>
-                            ${medidas.map((medida, idx) => {
-                                const selectId = `select-perchero-${idx}`;
-                                return `<tr class="mobile-select-row"><td colspan="4"><strong>${medida}</strong><select id="${selectId}" class="dropbtn"><option value="" selected disabled>Elegir opción</option>${tipos.map(tipo => {
-                                        const k = keyOf(modelo, medida, tipo);
-                                        const it = items.find(i => keyOf(i.modelo, i.medida, i.tipo) === k);
-                                        if (it && it.href && it.href !== '#') {
-                                            return `<option value="${it.href}">${tipo}</option>`;
-                                        } else {
-                                            return `<option value="" disabled>${tipo} (Próximamente)</option>`;
-                                        }
-                                    }).join('')}</select></td></tr>`;
-                            }).join('')}
-                        </table>
-                    `;
-                    stack.appendChild(card);
-                });
-        }
-
-        (async () => {
-            const rows = await fetchLinks();
-            renderProducts(rows);
-        })();
+      renderPivotModule({
+        moduleId: 'percheros',
+        containerSelector: '#product-stack',
+        medidaLabel: 'Medida',
+        imageForModel,
+        tiposPriority,
+        selectLabelMap,
+        variantForTipo,
+        includeMobileSelect: true
+      });
     </script>
     <script src="responsive-tables.js?v=20251001"></script>
 </body>

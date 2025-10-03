@@ -79,80 +79,36 @@
         </nav>
     </div>
     <script type="module">
-    const moduleId = 'podios';
-    const whatsapp = 'https://wa.me/5491167007723';
+    import { renderPivotModule } from './js/modules/pivot.js';
+
     const IMAGES = {
-        'Podio premiación (3 módulos)': 'img/steps_cajones/podiopremiacion.jpg',
-        'Podios individuales': 'img/steps_cajones/podiosindividuales.jpg'
+      'Podio premiación (3 módulos)': 'img/steps_cajones/podiopremiacion.jpg',
+      'Podios individuales': 'img/steps_cajones/podiosindividuales.jpg'
     };
-    function getModeloKey(modelo) {
-        if (modelo.toLowerCase().includes('premiación')) return 'Podio premiación (3 módulos)';
-        if (modelo.toLowerCase().includes('individuales')) return 'Podios individuales';
-        return modelo;
-    }
-    async function getLinks(){
-        try {
-            const res = await fetch('Links/links.json', { cache: 'no-store' });
-            if(res.ok){
-                const json = await res.json();
-                return Array.isArray(json.modules[moduleId]) ? json.modules[moduleId] : [];
-            }
-        } catch(e){
-            console.error('Error al cargar links.json', e);
-        }
-        return [];
-    }
-    function groupByModelo(rows) {
-        const grupos = {};
-        rows.forEach(row => {
-            const key = getModeloKey(row.modelo);
-            if (!grupos[key]) grupos[key] = [];
-            grupos[key].push(row);
-        });
-        return grupos;
-    }
-    function renderCards(grupos) {
-        const stack = document.getElementById('product-stack');
-        stack.innerHTML = '';
-        Object.entries(grupos).forEach(([modelo, items]) => {
-            // Agrupar por medida
-            const medidas = {};
-            items.forEach(item => {
-                const medida = item.medida || '';
-                if (!medidas[medida]) medidas[medida] = {};
-                medidas[medida][item.tipo] = item.href;
-            });
-            // Crear card
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.innerHTML = `
-                <div class="product-image">
-                    <img src="${IMAGES[modelo]||''}" alt="${modelo}" loading="lazy">
-                </div>
-                <div class="product-card-title">${modelo}</div>
-                <table class="product-table">
-                    <tr>
-                        <th>Medida</th>
-                        <th>Comprar</th>
-                    </tr>
-                    ${Object.entries(medidas).map(([medida, tipos]) => {
-                        const href = tipos['Comprar'] && tipos['Comprar'].trim() && tipos['Comprar'] !== '#';
-                        if (href) {
-                            return `<tr><td>${medida}</td><td><a class="buy-btn primary" href="${tipos['Comprar']}" target="_blank" rel="noopener">Comprar</a></td></tr>`;
-                        } else {
-                            return `<tr><td>${medida}</td><td><a class="buy-btn loading-link" tabindex="-1"></a></td></tr>`;
-                        }
-                    }).join('')}
-                </table>
-            `;
-            stack.appendChild(card);
-        });
-    }
-    (async () => {
-        const links = await getLinks();
-        const grupos = groupByModelo(links);
-        renderCards(grupos);
-    })();
+
+    const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const groupKeyFn = (row) => {
+      const m = normalizeText(row?.modelo||'');
+      if (m.includes('premiacion')) return 'Podio premiación (3 módulos)';
+      if (m.includes('individuales')) return 'Podios individuales';
+      return (row?.modelo||'Otros');
+    };
+    const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+
+    const selectLabelMap = { 'Comprar': 'Comprar' };
+    const variantForTipo = (t) => (String(t).toLowerCase()==='comprar' ? 'primary' : 'secondary');
+
+    renderPivotModule({
+      moduleId: 'podios',
+      containerSelector: '#product-stack',
+      medidaLabel: 'Medida',
+      groupKeyFn,
+      imageForModel,
+      tiposOrder: ['Comprar'],
+      selectLabelMap,
+      variantForTipo,
+      includeMobileSelect: true
+    });
     </script>
 </body>
 <script src="responsive-tables.js?v=20251001"></script>

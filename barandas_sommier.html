@@ -95,140 +95,38 @@
     </div>
 
     <script type="module">
-    const moduleId = 'barandas_sommier';
-    const whatsapp = 'https://wa.me/5491167007723';
-    const IMAGES = {
+      import { renderPivotModule } from './js/modules/pivot.js';
+
+      const moduleId = 'barandas_sommier';
+      const IMAGES = {
         'Clásica': 'img/barandas_sommier/barandasommierclasica.jpg',
         'Triple': 'img/barandas_sommier/barandasommiertriple.jpg'
-    };
-    function normalizeText(s){
-        return (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    }
-    function getModeloKey(modelo) {
-        const norm = normalizeText(modelo);
+      };
+
+      const normalizeText = (s) => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      const groupKeyFn = (row) => {
+        const norm = normalizeText(row?.modelo);
         if (norm.includes('clasica')) return 'Clásica';
         if (norm.includes('triple')) return 'Triple';
-        return (modelo || 'Otros');
-    }
-    async function getLinks(){
-        try {
-            const res = await fetch('Links/links.json', { cache: 'no-store' });
-            if(res.ok){
-                const json = await res.json();
-                return Array.isArray(json.modules[moduleId]) ? json.modules[moduleId] : [];
-            }
-        } catch(e){
-            console.error('Error al cargar links.json', e);
-        }
-        return [];
-    }
-    function groupByModelo(rows) {
-        const grupos = {};
-        rows.forEach(row => {
-            const key = getModeloKey(row && row.modelo);
-            if (!grupos[key]) grupos[key] = [];
-            grupos[key].push(row);
-        });
-        return grupos;
-    }
-    function renderCards(grupos) {
-        const stack = document.getElementById('product-stack');
-        stack.innerHTML = '';
-        Object.entries(grupos).forEach(([modelo, items]) => {
-            // Agrupar por medida y limpiar duplicados
-            const tiposValidos = ['Natural', 'Barnizadas', 'Blancas'];
-            const medidas = {};
-            items.forEach(item => {
-                const medida = item.medida || '';
-                const tipo = item.tipo && item.tipo.trim();
-                if (!tiposValidos.includes(tipo)) return;
-                if (!medidas[medida]) medidas[medida] = {};
-                if (!medidas[medida][tipo]) {
-                    medidas[medida][tipo] = item.href;
-                }
-            });
-            // Crear card
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.innerHTML = `
-                <div class="product-image">
-                    <img src="${IMAGES[modelo] || 'img/base.png'}" alt="Baranda sommier ${modelo}" loading="lazy">
-                </div>
-                <div class="product-card-title">Baranda sommier ${modelo}</div>
-                <table class="product-table">
-                    <thead>
-                        <tr>
-                            <th>Medida</th>
-                            <th>Natural</th>
-                            <th>Barnizadas</th>
-                            <th>Blancas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    ${Object.entries(medidas).map(([medida, tipos], idx) => {
-                        const opciones = [
-                            { label: 'Natural', tipo: 'Natural', href: tipos['Natural'] },
-                            { label: 'Barnizadas', tipo: 'Barnizadas', href: tipos['Barnizadas'] },
-                            { label: 'Blancas', tipo: 'Blancas', href: tipos['Blancas'] }
-                        ];
-                        const selectId = `select-${modelo.replace(/\s/g,'')}-${idx}`;
-                        // Fila para escritorio (botones)
-                        const desktopRow = `
-                            <tr class="desktop-row">
-                                <td>${medida}</td>
-                                <td>${tipos['Natural'] && tipos['Natural'].trim() && tipos['Natural'] !== '#' ? `<a class="buy-btn primary" href="${tipos['Natural']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
-                                <td>${tipos['Barnizadas'] && tipos['Barnizadas'].trim() && tipos['Barnizadas'] !== '#' ? `<a class="buy-btn secondary" href="${tipos['Barnizadas']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
-                                <td>${tipos['Blancas'] && tipos['Blancas'].trim() && tipos['Blancas'] !== '#' ? `<a class="buy-btn secondary" href="${tipos['Blancas']}" target="_blank" rel="noopener">Comprar</a>` : `<span class="buy-btn loading-link" tabindex="-1"></span>`}</td>
-                            </tr>
-                        `;
-                        // Fila para móvil (select)
-                        const mobileRow = (() => {
-                            const rendered = new Set();
-                            return `
-                            <tr class="mobile-select-row">
-                                <td colspan="4">
-                                    <strong>${medida}</strong>
-                                    <select id="${selectId}" class="dropbtn">
-                                        <option value="" selected disabled>Elegir opción</option>
-                                        ${opciones.map(opt => {
-                                            if (opt.href && opt.href.trim() && opt.href !== '#') {
-                                                return `<option value="${opt.href}">${opt.label}</option>`;
-                                            } else if (!rendered.has(opt.label)) {
-                                                rendered.add(opt.label);
-                                                return `<option value="" disabled>${opt.label} (Próximamente)</option>`;
-                                            } else {
-                                                return '';
-                                            }
-                                        }).join('')}
-                                    </select>
-                                </td>
-                            </tr>
-                            `;
-                        })();
-                        return desktopRow + mobileRow;
-                    }).join('')}
-                    </tbody>
-                </table>
-            `;
-            // Listeners para selects móviles
-            setTimeout(() => {
-                const selects = card.querySelectorAll('.mobile-select-row select');
-                selects.forEach(sel => {
-                    sel.addEventListener('change', function(e) {
-                        const url = this.value;
-                        if(url) window.open(url, '_blank');
-                        this.selectedIndex = 0;
-                    });
-                });
-            }, 0);
-            stack.appendChild(card);
-        });
-    }
-    (async () => {
-        const links = await getLinks();
-        const grupos = groupByModelo(links);
-        renderCards(grupos);
-    })();
+        return (row?.modelo || 'Otros');
+      };
+      const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+      const tiposPriority = ['natural','barnizadas','blancas'];
+      const variantForTipo = (tipo) => {
+        const t = (tipo||'').toLowerCase();
+        return t === 'natural' ? 'primary' : 'secondary';
+      };
+
+      renderPivotModule({
+        moduleId,
+        containerSelector: '#product-stack',
+        medidaLabel: 'Medida',
+        tiposPriority,
+        imageForModel,
+        groupKeyFn,
+        variantForTipo,
+        includeMobileSelect: true
+      });
     </script>
 </body>
 <script src="responsive-tables.js?v=20251001"></script>

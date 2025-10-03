@@ -2,19 +2,26 @@
   "modules": {
     "regalos": [
       {
-        "modelo": "Links utiles",
+        "modelo": "Links",
         "href": "https://www.youtube.com/",
-        "recurso": "PC"
+        "recurso": "Probando"
       },
       {
-        "modelo": "Links utiles",
+        "modelo": "Programas",
         "href": "https://www.youtube.com/",
-        "recurso": "cel"
+        "recurso": "Probando 2",
+        "visitar": "https://www.youtube.com/",
+        "descargar": "https://www.youtube.com/"
       },
       {
-        "modelo": "PC PC",
+        "modelo": "Links",
         "href": "https://www.youtube.com/",
-        "recurso": "PC"
+        "recurso": "2"
+      },
+      {
+        "modelo": "Programas",
+        "href": "https://www.youtube.com/",
+        "recurso": "3"
       }
     ],
     "camas": [
@@ -219,134 +226,6 @@
         "href": ""
       }
     ],
-    "fanales": [
-      {
-        "modelo": "Set x3",
-        "medida": "",
-        "tipo": "1un",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2164674452-fanal-madera-pino-por-tres-unidades-_JM"
-      },
-      {
-        "modelo": "Set x3",
-        "medida": "",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Set x3",
-        "medida": "",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "2un",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1511344093-fanal-madera-pino-x2-un-chico-_JM"
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "10un",
-        "href": ""
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "20un",
-        "href": ""
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "30un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "10un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "20un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "30un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "10un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "20un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "30un",
-        "href": ""
-      }
-    ],
     "deck": [
       {
         "modelo": "Deck cuadrado",
@@ -403,166 +282,22 @@
         "href": ""
       },
       {
-        "modelo": "Deck cuadrado",
-        "tipo": "6un",
-        "medida": "25 x 25 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "6un",
-        "medida": "30 x 30 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "6un",
-        "medida": "40 x 40 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "12un",
-        "medida": "25 x 25 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "12un",
-        "medida": "30 x 30 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "12un",
-        "medida": "40 x 40 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "24un",
-        "medida": "25 x 25 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "24un",
-        "medida": "30 x 30 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "24un",
-        "medida": "40 x 40 cm",
+        "modelo": "Deck rectangular",
+        "tipo": "1un",
+        "medida": "25 x 60 cm",
         "href": ""
       },
       {
         "modelo": "Deck rectangular",
-        "tipo": "1un",
         "medida": "25 x 50 cm",
+        "tipo": "1un",
         "href": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM"
       },
       {
-        "modelo": "Deck rectangular",
-        "tipo": "1un",
-        "medida": "35 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "1un",
-        "medida": "45 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "2un",
-        "medida": "25 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "2un",
-        "medida": "35 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "2un",
-        "medida": "45 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "3un",
-        "medida": "25 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "3un",
-        "medida": "35 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "3un",
-        "medida": "45 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "6un",
-        "medida": "25 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "6un",
-        "medida": "35 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "6un",
-        "medida": "45 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "12un",
-        "medida": "25 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "12un",
-        "medida": "35 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "12un",
-        "medida": "45 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "24un",
-        "medida": "25 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "24un",
-        "medida": "35 x 60 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "24un",
-        "medida": "45 x 60 cm",
-        "href": ""
+        "modelo": "DECK RECTANGULAR",
+        "medida": "25 x 50 cm",
+        "tipo": "12 un",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM"
       }
     ],
     "infantiles": [
@@ -891,7 +626,7 @@
       {
         "modelo": "Estantes Montessori",
         "medida": "Combo x3",
-        "tipo": "combo",
+        "tipo": "1un",
         "href": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM"
       },
       {
@@ -2092,6 +1827,37 @@
         "href": ""
       }
     ],
-    "links_utiles": []
+    "otros_productos": [
+      {
+        "modelo": "Blanco",
+        "medida": "110 x 45 cm",
+        "tipo": "1",
+        "href": "https://www.youtube.com/"
+      },
+      {
+        "modelo": "Blanco",
+        "medida": "110 x 45 cm",
+        "tipo": "2",
+        "href": "https://www.youtube.com/"
+      },
+      {
+        "modelo": "Blanco",
+        "medida": "120 x 45 cm",
+        "tipo": "2",
+        "href": "https://www.youtube.com/"
+      },
+      {
+        "modelo": "Blanco",
+        "medida": "110 x 45 cm",
+        "tipo": "3",
+        "href": "https://www.youtube.com/"
+      },
+      {
+        "modelo": "Blanco",
+        "medida": "110 x 45 cm",
+        "tipo": "",
+        "href": ""
+      }
+    ]
   }
 }

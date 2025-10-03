@@ -21,14 +21,14 @@
 	<!-- Open Graph / Twitter -->
 	<meta property="og:title" content="Camas de madera | LA TARIMA">
 	<meta property="og:description" content="Camas de madera con barandas. Diseño artesanal.">
-	<meta property="og:image" content="https://latarimadecoracion.github.io/img/estantes/estantes.jpg">
+	<meta property="og:image" content="https://latarimadecoracion.github.io/img/icono-carpintero.jpg">
 	<meta property="og:url" content="https://latarimadecoracion.github.io/camas.html">
 	<meta property="og:type" content="website">
 	<meta property="og:locale" content="es_AR">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Camas de madera | LA TARIMA">
 	<meta name="twitter:description" content="Camas de madera con barandas. Diseño artesanal.">
-	<meta name="twitter:image" content="https://latarimadecoracion.github.io/img/estantes/estantes.jpg">
+	<meta name="twitter:image" content="https://latarimadecoracion.github.io/img/icono-carpintero.jpg">
 		<script type="application/ld+json">
 {
 	"@context": "https://schema.org",
@@ -68,97 +68,31 @@
 			</a>
 		</div>
 		<div class="product-stack" id="product-stack"></div>
-				<script type="module">
-				import { crearBotonProducto } from './js/generar-botones.js';
-				const stack = document.getElementById('product-stack');
-				const botones = [
-					{ nombre: 'Barandas desmontables', href: 'barandas_desmontables.html' },
-					{ nombre: 'Barandas para Sommier', href: 'barandas_sommier.html' },
-					{ nombre: 'Barandas Fijas', href: 'barandas_fijas.html' },
-					{ nombre: 'Barandas Ortopédicas', href: 'barandas_ortopedicas.html' },
-				];
-				const btnStack = document.createElement('div');
-				btnStack.className = 'btn-stack';
-				botones.forEach(b => {
-					btnStack.appendChild(crearBotonProducto(b.nombre, b.href));
-				});
-				stack.appendChild(btnStack);
-				</script>
 		<nav class="split-btn" aria-label="Acciones de navegación y contacto">
 			<a href="index.html" title="Volver al inicio">INICIO</a>
 			<a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener" title="Consultar por WhatsApp">CONSULTAR</a>
 		</nav>
 	</div>
 	<script type="module">
-	const moduleId = 'camas';
-	const whatsapp = 'https://wa.me/5491167007723';
-	const IMAGES = {
-		// Agrega aquí los modelos y rutas de imágenes de camas
-		'Cama 1': 'img/camas/cama1.jpg',
-		'Cama 2': 'img/camas/cama2.jpg',
-		'Cama 3': 'img/camas/cama3.jpg',
-		'Cama 4': 'img/camas/cama4.jpg',
-		'Cama 5': 'img/camas/cama5.jpg'
-	};
-	function getModeloKey(modelo) {
-		return modelo;
-	}
-	async function getLinks(){
-		try {
-			const res = await fetch('Links/links.json', { cache: 'no-store' });
-			if(res.ok){
-				const json = await res.json();
-				return Array.isArray(json.modules[moduleId]) ? json.modules[moduleId] : [];
-			}
-		} catch(e){
-			console.error('Error al cargar links.json', e);
-		}
-		return [];
-	}
-	function groupByModelo(rows) {
-		const grupos = {};
-		rows.forEach(row => {
-			const key = getModeloKey(row.modelo);
-			if (!grupos[key]) grupos[key] = [];
-			grupos[key].push(row);
-		});
-		return grupos;
-	}
-	function renderCards(grupos) {
-		const stack = document.getElementById('product-stack');
-		stack.innerHTML = '';
-		Object.entries(grupos).forEach(([modelo, items]) => {
-			// Obtener todos los tipos únicos para este modelo
-			const tipos = Array.from(new Set(items.map(item => item.tipo)));
-			// Crear card
-			const card = document.createElement('div');
-			card.className = 'product-card';
-			card.innerHTML = `
-				<div class="product-image">
-					<img src="${IMAGES[modelo]||''}" alt="Cama ${modelo}" loading="lazy">
-				</div>
-				<div class="product-card-title">Cama ${modelo}</div>
-				<table class="product-table">
-					<tr>
-						${tipos.map(tipo => `<th>${tipo}</th>`).join('')}
-					</tr>
-					<tr>
-						${tipos.map(tipo => {
-							const item = items.find(i => i.tipo === tipo);
-							const href = item && item.href && item.href.trim() && item.href !== '#' ? item.href : whatsapp;
-							return `<td><a class="buy-btn${item && item.href && item.href.trim() && item.href !== '#' ? ' primary' : ' loading-link'}" href="${item && item.href && item.href.trim() && item.href !== '#' ? item.href : '#'}"${item && item.href && item.href.trim() && item.href !== '#' ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${item && item.href && item.href.trim() && item.href !== '#' ? 'Comprar' : ''}</a></td>`;
-						}).join('')}
-					</tr>
-				</table>
-			`;
-			stack.appendChild(card);
-		});
-	}
-	(async () => {
-		const links = await getLinks();
-		const grupos = groupByModelo(links);
-		renderCards(grupos);
-	})();
+	import { renderPivotModule } from './js/modules/pivot.js';
+
+	const tiposPriority = ['1 plaza','2 plazas'];
+	const selectLabelMap = { '1 plaza':'1 plaza', '2 plazas':'2 plazas' };
+	const normalizeText = s => (s||'').toString().toLowerCase();
+	const variantForTipo = (t) => (normalizeText(t)==='1 plaza' ? 'primary' : 'secondary');
+	const imageForModel = () => 'img/base.png';
+
+	renderPivotModule({
+	  moduleId: 'camas',
+	  containerSelector: '#product-stack',
+	  medidaLabel: 'Variante',
+	  imageForModel,
+	  tiposPriority,
+	  selectLabelMap,
+	  variantForTipo,
+	  includeMobileSelect: true
+	});
 	</script>
+	<script src="responsive-tables.js?v=20251001"></script>
 </body>
 </html>

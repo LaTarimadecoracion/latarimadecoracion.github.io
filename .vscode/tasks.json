@@ -62,6 +62,54 @@
 			"isBackground": false,
 			"problemMatcher": [],
 			"group": "build"
+		},
+		{
+			"label": "Iniciar servidor local HTTP",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-m",
+				"http.server",
+				"8000"
+			],
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "Iniciar servidor local HTTP",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-m",
+				"http.server",
+				"8000"
+			],
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "Iniciar servidor local HTTP",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-m",
+				"http.server",
+				"8000"
+			],
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "Iniciar servidor local HTTP",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-m",
+				"http.server",
+				"8000"
+			],
+			"isBackground": true,
+			"group": "build"
 		}
 	]
 }

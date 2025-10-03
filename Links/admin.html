@@ -146,48 +146,46 @@
         // Eliminada la lógica de botones "Añadir fila" para trabajar módulo por módulo
         // Cargar links reales desde links.json
         let links = {};
-        let ordenModulos = [
+        // Orden de prioridad sugerido; si hay más módulos, se agregan al final en orden alfabético
+        const ordenPrioritario = [
+            // Barandas (dropdown en home)
             'barandas_desmontables',
             'barandas_sommier',
             'barandas_fijas',
             'barandas_ortopedicas',
-            'steps_cajones',
+            // Resto siguiendo el orden visual de la home (estilo "cebolla")
+            'deck',
+            'camas',
             'podios',
             'estantes',
-            'deck',
-            'fanales',
-            'organizadores',
-            'percheros',
-            'camas',
             'escaleras',
+            'percheros',
             'infantiles',
+            'organizadores',
+            'steps_cajones',
+            // Siempre último
             'regalos'
         ];
-    let moduloActual = ordenModulos[0];
-        // Módulos que usan el patrón de secciones (botón Añadir sección y Añadir fila por sección)
-        const modulosConSecciones = new Set([
-            'barandas_desmontables',
-            'barandas_sommier',
-            'barandas_fijas',
-            'barandas_ortopedicas',
-            'steps_cajones',
-            'podios',
-            'estantes',
-            'deck',
-            'fanales',
-            'organizadores',
-            'percheros',
-            'camas',
-            'escaleras',
-            'infantiles',
-            'regalos'
-        ]);
-    // Módulos con filas de solo {modelo, href}
-    const modulosSoloModelo = new Set(['regalos', 'links_utiles']);
+        let orderedModules = [];
+        let moduloActual = null;
+        // Módulos con filas de solo {modelo, href}
+    const modulosSoloModelo = new Set(['regalos']);
+        const isConSecciones = (mod) => !modulosSoloModelo.has(mod);
         fetch('./links.json')
             .then(res => res.json())
             .then(data => {
                 links = data.modules || {};
+                const existentes = Object.keys(links);
+                const prioridad = ordenPrioritario.filter(m => existentes.includes(m));
+                const adicionales = existentes.filter(m => !ordenPrioritario.includes(m)).sort((a,b)=>a.localeCompare(b));
+                orderedModules = [...prioridad, ...adicionales];
+                // Forzar 'regalos' como último si existe
+                const idxRegalos = orderedModules.indexOf('regalos');
+                if (idxRegalos !== -1 && idxRegalos !== orderedModules.length - 1) {
+                    orderedModules.splice(idxRegalos, 1);
+                    orderedModules.push('regalos');
+                }
+                if (!moduloActual) moduloActual = orderedModules[0] || '';
                 renderSelector();
                 renderTables();
             });
@@ -195,27 +193,53 @@
         function renderSelector() {
             const select = document.getElementById('modulo-select');
             select.innerHTML = '';
-            ordenModulos.forEach(mod => {
-                if (Array.isArray(links[mod])) {
-                    const opt = document.createElement('option');
-                    opt.value = mod;
-                    opt.textContent = mod.replace(/_/g,' ').toUpperCase();
-                    select.appendChild(opt);
-                }
+            orderedModules.forEach(mod => {
+                const opt = document.createElement('option');
+                opt.value = mod;
+                opt.textContent = mod.replace(/_/g,' ').toUpperCase();
+                select.appendChild(opt);
             });
             select.value = moduloActual;
             select.onchange = function() {
                 moduloActual = this.value;
                 renderTables();
             };
+            // Botón Añadir módulo
+            if (!document.getElementById('btn-add-module')) {
+                const btn = document.createElement('button');
+                btn.id = 'btn-add-module';
+                btn.textContent = 'Añadir módulo';
+                btn.className = 'admin-btn';
+                btn.style.marginLeft = '8px';
+                select.insertAdjacentElement('afterend', btn);
+                btn.onclick = function(){
+                    const nombre = (prompt('ID del nuevo módulo (sin espacios, use _):', '') || '').trim();
+                    if (!nombre) return;
+                    if (!links[nombre]) links[nombre] = [];
+                    // recalcular orden
+                    const existentes = Object.keys(links);
+                    const prioridad = ordenPrioritario.filter(m => existentes.includes(m));
+                    const adicionales = existentes.filter(m => !ordenPrioritario.includes(m)).sort((a,b)=>a.localeCompare(b));
+                    orderedModules = [...prioridad, ...adicionales];
+                    // Forzar 'regalos' como último si existe
+                    const idxRegalos2 = orderedModules.indexOf('regalos');
+                    if (idxRegalos2 !== -1 && idxRegalos2 !== orderedModules.length - 1) {
+                        orderedModules.splice(idxRegalos2, 1);
+                        orderedModules.push('regalos');
+                    }
+                    moduloActual = nombre;
+                    renderSelector();
+                    renderTables();
+                };
+            }
         }
 
         function renderTables() {
             const container = document.getElementById('tables');
             container.innerHTML = '';
             if (!Array.isArray(links[moduloActual])) return;
-            // Botón superior para añadir sección en módulos habilitados
-            if (modulosConSecciones.has(moduloActual)) {
+            // Botón superior para añadir sección: habilitado para módulos con secciones y también para 'regalos'
+            if (moduloActual === 'regalos' || isConSecciones(moduloActual)) {
                 const btnAddSeccion = document.createElement('button');
                 btnAddSeccion.textContent = 'Añadir sección';
                 btnAddSeccion.className = 'admin-btn';
@@ -224,8 +248,8 @@
                     const nombre = (prompt('Nombre de la sección (Modelo):') || '').trim();
                     if (!nombre) return;
                     if (!Array.isArray(links[moduloActual])) links[moduloActual] = [];
-                    const nueva = modulosSoloModelo.has(moduloActual)
-                        ? { modelo: nombre, href: '' }
+                    const nueva = (moduloActual === 'regalos' || modulosSoloModelo.has(moduloActual))
+                        ? { modelo: nombre, recurso: '', visitar: '', ver: '', descargar: '' }
                         : { modelo: nombre, medida: '', tipo: '', href: '' };
                     links[moduloActual].push(nueva);
                     window.__newRowIndex = links[moduloActual].length - 1;
@@ -240,7 +264,7 @@
             const thead = document.createElement('thead');
             if (moduloActual === 'regalos') {
                 // Render principal de REGALOS con secciones por 'modelo'
-                thead.innerHTML = `<tr><th colspan='4' class='mod-title'>REGALOS</th></tr><tr><th>Recurso</th><th>Enlace</th><th>Agregar</th><th>Elimina</th></tr>`;
+                thead.innerHTML = `<tr><th colspan='6' class='mod-title'>REGALOS</th></tr><tr><th>Recurso</th><th>Visitar</th><th>Video</th><th>Descargar</th><th>Pegar</th><th>Elimina</th></tr>`;
                 table.appendChild(thead);
                 const tbody = document.createElement('tbody');
                 const modelosUnicos = [...new Set(productos.map(p => (p.modelo ?? '')))]
@@ -250,7 +274,7 @@
                     // Encabezado de sección con Renombrar
                     const trHeader = document.createElement('tr');
                     const tdHeader = document.createElement('td');
-                    tdHeader.colSpan = 4;
+                    tdHeader.colSpan = 6;
                     tdHeader.style.background = '#dbeafe';
                     tdHeader.style.fontWeight = 'bold';
                     tdHeader.style.display = 'flex';
@@ -259,7 +283,7 @@
                     const spanTitulo = document.createElement('span');
                     spanTitulo.textContent = (modelo ? modelo.toUpperCase() : 'SIN MODELO / NUEVA SECCIÓN');
                     tdHeader.appendChild(spanTitulo);
-                    if (modulosConSecciones.has(moduloActual)) {
+                    if (isConSecciones(moduloActual)) {
                         const btnRename = document.createElement('button');
                         btnRename.textContent = 'Renombrar sección';
                         btnRename.className = 'admin-btn';
@@ -283,8 +307,12 @@
                     // Filas de la sección
                     grupo.forEach(item => {
                         const realIdx = productos.indexOf(item);
-                        const hasLink = item.href && item.href.trim() && item.href !== '#';
-                        const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
+                        const visitarVal = (item.visitar || '').trim();
+                        const verVal = (item.ver || item.video || item.href || '').trim();
+                        const descargarVal = (item.descargar || item.download || '').trim();
+                        const inputStyleVis = visitarVal ? "background:#d1fae5;border:2px solid #059669;" : "";
+                        const inputStyleVer = verVal ? "background:#d1fae5;border:2px solid #059669;" : "";
+                        const inputStyleDes = descargarVal ? "background:#d1fae5;border:2px solid #059669;" : "";
                         const tr = document.createElement('tr');
                         // En REGALOS, el nombre visible de la fila es 'recurso'; 'modelo' queda fijo (se usa como sección)
                         tr.innerHTML = `
@@ -292,8 +320,14 @@
                                 <input class='admin-input' type='text' value='${(item.recurso || '')}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='recurso' placeholder='Nombre del recurso'>
                                 <input type='hidden' value='${item.modelo || ''}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='modelo'>
                             </td>
-                            <td><input class='admin-input' type='text' value='${item.href || ''}' style='${inputStyle}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='href' placeholder='Enlace'></td>
-                            <td><button class='admin-btn' onclick='pasteLink(this, "${moduloActual}", ${realIdx})'>Agregar</button></td>
+                            <td><input class='admin-input' type='text' value='${visitarVal}' style='${inputStyleVis}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='visitar' placeholder='URL visitar'></td>
+                            <td><input class='admin-input' type='text' value='${verVal}' style='${inputStyleVer}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='ver' placeholder='URL video'></td>
+                            <td><input class='admin-input' type='text' value='${descargarVal}' style='${inputStyleDes}' data-mod='${moduloActual}' data-idx='${realIdx}' data-field='descargar' placeholder='URL descargar'></td>
+                            <td>
+                                <button class='admin-btn' onclick='pasteLinkTo(this, "${moduloActual}", ${realIdx}, "visitar")'>Pegar visitar</button>
+                                <button class='admin-btn' onclick='pasteLinkTo(this, "${moduloActual}", ${realIdx}, "ver")'>Pegar video</button>
+                                <button class='admin-btn' onclick='pasteLinkTo(this, "${moduloActual}", ${realIdx}, "descargar")'>Pegar descargar</button>
+                            </td>
                             <td><button class='admin-btn delete' onclick='deleteRowGeneric("${moduloActual}", ${realIdx})' title='Eliminar fila'>🗑️</button></td>
                         `;
                         tbody.appendChild(tr);
@@ -301,14 +335,14 @@
                     // Botón al final de la sección para añadir fila
                     const trAdd = document.createElement('tr');
                     const tdAdd = document.createElement('td');
-                    tdAdd.colSpan = 4;
+                    tdAdd.colSpan = 6;
                     tdAdd.style.textAlign = 'right';
                     const btnAddFila = document.createElement('button');
                     btnAddFila.textContent = 'Añadir fila';
                     btnAddFila.className = 'admin-btn';
                     btnAddFila.onclick = function() {
                         if (!Array.isArray(links[moduloActual])) links[moduloActual] = [];
-                        links[moduloActual].push({ modelo: modelo || '', href: '' });
+                        links[moduloActual].push({ modelo: modelo || '', recurso: '', visitar: '', ver: '', descargar: '' });
                         window.__newRowIndex = links[moduloActual].length - 1;
                         renderTables();
                     };
@@ -318,40 +352,9 @@
                 });
                 table.appendChild(tbody);
                 container.appendChild(table);
-                // Focus a nueva fila si aplica
-                if (modulosConSecciones.has(moduloActual) && typeof window.__newRowIndex === 'number') {
-                    const target = document.querySelector(`input[data-mod='${moduloActual}'][data-idx='${window.__newRowIndex}'][data-field='modelo']`);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        target.focus();
-                    }
-                    window.__newRowIndex = null;
-                }
+                // (sin enfoque automático especial para regalos)
 
-                // Render de LINKS UTILES dentro de REGALOS (solo si existe y tiene elementos)
-                const utiles = Array.isArray(links['links_utiles']) ? links['links_utiles'] : null;
-                if (utiles && utiles.length) {
-                    const tableUtiles = document.createElement('table');
-                    tableUtiles.className = 'admin-table';
-                    const theadUtiles = document.createElement('thead');
-                    theadUtiles.innerHTML = `<tr><th colspan='4' class='mod-title'>LINKS UTILES</th></tr><tr><th>Recurso</th><th>Enlace</th><th>Agregar</th><th>Eliminar</th></tr>`;
-                    tableUtiles.appendChild(theadUtiles);
-                    const tbodyUtiles = document.createElement('tbody');
-                    utiles.forEach((item, idx) => {
-                        const hasLink = item.href && item.href.trim() && item.href !== '#';
-                        const inputStyle = hasLink ? "background:#d1fae5;border:2px solid #059669;" : "";
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td><input class='admin-input' type='text' value='${item.modelo || ''}' data-mod='links_utiles' data-idx='${idx}' data-field='modelo' placeholder='Nombre del recurso'></td>
-                            <td><input class='admin-input' type='text' value='${item.href || ''}' style='${inputStyle}' data-mod='links_utiles' data-idx='${idx}' data-field='href' placeholder='Enlace'></td>
-                            <td><button class='admin-btn' onclick='pasteLink(this, "links_utiles", ${idx})'>Agregar</button></td>
-                            <td><button class='admin-btn delete' onclick='deleteRowGeneric("links_utiles", ${idx})' title='Eliminar fila'>🗑️</button></td>
-                        `;
-                        tbodyUtiles.appendChild(tr);
-                    });
-                    tableUtiles.appendChild(tbodyUtiles);
-                    container.appendChild(tableUtiles);
-                }
+                // Eliminado bloque de LINKS UTILES (módulo deprecado)
             } else {
                 // Encabezado con columna Elimina
                 thead.innerHTML = `<tr><th colspan='6' class='mod-title'>${moduloActual.replace(/_/g,' ').toUpperCase()}</th></tr><tr><th>Modelo</th><th>Medida</th><th>Tipo</th><th>Enlace</th><th>Agregar</th><th>Elimina</th></tr>`;
@@ -375,7 +378,7 @@
                         const spanModelo = document.createElement('span');
                         spanModelo.textContent = modeloLabel;
                         tdModelo.appendChild(spanModelo);
-                        if (modulosConSecciones.has(moduloActual)) {
+                        if (isConSecciones(moduloActual)) {
                             const btnRenameSection = document.createElement('button');
                             btnRenameSection.textContent = 'Renombrar sección';
                             btnRenameSection.className = 'admin-btn';
@@ -441,7 +444,7 @@
                             }
                         });
                         // Botón al final de la sección para añadir fila dentro de esa sección (módulos habilitados)
-                        if (modulosConSecciones.has(moduloActual)) {
+                        if (isConSecciones(moduloActual)) {
                             const trAddBottom = document.createElement('tr');
                             const tdAddBottom = document.createElement('td');
                             tdAddBottom.colSpan = 6;
@@ -464,7 +467,7 @@
                 table.appendChild(tbody);
                 container.appendChild(table);
                 // Si se añadió una nueva fila, enfocar y desplazar a esa fila para módulos habilitados
-                if (modulosConSecciones.has(moduloActual) && typeof window.__newRowIndex === 'number') {
+                if (isConSecciones(moduloActual) && typeof window.__newRowIndex === 'number') {
                     const target = document.querySelector(`input[data-mod='${moduloActual}'][data-idx='${window.__newRowIndex}'][data-field='modelo']`);
                     if (target) {
                         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -496,12 +499,34 @@
         }
 
         window.pasteLink = function(btn, mod, idx) {
+            // Compatibilidad: módulos tradicionales con único campo 'href'.
+            // Para 'regalos', pegar en el campo 'ver' por defecto.
             navigator.clipboard.readText().then(text => {
                 const row = btn.closest('tr');
-                const inputHref = row && row.querySelector(`input.admin-input[data-field='href'][data-mod='${mod}'][data-idx='${idx}']`);
-                if (inputHref) inputHref.value = text;
+                if (mod === 'regalos') {
+                    const inputVer = row && row.querySelector(`input.admin-input[data-field='ver'][data-mod='${mod}'][data-idx='${idx}']`);
+                    if (inputVer) inputVer.value = text;
+                    if (Array.isArray(links[mod]) && links[mod][idx]) {
+                        links[mod][idx].ver = text;
+                    }
+                } else {
+                    const inputHref = row && row.querySelector(`input.admin-input[data-field='href'][data-mod='${mod}'][data-idx='${idx}']`);
+                    if (inputHref) inputHref.value = text;
+                    if (Array.isArray(links[mod]) && links[mod][idx]) {
+                        links[mod][idx].href = text;
+                    }
+                }
+            });
+        }
+
+        window.pasteLinkTo = function(btn, mod, idx, field) {
+            // Nuevo: pegar desde portapapeles a un campo específico (visitar|ver|descargar) en 'regalos'
+            navigator.clipboard.readText().then(text => {
+                const row = btn.closest('tr');
+                const input = row && row.querySelector(`input.admin-input[data-field='${field}'][data-mod='${mod}'][data-idx='${idx}']`);
+                if (input) input.value = text;
                 if (Array.isArray(links[mod]) && links[mod][idx]) {
-                    links[mod][idx].href = text;
+                    links[mod][idx][field] = text;
                 }
             });
         }

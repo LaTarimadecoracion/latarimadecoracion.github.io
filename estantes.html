@@ -90,215 +90,63 @@
 		</nav>
 	</div>
 	<script type="module">
-	// Configuración de imágenes por modelo
+	import { renderPivotModule } from './js/modules/pivot.js';
+
+	// Mapeo de imágenes por modelo
 	const IMAGES = {
-		'Estantes Montessori': 'img/estantes/montessori.jpg',
-		'Librero': 'img/estantes/librero.jpg',
-		'Hexagonales': 'img/estantes/hexagonales.jpg',
-		'Triángulos': 'img/estantes/triangulos.jpg',
-		'Cuadrados': 'img/estantes/cuadrados.jpg',
-		'Ménsulas': 'img/estantes/mensulas.jpg',
-		'Estantes': 'img/estantes/estantes.jpg'
+	  'Estantes Montessori': 'img/estantes/montessori.jpg',
+	  'Librero': 'img/estantes/librero.jpg',
+	  'Hexagonales': 'img/estantes/hexagonales.jpg',
+	  'Triángulos': 'img/estantes/triangulos.jpg',
+	  'Cuadrados': 'img/estantes/cuadrados.jpg',
+	  'Ménsulas': 'img/estantes/mensulas.jpg',
+	  'Estantes': 'img/estantes/estantes.jpg'
 	};
-	// Normaliza el modelo para agrupar correctamente
-	 function normalizeText(s){
-	 	return (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-	 }
-	 function getModeloKey(modelo) {
-	 	const m = normalizeText(modelo);
-	 	if (m.includes('montessori')) return 'Estantes Montessori';
-	 	if (m.includes('librero')) return 'Librero';
-	 	if (m.includes('hexagonales')) return 'Hexagonales';
-	 	if (m.includes('triangulos')) return 'Triángulos';
-	 	if (m.includes('cuadrados')) return 'Cuadrados';
-	 	if (m.includes('mensulas')) return 'Ménsulas';
-	 	if (m.includes('estantes')) return 'Estantes';
-	 	return (modelo || 'Otros');
-	 }
-	// Carga los productos del módulo estantes
-	async function getEstantes() {
-		try {
-			const res = await fetch('Links/links.json', { cache: 'no-store' });
-			if (!res.ok) throw new Error('No se pudo cargar links.json');
-			const json = await res.json();
-			if (!json.modules || !json.modules.estantes) throw new Error('No existe el módulo estantes en el JSON');
-			return json.modules.estantes;
-		} catch (e) {
-			console.error('Error cargando productos:', e);
-			return [];
-		}
-	}
-	// Agrupa productos por modelo
-	 function groupByModelo(rows) {
-		const grupos = {};
-		rows.forEach(row => {
-			const key = getModeloKey(row && row.modelo);
-			if (!grupos[key]) grupos[key] = [];
-			grupos[key].push(row);
-		});
-		return grupos;
-	}
-	// Renderiza las cards de productos
-	function renderCards(grupos) {
-		const stack = document.getElementById('product-stack');
-		stack.innerHTML = '';
-		Object.entries(grupos).forEach(([modelo, items]) => {
-			// Agrupar por medida
-			const medidas = {};
-			items.forEach(item => {
-				const medida = item.medida || '';
-				if (!medidas[medida]) medidas[medida] = [];
-				medidas[medida].push(item);
-			});
-			// Detectar todos los tipos de columna presentes en este modelo
-			const tiposColumnasSet = new Set();
-			let soloComprar = true;
-			Object.values(medidas).forEach(productos => {
-				productos.forEach(producto => {
-					if (producto.tipo && producto.tipo !== 'combo' && producto.tipo !== 'Comprar') {
-						tiposColumnasSet.add(producto.tipo);
-						soloComprar = false;
-					}
-				});
-			});
-			// Ordenar tipos de columna por orden lógico
-			const ordenTipos = ['1un','2un','3un','2 un','6 un','12 un'];
-			const tiposColumnas = Array.from(tiposColumnasSet).sort((a,b) => ordenTipos.indexOf(a) - ordenTipos.indexOf(b));
-			// Crear card
-			const card = document.createElement('div');
-			card.className = 'product-card';
 
-			// --- SELECT MÓVIL UNIFICADO ---
-			let mobileSelectHTML = '';
-			let mobileOptions = '';
-			let idx = 0;
-			Object.entries(medidas).forEach(([medida, productos]) => {
-				// Si hay un producto tipo combo, mostrar el botón en la columna 1un
-				const combo = productos.find(p => p.tipo === 'combo');
-				if (combo) {
-					const href = combo.href;
-					const isActive = href && href.trim() && href !== '#';
-					mobileOptions += isActive ? `<option value="${href}">${medida} - Comprar</option>` : `<option value="" disabled>${medida} - Comprar (Próximamente)</option>`;
-					idx++;
-					return;
-				}
-				// Si todos los productos son tipo único (por ejemplo, solo 'Comprar'), mostrar una fila por producto
-				const tiposUnicos = productos.every(p => !tiposColumnas.includes(p.tipo));
-				if (tiposUnicos) {
-					productos.forEach((producto) => {
-						const href = producto.href;
-						const isActive = href && href.trim() && href !== '#';
-						mobileOptions += isActive ? `<option value="${href}">${medida || producto.tipo} - Comprar</option>` : `<option value="" disabled>${medida || producto.tipo} - Comprar (Próximamente)</option>`;
-					});
-					idx++;
-					return;
-				}
-				// Buscar productos por tipo columna
-				const tipos = {};
-				tiposColumnas.forEach(tipo => tipos[tipo] = null);
-				productos.forEach(producto => {
-					if (tiposColumnas.includes(producto.tipo)) tipos[producto.tipo] = producto;
-				});
-				tiposColumnas.forEach(tipo => {
-					const producto = tipos[tipo];
-					if (producto && producto.href && producto.href.trim() && producto.href !== '#') {
-						mobileOptions += `<option value="${producto.href}">${medida} - ${tipo}</option>`;
-					} else {
-						mobileOptions += `<option value="" disabled>${medida} - ${tipo} (Próximamente)</option>`;
-					}
-				});
-				idx++;
-			});
-			mobileSelectHTML = `<div class="mobile-select-row" style="display:none;"><select class="dropbtn" id="select-${modelo.replace(/\s/g,'')}"><option value="" selected disabled>Elegir opción</option>${mobileOptions}</select></div>`;
+	const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+	const groupKeyFn = (row) => {
+	  const m = normalizeText(row?.modelo||'');
+	  if (m.includes('montessori')) return 'Estantes Montessori';
+	  if (m.includes('librero')) return 'Librero';
+	  if (m.includes('hexagonales')) return 'Hexagonales';
+	  if (m.includes('triangulos')) return 'Triángulos';
+	  if (m.includes('cuadrados')) return 'Cuadrados';
+	  if (m.includes('mensulas')) return 'Ménsulas';
+	  if (m.includes('estantes')) return 'Estantes';
+	  return (row?.modelo||'Otros');
+	};
 
-			// --- TABLA DESKTOP ---
-			let tableRows = '';
-			Object.entries(medidas).forEach(([medida, productos], idx) => {
-				// Si hay un producto tipo combo, mostrar el botón en la columna 1un
-				const combo = productos.find(p => p.tipo === 'combo');
-				if (combo) {
-					const href = combo.href;
-					const isActive = href && href.trim() && href !== '#';
-					tableRows += `<tr class="desktop-row"><td>${medida}</td><td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>Comprar</a></td>`;
-					for(let i=1;i<tiposColumnas.length;i++) tableRows += '<td></td>';
-					tableRows += `</tr>`;
-					return;
-				}
-				// Si todos los productos son tipo único (por ejemplo, solo 'Comprar'), mostrar una fila por producto
-				const tiposUnicos = productos.every(p => !tiposColumnas.includes(p.tipo));
-				if (tiposUnicos) {
-					productos.forEach((producto, j) => {
-						const href = producto.href;
-						const isActive = href && href.trim() && href !== '#';
-						const colspan = (tiposColumnas.length > 0) ? tiposColumnas.length : 1;
-						tableRows += `<tr class="desktop-row"><td>${medida || producto.tipo}</td><td colspan="${colspan}"><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td></tr>`;
-					});
-					return;
-				}
-				// Buscar productos por tipo columna
-				const tipos = {};
-				tiposColumnas.forEach(tipo => tipos[tipo] = null);
-				productos.forEach(producto => {
-					if (tiposColumnas.includes(producto.tipo)) tipos[producto.tipo] = producto;
-				});
-				tableRows += `<tr class="desktop-row"><td>${medida}</td>`;
-				tiposColumnas.forEach(tipo => {
-					const producto = tipos[tipo];
-					if (producto) {
-						const href = producto.href;
-						const isActive = href && href.trim() && href !== '#';
-						tableRows += `<td><a class="buy-btn${isActive ? ' primary' : ' loading-link'}" href="${isActive ? href : '#'}"${isActive ? ' target=\"_blank\" rel=\"noopener\"' : ' tabindex=\"-1\"'}>${isActive ? 'Comprar' : ''}</a></td>`;
-					} else {
-						tableRows += `<td><span class="buy-btn loading-link" tabindex="-1"></span></td>`;
-					}
-				});
-				tableRows += '</tr>';
-			});
-			// Encabezados dinámicos o solo botón si todos son 'Comprar'
-			let ths = '<th>Medida</th>';
-			if (soloComprar) {
-				ths += '<th>Comprar</th>';
-			} else {
-				tiposColumnas.forEach(tipo => ths += `<th>${tipo}</th>`);
-			}
- 			card.innerHTML = `
-				<div class="product-image">
-					<img src="${IMAGES[modelo] || 'img/base.png'}" alt="${modelo}" loading="lazy">
-				</div>
-				<div class="product-card-title">${modelo}</div>
-				${mobileSelectHTML}
-				<table class="product-table">
-					<thead><tr>${ths}</tr></thead>
-					<tbody>${tableRows}</tbody>
-				</table>
-			`;
-			// Listeners para select móvil
-			setTimeout(() => {
-				const select = card.querySelector('.mobile-select-row select');
-				if (select) {
-					select.addEventListener('change', function(e) {
-						const url = this.value;
-						if(url) window.open(url, '_blank');
-						this.selectedIndex = 0;
-					});
-				}
-			}, 0);
-			stack.appendChild(card);
-		});
-	}
-	// Inicializa la carga
-	getEstantes().then(rows => {
-		// Mostrar todos los modelos únicos detectados
-		const modelosUnicos = Array.from(new Set(rows.map(r => r.modelo))).sort();
-		console.log('[DEBUG] Modelos únicos detectados:', modelosUnicos);
-		const grupos = groupByModelo(rows);
-		console.log('[DEBUG] Grupos generados:', Object.keys(grupos));
-		Object.keys(grupos).forEach(key => {
-			if (["Hexagonales","Triángulos","Cuadrados","Ménsulas","Estantes"].includes(key)) {
-				console.log(`[DEBUG] Grupo ${key}:`, grupos[key]);
-			}
-		});
-		renderCards(grupos);
+	const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+
+	// Etiquetas amigables para el select móvil
+	const selectLabelMap = {
+	  '1un': '1 un',
+	  '2un': '2 un',
+	  '3un': '3 un',
+	  '2 un': '2 un',
+	  '6 un': '6 un',
+	  '12 un': '12 un',
+	  'combo': 'Comprar',
+	  'Comprar': 'Comprar'
+	};
+
+	// Estilo de botón por tipo
+	const variantForTipo = (t) => {
+	  const n = (t||'').toLowerCase();
+	  if (n === '1un' || n === 'comprar' || n === 'combo') return 'primary';
+	  return 'secondary';
+	};
+
+	renderPivotModule({
+	  moduleId: 'estantes',
+	  containerSelector: '#product-stack',
+	  medidaLabel: 'Medida',
+	  groupKeyFn,
+	  imageForModel,
+	  tiposPriority: ['1un','2un','3un','2 un','6 un','12 un','comprar','combo'],
+	  variantForTipo,
+	  selectLabelMap,
+	  includeMobileSelect: true
 	});
 	</script>
 </body>
