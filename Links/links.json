@@ -2,26 +2,67 @@
   "modules": {
     "regalos": [
       {
-        "modelo": "Links",
-        "href": "https://www.youtube.com/",
-        "recurso": "Probando"
+        "modelo": "Programas que te sirven",
+        "recurso": "Demo 01",
+        "visitar": "",
+        "ver": "",
+        "descargar": ""
       },
       {
-        "modelo": "Programas",
-        "href": "https://www.youtube.com/",
-        "recurso": "Probando 2",
-        "visitar": "https://www.youtube.com/",
-        "descargar": "https://www.youtube.com/"
+        "modelo": "Páginas útiles de internet",
+        "recurso": "Mis links",
+        "visitar": "https://latarimadecoracion.github.io/regalos/index.html",
+        "ver": "",
+        "descargar": ""
       },
       {
-        "modelo": "Links",
-        "href": "https://www.youtube.com/",
-        "recurso": "2"
+        "modelo": "Herramientas para trabajar",
+        "recurso": "Demo 3",
+        "visitar": "",
+        "ver": "",
+        "descargar": ""
       },
       {
-        "modelo": "Programas",
-        "href": "https://www.youtube.com/",
-        "recurso": "3"
+        "modelo": "Ideas y consejos",
+        "recurso": "Demo 4",
+        "visitar": "",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Personas y cuentas que te conviene seguir",
+        "recurso": "Demo 5",
+        "visitar": "",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Regalos y cosas para descargar",
+        "recurso": "Demo 6",
+        "visitar": "",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Páginas útiles de internet",
+        "recurso": "Chat GPT ",
+        "visitar": "https://chatgpt.com/",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Páginas útiles de internet",
+        "recurso": "Qwen (GPT Gratis)",
+        "visitar": "chat.qwen.ai/",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Páginas útiles de internet",
+        "recurso": "Eliminar fondos",
+        "visitar": "https://new.express.adobe.com/tools/remove-background",
+        "ver": "",
+        "descargar": ""
       }
     ],
     "camas": [
