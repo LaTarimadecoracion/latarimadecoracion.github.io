@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos integrados | LA TARIMA</title>
+    <link rel="stylesheet" href="estilos.css?v=20251003">
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <a href="index.html"><h1>LA TARIMA</h1></a>
+            <div class="subtitle">Pagos integrados MercadoPago</div>
+        </header>
+        <h2 class="title">Pagar sin salir de la web</h2>
+        <p>Completa el pago directamente aquí:</p>
+        <div id="mp-button" style="margin:32px 0;"></div>
+        <p style="margin-top:32px; color:#888; font-size:0.98em;">* Este es un ejemplo de integración. Debes reemplazar el <b>preference-id</b> por el tuyo real.<br>El pago se procesa en MercadoPago y recibes confirmación automática.</p>
+    </div>
+    <!-- MercadoPago Checkout Básico -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script>
+      const mp = new MercadoPago('APP_USR-773187908248772-100321-f983f9946266ea55f4346dc30a4755a4-1111656873'); // Reemplaza por tu Public Key
+      mp.checkout({
+        preference: {
+          id: '773187908248772' // Reemplaza por tu preference-id real
+        },
+        render: {
+          container: '#mp-button', // Indica el div donde se mostrará el botón
+          label: 'Pagar con MercadoPago',
+        }
+      });
+    </script>
+</body>
+</html>

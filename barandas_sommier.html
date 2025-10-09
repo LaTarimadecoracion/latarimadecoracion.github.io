@@ -97,11 +97,7 @@
     <script type="module">
       import { renderPivotModule } from './js/modules/pivot.js';
 
-      const moduleId = 'barandas_sommier';
-      const IMAGES = {
-        'Clásica': 'img/barandas_sommier/barandasommierclasica.jpg',
-        'Triple': 'img/barandas_sommier/barandasommiertriple.jpg'
-      };
+            const moduleId = 'barandas_sommier';
 
       const normalizeText = (s) => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
       const groupKeyFn = (row) => {
@@ -110,7 +106,7 @@
         if (norm.includes('triple')) return 'Triple';
         return (row?.modelo || 'Otros');
       };
-      const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+    // Resolución automática de imágenes en pivot.js
       const tiposPriority = ['natural','barnizadas','blancas'];
       const variantForTipo = (tipo) => {
         const t = (tipo||'').toLowerCase();
@@ -122,7 +118,7 @@
         containerSelector: '#product-stack',
         medidaLabel: 'Medida',
         tiposPriority,
-        imageForModel,
+                // imágenes automáticas: usa img/barandas_sommier
         groupKeyFn,
         variantForTipo,
         includeMobileSelect: true

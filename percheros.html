@@ -88,21 +88,9 @@
     <script type="module">
       import { renderPivotModule } from './js/modules/pivot.js';
 
-      const IMAGES = {
-        'Perchero 1': 'img/percheros/perchero1.jpg',
-        'Perchero 2': 'img/percheros/perchero2.jpg',
-        'Perchero 3': 'img/percheros/perchero3.jpg',
-        'Perchero 4': 'img/percheros/perchero4.jpg',
-        'Perchero 5': 'img/percheros/perchero5.jpg',
-        'Perchero 6': 'img/percheros/perchero6.jpg',
-        'Perchero 7': 'img/percheros/perchero7.jpg',
-        'Perchero 8': 'img/percheros/perchero8.jpg',
-        'Perchero 9': 'img/percheros/perchero9.jpg',
-        'Perchero 10': 'img/percheros/perchero10.jpg'
-      };
 
       const normalizeText = (s) => (s||'').toString().toLowerCase();
-      const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+    // Resolución automática de imágenes en pivot.js
       const tiposPriority = ['1un','2un','3un'];
       const selectLabelMap = { '1un':'1 un', '2un':'2 un', '3un':'3 un' };
       const variantForTipo = (t) => (normalizeText(t)==='1un' ? 'primary' : 'secondary');
@@ -111,7 +99,7 @@
         moduleId: 'percheros',
         containerSelector: '#product-stack',
         medidaLabel: 'Medida',
-        imageForModel,
+                // imágenes automáticas: usa img/percheros
         tiposPriority,
         selectLabelMap,
         variantForTipo,

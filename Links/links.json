@@ -65,54 +65,37 @@
         "descargar": ""
       }
     ],
-    "camas": [
-      {
-        "modelo": "Cama Montessori",
-        "tipo": "1 plaza",
-        "href": "https://bio.link/latarima"
-      },
-      {
-        "modelo": "Cama Montessori",
-        "tipo": "2 plazas",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Montessori II",
-        "tipo": "1 plaza",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Montessori II",
-        "tipo": "2 plazas",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Turca",
-        "tipo": "1 plaza",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Turca",
-        "tipo": "2 plazas",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Doble",
-        "tipo": "1 plaza",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Doble",
-        "tipo": "2 plazas",
-        "href": ""
-      }
-    ],
+    "camas": [],
     "podios": [
       {
         "modelo": "Podio premiación (3 módulos)",
         "medida": "Único combo",
         "tipo": "Comprar",
         "href": "https://articulo.mercadolibre.com.ar/MLA-2235353348-podio-de-premiacion-profesional-3-niveles-reforzados-_JM"
+      },
+      {
+        "modelo": "Podios individuales",
+        "medida": "60 x 40 x 40",
+        "tipo": "Comprar",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2351358716-podio-de-premiacion-profesional-60-x-40-x-40-cm-n-1-_JM?has_official_store=false&highlight=false&searchVariation=190710551513&headerTopBrand=false#polycard_client=search-nordic&searchVariation=190710551513&search_layout=grid&position=2&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec"
+      },
+      {
+        "modelo": "Podios individuales",
+        "medida": "60 x 40 x 30",
+        "tipo": "Comprar",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2242326346-podio-de-premiacion-profesional-60-x-40-x-30-cm-n-2-_JM?has_official_store=false&highlight=false&searchVariation=184697351002&headerTopBrand=false#polycard_client=search-nordic&searchVariation=184697351002&search_layout=grid&position=3&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec"
+      },
+      {
+        "modelo": "Podios individuales",
+        "medida": "60 x 40 x 20",
+        "tipo": "Comprar",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2351255318-podio-de-premiacion-profesional-60-x-40-x-20-cm-n-3-_JM"
+      },
+      {
+        "modelo": "Muestra",
+        "medida": "",
+        "tipo": "",
+        "href": ""
       }
     ],
     "percheros": [
@@ -173,96 +156,6 @@
       },
       {
         "modelo": "Perchero 4",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 5",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 5",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 5",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 6",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 6",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 6",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 7",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 7",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 7",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 8",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 8",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 8",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 9",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 9",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 9",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 10",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 10",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 10",
         "tipo": "3un",
         "href": ""
       }
@@ -1113,58 +1006,22 @@
     ],
     "barandas_fijas": [
       {
-        "modelo": "Baranda Fija Montessori",
-        "medida": "60 x 45",
+        "modelo": "Baranda Montessori",
+        "medida": "45 x 60 cm",
         "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1145213600-baranda-para-cama-barral-seguridad-_JM#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=rk_entity_sameseller&reco_client=vip-seller_items-above&reco_item_pos=1&reco_backend_type=low_level&reco_id=739a45fe-ca2b-4cfb-b46c-4844de2b6468&wid=MLA1145213600&sid=recos"
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1145213600-baranda-para-cama-barral-seguridad-_JM"
       },
       {
-        "modelo": "Baranda Fija Montessori",
-        "medida": "60 x 45",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Fija Montessori",
-        "medida": "60 x 45",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Fija Montessori II",
-        "medida": "60 x 45",
+        "modelo": "Baranda Simple",
+        "medida": "35 x 60 cm",
         "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1241768126-baranda-para-cama-montessori-60x45-_JM?searchVariation=180148294133#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=rk_entity_sameseller&reco_client=vip-seller_items-above&reco_item_pos=3&reco_backend_type=low_level&reco_id=739a45fe-ca2b-4cfb-b46c-4844de2b6468"
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1380333706-baranda-de-seguridad-para-cama-infantil-60x35cm-_JM"
       },
       {
-        "modelo": "Baranda Fija Montessori II",
-        "medida": "60 x 45",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Fija Montessori II",
-        "medida": "60 x 45",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Fija Simple",
-        "medida": "60 x 45",
+        "modelo": "Baranda Fija Clasica",
+        "medida": "45 x 60 cm",
         "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1380333706-baranda-de-seguridad-para-cama-infantil-60x35cm-_JM?searchVariation=177359235387#polycard_client=search-nordic&searchVariation=177359235387&search_layout=grid&position=5&type=item&tracking_id=76e1d9d5-f254-4ee5-a1cf-e17f697f9912"
-      },
-      {
-        "modelo": "Baranda Fija Simple",
-        "medida": "60 x 45",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Fija Simple",
-        "medida": "60 x 45",
-        "tipo": "Blanca",
-        "href": ""
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1241768126-baranda-para-cama-montessori-60x45-_JM"
       }
     ],
     "barandas_desmontables": [

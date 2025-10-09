@@ -113,13 +113,6 @@
     <script type="module">
     import { renderPivotModule } from './js/modules/pivot.js';
 
-    const IMAGES = {
-      'Verdulero x3 con Techito': 'img/organizadores/organizador1.jpg',
-      'Verdulero x3': 'img/organizadores/organizador2.jpg',
-      'Verdulero Mediano': 'img/organizadores/organizador3.jpg',
-      'Verdule para Mesada': 'img/organizadores/organizador4.jpg',
-      'Esquinero x3': 'img/organizadores/organizador5.jpg'
-    };
 
     const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     const groupKeyFn = (row) => {
@@ -132,7 +125,7 @@
       return (row?.modelo||'Otros');
     };
 
-    const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+    // Resolución automática de imágenes en pivot.js
 
     const tiposPriority = ['natural','barnizado','tintado'];
     const selectLabelMap = { 'Natural':'Natural', 'Barnizado':'Barnizado', 'Tintado':'Tintado' };
@@ -143,7 +136,7 @@
       containerSelector: '#product-stack',
       medidaLabel: 'Medida',
       groupKeyFn,
-      imageForModel,
+            // imágenes automáticas: usa img/organizadores
       tiposPriority,
       selectLabelMap,
       variantForTipo,

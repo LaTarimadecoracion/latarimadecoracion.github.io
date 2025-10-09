@@ -106,14 +106,8 @@
       import { renderPivotModule } from './js/modules/pivot.js';
 
       const moduleId = 'barandas_desmontables';
-            // Mapear exactamente los nombres de modelo que vienen en links.json
-            const IMAGES = {
-                'Baranda desmontable Clásica': 'img/barandas_desmontables/barandadesmontableclasica.jpg',
-                'Baranda desmontable Montessori': 'img/barandas_desmontables/barandadesmontablemontessori.jpg',
-                'Baranda desmontable Triple': 'img/barandas_desmontables/barandadesmontabletriple.jpg'
-            };
-
-            const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+            const normalizeText = (s) => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+            // Resolución automática de imágenes en pivot.js
       const tiposPriority = ['natural','barnizadas','blancas'];
       const variantForTipo = (tipo) => {
         const t = (tipo||'').toLowerCase();
@@ -125,7 +119,7 @@
         containerSelector: '#product-stack',
         medidaLabel: 'Medida',
         tiposPriority,
-        imageForModel,
+                // imágenes automáticas: usa img/barandas_desmontables
         variantForTipo,
         includeMobileSelect: true
       });

@@ -83,10 +83,34 @@ export async function renderPivotModule(options){
     showMissingCombos = true,   // mostrar placeholders para combos inexistentes
     includeMobileSelect = true, // incluir fila select en móvil
     rowFilter = null,           // (row) => boolean, para filtrar filas antes de agrupar
+    // Personalización del estado vacío
+    emptyStateTitle = 'Próximamente',
+    emptyStateSubtitle = 'Consultanos por WhatsApp. Hacemos envíos a todo el país.',
+    emptyStateWhatsAppNumber = '5491167007723',
+    emptyStateWhatsAppText = null, // si no se pasa, usa `Hola! Consulta por ${moduleId} desde la web`
+    emptyStateCTAButtonText = 'Consultar por WhatsApp'
   } = options || {};
 
   const container = document.querySelector(containerSelector);
   if (!container) return;
+
+  // Fallback global para imágenes: intenta siguientes candidatos antes de caer a base.png
+  if (typeof window !== 'undefined' && !window.__imgFallback){
+    window.__imgFallback = function(imgEl){
+      try{
+        const rest = imgEl.getAttribute('data-candidates') || '';
+        if (!rest){ imgEl.onerror=null; imgEl.src='img/base.png'; return; }
+        const parts = rest.split('||').filter(Boolean);
+        const next = parts.shift();
+        if (next){
+          imgEl.setAttribute('data-candidates', parts.join('||'));
+          imgEl.src = next;
+        } else {
+          imgEl.onerror=null; imgEl.src='img/base.png';
+        }
+      }catch(e){ imgEl.onerror=null; imgEl.src='img/base.png'; }
+    };
+  }
 
   // Aviso si se abre como file://
   if (location.protocol === 'file:'){
@@ -104,7 +128,21 @@ export async function renderPivotModule(options){
     });
   }
   if (!rows.length){
-    container.innerHTML += `<p style="text-align:center;opacity:.7">Sin productos por ahora. Agregá filas en el módulo <code>${moduleId}</code> dentro de ${fetchPath}</p>`;
+    const waText = emptyStateWhatsAppText || `Hola! Consulta por ${moduleId} desde la web`;
+    const waMsg = encodeURIComponent(waText);
+    const waUrl = `https://wa.me/${emptyStateWhatsAppNumber}?text=${waMsg}`;
+      container.innerHTML += `
+      <div class="product-card" style="text-align:center; padding:24px 16px;">
+        <div class="product-image" style="display:flex; justify-content:center;">
+          <img src="img/proximamente.png" alt="Próximamente" loading="lazy" style="max-width:380px;width:100%;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06)" onerror="this.onerror=null;this.src='img/proximamente.jpg'" />
+        </div>
+        <div class="product-card-title" style="margin-top:12px;">${emptyStateTitle}</div>
+        <div style="color:#555;margin-top:6px;">${emptyStateSubtitle}</div>
+          <div style="margin-top:12px;">
+          <a class="btn-visitar" href="${waUrl}" target="_blank" rel="noopener">${emptyStateCTAButtonText}</a>
+          </div>
+      </div>
+    `;
     return;
   }
 
@@ -151,10 +189,50 @@ export async function renderPivotModule(options){
     const card = document.createElement('div');
     card.className = 'product-card';
 
-    const getImg = () => {
-      if (typeof imageForModel === 'function') return imageForModel(modelo);
-      return defaultImageForModel(imageBasePath, modelo);
+    // Genera candidatos de imagen automáticos
+    const buildImageCandidates = () => {
+      const candidates = [];
+      const baseFolder = imageBasePath ? imageBasePath.replace(/\/$/,'') : (moduleId ? `img/${moduleId}` : 'img');
+
+      // 1) Si hay función imageForModel, tomarla como primer candidato
+      if (typeof imageForModel === 'function'){
+        try { const p = imageForModel(modelo); if (p) candidates.push(p); } catch {}
+      }
+
+      // 2) Nombres posibles derivados del modelo
+  const original = (modelo||'').toString();
+  const ascii = original.normalize('NFD').replace(/[\u0300-\u036f]/g,''); // sin acentos, conserva mayúsculas y espacios
+  const asciiTrim = ascii.replace(/\s+/g,' ').trim();
+  const slug = slugify(original); // minusculas y guiones
+  const asciiNoRomanII = asciiTrim.replace(/\bii\b/ig,'').replace(/\s+/g,' ').trim(); // quita 'II'
+  // Variante condensada: sin espacios ni separadores, todo en minúsculas (ej.: 'Deck rectangular' -> 'deckrectangular')
+  const condensedLower = asciiTrim.toLowerCase().replace(/[^a-z0-9]+/g,'');
+  const condensedNoII = asciiNoRomanII.toLowerCase().replace(/[^a-z0-9]+/g,'');
+
+      const nameVariants = uniqueSorted([
+        asciiTrim,
+        asciiNoRomanII !== asciiTrim ? asciiNoRomanII : null,
+        slug,
+        condensedLower,
+        condensedNoII !== condensedLower ? condensedNoII : null
+      ].filter(Boolean));
+
+      const exts = ['jpg','jpeg','png','webp'];
+      nameVariants.forEach(name => {
+        exts.forEach(ext => {
+          // si es slug, va directo; si no, encodeURIComponent preserva espacios como %20
+          const file = name === slug ? `${name}.${ext}` : `${encodeURIComponent(name)}.${ext}`;
+          candidates.push(`${baseFolder}/${file}`);
+        });
+      });
+
+      // Siempre último recurso
+      candidates.push('img/base.png');
+      return uniqueSorted(candidates);
     };
+
+    const imgCandidates = buildImageCandidates();
+    const [firstImg, ...restImgs] = imgCandidates;
 
     const ths = [`<th>${medidaLabel}</th>`].concat(tipos.map(t=>`<th>${t}</th>`)).join('');
 
@@ -199,7 +277,7 @@ export async function renderPivotModule(options){
 
     card.innerHTML = `
       <div class="product-image">
-        <img src="${getImg()}" alt="${modelo}" loading="lazy" onerror="this.onerror=null;this.src='img/base.png'">
+        <img src="${firstImg}" data-candidates="${restImgs.join('||')}" alt="${modelo}" loading="lazy" onerror="window.__imgFallback(this)">
       </div>
       <div class="product-card-title">${modelo}</div>
       <table class="product-table">

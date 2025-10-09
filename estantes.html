@@ -92,16 +92,6 @@
 	<script type="module">
 	import { renderPivotModule } from './js/modules/pivot.js';
 
-	// Mapeo de imágenes por modelo
-	const IMAGES = {
-	  'Estantes Montessori': 'img/estantes/montessori.jpg',
-	  'Librero': 'img/estantes/librero.jpg',
-	  'Hexagonales': 'img/estantes/hexagonales.jpg',
-	  'Triángulos': 'img/estantes/triangulos.jpg',
-	  'Cuadrados': 'img/estantes/cuadrados.jpg',
-	  'Ménsulas': 'img/estantes/mensulas.jpg',
-	  'Estantes': 'img/estantes/estantes.jpg'
-	};
 
 	const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 	const groupKeyFn = (row) => {
@@ -116,7 +106,7 @@
 	  return (row?.modelo||'Otros');
 	};
 
-	const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+	// Resolución automática de imágenes en pivot.js
 
 	// Etiquetas amigables para el select móvil
 	const selectLabelMap = {
@@ -142,7 +132,6 @@
 	  containerSelector: '#product-stack',
 	  medidaLabel: 'Medida',
 	  groupKeyFn,
-	  imageForModel,
 	  tiposPriority: ['1un','2un','3un','2 un','6 un','12 un','comprar','combo'],
 	  variantForTipo,
 	  selectLabelMap,

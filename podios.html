@@ -81,19 +81,17 @@
     <script type="module">
     import { renderPivotModule } from './js/modules/pivot.js';
 
-    const IMAGES = {
-      'Podio premiación (3 módulos)': 'img/steps_cajones/podiopremiacion.jpg',
-      'Podios individuales': 'img/steps_cajones/podiosindividuales.jpg'
-    };
 
-    const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+        const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+        const slugify = s => normalizeText(s).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
     const groupKeyFn = (row) => {
       const m = normalizeText(row?.modelo||'');
       if (m.includes('premiacion')) return 'Podio premiación (3 módulos)';
       if (m.includes('individuales')) return 'Podios individuales';
       return (row?.modelo||'Otros');
     };
-    const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+    // Usaremos resolución automática de imágenes; indicar carpeta específica
+    const imageBasePath = 'img/steps_cajones';
 
     const selectLabelMap = { 'Comprar': 'Comprar' };
     const variantForTipo = (t) => (String(t).toLowerCase()==='comprar' ? 'primary' : 'secondary');
@@ -103,7 +101,7 @@
       containerSelector: '#product-stack',
       medidaLabel: 'Medida',
       groupKeyFn,
-      imageForModel,
+                        imageBasePath,
       tiposOrder: ['Comprar'],
       selectLabelMap,
       variantForTipo,

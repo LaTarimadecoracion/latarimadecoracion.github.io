@@ -96,10 +96,6 @@
       import { renderPivotModule } from './js/modules/pivot.js';
 
       const moduleId = 'barandas_ortopedicas';
-      const IMAGES = {
-        'Baranda Ortopedica': 'img/barandas_ortopedicas/barandaortopedicaclasica.jpg',
-        'Baranda Ortopedica Alta': 'img/barandas_ortopedicas/barandaortopedicaclasica.jpg'
-      };
       const normalizeText = (s) => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
       const groupKeyFn = (row) => {
         const m = normalizeText(row?.modelo);
@@ -107,7 +103,7 @@
         if (m.includes('ortoped')) return 'Baranda Ortopedica';
         return (row?.modelo || 'Otros');
       };
-      const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+  // Resolución automática de imágenes en pivot.js
       const tiposPriority = ['natural','barnizada','blanca'];
       const variantForTipo = (tipo) => ( (tipo||'').toLowerCase() === 'natural' ? 'primary' : 'secondary' );
 
@@ -116,7 +112,7 @@
         containerSelector: '#product-stack',
         medidaLabel: 'Medida',
         tiposPriority,
-        imageForModel,
+        // imágenes automáticas: usa img/barandas_ortopedicas
         groupKeyFn,
         variantForTipo,
         includeMobileSelect: true

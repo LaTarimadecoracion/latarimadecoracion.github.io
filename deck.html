@@ -91,10 +91,6 @@
     <script type="module">
     import { renderPivotModule } from './js/modules/pivot.js';
 
-    const IMAGES = {
-      'Deck cuadrado': 'img/deck/deckcuadrado.jpg',
-      'Deck rectangular': 'img/deck/deckrectangular.jpg'
-    };
 
     const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     const groupKeyFn = (row) => {
@@ -103,19 +99,18 @@
       if (m.includes('rectangular')) return 'Deck rectangular';
       return (row?.modelo||'Otros');
     };
-    const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+    // Resolución automática de imágenes en pivot.js
 
     const selectLabelMap = {
       '1un':'1 un', '2un':'2 un', '3un':'3 un', '6un':'6 un', '12un':'12 un', '24un':'24 un'
     };
     const variantForTipo = (t) => 'primary';
 
-    renderPivotModule({
+        renderPivotModule({
       moduleId: 'deck',
       containerSelector: '#product-stack',
       medidaLabel: 'Medida',
       groupKeyFn,
-      imageForModel,
       // Dejar que el renderer ordene por cantidad automáticamente; opcionalmente podríamos fijar el orden con tiposPriority
       tiposPriority: ['1un','2un','3un','6un','12un','24un'],
       selectLabelMap,

@@ -22,14 +22,14 @@
 	<!-- Open Graph / Twitter -->
 	<meta property="og:title" content="Barandas fijas para cama de madera | LA TARIMA">
 	<meta property="og:description" content="Modelos Simple, Clásica y Montessori. Seguridad y diseño en madera.">
-	<meta property="og:image" content="https://latarimadecoracion.github.io/img/barandas_fijas/barandafijaclasica.jpg">
+	<meta property="og:image" content="https://latarimadecoracion.github.io/img/barandas_fijas/Baranda%20Fija%20Clasica.jpg">
 	<meta property="og:url" content="https://latarimadecoracion.github.io/barandas_fijas.html">
 	<meta property="og:type" content="product.group">
 	<meta property="og:locale" content="es_AR">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Barandas fijas para cama de madera | LA TARIMA">
 	<meta name="twitter:description" content="Simple, Clásica y Montessori en madera. Seguridad infantil y diseño artesanal.">
-	<meta name="twitter:image" content="https://latarimadecoracion.github.io/img/barandas_fijas/barandafijaclasica.jpg">
+	<meta name="twitter:image" content="https://latarimadecoracion.github.io/img/barandas_fijas/Baranda%20Fija%20Clasica.jpg">
 		<script type="application/ld+json">
 {
 	"@context": "https://schema.org",
@@ -52,9 +52,9 @@
 	"category": "Hogar y Muebles > Dormitorio",
 	"url": "https://latarimadecoracion.github.io/barandas_fijas.html",
 	"image": [
-		"https://latarimadecoracion.github.io/img/barandas_fijas/barandafijaclasica.jpg",
-		"https://latarimadecoracion.github.io/img/barandas_fijas/barandassimplefija.jpg",
-		"https://latarimadecoracion.github.io/img/barandas_fijas/barandafijamontessori.jpg"
+		"https://latarimadecoracion.github.io/img/barandas_fijas/Baranda%20Fija%20Clasica.jpg",
+		"https://latarimadecoracion.github.io/img/barandas_fijas/Baranda%20Fija%20Simple.jpg",
+		"https://latarimadecoracion.github.io/img/barandas_fijas/Baranda%20Fija%20Montessori.jpg"
 	],
 	"additionalProperty": [
 		{"@type":"PropertyValue","name":"Material","value":"Madera"},
@@ -97,22 +97,18 @@
 	  import { renderPivotModule } from './js/modules/pivot.js';
 
 	  const moduleId = 'barandas_fijas';
-	  const IMAGES = {
-		'Baranda Fija Montessori': 'img/barandas_fijas/barandafijamontessori.jpg',
-		'Baranda Fija Montessori II': 'img/barandas_fijas/barandafijamontessori.jpg',
-		'Baranda Fija Simple': 'img/barandas_fijas/barandassimplefija.jpg',
-		'Baranda Fija Clásica': 'img/barandas_fijas/barandafijaclasica.jpg'
-	  };
 
 	  const normalizeText = (s) => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-	  const groupKeyFn = (row) => {
-		const m = normalizeText(row?.modelo);
-		if (m.includes('montessori')) return 'Baranda Fija Montessori';
-		if (m.includes('clasica') || m.includes('clásica')) return 'Baranda Fija Clásica';
-		if (m.includes('simple')) return 'Baranda Fija Simple';
-		return (row?.modelo || 'Otros');
-	  };
-	  const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+		const groupKeyFn = (row) => {
+			const m = normalizeText(row?.modelo || '');
+			// Distinguir Montessori II antes que Montessori genérico
+			if (m.includes('montessori ii')) return 'Baranda Fija Montessori II';
+			if (m.includes('montessori')) return 'Baranda Fija Montessori';
+			if (m.includes('clasica') || m.includes('clasica') || m.includes('clásica')) return 'Baranda Fija Clásica';
+			if (m.includes('simple')) return 'Baranda Fija Simple';
+			return (row?.modelo || 'Otros');
+		};
+		// Ya no necesitamos mapeo manual ni imageForModel: pivot.js ahora resuelve automáticamente candidatos de imagen
 	  const tiposPriority = ['natural','barnizada','blanca'];
 	  const variantForTipo = (tipo) => {
 		const t = (tipo||'').toLowerCase();
@@ -124,7 +120,6 @@
 		containerSelector: '#product-stack',
 		medidaLabel: 'Medida',
 		tiposPriority,
-		imageForModel,
 		groupKeyFn,
 		variantForTipo,
 		includeMobileSelect: true

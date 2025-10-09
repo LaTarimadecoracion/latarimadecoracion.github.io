@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoUploader Local</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <h1>VideoUploader Local</h1>
+        <form id="videoForm">
+            <label for="videoFile">Selecciona un video:</label>
+            <input type="file" id="videoFile" accept="video/*" required>
+            <br><br>
+            <label for="title">Título:</label>
+            <input type="text" id="title" required>
+            <br><br>
+            <label for="description">Descripción:</label>
+            <textarea id="description" rows="3"></textarea>
+            <br><br>
+            <button type="button" onclick="uploadToYoutube()">Simular subida a YouTube</button>
+            <button type="button" onclick="uploadToInstagram()">Simular subida a Instagram</button>
+        </form>
+        <div id="result"></div>
+        <hr>
+        <div style="text-align:center; margin-top:20px;">
+            <a href="https://www.youtube.com/upload" target="_blank">
+                <button type="button">Ir a subir video en YouTube</button>
+            </a>
+            <a href="https://www.instagram.com/" target="_blank">
+                <button type="button" style="background:#e1306c;">Ir a subir video en Instagram</button>
+            </a>
+        </div>
+        <hr>
+        <div class="tiktok-list">
+            <h2>Mis videos de TikTok</h2>
+            <form id="tiktokForm" style="margin-bottom:20px;">
+                <label for="tiktokLinks">Pega aquí los enlaces de tus videos (uno por línea):</label><br>
+                <textarea id="tiktokLinks" rows="5" style="width:100%;"></textarea><br>
+                <button type="button" onclick="mostrarTikToks()">Mostrar videos</button>
+            </form>
+            <div id="tiktokVideos"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

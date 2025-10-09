@@ -77,11 +77,6 @@
     <script type="module">
     import { renderPivotModule } from './js/modules/pivot.js';
 
-    const IMAGES = {
-      'Steps / Cajones': 'img/steps_cajones/stepscajones.jpg',
-      'Podio premiación (3 módulos)': 'img/steps_cajones/podiopremiacion.jpg',
-      'Podios individuales': 'img/steps_cajones/podiosindividuales.jpg'
-    };
 
     const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     const groupKeyFn = (row) => {
@@ -92,7 +87,8 @@
       return (row?.modelo||'Otros');
     };
 
-    const imageForModel = (key) => IMAGES[key] || 'img/base.png';
+  // Resolver automático con carpeta compartida
+  const imageBasePath = 'img/steps_cajones';
 
     const selectLabelMap = { 'Comprar': 'Comprar' };
     const variantForTipo = (t) => (String(t).toLowerCase()==='comprar' ? 'primary' : 'secondary');
@@ -102,7 +98,7 @@
       containerSelector: '#product-stack',
       medidaLabel: 'Medida',
       groupKeyFn,
-      imageForModel,
+  imageBasePath,
       tiposOrder: ['Comprar'],
       selectLabelMap,
       variantForTipo,
