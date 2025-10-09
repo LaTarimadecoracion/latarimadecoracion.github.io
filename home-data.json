@@ -1,0 +1,176 @@
+{
+  "configuracion": {
+    "titulo": "LA TARIMA",
+    "subtitulo": "Carpintería Online",
+    "descripcion": "Carpintería online especializada en barandas para cama, estantes, decks, fanales, organizadores, productos infantiles y más. Calidad, seguridad y diseño en cada producto.",
+    "icono_flotante": {
+      "enlace": "regalos/index.html",
+      "texto": "Regalos para seguidores",
+      "imagen": "img/icono-carpintero.png"
+    }
+  },
+  "redes_sociales": [
+    {
+      "nombre": "TikTok",
+      "enlace": "https://www.tiktok.com/@latarimadecoracion",
+      "activo": true
+    },
+    {
+      "nombre": "Instagram", 
+      "enlace": "https://www.instagram.com/latarimadecoracion",
+      "activo": true
+    },
+    {
+      "nombre": "Facebook",
+      "enlace": "https://www.facebook.com/latarimadecoracion", 
+      "activo": true
+    },
+    {
+      "nombre": "YouTube",
+      "enlace": "https://www.youtube.com/@latarimadecoracion",
+      "activo": true
+    },
+    {
+      "nombre": "WhatsApp",
+      "enlace": "https://wa.me/5491167007723",
+      "activo": true
+    }
+  ],
+  "menu_principal": [
+    {
+      "tipo": "dropdown",
+      "titulo": "Barandas para cama",
+      "icono": "arrow",
+      "activo": true,
+      "subitems": [
+        {
+          "titulo": "Barandas desmontables",
+          "enlace": "barandas_desmontables.html",
+          "activo": true
+        },
+        {
+          "titulo": "Barandas para Sommier", 
+          "enlace": "barandas_sommier.html",
+          "activo": true
+        },
+        {
+          "titulo": "Barandas Fijas para cama",
+          "enlace": "barandas_fijas.html",
+          "activo": true
+        },
+        {
+          "titulo": "Barandas Ortopédicas",
+          "enlace": "barandas_ortopedicas.html",
+          "activo": true
+        }
+      ]
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Deck",
+      "enlace": "deck.html",
+      "icono": "flaticon",
+      "activo": true
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Camas",
+      "enlace": "camas.html", 
+      "icono": "flaticon",
+      "activo": true
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Podios",
+      "enlace": "podios.html",
+      "icono": "flaticon", 
+      "activo": true
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Estantes",
+      "enlace": "estantes.html",
+      "icono": "flaticon",
+      "activo": true
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Escaleras",
+      "enlace": "escaleras.html",
+      "icono": "flaticon",
+      "activo": true
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Percheros",
+      "enlace": "percheros.html",
+      "icono": "flaticon",
+      "activo": true
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Infantiles",
+      "enlace": "infantiles.html",
+      "icono": "flaticon",
+      "activo": true
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Organizadores", 
+      "enlace": "organizadores.html",
+      "icono": "flaticon",
+      "activo": true
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Steps / Cajones",
+      "enlace": "steps_cajones.html",
+      "icono": "flaticon",
+      "activo": true
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Otros productos",
+      "enlace": "otros_productos.html",
+      "icono": "flaticon",
+      "activo": true
+    }
+  ],
+  "redes_botones": [
+    {
+      "nombre": "WhatsApp",
+      "titulo": "+54 911 6700-7723",
+      "enlace": "https://api.whatsapp.com/send/?phone=5491167007723&text&type=phone_number&app_absent=0",
+      "color": "#25D366",
+      "activo": true
+    },
+    {
+      "nombre": "TikTok",
+      "titulo": "TikTok", 
+      "enlace": "https://www.tiktok.com/@latarimadecoracion",
+      "color": "#000000",
+      "activo": true
+    },
+    {
+      "nombre": "Instagram",
+      "titulo": "Instagram",
+      "enlace": "https://www.instagram.com/latarimadecoracion",
+      "color": "#E4405F",
+      "activo": true
+    },
+    {
+      "nombre": "Facebook",
+      "titulo": "Facebook",
+      "enlace": "https://www.facebook.com/latarimadecoracion", 
+      "color": "#1877F2",
+      "activo": true
+    },
+    {
+      "nombre": "YouTube",
+      "titulo": "YouTube",
+      "enlace": "https://www.youtube.com/@latarimadecoracion",
+      "color": "#FF0000",
+      "activo": true
+    }
+  ]
+}
