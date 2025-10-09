@@ -70,17 +70,17 @@
 </head>
 <body class="home">
 		<!-- Icono flotante carpintero TikTok -->
-		<a href="regalos/index.html" class="floating-carpenter" title="Regalos para seguidores">
+		<a href="regalos/index.html" class="floating-carpenter" title="Regalos para seguidores" id="floating-icon">
 					<span class="carpenter-icon">
 					<img src="img/icono-carpintero.png" alt="Carpintero" style="width:32px; height:32px; object-fit:contain; border-radius:50%;" />
 					</span>
 		</a>
 		<div class="container">
-			<header class="site-header">
-				<a href="index.html" aria-label="Ir al inicio"><h1>LA TARIMA</h1></a>
-				<a href="index.html" aria-label="Ir al inicio"><div class="subtitle">Carpintería Online</div></a>
+			<header class="site-header" id="site-header">
+				<a href="index.html" aria-label="Ir al inicio"><h1 id="main-title">LA TARIMA</h1></a>
+				<a href="index.html" aria-label="Ir al inicio"><div class="subtitle" id="main-subtitle">Carpintería Online</div></a>
 				<!-- Redes sociales -->
-				<div class="socials">
+				<div class="socials" id="social-links">
 			<!-- TikTok -->
 			<a href="https://www.tiktok.com/@latarimadecoracion" target="_blank" rel="noopener" aria-label="TikTok">
 				<svg viewBox="0 0 24 24" aria-hidden="true">
@@ -115,19 +115,11 @@
 			</a>
 			</div>
 		</header>
-		<!-- Dropdown de Barandas para cama -->
-		<details class="dropdown" id="dd-barandas" aria-label="Barandas para cama">
-			<summary>
-				<button class="main-btn" type="button" aria-expanded="false">
-					<span class="icon-circle">
-						<svg viewBox="0 0 24 24" aria-hidden="true" class="arrow-icon">
-							<path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
-						</svg>
-					</span>
-					<span class="btn-text">Barandas para cama</span>
-					<span class="spacer"></span>
-				</button>
-			</summary>
+		
+		<!-- Contenido dinámico del menú principal -->
+		<div id="main-menu">
+		<!-- Se llena dinámicamente desde home-data.json -->
+		</div>
 			<div class="dropdown-content">
 				<a href="barandas_desmontables.html" class="main-btn" id="btn-baranda" aria-label="Barandas desmontables">
 					<span class="icon-circle">
@@ -238,80 +230,200 @@
 			<span class="btn-text">Otros productos</span>
 			<span class="spacer"></span>
 		</a>
-		<!-- Subtítulo y redes (SOLO inicio) -->
-		<!-- Botones de redes con estilo de productos (WhatsApp primero) -->
+		<!-- Contenido dinámico de botones de redes -->
 		<div class="home-only home-heading">Nuestras redes</div>
-
-		<a href="https://api.whatsapp.com/send/?phone=5491167007723&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="home-only social-link">
-			<button class="main-btn" aria-label="WhatsApp">
-				<span class="icon-circle">
-					<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-22">
-						<path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
-					</svg>
-				</span>
-				<span class="btn-text">+54 911 6700-7723</span>
-				<span class="spacer"></span>
-			</button>
-		</a>
-		<a href="https://www.tiktok.com/@latarimadecoracion" target="_blank" rel="noopener" class="home-only social-link">
-			<button class="main-btn" aria-label="TikTok">
-				<span class="icon-circle">
-					<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-22">
-						<path fill="#000000" d="M16 3c.3 2 1.7 3.6 3.6 3.9.3 0 .4.2.4.4v2.2c0 .3-.2.5-.5.5-1.7 0-3.3-.6-4.5-1.6v6.6c0 3-2.4 5.5-5.4 5.7-3.2.2-5.9-2.4-5.9-5.6 0-3.1 2.5-5.6 5.6-5.6.4 0 .8 0 1.1.1.2 0 .3.2.3.4v2.3c0 .2-.2.4-.4.4-.3-.1-.6-.1-.9-.1-1.6 0-2.9 1.4-2.8 3 .1 1.5 1.4 2.7 3 2.7 1.6 0 2.9-1.3 2.9-2.9V3.5c0-.3.2-.5.5-.5H16z"/>
-					</svg>
-				</span>
-				<span class="btn-text">TikTok</span>
-				<span class="spacer"></span>
-			</button>
-		</a>
-		<a href="https://www.instagram.com/latarimadecoracion" target="_blank" rel="noopener" class="home-only social-link">
-			<button class="main-btn" aria-label="Instagram">
-				<span class="icon-circle">
-					<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-22">
-						<path fill="#E4405F" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3a5 5 0 110 10 5 5 0 010-10zm0 2.2a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zM18.5 6.5a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/>
-					</svg>
-				</span>
-				<span class="btn-text">Instagram</span>
-				<span class="spacer"></span>
-			</button>
-		</a>
-		<a href="https://www.facebook.com/latarimadecoracion" target="_blank" rel="noopener" class="home-only social-link">
-			<button class="main-btn" aria-label="Facebook">
-				<span class="icon-circle">
-					<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-22">
-						<path fill="#1877F2" d="M13 22v-9h3l.5-3H13V8.5c0-.9.3-1.5 1.7-1.5H16V4.3c-.3 0-1.2-.1-2.2-.1-2.2 0-3.8 1.3-3.8 3.9V10H7v3h3v9h3z"/>
-					</svg>
-				</span>
-				<span class="btn-text">Facebook</span>
-				<span class="spacer"></span>
-			</button>
-		</a>
-		<a href="https://www.youtube.com/@latarimadecoracion" target="_blank" rel="noopener" class="home-only social-link">
-			<button class="main-btn" aria-label="YouTube">
-				<span class="icon-circle">
-					<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-22">
-						<path fill="#FF0000" d="M23.5 7.2c-.3-1.2-1.2-2.1-2.4-2.4C19 4.3 12 4.3 12 4.3s-7 0-9.1.5C1.7 5.1.8 6 .5 7.2.1 9.3.1 12 .1 12s0 2.7.4 4.8c.3 1.2 1.2 2.1 2.4 2.4C5 19.7 12 19.7 12 19.7s7 0 9.1-.5c1.2-.3 2.1-1.2 2.4-2.4.4-2.1.4-4.8.4-4.8s0-2.7-.4-4.8zM9.8 15.5V8.5l6 3.5-6 3.5z"/>
-					</svg>
-				</span>
-				<span class="btn-text">YouTube</span>
-				<span class="spacer"></span>
-			</button>
-		</a>
+		<div id="social-buttons">
+		<!-- Se llena dinámicamente desde home-data.json -->
+		</div>
 
 	</div>
 
 </body>
 <script>
-// Maneja el despliegue del dropdown y accesibilidad del botón
-(function(){
-	var dd = document.getElementById('dd-barandas');
-	if (!dd) return;
-	var btn = dd.querySelector('summary > .main-btn');
-	if (!btn) return;
-	function sync(){ btn.setAttribute('aria-expanded', dd.hasAttribute('open') ? 'true' : 'false'); }
-	btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); dd.open = !dd.open; sync(); });
-	dd.addEventListener('toggle', sync);
-	sync();
+// Sistema de carga dinámica desde home-data.json
+(async function() {
+    try {
+        const response = await fetch('home-data.json');
+        if (!response.ok) {
+            console.log('Usando contenido estático (no se encontró home-data.json)');
+            return;
+        }
+        
+        const data = await response.json();
+        
+        // Actualizar configuración general
+        if (data.configuracion) {
+            const titleEl = document.getElementById('main-title');
+            const subtitleEl = document.getElementById('main-subtitle');
+            const floatingIcon = document.getElementById('floating-icon');
+            
+            if (titleEl && data.configuracion.titulo) {
+                titleEl.textContent = data.configuracion.titulo;
+            }
+            if (subtitleEl && data.configuracion.subtitulo) {
+                subtitleEl.textContent = data.configuracion.subtitulo;
+            }
+            if (floatingIcon && data.configuracion.icono_flotante) {
+                floatingIcon.href = data.configuracion.icono_flotante.enlace;
+                floatingIcon.title = data.configuracion.icono_flotante.texto;
+            }
+        }
+        
+        // Actualizar redes sociales del header
+        if (data.redes_sociales) {
+            const socialLinksContainer = document.getElementById('social-links');
+            if (socialLinksContainer) {
+                socialLinksContainer.innerHTML = '';
+                
+                data.redes_sociales.filter(red => red.activo).forEach(red => {
+                    const iconMap = {
+                        'TikTok': 'M16 3c.3 2 1.7 3.6 3.6 3.9.3 0 .4.2.4.4v2.2c0 .3-.2.5-.5.5-1.7 0-3.3-.6-4.5-1.6v6.6c0 3-2.4 5.5-5.4 5.7-3.2.2-5.9-2.4-5.9-5.6 0-3.1 2.5-5.6 5.6-5.6.4 0 .8 0 1.1.1.2 0 .3.2.3.4v2.3c0 .2-.2.4-.4.4-.3-.1-.6-.1-.9-.1-1.6 0-2.9 1.4-2.8 3 .1 1.5 1.4 2.7 3 2.7 1.6 0 2.9-1.3 2.9-2.9V3.5c0-.3.2-.5.5-.5H16z',
+                        'Instagram': 'M7 3h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3a5 5 0 110 10 5 5 0 010-10zm0 2.2a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zM18.5 6.5a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z',
+                        'Facebook': 'M13 22v-9h3l.5-3H13V8.5c0-.9.3-1.5 1.7-1.5H16V4.3c-.3 0-1.2-.1-2.2-.1-2.2 0-3.8 1.3-3.8 3.9V10H7v3h3v9h3z',
+                        'YouTube': 'M23.5 7.2c-.3-1.2-1.2-2.1-2.4-2.4C19 4.3 12 4.3 12 4.3s-7 0-9.1.5C1.7 5.1.8 6 .5 7.2.1 9.3.1 12 .1 12s0 2.7.4 4.8c.3 1.2 1.2 2.1 2.4 2.4C5 19.7 12 19.7 12 19.7s7 0 9.1-.5c1.2-.3 2.1-1.2 2.4-2.4.4-2.1.4-4.8.4-4.8s0-2.7-.4-4.8zM9.8 15.5V8.5l6 3.5-6 3.5z',
+                        'WhatsApp': 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488'
+                    };
+                    
+                    const link = document.createElement('a');
+                    link.href = red.enlace;
+                    link.target = '_blank';
+                    link.rel = 'noopener';
+                    link.setAttribute('aria-label', red.nombre);
+                    
+                    const iconPath = iconMap[red.nombre] || iconMap['Instagram'];
+                    link.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${iconPath}"/></svg>`;
+                    
+                    socialLinksContainer.appendChild(link);
+                });
+            }
+        }
+        
+        // Actualizar menú principal
+        if (data.menu_principal) {
+            const menuContainer = document.getElementById('main-menu');
+            if (menuContainer) {
+                menuContainer.innerHTML = '';
+                
+                data.menu_principal.filter(item => item.activo).forEach(item => {
+                    if (item.tipo === 'dropdown') {
+                        const dropdown = document.createElement('details');
+                        dropdown.className = 'dropdown';
+                        dropdown.setAttribute('aria-label', item.titulo);
+                        
+                        let dropdownContent = `
+                            <summary>
+                                <button class="main-btn" type="button" aria-expanded="false">
+                                    <span class="icon-circle">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true" class="arrow-icon">
+                                            <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="btn-text">${item.titulo}</span>
+                                    <span class="spacer"></span>
+                                </button>
+                            </summary>
+                            <div class="dropdown-content">
+                        `;
+                        
+                        (item.subitems || []).filter(sub => sub.activo).forEach(subitem => {
+                            dropdownContent += `
+                                <a href="${subitem.enlace}" class="main-btn" aria-label="${subitem.titulo}">
+                                    <span class="icon-circle">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true" class="chev-right-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </span>
+                                    <span class="btn-text">${subitem.titulo}</span>
+                                    <span class="spacer"></span>
+                                </a>
+                            `;
+                        });
+                        
+                        dropdownContent += '</div>';
+                        dropdown.innerHTML = dropdownContent;
+                        menuContainer.appendChild(dropdown);
+                        
+                        // Configurar funcionalidad del dropdown
+                        const btn = dropdown.querySelector('summary > .main-btn');
+                        if (btn) {
+                            function sync() { 
+                                btn.setAttribute('aria-expanded', dropdown.hasAttribute('open') ? 'true' : 'false'); 
+                            }
+                            btn.addEventListener('click', function(e) { 
+                                e.preventDefault(); 
+                                e.stopPropagation(); 
+                                dropdown.open = !dropdown.open; 
+                                sync(); 
+                            });
+                            dropdown.addEventListener('toggle', sync);
+                            sync();
+                        }
+                        
+                    } else if (item.tipo === 'enlace') {
+                        const link = document.createElement('a');
+                        link.href = item.enlace;
+                        link.className = 'main-btn';
+                        link.setAttribute('aria-label', item.titulo);
+                        
+                        link.innerHTML = `
+                            <span class="icon-circle">
+                                <img src="https://cdn-icons-png.flaticon.com/512/69/69524.png" alt="${item.titulo}" class="icon-22" />
+                            </span>
+                            <span class="btn-text">${item.titulo}</span>
+                            <span class="spacer"></span>
+                        `;
+                        
+                        menuContainer.appendChild(link);
+                    }
+                });
+            }
+        }
+        
+        // Actualizar botones de redes
+        if (data.redes_botones) {
+            const socialButtonsContainer = document.getElementById('social-buttons');
+            if (socialButtonsContainer) {
+                socialButtonsContainer.innerHTML = '';
+                
+                data.redes_botones.filter(boton => boton.activo).forEach(boton => {
+                    const iconMap = {
+                        'WhatsApp': 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488',
+                        'TikTok': 'M16 3c.3 2 1.7 3.6 3.6 3.9.3 0 .4.2.4.4v2.2c0 .3-.2.5-.5.5-1.7 0-3.3-.6-4.5-1.6v6.6c0 3-2.4 5.5-5.4 5.7-3.2.2-5.9-2.4-5.9-5.6 0-3.1 2.5-5.6 5.6-5.6.4 0 .8 0 1.1.1.2 0 .3.2.3.4v2.3c0 .2-.2.4-.4.4-.3-.1-.6-.1-.9-.1-1.6 0-2.9 1.4-2.8 3 .1 1.5 1.4 2.7 3 2.7 1.6 0 2.9-1.3 2.9-2.9V3.5c0-.3.2-.5.5-.5H16z',
+                        'Instagram': 'M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3a5 5 0 110 10 5 5 0 010-10zm0 2.2a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zM18.5 6.5a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z',
+                        'Facebook': 'M13 22v-9h3l.5-3H13V8.5c0-.9.3-1.5 1.7-1.5H16V4.3c-.3 0-1.2-.1-2.2-.1-2.2 0-3.8 1.3-3.8 3.9V10H7v3h3v9h3z',
+                        'YouTube': 'M23.5 7.2c-.3-1.2-1.2-2.1-2.4-2.4C19 4.3 12 4.3 12 4.3s-7 0-9.1.5C1.7 5.1.8 6 .5 7.2.1 9.3.1 12 .1 12s0 2.7.4 4.8c.3 1.2 1.2 2.1 2.4 2.4C5 19.7 12 19.7 12 19.7s7 0 9.1-.5c1.2-.3 2.1-1.2 2.4-2.4.4-2.1.4-4.8.4-4.8s0-2.7-.4-4.8zM9.8 15.5V8.5l6 3.5-6 3.5z'
+                    };
+                    
+                    const link = document.createElement('a');
+                    link.href = boton.enlace;
+                    link.target = '_blank';
+                    link.rel = 'noopener';
+                    link.className = 'home-only social-link';
+                    
+                    const iconPath = iconMap[boton.nombre] || iconMap['Instagram'];
+                    link.innerHTML = `
+                        <button class="main-btn" aria-label="${boton.nombre}">
+                            <span class="icon-circle">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-22">
+                                    <path fill="${boton.color || '#3498db'}" d="${iconPath}"/>
+                                </svg>
+                            </span>
+                            <span class="btn-text">${boton.titulo}</span>
+                            <span class="spacer"></span>
+                        </button>
+                    `;
+                    
+                    socialButtonsContainer.appendChild(link);
+                });
+            }
+        }
+        
+        console.log('✅ Contenido cargado dinámicamente desde home-data.json');
+        
+    } catch (error) {
+        console.error('Error cargando configuración dinámica:', error);
+        console.log('Usando contenido estático como fallback');
+    }
 })();
 </script>
 </html>
