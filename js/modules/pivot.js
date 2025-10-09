@@ -146,6 +146,74 @@ export async function renderPivotModule(options){
     return;
   }
 
+  // Función para ordenar medidas de mayor a menor
+  function parseMedidaValue(medida) {
+    if (!medida) return 0;
+    const str = medida.toString().toLowerCase();
+    
+    // Para medidas como "2 plazas", "1 plaza"
+    if (str.includes('plaza')) {
+      const num = str.match(/(\d+)/);
+      return num ? parseInt(num[1]) * 1000 : 0; // Multiplicar para que tenga prioridad
+    }
+    
+    // Para medidas como "90x190", "120x200"
+    const dimensiones = str.match(/(\d+)\s*x\s*(\d+)/);
+    if (dimensiones) {
+      const ancho = parseInt(dimensiones[1]);
+      const largo = parseInt(dimensiones[2]);
+      return ancho * largo; // Área total
+    }
+    
+    // Para medidas simples como "Grande", "Mediano", "Pequeño"
+    if (str.includes('grande') || str.includes('xl')) return 3;
+    if (str.includes('mediano') || str.includes('medium')) return 2;
+    if (str.includes('pequeño') || str.includes('small')) return 1;
+    
+    // Para números simples
+    const num = str.match(/(\d+)/);
+    return num ? parseInt(num[1]) : 0;
+  }
+
+  // Función para obtener la prioridad del tipo
+  function getTipoPriority(tipo) {
+    if (!tipo) return 999;
+    const tipoLower = tipo.toLowerCase();
+    
+    // Primero: Natural / Único
+    if (tipoLower.includes('natural') || tipoLower.includes('único') || tipoLower.includes('unico')) return 1;
+    
+    // Segundo: Barnizada
+    if (tipoLower.includes('barniz') || tipoLower.includes('barnizada')) return 2;
+    
+    // Tercero: Blancas / Pintadas / Tintes
+    if (tipoLower.includes('blanca') || tipoLower.includes('pintada') || tipoLower.includes('tinte') || 
+        tipoLower.includes('blanco') || tipoLower.includes('pintado') || tipoLower.includes('color')) return 3;
+    
+    // Otros tipos van al final por orden alfabético
+    return 10;
+  }
+
+  // Primero ordenar todas las filas por Modelo > Medida (mayor a menor) > Tipo (por prioridad específica)
+  rows.sort((a, b) => {
+    const modeloA = (a.modelo || '').toLowerCase();
+    const modeloB = (b.modelo || '').toLowerCase();
+    if (modeloA !== modeloB) return modeloA.localeCompare(modeloB);
+    
+    const medidaValueA = parseMedidaValue(a.medida);
+    const medidaValueB = parseMedidaValue(b.medida);
+    if (medidaValueA !== medidaValueB) return medidaValueB - medidaValueA; // Mayor a menor
+    
+    const prioridadA = getTipoPriority(a.tipo);
+    const prioridadB = getTipoPriority(b.tipo);
+    if (prioridadA !== prioridadB) return prioridadA - prioridadB;
+    
+    // Si tienen la misma prioridad, ordenar alfabéticamente
+    const tipoA = (a.tipo || '').toLowerCase();
+    const tipoB = (b.tipo || '').toLowerCase();
+    return tipoA.localeCompare(tipoB);
+  });
+
   // Agrupar por modelo (clave configurable)
   const grupos = {};
   rows.forEach(r => {
@@ -158,9 +226,8 @@ export async function renderPivotModule(options){
   modelos.forEach((modelo, idxModel) => {
     const items = grupos[modelo];
 
-    // Medidas
-    const medidas = uniqueSorted(items.map(i => (i.medida && i.medida.trim()) ? i.medida : 'Único'))
-      .sort((a,b)=>{ const [aw,ah]=parseMedidaToTuple(a); const [bw,bh]=parseMedidaToTuple(b); if (aw!==bw) return aw-bw; if (ah!==bh) return ah-bh; return String(a).localeCompare(String(b)); });
+    // Medidas ordenadas de mayor a menor (ya están ordenadas en items gracias al sort previo)
+    const medidas = uniqueSorted(items.map(i => (i.medida && i.medida.trim()) ? i.medida : 'Único'));
 
     // Tipos
     let tipos = [];

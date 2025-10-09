@@ -69,181 +69,32 @@
 	</div>
 
 	<script type="module">
-	const moduleId = 'otros_productos';
+	import { renderPivotModule } from './js/modules/pivot.js';
 
-	function normalizeText(s){
-		return (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-	}
-	function slugify(s){
-		return normalizeText(s).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-	}
-	function parseMedidaToTuple(medida){
-		if (typeof medida !== 'string' || !medida.trim()) return [Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
-		const m2 = medida.match(/(\d+)\s*x\s*(\d+)/i);
-		if (m2) return [parseInt(m2[1],10), parseInt(m2[2],10)];
-		const m1 = medida.match(/(\d+)/); // soporta "10", "20", etc.
-		if (m1) return [parseInt(m1[1],10), 0];
-		return [Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
-	}
-	function uniqueSorted(arr){
-		return Array.from(new Set(arr));
-	}
-	function parseCantidadTipo(t){
-		if (typeof t !== 'string') return null;
-		// Acepta "1un", "1 un" y también solo números "1"
-		const m = t.match(/^(\d+)(?:\s*un)?$/i);
-		return m ? parseInt(m[1],10) : null;
-	}
-	function orderTipos(tipos){
-		// Si todos son cantidades, ordenar por número; si no, prioridad de acabados y luego alfabético
-		const allCant = tipos.length && tipos.every(t => parseCantidadTipo(t) !== null);
-		if (allCant) return tipos.sort((a,b)=>parseCantidadTipo(a)-parseCantidadTipo(b));
-		const prio = ['natural','barnizado','barnizada','blanco','blanca','tintes'];
-		return tipos.sort((a,b)=>{
-			const na = normalizeText(a); const nb = normalizeText(b);
-			const ia = prio.indexOf(na); const ib = prio.indexOf(nb);
-			if (ia !== -1 || ib !== -1){
-				if (ia === -1) return 1; if (ib === -1) return -1; return ia - ib;
-			}
-			return a.localeCompare(b);
-		});
-	}
+	const normalizeText = s => (s||'').toString().toLowerCase();
+	const groupKeyFn = (row) => {
+		const m = normalizeText(row?.modelo||'');
+		return (row?.modelo||'Otros');
+	};
+	
+	const selectLabelMap = {
+		'1un':'1 un', '2un':'2 un', '3un':'3 un', '6un':'6 un', '12un':'12 un'
+	};
+	const variantForTipo = (t) => 'primary';
+	const imageForModel = (modelo) => `img/otros_productos/${normalizeText(modelo).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}.jpg`;
 
-	async function getModuleRows(){
-		try{
-			const res = await fetch('Links/links.json', { cache: 'no-store' });
-			if(!res.ok) return [];
-			const json = await res.json();
-			const mod = json?.modules?.[moduleId];
-			return Array.isArray(mod) ? mod : [];
-		}catch(e){
-			console.error('Error cargando links.json', e);
-			return [];
-		}
-	}
-
-	function groupByModelo(rows){
-		const map = {};
-		rows.forEach(r=>{
-			const key = (r?.modelo||'Otros').toString();
-			(map[key] ||= []).push(r);
-		});
-		return map;
-	}
-
-		function renderProductoCard(parent, modelo, items){
-		const imgSrc = `img/otros_productos/${slugify(modelo)}.jpg`;
-		// Filas = medidas, Columnas = tipos
-			const medidas = uniqueSorted(items.map(i => (i.medida && i.medida.trim()) ? i.medida : 'Único'))
-			.sort((a,b)=>{ const [aw,ah]=parseMedidaToTuple(a); const [bw,bh]=parseMedidaToTuple(b); if (aw!==bw) return aw-bw; if (ah!==bh) return ah-bh; return String(a).localeCompare(String(b)); });
-			// Solo considerar tipos reales; ignorar tipos vacíos para no crear una columna extra
-			const tiposRaw = uniqueSorted(items.map(i => i.tipo && i.tipo.trim()).filter(Boolean));
-		const tipos = orderTipos(tiposRaw);
-		// mapa medida→tipo→href (preferir href no vacío)
-			const mapHref = new Map();
-			items.forEach(i => {
-				const med = (i.medida && i.medida.trim()) ? i.medida : 'Único';
-				const tipo = (i.tipo && i.tipo.trim()) ? i.tipo : null;
-				if (!tipo) return; // omitir items sin tipo para no generar columna vacía
-				const href = i.href || '';
-				const key = med + '||' + tipo;
-				const exists = mapHref.get(key);
-				if (!exists || (!exists.href && href)) {
-					mapHref.set(key, { href, present: true });
-				}
-			});
-
-		const card = document.createElement('div');
-		card.className = 'product-card';
-		card.innerHTML = `
-			<div class="product-image">
-				<img src="${imgSrc}" alt="${modelo}" loading="lazy" onerror="this.onerror=null;this.src='img/base.png'">
-			</div>
-			<div class="product-card-title">${modelo}</div>
-				<table class="product-table">
-					<thead>
-						<tr>
-							<th>Medida</th>
-							${tipos.map(t => `<th>${t}</th>`).join('')}
-						</tr>
-					</thead>
-					<tbody>
-						${medidas.map((m, idx) => {
-											const selectId = `select-${slugify(modelo)}-${idx}`;
-											// Fila de escritorio con botones
-											const desktopCells = tipos.map(t => {
-												const entry = mapHref.get(m + '||' + t);
-												const href = entry && entry.href ? entry.href : '';
-												const btn = (href && href.trim() && href !== '#')
-													? `<a class=\"buy-btn primary\" href=\"${href}\" target=\"_blank\" rel=\"noopener\">Comprar</a>`
-													: `<span class=\"buy-btn loading-link\" tabindex=\"-1\"></span>`;
-												return `<td data-label=\"${t}\">${btn}</td>`;
-											}).join('');
-											const desktopRow = `<tr class=\"desktop-row\"><td>${m}</td>${desktopCells}</tr>`;
-
-											// Fila para móvil con select
-											const opciones = tipos.map(t => {
-												const entry = mapHref.get(m + '||' + t);
-												const href = entry && entry.href ? entry.href : '';
-												if (href && href.trim() && href !== '#') {
-													return `<option value=\"${href}\">${t}</option>`;
-												}
-												return `<option value=\"\" disabled>${t} (Próximamente)</option>`;
-											}).join('');
-											const mobileRow = `
-												<tr class=\"mobile-select-row\">
-													<td colspan=\"${tipos.length + 1}\" style=\"text-align:center;\">
-														<div style=\"font-weight:600;font-size:1.08em;margin-bottom:8px;\">${m}</div>
-														<select id=\"${selectId}\" class=\"dropbtn\">
-															<option value=\"\" selected disabled>Elegir opción</option>
-															${opciones}
-														</select>
-													</td>
-												</tr>
-											`;
-
-											return desktopRow + mobileRow;
-										}).join('')}
-					</tbody>
-				</table>
-		`;
-		parent.appendChild(card);
-
-		// Agregar listeners a los selects móviles de este card
-		setTimeout(() => {
-			const selects = card.querySelectorAll('.mobile-select-row select');
-			selects.forEach(sel => {
-				sel.addEventListener('change', function() {
-					const url = this.value;
-					if (url) window.open(url, '_blank');
-					this.selectedIndex = 0;
-				});
-			});
-		}, 0);
-	}
-
-	(async () => {
-		const stackEl = document.getElementById('product-stack');
-		// Aviso si se abre como file://
-		if (location.protocol === 'file:') {
-			stackEl.innerHTML = `
-				<div style="background:#fff3cd;border:1px solid #ffeeba;color:#856404;padding:10px 12px;border-radius:8px;margin-bottom:10px;">
-					Para ver los productos cargados en <code>Links/links.json</code>, abrí el sitio con un servidor local.
-					Desde VS Code podés usar la tarea "Iniciar servidor local HTTP" y entrar a 
-					<b>http://localhost:8000/otros_productos.html</b>.
-				</div>
-			`;
-		}
-		const rows = await getModuleRows();
-		if (!rows.length) {
-			stackEl.innerHTML += `<p style=\"text-align:center;opacity:.7\">Sin productos por ahora. Agregá filas en el módulo <code>${moduleId}</code> dentro de Links/links.json</p>`;
-			return;
-		}
-		const grupos = groupByModelo(rows);
-		const modelos = Object.keys(grupos).sort((a,b)=>a.localeCompare(b));
-		modelos.forEach(modelo => renderProductoCard(stackEl, modelo, grupos[modelo]));
-	})();
+	renderPivotModule({
+		moduleId: 'otros_productos',
+		containerSelector: '#product-stack',
+		medidaLabel: 'Medida',
+		groupKeyFn,
+		imageForModel,
+		selectLabelMap,
+		variantForTipo,
+		includeMobileSelect: true
+	});
 	</script>
+	<script src="responsive-tables.js?v=20251001"></script>
 </body>
 </html>
 

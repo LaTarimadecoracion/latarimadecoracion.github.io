@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Envíos | LA TARIMA</title>
+    <link rel="stylesheet" href="../estilos.css">
+    <link rel="icon" href="../img/ico.png" type="image/png">
+    <style>
+        .editor-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .form-group textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+        
+        .seccion-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px #0001;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid transparent;
+        }
+        
+        .seccion-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .seccion-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+        }
+        
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+        
+        .btn-success {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .btn-success:hover {
+            background: #219a52;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+        
+        .item-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+        
+        .item-row input {
+            flex: 1;
+        }
+        
+        .item-row .btn-danger {
+            flex-shrink: 0;
+            height: 38px;
+        }
+        
+        .boton-config {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .actions {
+            position: sticky;
+            bottom: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .preview-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .preview-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .json-preview {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .status-message {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body class="barandas">
+    <div class="container">
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+            <h1 style="cursor:pointer;">LA TARIMA</h1>
+        </a>
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+            <div class="subtitle" style="cursor:pointer;">Editor de Envíos</div>
+        </a>
+
+        <div class="editor-container">
+            <div id="status-message"></div>
+            
+            <!-- Título Principal -->
+            <div class="seccion-card">
+                <div class="form-group">
+                    <label for="titulo-principal">Título Principal:</label>
+                    <input type="text" id="titulo-principal" placeholder="📦 Información de Envíos">
+                </div>
+            </div>
+
+            <!-- Secciones -->
+            <div id="secciones-container">
+                <!-- Las secciones se cargan dinámicamente -->
+            </div>
+
+            <!-- Botón para agregar sección -->
+            <div class="seccion-card" style="text-align: center;">
+                <button class="btn-success" onclick="agregarSeccion()">+ Agregar Nueva Sección</button>
+            </div>
+
+            <!-- Vista previa JSON -->
+            <div class="preview-container">
+                <div class="preview-title">Vista Previa JSON:</div>
+                <div class="json-preview" id="json-preview"></div>
+            </div>
+
+            <!-- Acciones -->
+            <div class="actions">
+                <button class="btn-primary" onclick="actualizarPreview()">🔄 Actualizar Vista Previa</button>
+                <button class="btn-success" onclick="guardarJSON()">💾 Guardar Cambios</button>
+                <button class="btn-primary" onclick="cargarJSON()">📂 Recargar desde Archivo</button>
+            </div>
+        </div>
+
+        <nav class="split-btn" aria-label="Acciones de navegación">
+            <a href="index.html" title="Ver página de envíos">VER ENVÍOS</a>
+            <a href="../index.html" title="Volver al inicio">INICIO</a>
+        </nav>
+    </div>
+
+    <script>
+        let datosEnvios = {
+            titulo: "📦 Información de Envíos",
+            secciones: []
+        };
+
+        // Cargar datos al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarJSON();
+        });
+
+        async function cargarJSON() {
+            try {
+                const response = await fetch('envios-data.json');
+                if (response.ok) {
+                    datosEnvios = await response.json();
+                    mostrarDatos();
+                    actualizarPreview();
+                    mostrarMensaje('Datos cargados correctamente', 'success');
+                } else {
+                    mostrarMensaje('No se pudo cargar el archivo JSON', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                mostrarMensaje('Error al cargar el archivo JSON: ' + error.message, 'error');
+            }
+        }
+
+        function mostrarDatos() {
+            // Cargar título principal
+            document.getElementById('titulo-principal').value = datosEnvios.titulo || '';
+
+            // Cargar secciones
+            const container = document.getElementById('secciones-container');
+            container.innerHTML = '';
+
+            datosEnvios.secciones.forEach((seccion, index) => {
+                crearSeccionHTML(seccion, index);
+            });
+        }
+
+        function crearSeccionHTML(seccion, index) {
+            const container = document.getElementById('secciones-container');
+            
+            const seccionDiv = document.createElement('div');
+            seccionDiv.className = 'seccion-card';
+            seccionDiv.setAttribute('data-index', index);
+
+            seccionDiv.innerHTML = `
+                <div class="seccion-header">
+                    <h3 class="seccion-title">Sección ${index + 1}</h3>
+                    <button class="btn-danger" onclick="eliminarSeccion(${index})">🗑️ Eliminar</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Título de la Sección:</label>
+                    <input type="text" value="${seccion.titulo || ''}" onchange="actualizarSeccionTitulo(${index}, this.value)">
+                </div>
+
+                <div class="form-group">
+                    <label>Imagen (opcional):</label>
+                    <input type="text" value="${seccion.imagen || ''}" placeholder="img/nombre_seccion" onchange="actualizarSeccionImagen(${index}, this.value)">
+                    <small style="color: #666; font-size: 12px;">
+                        <strong>Opciones:</strong><br>
+                        • Con extensión: <code>img/metodos.jpg</code>, <code>img/metodos.png</code><br>
+                        • Sin extensión: <code>img/metodos</code> (detecta automáticamente: .jpg, .png, .webp, .gif, .svg)<br>
+                        • Extensiones soportadas: JPG, JPEG, PNG, WebP, GIF, SVG
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label>Items:</label>
+                    <div id="items-${index}">
+                        ${seccion.items.map((item, itemIndex) => `
+                            <div class="item-row">
+                                <input type="text" placeholder="Título (opcional)" value="${item.titulo || ''}" onchange="actualizarItem(${index}, ${itemIndex}, 'titulo', this.value)">
+                                <input type="text" placeholder="Descripción" value="${item.descripcion || ''}" onchange="actualizarItem(${index}, ${itemIndex}, 'descripcion', this.value)">
+                                <button class="btn-danger" onclick="eliminarItem(${index}, ${itemIndex})">🗑️</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="btn-success" onclick="agregarItem(${index})" style="margin-top: 10px;">+ Agregar Item</button>
+                </div>
+
+                ${seccion.boton ? `
+                    <div class="boton-config">
+                        <label>Botón (opcional):</label>
+                        <div class="item-row">
+                            <input type="text" placeholder="Texto del botón" value="${seccion.boton.texto || ''}" onchange="actualizarBoton(${index}, 'texto', this.value)">
+                            <input type="text" placeholder="URL del botón" value="${seccion.boton.url || ''}" onchange="actualizarBoton(${index}, 'url', this.value)">
+                            <button class="btn-danger" onclick="eliminarBoton(${index})">🗑️</button>
+                        </div>
+                    </div>
+                ` : `
+                    <button class="btn-primary" onclick="agregarBoton(${index})" style="margin-top: 10px;">+ Agregar Botón</button>
+                `}
+            `;
+
+            container.appendChild(seccionDiv);
+        }
+
+        function agregarSeccion() {
+            const nuevaSeccion = {
+                id: "seccion" + Date.now(),
+                titulo: "🆕 Nueva Sección",
+                items: [
+                    { titulo: "", descripcion: "Nueva descripción" }
+                ]
+            };
+            
+            datosEnvios.secciones.push(nuevaSeccion);
+            mostrarDatos();
+            actualizarPreview();
+        }
+
+        function eliminarSeccion(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar esta sección?')) {
+                datosEnvios.secciones.splice(index, 1);
+                mostrarDatos();
+                actualizarPreview();
+            }
+        }
+
+        function actualizarSeccionTitulo(index, valor) {
+            datosEnvios.secciones[index].titulo = valor;
+            actualizarPreview();
+        }
+
+        function actualizarSeccionImagen(index, valor) {
+            if (valor.trim() === '') {
+                delete datosEnvios.secciones[index].imagen;
+            } else {
+                datosEnvios.secciones[index].imagen = valor;
+            }
+            actualizarPreview();
+        }
+
+        function agregarItem(seccionIndex) {
+            datosEnvios.secciones[seccionIndex].items.push({ titulo: "", descripcion: "" });
+            mostrarDatos();
+            actualizarPreview();
+        }
+
+        function eliminarItem(seccionIndex, itemIndex) {
+            datosEnvios.secciones[seccionIndex].items.splice(itemIndex, 1);
+            mostrarDatos();
+            actualizarPreview();
+        }
+
+        function actualizarItem(seccionIndex, itemIndex, campo, valor) {
+            datosEnvios.secciones[seccionIndex].items[itemIndex][campo] = valor;
+            actualizarPreview();
+        }
+
+        function agregarBoton(seccionIndex) {
+            datosEnvios.secciones[seccionIndex].boton = { texto: "Nuevo Botón", url: "#" };
+            mostrarDatos();
+            actualizarPreview();
+        }
+
+        function eliminarBoton(seccionIndex) {
+            delete datosEnvios.secciones[seccionIndex].boton;
+            mostrarDatos();
+            actualizarPreview();
+        }
+
+        function actualizarBoton(seccionIndex, campo, valor) {
+            datosEnvios.secciones[seccionIndex].boton[campo] = valor;
+            actualizarPreview();
+        }
+
+        function actualizarPreview() {
+            // Actualizar título principal
+            datosEnvios.titulo = document.getElementById('titulo-principal').value;
+            
+            // Mostrar JSON
+            document.getElementById('json-preview').textContent = JSON.stringify(datosEnvios, null, 2);
+        }
+
+        async function guardarJSON() {
+            try {
+                // Actualizar datos antes de guardar
+                actualizarPreview();
+                
+                // Crear blob con el JSON
+                const jsonString = JSON.stringify(datosEnvios, null, 2);
+                const blob = new Blob([jsonString], { type: 'application/json' });
+                
+                // Crear enlace de descarga
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'envios-data.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                mostrarMensaje('JSON descargado. Reemplaza el archivo envios-data.json en tu servidor.', 'success');
+                
+            } catch (error) {
+                console.error('Error:', error);
+                mostrarMensaje('Error al generar el archivo JSON: ' + error.message, 'error');
+            }
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.innerHTML = `<div class="status-message status-${tipo}">${mensaje}</div>`;
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                statusDiv.innerHTML = '';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

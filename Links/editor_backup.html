@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Links | LA TARIMA</title>
+    <link rel="stylesheet" href="../estilos.css">
+    <link rel="stylesheet" href="editor.css">
+    <link rel="icon" href="../img/ico.png" type="image/png">
+    <style>
+        /* Reset y configuración base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Contenedor principal optimizado */
+        .editor-container {
+            max-width: 700px;
+            margin: 10px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        /* Header con gradiente animado */
+        .editor-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .editor-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .editor-header h1 {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .editor-header p {
+            font-size: 0.9em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Área de contenido con fondo sutil */
+        .content-area {
+            padding: 20px;
+            background: linear-gradient(135deg, #fafbfc 0%, #f8f9fa 100%);
+        }
+
+        /* Estadísticas compactas */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 15px 10px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(52,152,219,0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(52,152,219,0.4);
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            opacity: 0.95;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Búsqueda compacta */
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 14px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 4px rgba(0,123,255,0.15), 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Tarjetas de módulo compactas */
+        .modulo-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .modulo-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+        }
+
+        .modulo-header {
+            background: linear-gradient(135deg, #495057 0%, #6c757d 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .modulo-header.regalos {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .modulo-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Headers de productos compactos */
+        .producto-headers {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 12px 15px;
+            display: grid;
+            grid-template-columns: 2fr 1.2fr 1.2fr 1.8fr auto;
+            gap: 10px;
+            font-weight: 700;
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-size: 11px;
+        }
+
+        .producto-headers.regalos-headers {
+            grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr auto;
+        }
+
+        /* Filas de productos compactas */
+        .producto-row {
+            padding: 12px 15px;
+            display: grid;
+            grid-template-columns: 2fr 1.2fr 1.2fr 1.8fr auto;
+            gap: 10px;
+            align-items: center;
+            border-bottom: 1px solid #f1f3f4;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .producto-row.regalos-row {
+            grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr auto;
+        }
+
+        .producto-row:hover {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            transform: translateX(5px);
+        }
+
+        .producto-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Inputs compactos */
+        .producto-row input {
+            padding: 8px 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            background: white;
+            margin: 0;
+        }
+
+        .producto-row input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 4px rgba(0,123,255,0.15);
+            transform: scale(1.02);
+        }
+
+        .producto-row input[type="url"]:not(:placeholder-shown) {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            border-color: #28a745;
+        }
+
+        /* Botones compactos */
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 12px;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(40,167,69,0.4);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+            color: #212529;
+            box-shadow: 0 4px 15px rgba(255,193,7,0.3);
+        }
+
+        .btn-warning:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,193,7,0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(220,53,69,0.3);
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(220,53,69,0.4);
+        }
+
+        /* Formularios mejorados */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #495057;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: white;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 4px rgba(0,123,255,0.15);
+            transform: translateY(-1px);
+        }
+
+        /* Mensajes de estado mejorados */
+        .status-message {
+            padding: 18px 24px;
+            margin: 15px 0;
+            border-radius: 12px;
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .status-success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+        }
+
+        .status-error {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+        }
+
+        .status-info {
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            color: #0c5460;
+        }
+
+        /* Acciones sticky compactas */
+        .actions {
+            position: sticky;
+            bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+            text-align: center;
+            margin-top: 25px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Preview mejorado */
+        .preview-container {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Modal mejorado */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 3% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes modalSlideIn {
+            from { 
+                transform: translateY(-50px) scale(0.95); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateY(0) scale(1); 
+                opacity: 1; 
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            margin: 0;
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+
+        .close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: 60vh;
+            overflow-y: auto;
+            background: #fafbfc;
+        }
+
+        /* Variantes mejoradas */
+        .variante-preset {
+            display: flex;
+            gap: 12px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .preset-btn {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .preset-btn:hover {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .preset-btn.selected {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border-color: #2980b9;
+        }
+
+        .variantes-seleccionadas {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            min-height: 50px;
+        }
+
+        .variante-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            margin: 3px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .variante-tag .remove {
+            cursor: pointer;
+            margin-left: 8px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .variante-tag .remove:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Utilidades */
+        .hidden {
+            display: none;
+        }
+
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .producto-headers,
+            .producto-row {
+                grid-template-columns: 1.5fr 1fr 1fr 1.2fr auto;
+                gap: 8px;
+            }
+            
+            .producto-headers.regalos-headers,
+            .producto-row.regalos-row {
+                grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr 0.8fr auto;
+            }
+            
+            .producto-row input {
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+
+            .editor-container {
+                margin: 5px;
+                border-radius: 12px;
+            }
+
+            .editor-header {
+                padding: 20px 15px;
+            }
+
+            .editor-header h1 {
+                font-size: 1.5em;
+            }
+
+            .editor-header p {
+                font-size: 0.8em;
+            }
+
+            .content-area {
+                padding: 15px;
+            }
+
+            .producto-headers,
+            .producto-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 12px;
+            }
+
+            .producto-headers.regalos-headers,
+            .producto-row.regalos-row {
+                grid-template-columns: 1fr;
+            }
+
+            .producto-headers div {
+                background: #e9ecef;
+                padding: 6px 10px;
+                border-radius: 6px;
+                text-align: center;
+                margin-bottom: 3px;
+                font-size: 10px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 12px 8px;
+            }
+
+            .stat-number {
+                font-size: 1.5em;
+            }
+
+            .stat-label {
+                font-size: 0.7em;
+            }
+
+            .actions {
+                flex-direction: column;
+                padding: 12px;
+                gap: 8px;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 10px;
+                font-size: 11px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+                border-radius: 12px;
+            }
+
+            .modal-body {
+                padding: 15px;
+            }
+
+            .search-box {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <!-- Header mejorado -->
+        <div class="editor-header">
+            <h1>🔗 LA TARIMA - Editor de Links</h1>
+            <p>Gestiona tu catálogo de productos de forma visual y eficiente</p>
+        </div>
+
+        <!-- Área de contenido -->
+        <div class="content-area">
+            <div id="status-message"></div>
+            
+            <!-- Estadísticas -->
+            <div class="stats" id="stats-container">
+                <!-- Las estadísticas se cargan dinámicamente -->
+            </div>
+            
+            <!-- Buscador -->
+            <input type="text" class="search-box" id="search-box" placeholder="🔍 Buscar módulos o productos...">
+            
+            <!-- Módulos -->
+            <div id="modulos-container">
+                <!-- Los módulos se cargan dinámicamente -->
+            </div>
+
+            <!-- Botón para agregar módulo -->
+            <div class="modulo-card" style="text-align: center; padding: 25px;">
+                <button class="btn btn-success" onclick="agregarModulo()">
+                    ➕ Agregar Nuevo Módulo
+                </button>
+            </div>
+
+            <!-- Vista previa JSON (colapsible) -->
+            <div class="modulo-card">
+                <div style="padding: 15px; text-align: center;">
+                    <button class="btn btn-primary" onclick="togglePreview()" id="preview-toggle">
+                        👁️ Mostrar Vista Previa JSON
+                    </button>
+                </div>
+                <div class="preview-container hidden" id="json-preview"></div>
+            </div>
+
+            <!-- Acciones -->
+            <div class="actions">
+                <button class="btn btn-primary" onclick="actualizarStats()">
+                    📊 Actualizar Estadísticas
+                </button>
+                <button class="btn btn-warning" onclick="validarLinks()">
+                    🔗 Validar Links
+                </button>
+                <button class="btn btn-success" onclick="guardarJSON()">
+                    💾 Guardar Cambios
+                </button>
+                <button class="btn btn-primary" onclick="cargarJSON()">
+                    📂 Recargar desde Archivo
+                </button>
+                <a href="../index.html" class="btn btn-info">
+                    🏠 Volver al Inicio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Modal para agregar variantes -->
+    <div id="modal-variantes" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">📏 Agregar Variantes de Medidas/Tipos</h3>
+                <span class="close" onclick="cerrarModalVariantes()">&times;</span>
+            </div>
+            
+            <div class="form-group">
+                <label>Modelo Base:</label>
+                <input type="text" id="modelo-base" placeholder="Ej: Cama Montessori">
+            </div>
+            
+            <div class="form-group">
+                <label>Selecciona variantes comunes o agrega personalizadas:</label>
+                
+                <!-- Presets comunes -->
+                <div class="variante-preset">
+                    <strong>Camas/Muebles:</strong>
+                    <div class="preset-btn" onclick="toggleVariante('1 plaza')">1 plaza</div>
+                    <div class="preset-btn" onclick="toggleVariante('2 plazas')">2 plazas</div>
+                    <div class="preset-btn" onclick="toggleVariante('1.5 plazas')">1.5 plazas</div>
+                    <div class="preset-btn" onclick="toggleVariante('Queen')">Queen</div>
+                    <div class="preset-btn" onclick="toggleVariante('King')">King</div>
+                </div>
+                
+                <div class="variante-preset">
+                    <strong>Cantidades:</strong>
+                    <div class="preset-btn" onclick="toggleVariante('1un')">1un</div>
+                    <div class="preset-btn" onclick="toggleVariante('2un')">2un</div>
+                    <div class="preset-btn" onclick="toggleVariante('3un')">3un</div>
+                    <div class="preset-btn" onclick="toggleVariante('4un')">4un</div>
+                    <div class="preset-btn" onclick="toggleVariante('5un')">5un</div>
+                </div>
+                
+                <div class="variante-preset">
+                    <strong>Tamaños:</strong>
+                    <div class="preset-btn" onclick="toggleVariante('Chico')">Chico</div>
+                    <div class="preset-btn" onclick="toggleVariante('Mediano')">Mediano</div>
+                    <div class="preset-btn" onclick="toggleVariante('Grande')">Grande</div>
+                    <div class="preset-btn" onclick="toggleVariante('XL')">XL</div>
+                </div>
+                
+                <div class="variante-preset">
+                    <strong>Materiales:</strong>
+                    <div class="preset-btn" onclick="toggleVariante('Pino')">Pino</div>
+                    <div class="preset-btn" onclick="toggleVariante('MDF')">MDF</div>
+                    <div class="preset-btn" onclick="toggleVariante('Melamina')">Melamina</div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Agregar variante personalizada:</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="variante-custom" placeholder="Ej: 90x190cm">
+                    <button class="btn btn-primary" onclick="agregarVarianteCustom()">+ Agregar</button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Variantes seleccionadas:</label>
+                <div class="variantes-seleccionadas" id="variantes-seleccionadas">
+                    <em>Selecciona variantes arriba...</em>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Link base (opcional - se copiará a todas las variantes):</label>
+                <input type="url" id="link-base" placeholder="https://...">
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-success" onclick="crearVariantes()">✅ Crear Variantes</button>
+                <button class="btn" onclick="cerrarModalVariantes()" style="background: #95a5a6; color: white; margin-left: 10px;">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let datosLinks = { modules: {} };
+        let previewVisible = false;
+        let moduloActual = '';
+        let variantesSeleccionadas = [];
+
+        // Cargar datos al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarJSON();
+            configurarBuscador();
+        });
+
+        async function cargarJSON() {
+            try {
+                const response = await fetch('links.json');
+                if (response.ok) {
+                    datosLinks = await response.json();
+                    mostrarDatos();
+                    actualizarStats();
+                    mostrarMensaje('Datos cargados correctamente', 'success');
+                } else {
+                    mostrarMensaje('No se pudo cargar el archivo JSON', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                mostrarMensaje('Error al cargar el archivo JSON: ' + error.message, 'error');
+            }
+        }
+
+        function mostrarDatos() {
+            const container = document.getElementById('modulos-container');
+            container.innerHTML = '';
+
+            Object.keys(datosLinks.modules).forEach(moduloNombre => {
+                crearModuloHTML(moduloNombre, datosLinks.modules[moduloNombre]);
+            });
+        }
+
+        function crearModuloHTML(nombre, productos) {
+            const container = document.getElementById('modulos-container');
+            
+            const moduloDiv = document.createElement('div');
+            moduloDiv.className = 'modulo-card';
+            moduloDiv.setAttribute('data-modulo', nombre);
+
+            // Detectar estructura del módulo
+            const esRegalos = nombre === 'regalos';
+            const productosConLinks = esRegalos 
+                ? productos.filter(p => (p.visitar && p.visitar.trim() !== '') || (p.ver && p.ver.trim() !== '') || (p.descargar && p.descargar.trim() !== '')).length
+                : productos.filter(p => p.href && p.href.trim() !== '').length;
+            const totalProductos = productos.length;
+
+            if (esRegalos) {
+                // Estructura especial para regalos
+                moduloDiv.innerHTML = `
+                    <div class="modulo-header regalos">
+                        <h3 class="modulo-title">🎁 ${nombre.charAt(0).toUpperCase() + nombre.slice(1)} (${productosConLinks}/${totalProductos} con links)</h3>
+                        <button class="btn btn-danger" onclick="eliminarModulo('${nombre}')">🗑️ Eliminar Módulo</button>
+                    </div>
+
+                    <div class="producto-headers regalos-headers">
+                        <div>📦 Modelo</div>
+                        <div>🎯 Recurso</div>
+                        <div>� Visitar</div>
+                        <div>👁️ Ver</div>
+                        <div>⬇️ Descargar</div>
+                        <div>⚙️ Acción</div>
+                    </div>
+
+                    <div id="productos-${nombre}">
+                        ${productos.map((producto, index) => `
+                            <div class="producto-row regalos-row">
+                                <input type="text" value="${producto.modelo || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'modelo', this.value)" placeholder="Ej: Programa útil">
+                                <input type="text" value="${producto.recurso || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'recurso', this.value)" placeholder="Ej: Demo 01">
+                                <input type="url" value="${producto.visitar || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'visitar', this.value)" placeholder="https://...">
+                                <input type="url" value="${producto.ver || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'ver', this.value)" placeholder="https://...">
+                                <input type="url" value="${producto.descargar || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'descargar', this.value)" placeholder="https://...">
+                                <button class="btn btn-danger" onclick="eliminarProducto('${nombre}', ${index})">🗑️</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="padding: 15px 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn btn-success" onclick="agregarProductoRegalos('${nombre}')">🎁 Agregar Regalo</button>
+                    </div>
+                `;
+            } else {
+                // Estructura normal para otros módulos
+                moduloDiv.innerHTML = `
+                    <div class="modulo-header">
+                        <h3 class="modulo-title">${nombre.charAt(0).toUpperCase() + nombre.slice(1)} (${productosConLinks}/${totalProductos} con links)</h3>
+                        <button class="btn btn-danger" onclick="eliminarModulo('${nombre}')">🗑️ Eliminar Módulo</button>
+                    </div>
+
+                    <div class="producto-headers">
+                        <div>📦 Modelo</div>
+                        <div>�📏 Medida</div>
+                        <div>🏷️ Tipo</div>
+                        <div>🔗 Enlace</div>
+                        <div>⚙️ Acción</div>
+                    </div>
+
+                    <div id="productos-${nombre}">
+                        ${productos.map((producto, index) => `
+                            <div class="producto-row">
+                                <input type="text" value="${producto.modelo || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'modelo', this.value)" placeholder="Ej: Cama Montessori">
+                                <input type="text" value="${producto.tipo || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'tipo', this.value)" placeholder="Ej: 1 plaza, 90x190">
+                                <input type="text" value="${producto.categoria || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'categoria', this.value)" placeholder="Ej: Premium, Básico">
+                                <input type="url" value="${producto.href || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'href', this.value)" placeholder="https://...">
+                                <button class="btn btn-danger" onclick="eliminarProducto('${nombre}', ${index})">🗑️</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="padding: 15px 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn btn-success" onclick="agregarProducto('${nombre}')">➕ Agregar Producto</button>
+                        <button class="btn btn-primary" onclick="agregarVariantes('${nombre}')">📏 Agregar Variantes</button>
+                    </div>
+                `;
+            }
+
+            container.appendChild(moduloDiv);
+        }
+
+        function actualizarStats() {
+            const statsContainer = document.getElementById('stats-container');
+            
+            let totalModulos = Object.keys(datosLinks.modules).length;
+            let totalProductos = 0;
+            let productosConLinks = 0;
+            let linksVacios = 0;
+
+            Object.entries(datosLinks.modules).forEach(([modulo, productos]) => {
+                totalProductos += productos.length;
+                productos.forEach(producto => {
+                    let tieneLink = false;
+                    
+                    if (modulo === 'regalos') {
+                        // Para regalos, verificar visitar, ver o descargar
+                        tieneLink = (producto.visitar && producto.visitar.trim() !== '') ||
+                                   (producto.ver && producto.ver.trim() !== '') ||
+                                   (producto.descargar && producto.descargar.trim() !== '');
+                    } else {
+                        // Para otros módulos, verificar href
+                        tieneLink = producto.href && producto.href.trim() !== '';
+                    }
+                    
+                    if (tieneLink) {
+                        productosConLinks++;
+                    } else {
+                        linksVacios++;
+                    }
+                });
+            });
+
+            const porcentajeCompleto = totalProductos > 0 ? Math.round((productosConLinks / totalProductos) * 100) : 0;
+
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${totalModulos}</div>
+                    <div class="stat-label">Módulos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${totalProductos}</div>
+                    <div class="stat-label">Productos</div>
+                </div>
+                <div class="stat-card" style="background: #27ae60;">
+                    <div class="stat-number">${productosConLinks}</div>
+                    <div class="stat-label">Con Links</div>
+                </div>
+                <div class="stat-card" style="background: #e74c3c;">
+                    <div class="stat-number">${linksVacios}</div>
+                    <div class="stat-label">Sin Links</div>
+                </div>
+                <div class="stat-card" style="background: #9b59b6;">
+                    <div class="stat-number">${porcentajeCompleto}%</div>
+                    <div class="stat-label">Completado</div>
+                </div>
+            `;
+        }
+
+        function configurarBuscador() {
+            const searchBox = document.getElementById('search-box');
+            searchBox.addEventListener('input', function() {
+                const termino = this.value.toLowerCase();
+                const modulos = document.querySelectorAll('[data-modulo]');
+                
+                modulos.forEach(modulo => {
+                    const nombre = modulo.getAttribute('data-modulo').toLowerCase();
+                    const contenido = modulo.textContent.toLowerCase();
+                    
+                    if (nombre.includes(termino) || contenido.includes(termino)) {
+                        modulo.style.display = 'block';
+                    } else {
+                        modulo.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        function agregarModulo() {
+            const nombre = prompt('Nombre del nuevo módulo:');
+            if (nombre && nombre.trim() !== '') {
+                const nombreLimpio = nombre.trim().toLowerCase();
+                if (datosLinks.modules[nombreLimpio]) {
+                    mostrarMensaje('Ya existe un módulo con ese nombre', 'error');
+                    return;
+                }
+                
+                datosLinks.modules[nombreLimpio] = [
+                    { modelo: '', tipo: '', categoria: '', href: '' }
+                ];
+                mostrarDatos();
+                actualizarStats();
+                mostrarMensaje(`Módulo "${nombreLimpio}" creado`, 'success');
+            }
+        }
+
+        function eliminarModulo(nombre) {
+            if (confirm(`¿Estás seguro de que quieres eliminar el módulo "${nombre}" y todos sus productos?`)) {
+                delete datosLinks.modules[nombre];
+                mostrarDatos();
+                actualizarStats();
+                mostrarMensaje(`Módulo "${nombre}" eliminado`, 'success');
+            }
+        }
+
+        function agregarProducto(modulo) {
+            datosLinks.modules[modulo].push({ modelo: '', tipo: '', categoria: '', href: '' });
+            mostrarDatos();
+            actualizarStats();
+        }
+
+        function agregarProductoRegalos(modulo) {
+            datosLinks.modules[modulo].push({ 
+                modelo: '', 
+                recurso: '', 
+                visitar: '', 
+                ver: '', 
+                descargar: '' 
+            });
+            mostrarDatos();
+            actualizarStats();
+        }
+
+        function eliminarProducto(modulo, index) {
+            if (confirm('¿Eliminar este producto?')) {
+                datosLinks.modules[modulo].splice(index, 1);
+                mostrarDatos();
+                actualizarStats();
+            }
+        }
+
+        function actualizarProducto(modulo, index, campo, valor) {
+            datosLinks.modules[modulo][index][campo] = valor;
+            // Auto-actualizar stats cuando se agrega/quita un link
+            if (campo === 'href' || campo === 'visitar' || campo === 'ver' || campo === 'descargar') {
+                actualizarStats();
+            }
+        }
+
+        function togglePreview() {
+            const preview = document.getElementById('json-preview');
+            const button = document.getElementById('preview-toggle');
+            
+            if (previewVisible) {
+                preview.classList.add('hidden');
+                button.textContent = '👁️ Mostrar Vista Previa JSON';
+                previewVisible = false;
+            } else {
+                preview.innerHTML = JSON.stringify(datosLinks, null, 2);
+                preview.classList.remove('hidden');
+                button.textContent = '👁️ Ocultar Vista Previa JSON';
+                previewVisible = true;
+            }
+        }
+
+        function validarLinks() {
+            let linksInvalidos = [];
+            
+            Object.keys(datosLinks.modules).forEach(modulo => {
+                datosLinks.modules[modulo].forEach((producto, index) => {
+                    if (producto.href && producto.href.trim() !== '') {
+                        try {
+                            new URL(producto.href);
+                        } catch (e) {
+                            linksInvalidos.push(`${modulo} - ${producto.modelo || 'Sin modelo'}: ${producto.href}`);
+                        }
+                    }
+                });
+            });
+
+            if (linksInvalidos.length === 0) {
+                mostrarMensaje('✅ Todos los links son válidos', 'success');
+            } else {
+                mostrarMensaje(`❌ ${linksInvalidos.length} links inválidos encontrados. Ver consola para detalles.`, 'error');
+                console.log('Links inválidos:', linksInvalidos);
+            }
+        }
+
+        async function guardarJSON() {
+            try {
+                const jsonString = JSON.stringify(datosLinks, null, 2);
+                const blob = new Blob([jsonString], { type: 'application/json' });
+                
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'links.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                mostrarMensaje('JSON descargado. Reemplaza el archivo links.json en tu servidor.', 'success');
+                
+            } catch (error) {
+                console.error('Error:', error);
+                mostrarMensaje('Error al generar el archivo JSON: ' + error.message, 'error');
+            }
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.innerHTML = `<div class="status-message status-${tipo}">${mensaje}</div>`;
+            
+            setTimeout(() => {
+                statusDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        // Funciones para variantes
+        function agregarVariantes(modulo) {
+            moduloActual = modulo;
+            variantesSeleccionadas = [];
+            document.getElementById('modelo-base').value = '';
+            document.getElementById('link-base').value = '';
+            actualizarVariantesSeleccionadas();
+            document.getElementById('modal-variantes').style.display = 'block';
+        }
+
+        function cerrarModalVariantes() {
+            document.getElementById('modal-variantes').style.display = 'none';
+            // Limpiar selecciones
+            document.querySelectorAll('.preset-btn.selected').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+        }
+
+        function toggleVariante(variante) {
+            const index = variantesSeleccionadas.indexOf(variante);
+            const btn = event.target;
+            
+            if (index > -1) {
+                // Quitar variante
+                variantesSeleccionadas.splice(index, 1);
+                btn.classList.remove('selected');
+            } else {
+                // Agregar variante
+                variantesSeleccionadas.push(variante);
+                btn.classList.add('selected');
+            }
+            
+            actualizarVariantesSeleccionadas();
+        }
+
+        function agregarVarianteCustom() {
+            const input = document.getElementById('variante-custom');
+            const variante = input.value.trim();
+            
+            if (variante && !variantesSeleccionadas.includes(variante)) {
+                variantesSeleccionadas.push(variante);
+                input.value = '';
+                actualizarVariantesSeleccionadas();
+            }
+        }
+
+        function actualizarVariantesSeleccionadas() {
+            const container = document.getElementById('variantes-seleccionadas');
+            
+            if (variantesSeleccionadas.length === 0) {
+                container.innerHTML = '<em>Selecciona variantes arriba...</em>';
+                return;
+            }
+            
+            container.innerHTML = variantesSeleccionadas.map(variante => 
+                `<span class="variante-tag">${variante}<span class="remove" onclick="quitarVariante('${variante}')">×</span></span>`
+            ).join('');
+        }
+
+        function quitarVariante(variante) {
+            const index = variantesSeleccionadas.indexOf(variante);
+            if (index > -1) {
+                variantesSeleccionadas.splice(index, 1);
+                actualizarVariantesSeleccionadas();
+                
+                // Quitar selección del botón si existe
+                const btn = Array.from(document.querySelectorAll('.preset-btn')).find(b => b.textContent === variante);
+                if (btn) btn.classList.remove('selected');
+            }
+        }
+
+        function crearVariantes() {
+            const modeloBase = document.getElementById('modelo-base').value.trim();
+            const linkBase = document.getElementById('link-base').value.trim();
+            
+            if (!modeloBase) {
+                mostrarMensaje('Por favor ingresa un modelo base', 'error');
+                return;
+            }
+            
+            if (variantesSeleccionadas.length === 0) {
+                mostrarMensaje('Selecciona al menos una variante', 'error');
+                return;
+            }
+            
+            // Crear productos para cada variante
+            variantesSeleccionadas.forEach(variante => {
+                const nuevoProducto = {
+                    modelo: modeloBase,
+                    tipo: variante,
+                    categoria: '',
+                    href: linkBase
+                };
+                
+                datosLinks.modules[moduloActual].push(nuevoProducto);
+            });
+            
+            // Actualizar vista
+            mostrarDatos();
+            actualizarStats();
+            cerrarModalVariantes();
+            
+            mostrarMensaje(`✅ Creadas ${variantesSeleccionadas.length} variantes de "${modeloBase}"`, 'success');
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal-variantes');
+            if (event.target === modal) {
+                cerrarModalVariantes();
+            }
+        }
+
+        // Permitir Enter en el input de variante custom
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('variante-custom').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    agregarVarianteCustom();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

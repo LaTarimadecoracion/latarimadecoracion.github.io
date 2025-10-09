@@ -18,7 +18,7 @@
       {
         "modelo": "Herramientas para trabajar",
         "recurso": "Demo 3",
-        "visitar": "",
+        "visitar": "https://latarimadecoracion.github.io/regalos/index.html",
         "ver": "",
         "descargar": ""
       },
@@ -61,6 +61,13 @@
         "modelo": "Páginas útiles de internet",
         "recurso": "Eliminar fondos",
         "visitar": "https://new.express.adobe.com/tools/remove-background",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "",
+        "recurso": "",
+        "visitar": "",
         "ver": "",
         "descargar": ""
       }
@@ -165,7 +172,8 @@
         "modelo": "Deck cuadrado",
         "tipo": "1un",
         "medida": "25 x 25 cm",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2399572790-deck-base-macetas-madera-25-x-25-cm-_JM"
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2399572790-deck-base-macetas-madera-25-x-25-cm-_JM",
+        "categoria": "hola hola"
       },
       {
         "modelo": "Deck cuadrado",
@@ -1509,37 +1517,6 @@
         "href": ""
       }
     ],
-    "otros_productos": [
-      {
-        "modelo": "Blanco",
-        "medida": "110 x 45 cm",
-        "tipo": "1",
-        "href": "https://www.youtube.com/"
-      },
-      {
-        "modelo": "Blanco",
-        "medida": "110 x 45 cm",
-        "tipo": "2",
-        "href": "https://www.youtube.com/"
-      },
-      {
-        "modelo": "Blanco",
-        "medida": "120 x 45 cm",
-        "tipo": "2",
-        "href": "https://www.youtube.com/"
-      },
-      {
-        "modelo": "Blanco",
-        "medida": "110 x 45 cm",
-        "tipo": "3",
-        "href": "https://www.youtube.com/"
-      },
-      {
-        "modelo": "Blanco",
-        "medida": "110 x 45 cm",
-        "tipo": "",
-        "href": ""
-      }
-    ]
+    "otros_productos": []
   }
 }

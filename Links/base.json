@@ -2,59 +2,100 @@
   "modules": {
     "regalos": [
       {
-        "modelo": "PC PC",
-        "href": "https://www.youtube.com/",
-        "recurso": "PC"
+        "modelo": "Programas que te sirven",
+        "recurso": "Demo 01",
+        "visitar": "",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Páginas útiles de internet",
+        "recurso": "Mis links",
+        "visitar": "https://latarimadecoracion.github.io/regalos/index.html",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Herramientas para trabajar",
+        "recurso": "Demo 3",
+        "visitar": "",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Ideas y consejos",
+        "recurso": "Demo 4",
+        "visitar": "",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Personas y cuentas que te conviene seguir",
+        "recurso": "Demo 5",
+        "visitar": "",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Regalos y cosas para descargar",
+        "recurso": "Demo 6",
+        "visitar": "",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Páginas útiles de internet",
+        "recurso": "Chat GPT ",
+        "visitar": "https://chatgpt.com/",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Páginas útiles de internet",
+        "recurso": "Qwen (GPT Gratis)",
+        "visitar": "chat.qwen.ai/",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Páginas útiles de internet",
+        "recurso": "Eliminar fondos",
+        "visitar": "https://new.express.adobe.com/tools/remove-background",
+        "ver": "",
+        "descargar": ""
       }
     ],
-    "camas": [
-      {
-        "modelo": "Cama Montessori",
-        "tipo": "1 plaza",
-        "href": "https://bio.link/latarima"
-      },
-      {
-        "modelo": "Cama Montessori",
-        "tipo": "2 plazas",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Montessori II",
-        "tipo": "1 plaza",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Montessori II",
-        "tipo": "2 plazas",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Turca",
-        "tipo": "1 plaza",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Turca",
-        "tipo": "2 plazas",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Doble",
-        "tipo": "1 plaza",
-        "href": ""
-      },
-      {
-        "modelo": "Cama Doble",
-        "tipo": "2 plazas",
-        "href": ""
-      }
-    ],
+    "camas": [],
     "podios": [
       {
         "modelo": "Podio premiación (3 módulos)",
         "medida": "Único combo",
         "tipo": "Comprar",
         "href": "https://articulo.mercadolibre.com.ar/MLA-2235353348-podio-de-premiacion-profesional-3-niveles-reforzados-_JM"
+      },
+      {
+        "modelo": "Podios individuales",
+        "medida": "60 x 40 x 40",
+        "tipo": "Comprar",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2351358716-podio-de-premiacion-profesional-60-x-40-x-40-cm-n-1-_JM?has_official_store=false&highlight=false&searchVariation=190710551513&headerTopBrand=false#polycard_client=search-nordic&searchVariation=190710551513&search_layout=grid&position=2&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec"
+      },
+      {
+        "modelo": "Podios individuales",
+        "medida": "60 x 40 x 30",
+        "tipo": "Comprar",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2242326346-podio-de-premiacion-profesional-60-x-40-x-30-cm-n-2-_JM?has_official_store=false&highlight=false&searchVariation=184697351002&headerTopBrand=false#polycard_client=search-nordic&searchVariation=184697351002&search_layout=grid&position=3&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec"
+      },
+      {
+        "modelo": "Podios individuales",
+        "medida": "60 x 40 x 20",
+        "tipo": "Comprar",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2351255318-podio-de-premiacion-profesional-60-x-40-x-20-cm-n-3-_JM"
+      },
+      {
+        "modelo": "Muestra",
+        "medida": "",
+        "tipo": "",
+        "href": ""
       }
     ],
     "percheros": [
@@ -117,224 +158,6 @@
         "modelo": "Perchero 4",
         "tipo": "3un",
         "href": ""
-      },
-      {
-        "modelo": "Perchero 5",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 5",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 5",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 6",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 6",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 6",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 7",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 7",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 7",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 8",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 8",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 8",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 9",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 9",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 9",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 10",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 10",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Perchero 10",
-        "tipo": "3un",
-        "href": ""
-      }
-    ],
-    "fanales": [
-      {
-        "modelo": "Set x3",
-        "medida": "",
-        "tipo": "1un",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2164674452-fanal-madera-pino-por-tres-unidades-_JM"
-      },
-      {
-        "modelo": "Set x3",
-        "medida": "",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Set x3",
-        "medida": "",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "2un",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1511344093-fanal-madera-pino-x2-un-chico-_JM"
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "10un",
-        "href": ""
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "20un",
-        "href": ""
-      },
-      {
-        "modelo": "Chico",
-        "medida": "",
-        "tipo": "30un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "10un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "20un",
-        "href": ""
-      },
-      {
-        "modelo": "Mediano",
-        "medida": "",
-        "tipo": "30un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "10un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "20un",
-        "href": ""
-      },
-      {
-        "modelo": "Grande",
-        "medida": "",
-        "tipo": "30un",
-        "href": ""
       }
     ],
     "deck": [
@@ -360,25 +183,25 @@
         "modelo": "Deck cuadrado",
         "tipo": "2un",
         "medida": "25 x 25 cm",
-        "href": ""
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2416155670-deck-base-macetas-madera-25-x-25-cm-x2-un-_JM"
       },
       {
         "modelo": "Deck cuadrado",
         "tipo": "2un",
         "medida": "30 x 30 cm",
-        "href": ""
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM"
       },
       {
         "modelo": "Deck cuadrado",
         "tipo": "2un",
         "medida": "40 x 40 cm",
-        "href": ""
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2416155916-deck-base-macetas-madera-40-x-40-cm-x2-un-_JM"
       },
       {
         "modelo": "Deck cuadrado",
         "tipo": "3un",
         "medida": "25 x 25 cm",
-        "href": ""
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2415986866-deck-base-macetas-madera-25-x-25-cm-x-3-un-_JM"
       },
       {
         "modelo": "Deck cuadrado",
@@ -390,73 +213,37 @@
         "modelo": "Deck cuadrado",
         "tipo": "3un",
         "medida": "40 x 40 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "6un",
-        "medida": "25 x 25 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "6un",
-        "medida": "30 x 30 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "6un",
-        "medida": "40 x 40 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "12un",
-        "medida": "25 x 25 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "12un",
-        "medida": "30 x 30 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "12un",
-        "medida": "40 x 40 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "24un",
-        "medida": "25 x 25 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "24un",
-        "medida": "30 x 30 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck cuadrado",
-        "tipo": "24un",
-        "medida": "40 x 40 cm",
-        "href": ""
-      },
-      {
-        "modelo": "Deck rectangular",
-        "tipo": "1un",
-        "medida": "25 x 60 cm",
-        "href": ""
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2416156026-deck-base-macetas-madera-40-x-40-cm-x3-un-_JM"
       },
       {
         "modelo": "Deck rectangular",
         "medida": "25 x 50 cm",
         "tipo": "1un",
         "href": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "25 x 50 cm",
+        "tipo": "2un",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM"
+      },
+      {
+        "modelo": "Deck rectangular",
+        "medida": "25 x 50 cm",
+        "tipo": "3un",
+        "href": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM"
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "45 x 45 cm",
+        "tipo": "1un",
+        "href": ""
+      },
+      {
+        "modelo": "Deck cuadrado",
+        "medida": "50 x 50 cm",
+        "tipo": "1un",
+        "href": ""
       }
     ],
     "infantiles": [
@@ -785,7 +572,7 @@
       {
         "modelo": "Estantes Montessori",
         "medida": "Combo x3",
-        "tipo": "combo",
+        "tipo": "1un",
         "href": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM"
       },
       {
@@ -1219,58 +1006,22 @@
     ],
     "barandas_fijas": [
       {
-        "modelo": "Baranda Fija Montessori",
-        "medida": "60 x 45",
+        "modelo": "Baranda Montessori",
+        "medida": "45 x 60 cm",
         "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1145213600-baranda-para-cama-barral-seguridad-_JM#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=rk_entity_sameseller&reco_client=vip-seller_items-above&reco_item_pos=1&reco_backend_type=low_level&reco_id=739a45fe-ca2b-4cfb-b46c-4844de2b6468&wid=MLA1145213600&sid=recos"
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1145213600-baranda-para-cama-barral-seguridad-_JM"
       },
       {
-        "modelo": "Baranda Fija Montessori",
-        "medida": "60 x 45",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Fija Montessori",
-        "medida": "60 x 45",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Fija Montessori II",
-        "medida": "60 x 45",
+        "modelo": "Baranda Simple",
+        "medida": "35 x 60 cm",
         "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1241768126-baranda-para-cama-montessori-60x45-_JM?searchVariation=180148294133#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=rk_entity_sameseller&reco_client=vip-seller_items-above&reco_item_pos=3&reco_backend_type=low_level&reco_id=739a45fe-ca2b-4cfb-b46c-4844de2b6468"
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1380333706-baranda-de-seguridad-para-cama-infantil-60x35cm-_JM"
       },
       {
-        "modelo": "Baranda Fija Montessori II",
-        "medida": "60 x 45",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Fija Montessori II",
-        "medida": "60 x 45",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Fija Simple",
-        "medida": "60 x 45",
+        "modelo": "Baranda Fija Clasica",
+        "medida": "45 x 60 cm",
         "tipo": "Natural",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-1380333706-baranda-de-seguridad-para-cama-infantil-60x35cm-_JM?searchVariation=177359235387#polycard_client=search-nordic&searchVariation=177359235387&search_layout=grid&position=5&type=item&tracking_id=76e1d9d5-f254-4ee5-a1cf-e17f697f9912"
-      },
-      {
-        "modelo": "Baranda Fija Simple",
-        "medida": "60 x 45",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Fija Simple",
-        "medida": "60 x 45",
-        "tipo": "Blanca",
-        "href": ""
+        "href": "https://articulo.mercadolibre.com.ar/MLA-1241768126-baranda-para-cama-montessori-60x45-_JM"
       }
     ],
     "barandas_desmontables": [
@@ -1752,268 +1503,40 @@
     ],
     "barandas_ortopedicas": [
       {
-        "modelo": "Baranda desmontable",
-        "medida": "110 x 45 cm",
-        "tipo": "Natural",
-        "href": "https://mail.google.com/mail/u/0/"
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "110 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "110 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "100 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "100 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "100 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "90 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "90 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "90 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "80 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "80 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "80 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "70 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "70 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "70 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "60 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "60 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda desmontable",
-        "medida": "60 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "110 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "110 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "110 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "100 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "100 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "100 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "90 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "90 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "90 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "80 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "80 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "80 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "70 x 45 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "70 x 45 cm",
-        "tipo": "Barnizada",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica",
-        "medida": "70 x 45 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica Alta",
-        "medida": "110 x 60 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica Alta",
-        "medida": "110 x 60 cm",
-        "tipo": "Barnizada",
-        "href": "https://music.youtube.com/watch?v=yD0ogQXFGZU&list=RDAMVM-zPKfjIvAro"
-      },
-      {
-        "modelo": "Baranda Ortopedica Alta",
-        "medida": "110 x 60 cm",
-        "tipo": "Blanca",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica Alta",
-        "medida": "70 x 60 cm",
-        "tipo": "Natural",
-        "href": ""
-      },
-      {
-        "modelo": "Baranda Ortopedica Alta",
-        "medida": "70 x 60 cm",
-        "tipo": "Barnizada",
-        "href": "https://music.youtube.com/watch?v=yD0ogQXFGZU&list=RDAMVM-zPKfjIvAro"
-      },
-      {
-        "modelo": "Baranda Ortopedica Alta",
-        "medida": "70 x 60 cm",
-        "tipo": "Blanca",
+        "modelo": "Baranda Rebatible",
+        "medida": "",
+        "tipo": "",
         "href": ""
       }
-  ],
-  "otros_productos": [
+    ],
+    "otros_productos": [
       {
         "modelo": "Blanco",
-        "medida": "10",
+        "medida": "110 x 45 cm",
         "tipo": "1",
         "href": "https://www.youtube.com/"
       },
       {
         "modelo": "Blanco",
-        "medida": "20",
+        "medida": "110 x 45 cm",
         "tipo": "2",
         "href": "https://www.youtube.com/"
       },
       {
         "modelo": "Blanco",
-        "medida": "20",
+        "medida": "120 x 45 cm",
         "tipo": "2",
         "href": "https://www.youtube.com/"
       },
       {
         "modelo": "Blanco",
-        "medida": "20",
+        "medida": "110 x 45 cm",
         "tipo": "3",
         "href": "https://www.youtube.com/"
       },
       {
         "modelo": "Blanco",
-        "medida": "",
+        "medida": "110 x 45 cm",
         "tipo": "",
         "href": ""
       }

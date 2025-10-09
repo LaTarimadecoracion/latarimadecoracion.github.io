@@ -1,0 +1,104 @@
+{
+  "titulo": "📦 Información de Envíos",
+  "secciones": [
+    {
+      "id": "metodos",
+      "titulo": "🚚 Métodos de Envío",
+      "imagen": "img/seccion1",
+      "items": [
+        {
+          "titulo": "CABA y GBA",
+          "descripcion": "Envío propio - Consultar costo"
+        },
+        {
+          "titulo": "Interior del país",
+          "descripcion": "Via Cargo - Consultar sucursales"
+        },
+        {
+          "titulo": "Retiro en taller",
+          "descripcion": "Sin costo adicional"
+        }
+      ]
+    },
+    {
+      "id": "tiempos",
+      "titulo": "⏱️ Tiempos de Entrega",
+      "imagen": "img/",
+      "items": [
+        {
+          "titulo": "CABA y GBA",
+          "descripcion": "3-5 días hábiles"
+        },
+        {
+          "titulo": "Interior",
+          "descripcion": "5-10 días hábiles (depende de la ubicación)"
+        },
+        {
+          "titulo": "Productos personalizados",
+          "descripcion": "7-15 días hábiles"
+        }
+      ]
+    },
+    {
+      "id": "costos",
+      "titulo": "💰 Costos de Envío",
+      "imagen": "img/costos.jpg",
+      "items": [
+        {
+          "titulo": "",
+          "descripcion": "Los costos varían según la ubicación y el peso del producto"
+        },
+        {
+          "titulo": "",
+          "descripcion": "Consultar costo específico por WhatsApp antes de la compra"
+        },
+        {
+          "titulo": "",
+          "descripcion": "Envío gratuito en compras superiores a $150.000 (CABA y GBA)"
+        }
+      ]
+    },
+    {
+      "id": "condiciones",
+      "titulo": "📋 Condiciones",
+      "imagen": "img/condiciones.jpg",
+      "items": [
+        {
+          "titulo": "",
+          "descripcion": "Todos los productos se envían desarmados con instrucciones de armado"
+        },
+        {
+          "titulo": "",
+          "descripcion": "Incluye tornillería necesaria para el montaje"
+        },
+        {
+          "titulo": "",
+          "descripcion": "Embalaje reforzado para proteger los productos durante el transporte"
+        },
+        {
+          "titulo": "",
+          "descripcion": "Revisar el producto al recibirlo y reportar cualquier daño dentro de las 24hs"
+        }
+      ]
+    },
+    {
+      "id": "viacargo",
+      "titulo": "📍 Via Cargo - Sucursales",
+      "imagen": "img/viacargo.jpg",
+      "items": [
+        {
+          "titulo": "",
+          "descripcion": "Trabajamos con Via Cargo para envíos al interior del país."
+        },
+        {
+          "titulo": "",
+          "descripcion": "Consultá la sucursal más cercana a tu domicilio:"
+        }
+      ],
+      "boton": {
+        "texto": "Ver Sucursales Via Cargo",
+        "url": "viacargo.html"
+      }
+    }
+  ]
+}

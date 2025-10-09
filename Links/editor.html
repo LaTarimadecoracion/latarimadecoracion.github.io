@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Links | LA TARIMA</title>
+    <link rel="stylesheet" href="../estilos.css">
+    <link rel="stylesheet" href="editor.css">
+    <link rel="icon" href="../img/ico.png" type="image/png">
+</head>
+<body>
+    <div class="editor-container">
+        <!-- Header mejorado -->
+        <div class="editor-header">
+            <h1>🔗 LA TARIMA - Editor de Links</h1>
+            <p>Gestiona tu catálogo de productos de forma visual y eficiente</p>
+        </div>
+
+        <!-- Área de contenido -->
+        <div class="content-area">
+            <div id="status-message"></div>
+            
+            <!-- Estadísticas -->
+            <div class="stats" id="stats-container">
+                <!-- Las estadísticas se cargan dinámicamente -->
+            </div>
+            
+            <!-- Selector de Módulo -->
+            <div class="module-selector-container">
+                <select class="module-selector" id="module-selector">
+                </select>
+            </div>
+            
+            <!-- Módulos -->
+            <div id="modulos-container">
+                <!-- Los módulos se cargan dinámicamente -->
+            </div>
+
+            <!-- Botón para agregar módulo -->
+            <div class="modulo-card" style="text-align: center; padding: 25px;">
+                <button class="btn btn-success" type="button" onclick="agregarModulo()">
+                    ➕ Agregar Nuevo Módulo
+                </button>
+            </div>
+
+            <!-- Vista previa JSON (colapsible) -->
+            <div class="modulo-card">
+                <div style="padding: 15px; text-align: center;">
+                    <button class="btn btn-primary" onclick="togglePreview()" id="preview-toggle">
+                        👁️ Mostrar Vista Previa JSON
+                    </button>
+                </div>
+                <div class="preview-container hidden" id="json-preview"></div>
+            </div>
+
+            <!-- Acciones -->
+            <div class="actions">
+                <button class="btn btn-primary" onclick="actualizarStats()">
+                    📊 Actualizar Estadísticas
+                </button>
+                <button class="btn btn-warning" onclick="validarLinks()">
+                    🔗 Validar Links
+                </button>
+                <button class="btn btn-success" onclick="guardarJSON()">
+                    💾 Guardar Cambios
+                </button>
+                <button class="btn btn-primary" onclick="cargarJSON()">
+                    📂 Recargar desde Archivo
+                </button>
+                <a href="../index.html" class="btn btn-info">
+                    🏠 Volver al Inicio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar variantes -->
+    <div id="modal-variantes" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">📏 Agregar Variantes de Medidas/Tipos</h3>
+                <span class="close" onclick="cerrarModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="modelo-base">Modelo Base:</label>
+                    <input type="text" id="modelo-base" placeholder="Ej: Cama Montessori">
+                </div>
+
+                <div class="form-group">
+                    <label>Presets de Medidas Comunes:</label>
+                    <div class="variante-preset">
+                        <span class="preset-btn" onclick="togglePreset(this, '1 plaza')" data-medida="1 plaza">1 Plaza</span>
+                        <span class="preset-btn" onclick="togglePreset(this, '1½ plaza')" data-medida="1½ plaza">1½ Plaza</span>
+                        <span class="preset-btn" onclick="togglePreset(this, '2 plazas')" data-medida="2 plazas">2 Plazas</span>
+                        <span class="preset-btn" onclick="togglePreset(this, 'Queen')" data-medida="Queen">Queen</span>
+                        <span class="preset-btn" onclick="togglePreset(this, 'King')" data-medida="King">King</span>
+                    </div>
+                    <div class="variante-preset">
+                        <span class="preset-btn" onclick="togglePreset(this, 'Pequeño')" data-medida="Pequeño">Pequeño</span>
+                        <span class="preset-btn" onclick="togglePreset(this, 'Mediano')" data-medida="Mediano">Mediano</span>
+                        <span class="preset-btn" onclick="togglePreset(this, 'Grande')" data-medida="Grande">Grande</span>
+                        <span class="preset-btn" onclick="togglePreset(this, 'XL')" data-medida="XL">XL</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="medida-personalizada">O agrega medida personalizada:</label>
+                    <input type="text" id="medida-personalizada" placeholder="Ej: 90x190cm">
+                    <button class="btn btn-success" type="button" onclick="agregarMedidaPersonalizada()" style="margin-top: 10px;">+ Agregar</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Medidas/Tipos Seleccionados:</label>
+                    <div class="variantes-seleccionadas" id="variantes-seleccionadas">
+                        <em>Selecciona variantes arriba...</em>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" type="button" onclick="generarVariantes()">🚀 Generar Variantes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let datosLinks = { modules: {} };
+        let moduloActualVariantes = '';
+
+        // Cargar datos al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarJSON();
+            
+            // Selector de módulo
+            document.getElementById('module-selector').addEventListener('change', function(e) {
+                const selectedModule = e.target.value;
+                filtrarPorModulo(selectedModule);
+            });
+        });
+
+        async function cargarJSON() {
+            try {
+                const response = await fetch('links.json');
+                if (response.ok) {
+                    datosLinks = await response.json();
+                    mostrarDatos();
+                    actualizarStats();
+                    mostrarMensaje('✅ Datos cargados correctamente', 'success');
+                } else {
+                    throw new Error('No se pudo cargar el archivo');
+                }
+            } catch (error) {
+                console.error('Error al cargar JSON:', error);
+                mostrarMensaje('❌ Error al cargar datos: ' + error.message, 'error');
+                // Inicializar con estructura vacía si no se puede cargar
+                datosLinks = { modules: {} };
+                mostrarDatos();
+                actualizarStats();
+            }
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.className = `status-message status-${tipo}`;
+            statusDiv.textContent = mensaje;
+            statusDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function actualizarStats() {
+            const statsContainer = document.getElementById('stats-container');
+            
+            let totalModulos = Object.keys(datosLinks.modules).length;
+            let totalProductos = 0;
+            let productosConLinks = 0;
+            let linksVacios = 0;
+
+            Object.entries(datosLinks.modules).forEach(([modulo, productos]) => {
+                totalProductos += productos.length;
+                productos.forEach(producto => {
+                    let tieneLink = false;
+                    
+                    if (modulo === 'regalos') {
+                        // Para regalos, verificar visitar, ver o descargar
+                        tieneLink = (producto.visitar && producto.visitar.trim() !== '') ||
+                                   (producto.ver && producto.ver.trim() !== '') ||
+                                   (producto.descargar && producto.descargar.trim() !== '');
+                    } else {
+                        // Para otros módulos, verificar href
+                        tieneLink = producto.href && producto.href.trim() !== '';
+                    }
+                    
+                    if (tieneLink) {
+                        productosConLinks++;
+                    } else {
+                        linksVacios++;
+                    }
+                });
+            });
+
+            const porcentajeCompleto = totalProductos > 0 ? Math.round((productosConLinks / totalProductos) * 100) : 0;
+
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${totalModulos}</div>
+                    <div class="stat-label">Módulos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${totalProductos}</div>
+                    <div class="stat-label">Productos</div>
+                </div>
+                <div class="stat-card" style="background: #27ae60;">
+                    <div class="stat-number">${productosConLinks}</div>
+                    <div class="stat-label">Con Links</div>
+                </div>
+                <div class="stat-card" style="background: #e74c3c;">
+                    <div class="stat-number">${linksVacios}</div>
+                    <div class="stat-label">Sin Links</div>
+                </div>
+                <div class="stat-card" style="background: #9b59b6;">
+                    <div class="stat-number">${porcentajeCompleto}%</div>
+                    <div class="stat-label">Completo</div>
+                </div>
+            `;
+        }
+
+        function mostrarDatos() {
+            const container = document.getElementById('modulos-container');
+            container.innerHTML = '';
+
+            // Guardar el módulo seleccionado antes de repoblar
+            const selector = document.getElementById('module-selector');
+            const moduloSeleccionado = selector.value;
+
+            Object.keys(datosLinks.modules).forEach(moduloNombre => {
+                crearModuloHTML(moduloNombre, datosLinks.modules[moduloNombre]);
+            });
+
+            // Actualizar selector de módulos
+            poblarSelectorModulos();
+
+            // Restaurar la selección previa si existe
+            if (moduloSeleccionado && datosLinks.modules[moduloSeleccionado]) {
+                selector.value = moduloSeleccionado;
+                filtrarPorModulo(moduloSeleccionado);
+            } else {
+                // Si no existe, seleccionar el primer módulo
+                const primerModulo = Object.keys(datosLinks.modules)[0];
+                if (primerModulo) {
+                    selector.value = primerModulo;
+                    filtrarPorModulo(primerModulo);
+                }
+            }
+        }
+        
+        function poblarSelectorModulos() {
+            const selector = document.getElementById('module-selector');
+            // Limpiar todas las opciones existentes
+            selector.innerHTML = '';
+            
+            // Agregar opciones de módulos
+            Object.keys(datosLinks.modules).forEach(moduloNombre => {
+                const option = document.createElement('option');
+                option.value = moduloNombre;
+                option.textContent = `📂 ${moduloNombre.charAt(0).toUpperCase() + moduloNombre.slice(1)}`;
+                selector.appendChild(option);
+            });
+        }
+
+        function crearModuloHTML(nombre, productos) {
+            const container = document.getElementById('modulos-container');
+            
+            const moduloDiv = document.createElement('div');
+            moduloDiv.className = 'modulo-card';
+            moduloDiv.setAttribute('data-modulo', nombre);
+
+            // Detectar estructura del módulo
+            const esRegalos = nombre === 'regalos';
+            
+            // Función para ordenar medidas de mayor a menor
+            function parseMedidaValue(medida) {
+                if (!medida) return 0;
+                const str = medida.toString().toLowerCase();
+                
+                // Para medidas como "2 plazas", "1 plaza"
+                if (str.includes('plaza')) {
+                    const num = str.match(/(\d+)/);
+                    return num ? parseInt(num[1]) * 1000 : 0; // Multiplicar para que tenga prioridad
+                }
+                
+                // Para medidas como "90x190", "120x200"
+                const dimensiones = str.match(/(\d+)\s*x\s*(\d+)/);
+                if (dimensiones) {
+                    const ancho = parseInt(dimensiones[1]);
+                    const largo = parseInt(dimensiones[2]);
+                    return ancho * largo; // Área total
+                }
+                
+                // Para medidas simples como "Grande", "Mediano", "Pequeño"
+                if (str.includes('grande') || str.includes('xl')) return 3;
+                if (str.includes('mediano') || str.includes('medium')) return 2;
+                if (str.includes('pequeño') || str.includes('small')) return 1;
+                
+                // Para números simples
+                const num = str.match(/(\d+)/);
+                return num ? parseInt(num[1]) : 0;
+            }
+            
+            // Función para obtener la prioridad del tipo
+            function getTipoPriority(tipo) {
+                if (!tipo) return 999;
+                const tipoLower = tipo.toLowerCase();
+                
+                // Primero: Natural / Único
+                if (tipoLower.includes('natural') || tipoLower.includes('único') || tipoLower.includes('unico')) return 1;
+                
+                // Segundo: Barnizada
+                if (tipoLower.includes('barniz') || tipoLower.includes('barnizada')) return 2;
+                
+                // Tercero: Blancas / Pintadas / Tintes
+                if (tipoLower.includes('blanca') || tipoLower.includes('pintada') || tipoLower.includes('tinte') || 
+                    tipoLower.includes('blanco') || tipoLower.includes('pintado') || tipoLower.includes('color')) return 3;
+                
+                // Otros tipos van al final por orden alfabético
+                return 10;
+            }
+            
+            // Ordenar productos por Modelo > Medida (mayor a menor) > Tipo (por prioridad específica)
+            if (!esRegalos) {
+                productos.sort((a, b) => {
+                    const modeloA = (a.modelo || '').toLowerCase();
+                    const modeloB = (b.modelo || '').toLowerCase();
+                    if (modeloA !== modeloB) return modeloA.localeCompare(modeloB);
+                    
+                    const medidaValueA = parseMedidaValue(a.medida);
+                    const medidaValueB = parseMedidaValue(b.medida);
+                    if (medidaValueA !== medidaValueB) return medidaValueB - medidaValueA; // Mayor a menor
+                    
+                    const prioridadA = getTipoPriority(a.tipo);
+                    const prioridadB = getTipoPriority(b.tipo);
+                    if (prioridadA !== prioridadB) return prioridadA - prioridadB;
+                    
+                    // Si tienen la misma prioridad, ordenar alfabéticamente
+                    const tipoA = (a.tipo || '').toLowerCase();
+                    const tipoB = (b.tipo || '').toLowerCase();
+                    return tipoA.localeCompare(tipoB);
+                });
+            }
+            
+            // Agrupar productos por tipo (solo para módulos normales)
+            function agruparProductosPorTipo(productosArray) {
+                if (esRegalos) return productosArray;
+                
+                const grupos = {};
+                productosArray.forEach((producto, index) => {
+                    const tipo = (producto.tipo || 'Sin tipo').toLowerCase();
+                    if (!grupos[tipo]) {
+                        grupos[tipo] = [];
+                    }
+                    grupos[tipo].push({...producto, originalIndex: index});
+                });
+                
+                return grupos;
+            }
+            
+            const productosAgrupados = agruparProductosPorTipo(productos);
+            
+            const productosConLinks = esRegalos 
+                ? productos.filter(p => (p.visitar && p.visitar.trim() !== '') || (p.ver && p.ver.trim() !== '') || (p.descargar && p.descargar.trim() !== '')).length
+                : productos.filter(p => p.href && p.href.trim() !== '').length;
+            const totalProductos = productos.length;
+
+            if (esRegalos) {
+                // Estructura especial para regalos
+                moduloDiv.innerHTML = `
+                    <div class="modulo-header regalos">
+                        <h3 class="modulo-title">🎁 ${nombre.charAt(0).toUpperCase() + nombre.slice(1)} (${productosConLinks}/${totalProductos} con links)</h3>
+                        <button class="btn btn-danger" onclick="eliminarModulo('${nombre}')">🗑️ Eliminar Módulo</button>
+                    </div>
+
+                    <div class="producto-headers regalos-headers">
+                        <div>📦 Modelo</div>
+                        <div>🎯 Recurso</div>
+                        <div>👀 Visitar</div>
+                        <div>👁️ Ver</div>
+                        <div>⬇️ Descargar</div>
+                        <div>⚙️</div>
+                    </div>
+
+                    <div id="productos-${nombre}">
+                        ${productos.map((producto, index) => `
+                            <div class="producto-row regalos-row">
+                                <input type="text" value="${producto.modelo || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'modelo', this.value)" placeholder="Ej: Programa útil">
+                                <input type="text" value="${producto.recurso || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'recurso', this.value)" placeholder="Ej: Demo 01">
+                                <input type="url" value="${producto.visitar || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'visitar', this.value)" placeholder="https://...">
+                                <input type="url" value="${producto.ver || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'ver', this.value)" placeholder="https://...">
+                                <input type="url" value="${producto.descargar || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'descargar', this.value)" placeholder="https://...">
+                                <button class="btn btn-danger" onclick="eliminarProducto('${nombre}', ${index})">🗑️</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="padding: 15px 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn btn-success" type="button" onclick="agregarProductoRegalos('${nombre}')">🎁 Agregar Regalo</button>
+                    </div>
+                `;
+            } else {
+                // Estructura normal para otros módulos
+                moduloDiv.innerHTML = `
+                    <div class="modulo-header">
+                        <h3 class="modulo-title">${nombre.charAt(0).toUpperCase() + nombre.slice(1)} (${productosConLinks}/${totalProductos} con links)</h3>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn btn-danger" onclick="eliminarModulo('${nombre}')">🗑️ Eliminar Módulo</button>
+                            <button class="btn btn-info" onclick="descargarPlantillaHTML('${nombre}')">📄 Descargar HTML</button>
+                        </div>
+                    </div>
+
+                    <div class="producto-headers">
+                        <div>📦 Modelo</div>
+                        <div>📏 Medida</div>
+                        <div>🏷️ Tipo</div>
+                        <div>🔗 Enlace</div>
+                        <div>⚙️</div>
+                    </div>
+
+                    <div id="productos-${nombre}">
+                        ${esRegalos ? 
+                            productos.map((producto, index) => `
+                                <div class="producto-row">
+                                    <input type="text" value="${producto.modelo || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'modelo', this.value)" placeholder="Ej: Cama Montessori">
+                                    <input type="text" value="${producto.medida || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'medida', this.value)" placeholder="Ej: 90x190, 1 plaza">
+                                    <input type="text" value="${producto.tipo || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'tipo', this.value)" placeholder="Ej: 1un, 2un, natural">
+                                    <input type="url" value="${producto.href || ''}" onchange="actualizarProducto('${nombre}', ${index}, 'href', this.value)" placeholder="https://...">
+                                    <button class="btn btn-danger" onclick="eliminarProducto('${nombre}', ${index})">🗑️</button>
+                                </div>
+                            `).join('')
+                            :
+                            Object.keys(productosAgrupados).map(tipoGrupo => {
+                                const productosDelGrupo = productosAgrupados[tipoGrupo];
+                                const tipoCapitalizado = tipoGrupo.charAt(0).toUpperCase() + tipoGrupo.slice(1);
+                                
+                                return `
+                                    <div class="grupo-tipo">
+                                        <div class="grupo-tipo-header">
+                                            <span class="grupo-tipo-badge">🏷️ ${tipoCapitalizado}</span>
+                                            <span class="grupo-tipo-count">${productosDelGrupo.length} producto${productosDelGrupo.length !== 1 ? 's' : ''}</span>
+                                        </div>
+                                        ${productosDelGrupo.map(producto => `
+                                            <div class="producto-row">
+                                                <input type="text" value="${producto.modelo || ''}" onchange="actualizarProducto('${nombre}', ${producto.originalIndex}, 'modelo', this.value)" placeholder="Ej: Cama Montessori">
+                                                <input type="text" value="${producto.medida || ''}" onchange="actualizarProducto('${nombre}', ${producto.originalIndex}, 'medida', this.value)" placeholder="Ej: 90x190, 1 plaza">
+                                                <input type="text" value="${producto.tipo || ''}" onchange="actualizarProducto('${nombre}', ${producto.originalIndex}, 'tipo', this.value)" placeholder="Ej: 1un, 2un, natural">
+                                                <input type="url" value="${producto.href || ''}" onchange="actualizarProducto('${nombre}', ${producto.originalIndex}, 'href', this.value)" placeholder="https://...">
+                                                <button class="btn btn-danger" onclick="eliminarProducto('${nombre}', ${producto.originalIndex})">🗑️</button>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                `;
+                            }).join('')
+                        }
+                    </div>
+                    
+                    <div style="padding: 15px 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn btn-success" type="button" onclick="agregarProducto('${nombre}')">➕ Agregar Producto</button>
+                        <button class="btn btn-primary" type="button" onclick="agregarVariantes('${nombre}')">📏 Agregar Variantes</button>
+                    </div>
+                `;
+            }
+
+            container.appendChild(moduloDiv);
+        }
+
+        function agregarProducto(modulo) {
+            datosLinks.modules[modulo].push({ modelo: '', medida: '', tipo: '', href: '' });
+            mostrarDatos();
+            actualizarStats();
+        }
+
+        function agregarProductoRegalos(modulo) {
+            datosLinks.modules[modulo].push({ 
+                modelo: '', 
+                recurso: '', 
+                visitar: '', 
+                ver: '', 
+                descargar: '' 
+            });
+            mostrarDatos();
+            actualizarStats();
+        }
+
+        function eliminarProducto(modulo, index) {
+            datosLinks.modules[modulo].splice(index, 1);
+            mostrarDatos();
+            actualizarStats();
+        }
+
+        function actualizarProducto(modulo, index, campo, valor) {
+            datosLinks.modules[modulo][index][campo] = valor;
+            // Auto-actualizar stats cuando se agrega/quita un link
+            if (campo === 'href' || campo === 'visitar' || campo === 'ver' || campo === 'descargar') {
+                actualizarStats();
+            }
+        }
+
+        function agregarModulo() {
+            const nombre = prompt('Nombre del nuevo módulo:');
+            if (nombre && !datosLinks.modules[nombre]) {
+                datosLinks.modules[nombre] = [];
+                mostrarDatos();
+                actualizarStats();
+                mostrarMensaje(`✅ Módulo "${nombre}" creado`, 'success');
+            } else if (datosLinks.modules[nombre]) {
+                mostrarMensaje('❌ Ya existe un módulo con ese nombre', 'error');
+            }
+        }
+
+        function eliminarModulo(nombre) {
+            delete datosLinks.modules[nombre];
+            mostrarDatos();
+            actualizarStats();
+            mostrarMensaje(`✅ Módulo "${nombre}" eliminado`, 'success');
+        }
+
+        function filtrarPorModulo(selectedModule) {
+            const modulos = document.querySelectorAll('.modulo-card[data-modulo]');
+            
+            modulos.forEach(modulo => {
+                const nombreModulo = modulo.getAttribute('data-modulo');
+                
+                if (selectedModule && nombreModulo === selectedModule) {
+                    modulo.style.display = 'block';
+                } else {
+                    modulo.style.display = 'none';
+                }
+            });
+        }
+
+        function validarLinks() {
+            let linksRotos = [];
+            let totalValidados = 0;
+            
+            Object.entries(datosLinks.modules).forEach(([modulo, productos]) => {
+                productos.forEach((producto, index) => {
+                    if (modulo === 'regalos') {
+                        if (producto.visitar) { totalValidados++; }
+                        if (producto.ver) { totalValidados++; }
+                        if (producto.descargar) { totalValidados++; }
+                    } else {
+                        if (producto.href) { totalValidados++; }
+                    }
+                });
+            });
+            
+            mostrarMensaje(`🔍 Validación completada: ${totalValidados} links encontrados`, 'info');
+        }
+
+        function togglePreview() {
+            const preview = document.getElementById('json-preview');
+            const button = document.getElementById('preview-toggle');
+            
+            if (preview.classList.contains('hidden')) {
+                preview.innerHTML = JSON.stringify(datosLinks, null, 2);
+                preview.classList.remove('hidden');
+                button.textContent = '👁️ Ocultar Vista Previa JSON';
+            } else {
+                preview.classList.add('hidden');
+                button.textContent = '👁️ Mostrar Vista Previa JSON';
+            }
+        }
+
+        async function guardarJSON() {
+            try {
+                const jsonString = JSON.stringify(datosLinks, null, 2);
+                const blob = new Blob([jsonString], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'links.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                mostrarMensaje('💾 JSON descargado correctamente', 'success');
+            } catch (error) {
+                console.error('Error al guardar:', error);
+                mostrarMensaje('❌ Error al guardar: ' + error.message, 'error');
+            }
+        }
+
+        // Funciones del modal de variantes
+        function agregarVariantes(modulo) {
+            moduloActualVariantes = modulo;
+            document.getElementById('modelo-base').value = '';
+            document.getElementById('medida-personalizada').value = '';
+            document.getElementById('variantes-seleccionadas').innerHTML = '<em>Selecciona variantes arriba...</em>';
+            
+            // Limpiar presets seleccionados
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            document.getElementById('modal-variantes').style.display = 'block';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal-variantes').style.display = 'none';
+        }
+
+        function togglePreset(element, medida) {
+            element.classList.toggle('selected');
+            actualizarVariantesSeleccionadas();
+        }
+
+        function agregarMedidaPersonalizada() {
+            const medida = document.getElementById('medida-personalizada').value.trim();
+            if (medida) {
+                const container = document.querySelector('.variante-preset');
+                const newBtn = document.createElement('span');
+                newBtn.className = 'preset-btn selected';
+                newBtn.textContent = medida;
+                newBtn.setAttribute('data-medida', medida);
+                newBtn.onclick = function() { togglePreset(this, medida); };
+                container.appendChild(newBtn);
+                
+                document.getElementById('medida-personalizada').value = '';
+                actualizarVariantesSeleccionadas();
+            }
+        }
+
+        function actualizarVariantesSeleccionadas() {
+            const seleccionados = document.querySelectorAll('.preset-btn.selected');
+            const container = document.getElementById('variantes-seleccionadas');
+            
+            if (seleccionados.length === 0) {
+                container.innerHTML = '<em>Selecciona variantes arriba...</em>';
+            } else {
+                container.innerHTML = '';
+                seleccionados.forEach(btn => {
+                    const tag = document.createElement('span');
+                    tag.className = 'variante-tag';
+                    tag.innerHTML = `${btn.textContent} <span class="remove" onclick="this.parentElement.remove(); actualizarVariantesSeleccionadas();">×</span>`;
+                    container.appendChild(tag);
+                });
+            }
+        }
+
+        function generarVariantes() {
+            const modeloBase = document.getElementById('modelo-base').value.trim();
+            const variantes = document.querySelectorAll('#variantes-seleccionadas .variante-tag');
+            
+            if (!modeloBase) {
+                alert('Por favor, ingresa un modelo base');
+                return;
+            }
+            
+            if (variantes.length === 0) {
+                alert('Por favor, selecciona al menos una variante');
+                return;
+            }
+            
+            let productosAgregados = 0;
+            variantes.forEach(variante => {
+                const medida = variante.textContent.replace('×', '').trim();
+                datosLinks.modules[moduloActualVariantes].push({
+                    modelo: modeloBase,
+                    medida: medida,
+                    tipo: '',
+                    href: ''
+                });
+                productosAgregados++;
+            });
+            
+            cerrarModal();
+            mostrarDatos();
+            actualizarStats();
+            mostrarMensaje(`✅ ${productosAgregados} variantes agregadas a "${moduloActualVariantes}"`, 'success');
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal-variantes');
+            if (event.target === modal) {
+                cerrarModal();
+            }
+        }
+    </script>
+</body>
+    <script>
+    // Función robusta para descargar plantilla HTML de un módulo
+    function descargarPlantillaHTML(nombreModulo) {
+        var nombreArchivo = nombreModulo + '.html';
+        var titulo = nombreModulo.charAt(0).toUpperCase() + nombreModulo.slice(1);
+        var contenido = '<!DOCTYPE html>'+
+            '<html lang="es">'+
+            '<head>'+ 
+            '    <meta charset="UTF-8">'+
+            '    <meta name="viewport" content="width=device-width, initial-scale=1.0">'+
+            '    <title>' + titulo + ' | LA TARIMA</title>'+ 
+            '    <link rel="stylesheet" href="../estilos.css">'+
+            '    <link rel="stylesheet" href="Links/editor.css">'+
+            '</head>'+ 
+            '<body>'+ 
+            '    <div class="editor-header">'+
+            '        <h1>' + titulo + '</h1>'+ 
+            '    </div>'+ 
+            '    <div class="content-area">'+ 
+            '        <div id="modulo-container"></div>'+ 
+            '    </div>'+ 
+            '    <script>'+ 
+            '    async function cargarModulo() {'+ 
+            '        const res = await fetch("Links/links.json");'+ 
+            '        const json = await res.json();'+ 
+            '        const productos = json.modules["' + nombreModulo + '"] || [];'+ 
+            '        const container = document.getElementById("modulo-container");'+ 
+            '        if (!productos.length) {'+ 
+            '            container.innerHTML = "<p>No hay productos en este módulo.</p>";'+ 
+            '            return;'+ 
+            '        }'+ 
+            '        container.innerHTML = productos.map(function(p){'+ 
+            '            return "<div style=\\"border:1px solid #e9ecef;padding:12px;margin-bottom:10px;border-radius:8px;background:#fff;\\">" +'+ 
+            '                "<strong>Modelo:</strong> " + (p.modelo || "") + "<br>" +'+ 
+            '                "<strong>Tipo:</strong> " + (p.tipo || "") + "<br>" +'+ 
+            '                "<strong>Enlace:</strong> <a href=\\"" + (p.href || "#") + "\\" target=\\"_blank\\">" + (p.href ? "Ver" : "Sin enlace") + "</a>" +'+ 
+            '            "</div>";'+ 
+            '        }).join("");'+ 
+            '    }'+ 
+            '    cargarModulo();'+ 
+            '    <\/script>'+ 
+            '</body>'+ 
+            '</html>';
+        var blob = new Blob([contenido], { type: 'text/html' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = nombreArchivo;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+    </script>
+</html>
