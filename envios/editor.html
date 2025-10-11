@@ -187,6 +187,48 @@
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+
+        /* BOTONES FLOTANTES SOLO ICONOS */
+        .floating-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .floating-buttons a {
+            background: #0078d7;
+            color: #fff;
+            padding: 14px 16px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+        }
+        .floating-buttons a:hover {
+            background: #005fa3;
+        }
+        @media (max-width: 600px) {
+          .floating-buttons {
+            top: 10px;
+            right: 10px;
+            gap: 8px;
+          }
+          .floating-buttons a {
+            padding: 12px;
+            font-size: 1.3rem;
+            width: 40px;
+            height: 40px;
+          }
+        }
     </style>
 </head>
 <body class="barandas">
@@ -231,6 +273,12 @@
                 <button class="btn-success" onclick="guardarJSON()">💾 Guardar Cambios</button>
                 <button class="btn-primary" onclick="cargarJSON()">📂 Recargar desde Archivo</button>
             </div>
+        </div>
+
+        <!-- BOTONES FLOTANTES SOLO ICONOS -->
+        <div class="floating-buttons">
+          <a href="../edit/index.html" target="_blank" title="Editor Principal">🏠</a>
+          <a href="../Links/editor.html" target="_blank" title="Editor de Links">🔗</a>
         </div>
 
         <nav class="split-btn" aria-label="Acciones de navegación">

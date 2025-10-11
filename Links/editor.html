@@ -9,6 +9,54 @@
     <link rel="icon" href="../img/ico.png" type="image/png">
 </head>
 <body>
+    <!-- BOTONES FLOTANTES SOLO ICONOS -->
+<style>
+.floating-buttons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.floating-buttons a {
+  background: #0078d7;
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+.floating-buttons a:hover {
+  background: #005fa3;
+}
+@media (max-width: 600px) {
+  .floating-buttons {
+    top: 10px;
+    right: 10px;
+    gap: 8px;
+  }
+  .floating-buttons a {
+    padding: 12px;
+    font-size: 1.3rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+</style>
+<div class="floating-buttons">
+  <a href="../edit/index.html" target="_blank" title="Editor Principal">🏠</a>
+  <a href="../envios/editor.html" target="_blank" title="Editor de Envios">🚚</a>
+</div>
+
     <div class="editor-container">
         <!-- Header mejorado -->
         <div class="editor-header">
