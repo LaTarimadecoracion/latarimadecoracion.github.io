@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Principal | LA TARIMA</title>
+    <link rel="stylesheet" href="editor.css">
+    <link rel="icon" href="../img/ico.png" type="image/png">
+</head>
+<body>
+    <div class="editor-container">
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+            <h1>🎯 EDITOR PRINCIPAL - LA TARIMA</h1>
+        </a>
+        
+        <div id="mensaje-status" class="status-message" style="display:none;"></div>
+        
+        <!-- Información Básica del Sitio -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">📝 Información Básica</h3>
+            </div>
+            <div class="seccion-content">
+                <div class="two-column">
+                    <div class="form-group">
+                        <label>Nombre del Sitio:</label>
+                        <input type="text" id="siteName" placeholder="LA TARIMA">
+                    </div>
+                    <div class="form-group">
+                        <label>Subtítulo:</label>
+                        <input type="text" id="subtitle" placeholder="Carpintería Online">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Descripción SEO:</label>
+                    <textarea id="seoDescription" placeholder="Descripción para motores de búsqueda"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Palabras Clave SEO:</label>
+                    <input type="text" id="seoKeywords" placeholder="carpintería, barandas, estantes, etc.">
+                </div>
+            </div>
+        </div>
+
+        <!-- Enlaces Sociales -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">🌐 Enlaces Sociales</h3>
+            </div>
+            <div class="seccion-content">
+                <div id="social-links-container">
+                    <!-- Los enlaces sociales se cargan dinámicamente -->
+                </div>
+                <button class="btn-success" onclick="agregarEnlaceSocial()">+ Agregar Enlace Social</button>
+            </div>
+        </div>
+
+        <!-- Iconos Flotantes -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">🎯 Iconos Flotantes</h3>
+            </div>
+            <div class="seccion-content">
+                <div id="floating-icons-container">
+                    <div class="empty-message">Los iconos flotantes aparecerán aquí...</div>
+                </div>
+                
+                <button class="btn-success" onclick="agregarIconoFlotante()">+ Agregar Icono Flotante</button>
+                <button class="btn-primary" onclick="debugIconosFlotantes()" style="margin-left: 10px;">🐛 Debug Iconos</button>
+                <button class="btn-warning" onclick="repararIconosFlotantes()" style="margin-left: 10px;">🔧 Reparar</button>
+                <button class="btn-primary" onclick="testVisualIconos()" style="margin-left: 10px;">👁️ Test Visual</button>
+                <button class="btn-success" onclick="window.location.reload()" style="margin-left: 10px;">🔄 Recargar</button>
+                
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <h4 style="margin: 0 0 10px 0; color: #2c3e50;">💡 Consejos:</h4>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #666;">
+                        <li>Los iconos flotantes aparecen en el lateral derecho de la página</li>
+                        <li>Usa imágenes cuadradas (PNG con transparencia funciona mejor)</li>
+                        <li>Las URLs pueden ser páginas internas (ej: calcular.html) o externas (ej: https://...)</li>
+                        <li>La posición determina el orden (1 = arriba, 2 = medio, etc.)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación Principal -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">🧭 Navegación Principal</h3>
+            </div>
+            <div class="seccion-content">
+                <div id="navigation-container">
+                    <!-- La navegación se carga dinámicamente -->
+                </div>
+                <button class="btn-success" onclick="agregarBotonNavegacion()">+ Agregar Botón</button>
+            </div>
+        </div>
+
+        <!-- Acciones -->
+        <div class="actions">
+            <button class="btn-primary" onclick="guardarCambios()">💾 Guardar Cambios</button>
+            <button class="btn-success" onclick="actualizarPreview()">🔄 Actualizar Vista Previa</button>
+            <button class="btn-warning" onclick="descargarBackup()">📥 Descargar Backup</button>
+            <button class="btn-primary" onclick="diagnosticoCompleto()" style="background: #9b59b6;">🔍 Diagnóstico Completo</button>
+            <a href="../index.html" class="btn-primary">🏠 Volver al Sitio</a>
+        </div>
+
+        <!-- Vista Previa del JSON -->
+        <div class="preview-container">
+            <div class="preview-title">Vista Previa del Archivo JSON:</div>
+            <div id="json-preview" class="json-preview"></div>
+        </div>
+    </div>
+
+    <script>
+        let datosMain = {};
+
+        // Cargar datos al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado, iniciando editor...');
+            
+            cargarJSON().then(() => {
+                console.log('JSON cargado, mostrando interfaz...');
+                
+                try {
+                    mostrarDatos();
+                    console.log('Datos básicos mostrados');
+                } catch (error) {
+                    console.error('Error mostrando datos básicos:', error);
+                }
+                
+                try {
+                    mostrarEnlacesSociales();
+                    console.log('Enlaces sociales mostrados');
+                } catch (error) {
+                    console.error('Error mostrando enlaces sociales:', error);
+                }
+                
+                try {
+                    mostrarNavegacion();
+                    console.log('Navegación mostrada');
+                } catch (error) {
+                    console.error('Error mostrando navegación:', error);
+                }
+                
+                try {
+                    mostrarIconosFlotantes();
+                    console.log('Iconos flotantes mostrados');
+                } catch (error) {
+                    console.error('Error mostrando iconos flotantes:', error);
+                }
+                
+                console.log('Editor cargado completamente');
+            }).catch(error => {
+                console.error('Error cargando editor:', error);
+                mostrarMensaje('Error cargando el editor: ' + error.message, 'error');
+            });
+        });
+
+        async function cargarJSON() {
+            try {
+                console.log('Cargando JSON...');
+                const response = await fetch('main-data.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                datosMain = await response.json();
+                console.log('JSON cargado exitosamente:', datosMain);
+                
+                // Asegurar que existe la estructura completa
+                if (!datosMain.floatingIcons) {
+                    datosMain.floatingIcons = [];
+                    console.log('Creada estructura floatingIcons vacía');
+                }
+                
+                if (!datosMain.socialLinks) {
+                    datosMain.socialLinks = {};
+                    console.log('Creada estructura socialLinks vacía');
+                }
+                
+                if (!datosMain.mainNavigation) {
+                    datosMain.mainNavigation = { barandas: { items: [] } };
+                    console.log('Creada estructura mainNavigation vacía');
+                }
+                
+                if (!datosMain.seo) {
+                    datosMain.seo = { title: "", description: "", keywords: "" };
+                    console.log('Creada estructura seo vacía');
+                }
+                
+                return datosMain;
+            } catch (error) {
+                console.error('Error cargando JSON:', error);
+                
+                // Crear estructura mínima si falla
+                console.log('Creando estructura de datos por defecto...');
+                datosMain = {
+                    siteName: "LA TARIMA",
+                    subtitle: "Carpintería Online",
+                    seo: { 
+                        title: "LA TARIMA - Carpintería", 
+                        description: "Carpintería online especializada en productos de madera", 
+                        keywords: "carpintería, barandas, estantes, madera" 
+                    },
+                    socialLinks: {
+                        whatsapp: "https://wa.me/5491167007723",
+                        instagram: "https://www.instagram.com/latarimadecoracion"
+                    },
+                    floatingIcons: [],
+                    mainNavigation: { 
+                        barandas: { 
+                            title: "Barandas para cama",
+                            items: [] 
+                        } 
+                    }
+                };
+                
+                mostrarMensaje('Usando datos por defecto (no se pudo cargar main-data.json)', 'error');
+                return datosMain;
+            }
+        }
+
+        function mostrarDatos() {
+            try {
+                console.log('Mostrando datos básicos...');
+                
+                const siteName = document.getElementById('siteName');
+                const subtitle = document.getElementById('subtitle');
+                const seoDescription = document.getElementById('seoDescription');
+                const seoKeywords = document.getElementById('seoKeywords');
+                
+                if (siteName) siteName.value = datosMain.siteName || '';
+                if (subtitle) subtitle.value = datosMain.subtitle || '';
+                if (seoDescription) seoDescription.value = datosMain.seo?.description || '';
+                if (seoKeywords) seoKeywords.value = datosMain.seo?.keywords || '';
+                
+                actualizarPreview();
+                console.log('Datos básicos mostrados correctamente');
+            } catch (error) {
+                console.error('Error mostrando datos:', error);
+                mostrarMensaje('Error mostrando datos básicos: ' + error.message, 'error');
+            }
+        }
+
+        // Funciones para iconos flotantes (globales)
+        window.mostrarIconosFlotantes = function() {
+            const container = document.getElementById('floating-icons-container');
+            if (!container) {
+                console.error('No se encontró el contenedor floating-icons-container');
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            if (!datosMain.floatingIcons) datosMain.floatingIcons = [];
+            
+            console.log('Mostrando iconos flotantes:', datosMain.floatingIcons.length);
+            
+            if (datosMain.floatingIcons.length === 0) {
+                container.innerHTML = '<div class="empty-message">No hay iconos flotantes. Haz click en "+ Agregar Icono Flotante" para crear uno.</div>';
+                return;
+            }
+            
+            // Ordenar por posición
+            const iconosOrdenados = [...datosMain.floatingIcons].sort((a, b) => (a.position || 1) - (b.position || 1));
+            
+            iconosOrdenados.forEach((icono, index) => {
+                const realIndex = datosMain.floatingIcons.findIndex(i => i.id === icono.id);
+                const iconoDiv = document.createElement('div');
+                iconoDiv.className = 'navigation-item';
+                iconoDiv.innerHTML = `
+                    <div class="item-row">
+                        <span class="drag-handle">⋮⋮</span>
+                        <strong>Icono Flotante ${icono.position || realIndex + 1}</strong>
+                        <button class="btn-danger" onclick="eliminarIconoFlotante(${realIndex})">🗑️</button>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label>Texto del Tooltip:</label>
+                            <input type="text" placeholder="Texto al pasar mouse" value="${icono.text || ''}" onchange="actualizarIconoFlotante(${realIndex}, 'text', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>URL de Destino:</label>
+                            <input type="text" placeholder="pagina.html o https://..." value="${icono.url || ''}" onchange="actualizarIconoFlotante(${realIndex}, 'url', this.value)">
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label>Imagen del Icono:</label>
+                            <input type="text" placeholder="img/mi-icono.png" value="${icono.image || ''}" onchange="actualizarIconoFlotante(${realIndex}, 'image', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Posición (orden):</label>
+                            <input type="number" min="1" max="10" placeholder="1" value="${icono.position || realIndex + 1}" onchange="actualizarIconoFlotante(${realIndex}, 'position', parseInt(this.value) || 1)">
+                        </div>
+                    </div>
+                `;
+                container.appendChild(iconoDiv);
+            });
+        }
+
+        window.agregarIconoFlotante = function() {
+            try {
+                const nuevoIcono = {
+                    id: 'icono-' + Date.now(),
+                    text: 'Nuevo Icono',
+                    url: '#',
+                    image: 'img/icono-carpintero.png',
+                    position: (datosMain.floatingIcons?.length || 0) + 1
+                };
+                
+                if (!datosMain.floatingIcons) datosMain.floatingIcons = [];
+                datosMain.floatingIcons.push(nuevoIcono);
+                
+                mostrarIconosFlotantes();
+                actualizarPreview();
+                mostrarMensaje('Icono flotante agregado correctamente', 'exito');
+            } catch (error) {
+                console.error('Error agregando icono flotante:', error);
+                mostrarMensaje('Error al agregar icono: ' + error.message, 'error');
+            }
+        }
+
+        window.eliminarIconoFlotante = function(index) {
+            try {
+                if (confirm('¿Estás seguro de que quieres eliminar este icono flotante?')) {
+                    datosMain.floatingIcons.splice(index, 1);
+                    mostrarIconosFlotantes();
+                    actualizarPreview();
+                }
+            } catch (error) {
+                console.error('Error eliminando icono flotante:', error);
+                mostrarMensaje('Error al eliminar icono: ' + error.message, 'error');
+            }
+        }
+
+        window.actualizarIconoFlotante = function(index, campo, valor) {
+            try {
+                if (campo === 'position') {
+                    datosMain.floatingIcons[index][campo] = valor;
+                    mostrarIconosFlotantes(); // Refrescar para reordenar
+                } else {
+                    datosMain.floatingIcons[index][campo] = valor;
+                }
+                actualizarPreview();
+            } catch (error) {
+                console.error('Error actualizando icono flotante:', error);
+                mostrarMensaje('Error al actualizar icono: ' + error.message, 'error');
+            }
+        }
+
+        // Función de debug completa
+        window.debugIconosFlotantes = function() {
+            console.log('=== DEBUG COMPLETO ICONOS FLOTANTES ===');
+            
+            // 1. Verificar datos
+            console.log('1. datosMain existe:', typeof datosMain !== 'undefined');
+            console.log('2. datosMain completo:', datosMain);
+            console.log('3. datosMain.floatingIcons:', datosMain?.floatingIcons);
+            console.log('4. Cantidad de iconos:', datosMain?.floatingIcons?.length || 0);
+            
+            // 2. Verificar DOM
+            const container = document.getElementById('floating-icons-container');
+            console.log('5. Contenedor existe:', !!container);
+            console.log('6. Contenedor HTML antes:', container?.innerHTML);
+            
+            // 3. Verificar funciones
+            console.log('7. mostrarIconosFlotantes es función:', typeof window.mostrarIconosFlotantes);
+            console.log('8. agregarIconoFlotante es función:', typeof window.agregarIconoFlotante);
+            
+            // 4. Ejecutar función
+            try {
+                console.log('9. Ejecutando mostrarIconosFlotantes...');
+                window.mostrarIconosFlotantes();
+                console.log('10. mostrarIconosFlotantes ejecutado correctamente');
+                console.log('11. Contenedor HTML después:', container?.innerHTML);
+            } catch (error) {
+                console.error('10. ERROR en mostrarIconosFlotantes:', error);
+                console.error('11. Stack trace:', error.stack);
+            }
+            
+            // 5. Verificar eventos de botones
+            const btnAgregar = document.querySelector('button[onclick="agregarIconoFlotante()"]');
+            console.log('12. Botón agregar existe:', !!btnAgregar);
+            
+            console.log('=== FIN DEBUG COMPLETO ===');
+        }
+
+        // Función de reparación automática
+        window.repararIconosFlotantes = function() {
+            console.log('Intentando reparar iconos flotantes...');
+            
+            // Verificar y crear estructura mínima si no existe
+            if (!datosMain.floatingIcons) {
+                datosMain.floatingIcons = [];
+            }
+            
+            // Re-ejecutar mostrarIconosFlotantes
+            try {
+                window.mostrarIconosFlotantes();
+                console.log('✅ Reparación completada');
+                return true;
+            } catch (error) {
+                console.error('❌ Error en reparación:', error);
+                return false;
+            }
+        }
+        
+        // Función de test visual
+        window.testVisualIconos = function() {
+            const container = document.getElementById('floating-icons-container');
+            if (!container) {
+                alert('❌ Contenedor no encontrado');
+                return;
+            }
+            
+            // Añadir un elemento de prueba visible
+            const testDiv = document.createElement('div');
+            testDiv.style.cssText = 'background: red !important; color: white !important; padding: 20px !important; margin: 10px !important; border: 2px solid black !important; font-size: 16px !important; font-weight: bold !important;';
+            testDiv.innerHTML = '🔴 ELEMENTO DE PRUEBA VISIBLE - Si ves esto, el CSS funciona';
+            container.appendChild(testDiv);
+            
+            setTimeout(() => {
+                container.removeChild(testDiv);
+            }, 3000);
+            
+            alert('✅ Elemento de prueba añadido por 3 segundos');
+        }
+
+        // Función de diagnóstico general
+        window.diagnosticoCompleto = function() {
+            console.log('=== DIAGNÓSTICO COMPLETO DEL EDITOR ===');
+            
+            // 1. Verificar datos
+            console.log('1. datosMain:', datosMain);
+            console.log('2. Estructura completa:', JSON.stringify(datosMain, null, 2));
+            
+            // 2. Verificar elementos DOM
+            const elementos = [
+                'siteName', 'subtitle', 'seoDescription', 'seoKeywords',
+                'floating-icons-container', 'social-links-container', 
+                'navigation-container', 'json-preview', 'mensaje-status'
+            ];
+            
+            elementos.forEach(id => {
+                const elemento = document.getElementById(id);
+                console.log(`3. Elemento ${id}:`, !!elemento);
+            });
+            
+            // 3. Verificar funciones
+            const funciones = [
+                'mostrarIconosFlotantes', 'agregarIconoFlotante', 'mostrarDatos',
+                'mostrarEnlacesSociales', 'mostrarNavegacion', 'guardarCambios'
+            ];
+            
+            funciones.forEach(func => {
+                console.log(`4. Función ${func}:`, typeof window[func] || typeof eval(func));
+            });
+            
+            // 4. Verificar CSS
+            const computed = getComputedStyle(document.body);
+            console.log('5. CSS cargado - color de fondo:', computed.background);
+            
+            console.log('=== FIN DIAGNÓSTICO ===');
+            
+            // Mostrar resumen en alerta
+            const resumen = `
+                ✓ Datos: ${datosMain ? 'OK' : 'ERROR'}
+                ✓ Iconos flotantes: ${datosMain.floatingIcons ? datosMain.floatingIcons.length : 0}
+                ✓ Enlaces sociales: ${datosMain.socialLinks ? Object.keys(datosMain.socialLinks).length : 0}
+                ✓ CSS: ${computed.background ? 'Cargado' : 'Error'}
+            `;
+            alert('Diagnóstico completado - Ver consola (F12) para detalles' + resumen);
+        }
+
+        // Funciones para enlaces sociales
+        function mostrarEnlacesSociales() {
+            const container = document.getElementById('social-links-container');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (!datosMain.socialLinks) {
+                datosMain.socialLinks = {};
+            }
+            
+            const socialNetworks = ['whatsapp', 'instagram', 'facebook', 'tiktok', 'youtube'];
+            
+            socialNetworks.forEach(network => {
+                const linkDiv = document.createElement('div');
+                linkDiv.className = 'form-group';
+                linkDiv.innerHTML = `
+                    <label>${network.charAt(0).toUpperCase() + network.slice(1)}:</label>
+                    <input type="url" placeholder="https://..." value="${datosMain.socialLinks[network] || ''}" 
+                           onchange="actualizarEnlaceSocial('${network}', this.value)">
+                `;
+                container.appendChild(linkDiv);
+            });
+        }
+
+        function agregarEnlaceSocial() {
+            const nombre = prompt('Nombre de la red social:');
+            if (nombre) {
+                const url = prompt('URL de la red social:');
+                if (url) {
+                    datosMain.socialLinks[nombre.toLowerCase()] = url;
+                    mostrarEnlacesSociales();
+                    actualizarPreview();
+                }
+            }
+        }
+
+        function actualizarEnlaceSocial(network, url) {
+            datosMain.socialLinks[network] = url;
+            actualizarPreview();
+        }
+
+        // Funciones para navegación
+        function mostrarNavegacion() {
+            const container = document.getElementById('navigation-container');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (!datosMain.mainNavigation) {
+                datosMain.mainNavigation = { barandas: { items: [] } };
+            }
+            
+            if (datosMain.mainNavigation.barandas && datosMain.mainNavigation.barandas.items) {
+                datosMain.mainNavigation.barandas.items.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'navigation-item';
+                    itemDiv.innerHTML = `
+                        <div class="item-row">
+                            <strong>Botón de Navegación ${index + 1}</strong>
+                            <button class="btn-danger" onclick="eliminarBotonNavegacion(${index})">🗑️</button>
+                        </div>
+                        <div class="two-column">
+                            <div class="form-group">
+                                <label>Título:</label>
+                                <input type="text" value="${item.title || ''}" onchange="actualizarBotonNavegacion(${index}, 'title', this.value)">
+                            </div>
+                            <div class="form-group">
+                                <label>URL:</label>
+                                <input type="text" value="${item.url || ''}" onchange="actualizarBotonNavegacion(${index}, 'url', this.value)">
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(itemDiv);
+                });
+            }
+        }
+
+        function agregarBotonNavegacion() {
+            if (!datosMain.mainNavigation) {
+                datosMain.mainNavigation = { barandas: { items: [] } };
+            }
+            if (!datosMain.mainNavigation.barandas) {
+                datosMain.mainNavigation.barandas = { items: [] };
+            }
+            if (!datosMain.mainNavigation.barandas.items) {
+                datosMain.mainNavigation.barandas.items = [];
+            }
+            
+            const nuevoBoton = {
+                title: 'Nuevo Botón',
+                url: '#',
+                id: 'btn-' + Date.now()
+            };
+            
+            datosMain.mainNavigation.barandas.items.push(nuevoBoton);
+            mostrarNavegacion();
+            actualizarPreview();
+        }
+
+        function eliminarBotonNavegacion(index) {
+            if (confirm('¿Eliminar este botón de navegación?')) {
+                datosMain.mainNavigation.barandas.items.splice(index, 1);
+                mostrarNavegacion();
+                actualizarPreview();
+            }
+        }
+
+        function actualizarBotonNavegacion(index, campo, valor) {
+            datosMain.mainNavigation.barandas.items[index][campo] = valor;
+            actualizarPreview();
+        }
+        
+        function actualizarPreview() {
+            document.getElementById('json-preview').textContent = JSON.stringify(datosMain, null, 2);
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            const statusDiv = document.getElementById('mensaje-status');
+            statusDiv.textContent = mensaje;
+            statusDiv.className = `mensaje ${tipo}`;
+            statusDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        async function guardarCambios() {
+            try {
+                // Actualizar datos básicos
+                datosMain.siteName = document.getElementById('siteName').value;
+                datosMain.subtitle = document.getElementById('subtitle').value;
+                datosMain.seo.description = document.getElementById('seoDescription').value;
+                datosMain.seo.keywords = document.getElementById('seoKeywords').value;
+                
+                // Simulación de guardado (en un proyecto real aquí iría una petición al servidor)
+                console.log('Guardando:', datosMain);
+                mostrarMensaje('Cambios guardados correctamente', 'exito');
+                actualizarPreview();
+            } catch (error) {
+                console.error('Error guardando:', error);
+                mostrarMensaje('Error al guardar: ' + error.message, 'error');
+            }
+        }
+
+        function descargarBackup() {
+            const dataStr = JSON.stringify(datosMain, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'main-data-backup.json';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

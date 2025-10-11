@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor LA TARIMA - Simple</title>
+    <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+    <div class="editor-container">
+        <h1>🎯 EDITOR LA TARIMA - VERSION SIMPLE</h1>
+        
+        <div id="mensaje-status" class="mensaje info">
+            🔄 Cargando editor...
+        </div>
+        
+        <!-- Información Básica del Sitio -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">📝 Información Básica</h3>
+            </div>
+            <div class="seccion-content">
+                <div class="two-column">
+                    <div class="form-group">
+                        <label>Nombre del Sitio:</label>
+                        <input type="text" id="siteName" placeholder="LA TARIMA" value="LA TARIMA">
+                    </div>
+                    <div class="form-group">
+                        <label>Subtítulo:</label>
+                        <input type="text" id="subtitle" placeholder="Carpintería Online" value="Carpintería Online">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enlaces Sociales -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">🌐 Enlaces Sociales</h3>
+            </div>
+            <div class="seccion-content">
+                <div id="social-links-container">
+                    <div class="form-group">
+                        <label>WhatsApp:</label>
+                        <input type="text" value="https://wa.me/5491167007723">
+                    </div>
+                    <div class="form-group">
+                        <label>Instagram:</label>
+                        <input type="text" value="https://www.instagram.com/latarimadecoracion">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Iconos Flotantes -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">🎯 Iconos Flotantes</h3>
+            </div>
+            <div class="seccion-content">
+                <div id="floating-icons-container">
+                    <div class="navigation-item">
+                        <strong>Icono 1 - Regalos</strong>
+                        <div class="form-group">
+                            <label>Texto:</label>
+                            <input type="text" value="Regalos para seguidores">
+                        </div>
+                        <div class="form-group">
+                            <label>URL:</label>
+                            <input type="text" value="regalos/index.html">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación Principal -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">🧭 Navegación Principal</h3>
+            </div>
+            <div class="seccion-content">
+                <div id="navigation-container">
+                    <div class="navigation-item">
+                        <strong>Botón de Navegación 1</strong>
+                        <div class="form-group">
+                            <label>Título:</label>
+                            <input type="text" value="Barandas desmontables">
+                        </div>
+                        <div class="form-group">
+                            <label>URL:</label>
+                            <input type="text" value="barandas_desmontables.html">
+                        </div>
+                    </div>
+                    
+                    <div class="navigation-item">
+                        <strong>Botón de Navegación 2</strong>
+                        <div class="form-group">
+                            <label>Título:</label>
+                            <input type="text" value="Barandas para Sommier">
+                        </div>
+                        <div class="form-group">
+                            <label>URL:</label>
+                            <input type="text" value="barandas_sommier.html">
+                        </div>
+                    </div>
+                    
+                    <div class="navigation-item">
+                        <strong>Botón de Navegación 3</strong>
+                        <div class="form-group">
+                            <label>Título:</label>
+                            <input type="text" value="Barandas Fijas para cama">
+                        </div>
+                        <div class="form-group">
+                            <label>URL:</label>
+                            <input type="text" value="barandas_fijas.html">
+                        </div>
+                    </div>
+                    
+                    <div class="navigation-item">
+                        <strong>Botón de Navegación 4</strong>
+                        <div class="form-group">
+                            <label>Título:</label>
+                            <input type="text" value="Barandas Ortopédicas">
+                        </div>
+                        <div class="form-group">
+                            <label>URL:</label>
+                            <input type="text" value="barandas_ortopedicas.html">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Acciones -->
+        <div class="actions">
+            <button class="btn-primary" onclick="alert('Funciona!')">💾 Test Botón</button>
+            <a href="../index.html" class="btn-primary">🏠 Volver al Sitio</a>
+        </div>
+
+        <!-- Vista Previa del JSON -->
+        <div class="preview-container">
+            <div class="preview-title">Vista Previa del Archivo JSON:</div>
+            <div id="json-preview" class="json-preview">
+                <p>Esta es una versión simplificada sin JavaScript complejo.</p>
+                <p>Si ves este mensaje y las secciones de arriba, significa que el HTML y CSS funcionan correctamente.</p>
+                <p>El problema original está en el JavaScript que maneja la carga dinámica de datos.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Editor simple cargado');
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('mensaje-status').textContent = '✅ Editor simple funcionando';
+            document.getElementById('mensaje-status').className = 'mensaje exito';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Simple - Test</title>
+    <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+    <div class="editor-container">
+        <h1>🎯 EDITOR TEST - LA TARIMA</h1>
+        
+        <div id="mensaje-status" class="mensaje info">
+            🔄 Cargando editor...
+        </div>
+        
+        <!-- Test Simple -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">📝 Test Simple</h3>
+            </div>
+            <div class="seccion-content">
+                <div id="test-content">
+                    <p>Si ves este mensaje, el HTML y CSS funcionan correctamente.</p>
+                    <button class="btn-primary" onclick="testFunction()">Test JavaScript</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista Previa -->
+        <div class="preview-container">
+            <div class="preview-title">Estado del Sistema:</div>
+            <div id="system-status" class="json-preview">Esperando...</div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Script cargado correctamente');
+        
+        function testFunction() {
+            console.log('Función JavaScript ejecutada');
+            document.getElementById('system-status').textContent = 'JavaScript funciona correctamente - ' + new Date().toLocaleTimeString();
+            document.getElementById('mensaje-status').textContent = '✅ Todo funciona correctamente';
+            document.getElementById('mensaje-status').className = 'mensaje exito';
+        }
+        
+        // Test automático al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado');
+            setTimeout(() => {
+                document.getElementById('mensaje-status').textContent = '✅ Editor de prueba cargado';
+                document.getElementById('mensaje-status').className = 'mensaje exito';
+                document.getElementById('system-status').textContent = 'Sistema cargado correctamente - ' + new Date().toLocaleTimeString();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

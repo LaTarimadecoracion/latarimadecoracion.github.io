@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Principal | LA TARIMA</title>
+    <link rel="stylesheet" href="editor.css">
+    <link rel="icon" href="../img/ico.png" type="image/png">
+        .editor-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .form-group textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+        
+        .seccion-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px #0001;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid transparent;
+        }
+        
+        .seccion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .seccion-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+        }
+        
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+        
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn-warning:hover {
+            background: #e67e22;
+        }
+        
+        .btn-success {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .btn-success:hover {
+            background: #219a52;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+        
+        .item-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+        
+        .item-row input {
+            flex: 1;
+        }
+        
+        .item-row .btn-danger {
+            flex-shrink: 0;
+            height: 38px;
+        }
+        
+        .actions {
+            position: sticky;
+            bottom: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .preview-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .preview-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .json-preview {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .status-message {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .color-input {
+            width: 60px !important;
+            height: 38px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navigation-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #e9ecef;
+            color: #212529;
+        }
+        
+        .navigation-item label {
+            color: #495057;
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .navigation-item input {
+            background: white;
+            color: #212529;
+            border: 1px solid #ced4da;
+        }
+        
+        .navigation-item strong {
+            color: #2c3e50;
+        }
+        
+        #floating-icons-container {
+            background: #ffffff !important;
+            border: 1px dashed #dee2e6 !important;
+            min-height: 50px !important;
+        }
+        
+        #floating-icons-container .navigation-item {
+            background: #f8f9fa !important;
+            border: 1px solid #e9ecef !important;
+            color: #212529 !important;
+        }
+        
+        #floating-icons-container .form-group label {
+            color: #495057 !important;
+            font-weight: 500 !important;
+        }
+        
+        #floating-icons-container .form-group input {
+            background: white !important;
+            color: #212529 !important;
+            border: 1px solid #ced4da !important;
+        }
+        
+        /* ESTILOS ESPECÍFICOS PARA ICONOS FLOTANTES - MÁXIMA PRIORIDAD */
+        .editor-container #floating-icons-container {
+            background: white !important;
+            border: 2px solid #007bff !important;
+            border-radius: 8px !important;
+            padding: 20px !important;
+            margin: 10px 0 !important;
+            min-height: 100px !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        
+        .editor-container #floating-icons-container * {
+            color: #333 !important;
+            font-family: Arial, sans-serif !important;
+            font-size: 14px !important;
+            line-height: 1.4 !important;
+        }
+        
+        .editor-container #floating-icons-container .navigation-item {
+            background: #f8f9fa !important;
+            border: 1px solid #dee2e6 !important;
+            border-radius: 8px !important;
+            padding: 15px !important;
+            margin: 10px 0 !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .editor-container #floating-icons-container label {
+            color: #495057 !important;
+            font-weight: bold !important;
+            display: block !important;
+            margin-bottom: 5px !important;
+        }
+        
+        .editor-container #floating-icons-container input {
+            background: white !important;
+            color: #212529 !important;
+            border: 1px solid #ced4da !important;
+            padding: 8px 12px !important;
+            border-radius: 4px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            font-size: 14px !important;
+        }
+        
+        .editor-container #floating-icons-container strong {
+            color: #2c3e50 !important;
+            font-weight: bold !important;
+            font-size: 16px !important;
+        }
+
+        .drag-handle {
+            cursor: grab;
+            color: #666;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .drag-handle:active {
+            cursor: grabbing;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            .three-column {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="barandas">
+    <div class="container">
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+            <h1 style="cursor:pointer;">LA TARIMA</h1>
+        </a>
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+            <div class="subtitle" style="cursor:pointer;">Editor Principal</div>
+        </a>
+
+        <div class="editor-container">
+            <div id="status-message"></div>
+            
+            <!-- Información Básica del Sitio -->
+            <div class="seccion-card">
+                <div class="seccion-header">
+                    <h3 class="seccion-title">🏠 Información Básica del Sitio</h3>
+                </div>
+                
+                <div class="two-column">
+                    <div class="form-group">
+                        <label for="site-name">Nombre del Sitio:</label>
+                        <input type="text" id="site-name" placeholder="LA TARIMA">
+                    </div>
+                    <div class="form-group">
+                        <label for="site-subtitle">Subtítulo:</label>
+                        <input type="text" id="site-subtitle" placeholder="Carpintería Online">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO -->
+            <div class="seccion-card">
+                <div class="seccion-header">
+                    <h3 class="seccion-title">🔍 SEO (Meta Tags)</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="seo-title">Título SEO:</label>
+                    <input type="text" id="seo-title" placeholder="LA TARIMA - Carpintería">
+                </div>
+                
+                <div class="form-group">
+                    <label for="seo-description">Descripción SEO:</label>
+                    <textarea id="seo-description" placeholder="Descripción para motores de búsqueda..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="seo-keywords">Palabras Clave SEO:</label>
+                    <textarea id="seo-keywords" placeholder="palabra1, palabra2, palabra3..."></textarea>
+                </div>
+            </div>
+
+            <!-- Redes Sociales -->
+            <div class="seccion-card">
+                <div class="seccion-header">
+                    <h3 class="seccion-title">📱 Enlaces de Redes Sociales</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="whatsapp-link">WhatsApp:</label>
+                    <input type="url" id="whatsapp-link" placeholder="https://wa.me/5491167007723">
+                </div>
+                
+                <div class="two-column">
+                    <div class="form-group">
+                        <label for="tiktok-link">TikTok:</label>
+                        <input type="url" id="tiktok-link" placeholder="https://www.tiktok.com/@latarimadecoracion">
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram-link">Instagram:</label>
+                        <input type="url" id="instagram-link" placeholder="https://www.instagram.com/latarimadecoracion">
+                    </div>
+                </div>
+                
+                <div class="two-column">
+                    <div class="form-group">
+                        <label for="facebook-link">Facebook:</label>
+                        <input type="url" id="facebook-link" placeholder="https://www.facebook.com/latarimadecoracion">
+                    </div>
+                    <div class="form-group">
+                        <label for="youtube-link">YouTube:</label>
+                        <input type="url" id="youtube-link" placeholder="https://www.youtube.com/@latarimadecoracion">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Iconos Flotantes -->
+            <div class="seccion-card">
+                <div class="seccion-header">
+                    <h3 class="seccion-title">🎯 Iconos Flotantes</h3>
+                </div>
+                
+                <div id="floating-icons-container" style="background: white; border: 2px solid #007bff; border-radius: 8px; padding: 20px; margin: 10px 0; min-height: 100px;">
+                    <div style="color: #666; text-align: center; padding: 20px; font-style: italic;">
+                        Los iconos flotantes aparecerán aquí...
+                    </div>
+                </div>
+                
+                <button class="btn-success" onclick="agregarIconoFlotante()">+ Agregar Icono Flotante</button>
+                <button class="btn-primary" onclick="debugIconosFlotantes()" style="margin-left: 10px;">🐛 Debug Iconos</button>
+                <button class="btn-warning" onclick="repararIconosFlotantes()" style="margin-left: 10px;">🔧 Reparar</button>
+                <button class="btn-primary" onclick="testVisualIconos()" style="margin-left: 10px;">👁️ Test Visual</button>
+                <button class="btn-success" onclick="window.location.reload()" style="margin-left: 10px;">🔄 Recargar</button>
+                
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <h4 style="margin: 0 0 10px 0; color: #2c3e50;">💡 Consejos:</h4>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #666;">
+                        <li>Los iconos se apilan verticalmente en el orden de posición</li>
+                        <li>Posición 1 = arriba, números mayores = más abajo</li>
+                        <li>Usa imágenes cuadradas para mejor apariencia</li>
+                        <li>Tamaño recomendado: 32x32px o 64x64px</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Botones de Navegación -->
+            <div class="seccion-card">
+                <div class="seccion-header">
+                    <h3 class="seccion-title">🧭 Botones de Navegación</h3>
+                </div>
+                
+                <div id="navigation-buttons-container">
+                    <!-- Los botones se cargan dinámicamente -->
+                </div>
+                
+                <button class="btn-success" onclick="agregarBotonNavegacion()">+ Agregar Botón de Navegación</button>
+            </div>
+
+            <!-- Barandas Dropdown -->
+            <div class="seccion-card">
+                <div class="seccion-header">
+                    <h3 class="seccion-title">📋 Dropdown de Barandas</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="barandas-title">Título del Dropdown:</label>
+                    <input type="text" id="barandas-title" placeholder="Barandas para cama">
+                </div>
+                
+                <div id="barandas-items-container">
+                    <!-- Los items se cargan dinámicamente -->
+                </div>
+                
+                <button class="btn-success" onclick="agregarItemBarandas()">+ Agregar Item de Barandas</button>
+            </div>
+
+            <!-- Sección de Redes Sociales -->
+            <div class="seccion-card">
+                <div class="seccion-header">
+                    <h3 class="seccion-title">🌐 Sección de Redes Sociales</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="social-section-title">Título de la Sección:</label>
+                    <input type="text" id="social-section-title" placeholder="Nuestras redes">
+                </div>
+                
+                <div id="social-links-container">
+                    <!-- Los enlaces sociales se cargan dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Vista previa JSON -->
+            <div class="preview-container">
+                <div class="preview-title">Vista Previa JSON:</div>
+                <div class="json-preview" id="json-preview"></div>
+            </div>
+
+            <!-- Acciones -->
+            <div class="actions">
+                <button class="btn-primary" onclick="actualizarPreview()">🔄 Actualizar Vista Previa</button>
+                <button class="btn-success" onclick="guardarJSON()">💾 Guardar Cambios</button>
+                <button class="btn-primary" onclick="cargarJSON()">📂 Recargar desde Archivo</button>
+            </div>
+        </div>
+
+        <nav class="split-btn" aria-label="Acciones de navegación">
+            <a href="../index.html" title="Ver página principal">VER PÁGINA</a>
+            <a href="../index.html" title="Volver al inicio">INICIO</a>
+        </nav>
+    </div>
+
+    <script>
+        let datosMain = {
+            siteName: "LA TARIMA",
+            subtitle: "Carpintería Online",
+            seo: {
+                title: "LA TARIMA - Carpintería",
+                description: "Carpintería online especializada en barandas para cama, estantes, decks, fanales, organizadores, productos infantiles y más. Calidad, seguridad y diseño en cada producto.",
+                keywords: "carpintería, barandas para cama, estantes, decks, fanales, organizadores, infantiles, percheros, sommier, seguridad, madera, regalos"
+            },
+            socialLinks: {
+                whatsapp: "https://wa.me/5491167007723",
+                tiktok: "https://www.tiktok.com/@latarimadecoracion",
+                instagram: "https://www.instagram.com/latarimadecoracion",
+                facebook: "https://www.facebook.com/latarimadecoracion",
+                youtube: "https://www.youtube.com/@latarimadecoracion"
+            },
+            floatingIcons: [
+                {
+                    id: "regalos",
+                    text: "Regalos para seguidores",
+                    url: "regalos/index.html",
+                    image: "img/icono-carpintero.png",
+                    position: 1
+                }
+            ],
+            mainNavigation: {
+                barandas: {
+                    title: "Barandas para cama",
+                    type: "dropdown",
+                    items: []
+                }
+            },
+            navigationButtons: [],
+            socialSection: {
+                title: "Nuestras redes",
+                links: []
+            }
+        };
+
+        // Cargar datos al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado, iniciando editor...');
+            cargarJSON();
+            
+            // Debug: verificar que el contenedor existe
+            setTimeout(() => {
+                const container = document.getElementById('floating-icons-container');
+                console.log('Contenedor encontrado:', container);
+                console.log('datosMain:', datosMain);
+                
+                // Forzar mostrar iconos flotantes para debug
+                if (container && datosMain.floatingIcons) {
+                    console.log('Forzando mostrar iconos flotantes...');
+                    mostrarIconosFlotantes();
+                }
+            }, 1000);
+        });
+
+        async function cargarJSON() {
+            try {
+                console.log('Intentando cargar main-data.json...');
+                const response = await fetch('main-data.json');
+                console.log('Respuesta fetch:', response.status, response.ok);
+                
+                if (response.ok) {
+                    datosMain = await response.json();
+                    console.log('JSON cargado:', datosMain);
+                    console.log('Iconos flotantes encontrados:', datosMain.floatingIcons?.length || 0);
+                    
+                    mostrarDatos();
+                    actualizarPreview();
+                    mostrarMensaje('Datos cargados correctamente', 'success');
+                } else {
+                    console.warn('Respuesta no OK, usando datos por defecto');
+                    mostrarMensaje('No se pudo cargar el archivo JSON, usando datos por defecto', 'error');
+                    mostrarDatos();
+                    actualizarPreview();
+                }
+            } catch (error) {
+                console.error('Error cargando JSON:', error);
+                mostrarMensaje('Error al cargar el archivo JSON: ' + error.message, 'error');
+                mostrarDatos();
+                actualizarPreview();
+            }
+        }
+
+        function mostrarDatos() {
+            console.log('Ejecutando mostrarDatos() con:', datosMain);
+            
+            // Información básica
+            document.getElementById('site-name').value = datosMain.siteName || '';
+            document.getElementById('site-subtitle').value = datosMain.subtitle || '';
+            
+            // SEO
+            document.getElementById('seo-title').value = datosMain.seo?.title || '';
+            document.getElementById('seo-description').value = datosMain.seo?.description || '';
+            document.getElementById('seo-keywords').value = datosMain.seo?.keywords || '';
+            
+            // Redes sociales
+            document.getElementById('whatsapp-link').value = datosMain.socialLinks?.whatsapp || '';
+            document.getElementById('tiktok-link').value = datosMain.socialLinks?.tiktok || '';
+            document.getElementById('instagram-link').value = datosMain.socialLinks?.instagram || '';
+            document.getElementById('facebook-link').value = datosMain.socialLinks?.facebook || '';
+            document.getElementById('youtube-link').value = datosMain.socialLinks?.youtube || '';
+            
+            // Iconos flotantes - mantener compatibilidad con formato anterior
+            if (datosMain.floatingIcon && !datosMain.floatingIcons) {
+                datosMain.floatingIcons = [{
+                    id: "main",
+                    text: datosMain.floatingIcon.text,
+                    url: datosMain.floatingIcon.url,
+                    image: datosMain.floatingIcon.image,
+                    position: 1
+                }];
+                delete datosMain.floatingIcon;
+            }
+            
+            // Dropdown de barandas
+            document.getElementById('barandas-title').value = datosMain.mainNavigation?.barandas?.title || '';
+            
+            // Sección social
+            document.getElementById('social-section-title').value = datosMain.socialSection?.title || '';
+            
+            // Cargar botones de navegación
+            mostrarBotonesNavegacion();
+            
+            // Cargar items de barandas
+            mostrarItemsBarandas();
+            
+            // Cargar enlaces sociales
+            mostrarEnlacesSociales();
+            
+            // Cargar iconos flotantes
+            mostrarIconosFlotantes();
+        }
+
+        function mostrarBotonesNavegacion() {
+            const container = document.getElementById('navigation-buttons-container');
+            container.innerHTML = '';
+            
+            if (!datosMain.navigationButtons) datosMain.navigationButtons = [];
+            
+            datosMain.navigationButtons.forEach((boton, index) => {
+                const botonDiv = document.createElement('div');
+                botonDiv.className = 'navigation-item';
+                botonDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <span class="drag-handle">⋮⋮</span>
+                        <strong>Botón ${index + 1}</strong>
+                        <button class="btn-danger" onclick="eliminarBotonNavegacion(${index})" style="margin-left: auto;">🗑️</button>
+                    </div>
+                    <div class="three-column">
+                        <input type="text" placeholder="Título" value="${boton.title || ''}" onchange="actualizarBotonNavegacion(${index}, 'title', this.value)">
+                        <input type="text" placeholder="URL" value="${boton.url || ''}" onchange="actualizarBotonNavegacion(${index}, 'url', this.value)">
+                        <input type="text" placeholder="ID" value="${boton.id || ''}" onchange="actualizarBotonNavegacion(${index}, 'id', this.value)">
+                    </div>
+                    <div class="form-group" style="margin-top: 10px;">
+                        <input type="text" placeholder="URL del Icono" value="${boton.icon || ''}" onchange="actualizarBotonNavegacion(${index}, 'icon', this.value)" style="width: 100%;">
+                    </div>
+                `;
+                container.appendChild(botonDiv);
+            });
+        }
+
+        function mostrarItemsBarandas() {
+            const container = document.getElementById('barandas-items-container');
+            container.innerHTML = '';
+            
+            if (!datosMain.mainNavigation?.barandas?.items) {
+                if (!datosMain.mainNavigation) datosMain.mainNavigation = {};
+                if (!datosMain.mainNavigation.barandas) datosMain.mainNavigation.barandas = {};
+                datosMain.mainNavigation.barandas.items = [];
+            }
+            
+            datosMain.mainNavigation.barandas.items.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'navigation-item';
+                itemDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <strong>Item ${index + 1}</strong>
+                        <button class="btn-danger" onclick="eliminarItemBarandas(${index})" style="margin-left: auto;">🗑️</button>
+                    </div>
+                    <div class="three-column">
+                        <input type="text" placeholder="Título" value="${item.title || ''}" onchange="actualizarItemBarandas(${index}, 'title', this.value)">
+                        <input type="text" placeholder="URL" value="${item.url || ''}" onchange="actualizarItemBarandas(${index}, 'url', this.value)">
+                        <input type="text" placeholder="ID" value="${item.id || ''}" onchange="actualizarItemBarandas(${index}, 'id', this.value)">
+                    </div>
+                `;
+                container.appendChild(itemDiv);
+            });
+        }
+
+        function mostrarEnlacesSociales() {
+            const container = document.getElementById('social-links-container');
+            container.innerHTML = '';
+            
+            if (!datosMain.socialSection?.links) {
+                if (!datosMain.socialSection) datosMain.socialSection = {};
+                datosMain.socialSection.links = [];
+            }
+            
+            datosMain.socialSection.links.forEach((link, index) => {
+                const linkDiv = document.createElement('div');
+                linkDiv.className = 'navigation-item';
+                linkDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <strong>${link.name || 'Red Social ' + (index + 1)}</strong>
+                        <button class="btn-danger" onclick="eliminarEnlaceSocial(${index})" style="margin-left: auto;">🗑️</button>
+                    </div>
+                    <div class="three-column">
+                        <input type="text" placeholder="Nombre" value="${link.name || ''}" onchange="actualizarEnlaceSocial(${index}, 'name', this.value)">
+                        <input type="url" placeholder="URL" value="${link.url || ''}" onchange="actualizarEnlaceSocial(${index}, 'url', this.value)">
+                        <input type="text" placeholder="Texto a mostrar" value="${link.displayText || ''}" onchange="actualizarEnlaceSocial(${index}, 'displayText', this.value)">
+                    </div>
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label>Color:</label>
+                        <input type="color" class="color-input" value="${link.color || '#000000'}" onchange="actualizarEnlaceSocial(${index}, 'color', this.value)">
+                    </div>
+                `;
+                container.appendChild(linkDiv);
+            });
+        }
+
+        // Funciones para botones de navegación
+        function agregarBotonNavegacion() {
+            if (!datosMain.navigationButtons) datosMain.navigationButtons = [];
+            datosMain.navigationButtons.push({
+                title: "Nuevo Botón",
+                url: "nueva-pagina.html",
+                id: "btn-nuevo",
+                icon: "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+            });
+            mostrarBotonesNavegacion();
+            actualizarPreview();
+        }
+
+        function eliminarBotonNavegacion(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este botón?')) {
+                datosMain.navigationButtons.splice(index, 1);
+                mostrarBotonesNavegacion();
+                actualizarPreview();
+            }
+        }
+
+        function actualizarBotonNavegacion(index, campo, valor) {
+            datosMain.navigationButtons[index][campo] = valor;
+            actualizarPreview();
+        }
+
+        // Funciones para items de barandas
+        function agregarItemBarandas() {
+            if (!datosMain.mainNavigation?.barandas?.items) {
+                if (!datosMain.mainNavigation) datosMain.mainNavigation = {};
+                if (!datosMain.mainNavigation.barandas) datosMain.mainNavigation.barandas = {};
+                datosMain.mainNavigation.barandas.items = [];
+            }
+            datosMain.mainNavigation.barandas.items.push({
+                title: "Nuevo Item",
+                url: "nueva-baranda.html",
+                id: "btn-nueva-baranda"
+            });
+            mostrarItemsBarandas();
+            actualizarPreview();
+        }
+
+        function eliminarItemBarandas(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este item?')) {
+                datosMain.mainNavigation.barandas.items.splice(index, 1);
+                mostrarItemsBarandas();
+                actualizarPreview();
+            }
+        }
+
+        function actualizarItemBarandas(index, campo, valor) {
+            datosMain.mainNavigation.barandas.items[index][campo] = valor;
+            actualizarPreview();
+        }
+
+        // Funciones para enlaces sociales
+        function eliminarEnlaceSocial(index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este enlace social?')) {
+                datosMain.socialSection.links.splice(index, 1);
+                mostrarEnlacesSociales();
+                actualizarPreview();
+            }
+        }
+
+        function actualizarEnlaceSocial(index, campo, valor) {
+            datosMain.socialSection.links[index][campo] = valor;
+            if (campo === 'name') {
+                mostrarEnlacesSociales(); // Refrescar para mostrar el nuevo nombre
+            }
+            actualizarPreview();
+        }
+
+        // Funciones para iconos flotantes (globales)
+        window.mostrarIconosFlotantes = function() {
+            const container = document.getElementById('floating-icons-container');
+            if (!container) {
+                console.error('No se encontró el contenedor floating-icons-container');
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            if (!datosMain.floatingIcons) datosMain.floatingIcons = [];
+            
+            console.log('Mostrando iconos flotantes:', datosMain.floatingIcons.length);
+            
+            // Ordenar por posición
+            const iconosOrdenados = [...datosMain.floatingIcons].sort((a, b) => (a.position || 1) - (b.position || 1));
+            
+            iconosOrdenados.forEach((icono, index) => {
+                const realIndex = datosMain.floatingIcons.findIndex(i => i.id === icono.id);
+                const iconoDiv = document.createElement('div');
+                iconoDiv.className = 'navigation-item';
+                iconoDiv.style.cssText = 'background: #f8f9fa !important; padding: 15px !important; border-radius: 8px !important; margin-bottom: 10px !important; border: 1px solid #e9ecef !important; color: #212529 !important;';
+                iconoDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; margin-bottom: 10px; color: #212529;">
+                        <span class="drag-handle" style="color: #666; margin-right: 10px; font-size: 18px;">⋮⋮</span>
+                        <strong style="color: #2c3e50;">Icono Flotante ${icono.position || realIndex + 1}</strong>
+                        <button class="btn-danger" onclick="eliminarIconoFlotante(${realIndex})" style="margin-left: auto;">🗑️</button>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label style="color: #495057 !important; font-weight: 500; margin-bottom: 5px; display: block;">Texto del Tooltip:</label>
+                            <input type="text" placeholder="Texto al pasar mouse" value="${icono.text || ''}" onchange="actualizarIconoFlotante(${realIndex}, 'text', this.value)" style="background: white !important; color: #212529 !important; border: 1px solid #ced4da !important; width: 100%; padding: 10px; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #495057 !important; font-weight: 500; margin-bottom: 5px; display: block;">URL de Destino:</label>
+                            <input type="text" placeholder="pagina.html o https://..." value="${icono.url || ''}" onchange="actualizarIconoFlotante(${realIndex}, 'url', this.value)" style="background: white !important; color: #212529 !important; border: 1px solid #ced4da !important; width: 100%; padding: 10px; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label style="color: #495057 !important; font-weight: 500; margin-bottom: 5px; display: block;">Imagen del Icono:</label>
+                            <input type="text" placeholder="img/mi-icono.png" value="${icono.image || ''}" onchange="actualizarIconoFlotante(${realIndex}, 'image', this.value)" style="background: white !important; color: #212529 !important; border: 1px solid #ced4da !important; width: 100%; padding: 10px; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #495057 !important; font-weight: 500; margin-bottom: 5px; display: block;">Posición (orden):</label>
+                            <input type="number" min="1" max="10" placeholder="1" value="${icono.position || realIndex + 1}" onchange="actualizarIconoFlotante(${realIndex}, 'position', parseInt(this.value) || 1)" style="background: white !important; color: #212529 !important; border: 1px solid #ced4da !important; width: 100%; padding: 10px; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>ID único:</label>
+                        <input type="text" placeholder="identificador-unico" value="${icono.id || ''}" onchange="actualizarIconoFlotante(${realIndex}, 'id', this.value)" style="font-family: monospace; font-size: 12px;">
+                    </div>
+                `;
+                container.appendChild(iconoDiv);
+            });
+        }
+
+        window.agregarIconoFlotante = function() {
+            try {
+                if (!datosMain.floatingIcons) datosMain.floatingIcons = [];
+                
+                const nuevaPosition = Math.max(...datosMain.floatingIcons.map(i => i.position || 1), 0) + 1;
+                const nuevoId = "icono" + Date.now();
+            
+                datosMain.floatingIcons.push({
+                    id: nuevoId,
+                    text: "Nuevo Enlace Rápido",
+                    url: "nueva-pagina.html",
+                    image: "img/nuevo-icono.png",
+                    position: nuevaPosition
+                });
+                
+                mostrarIconosFlotantes();
+                actualizarPreview();
+            } catch (error) {
+                console.error('Error agregando icono flotante:', error);
+                mostrarMensaje('Error al agregar icono: ' + error.message, 'error');
+            }
+        }
+
+        window.eliminarIconoFlotante = function(index) {
+            try {
+                if (confirm('¿Estás seguro de que quieres eliminar este icono flotante?')) {
+                    datosMain.floatingIcons.splice(index, 1);
+                    mostrarIconosFlotantes();
+                    actualizarPreview();
+                }
+            } catch (error) {
+                console.error('Error eliminando icono flotante:', error);
+                mostrarMensaje('Error al eliminar icono: ' + error.message, 'error');
+            }
+        }
+
+        window.actualizarIconoFlotante = function(index, campo, valor) {
+            try {
+                if (campo === 'position') {
+                    datosMain.floatingIcons[index][campo] = valor;
+                    mostrarIconosFlotantes(); // Refrescar para reordenar
+                } else if (campo === 'id') {
+                    // Validar que el ID sea único
+                    const idLimpio = valor.replace(/[^a-zA-Z0-9-_]/g, '');
+                    const idExiste = datosMain.floatingIcons.some((icono, i) => i !== index && icono.id === idLimpio);
+                    
+                    if (idExiste) {
+                        mostrarMensaje('ID ya existe, se agregó sufijo único', 'error');
+                        datosMain.floatingIcons[index][campo] = idLimpio + '_' + Date.now();
+                    } else {
+                        datosMain.floatingIcons[index][campo] = idLimpio;
+                    }
+                    mostrarIconosFlotantes();
+                } else {
+                    datosMain.floatingIcons[index][campo] = valor;
+                }
+                actualizarPreview();
+            } catch (error) {
+                console.error('Error actualizando icono flotante:', error);
+                mostrarMensaje('Error al actualizar icono: ' + error.message, 'error');
+            }
+        }
+
+        function actualizarPreview() {
+            // Actualizar datos desde los campos del formulario
+            datosMain.siteName = document.getElementById('site-name').value;
+            datosMain.subtitle = document.getElementById('site-subtitle').value;
+            
+            // SEO
+            datosMain.seo = {
+                title: document.getElementById('seo-title').value,
+                description: document.getElementById('seo-description').value,
+                keywords: document.getElementById('seo-keywords').value
+            };
+            
+            // Redes sociales
+            datosMain.socialLinks = {
+                whatsapp: document.getElementById('whatsapp-link').value,
+                tiktok: document.getElementById('tiktok-link').value,
+                instagram: document.getElementById('instagram-link').value,
+                facebook: document.getElementById('facebook-link').value,
+                youtube: document.getElementById('youtube-link').value
+            };
+            
+            // Los iconos flotantes ya se actualizan automáticamente
+            
+            // Dropdown de barandas
+            if (!datosMain.mainNavigation) datosMain.mainNavigation = {};
+            if (!datosMain.mainNavigation.barandas) datosMain.mainNavigation.barandas = {};
+            datosMain.mainNavigation.barandas.title = document.getElementById('barandas-title').value;
+            
+            // Sección social
+            if (!datosMain.socialSection) datosMain.socialSection = {};
+            datosMain.socialSection.title = document.getElementById('social-section-title').value;
+            
+            // Mostrar JSON
+            document.getElementById('json-preview').textContent = JSON.stringify(datosMain, null, 2);
+        }
+
+        async function guardarJSON() {
+            try {
+                // Actualizar datos antes de guardar
+                actualizarPreview();
+                
+                // Crear blob con el JSON
+                const jsonString = JSON.stringify(datosMain, null, 2);
+                const blob = new Blob([jsonString], { type: 'application/json' });
+                
+                // Crear enlace de descarga
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'main-data.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                mostrarMensaje('JSON descargado. Reemplaza el archivo main-data.json en tu servidor.', 'success');
+                
+            } catch (error) {
+                console.error('Error:', error);
+                mostrarMensaje('Error al generar el archivo JSON: ' + error.message, 'error');
+            }
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.innerHTML = `<div class="status-message status-${tipo}">${mensaje}</div>`;
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                statusDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        // Función de debug completa
+        window.debugIconosFlotantes = function() {
+            console.log('=== DEBUG COMPLETO ICONOS FLOTANTES ===');
+            
+            // 1. Verificar datos
+            console.log('1. datosMain existe:', typeof datosMain !== 'undefined');
+            console.log('2. datosMain completo:', datosMain);
+            console.log('3. datosMain.floatingIcons:', datosMain?.floatingIcons);
+            console.log('4. Cantidad de iconos:', datosMain?.floatingIcons?.length || 0);
+            
+            // 2. Verificar DOM
+            const container = document.getElementById('floating-icons-container');
+            console.log('5. Contenedor existe:', !!container);
+            console.log('6. Contenedor HTML antes:', container?.innerHTML);
+            
+            // 3. Verificar funciones
+            console.log('7. mostrarIconosFlotantes es función:', typeof window.mostrarIconosFlotantes);
+            console.log('8. agregarIconoFlotante es función:', typeof window.agregarIconoFlotante);
+            
+            // 4. Ejecutar función
+            try {
+                console.log('9. Ejecutando mostrarIconosFlotantes...');
+                window.mostrarIconosFlotantes();
+                console.log('10. mostrarIconosFlotantes ejecutado correctamente');
+                console.log('11. Contenedor HTML después:', container?.innerHTML);
+            } catch (error) {
+                console.error('10. ERROR en mostrarIconosFlotantes:', error);
+                console.error('11. Stack trace:', error.stack);
+            }
+            
+            // 5. Verificar eventos de botones
+            const btnAgregar = document.querySelector('button[onclick="agregarIconoFlotante()"]');
+            console.log('12. Botón agregar existe:', !!btnAgregar);
+            
+            console.log('=== FIN DEBUG COMPLETO ===');
+        }
+
+        // Función de reparación automática
+        window.repararIconosFlotantes = function() {
+            console.log('Intentando reparar iconos flotantes...');
+            
+            // Verificar y crear estructura mínima si no existe
+            if (!datosMain.floatingIcons) {
+                datosMain.floatingIcons = [];
+            }
+            
+            // Re-ejecutar mostrarIconosFlotantes
+            try {
+                window.mostrarIconosFlotantes();
+                console.log('✅ Reparación completada');
+                return true;
+            } catch (error) {
+                console.error('❌ Error en reparación:', error);
+                return false;
+            }
+        }
+        
+        // Función de test visual
+        window.testVisualIconos = function() {
+            const container = document.getElementById('floating-icons-container');
+            if (!container) {
+                alert('❌ Contenedor no encontrado');
+                return;
+            }
+            
+            // Añadir un elemento de prueba visible
+            const testDiv = document.createElement('div');
+            testDiv.style.cssText = 'background: red !important; color: white !important; padding: 20px !important; margin: 10px !important; border: 2px solid black !important; font-size: 16px !important; font-weight: bold !important;';
+            testDiv.innerHTML = '🔴 ELEMENTO DE PRUEBA VISIBLE - Si ves esto, el CSS funciona';
+            container.appendChild(testDiv);
+            
+            setTimeout(() => {
+                container.removeChild(testDiv);
+            }, 3000);
+            
+            alert('✅ Elemento de prueba añadido por 3 segundos');
+        }
+
+        // Agregar listeners para actualización automática
+        document.addEventListener('input', function(e) {
+            if (e.target.matches('input, textarea')) {
+                actualizarPreview();
+            }
+        });
+    </script>
+    
+    <!-- Utilidades adicionales del editor -->
+    <script src="../js/auto-apply-system.js"></script>
+    <script src="editor-utils.js"></script>
+</body>
+</html>

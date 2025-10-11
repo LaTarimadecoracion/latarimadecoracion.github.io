@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Principal | LA TARIMA</title>
+    <link rel="stylesheet" href="editor.css">
+    <link rel="icon" href="../img/ico.png" type="image/png">
+</head>
+<body>
+    <div class="editor-container">
+        <a href="../index.html" class="titulo-link">
+            <h1>🎯 EDITOR PRINCIPAL - LA TARIMA</h1>
+        </a>
+        
+        <div id="mensaje-status" class="mensaje info">
+            🔄 Cargando editor...
+        </div>
+        
+        <!-- Información Básica del Sitio -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">📝 Información Básica</h3>
+            </div>
+            <div class="seccion-content">
+                <div class="two-column">
+                    <div class="form-group">
+                        <label>Nombre del Sitio:</label>
+                        <input type="text" id="siteName" placeholder="LA TARIMA">
+                    </div>
+                    <div class="form-group">
+                        <label>Subtítulo:</label>
+                        <input type="text" id="subtitle" placeholder="Carpintería Online">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Descripción SEO:</label>
+                    <textarea id="seoDescription" placeholder="Descripción para motores de búsqueda"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Palabras Clave SEO:</label>
+                    <input type="text" id="seoKeywords" placeholder="carpintería, barandas, estantes, etc.">
+                </div>
+            </div>
+        </div>
+
+        <!-- Enlaces Sociales -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">🌐 Enlaces Sociales</h3>
+            </div>
+            <div class="seccion-content">
+                <div id="social-links-container">
+                    <!-- Los enlaces sociales se cargan dinámicamente -->
+                </div>
+                <button class="btn-success" onclick="agregarEnlaceSocial()">+ Agregar Enlace Social</button>
+            </div>
+        </div>
+
+        <!-- Iconos Flotantes -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">🎯 Iconos Flotantes</h3>
+            </div>
+            <div class="seccion-content">
+                <div id="floating-icons-container">
+                    <div class="empty-message">Los iconos flotantes aparecerán aquí...</div>
+                </div>
+                
+                <button class="btn-success" onclick="agregarIconoFlotante()">+ Agregar Icono Flotante</button>
+                <button class="btn-primary" onclick="debugIconosFlotantes()">🐛 Debug Iconos</button>
+                <button class="btn-warning" onclick="repararIconosFlotantes()">🔧 Reparar</button>
+                <button class="btn-primary" onclick="testVisualIconos()">👁️ Test Visual</button>
+                <button class="btn-success" onclick="window.location.reload()">🔄 Recargar</button>
+            </div>
+        </div>
+
+        <!-- Navegación Principal -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">🧭 Navegación Principal</h3>
+            </div>
+            <div class="seccion-content">
+                <div id="navigation-container">
+                    <!-- La navegación se carga dinámicamente -->
+                </div>
+                <button class="btn-success" onclick="crearMenuDesplegable()">+ Crear Nuevo Menú Desplegable</button>
+                <button class="btn-info" onclick="agregarSubMenuAExistente()">+ Agregar Submenú a Menú Existente</button>
+                <button class="btn-success" onclick="agregarBotonDirecto()">+ Agregar Botón Principal</button>
+            </div>
+        </div>
+
+        <!-- Sección Nuestras Redes -->
+        <div class="seccion-card">
+            <div class="seccion-header">
+                <h3 class="seccion-title">📱 Sección "Nuestras Redes"</h3>
+            </div>
+            <div class="seccion-content">
+                <div class="form-group">
+                    <label>Título de la Sección:</label>
+                    <input type="text" id="social-section-title" placeholder="Nuestras redes" onchange="actualizarTituloSeccionSocial()">
+                </div>
+                
+                <div id="social-section-container">
+                    <!-- Las redes sociales se cargan dinámicamente -->
+                </div>
+                
+                <button class="btn-success" onclick="agregarRedSocial()">+ Agregar Red Social</button>
+            </div>
+        </div>
+
+        <!-- Acciones -->
+        <div class="actions">
+            <button class="btn-primary" onclick="guardarCambios()">💾 Guardar Cambios</button>
+            <button class="btn-info" onclick="console.log('Datos actuales:', datosMain)">� Ver Datos en Consola</button>
+            <button class="btn-warning" onclick="descargarBackup()">� Backup con Timestamp</button>
+            <button class="btn-diagnostic" onclick="diagnosticoCompleto()">🔍 Diagnóstico Completo</button>
+            <a href="../index.html" class="btn-primary">🏠 Volver al Sitio</a>
+        </div>
+
+        <!-- Editor completado - Sin vista previa JSON -->
+    </div>
+
+    <script>
+        let datosMain = {};
+
+        // Cargar datos al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado, iniciando editor...');
+            mostrarMensaje('🔄 Cargando datos...', 'info');
+            
+            cargarJSON().then(() => {
+                console.log('JSON cargado, mostrando interfaz...');
+                mostrarMensaje('✅ Datos cargados, construyendo interfaz...', 'info');
+                
+                try {
+                    mostrarDatos();
+                    console.log('Datos básicos mostrados');
+                } catch (error) {
+                    console.error('Error mostrando datos básicos:', error);
+                }
+                
+                try {
+                    mostrarEnlacesSociales();
+                    console.log('Enlaces sociales mostrados');
+                } catch (error) {
+                    console.error('Error mostrando enlaces sociales:', error);
+                }
+                
+                try {
+                    mostrarNavegacion();
+                    console.log('Navegación mostrada');
+                } catch (error) {
+                    console.error('Error mostrando navegación:', error);
+                }
+                
+                try {
+                    mostrarSeccionSocial();
+                    console.log('Sección social mostrada');
+                } catch (error) {
+                    console.error('Error mostrando sección social:', error);
+                }
+                
+                try {
+                    mostrarIconosFlotantes();
+                    console.log('Iconos flotantes mostrados');
+                } catch (error) {
+                    console.error('Error mostrando iconos flotantes:', error);
+                }
+                
+                console.log('Editor cargado completamente');
+                mostrarMensaje('🎉 Editor cargado correctamente! Todas las secciones están listas.', 'exito');
+                
+                // Verificar que todas las secciones se cargaron
+                setTimeout(() => {
+                    const secciones = [
+                        { id: 'siteName', nombre: 'Información Básica' },
+                        { id: 'social-links-container', nombre: 'Enlaces Sociales' },
+                        { id: 'floating-icons-container', nombre: 'Iconos Flotantes' },
+                        { id: 'navigation-container', nombre: 'Navegación' }
+                    ];
+                    
+                    let seccionesCargadas = 0;
+                    secciones.forEach(seccion => {
+                        const elemento = document.getElementById(seccion.id);
+                        if (elemento && (elemento.value || elemento.innerHTML.trim())) {
+                            seccionesCargadas++;
+                            console.log('✅ Sección cargada:', seccion.nombre);
+                        } else {
+                            console.log('❌ Sección vacía:', seccion.nombre);
+                        }
+                    });
+                    
+                    console.log(`📊 Secciones cargadas: ${seccionesCargadas}/${secciones.length}`);
+                    
+                    // Ocultar el mensaje de estado
+                    const statusDiv = document.getElementById('mensaje-status');
+                    if (statusDiv) {
+                        statusDiv.style.display = 'none';
+                    }
+                }, 2000);
+                
+            }).catch(error => {
+                console.error('Error cargando editor:', error);
+                mostrarMensaje('❌ Error cargando el editor: ' + error.message, 'error');
+            });
+        });
+
+        async function cargarJSON() {
+            try {
+                console.log('Cargando JSON...');
+                const response = await fetch('main-data.json');
+                
+                if (!response.ok) {
+                    throw new Error('HTTP error! status: ' + response.status);
+                }
+                
+                datosMain = await response.json();
+                console.log('JSON cargado exitosamente:', datosMain);
+                
+                // Asegurar que existe la estructura completa
+                if (!datosMain.floatingIcons) {
+                    datosMain.floatingIcons = [];
+                }
+                
+                if (!datosMain.socialLinks) {
+                    datosMain.socialLinks = {};
+                }
+                
+                if (!datosMain.mainNavigation) {
+                    datosMain.mainNavigation = { barandas: { items: [] } };
+                }
+                
+                if (!datosMain.seo) {
+                    datosMain.seo = { title: "", description: "", keywords: "" };
+                }
+                
+                return datosMain;
+            } catch (error) {
+                console.error('Error cargando JSON:', error);
+                
+                // Crear estructura mínima si falla
+                datosMain = {
+                    siteName: "LA TARIMA",
+                    subtitle: "Carpintería Online",
+                    seo: { 
+                        title: "LA TARIMA - Carpintería", 
+                        description: "Carpintería online especializada en productos de madera", 
+                        keywords: "carpintería, barandas, estantes, madera" 
+                    },
+                    socialLinks: {
+                        whatsapp: "https://wa.me/5491167007723",
+                        instagram: "https://www.instagram.com/latarimadecoracion"
+                    },
+                    floatingIcons: [],
+                    mainNavigation: {
+                        dropdownMenus: [
+                            {
+                                id: "barandas",
+                                title: "Barandas para cama",
+                                items: []
+                            }
+                        ],
+                        directButtons: []
+                    }
+                };
+                
+                mostrarMensaje('Usando datos por defecto (no se pudo cargar main-data.json)', 'error');
+                return datosMain;
+            }
+        }
+
+        function mostrarDatos() {
+            try {
+                console.log('Mostrando datos básicos...');
+                
+                const siteName = document.getElementById('siteName');
+                const subtitle = document.getElementById('subtitle');
+                const seoDescription = document.getElementById('seoDescription');
+                const seoKeywords = document.getElementById('seoKeywords');
+                
+                if (siteName) siteName.value = datosMain.siteName || '';
+                if (subtitle) subtitle.value = datosMain.subtitle || '';
+                if (seoDescription) seoDescription.value = datosMain.seo?.description || '';
+                if (seoKeywords) seoKeywords.value = datosMain.seo?.keywords || '';
+                
+                const socialSectionTitle = document.getElementById('social-section-title');
+                if (socialSectionTitle) socialSectionTitle.value = datosMain.socialSection?.title || 'Nuestras redes';
+                
+                actualizarPreview();
+                console.log('Datos básicos mostrados correctamente');
+            } catch (error) {
+                console.error('Error mostrando datos:', error);
+            }
+        }
+
+        // Funciones para iconos flotantes
+        window.mostrarIconosFlotantes = function() {
+            const container = document.getElementById('floating-icons-container');
+            if (!container) {
+                console.error('No se encontró el contenedor floating-icons-container');
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            if (!datosMain.floatingIcons) datosMain.floatingIcons = [];
+            
+            console.log('Mostrando iconos flotantes:', datosMain.floatingIcons.length);
+            
+            if (datosMain.floatingIcons.length === 0) {
+                container.innerHTML = '<div class="empty-message">No hay iconos flotantes. Haz click en "+ Agregar Icono Flotante" para crear uno.</div>';
+                return;
+            }
+            
+            // Ordenar por posición
+            const iconosOrdenados = [...datosMain.floatingIcons].sort((a, b) => (a.position || 1) - (b.position || 1));
+            
+            iconosOrdenados.forEach((icono, index) => {
+                const realIndex = datosMain.floatingIcons.findIndex(i => i.id === icono.id);
+                const iconoDiv = document.createElement('div');
+                iconoDiv.className = 'navigation-item';
+                iconoDiv.innerHTML = `
+                    <div class="item-row">
+                        <strong>Icono Flotante ${icono.position || realIndex + 1}</strong>
+                        <div class="order-controls">
+                            <button class="btn-small" onclick="moverIconoFlotante(${realIndex}, 'up')" ${realIndex === 0 ? 'disabled' : ''}>⬆️</button>
+                            <button class="btn-small" onclick="moverIconoFlotante(${realIndex}, 'down')" ${realIndex === datosMain.floatingIcons.length - 1 ? 'disabled' : ''}>⬇️</button>
+                            <button class="btn-danger" onclick="eliminarIconoFlotante(${realIndex})">🗑️</button>
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label>Texto del Tooltip:</label>
+                            <input type="text" placeholder="Texto al pasar mouse" value="${icono.text || ''}" onchange="actualizarIconoFlotante(${realIndex}, 'text', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>URL de Destino:</label>
+                            <input type="text" placeholder="pagina.html o https://..." value="${icono.url || ''}" onchange="actualizarIconoFlotante(${realIndex}, 'url', this.value)">
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label>Imagen del Icono:</label>
+                            <input type="text" placeholder="img/mi-icono.png" value="${icono.image || ''}" onchange="actualizarIconoFlotante(${realIndex}, 'image', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Posición (orden):</label>
+                            <input type="number" min="1" max="10" placeholder="1" value="${icono.position || realIndex + 1}" onchange="actualizarIconoFlotante(${realIndex}, 'position', parseInt(this.value) || 1)">
+                        </div>
+                    </div>
+                `;
+                container.appendChild(iconoDiv);
+            });
+        }
+
+        window.agregarIconoFlotante = function() {
+            try {
+                const nuevoIcono = {
+                    id: 'icono-' + Date.now(),
+                    text: 'Nuevo Icono',
+                    url: '#',
+                    image: 'img/icono-carpintero.png',
+                    position: (datosMain.floatingIcons?.length || 0) + 1
+                };
+                
+                if (!datosMain.floatingIcons) datosMain.floatingIcons = [];
+                datosMain.floatingIcons.push(nuevoIcono);
+                
+                mostrarIconosFlotantes();
+                actualizarPreview();
+                mostrarMensaje('Icono flotante agregado correctamente', 'exito');
+            } catch (error) {
+                console.error('Error agregando icono flotante:', error);
+                mostrarMensaje('Error al agregar icono: ' + error.message, 'error');
+            }
+        }
+
+        window.eliminarIconoFlotante = function(index) {
+            try {
+                if (confirm('¿Estás seguro de que quieres eliminar este icono flotante?')) {
+                    datosMain.floatingIcons.splice(index, 1);
+                    mostrarIconosFlotantes();
+                    actualizarPreview();
+                }
+            } catch (error) {
+                console.error('Error eliminando icono flotante:', error);
+            }
+        }
+
+        window.actualizarIconoFlotante = function(index, campo, valor) {
+            try {
+                if (campo === 'position') {
+                    datosMain.floatingIcons[index][campo] = valor;
+                    mostrarIconosFlotantes(); // Refrescar para reordenar
+                } else {
+                    datosMain.floatingIcons[index][campo] = valor;
+                }
+                actualizarPreview();
+            } catch (error) {
+                console.error('Error actualizando icono flotante:', error);
+            }
+        }
+
+        // Funciones para enlaces sociales
+        function mostrarEnlacesSociales() {
+            const container = document.getElementById('social-links-container');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (!datosMain.socialLinks) {
+                datosMain.socialLinks = {};
+            }
+            
+            const socialNetworks = ['whatsapp', 'instagram', 'facebook', 'tiktok', 'youtube'];
+            
+            socialNetworks.forEach(network => {
+                const linkDiv = document.createElement('div');
+                linkDiv.className = 'form-group';
+                linkDiv.innerHTML = `
+                    <label>${network.charAt(0).toUpperCase() + network.slice(1)}:</label>
+                    <input type="url" placeholder="https://..." value="${datosMain.socialLinks[network] || ''}" 
+                           onchange="actualizarEnlaceSocial('${network}', this.value)">
+                `;
+                container.appendChild(linkDiv);
+            });
+        }
+
+        function agregarEnlaceSocial() {
+            const nombre = prompt('Nombre de la red social:');
+            if (nombre) {
+                const url = prompt('URL de la red social:');
+                if (url) {
+                    datosMain.socialLinks[nombre.toLowerCase()] = url;
+                    mostrarEnlacesSociales();
+                    actualizarPreview();
+                }
+            }
+        }
+
+        function actualizarEnlaceSocial(network, url) {
+            datosMain.socialLinks[network] = url;
+            actualizarPreview();
+        }
+
+        // Funciones para navegación
+        function mostrarNavegacion() {
+            const container = document.getElementById('navigation-container');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            // Migrar estructura antigua si existe
+            if (!datosMain.mainNavigation) {
+                datosMain.mainNavigation = {
+                    dropdownMenus: [
+                        {
+                            id: "barandas",
+                            title: "Barandas para cama",
+                            items: []
+                        }
+                    ],
+                    directButtons: []
+                };
+            }
+            
+            // Migración de estructura antigua
+            if (datosMain.mainNavigation.barandas && !datosMain.mainNavigation.dropdownMenus) {
+                datosMain.mainNavigation.dropdownMenus = [
+                    {
+                        id: "barandas",
+                        title: "Barandas para cama",
+                        items: datosMain.mainNavigation.barandas.items || []
+                    }
+                ];
+                delete datosMain.mainNavigation.barandas;
+            }
+            
+            // Mostrar menús desplegables
+            if (datosMain.mainNavigation.dropdownMenus && datosMain.mainNavigation.dropdownMenus.length > 0) {
+                datosMain.mainNavigation.dropdownMenus.forEach((menu, menuIndex) => {
+                    const dropdownTitle = document.createElement('div');
+                    dropdownTitle.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0 10px 0;">
+                            <h4>🔽 Menú Desplegable "${menu.title}"</h4>
+                            <button class="btn-danger" onclick="eliminarMenuDesplegable(${menuIndex})" title="Eliminar menú completo">🗑️</button>
+                        </div>
+                    `;
+                    container.appendChild(dropdownTitle);
+                    
+                    menu.items.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'navigation-item';
+                    itemDiv.innerHTML = `
+                        <div class="item-row">
+                            <strong>${menu.title} - Submenú ${index + 1}</strong>
+                            <button class="btn-danger" onclick="eliminarSubMenu(${menuIndex}, ${index})">🗑️</button>
+                        </div>
+                        <div class="two-column">
+                            <div class="form-group">
+                                <label>Título:</label>
+                                <input type="text" value="${item.title || ''}" onchange="actualizarSubMenu(${menuIndex}, ${index}, 'title', this.value)">
+                            </div>
+                            <div class="form-group">
+                                <label>URL:</label>
+                                <input type="text" value="${item.url || ''}" onchange="actualizarSubMenu(${menuIndex}, ${index}, 'url', this.value)">
+                            </div>
+                        </div>
+                    `;
+                        container.appendChild(itemDiv);
+                    });
+                });
+            }
+            
+            // Mostrar botones directos de navegación
+            if (datosMain.mainNavigation.directButtons && datosMain.mainNavigation.directButtons.length > 0) {
+                const buttonsTitle = document.createElement('div');
+                buttonsTitle.innerHTML = '<h4 style="margin-top: 20px;">🔗 Botones de Navegación Principal</h4>';
+                container.appendChild(buttonsTitle);
+                
+                datosMain.mainNavigation.directButtons.forEach((button, index) => {
+                    const buttonDiv = document.createElement('div');
+                    buttonDiv.className = 'navigation-item';
+                    buttonDiv.innerHTML = `
+                        <div class="item-row">
+                            <strong>Botón Principal ${index + 1}</strong>
+                            <button class="btn-danger" onclick="eliminarBotonDirecto(${index})">🗑️</button>
+                        </div>
+                        <div class="two-column">
+                            <div class="form-group">
+                                <label>Texto del Botón:</label>
+                                <input type="text" value="${button.title || ''}" onchange="actualizarBotonDirecto(${index}, 'title', this.value)">
+                            </div>
+                            <div class="form-group">
+                                <label>URL:</label>
+                                <input type="text" value="${button.url || ''}" onchange="actualizarBotonDirecto(${index}, 'url', this.value)">
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(buttonDiv);
+                });
+            }
+            
+            // Compatibilidad con estructura antigua
+            if (datosMain.navigationButtons && datosMain.navigationButtons.length > 0) {
+                const buttonsTitle = document.createElement('div');
+                buttonsTitle.innerHTML = '<h4 style="margin-top: 20px;">🔗 Botones de Navegación Principal</h4>';
+                container.appendChild(buttonsTitle);
+                
+                datosMain.navigationButtons.forEach((button, index) => {
+                    const buttonDiv = document.createElement('div');
+                    buttonDiv.className = 'navigation-item';
+                    buttonDiv.innerHTML = `
+                        <div class="item-row">
+                            <strong>Botón Principal ${index + 1} - ${button.title}</strong>
+                            <div class="order-controls">
+                                <button class="btn-small" onclick="moverBotonPrincipal(${index}, 'up')" ${index === 0 ? 'disabled' : ''}>⬆️</button>
+                                <button class="btn-small" onclick="moverBotonPrincipal(${index}, 'down')" ${index === datosMain.navigationButtons.length - 1 ? 'disabled' : ''}>⬇️</button>
+                                <button class="btn-danger" onclick="eliminarBotonPrincipal(${index})">🗑️</button>
+                            </div>
+                        </div>
+                        <div class="two-column">
+                            <div class="form-group">
+                                <label>Título:</label>
+                                <input type="text" value="${button.title || ''}" onchange="actualizarBotonPrincipal(${index}, 'title', this.value)">
+                            </div>
+                            <div class="form-group">
+                                <label>URL:</label>
+                                <input type="text" value="${button.url || ''}" onchange="actualizarBotonPrincipal(${index}, 'url', this.value)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Icono URL:</label>
+                            <input type="text" value="${button.icon || ''}" onchange="actualizarBotonPrincipal(${index}, 'icon', this.value)">
+                        </div>
+                    `;
+                    container.appendChild(buttonDiv);
+                });
+            }
+        }
+
+        // Funciones para menús desplegables
+        function crearMenuDesplegable() {
+            const titulo = prompt('¿Cómo se llamará el nuevo menú desplegable?', 'Nuevo Menú');
+            if (!titulo) return;
+            
+            if (!datosMain.mainNavigation) {
+                datosMain.mainNavigation = { dropdownMenus: [], directButtons: [] };
+            }
+            if (!datosMain.mainNavigation.dropdownMenus) {
+                datosMain.mainNavigation.dropdownMenus = [];
+            }
+            
+            const nuevoMenu = {
+                id: 'menu-' + Date.now(),
+                title: titulo,
+                items: []
+            };
+            
+            datosMain.mainNavigation.dropdownMenus.push(nuevoMenu);
+            mostrarNavegacion();
+            actualizarPreview();
+            mostrarMensaje(`Menú desplegable "${titulo}" creado correctamente`, 'exito');
+        }
+
+        function agregarSubMenuAExistente() {
+            if (!datosMain.mainNavigation?.dropdownMenus || datosMain.mainNavigation.dropdownMenus.length === 0) {
+                alert('Primero debes crear un menú desplegable');
+                return;
+            }
+            
+            let opciones = 'Selecciona el menú al que agregar el submenú:\n\n';
+            datosMain.mainNavigation.dropdownMenus.forEach((menu, index) => {
+                opciones += `${index + 1}. ${menu.title}\n`;
+            });
+            
+            const seleccion = prompt(opciones + '\nEscribe el número del menú:');
+            const menuIndex = parseInt(seleccion) - 1;
+            
+            if (isNaN(menuIndex) || menuIndex < 0 || menuIndex >= datosMain.mainNavigation.dropdownMenus.length) {
+                alert('Selección inválida');
+                return;
+            }
+            
+            const nuevoSubMenu = {
+                title: 'Nuevo Submenú',
+                url: '#',
+                id: 'submenu-' + Date.now()
+            };
+            
+            datosMain.mainNavigation.dropdownMenus[menuIndex].items.push(nuevoSubMenu);
+            mostrarNavegacion();
+            actualizarPreview();
+            mostrarMensaje('Submenú agregado correctamente', 'exito');
+        }
+
+        function eliminarMenuDesplegable(menuIndex) {
+            const menu = datosMain.mainNavigation.dropdownMenus[menuIndex];
+            if (confirm(`¿Eliminar completamente el menú "${menu.title}" y todos sus submenús?`)) {
+                datosMain.mainNavigation.dropdownMenus.splice(menuIndex, 1);
+                mostrarNavegacion();
+                actualizarPreview();
+                mostrarMensaje('Menú eliminado correctamente', 'exito');
+            }
+        }
+
+        function eliminarSubMenu(menuIndex, itemIndex) {
+            if (confirm('¿Eliminar este submenú?')) {
+                datosMain.mainNavigation.dropdownMenus[menuIndex].items.splice(itemIndex, 1);
+                mostrarNavegacion();
+                actualizarPreview();
+            }
+        }
+
+        function actualizarSubMenu(menuIndex, itemIndex, campo, valor) {
+            datosMain.mainNavigation.dropdownMenus[menuIndex].items[itemIndex][campo] = valor;
+            actualizarPreview();
+        }
+
+        // Funciones para botones directos
+        function agregarBotonDirecto() {
+            if (!datosMain.mainNavigation) {
+                datosMain.mainNavigation = { dropdownMenus: [], directButtons: [] };
+            }
+            if (!datosMain.mainNavigation.directButtons) {
+                datosMain.mainNavigation.directButtons = [];
+            }
+            
+            const nuevoBoton = {
+                title: 'Nuevo Botón',
+                url: '#',
+                id: 'direct-btn-' + Date.now()
+            };
+            
+            datosMain.mainNavigation.directButtons.push(nuevoBoton);
+            mostrarNavegacion();
+            actualizarPreview();
+            mostrarMensaje('Botón principal agregado correctamente', 'exito');
+        }
+
+        function eliminarBotonDirecto(index) {
+            if (confirm('¿Eliminar este botón principal?')) {
+                datosMain.mainNavigation.directButtons.splice(index, 1);
+                mostrarNavegacion();
+                actualizarPreview();
+            }
+        }
+
+        function actualizarBotonDirecto(index, campo, valor) {
+            datosMain.mainNavigation.directButtons[index][campo] = valor;
+            actualizarPreview();
+        }
+
+        // Funciones para botones principales (compatibilidad)
+        function agregarBotonPrincipal() {
+            if (!datosMain.navigationButtons) {
+                datosMain.navigationButtons = [];
+            }
+            
+            const nuevoBoton = {
+                title: 'Nuevo Botón Principal',
+                url: '#',
+                id: 'btn-' + Date.now(),
+                icon: 'https://cdn-icons-png.flaticon.com/512/69/69524.png'
+            };
+            
+            datosMain.navigationButtons.push(nuevoBoton);
+            mostrarNavegacion();
+            actualizarPreview();
+        }
+
+        function eliminarBotonPrincipal(index) {
+            if (confirm('¿Eliminar este botón principal?')) {
+                datosMain.navigationButtons.splice(index, 1);
+                mostrarNavegacion();
+                actualizarPreview();
+            }
+        }
+
+        function actualizarBotonPrincipal(index, campo, valor) {
+            if (!datosMain.navigationButtons) {
+                datosMain.navigationButtons = [];
+            }
+            if (datosMain.navigationButtons[index]) {
+                datosMain.navigationButtons[index][campo] = valor;
+                actualizarPreview();
+            }
+        }
+
+        // Funciones para sección social
+        function mostrarSeccionSocial() {
+            const container = document.getElementById('social-section-container');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (!datosMain.socialSection) {
+                datosMain.socialSection = { title: 'Nuestras redes', links: [] };
+            }
+            
+            if (!datosMain.socialSection.links) {
+                datosMain.socialSection.links = [];
+            }
+            
+            datosMain.socialSection.links.forEach((link, index) => {
+                const linkDiv = document.createElement('div');
+                linkDiv.className = 'navigation-item';
+                linkDiv.innerHTML = `
+                    <div class="item-row">
+                        <strong>Red Social ${index + 1} - ${link.name}</strong>
+                        <div class="order-controls">
+                            <button class="btn-small" onclick="moverRedSocial(${index}, 'up')" ${index === 0 ? 'disabled' : ''}>⬆️</button>
+                            <button class="btn-small" onclick="moverRedSocial(${index}, 'down')" ${index === datosMain.socialSection.links.length - 1 ? 'disabled' : ''}>⬇️</button>
+                            <button class="btn-danger" onclick="eliminarRedSocial(${index})">🗑️</button>
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <input type="text" value="${link.name || ''}" onchange="actualizarRedSocial(${index}, 'name', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Texto a Mostrar:</label>
+                            <input type="text" value="${link.displayText || ''}" onchange="actualizarRedSocial(${index}, 'displayText', this.value)">
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label>URL:</label>
+                            <input type="text" value="${link.url || ''}" onchange="actualizarRedSocial(${index}, 'url', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Color:</label>
+                            <input type="color" value="${link.color || '#000000'}" onchange="actualizarRedSocial(${index}, 'color', this.value)">
+                        </div>
+                    </div>
+                `;
+                container.appendChild(linkDiv);
+            });
+        }
+
+        function agregarRedSocial() {
+            if (!datosMain.socialSection) {
+                datosMain.socialSection = { title: 'Nuestras redes', links: [] };
+            }
+            if (!datosMain.socialSection.links) {
+                datosMain.socialSection.links = [];
+            }
+            
+            const nuevaRed = {
+                name: 'Nueva Red',
+                url: '#',
+                displayText: 'Nueva Red',
+                color: '#000000'
+            };
+            
+            datosMain.socialSection.links.push(nuevaRed);
+            mostrarSeccionSocial();
+            actualizarPreview();
+        }
+
+        function eliminarRedSocial(index) {
+            if (confirm('¿Eliminar esta red social?')) {
+                datosMain.socialSection.links.splice(index, 1);
+                mostrarSeccionSocial();
+                actualizarPreview();
+            }
+        }
+
+        function actualizarRedSocial(index, campo, valor) {
+            if (!datosMain.socialSection || !datosMain.socialSection.links) {
+                return;
+            }
+            if (datosMain.socialSection.links[index]) {
+                datosMain.socialSection.links[index][campo] = valor;
+                actualizarPreview();
+            }
+        }
+
+        // Actualizar título de sección social
+        function actualizarTituloSeccionSocial() {
+            const input = document.getElementById('social-section-title');
+            if (input && datosMain.socialSection) {
+                datosMain.socialSection.title = input.value;
+                actualizarPreview();
+            }
+        }
+
+        // Funciones de reordenamiento
+        function moverRedSocial(index, direction) {
+            if (!datosMain.socialSection || !datosMain.socialSection.links) return;
+            
+            const links = datosMain.socialSection.links;
+            if (direction === 'up' && index > 0) {
+                [links[index], links[index - 1]] = [links[index - 1], links[index]];
+            } else if (direction === 'down' && index < links.length - 1) {
+                [links[index], links[index + 1]] = [links[index + 1], links[index]];
+            }
+            
+            mostrarSeccionSocial();
+            actualizarPreview();
+        }
+
+        function moverBotonPrincipal(index, direction) {
+            if (!datosMain.navigationButtons) return;
+            
+            const buttons = datosMain.navigationButtons;
+            if (direction === 'up' && index > 0) {
+                [buttons[index], buttons[index - 1]] = [buttons[index - 1], buttons[index]];
+            } else if (direction === 'down' && index < buttons.length - 1) {
+                [buttons[index], buttons[index + 1]] = [buttons[index + 1], buttons[index]];
+            }
+            
+            mostrarNavegacion();
+            actualizarPreview();
+        }
+
+        function moverIconoFlotante(index, direction) {
+            if (!datosMain.floatingIcons) return;
+            
+            const icons = datosMain.floatingIcons;
+            if (direction === 'up' && index > 0) {
+                [icons[index], icons[index - 1]] = [icons[index - 1], icons[index]];
+                // Actualizar positions
+                icons[index].position = index + 1;
+                icons[index - 1].position = index;
+            } else if (direction === 'down' && index < icons.length - 1) {
+                [icons[index], icons[index + 1]] = [icons[index + 1], icons[index]];
+                // Actualizar positions
+                icons[index].position = index + 1;
+                icons[index + 1].position = index + 2;
+            }
+            
+            mostrarIconosFlotantes();
+            actualizarPreview();
+        }
+
+        // Funciones de debug
+        window.debugIconosFlotantes = function() {
+            console.log('=== DEBUG ICONOS FLOTANTES ===');
+            console.log('datosMain:', datosMain);
+            console.log('floatingIcons:', datosMain.floatingIcons);
+            console.log('Cantidad:', datosMain.floatingIcons?.length || 0);
+            
+            const container = document.getElementById('floating-icons-container');
+            console.log('Container:', container);
+            
+            try {
+                mostrarIconosFlotantes();
+                console.log('mostrarIconosFlotantes ejecutado correctamente');
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        window.repararIconosFlotantes = function() {
+            if (!datosMain.floatingIcons) {
+                datosMain.floatingIcons = [];
+            }
+            mostrarIconosFlotantes();
+            console.log('Iconos flotantes reparados');
+        }
+
+        window.testVisualIconos = function() {
+            const container = document.getElementById('floating-icons-container');
+            if (!container) {
+                alert('❌ Contenedor no encontrado');
+                return;
+            }
+            
+            const testDiv = document.createElement('div');
+            testDiv.style.cssText = 'background: red !important; color: white !important; padding: 20px !important; margin: 10px !important; border: 2px solid black !important; font-size: 16px !important; font-weight: bold !important;';
+            testDiv.innerHTML = '🔴 ELEMENTO DE PRUEBA VISIBLE - Si ves esto, el CSS funciona';
+            container.appendChild(testDiv);
+            
+            setTimeout(() => {
+                if (container.contains(testDiv)) {
+                    container.removeChild(testDiv);
+                }
+            }, 3000);
+            
+            alert('✅ Elemento de prueba añadido por 3 segundos');
+        }
+
+        window.diagnosticoCompleto = function() {
+            console.log('=== DIAGNÓSTICO COMPLETO ===');
+            console.log('1. datosMain:', datosMain);
+            console.log('2. floatingIcons:', datosMain.floatingIcons?.length || 0);
+            console.log('3. socialLinks:', Object.keys(datosMain.socialLinks || {}).length);
+            console.log('4. mainNavigation:', datosMain.mainNavigation?.barandas?.items?.length || 0);
+            
+            const elementos = ['siteName', 'floating-icons-container', 'social-links-container', 'navigation-container'];
+            elementos.forEach(id => {
+                console.log('Elemento ' + id + ':', !!document.getElementById(id));
+            });
+            
+            alert('Diagnóstico completado - Ver consola (F12) para detalles');
+        }
+
+        function actualizarPreview() {
+            // Función mantenida para compatibilidad con llamadas existentes
+            console.log('Datos actualizados:', datosMain);
+        }
+
+        function mostrarMensaje(mensaje, tipo) {
+            const statusDiv = document.getElementById('mensaje-status');
+            if (statusDiv) {
+                statusDiv.textContent = mensaje;
+                statusDiv.className = 'mensaje ' + tipo;
+                statusDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        async function guardarCambios() {
+            try {
+                // Actualizar datos básicos
+                const siteName = document.getElementById('siteName');
+                const subtitle = document.getElementById('subtitle');
+                const seoDescription = document.getElementById('seoDescription');
+                const seoKeywords = document.getElementById('seoKeywords');
+                const socialSectionTitle = document.getElementById('social-section-title');
+                
+                if (siteName) datosMain.siteName = siteName.value;
+                if (subtitle) datosMain.subtitle = subtitle.value;
+                if (seoDescription) datosMain.seo.description = seoDescription.value;
+                if (seoKeywords) datosMain.seo.keywords = seoKeywords.value;
+                if (socialSectionTitle && datosMain.socialSection) {
+                    datosMain.socialSection.title = socialSectionTitle.value;
+                }
+                
+                console.log('Guardando datos:', datosMain);
+                
+                // Descargar el archivo JSON actualizado
+                const dataStr = JSON.stringify(datosMain, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'main-data.json';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                mostrarMensaje('✅ Archivo JSON descargado correctamente como "main-data.json"', 'exito');
+                actualizarPreview();
+            } catch (error) {
+                console.error('Error guardando:', error);
+                mostrarMensaje('❌ Error al guardar: ' + error.message, 'error');
+            }
+        }
+
+        function descargarBackup() {
+            try {
+                const fechaHora = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+                const dataStr = JSON.stringify(datosMain, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `main-data-backup-${fechaHora}.json`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                mostrarMensaje(`📄 Backup creado: main-data-backup-${fechaHora}.json`, 'exito');
+            } catch (error) {
+                console.error('Error creando backup:', error);
+                mostrarMensaje('❌ Error al crear backup: ' + error.message, 'error');
+            }
+        }
+    </script>
+</body>
+</html>

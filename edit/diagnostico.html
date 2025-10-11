@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico del Editor</title>
+</head>
+<body>
+    <h1>Diagnóstico del Editor</h1>
+    
+    <h2>1. Test de archivos:</h2>
+    <ul>
+        <li><a href="index.html" target="_blank">index.html</a></li>
+        <li><a href="editor.css" target="_blank">editor.css</a></li>
+        <li><a href="main-data.json" target="_blank">main-data.json</a></li>
+    </ul>
+    
+    <h2>2. Test de conectividad:</h2>
+    <button onclick="testFiles()">Probar archivos</button>
+    <div id="results"></div>
+    
+    <script>
+        async function testFiles() {
+            const files = ['index.html', 'editor.css', 'main-data.json'];
+            const results = document.getElementById('results');
+            results.innerHTML = '<h3>Resultados:</h3>';
+            
+            for (const file of files) {
+                try {
+                    const response = await fetch(file);
+                    const status = response.ok ? '✅ OK' : '❌ Error ' + response.status;
+                    results.innerHTML += `<p>${file}: ${status}</p>`;
+                } catch (error) {
+                    results.innerHTML += `<p>${file}: ❌ Error - ${error.message}</p>`;
+                }
+            }
+        }
+        
+        // Auto-ejecutar al cargar
+        window.onload = testFiles;
+    </script>
+</body>
+</html>

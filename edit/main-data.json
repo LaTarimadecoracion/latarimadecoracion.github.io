@@ -1,0 +1,164 @@
+{
+  "siteName": "LA TARIMA",
+  "subtitle": "Carpintería Online",
+  "seo": {
+    "title": "LA TARIMA - Carpintería",
+    "description": "Carpintería online especializada en barandas para cama, estantes, decks, fanales, organizadores, productos infantiles y más. Calidad, seguridad y diseño en cada producto.",
+    "keywords": "carpintería, barandas para cama, estantes, decks, fanales, organizadores, infantiles, percheros, sommier, seguridad, madera, regalos"
+  },
+  "socialLinks": {
+    "whatsapp": "https://wa.me/5491167007723",
+    "tiktok": "https://www.tiktok.com/@latarimadecoracion",
+    "instagram": "https://www.instagram.com/latarimadecoracion",
+    "facebook": "https://www.facebook.com/latarimadecoracion",
+    "youtube": "https://www.youtube.com/@latarimadecoracion"
+  },
+  "floatingIcons": [
+    {
+      "id": "regalos",
+      "text": "Regalos para seguidores",
+      "url": "regalos/index.html",
+      "image": "img/icono-carpintero.png",
+      "position": 1
+    },
+    {
+      "id": "whatsapp-directo",
+      "text": "Consulta Directa por WhatsApp",
+      "url": "https://wa.me/5491167007723?text=Hola! Me interesa consultar sobre sus productos",
+      "image": "https://cdn-icons-png.flaticon.com/512/733/733585.png",
+      "position": 2
+    },
+    {
+      "id": "calculadora",
+      "text": "Calculadora de Precios",
+      "url": "calcular.html",
+      "image": "https://cdn-icons-png.flaticon.com/512/1048/1048943.png",
+      "position": 3
+    }
+  ],
+  "mainNavigation": {
+    "barandas": {
+      "title": "Barandas para cama",
+      "type": "dropdown",
+      "items": [
+        {
+          "title": "Barandas desmontables",
+          "url": "barandas_desmontables.html",
+          "id": "btn-baranda"
+        },
+        {
+          "title": "Barandas para Sommier",
+          "url": "barandas_sommier.html",
+          "id": "btn-baranda-sommier"
+        },
+        {
+          "title": "Barandas Fijas para cama",
+          "url": "barandas_fijas.html",
+          "id": "btn-baranda-fija"
+        },
+        {
+          "title": "Barandas Ortopédicas",
+          "url": "barandas_ortopedicas.html",
+          "id": "btn-baranda-ortopedica"
+        }
+      ]
+    }
+  },
+  "navigationButtons": [
+    {
+      "title": "Deck",
+      "url": "deck.html",
+      "id": "btn-deck",
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+    },
+    {
+      "title": "Camas",
+      "url": "camas.html",
+      "id": "btn-camas",
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+    },
+    {
+      "title": "Podios",
+      "url": "podios.html",
+      "id": "btn-podios",
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+    },
+    {
+      "title": "Estantes",
+      "url": "estantes.html",
+      "id": "btn-estantes",
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+    },
+    {
+      "title": "Escaleras",
+      "url": "escaleras.html",
+      "id": "btn-escaleras",
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+    },
+    {
+      "title": "Percheros",
+      "url": "percheros.html",
+      "id": "btn-percheros",
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+    },
+    {
+      "title": "Infantiles",
+      "url": "infantiles.html",
+      "id": "btn-infantiles",
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+    },
+    {
+      "title": "Organizadores",
+      "url": "organizadores.html",
+      "id": "btn-organizadores",
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+    },
+    {
+      "title": "Steps / Cajones",
+      "url": "steps_cajones.html",
+      "id": "btn-steps",
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+    },
+    {
+      "title": "Otros productos",
+      "url": "otros_productos.html",
+      "id": "btn-otros-productos",
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+    }
+  ],
+  "socialSection": {
+    "title": "Nuestras redes",
+    "links": [
+      {
+        "name": "TikTok",
+        "url": "https://www.tiktok.com/@latarimadecoracion",
+        "displayText": "TikTok",
+        "color": "#000000"
+      },
+      {
+        "name": "WhatsApp",
+        "url": "https://api.whatsapp.com/send/?phone=5491167007723&text&type=phone_number&app_absent=0",
+        "displayText": "+54 911 6700-7723",
+        "color": "#25D366"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/latarimadecoracion",
+        "displayText": "Instagram",
+        "color": "#E4405F"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/latarimadecoracion",
+        "displayText": "Facebook",
+        "color": "#1877F2"
+      },
+      {
+        "name": "YouTube",
+        "url": "https://www.youtube.com/@latarimadecoracion",
+        "displayText": "YouTube",
+        "color": "#FF0000"
+      }
+    ]
+  }
+}

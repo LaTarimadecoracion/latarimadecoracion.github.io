@@ -1,0 +1,44 @@
+[
+  {
+    "modelo": "Fotos de Barandas",
+    "medida": "Cliente 1",
+    "tipo": "cliente1",
+    "imagen": "../img/proximamente.png",
+    "descripcion": "Próximamente - Fotos de barandas instaladas por nuestros clientes"
+  },
+  {
+    "modelo": "Fotos de Estantes",
+    "medida": "Cliente 2", 
+    "tipo": "cliente2",
+    "imagen": "../img/base.png",
+    "descripcion": "Próximamente - Fotos de estantes en hogares de clientes"
+  },
+  {
+    "modelo": "Fotos de Deck",
+    "medida": "Cliente 3",
+    "tipo": "cliente3", 
+    "imagen": "../img/icono-carpintero.png",
+    "descripcion": "Próximamente - Fotos de deck instalados"
+  },
+  {
+    "modelo": "Fotos de Percheros",
+    "medida": "Cliente 4",
+    "tipo": "cliente4",
+    "imagen": "../img/proximamente.png", 
+    "descripcion": "Próximamente - Fotos de percheros en uso"
+  },
+  {
+    "modelo": "Fotos de Organizadores",
+    "medida": "Cliente 5",
+    "tipo": "cliente5",
+    "imagen": "../img/base.png",
+    "descripcion": "Próximamente - Fotos de organizadores instalados"
+  },
+  {
+    "modelo": "Otras Fotos",
+    "medida": "Cliente 6", 
+    "tipo": "cliente6",
+    "imagen": "../img/icono-carpintero.png",
+    "descripcion": "Próximamente - Más fotos de trabajos realizados"
+  }
+]

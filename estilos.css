@@ -101,7 +101,38 @@ a.btn-visitar:focus,
 a.btn-visitar:focus-visible {
 	color: #fff !important;
 }
-/* Icono flotante carpintero TikTok */
+/* Contenedor de iconos flotantes */
+#floating-icons-container {
+	/* Inicialmente invisible hasta que se carguen los datos */
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+#floating-icons-container.loaded {
+	opacity: 1;
+}
+
+/* Loading state para iconos flotantes */
+#floating-icons-container.loading::after {
+	content: '';
+	position: fixed;
+	top: 22px;
+	right: 22px;
+	width: 48px;
+	height: 48px;
+	border: 2px solid #0074D9;
+	border-top: 2px solid transparent;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	z-index: 999;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+/* Iconos flotantes múltiples */
 .floating-carpenter {
 	position: fixed;
 	top: 22px;
@@ -115,12 +146,54 @@ a.btn-visitar:focus-visible {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: box-shadow 0.2s, transform 0.2s;
+	transition: all 0.3s ease;
 	border: 2px solid #0074D9;
+	text-decoration: none;
 }
+
 .floating-carpenter:hover {
 	box-shadow: 0 4px 24px rgba(0,0,0,0.18);
 	transform: scale(1.08);
+}
+
+/* Iconos flotantes adicionales con posicionamiento dinámico */
+.floating-carpenter:nth-of-type(n+2) {
+	top: auto;
+	/* La posición se establecerá dinámicamente via JavaScript */
+}
+
+/* Responsivo para iconos flotantes en móviles */
+@media (max-width: 768px) {
+	.floating-carpenter {
+		width: 44px;
+		height: 44px;
+		right: 16px;
+	}
+	
+	.floating-carpenter:first-of-type {
+		top: 16px;
+	}
+	
+	.carpenter-icon img {
+		width: 28px !important;
+		height: 28px !important;
+	}
+}
+
+/* Animación de entrada para nuevos iconos */
+@keyframes floatingIconIn {
+	from {
+		opacity: 0;
+		transform: translateX(60px) scale(0.8);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0) scale(1);
+	}
+}
+
+.floating-carpenter {
+	animation: floatingIconIn 0.4s ease-out;
 }
 .carpenter-icon svg {
 	display: block;
