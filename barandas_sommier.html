@@ -100,12 +100,7 @@
             const moduleId = 'barandas_sommier';
 
       const normalizeText = (s) => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-      const groupKeyFn = (row) => {
-        const norm = normalizeText(row?.modelo);
-        if (norm.includes('clasica')) return 'Clásica';
-        if (norm.includes('triple')) return 'Triple';
-        return (row?.modelo || 'Otros');
-      };
+      const groupKeyFn = (row) => row.modelo;
     // Resolución automática de imágenes en pivot.js
       const tiposPriority = ['natural','barnizadas','blancas'];
       const variantForTipo = (tipo) => {
@@ -118,7 +113,6 @@
         containerSelector: '#product-stack',
         medidaLabel: 'Medida',
         tiposPriority,
-                // imágenes automáticas: usa img/barandas_sommier
         groupKeyFn,
         variantForTipo,
         includeMobileSelect: true

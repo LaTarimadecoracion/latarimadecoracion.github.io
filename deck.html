@@ -93,12 +93,7 @@
 
 
     const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-    const groupKeyFn = (row) => {
-      const m = normalizeText(row?.modelo||'');
-      if (m.includes('cuadrado')) return 'Deck cuadrado';
-      if (m.includes('rectangular')) return 'Deck rectangular';
-      return (row?.modelo||'Otros');
-    };
+    const groupKeyFn = (row) => row.modelo;
     // Resolución automática de imágenes en pivot.js
 
     const selectLabelMap = {

@@ -94,17 +94,7 @@
 
 
 	const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-	const groupKeyFn = (row) => {
-	  const m = normalizeText(row?.modelo||'');
-	  if (m.includes('montessori')) return 'Estantes Montessori';
-	  if (m.includes('librero')) return 'Librero';
-	  if (m.includes('hexagonales')) return 'Hexagonales';
-	  if (m.includes('triangulos')) return 'Triángulos';
-	  if (m.includes('cuadrados')) return 'Cuadrados';
-	  if (m.includes('mensulas')) return 'Ménsulas';
-	  if (m.includes('estantes')) return 'Estantes';
-	  return (row?.modelo||'Otros');
-	};
+	const groupKeyFn = (row) => row.modelo;
 
 	// Resolución automática de imágenes en pivot.js
 

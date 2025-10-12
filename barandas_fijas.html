@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -99,15 +98,7 @@
 	  const moduleId = 'barandas_fijas';
 
 	  const normalizeText = (s) => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-		const groupKeyFn = (row) => {
-			const m = normalizeText(row?.modelo || '');
-			// Distinguir Montessori II antes que Montessori genérico
-			if (m.includes('montessori ii')) return 'Baranda Fija Montessori II';
-			if (m.includes('montessori')) return 'Baranda Fija Montessori';
-			if (m.includes('clasica') || m.includes('clasica') || m.includes('clásica')) return 'Baranda Fija Clásica';
-			if (m.includes('simple')) return 'Baranda Fija Simple';
-			return (row?.modelo || 'Otros');
-		};
+		const groupKeyFn = (row) => row.modelo;
 		// Ya no necesitamos mapeo manual ni imageForModel: pivot.js ahora resuelve automáticamente candidatos de imagen
 	  const tiposPriority = ['natural','barnizada','blanca'];
 	  const variantForTipo = (tipo) => {

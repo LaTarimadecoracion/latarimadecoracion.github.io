@@ -79,13 +79,7 @@
 
 
     const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-    const groupKeyFn = (row) => {
-      const m = normalizeText(row?.modelo||'');
-      if (m.includes('steps') || m.includes('cajones')) return 'Steps / Cajones';
-      if (m.includes('premiacion')) return 'Podio premiación (3 módulos)';
-      if (m.includes('individuales')) return 'Podios individuales';
-      return (row?.modelo||'Otros');
-    };
+    const groupKeyFn = (row) => row.modelo;
 
   // Resolver automático con carpeta compartida
   const imageBasePath = 'img/steps_cajones';

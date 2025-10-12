@@ -115,15 +115,7 @@
 
 
     const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-    const groupKeyFn = (row) => {
-      const m = normalizeText(row?.modelo||'');
-      if (m.includes('techito')) return 'Verdulero x3 con Techito';
-      if (m.includes('esquinero')) return 'Esquinero x3';
-      if (m.includes('mesada')) return 'Verdule para Mesada';
-      if (m.includes('verdulero') && m.includes('mediano')) return 'Verdulero Mediano';
-      if (m.includes('verdulero') && m.includes('x3')) return 'Verdulero x3';
-      return (row?.modelo||'Otros');
-    };
+    const groupKeyFn = (row) => row.modelo;
 
     // Resolución automática de imágenes en pivot.js
 

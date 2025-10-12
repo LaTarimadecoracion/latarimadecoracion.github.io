@@ -72,10 +72,7 @@
 	import { renderPivotModule } from './js/modules/pivot.js';
 
 	const normalizeText = s => (s||'').toString().toLowerCase();
-	const groupKeyFn = (row) => {
-		const m = normalizeText(row?.modelo||'');
-		return (row?.modelo||'Otros');
-	};
+	const groupKeyFn = (row) => row.modelo;
 	
 	const selectLabelMap = {
 		'1un':'1 un', '2un':'2 un', '3un':'3 un', '6un':'6 un', '12un':'12 un'

@@ -84,12 +84,7 @@
 
         const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
         const slugify = s => normalizeText(s).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-    const groupKeyFn = (row) => {
-      const m = normalizeText(row?.modelo||'');
-      if (m.includes('premiacion')) return 'Podio premiación (3 módulos)';
-      if (m.includes('individuales')) return 'Podios individuales';
-      return (row?.modelo||'Otros');
-    };
+    const groupKeyFn = (row) => row.modelo;
     // Usaremos resolución automática de imágenes; indicar carpeta específica
     const imageBasePath = 'img/steps_cajones';
 

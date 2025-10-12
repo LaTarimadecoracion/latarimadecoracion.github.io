@@ -97,12 +97,7 @@
 
       const moduleId = 'barandas_ortopedicas';
       const normalizeText = (s) => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-      const groupKeyFn = (row) => {
-        const m = normalizeText(row?.modelo);
-        if (m.includes('alta')) return 'Baranda Ortopedica Alta';
-        if (m.includes('ortoped')) return 'Baranda Ortopedica';
-        return (row?.modelo || 'Otros');
-      };
+      const groupKeyFn = (row) => row.modelo;
   // Resolución automática de imágenes en pivot.js
       const tiposPriority = ['natural','barnizada','blanca'];
       const variantForTipo = (tipo) => ( (tipo||'').toLowerCase() === 'natural' ? 'primary' : 'secondary' );
