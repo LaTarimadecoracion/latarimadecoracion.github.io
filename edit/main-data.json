@@ -27,42 +27,37 @@
       "url": "https://wa.me/5491167007723?text=Hola! Me interesa consultar sobre sus productos",
       "image": "https://cdn-icons-png.flaticon.com/512/733/733585.png",
       "position": 2
-    },
-    {
-      "id": "calculadora",
-      "text": "Calculadora de Precios",
-      "url": "calcular.html",
-      "image": "https://cdn-icons-png.flaticon.com/512/1048/1048943.png",
-      "position": 3
     }
   ],
   "mainNavigation": {
-    "barandas": {
-      "title": "Barandas para cama",
-      "type": "dropdown",
-      "items": [
-        {
-          "title": "Barandas desmontables",
-          "url": "barandas_desmontables.html",
-          "id": "btn-baranda"
-        },
-        {
-          "title": "Barandas para Sommier",
-          "url": "barandas_sommier.html",
-          "id": "btn-baranda-sommier"
-        },
-        {
-          "title": "Barandas Fijas para cama",
-          "url": "barandas_fijas.html",
-          "id": "btn-baranda-fija"
-        },
-        {
-          "title": "Barandas Ortopédicas",
-          "url": "barandas_ortopedicas.html",
-          "id": "btn-baranda-ortopedica"
-        }
-      ]
-    }
+    "dropdownMenus": [
+      {
+        "id": "barandas",
+        "title": "Barandas para cama",
+        "items": [
+          {
+            "title": "Barandas desmontables",
+            "url": "barandas_desmontables.html",
+            "id": "btn-baranda"
+          },
+          {
+            "title": "Barandas para Sommier",
+            "url": "barandas_sommier.html",
+            "id": "btn-baranda-sommier"
+          },
+          {
+            "title": "Barandas Fijas para cama",
+            "url": "barandas_fijas.html",
+            "id": "btn-baranda-fija"
+          },
+          {
+            "title": "Barandas Ortopédicas",
+            "url": "barandas_ortopedicas.html",
+            "id": "btn-baranda-ortopedica"
+          }
+        ]
+      }
+    ]
   },
   "navigationButtons": [
     {

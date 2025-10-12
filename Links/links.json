@@ -75,12 +75,6 @@
     "camas": [],
     "podios": [
       {
-        "modelo": "Muestra",
-        "medida": "",
-        "tipo": "",
-        "href": ""
-      },
-      {
         "modelo": "Podio premiación (3 módulos)",
         "medida": "Único combo",
         "tipo": "Comprar",
@@ -256,273 +250,9 @@
     ],
     "infantiles": [
       {
-        "modelo": "Infantil 1",
-        "medida": "",
-        "tipo": "Natural",
-        "href": "https://mail.google.com/mail/u/0/"
-      },
-      {
-        "modelo": "Infantil 1",
-        "medida": "",
-        "tipo": "Barnizado",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 1",
-        "medida": "",
-        "tipo": "Tintes",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 1",
-        "medida": "Standard",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 1",
-        "medida": "Standard",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 1",
-        "medida": "Standard",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 10",
-        "medida": "Standard",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 10",
-        "medida": "Standard",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 10",
-        "medida": "Standard",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 2",
-        "medida": "",
-        "tipo": "Natural",
-        "href": "https://mail.google.com/mail/u/0/"
-      },
-      {
-        "modelo": "Infantil 2",
-        "medida": "",
-        "tipo": "Barnizado",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 2",
-        "medida": "",
-        "tipo": "Tintes",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 2",
-        "medida": "Standard",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 2",
-        "medida": "Standard",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 2",
-        "medida": "Standard",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 3",
-        "medida": "",
-        "tipo": "Natural",
-        "href": "https://mail.google.com/mail/u/0/"
-      },
-      {
-        "modelo": "Infantil 3",
-        "medida": "",
-        "tipo": "Barnizado",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 3",
-        "medida": "",
-        "tipo": "Tintes",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 3",
-        "medida": "Standard",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 3",
-        "medida": "Standard",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 3",
-        "medida": "Standard",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 4",
-        "medida": "",
-        "tipo": "Natural",
-        "href": "https://mail.google.com/mail/u/0/"
-      },
-      {
-        "modelo": "Infantil 4",
-        "medida": "",
-        "tipo": "Barnizado",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 4",
-        "medida": "",
-        "tipo": "Tintes",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 4",
-        "medida": "Standard",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 4",
-        "medida": "Standard",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 4",
-        "medida": "Standard",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 5",
-        "medida": "",
-        "tipo": "Natural",
-        "href": "https://mail.google.com/mail/u/0/"
-      },
-      {
-        "modelo": "Infantil 5",
-        "medida": "",
-        "tipo": "Barnizado",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 5",
-        "medida": "",
-        "tipo": "Tintes",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 5",
-        "medida": "Standard",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 5",
-        "medida": "Standard",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 5",
-        "medida": "Standard",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 6",
-        "medida": "Standard",
-        "tipo": "1un",
-        "href": "https://mail.google.com/mail/u/0/"
-      },
-      {
-        "modelo": "Infantil 6",
-        "medida": "Standard",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 6",
-        "medida": "Standard",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 7",
-        "medida": "Standard",
-        "tipo": "1un",
-        "href": "https://mail.google.com/mail/u/0/"
-      },
-      {
-        "modelo": "Infantil 7",
-        "medida": "Standard",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 7",
-        "medida": "Standard",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 8",
-        "medida": "Standard",
-        "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 8",
-        "medida": "Standard",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 8",
-        "medida": "Standard",
-        "tipo": "3un",
-        "href": ""
-      },
-      {
         "modelo": "Infantil 9",
         "medida": "Standard",
         "tipo": "1un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 9",
-        "medida": "Standard",
-        "tipo": "2un",
-        "href": ""
-      },
-      {
-        "modelo": "Infantil 9",
-        "medida": "Standard",
-        "tipo": "3un",
         "href": ""
       }
     ],
@@ -531,49 +261,49 @@
         "modelo": "Escaleras",
         "medida": "150 a 200 cm",
         "tipo": "Inclinada",
-        "href": "#"
+        "href": ""
       },
       {
         "modelo": "Escaleras",
         "medida": "150 a 200 cm",
         "tipo": "Vertical",
-        "href": "#"
+        "href": ""
       },
       {
         "modelo": "Escaleras",
         "medida": "110 a 150 cm",
         "tipo": "Inclinada",
-        "href": "#"
+        "href": ""
       },
       {
         "modelo": "Escaleras",
         "medida": "110 a 150 cm",
         "tipo": "Vertical",
-        "href": "#"
+        "href": ""
       },
       {
         "modelo": "Escaleras",
         "medida": "60 a 100 cm",
         "tipo": "Inclinada",
-        "href": "#"
+        "href": ""
       },
       {
         "modelo": "Escaleras",
         "medida": "60 a 100 cm",
         "tipo": "Vertical",
-        "href": "https://bio.link/latarima"
+        "href": ""
       },
       {
         "modelo": "Escaleras",
         "medida": "0 a 60 cm",
         "tipo": "Inclinada",
-        "href": "#"
+        "href": ""
       },
       {
         "modelo": "Escaleras",
         "medida": "0 a 60 cm",
         "tipo": "Vertical",
-        "href": "https://bio.link/latarima"
+        "href": ""
       }
     ],
     "estantes": [
@@ -927,36 +657,6 @@
       }
     ],
     "steps_cajones": [
-      {
-        "modelo": "Podio premiación (3 módulos)",
-        "medida": "Único combo",
-        "tipo": "Comprar",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2235353348-podio-de-premiacion-profesional-3-niveles-reforzados-_JM"
-      },
-      {
-        "modelo": "Podio premiación (3 módulos)",
-        "medida": "Único combo",
-        "tipo": "Comprar",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2235353348-podio-de-premiacion-profesional-3-niveles-reforzados-_JM"
-      },
-      {
-        "modelo": "Podios individuales",
-        "medida": "Módulo 3",
-        "tipo": "Comprar",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2351255318-podio-de-premiacion-profesional-60-x-40-x-40-cm-n-3-_JM"
-      },
-      {
-        "modelo": "Podios individuales",
-        "medida": "Módulo 2",
-        "tipo": "Comprar",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2242326346-podio-de-premiacion-profesional-60-x-40-x-30-cm-n-2-_JM"
-      },
-      {
-        "modelo": "Podios individuales",
-        "medida": "Módulo 1",
-        "tipo": "Comprar",
-        "href": "https://articulo.mercadolibre.com.ar/MLA-2351358716-podio-de-premiacion-profesional-60-x-40-x-40-cm-n-1-_JM"
-      },
       {
         "modelo": "Steps / Cajones",
         "medida": "50x28x9",
