@@ -3,8 +3,8 @@
     "regalos": [
       {
         "modelo": "Programas que te sirven",
-        "recurso": "Demo 01",
-        "visitar": "",
+        "recurso": "SketchUp Free (versión web)",
+        "visitar": "https://app.sketchup.com",
         "ver": "",
         "descargar": ""
       },
@@ -18,7 +18,7 @@
       {
         "modelo": "Herramientas para trabajar",
         "recurso": "Demo 3",
-        "visitar": "https://latarimadecoracion.github.io/regalos/index.html",
+        "visitar": "",
         "ver": "",
         "descargar": ""
       },
@@ -65,9 +65,16 @@
         "descargar": ""
       },
       {
-        "modelo": "",
-        "recurso": "",
-        "visitar": "",
+        "modelo": "Programas que te sirven",
+        "recurso": "CutList Plus CZ (versión gratuita)",
+        "visitar": "https://www.cutlistplus.com/cutlist-plus-cz/",
+        "ver": "",
+        "descargar": ""
+      },
+      {
+        "modelo": "Páginas útiles de internet",
+        "recurso": "OptiCutter Online (versión gratuita)",
+        "visitar": "https://www.opticutter.com",
         "ver": "",
         "descargar": ""
       }
