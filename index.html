@@ -29,6 +29,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>LA TARIMA - Carpintería</title>
 	<link rel="stylesheet" href="estilos.css?v=20251003">
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#0074D9">
 	<link rel="icon" href="img/ico.png" type="image/png">
 	<meta name="theme-color" content="#ffffff">
 
@@ -297,6 +299,42 @@
 	</div>
 
 </body>
+<script>
+if ('serviceWorker' in navigator) {
+	window.addEventListener('load', function() {
+		navigator.serviceWorker.register('sw.js');
+	});
+}
+</script>
+
+	<div id="pwa-sugerencia" style="position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:9999;max-width:600px;width:100%;padding:1em 1em;background:#fffbe6;border-radius:18px;box-shadow:0 2px 16px #ffd70055;display:flex;align-items:center;gap:1em;font-size:1.08em;">
+		<span style="flex:1;">📱 Instala nuestro catálogo y no te pierdas ninguna oferta ni novedad. ¡Acceso rápido y directo desde tu celular o PC!</span>
+		<button id="instalar-pwa" style="background:#0074D9;color:#fff;border:none;border-radius:8px;padding:0.5em 1.2em;font-weight:600;cursor:pointer;font-size:1em;">Instalar</button>
+		<button id="cerrar-sugerencia" style="background:none;border:none;font-size:1.3em;cursor:pointer;color:#b71c1c;margin-left:8px;">×</button>
+	</div>
+	<script>
+	// Cerrar sugerencia
+	document.getElementById('cerrar-sugerencia').onclick = function() {
+		document.getElementById('pwa-sugerencia').style.display = 'none';
+	};
+	// Instalar PWA
+	let deferredPrompt;
+	window.addEventListener('beforeinstallprompt', (e) => {
+		e.preventDefault();
+		deferredPrompt = e;
+		document.getElementById('instalar-pwa').style.display = 'inline-block';
+	});
+	document.getElementById('instalar-pwa').onclick = function() {
+		if (deferredPrompt) {
+			deferredPrompt.prompt();
+			deferredPrompt.userChoice.then(() => {
+				deferredPrompt = null;
+			});
+		} else {
+			alert('Si no ves el botón de instalar, busca "Agregar a pantalla de inicio" en el menú de tu navegador.');
+		}
+	};
+	</script>
 <script>
 // Maneja el despliegue del dropdown y accesibilidad del botón
 (function(){

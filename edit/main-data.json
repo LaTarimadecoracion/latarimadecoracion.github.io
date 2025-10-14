@@ -125,16 +125,16 @@
     "title": "Nuestras redes",
     "links": [
       {
-        "name": "TikTok",
-        "url": "https://www.tiktok.com/@latarimadecoracion",
-        "displayText": "TikTok",
-        "color": "#000000"
-      },
-      {
         "name": "WhatsApp",
         "url": "https://api.whatsapp.com/send/?phone=5491167007723&text&type=phone_number&app_absent=0",
         "displayText": "+54 911 6700-7723",
         "color": "#25D366"
+      },
+      {
+        "name": "TikTok",
+        "url": "https://www.tiktok.com/@latarimadecoracion",
+        "displayText": "TikTok",
+        "color": "#000000"
       },
       {
         "name": "Instagram",
