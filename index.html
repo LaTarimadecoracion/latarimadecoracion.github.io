@@ -313,9 +313,18 @@ if ('serviceWorker' in navigator) {
 		<button id="cerrar-sugerencia" style="background:none;border:none;font-size:1.3em;cursor:pointer;color:#b71c1c;margin-left:8px;">×</button>
 	</div>
 	<script>
-	// Cerrar sugerencia
+	// Mostrar/ocultar banner según localStorage
+	const pwaBanner = document.getElementById('pwa-sugerencia');
+	const hideKey = 'pwaBannerHideUntil';
+	const now = Date.now();
+	const hideUntil = localStorage.getItem(hideKey);
+	if (hideUntil && now < parseInt(hideUntil)) {
+		pwaBanner.style.display = 'none';
+	}
+	// Cerrar sugerencia y ocultar por 7 días
 	document.getElementById('cerrar-sugerencia').onclick = function() {
-		document.getElementById('pwa-sugerencia').style.display = 'none';
+		pwaBanner.style.display = 'none';
+		localStorage.setItem(hideKey, now + 7*24*60*60*1000);
 	};
 	// Instalar PWA
 	let deferredPrompt;
