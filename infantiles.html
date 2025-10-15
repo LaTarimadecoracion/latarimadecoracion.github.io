@@ -85,22 +85,11 @@
 	<script type="module">
 	import { renderPivotModule } from './js/modules/pivot.js';
 
-	const tiposOrder = ['Natural','Barnizado','Tintes'];
-	const selectLabelMap = { 'Natural':'Natural', 'Barnizado':'Barnizado', 'Tintes':'Tintes' };
-	const normalize = s => (s||'').toString().toLowerCase();
-	const variantForTipo = (t) => (normalize(t)==='natural' ? 'primary' : 'secondary');
-	const imageForModel = () => 'img/base.png';
-
 	renderPivotModule({
-	  moduleId: 'infantiles',
-	  containerSelector: '#product-stack',
-	  medidaLabel: 'Medida',
-	  tiposOrder,
-	  selectLabelMap,
-	  variantForTipo,
-	  imageForModel,
-	  includeMobileSelect: true,
-	  rowFilter: (row) => (row && row.medida) !== 'Standard'
+		moduleId: 'infantiles',
+		containerSelector: '#product-stack',
+		medidaLabel: 'Medida',
+		includeMobileSelect: true
 	});
 	</script>
 </body>

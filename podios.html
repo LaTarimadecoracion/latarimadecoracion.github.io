@@ -81,26 +81,12 @@
     <script type="module">
     import { renderPivotModule } from './js/modules/pivot.js';
 
-
-        const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-        const slugify = s => normalizeText(s).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-    const groupKeyFn = (row) => row.modelo;
-    // Usaremos resolución automática de imágenes; indicar carpeta específica
-    const imageBasePath = 'img/steps_cajones';
-
-    const selectLabelMap = { 'Comprar': 'Comprar' };
-    const variantForTipo = (t) => (String(t).toLowerCase()==='comprar' ? 'primary' : 'secondary');
-
     renderPivotModule({
-      moduleId: 'podios',
-      containerSelector: '#product-stack',
-      medidaLabel: 'Medida',
-      groupKeyFn,
-                        imageBasePath,
-      tiposOrder: ['Comprar'],
-      selectLabelMap,
-      variantForTipo,
-      includeMobileSelect: true
+        moduleId: 'podios',
+        containerSelector: '#product-stack',
+        medidaLabel: 'Medida',
+        imageBasePath: 'img/podios',
+        includeMobileSelect: true
     });
     </script>
 </body>

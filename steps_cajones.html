@@ -77,25 +77,10 @@
     <script type="module">
     import { renderPivotModule } from './js/modules/pivot.js';
 
-
-    const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-    const groupKeyFn = (row) => row.modelo;
-
-  // Resolver automático con carpeta compartida
-  const imageBasePath = 'img/steps_cajones';
-
-    const selectLabelMap = { 'Comprar': 'Comprar' };
-    const variantForTipo = (t) => (String(t).toLowerCase()==='comprar' ? 'primary' : 'secondary');
-
     renderPivotModule({
       moduleId: 'steps_cajones',
       containerSelector: '#product-stack',
       medidaLabel: 'Medida',
-      groupKeyFn,
-  imageBasePath,
-      tiposOrder: ['Comprar'],
-      selectLabelMap,
-      variantForTipo,
       includeMobileSelect: true
     });
     </script>

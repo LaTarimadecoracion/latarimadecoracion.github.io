@@ -111,29 +111,14 @@
         </nav>
         </div>
     <script type="module">
-    import { renderPivotModule } from './js/modules/pivot.js';
+        import { renderPivotModule } from './js/modules/pivot.js';
 
-
-    const normalizeText = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-    const groupKeyFn = (row) => row.modelo;
-
-    // Resolución automática de imágenes en pivot.js
-
-    const tiposPriority = ['natural','barnizado','tintado'];
-    const selectLabelMap = { 'Natural':'Natural', 'Barnizado':'Barnizado', 'Tintado':'Tintado' };
-    const variantForTipo = (t) => (normalizeText(t)==='natural' ? 'primary' : 'secondary');
-
-    renderPivotModule({
-      moduleId: 'organizadores',
-      containerSelector: '#product-stack',
-      medidaLabel: 'Medida',
-      groupKeyFn,
-            // imágenes automáticas: usa img/organizadores
-      tiposPriority,
-      selectLabelMap,
-      variantForTipo,
-      includeMobileSelect: true
-    });
+        renderPivotModule({
+            moduleId: 'organizadores',
+            containerSelector: '#product-stack',
+            medidaLabel: 'Medida',
+            includeMobileSelect: true
+        });
     </script>
 </body>
 <script src="responsive-tables.js?v=20251001"></script>

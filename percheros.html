@@ -86,25 +86,14 @@
         </nav>
     </div>
     <script type="module">
-      import { renderPivotModule } from './js/modules/pivot.js';
+            import { renderPivotModule } from './js/modules/pivot.js';
 
-
-      const normalizeText = (s) => (s||'').toString().toLowerCase();
-    // Resolución automática de imágenes en pivot.js
-      const tiposPriority = ['1un','2un','3un'];
-      const selectLabelMap = { '1un':'1 un', '2un':'2 un', '3un':'3 un' };
-      const variantForTipo = (t) => (normalizeText(t)==='1un' ? 'primary' : 'secondary');
-
-      renderPivotModule({
-        moduleId: 'percheros',
-        containerSelector: '#product-stack',
-        medidaLabel: 'Medida',
-                // imágenes automáticas: usa img/percheros
-        tiposPriority,
-        selectLabelMap,
-        variantForTipo,
-        includeMobileSelect: true
-      });
+            renderPivotModule({
+                moduleId: 'percheros',
+                containerSelector: '#product-stack',
+                medidaLabel: 'Medida',
+                includeMobileSelect: true
+            });
     </script>
     <script src="responsive-tables.js?v=20251001"></script>
 </body>
