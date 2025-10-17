@@ -1,3 +1,29 @@
+/* Cartelito diagonal NUEVO parpadeando */
+.nuevo-tag {
+	position: absolute;
+	top: 8px;
+	right: -32px;
+	background: #ff1744;
+	color: #fff;
+	font-size: 0.85em;
+	font-weight: bold;
+	padding: 4px 24px;
+	transform: rotate(25deg);
+	box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+	z-index: 2;
+	animation: parpadeo-nuevo 1s infinite alternate;
+	letter-spacing: 1px;
+	pointer-events: none;
+}
+
+@keyframes parpadeo-nuevo {
+	0% { opacity: 1; }
+	100% { opacity: 0.4; }
+}
+
+.btn-product {
+	position: relative;
+}
 /* Select móvil ancho completo en tarjetas */
 .mobile-select-row select.dropbtn {
 	width: 100%;

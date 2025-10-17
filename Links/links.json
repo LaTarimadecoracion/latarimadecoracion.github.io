@@ -1232,16 +1232,88 @@
     ],
     "otros_productos": [
       {
+        "modelo": "Base de madera",
+        "medida": "",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Cajón madera",
+        "medida": "15 x 15 x 20 cm",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Cesto de Basura",
+        "medida": "",
+        "tipo": "Barnizado",
+        "href": ""
+      },
+      {
+        "modelo": "Especiero",
+        "medida": "30 x 30 x 10 cm",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Fanal",
+        "medida": "Grande",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Fanal",
+        "medida": "x3 Un",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Fanal",
+        "medida": "Mediano",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Fanal",
+        "medida": "Chico",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
         "modelo": "Mesa Plegabe",
         "medida": "64 x 45 x 36 cm",
-        "tipo": "Único",
+        "tipo": "Natural",
         "href": "https://articulo.mercadolibre.com.ar/MLA-1475679709-mesa-peglabe-playera-jardin-_JM?searchVariation=186882426581#polycard_client=search-nordic&searchVariation=186882426581&search_layout=grid&position=8&type=item&tracking_id=d54c9c84-c40e-4a07-97d6-b60aee6f63bb"
       },
       {
         "modelo": "Mesa Plegabe - Portavasos",
         "medida": "64 x 45 x 36 cm",
-        "tipo": "Único",
+        "tipo": "Natural",
         "href": "https://articulo.mercadolibre.com.ar/MLA-1475679709-mesa-peglabe-playera-jardin-_JM?searchVariation=186882426581#polycard_client=search-nordic&searchVariation=186882426581&search_layout=grid&position=8&type=item&tracking_id=d54c9c84-c40e-4a07-97d6-b60aee6f63bb"
+      },
+      {
+        "modelo": "Organizador Tribuna X3",
+        "medida": "",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Vinoteca",
+        "medida": "Grande",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Vinoteca",
+        "medida": "Mediano",
+        "tipo": "Natural",
+        "href": ""
+      },
+      {
+        "modelo": "Vinoteca",
+        "medida": "Mediano",
+        "tipo": "Tinte",
+        "href": ""
       }
     ]
   }

@@ -64,61 +64,71 @@
       "title": "Deck",
       "url": "deck.html",
       "id": "btn-deck",
-      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png",
+      "nuevo": false
     },
     {
       "title": "Camas",
       "url": "camas.html",
       "id": "btn-camas",
-      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png",
+      "nuevo": false
     },
     {
       "title": "Podios",
       "url": "podios.html",
       "id": "btn-podios",
-      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png",
+      "nuevo": false
     },
     {
       "title": "Estantes",
       "url": "estantes.html",
       "id": "btn-estantes",
-      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png",
+      "nuevo": false
     },
     {
       "title": "Escaleras",
       "url": "escaleras.html",
       "id": "btn-escaleras",
-      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png",
+      "nuevo": false
     },
     {
       "title": "Percheros",
       "url": "percheros.html",
       "id": "btn-percheros",
-      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png",
+      "nuevo": false
     },
     {
       "title": "Infantiles",
       "url": "infantiles.html",
       "id": "btn-infantiles",
-      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png",
+      "nuevo": false
     },
     {
       "title": "Organizadores",
       "url": "organizadores.html",
       "id": "btn-organizadores",
-      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png",
+      "nuevo": false
     },
     {
       "title": "Steps / Cajones",
       "url": "steps_cajones.html",
       "id": "btn-steps",
-      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png",
+      "nuevo": false
     },
     {
       "title": "Otros productos",
       "url": "otros_productos.html",
       "id": "btn-otros-productos",
-      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png"
+      "icon": "https://cdn-icons-png.flaticon.com/512/69/69524.png",
+      "nuevo": false
     }
   ],
   "socialSection": {

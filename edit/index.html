@@ -133,6 +133,7 @@
             <div class="seccion-content">
                 <div id="navigation-container">
                     <!-- La navegación se carga dinámicamente -->
+                    <div id="nuevo-switches-container"></div>
                 </div>
                 <button class="btn-success" onclick="crearMenuDesplegable()">+ Crear Nuevo Menú Desplegable</button>
                 <button class="btn-info" onclick="agregarSubMenuAExistente()">+ Agregar Submenú a Menú Existente</button>
@@ -172,56 +173,82 @@
     </div>
 
     <script>
-        let datosMain = {};
+                let datosMain = {};
+
+                // Mostrar switches para activar cartelito NUEVO en cada botón
+                        function mostrarSwitchesNuevo() {
+                                            const container = document.getElementById('nuevo-switches-container');
+                                            if (!container) {
+                                                    console.warn('No se encontró el contenedor nuevo-switches-container');
+                                                    return;
+                                            }
+                                            container.innerHTML = '<h4>Activar cartelito "NUEVO" en botones principales y menús desplegables:</h4>';
+                                            // Botones principales
+                                            if (datosMain.navigationButtons) {
+                                                    datosMain.navigationButtons.forEach((btn, idx) => {
+                                                            const checked = btn.nuevo ? 'checked' : '';
+                                                            container.innerHTML += `
+                                                                <div class="form-group">
+                                                                    <label>
+                                                                        <input type="checkbox" id="nuevo-btn-${idx}" ${checked} onchange="actualizarNuevoBoton(${idx}, this.checked)">
+                                                                        ${btn.title} <span style="font-size:0.9em;color:#0078d7;">(Mostrar cartel NUEVO)</span>
+                                                                    </label>
+                                                                </div>
+                                                            `;
+                                                    });
+                                            }
+                                            // Menús desplegables
+                                            if (datosMain.mainNavigation && datosMain.mainNavigation.dropdownMenus) {
+                                                    datosMain.mainNavigation.dropdownMenus.forEach((menu, mIdx) => {
+                                                            if (menu.items) {
+                                                                    menu.items.forEach((item, iIdx) => {
+                                                                            const checked = item.nuevo ? 'checked' : '';
+                                                                            container.innerHTML += `
+                                                                                <div class="form-group">
+                                                                                    <label>
+                                                                                        <input type="checkbox" id="nuevo-dd-${mIdx}-${iIdx}" ${checked} onchange="actualizarNuevoDropdown(${mIdx},${iIdx}, this.checked)">
+                                                                                        ${menu.title} → ${item.title} <span style="font-size:0.9em;color:#0078d7;">(Mostrar cartel NUEVO)</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            `;
+                                                                    });
+                                                            }
+                                                    });
+                                            }
+                        }
+
+                        // Actualizar estado del cartelito NUEVO en el JSON para botones principales
+                        window.actualizarNuevoBoton = function(idx, estado) {
+                                datosMain.navigationButtons[idx].nuevo = estado;
+                                mostrarSwitchesNuevo();
+                        }
+                        // Actualizar estado del cartelito NUEVO en el JSON para menús desplegables
+                        window.actualizarNuevoDropdown = function(mIdx, iIdx, estado) {
+                                datosMain.mainNavigation.dropdownMenus[mIdx].items[iIdx].nuevo = estado;
+                                mostrarSwitchesNuevo();
+                        }
+
+                // Actualizar estado del cartelito NUEVO en el JSON
+                window.actualizarNuevoBoton = function(idx, estado) {
+                        datosMain.navigationButtons[idx].nuevo = estado;
+                        mostrarSwitchesNuevo();
+                }
 
         // Cargar datos al iniciar
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM cargado, iniciando editor...');
             mostrarMensaje('🔄 Cargando datos...', 'info');
-            
             cargarJSON().then(() => {
                 console.log('JSON cargado, mostrando interfaz...');
                 mostrarMensaje('✅ Datos cargados, construyendo interfaz...', 'info');
-                
-                try {
-                    mostrarDatos();
-                    console.log('Datos básicos mostrados');
-                } catch (error) {
-                    console.error('Error mostrando datos básicos:', error);
-                }
-                
-                try {
-                    mostrarEnlacesSociales();
-                    console.log('Enlaces sociales mostrados');
-                } catch (error) {
-                    console.error('Error mostrando enlaces sociales:', error);
-                }
-                
-                try {
-                    mostrarNavegacion();
-                    console.log('Navegación mostrada');
-                } catch (error) {
-                    console.error('Error mostrando navegación:', error);
-                }
-                
-                try {
-                    mostrarSeccionSocial();
-                    console.log('Sección social mostrada');
-                } catch (error) {
-                    console.error('Error mostrando sección social:', error);
-                }
-                
-                try {
-                    mostrarIconosFlotantes();
-                    console.log('Iconos flotantes mostrados');
-                } catch (error) {
-                    console.error('Error mostrando iconos flotantes:', error);
-                }
-                
+                try { mostrarDatos(); } catch (error) { console.error('Error mostrando datos básicos:', error); }
+                try { mostrarEnlacesSociales(); } catch (error) { console.error('Error mostrando enlaces sociales:', error); }
+                try { mostrarNavegacion(); } catch (error) { console.error('Error mostrando navegación:', error); }
+                try { mostrarSeccionSocial(); } catch (error) { console.error('Error mostrando sección social:', error); }
+                try { mostrarIconosFlotantes(); } catch (error) { console.error('Error mostrando iconos flotantes:', error); }
+                mostrarSwitchesNuevo();
                 console.log('Editor cargado completamente');
                 mostrarMensaje('🎉 Editor cargado correctamente! Todas las secciones están listas.', 'exito');
-                
-                // Verificar que todas las secciones se cargaron
                 setTimeout(() => {
                     const secciones = [
                         { id: 'siteName', nombre: 'Información Básica' },
@@ -229,7 +256,6 @@
                         { id: 'floating-icons-container', nombre: 'Iconos Flotantes' },
                         { id: 'navigation-container', nombre: 'Navegación' }
                     ];
-                    
                     let seccionesCargadas = 0;
                     secciones.forEach(seccion => {
                         const elemento = document.getElementById(seccion.id);
@@ -240,16 +266,10 @@
                             console.log('❌ Sección vacía:', seccion.nombre);
                         }
                     });
-                    
                     console.log(`📊 Secciones cargadas: ${seccionesCargadas}/${secciones.length}`);
-                    
-                    // Ocultar el mensaje de estado
                     const statusDiv = document.getElementById('mensaje-status');
-                    if (statusDiv) {
-                        statusDiv.style.display = 'none';
-                    }
+                    if (statusDiv) { statusDiv.style.display = 'none'; }
                 }, 2000);
-                
             }).catch(error => {
                 console.error('Error cargando editor:', error);
                 mostrarMensaje('❌ Error cargando el editor: ' + error.message, 'error');
