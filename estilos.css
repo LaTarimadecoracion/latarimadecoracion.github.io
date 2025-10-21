@@ -42,12 +42,19 @@
 
 /* Estilos visuales de .container y .product-card para escritorio y móvil */
 .container {
-	max-width: 700px;
-			margin: 0.2em auto 1em auto;
-		background: rgba(255,255,255,0.97);
-		border-radius: 22px;
-		box-shadow: 0 4px 32px 0 #0074d91a, 0 1.5px 8px 0 #0001;
-		padding: 0.1em 2em 2em 2em;
+	max-width: var(--content-max);
+	margin: 0.2em auto 1em auto;
+	background: rgba(255,255,255,0.97);
+	border-radius: 22px;
+	box-shadow: 0 4px 32px 0 #0074d91a, 0 1.5px 8px 0 #0001;
+	padding: 2em 1.2em 2em 1.2em;
+	box-sizing: border-box;
+}
+@media (min-width: 1024px) {
+	.container {
+		padding-left: clamp(0px, calc((100vw - var(--content-max)) / 2), 400px);
+		padding-right: clamp(0px, calc((100vw - var(--content-max)) / 2), 400px);
+	}
 }
 .product-card {
 	background: linear-gradient(120deg, #f0f6ff 60%, #eaf6ff 100%);
