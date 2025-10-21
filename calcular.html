@@ -12,33 +12,8 @@
         </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de barandas: alto ideal | LA TARIMA</title>
-    <!-- SEO -->
-    <meta name="description" content="Calculadora para encontrar el alto ideal de barandas de cama según tus medidas (base y colchón).">
-    <meta name="robots" content="index,follow">
-    <link rel="canonical" href="https://latarimadecoracion.github.io/calcular.html">
-        <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://latarimadecoracion.github.io/"},
-        {"@type": "ListItem", "position": 2, "name": "Calculadora de barandas", "item": "https://latarimadecoracion.github.io/calcular.html"}
-    ]
-}
-        </script>
-        <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        {"@type": "Question","name": "¿Qué medidas necesito?","acceptedAnswer": {"@type": "Answer","text": "Altura de la base/tirante (B) desde el piso y la altura hasta la parte más alta del colchón (C)."}},
-        {"@type": "Question","name": "¿En qué unidades?","acceptedAnswer": {"@type": "Answer","text": "Centímetros. Podés usar decimales."}},
-        {"@type": "Question","name": "¿El resultado es definitivo?","acceptedAnswer": {"@type": "Answer","text": "Es una guía para ayudarte a elegir. Si tenés dudas, escribinos por WhatsApp."}}
-    ]
-}
-        </script>
-    <link rel="stylesheet" href="estilos.css?v=20251003">
+    <title>Calcular alto ideal | LA TARIMA</title>
+    <link rel="stylesheet" href="estilos.css?v=20250918-2">
         <link rel="icon" href="img/ico.png" type="image/png">
     <style>
     /* Resaltado de fila recomendada */
@@ -50,11 +25,15 @@
 </head>
 <body class="barandas">
     <div class="container">
-        <!-- CABECERA unificada -->
-        <header class="site-header">
-            <a href="index.html" aria-label="Ir al inicio"><h1>LA TARIMA</h1></a>
-            <a href="index.html" aria-label="Ir al inicio"><div class="subtitle">Carpintería Online</div></a>
-            <div class="socials">
+        <!-- CABECERA (INICIO) — LA TARIMA / Carpintería Online -->
+        <a href="index.html" style="text-decoration:none; color:inherit;">
+            <h1 style="cursor:pointer;">LA TARIMA</h1>
+        </a>
+        <a href="index.html" style="text-decoration:none; color:inherit;">
+            <div class="subtitle" style="cursor:pointer;">Carpintería Online</div>
+        </a>
+        <!-- BLOQUE DE REDES (INICIO) — botones grises de redes -->
+        <div class="socials">
             <!-- TikTok -->
             <a href="https://www.tiktok.com/@latarimadecoracion" target="_blank" rel="noopener" aria-label="TikTok">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -87,8 +66,7 @@
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
                 </svg>
             </a>
-            </div>
-        </header>
+        </div>
         <!-- BLOQUE DE REDES (FIN) -->
         <div class="product-stack">
             <div class="product-card">
@@ -103,16 +81,44 @@
                 Todo en <strong>centímetros</strong> (podés usar decimales).
             </p>
             <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;">
-                <label style="font-size:0.75rem;display:flex;flex-direction:column;gap:4px;">
+                <label for="medidaB" style="font-size:0.75rem;display:flex;flex-direction:column;gap:4px;">
                     B (tirante/base)
-                    <input id="medidaB" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 10" aria-label="Medida B (tirante/base) en centímetros" style="width:140px;padding:6px 8px;border:1px solid #bbb;border-radius:6px;font-size:14px;" />
+                    <input id="medidaB" name="medidaB" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 10" aria-label="Medida B (tirante/base) en centímetros" aria-describedby="diagramBC" style="width:140px;padding:6px 8px;border:1px solid #bbb;border-radius:6px;font-size:14px;" />
                 </label>
-                <label style="font-size:0.75rem;display:flex;flex-direction:column;gap:4px;">
+                <label for="medidaC" style="font-size:0.75rem;display:flex;flex-direction:column;gap:4px;">
                     C (hasta arriba colchón)
-                    <input id="medidaC" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 20" aria-label="Medida C (hasta parte superior del colchón) en centímetros" style="width:160px;padding:6px 8px;border:1px solid #bbb;border-radius:6px;font-size:14px;" />
+                    <input id="medidaC" name="medidaC" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 20" aria-label="Medida C (hasta parte superior del colchón) en centímetros" aria-describedby="diagramBC" style="width:160px;padding:6px 8px;border:1px solid #bbb;border-radius:6px;font-size:14px;" />
                 </label>
                 <div style="padding-top:4px;">
                     <button id="btnCalcular" class="btn-action" style="background:#1a7f37;color:#fff;border:none;padding:10px 18px;font-size:0.9rem;letter-spacing:.5px;border-radius:8px;cursor:pointer;">Calcular</button>
+                </div>
+            </div>
+            <!-- Diagrama explicativo B / C -->
+            <div id="diagramBC" style="margin-top:12px;display:flex;gap:12px;align-items:center;" aria-hidden="false">
+                <svg width="220" height="80" viewBox="0 0 220 80" aria-label="Diagrama medidas B y C">
+                    <rect x="10" y="58" width="200" height="12" fill="#d1e7ff" rx="3" />
+                    <!-- piso -->
+                    <rect x="0" y="72" width="220" height="6" fill="#e6eef7" />
+                    <!-- tirante/base -->
+                    <rect x="40" y="42" width="120" height="16" fill="#f4f4f4" stroke="#ccc" />
+                    <!-- colchón -->
+                    <rect x="48" y="18" width="104" height="24" fill="#fff3e0" stroke="#f0c27b" />
+                    <!-- medidas flechas -->
+                    <line x1="30" y1="44" x2="30" y2="72" stroke="#333" stroke-width="1.2" marker-end="url(#arr)" />
+                    <line x1="30" y1="72" x2="30" y2="44" stroke="#333" stroke-width="1.2" marker-end="url(#arr)" />
+                    <line x1="16" y1="20" x2="16" y2="72" stroke="#333" stroke-width="1.2" marker-end="url(#arr)" />
+                    <line x1="16" y1="72" x2="16" y2="20" stroke="#333" stroke-width="1.2" marker-end="url(#arr)" />
+                    <defs>
+                        <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                            <path d="M0,0 L6,3 L0,6 z" fill="#333" />
+                        </marker>
+                    </defs>
+                    <text x="34" y="36" font-size="10" fill="#333">B</text>
+                    <text x="6" y="12" font-size="10" fill="#333">C</text>
+                </svg>
+                <div style="font-size:0.8rem;color:#555;">
+                    <strong>B</strong>: altura desde el piso hasta la cara superior del tirante/base.<br>
+                    <strong>C</strong>: altura desde el piso hasta la parte más alta del colchón ya apoyado.
                 </div>
             </div>
             <div style="margin-top:8px;font-size:0.7rem;color:#666;line-height:1.25;">
@@ -136,7 +142,7 @@
                     </tbody>
                 </table>
                 <!-- Resumen rápido movido aquí para quedar inmediatamente debajo de la tabla de selección -->
-                <div id="resumenRapido" style="display:none;margin-top:12px;padding:12px 14px;border:1px solid #dcdfe3;background:#fafafa;border-radius:10px;font-size:0.9rem;line-height:1.4;">
+                <div id="resumenRapido" role="status" aria-live="polite" style="display:none;margin-top:12px;padding:12px 14px;border:1px solid #dcdfe3;background:#fafafa;border-radius:10px;font-size:0.9rem;line-height:1.4;">
                     <strong style="display:block;margin-bottom:4px;">Resumen rápido</strong>
                     <div id="resumenContenido"></div>
                     <div id="desgloseIntermedio" style="margin-top:8px;padding-top:8px;border-top:1px dashed #ccc;font-size:0.78rem;color:#333;display:none;"></div>
@@ -146,14 +152,14 @@
                     </div>
                 </div>
                 <!-- Resumen de selección manual -->
-                <div id="resumenManual" style="display:none;margin-top:10px;padding:12px 14px;border:1px solid #c9d2da;background:#fff;border-radius:10px;font-size:0.85rem;line-height:1.4;position:relative;">
+                <div id="resumenManual" role="region" aria-live="polite" style="display:none;margin-top:10px;padding:12px 14px;border:1px solid #c9d2da;background:#fff;border-radius:10px;font-size:0.85rem;line-height:1.4;position:relative;">
                     <strong style="display:block;margin-bottom:4px;">Tu elección</strong>
                     <div id="resumenManualContenido"></div>
                     <div id="resumenManualDesglose" style="margin-top:8px;padding-top:6px;border-top:1px dashed #ccc;font-size:0.72rem;color:#333;display:none;"></div>
                     <button id="btnCerrarManual" title="Quitar selección" style="position:absolute;top:6px;right:6px;background:#eee;border:1px solid #ccc;border-radius:4px;font-size:10px;line-height:1;padding:3px 6px;cursor:pointer;">X</button>
                 </div>
                 <!-- Detalle técnico (cálculos previos) -->
-                <div id="resultadoCalculo" style="margin-top:14px;font-size:0.9rem;line-height:1.35;background:#f8f9fb;border:1px solid #e2e5e9;padding:12px 14px;border-radius:10px;display:none;"></div>
+                <div id="resultadoCalculo" role="status" aria-live="polite" style="margin-top:14px;font-size:0.9rem;line-height:1.35;background:#f8f9fb;border:1px solid #e2e5e9;padding:12px 14px;border-radius:10px;display:none;"></div>
             </div>
         </div>
 
@@ -215,32 +221,36 @@
 
         function ajustarAgarre(baseAgarre,B){ return B < baseAgarre ? B : baseAgarre; }
         function calcModeloAvanzado(m){
-            const agarreReal = ajustarAgarre(m.agarre,B);
+            // Nuevo cálculo: agarre real y nuevo C
+            const agarreReal = B > m.agarre ? m.agarre : B;
+            const deltaB = B > m.agarre ? (B - m.agarre) : 0;
+            const nuevoC = C - deltaB;
+            // Alto ideal sin límite superior
+            let alturaIdeal = nuevoC + m.targetProt;
+            // El resto de cálculos igual que antes
             const estructuraMin = agarreReal + m.soporte + m.minAbertura;
-            const proteccionNominal = m.nominal - C;
-            let alturaIdeal = C + m.targetProt; if(alturaIdeal < estructuraMin) alturaIdeal = estructuraMin;
-            const diff = Math.abs(proteccionNominal - m.targetProt);
-            // margen ± eliminado: siempre prioriza target dentro de estructura mínima
-            let alturaSugerida = alturaIdeal;
-            let abertura = alturaSugerida - (agarreReal + m.soporte);
-            if(abertura < m.minAbertura){ alturaSugerida = estructuraMin; abertura = m.minAbertura; usarNominal=false; }
-            let proteccion = alturaSugerida - C;
+            if(alturaIdeal < estructuraMin) alturaIdeal = estructuraMin;
+            let abertura = alturaIdeal - (agarreReal + m.soporte);
+            if(abertura < m.minAbertura){ alturaIdeal = estructuraMin; abertura = m.minAbertura; }
+            let proteccion = alturaIdeal - nuevoC;
             // Forzar mínimo para modelos con minProteccion (Simple)
             if(m.minProteccion && proteccion < m.minProteccion){
-                alturaSugerida = C + m.minProteccion;
-                abertura = alturaSugerida - (agarreReal + m.soporte);
-                proteccion = alturaSugerida - C;
+                alturaIdeal = nuevoC + m.minProteccion;
+                abertura = alturaIdeal - (agarreReal + m.soporte);
+                proteccion = alturaIdeal - nuevoC;
             }
             const [pMin,pMax] = m.rangeProt;
             let estado = proteccion < pMin ? 'Baja' : (proteccion > pMax ? 'Alta' : 'Óptima');
             const color = estado==='Óptima' ? '#1a7f37' : (estado==='Baja' ? '#d97706' : '#b91c1c');
             let nota;
             if(m.minProteccion && proteccion < m.minProteccion) nota = `Elevada para mínimo ${m.minProteccion} cm`;
-            else if(Math.abs(alturaSugerida - m.nominal) > 0.5) nota = `Ajustada desde ${m.nominal} cm`;
+            else if(Math.abs(alturaIdeal - m.nominal) > 0.5) nota = `Ajustada desde ${m.nominal} cm`;
             else nota = 'Sin ajuste';
-            // Abertura fórmula usuario: (H - proteccion - (C - (B - (agarreStd)))) => se simplifica a B - agarreStd (si proteccion = H - C)
             let aberturaFormula = B - m.agarre; if(aberturaFormula < 0) aberturaFormula = 0;
-            return { ...m, agarreReal, abertura:+abertura.toFixed(1), aberturaFormula:+aberturaFormula.toFixed(1), alturaSugerida:+alturaSugerida.toFixed(1), proteccion:+proteccion.toFixed(1), estado, color, nota, rango:`${pMin}–${pMax}`, proteccionNominal:+proteccionNominal.toFixed(1), diffTarget:+diff.toFixed(1) };
+            // proteccionNominal y diffTarget ahora respecto a nuevoC
+            const proteccionNominal = m.nominal - nuevoC;
+            const diff = Math.abs(proteccionNominal - m.targetProt);
+            return { ...m, agarreReal, abertura:+abertura.toFixed(1), aberturaFormula:+aberturaFormula.toFixed(1), alturaSugerida:+alturaIdeal.toFixed(1), proteccion:+proteccion.toFixed(1), estado, color, nota, rango:`${pMin}–${pMax}`, proteccionNominal:+proteccionNominal.toFixed(1), diffTarget:+diff.toFixed(1) };
         }
         const evalAvanzado = modelosConfig.map(calcModeloAvanzado);
     window._lastEvalAvanzado = evalAvanzado; // guardar para selección manual
@@ -275,14 +285,23 @@
     }
 
     function attachRowSelection(recomendado){
+        // Adjuntar el handler una vez: el handler calcula el recomendado usando la última evaluación
+        if(tablaBarandaBody._rowSelectionAttached) return;
+        tablaBarandaBody._rowSelectionAttached = true;
         tablaBarandaBody.addEventListener('click', function(e){
             const tr = e.target.closest('tr'); if(!tr) return;
             const nombre = tr.getAttribute('data-modelo'); if(!nombre) return;
             const evals = window._lastEvalAvanzado || [];
             const modelo = evals.find(m=>m.nombre===nombre); if(!modelo) return;
-            renderSeleccionManual(modelo, recomendado);
+            // recalculamos cuál es el recomendado con la evaluación actual
+            let recomendadoLocal;
+            if(evals.length){
+                let cand = evals.filter(x=>x.estado==='Óptima'); if(!cand.length) cand = evals.slice();
+                recomendadoLocal = cand.sort((a,b)=>Math.abs(a.proteccion-a.targetProt)-Math.abs(b.proteccion-b.targetProt))[0];
+            }
+            renderSeleccionManual(modelo, recomendadoLocal);
             saveUserSelection(nombre);
-        }, { once:true }); // se vuelve a registrar tras cada recalculo
+        });
     }
 
     function renderSeleccionManual(modelo, recomendado){
@@ -362,5 +381,5 @@
 })();
 </script>
 </body>
-<script src="responsive-tables.js?v=20251001"></script>
+<script src="responsive-tables.js?v=20250918-2"></script>
 </html>
