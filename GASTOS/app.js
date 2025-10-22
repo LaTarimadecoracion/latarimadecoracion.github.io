@@ -60,15 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
 // Función para exportar a Google Sheets
 async function exportToSheets(data) {
     try {
+        console.log('📤 Enviando a Google Sheets:', data);
         const response = await fetch(SHEETS_WEB_APP_URL, {
             method: 'POST',
-            mode: 'no-cors',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'text/plain',
             },
             body: JSON.stringify(data)
         });
-        console.log('📊 Datos enviados a Google Sheets');
+        
+        const result = await response.text();
+        console.log('📊 Respuesta de Google Sheets:', result);
         return true;
     } catch (error) {
         console.error('❌ Error exportando a Sheets:', error);
