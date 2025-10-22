@@ -371,6 +371,22 @@ function attachEventListeners() {
             closeMonthPicker();
         }
     });
+    
+    // Backup buttons
+    const exportExcelBtn = document.getElementById('exportExcelBtn');
+    const exportCSVBtn = document.getElementById('exportCSVBtn');
+    const exportJSONBtn = document.getElementById('exportJSONBtn');
+    
+    if (exportExcelBtn) exportExcelBtn.addEventListener('click', downloadExcel);
+    if (exportCSVBtn) exportCSVBtn.addEventListener('click', downloadCSV);
+    if (exportJSONBtn) exportJSONBtn.addEventListener('click', downloadJSON);
+    
+    // Cargar última fecha de exportación
+    const lastExport = localStorage.getItem('lastExportTime');
+    if (lastExport) {
+        const elem = document.getElementById('lastExportTime');
+        if (elem) elem.textContent = lastExport;
+    }
 }
 
 // Limpiar filtro de día
@@ -1019,6 +1035,155 @@ function showNotification(message) {
         notification.style.animation = 'slideIn 0.3s ease reverse';
         setTimeout(() => notification.remove(), 300);
     }, 3000);
+}
+
+// ==========================================
+// FUNCIONES DE BACKUP Y EXPORTACIÓN
+// ==========================================
+
+function downloadCSV() {
+    const month = AppState.currentMonth;
+    const transactions = AppState.transactions.filter(t => t.date.startsWith(month));
+    
+    if (transactions.length === 0) {
+        showNotification('⚠️ No hay transacciones en este mes', 'warning');
+        return;
+    }
+    
+    // Crear CSV
+    let csv = 'Fecha,Tipo,Categoría,Módulo,Descripción,Monto\n';
+    
+    transactions.forEach(t => {
+        csv += `${t.date},${t.type},${t.category || ''},${t.module || ''},${t.description || ''},${t.amount}\n`;
+    });
+    
+    // Descargar
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `gastos_${month}.csv`;
+    link.click();
+    
+    updateLastExportTime();
+    showNotification('✅ CSV descargado exitosamente', 'success');
+}
+
+function downloadExcel() {
+    if (AppState.transactions.length === 0) {
+        showNotification('⚠️ No hay transacciones para exportar', 'warning');
+        return;
+    }
+    
+    // Agrupar por mes
+    const byMonth = {};
+    AppState.transactions.forEach(t => {
+        const month = t.date.substring(0, 7);
+        if (!byMonth[month]) byMonth[month] = [];
+        byMonth[month].push(t);
+    });
+    
+    // Crear HTML para Excel
+    let html = `
+        <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel">
+        <head>
+            <meta charset="utf-8">
+            <!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets>`;
+    
+    Object.keys(byMonth).sort().forEach(month => {
+        html += `<x:ExcelWorksheet><x:Name>${month}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet>`;
+    });
+    
+    html += `</x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
+        </head>
+        <body>`;
+    
+    Object.keys(byMonth).sort().forEach(month => {
+        const transactions = byMonth[month];
+        const ingresos = transactions.filter(t => t.type === 'ingreso' || t.type === 'venta').reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
+        const gastos = transactions.filter(t => t.type === 'gasto' || t.type === 'compra').reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
+        
+        html += `
+            <table border="1">
+                <caption><h2>${month}</h2></caption>
+                <thead>
+                    <tr style="background:#4285f4;color:white;font-weight:bold;">
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Categoría</th>
+                        <th>Módulo</th>
+                        <th>Descripción</th>
+                        <th>Monto</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+        
+        transactions.forEach(t => {
+            html += `
+                <tr>
+                    <td>${t.date}</td>
+                    <td>${t.type}</td>
+                    <td>${t.category || ''}</td>
+                    <td>${t.module || ''}</td>
+                    <td>${t.description || ''}</td>
+                    <td>${t.amount}</td>
+                </tr>`;
+        });
+        
+        html += `
+                    <tr style="background:#f0f0f0;font-weight:bold;">
+                        <td colspan="5">INGRESOS</td>
+                        <td>$${ingresos.toFixed(2)}</td>
+                    </tr>
+                    <tr style="background:#f0f0f0;font-weight:bold;">
+                        <td colspan="5">GASTOS</td>
+                        <td>$${gastos.toFixed(2)}</td>
+                    </tr>
+                    <tr style="background:#d4edda;font-weight:bold;">
+                        <td colspan="5">SALDO</td>
+                        <td>$${(ingresos - gastos).toFixed(2)}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br><br>`;
+    });
+    
+    html += `</body></html>`;
+    
+    // Descargar
+    const blob = new Blob([html], { type: 'application/vnd.ms-excel' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `gastos_completo_${new Date().toISOString().slice(0, 10)}.xls`;
+    link.click();
+    
+    updateLastExportTime();
+    showNotification('✅ Excel descargado exitosamente', 'success');
+}
+
+function downloadJSON() {
+    const backup = {
+        exportDate: new Date().toISOString(),
+        transactions: AppState.transactions,
+        modulesByMonth: AppState.modulesByMonth
+    };
+    
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `backup_completo_${new Date().toISOString().slice(0, 10)}.json`;
+    link.click();
+    
+    updateLastExportTime();
+    showNotification('✅ Backup JSON descargado exitosamente', 'success');
+}
+
+function updateLastExportTime() {
+    const now = new Date().toLocaleString('es-AR');
+    const elem = document.getElementById('lastExportTime');
+    if (elem) {
+        elem.textContent = now;
+        localStorage.setItem('lastExportTime', now);
+    }
 }
 
 // Exportar funciones globales

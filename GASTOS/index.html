@@ -54,6 +54,10 @@
                 <span class="tab-icon">💳</span>
                 <span class="tab-label">Módulos</span>
             </button>
+            <button class="tab-btn" data-tab="backup">
+                <span class="tab-icon">💾</span>
+                <span class="tab-label">Backup</span>
+            </button>
         </nav>
 
         <!-- Main Content -->
@@ -242,6 +246,38 @@
                     <p class="danger-text">Esto eliminará todas las transacciones del mes actual</p>
                 </div>
             </section>
+
+            <!-- Backup Tab -->
+            <section class="tab-content" id="backup">
+                <div class="backup-section">
+                    <h2>💾 Respaldo de Datos</h2>
+                    <p>Descarga tus transacciones en formato Excel o CSV para tener una copia de seguridad.</p>
+                    
+                    <div class="backup-options">
+                        <button class="btn-primary btn-large" id="exportExcelBtn">
+                            📊 Descargar Excel (Todas las Transacciones)
+                        </button>
+                        
+                        <button class="btn-secondary btn-large" id="exportCSVBtn">
+                            📄 Descargar CSV (Mes Actual)
+                        </button>
+                        
+                        <button class="btn-secondary btn-large" id="exportJSONBtn">
+                            💾 Descargar Backup Completo (JSON)
+                        </button>
+                    </div>
+
+                    <div class="backup-info">
+                        <h3>ℹ️ Información</h3>
+                        <ul>
+                            <li><strong>Excel:</strong> Archivo .xlsx con todas tus transacciones organizadas por mes</li>
+                            <li><strong>CSV:</strong> Archivo de texto simple que puedes abrir en Excel o Google Sheets</li>
+                            <li><strong>JSON:</strong> Backup completo incluyendo módulos (para restaurar si es necesario)</li>
+                        </ul>
+                        <p class="last-backup">Última exportación: <span id="lastExportTime">Nunca</span></p>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -345,7 +381,7 @@
     <script src="firebase-config.js"></script>
     
     <!-- App Scripts -->
-    <script src="app.js?v=60"></script>
+    <script src="app.js?v=61"></script>
     <script>
         console.log('📄 HTML CARGADO');
         // Registrar Service Worker para PWA
