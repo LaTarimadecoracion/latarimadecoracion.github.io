@@ -1347,3 +1347,10 @@ select, option, .segment-label, .segment-amount, .tab-icon, .recent-item, .trans
     margin-top: 0.5rem;
     font-weight: 500;
 }
+
+.info-text {
+    font-size: 0.85rem;
+    color: #0056b3;
+    margin-top: 0.3rem;
+    font-weight: 500;
+}

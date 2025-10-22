@@ -271,10 +271,18 @@
                         <h3>📥 Restaurar desde Backup</h3>
                         <p>Sube un archivo JSON de respaldo para restaurar tus datos.</p>
                         <input type="file" id="restoreFileInput" accept=".json" style="display:none;">
+                        <input type="file" id="restoreMonthFileInput" accept=".json" style="display:none;">
+                        
                         <button class="btn-warning btn-large" id="restoreBackupBtn">
-                            📥 Restaurar Backup JSON
+                            📥 Restaurar TODO (Reemplaza todos los datos)
                         </button>
-                        <p class="warning-text">⚠️ Esto reemplazará todos los datos actuales en Firebase</p>
+                        
+                        <button class="btn-secondary btn-large" id="restoreMonthBtn">
+                            📅 Restaurar SOLO UN MES (Agregar/Actualizar)
+                        </button>
+                        
+                        <p class="warning-text">⚠️ "Restaurar TODO" reemplaza todos los meses</p>
+                        <p class="info-text">ℹ️ "Restaurar UN MES" solo agrega/actualiza transacciones de ese mes</p>
                     </div>
 
                     <div class="backup-info">
@@ -391,7 +399,7 @@
     <script src="firebase-config.js"></script>
     
     <!-- App Scripts -->
-    <script src="app.js?v=63"></script>
+    <script src="app.js?v=64"></script>
     <script>
         console.log('📄 HTML CARGADO');
         // Registrar Service Worker para PWA
