@@ -4,6 +4,9 @@ console.log('🚀 CARGANDO APP.JS - Inicio');
 // Usuario actual
 let currentUser = null;
 
+// URL del Google Sheets Web App
+const SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzL5t8bbyDewBhxCsgZIY1gw-a_UL-LrFqcQDQf7eMnexZNa4Clh0zOxmo6x9tGs4IJ/exec';
+
 const AppState = {
     currentMonth: new Date().toISOString().slice(0, 7),
     // Módulos ahora son por mes: { "2025-10": { efectivo: 1000, banco: 2000, ... }, "2025-11": { ... } }
@@ -53,6 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 // FIREBASE FIRESTORE
 // ==========================================
+
+// Función para exportar a Google Sheets
+async function exportToSheets(data) {
+    try {
+        const response = await fetch(SHEETS_WEB_APP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        console.log('📊 Datos enviados a Google Sheets');
+        return true;
+    } catch (error) {
+        console.error('❌ Error exportando a Sheets:', error);
+        return false;
+    }
+}
 
 // Cargar datos desde Firestore
 function loadDataFromFirebase() {
@@ -108,11 +130,65 @@ function saveDataToFirebase() {
         })
         .then(() => {
             console.log('💾 Datos compartidos guardados en Firebase');
+            
+            // Exportar resumen mensual a Google Sheets
+            exportMonthDataToSheets(AppState.currentMonth);
         })
         .catch((error) => {
             console.error('❌ Error guardando datos:', error);
             alert('⚠️ Error al guardar. Verifica que tu email esté autorizado.');
         });
+}
+
+// Exportar datos del mes a Google Sheets
+function exportMonthDataToSheets(month) {
+    const modules = AppState.modulesByMonth[month] || {
+        efectivo: 0,
+        banco: 0,
+        ml_jona: 0,
+        ml_ceci: 0
+    };
+    
+    // Calcular totales del mes
+    const transactionsThisMonth = AppState.transactions.filter(t => t.date.startsWith(month));
+    const ingresos = transactionsThisMonth
+        .filter(t => t.transactionType === 'ingreso' || t.transactionType === 'venta')
+        .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
+    
+    const gastos = transactionsThisMonth
+        .filter(t => t.transactionType === 'gasto' || t.transactionType === 'compra')
+        .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
+    
+    // Calcular La Tarima
+    const laTarimaIngresos = transactionsThisMonth
+        .filter(t => (t.transactionType === 'venta') && t.module === 'La Tarima')
+        .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
+    
+    const laTarimaGastos = transactionsThisMonth
+        .filter(t => (t.transactionType === 'compra' || t.transactionType === 'gasto') && t.module === 'La Tarima')
+        .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
+    
+    const total = modules.efectivo + modules.banco + modules.ml_jona + modules.ml_ceci;
+    const saldo = ingresos - gastos;
+    
+    // Enviar datos del mes
+    exportToSheets({
+        type: 'monthData',
+        month: month,
+        inicial: total - saldo, // Aproximación
+        ingresos: ingresos,
+        gastos: gastos,
+        saldo: saldo,
+        ahorro: saldo + ingresos, // Fórmula AHORRO = DIFERENCIA + INGRESOS
+        efectivo: modules.efectivo,
+        banco: modules.banco,
+        ml_jona: modules.ml_jona,
+        ml_ceci: modules.ml_ceci,
+        laTarima: {
+            ingresos: laTarimaIngresos,
+            gastos: laTarimaGastos
+        }
+    });
 }
 
 // Helper para obtener módulos del mes actual
@@ -747,6 +823,18 @@ function handleTransactionSubmit(e) {
     // Las transacciones solo se registran para el cálculo del balance
 
     AppState.transactions.push(transaction);
+    
+    // Exportar transacción individual a Google Sheets
+    exportToSheets({
+        type: 'transaction',
+        date: transaction.date,
+        transactionType: transaction.transactionType,
+        category: transaction.category,
+        amount: transaction.amount,
+        description: transaction.description,
+        module: transaction.module
+    });
+    
     saveData();
     
     closeTransactionModal();
@@ -815,6 +903,18 @@ function handleQuickAddSubmit(e) {
     };
 
     AppState.transactions.push(transaction);
+    
+    // Exportar transacción rápida a Google Sheets
+    exportToSheets({
+        type: 'transaction',
+        date: transaction.date,
+        transactionType: transaction.type,
+        category: transaction.category,
+        amount: transaction.amount,
+        description: transaction.description,
+        module: transaction.module
+    });
+    
     saveData();
     
     // Limpiar solo el campo de monto y mantener el foco en él
