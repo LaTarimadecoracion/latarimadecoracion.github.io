@@ -285,9 +285,9 @@ function attachEventListeners() {
 
     document.getElementById('transactionForm').addEventListener('submit', handleTransactionSubmit);
     document.getElementById('quickAddForm').addEventListener('submit', handleQuickAddSubmit);
-    document.getElementById('quickAddFormBottom').addEventListener('submit', handleQuickAddSubmit);
+    document.getElementById('quickAddFormFloating').addEventListener('submit', handleQuickAddSubmit);
     document.getElementById('btnAddDetail').addEventListener('click', handleAddDetailClick);
-    document.getElementById('btnAddDetailBottom').addEventListener('click', handleAddDetailClick);
+    document.getElementById('btnAddDetailFloating').addEventListener('click', handleAddDetailClick);
 
     document.getElementById('filterType').addEventListener('change', displayTransactions);
 
@@ -382,6 +382,16 @@ function switchTab(tabName) {
     document.querySelectorAll('.tab-content').forEach(content => {
         content.classList.toggle('active', content.id === tabName);
     });
+
+    // Mostrar/ocultar barra flotante solo en dashboard
+    const floatingBar = document.getElementById('floatingQuickAdd');
+    if (floatingBar) {
+        if (tabName === 'dashboard') {
+            floatingBar.classList.add('show');
+        } else {
+            floatingBar.classList.remove('show');
+        }
+    }
 
     if (tabName === 'dashboard') {
         updateDashboard();
@@ -838,7 +848,7 @@ function handleAddDetailClick() {
 function handleQuickAddSubmit(e) {
     e.preventDefault();
     
-    const isBottomForm = e.target.id === 'quickAddFormBottom';
+    const isFloatingForm = e.target.id === 'quickAddFormFloating';
     const formData = new FormData(e.target);
     const selectedDay = parseInt(formData.get('day'));
     const [year, month] = AppState.currentMonth.split('-');
@@ -871,8 +881,8 @@ function handleQuickAddSubmit(e) {
     saveData();
     
     // Limpiar solo el campo de monto y mantener el foco en él
-    const amountFieldId = isBottomForm ? 'quickAmountBottom' : 'quickAmount';
-    const btnDetailId = isBottomForm ? 'btnAddDetailBottom' : 'btnAddDetail';
+    const amountFieldId = isFloatingForm ? 'quickAmountFloating' : 'quickAmount';
+    const btnDetailId = isFloatingForm ? 'btnAddDetailFloating' : 'btnAddDetail';
     
     document.getElementById(amountFieldId).value = '';
     document.getElementById(amountFieldId).focus();
@@ -880,7 +890,7 @@ function handleQuickAddSubmit(e) {
     // Resetear el botón de detalle y limpiar el campo oculto
     const btnDetail = document.getElementById(btnDetailId);
     btnDetail.textContent = '➕';
-    btnDetail.style.color = '#3B82F6';
+    btnDetail.style.color = isFloatingForm ? '#3B82F6' : '#3B82F6';
     const descInput = e.target.querySelector('input[name="description"]');
     if (descInput) {
         descInput.value = '';

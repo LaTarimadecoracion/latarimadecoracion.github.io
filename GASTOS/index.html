@@ -152,54 +152,6 @@
                     </div>
                 </div>
 
-                <!-- Quick Add Form Bottom -->
-                <div class="quick-add-section">
-                    <h3 style="margin-bottom: 1rem; color: #6b7280; font-size: 0.95rem;">✚ Agregar Rápido</h3>
-                    <form id="quickAddFormBottom" class="quick-add-form-inline">
-                        <input type="number" 
-                               id="quickDayBottom" 
-                               name="day" 
-                               placeholder="Día"
-                               min="1"
-                               max="31"
-                               required>
-                        
-                        <input type="number" 
-                               id="quickAmountBottom" 
-                               name="amount" 
-                               placeholder="$ Monto" 
-                               step="0.01" 
-                               inputmode="decimal"
-                               required>
-                        
-                        <select id="quickTypeBottom" name="type" required>
-                            <option value="ingreso">💰 Ingreso</option>
-                            <option value="gasto">💸 Gasto</option>
-                            <option value="venta">💵 Venta</option>
-                        </select>
-
-                        <select id="quickCategoryBottom" name="category" required>
-                            <option value="la_tarima">🔨 La Tarima</option>
-                            <option value="comida">🍔 Comida</option>
-                            <option value="transporte">🚗 Transporte</option>
-                            <option value="servicios">💡 Servicios</option>
-                            <option value="salud">🏥 Salud</option>
-                            <option value="entretenimiento">🎮 Entret.</option>
-                            <option value="compras">🛒 Compras</option>
-                            <option value="educacion">📚 Educ.</option>
-                            <option value="otros">📦 Otros</option>
-                        </select>
-
-                        <button type="button" class="btn-add-detail-inline" id="btnAddDetailBottom" title="Agregar detalle">
-                            ➕
-                        </button>
-
-                        <button type="submit" class="btn-quick-add-inline">
-                            ✅
-                        </button>
-                    </form>
-                </div>
-
                 <div class="chart-section">
                     <h2>Gastos por Categoría</h2>
                     <div class="chart-container" id="categoryChart">
@@ -341,6 +293,53 @@
                 </div>
             </section>
         </main>
+
+        <!-- Barra flotante inferior -->
+        <div class="floating-quick-add" id="floatingQuickAdd">
+            <form id="quickAddFormFloating" class="quick-add-form-floating">
+                <input type="number" 
+                       id="quickDayFloating" 
+                       name="day" 
+                       placeholder="Día"
+                       min="1"
+                       max="31"
+                       required>
+                
+                <input type="number" 
+                       id="quickAmountFloating" 
+                       name="amount" 
+                       placeholder="$ Monto" 
+                       step="0.01" 
+                       inputmode="decimal"
+                       required>
+                
+                <select id="quickTypeFloating" name="type" required>
+                    <option value="ingreso">💰 Ingreso</option>
+                    <option value="gasto">💸 Gasto</option>
+                    <option value="venta">💵 Venta</option>
+                </select>
+
+                <select id="quickCategoryFloating" name="category" required>
+                    <option value="la_tarima">🔨 La Tarima</option>
+                    <option value="comida">🍔 Comida</option>
+                    <option value="transporte">🚗 Transporte</option>
+                    <option value="servicios">💡 Servicios</option>
+                    <option value="salud">🏥 Salud</option>
+                    <option value="entretenimiento">🎮 Entret.</option>
+                    <option value="compras">🛒 Compras</option>
+                    <option value="educacion">📚 Educ.</option>
+                    <option value="otros">📦 Otros</option>
+                </select>
+
+                <button type="button" class="btn-add-detail-floating" id="btnAddDetailFloating" title="Agregar detalle">
+                    ➕
+                </button>
+
+                <button type="submit" class="btn-quick-add-floating">
+                    ✅
+                </button>
+            </form>
+        </div>
     </div>
 
     <!-- Modal para agregar transacción -->
