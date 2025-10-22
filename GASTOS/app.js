@@ -5,7 +5,7 @@ console.log('🚀 CARGANDO APP.JS - Inicio');
 let currentUser = null;
 
 // URL del Google Sheets Web App
-const SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzL5t8bbyDewBhxCsgZIY1gw-a_UL-LrFqcQDQf7eMnexZNa4Clh0zOxmo6x9tGs4IJ/exec';
+const SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbw6LtefFxcO5UOuJq91EY3Uka0iuGsq0k0NjmLYG2z05zLg4MVW-tb5xJokitjJlcZl/exec';
 
 const AppState = {
     currentMonth: new Date().toISOString().slice(0, 7),
