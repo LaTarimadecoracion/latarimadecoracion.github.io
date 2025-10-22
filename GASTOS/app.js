@@ -399,6 +399,9 @@ function changeMonth(direction) {
     displayRecentTransactions();
     displayTransactions();
     displayModulesCards(); // Actualizar módulos al cambiar de mes
+    
+    // Guardar y exportar datos del nuevo mes a Google Sheets
+    saveData();
 }
 
 // Cambiar tab
