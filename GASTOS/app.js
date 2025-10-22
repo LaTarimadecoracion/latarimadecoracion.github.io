@@ -179,15 +179,15 @@ function exportMonthDataToSheets(month) {
     
     console.log('📊 Exportando mes:', month, {ingresos, gastos, saldo, transacciones: transactionsThisMonth.length});
     
-    // Enviar datos del mes CON todas las transacciones (para recrear la hoja completa)
+    // Enviar datos del mes CON todas las transacciones del mes
     exportToSheets({
         type: 'monthData',
         month: month,
-        inicial: total - saldo, // Aproximación
+        inicial: total - saldo,
         ingresos: ingresos,
         gastos: gastos,
         saldo: saldo,
-        ahorro: saldo + ingresos, // Fórmula AHORRO = DIFERENCIA + INGRESOS
+        ahorro: saldo + ingresos,
         efectivo: modules.efectivo,
         banco: modules.banco,
         ml_jona: modules.ml_jona,
@@ -196,7 +196,8 @@ function exportMonthDataToSheets(month) {
             ingresos: laTarimaIngresos,
             gastos: laTarimaGastos
         },
-        transactions: transactionsThisMonth // Enviar todas las transacciones para recrear la lista
+        transactions: transactionsThisMonth,
+        allTransactions: AppState.transactions // TODAS las transacciones para el respaldo completo
     });
 }
 
@@ -837,17 +838,6 @@ function handleTransactionSubmit(e) {
 
     AppState.transactions.push(transaction);
     
-    // Exportar transacción individual a Google Sheets
-    exportToSheets({
-        type: 'transaction',
-        date: transaction.date,
-        transactionType: transaction.transactionType,
-        category: transaction.category,
-        amount: transaction.amount,
-        description: transaction.description,
-        module: transaction.module
-    });
-    
     saveData();
     
     closeTransactionModal();
@@ -916,17 +906,6 @@ function handleQuickAddSubmit(e) {
     };
 
     AppState.transactions.push(transaction);
-    
-    // Exportar transacción rápida a Google Sheets
-    exportToSheets({
-        type: 'transaction',
-        date: transaction.date,
-        transactionType: transaction.type,
-        category: transaction.category,
-        amount: transaction.amount,
-        description: transaction.description,
-        module: transaction.module
-    });
     
     saveData();
     

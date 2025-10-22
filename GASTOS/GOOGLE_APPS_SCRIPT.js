@@ -1,6 +1,6 @@
 // ========================================
 // GOOGLE APPS SCRIPT PARA GASTOS FAMILIA
-// Opción B: Una hoja por mes con todas las transacciones
+// Sistema de respaldo automático mejorado
 // ========================================
 
 function doPost(e) {
@@ -10,27 +10,33 @@ function doPost(e) {
     const data = JSON.parse(e.postData.contents);
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     
-    const parts = data.month ? data.month.split('-') : data.date.split('-');
-    const year = parts[0];
-    const month = parts[1];
-    const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-    const monthName = monthNames[parseInt(month) - 1];
-    const sheetName = year + '-' + month + ' ' + monthName;
-    
-    let sheet = ss.getSheetByName(sheetName);
-    if (!sheet) {
-      sheet = ss.insertSheet(sheetName);
-      initializeMonthSheet(sheet, monthName);
+    // Si es un respaldo completo de todos los datos
+    if (data.type === 'fullBackup') {
+      updateFullBackup(ss, data);
+      return success('Respaldo completo actualizado');
     }
     
-    if (data.type === 'transaction') {
-      addTransactionToSheet(sheet, data);
-      return success('Transacción agregada a ' + sheetName);
-    }
-    
+    // Si son datos de un mes específico
     if (data.type === 'monthData') {
+      const parts = data.month.split('-');
+      const year = parts[0];
+      const month = parts[1];
+      const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      const monthName = monthNames[parseInt(month) - 1];
+      const sheetName = year + '-' + month + ' ' + monthName;
+      
+      let sheet = ss.getSheetByName(sheetName);
+      if (!sheet) {
+        sheet = ss.insertSheet(sheetName);
+        initializeMonthSheet(sheet, monthName);
+      }
+      
       updateMonthSummary(sheet, data);
-      return success('Resumen actualizado en ' + sheetName);
+      
+      // También actualizar el respaldo completo
+      updateFullBackup(ss, data);
+      
+      return success('Mes actualizado: ' + sheetName);
     }
     
     return success('Procesado correctamente');
@@ -45,6 +51,104 @@ function doGet(e) {
   return ContentService.createTextOutput('Google Sheets API está funcionando correctamente');
 }
 
+// ========================================
+// FUNCIÓN PARA RESPALDO COMPLETO
+// ========================================
+function updateFullBackup(ss, data) {
+  let backupSheet = ss.getSheetByName('RESPALDO_COMPLETO');
+  
+  // Si no existe la hoja de respaldo, crearla
+  if (!backupSheet) {
+    backupSheet = ss.insertSheet('RESPALDO_COMPLETO', 0); // Primera posición
+    
+    // Encabezados
+    backupSheet.getRange('A1:H1').setValues([[
+      'FECHA', 'DÍA', 'TIPO', 'CATEGORÍA', 'DESCRIPCIÓN', 'MONTO', 'MES', 'ID'
+    ]]);
+    backupSheet.getRange('A1:H1').setFontWeight('bold')
+      .setBackground('#4285f4').setFontColor('#ffffff');
+    
+    backupSheet.setFrozenRows(1);
+    backupSheet.setColumnWidth(1, 100); // Fecha
+    backupSheet.setColumnWidth(2, 50);  // Día
+    backupSheet.setColumnWidth(3, 80);  // Tipo
+    backupSheet.setColumnWidth(4, 120); // Categoría
+    backupSheet.setColumnWidth(5, 250); // Descripción
+    backupSheet.setColumnWidth(6, 100); // Monto
+    backupSheet.setColumnWidth(7, 100); // Mes
+    backupSheet.setColumnWidth(8, 150); // ID
+  }
+  
+  // Obtener todas las transacciones desde data o desde allTransactions
+  let allTransactions = [];
+  
+  if (data.allTransactions) {
+    allTransactions = data.allTransactions;
+  } else if (data.transactions) {
+    allTransactions = data.transactions;
+  }
+  
+  // Limpiar todas las filas excepto el encabezado
+  const lastRow = backupSheet.getLastRow();
+  if (lastRow > 1) {
+    backupSheet.deleteRows(2, lastRow - 1);
+  }
+  
+  // Insertar todas las transacciones ordenadas por fecha
+  if (allTransactions && allTransactions.length > 0) {
+    // Ordenar por fecha
+    allTransactions.sort((a, b) => {
+      return new Date(a.date) - new Date(b.date);
+    });
+    
+    // Preparar datos para insertar
+    const rows = allTransactions.map(t => {
+      const day = t.date.split('-')[2];
+      const mes = t.date.substring(0, 7); // YYYY-MM
+      const tipoTexto = t.type === 'gasto' ? '💸 Gasto' : 
+                        t.type === 'ingreso' ? '💰 Ingreso' : '💵 Venta';
+      const categoria = formatCategory(t.category);
+      
+      return [
+        t.date,
+        parseInt(day),
+        tipoTexto,
+        categoria,
+        t.description || '',
+        parseFloat(t.amount),
+        mes,
+        t.id
+      ];
+    });
+    
+    // Insertar todas las filas de una vez
+    backupSheet.getRange(2, 1, rows.length, 8).setValues(rows);
+    
+    // Formatear columna de monto
+    backupSheet.getRange(2, 6, rows.length, 1).setNumberFormat('$#,##0.00');
+  }
+  
+  Logger.log('Respaldo completo actualizado con ' + allTransactions.length + ' transacciones');
+}
+
+function formatCategory(category) {
+  const categories = {
+    'la_tarima': '🔨 La Tarima',
+    'comida': '🍔 Comida',
+    'transporte': '🚗 Transporte',
+    'servicios': '💡 Servicios',
+    'salud': '🏥 Salud',
+    'entretenimiento': '🎮 Entretenimiento',
+    'compras': '🛒 Compras',
+    'educacion': '📚 Educación',
+    'otros': '📦 Otros'
+  };
+  return categories[category] || category;
+}
+
+// ========================================
+// FUNCIÓN PARA HOJA MENSUAL
+// ========================================
 function initializeMonthSheet(sheet, monthName) {
   sheet.getRange('A1').setValue(monthName.toUpperCase());
   sheet.getRange('A1:B1').merge().setFontSize(16).setFontWeight('bold').setBackground('#4285f4').setFontColor('#ffffff');
@@ -101,49 +205,7 @@ function initializeMonthSheet(sheet, monthName) {
   sheet.getRange('B20').setNumberFormat('0.00%');
 }
 
-function addTransactionToSheet(sheet, data) {
-  const day = data.date.split('-')[2];
-  const isIngreso = (data.type === 'ingreso' || data.type === 'venta');
-  const tipoTexto = data.type === 'gasto' ? 'Gasto' : 
-                    data.type === 'ingreso' ? 'Ingreso' : 'Venta';
-  
-  sheet.appendRow([
-    parseInt(day),
-    data.description || '',
-    data.category || '',
-    tipoTexto,
-    isIngreso ? parseFloat(data.amount) : '',
-    isIngreso ? '' : parseFloat(data.amount)
-  ]);
-  
-  recalculateTotals(sheet);
-}
 
-function recalculateTotals(sheet) {
-  var lastRow = sheet.getLastRow();
-  if (lastRow < 24) return;
-  
-  var ingresos = 0;
-  var gastos = 0;
-  
-  var ingresosRange = sheet.getRange('E24:E' + lastRow).getValues();
-  var gastosRange = sheet.getRange('F24:F' + lastRow).getValues();
-  
-  for (var i = 0; i < ingresosRange.length; i++) {
-    if (ingresosRange[i][0]) ingresos += parseFloat(ingresosRange[i][0]);
-    if (gastosRange[i][0]) gastos += parseFloat(gastosRange[i][0]);
-  }
-  
-  sheet.getRange('B5').setValue(ingresos);
-  sheet.getRange('B6').setValue(gastos);
-  
-  var inicial = parseFloat(sheet.getRange('B4').getValue()) || 0;
-  var saldo = ingresos - gastos;
-  var ahorro = saldo + ingresos;
-  
-  sheet.getRange('B7').setValue(saldo);
-  sheet.getRange('B8').setValue(ahorro);
-}
 
 function updateMonthSummary(sheet, data) {
   sheet.getRange('B4').setValue(parseFloat(data.inicial) || 0);
