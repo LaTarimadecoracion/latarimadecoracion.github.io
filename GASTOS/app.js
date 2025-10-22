@@ -112,9 +112,6 @@ function saveDataToFirebase() {
         })
         .then(() => {
             console.log('💾 Datos compartidos guardados en Firebase');
-            
-            // Exportar resumen mensual a Google Sheets
-            exportMonthDataToSheets(AppState.currentMonth);
         })
         .catch((error) => {
             console.error('❌ Error guardando datos:', error);
