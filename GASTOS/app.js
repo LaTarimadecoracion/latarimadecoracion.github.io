@@ -154,24 +154,26 @@ function exportMonthDataToSheets(month) {
     // Calcular totales del mes
     const transactionsThisMonth = AppState.transactions.filter(t => t.date.startsWith(month));
     const ingresos = transactionsThisMonth
-        .filter(t => t.transactionType === 'ingreso' || t.transactionType === 'venta')
+        .filter(t => t.type === 'ingreso' || t.type === 'venta')
         .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
     
     const gastos = transactionsThisMonth
-        .filter(t => t.transactionType === 'gasto' || t.transactionType === 'compra')
+        .filter(t => t.type === 'gasto' || t.type === 'compra')
         .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
     
     // Calcular La Tarima
     const laTarimaIngresos = transactionsThisMonth
-        .filter(t => (t.transactionType === 'venta') && t.module === 'La Tarima')
+        .filter(t => (t.type === 'venta') && t.module === 'La Tarima')
         .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
     
     const laTarimaGastos = transactionsThisMonth
-        .filter(t => (t.transactionType === 'compra' || t.transactionType === 'gasto') && t.module === 'La Tarima')
+        .filter(t => (t.type === 'compra' || t.type === 'gasto') && t.module === 'La Tarima')
         .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
     
     const total = modules.efectivo + modules.banco + modules.ml_jona + modules.ml_ceci;
     const saldo = ingresos - gastos;
+    
+    console.log('📊 Exportando mes:', month, {ingresos, gastos, saldo, modules});
     
     // Enviar datos del mes
     exportToSheets({
@@ -962,6 +964,9 @@ function deleteTransaction(id) {
 
     AppState.transactions = AppState.transactions.filter(t => t.id !== id);
     saveData();
+    
+    // Actualizar Google Sheets después de eliminar
+    exportMonthDataToSheets(AppState.currentMonth);
     
     updateDashboard();
     displayTransactions();
