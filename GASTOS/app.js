@@ -92,9 +92,11 @@ function loadDataFromFirebase() {
                 const data = doc.data();
                 AppState.modulesByMonth = data.modulesByMonth || {};
                 AppState.transactions = data.transactions || [];
-                AppState.currentMonth = data.currentMonth || AppState.currentMonth;
+                // SIEMPRE usar el mes actual, no el guardado en Firebase
+                AppState.currentMonth = new Date().toISOString().slice(0, 7);
                 
                 console.log('✅ Datos compartidos cargados de Firebase');
+                console.log('📅 Mes actual establecido:', AppState.currentMonth);
                 
                 // Actualizar UI solo si ya está inicializada
                 if (document.getElementById('currentMonth')) {
