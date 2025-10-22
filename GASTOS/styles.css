@@ -1,0 +1,1226 @@
+:root {
+    --primary: #4F46E5;
+    --primary-dark: #4338CA;
+    --secondary: #10B981;
+    --danger: #EF4444;
+    --warning: #F59E0B;
+    --bg: #F9FAFB;
+    --surface: #FFFFFF;
+    --text: #111827;
+    --text-secondary: #6B7280;
+    --border: #E5E7EB;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================
+   LOGIN SCREEN
+   ========================================== */
+
+.login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.login-container {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.login-container h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.login-container p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.btn-login-google {
+    background: white;
+    color: var(--text);
+    border: 2px solid var(--border);
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-login-google:hover {
+    background: var(--bg);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Asegurar que los emojis se vean correctamente */
+select, option, .segment-label, .segment-amount, .tab-icon, .recent-item, .transaction-item {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+
+/* App Container */
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--surface);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Header */
+.app-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.app-header h1 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.header-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.month-selector {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.month-nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.month-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.month-nav-btn:active {
+    transform: scale(0.95);
+}
+
+.current-month {
+    font-size: 0.9rem;
+    opacity: 1;
+    font-weight: 600;
+    min-width: 120px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.current-month:hover {
+    transform: scale(1.05);
+    text-decoration: underline;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--text-secondary);
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn:hover {
+    background: var(--bg);
+}
+
+.tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.tab-icon {
+    font-size: 1.25rem;
+}
+
+.tab-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Main Content */
+.main-content {
+    padding: 1rem;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Quick Add Section */
+.quick-add-section {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.quick-add-form-inline {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr auto auto;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.quick-add-form-inline input,
+.quick-add-form-inline select {
+    padding: 0.6rem;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: white;
+    transition: all 0.3s;
+}
+
+#quickDay {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Ocultar las flechas de los inputs de número */
+#quickDay::-webkit-outer-spin-button,
+#quickDay::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#quickDay[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.quick-add-form-inline input[type="number"] {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.quick-add-form-inline input:focus,
+.quick-add-form-inline select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.btn-add-detail-inline {
+    width: 50px;
+    padding: 0.6rem 0;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    background: white;
+    color: #3B82F6;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1;
+}
+
+.btn-add-detail-inline:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-add-detail-inline:active {
+    transform: scale(0.98);
+}
+
+.btn-quick-add-inline {
+    width: 50px;
+    padding: 0.6rem 0;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    background: white;
+    color: #059669;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1;
+}
+
+.btn-quick-add-inline:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-quick-add-inline:active {
+    transform: scale(0.98);
+}
+
+/* Balance Segmented Button */
+.balance-segmented {
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.segment {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.segment:active {
+    transform: scale(0.98);
+}
+
+.segment-initial {
+    background: linear-gradient(135deg, #ffa726 0%, #fb8c00 100%);
+}
+
+.segment-balance {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.segment-expense {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.segment-income {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.segment-label {
+    font-size: 0.7rem;
+    opacity: 0.95;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.segment-amount {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+/* ==========================================
+   MÓDULOS DE DINERO - Sección dedicada
+   ========================================== */
+
+/* Barra de información de módulos - estilo botón segmentado */
+.modules-info-bar {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0;
+    background: #9ca3af; /* Gris más claro */
+    border: none;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.info-bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 1rem 2rem;
+    flex: 1;
+    background: #9ca3af; /* Gris más claro */
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.2s;
+}
+
+.info-bar-item:last-child {
+    border-right: none;
+}
+
+.info-bar-item:hover {
+    background: #6b7280; /* Gris medio al hover */
+}
+
+.info-bar-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #1f2937; /* Texto oscuro para mejor contraste */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.info-bar-amount {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #111827; /* Texto oscuro para los montos */
+}
+
+.info-bar-separator {
+    display: none; /* Ya no necesitamos separadores */
+}
+
+/* Contenedor principal de módulos (estilo segmentado) */
+.modules-grid {
+    display: flex;
+    gap: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+/* Tarjeta individual de módulo */
+.module-card {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    color: white;
+    transition: transform 0.2s, filter 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.module-card:active {
+    transform: scale(0.98);
+}
+
+.module-card:hover {
+    filter: brightness(1.1);
+}
+
+/* Colores específicos por módulo */
+.module-card[data-module="efectivo"] {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.module-card[data-module="banco"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.module-card[data-module="ml_jona"] {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.module-card[data-module="ml_ceci"] {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Nombre del módulo */
+.module-name {
+    font-size: 0.7rem;
+    opacity: 0.95;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Balance del módulo */
+.module-balance {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Zona de peligro */
+.danger-zone {
+    background: #FEF2F2;
+    border: 2px solid #FCA5A5;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.danger-zone h3 {
+    color: #DC2626;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.danger-text {
+    color: #991B1B;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* ========================================== */
+
+/* Summary Section */
+.summary-section {
+    margin-bottom: 1rem;
+}
+
+.summary-section h2 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+}
+
+.summary-card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.summary-icon {
+    font-size: 1.25rem;
+}
+
+.summary-info {
+    flex: 1;
+}
+
+.summary-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.1rem;
+}
+
+.summary-amount {
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.summary-card.income .summary-amount {
+    color: var(--secondary);
+}
+
+.summary-card.expense .summary-amount {
+    color: var(--danger);
+}
+
+.summary-card.sales .summary-amount {
+    color: var(--warning);
+}
+
+/* Recent Transactions */
+.recent-section {
+    margin-bottom: 1.5rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    gap: 1rem;
+}
+
+.recent-section h2 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.day-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.day-filter label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.day-filter input {
+    padding: 0.4rem 0.6rem;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    background: white;
+    width: 80px;
+    text-align: center;
+}
+
+.day-filter input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.day-filter input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.btn-clear-filter {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-clear-filter:hover {
+    background: var(--danger);
+    color: white;
+    transform: scale(1.1);
+}
+
+.recent-transactions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.recent-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.recent-item-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.recent-day {
+    background: var(--primary);
+    color: white;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    min-width: 28px;
+    text-align: center;
+}
+
+.recent-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.recent-item-amount {
+    font-weight: 600;
+}
+
+.recent-item-amount.gasto {
+    color: var(--danger);
+}
+
+.recent-item-amount.ingreso {
+    color: var(--secondary);
+}
+
+.recent-item-amount.venta {
+    color: var(--warning);
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    opacity: 0.6;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.btn-delete:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.btn-delete:active {
+    transform: scale(0.95);
+}
+
+/* Chart Section */
+.chart-section {
+    margin-bottom: 1.5rem;
+}
+
+.chart-section h2 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.chart-container {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    min-height: 150px;
+}
+
+.chart-bar {
+    margin-bottom: 0.75rem;
+}
+
+.chart-bar-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.35rem;
+    font-size: 0.85rem;
+}
+
+.chart-bar-fill {
+    height: 20px;
+    background: var(--primary);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary, .btn-danger {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: var(--border);
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    background: var(--text-secondary);
+    color: white;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #DC2626;
+}
+
+/* ==========================================
+   TRANSACCIONES - Sección dedicada
+   ========================================== */
+
+/* Header de transacciones */
+.transactions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.transactions-header h2 {
+    font-size: 1.25rem;
+}
+
+/* Botón secundario pequeño */
+.btn-secondary-small {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: var(--surface);
+    color: var(--text-secondary);
+}
+
+.btn-secondary-small:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Filtros */
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background: var(--surface);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Lista de transacciones */
+.transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Header de tabla (títulos de columnas) */
+.transactions-header {
+    display: grid;
+    grid-template-columns: 90px 80px 120px 1fr 120px 50px;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.transactions-header > div {
+    text-align: left;
+}
+
+.th-monto {
+    text-align: right !important;
+}
+
+/* Item de transacción (fila de tabla) */
+.transaction-item {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    display: grid;
+    grid-template-columns: 90px 80px 120px 1fr 120px 50px;
+    gap: 0.75rem;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.transaction-item:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateX(4px);
+}
+
+/* Círculos indicadores de tipo */
+.circle-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.4rem;
+}
+
+.circle-indicator.red {
+    background-color: #EF4444;
+    box-shadow: 0 0 4px rgba(239, 68, 68, 0.5);
+}
+
+.circle-indicator.green {
+    background-color: #10B981;
+    box-shadow: 0 0 4px rgba(16, 185, 129, 0.5);
+}
+
+.circle-indicator.yellow {
+    background-color: #F59E0B;
+    box-shadow: 0 0 4px rgba(245, 158, 11, 0.5);
+}
+
+/* Celdas de transacción */
+.td-fecha {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.td-tipo {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+}
+
+.td-categoria {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.td-descripcion {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.td-monto {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.td-monto.gasto {
+    color: var(--danger);
+}
+
+.td-monto.ingreso {
+    color: var(--secondary);
+}
+
+.td-monto.venta {
+    color: var(--warning);
+}
+
+.td-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botón de ícono */
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.btn-icon:hover {
+    opacity: 1;
+}
+
+/* Estado vacío */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-secondary);
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+/* Formulario de transacción en modal */
+.transaction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ========================================== */
+
+/* Modules Section */
+.modules-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.modules-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.modules-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--surface);
+    border-radius: 1rem;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    line-height: 1;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+}
+
+.modal-close:hover {
+    color: var(--text);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-actions button {
+    flex: 1;
+}
+
+/* Month Picker Modal */
+.month-picker-content {
+    max-width: 400px;
+}
+
+.month-picker-form {
+    padding: 1.5rem;
+}
+
+.month-picker-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.month-picker-form select,
+.month-picker-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .app-container {
+        box-shadow: none;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    .balance-amount {
+        font-size: 2rem;
+    }
+
+    .tab-label {
+        display: none;
+    }
+
+    .tab-icon {
+        font-size: 1.75rem;
+    }
+
+    .modules-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .transaction-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .transaction-amount {
+        width: 100%;
+        text-align: left;
+    }
+
+    .transaction-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .balance-card {
+        padding: 1.5rem;
+    }
+
+    .balance-amount {
+        font-size: 1.75rem;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .filter-select {
+        width: 100%;
+    }
+
+    .quick-add-section {
+        padding: 0.65rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        border-radius: 0;
+    }
+
+    .quick-add-form-inline {
+        grid-template-columns: 1fr 1fr 1fr auto;
+        gap: 0.4rem;
+    }
+
+    .quick-add-form-inline input,
+    .quick-add-form-inline select {
+        font-size: 0.85rem;
+        padding: 0.55rem 0.4rem;
+    }
+
+    .btn-quick-add-inline {
+        padding: 0.55rem 0.85rem;
+        font-size: 1.2rem;
+    }
+
+    .transactions-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .transactions-header h2 {
+        font-size: 1.1rem;
+    }
+}
