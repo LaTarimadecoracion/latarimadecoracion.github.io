@@ -203,13 +203,21 @@ function initializeDayInput() {
     const [year, month] = AppState.currentMonth.split('-').map(Number);
     const daysInMonth = new Date(year, month, 0).getDate(); // month sin restar 1 porque Date(year, month, 0) da último día del mes anterior
     
-    // Ajustar el max del input según los días del mes
+    // Ajustar el max del input según los días del mes (formulario superior)
     const dayInput = document.getElementById('quickDay');
     if (dayInput) {
         dayInput.max = daysInMonth;
         // Restaurar el último día seleccionado (o día actual)
         const dayToSet = Math.min(parseInt(savedDay), daysInMonth);
         dayInput.value = dayToSet;
+    }
+    
+    // Ajustar el max del input según los días del mes (formulario inferior)
+    const dayInputBottom = document.getElementById('quickDayBottom');
+    if (dayInputBottom) {
+        dayInputBottom.max = daysInMonth;
+        const dayToSet = Math.min(parseInt(savedDay), daysInMonth);
+        dayInputBottom.value = dayToSet;
     }
     
     // Ajustar el filtro de días también
@@ -277,7 +285,9 @@ function attachEventListeners() {
 
     document.getElementById('transactionForm').addEventListener('submit', handleTransactionSubmit);
     document.getElementById('quickAddForm').addEventListener('submit', handleQuickAddSubmit);
+    document.getElementById('quickAddFormBottom').addEventListener('submit', handleQuickAddSubmit);
     document.getElementById('btnAddDetail').addEventListener('click', handleAddDetailClick);
+    document.getElementById('btnAddDetailBottom').addEventListener('click', handleAddDetailClick);
 
     document.getElementById('filterType').addEventListener('change', displayTransactions);
 
@@ -828,6 +838,7 @@ function handleAddDetailClick() {
 function handleQuickAddSubmit(e) {
     e.preventDefault();
     
+    const isBottomForm = e.target.id === 'quickAddFormBottom';
     const formData = new FormData(e.target);
     const selectedDay = parseInt(formData.get('day'));
     const [year, month] = AppState.currentMonth.split('-');
@@ -860,11 +871,14 @@ function handleQuickAddSubmit(e) {
     saveData();
     
     // Limpiar solo el campo de monto y mantener el foco en él
-    document.getElementById('quickAmount').value = '';
-    document.getElementById('quickAmount').focus();
+    const amountFieldId = isBottomForm ? 'quickAmountBottom' : 'quickAmount';
+    const btnDetailId = isBottomForm ? 'btnAddDetailBottom' : 'btnAddDetail';
+    
+    document.getElementById(amountFieldId).value = '';
+    document.getElementById(amountFieldId).focus();
     
     // Resetear el botón de detalle y limpiar el campo oculto
-    const btnDetail = document.getElementById('btnAddDetail');
+    const btnDetail = document.getElementById(btnDetailId);
     btnDetail.textContent = '➕';
     btnDetail.style.color = '#3B82F6';
     const descInput = e.target.querySelector('input[name="description"]');
