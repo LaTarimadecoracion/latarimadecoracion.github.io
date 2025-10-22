@@ -306,17 +306,13 @@ function attachEventListeners() {
     const exportCSVBtn = document.getElementById('exportCSVBtn');
     const exportJSONBtn = document.getElementById('exportJSONBtn');
     const restoreBackupBtn = document.getElementById('restoreBackupBtn');
-    const restoreMonthBtn = document.getElementById('restoreMonthBtn');
     const restoreFileInput = document.getElementById('restoreFileInput');
-    const restoreMonthFileInput = document.getElementById('restoreMonthFileInput');
     
     if (exportExcelBtn) exportExcelBtn.addEventListener('click', downloadExcel);
     if (exportCSVBtn) exportCSVBtn.addEventListener('click', downloadCSV);
     if (exportJSONBtn) exportJSONBtn.addEventListener('click', downloadJSON);
     if (restoreBackupBtn) restoreBackupBtn.addEventListener('click', restoreFromBackup);
-    if (restoreMonthBtn) restoreMonthBtn.addEventListener('click', restoreMonth);
     if (restoreFileInput) restoreFileInput.addEventListener('change', handleRestoreFile);
-    if (restoreMonthFileInput) restoreMonthFileInput.addEventListener('change', handleRestoreMonthFile);
     
     // Cargar última fecha de exportación
     const lastExport = localStorage.getItem('lastExportTime');
@@ -1128,11 +1124,6 @@ function handleRestoreFile(event) {
     const file = event.target.files[0];
     if (!file) return;
     
-    if (!confirm('⚠️ ADVERTENCIA: Esto reemplazará TODOS los datos actuales en Firebase.\n\n¿Estás seguro de continuar?')) {
-        event.target.value = '';
-        return;
-    }
-    
     const reader = new FileReader();
     reader.onload = function(e) {
         try {
@@ -1141,56 +1132,7 @@ function handleRestoreFile(event) {
             // Validar que tenga la estructura correcta
             if (!backup.transactions || !Array.isArray(backup.transactions)) {
                 alert('❌ El archivo no tiene un formato válido');
-                return;
-            }
-            
-            // Restaurar datos en AppState
-            AppState.transactions = backup.transactions || [];
-            AppState.modulesByMonth = backup.modulesByMonth || {};
-            
-            // Guardar en Firebase
-            saveDataToFirebase()
-                .then(() => {
-                    showNotification('✅ Backup restaurado exitosamente', 'success');
-                    updateDashboard();
-                    displayTransactions();
-                    displayModulesCards();
-                    console.log('✅ Restaurados:', AppState.transactions.length, 'transacciones');
-                })
-                .catch(error => {
-                    console.error('❌ Error restaurando:', error);
-                    alert('❌ Error al restaurar el backup: ' + error.message);
-                });
-            
-        } catch (error) {
-            console.error('❌ Error leyendo backup:', error);
-            alert('❌ Error al leer el archivo JSON: ' + error.message);
-        }
-        
-        // Limpiar input
-        event.target.value = '';
-    };
-    
-    reader.readAsText(file);
-}
-
-function restoreMonth() {
-    const fileInput = document.getElementById('restoreMonthFileInput');
-    fileInput.click();
-}
-
-function handleRestoreMonthFile(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        try {
-            const backup = JSON.parse(e.target.result);
-            
-            // Validar que tenga la estructura correcta
-            if (!backup.transactions || !Array.isArray(backup.transactions)) {
-                alert('❌ El archivo no tiene un formato válido');
+                event.target.value = '';
                 return;
             }
             
@@ -1205,62 +1147,67 @@ function handleRestoreMonthFile(event) {
             
             if (monthsList.length === 0) {
                 alert('❌ El backup no contiene transacciones');
-                return;
-            }
-            
-            // Si hay múltiples meses, preguntar cuál restaurar
-            let selectedMonth;
-            if (monthsList.length === 1) {
-                selectedMonth = monthsList[0];
-            } else {
-                const monthsText = monthsList.join('\n');
-                selectedMonth = prompt(`El backup contiene varios meses:\n\n${monthsText}\n\nEscribe el mes que quieres restaurar (formato: 2025-10):`);
-                
-                if (!selectedMonth || !monthsList.includes(selectedMonth)) {
-                    alert('❌ Mes no válido o cancelado');
-                    event.target.value = '';
-                    return;
-                }
-            }
-            
-            // Confirmar
-            const transactionsToRestore = backup.transactions.filter(t => t.date.startsWith(selectedMonth));
-            const confirmation = confirm(`¿Restaurar ${transactionsToRestore.length} transacciones del mes ${selectedMonth}?\n\nEsto ELIMINARÁ las transacciones actuales de ${selectedMonth} y las reemplazará con las del backup.`);
-            
-            if (!confirmation) {
                 event.target.value = '';
                 return;
             }
             
-            // Eliminar transacciones del mes seleccionado
-            AppState.transactions = AppState.transactions.filter(t => !t.date.startsWith(selectedMonth));
-            
-            // Agregar transacciones del backup para ese mes
-            AppState.transactions.push(...transactionsToRestore);
-            
-            // Restaurar módulos de ese mes si existen
-            if (backup.modulesByMonth && backup.modulesByMonth[selectedMonth]) {
-                AppState.modulesByMonth[selectedMonth] = backup.modulesByMonth[selectedMonth];
-            }
-            
-            // Guardar en Firebase
-            saveDataToFirebase()
-                .then(() => {
-                    showNotification(`✅ Mes ${selectedMonth} restaurado con ${transactionsToRestore.length} transacciones`, 'success');
+            // Mostrar opciones al usuario
+            let userChoice;
+            if (monthsList.length === 1) {
+                // Solo hay un mes
+                userChoice = confirm(`El backup contiene el mes: ${monthsList[0]}\n\n¿Quieres restaurar este mes?\n\nOK = Restaurar solo este mes\nCancelar = No hacer nada`);
+                
+                if (!userChoice) {
+                    event.target.value = '';
+                    return;
+                }
+                
+                // Restaurar solo ese mes
+                restoreSingleMonth(backup, monthsList[0]);
+                
+            } else {
+                // Múltiples meses - dar opciones
+                const monthsText = monthsList.join(', ');
+                const choice = prompt(`📊 El backup contiene ${monthsList.length} meses:\n${monthsText}\n\n¿Qué quieres hacer?\n\n1 = Restaurar TODO (reemplaza todos los datos)\n2 = Restaurar SOLO UN MES (escribe el mes)\n\nEscribe 1, 2 o el mes (ej: 2025-10):`);
+                
+                if (!choice) {
+                    event.target.value = '';
+                    return;
+                }
+                
+                if (choice === '1') {
+                    // Restaurar TODO
+                    const confirmAll = confirm(`⚠️ ¿Reemplazar TODOS los datos actuales con los ${backup.transactions.length} transacciones del backup?`);
                     
-                    // Si estamos viendo ese mes, actualizar la vista
-                    if (AppState.currentMonth === selectedMonth) {
-                        updateDashboard();
-                        displayTransactions();
-                        displayModulesCards();
+                    if (confirmAll) {
+                        AppState.transactions = backup.transactions || [];
+                        AppState.modulesByMonth = backup.modulesByMonth || {};
+                        
+                        saveDataToFirebase()
+                            .then(() => {
+                                showNotification(`✅ ${backup.transactions.length} transacciones restauradas`, 'success');
+                                updateDashboard();
+                                displayTransactions();
+                                displayModulesCards();
+                            })
+                            .catch(error => {
+                                alert('❌ Error: ' + error.message);
+                            });
                     }
                     
-                    console.log(`✅ Mes ${selectedMonth} restaurado:`, transactionsToRestore.length, 'transacciones');
-                })
-                .catch(error => {
-                    console.error('❌ Error restaurando mes:', error);
-                    alert('❌ Error al restaurar: ' + error.message);
-                });
+                } else if (choice === '2' || monthsList.includes(choice)) {
+                    // Restaurar un mes específico
+                    let selectedMonth = choice === '2' ? prompt(`Escribe el mes (${monthsList.join(', ')}):`) : choice;
+                    
+                    if (selectedMonth && monthsList.includes(selectedMonth)) {
+                        restoreSingleMonth(backup, selectedMonth);
+                    } else {
+                        alert('❌ Mes no válido');
+                    }
+                } else {
+                    alert('❌ Opción no válida');
+                }
+            }
             
         } catch (error) {
             console.error('❌ Error leyendo backup:', error);
@@ -1272,6 +1219,44 @@ function handleRestoreMonthFile(event) {
     };
     
     reader.readAsText(file);
+}
+
+function restoreSingleMonth(backup, month) {
+    const transactionsToRestore = backup.transactions.filter(t => t.date.startsWith(month));
+    
+    const confirmation = confirm(`¿Restaurar ${transactionsToRestore.length} transacciones del mes ${month}?\n\nEsto REEMPLAZARÁ las transacciones actuales de ese mes.`);
+    
+    if (!confirmation) return;
+    
+    // Eliminar transacciones del mes seleccionado
+    AppState.transactions = AppState.transactions.filter(t => !t.date.startsWith(month));
+    
+    // Agregar transacciones del backup para ese mes
+    AppState.transactions.push(...transactionsToRestore);
+    
+    // Restaurar módulos de ese mes si existen
+    if (backup.modulesByMonth && backup.modulesByMonth[month]) {
+        AppState.modulesByMonth[month] = backup.modulesByMonth[month];
+    }
+    
+    // Guardar en Firebase
+    saveDataToFirebase()
+        .then(() => {
+            showNotification(`✅ Mes ${month} restaurado con ${transactionsToRestore.length} transacciones`, 'success');
+            
+            // Si estamos viendo ese mes, actualizar la vista
+            if (AppState.currentMonth === month) {
+                updateDashboard();
+                displayTransactions();
+                displayModulesCards();
+            }
+            
+            console.log(`✅ Mes ${month} restaurado:`, transactionsToRestore.length, 'transacciones');
+        })
+        .catch(error => {
+            console.error('❌ Error restaurando mes:', error);
+            alert('❌ Error al restaurar: ' + error.message);
+        });
 }
 
 // Exportar funciones globales

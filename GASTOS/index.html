@@ -269,20 +269,14 @@
 
                     <div class="backup-restore">
                         <h3>📥 Restaurar desde Backup</h3>
-                        <p>Sube un archivo JSON de respaldo para restaurar tus datos.</p>
+                        <p>Sube un archivo JSON de respaldo. La app detectará automáticamente qué meses contiene y te preguntará qué quieres hacer.</p>
                         <input type="file" id="restoreFileInput" accept=".json" style="display:none;">
-                        <input type="file" id="restoreMonthFileInput" accept=".json" style="display:none;">
                         
                         <button class="btn-warning btn-large" id="restoreBackupBtn">
-                            📥 Restaurar TODO (Reemplaza todos los datos)
+                            📥 Restaurar desde JSON
                         </button>
                         
-                        <button class="btn-secondary btn-large" id="restoreMonthBtn">
-                            📅 Restaurar SOLO UN MES (Agregar/Actualizar)
-                        </button>
-                        
-                        <p class="warning-text">⚠️ "Restaurar TODO" reemplaza todos los meses</p>
-                        <p class="info-text">ℹ️ "Restaurar UN MES" solo agrega/actualiza transacciones de ese mes</p>
+                        <p class="info-text">ℹ️ Podrás elegir: restaurar todo o solo meses específicos</p>
                     </div>
 
                     <div class="backup-info">
@@ -399,7 +393,7 @@
     <script src="firebase-config.js"></script>
     
     <!-- App Scripts -->
-    <script src="app.js?v=64"></script>
+    <script src="app.js?v=65"></script>
     <script>
         console.log('📄 HTML CARGADO');
         // Registrar Service Worker para PWA
