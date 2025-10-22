@@ -173,9 +173,9 @@ function exportMonthDataToSheets(month) {
     const total = modules.efectivo + modules.banco + modules.ml_jona + modules.ml_ceci;
     const saldo = ingresos - gastos;
     
-    console.log('📊 Exportando mes:', month, {ingresos, gastos, saldo, modules});
+    console.log('📊 Exportando mes:', month, {ingresos, gastos, saldo, transacciones: transactionsThisMonth.length});
     
-    // Enviar datos del mes
+    // Enviar datos del mes CON todas las transacciones (para recrear la hoja completa)
     exportToSheets({
         type: 'monthData',
         month: month,
@@ -191,7 +191,8 @@ function exportMonthDataToSheets(month) {
         laTarima: {
             ingresos: laTarimaIngresos,
             gastos: laTarimaGastos
-        }
+        },
+        transactions: transactionsThisMonth // Enviar todas las transacciones para recrear la lista
     });
 }
 
@@ -264,15 +265,16 @@ function initializeUI() {
 function initializeDayInput() {
     const savedDay = localStorage.getItem('lastSelectedDay') || new Date().getDate();
     const [year, month] = AppState.currentMonth.split('-').map(Number);
-    const daysInMonth = new Date(year, month, 0).getDate();
+    const daysInMonth = new Date(year, month, 0).getDate(); // month sin restar 1 porque Date(year, month, 0) da último día del mes anterior
     
     // Ajustar el max del input según los días del mes
     const dayInput = document.getElementById('quickDay');
-    dayInput.max = daysInMonth;
-    
-    // Restaurar el último día seleccionado (o día actual)
-    const dayToSet = Math.min(parseInt(savedDay), daysInMonth);
-    dayInput.value = dayToSet;
+    if (dayInput) {
+        dayInput.max = daysInMonth;
+        // Restaurar el último día seleccionado (o día actual)
+        const dayToSet = Math.min(parseInt(savedDay), daysInMonth);
+        dayInput.value = dayToSet;
+    }
     
     // Ajustar el filtro de días también
     const filterDay = document.getElementById('filterDay');
