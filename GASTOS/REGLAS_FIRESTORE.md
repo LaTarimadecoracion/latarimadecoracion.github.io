@@ -1,4 +1,4 @@
-# 🔐 Reglas de Firestore para acceso compartido
+# 🔐 Reglas de Firestore - Acceso público compartido
 
 ## IMPORTANTE: Copia y pega estas reglas en Firebase Console
 
@@ -10,18 +10,10 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
-    // Función para verificar emails autorizados
-    function isAuthorized() {
-      return request.auth != null && request.auth.token.email in [
-        'TU_EMAIL_AQUI@gmail.com',           // REEMPLAZA con tu email
-        'EMAIL_DE_TU_ESPOSA@gmail.com'       // REEMPLAZA con el email de tu esposa
-      ];
-    }
-    
     // Colección compartida de la familia
-    // Ambos usuarios autorizados pueden leer y escribir
+    // Cualquier usuario autenticado puede leer y escribir
     match /familyData/{document=**} {
-      allow read, write: if isAuthorized();
+      allow read, write: if request.auth != null;
     }
     
     // Denegar todo lo demás
@@ -32,14 +24,17 @@ service cloud.firestore {
 }
 ```
 
-3. **IMPORTANTE:** Reemplaza los emails en las líneas 9 y 10 con los emails reales
-4. Click en "Publicar" o "Publish"
+3. Click en "Publicar" o "Publish"
 
-## ✅ Después de publicar las reglas:
+## ✅ ¿Qué hace esto?
 
-Los datos se sincronizarán en tiempo real entre ambos dispositivos.
-Cualquier cambio que haga uno, el otro lo verá instantáneamente.
+- ✅ Cualquier persona que haga login con Google puede acceder
+- ✅ Todos ven y comparten LOS MISMOS datos
+- ✅ Los cambios se sincronizan en tiempo real
+- ✅ Solo usuarios autenticados (con Google login) tienen acceso
+- ❌ Usuarios no autenticados NO pueden ver nada
 
-## 📧 ¿Cuáles son los emails?
+## � Seguridad:
 
-Dime los 2 emails para darte las reglas completas listas para copiar y pegar.
+Aunque cualquiera con cuenta de Google puede entrar, solo las personas que conozcas 
+tendrán el link de la app. Es poco probable que alguien la encuentre por accidente.
