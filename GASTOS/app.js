@@ -177,27 +177,19 @@ function exportMonthDataToSheets(month) {
     const total = modules.efectivo + modules.banco + modules.ml_jona + modules.ml_ceci;
     const saldo = ingresos - gastos;
     
-    console.log('📊 Exportando mes:', month, {ingresos, gastos, saldo, transacciones: transactionsThisMonth.length});
+    console.log('📊 Exportando mes:', month, {
+        ingresos, 
+        gastos, 
+        saldo, 
+        transaccionesDelMes: transactionsThisMonth.length,
+        totalTransacciones: AppState.transactions.length
+    });
     
-    // Enviar datos del mes CON todas las transacciones del mes
+    // Enviar datos del mes CON todas las transacciones
     exportToSheets({
         type: 'monthData',
         month: month,
-        inicial: total - saldo,
-        ingresos: ingresos,
-        gastos: gastos,
-        saldo: saldo,
-        ahorro: saldo + ingresos,
-        efectivo: modules.efectivo,
-        banco: modules.banco,
-        ml_jona: modules.ml_jona,
-        ml_ceci: modules.ml_ceci,
-        laTarima: {
-            ingresos: laTarimaIngresos,
-            gastos: laTarimaGastos
-        },
-        transactions: transactionsThisMonth,
-        allTransactions: AppState.transactions // TODAS las transacciones para el respaldo completo
+        allTransactions: AppState.transactions // TODAS las transacciones
     });
 }
 
