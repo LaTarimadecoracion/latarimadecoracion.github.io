@@ -1309,3 +1309,41 @@ select, option, .segment-label, .segment-amount, .tab-icon, .recent-item, .trans
     font-weight: 600;
     color: var(--primary-color);
 }
+
+.backup-restore {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.backup-restore h3 {
+    color: #856404;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.backup-restore p {
+    color: #856404;
+    margin-bottom: 1rem;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #212529;
+    border: none;
+}
+
+.btn-warning:hover {
+    background: #ffb300;
+    color: #212529;
+}
+
+.warning-text {
+    font-size: 0.85rem;
+    color: #dc3545;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}

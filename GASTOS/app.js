@@ -305,10 +305,14 @@ function attachEventListeners() {
     const exportExcelBtn = document.getElementById('exportExcelBtn');
     const exportCSVBtn = document.getElementById('exportCSVBtn');
     const exportJSONBtn = document.getElementById('exportJSONBtn');
+    const restoreBackupBtn = document.getElementById('restoreBackupBtn');
+    const restoreFileInput = document.getElementById('restoreFileInput');
     
     if (exportExcelBtn) exportExcelBtn.addEventListener('click', downloadExcel);
     if (exportCSVBtn) exportCSVBtn.addEventListener('click', downloadCSV);
     if (exportJSONBtn) exportJSONBtn.addEventListener('click', downloadJSON);
+    if (restoreBackupBtn) restoreBackupBtn.addEventListener('click', restoreFromBackup);
+    if (restoreFileInput) restoreFileInput.addEventListener('change', handleRestoreFile);
     
     // Cargar última fecha de exportación
     const lastExport = localStorage.getItem('lastExportTime');
@@ -1109,6 +1113,61 @@ function updateLastExportTime() {
         elem.textContent = now;
         localStorage.setItem('lastExportTime', now);
     }
+}
+
+function restoreFromBackup() {
+    const fileInput = document.getElementById('restoreFileInput');
+    fileInput.click();
+}
+
+function handleRestoreFile(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    if (!confirm('⚠️ ADVERTENCIA: Esto reemplazará TODOS los datos actuales en Firebase.\n\n¿Estás seguro de continuar?')) {
+        event.target.value = '';
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const backup = JSON.parse(e.target.result);
+            
+            // Validar que tenga la estructura correcta
+            if (!backup.transactions || !Array.isArray(backup.transactions)) {
+                alert('❌ El archivo no tiene un formato válido');
+                return;
+            }
+            
+            // Restaurar datos en AppState
+            AppState.transactions = backup.transactions || [];
+            AppState.modulesByMonth = backup.modulesByMonth || {};
+            
+            // Guardar en Firebase
+            saveDataToFirebase()
+                .then(() => {
+                    showNotification('✅ Backup restaurado exitosamente', 'success');
+                    updateDashboard();
+                    displayTransactions();
+                    displayModulesCards();
+                    console.log('✅ Restaurados:', AppState.transactions.length, 'transacciones');
+                })
+                .catch(error => {
+                    console.error('❌ Error restaurando:', error);
+                    alert('❌ Error al restaurar el backup: ' + error.message);
+                });
+            
+        } catch (error) {
+            console.error('❌ Error leyendo backup:', error);
+            alert('❌ Error al leer el archivo JSON: ' + error.message);
+        }
+        
+        // Limpiar input
+        event.target.value = '';
+    };
+    
+    reader.readAsText(file);
 }
 
 // Exportar funciones globales

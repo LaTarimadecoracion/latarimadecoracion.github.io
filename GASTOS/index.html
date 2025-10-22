@@ -267,6 +267,16 @@
                         </button>
                     </div>
 
+                    <div class="backup-restore">
+                        <h3>📥 Restaurar desde Backup</h3>
+                        <p>Sube un archivo JSON de respaldo para restaurar tus datos.</p>
+                        <input type="file" id="restoreFileInput" accept=".json" style="display:none;">
+                        <button class="btn-warning btn-large" id="restoreBackupBtn">
+                            📥 Restaurar Backup JSON
+                        </button>
+                        <p class="warning-text">⚠️ Esto reemplazará todos los datos actuales en Firebase</p>
+                    </div>
+
                     <div class="backup-info">
                         <h3>ℹ️ Información</h3>
                         <ul>
@@ -381,7 +391,7 @@
     <script src="firebase-config.js"></script>
     
     <!-- App Scripts -->
-    <script src="app.js?v=62"></script>
+    <script src="app.js?v=63"></script>
     <script>
         console.log('📄 HTML CARGADO');
         // Registrar Service Worker para PWA
