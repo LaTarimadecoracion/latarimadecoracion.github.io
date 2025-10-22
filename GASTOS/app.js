@@ -23,7 +23,7 @@ auth.onAuthStateChanged((user) => {
         document.getElementById('loginScreen').style.display = 'none';
         document.getElementById('appContainer').style.display = 'block';
         
-        // Cargar datos de Firebase
+        // Cargar datos de Firebase (las reglas de Firestore controlarán el acceso)
         loadDataFromFirebase();
     } else {
         console.log('❌ Usuario no autenticado');
@@ -58,10 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function loadDataFromFirebase() {
     if (!currentUser) return;
     
-    console.log('📥 Cargando datos de Firebase...');
+    console.log('📥 Cargando datos de Firebase (datos compartidos)...');
     
-    // Escuchar cambios en tiempo real
-    db.collection('users').doc(currentUser.uid).collection('data').doc('appState')
+    // Usar una colección compartida para la familia
+    // Todos los usuarios autorizados acceden al mismo documento
+    db.collection('familyData').doc('sharedAppState')
         .onSnapshot((doc) => {
             if (doc.exists) {
                 const data = doc.data();
@@ -69,7 +70,7 @@ function loadDataFromFirebase() {
                 AppState.transactions = data.transactions || [];
                 AppState.currentMonth = data.currentMonth || AppState.currentMonth;
                 
-                console.log('✅ Datos cargados de Firebase');
+                console.log('✅ Datos compartidos cargados de Firebase');
                 
                 // Actualizar UI solo si ya está inicializada
                 if (document.getElementById('currentMonth')) {
@@ -79,11 +80,12 @@ function loadDataFromFirebase() {
                     displayModulesCards();
                 }
             } else {
-                console.log('📝 Primera vez, creando documento...');
+                console.log('📝 Primera vez, creando documento compartido...');
                 saveDataToFirebase();
             }
         }, (error) => {
             console.error('❌ Error cargando datos:', error);
+            alert('⚠️ Error al cargar datos. Verifica que tu email esté autorizado.');
         });
 }
 
@@ -95,18 +97,21 @@ function saveDataToFirebase() {
         return;
     }
     
-    db.collection('users').doc(currentUser.uid).collection('data').doc('appState')
+    // Guardar en la colección compartida
+    db.collection('familyData').doc('sharedAppState')
         .set({
             modulesByMonth: AppState.modulesByMonth,
             transactions: AppState.transactions,
             currentMonth: AppState.currentMonth,
-            lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+            lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+            lastUpdatedBy: currentUser.email
         })
         .then(() => {
-            console.log('💾 Datos guardados en Firebase');
+            console.log('💾 Datos compartidos guardados en Firebase');
         })
         .catch((error) => {
             console.error('❌ Error guardando datos:', error);
+            alert('⚠️ Error al guardar. Verifica que tu email esté autorizado.');
         });
 }
 
