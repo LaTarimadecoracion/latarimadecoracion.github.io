@@ -89,7 +89,15 @@ function loadDataFromFirebase() {
             }
         }, (error) => {
             console.error('❌ Error cargando datos:', error);
-            alert('⚠️ Error al cargar datos. Verifica que tu email esté autorizado.');
+            
+            if (error.code === 'permission-denied') {
+                alert(`🔒 ACCESO DENEGADO\n\nTu email (${currentUser.email}) no está autorizado para acceder a esta aplicación.\n\nContacta al administrador para solicitar acceso.`);
+                
+                // Cerrar sesión automáticamente
+                auth.signOut();
+            } else {
+                alert('⚠️ Error al cargar datos: ' + error.message);
+            }
         });
 }
 
@@ -115,7 +123,12 @@ function saveDataToFirebase() {
         })
         .catch((error) => {
             console.error('❌ Error guardando datos:', error);
-            alert('⚠️ Error al guardar. Verifica que tu email esté autorizado.');
+            
+            if (error.code === 'permission-denied') {
+                alert(`🔒 ACCESO DENEGADO\n\nTu email (${currentUser.email}) no está autorizado para usar esta aplicación.\n\nContacta al administrador para solicitar acceso.`);
+            } else {
+                alert('⚠️ Error al guardar: ' + error.message);
+            }
         });
 }
 
