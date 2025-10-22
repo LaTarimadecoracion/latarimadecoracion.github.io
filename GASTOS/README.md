@@ -1,14 +1,15 @@
 # 💰 Control de Gastos Familiar
 
-Aplicación web moderna para controlar gastos, ingresos y ventas familiares.
+Aplicación web moderna para controlar gastos, ingresos y ventas familiares con sincronización en tiempo real vía Firebase.
 
 ## ✨ Características
 
 - 📱 **Responsive**: Funciona perfectamente en celular y computadora
-- 💾 **Sin Internet**: Los datos se guardan localmente en tu dispositivo
-- 🔒 **Privado**: Tus datos nunca salen de tu dispositivo
+- ☁️ **Sincronización en tiempo real**: Los datos se comparten entre todos los dispositivos familiares vía Firebase
+- � **Autenticación segura**: Login con Google para proteger tus datos
 - 🎨 **Diseño Moderno**: Interfaz limpia y fácil de usar
 - 📊 **Estadísticas**: Gráficos y resúmenes mensuales automáticos
+- 💾 **Backup simple**: Exporta tus datos a Excel, CSV o JSON con un clic
 
 ##  Tipos de Transacciones
 
@@ -98,14 +99,26 @@ Para restaurar, pega el contenido de vuelta en Local Storage.
 - LocalStorage para persistencia
 - PWA (Progressive Web App)
 - Service Worker para funcionamiento offline
+- Sistema de backup a Excel, CSV y JSON
 
 ## 📄 Archivos
 
 - `index.html` - Estructura de la aplicación
 - `styles.css` - Estilos y diseño responsive
 - `app.js` - Lógica de la aplicación
+- `firebase-config.js` - Configuración de Firebase
 - `manifest.json` - Configuración PWA
 - `sw.js` - Service Worker
+
+## 💾 Sistema de Backup
+
+La app incluye un sistema de backup simple y confiable:
+
+1. **📊 Excel (.xls)**: Descarga todas tus transacciones organizadas por mes con resúmenes automáticos
+2. **📄 CSV**: Exporta el mes actual en formato compatible con cualquier hoja de cálculo
+3. **💾 JSON**: Backup completo incluyendo módulos (para restauración futura)
+
+**Recomendación**: Descarga el backup de Excel al final de cada mes para tener un respaldo local.
 
 ## 🎯 Tips de Uso
 
@@ -113,21 +126,22 @@ Para restaurar, pega el contenido de vuelta en Local Storage.
 2. **Usa descripciones**: Te ayudará a recordar en qué gastaste
 3. **Revisa el dashboard**: Mira tus estadísticas semanalmente
 4. **Configura bien los módulos**: Al inicio del mes carga los saldos correctos
-5. **Haz respaldos**: Una vez al mes, exporta tus datos
+5. **Haz respaldos mensuales**: Ve a la pestaña Backup y descarga el Excel
 
 ## 🐛 Solución de Problemas
 
-**Los datos no se guardan:**
-- Verifica que no estés en modo incógnito
-- Asegúrate de tener espacio en el dispositivo
+**Los datos no se sincronizan:**
+- Verifica que hayas iniciado sesión con Google
+- Asegúrate de tener conexión a internet
+- Revisa que tu email esté autorizado en las reglas de Firebase
 
 **La app no funciona offline:**
 - Abre la app al menos una vez con internet
 - Verifica que el Service Worker esté registrado
 
 **Quiero borrar todo:**
-- Ve a Configuración del navegador > Borrar datos de sitio
-- O usa la función "Reiniciar Mes Actual" en Módulos
+- Usa la función "Reiniciar Mes Actual" en la pestaña Módulos
+- O elimina las transacciones desde Firebase Console
 
 ## 📞 Soporte
 
@@ -136,3 +150,4 @@ Si tienes problemas o sugerencias, revisa el código fuente o contacta al desarr
 ---
 
 **Hecho con ❤️ para llevar mejor control de las finanzas familiares**
+

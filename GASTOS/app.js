@@ -4,9 +4,6 @@ console.log('🚀 CARGANDO APP.JS - Inicio');
 // Usuario actual
 let currentUser = null;
 
-// URL del Google Sheets Web App
-const SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbw6LtefFxcO5UOuJq91EY3Uka0iuGsq0k0NjmLYG2z05zLg4MVW-tb5xJokitjJlcZl/exec';
-
 const AppState = {
     currentMonth: new Date().toISOString().slice(0, 7),
     // Módulos ahora son por mes: { "2025-10": { efectivo: 1000, banco: 2000, ... }, "2025-11": { ... } }
@@ -56,27 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 // FIREBASE FIRESTORE
 // ==========================================
-
-// Función para exportar a Google Sheets
-async function exportToSheets(data) {
-    try {
-        console.log('📤 Enviando a Google Sheets:', data);
-        const response = await fetch(SHEETS_WEB_APP_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'text/plain',
-            },
-            body: JSON.stringify(data)
-        });
-        
-        const result = await response.text();
-        console.log('📊 Respuesta de Google Sheets:', result);
-        return true;
-    } catch (error) {
-        console.error('❌ Error exportando a Sheets:', error);
-        return false;
-    }
-}
 
 // Cargar datos desde Firestore
 function loadDataFromFirebase() {
@@ -144,53 +120,6 @@ function saveDataToFirebase() {
             console.error('❌ Error guardando datos:', error);
             alert('⚠️ Error al guardar. Verifica que tu email esté autorizado.');
         });
-}
-
-// Exportar datos del mes a Google Sheets
-function exportMonthDataToSheets(month) {
-    const modules = AppState.modulesByMonth[month] || {
-        efectivo: 0,
-        banco: 0,
-        ml_jona: 0,
-        ml_ceci: 0
-    };
-    
-    // Calcular totales del mes
-    const transactionsThisMonth = AppState.transactions.filter(t => t.date.startsWith(month));
-    const ingresos = transactionsThisMonth
-        .filter(t => t.type === 'ingreso' || t.type === 'venta')
-        .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
-    
-    const gastos = transactionsThisMonth
-        .filter(t => t.type === 'gasto' || t.type === 'compra')
-        .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
-    
-    // Calcular La Tarima
-    const laTarimaIngresos = transactionsThisMonth
-        .filter(t => (t.type === 'venta') && t.module === 'La Tarima')
-        .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
-    
-    const laTarimaGastos = transactionsThisMonth
-        .filter(t => (t.type === 'compra' || t.type === 'gasto') && t.module === 'La Tarima')
-        .reduce((sum, t) => sum + parseFloat(t.amount || 0), 0);
-    
-    const total = modules.efectivo + modules.banco + modules.ml_jona + modules.ml_ceci;
-    const saldo = ingresos - gastos;
-    
-    console.log('📊 Exportando mes:', month, {
-        ingresos, 
-        gastos, 
-        saldo, 
-        transaccionesDelMes: transactionsThisMonth.length,
-        totalTransacciones: AppState.transactions.length
-    });
-    
-    // Enviar datos del mes CON todas las transacciones
-    exportToSheets({
-        type: 'monthData',
-        month: month,
-        allTransactions: AppState.transactions // TODAS las transacciones
-    });
 }
 
 // Helper para obtener módulos del mes actual
@@ -417,7 +346,6 @@ function changeMonth(direction) {
     displayTransactions();
     displayModulesCards(); // Actualizar módulos al cambiar de mes
     
-    // Guardar y exportar datos del nuevo mes a Google Sheets
     saveData();
 }
 
@@ -957,9 +885,6 @@ function deleteTransaction(id) {
 
     AppState.transactions = AppState.transactions.filter(t => t.id !== id);
     saveData();
-    
-    // Actualizar Google Sheets después de eliminar
-    exportMonthDataToSheets(AppState.currentMonth);
     
     updateDashboard();
     displayTransactions();
