@@ -285,9 +285,7 @@ function attachEventListeners() {
 
     document.getElementById('transactionForm').addEventListener('submit', handleTransactionSubmit);
     document.getElementById('quickAddForm').addEventListener('submit', handleQuickAddSubmit);
-    document.getElementById('quickAddFormFloating').addEventListener('submit', handleQuickAddSubmit);
     document.getElementById('btnAddDetail').addEventListener('click', handleAddDetailClick);
-    document.getElementById('btnAddDetailFloating').addEventListener('click', handleAddDetailClick);
 
     document.getElementById('filterType').addEventListener('change', displayTransactions);
 
@@ -383,16 +381,6 @@ function switchTab(tabName) {
         content.classList.toggle('active', content.id === tabName);
     });
 
-    // Mostrar/ocultar barra flotante solo en dashboard
-    const floatingBar = document.getElementById('floatingQuickAdd');
-    if (floatingBar) {
-        if (tabName === 'dashboard') {
-            floatingBar.classList.add('show');
-        } else {
-            floatingBar.classList.remove('show');
-        }
-    }
-
     if (tabName === 'dashboard') {
         updateDashboard();
     } else if (tabName === 'modules') {
@@ -477,10 +465,10 @@ function displayRecentTransactions() {
     }
     
     recentTransactions = recentTransactions.sort((a, b) => {
-        // Ordenar por fecha ascendente (día 1 arriba, día 31 abajo)
+        // Ordenar por fecha descendente (más reciente primero)
         const dateA = new Date(a.date);
         const dateB = new Date(b.date);
-        return dateA - dateB;
+        return dateB - dateA;
     });
 
     console.log('Transacciones filtradas:', recentTransactions.length);
@@ -848,7 +836,6 @@ function handleAddDetailClick() {
 function handleQuickAddSubmit(e) {
     e.preventDefault();
     
-    const isFloatingForm = e.target.id === 'quickAddFormFloating';
     const formData = new FormData(e.target);
     const selectedDay = parseInt(formData.get('day'));
     const [year, month] = AppState.currentMonth.split('-');
@@ -881,16 +868,13 @@ function handleQuickAddSubmit(e) {
     saveData();
     
     // Limpiar solo el campo de monto y mantener el foco en él
-    const amountFieldId = isFloatingForm ? 'quickAmountFloating' : 'quickAmount';
-    const btnDetailId = isFloatingForm ? 'btnAddDetailFloating' : 'btnAddDetail';
-    
-    document.getElementById(amountFieldId).value = '';
-    document.getElementById(amountFieldId).focus();
+    document.getElementById('quickAmount').value = '';
+    document.getElementById('quickAmount').focus();
     
     // Resetear el botón de detalle y limpiar el campo oculto
-    const btnDetail = document.getElementById(btnDetailId);
+    const btnDetail = document.getElementById('btnAddDetail');
     btnDetail.textContent = '➕';
-    btnDetail.style.color = isFloatingForm ? '#3B82F6' : '#3B82F6';
+    btnDetail.style.color = '#3B82F6';
     const descInput = e.target.querySelector('input[name="description"]');
     if (descInput) {
         descInput.value = '';
