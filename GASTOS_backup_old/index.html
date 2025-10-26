@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#18181B">
+    <meta name="theme-color" content="#4F46E5">
     <meta name="description" content="Aplicación para control de gastos, ingresos y ventas familiares">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Gastos">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' fill='%2318181B'/><text x='90' y='130' font-size='110' text-anchor='middle' fill='%23FFF'>💰</text></svg>">
     <title>Control de Gastos Familiar 💰</title>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
-    <style>:root{--primary:#27272A;--primary-dark:#18181B;--bg:#E4E4E7;--surface:#F4F4F5;--text:#18181B}[data-theme="dark"]{--primary:#71717A;--bg:#09090B;--surface:#18181B;--text:#FAFAFA}body{background:var(--bg);color:var(--text);margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}.app-container{background:var(--surface)}</style>
-    <link rel="stylesheet" href="styles.css?v=72">
+    <link rel="stylesheet" href="styles.css?v=51">
     
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-    
-    <script>window.db=null</script>
 </head>
 <body>
     <!-- Pantalla de Login -->
@@ -44,9 +39,6 @@
                     <span class="current-month" id="currentMonth"></span>
                     <button id="nextMonth" class="month-nav-btn">▶</button>
                 </div>
-                <button id="themeToggle" class="theme-toggle" title="Cambiar tema (Claro/Oscuro)">
-                    <span class="theme-icon">🌙</span>
-                </button>
             </div>
         </header>
 
@@ -85,13 +77,13 @@
                                max="31"
                                required>
                         
-               <input type="text" 
-                   id="quickAmount" 
-                   name="amount" 
-                   placeholder="$ Monto" 
-                   inputmode="decimal"
-                   autocomplete="off"
-                   required>
+                        <input type="number" 
+                               id="quickAmount" 
+                               name="amount" 
+                               placeholder="$ Monto" 
+                               step="0.01" 
+                               inputmode="decimal"
+                               required>
                         
                         <select id="quickType" name="type" required>
                             <option value="ingreso">💰 Ingreso</option>
@@ -125,65 +117,46 @@
                 <div class="balance-segmented">
                     <div class="segment segment-initial">
                         <div class="segment-label">INICIAL</div>
-                        <div class="segment-amount" id="totalInicial">$0.00</div>
+                        <div class="segment-amount">$0</div>
                     </div>
                     <div class="segment segment-balance">
                         <div class="segment-label">ACTUAL</div>
-                        <div class="segment-amount" id="totalBalance">$0.00</div>
+                        <div class="segment-amount">$0</div>
                     </div>
                     <div class="segment segment-expense">
                         <div class="segment-label">GASTOS</div>
-                        <div class="segment-amount" id="totalExpenses">$0.00</div>
+                        <div class="segment-amount">$0</div>
                     </div>
                     <div class="segment segment-income">
                         <div class="segment-label">INGRESOS</div>
-                        <div class="segment-amount" id="totalIncome">$0.00</div>
+                        <div class="segment-amount">$0</div>
                     </div>
                 </div>
 
-                <!-- Estadísticas de La Tarima -->
-                <div class="tarima-stats" id="tarimaStats"></div>
-
                 <div class="recent-section">
-                    <h2 style="margin-bottom: 0.75rem;">Transacciones</h2>
-                    <div class="filters-bar quick-add-form-inline">
-                        <input type="number" 
-                               id="filterDay" 
-                               placeholder="Día"
-                               value=""
-                               min="1" 
-                               max="31">
-                        
-                        <select id="filterDashType">
-                            <option value="all">🔍 Filtrar por tipo...</option>
-                            <option value="ingreso">💰 Ingreso</option>
-                            <option value="gasto">💸 Gasto</option>
-                            <option value="venta">💵 Venta</option>
-                        </select>
-
-                        <select id="filterDashCategory">
-                            <option value="all">🔍 Filtrar por categoría...</option>
-                            <option value="la_tarima">🔨 La Tarima</option>
-                            <option value="comida">🍔 Comida</option>
-                            <option value="transporte">🚗 Transporte</option>
-                            <option value="servicios">💡 Servicios</option>
-                            <option value="salud">🏥 Salud</option>
-                            <option value="entretenimiento">🎮 Entret.</option>
-                            <option value="compras">🛒 Compras</option>
-                            <option value="educacion">📚 Educ.</option>
-                            <option value="otros">📦 Otros</option>
-                        </select>
-                        
-                        <button type="button" class="btn-clear-filter-inline" id="btnClearFilter" title="Limpiar filtros">
-                            ❌
-                        </button>
+                    <div class="section-header">
+                        <h2>Transacciones</h2>
+                        <div class="day-filter">
+                            <label for="filterDay">Día:</label>
+                            <input type="number" 
+                                   id="filterDay" 
+                                   placeholder="Todos"
+                                   value=""
+                                   min="1" 
+                                   max="31">
+                            <button type="button" class="btn-clear-filter" id="btnClearFilter" title="Ver todos">✕</button>
+                        </div>
                     </div>
-                    <div class="recent-transactions" id="recentTransactions"></div>
+                    <div class="recent-transactions" id="recentTransactions">
+                        <!-- Transacciones recientes del mes -->
+                    </div>
                 </div>
 
                 <div class="chart-section">
                     <h2>Gastos por Categoría</h2>
-                    <div class="chart-container" id="categoryChart"></div>
+                    <div class="chart-container" id="categoryChart">
+                        <!-- Gráfico simple con barras -->
+                    </div>
                 </div>
             </section>
 
@@ -198,7 +171,7 @@
 
                 <div class="filters">
                     <select id="filterType" class="filter-select">
-                        <option value="all">🔍 Filtrar por tipo...</option>
+                        <option value="all">Todos los tipos</option>
                         <option value="gasto">💸 Gastos</option>
                         <option value="ingreso">💰 Ingresos</option>
                         <option value="venta">💵 Ventas</option>
@@ -214,7 +187,9 @@
                     <div class="th-acciones"></div>
                 </div>
 
-                <div class="transactions-list" id="transactionsList"></div>
+                <div class="transactions-list" id="transactionsList">
+                    <!-- Las transacciones se cargarán aquí -->
+                </div>
             </section>
 
             <!-- Modules Tab -->
@@ -223,7 +198,7 @@
                 <div class="modules-info-bar">
                     <div class="info-bar-item">
                         <div class="info-bar-label">INICIAL</div>
-                        <div class="info-bar-amount" id="totalInicialModules">$0.00</div>
+                        <div class="info-bar-amount" id="totalInicial">$0.00</div>
                     </div>
                     <div class="info-bar-separator">|</div>
                     <div class="info-bar-item">
@@ -292,19 +267,6 @@
                         <button class="btn-secondary btn-large" id="exportJSONBtn">
                             💾 Descargar Backup Completo (JSON)
                         </button>
-                        
-                        <div style="margin-top: 2rem; border-top: 1px solid #e2e8f0; padding-top: 1.5rem;">
-                            <h3>📤 Importar Transacciones</h3>
-                            <p>Importa transacciones desde un archivo CSV.</p>
-                            <button class="btn-primary btn-large" id="importTransactionsBtn" style="margin-top: 0.5rem;">
-                                📤 Seleccionar Archivo CSV
-                            </button>
-                            <input type="file" id="fileInput" accept=".csv" style="display: none;">
-                            <p class="text-muted small" style="margin-top: 0.5rem;">
-                                Formato: fecha,descripcion,monto,tipo,categoria<br>
-                                Ejemplo: 2023-10-25,Supermercado,15000,gasto,comida
-                            </p>
-                        </div>
                     </div>
 
                     <div class="backup-restore">
@@ -378,7 +340,7 @@
                 </div>
                 <div class="form-group">
                     <label for="transactionAmount">Monto</label>
-                    <input type="text" id="transactionAmount" name="amount" inputmode="decimal" required>
+                    <input type="number" id="transactionAmount" name="amount" step="0.01" required>
                 </div>
                 <div class="form-group">
                     <label for="transactionDescription">Descripción (opcional)</label>
@@ -429,45 +391,19 @@
         </div>
     </div>
 
-    <script defer src="app.js?v=69"></script>
-    <script>
-        if('serviceWorker' in navigator){
-            window.addEventListener('load',()=>{
-                navigator.serviceWorker.register('./sw.js');
-            });
-        }
-        
-        // Detectar cuando la app puede ser instalada
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt',(e)=>{
-            e.preventDefault();
-            deferredPrompt=e;
-            console.log('✅ PWA lista para instalar');
-            
-            // Opcional: Mostrar un botón de instalación
-            // const installBtn = document.createElement('button');
-            // installBtn.textContent = '📲 Instalar App';
-            // installBtn.style.cssText = 'position:fixed;bottom:20px;right:20px;padding:12px 20px;background:#18181B;color:#FFF;border:none;border-radius:8px;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,0.3);cursor:pointer;z-index:9999';
-            // installBtn.onclick = async ()=>{
-            //     if(deferredPrompt){
-            //         deferredPrompt.prompt();
-            //         const {outcome} = await deferredPrompt.userChoice;
-            //         console.log(`User response: ${outcome}`);
-            //         deferredPrompt=null;
-            //         installBtn.remove();
-            //     }
-            // };
-            // document.body.appendChild(installBtn);
-        });
-        
-        window.addEventListener('appinstalled',()=>{
-            console.log('✅ PWA instalada correctamente');
-            deferredPrompt=null;
-        });
-    </script>
-
-    <!-- Firebase Config y App Scripts -->
+    <!-- Firebase Config -->
     <script src="firebase-config.js"></script>
-    <script src="app.js?v=72"></script>
+    
+    <!-- App Scripts -->
+    <script src="app.js?v=69"></script>
+    <script>
+        console.log('📄 HTML CARGADO');
+        // Registrar Service Worker para PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('Service Worker registrado', reg))
+                .catch(err => console.log('Error al registrar SW', err));
+        }
+    </script>
 </body>
 </html>

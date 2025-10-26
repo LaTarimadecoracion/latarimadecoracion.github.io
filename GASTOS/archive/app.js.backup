@@ -1,0 +1,535 @@
+// Estado de la aplicación
+const AppState = {
+    currentMonth: new Date().toISOString().slice(0, 7), // YYYY-MM
+    modules: {
+        efectivo: 0,
+        banco: 0,
+        ml_jona: 0,
+        ml_ceci: 0
+    },
+    transactions: []
+};
+
+// Configuración de módulos
+const MODULE_CONFIG = {
+    efectivo: { name: 'Efectivo', icon: '💵', color: '#10B981' },
+    banco: { name: 'Banco', icon: '🏦', color: '#3B82F6' },
+    ml_jona: { name: 'ML Jona', icon: '📱', color: '#F59E0B' },
+    ml_ceci: { name: 'ML Ceci', icon: '📱', color: '#EC4899' }
+};
+
+// Categorías de transacciones
+const CATEGORIES = {
+    la_tarima: '🪜',
+    comida: '🍔',
+    transporte: '🚗',
+    servicios: '💡',
+    salud: '🏥',
+    entretenimiento: '🎮',
+    compras: '🛒',
+    educacion: '📚',
+    otros: '📦'
+};
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', () => {
+    loadData();
+    initializeUI();
+    attachEventListeners();
+    updateDashboard();
+    displayTransactions();
+});
+
+// Cargar datos del localStorage
+function loadData() {
+    const savedData = localStorage.getItem('gastosApp');
+    if (savedData) {
+        const data = JSON.parse(savedData);
+        AppState.modules = data.modules || AppState.modules;
+        AppState.transactions = data.transactions || [];
+        AppState.currentMonth = data.currentMonth || AppState.currentMonth;
+    }
+}
+
+// Guardar datos en localStorage
+function saveData() {
+    localStorage.setItem('gastosApp', JSON.stringify(AppState));
+}
+
+// Inicializar UI
+function initializeUI() {
+    // Mostrar mes actual
+    const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    const [year, month] = AppState.currentMonth.split('-');
+    document.getElementById('currentMonth').textContent = 
+        `${monthNames[parseInt(month) - 1]} ${year}`;
+
+    // Cargar valores de módulos en el formulario
+    document.getElementById('efectivo').value = AppState.modules.efectivo;
+    document.getElementById('banco').value = AppState.modules.banco;
+    document.getElementById('ml_jona').value = AppState.modules.ml_jona;
+    document.getElementById('ml_ceci').value = AppState.modules.ml_ceci;
+
+    // Establecer fecha de hoy en el formulario de transacción
+    document.getElementById('transDate').valueAsDate = new Date();
+}
+
+// Event Listeners
+function attachEventListeners() {
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tab = btn.dataset.tab;
+            switchTab(tab);
+        });
+    });
+
+    // Modal transacción
+    document.getElementById('addTransactionBtn').addEventListener('click', openTransactionModal);
+    document.getElementById('closeModal').addEventListener('click', closeTransactionModal);
+    document.getElementById('cancelTransaction').addEventListener('click', closeTransactionModal);
+    
+    // Cerrar modal al hacer click fuera
+    document.getElementById('transactionModal').addEventListener('click', (e) => {
+        if (e.target.id === 'transactionModal') {
+            closeTransactionModal();
+        }
+    });
+
+    // Formularios
+    document.getElementById('modulesForm').addEventListener('submit', handleModulesSubmit);
+    document.getElementById('transactionForm').addEventListener('submit', handleTransactionSubmit);
+    document.getElementById('quickAddForm').addEventListener('submit', handleQuickAddSubmit);
+
+    // Filtros
+    document.getElementById('filterType').addEventListener('change', displayTransactions);
+
+    // Reset month
+    document.getElementById('resetMonthBtn').addEventListener('click', handleResetMonth);
+}
+
+// Cambiar tab
+function switchTab(tabName) {
+    // Actualizar botones
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tabName);
+    });
+
+    // Actualizar contenido
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.toggle('active', content.id === tabName);
+    });
+
+    // Actualizar dashboard si es necesario
+    if (tabName === 'dashboard') {
+        updateDashboard();
+    }
+}
+
+// Actualizar dashboard
+function updateDashboard() {
+    // Calcular totales
+    const totals = calculateTotals();
+    
+    // Total general
+    const totalBalance = Object.values(AppState.modules).reduce((sum, val) => sum + val, 0);
+    document.getElementById('totalBalance').textContent = formatCurrency(totalBalance);
+
+    // Módulos individuales
+    const modulesGrid = document.getElementById('modulesGrid');
+    modulesGrid.innerHTML = '';
+    
+    Object.entries(MODULE_CONFIG).forEach(([key, config]) => {
+        const balance = AppState.modules[key] || 0;
+        const card = document.createElement('div');
+        card.className = 'module-card';
+        card.innerHTML = `
+            <div class="module-icon-large">${config.icon}</div>
+            <div class="module-name">${config.name}</div>
+            <div class="module-balance">${formatCurrency(balance)}</div>
+        `;
+        modulesGrid.appendChild(card);
+    });
+
+    // Resumen
+    document.getElementById('totalIncome').textContent = formatCurrency(totals.income);
+    document.getElementById('totalExpense').textContent = formatCurrency(totals.expense);
+    document.getElementById('totalSales').textContent = formatCurrency(totals.sales);
+
+    // Transacciones recientes
+    displayRecentTransactions();
+
+    // Gráfico de categorías
+    displayCategoryChart(totals.categoryExpenses);
+}
+
+// Calcular totales
+function calculateTotals() {
+    const currentMonthTransactions = AppState.transactions.filter(t => 
+        t.date.startsWith(AppState.currentMonth)
+    );
+
+    const totals = {
+        income: 0,
+        expense: 0,
+        sales: 0,
+        categoryExpenses: {}
+    };
+
+    currentMonthTransactions.forEach(t => {
+        if (t.type === 'ingreso') {
+            totals.income += t.amount;
+        } else if (t.type === 'gasto') {
+            totals.expense += t.amount;
+            totals.categoryExpenses[t.category] = (totals.categoryExpenses[t.category] || 0) + t.amount;
+        } else if (t.type === 'venta') {
+            totals.sales += t.amount;
+        }
+    });
+
+    return totals;
+}
+
+// Mostrar transacciones recientes
+function displayRecentTransactions() {
+    const container = document.getElementById('recentTransactions');
+    
+    // Obtener las últimas 5 transacciones del mes actual
+    const recentTransactions = AppState.transactions
+        .filter(t => t.date.startsWith(AppState.currentMonth))
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 5);
+
+    if (recentTransactions.length === 0) {
+        container.innerHTML = '<div class="empty-state" style="padding: 1.5rem;">No hay transacciones recientes</div>';
+        return;
+    }
+
+    container.innerHTML = '';
+    recentTransactions.forEach(transaction => {
+        const typeIcon = transaction.type === 'gasto' ? '💸' : 
+                        transaction.type === 'ingreso' ? '💰' : '💵';
+        const categoryIcon = CATEGORIES[transaction.category] || '📦';
+        const sign = transaction.type === 'gasto' ? '-' : '+';
+        const displayText = transaction.description || formatCategoryName(transaction.category);
+        
+        const item = document.createElement('div');
+        item.className = 'recent-item';
+        item.innerHTML = `
+            <div class="recent-item-info">
+                <span>${typeIcon}</span>
+                <span>${categoryIcon}</span>
+                <span>${displayText}</span>
+            </div>
+            <div class="recent-item-amount ${transaction.type}">
+                ${sign}${formatCurrency(transaction.amount)}
+            </div>
+        `;
+        container.appendChild(item);
+    });
+}
+
+// Formatear nombre de categoría
+function formatCategoryName(category) {
+    if (category === 'la_tarima') return 'La Tarima';
+    return category.charAt(0).toUpperCase() + category.slice(1);
+}
+
+// Mostrar gráfico de categorías
+function displayCategoryChart(categoryExpenses) {
+    const chartContainer = document.getElementById('categoryChart');
+    
+    if (Object.keys(categoryExpenses).length === 0) {
+        chartContainer.innerHTML = '<div class="empty-state">No hay gastos registrados este mes</div>';
+        return;
+    }
+
+    const maxAmount = Math.max(...Object.values(categoryExpenses));
+    chartContainer.innerHTML = '';
+
+    Object.entries(categoryExpenses)
+        .sort((a, b) => b[1] - a[1])
+        .forEach(([category, amount]) => {
+            const percentage = (amount / maxAmount) * 100;
+            const bar = document.createElement('div');
+            bar.className = 'chart-bar';
+            bar.innerHTML = `
+                <div class="chart-bar-label">
+                    <span>${CATEGORIES[category]} ${formatCategoryName(category)}</span>
+                    <span>${formatCurrency(amount)}</span>
+                </div>
+                <div class="chart-bar-fill" style="width: ${percentage}%"></div>
+            `;
+            chartContainer.appendChild(bar);
+        });
+}
+
+// Mostrar transacciones
+function displayTransactions() {
+    const list = document.getElementById('transactionsList');
+    const filterType = document.getElementById('filterType').value;
+
+    // Filtrar transacciones
+    let filtered = AppState.transactions.filter(t => 
+        t.date.startsWith(AppState.currentMonth)
+    );
+
+    if (filterType !== 'all') {
+        filtered = filtered.filter(t => t.type === filterType);
+    }
+
+    // Ordenar por fecha (más recientes primero)
+    filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (filtered.length === 0) {
+        list.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">📭</div>
+                <p>No hay transacciones para mostrar</p>
+            </div>
+        `;
+        return;
+    }
+
+    list.innerHTML = '';
+    filtered.forEach(transaction => {
+        const item = createTransactionElement(transaction);
+        list.appendChild(item);
+    });
+}
+
+// Crear elemento de transacción
+function createTransactionElement(transaction) {
+    const item = document.createElement('div');
+    item.className = 'transaction-item';
+    
+    const typeIcon = transaction.type === 'gasto' ? '💸' : 
+                     transaction.type === 'ingreso' ? '💰' : '💵';
+    
+    const categoryIcon = CATEGORIES[transaction.category] || '📦';
+    
+    const formattedDate = new Date(transaction.date + 'T00:00:00').toLocaleDateString('es-ES', {
+        day: '2-digit',
+        month: 'short'
+    });
+
+    const sign = transaction.type === 'gasto' ? '-' : '+';
+    
+    item.innerHTML = `
+        <div class="transaction-info">
+            <div class="transaction-header">
+                <span class="transaction-type">${typeIcon}</span>
+                <span class="transaction-category">${categoryIcon} ${formatCategoryName(transaction.category)}</span>
+            </div>
+            ${transaction.description ? `<div class="transaction-description">${transaction.description}</div>` : ''}
+            <div class="transaction-meta">
+                <span>${formattedDate}</span>
+            </div>
+        </div>
+        <div class="transaction-amount ${transaction.type}">
+            ${sign}${formatCurrency(transaction.amount)}
+        </div>
+        <div class="transaction-actions">
+            <button class="btn-icon" onclick="deleteTransaction('${transaction.id}')" title="Eliminar">🗑️</button>
+        </div>
+    `;
+    
+    return item;
+}
+
+// Modal de transacción
+function openTransactionModal() {
+    document.getElementById('transactionModal').classList.add('active');
+    document.getElementById('transactionForm').reset();
+    document.getElementById('transDate').valueAsDate = new Date();
+}
+
+function closeTransactionModal() {
+    document.getElementById('transactionModal').classList.remove('active');
+}
+
+// Manejar submit de módulos
+function handleModulesSubmit(e) {
+    e.preventDefault();
+    
+    AppState.modules.efectivo = parseFloat(document.getElementById('efectivo').value) || 0;
+    AppState.modules.banco = parseFloat(document.getElementById('banco').value) || 0;
+    AppState.modules.ml_jona = parseFloat(document.getElementById('ml_jona').value) || 0;
+    AppState.modules.ml_ceci = parseFloat(document.getElementById('ml_ceci').value) || 0;
+    
+    saveData();
+    updateDashboard();
+    
+    showNotification('✅ Saldos guardados correctamente');
+}
+
+// Manejar submit de transacción
+function handleTransactionSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const transaction = {
+        id: Date.now().toString(),
+        type: formData.get('type'),
+        module: formData.get('module'),
+        amount: parseFloat(formData.get('amount')),
+        category: formData.get('category'),
+        date: formData.get('date'),
+        description: formData.get('description')
+    };
+
+    // Actualizar saldo del módulo
+    if (transaction.type === 'gasto') {
+        AppState.modules[transaction.module] -= transaction.amount;
+    } else {
+        AppState.modules[transaction.module] += transaction.amount;
+    }
+
+    AppState.transactions.push(transaction);
+    saveData();
+    
+    closeTransactionModal();
+    updateDashboard();
+    displayTransactions();
+    
+    showNotification('✅ Transacción guardada');
+}
+
+// Manejar submit de formulario rápido
+function handleQuickAddSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const transaction = {
+        id: Date.now().toString(),
+        type: formData.get('type'),
+        module: 'general', // Ya no importa el módulo específico
+        amount: parseFloat(formData.get('amount')),
+        category: formData.get('category'),
+        date: new Date().toISOString().split('T')[0], // Fecha de hoy
+        description: formData.get('description') || ''
+    };
+
+    // Ya no actualizamos módulos específicos
+    // Solo guardamos la transacción
+    AppState.transactions.push(transaction);
+    saveData();
+    
+    // Limpiar formulario pero mantener tipo y categoría seleccionados
+    document.getElementById('quickAmount').value = '';
+    document.getElementById('quickDescription').value = '';
+    document.getElementById('quickAmount').focus(); // Volver el foco al campo de monto
+    
+    updateDashboard();
+    displayTransactions();
+    
+    // Animación de éxito
+    const btn = e.target.querySelector('.btn-quick-add');
+    const originalText = btn.textContent;
+    btn.textContent = '✅ ¡Agregado!';
+    btn.style.background = '#10B981';
+    btn.style.color = 'white';
+    
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.style.color = '';
+    }, 1000);
+}
+
+// Eliminar transacción
+function deleteTransaction(id) {
+    if (!confirm('¿Estás seguro de eliminar esta transacción?')) {
+        return;
+    }
+
+    const transaction = AppState.transactions.find(t => t.id === id);
+    if (!transaction) return;
+
+    // Ya no revertimos cambios en módulos
+    AppState.transactions = AppState.transactions.filter(t => t.id !== id);
+    saveData();
+    
+    updateDashboard();
+    displayTransactions();
+    
+    showNotification('🗑️ Transacción eliminada');
+}
+
+// Reiniciar mes
+function handleResetMonth() {
+    const confirmation = prompt('⚠️ ADVERTENCIA: Esto eliminará TODAS las transacciones del mes actual.\n\nEscribe "CONFIRMAR" para continuar:');
+    
+    if (confirmation !== 'CONFIRMAR') {
+        showNotification('❌ Operación cancelada');
+        return;
+    }
+
+    // Eliminar transacciones del mes actual
+    AppState.transactions = AppState.transactions.filter(t => 
+        !t.date.startsWith(AppState.currentMonth)
+    );
+
+    saveData();
+    updateDashboard();
+    displayTransactions();
+    
+    showNotification('🔄 Mes reiniciado correctamente');
+}
+
+// Formatear moneda
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('es-AR', {
+        style: 'currency',
+        currency: 'ARS',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }).format(amount);
+}
+
+// Mostrar notificación
+function showNotification(message) {
+    // Crear elemento de notificación
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #1F2937;
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        z-index: 2000;
+        animation: slideIn 0.3s ease;
+    `;
+    notification.textContent = message;
+
+    // Agregar animación
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    document.body.appendChild(notification);
+
+    // Eliminar después de 3 segundos
+    setTimeout(() => {
+        notification.style.animation = 'slideIn 0.3s ease reverse';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Exportar funciones globales para uso en HTML
+window.deleteTransaction = deleteTransaction;

@@ -1,38 +1,20 @@
-// Service Worker para PWA
-const CACHE_NAME = 'gastos-app-v32';
-const urlsToCache = [
-    './index.html',
-    './styles.css',
-    './app.js'
-];
+const CACHE='gastos-v71';
+const URLS=['./','./index.html','./styles.css','./app.js','./manifest.json'];
 
-// Instalación
-self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(urlsToCache))
-    );
+self.addEventListener('install',e=>{
+    e.waitUntil(caches.open(CACHE).then(c=>c.addAll(URLS)));
+    self.skipWaiting();
 });
 
-// Activación
-self.addEventListener('activate', event => {
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheName !== CACHE_NAME) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
+self.addEventListener('activate',e=>{
+    e.waitUntil(
+        caches.keys().then(k=>Promise.all(k.map(n=>n!==CACHE&&caches.delete(n))))
     );
+    self.clients.claim();
 });
 
-// Fetch - estrategia cache first
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => response || fetch(event.request))
+self.addEventListener('fetch',e=>{
+    e.respondWith(
+        caches.match(e.request).then(r=>r||fetch(e.request).catch(()=>caches.match('./index.html')))
     );
 });

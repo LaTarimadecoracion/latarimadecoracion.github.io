@@ -1,11 +1,1 @@
-{
-    "name": "Control de Gastos Familiar",
-    "short_name": "Gastos",
-    "description": "Aplicación para control de gastos, ingresos y ventas familiares",
-    "start_url": "./index.html",
-    "display": "standalone",
-    "background_color": "#F9FAFB",
-    "theme_color": "#4F46E5",
-    "orientation": "portrait",
-    "icons": []
-}
+{"name":"Control de Gastos Familiar","short_name":"Gastos","description":"Control de gastos, ingresos y ventas","start_url":"./","scope":"./","display":"standalone","background_color":"#18181B","theme_color":"#18181B","orientation":"portrait-primary","categories":["finance","productivity"],"icons":[{"src":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%2318181B'/%3E%3Ctext x='96' y='140' font-size='120' text-anchor='middle' fill='%23FFF'%3E💰%3C/text%3E%3C/svg%3E","sizes":"192x192","type":"image/svg+xml","purpose":"any"},{"src":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%2318181B'/%3E%3Ctext x='256' y='380' font-size='340' text-anchor='middle' fill='%23FFF'%3E💰%3C/text%3E%3C/svg%3E","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}],"screenshots":[{"src":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'%3E%3Crect width='540' height='720' fill='%23E4E4E7'/%3E%3Ctext x='270' y='360' font-size='48' text-anchor='middle' fill='%2318181B'%3EApp de Gastos%3C/text%3E%3C/svg%3E","sizes":"540x720","type":"image/svg+xml","form_factor":"narrow"}]}

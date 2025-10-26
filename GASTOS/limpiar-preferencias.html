@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiar Preferencias</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-weight: 600;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .success {
+            display: none;
+            color: #10b981;
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Restaurar Estilo Original</h1>
+        <p>
+            Haz clic en el botón para limpiar las preferencias guardadas 
+            y volver al <strong>estilo clásico colorido</strong> por defecto.
+        </p>
+        <button onclick="limpiarYRestaurar()">
+            ✨ Restaurar Estilo Original
+        </button>
+        <div class="success" id="success">
+            ✅ ¡Listo! Preferencias restauradas
+        </div>
+        <a href="index.html" class="back-link" id="backLink" style="display: none;">
+            ← Volver a la aplicación
+        </a>
+    </div>
+
+    <script>
+        function limpiarYRestaurar() {
+            // Limpiar solo la preferencia de estilo visual
+            localStorage.removeItem('visualStyle');
+            
+            // Mostrar mensaje de éxito
+            document.getElementById('success').style.display = 'block';
+            document.getElementById('backLink').style.display = 'inline-block';
+            
+            // Animar el botón
+            const btn = document.querySelector('button');
+            btn.textContent = '✅ Limpiado!';
+            btn.style.background = '#10b981';
+            
+            console.log('✅ Preferencia de estilo eliminada');
+            console.log('🎨 Al volver a la app, cargará el estilo Clásico por defecto');
+        }
+    </script>
+</body>
+</html>

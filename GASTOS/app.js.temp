@@ -1,9 +1,6 @@
 // Estado de la aplicación
 console.log('🚀 CARGANDO APP.JS - Inicio');
 
-// Usuario actual
-let currentUser = null;
-
 // Verificar si AppState ya existe en window para evitar duplicados
 if (!window.AppState) {
     window.AppState = {
@@ -19,122 +16,6 @@ if (!window.AppState) {
 
 // Referencia corta para el estado
 const AppState = window.AppState;
-
-// ==========================================
-// AUTENTICACIÓN FIREBASE
-// ==========================================
-
-// Listener de autenticación
-auth.onAuthStateChanged((user) => {
-    if (user) {
-        console.log('✅ Usuario autenticado:', user.email);
-        currentUser = user;
-        document.getElementById('loginScreen').style.display = 'none';
-        document.getElementById('appContainer').style.display = 'block';
-        
-        // Cargar datos de Firebase (las reglas de Firestore controlarán el acceso)
-        loadDataFromFirebase();
-    } else {
-        console.log('❌ Usuario no autenticado');
-        document.getElementById('loginScreen').style.display = 'flex';
-        document.getElementById('appContainer').style.display = 'none';
-    }
-});
-
-// Login con Google
-document.addEventListener('DOMContentLoaded', () => {
-    const btnLoginGoogle = document.getElementById('btnLoginGoogle');
-    if (btnLoginGoogle) {
-        btnLoginGoogle.addEventListener('click', () => {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            auth.signInWithPopup(provider)
-                .then((result) => {
-                    console.log('✅ Login exitoso:', result.user.email);
-                })
-                .catch((error) => {
-                    console.error('❌ Error en login:', error);
-                    alert('Error al iniciar sesión: ' + error.message);
-                });
-        });
-    }
-});
-
-// ==========================================
-// FIREBASE FIRESTORE
-// ==========================================
-
-// Cargar datos desde Firestore
-function loadDataFromFirebase() {
-    if (!currentUser) return;
-    
-    console.log('📥 Cargando datos de Firebase (datos compartidos)...');
-    
-    // Usar una colección compartida para la familia
-    // Todos los usuarios autorizados acceden al mismo documento
-    db.collection('familyData').doc('sharedAppState')
-        .onSnapshot((doc) => {
-            if (doc.exists) {
-                const data = doc.data();
-                AppState.modulesByMonth = data.modulesByMonth || {};
-                AppState.transactions = data.transactions || [];
-                // Solo establecer el mes actual si no está definido
-                if (!AppState.currentMonth) {
-                    AppState.currentMonth = new Date().toISOString().slice(0, 7);
-                }
-                
-                console.log('✅ Datos compartidos cargados de Firebase');
-                console.log('📅 Mes actual establecido:', AppState.currentMonth);
-                
-                // Actualizar UI solo si ya está inicializada
-                if (document.getElementById('currentMonth')) {
-                    updateDashboard();
-                    displayRecentTransactions();
-                    displayTransactions();
-                    displayModulesCards();
-                }
-            } else {
-                console.log('📝 Primera vez, creando documento compartido...');
-                saveDataToFirebase();
-            }
-        }, (error) => {
-            console.error('❌ Error cargando datos:', error);
-            
-            if (error.code === 'permission-denied') {
-                alert(`🔒 ACCESO DENEGADO\n\nTu email (${currentUser.email}) no está autorizado para acceder a esta aplicación.\n\nContacta al administrador para solicitar acceso.`);
-                
-                // Cerrar sesión automáticamente
-                auth.signOut();
-            } else {
-                alert('⚠️ Error al cargar datos: ' + error.message);
-            }
-        });
-}
-
-// Guardar datos a Firestore
-function saveDataToFirebase() {
-    if (!currentUser) return;
-    
-    console.log('📤 Guardando datos en Firebase...');
-    
-    db.collection('familyData').doc('sharedAppState')
-        .set({
-            modulesByMonth: AppState.modulesByMonth,
-            transactions: AppState.transactions,
-            lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
-            updatedBy: currentUser.email
-        })
-        .then(() => {
-            console.log('✅ Datos guardados en Firebase');
-        })
-        .catch((error) => {
-            console.error('❌ Error guardando en Firebase:', error);
-            if (error.code === 'permission-denied') {
-                alert('🔒 Sin permisos para guardar datos. Contacta al administrador.');
-            } else {
-                alert('⚠️ Error al guardar: ' + error.message);
-            }
-        });
-}
 
 // ==========================================
 // MODO OSCURO
@@ -312,14 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ App lista!');
 });
 
-// Cargar datos del localStorage (solo si no hay usuario Firebase autenticado)
+// Cargar datos del localStorage
 function loadData() {
-    // Si hay usuario autenticado, Firebase se encargará de los datos
-    if (currentUser) {
-        console.log('👤 Usuario autenticado - datos se cargarán desde Firebase');
-        return;
-    }
-    
     const savedData = localStorage.getItem('gastosApp');
     if (savedData) {
         const data = JSON.parse(savedData);
@@ -343,28 +218,16 @@ function loadData() {
     console.log('Mes actual configurado a:', AppState.currentMonth);
 }
 
-// Guardar datos en localStorage y Firebase
+// Guardar datos en localStorage
 function saveData() {
-    // Guardar localmente como respaldo
     localStorage.setItem('gastosApp', JSON.stringify(AppState));
     console.log('💾 Datos guardados en localStorage');
-    
-    // Guardar en Firebase si el usuario está autenticado
-    if (currentUser) {
-        saveDataToFirebase();
-    }
 }
 
 // Inicializar UI
 function initializeUI() {
     updateMonthDisplay();
     initializeDayInput();
-    
-    // Asegurar que el campo de monto esté limpio al cargar
-    const quickAmount = document.getElementById('quickAmount');
-    if (quickAmount) {
-        quickAmount.value = '';
-    }
 }
 
 // Inicializar input de día con el último guardado o día actual
@@ -457,50 +320,26 @@ function attachEventListeners() {
     document.getElementById('quickAddForm').addEventListener('submit', handleQuickAddSubmit);
     document.getElementById('btnAddDetail').addEventListener('click', handleAddDetailClick);
 
-    // Enter en los selects del quick add para submit rápido
-    const quickType = document.getElementById('quickType');
-    const quickCategory = document.getElementById('quickCategory');
-    
-    if (quickType) {
-        quickType.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                document.getElementById('quickAddForm').requestSubmit();
-            }
-        });
-    }
-    
-    if (quickCategory) {
-        quickCategory.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                document.getElementById('quickAddForm').requestSubmit();
-            }
-        });
-    }
-
-    document.getElementById('filterType').addEventListener('change', displayTransactions);
-
-    // Filtros en Dashboard
+    // Filtros del Dashboard
     const filterDayInput = document.getElementById('filterDay');
-    const filterDashType = document.getElementById('filterDashType');
-    const filterDashCategory = document.getElementById('filterDashCategory');
+    const filterTypeDashboard = document.getElementById('filterTypeDashboard');
+    const filterCategory = document.getElementById('filterCategory');
     const btnClearFilter = document.getElementById('btnClearFilter');
     
     if (filterDayInput) {
         filterDayInput.addEventListener('input', displayRecentTransactions);
     }
     
-    if (filterDashType) {
-        filterDashType.addEventListener('change', displayRecentTransactions);
+    if (filterTypeDashboard) {
+        filterTypeDashboard.addEventListener('change', displayRecentTransactions);
     }
     
-    if (filterDashCategory) {
-        filterDashCategory.addEventListener('change', displayRecentTransactions);
+    if (filterCategory) {
+        filterCategory.addEventListener('change', displayRecentTransactions);
     }
     
     if (btnClearFilter) {
-        btnClearFilter.addEventListener('click', clearDayFilter);
+        btnClearFilter.addEventListener('click', clearFilters);
     }
 
     document.getElementById('resetMonthBtn').addEventListener('click', handleResetMonth);
@@ -553,24 +392,24 @@ function attachEventListeners() {
 
     function formatInputDisplay(el) {
         if (!el) return;
-        // Si el campo está vacío, dejarlo vacío (no poner 0)
-        if (!el.value || el.value.trim() === '') {
+        const n = normalizeTransaction({ amount: el.value }).amount;
+        // Si el valor es 0, dejar el campo vacío
+        if (Number(n) === 0 || !el.value) {
             el.value = '';
             return;
         }
-        const n = normalizeTransaction({ amount: el.value }).amount;
-        const formatted = new Intl.NumberFormat('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(Number(n) || 0);
+        const formatted = new Intl.NumberFormat('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(Number(n));
         el.value = formatted;
     }
 
     function unformatInputForEdit(el) {
         if (!el) return;
-        // Si el campo está vacío, dejarlo vacío
-        if (!el.value || el.value.trim() === '' || el.value === '0' || el.value === '0.00') {
+        const n = normalizeTransaction({ amount: el.value }).amount;
+        // Si es 0 o está vacío, dejar vacío
+        if (Number(n) === 0 || !el.value) {
             el.value = '';
             return;
         }
-        const n = normalizeTransaction({ amount: el.value }).amount;
         // Mostrar con punto decimal para facilitar edición (no usar separador de miles)
         // Mantener hasta 5 decimales durante edición si existen
         const display = (Math.round(n * 100000) / 100000).toString();
@@ -593,25 +432,46 @@ function attachEventListeners() {
             setTimeout(() => formatInputDisplay(transAmount), 50);
         });
     }
+
+    // Atajos de teclado para Quick Add - presionar Enter en selects envía el formulario
+    const quickType = document.getElementById('quickType');
+    const quickCategory = document.getElementById('quickCategory');
+    
+    if (quickType) {
+        quickType.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('quickAddForm').requestSubmit();
+            }
+        });
+    }
+    
+    if (quickCategory) {
+        quickCategory.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('quickAddForm').requestSubmit();
+            }
+        });
+    }
 }
 
-// Limpiar filtro de día
-function clearDayFilter() {
+// Limpiar todos los filtros
+function clearFilters() {
     const filterDay = document.getElementById('filterDay');
-    const filterDashType = document.getElementById('filterDashType');
-    const filterDashCategory = document.getElementById('filterDashCategory');
+    const filterTypeDashboard = document.getElementById('filterTypeDashboard');
+    const filterCategory = document.getElementById('filterCategory');
     
-    if (filterDay) {
-        filterDay.value = '';
-    }
-    if (filterDashType) {
-        filterDashType.value = 'all';
-    }
-    if (filterDashCategory) {
-        filterDashCategory.value = 'all';
-    }
+    if (filterDay) filterDay.value = '';
+    if (filterTypeDashboard) filterTypeDashboard.value = 'all';
+    if (filterCategory) filterCategory.value = 'all';
     
     displayRecentTransactions();
+}
+
+// Función legacy para compatibilidad
+function clearDayFilter() {
+    clearFilters();
 }
 
 // Cambiar mes
@@ -838,15 +698,15 @@ function displayRecentTransactions() {
     }
     
     // Filtrar por tipo
-    const filterDashType = document.getElementById('filterDashType');
-    if (filterDashType && filterDashType.value !== 'all') {
-        recentTransactions = recentTransactions.filter(t => t.type === filterDashType.value);
+    const filterTypeDashboard = document.getElementById('filterTypeDashboard');
+    if (filterTypeDashboard && filterTypeDashboard.value !== 'all') {
+        recentTransactions = recentTransactions.filter(t => t.type === filterTypeDashboard.value);
     }
     
     // Filtrar por categoría
-    const filterDashCategory = document.getElementById('filterDashCategory');
-    if (filterDashCategory && filterDashCategory.value !== 'all') {
-        recentTransactions = recentTransactions.filter(t => t.category === filterDashCategory.value);
+    const filterCategory = document.getElementById('filterCategory');
+    if (filterCategory && filterCategory.value !== 'all') {
+        recentTransactions = recentTransactions.filter(t => t.category === filterCategory.value);
     }
     
     recentTransactions = recentTransactions.sort((a, b) => {
@@ -898,11 +758,11 @@ function displayRecentTransactions() {
             </div>
         `;
         
-        // Agregar event listeners
+        // Agregar event listeners a los botones
         const editBtn = item.querySelector('.btn-edit');
-        const deleteBtn = item.querySelector('.btn-delete');
-        
         editBtn.addEventListener('click', () => handleEditTransaction(transaction.id));
+        
+        const deleteBtn = item.querySelector('.btn-delete');
         deleteBtn.addEventListener('click', () => handleDeleteTransaction(transaction.id));
         
         container.appendChild(item);
@@ -923,174 +783,6 @@ function handleDeleteTransaction(transactionId) {
         displayRecentTransactions();
         displayTransactions();
         showNotification('🗑️ Transacción eliminada');
-    }
-}
-
-// Editar transacción inline
-function handleEditTransaction(transactionId) {
-    const transaction = AppState.transactions.find(t => t.id === transactionId);
-    if (!transaction) {
-        alert('Transacción no encontrada');
-        return;
-    }
-    
-    // Buscar el elemento de la transacción
-    const recentItems = document.querySelectorAll('.recent-item');
-    let targetElement = null;
-    
-    recentItems.forEach(item => {
-        const editBtn = item.querySelector(`[data-id="${transactionId}"]`);
-        if (editBtn) {
-            targetElement = item;
-        }
-    });
-    
-    if (!targetElement) {
-        console.error('No se encontró el elemento de la transacción');
-        return;
-    }
-    
-    // Extraer día de la fecha
-    const day = transaction.date.split('-')[2];
-    
-    // Reemplazar el contenido con un formulario inline
-    targetElement.innerHTML = `
-        <form class="quick-add-form-inline edit-mode" data-id="${transactionId}" data-original-date="${transaction.date}">
-            <input type="number" 
-                   name="day" 
-                   placeholder="Día"
-                   value="${parseInt(day)}"
-                   min="1"
-                   max="31"
-                   required>
-            
-            <input type="text" 
-                   name="amount" 
-                   placeholder="$ Monto"
-                   value="${transaction.amount}"
-                   inputmode="decimal"
-                   required>
-            
-            <select name="type" required>
-                <option value="ingreso" ${transaction.type === 'ingreso' ? 'selected' : ''}>💰 Ingreso</option>
-                <option value="gasto" ${transaction.type === 'gasto' ? 'selected' : ''}>💸 Gasto</option>
-                <option value="venta" ${transaction.type === 'venta' ? 'selected' : ''}>💵 Venta</option>
-            </select>
-
-            <select name="category" required>
-                <option value="la_tarima" ${transaction.category === 'la_tarima' ? 'selected' : ''}>🔨 La Tarima</option>
-                <option value="comida" ${transaction.category === 'comida' ? 'selected' : ''}>🍔 Comida</option>
-                <option value="transporte" ${transaction.category === 'transporte' ? 'selected' : ''}>🚗 Transporte</option>
-                <option value="servicios" ${transaction.category === 'servicios' ? 'selected' : ''}>💡 Servicios</option>
-                <option value="salud" ${transaction.category === 'salud' ? 'selected' : ''}>🏥 Salud</option>
-                <option value="entretenimiento" ${transaction.category === 'entretenimiento' ? 'selected' : ''}>🎮 Entret.</option>
-                <option value="compras" ${transaction.category === 'compras' ? 'selected' : ''}>🛒 Compras</option>
-                <option value="educacion" ${transaction.category === 'educacion' ? 'selected' : ''}>📚 Educ.</option>
-                <option value="otros" ${transaction.category === 'otros' ? 'selected' : ''}>📦 Otros</option>
-            </select>
-
-            <input type="hidden" name="description" value="${transaction.description || ''}">
-
-            <button type="button" class="btn-add-detail-inline" title="Agregar/editar detalle">
-                ${transaction.description ? '📝' : '➕'}
-            </button>
-
-            <button type="submit" class="btn-quick-add-inline">
-                ✅
-            </button>
-        </form>
-    `;
-    
-    // Agregar event listener al formulario
-    const form = targetElement.querySelector('form');
-    form.addEventListener('submit', (e) => handleInlineEditSubmit(e, transactionId));
-    
-    // Event listener para el botón de detalle
-    const btnDetail = form.querySelector('.btn-add-detail-inline');
-    btnDetail.addEventListener('click', () => editAddDetail(form));
-    
-    // Event listeners para Enter en los selects
-    const typeSelect = form.querySelector('select[name="type"]');
-    const categorySelect = form.querySelector('select[name="category"]');
-    
-    typeSelect.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            form.querySelector('button[type="submit"]').click();
-        }
-    });
-    
-    categorySelect.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            form.querySelector('button[type="submit"]').click();
-        }
-    });
-}
-
-// Manejar submit del formulario de edición inline
-function handleInlineEditSubmit(e, transactionId) {
-    e.preventDefault();
-    
-    const formData = new FormData(e.target);
-    const selectedDay = parseInt(formData.get('day'));
-    const originalDate = e.target.dataset.originalDate;
-    const [year, month] = originalDate.split('-');
-    
-    // Validar día
-    const daysInMonth = new Date(parseInt(year), parseInt(month), 0).getDate();
-    if (selectedDay < 1 || selectedDay > daysInMonth) {
-        alert(`El día debe estar entre 1 y ${daysInMonth} para este mes.`);
-        return;
-    }
-    
-    // Construir la fecha completa
-    const dateStr = `${year}-${month}-${String(selectedDay).padStart(2, '0')}`;
-    
-    // Encontrar y actualizar la transacción
-    const index = AppState.transactions.findIndex(t => t.id === transactionId);
-    if (index !== -1) {
-        const category = formData.get('category');
-        const type = formData.get('type');
-        const module = (category === 'la_tarima') ? 'tarima' : 'general';
-        
-        let updatedTransaction = {
-            id: transactionId,
-            type: type,
-            module: module,
-            amount: formData.get('amount'),
-            category: category,
-            date: dateStr,
-            description: formData.get('description') || ''
-        };
-        
-        updatedTransaction = normalizeTransaction(updatedTransaction);
-        AppState.transactions[index] = updatedTransaction;
-        
-        saveData();
-        updateDashboard();
-        displayRecentTransactions();
-        
-        showNotification('✅ Transacción actualizada');
-    }
-}
-
-// Editar detalle en formulario inline
-function editAddDetail(form) {
-    const currentDescription = form.querySelector('input[name="description"]').value;
-    const description = prompt('📝 Ingresa el detalle de la transacción:', currentDescription);
-    
-    if (description !== null) {
-        form.querySelector('input[name="description"]').value = description;
-        
-        const btn = form.querySelector('.btn-add-detail-inline');
-        if (description.trim() !== '') {
-            btn.textContent = '📝';
-            btn.style.color = '#059669';
-        } else {
-            btn.textContent = '➕';
-            btn.style.color = '#3B82F6';
-        }
     }
 }
 
@@ -1130,35 +822,11 @@ function displayCategoryChart(categoryExpenses) {
 }
 
 // Mostrar transacciones
+// Mostrar transacciones (DEPRECATED - pestaña eliminada)
 function displayTransactions() {
-    const list = document.getElementById('transactionsList');
-    const filterType = document.getElementById('filterType').value;
-
-    let filtered = AppState.transactions.filter(t => 
-        t.date.startsWith(AppState.currentMonth)
-    );
-
-    if (filterType !== 'all') {
-        filtered = filtered.filter(t => t.type === filterType);
-    }
-
-    filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    if (filtered.length === 0) {
-        list.innerHTML = `
-            <div class="empty-state">
-                <div class="empty-state-icon">📭</div>
-                <p>No hay transacciones para mostrar</p>
-            </div>
-        `;
-        return;
-    }
-
-    list.innerHTML = '';
-    filtered.forEach(transaction => {
-        const item = createTransactionElement(transaction);
-        list.appendChild(item);
-    });
+    // Esta función ya no se usa porque eliminamos la pestaña Transacciones
+    // Los filtros ahora están en displayRecentTransactions()
+    return;
 }
 
 // Crear elemento de transacción
@@ -1188,22 +856,184 @@ function createTransactionElement(transaction) {
         <div class="td-descripcion">${transaction.description || '-'}</div>
         <div class="td-monto ${transaction.type}">${sign}${formatCurrency(transaction.amount)}</div>
         <div class="td-actions">
-            <button class="btn-icon" onclick="deleteTransaction('${transaction.id}')" title="Eliminar">🗑️</button>
+            <button class="btn-icon" data-id="${transaction.id}" onclick="editTransaction('${transaction.id}')" title="Editar">✏️</button>
+            <button class="btn-icon" data-id="${transaction.id}" onclick="deleteTransaction('${transaction.id}')" title="Eliminar">🗑️</button>
         </div>
     `;
     
     return item;
 }
 
+// Editar transacción
+function handleEditTransaction(transactionId) {
+    const transaction = AppState.transactions.find(t => t.id === transactionId);
+    if (!transaction) return;
+    
+    // Encontrar el elemento de la transacción
+    const transactionElements = document.querySelectorAll('.transaction-item, .recent-item');
+    let targetElement = null;
+    
+    transactionElements.forEach(el => {
+        const editBtn = el.querySelector(`[data-id="${transactionId}"]`);
+        if (editBtn) targetElement = el;
+    });
+    
+    if (!targetElement) return;
+    
+    // Crear formulario inline exactamente igual al quick add
+    const formattedAmount = transaction.amount.toString().replace('.', ',');
+    
+    // Extraer el día de la fecha
+    const transactionDate = new Date(transaction.date + 'T00:00:00');
+    const day = transactionDate.getDate();
+    
+    // Formulario idéntico al quick add
+    targetElement.innerHTML = `
+        <form class="quick-add-form-inline edit-mode" data-id="${transactionId}" data-original-date="${transaction.date}">
+            <input type="number" 
+                   name="day" 
+                   value="${day}"
+                   placeholder="Día"
+                   min="1"
+                   max="31"
+                   required>
+            
+            <input type="text" 
+                   name="amount" 
+                   value="${formattedAmount}"
+                   placeholder="$ Monto" 
+                   inputmode="decimal"
+                   required>
+            
+            <select name="type" class="edit-type-${transactionId}" required>
+                <option value="ingreso" ${transaction.type === 'ingreso' ? 'selected' : ''}>💰 Ingreso</option>
+                <option value="gasto" ${transaction.type === 'gasto' ? 'selected' : ''}>💸 Gasto</option>
+                <option value="venta" ${transaction.type === 'venta' ? 'selected' : ''}>💵 Venta</option>
+            </select>
+
+            <select name="category" class="edit-category-${transactionId}" required>
+                <option value="la_tarima" ${transaction.category === 'la_tarima' ? 'selected' : ''}>🔨 La Tarima</option>
+                <option value="comida" ${transaction.category === 'comida' ? 'selected' : ''}>🍔 Comida</option>
+                <option value="transporte" ${transaction.category === 'transporte' ? 'selected' : ''}>🚗 Transporte</option>
+                <option value="servicios" ${transaction.category === 'servicios' ? 'selected' : ''}>💡 Servicios</option>
+                <option value="salud" ${transaction.category === 'salud' ? 'selected' : ''}>🏥 Salud</option>
+                <option value="entretenimiento" ${transaction.category === 'entretenimiento' ? 'selected' : ''}>🎮 Entret.</option>
+                <option value="compras" ${transaction.category === 'compras' ? 'selected' : ''}>🛒 Compras</option>
+                <option value="educacion" ${transaction.category === 'educacion' ? 'selected' : ''}>📚 Educ.</option>
+                <option value="otros" ${transaction.category === 'otros' ? 'selected' : ''}>📦 Otros</option>
+            </select>
+
+            <button type="button" class="btn-add-detail-inline" onclick="editAddDetail('${transactionId}')" title="Agregar detalle">
+                ➕
+            </button>
+
+            <input type="hidden" name="description" value="${transaction.description || ''}">
+
+            <button type="submit" class="btn-quick-add-inline" title="Guardar">
+                ✅
+            </button>
+        </form>
+    `;
+    
+    // Agregar event listener al formulario
+    const form = targetElement.querySelector('form');
+    form.addEventListener('submit', handleInlineEditSubmit);
+    
+    // Agregar event listeners de Enter a los selects
+    const typeSelect = form.querySelector('.edit-type-' + transactionId);
+    const categorySelect = form.querySelector('.edit-category-' + transactionId);
+    
+    if (typeSelect) {
+        typeSelect.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                form.requestSubmit();
+            }
+        });
+    }
+    
+    if (categorySelect) {
+        categorySelect.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                form.requestSubmit();
+            }
+        });
+    }
+}
+
+function editAddDetail(transactionId) {
+    const form = document.querySelector(`.edit-mode[data-id="${transactionId}"]`);
+    if (!form) return;
+    
+    const currentDesc = form.querySelector('input[name="description"]').value;
+    const description = prompt('📝 Ingresa el detalle de la transacción:', currentDesc);
+    
+    if (description !== null) {
+        form.querySelector('input[name="description"]').value = description.trim();
+    }
+}
+
+function handleInlineEditSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const transactionId = e.target.dataset.id;
+    const originalDate = e.target.dataset.originalDate;
+    
+    // Construir la nueva fecha usando el año y mes actual, y el día del formulario
+    const currentDate = new Date(originalDate + 'T00:00:00');
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(formData.get('day')).padStart(2, '0');
+    const newDate = `${year}-${month}-${day}`;
+    
+    const index = AppState.transactions.findIndex(t => t.id === transactionId);
+    if (index !== -1) {
+        let transaction = {
+            id: transactionId,
+            type: formData.get('type'),
+            module: AppState.transactions[index].module, // Mantener el módulo original
+            amount: formData.get('amount'),
+            category: formData.get('category'),
+            date: newDate,
+            description: formData.get('description') || ''
+        };
+        
+        transaction = normalizeTransaction(transaction);
+        AppState.transactions[index] = transaction;
+        
+        saveData();
+        updateDashboard();
+        displayRecentTransactions();
+        displayTransactions();
+        
+        showNotification('✅ Transacción actualizada');
+    }
+}
+
+function cancelEdit() {
+    updateDashboard();
+    displayRecentTransactions();
+    displayTransactions();
+}
+
+function editTransaction(id) {
+    handleEditTransaction(id);
+}
+
 // Modal de transacción
 function openTransactionModal() {
     document.getElementById('transactionModal').classList.add('active');
     document.getElementById('transactionForm').reset();
-    document.getElementById('transDate').valueAsDate = new Date();
+    document.getElementById('transactionDate').valueAsDate = new Date();
+    // Limpiar el ID de edición
+    delete document.getElementById('transactionForm').dataset.editId;
 }
 
 function closeTransactionModal() {
     document.getElementById('transactionModal').classList.remove('active');
+    // Limpiar el ID de edición al cerrar
+    delete document.getElementById('transactionForm').dataset.editId;
 }
 
 // Mostrar tarjetas de módulos
@@ -1350,10 +1180,10 @@ function handleTransactionSubmit(e) {
     const editId = e.target.dataset.editId;
     
     if (editId) {
-        // MODO EDICIÓN: Actualizar transacción existente
+        // Modo edición: actualizar transacción existente
         const index = AppState.transactions.findIndex(t => t.id === editId);
         if (index !== -1) {
-            let updatedTransaction = {
+            let transaction = {
                 id: editId,
                 type: formData.get('type'),
                 module: formData.get('module'),
@@ -1363,23 +1193,12 @@ function handleTransactionSubmit(e) {
                 description: formData.get('description')
             };
             
-            updatedTransaction = normalizeTransaction(updatedTransaction);
-            AppState.transactions[index] = updatedTransaction;
-            
-            saveData();
-            closeTransactionModal();
-            updateDashboard();
-            displayRecentTransactions();
-            displayTransactions();
-            
+            transaction = normalizeTransaction(transaction);
+            AppState.transactions[index] = transaction;
             showNotification('✅ Transacción actualizada');
         }
-        
-        // Limpiar el editId
-        delete e.target.dataset.editId;
-        
     } else {
-        // MODO CREACIÓN: Nueva transacción
+        // Modo creación: nueva transacción
         let transaction = {
             id: Date.now().toString(),
             type: formData.get('type'),
@@ -1392,15 +1211,13 @@ function handleTransactionSubmit(e) {
 
         transaction = normalizeTransaction(transaction);
         AppState.transactions.push(transaction);
-        
-        saveData();
-        closeTransactionModal();
-        updateDashboard();
-        displayRecentTransactions();
-        displayTransactions();
-        
         showNotification('✅ Transacción guardada');
     }
+    
+    saveData();
+    closeTransactionModal();
+    updateDashboard();
+    displayTransactions();
 }
 
 // Manejar clic en botón de agregar detalle
@@ -1497,15 +1314,10 @@ function handleQuickAddSubmit(e) {
     // Actualizar todas las vistas
     console.log('Actualizando la interfaz...');
     
-    // Forzar actualización del dashboard
+    // Actualizar dashboard
     updateDashboard();
     
-    // Actualizar transacciones recientes
-    if (typeof displayRecentTransactions === 'function') {
-        displayRecentTransactions();
-    }
-    
-    // Actualizar lista de transacciones
+    // Actualizar lista de transacciones (deprecated)
     if (typeof displayTransactions === 'function') {
         displayTransactions();
     }
@@ -1954,6 +1766,9 @@ function restoreSingleMonth(backup, month) {
 
 // Exportar funciones globales
 window.deleteTransaction = deleteTransaction;
+window.editTransaction = editTransaction;
+window.cancelEdit = cancelEdit;
+window.editAddDetail = editAddDetail;
 
 // Guardar datos en Firebase (función mínima para evitar errores si se llama)
 async function saveDataToFirebase() {
