@@ -2016,3 +2016,65 @@ select, option, .segment-label, .segment-amount, .tab-icon, .recent-item, .trans
         transform: translateY(0);
     }
 }
+
+/* ==========================================
+   CONTROLES DEL HEADER
+   ========================================== */
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sync-btn {
+    background: var(--primary);
+    color: var(--text);
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.sync-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+.sync-btn:active {
+    transform: scale(0.95);
+}
+
+.sync-btn.syncing .sync-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.sync-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+    .header-controls {
+        gap: 6px;
+    }
+    
+    .sync-btn,
+    .theme-toggle {
+        min-width: 36px;
+        min-height: 36px;
+        font-size: 14px;
+    }
+}

@@ -41,6 +41,28 @@ auth.onAuthStateChanged((user) => {
     }
 });
 
+// Detectar cambios de conectividad (importante para móviles)
+let isOnline = navigator.onLine;
+
+window.addEventListener('online', () => {
+    console.log('🌐 Conectividad restaurada');
+    isOnline = true;
+    showToast('🌐 Conectado - Sincronizando...');
+    
+    // Sincronizar datos pendientes cuando se recupera la conexión
+    if (currentUser) {
+        setTimeout(() => {
+            saveDataToFirebase();
+        }, 1000); // Esperar un poco para asegurar estabilidad de conexión
+    }
+});
+
+window.addEventListener('offline', () => {
+    console.log('📴 Sin conexión a internet');
+    isOnline = false;
+    showToast('📴 Sin conexión - Datos guardados localmente');
+});
+
 // Login con Google
 document.addEventListener('DOMContentLoaded', () => {
     const btnLoginGoogle = document.getElementById('btnLoginGoogle');
@@ -110,30 +132,112 @@ function loadDataFromFirebase() {
         });
 }
 
-// Guardar datos a Firestore
+// Guardar datos a Firestore (mejorado para móviles)
 function saveDataToFirebase() {
-    if (!currentUser) return;
+    if (!currentUser) {
+        console.log('⚠️ No hay usuario autenticado - saltando guardado en Firebase');
+        return;
+    }
     
-    console.log('📤 Guardando datos en Firebase...');
+    if (!db) {
+        console.error('❌ Firebase no está inicializado correctamente');
+        return;
+    }
     
-    db.collection('familyData').doc('sharedAppState')
+    // Verificar conectividad antes de intentar guardar
+    if (!navigator.onLine) {
+        console.log('� Sin conexión - guardado diferido hasta recuperar conectividad');
+        showToast('📴 Sin conexión - se sincronizará al conectar');
+        return;
+    }
+    
+    console.log('�📤 Guardando datos en Firebase...', {
+        user: currentUser.email,
+        transacciones: AppState.transactions.length,
+        meses: Object.keys(AppState.modulesByMonth).length,
+        online: navigator.onLine
+    });
+    
+    // Configurar timeout para evitar colgarse en móviles con mala conexión
+    const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Timeout: operación tardó más de 15 segundos')), 15000)
+    );
+    
+    const savePromise = db.collection('familyData').doc('sharedAppState')
         .set({
             modulesByMonth: AppState.modulesByMonth,
             transactions: AppState.transactions,
             lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
-            updatedBy: currentUser.email
-        })
-        .then(() => {
-            console.log('✅ Datos guardados en Firebase');
-        })
-        .catch((error) => {
-            console.error('❌ Error guardando en Firebase:', error);
-            if (error.code === 'permission-denied') {
-                alert('🔒 Sin permisos para guardar datos. Contacta al administrador.');
-            } else {
-                alert('⚠️ Error al guardar: ' + error.message);
+            updatedBy: currentUser.email,
+            deviceInfo: {
+                userAgent: navigator.userAgent.substring(0, 100),
+                timestamp: new Date().toISOString(),
+                online: navigator.onLine,
+                connection: navigator.connection ? {
+                    effectiveType: navigator.connection.effectiveType,
+                    downlink: navigator.connection.downlink
+                } : 'unknown'
             }
         });
+    
+    Promise.race([savePromise, timeoutPromise])
+        .then(() => {
+            console.log('✅ Datos guardados exitosamente en Firebase');
+            showToast('💾 Datos sincronizados');
+        })
+        .catch((error) => {
+            console.error('❌ Error detallado guardando en Firebase:', {
+                code: error.code,
+                message: error.message,
+                online: navigator.onLine,
+                details: error
+            });
+            
+            if (error.code === 'permission-denied') {
+                showToast('🔒 Sin permisos para guardar');
+                alert('🔒 Sin permisos para guardar datos. Contacta al administrador.');
+            } else if (error.code === 'unavailable' || error.message.includes('Timeout')) {
+                console.log('🔄 Firebase no disponible o timeout, reintentando...');
+                showToast('🔄 Reintentando sincronización...');
+                // Reintentar después de 3 segundos
+                setTimeout(() => saveDataToFirebase(), 3000);
+            } else {
+                showToast('⚠️ Error al sincronizar');
+                console.error('Error de sincronización:', error.message);
+            }
+        });
+}
+
+// Manejar botón de sincronización manual
+function handleSyncButton() {
+    const syncButton = document.getElementById('syncButton');
+    
+    if (!currentUser) {
+        showToast('🔐 Debes iniciar sesión para sincronizar');
+        return;
+    }
+    
+    if (!navigator.onLine) {
+        showToast('📴 Sin conexión a internet');
+        return;
+    }
+    
+    // Animación del botón
+    syncButton.classList.add('syncing');
+    showToast('🔄 Sincronizando datos...');
+    
+    console.log('🔄 Sincronización manual iniciada');
+    
+    // Forzar guardado inmediato
+    saveDataToFirebase();
+    
+    // También cargar datos por si hay cambios remotos
+    loadDataFromFirebase();
+    
+    // Quitar animación después de 2 segundos
+    setTimeout(() => {
+        syncButton.classList.remove('syncing');
+    }, 2000);
 }
 
 // ==========================================
@@ -343,15 +447,68 @@ function loadData() {
     console.log('Mes actual configurado a:', AppState.currentMonth);
 }
 
-// Guardar datos en localStorage y Firebase
-function saveData() {
-    // Guardar localmente como respaldo
-    localStorage.setItem('gastosApp', JSON.stringify(AppState));
-    console.log('💾 Datos guardados en localStorage');
+// Función para mostrar notificaciones discretas (toast)
+function showToast(message, duration = 2000) {
+    // Remover toast anterior si existe
+    const existingToast = document.getElementById('toast');
+    if (existingToast) {
+        existingToast.remove();
+    }
     
-    // Guardar en Firebase si el usuario está autenticado
-    if (currentUser) {
-        saveDataToFirebase();
+    // Crear nuevo toast
+    const toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        z-index: 10000;
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Mostrar con animación
+    setTimeout(() => toast.style.opacity = '1', 10);
+    
+    // Ocultar después del tiempo especificado
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => {
+            if (toast.parentNode) toast.remove();
+        }, 300);
+    }, duration);
+}
+
+// Guardar datos en localStorage y Firebase (mejorado)
+function saveData() {
+    try {
+        // Guardar localmente como respaldo
+        localStorage.setItem('gastosApp', JSON.stringify(AppState));
+        console.log('💾 Datos guardados en localStorage');
+        
+        // Guardar en Firebase si el usuario está autenticado
+        if (currentUser && db) {
+            console.log('🔄 Iniciando sincronización con Firebase...');
+            saveDataToFirebase();
+        } else if (!currentUser) {
+            console.log('ℹ️ Usuario no autenticado - solo guardando localmente');
+        } else if (!db) {
+            console.error('❌ Firebase no disponible - solo guardando localmente');
+        }
+    } catch (error) {
+        console.error('❌ Error en saveData:', error);
+        showToast('⚠️ Error al guardar datos');
     }
 }
 
@@ -545,6 +702,12 @@ function attachEventListeners() {
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    // Sync button (sincronización manual)
+    const syncButton = document.getElementById('syncButton');
+    if (syncButton) {
+        syncButton.addEventListener('click', handleSyncButton);
     }
 
     // Formato en tiempo real para inputs de monto (focus/blur)
@@ -1954,29 +2117,6 @@ function restoreSingleMonth(backup, month) {
 
 // Exportar funciones globales
 window.deleteTransaction = deleteTransaction;
-
-// Guardar datos en Firebase (función mínima para evitar errores si se llama)
-async function saveDataToFirebase() {
-    if (!window.db) {
-        console.log('ℹ️ saveDataToFirebase: No hay instancia de Firebase (window.db) — omitiendo subida');
-        return Promise.resolve();
-    }
-
-    try {
-        const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js');
-        const ref = doc(db, 'backups', 'latest');
-        await setDoc(ref, {
-            updatedAt: new Date().toISOString(),
-            modulesByMonth: AppState.modulesByMonth,
-            transactions: AppState.transactions.slice(-5000) // evitar subir un payload excesivo
-        });
-        console.log('✅ saveDataToFirebase: datos guardados (backup.latest)');
-        return Promise.resolve();
-    } catch (error) {
-        console.error('❌ saveDataToFirebase error:', error);
-        return Promise.reject(error);
-    }
-}
 
 // ==========================================
 // IMPORTACIÓN DE TRANSACCIONES DESDE CSV
