@@ -180,7 +180,12 @@ function saveDataToFirebase() {
             }
         });
     
+<<<<<<< HEAD
     Promise.race([savePromise, timeoutPromise])
+=======
+    // Devolver la promesa para que los llamadores puedan encadenar/await
+    return Promise.race([savePromise, timeoutPromise])
+>>>>>>> 5d884a1 (fix(gastos): remove duplicate app.js include and return promise from saveDataToFirebase)
         .then(() => {
             console.log('✅ Datos guardados exitosamente en Firebase');
             showToast('💾 Datos sincronizados');
@@ -196,7 +201,11 @@ function saveDataToFirebase() {
             if (error.code === 'permission-denied') {
                 showToast('🔒 Sin permisos para guardar');
                 alert('🔒 Sin permisos para guardar datos. Contacta al administrador.');
+<<<<<<< HEAD
             } else if (error.code === 'unavailable' || error.message.includes('Timeout')) {
+=======
+            } else if (error.code === 'unavailable' || (error.message && error.message.includes('Timeout'))) {
+>>>>>>> 5d884a1 (fix(gastos): remove duplicate app.js include and return promise from saveDataToFirebase)
                 console.log('🔄 Firebase no disponible o timeout, reintentando...');
                 showToast('🔄 Reintentando sincronización...');
                 // Reintentar después de 3 segundos
@@ -205,6 +214,11 @@ function saveDataToFirebase() {
                 showToast('⚠️ Error al sincronizar');
                 console.error('Error de sincronización:', error.message);
             }
+<<<<<<< HEAD
+=======
+            // Re-lanzar el error para que el llamador pueda manejarlo si lo desea
+            throw error;
+>>>>>>> 5d884a1 (fix(gastos): remove duplicate app.js include and return promise from saveDataToFirebase)
         });
 }
 
@@ -359,38 +373,35 @@ function normalizeTransaction(t) {
     if (tx.date) {
         // Si es Date
         if (tx.date instanceof Date && !isNaN(tx.date.getTime())) {
-            tx.date = tx.date.toISOString().split('T')[0];
-        } else if (typeof tx.date === 'string') {
-            // Si ya está en formato YYYY-MM-DD, dejar
-            if (/^\d{4}-\d{2}-\d{2}$/.test(tx.date)) {
-                // ok
+    // Devolver la promesa para que los llamadores puedan encadenar/await
+    return Promise.race([savePromise, timeoutPromise])
+        .then(() => {
+            console.log('✅ Datos guardados exitosamente en Firebase');
+            showToast('💾 Datos sincronizados');
+        })
+        .catch((error) => {
+            console.error('❌ Error detallado guardando en Firebase:', {
+                code: error.code,
+                message: error.message,
+                online: navigator.onLine,
+                details: error
+            });
+            
+            if (error.code === 'permission-denied') {
+                showToast('🔒 Sin permisos para guardar');
+                alert('🔒 Sin permisos para guardar datos. Contacta al administrador.');
+            } else if (error.code === 'unavailable' || (error.message && error.message.includes('Timeout'))) {
+                console.log('🔄 Firebase no disponible o timeout, reintentando...');
+                showToast('🔄 Reintentando sincronización...');
+                // Reintentar después de 3 segundos
+                setTimeout(() => saveDataToFirebase(), 3000);
             } else {
-                // Intentar parsear formatos comunes DD/MM/YYYY o DD-MM-YYYY
-                const parts = tx.date.split(/[\/\-.]/).map(p => p.trim());
-                if (parts.length === 3) {
-                    let [p1, p2, p3] = parts;
-                    let day, month, year;
-                    if (p1.length === 4) { // YYYY/MM/DD
-                        year = p1; month = p2; day = p3;
-                    } else { // DD/MM/YYYY
-                        day = p1; month = p2; year = p3;
-                    }
-                    if (year.length === 2) year = '20' + year;
-                    day = String(day).padStart(2, '0');
-                    month = String(month).padStart(2, '0');
-                    if (/^\d{4}$/.test(year) && /^\d{2}$/.test(month) && /^\d{2}$/.test(day)) {
-                        tx.date = `${year}-${month}-${day}`;
-                    } else {
-                        // fallback a fecha actual
-                        tx.date = new Date().toISOString().split('T')[0];
-                    }
-                } else {
-                    tx.date = new Date().toISOString().split('T')[0];
-                }
+                showToast('⚠️ Error al sincronizar');
+                console.error('Error de sincronización:', error.message);
             }
-        }
-    } else {
-        tx.date = new Date().toISOString().split('T')[0];
+            // Re-lanzar el error para que el llamador pueda manejarlo si lo desea
+            throw error;
+        });
     }
 
     // Normalizar strings

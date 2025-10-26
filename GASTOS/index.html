@@ -434,7 +434,7 @@
         </div>
     </div>
 
-    <script defer src="app.js?v=69"></script>
+    <!-- app.js se carga una sola vez al final del body; se removió la inclusión en el head para evitar ejecuciones dobles -->
     <script>
         if('serviceWorker' in navigator){
             window.addEventListener('load',()=>{
