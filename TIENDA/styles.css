@@ -1,0 +1,242 @@
+body { font-family: Arial, sans-serif; background: #f8f8f8; margin: 0; }
+
+/* Cabecera */
+header {
+	background: #222;
+	color: #fff;
+	padding: 1.5rem 1rem 1rem 1rem;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+.header-flex {
+	display: flex;
+	width: 100%;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+.header-info {
+	display: flex;
+	flex-direction: column;
+}
+header h1 {
+	margin: 0;
+	font-size: 2.2rem;
+	letter-spacing: 2px;
+}
+.subtitle {
+	font-size: 1.1rem;
+	color: #e0e0e0;
+	margin-bottom: 0.5rem;
+}
+nav {
+	margin-top: 0.5rem;
+}
+nav a {
+	color: #fff;
+	margin-right: 1.2rem;
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.2s;
+}
+nav a:last-child {
+	margin-right: 0;
+}
+nav a:hover {
+	color: #ffd700;
+}
+.buscador-header {
+	margin-top: 0.5rem;
+	margin-bottom: 0;
+	justify-content: flex-end;
+}
+
+/* Contenido principal */
+main {
+	padding: 2rem;
+}
+.productos-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 2rem;
+}
+.producto-card {
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	padding: 1.2rem 1rem 1.5rem 1rem;
+	text-align: center;
+	max-width: 400px;
+	margin: 0 auto;
+}
+.producto-card img {
+	max-width: 100%;
+	border-radius: 6px;
+	margin-bottom: 0.7rem;
+}
+.producto-card h3 {
+	margin: 0.5rem 0;
+	font-size: 1.3rem;
+}
+.producto-card p {
+	color: #444;
+	margin-bottom: 1rem;
+}
+.producto-card a {
+	display: inline-block;
+	margin-top: 0.5rem;
+	color: #222;
+	background: #ffd700;
+	padding: 0.4rem 1.2rem;
+	border-radius: 4px;
+	text-decoration: none;
+	font-weight: 500;
+	transition: background 0.2s, color 0.2s;
+}
+
+/* Sección FAQ */
+.faq {
+	background: #fffbe6;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+	padding: 2rem 1rem;
+	margin: 2rem auto 0 auto;
+	max-width: 700px;
+}
+.faq h2 {
+	text-align: center;
+	color: #222;
+	margin-bottom: 1.2rem;
+}
+.faq-item {
+	margin-bottom: 1.1rem;
+}
+.faq-item h3 {
+	color: #ffd700;
+	margin-bottom: 0.3rem;
+	font-size: 1.1rem;
+}
+.faq-item p {
+	color: #222;
+	margin: 0;
+}
+
+/* Buscador de productos */
+.buscador-productos {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1.5rem;
+}
+.buscador-productos input {
+	width: 260px;
+	padding: 0.6rem 1rem;
+	border: 2px solid #ffd700;
+	border-radius: 6px;
+	font-size: 1rem;
+	outline: none;
+	margin-right: 0.5rem;
+	transition: border-color 0.2s;
+}
+.buscador-productos input:focus {
+	border-color: #222;
+}
+.icono-busqueda {
+	font-size: 1.3rem;
+	color: #ffd700;
+}
+
+/* Filtros por categoría */
+.filtros-categorias {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: center;
+	margin-bottom: 1.2rem;
+}
+.banner-oferta {
+	background: linear-gradient(90deg, #ffd700 80%, #fffbe6 100%);
+	color: #222;
+	font-weight: 700;
+	font-size: 1.1rem;
+	text-align: center;
+	padding: 0.7rem 1rem;
+	border-radius: 8px;
+	margin-bottom: 1.2rem;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+}
+.filtro-btn {
+	background: #ffd700;
+	color: #222;
+	border: none;
+	border-radius: 4px;
+	padding: 0.5rem 1.1rem;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.filtro-btn:hover, .filtro-btn.active {
+	background: #222;
+	color: #ffd700;
+}
+
+/* Información de contacto visible */
+.contacto-info {
+	display: flex;
+	justify-content: center;
+	gap: 1.2rem;
+	margin: 1.2rem 0 0.5rem 0;
+	flex-wrap: wrap;
+}
+.contacto-info a {
+	color: #222;
+	background: #ffd700;
+	padding: 0.4rem 1rem;
+	border-radius: 4px;
+	text-decoration: none;
+	font-weight: 500;
+	transition: background 0.2s, color 0.2s;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.contacto-info a:hover {
+	background: #222;
+	color: #ffd700;
+}
+
+/* Pie de página */
+footer {
+	background: #222;
+	color: #fff;
+	text-align: center;
+	padding: 1rem;
+	margin-top: 2rem;
+	font-size: 1rem;
+	letter-spacing: 1px;
+	box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+}
+.footer-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.3rem;
+}
+.footer-redes {
+	margin-top: 0.5rem;
+	display: flex;
+	gap: 1.2rem;
+	justify-content: center;
+}
+.footer-redes a {
+	color: #ffd700;
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.2s;
+}
+.footer-redes a:hover {
+	color: #fff;
+}
+}

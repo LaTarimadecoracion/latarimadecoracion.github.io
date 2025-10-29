@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA TARIMA - Catálogo Profesional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-flex">
+            <div class="header-info">
+                <h1>LA TARIMA</h1>
+                <div class="subtitle">Carpintería Online</div>
+                <nav>
+                        <a href="#">Inicio</a>
+                        <a href="#catalogo">Catálogo</a>
+                        <a href="#contacto">Contacto</a>
+                </nav>
+            </div>
+            <div class="buscador-productos buscador-header">
+                <input type="text" id="busqueda" placeholder="Buscar productos..." autocomplete="off">
+                <span class="icono-busqueda">🔍</span>
+            </div>
+        </div>
+    </header>
+        <div class="contacto-info">
+            <a href="https://wa.me/5491123456789" target="_blank" class="contacto-whatsapp">WhatsApp</a>
+            <a href="mailto:info@latarima.com" class="contacto-email">info@latarima.com</a>
+            <a href="https://instagram.com/latarima" target="_blank" class="contacto-red">Instagram</a>
+            <a href="https://facebook.com/latarima" target="_blank" class="contacto-red">Facebook</a>
+        </div>
+        <main>
+        <section id="catalogo">
+            <div class="banner-oferta">
+                <span>🎉 Oferta especial: 10% OFF en productos seleccionados hasta el 15/11 🎉</span>
+            </div>
+            <div class="filtros-categorias">
+                <button class="filtro-btn" data-categoria="todos">Todos</button>
+                <button class="filtro-btn" data-categoria="Barandas desmontables">Barandas desmontables</button>
+                <button class="filtro-btn" data-categoria="Barandas para Sommier">Barandas para Sommier</button>
+                <button class="filtro-btn" data-categoria="Barandas Fijas">Barandas Fijas</button>
+                <button class="filtro-btn" data-categoria="Barandas Ortopédicas">Barandas Ortopédicas</button>
+                <button class="filtro-btn" data-categoria="Deck">Deck</button>
+                <button class="filtro-btn" data-categoria="Camas">Camas</button>
+                <button class="filtro-btn" data-categoria="Podios">Podios</button>
+                <button class="filtro-btn" data-categoria="Estantes">Estantes</button>
+                <button class="filtro-btn" data-categoria="Escaleras">Escaleras</button>
+                <button class="filtro-btn" data-categoria="Percheros">Percheros</button>
+                <button class="filtro-btn" data-categoria="Infantiles">Infantiles</button>
+                <button class="filtro-btn" data-categoria="Organizadores">Organizadores</button>
+                <button class="filtro-btn" data-categoria="Steps / Cajones">Steps / Cajones</button>
+                <button class="filtro-btn" data-categoria="Otros productos">Otros productos</button>
+            </div>
+            <h2>Productos Destacados</h2>
+            <div id="productos" class="productos-grid"></div>
+        </section>
+    </main>
+    <footer>
+                <div class="footer-info">
+                    <p>&copy; 2025 LA TARIMA - Carpintería Online</p>
+                    <p>Dirección: Av. Ejemplo 1234, CABA</p>
+                    <p>Teléfono: (011) 2345-6789</p>
+                    <div class="footer-redes">
+                        <a href="https://instagram.com/latarima" target="_blank">Instagram</a>
+                        <a href="https://facebook.com/latarima" target="_blank">Facebook</a>
+                        <a href="https://wa.me/5491123456789" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

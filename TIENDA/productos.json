@@ -1,0 +1,16 @@
+[
+  { "nombre": "Barandas desmontables", "descripcion": "Barandas para cama, seguras y fáciles de instalar.", "imagen": "tienda/Barandas desmontables.jpg" },
+  { "nombre": "Barandas para Sommier", "descripcion": "Barandas especiales para camas Sommier.", "imagen": "tienda/barandas-sommier.png" },
+  { "nombre": "Barandas Fijas", "descripcion": "Barandas fijas para máxima seguridad.", "imagen": "tienda/Barandas Fijas.JPG" },
+  { "nombre": "Barandas Ortopédicas", "descripcion": "Barandas ortopédicas para necesidades especiales.", "imagen": "tienda/barandas ortopedicas.jpeg" },
+  { "nombre": "Deck", "descripcion": "Decks de madera para exteriores e interiores.", "imagen": "tienda/deck madera.jpg" },
+  { "nombre": "Camas", "descripcion": "Camas de madera personalizadas.", "imagen": "tienda/Camas-personalizadas.png" },
+  { "nombre": "Podios", "descripcion": "Podios resistentes y funcionales.", "imagen": "tienda/podios funcionales.JPG" },
+  { "nombre": "Estantes", "descripcion": "Estantes de madera para organización y decoración.", "imagen": "tienda/estantes decorativos.jpeg" },
+  { "nombre": "Escaleras", "descripcion": "Escaleras de madera seguras y estéticas.", "imagen": "tienda/Escaleras madera.jpg" },
+  { "nombre": "Percheros", "descripcion": "Percheros de madera para el hogar.", "imagen": "tienda/percheros hogar.png" },
+  { "nombre": "Infantiles", "descripcion": "Productos infantiles en madera, seguros y coloridos.", "imagen": "tienda/Infantiles coloridos.JPG" },
+  { "nombre": "Organizadores", "descripcion": "Organizadores de madera para cualquier ambiente.", "imagen": "tienda/organizadores ambiente.jpeg" },
+  { "nombre": "Steps / Cajones", "descripcion": "Steps y cajones funcionales en madera.", "imagen": "tienda/steps cajones funcionales.png" },
+  { "nombre": "Otros productos", "descripcion": "Variedad de productos en madera personalizados.", "imagen": "tienda/Otros productos personalizados.JPG" }
+]
