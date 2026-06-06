@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Deep Linking Router para Productos Compartidos (?p=id-producto)
+    // 3. Deep Linking Router para Productos Compartidos (?p=id-producto) y Vistas (?view=id-vista)
     try {
         const urlParams = new URLSearchParams(window.location.search);
         const prodId = urlParams.get('p') || urlParams.get('product');
@@ -87,6 +87,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         console.warn(`[Router] Producto con ID '${prodId}' no encontrado en el catálogo.`);
                     }
+                }
+            }, 150);
+        }
+
+        const viewId = urlParams.get('view');
+        if (viewId) {
+            setTimeout(() => {
+                if (window.navigateToView) {
+                    console.log(`[Router] Navegación solicitada por URL a: ${viewId}`);
+                    window.navigateToView(viewId);
+                    
+                    // Limpiar la URL sin recargar para estética premium
+                    const cleanUrl = window.location.pathname;
+                    window.history.replaceState({}, document.title, cleanUrl);
                 }
             }, 150);
         }

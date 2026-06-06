@@ -1,169 +1,54 @@
 /* css/calcular.css */
-/* --- ESTILOS ULTRA-CLEAN LA TARIMA 2.0 PARA LA CALCULADORA --- */
+/* --- ESTILOS PREMIUM ULTRA-CLEAN LA TARIMA 2.0 --- */
 
-/* Reset de scroll y display para SPA */
-html, body {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    min-height: 100vh;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    position: relative;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background-color: var(--bg-color);
-    font-family: var(--font-main);
-    color: var(--text-main);
-}
-
-/* Auras de fondo premium */
-.bg-glow {
-    position: fixed;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(180, 132, 108, 0.12) 0%, rgba(250, 249, 246, 0) 70%);
-    filter: blur(80px);
-    z-index: -1;
-    pointer-events: none;
-}
-.bg-glow-1 { top: -150px; right: -150px; }
-.bg-glow-2 { bottom: -150px; left: -150px; }
-
-/* Contenedor Principal */
-.container {
-    max-width: 800px;
+/* Contenedor Limpio */
+.view-content-clean {
+    padding: 1.5rem 1.5rem 6rem 1.5rem;
+    max-width: 650px;
     margin: 0 auto;
-    padding: 2.5rem 1.25rem 4rem 1.25rem;
-    box-sizing: border-box;
     width: 100%;
+    box-sizing: border-box;
 }
 
-/* Cabecera minimalista (La Tarima 2.0) */
-.site-header {
-    text-align: center;
-    position: relative;
-    padding: 2rem 1.5rem;
+/* Tarjeta de la Calculadora */
+.calculator-card {
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 24px;
-    box-shadow: 0 8px 30px rgba(180, 132, 108, 0.03);
-    margin-bottom: 2rem;
-    animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.site-header .back-btn {
-    position: absolute;
-    left: 1.25rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(180, 132, 108, 0.15);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    color: var(--text-main);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    text-decoration: none;
-}
-
-.site-header .back-btn:hover {
-    background: var(--primary-color);
-    color: #FFFFFF;
-    border-color: var(--primary-color);
-    transform: translateY(-50%) scale(1.05);
-}
-
-.site-header .brand-title {
-    color: var(--primary-color);
-    font-weight: 800;
-    font-size: 2rem;
-    letter-spacing: 4px;
-    margin: 0;
-    text-shadow: 0 1px 2px rgba(180, 132, 108, 0.04);
-}
-
-.site-header .brand-subtitle {
-    color: var(--text-muted);
-    font-size: 0.98rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    margin-top: 0.25rem;
-}
-
-/* Tarjeta Principal */
-.product-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.product-card {
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    border-radius: 24px;
-    padding: 1.75rem;
-    box-shadow: 0 10px 30px rgba(180, 132, 108, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(180, 132, 108, 0.03);
     animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.product-card-title {
+.calculator-card-title {
     font-size: 1.35rem;
     font-weight: 700;
     color: var(--primary-color);
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     letter-spacing: 0.3px;
+    text-align: center;
 }
 
-/* Panel de Medidas (Ultra-Clean) */
+/* Panel de Parámetros */
 .calc-panel {
-    background: rgba(255, 255, 255, 0.7) !important;
-    border: 1px solid rgba(255, 255, 255, 0.6) !important;
-    border-radius: 18px !important;
-    padding: 1.5rem !important;
-    box-shadow: none !important;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(180, 132, 108, 0.12);
+    border-radius: 16px;
+    padding: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
-.calc-panel h2 {
-    color: var(--text-main);
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin: 0 0 0.5rem 0;
-}
-
-.calc-panel p {
-    color: var(--text-muted);
+.calc-intro-text {
     font-size: 0.85rem;
-    line-height: 1.45;
-    margin: 0 0 1.25rem 0;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
 }
 
-/* inputs */
-.inputs-grid {
+/* Formulario Grid */
+.inputs-grid-clean {
     display: flex;
     flex-wrap: wrap;
     gap: 1.25rem;
@@ -171,230 +56,292 @@ body {
     margin-bottom: 1.25rem;
 }
 
-.input-field {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--text-muted);
+.input-group-clean {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+    flex: 1;
+    min-width: 120px;
 }
 
-.input-field input {
+.input-group-clean label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-group-clean input {
     background: #FFFFFF;
     border: 1.5px solid var(--secondary-color);
     border-radius: 10px;
-    padding: 0.6rem 0.85rem;
+    padding: 0.65rem 0.9rem;
     font-family: var(--font-main);
     font-size: 0.95rem;
     color: var(--text-main);
     transition: all 0.2s ease;
     outline: none;
-    width: 150px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.input-field input:focus {
+.input-group-clean input:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(180, 132, 108, 0.12);
 }
 
-.calc-btn-container {
-    padding-top: 2px;
-}
-
-.btn-action {
-    background: var(--primary-color);
-    color: #FFFFFF;
-    font-family: var(--font-main);
-    font-weight: 600;
-    padding: 0.65rem 1.4rem;
-    border: none;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(180, 132, 108, 0.15);
-    transition: all 0.2s ease;
-}
-
-.btn-action:hover {
-    background: var(--primary-hover);
-    box-shadow: 0 5px 15px rgba(180, 132, 108, 0.25);
-}
-
-.btn-action:active {
-    transform: scale(0.98);
-}
-
-/* Diagrama */
-.diagram-container {
+/* Diagrama Explicativo */
+.diagram-container-clean {
     margin-top: 1.25rem;
     display: flex;
     gap: 1rem;
     align-items: center;
     background: rgba(255, 255, 255, 0.5);
-    padding: 0.75rem;
-    border-radius: 14px;
+    padding: 0.85rem;
+    border-radius: 12px;
     border: 1px dashed rgba(180, 132, 108, 0.15);
 }
 
-.diagram-container svg {
+.diagram-container-clean svg {
     border-radius: 8px;
     background: #FFFFFF;
-    border: 1px solid rgba(180, 132, 108, 0.06);
+    border: 1px solid rgba(180, 132, 108, 0.08);
     flex-shrink: 0;
 }
 
-.diagram-text {
+.diagram-text-clean {
     font-size: 0.78rem;
     color: var(--text-muted);
     line-height: 1.4;
 }
 
-.panel-disclaimer {
-    margin-top: 1rem;
+.panel-disclaimer-clean {
+    margin-top: 1.25rem;
     font-size: 0.72rem;
     color: var(--text-muted);
-    line-height: 1.35;
+    line-height: 1.4;
     border-left: 2px solid rgba(180, 132, 108, 0.25);
-    padding-left: 8px;
+    padding-left: 10px;
 }
 
-/* Tabla de Resultados (Estilo Minimalista) */
-.product-table {
+/* Tabla de Resultados */
+.results-table-container {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 10px rgba(180, 132, 108, 0.01);
+}
+
+.results-table-clean {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1.5rem;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    text-align: left;
 }
 
-.product-table th {
-    background: rgba(180, 132, 108, 0.08);
+.results-table-clean th {
+    background: rgba(180, 132, 108, 0.07);
     color: var(--primary-color);
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.75rem;
-    letter-spacing: 1px;
-    padding: 0.9rem 1.1rem;
+    letter-spacing: 0.8px;
+    padding: 0.95rem 1.15rem;
     border-bottom: 1px solid rgba(180, 132, 108, 0.1);
-    text-align: left;
 }
 
-.product-table th[colspan="3"] {
-    text-align: center;
-}
-
-.product-table td {
-    padding: 0.9rem 1.1rem;
+.results-table-clean td {
+    padding: 0.95rem 1.15rem;
     font-size: 0.88rem;
-    border-bottom: 1px solid rgba(180, 132, 108, 0.06);
+    border-bottom: 1px solid rgba(180, 132, 108, 0.05);
     color: var(--text-main);
+    vertical-align: middle;
 }
 
-.product-table tbody tr {
+.results-table-clean tbody tr {
     transition: background-color 0.2s ease;
-    cursor: pointer;
 }
 
-.product-table tbody tr:hover {
+.results-table-clean tbody tr:hover {
     background: rgba(180, 132, 108, 0.03);
 }
 
-.fila-recomendada {
-    background: rgba(26, 127, 55, 0.05) !important;
+/* Fila Recomendada */
+.results-table-clean tr.fila-recomendada {
+    background: rgba(26, 127, 55, 0.04) !important;
 }
 
-.fila-recomendada:hover {
-    background: rgba(26, 127, 55, 0.08) !important;
+.results-table-clean tr.fila-recomendada:hover {
+    background: rgba(26, 127, 55, 0.07) !important;
 }
 
-.fila-recomendada td:first-child::before {
+.results-table-clean tr.fila-recomendada td:first-child::before {
     content: "★";
     color: #1a7f37;
     margin-right: 6px;
-    font-size: 11px;
     font-weight: bold;
+    font-size: 0.85rem;
 }
 
-.fila-seleccionada {
+/* Fila Seleccionada */
+.results-table-clean tr.fila-seleccionada {
     box-shadow: 0 0 0 2px var(--primary-color) inset !important;
     background: rgba(180, 132, 108, 0.03) !important;
 }
 
-/* Bloques de Resumen */
-.resumen-box {
+/* Textos dentro de la tabla */
+.row-title {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+.row-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+}
+
+.row-status {
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    padding: 0.15rem 0.5rem;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.row-status.status-optima {
+    color: #16a34a;
+    background: rgba(22, 163, 74, 0.08);
+}
+
+.row-status.status-baja {
+    color: #d97706;
+    background: rgba(217, 119, 6, 0.08);
+}
+
+.row-status.status-alta {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.08);
+}
+
+/* Cuadros de Resumen */
+.result-summary-box {
     background: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(180, 132, 108, 0.12);
     border-left: 4px solid var(--primary-color);
     border-radius: 14px;
-    padding: 1.15rem;
-    margin-top: 1.25rem;
-    font-size: 0.88rem;
-    line-height: 1.45;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
     position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
 }
 
-.resumen-box.selection-box {
-    border-left-color: #718096;
+.result-summary-box.selection-box-clean {
+    border-left-color: var(--text-muted);
 }
 
-.resumen-box .box-title {
-    display: block;
+.summary-box-title {
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--text-main);
-    margin-bottom: 0.4rem;
-    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
 }
 
-.resumen-box #desgloseIntermedio, 
-.resumen-box #resumenManualDesglose {
+.summary-box-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.summary-line {
+    font-size: 0.88rem;
+    color: var(--text-main);
+    line-height: 1.45;
+}
+
+.summary-line strong {
+    font-weight: 600;
+}
+
+#desgloseIntermedio,
+#resumenManualDesglose {
     margin-top: 0.6rem;
     padding-top: 0.6rem;
     border-top: 1px dashed rgba(180, 132, 108, 0.15);
     font-size: 0.78rem;
     color: var(--text-muted);
+    line-height: 1.4;
 }
 
-.resumen-box .box-actions {
-    margin-top: 0.75rem;
+.summary-warnings {
+    margin-top: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    color: #b45309;
+    background: rgba(217, 119, 6, 0.06);
+    border: 1.5px solid rgba(217, 119, 6, 0.1);
+    border-radius: 8px;
+    line-height: 1.4;
+}
+
+.badge-rec {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #16a34a;
+    background: rgba(22, 163, 74, 0.08);
+    padding: 0.15rem 0.5rem;
+    border-radius: 50px;
+    margin-left: 6px;
+}
+
+/* Acciones en el Resumen */
+.summary-box-actions {
+    margin-top: 0.85rem;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
-.btn-copy {
-    background: rgba(180, 132, 108, 0.08);
+.btn-copy-clean {
+    background: rgba(180, 132, 108, 0.07);
     color: var(--primary-color);
-    border: 1px solid rgba(180, 132, 108, 0.15);
-    padding: 5px 12px;
-    font-size: 0.75rem;
+    border: 1.5px solid rgba(180, 132, 108, 0.15);
+    padding: 0.4rem 1.1rem;
+    font-size: 0.78rem;
     font-family: var(--font-main);
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 50px;
     cursor: pointer;
     transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.btn-copy:hover {
+.btn-copy-clean:hover {
     background: var(--primary-color);
     color: #FFFFFF;
     border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(180, 132, 108, 0.15);
 }
 
 #copyOk {
-    font-size: 0.75rem;
-    color: #1a7f37;
+    font-size: 0.78rem;
+    color: #16a34a;
     font-weight: 600;
 }
 
-.btn-close-selection {
+.btn-close-selection-clean {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+    top: 1rem;
+    right: 1rem;
     background: rgba(0, 0, 0, 0.03);
     color: var(--text-muted);
     border: none;
@@ -409,202 +356,85 @@ body {
     transition: all 0.2s ease;
 }
 
-.btn-close-selection:hover {
-    background: rgba(0, 0, 0, 0.08);
+.btn-close-selection-clean:hover {
+    background: rgba(0, 0, 0, 0.07);
     color: var(--text-main);
 }
 
-.tech-detail-box {
+/* Caja de Errores */
+.calc-error-box {
     margin-top: 1.25rem;
-    font-size: 0.82rem;
-    line-height: 1.4;
-    background: rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 1rem;
+    background: rgba(220, 38, 38, 0.06);
+    border: 1.5px solid rgba(220, 38, 38, 0.1);
+    padding: 0.85rem 1.15rem;
     border-radius: 12px;
-    color: var(--text-muted);
 }
 
-/* Botones de Navegación del Footer (Ultra-Clean) */
-.split-btn {
-    display: flex;
-    gap: 12px;
-    margin-top: 2rem;
-}
-
-.split-btn a {
-    flex: 1;
-    text-align: center;
-    text-decoration: none;
-    font-family: var(--font-main);
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 0.9rem 1.25rem;
-    border-radius: 14px;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid rgba(180, 132, 108, 0.15);
-    color: var(--text-main);
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.01);
-}
-
-.split-btn a.consultar {
-    background: var(--primary-color);
-    color: #FFFFFF;
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 14px rgba(180, 132, 108, 0.15);
-}
-
-.split-btn a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.03);
-}
-
-.split-btn a.consultar:hover {
-    background: var(--primary-hover);
-    border-color: var(--primary-hover);
-    box-shadow: 0 6px 18px rgba(180, 132, 108, 0.25);
-}
-
-.split-btn a:active {
-    transform: translateY(0);
-}
-
-/* Footer minimalista */
-.site-footer {
-    margin-top: 4rem;
-    background: rgba(255, 255, 255, 0.2);
-    border-top: 1px solid rgba(180, 132, 108, 0.08);
-    padding: 2.5rem 1.5rem;
-}
-
-.footer-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.site-footer .brand-name {
-    font-size: 1.25rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-    color: var(--primary-color);
-    margin-bottom: 0.75rem;
-}
-
-.site-footer .footer-info {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 1.25rem;
-    flex-wrap: wrap;
-}
-
-.site-footer .footer-info-item {
+.error-msg {
+    color: #dc2626;
+    font-weight: 600;
     font-size: 0.85rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
 }
 
-.site-footer .footer-info-item:hover {
-    color: var(--primary-color);
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.site-footer .footer-disclaimer {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    line-height: 1.55;
-    margin-bottom: 1.25rem;
-    text-align: center;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.site-footer .copyright {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-}
-
-/* Responsividad */
+/* Adaptabilidad Mobile */
 @media (max-width: 600px) {
-    .container {
-        padding: 1rem 0.75rem 2rem 0.75rem;
+    .view-content-clean {
+        padding: 1rem 0.75rem 6.5rem 0.75rem;
     }
     
-    .site-header {
-        padding: 1.5rem 1rem;
-        border-radius: 18px;
-        margin-bottom: 1.25rem;
-    }
-    
-    .site-header .back-btn {
-        width: 38px;
-        height: 38px;
-        left: 0.75rem;
-    }
-    
-    .site-header h1 {
-        font-size: 1.7rem;
-        letter-spacing: 2px;
-    }
-    
-    .product-card {
+    .calculator-card {
         padding: 1.25rem 1rem;
         border-radius: 18px;
     }
     
-    .product-card-title {
+    .calculator-card-title {
         font-size: 1.2rem;
+        margin-bottom: 1.25rem;
     }
     
     .calc-panel {
-        padding: 1rem !important;
-        border-radius: 14px !important;
+        padding: 1rem;
+        border-radius: 12px;
     }
     
-    .inputs-grid {
+    .inputs-grid-clean {
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
+        gap: 0.8rem;
     }
     
-    .input-field {
-        width: 100% !important;
-    }
-    
-    .input-field input {
-        width: 100% !important;
-    }
-    
-    .btn-action {
+    .input-group-clean {
         width: 100%;
     }
     
-    .diagram-container {
+    .diagram-container-clean {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 8px;
+        gap: 0.75rem;
     }
     
-    .product-table th, .product-table td {
-        padding: 0.75rem 0.4rem !important;
-        font-size: 0.78rem !important;
+    .results-table-clean th,
+    .results-table-clean td {
+        padding: 0.8rem 0.6rem !important;
+        font-size: 0.8rem !important;
     }
     
-    .split-btn {
-        flex-direction: column;
-        gap: 8px;
+    .row-title {
+        font-size: 0.82rem;
     }
     
-    .split-btn a {
-        padding: 0.85rem 1rem;
+    .row-sub {
+        font-size: 0.75rem;
     }
     
-    .site-footer {
-        padding: 2rem 1rem;
+    .result-summary-box {
+        padding: 1rem;
     }
 }

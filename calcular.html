@@ -26,179 +26,162 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css?v=4">
     <link rel="stylesheet" href="css/calcular.css?v=4">
-    <style>
-        /* Resaltado de fila recomendada */
-        .fila-recomendada {
-            background: #e8f7ee !important;
-            position: relative;
-        }
-
-        .fila-recomendada::after {
-            content: "★";
-            color: #1a7f37;
-            font-size: 12px;
-            position: absolute;
-            left: 4px;
-            top: 4px;
-        }
-
-        .fila-seleccionada {
-            outline: 2px solid #2563eb;
-            outline-offset: -2px;
-        }
-
-        .fila-seleccionada.fila-recomendada {
-            box-shadow: 0 0 0 2px #2563eb inset;
-        }
-    </style>
 </head>
 
-<body class="barandas">
+<body>
 
     <!-- Auras de fondo premium -->
     <div class="bg-glow bg-glow-1"></div>
     <div class="bg-glow bg-glow-2"></div>
 
-    <div class="container">
-        <!-- Cabecera (La Tarima 2.0 Style) -->
-        <header class="site-header">
-            <a href="index.html" class="back-btn" title="Volver al Inicio">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </a>
+    <!-- Main Header Bar (La Tarima 2.0 SPA Style) -->
+    <header class="main-header-bar">
+        <a href="index.html" class="back-nav-btn" title="Volver al Inicio">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        
+        <div class="header-titles-wrapper">
             <h1 class="brand-title">LA TARIMA</h1>
             <p class="brand-subtitle">Calculadora de Altura Ideal</p>
-        </header>
-        <div class="product-stack">
-            <div class="product-card">
-                <div class="product-card-title">Calculadora de barandas</div>
-                <!-- Panel de ingreso de medidas -->
-                <!-- Panel de ingreso de medidas -->
-                <div id="panelMedidas" class="calc-panel">
-                    <h2>Ingresá tus medidas</h2>
-                    <p>
-                        Necesitamos 2 datos para calcular la baranda ideal:<br>
-                        <strong>B</strong>: Altura del tirante/base desde el piso. (Si el colchón se apoya sobre listones, medí hasta la cara superior del tirante).<br>
-                        <strong>C</strong>: Altura desde el piso hasta la parte más alta del colchón ya apoyado.<br>
-                        Todo en <strong>centímetros</strong> (podés usar decimales).
-                    </p>
-                    <div class="inputs-grid">
-                        <label for="medidaB" class="input-field">
-                            B (tirante/base)
-                            <input id="medidaB" name="medidaB" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 10" aria-label="Medida B (tirante/base) en centímetros" aria-describedby="diagramBC" />
-                        </label>
-                        <label for="medidaC" class="input-field">
-                            C (hasta arriba colchón)
-                            <input id="medidaC" name="medidaC" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 20" aria-label="Medida C (hasta parte superior del colchón) en centímetros" aria-describedby="diagramBC" />
-                        </label>
-                        <div class="calc-btn-container">
-                            <button id="btnCalcular" class="btn-action">Calcular</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main id="app-container">
+        <section id="view-calculator" class="view active">
+            <div class="view-content-clean">
+                
+                <div class="calculator-card">
+                    <h2 class="calculator-card-title">Calculadora de barandas</h2>
+                    
+                    <!-- Panel de ingreso de medidas -->
+                    <div id="panelMedidas" class="calc-panel">
+                        <p class="calc-intro-text">
+                            Necesitamos 2 datos para calcular la baranda ideal:<br>
+                            <strong>B</strong>: Altura del tirante/base desde el piso. (Si el colchón se apoya sobre listones, medí hasta la cara superior del tirante).<br>
+                            <strong>C</strong>: Altura desde el piso hasta la parte más alta del colchón ya apoyado.<br>
+                            Todo en <strong>centímetros</strong>.
+                        </p>
+                        
+                        <div class="inputs-grid-clean">
+                            <div class="input-group-clean">
+                                <label for="medidaB">B (tirante/base)</label>
+                                <input id="medidaB" name="medidaB" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 10" aria-label="Medida B (tirante/base) en centímetros" aria-describedby="diagramBC" />
+                            </div>
+                            <div class="input-group-clean">
+                                <label for="medidaC">C (hasta arriba colchón)</label>
+                                <input id="medidaC" name="medidaC" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 20" aria-label="Medida C (hasta parte superior del colchón) en centímetros" aria-describedby="diagramBC" />
+                            </div>
+                            <div class="calc-btn-container" style="display:none;">
+                                <button id="btnCalcular" class="btn-action">Calcular</button>
+                            </div>
+                        </div>
+
+                        <!-- Diagrama explicativo B / C (Colores 2.0) -->
+                        <div id="diagramBC" class="diagram-container-clean" aria-hidden="false">
+                            <svg width="220" height="80" viewBox="0 0 220 80" aria-label="Diagrama medidas B y C">
+                                <rect x="10" y="58" width="200" height="12" fill="#F0EAE1" rx="3" />
+                                <!-- piso -->
+                                <rect x="0" y="72" width="220" height="6" fill="#E2E8F0" />
+                                <!-- tirante/base -->
+                                <rect x="40" y="42" width="120" height="16" fill="#FAF9F6" stroke="#B4846C" stroke-width="1.2" />
+                                <!-- colchón -->
+                                <rect x="48" y="18" width="104" height="24" fill="rgba(180, 132, 108, 0.15)" stroke="#B4846C" stroke-width="1.2" />
+                                <!-- medidas flechas -->
+                                <line x1="30" y1="44" x2="30" y2="72" stroke="var(--text-main)" stroke-width="1.2" marker-end="url(#arr)" />
+                                <line x1="30" y1="72" x2="30" y2="44" stroke="var(--text-main)" stroke-width="1.2" marker-end="url(#arr)" />
+                                <line x1="16" y1="20" x2="16" y2="72" stroke="var(--text-main)" stroke-width="1.2" marker-end="url(#arr)" />
+                                <line x1="16" y1="72" x2="16" y2="20" stroke="var(--text-main)" stroke-width="1.2" marker-end="url(#arr)" />
+                                <defs>
+                                    <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                                        <path d="M0,0 L6,3 L0,6 z" fill="var(--text-main)" />
+                                    </marker>
+                                </defs>
+                                <text x="34" y="36" font-size="10" fill="var(--text-main)">B</text>
+                                <text x="6" y="12" font-size="10" fill="var(--text-main)">C</text>
+                            </svg>
+                            <div class="diagram-text-clean">
+                                <strong>B</strong>: altura desde el piso hasta la cara superior del tirante/base.<br>
+                                <strong>C</strong>: altura desde el piso hasta la parte más alta del colchón ya apoyado.
+                            </div>
+                        </div>
+                        <div class="panel-disclaimer-clean">
+                            Regla clave: buscamos una <strong>protección útil</strong> (lo que sobresale sobre el colchón) dentro del rango objetivo de cada modelo. Si B &lt; 8 cm reducimos el agarre y esa diferencia pasa a la abertura. Si B &gt; 8 cm la abertura efectiva se achica.
                         </div>
                     </div>
-                    <!-- Diagrama explicativo B / C (Colores 2.0) -->
-                    <div id="diagramBC" class="diagram-container" aria-hidden="false">
-                        <svg width="220" height="80" viewBox="0 0 220 80" aria-label="Diagrama medidas B y C">
-                            <rect x="10" y="58" width="200" height="12" fill="#F0EAE1" rx="3" />
-                            <!-- piso -->
-                            <rect x="0" y="72" width="220" height="6" fill="#E2E8F0" />
-                            <!-- tirante/base -->
-                            <rect x="40" y="42" width="120" height="16" fill="#FAF9F6" stroke="#B4846C" stroke-width="1.2" />
-                            <!-- colchón -->
-                            <rect x="48" y="18" width="104" height="24" fill="rgba(180, 132, 108, 0.15)" stroke="#B4846C" stroke-width="1.2" />
-                            <!-- medidas flechas -->
-                            <line x1="30" y1="44" x2="30" y2="72" stroke="var(--text-main)" stroke-width="1.2" marker-end="url(#arr)" />
-                            <line x1="30" y1="72" x2="30" y2="44" stroke="var(--text-main)" stroke-width="1.2" marker-end="url(#arr)" />
-                            <line x1="16" y1="20" x2="16" y2="72" stroke="var(--text-main)" stroke-width="1.2" marker-end="url(#arr)" />
-                            <line x1="16" y1="72" x2="16" y2="20" stroke="var(--text-main)" stroke-width="1.2" marker-end="url(#arr)" />
-                            <defs>
-                                <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                                    <path d="M0,0 L6,3 L0,6 z" fill="var(--text-main)" />
-                                </marker>
-                            </defs>
-                            <text x="34" y="36" font-size="10" fill="var(--text-main)">B</text>
-                            <text x="6" y="12" font-size="10" fill="var(--text-main)">C</text>
-                        </svg>
-                        <div class="diagram-text">
-                            <strong>B</strong>: altura desde el piso hasta la cara superior del tirante/base.<br>
-                            <strong>C</strong>: altura desde el piso hasta la parte más alta del colchón ya apoyado.
+
+                    <!-- Tabla de Resultados -->
+                    <div class="results-table-container">
+                        <table id="tablaBaranda" class="results-table-clean">
+                            <thead>
+                                <tr>
+                                    <th>Modelo</th>
+                                    <th style="text-align: right;">Protección útil</th>
+                                    <th style="text-align: right;">Alto sugerido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Filas dinámicas -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Resumen Recomendado -->
+                    <div id="resumenRapido" role="status" aria-live="polite" class="result-summary-box" style="display:none;">
+                        <h3 class="summary-box-title">Recomendación</h3>
+                        <div id="resumenContenido" class="summary-box-content"></div>
+                        <div id="desgloseIntermedio" style="display:none;"></div>
+                        <div class="summary-box-actions">
+                            <button id="btnCopiarResumen" class="btn-copy-clean">
+                                <span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span>
+                                Copiar resumen
+                            </button>
+                            <span id="copyOk" style="display:none;">Copiado ✔</span>
                         </div>
                     </div>
-                    <div class="panel-disclaimer">
-                        Regla clave: buscamos una <strong>protección útil</strong> (lo que sobresale sobre el colchón) dentro del rango objetivo de cada modelo. Si B &lt; 8 cm reducimos el agarre y esa diferencia pasa a la abertura. Si B &gt; 8 cm la abertura efectiva se achica.
+
+                    <!-- Selección Manual -->
+                    <div id="resumenManual" role="region" aria-live="polite" class="result-summary-box selection-box-clean" style="display:none;">
+                        <button id="btnCerrarManual" title="Quitar selección" class="btn-close-selection-clean">✕</button>
+                        <h3 class="summary-box-title">Tu elección</h3>
+                        <div id="resumenManualContenido" class="summary-box-content"></div>
+                        <div id="resumenManualDesglose" style="display:none;"></div>
                     </div>
+
+                    <!-- Detalle Técnico / Errores -->
+                    <div id="resultadoCalculo" role="status" aria-live="polite" class="calc-error-box" style="display:none;"></div>
                 </div>
 
-                <!-- Tabla adicional dinámica: baranda ideal -->
-                <table id="tablaBaranda" class="product-table">
-                    <thead>
-                        <tr>
-                            <th colspan="3">Determinaremos su baranda ideal</th>
-                        </tr>
-                        <tr>
-                            <th>Modelo</th>
-                            <th>Protección útil</th>
-                            <th>Alto recomendado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Filas insertadas por script -->
-                    </tbody>
-                </table>
-
-                <!-- Resumen rápido -->
-                <div id="resumenRapido" role="status" aria-live="polite" class="resumen-box" style="display:none;">
-                    <span class="box-title">Resumen rápido</span>
-                    <div id="resumenContenido"></div>
-                    <div id="desgloseIntermedio" style="display:none;"></div>
-                    <div class="box-actions">
-                        <button id="btnCopiarResumen" class="btn-copy">Copiar resumen</button>
-                        <span id="copyOk" style="display:none;">Copiado ✔</span>
-                    </div>
-                </div>
-
-                <!-- Resumen de selección manual -->
-                <div id="resumenManual" role="region" aria-live="polite" class="resumen-box selection-box" style="display:none;">
-                    <span class="box-title">Tu elección</span>
-                    <div id="resumenManualContenido"></div>
-                    <div id="resumenManualDesglose" style="display:none;"></div>
-                    <button id="btnCerrarManual" title="Quitar selección" class="btn-close-selection">✕</button>
-                </div>
-
-                <!-- Detalle técnico (cálculos previos) -->
-                <div id="resultadoCalculo" role="status" aria-live="polite" class="tech-detail-box" style="display:none;">
-                </div>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <!-- CTA fusionado: [INICIO | CONSULTAR] -->
-        <nav class="split-btn" aria-label="Acciones de navegación y contacto">
-            <a href="index.html" title="Volver al inicio">INICIO</a>
-            <a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener"
-                title="Consultar por WhatsApp">CONSULTAR</a>
-        </nav>
-    </div>
-
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="brand-name">LA TARIMA</div>
-
-            <div class="footer-info">
-                <div class="footer-info-item">📍 Hurlingham, Buenos Aires - Argentina</div>
-                <a href="https://wa.me/5491167007723" class="footer-info-item" target="_blank" rel="noopener">📞 +54 911
-                    6700 7723</a>
+    <!-- Bottom Navigation Bar (La Tarima 2.0 SPA Style) -->
+    <nav class="bottom-nav">
+        <a href="index.html?view=view-home" class="nav-item">
+            <span class="material-symbols-outlined">grid_view</span>
+            <span class="nav-label">Inicio</span>
+        </a>
+        <a href="index.html?view=view-profile" class="nav-item">
+            <span class="material-symbols-outlined">person</span>
+            <span class="nav-label">Perfil</span>
+        </a>
+        <a href="index.html?view=view-search" class="nav-item">
+            <span class="material-symbols-outlined">search</span>
+            <span class="nav-label">Buscar</span>
+        </a>
+        <a href="index.html?view=view-notifications" class="nav-item" id="nav-notif-btn">
+            <div class="icon-wrapper">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="badge" id="nav-badge"></span>
             </div>
-
-            <div class="footer-disclaimer">
-                <strong>Aviso importante:</strong> Nuestra tienda oficial opera exclusivamente a través de
-                <strong>Mercado Libre</strong>.
-                Para ventas personalizadas o consultas directas fuera de dicha plataforma, el único canal habilitado es
-                nuestro número de contacto oficial.
-                No poseemos otros centros de venta ni intermediarios.
-            </div>
-
-            <div class="copyright">Carpinter&iacute;a Online &copy; 2026</div>
-            <div class="accent-line"></div>
-        </div>
-    </footer>
+            <span class="nav-label">Avisos</span>
+        </a>
+        <a href="index.html?view=view-about" class="nav-item">
+            <span class="material-symbols-outlined">info</span>
+            <span class="nav-label">Nosotros</span>
+        </a>
+    </nav>
 
     <script>
         (function () {
@@ -219,27 +202,23 @@
                 const C = parseFloat(inputC.value);
                 if (isNaN(B) || isNaN(C)) {
                     out.style.display = 'block';
-                    out.innerHTML = '<span style="color:#c00;">Ingresá valores numéricos en B y C para calcular.</span>';
+                    out.innerHTML = '<span class="error-msg">Ingresá valores numéricos en B y C para calcular.</span>';
                     tablaBarandaBody.innerHTML = '';
                     document.getElementById('resumenRapido').style.display = 'none';
                     return;
                 }
-                // Ocultamos bloque técnico legacy (ya no se usa)
                 out.style.display = 'none';
 
-                // Validación adicional: colchón no puede ser más bajo que el tirante (C >= B aceptable),
-                // pero si C < B se advierte (medición inconsistente) y se detiene.
                 if (C < B) {
                     tablaBarandaBody.innerHTML = '';
                     document.getElementById('resumenRapido').style.display = 'none';
                     resumenManualBox.style.display = 'none';
                     out.style.display = 'block';
-                    out.innerHTML = '<span style="color:#c00;">C no puede ser menor que B. Revisá las medidas.</span>';
+                    out.innerHTML = '<span class="error-msg">C no puede ser menor que B. Revisá las medidas.</span>';
                     return;
                 }
 
                 // ================= CONFIG DINÁMICA MODELOS =================
-                // Modelos fijos (inmutables)
                 const modelosConfig = [
                     { nombre: 'Clásica 45', nominal: 45, agarre: 8, soporte: 20, minAbertura: 5, targetProt: 20, rangeProt: [18, 22] },
                     { nombre: 'Clásica 60', nominal: 60, agarre: 8, soporte: 20, minAbertura: 5, targetProt: 35, rangeProt: [33, 37] },
@@ -250,21 +229,16 @@
                 function loadMedidas() { try { const s = localStorage.getItem(STORAGE_KEYS.medidas); return s ? JSON.parse(s) : {}; } catch (e) { return {}; } }
                 function saveMedidas(B, C) { localStorage.setItem(STORAGE_KEYS.medidas, JSON.stringify({ B, C })); }
 
-                function ajustarAgarre(baseAgarre, B) { return B < baseAgarre ? B : baseAgarre; }
                 function calcModeloAvanzado(m) {
-                    // Nuevo cálculo: agarre real y nuevo C
                     const agarreReal = B > m.agarre ? m.agarre : B;
                     const deltaB = B > m.agarre ? (B - m.agarre) : 0;
                     const nuevoC = C - deltaB;
-                    // Alto ideal sin límite superior
                     let alturaIdeal = nuevoC + m.targetProt;
-                    // El resto de cálculos igual que antes
                     const estructuraMin = agarreReal + m.soporte + m.minAbertura;
                     if (alturaIdeal < estructuraMin) alturaIdeal = estructuraMin;
                     let abertura = alturaIdeal - (agarreReal + m.soporte);
                     if (abertura < m.minAbertura) { alturaIdeal = estructuraMin; abertura = m.minAbertura; }
                     let proteccion = alturaIdeal - nuevoC;
-                    // Forzar mínimo para modelos con minProteccion (Simple)
                     if (m.minProteccion && proteccion < m.minProteccion) {
                         alturaIdeal = nuevoC + m.minProteccion;
                         abertura = alturaIdeal - (agarreReal + m.soporte);
@@ -272,37 +246,62 @@
                     }
                     const [pMin, pMax] = m.rangeProt;
                     let estado = proteccion < pMin ? 'Baja' : (proteccion > pMax ? 'Alta' : 'Óptima');
-                    const color = estado === 'Óptima' ? '#1a7f37' : (estado === 'Baja' ? '#d97706' : '#b91c1c');
+                    const colorClass = estado === 'Óptima' ? 'status-optima' : (estado === 'Baja' ? 'status-baja' : 'status-alta');
+                    const colorStyle = estado === 'Óptima' ? '#1a7f37' : (estado === 'Baja' ? '#d97706' : '#b91c1c');
                     let nota;
                     if (m.minProteccion && proteccion < m.minProteccion) nota = `Elevada para mínimo ${m.minProteccion} cm`;
                     else if (Math.abs(alturaIdeal - m.nominal) > 0.5) nota = `Ajustada desde ${m.nominal} cm`;
                     else nota = 'Sin ajuste';
                     let aberturaFormula = B - m.agarre; if (aberturaFormula < 0) aberturaFormula = 0;
-                    // proteccionNominal y diffTarget ahora respecto a nuevoC
                     const proteccionNominal = m.nominal - nuevoC;
                     const diff = Math.abs(proteccionNominal - m.targetProt);
-                    return { ...m, agarreReal, abertura: +abertura.toFixed(1), aberturaFormula: +aberturaFormula.toFixed(1), alturaSugerida: +alturaIdeal.toFixed(1), proteccion: +proteccion.toFixed(1), estado, color, nota, rango: `${pMin}–${pMax}`, proteccionNominal: +proteccionNominal.toFixed(1), diffTarget: +diff.toFixed(1) };
+                    return { ...m, agarreReal, abertura: +abertura.toFixed(1), aberturaFormula: +aberturaFormula.toFixed(1), alturaSugerida: +alturaIdeal.toFixed(1), proteccion: +proteccion.toFixed(1), estado, colorStyle, colorClass, nota, rango: `${pMin}–${pMax}`, proteccionNominal: +proteccionNominal.toFixed(1), diffTarget: +diff.toFixed(1) };
                 }
                 const evalAvanzado = modelosConfig.map(calcModeloAvanzado);
-                window._lastEvalAvanzado = evalAvanzado; // guardar para selección manual
+                window._lastEvalAvanzado = evalAvanzado;
                 let cand = evalAvanzado.filter(x => x.estado === 'Óptima'); if (!cand.length) cand = evalAvanzado.slice();
                 const recomendadoAv = cand.sort((a, b) => Math.abs(a.proteccion - a.targetProt) - Math.abs(b.proteccion - b.targetProt))[0];
-                const filasAv = evalAvanzado.map(e => `<tr data-modelo="${e.nombre}"><td>${e.nombre}<div style=\"font-size:10px;color:#666;\">Rango ${e.rango} (target ${e.targetProt})</div></td><td style=\"text-align:right;\">${e.proteccion} cm <span style=\"font-size:11px;color:${e.color};\">(${e.estado})</span><div style=\"font-size:10px;color:#777;\">Abertura: ${e.abertura} cm</div></td><td style=\"text-align:right;\">${e.alturaSugerida} cm<div style=\"font-size:10px;color:#777;\">${e.nota}</div></td></tr>`).join('');
+                
+                const filasAv = evalAvanzado.map(e => `
+                    <tr data-modelo="${e.nombre}">
+                        <td>
+                            <div class="row-title">${e.nombre}</div>
+                            <div class="row-sub">Rango ${e.rango} (target ${e.targetProt})</div>
+                        </td>
+                        <td style="text-align:right;">
+                            <div class="row-title">${e.proteccion} cm <span class="row-status ${e.colorClass}">(${e.estado})</span></div>
+                            <div class="row-sub">Abertura: ${e.abertura} cm</div>
+                        </td>
+                        <td style="text-align:right;">
+                            <div class="row-title">${e.alturaSugerida} cm</div>
+                            <div class="row-sub">${e.nota}</div>
+                        </td>
+                    </tr>
+                `).join('');
                 tablaBarandaBody.innerHTML = filasAv;
+                
                 const resumen = document.getElementById('resumenRapido');
                 const cont = document.getElementById('resumenContenido');
-                cont.innerHTML = `Modelo recomendado: <strong>${recomendadoAv.nombre}</strong><br>Protección útil: <strong>${recomendadoAv.proteccion} cm</strong> (rango ${recomendadoAv.rango}, target ${recomendadoAv.targetProt})<br>Altura sugerida: <strong>${recomendadoAv.alturaSugerida} cm</strong> (${recomendadoAv.nota})<br>Abertura resultante: <strong>${recomendadoAv.abertura} cm</strong><br>Protección nominal: <strong>${recomendadoAv.proteccionNominal} cm</strong> (Δ target: ${recomendadoAv.diffTarget} cm)<br>Estado: <span style=\"color:${recomendadoAv.color};\">${recomendadoAv.estado}</span>`;
+                cont.innerHTML = `
+                    <div class="summary-line">Modelo recomendado: <strong>${recomendadoAv.nombre}</strong></div>
+                    <div class="summary-line">Protección útil: <strong>${recomendadoAv.proteccion} cm</strong> (rango ${recomendadoAv.rango}, target ${recomendadoAv.targetProt})</div>
+                    <div class="summary-line">Altura sugerida: <strong>${recomendadoAv.alturaSugerida} cm</strong> (${recomendadoAv.nota})</div>
+                    <div class="summary-line">Abertura resultante: <strong>${recomendadoAv.abertura} cm</strong></div>
+                    <div class="summary-line">Protección nominal: <strong>${recomendadoAv.proteccionNominal} cm</strong> (Δ target: ${recomendadoAv.diffTarget} cm)</div>
+                    <div class="summary-line">Estado: <span class="row-status ${recomendadoAv.colorClass}">${recomendadoAv.estado}</span></div>
+                `;
                 resumen.style.display = 'block';
+                
                 const desglose = document.getElementById('desgloseIntermedio');
                 desglose.innerHTML = `Agarre real: <strong>${recomendadoAv.agarreReal} cm</strong> | Soporte: <strong>${recomendadoAv.soporte} cm</strong> | Abertura estructural: <strong>${recomendadoAv.abertura} cm</strong> | Abertura fórmula: <strong>${recomendadoAv.aberturaFormula} cm</strong> | Protección útil: <strong>${recomendadoAv.proteccion} cm</strong>`;
                 desglose.style.display = 'block';
+                
                 Array.from(tablaBarandaBody.querySelectorAll('tr')).forEach(tr => {
                     const nombre = tr.getAttribute('data-modelo');
                     if (nombre === recomendadoAv.nombre) tr.classList.add('fila-recomendada');
                     tr.style.cursor = 'pointer';
                 });
 
-                // Si había una selección manual previa la re-renderizamos
                 const storedSel = loadUserSelection();
                 if (storedSel) {
                     const encontrado = evalAvanzado.find(m => m.nombre === storedSel);
@@ -312,11 +311,10 @@
                     resumenManualBox.style.display = 'none';
                 }
 
-                attachRowSelection(recomendadoAv);
+                attachRowSelection();
             }
 
-            function attachRowSelection(recomendado) {
-                // Adjuntar el handler una vez: el handler calcula el recomendado usando la última evaluación
+            function attachRowSelection() {
                 if (tablaBarandaBody._rowSelectionAttached) return;
                 tablaBarandaBody._rowSelectionAttached = true;
                 tablaBarandaBody.addEventListener('click', function (e) {
@@ -324,7 +322,6 @@
                     const nombre = tr.getAttribute('data-modelo'); if (!nombre) return;
                     const evals = window._lastEvalAvanzado || [];
                     const modelo = evals.find(m => m.nombre === nombre); if (!modelo) return;
-                    // recalculamos cuál es el recomendado con la evaluación actual
                     let recomendadoLocal;
                     if (evals.length) {
                         let cand = evals.filter(x => x.estado === 'Óptima'); if (!cand.length) cand = evals.slice();
@@ -343,21 +340,22 @@
                     if (modelo.estado === 'Baja') advertencias.push('Protección por debajo del rango recomendado.');
                     else if (modelo.estado === 'Alta') advertencias.push('Protección más alta de lo necesario.');
                     else {
-                        // Óptima pero no la más cercana al target
                         const diffSel = Math.abs(modelo.proteccion - modelo.targetProt);
                         const diffRec = Math.abs(recomendado.proteccion - recomendado.targetProt);
                         if (diffSel > diffRec + 0.1) advertencias.push('Hay otra opción más cercana al objetivo.');
                     }
                 }
-                resumenManualContenido.innerHTML = `Modelo: <strong>${modelo.nombre}</strong>${esRecomendado ? ' <span style="color:#1a7f37;">(También recomendado)</span>' : ''}<br>
-    Protección útil: <strong>${modelo.proteccion} cm</strong> (target ${modelo.targetProt}, Δ ${modelo.diffTarget} cm)<br>
-    Estado de protección: <span style="color:${modelo.color};font-weight:600;">${modelo.estado}</span><br>
-    Altura sugerida: <strong>${modelo.alturaSugerida} cm</strong> (${modelo.nota})<br>
-    Abertura estructural: <strong>${modelo.abertura} cm</strong>`;
+                resumenManualContenido.innerHTML = `
+                    <div class="summary-line">Modelo: <strong>${modelo.nombre}</strong>${esRecomendado ? ' <span class="badge-rec">(También recomendado)</span>' : ''}</div>
+                    <div class="summary-line">Protección útil: <strong>${modelo.proteccion} cm</strong> (target ${modelo.targetProt}, Δ ${modelo.diffTarget} cm)</div>
+                    <div class="summary-line">Estado de protección: <span class="row-status ${modelo.colorClass}">${modelo.estado}</span></div>
+                    <div class="summary-line">Altura sugerida: <strong>${modelo.alturaSugerida} cm</strong> (${modelo.nota})</div>
+                    <div class="summary-line">Abertura estructural: <strong>${modelo.abertura} cm</strong></div>
+                `;
                 resumenManualDesglose.innerHTML = `Agarre real: <strong>${modelo.agarreReal} cm</strong> | Soporte: <strong>${modelo.soporte} cm</strong> | Abertura estructural: <strong>${modelo.abertura} cm</strong> | Abertura fórmula: <strong>${modelo.aberturaFormula} cm</strong> | Protección nominal: <strong>${modelo.proteccionNominal} cm</strong>`;
                 resumenManualDesglose.style.display = 'block';
                 if (advertencias.length) {
-                    resumenManualContenido.innerHTML += `<div style="margin-top:6px;color:#b45309;font-size:0.7rem;">${advertencias.map(a => `• ${a}`).join('<br>')}</div>`;
+                    resumenManualContenido.innerHTML += `<div class="summary-warnings">${advertencias.map(a => `• ${a}`).join('<br>')}</div>`;
                 }
                 resumenManualBox.style.display = 'block';
                 marcarFilaSeleccionada(modelo.nombre, recomendado?.nombre);
@@ -380,14 +378,18 @@
                 });
             }
 
-            btn.addEventListener('click', (e) => { e.preventDefault(); ejecutar(); });
-            // Auto-cálculo al cambiar B o C
+            if (btn) {
+                btn.addEventListener('click', (e) => { e.preventDefault(); ejecutar(); });
+            }
+            
             ['input', 'change'].forEach(evt => {
                 inputB.addEventListener(evt, () => { if (inputB.value !== '' && inputC.value !== '') { saveMedidas(parseFloat(inputB.value), parseFloat(inputC.value)); ejecutar(); } });
                 inputC.addEventListener(evt, () => { if (inputB.value !== '' && inputC.value !== '') { saveMedidas(parseFloat(inputB.value), parseFloat(inputC.value)); ejecutar(); } });
             });
-            // Si ya hay valores precargados (autocompletado navegador) calcular
+
             window.addEventListener('DOMContentLoaded', () => {
+                const STORAGE_KEYS = { medidas: 'lastMedidasBC' };
+                function loadMedidas() { try { const s = localStorage.getItem(STORAGE_KEYS.medidas); return s ? JSON.parse(s) : {}; } catch (e) { return {}; } }
                 const last = loadMedidas(); if (last.B != null) inputB.value = last.B; if (last.C != null) inputC.value = last.C; if (inputB.value !== '' && inputC.value !== '') { ejecutar(); }
                 const btnCopiar = document.getElementById('btnCopiarResumen');
                 const copyOk = document.getElementById('copyOk');
@@ -400,7 +402,6 @@
                                 setTimeout(() => copyOk.style.display = 'none', 1800);
                             });
                         } else {
-                            // fallback
                             const ta = document.createElement('textarea');
                             ta.value = texto; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
                             copyOk.style.display = 'inline';
@@ -412,10 +413,5 @@
         })();
     </script>
 </body>
+
 </html>
-
-
-
-
-
-
