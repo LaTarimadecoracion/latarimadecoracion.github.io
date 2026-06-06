@@ -188,7 +188,8 @@ const productsData = [
                         "3.5 cm",
                         "Otras medidas"
                     ]
-                }
+                },
+                "views": 2
             },
             {
                 "id": "baranda-desmontable-montessori",
@@ -498,7 +499,8 @@ const productsData = [
                         "4.5 cm",
                         "Otras medidas"
                     ]
-                }
+                },
+                "views": 3
             },
             {
                 "id": "baranda-desmontable-triple",
@@ -591,7 +593,8 @@ const productsData = [
                         "3.5 cm",
                         "Otras medidas"
                     ]
-                }
+                },
+                "views": 0
             }
         ]
     },
@@ -712,7 +715,8 @@ const productsData = [
                         ]
                     }
                 ],
-                "last_modified": 1780602269740
+                "last_modified": 1780602269740,
+                "views": 0
             },
             {
                 "id": "baranda-sommier-triple",
@@ -791,7 +795,8 @@ const productsData = [
                         ]
                     }
                 ],
-                "last_modified": 1780602364722
+                "last_modified": 1780602364722,
+                "views": 0
             }
         ]
     },
@@ -823,7 +828,8 @@ const productsData = [
                         ]
                     }
                 ],
-                "last_modified": 1780542665303
+                "last_modified": 1780542665303,
+                "views": 0
             },
             {
                 "id": "baranda-montessori",
@@ -847,7 +853,8 @@ const productsData = [
                         ]
                     }
                 ],
-                "last_modified": 1780542669631
+                "last_modified": 1780542669631,
+                "views": 0
             },
             {
                 "id": "baranda-simple",
@@ -871,7 +878,8 @@ const productsData = [
                         ]
                     }
                 ],
-                "last_modified": 1780542770327
+                "last_modified": 1780542770327,
+                "views": 0
             }
         ]
     },
@@ -917,7 +925,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "escalera-altillo",
@@ -934,7 +943,8 @@ const productsData = [
                         ],
                         "medidas_variants": []
                     }
-                ]
+                ],
+                "views": 0
             }
         ]
     },
@@ -966,7 +976,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "9-vinos",
@@ -990,7 +1001,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "13-vinos",
@@ -1014,7 +1026,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "17-vinos",
@@ -1038,48 +1051,86 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             }
         ]
     },
     {
         "id": "Podios",
         "name": "Podios de Premiacion",
-        "image": "img/migrados/otros/general/Podio premiacion (3 modulos).webp",
+        "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
         "order": 5,
         "products": [
             {
                 "id": "podio-profesional",
-                "title": "Podio profesional (Tres modulos)",
+                "title": "Podio profesional | Grande",
                 "description": "",
-                "image": "img/podios-de-premiacion/podio-profesional--tres-modulos-/1780323262910-imagen.webp",
+                "image": "img/podios-de-premiacion/podio-profesional---grande/1780774147587-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Negro",
-                        "cover_image": "img/podios-de-premiacion/podio-profesional--tres-modulos-/1780323262910-imagen.webp",
+                        "cover_image": "img/podios-de-premiacion/podio-profesional---grande/1780774147587-imagen.webp",
                         "images_list": [
-                            "img/podios-de-premiacion/podio-profesional--tres-modulos-/1780323262910-imagen.webp",
-                            "img/podios-de-premiacion/podio-profesional--tres-modulos-/1780323263108-imagen.webp",
-                            "img/podios-de-premiacion/podio-profesional--tres-modulos-/1780323263270-imagen.webp",
-                            "img/podios-de-premiacion/podio-profesional--tres-modulos-/1780323263373-imagen.webp",
-                            "img/podios-de-premiacion/podio-profesional--tres-modulos-/1780323263477-imagen.webp",
-                            "img/podios-de-premiacion/podio-profesional--tres-modulos-/1780323263581-imagen.webp"
+                            "img/podios-de-premiacion/podio-profesional---grande/1780774147587-imagen.webp",
+                            "img/podios-de-premiacion/podio-profesional---grande/1780774147784-imagen.webp",
+                            "img/podios-de-premiacion/podio-profesional---grande/1780774147917-imagen.webp",
+                            "img/podios-de-premiacion/podio-profesional---grande/1780774148049-imagen.webp",
+                            "img/podios-de-premiacion/podio-profesional---grande/1780774148175-imagen.webp"
                         ],
-                        "medidas_variants": []
+                        "medidas_variants": [
+                            {
+                                "medida": "Grande",
+                                "link": "https://www.mercadolibre.com.ar/podio-de-premiacion-profesional--3-niveles/up/MLAU3923567631",
+                                "default": false
+                            }
+                        ]
                     }
-                ]
+                ],
+                "tags": [
+                    "Podio de premiación",
+                    "3 niveles",
+                    "profesional",
+                    "color negro",
+                    "tarima de campeones",
+                    "bloques independientes",
+                    "estructura modular",
+                    "eventos deportivos",
+                    "entrega de premios",
+                    "podio escalonado",
+                    "acabado premium",
+                    "alta resistencia",
+                    "minimalista",
+                    "moderno",
+                    "corporativo",
+                    "competencias",
+                    "primer puesto",
+                    "segundo puesto",
+                    "tercer puesto",
+                    "podio deportivo",
+                    "tarima de premiación",
+                    "pintura negra matizada",
+                    "uso rudo",
+                    "eventos corporativos"
+                ],
+                "last_modified": 1780774148299,
+                "primaryCatId": "Podios"
             },
             {
                 "id": "podio-premiacion--3-modulos-",
-                "title": "Podio premiación (3 módulos)",
+                "title": "Podio premiación",
                 "description": "Podios modulares resistentes para eventos y premiaciones.",
-                "image": "img/migrados/otros/podio-premiacion--3-modulos-/Podio premiacion (3 modulos).webp",
+                "image": "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/otros/podio-premiacion--3-modulos-/Podio premiacion (3 modulos).webp",
+                        "cover_image": "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
                         "images_list": [
-                            "img/migrados/otros/podio-premiacion--3-modulos-/Podio premiacion (3 modulos).webp"
+                            "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion/1780774911040-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion/1780774911168-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion/1780774911301-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion/1780774911452-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1089,7 +1140,10 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "tags": [],
+                "last_modified": 1780774911579,
+                "primaryCatId": "Podios"
             },
             {
                 "id": "podios-individuales",
@@ -1121,7 +1175,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             }
         ]
     },
@@ -1206,7 +1261,8 @@ const productsData = [
                         ]
                     }
                 ],
-                "last_modified": 1780589686041
+                "last_modified": 1780589686041,
+                "views": 0
             },
             {
                 "id": "cajones-profesional",
@@ -1242,7 +1298,8 @@ const productsData = [
                         ]
                     }
                 ],
-                "last_modified": 1780590450835
+                "last_modified": 1780590450835,
+                "views": 0
             }
         ]
     },
@@ -1319,7 +1376,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "hexagonales",
@@ -1356,7 +1414,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "librero",
@@ -1418,7 +1477,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "triangulos",
@@ -1440,7 +1500,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "cuadrados",
@@ -1477,7 +1538,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "mensulas",
@@ -1554,7 +1616,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 1
             },
             {
                 "id": "estantes",
@@ -1606,7 +1669,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             }
         ]
     },
@@ -1641,7 +1705,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780707190575,
-                "primaryCatId": "Interior"
+                "primaryCatId": "Interior",
+                "views": 0
             },
             {
                 "id": "fanal",
@@ -1678,7 +1743,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "organizador-tribuna-x3",
@@ -1701,7 +1767,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "especiero",
@@ -1728,7 +1795,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708579332,
-                "primaryCatId": "decoracion"
+                "primaryCatId": "decoracion",
+                "views": 0
             },
             {
                 "id": "banquito-de-plaza",
@@ -1753,7 +1821,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708180941,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             },
             {
                 "id": "Mueble-Multifunción",
@@ -1790,7 +1859,8 @@ const productsData = [
                     "carpinteria artesanal"
                 ],
                 "last_modified": 1780707364726,
-                "primaryCatId": "Interior"
+                "primaryCatId": "Interior",
+                "views": 0
             },
             {
                 "id": "deck-cuadrado",
@@ -1882,7 +1952,8 @@ const productsData = [
                     "Estantes para macetas"
                 ],
                 "last_modified": 1780708146541,
-                "primaryCatId": "Muebles-y-Jardín"
+                "primaryCatId": "Muebles-y-Jardín",
+                "views": 0
             },
             {
                 "id": "silla-infantil",
@@ -1909,7 +1980,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708199604,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -1962,7 +2034,8 @@ const productsData = [
                     "Regalos decoracion hogar"
                 ],
                 "last_modified": 1780708812530,
-                "primaryCatId": "Muebles-y-Jardín"
+                "primaryCatId": "Muebles-y-Jardín",
+                "views": 0
             }
         ]
     },
@@ -2062,7 +2135,8 @@ const productsData = [
                     "Estantes para macetas"
                 ],
                 "last_modified": 1780708146541,
-                "primaryCatId": "Muebles-y-Jardín"
+                "primaryCatId": "Muebles-y-Jardín",
+                "views": 0
             },
             {
                 "id": "deck-rectangular",
@@ -2125,7 +2199,8 @@ const productsData = [
                     "Estantes para macetas"
                 ],
                 "last_modified": 1780708127230,
-                "primaryCatId": "Muebles-y-Jardín"
+                "primaryCatId": "Muebles-y-Jardín",
+                "views": 0
             },
             {
                 "id": "mesa-plegabe",
@@ -2147,7 +2222,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "mesa-plegabe---portavasos",
@@ -2169,7 +2245,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "banquito-de-plaza",
@@ -2194,7 +2271,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708180941,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             },
             {
                 "id": "Mueble-Multifunción",
@@ -2231,7 +2309,8 @@ const productsData = [
                     "carpinteria artesanal"
                 ],
                 "last_modified": 1780707364726,
-                "primaryCatId": "Interior"
+                "primaryCatId": "Interior",
+                "views": 0
             },
             {
                 "id": "cesto-de-basura",
@@ -2264,7 +2343,8 @@ const productsData = [
                     "madera"
                 ],
                 "last_modified": 1780707328639,
-                "primaryCatId": "exterior"
+                "primaryCatId": "exterior",
+                "views": 0
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -2317,7 +2397,8 @@ const productsData = [
                     "Regalos decoracion hogar"
                 ],
                 "last_modified": 1780708812530,
-                "primaryCatId": "Muebles-y-Jardín"
+                "primaryCatId": "Muebles-y-Jardín",
+                "views": 0
             },
             {
                 "id": "Platos-madera",
@@ -2340,7 +2421,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780709044058,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 6
             }
         ]
     },
@@ -2373,7 +2455,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "verdule-para-mesada",
@@ -2432,7 +2515,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "verdulero-mediano",
@@ -2457,7 +2541,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708412846,
-                "primaryCatId": "organizacion"
+                "primaryCatId": "organizacion",
+                "views": 0
             },
             {
                 "id": "verdulero-x3",
@@ -2482,7 +2567,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708454015,
-                "primaryCatId": "organizacion"
+                "primaryCatId": "organizacion",
+                "views": 0
             },
             {
                 "id": "esquinero-x3",
@@ -2532,7 +2618,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "Mueble-Multifunción",
@@ -2569,7 +2656,8 @@ const productsData = [
                     "carpinteria artesanal"
                 ],
                 "last_modified": 1780707364726,
-                "primaryCatId": "Interior"
+                "primaryCatId": "Interior",
+                "views": 0
             },
             {
                 "id": "perchero-1",
@@ -2596,7 +2684,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780707190575,
-                "primaryCatId": "Interior"
+                "primaryCatId": "Interior",
+                "views": 0
             },
             {
                 "id": "deck-rectangular",
@@ -2659,7 +2748,8 @@ const productsData = [
                     "Estantes para macetas"
                 ],
                 "last_modified": 1780708127230,
-                "primaryCatId": "Muebles-y-Jardín"
+                "primaryCatId": "Muebles-y-Jardín",
+                "views": 0
             }
         ]
     },
@@ -2692,7 +2782,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708312773,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             },
             {
                 "id": "banquito-de-plaza",
@@ -2717,7 +2808,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708180941,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             },
             {
                 "id": "silla-infantil",
@@ -2744,7 +2836,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708199604,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             }
         ]
     },
@@ -2789,7 +2882,8 @@ const productsData = [
                     "carpinteria artesanal"
                 ],
                 "last_modified": 1780707364726,
-                "primaryCatId": "Interior"
+                "primaryCatId": "Interior",
+                "views": 0
             },
             {
                 "id": "perchero-1",
@@ -2816,7 +2910,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780707190575,
-                "primaryCatId": "Interior"
+                "primaryCatId": "Interior",
+                "views": 0
             },
             {
                 "id": "banquito-de-plaza",
@@ -2841,7 +2936,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708180941,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             },
             {
                 "id": "silla-infantil",
@@ -2868,7 +2964,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708199604,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             }
         ]
     },
@@ -2901,7 +2998,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708180941,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             },
             {
                 "id": "silla-infantil",
@@ -2928,7 +3026,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708199604,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             },
             {
                 "id": "Mate",
@@ -2950,7 +3049,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708904153,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 0
             },
             {
                 "id": "Platos - Cuencos",
@@ -2971,7 +3071,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708978310,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 1
             },
             {
                 "id": "Platos-madera",
@@ -2994,7 +3095,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780709044058,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 6
             }
         ]
     },
@@ -3065,7 +3167,8 @@ const productsData = [
                     "Estantes para macetas"
                 ],
                 "last_modified": 1780708127230,
-                "primaryCatId": "Muebles-y-Jardín"
+                "primaryCatId": "Muebles-y-Jardín",
+                "views": 0
             },
             {
                 "id": "deck-cuadrado",
@@ -3157,7 +3260,8 @@ const productsData = [
                     "Estantes para macetas"
                 ],
                 "last_modified": 1780708146541,
-                "primaryCatId": "Muebles-y-Jardín"
+                "primaryCatId": "Muebles-y-Jardín",
+                "views": 0
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -3210,7 +3314,8 @@ const productsData = [
                     "Regalos decoracion hogar"
                 ],
                 "last_modified": 1780708812530,
-                "primaryCatId": "Muebles-y-Jardín"
+                "primaryCatId": "Muebles-y-Jardín",
+                "views": 0
             },
             {
                 "id": "Platos-madera",
@@ -3233,7 +3338,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780709044058,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 6
             }
         ]
     },
@@ -3266,7 +3372,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780708312773,
-                "primaryCatId": "infantil"
+                "primaryCatId": "infantil",
+                "views": 0
             }
         ]
     }
