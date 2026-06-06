@@ -231,6 +231,15 @@ function updateHeader(viewId, context = null) {
         btnBack.style.display = 'none';
     }
 
+    // Mostrar u ocultar botón de compartir categoría
+    if (window.btnShareHeader) {
+        if (viewId === 'view-category-feed') {
+            window.btnShareHeader.style.display = 'flex';
+        } else {
+            window.btnShareHeader.style.display = 'none';
+        }
+    }
+
     if (viewId === 'view-home') {
         dynamicTitle.textContent = appConfig.home.title;
         dynamicSubtitle.textContent = appConfig.home.subtitle;

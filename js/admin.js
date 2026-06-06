@@ -2016,6 +2016,12 @@ window.safeAdminRun = function(fn) {
         const cat = sourceData.find(c => c.id === categoryId);
         if (!cat) return;
 
+        // Configurar atributos para compartir categoría
+        if (window.btnShareHeader) {
+            window.btnShareHeader.setAttribute('data-category-id', categoryId);
+            window.btnShareHeader.setAttribute('data-category-name', cat.name);
+        }
+
         // Limpiar el feed anterior
         if (categoryFeedList) categoryFeedList.innerHTML = '';
 

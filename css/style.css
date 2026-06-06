@@ -225,6 +225,34 @@ button, .btn-primary, .btn-outline {
     font-size: 1.6rem;       /* Tamaño táctil ideal para celulares */
 }
 
+.share-nav-btn {
+    position: absolute;      /* Se vuelve flotante */
+    right: 15px;             /* Se ancla firmemente a la derecha */
+    top: 50%;
+    transform: translateY(-50%); /* Lo centra verticalmente */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 10px;
+    margin: 0;
+    z-index: 210;             /* Asegura que siempre esté por encima */
+    transition: color 0.2s ease, transform 0.2s ease;
+    width: auto;
+}
+
+.share-nav-btn:hover {
+    color: var(--primary-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.share-nav-btn .material-symbols-outlined {
+    font-size: 1.6rem;
+}
+
 .header-titles-wrapper {
     width: 100%;
     max-width: 70%;          /* Evita que un título muy largo pise el botón flotante */

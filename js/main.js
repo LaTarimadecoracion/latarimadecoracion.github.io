@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.btnBack = document.getElementById('btn-back');
     window.dynamicTitle = document.getElementById('dynamic-main-title');
     window.dynamicSubtitle = document.getElementById('dynamic-subtitle');
+    window.btnShareHeader = document.getElementById('btn-share-header');
 
     // Inicializar renders
     if (window.renderBottomNav) window.renderBottomNav();
@@ -53,6 +54,86 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.navigationHistory && window.navigationHistory.length > 0) {
                 const prev = window.navigationHistory[window.navigationHistory.length - 1];
                 if (window.navigateToView) window.navigateToView(prev.viewId, prev.context, true);
+            }
+        });
+    }
+
+    // Eventos Globales (Share Category)
+    if (window.btnShareHeader) {
+        window.btnShareHeader.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const categoryId = window.btnShareHeader.getAttribute('data-category-id');
+            const categoryName = window.btnShareHeader.getAttribute('data-category-name') || 'Categoría';
+            if (!categoryId) return;
+
+            const shareUrl = `${window.location.origin}${window.location.pathname}?cat=${categoryId}`;
+            const shareText = `Mirá la categoría *${categoryName}* en La Tarima 😊`;
+
+            const copyTextToClipboard = (textToCopy) => {
+                const showToast = () => {
+                    const toast = document.getElementById('admin-toast');
+                    if (toast) {
+                        toast.textContent = "🔗 ¡Enlace de categoría copiado!";
+                        toast.classList.add('show');
+                        setTimeout(() => toast.classList.remove('show'), 2000);
+                    } else {
+                        alert("¡Enlace copiado al portapapeles!");
+                    }
+                };
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(textToCopy)
+                        .then(showToast)
+                        .catch(err => {
+                            console.warn('Navigator clipboard failed, trying fallback:', err);
+                            fallbackCopy(textToCopy);
+                        });
+                } else {
+                    fallbackCopy(textToCopy);
+                }
+
+                function fallbackCopy(text) {
+                    try {
+                        const textArea = document.createElement("textarea");
+                        textArea.value = text;
+                        textArea.style.position = "fixed";
+                        textArea.style.top = "0";
+                        textArea.style.left = "0";
+                        textArea.style.width = "2em";
+                        textArea.style.height = "2em";
+                        textArea.style.padding = "0";
+                        textArea.style.border = "none";
+                        textArea.style.outline = "none";
+                        textArea.style.boxShadow = "none";
+                        textArea.style.background = "transparent";
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        const successful = document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        if (successful) {
+                            showToast();
+                        } else {
+                            alert("No se pudo copiar el enlace automáticamente. Por favor copialo manualmente.");
+                        }
+                    } catch (err) {
+                        console.error('Fallback copy failed:', err);
+                        alert("No se pudo copiar el enlace.");
+                    }
+                }
+            };
+
+            if (navigator.share) {
+                navigator.share({
+                    title: categoryName,
+                    text: shareText,
+                    url: shareUrl
+                }).catch(err => {
+                    console.log('Error sharing:', err);
+                    copyTextToClipboard(`${shareText}\n${shareUrl}`);
+                });
+            } else {
+                copyTextToClipboard(`${shareText}\n${shareUrl}`);
             }
         });
     }
@@ -97,6 +178,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (window.navigateToView) {
                     console.log(`[Router] Navegación solicitada por URL a: ${viewId}`);
                     window.navigateToView(viewId);
+                    
+                    // Limpiar la URL sin recargar para estética premium
+                    const cleanUrl = window.location.pathname;
+                    window.history.replaceState({}, document.title, cleanUrl);
+                }
+            }, 150);
+        }
+
+        const catId = urlParams.get('cat') || urlParams.get('category');
+        if (catId) {
+            setTimeout(() => {
+                if (window.navigateToCategoryFeed) {
+                    console.log(`[Router] Categoría compartida detectada: ${catId}. Abriendo feed.`);
+                    window.navigateToCategoryFeed(catId);
                     
                     // Limpiar la URL sin recargar para estética premium
                     const cleanUrl = window.location.pathname;
