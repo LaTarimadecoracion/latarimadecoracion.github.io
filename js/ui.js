@@ -1296,6 +1296,15 @@ window.safeRender = function(fn, name) {
 
     // 2. Renderizado Cliente
     function renderNosotrosBlocksCliente() {
+        const linksMap = window.socialLinks || {};
+        const redes = ['instagram', 'tiktok', 'facebook', 'youtube', 'whatsapp', 'mercadolibre'];
+        redes.forEach(red => {
+            const btn = document.getElementById(`social-link-${red}`);
+            if (btn && linksMap[red]) {
+                btn.setAttribute('href', linksMap[red]);
+            }
+        });
+
         if (!nosotrosBlocksContainer) return;
         nosotrosBlocksContainer.innerHTML = '';
 

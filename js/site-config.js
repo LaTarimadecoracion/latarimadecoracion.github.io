@@ -127,5 +127,13 @@ window.siteConfig = {
             "youtubeId": "https://youtu.be/RXUtc6yk8ME?list=RDRXUtc6yk8ME",
             "productId": ""
         }
-    ]
+    ],
+    "socialLinks": {
+        "instagram": "https://instagram.com",
+        "tiktok": "https://tiktok.com",
+        "facebook": "https://facebook.com",
+        "youtube": "https://youtube.com",
+        "whatsapp": "https://wa.me/5491167007723",
+        "mercadolibre": "#"
+    }
 };

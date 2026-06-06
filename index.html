@@ -230,27 +230,27 @@
                     <p class="text-muted" style="margin-bottom: 1rem; font-weight: 500; font-size: 0.95rem;">Seguinos en redes:</p>
                     <div class="social-icons-row" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
                         <!-- Instagram -->
-                        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram">
+                        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram" id="social-link-instagram">
                             <span class="material-symbols-outlined">camera</span>
                         </a>
                         <!-- TikTok -->
-                        <a href="https://tiktok.com" target="_blank" class="social-icon-btn" title="TikTok">
+                        <a href="https://tiktok.com" target="_blank" class="social-icon-btn" title="TikTok" id="social-link-tiktok">
                             <span class="material-symbols-outlined">music_note</span>
                         </a>
                         <!-- Facebook -->
-                        <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook">
+                        <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook" id="social-link-facebook">
                             <span class="material-symbols-outlined">group</span>
                         </a>
                         <!-- YouTube -->
-                        <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube">
+                        <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube" id="social-link-youtube">
                             <span class="material-symbols-outlined">smart_display</span>
                         </a>
                         <!-- WhatsApp -->
-                        <a href="https://wa.me/5491167007723" target="_blank" class="social-icon-btn" title="WhatsApp">
+                        <a href="https://wa.me/5491167007723" target="_blank" class="social-icon-btn" title="WhatsApp" id="social-link-whatsapp">
                             <span class="material-symbols-outlined">forum</span>
                         </a>
                         <!-- Mercado Libre -->
-                        <a href="#" target="_blank" class="social-icon-btn" title="Mercado Libre">
+                        <a href="#" target="_blank" class="social-icon-btn" title="Mercado Libre" id="social-link-mercadolibre">
                             <span class="material-symbols-outlined">shopping_bag</span>
                         </a>
                     </div>
@@ -389,6 +389,44 @@
                         <div id="admin-config-list" style="display: flex; flex-direction: column; gap: 0.8rem;">
                             <!-- Secciones administrables inyectadas dinámicamente por JS -->
                         </div>
+                    </div>
+
+                    <!-- Enlaces a Redes Sociales -->
+                    <div class="admin-nosotros-section" style="background: white; padding: 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1.5px solid #E8ECF0; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.1rem; margin:0 0 1.25rem 0; display:flex; align-items:center; gap:0.5rem; color:var(--primary-color);">
+                            <span class="material-symbols-outlined">share</span>
+                            Enlaces de Redes Sociales (Nosotros)
+                        </h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 1.5rem 0; line-height: 1.5;">
+                            Ingresá las URLs de tus redes sociales. Se actualizarán automáticamente en la sección de contacto al final de la página Nosotros.
+                        </p>
+                        <form id="admin-social-form" class="admin-form" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <div class="form-group">
+                                <label style="font-size: 0.8rem; font-weight:600; display:block; margin-bottom:0.3rem;">Instagram:</label>
+                                <input type="text" id="admin-social-instagram" style="width:100%; padding:0.65rem 1rem; border:1.5px solid #E2E8F0; border-radius:8px;">
+                            </div>
+                            <div class="form-group">
+                                <label style="font-size: 0.8rem; font-weight:600; display:block; margin-bottom:0.3rem;">TikTok:</label>
+                                <input type="text" id="admin-social-tiktok" style="width:100%; padding:0.65rem 1rem; border:1.5px solid #E2E8F0; border-radius:8px;">
+                            </div>
+                            <div class="form-group">
+                                <label style="font-size: 0.8rem; font-weight:600; display:block; margin-bottom:0.3rem;">Facebook:</label>
+                                <input type="text" id="admin-social-facebook" style="width:100%; padding:0.65rem 1rem; border:1.5px solid #E2E8F0; border-radius:8px;">
+                            </div>
+                            <div class="form-group">
+                                <label style="font-size: 0.8rem; font-weight:600; display:block; margin-bottom:0.3rem;">YouTube:</label>
+                                <input type="text" id="admin-social-youtube" style="width:100%; padding:0.65rem 1rem; border:1.5px solid #E2E8F0; border-radius:8px;">
+                            </div>
+                            <div class="form-group">
+                                <label style="font-size: 0.8rem; font-weight:600; display:block; margin-bottom:0.3rem;">WhatsApp:</label>
+                                <input type="text" id="admin-social-whatsapp" style="width:100%; padding:0.65rem 1rem; border:1.5px solid #E2E8F0; border-radius:8px;">
+                            </div>
+                            <div class="form-group">
+                                <label style="font-size: 0.8rem; font-weight:600; display:block; margin-bottom:0.3rem;">Mercado Libre:</label>
+                                <input type="text" id="admin-social-mercadolibre" style="width:100%; padding:0.65rem 1rem; border:1.5px solid #E2E8F0; border-radius:8px;">
+                            </div>
+                            <button type="submit" class="btn-primary" style="margin-top: 0.5rem; width: 100%; max-width: none;">Guardar Redes Sociales</button>
+                        </form>
                     </div>
                 </div>
 

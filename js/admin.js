@@ -480,6 +480,8 @@ window.safeAdminRun = function(fn) {
                 btnSaveSectionComp.textContent = 'Guardar Componente';
             });
         }
+
+        initSocialLinksAdmin();
     }
 
     function renderAdminUX() {
@@ -541,6 +543,7 @@ window.safeAdminRun = function(fn) {
             if (configView) configView.style.display = 'block';
             if (closeBtn) closeBtn.textContent = 'Cerrar';
             renderAdminConfig();
+            populateAdminSocialLinks();
         }
     }
 
@@ -2584,6 +2587,62 @@ window.safeAdminRun = function(fn) {
             renderAdminHomeSectionsList();
             if (window.renderHome) window.renderHome();
             showAdminToast('✅ Orden de secciones guardado físicamente');
+        });
+    }
+
+    function populateAdminSocialLinks() {
+        const instagramInput = document.getElementById('admin-social-instagram');
+        const tiktokInput = document.getElementById('admin-social-tiktok');
+        const facebookInput = document.getElementById('admin-social-facebook');
+        const youtubeInput = document.getElementById('admin-social-youtube');
+        const whatsappInput = document.getElementById('admin-social-whatsapp');
+        const mercadolibreInput = document.getElementById('admin-social-mercadolibre');
+
+        const links = window.socialLinks || {};
+
+        if (instagramInput) instagramInput.value = links.instagram || '';
+        if (tiktokInput) tiktokInput.value = links.tiktok || '';
+        if (facebookInput) facebookInput.value = links.facebook || '';
+        if (youtubeInput) youtubeInput.value = links.youtube || '';
+        if (whatsappInput) whatsappInput.value = links.whatsapp || '';
+        if (mercadolibreInput) mercadolibreInput.value = links.mercadolibre || '';
+    }
+
+    function initSocialLinksAdmin() {
+        const form = document.getElementById('admin-social-form');
+        if (!form) return;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const instagram = document.getElementById('admin-social-instagram')?.value || '';
+            const tiktok = document.getElementById('admin-social-tiktok')?.value || '';
+            const facebook = document.getElementById('admin-social-facebook')?.value || '';
+            const youtube = document.getElementById('admin-social-youtube')?.value || '';
+            const whatsapp = document.getElementById('admin-social-whatsapp')?.value || '';
+            const mercadolibre = document.getElementById('admin-social-mercadolibre')?.value || '';
+
+            window.socialLinks = {
+                instagram,
+                tiktok,
+                facebook,
+                youtube,
+                whatsapp,
+                mercadolibre
+            };
+
+            localStorage.setItem('socialLinks', JSON.stringify(window.socialLinks));
+
+            if (window.syncSiteConfigWithServer) {
+                await window.syncSiteConfigWithServer();
+            }
+
+            // Sync with client view
+            if (window.renderNosotrosBlocksCliente) {
+                window.renderNosotrosBlocksCliente();
+            }
+
+            showAdminToast('✅ Redes sociales guardadas');
         });
     }
 

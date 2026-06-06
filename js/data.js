@@ -118,6 +118,25 @@ window.homeConfig = window.siteConfig.homeConfig || {
     }
 };
 
+// 4b. Enlaces a Redes Sociales
+window.socialLinks = window.siteConfig.socialLinks || {
+    instagram: "https://instagram.com",
+    tiktok: "https://tiktok.com",
+    facebook: "https://facebook.com",
+    youtube: "https://youtube.com",
+    whatsapp: "https://wa.me/5491167007723",
+    mercadolibre: "#"
+};
+
+try {
+    const localSocial = localStorage.getItem('socialLinks');
+    if (localSocial && !window.siteConfig.socialLinks) {
+        window.socialLinks = JSON.parse(localSocial);
+    }
+} catch (e) {
+    console.error("Error loading socialLinks fallback:", e);
+}
+
 try {
     const localHomeConfig = localStorage.getItem('homeConfig');
     if (localHomeConfig && (!window.siteConfig.homeConfig || !window.siteConfig.homeConfig.order)) {
@@ -137,7 +156,8 @@ window.syncSiteConfigWithServer = async function() {
             sessionNosotros: window.sessionNosotros,
             sessionAvisos: (window.AvisosModule && window.AvisosModule.getAvisos) 
                 ? window.AvisosModule.getAvisos() 
-                : (window.siteConfig.sessionAvisos || [])
+                : (window.siteConfig.sessionAvisos || []),
+            socialLinks: window.socialLinks
         };
 
         const res = await fetch('/api/save-site-config', {
