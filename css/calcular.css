@@ -1,0 +1,497 @@
+/* css/calcular.css */
+/* --- ESTILOS PREMIUM PARA LA CALCULADORA DE BARANDAS A-Z --- */
+
+/* Reset de display para anular el overflow:hidden y flex de style.css */
+html, body {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-main);
+    color: var(--text-main);
+}
+
+/* Auras de fondo premium */
+.bg-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(180, 132, 108, 0.15) 0%, rgba(250, 249, 246, 0) 70%);
+    filter: blur(80px);
+    z-index: -1;
+    pointer-events: none;
+}
+.bg-glow-1 { top: -150px; right: -150px; }
+.bg-glow-2 { bottom: -150px; left: -150px; }
+
+/* Contenedor Principal */
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem 1.25rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Cabecera unificada (Glassmorphism) */
+.site-header {
+    text-align: center;
+    position: relative;
+    padding: 2.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 28px;
+    box-shadow: 0 8px 32px rgba(180, 132, 108, 0.05);
+    margin-bottom: 2rem;
+    animation: slideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.site-header a {
+    text-decoration: none;
+}
+
+.site-header h1 {
+    color: var(--primary-color);
+    font-weight: 900;
+    font-size: 2.3rem;
+    letter-spacing: 5px;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(180, 132, 108, 0.06);
+}
+
+.site-header .subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    margin-top: 0.2rem;
+}
+
+.site-header .socials {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 1.25rem;
+}
+
+.site-header .socials a {
+    color: var(--text-muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.site-header .socials a:hover {
+    color: var(--primary-color);
+    transform: scale(1.15);
+}
+
+.site-header .socials svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+/* Tarjeta Principal */
+.product-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px) saturate(165%);
+    -webkit-backdrop-filter: blur(20px) saturate(165%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 28px;
+    padding: 2rem;
+    box-shadow: 0 10px 35px rgba(180, 132, 108, 0.04);
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.product-card-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 1.25rem;
+    border-bottom: 2px dashed rgba(180, 132, 108, 0.12);
+    padding-bottom: 0.6rem;
+}
+
+/* Panel de Medidas */
+#panelMedidas {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.01) !important;
+    border-radius: 20px !important;
+    padding: 1.5rem !important;
+}
+
+#panelMedidas h2 {
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 1.15rem !important;
+}
+
+#panelMedidas p {
+    color: var(--text-muted) !important;
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+}
+
+#panelMedidas input {
+    background: #FFFFFF;
+    border: 1.5px solid var(--secondary-color) !important;
+    border-radius: 12px !important;
+    padding: 0.75rem 1rem !important;
+    font-family: var(--font-main);
+    font-size: 1rem !important;
+    color: var(--text-main);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+    outline: none;
+}
+
+#panelMedidas input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(180, 132, 108, 0.18) !important;
+}
+
+#btnCalcular {
+    background: var(--primary-color) !important;
+    color: #FFFFFF !important;
+    font-family: var(--font-main);
+    font-weight: 700;
+    padding: 0.75rem 1.8rem !important;
+    border-radius: 12px !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 5px 15px rgba(180, 132, 108, 0.25);
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease !important;
+}
+
+#btnCalcular:hover {
+    background: var(--primary-hover) !important;
+    box-shadow: 0 7px 20px rgba(180, 132, 108, 0.35);
+}
+
+#btnCalcular:active {
+    transform: scale(0.97);
+}
+
+/* SVG del Diagrama */
+#diagramBC svg {
+    border-radius: 12px;
+    background: #FFFFFF;
+    border: 1px solid rgba(180, 132, 108, 0.08);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* Tabla de Resultados */
+.product-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 1.75rem !important;
+    background: rgba(255, 255, 255, 0.75) !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 4px 20px rgba(180, 132, 108, 0.03) !important;
+}
+
+.product-table th {
+    background: rgba(180, 132, 108, 0.12) !important;
+    color: var(--primary-color) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 1.2px !important;
+    padding: 1.1rem !important;
+    border-bottom: 1.5px solid rgba(180, 132, 108, 0.1) !important;
+}
+
+.product-table td {
+    padding: 1.1rem !important;
+    font-size: 0.92rem !important;
+    border-bottom: 1px solid rgba(180, 132, 108, 0.08) !important;
+    color: var(--text-main) !important;
+}
+
+.product-table tbody tr {
+    transition: background-color 0.2s ease !important;
+}
+
+.product-table tbody tr:hover {
+    background: rgba(180, 132, 108, 0.05) !important;
+}
+
+/* Estados y Resaltados */
+.fila-recomendada {
+    background: rgba(26, 127, 55, 0.08) !important;
+}
+
+.fila-recomendada:hover {
+    background: rgba(26, 127, 55, 0.12) !important;
+}
+
+.fila-recomendada td:first-child::before {
+    content: "★";
+    color: #1a7f37;
+    margin-right: 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Anulamos la estrella por CSS absoluto vieja */
+.fila-recomendada::after {
+    display: none !important;
+}
+
+.fila-seleccionada {
+    outline: 2.5px solid var(--primary-color) !important;
+    outline-offset: -2.5px !important;
+    background: rgba(180, 132, 108, 0.04) !important;
+}
+
+/* Bloques de Resumen */
+#resumenRapido, #resumenManual, #resultadoCalculo {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid rgba(180, 132, 108, 0.16) !important;
+    border-radius: 18px !important;
+    padding: 1.4rem !important;
+    box-shadow: 0 4px 20px rgba(180, 132, 108, 0.03) !important;
+    margin-top: 1.25rem !important;
+}
+
+#btnCopiarResumen {
+    background: var(--primary-color) !important;
+    color: #FFFFFF !important;
+    font-family: var(--font-main) !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1.1rem !important;
+    border-radius: 9px !important;
+    box-shadow: 0 3px 8px rgba(180, 132, 108, 0.15);
+    transition: background-color 0.2s ease, transform 0.1s ease !important;
+}
+
+#btnCopiarResumen:hover {
+    background: var(--primary-hover) !important;
+}
+
+#btnCerrarManual {
+    background: rgba(180, 132, 108, 0.12) !important;
+    color: var(--primary-color) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: bold !important;
+    padding: 5px 10px !important;
+    font-family: var(--font-main) !important;
+    transition: background-color 0.2s ease !important;
+}
+
+#btnCerrarManual:hover {
+    background: rgba(180, 132, 108, 0.2) !important;
+}
+
+/* CTA Footer Navigation Buttons */
+.split-btn {
+    display: flex;
+    gap: 12px;
+    margin-top: 2rem;
+}
+
+.split-btn a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 1.05rem 1.5rem;
+    border-radius: 16px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    border: 1.5px solid rgba(180, 132, 108, 0.2);
+    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.split-btn a.consultar {
+    background: var(--primary-color);
+    color: #FFFFFF;
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 22px rgba(180, 132, 108, 0.22);
+}
+
+.split-btn a:hover {
+    transform: translateY(-3px);
+}
+
+.split-btn a:active {
+    transform: translateY(0);
+}
+
+.split-btn a.consultar:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+    box-shadow: 0 8px 25px rgba(180, 132, 108, 0.32);
+}
+
+/* Footer de la página */
+.site-footer {
+    margin-top: 4.5rem;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(180, 132, 108, 0.1);
+    padding: 3.5rem 1.5rem;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.site-footer .brand-name {
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.site-footer .footer-info {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+}
+
+.site-footer .footer-info-item {
+    font-size: 0.92rem;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.site-footer .footer-info-item:hover {
+    color: var(--primary-color);
+}
+
+.site-footer .footer-disclaimer {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+    text-align: justify;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(180, 132, 108, 0.05);
+}
+
+.site-footer .copyright {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* Responsividad en Móvil */
+@media (max-width: 650px) {
+    .container {
+        padding: 1rem 0.75rem 2rem 0.75rem;
+    }
+    
+    .site-header {
+        padding: 1.75rem 1rem;
+        border-radius: 22px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .site-header h1 {
+        font-size: 1.9rem;
+        letter-spacing: 3px;
+    }
+    
+    .product-card {
+        padding: 1.5rem 1rem;
+        border-radius: 22px;
+    }
+    
+    .product-card-title {
+        font-size: 1.35rem;
+    }
+    
+    #panelMedidas {
+        padding: 1rem !important;
+        border-radius: 16px !important;
+    }
+    
+    /* Reorganizar inputs de medidas en vertical */
+    #panelMedidas div[style*="display:flex"] {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 12px !important;
+    }
+    
+    #panelMedidas label {
+        width: 100% !important;
+    }
+    
+    #panelMedidas input {
+        width: 100% !important;
+    }
+    
+    #btnCalcular {
+        width: 100% !important;
+    }
+    
+    #diagramBC {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center;
+        gap: 8px !important;
+    }
+    
+    .product-table th, .product-table td {
+        padding: 0.8rem 0.4rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .split-btn {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .split-btn a {
+        padding: 0.9rem 1rem;
+    }
+}
