@@ -8,13 +8,15 @@ window.siteConfig = {
             "title": "La Tarima",
             "subtitle": "Decoración",
             "icon": "home",
-            "visible": true
+            "visible": true,
+            "contentStack": []
         },
         "search": {
             "title": "Buscar",
             "subtitle": "Encontrá tu producto",
             "icon": "search",
-            "visible": true
+            "visible": true,
+            "contentStack": []
         },
         "profile": {
             "title": "Tu Perfil",
@@ -129,11 +131,11 @@ window.siteConfig = {
         }
     ],
     "socialLinks": {
-        "instagram": "https://instagram.com",
-        "tiktok": "https://tiktok.com",
-        "facebook": "https://facebook.com",
-        "youtube": "https://youtube.com",
+        "instagram": "https://www.instagram.com/latarimadecoracion",
+        "tiktok": "https://www.tiktok.com/@latarimadecoracion",
+        "facebook": "https://www.facebook.com/LaTarimaDecoracion/",
+        "youtube": "https://www.youtube.com/@latarimadecoracion",
         "whatsapp": "https://wa.me/5491167007723",
-        "mercadolibre": "#"
+        "mercadolibre": "https://www.mercadolibre.com.ar/pagina/latarima"
     }
 };
