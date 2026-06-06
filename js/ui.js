@@ -1831,6 +1831,7 @@ window.findProductById = findProductById;
 
 // --- MOUSE DRAG TO SCROLL FOR HORIZONTAL CAROUSELS (PC COMPATIBILITY) ---
 (function() {
+    console.log("🚀 Initializing Drag-to-Scroll for carousels...");
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -1843,26 +1844,32 @@ window.findProductById = findProductById;
 
     const carouselSelector = '.carousel-categories, .carousel-gallery, .carousel-horizontal, .carousel-full, .product-detail-carousel, .filter-chips, .variant-buttons-container';
 
-    const style = document.createElement('style');
-    style.innerHTML = `
-        ${carouselSelector} {
-            cursor: grab;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-        .carousel-categories:active, .carousel-gallery:active, .carousel-horizontal:active, .carousel-full:active, .product-detail-carousel:active, .filter-chips:active, .variant-buttons-container:active {
-            cursor: grabbing;
-        }
-        .carousel-categories *, .carousel-gallery *, .carousel-horizontal *, .carousel-full *, .product-detail-carousel *, .filter-chips *, .variant-buttons-container * {
-            -webkit-user-drag: none;
-            user-select: none;
-        }
-    `;
-    document.head.appendChild(style);
+    try {
+        const style = document.createElement('style');
+        style.innerHTML = `
+            ${carouselSelector} {
+                cursor: grab !important;
+                user-select: none !important;
+                -webkit-user-drag: none !important;
+            }
+            .carousel-categories:active, .carousel-gallery:active, .carousel-horizontal:active, .carousel-full:active, .product-detail-carousel:active, .filter-chips:active, .variant-buttons-container:active {
+                cursor: grabbing !important;
+            }
+            .carousel-categories *, .carousel-gallery *, .carousel-horizontal *, .carousel-full *, .product-detail-carousel *, .filter-chips *, .variant-buttons-container * {
+                -webkit-user-drag: none !important;
+                user-select: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+        console.log("✅ Custom drag styles injected successfully.");
+    } catch (err) {
+        console.error("❌ Error injecting drag styles:", err);
+    }
 
     // Prevent native drag-and-drop of images and links inside the carousel
     document.addEventListener('dragstart', (e) => {
         if (e.target.closest(carouselSelector)) {
+            console.log("🚫 Prevented native dragstart inside carousel");
             e.preventDefault();
         }
     }, true);
@@ -1871,6 +1878,7 @@ window.findProductById = findProductById;
         const carousel = e.target.closest(carouselSelector);
         if (!carousel) return;
 
+        console.log("🎯 Mousedown detected on carousel:", carousel.id || carousel.className);
         isDown = true;
         activeCarousel = carousel;
         carousel.classList.add('grabbing');
@@ -1892,6 +1900,7 @@ window.findProductById = findProductById;
 
     const endDrag = () => {
         if (!isDown || !activeCarousel) return;
+        console.log("👋 Mouseup/Leave: Ending drag on carousel");
         isDown = false;
         activeCarousel.classList.remove('grabbing');
 
@@ -1903,6 +1912,7 @@ window.findProductById = findProductById;
 
         if (Math.abs(velocity) > 0.5) {
             let momentum = velocity * 15;
+            console.log(`🌀 Momentum scroll initiated with velocity: ${velocity}, scrollLeft: ${carousel.scrollLeft}`);
             const step = () => {
                 if (isDown) return;
                 carousel.scrollLeft -= momentum;
@@ -1910,13 +1920,13 @@ window.findProductById = findProductById;
                 if (Math.abs(momentum) > 0.5) {
                     requestAnimationFrame(step);
                 } else {
-                    // Re-enable scroll snap after momentum scroll ends
+                    console.log("💤 Momentum scroll finished. Restoring scroll-snap.");
                     carousel.style.scrollSnapType = '';
                 }
             };
             requestAnimationFrame(step);
         } else {
-            // Re-enable scroll snap immediately if there is no momentum
+            console.log("Restoring scroll-snap immediately.");
             carousel.style.scrollSnapType = '';
         }
     };
@@ -1932,6 +1942,11 @@ window.findProductById = findProductById;
         const x = e.pageX;
         const walk = (x - startX) * 1.5;
         activeCarousel.scrollLeft = scrollLeft - walk;
+        
+        // Log dragging progress occasionally
+        if (Math.random() < 0.1) {
+            console.log(`Dragging... DeltaX: ${x - startX}, scrollLeft: ${activeCarousel.scrollLeft}`);
+        }
 
         const now = Date.now();
         const elapsed = now - lastTime;
@@ -1950,6 +1965,7 @@ window.findProductById = findProductById;
         const deltaX = Math.abs(e.clientX - clickStartX);
         const deltaY = Math.abs(e.clientY - clickStartY);
         if (deltaX > 10 || deltaY > 10) {
+            console.log("🚫 Click prevented because it was a drag operation");
             e.preventDefault();
             e.stopPropagation();
         }
