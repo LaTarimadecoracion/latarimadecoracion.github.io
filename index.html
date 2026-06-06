@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LA TARIMA - Carpintería Premium</title>
+    
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#FAF9F6">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Open Graph / Meta de Redes Sociales (Inyectados dinámicamente en server.js) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" id="meta-og-title" content="LA TARIMA - Carpintería Premium">
+    <meta property="og:description" id="meta-og-desc" content="Muebles infantiles y de diseño a medida. Diseños escandinavos y premium para el hogar.">
+    <meta property="og:image" id="meta-og-image" content="img/logo_provisional.png">
+    <meta property="og:url" content="https://latarima.com/">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <img src="img/logo_provisional.png" alt="La Tarima Logo" class="splash-logo">
+            <h1 class="splash-title">LA TARIMA</h1>
+            <p class="splash-subtitle">Carpintería Online</p>
+        </div>
+    </div>
+
+    <!-- Main App Container (SPA Views) -->
+    <header class="main-header-bar">
+        <button id="btn-back" class="back-nav-btn" style="display: none;">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        
+        <div class="header-titles-wrapper">
+            <h1 id="dynamic-main-title" class="brand-title">LA TARIMA</h1>
+            <p id="dynamic-subtitle" class="brand-subtitle">Diseño en madera para tu hogar</p>
+        </div>
+    </header>
+    <main id="app-container">
+
+        <!-- View 1: Home -->
+        <section id="view-home" class="view active">
+
+
+            <div class="home-content">
+                <!-- Stack Superior del Constructor de Vistas -->
+                <div id="home-top-stack" style="display:none;"></div>
+
+                <!-- Carrusel 1: Categorías -->
+                <section class="home-section full-width">
+                    <div id="carousel-categories" class="carousel-categories">
+                        <!-- Categorías dinámicas -->
+                    </div>
+                </section>
+
+                <!-- Carrusel 2: Novedades / Banner Full -->
+                <section class="home-section full-width">
+                    <h2 class="section-title" style="padding: 0 1.5rem;">Nuevos Diseños 2026</h2>
+                    <div id="home-new-designs-list" class="carousel-categories">
+                        <!-- Nuevos diseños dinámicos -->
+                    </div>
+                </section>
+
+                <!-- Feed: Los Más Buscados -->
+                <section class="home-section full-width">
+                    <h2 class="section-title">Los más buscados</h2>
+                    <div id="home-product-list" class="carousel-categories">
+                        <!-- Feed inyectado dinámicamente desde js/app.js -->
+                    </div>
+                </section>
+
+                <!-- Stack Inferior del Constructor de Vistas -->
+                <div id="home-bottom-stack" style="display:none;"></div>
+            </div>
+        </section>
+
+        <!-- View: Product Detail (Hidden by default) -->
+        <section id="view-product-detail" class="view detail-view">
+            <div class="detail-img-container"></div>
+            <div class="detail-content">
+                <p id="detail-description" class="detail-description product-description-text"></p>
+                
+                <div id="detail-attributes-container"></div>
+
+                <div id="detail-price-display" class="detail-price" style="display:none;"></div>
+                
+                <div class="detail-actions mt-2" id="detail-actions-container">
+                    <a id="btn-buy-shipping" href="#" target="_blank" class="btn-primary giant-btn" style="display:none;">
+                        <span class="material-symbols-outlined">local_shipping</span>
+                        Comprar con Envío
+                    </a>
+                    <a id="btn-buy-pickup" href="#" target="_blank" class="btn-outline giant-btn whatsapp-btn">
+                        <span class="material-symbols-outlined">chat</span>
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- View: Category Feed (Acceso exclusivo desde tarjetas de Home) -->
+        <section id="view-category-feed" class="view">
+            <div id="category-feed-container" class="category-feed-list">
+                <!-- Feed de tarjetas inyectado dinámicamente por JS -->
+            </div>
+            <div id="category-feed-empty" class="center-content text-muted" style="display:none; padding:3rem 1.5rem;">
+                <span class="material-symbols-outlined large-icon" style="opacity:0.4;">inventory_2</span>
+                <p>Esta categoría todavía no tiene productos.<br>¡Volvé pronto!</p>
+            </div>
+        </section>
+
+        <!-- View 2: Perfil -->
+        <section id="view-profile" class="view">
+            <div class="view-content center-content">
+                <span class="material-symbols-outlined large-icon">account_circle</span>
+                <h3>Bienvenido a La Tarima</h3>
+                <p>Ingresá para guardar tus favoritos y ver tus consultas.</p>
+                <button class="btn-primary mt-2">Iniciar Sesión</button>
+                <button class="btn-outline mt-1">Registrarme</button>
+            </div>
+        </section>
+
+        <!-- View 3: Buscar -->
+        <section id="view-search" class="view">
+            <div class="view-content">
+                <!-- Barra de búsqueda -->
+                <div class="search-bar-container" style="margin-bottom: 0.75rem;">
+                    <span class="material-symbols-outlined search-icon">search</span>
+                    <input type="text" id="search-input" placeholder="Buscar por nombre o descripción..." class="search-input" autocomplete="off">
+                </div>
+                <!-- Enlace rápido al catálogo A-Z -->
+                <div class="catalog-link-container" style="padding: 0 1.5rem; margin-bottom: 0.75rem;">
+                    <a href="catalogo.html" class="catalog-shortcut-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(180, 132, 108, 0.08); color: var(--primary-color); padding: 0.75rem 1.2rem; border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 600; text-decoration: none; border: 1px dashed rgba(180, 132, 108, 0.3); transition: all 0.2s ease;">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem;">list_alt</span>
+                        Ver catálogo completo de la A a la Z
+                    </a>
+                </div>
+                <!-- Filtros por categoría (generados dinámicamente) -->
+                <div id="search-filter-chips" class="filter-chips mt-1">
+                    <!-- Chips inyectados por JS -->
+                </div>
+                <!-- Resultados de búsqueda (feed inmersivo) -->
+                <div id="search-results-container" class="product-feed">
+                    <!-- Feed inyectado por JS -->
+                </div>
+                <!-- Estado vacío -->
+                <div id="search-empty-state" class="center-content text-muted" style="display: none; padding: 3rem 1.5rem;">
+                    <span class="material-symbols-outlined large-icon" style="opacity: 0.4;">search_off</span>
+                    <p>No encontramos productos con esa búsqueda.<br>Intentá con otra palabra clave.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- View 4: Notificaciones -->
+        <section id="view-notifications" class="view">
+            <div class="view-content">
+                
+                <!-- Push Notification Banner -->
+                <div class="push-banner" style="background: var(--primary-color); color: white; padding: 1.5rem; margin: 1rem 1.5rem; border-radius: var(--radius-md); text-align: center; box-shadow: var(--shadow-sm);">
+                    <span class="material-symbols-outlined" style="font-size: 32px; margin-bottom: 0.5rem;">campaign</span>
+                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">¿Querés enterarte antes que nadie cuando sumemos productos?</h4>
+                    <button id="btn-enable-push" class="btn-outline" style="background: white; color: var(--primary-color); border: none; margin-top: 0.5rem; width: auto; padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                        Activar Notificaciones
+                    </button>
+                </div>
+
+                <!-- Empty State (oculto por defecto si hay notificaciones) -->
+                <div id="notif-empty-state" class="center-content text-muted" style="display: none; padding: 3rem 1.5rem;">
+                    <span class="material-symbols-outlined large-icon" style="opacity: 0.5;">carpenter</span>
+                    <p>Por ahora estás al día. ¡Te avisaremos cuando haya viruta fresca en el taller!</p>
+                </div>
+
+                <div class="notification-list" id="notification-list-container">
+                    <div class="notification-item unread">
+                        <div class="notif-icon"><span class="material-symbols-outlined">celebration</span></div>
+                        <div class="notif-text">
+                            <h4>¡Nuevo Lanzamiento!</h4>
+                            <p>Ya están disponibles los podios reforzados en preventa exclusiva.</p>
+                            <span class="notif-time">Hace 2 horas</span>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notif-icon"><span class="material-symbols-outlined">local_shipping</span></div>
+                        <div class="notif-text">
+                            <h4>Envíos gratis</h4>
+                            <p>Esta semana tenemos envíos gratis en CABA y GBA para compras superiores a $50.000.</p>
+                            <span class="notif-time">Hace 2 días</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View 5: Nosotros -->
+        <section id="view-about" class="view">
+            <div class="view-content" style="padding: 1.5rem 1.5rem 4rem;">
+                
+                <!-- Contenedor dinámico de bloques de Nosotros -->
+                <div id="nosotros-blocks-container">
+                    <!-- Inyectado dinámicamente por JS -->
+                </div>
+
+                <!-- Enlace al catálogo en Nosotros -->
+                <div style="text-align: center; margin-top: 2rem; padding: 0 1rem;">
+                    <a href="catalogo.html" class="btn-primary" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; width: 100%; max-width: 320px; box-sizing: border-box; margin: 0 auto;">
+                        <span class="material-symbols-outlined">menu_book</span>
+                        Explorar Catálogo A-Z
+                    </a>
+                </div>
+
+                <div class="social-links mt-2" style="margin-top: 3rem; text-align: center;">
+                    <p class="text-muted" style="margin-bottom: 1rem; font-weight: 500; font-size: 0.95rem;">Seguinos en redes:</p>
+                    <div class="social-icons-row" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                        <!-- Instagram -->
+                        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram">
+                            <span class="material-symbols-outlined">camera</span>
+                        </a>
+                        <!-- TikTok -->
+                        <a href="https://tiktok.com" target="_blank" class="social-icon-btn" title="TikTok">
+                            <span class="material-symbols-outlined">music_note</span>
+                        </a>
+                        <!-- Facebook -->
+                        <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook">
+                            <span class="material-symbols-outlined">group</span>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube">
+                            <span class="material-symbols-outlined">smart_display</span>
+                        </a>
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/5491167007723" target="_blank" class="social-icon-btn" title="WhatsApp">
+                            <span class="material-symbols-outlined">forum</span>
+                        </a>
+                        <!-- Mercado Libre -->
+                        <a href="#" target="_blank" class="social-icon-btn" title="Mercado Libre">
+                            <span class="material-symbols-outlined">shopping_bag</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View 6: Admin Panel (Hidden) -->
+        <section id="view-admin" class="view admin-view">
+            <header class="view-header" style="display: flex; justify-content: space-between; align-items: center; background: #F4F6F9; box-shadow: none; border-bottom: 1.5px solid #E8ECF0;">
+                <h2 style="font-size: 1.1rem;">⚙️ Admin Local</h2>
+                <button id="btn-close-admin" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cerrar</button>
+            </header>
+            <div class="view-content" style="padding: 1.25rem; padding-bottom: 5rem;">
+
+                <!-- ── TABS DE NAVEGACIÓN ADMIN ── -->
+                <div class="admin-tabs-bar" style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1.5px solid #E8ECF0; padding-bottom: 0.75rem; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                    <button type="button" id="tab-btn-catalog" class="btn-primary" style="padding: 0.5rem 1rem; width: auto; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">inventory_2</span>
+                        Catálogo
+                    </button>
+                    <button type="button" id="tab-btn-sections" class="btn-outline" style="padding: 0.5rem 1rem; width: auto; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">view_quilt</span>
+                        Secciones
+                    </button>
+                    <button type="button" id="tab-btn-config" class="btn-outline" style="padding: 0.5rem 1rem; width: auto; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; white-space: nowrap;">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">settings</span>
+                        Config App
+                    </button>
+                </div>
+
+                <!-- ── FASE 1: GRID DE CATEGORÍAS ── -->
+                <div id="admin-categories-view">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;">
+                        <p class="admin-section-label" style="margin: 0;">📦 Estanterías por Categoría</p>
+                        <button type="button" id="btn-open-add-category" class="btn-primary" style="padding:0.5rem 1rem; width:auto; font-size:0.85rem;">➕ Nueva Categoría</button>
+                    </div>
+                    <div id="admin-category-tree" style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                        <!-- Estanterías por categoría inyectadas por JS -->
+                    </div>
+                </div>
+
+                <!-- ── ELEMENTOS PERSISTENTES (Visibles solo en fase categories) ── -->
+                <div id="admin-nosotros-panel">
+
+                    <!-- ── Configurar Secciones del Home ── -->
+                    <div class="admin-nosotros-section" style="background: white; padding: 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin-bottom: 2rem; border: 1.5px solid #E8ECF0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.8rem;">
+                            <h3 style="font-size: 1.1rem; margin:0; display:flex; align-items:center; gap:0.5rem; color:var(--primary-color);">
+                                <span class="material-symbols-outlined">sort</span>
+                                Configurar Secciones del Home
+                            </h3>
+                            <button type="button" id="btn-quick-add-aviso" class="btn-primary" style="padding:0.5rem 1rem; width:auto; font-size:0.85rem;">➕ Agregar Aviso</button>
+                        </div>
+                        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                            Ordená las secciones principales del Home y editá sus títulos, subtítulos e íconos para personalizar la pantalla principal del cliente en caliente.
+                        </p>
+                        <div id="admin-home-sections-list" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <!-- Lista de secciones del Home con controles ⬆️ ⬇️ e inputs inyectados por JS -->
+                        </div>
+                    </div>
+
+                    <!-- ── Constructor Dinámico de Vistas (Home / Buscar / Avisos) ── -->
+                    <div class="admin-nosotros-section" style="background: white; padding: 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin-bottom: 2rem; border: 1.5px solid #E8ECF0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;">
+                            <h3 style="font-size: 1.1rem; margin:0; display:flex; align-items:center; gap:0.5rem; color:var(--primary-color);">
+                                <span class="material-symbols-outlined">grid_view</span>
+                                Constructor de Vistas
+                            </h3>
+                            <button type="button" id="btn-add-section-component" class="btn-primary" style="padding:0.5rem 1rem; width:auto; font-size:0.85rem;">➕ Agregar Componente</button>
+                        </div>
+                        
+                        <!-- Selector de sección -->
+                        <div class="form-group" style="margin-bottom: 1.25rem;">
+                            <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.4rem; display: block;">Sección a Componer:</label>
+                            <select id="admin-view-builder-select" style="width:100%; padding:0.65rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:0.95rem; background:white; appearance:auto; cursor:pointer;">
+                                <option value="home">Inicio (Home)</option>
+                                <option value="search">Buscador (Explorar - Landing)</option>
+                                <option value="avisos">Avisos (Novedades)</option>
+                            </select>
+                        </div>
+
+                        <div id="admin-section-components-list" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <!-- Listado de componentes inyectado por JS -->
+                        </div>
+                    </div>
+
+                    <!-- ── Gestionar Nosotros (Bloques Dinámicos) ── -->
+                    <div class="admin-nosotros-section" style="background: white; padding: 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin-bottom: 2rem; border: 1.5px solid #E8ECF0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.8rem;">
+                            <h3 style="font-size: 1.1rem; margin:0; display:flex; align-items:center; gap:0.5rem; color:var(--primary-color);">
+                                <span class="material-symbols-outlined">info</span>
+                                Gestionar Nosotros
+                            </h3>
+                            <button type="button" id="btn-add-nosotros-block" class="btn-primary" style="padding:0.5rem 1rem; width:auto; font-size:0.85rem;">➕ Agregar Bloque de Presentación</button>
+                        </div>
+                        <div id="admin-nosotros-list" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <!-- Bloques administrables inyectados dinámicamente por JS -->
+                        </div>
+                    </div>
+
+                    <!-- ── Panel de Mantenimiento ── -->
+                    <div class="admin-nosotros-section" id="admin-maintenance-panel" style="background: #fff8f0; padding: 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin-bottom: 2rem; border: 1.5px solid #f5c299;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;">
+                            <h3 style="font-size: 1.1rem; margin:0; display:flex; align-items:center; gap:0.5rem; color: #c0510a;">
+                                <span class="material-symbols-outlined">build</span>
+                                Mantenimiento del Catálogo
+                            </h3>
+                        </div>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0 0 1rem 0; line-height: 1.5;">
+                            Convierte todas las imágenes del disco a <strong>WebP</strong> (calidad 80%) y elimina archivos huérfanos que ya no están en la base de datos. Esta operación modifica archivos físicamente.
+                        </p>
+                        <button type="button" id="btn-run-maintenance" class="btn-primary" style="background: #c0510a; width: 100%;">
+                            <span class="material-symbols-outlined" style="font-size:1.1rem; vertical-align: middle;">auto_fix_high</span>
+                            Ejecutar Limpieza y Conversión WebP
+                        </button>
+                        <!-- Resultado -->
+                        <div id="maintenance-result" style="display:none; margin-top: 1rem; background: #1a1a2e; border-radius: 10px; padding: 1rem; max-height: 280px; overflow-y: auto;">
+                            <div id="maintenance-summary" style="display:flex; gap:1rem; margin-bottom:0.75rem; flex-wrap:wrap;"></div>
+                            <pre id="maintenance-log" style="font-size: 0.72rem; color: #a8ff78; margin:0; white-space: pre-wrap; font-family: monospace; line-height: 1.6;"></pre>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ── NUEVA SECCIÓN: CONFIGURACIÓN DE LA APP ── -->
+                <div id="admin-config-view" style="display: none; margin-bottom: 2rem;">
+                    <div class="admin-nosotros-section" style="background: white; padding: 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1.5px solid #E8ECF0; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.1rem; margin:0 0 1.25rem 0; display:flex; align-items:center; gap:0.5rem; color:var(--primary-color);">
+                            <span class="material-symbols-outlined">settings</span>
+                            Identidad y Menú de la Web
+                        </h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 1.5rem 0; line-height: 1.5;">
+                            Personalizá los títulos, subtítulos, íconos y la visibilidad de las 5 secciones principales de tu web. Los cambios se reflejarán instantáneamente en la barra inferior y en la cabecera.
+                        </p>
+                        <div id="admin-config-list" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <!-- Secciones administrables inyectadas dinámicamente por JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── FASE 2: PRODUCTOS DE CATEGORÍA SELECCIONADA ── -->
+                <div id="admin-products-view" style="display: none; margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.8rem;">
+                        <h3 id="admin-products-title" style="font-size: 1.2rem; margin:0; display:flex; align-items:center; gap:0.5rem; color:var(--primary-color);">
+                            <span class="material-symbols-outlined">inventory_2</span>
+                            Productos
+                        </h3>
+                        <button type="button" id="btn-add-product-main" class="btn-primary" style="padding:0.6rem 1.2rem; width:auto; font-size:0.88rem;">➕ Nuevo Producto</button>
+                    </div>
+
+                    <!-- Barra de búsqueda y filtro -->
+                    <div class="admin-filters-bar" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center; background: white; padding: 1rem; border-radius: 12px; border: 1.5px solid #E8ECF0; box-shadow: var(--shadow-sm);">
+                        <div class="search-wrapper" style="flex: 1; min-width: 240px; position: relative;">
+                            <span class="material-symbols-outlined" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 20px;">search</span>
+                            <input type="text" id="admin-search" placeholder="Buscar por nombre o SKU..." style="padding-left: 2.5rem; width: 100%; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                        </div>
+                        <div class="filter-wrapper" style="min-width: 180px; position: relative;">
+                            <select id="admin-category-filter" style="width: 100%; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; padding: 0.65rem 1rem; appearance: auto; cursor: pointer;">
+                                <!-- Categorías cargadas dinámicamente -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Tabla de productos -->
+                    <div class="admin-table-responsive" style="overflow-x: auto; background: white; border-radius: 14px; border: 1.5px solid #E8ECF0; box-shadow: var(--shadow-sm); margin-bottom: 1.5rem;">
+                        <table class="admin-products-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: #F8F9FA; border-bottom: 1.5px solid #E8ECF0;">
+                                    <th style="padding: 1rem; font-weight: 700; color: var(--text-muted); width: 60px;">Foto</th>
+                                    <th style="padding: 1rem; font-weight: 700; color: var(--text-muted);">Producto / SKU</th>
+                                    <th style="padding: 1rem; font-weight: 700; color: var(--text-muted);">Categoría</th>
+                                    <th style="padding: 1rem; font-weight: 700; color: var(--text-muted); text-align: center; width: 100px;">Variantes</th>
+                                    <th style="padding: 1rem; font-weight: 700; color: var(--text-muted); text-align: center; width: 120px;">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-products-table-body">
+                                <!-- Filas de productos inyectadas dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Controles de paginación -->
+                    <div class="admin-pagination-container" style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 0.9rem 1.2rem; border-radius: 12px; border: 1.5px solid #E8ECF0; box-shadow: var(--shadow-sm);">
+                        <button type="button" id="btn-admin-prev" class="btn-outline" style="width: auto; padding: 0.5rem 1rem; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">chevron_left</span> Anterior
+                        </button>
+                        <span id="admin-page-indicator" style="font-size: 0.88rem; font-weight: 600; color: var(--text-main);">
+                            Página 1 de 1
+                        </span>
+                        <button type="button" id="btn-admin-next" class="btn-outline" style="width: auto; padding: 0.5rem 1rem; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;">
+                            Siguiente <span class="material-symbols-outlined" style="font-size: 18px;">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-target="view-home">
+            <span class="material-symbols-outlined">grid_view</span>
+            <span class="nav-label">Inicio</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-profile">
+            <span class="material-symbols-outlined">person</span>
+            <span class="nav-label">Perfil</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-search">
+            <span class="material-symbols-outlined">search</span>
+            <span class="nav-label">Buscar</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-notifications" id="nav-notif-btn">
+            <div class="icon-wrapper">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="badge" id="nav-badge"></span>
+            </div>
+            <span class="nav-label">Avisos</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-about">
+            <span class="material-symbols-outlined">info</span>
+            <span class="nav-label">Nosotros</span>
+        </a>
+    </nav>
+    <div id="admin-toast" class="admin-toast"></div>
+
+                <!-- ── Formulario Modal de Nosotros (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-nosotros-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-nosotros-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Agregar / Editar Bloque de Nosotros</h3>
+                            <button type="button" id="btn-cancel-nosotros" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-nosotros-form" class="admin-form">
+                            <!-- Título -->
+                            <div class="form-group">
+                                <label>Título del Bloque</label>
+                                <input type="text" id="admin-nosotros-title" placeholder="ej: Presentación" required>
+                            </div>
+                            <!-- Selector de tipo de medio -->
+                            <div class="form-group">
+                                <label>Tipo de Contenido Visual</label>
+                                <div class="media-type-selector" id="nosotros-media-type-selector">
+                                    <button type="button" class="media-type-btn active" data-type="image">
+                                        <span class="material-symbols-outlined">image</span>
+                                        Imagen
+                                    </button>
+                                    <button type="button" class="media-type-btn" data-type="video">
+                                        <span class="material-symbols-outlined">smart_display</span>
+                                        Video
+                                    </button>
+                                    <button type="button" class="media-type-btn" data-type="map">
+                                        <span class="material-symbols-outlined">location_on</span>
+                                        Mapa
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Panel: Imagen -->
+                            <div id="nosotros-panel-image" class="nosotros-media-panel form-group">
+                                <label>Subir Foto</label>
+                                <input type="file" id="admin-nosotros-image" accept="image/*">
+                                <input type="hidden" id="admin-nosotros-image-url">
+                                <div id="nosotros-image-preview" style="margin-top:0.5rem; max-width:100%;"></div>
+                            </div>
+
+                            <!-- Panel: Video de YouTube -->
+                            <div id="nosotros-panel-video" class="nosotros-media-panel form-group" style="display:none;">
+                                <label>URL del Video de YouTube</label>
+                                <input type="text" id="admin-nosotros-video-url" placeholder="ej: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                                <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Se reproducirá automáticamente en silencio y en bucle.</small>
+                                <div id="nosotros-video-preview" style="margin-top:0.75rem; border-radius: 10px; overflow:hidden; display:none;"></div>
+                            </div>
+
+                            <!-- Panel: Mapa de Google Maps -->
+                            <div id="nosotros-panel-map" class="nosotros-media-panel form-group" style="display:none;">
+                                <label>Lugar a mostrar en el mapa</label>
+                                <input type="text" id="admin-nosotros-map-query" placeholder="ej: Hurlingham, Buenos Aires, Argentina">
+                                <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Al hacer clic en el mapa se abrirá Google Maps para navegar hasta allí.</small>
+                                <div id="nosotros-map-preview" style="margin-top:0.75rem; border-radius: 10px; overflow:hidden; display:none;"></div>
+                                <button type="button" id="btn-preview-map" class="btn-outline" style="margin-top:0.5rem; width:auto; padding:0.4rem 1rem; font-size:0.85rem;">🗺️ Vista Previa del Mapa</button>
+                            </div>
+                            <!-- Descripción -->
+                            <div class="form-group">
+                                <label>Descripción del Bloque</label>
+                                <textarea id="admin-nosotros-description" rows="4" placeholder="Escribí el texto aquí..." required></textarea>
+                            </div>
+                            <!-- Enlace / Link de Acción -->
+                            <div class="form-group">
+                                <label>Enlace / URL de Acción (Opcional)</label>
+                                <input type="text" id="nosotros-link-url" placeholder="ej: https://maps.google.com/...">
+                            </div>
+                            <!-- Texto del Botón -->
+                            <div class="form-group">
+                                <label>Texto del Botón (Opcional)</label>
+                                <input type="text" id="nosotros-link-text" placeholder="Ej: Ver en Google Maps">
+                            </div>
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-nosotros-block" class="btn-primary" style="width: 100%; max-width: none;">Guardar Bloque de Nosotros</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── Formulario Modal de Categoría (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-category-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-category-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Crear Nueva Categoría</h3>
+                            <button type="button" id="btn-cancel-category" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-cat-form" class="admin-form">
+                            <div class="form-group">
+                                <label>ID (Slug)</label>
+                                <input type="text" id="admin-cat-id" placeholder="ej: linea-infantil" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre visible</label>
+                                <input type="text" id="admin-cat-name" placeholder="ej: Línea Infantil" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Foto de Portada</label>
+                                <input type="file" id="admin-cat-image" accept="image/*">
+                            </div>
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-cat" class="btn-primary" style="width: 100%; max-width: none;">Guardar Categoría</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── Formulario de Producto (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-product-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Cargar / Editar Producto</h3>
+                            <button type="button" id="btn-cancel-product" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+
+                        <form id="admin-form" class="admin-form">
+                            <!-- ID -->
+                            <div class="form-group">
+                                <label>ID del Producto (Slug)</label>
+                                <input type="text" id="admin-id" placeholder="ej: cama-casita-natural" required>
+                            </div>
+
+                            <!-- Título -->
+                            <div class="form-group">
+                                <label>Título</label>
+                                <input type="text" id="admin-title" placeholder="ej: Cama Casita" required>
+                            </div>
+
+                            <!-- Categoría -->
+                            <div class="form-group">
+                                <label style="display:flex; align-items:center; gap:0.4rem;">
+                                    <span class="material-symbols-outlined" style="font-size:16px; color:var(--primary-color);">folder_open</span>
+                                    Categoría
+                                </label>
+                                <div id="product-categories-checkboxes" style="display:flex; flex-direction:column; gap:0.6rem; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; background:white; font-family:var(--font-main); font-size:0.95rem; max-height: 200px; overflow-y: auto;">
+                                    <!-- Checkboxes de categorías inyectados dinámicamente -->
+                                </div>
+                            </div>
+
+                            <!-- Descripción -->
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <textarea id="admin-description" rows="3" required></textarea>
+                            </div>
+
+                            <!-- Grupos de Acabados / Colores -->
+                            <div class="form-group" style="margin-top: 1.5rem;">
+                                <label style="font-size:1.1rem; color:var(--primary-color); display:flex; align-items:center; gap:0.5rem;">
+                                    <span class="material-symbols-outlined">palette</span>
+                                    Grupos de Acabados / Colores
+                                </label>
+                                <div id="admin-acabados-groups" style="display:flex; flex-direction:column; gap:1.5rem; margin-top:1rem;">
+                                    <!-- Los grupos se insertan acá dinámicamente -->
+                                </div>
+                                <button type="button" id="btn-add-acabado-group" class="btn-outline mt-2" style="width:100%; max-width:none; padding:0.8rem; border-style:dashed;">+ Agregar Grupo de Acabado / Color</button>
+                            </div>
+
+                            <!-- Variante Opcional (Datos Técnicos) -->
+                            <div class="form-group attr-group" style="background:#f8f9fb;padding:1rem;border-radius:10px;border:1.5px solid #E8ECF0;">
+                                <label style="text-transform:none;letter-spacing:0;font-size:0.95rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
+                                    <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-color);">tune</span>
+                                    Variante Opcional (Datos Técnicos)
+                                </label>
+                                <div class="form-group" style="margin-bottom:0.5rem;">
+                                    <label style="font-size:0.82rem;margin-bottom:0.3rem;display:block;">Nombre de la variante</label>
+                                    <input type="text" id="admin-opt-label" placeholder="ej: Espesor de agarre">
+                                </div>
+                                <div class="form-group" style="margin-bottom:0;">
+                                    <label style="font-size:0.82rem;margin-bottom:0.3rem;display:block;">Opciones (separadas por coma)</label>
+                                    <input type="text" id="admin-opt-options" placeholder="ej: 20mm, 30mm, 40mm">
+                                </div>
+                            </div>
+
+                            <!-- Etiquetas (Tags) para búsqueda -->
+                            <div class="form-group attr-group" style="background:#f8f9fb;padding:1rem;border-radius:10px;border:1.5px solid #E8ECF0;margin-top:1rem;">
+                                <label style="text-transform:none;letter-spacing:0;font-size:0.95rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
+                                    <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-color);">sell</span>
+                                    Etiquetas de Búsqueda (Opcional)
+                                </label>
+                                <div class="form-group" style="margin-bottom:0;">
+                                    <label style="font-size:0.82rem;margin-bottom:0.3rem;display:block;">Etiquetas (separadas por coma)</label>
+                                    <input type="text" id="admin-tags" placeholder="ej: mesa para patio, mesita de madera, exterior">
+                                </div>
+                            </div>
+
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-generate-json" class="btn-primary">Guardar Producto en Servidor</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── Formulario Modal de Configuración App (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-app-config-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-app-config-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Editar Configuración de Sección</h3>
+                            <button type="button" id="btn-cancel-app-config" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-app-config-form" class="admin-form">
+                            <input type="hidden" id="admin-config-section-key">
+                            <div class="form-group">
+                                <label>Título de la Sección</label>
+                                <input type="text" id="admin-config-title" placeholder="ej: La Tarima" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Subtítulo de la Sección</label>
+                                <input type="text" id="admin-config-subtitle" placeholder="ej: Diseño en madera" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Ícono de la Sección (Material Icon)</label>
+                                <input type="text" id="admin-config-icon" placeholder="ej: home" required>
+                                <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Podés usar nombres de <a href="https://fonts.google.com/icons" target="_blank" style="color:var(--primary-color);">Material Icons</a> como: home, search, person, notifications, info.</small>
+                                <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px; padding: 8px 12px; background: rgba(255, 149, 0, 0.08); border-left: 3px solid #ff9500; border-radius: 6px;">
+                                    <span class="material-symbols-outlined" style="color: #ff9500; font-size: 1.1rem; line-height: 1; font-variation-settings: 'FILL' 1;">warning</span>
+                                    <small style="color: #c07000; font-size: 0.75rem; font-weight: 600; margin: 0; display: block; line-height: 1.3;">
+                                        <strong>Nota de Diseño:</strong> Este ícono será el único elemento visual en la barra de navegación del cliente ("Icon Only"). No se mostrarán etiquetas de texto en el menú.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 1rem;">
+                                <label style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="admin-config-visible" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span>Sección Activa (Visible en menú)</span>
+                                </label>
+                            </div>
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-app-config" class="btn-primary" style="width: 100%; max-width: none;">Guardar Configuración</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── Formulario Modal de Componentes de Vista (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-component-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-component-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Agregar / Editar Componente</h3>
+                            <button type="button" id="btn-cancel-section-component" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-component-form" class="admin-form">
+                            <input type="hidden" id="admin-comp-id">
+                            
+                            <!-- Tipo de Componente -->
+                            <div class="form-group">
+                                <label>Tipo de Componente</label>
+                                <select id="admin-comp-type" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; transition:border-color 0.2s ease; appearance:auto; cursor:pointer;">
+                                    <option value="banner">🌅 Banner Promocional</option>
+                                    <option value="product">⭐️ Destacar Producto</option>
+                                    <option value="video">🎥 Video de Promoción</option>
+                                </select>
+                            </div>
+
+                            <!-- Posicionamiento del Componente (Solo para Home) -->
+                            <div class="form-group" id="admin-comp-position-group" style="display: none;">
+                                <label>Posición del Componente</label>
+                                <select id="admin-comp-position" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; transition:border-color 0.2s ease; appearance:auto; cursor:pointer;">
+                                    <option value="bottom">⬇️ Inferior (Después de los carruseles)</option>
+                                    <option value="top">⬆️ Superior (Antes de los carruseles)</option>
+                                </select>
+                            </div>
+
+
+                            <!-- Panel 1: Banner -->
+                            <div id="comp-panel-banner" class="comp-media-panel form-group">
+                                <div class="form-group" style="margin-bottom:1rem;">
+                                    <label>Foto del Banner</label>
+                                    <input type="file" id="admin-comp-banner-image" accept="image/*">
+                                    <input type="hidden" id="admin-comp-banner-image-url">
+                                    <div id="comp-banner-preview" style="margin-top:0.5rem; max-width:100%;"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enlace / Link de Acción (Opcional)</label>
+                                    <input type="text" id="admin-comp-banner-link" placeholder="ej: https://maps.google.com/...">
+                                </div>
+                            </div>
+
+                            <!-- Panel 2: Destacar Producto -->
+                            <div id="comp-panel-product" class="comp-media-panel form-group" style="display:none;">
+                                <div class="form-group" style="margin-bottom:1rem;">
+                                    <label>Seleccionar Producto</label>
+                                    <select id="admin-comp-product-select" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; appearance:auto; cursor:pointer;">
+                                        <!-- Productos cargados dinámicamente -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mensaje de Alerta / Badge (ej: ¡Novedad de la semana!)</label>
+                                    <input type="text" id="admin-comp-product-badge" placeholder="ej: ¡Súper Venta!">
+                                </div>
+                            </div>
+
+                            <!-- Panel 3: Video Promo -->
+                            <div id="comp-panel-video" class="comp-media-panel form-group" style="display:none;">
+                                <div class="form-group">
+                                    <label>URL del Video de YouTube</label>
+                                    <input type="text" id="admin-comp-video-url" placeholder="ej: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                                    <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Se reproducirá automáticamente en silencio y en bucle.</small>
+                                    <div id="comp-video-preview" style="margin-top:0.75rem; border-radius:10px; overflow:hidden; display:none;"></div>
+                                </div>
+                            </div>
+
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-section-component" class="btn-primary" style="width: 100%; max-width: none;">Guardar Componente</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+    <!-- Scripts -->
+    <script src="js/site-config.js"></script>
+    <script src="js/products-data.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/avisos.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
