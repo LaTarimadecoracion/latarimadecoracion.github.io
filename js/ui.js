@@ -1825,7 +1825,6 @@ window.renderSectionContent = safeRender(renderSectionContent, 'renderSectionCon
 window.showProductDetail = safeRender(showProductDetail, 'showProductDetail');
 window.renderNosotrosBlocksCliente = safeRender(renderNosotrosBlocksCliente, 'renderNosotrosBlocksCliente');
 window.renderAvisosCliente = safeRender(renderAvisosCliente, 'renderAvisosCliente');
-window.openPhotoViewer = openPhotoViewer;
 window.updateActionLinks = updateActionLinks;
 window.findProductById = findProductById;
 
