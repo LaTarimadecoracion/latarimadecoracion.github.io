@@ -193,18 +193,24 @@
             const resumenManualBox = document.getElementById('resumenManual');
             const resumenManualContenido = document.getElementById('resumenManualContenido');
             const resumenManualDesglose = document.getElementById('resumenManualDesglose');
+            
             const STORAGE_USER_SEL = 'userSelectedModeloV1';
+            const STORAGE_KEYS = { medidas: 'lastMedidasBC' };
+            
             function saveUserSelection(nombre) { localStorage.setItem(STORAGE_USER_SEL, nombre || ''); }
             function loadUserSelection() { try { return localStorage.getItem(STORAGE_USER_SEL) || ''; } catch (e) { return ''; } }
+            
+            function loadMedidas() { try { const s = localStorage.getItem(STORAGE_KEYS.medidas); return s ? JSON.parse(s) : {}; } catch (e) { return {}; } }
+            function saveMedidas(B, C) { localStorage.setItem(STORAGE_KEYS.medidas, JSON.stringify({ B, C })); }
 
             function ejecutar() {
                 const B = parseFloat(inputB.value);
                 const C = parseFloat(inputC.value);
                 if (isNaN(B) || isNaN(C)) {
-                    out.style.display = 'block';
-                    out.innerHTML = '<span class="error-msg">Ingresá valores numéricos en B y C para calcular.</span>';
+                    out.style.display = 'none';
                     tablaBarandaBody.innerHTML = '';
                     document.getElementById('resumenRapido').style.display = 'none';
+                    resumenManualBox.style.display = 'none';
                     return;
                 }
                 out.style.display = 'none';
@@ -225,9 +231,6 @@
                     { nombre: 'Montessori 45', nominal: 45, agarre: 8, soporte: 20, minAbertura: 5, targetProt: 15, rangeProt: [13, 17] },
                     { nombre: 'Simple 35', nominal: 35, agarre: 8, soporte: 20, minAbertura: 5, targetProt: 10, rangeProt: [10, 12], minProteccion: 10 }
                 ];
-                const STORAGE_KEYS = { medidas: 'lastMedidasBC' };
-                function loadMedidas() { try { const s = localStorage.getItem(STORAGE_KEYS.medidas); return s ? JSON.parse(s) : {}; } catch (e) { return {}; } }
-                function saveMedidas(B, C) { localStorage.setItem(STORAGE_KEYS.medidas, JSON.stringify({ B, C })); }
 
                 function calcModeloAvanzado(m) {
                     const agarreReal = B > m.agarre ? m.agarre : B;
@@ -257,6 +260,7 @@
                     const diff = Math.abs(proteccionNominal - m.targetProt);
                     return { ...m, agarreReal, abertura: +abertura.toFixed(1), aberturaFormula: +aberturaFormula.toFixed(1), alturaSugerida: +alturaIdeal.toFixed(1), proteccion: +proteccion.toFixed(1), estado, colorStyle, colorClass, nota, rango: `${pMin}–${pMax}`, proteccionNominal: +proteccionNominal.toFixed(1), diffTarget: +diff.toFixed(1) };
                 }
+                
                 const evalAvanzado = modelosConfig.map(calcModeloAvanzado);
                 window._lastEvalAvanzado = evalAvanzado;
                 let cand = evalAvanzado.filter(x => x.estado === 'Óptima'); if (!cand.length) cand = evalAvanzado.slice();
@@ -383,14 +387,32 @@
             }
             
             ['input', 'change'].forEach(evt => {
-                inputB.addEventListener(evt, () => { if (inputB.value !== '' && inputC.value !== '') { saveMedidas(parseFloat(inputB.value), parseFloat(inputC.value)); ejecutar(); } });
-                inputC.addEventListener(evt, () => { if (inputB.value !== '' && inputC.value !== '') { saveMedidas(parseFloat(inputB.value), parseFloat(inputC.value)); ejecutar(); } });
+                inputB.addEventListener(evt, () => {
+                    const B = parseFloat(inputB.value);
+                    const C = parseFloat(inputC.value);
+                    if (!isNaN(B) && !isNaN(C)) {
+                        saveMedidas(B, C);
+                    }
+                    ejecutar();
+                });
+                inputC.addEventListener(evt, () => {
+                    const B = parseFloat(inputB.value);
+                    const C = parseFloat(inputC.value);
+                    if (!isNaN(B) && !isNaN(C)) {
+                        saveMedidas(B, C);
+                    }
+                    ejecutar();
+                });
             });
 
-            window.addEventListener('DOMContentLoaded', () => {
-                const STORAGE_KEYS = { medidas: 'lastMedidasBC' };
-                function loadMedidas() { try { const s = localStorage.getItem(STORAGE_KEYS.medidas); return s ? JSON.parse(s) : {}; } catch (e) { return {}; } }
-                const last = loadMedidas(); if (last.B != null) inputB.value = last.B; if (last.C != null) inputC.value = last.C; if (inputB.value !== '' && inputC.value !== '') { ejecutar(); }
+            function initCalculator() {
+                const last = loadMedidas();
+                if (last.B != null) inputB.value = last.B;
+                if (last.C != null) inputC.value = last.C;
+                if (inputB.value !== '' && inputC.value !== '') {
+                    ejecutar();
+                }
+                
                 const btnCopiar = document.getElementById('btnCopiarResumen');
                 const copyOk = document.getElementById('copyOk');
                 if (btnCopiar) {
@@ -409,7 +431,13 @@
                         }
                     });
                 }
-            });
+            }
+
+            if (document.readyState === 'loading') {
+                window.addEventListener('DOMContentLoaded', initCalculator);
+            } else {
+                initCalculator();
+            }
         })();
     </script>
 </body>
