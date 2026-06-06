@@ -1306,7 +1306,7 @@ const productsData = [
     {
         "id": "Estantes",
         "name": "Estantes",
-        "image": "img/estantes/portada-imagen.webp",
+        "image": "img/estantes/portada-1780775756126-imagen.webp",
         "order": 7,
         "products": [
             {
@@ -1677,7 +1677,7 @@ const productsData = [
     {
         "id": "decoracion",
         "name": "Decoracion",
-        "image": "img/migrados/decoracion/general/perchero1.webp",
+        "image": "img/decoracion/portada-1780775663430-imagen.webp",
         "order": 8,
         "products": [
             {
@@ -2042,7 +2042,7 @@ const productsData = [
     {
         "id": "exterior",
         "name": "Exterior",
-        "image": "img/migrados/exterior/general/deckcuadrado.webp",
+        "image": "img/exterior/portada-1780775296111-imagen.webp",
         "order": 9,
         "products": [
             {
@@ -2428,8 +2428,8 @@ const productsData = [
     },
     {
         "id": "organizacion",
-        "name": "Organizacion",
-        "image": "img/migrados/organizacion/general/organizador6.webp",
+        "name": "Organizadores",
+        "image": "img/organizadores/portada-1780775974452-imagen.webp",
         "order": 10,
         "products": [
             {
@@ -2522,7 +2522,7 @@ const productsData = [
                 "id": "verdulero-mediano",
                 "title": "Verdulero Mediano",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizacion/verdulero-mediano/1780708412753-imagen.webp",
+                "image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
@@ -2548,7 +2548,7 @@ const productsData = [
                 "id": "verdulero-x3",
                 "title": "Verdulero x3",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizacion/verdulero-x3/1780708453865-imagen.webp",
+                "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
