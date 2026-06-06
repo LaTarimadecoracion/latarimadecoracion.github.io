@@ -1828,3 +1828,115 @@ window.renderAvisosCliente = safeRender(renderAvisosCliente, 'renderAvisosClient
 window.openPhotoViewer = openPhotoViewer;
 window.updateActionLinks = updateActionLinks;
 window.findProductById = findProductById;
+
+// --- MOUSE DRAG TO SCROLL FOR HORIZONTAL CAROUSELS (PC COMPATIBILITY) ---
+(function() {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let activeCarousel = null;
+    let velocity = 0;
+    let lastTime = 0;
+    let lastX = 0;
+    let clickStartX = 0;
+    let clickStartY = 0;
+
+    const carouselSelector = '.carousel-categories, .carousel-gallery, .carousel-horizontal, .carousel-full, .product-detail-carousel, .filter-chips, .variant-buttons-container';
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+        ${carouselSelector} {
+            cursor: grab;
+            user-select: none;
+            -webkit-user-drag: none;
+            scroll-behavior: auto !important;
+        }
+        .carousel-categories:active, .carousel-gallery:active, .carousel-horizontal:active, .carousel-full:active, .product-detail-carousel:active, .filter-chips:active, .variant-buttons-container:active {
+            cursor: grabbing;
+        }
+        .carousel-categories *, .carousel-gallery *, .carousel-horizontal *, .carousel-full *, .product-detail-carousel *, .filter-chips *, .variant-buttons-container * {
+            -webkit-user-drag: none;
+        }
+    `;
+    document.head.appendChild(style);
+
+    document.addEventListener('mousedown', (e) => {
+        const carousel = e.target.closest(carouselSelector);
+        if (!carousel) return;
+
+        isDown = true;
+        activeCarousel = carousel;
+        carousel.classList.add('grabbing');
+
+        startX = e.pageX;
+        scrollLeft = carousel.scrollLeft;
+
+        lastTime = Date.now();
+        lastX = e.pageX;
+        velocity = 0;
+        
+        clickStartX = e.clientX;
+        clickStartY = e.clientY;
+    }, true);
+
+    document.addEventListener('mouseleave', () => {
+        if (!isDown || !activeCarousel) return;
+        isDown = false;
+        activeCarousel.classList.remove('grabbing');
+        activeCarousel = null;
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (!isDown || !activeCarousel) return;
+        isDown = false;
+        activeCarousel.classList.remove('grabbing');
+
+        const carousel = activeCarousel;
+        activeCarousel = null;
+
+        if (Math.abs(velocity) > 0.5) {
+            let momentum = velocity * 15;
+            const step = () => {
+                if (isDown) return;
+                carousel.scrollLeft -= momentum;
+                momentum *= 0.92;
+                if (Math.abs(momentum) > 0.5) {
+                    requestAnimationFrame(step);
+                }
+            };
+            requestAnimationFrame(step);
+        }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDown || !activeCarousel) return;
+
+        e.preventDefault();
+
+        const x = e.pageX;
+        const walk = (x - startX) * 1.5;
+        activeCarousel.scrollLeft = scrollLeft - walk;
+
+        const now = Date.now();
+        const elapsed = now - lastTime;
+        if (elapsed > 0) {
+            const deltaX = e.pageX - lastX;
+            velocity = deltaX / elapsed;
+            lastTime = now;
+            lastX = e.pageX;
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        const carousel = e.target.closest(carouselSelector);
+        if (!carousel) return;
+
+        const deltaX = Math.abs(e.clientX - clickStartX);
+        const deltaY = Math.abs(e.clientY - clickStartY);
+        if (deltaX > 10 || deltaY > 10) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }, true);
+})();
+
