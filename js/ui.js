@@ -1849,16 +1849,23 @@ window.findProductById = findProductById;
             cursor: grab;
             user-select: none;
             -webkit-user-drag: none;
-            scroll-behavior: auto !important;
         }
         .carousel-categories:active, .carousel-gallery:active, .carousel-horizontal:active, .carousel-full:active, .product-detail-carousel:active, .filter-chips:active, .variant-buttons-container:active {
             cursor: grabbing;
         }
         .carousel-categories *, .carousel-gallery *, .carousel-horizontal *, .carousel-full *, .product-detail-carousel *, .filter-chips *, .variant-buttons-container * {
             -webkit-user-drag: none;
+            user-select: none;
         }
     `;
     document.head.appendChild(style);
+
+    // Prevent native drag-and-drop of images and links inside the carousel
+    document.addEventListener('dragstart', (e) => {
+        if (e.target.closest(carouselSelector)) {
+            e.preventDefault();
+        }
+    }, true);
 
     document.addEventListener('mousedown', (e) => {
         const carousel = e.target.closest(carouselSelector);
@@ -1867,6 +1874,10 @@ window.findProductById = findProductById;
         isDown = true;
         activeCarousel = carousel;
         carousel.classList.add('grabbing');
+
+        // Temporarily disable scroll snapping so programmatically setting scrollLeft is smooth
+        carousel.style.scrollSnapType = 'none';
+        carousel.style.scrollBehavior = 'auto'; // Disable CSS transition scroll-behavior during manual drag
 
         startX = e.pageX;
         scrollLeft = carousel.scrollLeft;
@@ -1879,20 +1890,16 @@ window.findProductById = findProductById;
         clickStartY = e.clientY;
     }, true);
 
-    document.addEventListener('mouseleave', () => {
-        if (!isDown || !activeCarousel) return;
-        isDown = false;
-        activeCarousel.classList.remove('grabbing');
-        activeCarousel = null;
-    });
-
-    document.addEventListener('mouseup', () => {
+    const endDrag = () => {
         if (!isDown || !activeCarousel) return;
         isDown = false;
         activeCarousel.classList.remove('grabbing');
 
         const carousel = activeCarousel;
         activeCarousel = null;
+
+        // Restore scroll behavior
+        carousel.style.scrollBehavior = '';
 
         if (Math.abs(velocity) > 0.5) {
             let momentum = velocity * 15;
@@ -1902,11 +1909,20 @@ window.findProductById = findProductById;
                 momentum *= 0.92;
                 if (Math.abs(momentum) > 0.5) {
                     requestAnimationFrame(step);
+                } else {
+                    // Re-enable scroll snap after momentum scroll ends
+                    carousel.style.scrollSnapType = '';
                 }
             };
             requestAnimationFrame(step);
+        } else {
+            // Re-enable scroll snap immediately if there is no momentum
+            carousel.style.scrollSnapType = '';
         }
-    });
+    };
+
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('mouseleave', endDrag);
 
     document.addEventListener('mousemove', (e) => {
         if (!isDown || !activeCarousel) return;
