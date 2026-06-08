@@ -29,6 +29,47 @@
     --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── TEMÁTICAS / SKINS DE LA WEB ── */
+/* Sobrio V1 (Negro, Blanco y Gris) */
+body.theme-sobrio {
+    --primary-color: #1A1A1A;
+    --primary-hover: #333333;
+    --accent-color: #4A5568;
+    --bg-color: #FFFFFF;
+}
+
+/* Mes Mundialista (Celeste y Dorado) */
+body.theme-mundial {
+    --primary-color: #74ACDF;
+    --primary-hover: #5992C6;
+    --accent-color: #F6B828;
+    --bg-color: #F0F6FA;
+}
+
+/* Navidad (Rojo y Verde) */
+body.theme-navidad {
+    --primary-color: #C22A2A;
+    --primary-hover: #A32020;
+    --accent-color: #1A6C37;
+    --bg-color: #FAF5F5;
+}
+
+/* Halloween (Naranja y Violeta) */
+body.theme-halloween {
+    --primary-color: #E65100;
+    --primary-hover: #D84315;
+    --accent-color: #5E35B1;
+    --bg-color: #FBF4EF;
+}
+
+/* San Valentín (Rosa y Rosa Pastel) */
+body.theme-valentin {
+    --primary-color: #E91E63;
+    --primary-hover: #C2185B;
+    --accent-color: #F48FB1;
+    --bg-color: #FFF2F5;
+}
+
 /* Base Reset */
 * {
     margin: 0;
@@ -2608,6 +2649,66 @@ button, .btn-primary, .btn-outline {
 
 .btn-clone-group .material-symbols-outlined {
     font-size: 18px !important;
+}
+
+/* ── Partículas de Confeti para Temas Festivos ── */
+.confetti-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: confetti-fly 3.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes confetti-fly {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(var(--tx), var(--ty), 0) rotate(var(--rot)) scale(0.15);
+        opacity: 0;
+    }
+}
+
+/* ── CARGA SUAVE DE IMÁGENES (SHIMMER SKELETON + FADE-IN) ── */
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Contenedores que muestran el esqueleto de carga animado */
+.feed-card-photo,
+.feed-card-photo-container,
+.category-card,
+.product-detail-slide {
+    background: linear-gradient(90deg, #F5F2EE 25%, #E9E4DD 50%, #F5F2EE 75%) !important;
+    background-size: 200% 100% !important;
+    animation: shimmer 1.6s infinite linear !important;
+}
+
+/* Imágenes ocultas inicialmente */
+.feed-card-img,
+.category-card-img,
+.product-detail-img {
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out !important;
+    will-change: opacity;
+}
+
+/* Clase inyectada cuando la imagen se descarga completamente */
+.feed-card-img.loaded,
+.category-card-img.loaded,
+.product-detail-img.loaded {
+    opacity: 1;
 }
 
 

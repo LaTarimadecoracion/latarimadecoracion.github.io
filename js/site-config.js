@@ -3,6 +3,7 @@
 // Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.
 
 window.siteConfig = {
+    "activeTheme": "mundial",
     "appConfig": {
         "home": {
             "title": "La Tarima",

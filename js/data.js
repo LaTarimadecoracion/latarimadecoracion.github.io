@@ -9,6 +9,7 @@ window.sessionProducts = typeof productsData !== 'undefined' ? [...productsData]
 // Garantizar que existan las estructuras de siteConfig del servidor
 if (!window.siteConfig) {
     window.siteConfig = {
+        activeTheme: "classic",
         appConfig: {
             home: { title: "La Tarima", subtitle: "Diseño en madera", icon: "home", visible: true, contentStack: [] },
             search: { title: "Explorar", subtitle: "Encontrá lo que buscás", icon: "search", visible: true, contentStack: [] },
@@ -29,6 +30,18 @@ if (!window.siteConfig) {
         sessionAvisos: []
     };
 }
+
+// Función para aplicar la skin de forma reactiva en el body
+window.applyTheme = function(themeName) {
+    document.body.classList.remove('theme-sobrio', 'theme-mundial', 'theme-navidad', 'theme-halloween', 'theme-valentin');
+    if (themeName && themeName !== 'classic') {
+        document.body.classList.add(`theme-${themeName}`);
+    }
+};
+
+// Cargar tema activo inicial (primero del servidor, luego local como respaldo)
+window.activeTheme = window.siteConfig.activeTheme || localStorage.getItem('activeTheme') || 'classic';
+window.applyTheme(window.activeTheme);
 
 // 1. App Configurator: Dynamic Identity and Navigation State
 window.appConfig = window.siteConfig.appConfig || {
@@ -150,6 +163,7 @@ try {
 window.syncSiteConfigWithServer = async function() {
     try {
         window.siteConfig = {
+            activeTheme: window.activeTheme || 'classic',
             appConfig: window.appConfig,
             contentRegistry: window.contentRegistry,
             homeConfig: window.homeConfig,

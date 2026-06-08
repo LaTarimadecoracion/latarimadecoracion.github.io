@@ -21,7 +21,8 @@ const serveIndexWithOG = (req, res) => {
             let html = fs.readFileSync(indexHtmlPath, 'utf8');
             
             // If there's a product query parameter, we want to inject metadata
-            if (req.query.p) {
+            const prodParam = req.query.prod || req.query.product || req.query.p;
+            if (prodParam) {
                 const databasePath = path.join(__dirname, 'js', 'products-data.js');
                 if (fs.existsSync(databasePath)) {
                     const rawFile = fs.readFileSync(databasePath, 'utf8');
@@ -35,7 +36,7 @@ const serveIndexWithOG = (req, res) => {
                     let foundProduct = null;
                     for (const category of productsData) {
                         if (category.products) {
-                            const p = category.products.find(prod => prod.id === req.query.p);
+                            const p = category.products.find(prod => prod.id === prodParam);
                             if (p) {
                                 foundProduct = p;
                                 break;
@@ -55,7 +56,7 @@ const serveIndexWithOG = (req, res) => {
                             imageUrl = `${baseUrl}/img/logo_provisional.png`;
                         }
                         
-                        const productUrl = `${baseUrl}/?p=${req.query.p}`;
+                        const productUrl = `${baseUrl}/?prod=${prodParam}`;
                         const pageTitle = `${foundProduct.title} | LA TARIMA`;
                         const pageDesc = foundProduct.description || '';
                         
@@ -107,7 +108,7 @@ const serveIndexWithOG = (req, res) => {
 // Intercept requests to root or index.html to inject Open Graph tags dynamically
 app.get(['/', '/index.html'], (req, res, next) => {
     // Only run if there is a query parameter, otherwise let express.static handle it (highly efficient)
-    if (req.query.p) {
+    if (req.query.prod || req.query.product || req.query.p) {
         return serveIndexWithOG(req, res);
     }
     next();

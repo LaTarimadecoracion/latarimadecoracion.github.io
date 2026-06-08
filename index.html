@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXNJV3XERK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-JXNJV3XERK');
+    </script>
+
+    <!-- Google Site Verification (Search Console) -->
+    <!-- <meta name="google-site-verification" content="COPIA_EL_CODIGO_AQUI" /> -->
+
+    <!-- SEO / Indexers -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://latarimadecoracion.github.io/">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LA TARIMA - Carpintería Premium</title>
@@ -392,6 +408,28 @@
                         </p>
                         <div id="admin-config-list" style="display: flex; flex-direction: column; gap: 0.8rem;">
                             <!-- Secciones administrables inyectadas dinámicamente por JS -->
+                        </div>
+                    </div>
+
+                    <!-- Temática / Skin de la Web -->
+                    <div class="admin-nosotros-section" style="background: white; padding: 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1.5px solid #E8ECF0; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.1rem; margin:0 0 1.25rem 0; display:flex; align-items:center; gap:0.5rem; color:var(--primary-color);">
+                            <span class="material-symbols-outlined">palette</span>
+                            Decoración / Temática de la Web
+                        </h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 1.5rem 0; line-height: 1.5;">
+                            Elegí una skin temática para decorar tu tienda. Se aplicará instantáneamente a la web y cambiará los colores de fondo, botones e identidad visual de forma automática.
+                        </p>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Skin / Tema Activo:</label>
+                            <select id="admin-theme-select" style="width:100%; padding:0.65rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:0.95rem; background:white; appearance:auto; cursor:pointer;">
+                                <option value="classic">🌲 Madera Clásica (Default)</option>
+                                <option value="sobrio">⚫ Sobrio V1 (Negro, Blanco y Gris)</option>
+                                <option value="mundial">⚽ Mes Mundialista (Celeste y Blanco)</option>
+                                <option value="navidad">🎅 Navidad (Rojo y Verde)</option>
+                                <option value="halloween">🎃 Halloween (Naranja y Violeta)</option>
+                                <option value="valentin">💖 San Valentín (Rosa y Corazones)</option>
+                            </select>
                         </div>
                     </div>
 

@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const infoCol = document.createElement('div');
             infoCol.className = 'catalog-info-col';
             
-            const detailUrl = `index.html?p=${product.id}`;
+            const detailUrl = `./?prod=${product.id}`;
             infoCol.innerHTML = `
                 <a href="${detailUrl}" class="catalog-thumb-link">
                     <img src="${product.image}" class="catalog-thumb" alt="${product.title}" onerror="this.onerror=null; this.src='img/logo_provisional.png';">
@@ -231,6 +231,18 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 btnShipping.style.display = 'none'; // Se oculta si no tiene link
             }
+            btnShipping.addEventListener('click', () => {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'begin_checkout', {
+                        currency: 'ARS',
+                        items: [{
+                            item_id: product.id,
+                            item_name: product.title,
+                            item_category: product.categoryName
+                        }]
+                    });
+                }
+            });
             actionsCol.appendChild(btnShipping);
 
             // Botón WhatsApp
@@ -239,6 +251,18 @@ document.addEventListener('DOMContentLoaded', () => {
             btnWpp.href = currentWhatsAppLink;
             btnWpp.target = '_blank';
             btnWpp.innerHTML = `<span class="material-symbols-outlined">forum</span> Consultar`;
+            btnWpp.addEventListener('click', () => {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'contact', {
+                        method: 'WhatsApp',
+                        event_category: 'Engagement',
+                        event_label: 'Consultar WhatsApp Catálogo A-Z',
+                        item_id: product.id,
+                        item_name: product.title,
+                        item_category: product.categoryName
+                    });
+                }
+            });
             actionsCol.appendChild(btnWpp);
 
             row.appendChild(actionsCol);

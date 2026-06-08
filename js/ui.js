@@ -174,7 +174,7 @@ window.safeRender = function(fn, name) {
                     
                     card.innerHTML = `
                         <div class="feed-card-photo-container">
-                            <img src="${productCover}" class="feed-card-img" alt="${product.title}" loading="lazy" onerror="if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                            <img src="${productCover}" class="feed-card-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
                             <div class="feed-card-gradient"></div>
                             <div class="feed-card-info">
                                 <span class="feed-card-cat">${catName}</span>
@@ -406,6 +406,41 @@ window.safeRender = function(fn, name) {
         }
 
         updateHeader(viewId, context);
+
+        // Actualizar URL en el historial (si no es navegación hacia atrás o disparada por popstate/detalles/categoría)
+        const isProductOrCategoryView = viewId === 'view-product-detail' || viewId === 'view-category-feed';
+        
+        if (!isProductOrCategoryView) {
+            const prettyNames = {
+                'view-about': 'nosotros',
+                'view-search': 'buscar',
+                'view-notifications': 'avisos',
+                'view-profile': 'perfil',
+                'view-admin': 'admin'
+            };
+            
+            const viewName = prettyNames[viewId] || '';
+            let query = '';
+            if (viewId !== 'view-home' && viewName) {
+                query = `?view=${viewName}`;
+            }
+            
+            const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + query;
+            if (!isBack) {
+                window.history.pushState({ viewId }, document.title, cleanUrl);
+            } else {
+                window.history.replaceState({ viewId }, document.title, cleanUrl);
+            }
+        }
+
+        // Tracking virtual de Google Analytics para la SPA
+        if (typeof gtag === 'function') {
+            gtag('event', 'page_view', {
+                page_title: (context && context.title) ? context.title : (document.title + ' - ' + viewId.replace('view-', '').toUpperCase()),
+                page_location: window.location.href.split('?')[0] + '#' + viewId,
+                page_path: '/' + viewId
+            });
+        }
     }
 
 
@@ -562,6 +597,17 @@ window.safeRender = function(fn, name) {
         } catch (e) {
             console.warn('[Tracking] No se pudo conectar al servidor para registrar la vista:', e);
         }
+
+        // 4. Registrar vista en Google Analytics
+        if (typeof gtag === 'function') {
+            gtag('event', 'view_item', {
+                currency: 'ARS',
+                items: [{
+                    item_id: productId,
+                    item_name: productId
+                }]
+            });
+        }
     };
 
     function renderHome() {
@@ -652,7 +698,7 @@ window.safeRender = function(fn, name) {
                             catCard.className = 'category-card';
                             const catCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
                             catCard.innerHTML = `
-                                <img src="${catCover}" class="category-card-img" alt="${cat.name}" loading="lazy" onerror="if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                                <img src="${catCover}" class="category-card-img" alt="${cat.name}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
                                 <div class="category-overlay">
                                     <span>${cat.name}</span>
                                 </div>
@@ -697,7 +743,7 @@ window.safeRender = function(fn, name) {
                             card.className = 'category-card';
                             const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
                             card.innerHTML = `
-                                <img src="${productCover}" class="category-card-img" alt="${product.title}" loading="lazy" onerror="if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                                <img src="${productCover}" class="category-card-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
                                 <div class="category-overlay">
                                     <span>${product.title}</span>
                                 </div>
@@ -734,29 +780,18 @@ window.safeRender = function(fn, name) {
                             }
                         });
 
-                        // Ordenar por vistas descendente antes de recortar los top 8
-                        const mostWanted = [...allProducts]
-                            .sort((a, b) => {
-                                const viewsA = a.product.views || 0;
-                                const viewsB = b.product.views || 0;
-                                return viewsB - viewsA;
-                            })
+                        // Selección aleatoria para mantener el home dinámico (sin base de datos)
+                        const randomSelections = [...allProducts]
+                            .sort(() => 0.5 - Math.random())
                             .slice(0, 8);
-                        mostWanted.forEach(({ product, catName }) => {
+                        randomSelections.forEach(({ product, catName }) => {
                             const pCard = document.createElement('div');
                             pCard.className = 'category-card';
                             const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
-                            const viewsCount = product.views || 0;
                             pCard.innerHTML = `
-                                <img src="${productCover}" class="category-card-img" alt="${product.title}" loading="lazy" onerror="if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
-                                <div class="category-overlay" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <img src="${productCover}" class="category-card-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                                <div class="category-overlay">
                                     <span>${product.title}</span>
-                                    ${viewsCount > 0 ? `
-                                        <span style="font-size: 0.72rem; opacity: 0.8; font-weight: normal; margin-top: 2px; display: flex; align-items: center; gap: 3px;">
-                                            <span class="material-symbols-outlined" style="font-size: 11px; vertical-align: middle;">visibility</span>
-                                            ${viewsCount} ${viewsCount === 1 ? 'visita' : 'visitas'}
-                                        </span>
-                                    ` : ''}
                                 </div>
                             `;
                             pCard.addEventListener('click', () => {
@@ -805,6 +840,18 @@ window.safeRender = function(fn, name) {
     }
 
     function showProductDetail(product, categoryName, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '') {
+        // Actualizar URL en el historial si es necesario
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('prod') !== product.id) {
+            const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + `?prod=${product.id}`;
+            const comesFromLegacy = (urlParams.get('p') === product.id || urlParams.get('product') === product.id);
+            if (comesFromLegacy) {
+                window.history.replaceState({ viewId: 'view-product-detail', productId: product.id }, document.title, cleanUrl);
+            } else {
+                window.history.pushState({ viewId: 'view-product-detail', productId: product.id }, document.title, cleanUrl);
+            }
+        }
+
         const detailImgContainer = document.querySelector('.detail-img-container');
         const detailDescription = document.getElementById('detail-description');
         
@@ -852,6 +899,37 @@ window.safeRender = function(fn, name) {
         const btnShipping = document.getElementById('btn-buy-shipping');
         const btnPickup = document.getElementById('btn-buy-pickup');
         const phone = '5491167007723';
+
+        // Vincular eventos de conversión de Google Analytics
+        if (btnShipping) {
+            btnShipping.onclick = () => {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'begin_checkout', {
+                        currency: 'ARS',
+                        items: [{
+                            item_id: product.id,
+                            item_name: product.title,
+                            item_category: categoryName
+                        }]
+                    });
+                }
+            };
+        }
+
+        if (btnPickup) {
+            btnPickup.onclick = () => {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'contact', {
+                        method: 'WhatsApp',
+                        event_category: 'Engagement',
+                        event_label: 'Consultar WhatsApp Producto',
+                        item_id: product.id,
+                        item_name: product.title,
+                        item_category: categoryName
+                    });
+                }
+            };
+        }
 
         // 1. Identificar grupos de acabado
         let grupos = product.acabados_groups || [];
@@ -946,7 +1024,7 @@ window.safeRender = function(fn, name) {
             // Clic en Compartir
             btnShare.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const shareUrl = `${window.location.origin}${window.location.pathname}?p=${product.id}`;
+                const shareUrl = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/')}?prod=${product.id}`;
                 const shareText = `Mira lo que encontré en La Tarima 😊\n*${product.title}* (${acabado})`;
                 
                 const copyTextToClipboard = (textToCopy) => {
@@ -1026,7 +1104,7 @@ window.safeRender = function(fn, name) {
                 if(!imgUrl) return;
                 galleryHTML += `
                     <div class="product-detail-slide">
-                        <img src="${imgUrl}" class="product-detail-img" alt="${product.title}" loading="lazy" onerror="if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                        <img src="${imgUrl}" class="product-detail-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
                         <span class="slide-indicator">${index + 1} / ${images.length}</span>
                     </div>
                 `;
@@ -1170,7 +1248,7 @@ window.safeRender = function(fn, name) {
         navigateToView('view-product-detail', {
             title: product.title,
             category: categoryName
-        });
+        }, true); // true to skip pushing double history state
     }
 
     // 5. Admin Panel Logic

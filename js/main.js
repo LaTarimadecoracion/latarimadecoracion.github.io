@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const categoryName = window.btnShareHeader.getAttribute('data-category-name') || 'Categoría';
             if (!categoryId) return;
 
-            const shareUrl = `${window.location.origin}${window.location.pathname}?cat=${categoryId}`;
+            const shareUrl = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/')}?cat=${categoryId}`;
             const shareText = `Mirá la categoría *${categoryName}* en La Tarima 😊`;
 
             const copyTextToClipboard = (textToCopy) => {
@@ -149,10 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Deep Linking Router para Productos Compartidos (?p=id-producto) y Vistas (?view=id-vista)
+    // 3. Deep Linking Router para Productos Compartidos (?prod=id-producto) y Vistas (?view=id-vista)
     try {
         const urlParams = new URLSearchParams(window.location.search);
-        const prodId = urlParams.get('p') || urlParams.get('product');
+        const prodId = urlParams.get('prod') || urlParams.get('product') || urlParams.get('p');
         if (prodId) {
             // Pequeño retardo para asegurar que los renders y la UI se asienten en el DOM
             setTimeout(() => {
@@ -161,10 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (foundData) {
                         console.log(`[Router] Producto compartido detectado: ${prodId}. Abriendo modal.`);
                         window.showProductDetail(foundData.product, foundData.catName);
-                        
-                        // Limpiar la URL sin recargar para estética premium
-                        const cleanUrl = window.location.pathname;
-                        window.history.replaceState({}, document.title, cleanUrl);
                     } else {
                         console.warn(`[Router] Producto con ID '${prodId}' no encontrado en el catálogo.`);
                     }
@@ -172,16 +168,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 150);
         }
 
-        const viewId = urlParams.get('view');
-        if (viewId) {
+        const viewParam = urlParams.get('view');
+        if (viewParam) {
+            const viewIdMap = {
+                'nosotros': 'view-about',
+                'buscar': 'view-search',
+                'avisos': 'view-notifications',
+                'perfil': 'view-profile',
+                'admin': 'view-admin'
+            };
+            const targetViewId = viewIdMap[viewParam] || viewParam;
             setTimeout(() => {
                 if (window.navigateToView) {
-                    console.log(`[Router] Navegación solicitada por URL a: ${viewId}`);
-                    window.navigateToView(viewId);
-                    
-                    // Limpiar la URL sin recargar para estética premium
-                    const cleanUrl = window.location.pathname;
-                    window.history.replaceState({}, document.title, cleanUrl);
+                    console.log(`[Router] Navegación solicitada por URL a: ${targetViewId}`);
+                    window.navigateToView(targetViewId);
                 }
             }, 150);
         }
@@ -192,14 +192,102 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (window.navigateToCategoryFeed) {
                     console.log(`[Router] Categoría compartida detectada: ${catId}. Abriendo feed.`);
                     window.navigateToCategoryFeed(catId);
-                    
-                    // Limpiar la URL sin recargar para estética premium
-                    const cleanUrl = window.location.pathname;
-                    window.history.replaceState({}, document.title, cleanUrl);
                 }
             }, 150);
         }
     } catch (e) {
         console.error("[Router] Error en deep-linking:", e);
+    }
+
+    // 4. Popstate event listener for native back/forward navigation support
+    window.addEventListener('popstate', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const prodId = urlParams.get('prod') || urlParams.get('product') || urlParams.get('p');
+        const viewParam = urlParams.get('view');
+        const catId = urlParams.get('cat') || urlParams.get('category');
+        
+        if (prodId) {
+            if (window.findProductById && window.showProductDetail) {
+                const foundData = window.findProductById(prodId);
+                if (foundData) {
+                    window.showProductDetail(foundData.product, foundData.catName);
+                }
+            }
+        } else if (catId) {
+            if (window.navigateToCategoryFeed) {
+                window.navigateToCategoryFeed(catId);
+            }
+        } else if (viewParam) {
+            const viewIdMap = {
+                'nosotros': 'view-about',
+                'buscar': 'view-search',
+                'avisos': 'view-notifications',
+                'perfil': 'view-profile',
+                'admin': 'view-admin'
+            };
+            const targetViewId = viewIdMap[viewParam] || viewParam;
+            if (window.navigateToView) {
+                window.navigateToView(targetViewId, null, true);
+            }
+        } else {
+            if (window.navigateToView) {
+                window.navigateToView('view-home', null, true);
+            }
+        }
+    });
+});
+
+// Efecto de explosión de confeti en clicks/taps para temáticas festivas
+document.addEventListener('pointerdown', (e) => {
+    const activeTheme = window.activeTheme || 'classic';
+    const festiveThemes = ['mundial', 'navidad', 'halloween', 'valentin'];
+    if (!festiveThemes.includes(activeTheme)) return;
+
+    // Dos colores específicos por temática (bien de cancha)
+    const themeColors = {
+        mundial: ['#74ACDF', '#FFFFFF'], // Celeste y blanco
+        navidad: ['#C22A2A', '#1A6C37'], // Rojo y verde
+        halloween: ['#E65100', '#5E35B1'], // Naranja y violeta
+        valentin: ['#E91E63', '#FFFFFF'] // Rosa y blanco
+    };
+
+    const colors = themeColors[activeTheme];
+    if (!colors) return;
+
+    const particleCount = 28; // Mayor cantidad para simular una lluvia tupida de tribuna
+    const container = document.body;
+
+    for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.className = 'confetti-particle';
+
+        // Confetis perfectamente cuadrados (estilo papel cortado de tribuna)
+        const size = Math.random() * 8 + 6; // 6px a 14px
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.backgroundColor = color;
+        p.style.borderRadius = '0px'; // 100% Cuadrado sin bordes redondeados
+
+        // Posición de origen (donde se hizo click/tap)
+        p.style.left = `${e.clientX - size / 2}px`;
+        p.style.top = `${e.clientY - size / 2}px`;
+
+        // Explosión radial simétrica en cámara lenta (tipo estrella flotante)
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 65 + 35; // Velocidad de explosión reducida para cámara lenta
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity + 75; // Desplazamiento + caída vertical lenta y persistente
+        const rot = Math.random() * 900 + 450; // Gran cantidad de giros durante los 3.5 segundos de caída
+
+        p.style.setProperty('--tx', `${tx}px`);
+        p.style.setProperty('--ty', `${ty}px`);
+        p.style.setProperty('--rot', `${rot}deg`);
+
+        container.appendChild(p);
+
+        // Limpieza tras 3.5s (duración de la fiesta de confeti en cámara lenta)
+        setTimeout(() => p.remove(), 3500);
     }
 });

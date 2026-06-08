@@ -11,6 +11,14 @@
 
         gtag('config', 'G-JXNJV3XERK');
     </script>
+
+    <!-- Google Site Verification (Search Console) -->
+    <!-- <meta name="google-site-verification" content="COPIA_EL_CODIGO_AQUI" /> -->
+
+    <!-- SEO / Indexers -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://latarimadecoracion.github.io/calcular.html">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Calcular Alto Ideal - LA TARIMA</title>
@@ -36,7 +44,7 @@
 
     <!-- Main Header Bar (La Tarima 2.0 SPA Style) -->
     <header class="main-header-bar">
-        <a href="index.html" class="back-nav-btn" title="Volver al Inicio">
+        <a href="./" class="back-nav-btn" title="Volver al Inicio">
             <span class="material-symbols-outlined">arrow_back</span>
         </a>
         
@@ -148,26 +156,26 @@
 
     <!-- Bottom Navigation Bar (La Tarima 2.0 SPA Style) -->
     <nav class="bottom-nav">
-        <a href="index.html?view=view-home" class="nav-item">
+        <a href="./?view=view-home" class="nav-item">
             <span class="material-symbols-outlined">grid_view</span>
             <span class="nav-label">Inicio</span>
         </a>
-        <a href="index.html?view=view-profile" class="nav-item">
+        <a href="./?view=view-profile" class="nav-item">
             <span class="material-symbols-outlined">person</span>
             <span class="nav-label">Perfil</span>
         </a>
-        <a href="index.html?view=view-search" class="nav-item">
+        <a href="./?view=view-search" class="nav-item">
             <span class="material-symbols-outlined">search</span>
             <span class="nav-label">Buscar</span>
         </a>
-        <a href="index.html?view=view-notifications" class="nav-item" id="nav-notif-btn">
+        <a href="./?view=view-notifications" class="nav-item" id="nav-notif-btn">
             <div class="icon-wrapper">
                 <span class="material-symbols-outlined">notifications</span>
                 <span class="badge" id="nav-badge"></span>
             </div>
             <span class="nav-label">Avisos</span>
         </a>
-        <a href="index.html?view=view-about" class="nav-item">
+        <a href="./?view=view-about" class="nav-item">
             <span class="material-symbols-outlined">info</span>
             <span class="nav-label">Nosotros</span>
         </a>
@@ -397,6 +405,15 @@
                 dibujarBaranda();
 
                 document.getElementById('btnCopiarResumen').addEventListener('click', () => {
+                    // Track copy summary event
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'copy_summary', {
+                            event_category: 'Engagement',
+                            event_label: 'Copiar Resumen Calculadora',
+                            modelo_baranda: modelo.nombre
+                        });
+                    }
+
                     const texto = `La Tarima - Cálculo de Baranda\nModelo: ${modelo.nombre}\nMedidas del cliente: A (ancho tirante) = ${inputA.value || 'N/C'} cm, B (alto tirante) = ${inputB.value} cm, C (alto tirante + colchón) = ${inputC.value} cm\nProtección útil: ${modelo.proteccion} cm\nAbertura resultante: ${modelo.abertura} cm\nAltura sugerida a encargar: ${modelo.alturaSugerida} cm (${modelo.nota})`;
                     const copyOk = document.getElementById('copyOk');
                     if (navigator.clipboard) {
@@ -959,6 +976,14 @@
 
 
             document.getElementById('btnDescargar').addEventListener('click', () => {
+                // Track diagram download
+                if (typeof gtag === 'function') {
+                    gtag('event', 'download_diagram', {
+                        event_category: 'Engagement',
+                        event_label: 'Descargar Diagrama Calculadora'
+                    });
+                }
+
                 const svgElement = document.getElementById('diagrama');
                 if (!svgElement) return;
                 const multiplier = 4;

@@ -1,7 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXNJV3XERK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-JXNJV3XERK');
+    </script>
+
+    <!-- Google Site Verification (Search Console) -->
+    <!-- <meta name="google-site-verification" content="COPIA_EL_CODIGO_AQUI" /> -->
+
+    <!-- SEO / Indexers -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://latarimadecoracion.github.io/visualizador.html">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizador de Barandas | LA TARIMA</title>
@@ -219,10 +235,10 @@
 <body class="barandas">
     <div class="container">
         <header class="site-header">
-            <a href="index.html" aria-label="Ir al inicio">
+            <a href="./" aria-label="Ir al inicio">
                 <h1>LA TARIMA</h1>
             </a>
-            <a href="index.html" aria-label="Ir al inicio">
+            <a href="./" aria-label="Ir al inicio">
                 <div class="subtitle">Carpinter&iacute;a Online</div>
             </a>
             <div class="socials">
@@ -323,7 +339,7 @@
         </div>
 
         <nav class="split-btn" aria-label="Acciones de navegación y contacto">
-            <a href="index.html" title="Volver al inicio">INICIO</a>
+            <a href="./" title="Volver al inicio">INICIO</a>
             <a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener"
                 title="Consultar por WhatsApp">CONSULTAR</a>
         </nav>
@@ -1009,6 +1025,14 @@
 
         // Botón descargar (Exportación 4K PNG)
         document.getElementById('btnDescargar').addEventListener('click', () => {
+            // Track diagram download
+            if (typeof gtag === 'function') {
+                gtag('event', 'download_diagram', {
+                    event_category: 'Engagement',
+                    event_label: 'Descargar Diagrama Visualizador'
+                });
+            }
+
             const multiplier = 4; // Factor para calidad "4K"
             const svgData = new XMLSerializer().serializeToString(svg);
             const canvas = document.createElement('canvas');
@@ -1031,6 +1055,20 @@
             };
             img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
         });
+
+        // Consultar por WhatsApp
+        const consultWppLink = document.querySelector('.split-btn a.consultar');
+        if (consultWppLink) {
+            consultWppLink.addEventListener('click', () => {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'contact', {
+                        method: 'WhatsApp',
+                        event_category: 'Engagement',
+                        event_label: 'Consultar WhatsApp Visualizador'
+                    });
+                }
+            });
+        }
 
         // Cargar por primera vez
         actualizarInterfazBarandas();

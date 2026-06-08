@@ -482,6 +482,7 @@ window.safeAdminRun = function(fn) {
         }
 
         initSocialLinksAdmin();
+        initThemeAdmin();
     }
 
     function renderAdminUX() {
@@ -544,6 +545,7 @@ window.safeAdminRun = function(fn) {
             if (closeBtn) closeBtn.textContent = 'Cerrar';
             renderAdminConfig();
             populateAdminSocialLinks();
+            populateAdminTheme();
         }
     }
 
@@ -1978,7 +1980,7 @@ window.safeAdminRun = function(fn) {
 
             card.innerHTML = `
                 <div class="feed-card-photo-container">
-                    <img src="${productCover}" class="feed-card-img" alt="${nombre}" loading="lazy" onerror="if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                    <img src="${productCover}" class="feed-card-img" alt="${nombre}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
                     ${acabadoBadge}
                     <div class="feed-card-gradient"></div>
                     <div class="feed-card-info">
@@ -2010,6 +2012,12 @@ window.safeAdminRun = function(fn) {
     const categoryFeedEmpty = document.getElementById('category-feed-empty');
 
     function navigateToCategoryFeed(categoryId) {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('cat') !== categoryId) {
+            const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + `?cat=${categoryId}`;
+            window.history.pushState({ viewId: 'view-category-feed', categoryId }, document.title, cleanUrl);
+        }
+
         const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : productsData;
         if (typeof sourceData === 'undefined') return;
 
@@ -2036,7 +2044,7 @@ window.safeAdminRun = function(fn) {
                 const productCover = Array.isArray(product.image) ? product.image[0] : product.image;
                 card.innerHTML = `
                     <div class="feed-card-photo-container">
-                        <img src="${productCover}" class="feed-card-img" alt="${product.title}" loading="lazy" onerror="if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                        <img src="${productCover}" class="feed-card-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
                         <div class="feed-card-gradient"></div>
                         <div class="feed-card-info">
                             <h3 class="feed-card-title">${product.title}</h3>
@@ -2054,7 +2062,7 @@ window.safeAdminRun = function(fn) {
         }
 
         // Navegar: ocultar todo y mostrar solo el feed de categoría
-        navigateToView('view-category-feed', { name: cat.name });
+        navigateToView('view-category-feed', { name: cat.name }, true);
     }
 
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -2649,6 +2657,36 @@ window.safeAdminRun = function(fn) {
             }
 
             showAdminToast('✅ Redes sociales guardadas');
+        });
+    }
+
+    function populateAdminTheme() {
+        const themeSelect = document.getElementById('admin-theme-select');
+        if (themeSelect) {
+            themeSelect.value = window.activeTheme || 'classic';
+        }
+    }
+
+    function initThemeAdmin() {
+        const themeSelect = document.getElementById('admin-theme-select');
+        if (!themeSelect) return;
+
+        themeSelect.addEventListener('change', async function() {
+            const newTheme = this.value;
+            window.activeTheme = newTheme;
+            
+            // Aplicar de inmediato visualmente
+            if (window.applyTheme) {
+                window.applyTheme(newTheme);
+            }
+            
+            localStorage.setItem('activeTheme', newTheme);
+
+            if (window.syncSiteConfigWithServer) {
+                await window.syncSiteConfigWithServer();
+            }
+
+            showAdminToast(`✅ Temática aplicada: ${newTheme}`);
         });
     }
 
