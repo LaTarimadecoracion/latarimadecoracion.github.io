@@ -9,6 +9,12 @@ const sharp   = require('sharp');     // Conversión de imágenes a WebP
 const app = express();
 const PORT = 7000;
 
+// Ensure rentals database file exists
+const rentalsDbPath = path.join(__dirname, 'js', 'rentals-data.js');
+if (!fs.existsSync(rentalsDbPath)) {
+    fs.writeFileSync(rentalsDbPath, 'const rentalsData = [];\n', 'utf8');
+}
+
 // Configure body parser for JSON
 app.use(express.json());
 
@@ -174,6 +180,27 @@ app.post('/api/save-products', (req, res) => {
         res.json({ success: true, message: 'Productos guardados exitosamente.' });
     } catch (error) {
         console.error('❌ Error guardando productos:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+    }
+});
+
+// API Endpoint to save rentalsData JSON
+app.post('/api/save-rentals', (req, res) => {
+    try {
+        const rentalsArray = req.body;
+        
+        if (!Array.isArray(rentalsArray)) {
+            return res.status(400).json({ success: false, message: 'El payload debe ser un array.' });
+        }
+
+        const fileContent = 'const rentalsData = ' + JSON.stringify(rentalsArray, null, 4) + ';\n';
+        const filePath = path.join(__dirname, 'js', 'rentals-data.js');
+        
+        fs.writeFileSync(filePath, fileContent, 'utf8');
+        console.log('✅ js/rentals-data.js actualizado correctamente.');
+        res.json({ success: true, message: 'Alquileres guardados exitosamente.' });
+    } catch (error) {
+        console.error('❌ Error guardando alquileres:', error);
         res.status(500).json({ success: false, message: 'Error interno del servidor.' });
     }
 });
@@ -447,6 +474,58 @@ app.post('/api/maintenance/clean-and-convert', async (req, res) => {
             });
         });
 
+        // ── 2b. Mapear y normalizar rutas en site-config.js ──
+        const configPath = path.join(__dirname, 'js', 'site-config.js');
+        let siteConfig = null;
+        if (fs.existsSync(configPath)) {
+            try {
+                const rawConfig = fs.readFileSync(configPath, 'utf8');
+                const configJsonStr = rawConfig
+                    .replace(/^\s*window\.siteConfig\s*=\s*/, '')
+                    .replace(/;\s*$/, '')
+                    .trim();
+                siteConfig = JSON.parse(configJsonStr);
+            } catch (err) {
+                log.push(`⚠️ Error leyendo/parseando site-config.js: ${err.message}`);
+            }
+        }
+
+        if (siteConfig) {
+            // Recorrer recursivamente y normalizar cualquier cadena que empiece con "img/"
+            function normalizeConfigImages(obj) {
+                if (!obj || typeof obj !== 'object') return;
+                for (const key in obj) {
+                    if (typeof obj[key] === 'string' && obj[key].startsWith('img/')) {
+                        obj[key] = normalizeToWebP(obj[key]);
+                    } else if (typeof obj[key] === 'object') {
+                        normalizeConfigImages(obj[key]);
+                    }
+                }
+            }
+            normalizeConfigImages(siteConfig);
+        }
+
+        // ── 2c. Extraer archivos protegidos de html, css y js en el raíz del proyecto ──
+        const protectedPaths = new Set();
+        try {
+            const rootFiles = fs.readdirSync(__dirname);
+            for (const file of rootFiles) {
+                const ext = path.extname(file).toLowerCase();
+                if (['.html', '.css', '.js'].includes(ext) && file !== 'products-data.js' && file !== 'site-config.js') {
+                    const content = fs.readFileSync(path.join(__dirname, file), 'utf8');
+                    const matches = content.match(/img\/[a-zA-Z0-9_\-\.\/]+/g);
+                    if (matches) {
+                        matches.forEach(match => {
+                            const cleanMatch = match.replace(/['"\)\(;,>]/g, '').trim();
+                            protectedPaths.add(cleanMatch);
+                        });
+                    }
+                }
+            }
+        } catch (err) {
+            log.push(`⚠️ Error escaneando archivos estáticos para protección: ${err.message}`);
+        }
+
         // ── 3. Escanear todos los archivos físicos en img/ ──
         const allFilesOnDisk = [];
 
@@ -489,8 +568,14 @@ app.post('/api/maintenance/clean-and-convert', async (req, res) => {
 
             const isInDB  = validWebpPaths.has(equivalentWebpRelative);
             const isWebP  = file.ext === '.webp';
+            const isRootImg = file.dir === imgDir;
+            const isProtected = isRootImg || protectedPaths.has(file.relative);
 
-            if (isInDB && isWebP) {
+            if (isProtected) {
+                // Mantener intacto sin borrar ni convertir (a menos que esté también en DB)
+                keptCount++;
+                log.push(`🛡️ PROTEGIDO: ${file.relative}`);
+            } else if (isInDB && isWebP) {
                 // CASO 3: En uso y ya es WebP → mantener intacto
                 keptCount++;
                 log.push(`✅ OK:        ${file.relative}`);
@@ -510,7 +595,7 @@ app.post('/api/maintenance/clean-and-convert', async (req, res) => {
                 }
 
             } else {
-                // CASO 2: Huérfano (no está en la BD) → eliminar
+                // CASO 2: Huérfano (no está en la BD ni protegido) → eliminar
                 try {
                     await fse.remove(file.absolute);
                     deletedCount++;
@@ -521,11 +606,17 @@ app.post('/api/maintenance/clean-and-convert', async (req, res) => {
             }
         }
 
-        // ── 5. Guardar products-data.js con rutas unificadas a .webp ──
+        // ── 5. Guardar bases de datos unificadas ──
         const updatedContent = `const productsData = ${JSON.stringify(productsData, null, 4)};
 `;
         await fse.writeFile(databasePath, updatedContent, 'utf8');
         log.push(`\n💾 products-data.js actualizado con rutas .webp unificadas.`);
+
+        if (siteConfig) {
+            const fileContent = '// js/site-config.js\n// --- SITE CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.siteConfig = ' + JSON.stringify(siteConfig, null, 4) + ';\n';
+            await fse.writeFile(configPath, fileContent, 'utf8');
+            log.push(`💾 site-config.js actualizado con rutas .webp unificadas.`);
+        }
 
         console.log('\n🧹 MANTENIMIENTO COMPLETADO:\n' + log.join('\n'));
 

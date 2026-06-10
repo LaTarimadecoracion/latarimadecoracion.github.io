@@ -175,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'buscar': 'view-search',
                 'avisos': 'view-notifications',
                 'perfil': 'view-profile',
+                'alquileres': 'view-rentals',
                 'admin': 'view-admin'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
@@ -223,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'buscar': 'view-search',
                 'avisos': 'view-notifications',
                 'perfil': 'view-profile',
+                'alquileres': 'view-rentals',
                 'admin': 'view-admin'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;

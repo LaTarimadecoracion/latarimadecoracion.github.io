@@ -5,6 +5,7 @@ window.navigationHistory = [];
 
 // Estado global de Productos
 window.sessionProducts = typeof productsData !== 'undefined' ? [...productsData] : [];
+window.sessionRentals = typeof rentalsData !== 'undefined' ? [...rentalsData] : [];
 
 // Garantizar que existan las estructuras de siteConfig del servidor
 if (!window.siteConfig) {
@@ -275,6 +276,9 @@ function updateHeader(viewId, context = null) {
     } else if (viewId === 'view-about') {
         dynamicTitle.textContent = appConfig.nosotros.title;
         dynamicSubtitle.textContent = appConfig.nosotros.subtitle;
+    } else if (viewId === 'view-rentals') {
+        dynamicTitle.textContent = 'Alquileres';
+        dynamicSubtitle.textContent = 'Productos para eventos';
     } else if (viewId === 'view-admin') {
         dynamicTitle.textContent = 'Panel de Administración';
         dynamicSubtitle.textContent = 'Gestión de catálogo';

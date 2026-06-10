@@ -132,7 +132,7 @@ window.safeAdminRun = function(fn) {
 
     // Admin UX 2.0 - Lógica de Fases, Buscador, Filtros y Paginación
     let currentAdminPhase = 'categories'; // 'categories' o 'products'
-    let currentAdminTab = 'catalog'; // 'catalog', 'sections', 'config'
+    let currentAdminTab = 'dashboard'; // 'dashboard', 'catalog', 'pages', 'maintenance'
     let editingConfigKey = null;
     let selectedCategoryIdForProducts = null; // id de la categoría elegida (ej: 'Barandas')
     let adminCurrentPage = 1;
@@ -143,6 +143,7 @@ window.safeAdminRun = function(fn) {
     let targetCategoryIdForProduct = null;
     let editingProductId = null;
     let selectedProductImage = "img/logo_provisional.png";
+    let editingRentalId = null;
 
     let adminUX20Initialized = false;
     function initAdminUX20() {
@@ -219,26 +220,35 @@ window.safeAdminRun = function(fn) {
             });
         }
 
-        // --- LISTENERS DE PESTAÑAS (TABS) DEL DASHBOARD ---
-        const tabBtnCatalog = document.getElementById('tab-btn-catalog');
-        const tabBtnSections = document.getElementById('tab-btn-sections');
-        const tabBtnConfig = document.getElementById('tab-btn-config');
+        // --- LISTENERS DE PESTAÑAS (TABS) DEL DASHBOARD (V2) ---
+        const tabs = ['dashboard', 'catalog', 'pages', 'maintenance'];
+        tabs.forEach(tab => {
+            const btn = document.getElementById(`tab-btn-${tab}`);
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    currentAdminTab = tab;
+                    if (tab === 'pages') {
+                        switchAdminSubtab('structure');
+                    }
+                    renderAdminUX();
+                });
+            }
+        });
 
-        if (tabBtnCatalog) {
-            tabBtnCatalog.addEventListener('click', () => {
-                currentAdminTab = 'catalog';
-                renderAdminUX();
+        // --- LISTENERS DE SUB-PESTAÑAS DE PÁGINAS ---
+        const subtabBtns = document.querySelectorAll('.subtab-btn');
+        subtabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetSubtab = btn.getAttribute('data-subtab');
+                switchAdminSubtab(targetSubtab);
             });
-        }
-        if (tabBtnSections) {
-            tabBtnSections.addEventListener('click', () => {
-                currentAdminTab = 'sections';
-                renderAdminUX();
-            });
-        }
-        if (tabBtnConfig) {
-            tabBtnConfig.addEventListener('click', () => {
-                currentAdminTab = 'config';
+        });
+
+        // Botón de retroceso de productos a categorías
+        const btnBackToCategories = document.getElementById('btn-back-to-categories');
+        if (btnBackToCategories) {
+            btnBackToCategories.addEventListener('click', () => {
+                currentAdminPhase = 'categories';
                 renderAdminUX();
             });
         }
@@ -483,44 +493,177 @@ window.safeAdminRun = function(fn) {
 
         initSocialLinksAdmin();
         initThemeAdmin();
+        initRentalsAdmin();
+    }
+
+    async function renderAdminDashboard() {
+        // Calcular totales
+        const totalCategories = sessionProducts.length;
+        let totalProducts = 0;
+        sessionProducts.forEach(cat => {
+            totalProducts += (cat.products || []).length;
+        });
+
+        const activeThemeName = window.activeTheme || 'classic';
+        const themeLabels = {
+            classic: "🌲 Madera Clásica",
+            sobrio: "⚫ Sobrio V1",
+            mundial: "⚽ Mes Mundialista",
+            navidad: "🎅 Navidad",
+            halloween: "🎃 Halloween",
+            valentin: "💖 San Valentín"
+        };
+        const themeLabel = themeLabels[activeThemeName] || activeThemeName;
+
+        // Renderizar estadísticas estáticas
+        const catStat = document.getElementById('stat-total-categories');
+        const prodStat = document.getElementById('stat-total-products');
+        const themeStat = document.getElementById('stat-active-theme');
+        const viewsStat = document.getElementById('stat-total-views');
+
+        if (catStat) catStat.textContent = totalCategories;
+        if (prodStat) prodStat.textContent = totalProducts;
+        if (themeStat) themeStat.textContent = themeLabel;
+
+        // Buscar visitas acumuladas del servidor
+        let viewsMap = {};
+        let totalViews = 0;
+        try {
+            const res = await fetch('/api/views');
+            if (res.ok) {
+                viewsMap = await res.json();
+                Object.values(viewsMap).forEach(v => {
+                    totalViews += (v || 0);
+                });
+            }
+        } catch (e) {
+            console.error('Error al obtener estadísticas de visitas:', e);
+        }
+        if (viewsStat) viewsStat.textContent = totalViews;
+
+        // Renderizar lista de productos más populares
+        const topProductsList = document.getElementById('dashboard-top-products-list');
+        if (!topProductsList) return;
+
+        // Armar array con las visitas de cada producto
+        let productsWithViews = [];
+        sessionProducts.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                const viewsCount = viewsMap[prod.id] || 0;
+                productsWithViews.push({
+                    id: prod.id,
+                    title: prod.title,
+                    categoryName: cat.name,
+                    image: prod.image,
+                    views: viewsCount
+                });
+            });
+        });
+
+        // Ordenar descendentemente por visitas y tomar los top 5
+        productsWithViews.sort((a, b) => b.views - a.views);
+        const topProducts = productsWithViews.filter(p => p.views > 0).slice(0, 5);
+
+        if (topProducts.length === 0) {
+            topProductsList.innerHTML = `
+                <div class="dashboard-empty-state">
+                    <span class="material-symbols-outlined">monitoring</span>
+                    <p>No hay visitas registradas todavía.</p>
+                </div>
+            `;
+            return;
+        }
+
+        topProductsList.innerHTML = '';
+        topProducts.forEach(p => {
+            const item = document.createElement('div');
+            item.className = 'popular-item';
+            
+            const imgUrl = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+
+            item.innerHTML = `
+                <div class="popular-thumb" style="background-image: url('${imgUrl}');"></div>
+                <div class="popular-meta">
+                    <h4 class="popular-title" title="${p.title}">${p.title}</h4>
+                    <span class="popular-category">${p.categoryName}</span>
+                </div>
+                <div class="popular-views">
+                    <span class="material-symbols-outlined">visibility</span>
+                    <strong>${p.views}</strong>
+                </div>
+            `;
+            topProductsList.appendChild(item);
+        });
+    }
+
+    function switchAdminSubtab(subtabId) {
+        const subtabBtns = document.querySelectorAll('.subtab-btn');
+        subtabBtns.forEach(btn => {
+            if (btn.getAttribute('data-subtab') === subtabId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        const subviews = ['structure', 'home-design', 'about-social'];
+        subviews.forEach(key => {
+            const el = document.getElementById(`subview-${key}`);
+            if (el) {
+                el.style.display = (key === subtabId) ? 'block' : 'none';
+            }
+        });
     }
 
     function renderAdminUX() {
         initAdminUX20();
 
-        const categoriesView = document.getElementById('admin-categories-view');
-        const persistentElements = document.getElementById('admin-nosotros-panel') || document.getElementById('admin-persistent-elements');
-        const productsView = document.getElementById('admin-products-view');
-        const configView = document.getElementById('admin-config-view');
-        const closeBtn = document.getElementById('btn-close-admin');
+        // Control visual de la barra de navegación del panel (V2)
+        const tabs = ['dashboard', 'catalog', 'pages', 'maintenance'];
+        tabs.forEach(tab => {
+            const btn = document.getElementById(`tab-btn-${tab}`);
+            if (btn) {
+                if (currentAdminTab === tab) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            }
+        });
 
-        // Actualizar visual de botones de pestañas
-        const tabBtnCatalog = document.getElementById('tab-btn-catalog');
-        const tabBtnSections = document.getElementById('tab-btn-sections');
-        const tabBtnConfig = document.getElementById('tab-btn-config');
+        // Ocultar todas las secciones principales
+        const viewIds = {
+            dashboard: 'admin-dashboard-view',
+            catalog: 'admin-catalog-view',
+            pages: 'admin-pages-view',
+            maintenance: 'admin-maintenance-view'
+        };
 
-        if (tabBtnCatalog && tabBtnSections && tabBtnConfig) {
-            tabBtnCatalog.className = currentAdminTab === 'catalog' ? 'btn-primary' : 'btn-outline';
-            tabBtnSections.className = currentAdminTab === 'sections' ? 'btn-primary' : 'btn-outline';
-            tabBtnConfig.className = currentAdminTab === 'config' ? 'btn-primary' : 'btn-outline';
-        }
+        Object.entries(viewIds).forEach(([key, id]) => {
+            const container = document.getElementById(id);
+            if (container) {
+                container.style.display = (currentAdminTab === key) ? 'block' : 'none';
+            }
+        });
 
-        // Ocultar todos los contenedores primero
-        if (categoriesView) categoriesView.style.display = 'none';
-        if (persistentElements) persistentElements.style.display = 'none';
-        if (productsView) productsView.style.display = 'none';
-        if (configView) configView.style.display = 'none';
+        // Renderizado dinámico y lógica de cada sección activa
+        if (currentAdminTab === 'dashboard') {
+            renderAdminDashboard();
+            populateAdminTheme();
+        } else if (currentAdminTab === 'catalog') {
+            const categoriesView = document.getElementById('admin-categories-view');
+            const productsView = document.getElementById('admin-products-view');
 
-        if (currentAdminTab === 'catalog') {
             if (currentAdminPhase === 'categories') {
                 if (categoriesView) categoriesView.style.display = 'block';
-                if (closeBtn) closeBtn.textContent = 'Cerrar';
+                if (productsView) productsView.style.display = 'none';
                 renderAdminTree();
+                renderAdminRentals();
             } else if (currentAdminPhase === 'products') {
+                if (categoriesView) categoriesView.style.display = 'none';
                 if (productsView) productsView.style.display = 'block';
-                if (closeBtn) closeBtn.textContent = '◀ Volver';
 
-                // Sync dynamic category dropdown
+                // Sincronizar selector de categorías
                 const filterSelect = document.getElementById('admin-category-filter');
                 if (filterSelect) {
                     filterSelect.innerHTML = '<option value="all">Todas las categorías</option>';
@@ -535,17 +678,19 @@ window.safeAdminRun = function(fn) {
 
                 renderAdminProducts();
             }
-        } else if (currentAdminTab === 'sections') {
-            if (persistentElements) persistentElements.style.display = 'block';
-            if (closeBtn) closeBtn.textContent = 'Cerrar';
-            if (window.renderAdminHomeSectionsList) window.renderAdminHomeSectionsList();
-            renderAdminNosotrosList();
-        } else if (currentAdminTab === 'config') {
-            if (configView) configView.style.display = 'block';
-            if (closeBtn) closeBtn.textContent = 'Cerrar';
+        } else if (currentAdminTab === 'pages') {
             renderAdminConfig();
+            if (window.renderAdminHomeSectionsList) window.renderAdminHomeSectionsList();
+            if (window.renderAdminViewBuilderList) window.renderAdminViewBuilderList();
+            renderAdminNosotrosList();
             populateAdminSocialLinks();
-            populateAdminTheme();
+
+            // Sincronizar subvista activa
+            const activeBtn = document.querySelector('.subtab-btn.active');
+            const activeSubtab = activeBtn ? activeBtn.getAttribute('data-subtab') : 'structure';
+            switchAdminSubtab(activeSubtab);
+        } else if (currentAdminTab === 'maintenance') {
+            // Se mantiene el diseño estático inicial
         }
     }
 
@@ -2690,8 +2835,236 @@ window.safeAdminRun = function(fn) {
         });
     }
 
-    
+    function initRentalsAdmin() {
+        const btnOpenAddRental = document.getElementById('btn-open-add-rental');
+        if (btnOpenAddRental) {
+            btnOpenAddRental.addEventListener('click', () => {
+                openRentalForm(null);
+            });
+        }
+
+        const btnCancelRental = document.getElementById('btn-cancel-rental');
+        if (btnCancelRental) {
+            btnCancelRental.addEventListener('click', () => {
+                const modal = document.getElementById('admin-rental-modal');
+                if (modal) modal.style.display = 'none';
+            });
+        }
+
+        // File upload change listener
+        const rentalFileSelect = document.getElementById('admin-rental-image-file');
+        if (rentalFileSelect) {
+            rentalFileSelect.addEventListener('change', async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const nameLabel = document.getElementById('admin-rental-image-name');
+                if (nameLabel) nameLabel.textContent = file.name;
+
+                // Show client-side local preview while processing
+                const previewContainer = document.getElementById('admin-rental-image-preview-container');
+                const previewImg = document.getElementById('admin-rental-image-preview');
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    if (previewImg) previewImg.src = event.target.result;
+                    if (previewContainer) previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Form submit listener
+        const rentalForm = document.getElementById('admin-rental-form');
+        if (rentalForm) {
+            rentalForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const submitBtn = document.getElementById('btn-save-rental-submit');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Procesando...';
+
+                const id = document.getElementById('admin-rental-id').value.trim();
+                const title = document.getElementById('admin-rental-title').value.trim();
+                const description = document.getElementById('admin-rental-description').value.trim();
+                const price = document.getElementById('admin-rental-price').value.trim();
+                let imageUrl = document.getElementById('admin-rental-image-url').value;
+
+                // 1. Si seleccionó un archivo nuevo, subirlo y convertirlo a WebP
+                const fileInput = document.getElementById('admin-rental-image-file');
+                if (fileInput && fileInput.files && fileInput.files[0]) {
+                    let webpFile = fileInput.files[0];
+                    try {
+                        if (typeof convertImageToWebP === 'function') {
+                            const converted = await convertImageToWebP(webpFile);
+                            webpFile = converted.file;
+                        }
+                    } catch (error) {
+                        console.warn('No se pudo convertir imagen de alquiler a WebP:', error);
+                    }
+
+                    if (typeof uploadImageToServer === 'function') {
+                        const uploadedPath = await uploadImageToServer(webpFile, 'alquileres', id);
+                        if (uploadedPath) {
+                            imageUrl = uploadedPath;
+                        } else {
+                            alert('No se pudo subir la foto de alquiler al servidor.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = editingRentalId ? 'Actualizar Producto de Alquiler' : 'Guardar Producto de Alquiler';
+                            return;
+                        }
+                    }
+                }
+
+                // 2. Crear o actualizar el objeto
+                const rentalData = {
+                    id: id,
+                    title: title,
+                    description: description,
+                    price: price,
+                    image: imageUrl
+                };
+
+                if (editingRentalId) {
+                    const index = sessionRentals.findIndex(r => r.id === editingRentalId);
+                    if (index !== -1) {
+                        sessionRentals[index] = rentalData;
+                    }
+                    showAdminToast('✅ Alquiler actualizado correctamente');
+                } else {
+                    if (sessionRentals.some(r => r.id === id)) {
+                        alert('Error: Ya existe un alquiler con este ID/Slug. Elegí otro ID único.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Guardar Producto de Alquiler';
+                        return;
+                    }
+                    sessionRentals.push(rentalData);
+                    showAdminToast('✅ Alquiler creado correctamente');
+                }
+
+                if (window.saveRentalsToServer) {
+                    await window.saveRentalsToServer();
+                }
+
+                document.getElementById('admin-rental-modal').style.display = 'none';
+                renderAdminRentals();
+
+                submitBtn.disabled = false;
+            });
+        }
+    }
+
+    function renderAdminRentals() {
+        const tableBody = document.getElementById('admin-rentals-table-body');
+        if (!tableBody) return;
+
+        tableBody.innerHTML = '';
+
+        const sourceRentals = typeof sessionRentals !== 'undefined' ? sessionRentals : [];
+
+        if (sourceRentals.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="4" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                        No hay productos de alquiler creados. ¡Hacé clic en "Nuevo Alquiler" para agregar uno!
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        sourceRentals.forEach((rental, index) => {
+            const tr = document.createElement('tr');
+            const imgUrl = rental.image || 'img/logo_provisional.png';
+
+            tr.innerHTML = `
+                <td>
+                    <img src="${imgUrl}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px; border: 1px solid #E2E8F0;" onerror="this.src='img/logo_provisional.png';">
+                </td>
+                <td>
+                    <strong style="color: var(--text-main); font-size: 0.95rem;">${rental.title}</strong>
+                    <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">ID: ${rental.id}</div>
+                </td>
+                <td>
+                    <span style="font-weight: 600; color: var(--primary-color);">${rental.price || 'Consultar'}</span>
+                </td>
+                <td style="text-align: center;">
+                    <div style="display: flex; gap: 8px; justify-content: center;">
+                        <button class="action-btn edit btn-edit-rental" data-index="${index}" title="Editar alquiler">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
+                        </button>
+                        <button class="action-btn delete btn-delete-rental" data-index="${index}" style="background: rgba(220, 38, 38, 0.08); color: #DC2626;" title="Eliminar alquiler">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+                        </button>
+                    </div>
+                </td>
+            `;
+
+            tr.querySelector('.btn-edit-rental').addEventListener('click', () => {
+                openRentalForm(rental);
+            });
+
+            tr.querySelector('.btn-delete-rental').addEventListener('click', async () => {
+                if (confirm(`¿Seguro que querés eliminar el alquiler "${rental.title}"? Esta acción no se puede deshacer.`)) {
+                    sessionRentals.splice(index, 1);
+                    if (window.saveRentalsToServer) {
+                        await window.saveRentalsToServer();
+                    }
+                    showAdminToast('✅ Alquiler eliminado correctamente');
+                    renderAdminRentals();
+                }
+            });
+
+            tableBody.appendChild(tr);
+        });
+    }
+
+    function openRentalForm(rental = null) {
+        const modal = document.getElementById('admin-rental-modal');
+        const form = document.getElementById('admin-rental-form');
+        const formTitle = document.getElementById('admin-rental-form-title');
+        const submitBtn = document.getElementById('btn-save-rental-submit');
+        const imgName = document.getElementById('admin-rental-image-name');
+        const imgPreviewContainer = document.getElementById('admin-rental-image-preview-container');
+        const imgPreview = document.getElementById('admin-rental-image-preview');
+        const imgUrlInput = document.getElementById('admin-rental-image-url');
+
+        if (!modal || !form) return;
+
+        form.reset();
+        imgName.textContent = 'Ninguna foto seleccionada';
+        imgPreviewContainer.style.display = 'none';
+        imgPreview.src = '';
+        imgUrlInput.value = '';
+
+        if (rental) {
+            editingRentalId = rental.id;
+            formTitle.textContent = 'Editar Alquiler';
+            submitBtn.textContent = 'Actualizar Producto de Alquiler';
+
+            document.getElementById('admin-rental-id').value = rental.id;
+            document.getElementById('admin-rental-id').disabled = true;
+            document.getElementById('admin-rental-title').value = rental.title;
+            document.getElementById('admin-rental-description').value = rental.description;
+            document.getElementById('admin-rental-price').value = rental.price;
+
+            if (rental.image) {
+                imgUrlInput.value = rental.image;
+                imgPreview.src = rental.image;
+                imgPreviewContainer.style.display = 'block';
+            }
+        } else {
+            editingRentalId = null;
+            formTitle.textContent = 'Cargar Nuevo Alquiler';
+            submitBtn.textContent = 'Guardar Producto de Alquiler';
+            document.getElementById('admin-rental-id').disabled = false;
+        }
+
+        modal.style.display = 'flex';
+    }
+
+
 window.renderAdminUX = safeAdminRun(renderAdminUX);
 window.renderAdminViewBuilderList = safeAdminRun(renderAdminViewBuilderList);
 window.renderAdminHomeSectionsList = safeAdminRun(renderAdminHomeSectionsList);
+window.renderAdminRentals = safeAdminRun(renderAdminRentals);
 

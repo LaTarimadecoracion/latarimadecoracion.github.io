@@ -42,86 +42,6 @@ body {
     width: 100%;
 }
 
-/* Cabecera del catálogo (Glassmorphism) */
-.catalog-header {
-    text-align: center;
-    position: relative;
-    padding: 2.25rem 1.5rem;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: 28px;
-    box-shadow: 0 8px 32px rgba(180, 132, 108, 0.05);
-    margin-bottom: 2rem;
-    animation: slideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.catalog-brand-title {
-    color: var(--primary-color);
-    font-weight: 900;
-    font-size: 2.3rem;
-    letter-spacing: 5px;
-    margin-bottom: 0.2rem;
-    text-shadow: 0 2px 4px rgba(180, 132, 108, 0.06);
-}
-
-.catalog-brand-subtitle {
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    font-weight: 500;
-    letter-spacing: 0.8px;
-}
-
-/* Botón de volver elegante flotante */
-.catalog-back-btn {
-    position: absolute;
-    left: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.95);
-    border: 1.5px solid rgba(180, 132, 108, 0.15);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-    color: var(--text-main);
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 10;
-}
-
-.catalog-back-btn:hover {
-    color: white;
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    box-shadow: 0 6px 20px rgba(180, 132, 108, 0.3);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.catalog-back-btn:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-.catalog-back-btn span {
-    font-size: 1.5rem;
-}
-
 /* Barra de Búsqueda Premium */
 .catalog-search-section {
     margin-bottom: 2.25rem;
@@ -457,32 +377,6 @@ body {
 
 /* Adaptabilidad para Dispositivos Móviles */
 @media (max-width: 768px) {
-    .catalog-header {
-        padding: 2.25rem 1rem 1.75rem 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .catalog-back-btn {
-        position: relative;
-        left: unset;
-        top: unset;
-        transform: unset;
-        margin: 0 auto 1rem auto;
-        display: flex;
-    }
-
-    .catalog-back-btn:hover {
-        transform: scale(1.05);
-    }
-    .catalog-back-btn:active {
-        transform: scale(0.95);
-    }
-
-    .catalog-brand-title {
-        font-size: 1.8rem;
-        letter-spacing: 3px;
-    }
-
     .catalog-row {
         flex-direction: column;
         align-items: stretch;
