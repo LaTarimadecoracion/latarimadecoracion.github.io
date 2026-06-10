@@ -25,8 +25,8 @@ self.addEventListener('push', (event) => {
     const title = payloadData.title || 'La Tarima';
     const options = {
         body: payloadData.body || 'Tenemos novedades para vos.',
-        icon: 'img/logo_provisional.png', // Replace with an actual 192x192 icon URL
-        badge: 'img/logo_provisional.png', // Replace with a monochrome icon (like a bell)
+        icon: 'img/icon-192.png', // Replace with an actual 192x192 icon URL
+        badge: 'img/icon-192.png', // Replace with a monochrome icon (like a bell)
         vibrate: [100, 50, 100],
         data: {
             url: payloadData.url || '/' // Default URL to open when clicked
