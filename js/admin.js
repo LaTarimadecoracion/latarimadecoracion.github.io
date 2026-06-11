@@ -571,29 +571,108 @@ window.safeAdminRun = function(fn) {
                     <p>No hay visitas registradas todavía.</p>
                 </div>
             `;
-            return;
+        } else {
+            topProductsList.innerHTML = '';
+            const maxViews = topProducts[0]?.views || 1;
+            topProducts.forEach(p => {
+                const item = document.createElement('div');
+                item.className = 'popular-item';
+                
+                const imgUrl = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                const percent = (p.views / maxViews) * 100;
+
+                item.innerHTML = `
+                    <div class="popular-thumb" style="background-image: url('${imgUrl}');"></div>
+                    <div class="popular-meta">
+                        <h4 class="popular-title" title="${p.title}">${p.title}</h4>
+                        <span class="popular-category">${p.categoryName}</span>
+                        <div class="popularity-bar-container">
+                            <div class="popularity-bar-fill" style="width: 0%;" data-width="${percent}"></div>
+                        </div>
+                    </div>
+                    <div class="popular-views">
+                        <span class="material-symbols-outlined">visibility</span>
+                        <strong>${p.views}</strong>
+                    </div>
+                `;
+                topProductsList.appendChild(item);
+            });
         }
 
-        topProductsList.innerHTML = '';
-        topProducts.forEach(p => {
-            const item = document.createElement('div');
-            item.className = 'popular-item';
-            
-            const imgUrl = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+        // Renderizar lista de visitas por categoría
+        const categoriesViewsList = document.getElementById('dashboard-categories-views-list');
+        if (categoriesViewsList) {
+            // Calcular visitas por categoría
+            let categoryViewsMap = {};
+            let maxCategoryViews = 0;
+            let totalCatViewsSum = 0;
 
-            item.innerHTML = `
-                <div class="popular-thumb" style="background-image: url('${imgUrl}');"></div>
-                <div class="popular-meta">
-                    <h4 class="popular-title" title="${p.title}">${p.title}</h4>
-                    <span class="popular-category">${p.categoryName}</span>
-                </div>
-                <div class="popular-views">
-                    <span class="material-symbols-outlined">visibility</span>
-                    <strong>${p.views}</strong>
-                </div>
-            `;
-            topProductsList.appendChild(item);
-        });
+            sessionProducts.forEach(cat => {
+                let catViewsSum = 0;
+                (cat.products || []).forEach(prod => {
+                    catViewsSum += (viewsMap[prod.id] || 0);
+                });
+                if (catViewsSum > 0) {
+                    categoryViewsMap[cat.name] = {
+                        name: cat.name,
+                        image: cat.image,
+                        views: catViewsSum
+                    };
+                    totalCatViewsSum += catViewsSum;
+                    if (catViewsSum > maxCategoryViews) {
+                        maxCategoryViews = catViewsSum;
+                    }
+                }
+            });
+
+            const sortedCategories = Object.values(categoryViewsMap).sort((a, b) => b.views - a.views);
+
+            if (sortedCategories.length === 0) {
+                categoriesViewsList.innerHTML = `
+                    <div class="dashboard-empty-state">
+                        <span class="material-symbols-outlined">pie_chart</span>
+                        <p>No hay visitas registradas todavía.</p>
+                    </div>
+                `;
+            } else {
+                categoriesViewsList.innerHTML = '';
+                sortedCategories.forEach(c => {
+                    const item = document.createElement('div');
+                    item.className = 'popular-item';
+                    const imgUrl = Array.isArray(c.image) ? c.image[0] : (c.image || 'img/logo_provisional.png');
+                    const percent = maxCategoryViews > 0 ? (c.views / maxCategoryViews) * 100 : 0;
+                    const totalPercent = totalCatViewsSum > 0 ? Math.round((c.views / totalCatViewsSum) * 100) : 0;
+
+                    item.innerHTML = `
+                        <div class="popular-thumb" style="background-image: url('${imgUrl}');"></div>
+                        <div class="popular-meta">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <h4 class="popular-title" title="${c.name}">${c.name}</h4>
+                                <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted);">${totalPercent}% del total</span>
+                            </div>
+                            <div class="popularity-bar-container">
+                                <div class="popularity-bar-fill" style="width: 0%;" data-width="${percent}"></div>
+                            </div>
+                        </div>
+                        <div class="popular-views" style="background: rgba(49, 130, 206, 0.1); color: #3182CE;">
+                            <span class="material-symbols-outlined">folder</span>
+                            <strong>${c.views}</strong>
+                        </div>
+                    `;
+                    categoriesViewsList.appendChild(item);
+                });
+            }
+        }
+
+        // Gatillar la animación de barras de progreso después de inyectar en el DOM
+        setTimeout(() => {
+            document.querySelectorAll('.popularity-bar-fill').forEach(bar => {
+                const targetWidth = bar.getAttribute('data-width');
+                if (targetWidth) {
+                    bar.style.width = targetWidth + '%';
+                }
+            });
+        }, 100);
     }
 
     function switchAdminSubtab(subtabId) {

@@ -150,6 +150,60 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 3. Deep Linking Router para Productos Compartidos (?prod=id-producto) y Vistas (?view=id-vista)
+    function getVariantsFromUrl(product, urlParams) {
+        let preselectedAcabado = '';
+        let preselectedMedida = '';
+        let preselectedOpcion = '';
+        
+        const urlKeys = Array.from(urlParams.keys())
+            .filter(k => k !== 'prod' && k !== 'product' && k !== 'p' && k !== 'view' && k !== 'cat' && k !== 'category');
+        
+        urlKeys.forEach(key => {
+            const cleanKey = key.trim().toLowerCase();
+            if (!cleanKey) return;
+            
+            let grupos = product.acabados_groups || [];
+            if (grupos.length === 0) {
+                const singleAcabado = (product.acabado || 'Único').trim().toLowerCase();
+                if (cleanKey === singleAcabado) {
+                    preselectedAcabado = product.acabado || 'Único';
+                }
+            } else {
+                const matchedGrupo = grupos.find(g => (g.acabado_name || '').trim().toLowerCase() === cleanKey);
+                if (matchedGrupo) {
+                    preselectedAcabado = matchedGrupo.acabado_name;
+                }
+            }
+            
+            if (grupos.length > 0) {
+                for (const g of grupos) {
+                    if (g.medidas_variants) {
+                        const matchedMed = g.medidas_variants.find(m => (m.medida || '').trim().toLowerCase() === cleanKey);
+                        if (matchedMed) {
+                            preselectedMedida = matchedMed.medida;
+                            break;
+                        }
+                    }
+                }
+            } else if (product.medidas_variants) {
+                const matchedMed = product.medidas_variants.find(m => (m.medida || '').trim().toLowerCase() === cleanKey);
+                if (matchedMed) {
+                    preselectedMedida = matchedMed.medida;
+                }
+            }
+            
+            const opt = product.optional_variant;
+            if (opt && opt.options) {
+                const matchedOpt = opt.options.find(o => (o || '').trim().toLowerCase() === cleanKey);
+                if (matchedOpt) {
+                    preselectedOpcion = matchedOpt;
+                }
+            }
+        });
+        
+        return { preselectedAcabado, preselectedMedida, preselectedOpcion };
+    }
+
     try {
         const urlParams = new URLSearchParams(window.location.search);
         const prodId = urlParams.get('prod') || urlParams.get('product') || urlParams.get('p');
@@ -160,7 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const foundData = window.findProductById(prodId);
                     if (foundData) {
                         console.log(`[Router] Producto compartido detectado: ${prodId}. Abriendo modal.`);
-                        window.showProductDetail(foundData.product, foundData.catName);
+                        const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
+                        window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
                     } else {
                         console.warn(`[Router] Producto con ID '${prodId}' no encontrado en el catálogo.`);
                     }
@@ -196,6 +251,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 150);
         }
+
+        const cartParam = urlParams.get('cart');
+        if (cartParam) {
+            setTimeout(() => {
+                if (window.importCartFromString) {
+                    console.log(`[Router] Importación de carrito detectada.`);
+                    window.importCartFromString(cartParam);
+                }
+            }, 200);
+        }
     } catch (e) {
         console.error("[Router] Error en deep-linking:", e);
     }
@@ -206,17 +271,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const prodId = urlParams.get('prod') || urlParams.get('product') || urlParams.get('p');
         const viewParam = urlParams.get('view');
         const catId = urlParams.get('cat') || urlParams.get('category');
+        const cartParam = urlParams.get('cart');
         
         if (prodId) {
             if (window.findProductById && window.showProductDetail) {
                 const foundData = window.findProductById(prodId);
                 if (foundData) {
-                    window.showProductDetail(foundData.product, foundData.catName);
+                    const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
+                    window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
                 }
             }
         } else if (catId) {
             if (window.navigateToCategoryFeed) {
                 window.navigateToCategoryFeed(catId);
+            }
+        } else if (cartParam) {
+            if (window.importCartFromString) {
+                window.importCartFromString(cartParam);
             }
         } else if (viewParam) {
             const viewIdMap = {

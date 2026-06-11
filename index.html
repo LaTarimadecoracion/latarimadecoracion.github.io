@@ -134,6 +134,20 @@
                     </a>
                 </div>
             </div>
+
+            <!-- Relacionados / Más Buscados en el Detalle -->
+            <div class="detail-related-section" style="border-top: 1px solid rgba(180, 132, 108, 0.1); padding-top: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                <div class="section-header-premium" style="padding: 0 1.5rem 0.4rem; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a); font-size: 1.5rem; vertical-align: middle;">star</span>
+                    <div>
+                        <h2 class="section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; padding:0;">Los más buscados</h2>
+                        <p class="section-subtitle" style="font-size: 0.8rem; color: var(--text-muted); margin: 2px 0 0 0; padding:0;">Otros preferidos de nuestros clientes</p>
+                    </div>
+                </div>
+                <div id="detail-related-product-list" class="carousel-categories" style="padding: 0 1.25rem 0.5rem;">
+                    <!-- Se inyecta dinámicamente -->
+                </div>
+            </div>
         </section>
 
         <!-- View: Category Feed (Acceso exclusivo desde tarjetas de Home) -->
@@ -468,6 +482,14 @@
                                         <div class="dashboard-empty-state">
                                             <span class="material-symbols-outlined">monitoring</span>
                                             <p>No hay datos de visitas registrados todavía.</p>
+                                        </div>
+                                    </div>
+
+                                    <h3 style="margin-top: 2rem; border-top: 1px solid #E2E8F0; padding-top: 1.5rem;">📊 Visitas por Categoría</h3>
+                                    <div class="popular-products-list" id="dashboard-categories-views-list">
+                                        <div class="dashboard-empty-state">
+                                            <span class="material-symbols-outlined">pie_chart</span>
+                                            <p>No hay visitas registradas todavía.</p>
                                         </div>
                                     </div>
                                 </div>

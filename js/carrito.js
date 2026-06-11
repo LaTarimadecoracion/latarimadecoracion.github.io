@@ -449,6 +449,10 @@
                                 <span class="material-symbols-outlined">storefront</span>
                                 Retirar por Taller (Hurlingham)
                             </button>
+                            <button type="button" id="btn-cart-share" class="btn-outline giant-btn" style="display:flex; align-items:center; justify-content:center; gap:8px; border-color:#cbd5e1; background:white; color:#475569; margin-top: 4px;">
+                                <span class="material-symbols-outlined">share</span>
+                                Compartir esta Lista / Carrito
+                            </button>
                         </div>
                     </div>
                 `;
@@ -814,10 +818,181 @@
                     window.open(url, '_blank');
                 });
             }
+
+            // C. Botón "Compartir Carrito"
+            const btnShareCart = document.getElementById('btn-cart-share');
+            if (btnShareCart) {
+                btnShareCart.addEventListener('click', () => {
+                    const encodedCart = cartItems.map(item => {
+                        return [
+                            item.id,
+                            item.qty || 1,
+                            encodeURIComponent(item.acabado || 'Único'),
+                            encodeURIComponent(item.medida || ''),
+                            encodeURIComponent(item.opcion || '')
+                        ].join(':');
+                    }).join(';');
+
+                    const shareUrl = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/')}?cart=${encodedCart}`;
+                    const shareText = `¡Hola! Te comparto mi lista de deseos de La Tarima 🛒\nTotal de productos: ${cartItems.length}`;
+
+                    const copyTextToClipboard = (textToCopy) => {
+                        const showToast = () => {
+                            const toast = document.getElementById('admin-toast');
+                            if (toast) {
+                                toast.textContent = "🔗 ¡Enlace de carrito copiado!";
+                                toast.classList.add('show');
+                                setTimeout(() => toast.classList.remove('show'), 2000);
+                            } else {
+                                alert("¡Enlace copiado al portapapeles!");
+                            }
+                        };
+
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(textToCopy)
+                                .then(showToast)
+                                .catch(err => {
+                                    console.warn('Clipboard fallback:', err);
+                                    fallbackCopy(textToCopy);
+                                });
+                        } else {
+                            fallbackCopy(textToCopy);
+                        }
+
+                        function fallbackCopy(text) {
+                            try {
+                                const textArea = document.createElement("textarea");
+                                textArea.value = text;
+                                textArea.style.position = "fixed";
+                                textArea.style.top = "0";
+                                textArea.style.left = "0";
+                                textArea.style.width = "2em";
+                                textArea.style.height = "2em";
+                                textArea.style.padding = "0";
+                                textArea.style.border = "none";
+                                textArea.style.outline = "none";
+                                textArea.style.boxShadow = "none";
+                                textArea.style.background = "transparent";
+                                document.body.appendChild(textArea);
+                                textArea.focus();
+                                textArea.select();
+                                const successful = document.execCommand('copy');
+                                document.body.removeChild(textArea);
+                                if (successful) {
+                                    showToast();
+                                } else {
+                                    alert("No se pudo copiar automáticamente.");
+                                }
+                            } catch (err) {
+                                console.error('Fallback copy failed:', err);
+                            }
+                        }
+                    };
+
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Lista de Deseos La Tarima',
+                            text: shareText,
+                            url: shareUrl
+                        }).catch(err => {
+                            console.log('Error sharing:', err);
+                            copyTextToClipboard(`${shareText}\n${shareUrl}`);
+                        });
+                    } else {
+                        copyTextToClipboard(`${shareText}\n${shareUrl}`);
+                    }
+                });
+            }
         } catch (e) {
             console.error('[Carrito Module] Error rendering Perfil-Carrito view:', e);
         }
     }
+
+    function importCartFromString(cartParam) {
+        if (!cartParam) return;
+        try {
+            const items = cartParam.split(';').map(itemStr => {
+                const parts = itemStr.split(':');
+                if (!parts[0]) return null;
+                return {
+                    id: parts[0],
+                    qty: parseInt(parts[1]) || 1,
+                    acabado: parts[2] ? decodeURIComponent(parts[2]) : 'Único',
+                    medida: parts[3] ? decodeURIComponent(parts[3]) : '',
+                    opcion: parts[4] ? decodeURIComponent(parts[4]) : ''
+                };
+            }).filter(Boolean);
+
+            if (items.length === 0) return;
+
+            // Cargar favoritos actuales
+            loadCartItems();
+
+            items.forEach(item => {
+                const existingIdx = cartItems.findIndex(localItem => 
+                    localItem.id === item.id && 
+                    (localItem.acabado || '').trim().toLowerCase() === (item.acabado || '').trim().toLowerCase() &&
+                    (localItem.medida || '').trim().toLowerCase() === (item.medida || '').trim().toLowerCase() &&
+                    (localItem.opcion || '').trim().toLowerCase() === (item.opcion || '').trim().toLowerCase()
+                );
+
+                if (existingIdx !== -1) {
+                    cartItems[existingIdx].qty = item.qty;
+                } else {
+                    if (window.findProductById) {
+                        const found = window.findProductById(item.id);
+                        if (found) {
+                            const product = found.product;
+                            let img = product.image;
+                            if (product.acabados_groups) {
+                                const ac = product.acabados_groups.find(g => (g.acabado_name || '').trim().toLowerCase() === (item.acabado || '').trim().toLowerCase());
+                                if (ac && ac.cover_image) img = ac.cover_image;
+                            }
+                            const productCover = Array.isArray(img) ? img[0] : (img || 'img/logo_provisional.png');
+
+                            cartItems.push({
+                                id: item.id,
+                                title: product.title,
+                                acabado: item.acabado,
+                                medida: item.medida,
+                                opcion: item.opcion,
+                                opcionLabel: product.optional_variant?.label || 'Opción',
+                                image: productCover,
+                                catName: found.catName,
+                                qty: item.qty
+                            });
+                        }
+                    }
+                }
+            });
+
+            saveCartItems();
+            
+            const toast = document.getElementById('admin-toast');
+            if (toast) {
+                toast.textContent = `🛒 ¡Se cargaron ${items.length} productos en tu lista!`;
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            }
+            
+            if (window.navigateToView) {
+                window.navigateToView('view-profile');
+            }
+
+            // Limpiar parámetro de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.delete('cart');
+            const newQuery = urlParams.toString();
+            const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + (newQuery ? `?${newQuery}` : '');
+            window.history.replaceState({ viewId: 'view-profile' }, document.title, cleanUrl);
+
+            // Redibujar vista
+            renderPerfilCarritoView();
+        } catch (e) {
+            console.error('[Carrito Module] Error importing cart:', e);
+        }
+    }
+    window.importCartFromString = importCartFromString;
 
     // 7. Mapeado de Inicialización y Namespace Global
     window.CarritoModule = {

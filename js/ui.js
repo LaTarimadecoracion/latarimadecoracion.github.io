@@ -955,7 +955,14 @@ window.safeRender = function(fn, name) {
         // Actualizar URL en el historial si es necesario
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('prod') !== product.id) {
-            const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + `?prod=${product.id}`;
+            const initialParams = new URLSearchParams();
+            initialParams.set('prod', product.id);
+            if (preselectedAcabado && preselectedAcabado !== 'Único') initialParams.set(preselectedAcabado, '');
+            if (preselectedMedida) initialParams.set(preselectedMedida, '');
+            if (preselectedOpcion) initialParams.set(preselectedOpcion, '');
+            
+            let queryStr = initialParams.toString().replace(/=(?=&|$)/g, '');
+            const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + (queryStr ? `?${queryStr}` : '');
             const comesFromLegacy = (urlParams.get('p') === product.id || urlParams.get('product') === product.id);
             if (comesFromLegacy) {
                 window.history.replaceState({ viewId: 'view-product-detail', productId: product.id }, document.title, cleanUrl);
@@ -1004,6 +1011,45 @@ window.safeRender = function(fn, name) {
                 btnFav.classList.remove('is-fav');
                 btnFav.innerHTML = `<span class="material-symbols-outlined">favorite_border</span>`;
             }
+        };
+
+        const updateUrlWithVariants = () => {
+            const currentParams = new URLSearchParams(window.location.search);
+            const newParams = new URLSearchParams();
+            
+            // Conservar solo parámetros de enrutamiento del sistema
+            const systemKeys = ['prod', 'product', 'p', 'view', 'cat', 'category'];
+            systemKeys.forEach(key => {
+                if (currentParams.has(key)) {
+                    newParams.set(key, currentParams.get(key));
+                }
+            });
+            
+            // Asegurar el prod
+            newParams.set('prod', product.id);
+            
+            // Añadir variantes como claves vacías
+            const grupo = grupos[currentGroupIndex];
+            if (grupo && grupo.acabado_name && grupo.acabado_name !== 'Único') {
+                newParams.set(grupo.acabado_name, '');
+            }
+            
+            const selMedida = divMedida.querySelector('select');
+            const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
+            if (medidaText) {
+                newParams.set(medidaText, '');
+            }
+            
+            const selOpt = divOpt.querySelector('select');
+            const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
+            if (optText) {
+                newParams.set(optText, '');
+            }
+            
+            // Limpiar los signos "=" vacíos
+            let queryStr = newParams.toString().replace(/=(?=&|$)/g, '');
+            const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + (queryStr ? `?${queryStr}` : '');
+            window.history.replaceState({ viewId: 'view-product-detail', productId: product.id }, document.title, cleanUrl);
         };
 
         const attrContainer = document.getElementById('detail-attributes-container');
@@ -1136,8 +1182,29 @@ window.safeRender = function(fn, name) {
             // Clic en Compartir
             btnShare.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const shareUrl = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/')}?prod=${product.id}`;
-                const shareText = `Mira lo que encontré en La Tarima 😊\n*${product.title}* (${acabado})`;
+                
+                // Construir la URL completa con las variantes actualmente en la URL del navegador
+                const currentQuery = window.location.search;
+                const shareUrl = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/')}${currentQuery}`;
+                
+                const grupo = grupos[currentGroupIndex];
+                const acabadoName = grupo.acabado_name || 'Único';
+                
+                const selMedida = divMedida.querySelector('select');
+                const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
+                
+                const selOpt = divOpt.querySelector('select');
+                const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
+                
+                let selectedDetails = acabadoName;
+                if (acabadoName === 'Único' && (medidaText || optText)) {
+                    selectedDetails = medidaText || optText;
+                } else {
+                    if (medidaText) selectedDetails += ` - ${medidaText}`;
+                    if (optText) selectedDetails += ` - ${optText}`;
+                }
+                
+                const shareText = `Mira lo que encontré en La Tarima 😊\n*${product.title}* (${selectedDetails})`;
                 
                 const copyTextToClipboard = (textToCopy) => {
                     const showToast = () => {
@@ -1282,6 +1349,7 @@ window.safeRender = function(fn, name) {
                 divMedida.querySelector('select').addEventListener('change', (e) => {
                     updateBuyButton(grupo, parseInt(e.target.value));
                     updateFavState();
+                    updateUrlWithVariants();
                 });
             }
 
@@ -1290,6 +1358,9 @@ window.safeRender = function(fn, name) {
 
             // Update Favorites button state
             updateFavState();
+
+            // Update URL parameters
+            updateUrlWithVariants();
         }
 
         // --- Render Selectors ---
@@ -1341,6 +1412,7 @@ window.safeRender = function(fn, name) {
                 const mIdx = selMedida ? parseInt(selMedida.value) : 0;
                 updateBuyButton(grupos[currentGroupIndex], mIdx);
                 updateFavState();
+                updateUrlWithVariants();
             });
         }
 
@@ -1355,6 +1427,58 @@ window.safeRender = function(fn, name) {
         // Registrar visita
         if (window.trackProductView) {
             window.trackProductView(product.id);
+        }
+
+        // Rellenar carrusel de recomendados ("Los más buscados")
+        const relatedList = document.getElementById('detail-related-product-list');
+        if (relatedList) {
+            relatedList.innerHTML = '';
+            
+            const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : productsData;
+            if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
+                let allProductsList = [];
+                const seenIds = new Set();
+                sourceData.forEach(cat => {
+                    if (cat.products) {
+                        cat.products.forEach(p => {
+                            if (!seenIds.has(p.id) && p.id !== product.id) { // Excluir producto actual
+                                seenIds.add(p.id);
+                                const res = findProductById(p.id);
+                                allProductsList.push({ product: p, catName: res ? res.catName : cat.name });
+                            }
+                        });
+                    }
+                });
+
+                // Selección aleatoria de 8 productos recomendados
+                const randomSelections = [...allProductsList]
+                    .sort(() => 0.5 - Math.random())
+                    .slice(0, 8);
+
+                randomSelections.forEach(({ product: p, catName }) => {
+                    const pCard = document.createElement('div');
+                    pCard.className = 'category-card';
+                    const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                    pCard.innerHTML = `
+                        <img src="${productCover}" class="category-card-img" alt="${p.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                        <div class="category-overlay">
+                            <span>${p.title}</span>
+                        </div>
+                    `;
+                    pCard.addEventListener('click', () => {
+                        // Navegar al detalle del producto recomendado y desplazarse arriba suavemente
+                        if (window.showProductDetail) {
+                            window.showProductDetail(p, catName);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            const appContainer = document.getElementById('app-container');
+                            if (appContainer) appContainer.scrollTop = 0;
+                        }
+                    });
+                    relatedList.appendChild(pCard);
+                });
+            } else {
+                relatedList.innerHTML = '<p class="text-muted">No hay productos recomendados disponibles.</p>';
+            }
         }
 
         navigateToView('view-product-detail', {

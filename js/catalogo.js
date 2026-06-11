@@ -293,27 +293,79 @@ document.addEventListener('DOMContentLoaded', () => {
             .toLowerCase();
     };
 
+    let selectedCategory = 'all';
+
+    function renderCategoryChips() {
+        const chipsContainer = document.getElementById('catalog-filter-chips');
+        if (!chipsContainer) return;
+
+        // Extraer categorías únicas presentes en los productos
+        const categories = new Set();
+        allProducts.forEach(p => {
+            if (p.categoryName) categories.add(p.categoryName);
+        });
+
+        const sortedCategories = Array.from(categories).sort();
+
+        let chipsHTML = `
+            <button class="catalog-chip ${selectedCategory === 'all' ? 'active' : ''}" data-category="all">
+                Todos
+            </button>
+        `;
+
+        sortedCategories.forEach(cat => {
+            chipsHTML += `
+                <button class="catalog-chip ${selectedCategory === cat ? 'active' : ''}" data-category="${cat}">
+                    ${cat}
+                </button>
+            `;
+        });
+
+        chipsContainer.innerHTML = chipsHTML;
+
+        // Registrar listeners de click
+        chipsContainer.querySelectorAll('.catalog-chip').forEach(chip => {
+            chip.addEventListener('click', (e) => {
+                selectedCategory = chip.dataset.category;
+                
+                // Actualizar clases active
+                chipsContainer.querySelectorAll('.catalog-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+
+                // Filtrar de inmediato
+                filterProducts();
+            });
+        });
+    }
+
     function filterProducts() {
         const query = normalizeForSearch(searchInput.value).trim();
-        if (!query) {
-            renderCatalogList(allProducts);
-            return;
+        
+        let filtered = allProducts;
+
+        // 1. Filtrar por categoría seleccionada
+        if (selectedCategory !== 'all') {
+            filtered = filtered.filter(p => p.categoryName === selectedCategory);
         }
 
-        const filtered = allProducts.filter(p => {
-            const matchesTitle = normalizeForSearch(p.title).includes(query);
-            const matchesDesc = normalizeForSearch(p.description).includes(query);
-            const matchesCat = normalizeForSearch(p.categoryName).includes(query);
-            const matchesTags = p.tags && p.tags.some(tag => normalizeForSearch(tag).includes(query));
+        // 2. Filtrar por texto de búsqueda
+        if (query) {
+            filtered = filtered.filter(p => {
+                const matchesTitle = normalizeForSearch(p.title).includes(query);
+                const matchesDesc = normalizeForSearch(p.description).includes(query);
+                const matchesCat = normalizeForSearch(p.categoryName).includes(query);
+                const matchesTags = p.tags && p.tags.some(tag => normalizeForSearch(tag).includes(query));
 
-            return matchesTitle || matchesDesc || matchesCat || matchesTags;
-        });
+                return matchesTitle || matchesDesc || matchesCat || matchesTags;
+            });
+        }
 
         renderCatalogList(filtered);
     }
 
     // Inicializar
     loadProducts();
+    renderCategoryChips();
     renderCatalogList(allProducts);
 
     if (searchInput) {
