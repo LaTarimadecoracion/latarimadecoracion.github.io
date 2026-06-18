@@ -1618,15 +1618,34 @@ window.safeRender = function(fn, name) {
     }
 
     // 2. Renderizado Cliente
-    function renderNosotrosBlocksCliente() {
+    window.renderGlobalSocialLinks = function() {
         const linksMap = window.socialLinks || {};
         const redes = ['instagram', 'tiktok', 'facebook', 'youtube', 'whatsapp', 'mercadolibre'];
-        redes.forEach(red => {
-            const btn = document.getElementById(`social-link-${red}`);
-            if (btn && linksMap[red]) {
-                btn.setAttribute('href', linksMap[red]);
-            }
-        });
+        const template = document.getElementById('social-links-template');
+        const containers = document.querySelectorAll('.social-links-container');
+        
+        if (template) {
+            containers.forEach(container => {
+                container.innerHTML = ''; // Clear previous
+                const clone = template.content.cloneNode(true);
+                
+                redes.forEach(red => {
+                    const btn = clone.querySelector(`.social-link-${red}`);
+                    if (btn) {
+                        if (linksMap[red]) {
+                            btn.setAttribute('href', linksMap[red]);
+                            btn.style.display = 'inline-flex';
+                        } else {
+                            btn.style.display = 'none';
+                        }
+                    }
+                });
+                container.appendChild(clone);
+            });
+        }
+    };
+
+    function renderNosotrosBlocksCliente() {
 
         if (!nosotrosBlocksContainer) return;
         nosotrosBlocksContainer.innerHTML = '';
@@ -2173,7 +2192,11 @@ window.renderHome = safeRender(renderHome, 'renderHome');
 window.renderSectionContent = safeRender(renderSectionContent, 'renderSectionContent');
 window.showProductDetail = safeRender(showProductDetail, 'showProductDetail');
 window.renderNosotrosBlocksCliente = safeRender(renderNosotrosBlocksCliente, 'renderNosotrosBlocksCliente');
-window.renderAvisosCliente = safeRender(renderAvisosCliente, 'renderAvisosCliente');
+
+// Inicializar links globales si ya existen
+if (window.renderGlobalSocialLinks) {
+    window.renderGlobalSocialLinks();
+}window.renderAvisosCliente = safeRender(renderAvisosCliente, 'renderAvisosCliente');
 window.renderRentals = safeRender(renderRentals, 'renderRentals');
 window.showRentalDetail = safeRender(showRentalDetail, 'showRentalDetail');
 window.saveRentalsToServer = saveRentalsToServer;

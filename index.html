@@ -149,6 +149,8 @@
                     <!-- Se inyecta dinámicamente -->
                 </div>
             </div>
+            
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
         <!-- View: Category Feed (Acceso exclusivo desde tarjetas de Home) -->
@@ -171,6 +173,7 @@
                 <button class="btn-primary mt-2">Iniciar Sesión</button>
                 <button class="btn-outline mt-1">Registrarme</button>
             </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
         <!-- View 3: Buscar -->
@@ -202,6 +205,7 @@
                     <p>No encontramos productos con esa búsqueda.<br>Intentá con otra palabra clave.</p>
                 </div>
             </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
         <!-- View 3b: Alquileres (Acceso exclusivo por URL) -->
@@ -283,6 +287,7 @@
                     </div>
                 </div>
             </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
         <!-- View 5: Nosotros -->
@@ -302,37 +307,41 @@
                     </a>
                 </div>
 
-                <div class="social-links mt-2" style="margin-top: 3rem; text-align: center;">
-                    <p class="text-muted" style="margin-bottom: 1rem; font-weight: 500; font-size: 0.95rem;">Seguinos en redes:</p>
-                    <div class="social-icons-row" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-                        <!-- Instagram -->
-                        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram" id="social-link-instagram">
-                            <span class="material-symbols-outlined">camera</span>
-                        </a>
-                        <!-- TikTok -->
-                        <a href="https://tiktok.com" target="_blank" class="social-icon-btn" title="TikTok" id="social-link-tiktok">
-                            <span class="material-symbols-outlined">music_note</span>
-                        </a>
-                        <!-- Facebook -->
-                        <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook" id="social-link-facebook">
-                            <span class="material-symbols-outlined">group</span>
-                        </a>
-                        <!-- YouTube -->
-                        <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube" id="social-link-youtube">
-                            <span class="material-symbols-outlined">smart_display</span>
-                        </a>
-                        <!-- WhatsApp -->
-                        <a href="https://wa.me/5491167007723" target="_blank" class="social-icon-btn" title="WhatsApp" id="social-link-whatsapp">
-                            <span class="material-symbols-outlined">forum</span>
-                        </a>
-                        <!-- Mercado Libre -->
-                        <a href="#" target="_blank" class="social-icon-btn" title="Mercado Libre" id="social-link-mercadolibre">
-                            <span class="material-symbols-outlined">shopping_bag</span>
-                        </a>
-                    </div>
-                </div>
+                <div class="social-links-container" style="padding-top: 1rem;"></div>
             </div>
         </section>
+
+        <template id="social-links-template">
+            <div class="social-links mt-2" style="margin-top: 3rem; text-align: center;">
+                <p class="text-muted" style="margin-bottom: 1rem; font-weight: 500; font-size: 0.95rem;">Seguinos en redes:</p>
+                <div class="social-icons-row" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                    <!-- Instagram -->
+                    <a href="https://instagram.com" target="_blank" class="social-icon-btn social-link-instagram" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <!-- TikTok -->
+                    <a href="https://tiktok.com" target="_blank" class="social-icon-btn social-link-tiktok" title="TikTok">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="https://facebook.com" target="_blank" class="social-icon-btn social-link-facebook" title="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="https://youtube.com" target="_blank" class="social-icon-btn social-link-youtube" title="YouTube">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/5491167007723" target="_blank" class="social-icon-btn social-link-whatsapp" title="WhatsApp">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </a>
+                    <!-- Mercado Libre -->
+                    <a href="#" target="_blank" class="social-icon-btn social-link-mercadolibre" title="Mercado Libre">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </template>
 
         <!-- View 6: Admin Panel (Hidden) -->
         <section id="view-admin" class="view admin-view">
@@ -1144,8 +1153,8 @@
     <script src="js/products-data.js?v=4"></script>
     <script src="js/rentals-data.js?v=4"></script>
     <script src="js/data.js?v=4"></script>
-    <script src="js/ui.js?v=5"></script>
-    <script src="js/admin.js?v=4"></script>
+    <script src="js/ui.js?v=7"></script>
+    <script src="js/admin.js?v=5"></script>
     <script src="js/avisos.js?v=4"></script>
     <script src="js/carrito.js?v=4"></script>
     <script src="js/main.js?v=4"></script>

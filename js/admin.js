@@ -2879,6 +2879,9 @@ window.safeAdminRun = function(fn) {
             if (window.renderNosotrosBlocksCliente) {
                 window.renderNosotrosBlocksCliente();
             }
+            if (window.renderGlobalSocialLinks) {
+                window.renderGlobalSocialLinks();
+            }
 
             showAdminToast('✅ Redes sociales guardadas');
         });
