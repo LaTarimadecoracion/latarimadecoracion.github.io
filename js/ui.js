@@ -951,6 +951,20 @@ window.safeRender = function(fn, name) {
         btnBuyPickup.href = `https://wa.me/${phone}?text=${text}`;
     }
 
+    function updateMetaTags(title, desc, imageUrl) {
+        document.title = title ? `${title} | LA TARIMA` : 'LA TARIMA - Decoración';
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        
+        if (ogTitle && title) ogTitle.setAttribute('content', `${title} - LA TARIMA`);
+        if (ogDesc && desc) ogDesc.setAttribute('content', desc.substring(0, 150));
+        if (ogImage && imageUrl) {
+            const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `${window.location.origin}/${imageUrl.replace(/^[\/\\]/, '')}`;
+            ogImage.setAttribute('content', absoluteImageUrl);
+        }
+    }
+
     function showProductDetail(product, categoryName, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '') {
         // Actualizar URL en el historial si es necesario
         const urlParams = new URLSearchParams(window.location.search);
@@ -970,6 +984,15 @@ window.safeRender = function(fn, name) {
                 window.history.pushState({ viewId: 'view-product-detail', productId: product.id }, document.title, cleanUrl);
             }
         }
+
+        // Actualizar SEO tags dinámicamente
+        let imageUrl = '';
+        if (Array.isArray(product.image) && product.image.length > 0) imageUrl = product.image[0];
+        else if (typeof product.image === 'string') imageUrl = product.image;
+        else if (product.acabados_groups && product.acabados_groups.length > 0) imageUrl = product.acabados_groups[0].cover_image;
+        
+        const safeDesc = (product.description || '').replace(/<[^>]*>?/gm, '');
+        updateMetaTags(product.title, safeDesc, imageUrl);
 
         const detailImgContainer = document.querySelector('.detail-img-container');
         const detailDescription = document.getElementById('detail-description');
@@ -1187,9 +1210,11 @@ window.safeRender = function(fn, name) {
             btnShare.addEventListener('click', (e) => {
                 e.stopPropagation();
                 
-                // Construir la URL completa con las variantes actualmente en la URL del navegador
+                // Construir la URL completa apuntando al archivo SEO estático
                 const currentQuery = window.location.search;
-                const shareUrl = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/')}${currentQuery}`;
+                const originPath = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/')}`;
+                const baseUrl = originPath.endsWith('/') ? originPath : originPath + '/';
+                const shareUrl = `${baseUrl}p/${product.id}.html${currentQuery}`;
                 
                 const grupo = grupos[currentGroupIndex];
                 const acabadoName = grupo.acabado_name || 'Único';
