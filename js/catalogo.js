@@ -232,16 +232,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnShipping.style.display = 'none'; // Se oculta si no tiene link
             }
             btnShipping.addEventListener('click', () => {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'begin_checkout', {
-                        currency: 'ARS',
-                        items: [{
-                            item_id: product.id,
-                            item_name: product.title,
-                            item_category: product.categoryName
-                        }]
-                    });
-                }
+                try {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'begin_checkout', {
+                            currency: 'ARS',
+                            items: [{
+                                item_id: product.id,
+                                item_name: product.title,
+                                item_category: product.categoryName
+                            }]
+                        });
+                    }
+                } catch (e) { /* Ignore adblocker errors */ }
             });
             actionsCol.appendChild(btnShipping);
 
@@ -252,16 +254,18 @@ document.addEventListener('DOMContentLoaded', () => {
             btnWpp.target = '_blank';
             btnWpp.innerHTML = `<span class="material-symbols-outlined">forum</span> Consultar`;
             btnWpp.addEventListener('click', () => {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'contact', {
-                        method: 'WhatsApp',
-                        event_category: 'Engagement',
-                        event_label: 'Consultar WhatsApp Catálogo A-Z',
-                        item_id: product.id,
-                        item_name: product.title,
-                        item_category: product.categoryName
-                    });
-                }
+                try {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'contact', {
+                            method: 'WhatsApp',
+                            event_category: 'Engagement',
+                            event_label: 'Consultar WhatsApp Catálogo A-Z',
+                            item_id: product.id,
+                            item_name: product.title,
+                            item_category: product.categoryName
+                        });
+                    }
+                } catch (e) { /* Ignore adblocker errors */ }
             });
             actionsCol.appendChild(btnWpp);
 

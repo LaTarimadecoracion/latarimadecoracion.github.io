@@ -1061,31 +1061,35 @@ window.safeRender = function(fn, name) {
         // Vincular eventos de conversión de Google Analytics
         if (btnShipping) {
             btnShipping.onclick = () => {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'begin_checkout', {
-                        currency: 'ARS',
-                        items: [{
-                            item_id: product.id,
-                            item_name: product.title,
-                            item_category: categoryName
-                        }]
-                    });
-                }
+                try {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'begin_checkout', {
+                            currency: 'ARS',
+                            items: [{
+                                item_id: product.id,
+                                item_name: product.title,
+                                item_category: categoryName
+                            }]
+                        });
+                    }
+                } catch (e) { /* Ignore adblocker errors */ }
             };
         }
 
         if (btnPickup) {
             btnPickup.onclick = () => {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'contact', {
-                        method: 'WhatsApp',
-                        event_category: 'Engagement',
-                        event_label: 'Consultar WhatsApp Producto',
-                        item_id: product.id,
-                        item_name: product.title,
-                        item_category: categoryName
-                    });
-                }
+                try {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'contact', {
+                            method: 'WhatsApp',
+                            event_category: 'Engagement',
+                            event_label: 'Consultar WhatsApp Producto',
+                            item_id: product.id,
+                            item_name: product.title,
+                            item_category: categoryName
+                        });
+                    }
+                } catch (e) { /* Ignore adblocker errors */ }
             };
         }
 
