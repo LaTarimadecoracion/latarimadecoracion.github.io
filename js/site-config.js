@@ -22,7 +22,7 @@ window.siteConfig = {
         "profile": {
             "title": "Tu Perfil",
             "subtitle": "Gestioná tus datos",
-            "icon": "person",
+            "icon": "account_circle",
             "visible": true
         },
         "avisos": {
@@ -35,7 +35,7 @@ window.siteConfig = {
         "nosotros": {
             "title": "La Tarima",
             "subtitle": "Conocé quiénes somos",
-            "icon": "info",
+            "icon": "storefront",
             "visible": true
         }
     },

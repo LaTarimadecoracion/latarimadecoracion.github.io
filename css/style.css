@@ -236,7 +236,16 @@ button, .btn-primary, .btn-outline {
     top: 0;
     z-index: 200;
     min-height: 75px;        /* Altura fija y constante */
+    /* La decoración de canvas vive aquí adentro */
+    overflow: visible;
 }
+
+/* Todos los hijos directos del header van encima del canvas decorativo */
+.main-header-bar > *:not(#lt-header-deco):not(#lt-garland) {
+    position: relative;
+    z-index: 2;
+}
+
 
 .back-nav-btn {
     position: absolute;      /* Se vuelve flotante, sale del flujo normal de la grilla */
@@ -311,6 +320,12 @@ button, .btn-primary, .btn-outline {
     letter-spacing: 2px;
     line-height: 1.2;
     text-align: center;
+    text-shadow:
+        -1.5px -1.5px 0 #fff,
+         1.5px -1.5px 0 #fff,
+        -1.5px  1.5px 0 #fff,
+         1.5px  1.5px 0 #fff,
+         0px 2px 6px rgba(0,0,0,0.25);
 }
 
 .brand-subtitle {
@@ -321,6 +336,11 @@ button, .btn-primary, .btn-outline {
     letter-spacing: 0.3px;
     line-height: 1.2;
     text-align: center;
+    text-shadow:
+        -1px -1px 0 #fff,
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff;
 }
 
 .view-header {
@@ -1949,6 +1969,7 @@ button, .btn-primary, .btn-outline {
     border-top-right-radius: var(--radius-lg);
 }
 
+
 .nav-item {
     display: flex;
     flex-direction: column;
@@ -1995,6 +2016,8 @@ button, .btn-primary, .btn-outline {
     border-radius: 50%;
     border: 2px solid var(--surface-color);
 }
+
+
 
 .cart-fav-badge {
     position: absolute;
