@@ -1,13 +1,93 @@
+const CACHE_NAME = 'tarima-cache-v2';
+const STATIC_ASSETS = [
+    './',
+    './index.html',
+    './css/style.css',
+    './js/ui.js',
+    './js/data.js',
+    './js/products-data.js',
+    './js/rentals-data.js',
+    './js/site-config.js',
+    './js/main.js'
+];
+
 self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches.open(CACHE_NAME).then((cache) => {
+            console.log('[SW] Pre-caching offline skeleton');
+            return cache.addAll(STATIC_ASSETS);
+        })
+    );
     self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        caches.keys().then((keyList) => {
+            return Promise.all(keyList.map((key) => {
+                if (key !== CACHE_NAME) {
+                    console.log('[SW] Removing old cache', key);
+                    return caches.delete(key);
+                }
+            }));
+        })
+    );
     event.waitUntil(self.clients.claim());
 });
 
+self.addEventListener('fetch', (event) => {
+    const url = new URL(event.request.url);
+
+    // Skip non-GET requests (like POST for admin saves) or chrome-extensions
+    if (event.request.method !== 'GET' || !url.protocol.startsWith('http')) {
+        return;
+    }
+
+    // 1. Imágenes (Cache First)
+    if (event.request.destination === 'image' || url.pathname.match(/\.(png|jpg|jpeg|gif|webp|svg)$/)) {
+        event.respondWith(
+            caches.match(event.request).then((cachedResponse) => {
+                if (cachedResponse) {
+                    return cachedResponse; // Return from cache immediately
+                }
+                // If not in cache, fetch from network and add to cache
+                return fetch(event.request).then((networkResponse) => {
+                    if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+                        return networkResponse;
+                    }
+                    const responseToCache = networkResponse.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, responseToCache);
+                    });
+                    return networkResponse;
+                }).catch(() => {
+                    // Fallback image if totally offline and image not cached
+                    return caches.match('./img/logo_provisional.png');
+                });
+            })
+        );
+        return;
+    }
+
+    // 2. HTML, CSS, JS y JSON (Network First)
+    event.respondWith(
+        fetch(event.request).then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+                const responseToCache = networkResponse.clone();
+                caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, responseToCache);
+                });
+            }
+            return networkResponse;
+        }).catch(() => {
+            // No internet connection, return from cache
+            return caches.match(event.request);
+        })
+    );
+});
+
+// PUSH NOTIFICATIONS LOGIC
 self.addEventListener('push', (event) => {
-    // Check if there is payload data
     let payloadData = {};
     if (event.data) {
         try {
@@ -25,11 +105,11 @@ self.addEventListener('push', (event) => {
     const title = payloadData.title || 'La Tarima';
     const options = {
         body: payloadData.body || 'Tenemos novedades para vos.',
-        icon: 'img/icon-192.png', // Replace with an actual 192x192 icon URL
-        badge: 'img/icon-192.png', // Replace with a monochrome icon (like a bell)
+        icon: 'img/icon-192.png',
+        badge: 'img/icon-192.png',
         vibrate: [100, 50, 100],
         data: {
-            url: payloadData.url || '/' // Default URL to open when clicked
+            url: payloadData.url || '/' 
         }
     };
 
@@ -40,10 +120,7 @@ self.addEventListener('push', (event) => {
 
 self.addEventListener('notificationclick', (event) => {
     event.notification.close();
-    
     const targetUrl = event.notification.data.url;
-
-    // This looks to see if the current is already open and focuses if it is
     event.waitUntil(
         clients.matchAll({ type: 'window' }).then((clientList) => {
             for (let i = 0; i < clientList.length; i++) {

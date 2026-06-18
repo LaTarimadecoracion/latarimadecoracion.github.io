@@ -1149,15 +1149,26 @@
     <!-- Scripts -->
     <script src="js/confetti-arg.js?v=1"></script>
     <script src="js/header-deco-arg.js?v=3"></script>
-    <script src="js/site-config.js?v=4"></script>
-    <script src="js/products-data.js?v=4"></script>
-    <script src="js/rentals-data.js?v=4"></script>
-    <script src="js/data.js?v=4"></script>
-    <script src="js/ui.js?v=8"></script>
-    <script src="js/admin.js?v=5"></script>
-    <script src="js/avisos.js?v=4"></script>
-    <script src="js/carrito.js?v=4"></script>
-    <script src="js/main.js?v=4"></script>
-    <script src="js/pwa-banner.js?v=1"></script>
+    <script src="js/site-config.js?v=5"></script>
+    <script src="js/products-data.js?v=5"></script>
+    <script src="js/rentals-data.js?v=5"></script>
+    <script src="js/data.js?v=5"></script>
+    <script src="js/ui.js?v=9"></script>
+    <script src="js/admin.js?v=6"></script>
+    <script src="js/avisos.js?v=5"></script>
+    <script src="js/carrito.js?v=5"></script>
+    <script src="js/main.js?v=5"></script>
+    <script src="js/pwa-banner.js?v=2"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js?v=2').then((registration) => {
+                    console.log('✅ ServiceWorker registration successful with scope: ', registration.scope);
+                }, (err) => {
+                    console.log('❌ ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
