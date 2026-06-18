@@ -3442,5 +3442,23 @@ button, .btn-primary, .btn-outline {
     transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Premium Lazy Loading */
+.lazy-img {
+    opacity: 0;
+    background-color: #f0f0f0; /* Skeleton gray */
+    background-image: linear-gradient(90deg, #f0f0f0 0px, #f8f8f8 50%, #f0f0f0 100%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite linear;
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
+.lazy-img.loaded {
+    opacity: 1;
+    background-image: none;
+    animation: none;
+}
 
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}

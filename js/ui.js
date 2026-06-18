@@ -174,7 +174,9 @@ window.safeRender = function(fn, name) {
                     
                     card.innerHTML = `
                         <div class="feed-card-photo-container">
-                            <img src="${productCover}" class="feed-card-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                            <div class="feed-card-img-wrapper" style="position:relative;">
+                                <img src="${productCover}" class="feed-card-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
+                            </div>
                             <div class="feed-card-gradient"></div>
                             <div class="feed-card-info">
                                 <span class="feed-card-cat">${catName}</span>
@@ -268,7 +270,9 @@ window.safeRender = function(fn, name) {
 
                 card.innerHTML = `
                     <div class="feed-card-photo-container">
-                        <img src="${coverImage}" class="feed-card-img" alt="${rental.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); this.src='img/logo_provisional.png';">
+                        <div class="feed-card-img-wrapper" style="position:relative;">
+                            <img src="${coverImage}" class="feed-card-img lazy-img" alt="${rental.title}" loading="lazy" onload="this.classList.add('loaded')">
+                        </div>
                         <span style="position: absolute; top: 12px; right: 12px; z-index: 5; background: #5E35B1; color: white; border: none; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 50px; box-shadow: 0 2px 6px rgba(0,0,0,0.25);">Alquiler</span>
                         <div class="feed-card-gradient"></div>
                         <div class="feed-card-info">
@@ -810,7 +814,9 @@ window.safeRender = function(fn, name) {
                             catCard.className = 'category-card';
                             const catCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
                             catCard.innerHTML = `
-                                <img src="${catCover}" class="category-card-img" alt="${cat.name}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                                <div class="category-card-img-wrapper" style="position:relative;">
+                                    <img src="${catCover}" class="category-card-img lazy-img" alt="${cat.name}" loading="lazy" onload="this.classList.add('loaded')">
+                                </div>
                                 <div class="category-overlay">
                                     <span>${cat.name}</span>
                                 </div>
@@ -855,7 +861,9 @@ window.safeRender = function(fn, name) {
                             card.className = 'category-card';
                             const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
                             card.innerHTML = `
-                                <img src="${productCover}" class="category-card-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                                <div class="category-card-img-wrapper" style="position:relative;">
+                                    <img src="${productCover}" class="category-card-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
+                                </div>
                                 <div class="category-overlay">
                                     <span>${product.title}</span>
                                 </div>
@@ -901,7 +909,9 @@ window.safeRender = function(fn, name) {
                             pCard.className = 'category-card';
                             const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
                             pCard.innerHTML = `
-                                <img src="${productCover}" class="category-card-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                                <div class="category-card-img-wrapper" style="position:relative;">
+                                    <img src="${productCover}" class="category-card-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
+                                </div>
                                 <div class="category-overlay">
                                     <span>${product.title}</span>
                                 </div>
@@ -1312,7 +1322,9 @@ window.safeRender = function(fn, name) {
                 if(!imgUrl) return;
                 galleryHTML += `
                     <div class="product-detail-slide">
-                        <img src="${imgUrl}" class="product-detail-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                        <div class="product-gallery-img-wrapper" style="position:relative;">
+                            <img src="${imgUrl}" class="product-detail-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
+                        </div>
                         <span class="slide-indicator">${index + 1} / ${images.length}</span>
                     </div>
                 `;
@@ -1489,7 +1501,9 @@ window.safeRender = function(fn, name) {
                     pCard.className = 'category-card';
                     const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
                     pCard.innerHTML = `
-                        <img src="${productCover}" class="category-card-img" alt="${p.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                        <div class="category-card-img-wrapper" style="position:relative;">
+                            <img src="${productCover}" class="category-card-img lazy-img" alt="${p.title}" loading="lazy" onload="this.classList.add('loaded')">
+                        </div>
                         <div class="category-overlay">
                             <span>${p.title}</span>
                         </div>
@@ -1690,8 +1704,8 @@ window.safeRender = function(fn, name) {
 
             if (mType === 'image' && block.image) {
                 mediaHtml = `
-                <div class="block-image-wrapper">
-                    <img src="${block.image}" alt="${block.title}" class="nosotros-img">
+                <div class="block-image-wrapper" style="position:relative;">
+                    <img src="${block.image}" alt="${block.title}" class="nosotros-img lazy-img" loading="lazy" onload="this.classList.add('loaded')">
                 </div>`;
 
             } else if (mType === 'video' && block.videoUrl) {
