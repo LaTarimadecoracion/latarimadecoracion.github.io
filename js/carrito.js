@@ -397,46 +397,46 @@
 
             let cartListHTML = '';
             if (cartItems.length === 0) {
-                cartListHTML = \`
+                cartListHTML = `
                     <div style="padding: 3rem 1rem; text-align: center; color: var(--text-muted, #64748b); border: 1.5px dashed #E8ECF0; border-radius: 12px; background: white; margin-top:0.5rem;">
                         <span class="material-symbols-outlined" style="font-size: 38px; opacity:0.4; display:block; margin-bottom:0.5rem; color:var(--primary-color, #c0510a);">favorite_border</span>
                         <p style="font-size:0.85rem; margin:0; font-weight: 600;">Tu lista de deseos está vacía.</p>
                         <p style="font-size:0.75rem; color:#94a3b8; margin:4px 0 0 0;">¡Explorá el catálogo y agregá viruta fresca!</p>
                     </div>
-                \`;
+                `;
             } else {
-                cartListHTML = \`
+                cartListHTML = `
                     <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.5rem;">
-                        \${cartItems.map((item, idx) => \`
+                        ${cartItems.map((item, idx) => `
                             <div class="cart-item-row">
                                 <!-- Clickable Product Area -->
-                                <div class="cart-item-clickable-area" data-id="\${item.id}" data-acabado="\${item.acabado}" data-medida="\${item.medida || ''}" data-opcion="\${item.opcion || ''}" title="Ver producto">
-                                    <div class="cart-item-thumb" style="background-image: url('\${item.image}');"></div>
+                                <div class="cart-item-clickable-area" data-id="${item.id}" data-acabado="${item.acabado}" data-medida="${item.medida || ''}" data-opcion="${item.opcion || ''}" title="Ver producto">
+                                    <div class="cart-item-thumb" style="background-image: url('${item.image}');"></div>
                                     <div class="cart-item-details">
-                                        <h5>\${item.title}</h5>
+                                        <h5>${item.title}</h5>
                                         <p style="margin: 0;">
-                                            <span style="display:block; margin-bottom: 2px;">Acabado: <strong>\${item.acabado}</strong></span>
-                                            \${item.medida ? \`<span style="display:block; margin-bottom: 2px;">Medida: <strong>\${item.medida}</strong></span>\` : ''}
-                                            \${item.opcion ? \`<span style="display:block; margin-bottom: 2px;">\${item.opcionLabel || 'Opción'}: <strong>\${item.opcion}</strong></span>\` : ''}
+                                            <span style="display:block; margin-bottom: 2px;">Acabado: <strong>${item.acabado}</strong></span>
+                                            ${item.medida ? `<span style="display:block; margin-bottom: 2px;">Medida: <strong>${item.medida}</strong></span>` : ''}
+                                            ${item.opcion ? `<span style="display:block; margin-bottom: 2px;">${item.opcionLabel || 'Opción'}: <strong>${item.opcion}</strong></span>` : ''}
                                         </p>
-                                        <p style="font-size:0.72rem; color:#94a3b8; margin: 4px 0 0 0;">\${item.catName}</p>
+                                        <p style="font-size:0.72rem; color:#94a3b8; margin: 4px 0 0 0;">${item.catName}</p>
                                     </div>
                                 </div>
                                 <!-- Quantity & Delete Right Actions Group -->
                                 <div style="display: flex; align-items: center; justify-content: flex-end; gap: 12px; border-top: 1px solid #f1f5f9; padding-top: 0.8rem; margin-top: 0.2rem;">
                                     <!-- Qty Control -->
                                     <div class="cart-item-qty-control">
-                                        <button type="button" class="qty-btn qty-minus" data-index="\${idx}">-</button>
-                                        <span class="qty-val">\${item.qty || 1}</span>
-                                        <button type="button" class="qty-btn qty-plus" data-index="\${idx}">+</button>
+                                        <button type="button" class="qty-btn qty-minus" data-index="${idx}">-</button>
+                                        <span class="qty-val">${item.qty || 1}</span>
+                                        <button type="button" class="qty-btn qty-plus" data-index="${idx}">+</button>
                                     </div>
                                     <!-- Delete Button -->
-                                    <button type="button" class="cart-item-del-btn" data-index="\${idx}" title="Quitar de la lista de deseos" style="background: #fff1f2; border-radius: 8px; padding: 6px; color: #e11d48;">
+                                    <button type="button" class="cart-item-del-btn" data-index="${idx}" title="Quitar de la lista de deseos" style="background: #fff1f2; border-radius: 8px; padding: 6px; color: #e11d48;">
                                         <span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
                                     </button>
                                 </div>
                             </div>
-                        \`).join('')}
+                        `).join('')}
                         
                         <!-- Acciones Directas Doble Camino (Sin formularios intermedios) -->
                         <div class="cart-actions-bar">
