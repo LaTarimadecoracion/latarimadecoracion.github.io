@@ -270,26 +270,26 @@
                 .cart-item-row {
                     background: white;
                     border-radius: 12px;
-                    padding: 0.7rem 0.9rem;
+                    padding: 0.9rem;
                     border: 1.5px solid #E8ECF0;
                     display: flex;
-                    align-items: center;
+                    flex-direction: column;
                     gap: 0.8rem;
-                    margin-bottom: 0.65rem;
+                    margin-bottom: 0.8rem;
                     box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
                     animation: fadeIn 0.2s ease;
                 }
                 .cart-item-clickable-area {
                     display: flex;
-                    align-items: center;
-                    gap: 0.8rem;
-                    flex: 1;
+                    align-items: flex-start;
+                    gap: 1rem;
+                    width: 100%;
                     cursor: pointer;
                     overflow: hidden;
                 }
                 .cart-item-thumb {
-                    width: 44px;
-                    height: 44px;
+                    width: 56px;
+                    height: 56px;
                     border-radius: 8px;
                     background-size: cover;
                     background-position: center;
@@ -301,26 +301,25 @@
                     overflow: hidden;
                 }
                 .cart-item-details h5 {
-                    margin: 0;
-                    font-size: 0.85rem;
+                    margin: 0 0 4px 0;
+                    font-size: 0.9rem;
                     font-weight: 700;
                     color: var(--text-main, #334155);
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
+                    line-height: 1.3;
                 }
                 .cart-item-details p {
                     margin: 2px 0 0 0;
-                    font-size: 0.72rem;
+                    font-size: 0.78rem;
                     color: var(--text-muted, #64748b);
+                    line-height: 1.5;
                 }
                 .cart-item-qty-control {
                     display: flex;
                     align-items: center;
-                    gap: 2px;
+                    gap: 4px;
                     background: #f8fafc;
                     border-radius: 20px;
-                    padding: 2px 4px;
+                    padding: 3px 6px;
                     border: 1.5px solid #e2e8f0;
                     transition: all 0.2s ease;
                 }
@@ -330,15 +329,15 @@
                 .qty-btn {
                     background: none;
                     border: none;
-                    width: 24px;
-                    height: 24px;
+                    width: 26px;
+                    height: 26px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     cursor: pointer;
                     color: #64748b;
                     font-weight: 700;
-                    font-size: 15px;
+                    font-size: 16px;
                     padding: 0;
                     border-radius: 50%;
                     transition: background 0.2s, color 0.2s, transform 0.1s;
@@ -351,9 +350,9 @@
                     transform: scale(0.9);
                 }
                 .qty-val {
-                    font-size: 0.82rem;
+                    font-size: 0.85rem;
                     font-weight: 700;
-                    min-width: 18px;
+                    min-width: 20px;
                     text-align: center;
                     color: #1e293b;
                 }
@@ -377,7 +376,7 @@
                     gap: 0.6rem;
                     margin-top: 1.5rem;
                 }
-            `;
+            \`;
             document.head.appendChild(style);
         } catch (e) {
             console.error('[Carrito Module] Error injecting styles:', e);
@@ -398,46 +397,46 @@
 
             let cartListHTML = '';
             if (cartItems.length === 0) {
-                cartListHTML = `
+                cartListHTML = \`
                     <div style="padding: 3rem 1rem; text-align: center; color: var(--text-muted, #64748b); border: 1.5px dashed #E8ECF0; border-radius: 12px; background: white; margin-top:0.5rem;">
                         <span class="material-symbols-outlined" style="font-size: 38px; opacity:0.4; display:block; margin-bottom:0.5rem; color:var(--primary-color, #c0510a);">favorite_border</span>
                         <p style="font-size:0.85rem; margin:0; font-weight: 600;">Tu lista de deseos está vacía.</p>
                         <p style="font-size:0.75rem; color:#94a3b8; margin:4px 0 0 0;">¡Explorá el catálogo y agregá viruta fresca!</p>
                     </div>
-                `;
+                \`;
             } else {
-                cartListHTML = `
+                cartListHTML = \`
                     <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.5rem;">
-                        ${cartItems.map((item, idx) => `
+                        \${cartItems.map((item, idx) => \`
                             <div class="cart-item-row">
                                 <!-- Clickable Product Area -->
-                                <div class="cart-item-clickable-area" data-id="${item.id}" data-acabado="${item.acabado}" data-medida="${item.medida || ''}" data-opcion="${item.opcion || ''}" title="Ver producto">
-                                    <div class="cart-item-thumb" style="background-image: url('${item.image}');"></div>
+                                <div class="cart-item-clickable-area" data-id="\${item.id}" data-acabado="\${item.acabado}" data-medida="\${item.medida || ''}" data-opcion="\${item.opcion || ''}" title="Ver producto">
+                                    <div class="cart-item-thumb" style="background-image: url('\${item.image}');"></div>
                                     <div class="cart-item-details">
-                                        <h5>${item.title}</h5>
-                                        <p style="margin: 0; line-height: 1.45;">
-                                            Acabado: <strong>${item.acabado}</strong>
-                                            ${item.medida ? ` · Medida: <strong>${item.medida}</strong>` : ''}
-                                            ${item.opcion ? ` · ${item.opcionLabel || 'Opción'}: <strong>${item.opcion}</strong>` : ''}
+                                        <h5>\${item.title}</h5>
+                                        <p style="margin: 0;">
+                                            <span style="display:block; margin-bottom: 2px;">Acabado: <strong>\${item.acabado}</strong></span>
+                                            \${item.medida ? \`<span style="display:block; margin-bottom: 2px;">Medida: <strong>\${item.medida}</strong></span>\` : ''}
+                                            \${item.opcion ? \`<span style="display:block; margin-bottom: 2px;">\${item.opcionLabel || 'Opción'}: <strong>\${item.opcion}</strong></span>\` : ''}
                                         </p>
-                                        <p style="font-size:0.68rem; color:#94a3b8; margin: 2px 0 0 0;">${item.catName}</p>
+                                        <p style="font-size:0.72rem; color:#94a3b8; margin: 4px 0 0 0;">\${item.catName}</p>
                                     </div>
                                 </div>
                                 <!-- Quantity & Delete Right Actions Group -->
-                                <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto;">
+                                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 12px; border-top: 1px solid #f1f5f9; padding-top: 0.8rem; margin-top: 0.2rem;">
                                     <!-- Qty Control -->
                                     <div class="cart-item-qty-control">
-                                        <button type="button" class="qty-btn qty-minus" data-index="${idx}">-</button>
-                                        <span class="qty-val">${item.qty || 1}</span>
-                                        <button type="button" class="qty-btn qty-plus" data-index="${idx}">+</button>
+                                        <button type="button" class="qty-btn qty-minus" data-index="\${idx}">-</button>
+                                        <span class="qty-val">\${item.qty || 1}</span>
+                                        <button type="button" class="qty-btn qty-plus" data-index="\${idx}">+</button>
                                     </div>
                                     <!-- Delete Button -->
-                                    <button type="button" class="cart-item-del-btn" data-index="${idx}" title="Quitar de la lista de deseos">
-                                        <span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+                                    <button type="button" class="cart-item-del-btn" data-index="\${idx}" title="Quitar de la lista de deseos" style="background: #fff1f2; border-radius: 8px; padding: 6px; color: #e11d48;">
+                                        <span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
                                     </button>
                                 </div>
                             </div>
-                        `).join('')}
+                        \`).join('')}
                         
                         <!-- Acciones Directas Doble Camino (Sin formularios intermedios) -->
                         <div class="cart-actions-bar">
