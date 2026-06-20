@@ -376,7 +376,7 @@
                     gap: 0.6rem;
                     margin-top: 1.5rem;
                 }
-            \`;
+            `;
             document.head.appendChild(style);
         } catch (e) {
             console.error('[Carrito Module] Error injecting styles:', e);
