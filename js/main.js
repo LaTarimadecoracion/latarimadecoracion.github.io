@@ -5,12 +5,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Splash Screen
     const splashScreen = document.getElementById('splash-screen');
-    setTimeout(() => {
-        if (splashScreen) {
-            splashScreen.style.opacity = '0';
-            splashScreen.style.visibility = 'hidden';
+    
+    // Check if running as installed PWA
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    
+    if (splashScreen) {
+        if (isStandalone) {
+            // Hide immediately if it's already showing native PWA splash screen
+            splashScreen.style.display = 'none';
+        } else {
+            // Show for 2 seconds on normal web browsing
+            setTimeout(() => {
+                splashScreen.style.opacity = '0';
+                splashScreen.style.visibility = 'hidden';
+            }, 2000);
         }
-    }, 2000);
+    }
 
     // 2. Global DOM Cache
     window.navItems = document.querySelectorAll('.nav-item');
