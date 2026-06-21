@@ -2148,17 +2148,21 @@ window.safeAdminRun = function(fn) {
         let results = [];
 
         indexed.forEach(item => {
-            // Coincidir consulta con título, acabado, descripción original, tags o medidas (normalizando acentos y espacios en medidas)
-            const matchesQuery = !query ||
-                normalizeForSearch(item.nombre).includes(query) ||
-                (item.acabado && normalizeForSearch(item.acabado).includes(query)) ||
-                (item.product.description && normalizeForSearch(item.product.description).includes(query)) ||
-                (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(query))) ||
-                (item.medidas && item.medidas.some(medida => {
-                    const normMedida = normalizeForSearch(medida).replace(/\s+/g, '');
-                    const normQuery = query.replace(/\s+/g, '');
-                    return normMedida.includes(normQuery);
-                }));
+            // Dividir la consulta de búsqueda en términos individuales (ej: "blanca 110" -> ["blanca", "110"])
+            const queryTerms = query.split(/\s+/).filter(Boolean);
+
+            // Coincidir si cada uno de los términos buscados está en al menos uno de los campos
+            const matchesQuery = queryTerms.length === 0 || queryTerms.every(term => {
+                return normalizeForSearch(item.nombre).includes(term) ||
+                    (item.acabado && normalizeForSearch(item.acabado).includes(term)) ||
+                    (item.product.description && normalizeForSearch(item.product.description).includes(term)) ||
+                    (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(term))) ||
+                    (item.medidas && item.medidas.some(medida => {
+                        const normMedida = normalizeForSearch(medida).replace(/\s+/g, '');
+                        const normTerm = term.replace(/\s+/g, '');
+                        return normMedida.includes(normTerm);
+                    }));
+            });
 
             if (matchesQuery) {
                 const key = `${item.id}::${item.acabado}`;
