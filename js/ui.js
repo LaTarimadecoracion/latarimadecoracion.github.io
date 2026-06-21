@@ -1793,12 +1793,10 @@ window.safeRender = function(fn, name) {
                 if (!href) return;
 
                 try {
-                    const isQuery = href.startsWith('?');
-                    const isHash = href.startsWith('#');
-                    const isSameHost = href.includes(window.location.host);
+                    const parsedUrl = new URL(href, window.location.href);
 
-                    if (isQuery || isHash || isSameHost) {
-                        const parsedUrl = new URL(href, window.location.href);
+                    // Si el host es el mismo, es un enlace interno de la app
+                    if (parsedUrl.host === window.location.host) {
                         const params = parsedUrl.searchParams;
 
                         const targetView = params.get('view');
