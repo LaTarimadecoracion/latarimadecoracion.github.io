@@ -2031,42 +2031,10 @@ window.safeAdminRun = function(fn) {
         });
     }
 
-    // 6. Search View — Dynamic filters & real-time search
+    // 6. Search View — Real-time search
     const searchInput = document.getElementById('search-input');
-    const searchFilterChips = document.getElementById('search-filter-chips');
     const searchResultsContainer = document.getElementById('search-results-container');
     const searchEmptyState = document.getElementById('search-empty-state');
-
-    let activeSearchCategoryId = 'all';
-
-    function buildSearchFilters() {
-        const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : productsData;
-        if (!searchFilterChips || typeof sourceData === 'undefined') return;
-        searchFilterChips.innerHTML = '';
-
-        // "Todos" chip
-        const allChip = document.createElement('button');
-        allChip.className = 'chip' + (activeSearchCategoryId === 'all' ? ' active' : '');
-        allChip.textContent = 'Todos';
-        allChip.dataset.catId = 'all';
-        searchFilterChips.appendChild(allChip);
-
-        sourceData.forEach(cat => {
-            const chip = document.createElement('button');
-            chip.className = 'chip' + (activeSearchCategoryId === cat.id ? ' active' : '');
-            chip.textContent = cat.name;
-            chip.dataset.catId = cat.id;
-            searchFilterChips.appendChild(chip);
-        });
-
-        searchFilterChips.querySelectorAll('.chip').forEach(chip => {
-            chip.addEventListener('click', () => {
-                activeSearchCategoryId = chip.dataset.catId;
-                buildSearchFilters();
-                runSearch();
-            });
-        });
-    }
 
     // --- BUSCADOR CONSCIENTE DE LAS VARIANTES (ACABADOS) ---
     
@@ -2178,9 +2146,6 @@ window.safeAdminRun = function(fn) {
         let results = [];
 
         indexed.forEach(item => {
-            // Filtrar por categoría seleccionada
-            if (activeSearchCategoryId !== 'all' && item.cat.id !== activeSearchCategoryId) return;
-
             // Coincidir consulta con título, acabado, descripción original o tags (normalizando acentos)
             const matchesQuery = !query ||
                 normalizeForSearch(item.nombre).includes(query) ||
@@ -2189,16 +2154,12 @@ window.safeAdminRun = function(fn) {
                 (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(query)));
 
             if (matchesQuery) {
-                if (activeSearchCategoryId === 'all') {
-                    const key = `${item.id}::${item.acabado}`;
-                    const existingIndex = results.findIndex(r => `${r.id}::${r.acabado}` === key);
-                    if (existingIndex !== -1) {
-                        const currentIsPrimary = item.product.primaryCatId === item.cat.id;
-                        if (currentIsPrimary) {
-                            results[existingIndex] = item;
-                        }
-                    } else {
-                        results.push(item);
+                const key = `${item.id}::${item.acabado}`;
+                const existingIndex = results.findIndex(r => `${r.id}::${r.acabado}` === key);
+                if (existingIndex !== -1) {
+                    const currentIsPrimary = item.product.primaryCatId === item.cat.id;
+                    if (currentIsPrimary) {
+                        results[existingIndex] = item;
                     }
                 } else {
                     results.push(item);
@@ -2317,12 +2278,10 @@ window.safeAdminRun = function(fn) {
     // SEARCH — Vista del buscador general
     // Solo se accede tocando el ícono de lupa en el nav.
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    function navigateToSearch(categoryId = 'all') {
-        activeSearchCategoryId = categoryId;
+    function navigateToSearch() {
         navigateToView('view-search');
         document.getElementById('app-container').scrollTop = 0;
         if (searchInput) searchInput.value = '';
-        buildSearchFilters();
         runSearch();
     }
 
@@ -2338,14 +2297,12 @@ window.safeAdminRun = function(fn) {
             // Only reset if NOT navigating from a category card (navigateToSearch sets it first)
             // We reset on next tick so navigateToSearch (if called) has priority
             setTimeout(() => {
-                buildSearchFilters();
                 runSearch();
             }, 0);
         });
     }
 
     // Initialize search view on first load so it's ready
-    buildSearchFilters();
     runSearch();
 
     // 7. Push Config

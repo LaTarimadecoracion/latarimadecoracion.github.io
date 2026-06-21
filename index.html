@@ -79,12 +79,8 @@
             <input type="text" id="search-input" placeholder="Buscar..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && window.navigateToView) window.navigateToView('view-search');" style="font-size: 0.9rem; padding: 0;">
         </div>
 
-        <!-- Derecha: Acciones (Filtros, Catálogo, Notificaciones) -->
+        <!-- Derecha: Acciones (Catálogo, Notificaciones) -->
         <div class="header-actions" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
-            <!-- Filtro -->
-            <button id="toggle-search-filters" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;" onclick="const f = document.getElementById('search-filter-chips'); f.style.display = f.style.display === 'none' ? 'flex' : 'none'; if(window.navigateToView) window.navigateToView('view-search');" title="Filtros">
-                <span class="material-symbols-outlined" style="font-size: 18px;">tune</span>
-            </button>
             <!-- Catálogo A-Z -->
             <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-catalogo');" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none;" title="Catálogo A-Z">
                 <span class="material-symbols-outlined" style="font-size: 18px;">list_alt</span>
@@ -97,11 +93,6 @@
         </div>
         
     </header>
-
-    <!-- Contenedor extra para los chips de filtro debajo de la cabecera para que no rompan el renglón -->
-    <div id="search-filter-chips" class="filter-chips mt-1" style="display: none; padding: 0.5rem 1rem; margin: 0; width: 100%; background: var(--surface-color); border-bottom: 1px solid rgba(0,0,0,0.05);">
-        <!-- Chips inyectados por JS -->
-    </div>
     <main id="app-container">
 
         <!-- View 1: Home -->
