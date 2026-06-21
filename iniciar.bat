@@ -14,5 +14,6 @@ echo.
 :: Abre el navegador local
 start http://localhost:7000
 
-:: Inicia el servidor Node.js
+:: Inicia el servidor Node.js desde _dev
+cd _dev
 npm start
