@@ -312,7 +312,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 'perfil': 'view-profile',
                 'alquileres': 'view-rentals',
                 'admin': 'view-admin',
-                'catalogo': 'view-catalogo'
+                'catalogo': 'view-catalogo',
+                'categorias': 'view-categories',
+                'videos': 'view-videos',
+                'carrito': 'view-cart'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             if (window.navigateToView) {

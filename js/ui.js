@@ -540,7 +540,10 @@ window.safeRender = function(fn, name) {
                 'view-profile': 'perfil',
                 'view-rentals': 'alquileres',
                 'view-admin': 'admin',
-                'view-catalogo': 'catalogo'
+                'view-catalogo': 'catalogo',
+                'view-categories': 'categorias',
+                'view-videos': 'videos',
+                'view-cart': 'carrito'
             };
             
             const viewName = prettyNames[viewId] || '';
