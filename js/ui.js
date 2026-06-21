@@ -552,7 +552,7 @@ window.safeRender = function(fn, name) {
             if (appContainer) {
                 appContainer.scrollTop = 0;
                 // Desactivar scroll del parent si estamos en el iframe
-                if (viewId === 'view-catalogo') {
+                if (viewId === 'view-catalogo' || viewId === 'view-calculator') {
                     appContainer.style.overflowY = 'hidden';
                 } else {
                     appContainer.style.overflowY = 'auto';
@@ -595,7 +595,8 @@ window.safeRender = function(fn, name) {
                 'view-catalogo': 'catalogo',
                 'view-categories': 'categorias',
                 'view-videos': 'videos',
-                'view-cart': 'carrito'
+                'view-cart': 'carrito',
+                'view-calculator': 'calcular'
             };
             
             const viewName = prettyNames[viewId] || '';
@@ -1875,6 +1876,7 @@ window.safeRender = function(fn, name) {
                                         'alquileres': 'view-rentals',
                                         'admin': 'view-admin',
                                         'catalogo': 'view-catalogo',
+                                        'calcular': 'view-calculator',
                                         'home': 'view-home',
                                         'categorias': 'view-categories',
                                         'carrito': 'view-cart',

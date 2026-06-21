@@ -196,6 +196,21 @@
 
     <script>
         (function () {
+            // Si está dentro de un iframe (modo SPA), ocultar cabecera duplicada y ajustar márgenes
+            if (window.self !== window.top) {
+                const header = document.querySelector('.main-header-bar');
+                if (header) header.style.display = 'none';
+                
+                document.body.style.paddingTop = '0';
+                document.body.style.marginTop = '0';
+                const appContainer = document.getElementById('app-container');
+                if (appContainer) {
+                    appContainer.style.paddingTop = '0';
+                    appContainer.style.marginTop = '0';
+                    appContainer.style.height = '100vh';
+                }
+            }
+
             const inputA = document.getElementById('medidaA');
             const inputB = document.getElementById('medidaB');
             const inputC = document.getElementById('medidaC');

@@ -76,11 +76,15 @@
         <!-- Centro: Buscador -->
         <div class="search-bar-container" style="flex: 1; margin: 0; padding: 0.4rem 0.6rem; min-width: 0;">
             <span class="material-symbols-outlined search-icon" style="font-size: 18px;">search</span>
-            <input type="text" id="search-input" placeholder="Buscar..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && window.navigateToView) window.navigateToView('view-search');" style="font-size: 0.9rem; padding: 0;">
+            <input type="text" id="search-input" placeholder="Buscar..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && activeView.id !== 'view-calculator' && window.navigateToView) window.navigateToView('view-search');" style="font-size: 0.9rem; padding: 0;">
         </div>
 
         <!-- Derecha: Acciones (Catálogo, Notificaciones) -->
         <div class="header-actions" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+            <!-- Calculadora Alto Ideal -->
+            <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-calculator');" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" title="Calcular Altura Ideal">
+                <span class="material-symbols-outlined" style="font-size: 18px;">calculate</span>
+            </a>
             <!-- Catálogo A-Z -->
             <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-catalogo');" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" title="Catálogo A-Z">
                 <span class="material-symbols-outlined" style="font-size: 18px;">list_alt</span>
@@ -259,6 +263,13 @@
         <section id="view-catalogo" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="catalogo.html" style="width: 100%; flex: 1; border: none; display: block;" title="Catálogo A-Z"></iframe>
+            </div>
+        </section>
+
+        <!-- View 7: Calculadora Iframe -->
+        <section id="view-calculator" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe src="calcular.html" style="width: 100%; flex: 1; border: none; display: block;" title="Calcular Altura Ideal"></iframe>
             </div>
         </section>
 

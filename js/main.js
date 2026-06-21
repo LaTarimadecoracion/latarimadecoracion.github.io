@@ -246,7 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'perfil': 'view-profile',
                 'alquileres': 'view-rentals',
                 'admin': 'view-admin',
-                'catalogo': 'view-catalogo'
+                'catalogo': 'view-catalogo',
+                'calcular': 'view-calculator'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             setTimeout(() => {
@@ -313,6 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'alquileres': 'view-rentals',
                 'admin': 'view-admin',
                 'catalogo': 'view-catalogo',
+                'calcular': 'view-calculator',
                 'categorias': 'view-categories',
                 'videos': 'view-videos',
                 'carrito': 'view-cart'
