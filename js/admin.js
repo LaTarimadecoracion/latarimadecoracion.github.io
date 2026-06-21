@@ -2154,6 +2154,7 @@ window.safeAdminRun = function(fn) {
             // Coincidir si cada uno de los términos buscados está en al menos uno de los campos
             const matchesQuery = queryTerms.length === 0 || queryTerms.every(term => {
                 return normalizeForSearch(item.nombre).includes(term) ||
+                    (item.cat && item.cat.name && normalizeForSearch(item.cat.name).includes(term)) ||
                     (item.acabado && normalizeForSearch(item.acabado).includes(term)) ||
                     (item.product.description && normalizeForSearch(item.product.description).includes(term)) ||
                     (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(term))) ||
