@@ -243,11 +243,13 @@ setTimeout(() => {
 function updateHeader(viewId, context = null) {
     if (!dynamicTitle || !dynamicSubtitle || !btnBack) return;
 
-    // Mostrar u ocultar botón de retroceso
+    // Mostrar u ocultar botón de retroceso y reemplazar el título
     if (navigationHistory.length > 0) {
         btnBack.style.display = 'flex';
+        dynamicTitle.style.display = 'none';
     } else {
         btnBack.style.display = 'none';
+        dynamicTitle.style.display = '';
     }
 
     // Mostrar u ocultar botón de compartir categoría
@@ -258,7 +260,4 @@ function updateHeader(viewId, context = null) {
             window.btnShareHeader.style.display = 'none';
         }
     }
-
-    // El título "LA TARIMA" ahora es fijo en todas las vistas, por pedido del usuario.
-    // Solo mostramos u ocultamos el botón de atrás (lógica superior ya lo hace).
 }
