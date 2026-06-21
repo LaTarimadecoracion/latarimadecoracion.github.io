@@ -2128,6 +2128,7 @@ window.safeRender = function(fn, name) {
             saveNosotrosToLocalStorage();
             if (adminNosotrosModal) adminNosotrosModal.style.display = 'none';
             renderAdminNosotrosList();
+            renderNosotrosBlocksCliente();
             alert('✅ Bloque de Nosotros guardado exitosamente.');
         });
     }

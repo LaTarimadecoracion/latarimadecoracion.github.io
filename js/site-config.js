@@ -36,7 +36,8 @@ window.siteConfig = {
             "title": "NOSOTROS",
             "subtitle": "Conocé quiénes somos",
             "icon": "storefront",
-            "visible": true
+            "visible": true,
+            "contentStack": []
         }
     },
     "contentRegistry": {
@@ -88,6 +89,17 @@ window.siteConfig = {
             "image": "",
             "videoUrl": "",
             "mapQuery": "vergara y jaureche, hurlingham, buenos aires, argentina"
+        },
+        {
+            "title": "Catalogo completo",
+            "description": "",
+            "mediaType": "link",
+            "image": "",
+            "videoUrl": "",
+            "mapQuery": "",
+            "linkUrl": "https://latarimadecoracion.github.io/?view=catalogo",
+            "linkText": "Catalogo completo",
+            "linkNewTab": false
         }
     ],
     "sessionAvisos": [
