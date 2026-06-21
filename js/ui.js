@@ -1786,6 +1786,65 @@ window.safeRender = function(fn, name) {
                 ${block.description ? `<p>${block.description}</p>` : ''}
                 ${actionButtonHtml}
             `;
+
+            // Interceptar enlaces internos para navegación SPA sin recargar
+            blockSection.querySelectorAll('.block-action-btn').forEach(btn => {
+                const href = btn.getAttribute('href');
+                if (!href) return;
+
+                try {
+                    const isQuery = href.startsWith('?');
+                    const isHash = href.startsWith('#');
+                    const isSameHost = href.includes(window.location.host);
+
+                    if (isQuery || isHash || isSameHost) {
+                        const parsedUrl = new URL(href, window.location.href);
+                        const params = parsedUrl.searchParams;
+
+                        const targetView = params.get('view');
+                        const targetProd = params.get('prod') || params.get('product') || params.get('p');
+                        const targetCat = params.get('cat') || params.get('category');
+
+                        if (targetView || targetProd || targetCat) {
+                            btn.addEventListener('click', (e) => {
+                                e.preventDefault();
+
+                                if (targetView) {
+                                    const viewIdMap = {
+                                        'nosotros': 'view-about',
+                                        'buscar': 'view-search',
+                                        'avisos': 'view-notifications',
+                                        'perfil': 'view-profile',
+                                        'alquileres': 'view-rentals',
+                                        'admin': 'view-admin',
+                                        'catalogo': 'view-catalogo',
+                                        'home': 'view-home',
+                                        'categorias': 'view-categories',
+                                        'carrito': 'view-cart',
+                                        'videos': 'view-videos'
+                                    };
+                                    const viewId = viewIdMap[targetView] || targetView;
+                                    if (window.navigateToView) window.navigateToView(viewId);
+                                } else if (targetProd) {
+                                    if (window.findProductById && window.showProductDetail) {
+                                        const found = window.findProductById(targetProd);
+                                        if (found) {
+                                            window.showProductDetail(found.product, found.catName);
+                                        }
+                                    }
+                                } else if (targetCat) {
+                                    if (window.navigateToCategoryFeed) {
+                                        window.navigateToCategoryFeed(targetCat);
+                                    }
+                                }
+                            });
+                        }
+                    }
+                } catch (err) {
+                    console.error("Error parsing block link for SPA navigation:", err);
+                }
+            });
+
             nosotrosBlocksContainer.appendChild(blockSection);
 
             if (idx < sessionNosotros.length - 1) {
