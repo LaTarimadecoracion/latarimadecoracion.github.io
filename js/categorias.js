@@ -44,8 +44,8 @@ window.renderCategoriesMenu = function() {
                     <img src="${catCover}" class="feed-card-img lazy-img" alt="${cat.name}" loading="lazy" onload="this.classList.add('loaded')">
                 </div>
                 <div class="feed-card-gradient"></div>
-                <div class="feed-card-info" style="bottom: 8px;">
-                    <h3 class="feed-card-title" style="font-size: 1.05rem; margin-bottom: 0;">${cat.name}</h3>
+                <div class="feed-card-info" style="bottom: 0; left: 0; right: 0; padding: 0.35rem 0.5rem; text-align: center;">
+                    <h3 class="feed-card-title" style="font-size: 1.05rem; margin-bottom: 0; text-align: center; width: 100%;">${cat.name}</h3>
                 </div>
             </div>
         `;
