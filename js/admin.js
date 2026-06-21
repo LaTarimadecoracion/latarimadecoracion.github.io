@@ -2271,7 +2271,7 @@ window.safeAdminRun = function(fn) {
         }
 
         // Navegar: ocultar todo y mostrar solo el feed de categoría
-        navigateToView('view-category-feed', { name: cat.name }, true);
+        navigateToView('view-category-feed', { name: cat.name }, false);
     }
 
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -1535,7 +1535,7 @@ window.safeRender = function(fn, name) {
         navigateToView('view-product-detail', {
             title: product.title,
             category: categoryName
-        }, true); // true to skip pushing double history state
+        }, false);
     }
 
     // 5. Admin Panel Logic
