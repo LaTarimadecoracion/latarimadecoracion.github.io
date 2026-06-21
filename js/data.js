@@ -41,6 +41,9 @@ window.applyTheme = function(themeName) {
     if (themeName && themeName !== 'classic') {
         document.body.classList.add(`theme-${themeName}`);
     }
+    if (window.updateGarlandVisibility) {
+        window.updateGarlandVisibility();
+    }
 };
 
 // Cargar tema activo inicial (primero del servidor, luego local como respaldo)

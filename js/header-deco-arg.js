@@ -230,6 +230,21 @@
         header.prepend(garland);
     }
 
+    // Actualizar la visibilidad de la guirnalda de forma reactiva según la temática activa
+    window.updateGarlandVisibility = function() {
+        const header = document.querySelector('.main-header-bar');
+        if (!header) return;
+
+        const activeTheme = window.activeTheme || 'classic';
+        const garland = document.getElementById('lt-garland');
+
+        if (activeTheme === 'mundial') {
+            buildGarland(header);
+        } else {
+            if (garland) garland.remove();
+        }
+    };
+
     // ── Init ───────────────────────────────────────────────────────
     function init() {
         const header = document.querySelector('.main-header-bar');
@@ -241,10 +256,15 @@
         const oldCanvas = document.getElementById('lt-header-deco');
         if (oldCanvas) oldCanvas.remove();
 
-        buildGarland(header);
+        // Aplicar según el tema activo inicial
+        window.updateGarlandVisibility();
 
-        // Reconstruir si cambia el tamaño
-        window.addEventListener('resize', () => buildGarland(header));
+        // Reconstruir si cambia el tamaño y estamos en la temática mundialista
+        window.addEventListener('resize', () => {
+            if (window.activeTheme === 'mundial') {
+                buildGarland(header);
+            }
+        });
     }
 
     if (document.readyState === 'loading') {
