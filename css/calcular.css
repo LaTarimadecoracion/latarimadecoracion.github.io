@@ -655,3 +655,302 @@
         font-size: 0.78rem;
     }
 }
+
+/* ═══════════════════════════════════════════════════════
+   PANEL GUIADO V2 — Ingreso de medidas con diagrama
+   ═══════════════════════════════════════════════════════ */
+
+/* Contenedor del panel */
+.calc-panel-v2 {
+    background: var(--surface-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Encabezado del panel guiado */
+.guide-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+}
+
+.guide-header-icon {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    opacity: 0.9;
+    flex-shrink: 0;
+}
+
+.guide-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0 0 0.15rem 0;
+    line-height: 1.2;
+}
+
+.guide-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Botón de ayuda tipo ícono */
+.btn-help-icon {
+    margin-left: auto;
+    flex-shrink: 0;
+    background: transparent;
+    border: 1.5px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+
+.btn-help-icon:hover {
+    background: rgba(180, 132, 108, 0.08);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.btn-help-icon .material-symbols-outlined {
+    font-size: 20px;
+}
+
+/* Contenedor del diagrama SVG guía */
+.guide-diagram-wrap {
+    background: #faf8f5;
+    border: 1px dashed var(--secondary-color);
+    border-radius: 12px;
+    padding: 0.75rem;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+}
+
+.guide-diagram-wrap svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Lista de pasos */
+.guide-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Tarjeta de cada paso */
+.guide-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1.5px solid var(--secondary-color);
+    border-radius: 14px;
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.guide-step:hover {
+    border-color: rgba(180, 132, 108, 0.4);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.guide-step.is-active {
+    border-color: var(--step-color, var(--primary-color));
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--step-color, var(--primary-color)) 12%, transparent);
+    background: white;
+}
+
+/* Badge de letra A/B/C */
+.step-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--step-color, var(--primary-color));
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--step-color, var(--primary-color)) 35%, transparent);
+    transition: transform 0.2s ease;
+}
+
+.guide-step.is-active .step-badge {
+    transform: scale(1.08);
+}
+
+/* Cuerpo del paso */
+.step-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.step-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.15rem;
+    line-height: 1.2;
+}
+
+.step-hint {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+    margin-bottom: 0.65rem;
+}
+
+.step-hint strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* Fila de input con +/- */
+.step-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Botones de incremento +/- */
+.btn-stepper {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid var(--secondary-color);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.18s ease;
+    line-height: 1;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.btn-stepper:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: rgba(180, 132, 108, 0.06);
+}
+
+.btn-stepper:active {
+    transform: scale(0.93);
+    background: rgba(180, 132, 108, 0.12);
+}
+
+/* Input de medida dentro del paso */
+.step-input {
+    flex: 1;
+    min-width: 0;
+    background: #FFFFFF;
+    border: 1.5px solid var(--secondary-color);
+    border-radius: 10px;
+    padding: 0.55rem 0.75rem;
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    text-align: center;
+    transition: all 0.2s ease;
+    outline: none;
+    box-sizing: border-box;
+    -moz-appearance: textfield;
+}
+
+/* Ocultar flechas nativas del input number */
+.step-input::-webkit-inner-spin-button,
+.step-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.step-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(180, 132, 108, 0.12);
+}
+
+/* Override color del borde al enfocarse según paso activo */
+#step-A.is-active .step-input:focus { border-color: #e07c40; box-shadow: 0 0 0 3px rgba(224,124,64,0.12); }
+#step-B.is-active .step-input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
+#step-C.is-active .step-input:focus { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,0.12); }
+
+/* Responsive mobile */
+@media (max-width: 600px) {
+    .calc-panel-v2 {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .guide-header {
+        gap: 0.6rem;
+    }
+
+    .guide-title {
+        font-size: 0.92rem;
+    }
+
+    .guide-subtitle {
+        font-size: 0.74rem;
+    }
+
+    .guide-diagram-wrap {
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .guide-steps {
+        gap: 0.6rem;
+    }
+
+    .guide-step {
+        padding: 0.75rem 0.75rem;
+        gap: 0.75rem;
+        border-radius: 12px;
+    }
+
+    .step-badge {
+        width: 33px;
+        height: 33px;
+        font-size: 0.9rem;
+    }
+
+    .step-label {
+        font-size: 0.85rem;
+    }
+
+    .step-hint {
+        font-size: 0.74rem;
+    }
+
+    .step-input {
+        font-size: 1rem;
+    }
+
+    .btn-stepper {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+}

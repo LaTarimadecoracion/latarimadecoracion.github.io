@@ -32,8 +32,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css?v=4">
-    <link rel="stylesheet" href="css/calcular.css?v=4">
+    <link rel="stylesheet" href="css/style.css?v=5">
+    <link rel="stylesheet" href="css/calcular.css?v=5">
     <style>
         body {
             background: transparent !important;
@@ -69,39 +69,125 @@
             <div class="view-content-clean">
                 
                 <!-- Panel de ingreso de medidas -->
-                    <div id="panelMedidas" class="calc-panel">
-                        <p class="calc-intro-text" style="margin-bottom: 0.75rem;">
-                            Necesitamos 3 datos:<br>
-                            <strong>A</strong>: Ancho del tirante<br>
-                            <strong>B</strong>: Alto del Tirante<br>
-                            <strong>C</strong>: alto del Tirante + Colchon
-                        </p>
-                        <button id="btnVerAyuda" class="btn-help-link" type="button" aria-label="Ver imagen de ayuda para tomar medidas" style="margin-bottom: 1.25rem; margin-top: 0;">
-                            <span class="material-symbols-outlined" style="font-size: 18px; vertical-align: middle; margin-right: 4px;">image</span>
-                            (VER IMAGEN DE AYUDA)
-                        </button>
-                        
-                        <div class="inputs-grid-clean">
-                            <div class="input-row-single">
-                                <div class="input-group-clean">
-                                    <label for="medidaA">A</label>
-                                    <input id="medidaA" name="medidaA" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 4.5" aria-label="Medida A" />
-                                </div>
+                    <div id="panelMedidas" class="calc-panel-v2">
+
+                        <!-- Encabezado del panel -->
+                        <div class="guide-header">
+                            <span class="material-symbols-outlined guide-header-icon">straighten</span>
+                            <div>
+                                <h2 class="guide-title">Tomá las medidas de tu cama</h2>
+                                <p class="guide-subtitle">Necesitás una cinta métrica. Solo son 3 medidas rápidas.</p>
                             </div>
-                            <div class="input-row-double">
-                                <div class="input-group-clean">
-                                    <label for="medidaB">B</label>
-                                    <input id="medidaB" name="medidaB" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 10" aria-label="Medida B" />
-                                </div>
-                                <div class="input-group-clean">
-                                    <label for="medidaC">C</label>
-                                    <input id="medidaC" name="medidaC" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Ej: 20" aria-label="Medida C" />
-                                </div>
-                            </div>
-                            <div class="calc-btn-container" style="display:none;">
-                                <button id="btnCalcular" class="btn-action">Calcular</button>
-                            </div>
+                            <button id="btnVerAyuda" class="btn-help-icon" type="button" aria-label="Ver imagen de ayuda">
+                                <span class="material-symbols-outlined">help_outline</span>
+                            </button>
                         </div>
+
+                        <!-- Diagrama SVG interactivo -->
+                        <div class="guide-diagram-wrap">
+                            <svg id="diagramaGuia" viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <!-- Piso -->
+                                <rect x="20" y="148" width="300" height="6" rx="3" fill="#d1c4b2"/>
+                                <!-- Tirante (tabla lateral de la cama) -->
+                                <rect id="dg-tirante" x="20" y="100" width="300" height="48" rx="4" fill="#c9b99a" stroke="#a67c52" stroke-width="1.5"/>
+                                <!-- Colchón -->
+                                <rect id="dg-colchon" x="30" y="62" width="280" height="42" rx="6" fill="#f5f0e8" stroke="#d4c4a8" stroke-width="1.5"/>
+                                <!-- Líneas de colchón decorativas -->
+                                <line x1="30" y1="74" x2="310" y2="74" stroke="#e8dcc8" stroke-width="1"/>
+                                <line x1="30" y1="84" x2="310" y2="84" stroke="#e8dcc8" stroke-width="1"/>
+                                <!-- Baranda (placeholder visual) -->
+                                <rect x="24" y="46" width="8" height="102" rx="2" fill="#a67c52" opacity="0.5"/>
+                                <rect x="308" y="46" width="8" height="102" rx="2" fill="#a67c52" opacity="0.5"/>
+
+                                <!-- Cota A: Ancho del tirante (horizontal en el tirante) -->
+                                <g id="cota-A" opacity="0.25" style="transition: opacity 0.3s ease;">
+                                    <line x1="60" y1="156" x2="260" y2="156" stroke="#e07c40" stroke-width="2" marker-start="url(#arrA)" marker-end="url(#arrA)"/>
+                                    <rect x="138" y="149" width="64" height="14" rx="3" fill="white" opacity="0.92"/>
+                                    <text x="170" y="160" text-anchor="middle" font-size="10" font-weight="700" fill="#e07c40">A: Ancho</text>
+                                </g>
+
+                                <!-- Cota B: Alto del tirante (vertical) -->
+                                <g id="cota-B" opacity="0.25" style="transition: opacity 0.3s ease;">
+                                    <line x1="14" y1="100" x2="14" y2="148" stroke="#3b82f6" stroke-width="2" marker-start="url(#arrB)" marker-end="url(#arrB)"/>
+                                    <rect x="0" y="118" width="28" height="14" rx="3" fill="white" opacity="0.92"/>
+                                    <text x="14" y="129" text-anchor="middle" font-size="9" font-weight="700" fill="#3b82f6">B: Alto</text>
+                                </g>
+
+                                <!-- Cota C: Alto tirante + colchón (vertical) -->
+                                <g id="cota-C" opacity="0.25" style="transition: opacity 0.3s ease;">
+                                    <line x1="325" y1="62" x2="325" y2="148" stroke="#16a34a" stroke-width="2" marker-start="url(#arrC)" marker-end="url(#arrC)"/>
+                                    <rect x="312" y="96" width="26" height="14" rx="3" fill="white" opacity="0.92"/>
+                                    <text x="325" y="107" text-anchor="middle" font-size="9" font-weight="700" fill="#16a34a">C: Suma</text>
+                                </g>
+
+                                <!-- Marcadores de flechas -->
+                                <defs>
+                                    <marker id="arrA" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto">
+                                        <path d="M0,0 L5,2.5 L0,5 z" fill="#e07c40"/>
+                                    </marker>
+                                    <marker id="arrB" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto">
+                                        <path d="M0,0 L5,2.5 L0,5 z" fill="#3b82f6"/>
+                                    </marker>
+                                    <marker id="arrC" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto">
+                                        <path d="M0,0 L5,2.5 L0,5 z" fill="#16a34a"/>
+                                    </marker>
+                                </defs>
+
+                                <!-- Etiquetas fijas de partes -->
+                                <text x="170" y="128" text-anchor="middle" font-size="9" fill="#8b7355" opacity="0.7" font-weight="600">TIRANTE (tabla lateral)</text>
+                                <text x="170" y="88" text-anchor="middle" font-size="9" fill="#8b7355" opacity="0.7" font-weight="600">COLCHÓN</text>
+                            </svg>
+                        </div>
+
+                        <!-- Pasos de ingreso -->
+                        <div class="guide-steps">
+
+                            <!-- PASO 1: Medida A -->
+                            <div class="guide-step" id="step-A" data-step="A">
+                                <div class="step-badge" style="--step-color: #e07c40;">A</div>
+                                <div class="step-body">
+                                    <div class="step-label">Ancho del tirante</div>
+                                    <div class="step-hint">La tabla lateral de la cama medida de frente a fondo (cm)</div>
+                                    <div class="step-input-row">
+                                        <button class="btn-stepper" data-field="medidaA" data-dir="-1" aria-label="Reducir A" tabindex="-1">−</button>
+                                        <input id="medidaA" name="medidaA" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej: 4.5" aria-label="Ancho del tirante (A)" class="step-input" />
+                                        <button class="btn-stepper" data-field="medidaA" data-dir="1" aria-label="Aumentar A" tabindex="-1">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PASO 2: Medida B -->
+                            <div class="guide-step" id="step-B" data-step="B">
+                                <div class="step-badge" style="--step-color: #3b82f6;">B</div>
+                                <div class="step-body">
+                                    <div class="step-label">Alto del tirante</div>
+                                    <div class="step-hint">Desde el piso de la cama hasta la superficie del tirante (cm)</div>
+                                    <div class="step-input-row">
+                                        <button class="btn-stepper" data-field="medidaB" data-dir="-1" aria-label="Reducir B" tabindex="-1">−</button>
+                                        <input id="medidaB" name="medidaB" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej: 10" aria-label="Alto del tirante (B)" class="step-input" />
+                                        <button class="btn-stepper" data-field="medidaB" data-dir="1" aria-label="Aumentar B" tabindex="-1">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PASO 3: Medida C -->
+                            <div class="guide-step" id="step-C" data-step="C">
+                                <div class="step-badge" style="--step-color: #16a34a;">C</div>
+                                <div class="step-body">
+                                    <div class="step-label">Alto del tirante + colchón</div>
+                                    <div class="step-hint">Desde el piso hasta la <strong>superficie del colchón</strong> (cm)</div>
+                                    <div class="step-input-row">
+                                        <button class="btn-stepper" data-field="medidaC" data-dir="-1" aria-label="Reducir C" tabindex="-1">−</button>
+                                        <input id="medidaC" name="medidaC" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej: 20" aria-label="Alto tirante + colchón (C)" class="step-input" />
+                                        <button class="btn-stepper" data-field="medidaC" data-dir="1" aria-label="Aumentar C" tabindex="-1">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Botón oculto para compatibilidad con el script -->
+                        <div style="display:none;"><button id="btnCalcular">Calcular</button></div>
 
                         <div class="panel-disclaimer-clean" style="margin-top: 1.25rem;">
                             Regla clave: buscamos una <strong>protección útil</strong> (lo que sobresale sobre el colchón) dentro del rango objetivo de cada modelo. Si B &lt; 8 cm reducimos el agarre y esa diferencia pasa a la abertura. Si B &gt; 8 cm la abertura efectiva se achica.
@@ -547,6 +633,77 @@
                     }
                 });
             }
+
+            // ── Diagrama guía: resaltar cota activa al hacer foco en cada input ──
+            (function initGuideInteractions() {
+                const cotas = { A: 'cota-A', B: 'cota-B', C: 'cota-C' };
+                const parts = { A: 'dg-tirante', B: 'dg-tirante', C: 'dg-colchon' };
+                const colors = { A: '#e07c40', B: '#3b82f6', C: '#16a34a' };
+
+                function highlightStep(step) {
+                    // Resetear todas las cotas y pasos
+                    Object.values(cotas).forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) el.style.opacity = '0.2';
+                    });
+                    ['dg-tirante', 'dg-colchon'].forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) { el.style.transition = 'filter 0.3s ease'; el.style.filter = ''; }
+                    });
+                    document.querySelectorAll('.guide-step').forEach(s => s.classList.remove('is-active'));
+
+                    if (!step) return;
+
+                    // Activar cota del diagrama
+                    const cotaEl = document.getElementById(cotas[step]);
+                    if (cotaEl) cotaEl.style.opacity = '1';
+
+                    // Resaltar parte de la cama correspondiente
+                    const partEl = document.getElementById(parts[step]);
+                    if (partEl) partEl.style.filter = `drop-shadow(0 0 5px ${colors[step]}88)`;
+
+                    // Resaltar el paso
+                    const stepEl = document.getElementById('step-' + step);
+                    if (stepEl) stepEl.classList.add('is-active');
+                }
+
+                // Bindings de foco en cada input
+                [
+                    { input: inputA, step: 'A' },
+                    { input: inputB, step: 'B' },
+                    { input: inputC, step: 'C' }
+                ].forEach(({ input, step }) => {
+                    if (!input) return;
+                    input.addEventListener('focus', () => highlightStep(step));
+                    input.addEventListener('blur', () => highlightStep(null));
+                    // También activar al hacer clic en el contenedor del paso
+                    const stepEl = document.getElementById('step-' + step);
+                    if (stepEl) {
+                        stepEl.addEventListener('click', (e) => {
+                            if (!e.target.classList.contains('btn-stepper')) {
+                                input.focus();
+                            }
+                        });
+                    }
+                });
+
+                // Botones +/-
+                document.querySelectorAll('.btn-stepper').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const fieldId = btn.getAttribute('data-field');
+                        const dir = parseFloat(btn.getAttribute('data-dir'));
+                        const field = document.getElementById(fieldId);
+                        if (!field) return;
+                        const currentVal = parseFloat(field.value) || 0;
+                        const step = parseFloat(field.step) || 0.5;
+                        const newVal = Math.max(0, Math.round((currentVal + dir * step) * 10) / 10);
+                        field.value = newVal;
+                        field.dispatchEvent(new Event('input', { bubbles: true }));
+                        field.dispatchEvent(new Event('change', { bubbles: true }));
+                    });
+                });
+            })();
 
             // Visualizador Interactivo de Baranda
             const modelosVisualizador = {
