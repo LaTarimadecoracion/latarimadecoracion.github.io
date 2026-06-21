@@ -727,21 +727,7 @@
     font-size: 20px;
 }
 
-/* Contenedor del diagrama SVG guía */
-.guide-diagram-wrap {
-    background: #faf8f5;
-    border: 1px dashed var(--secondary-color);
-    border-radius: 12px;
-    padding: 0.75rem;
-    margin-bottom: 1.25rem;
-    overflow: hidden;
-}
 
-.guide-diagram-wrap svg {
-    display: block;
-    width: 100%;
-    height: auto;
-}
 
 /* Lista de pasos */
 .guide-steps {
@@ -913,11 +899,6 @@
 
     .guide-subtitle {
         font-size: 0.74rem;
-    }
-
-    .guide-diagram-wrap {
-        padding: 0.5rem;
-        margin-bottom: 1rem;
     }
 
     .guide-steps {
