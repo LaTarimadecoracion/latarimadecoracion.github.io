@@ -133,6 +133,11 @@
 
         <!-- View: Product Detail (Hidden by default) -->
         <section id="view-product-detail" class="view detail-view">
+            <!-- Título y Categoría del Producto (Cuerpo de página, no superpuesto) -->
+            <div id="detail-header-info" style="padding: 1.25rem 1.5rem 0.5rem; text-align: left; background: var(--bg-color);">
+                <h2 id="detail-title" style="margin: 0 0 0.15rem 0; font-size: 1.4rem; font-weight: 800; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
+                <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: var(--primary-color, #c0510a); text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-main);"></span>
+            </div>
             <div class="detail-img-container"></div>
             <div class="detail-content">
                 <p id="detail-description" class="detail-description product-description-text"></p>

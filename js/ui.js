@@ -947,6 +947,8 @@ window.safeRender = function(fn, name) {
     const viewHome = document.getElementById('view-home');
     const viewDetail = document.getElementById('view-product-detail');
     
+    const detailTitle = document.getElementById('detail-title');
+    const detailCategory = document.getElementById('detail-category');
     const detailDescription = document.getElementById('detail-description');
     const btnBuyShipping = document.getElementById('btn-buy-shipping');
     const btnBuyPickup = document.getElementById('btn-buy-pickup');
@@ -984,6 +986,19 @@ window.safeRender = function(fn, name) {
     }
 
     function showProductDetail(product, categoryName, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '') {
+        // Asignar título y categoría principal en el cuerpo
+        if (detailTitle) {
+            detailTitle.textContent = product.title;
+        }
+        if (detailCategory) {
+            let displayCategory = categoryName || '';
+            if (product.primaryCatId && typeof sessionProducts !== 'undefined') {
+                const primaryCat = sessionProducts.find(c => c.id === product.primaryCatId);
+                if (primaryCat) displayCategory = primaryCat.name;
+            }
+            detailCategory.textContent = displayCategory;
+        }
+
         // Actualizar URL en el historial si es necesario
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('prod') !== product.id) {
