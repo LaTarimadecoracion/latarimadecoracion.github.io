@@ -1755,7 +1755,8 @@ window.safeRender = function(fn, name) {
 
             // Si el tipo es 'link', mostrar el botón como contenido principal
             if (mType === 'link' && block.linkUrl) {
-                mediaHtml = `<a href="${block.linkUrl}" target="_blank" class="block-action-btn" style="width:100%; text-align:center;">${block.linkText || 'Ver más'}</a>`;
+                const target = block.linkNewTab !== false ? 'target="_blank" rel="noopener"' : '';
+                mediaHtml = `<a href="${block.linkUrl}" ${target} class="block-action-btn" style="width:100%; text-align:center;">${block.linkText || 'Ver más'}</a>`;
             }
 
             // Botón de acción extra (retrocompat con viejos bloques que tenían linkUrl)
@@ -1942,10 +1943,12 @@ window.safeRender = function(fn, name) {
                     mapPreview.style.display = 'block';
                 }
             } else if (mediaType === 'link') {
-                const linkTextEl = document.getElementById('admin-nosotros-link-text');
-                const linkUrlEl  = document.getElementById('admin-nosotros-link-url');
-                if (linkTextEl) linkTextEl.value = block.linkText || '';
-                if (linkUrlEl)  linkUrlEl.value  = block.linkUrl  || '';
+                const linkTextEl   = document.getElementById('admin-nosotros-link-text');
+                const linkUrlEl    = document.getElementById('admin-nosotros-link-url');
+                const linkNewTabEl = document.getElementById('admin-nosotros-link-newtab');
+                if (linkTextEl)   linkTextEl.value     = block.linkText   || '';
+                if (linkUrlEl)    linkUrlEl.value      = block.linkUrl    || '';
+                if (linkNewTabEl) linkNewTabEl.checked = block.linkNewTab !== false;
             }
             document.getElementById('admin-nosotros-form-title').textContent = `Editar Bloque: ${block.title}`;
         } else {
@@ -2085,6 +2088,7 @@ window.safeRender = function(fn, name) {
                 mapQuery: mediaType === 'map'   ? (document.getElementById('admin-nosotros-map-query')?.value.trim() || '') : '',
                 linkUrl:  mediaType === 'link'  ? (document.getElementById('admin-nosotros-link-url')?.value.trim() || '') : '',
                 linkText: mediaType === 'link'  ? (document.getElementById('admin-nosotros-link-text')?.value.trim() || 'Ver más') : '',
+                linkNewTab: mediaType === 'link' ? (document.getElementById('admin-nosotros-link-newtab')?.checked !== false) : true,
             };
 
             // Validaciones por tipo
