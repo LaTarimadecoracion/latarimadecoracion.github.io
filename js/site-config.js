@@ -97,7 +97,7 @@ window.siteConfig = {
             "image": "",
             "videoUrl": "",
             "mapQuery": "",
-            "linkUrl": "https://latarimadecoracion.github.io/?view=catalogo",
+            "linkUrl": "/?view=catalogo",
             "linkText": "Catalogo completo",
             "linkNewTab": false
         }
