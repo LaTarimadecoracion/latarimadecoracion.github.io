@@ -1888,8 +1888,6 @@ window.safeRender = function(fn, name) {
         editingNosotrosIndex = idx;
         const titleInput       = document.getElementById('admin-nosotros-title');
         const descriptionInput = document.getElementById('admin-nosotros-description');
-        const linkUrlInput     = document.getElementById('nosotros-link-url');
-        const linkTextInput    = document.getElementById('nosotros-link-text');
         const hiddenUrlInput   = document.getElementById('admin-nosotros-image-url');
         const videoUrlInput    = document.getElementById('admin-nosotros-video-url');
         const mapQueryInput    = document.getElementById('admin-nosotros-map-query');
@@ -1897,8 +1895,6 @@ window.safeRender = function(fn, name) {
         // Limpiar todos los inputs
         titleInput.value       = '';
         descriptionInput.value = '';
-        linkUrlInput.value     = '';
-        linkTextInput.value    = '';
         hiddenUrlInput.value   = '';
         if (videoUrlInput) videoUrlInput.value = '';
         if (mapQueryInput) mapQueryInput.value = '';
@@ -1919,8 +1915,6 @@ window.safeRender = function(fn, name) {
             const block = sessionNosotros[idx];
             titleInput.value       = block.title;
             descriptionInput.value = block.description;
-            linkUrlInput.value     = block.linkUrl  || '';
-            linkTextInput.value    = block.linkText || '';
             mediaType = block.mediaType || 'image';
             // Cargar enlaces si existen
             renderNosotrosLinksList(block.links || (block.linkUrl ? [{ text: block.linkText || 'Ver más', url: block.linkUrl }] : []));
