@@ -39,13 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.renderHome) window.renderHome();
             if (window.renderCategoriesMenu) window.renderCategoriesMenu();
             if (window.renderVideosView) window.renderVideosView();
-            if (window.renderAvisosCliente) window.renderAvisosCliente();
+            if (window.renderNosotrosBlocksCliente) window.renderNosotrosBlocksCliente();
         });
     } else {
         if (window.renderHome) window.renderHome();
         if (window.renderCategoriesMenu) window.renderCategoriesMenu();
         if (window.renderVideosView) window.renderVideosView();
-        if (window.renderAvisosCliente) window.renderAvisosCliente();
+        if (window.renderNosotrosBlocksCliente) window.renderNosotrosBlocksCliente();
     }
 
     // Módulo Avisos Autónomo

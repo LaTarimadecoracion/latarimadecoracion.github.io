@@ -22,6 +22,9 @@ if (!window.siteConfig) {
             search: { title: "Explorar", subtitle: "Encontrá lo que buscás", icon: "search", visible: true }
         },
         contentRegistry: { home: [], categories: [], avisos: [], cart: [], videos: [], catalogo: [], nosotros: [], search: [] },
+        socialLinks: { instagram: "", tiktok: "", facebook: "", youtube: "", whatsapp: "", mercadolibre: "" },
+        sessionNosotros: [],
+        sessionAvisos: [],
         homeConfig: {
             order: ['categorias', 'novedades', 'buscados'],
             sections: {
@@ -29,9 +32,7 @@ if (!window.siteConfig) {
                 novedades: { title: "Nuevos Diseños 2026", subtitle: "Novedades del taller", icon: "auto_awesome" },
                 buscados: { title: "Los más buscados", subtitle: "Los preferidos de nuestros clientes", icon: "favorite" }
             }
-        },
-        sessionNosotros: [],
-        sessionAvisos: []
+        }
     };
 }
 
@@ -129,6 +130,19 @@ try {
     console.error("Error loading sessionNosotros fallback:", e);
 }
 
+window.sessionAvisos = window.siteConfig.sessionAvisos && window.siteConfig.sessionAvisos.length 
+    ? window.siteConfig.sessionAvisos 
+    : [];
+
+try {
+    const localAvisos = localStorage.getItem('sessionAvisosAutonomo'); // Legacy fallback
+    if (localAvisos && (!window.siteConfig.sessionAvisos || !window.siteConfig.sessionAvisos.length)) {
+        window.sessionAvisos = JSON.parse(localAvisos);
+    }
+} catch(e) {
+    console.error("Error loading sessionAvisos fallback:", e);
+}
+
 // 4. CONFIGURACIÓN DE ORDEN Y CONTROL DE SECCIONES DEL HOME
 window.homeConfig = window.siteConfig.homeConfig || {
     order: ['categorias', 'novedades', 'buscados'],
@@ -176,9 +190,7 @@ window.syncSiteConfigWithServer = async function() {
             contentRegistry: window.contentRegistry,
             homeConfig: window.homeConfig,
             sessionNosotros: window.sessionNosotros,
-            sessionAvisos: (window.AvisosModule && window.AvisosModule.getAvisos) 
-                ? window.AvisosModule.getAvisos() 
-                : (window.siteConfig.sessionAvisos || []),
+            sessionAvisos: window.sessionAvisos,
             socialLinks: window.socialLinks
         };
 

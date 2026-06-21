@@ -1720,37 +1720,152 @@ window.safeRender = function(fn, name) {
 
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    // GESTIÓN DINÁMICA DE SECCIÓN NOSOTROS
+// GESTIÓN DINÁMICA DE BLOQUES DE INFORMACIÓN (NOSOTROS Y AVISOS)
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    const nosotrosBlocksContainer = document.getElementById('nosotros-blocks-container');
-    const adminNosotrosList = document.getElementById('admin-nosotros-list');
-    const adminNosotrosModal = document.getElementById('admin-nosotros-modal');
-    const btnAddNosotrosBlock = document.getElementById('btn-add-nosotros-block');
-    const btnCancelNosotros = document.getElementById('btn-cancel-nosotros');
-    const btnSaveNosotrosBlock = document.getElementById('btn-save-nosotros-block');
-    const inputNosotrosImage = document.getElementById('admin-nosotros-image');
-    const nosotrosImagePreview = document.getElementById('nosotros-image-preview');
+    let currentInfoTarget = 'nosotros'; // 'nosotros' o 'avisos'
+    let editingInfoIndex = null;
 
-    // 1. Guardar localmente
-    function saveNosotrosToLocalStorage() {
-        localStorage.setItem('sessionNosotros', JSON.stringify(sessionNosotros));
+    // Elementos del DOM genéricos
+    const adminInfoModal = document.getElementById('admin-nosotros-modal');
+    const inputInfoImage = document.getElementById('admin-nosotros-image');
+    const infoImagePreview = document.getElementById('nosotros-image-preview');
+    const btnCancelInfo = document.getElementById('btn-cancel-nosotros');
+    const btnSaveInfoBlock = document.getElementById('btn-save-nosotros-block');
+
+    function getSessionArray() {
+        return currentInfoTarget === 'avisos' ? window.sessionAvisos : window.sessionNosotros;
+    }
+
+    function saveInfoToLocalStorage() {
+        if(currentInfoTarget === 'avisos') {
+            localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
+        } else {
+            localStorage.setItem('sessionNosotros', JSON.stringify(window.sessionNosotros));
+        }
         if (window.syncSiteConfigWithServer) {
             window.syncSiteConfigWithServer();
         }
     }
 
-    // 2. Renderizado Cliente
+    // 2. Renderizado Cliente genérico
+    window.renderInfoBlocksCliente = function(target) {
+        const container = document.getElementById(target + '-blocks-container');
+        if (!container) return;
+        container.innerHTML = '';
+
+        const sessionArr = target === 'avisos' ? window.sessionAvisos : window.sessionNosotros;
+
+        if (sessionArr.length === 0) {
+            container.innerHTML = '<p class="text-muted" style="text-align:center; padding: 2rem 0;">No hay bloques de información cargados.</p>';
+            return;
+        }
+
+        sessionArr.forEach((block, idx) => {
+            const blockSection = document.createElement('section');
+            blockSection.className = 'nosotros-block'; // Reusamos CSS
+
+            let mediaHtml = '';
+            const mType = block.mediaType || (block.image ? 'image' : 'none');
+
+            if (mType === 'image' && block.image) {
+                mediaHtml = `
+                <div class="block-image-wrapper" style="position:relative;">
+                    <img src="${block.image}" alt="${block.title}" class="nosotros-img lazy-img" loading="lazy" onload="this.classList.add('loaded')">
+                </div>`;
+            } else if (mType === 'video' && block.videoUrl) {
+                const ytId = extractYouTubeId(block.videoUrl);
+                if (ytId) {
+                    mediaHtml = `
+                    <div class="block-video-wrapper">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=0&modestbranding=1&rel=0"
+                            allow="autoplay; encrypted-media"
+                            allowfullscreen
+                            loading="lazy"
+                            title="${block.title}"
+                        ></iframe>
+                        <div class="block-video-shield"></div>
+                    </div>`;
+                }
+            } else if (mType === 'map' && block.mapQuery) {
+                const encodedQuery = encodeURIComponent(block.mapQuery);
+                const mapsEmbedUrl = `https://maps.google.com/maps?q=${encodedQuery}&output=embed&z=15`;
+                const mapsOpenUrl = `https://maps.google.com/maps?q=${encodedQuery}`;
+                mediaHtml = `
+                <div class="block-map-wrapper">
+                    <iframe src="${mapsEmbedUrl}" allowfullscreen loading="lazy" title="${block.mapQuery}"></iframe>
+                    <a href="${mapsOpenUrl}" target="_blank" class="block-map-link" title="Abrir en Google Maps">
+                        <span class="block-map-badge"><span class="material-symbols-outlined" style="font-size:1rem;">navigation</span> Cómo llegar</span>
+                    </a>
+                </div>`;
+            }
+
+            if (mType === 'link' && block.linkUrl) {
+                const targetAttr = block.linkNewTab !== false ? 'target="_blank" rel="noopener"' : '';
+                mediaHtml = `<a href="${block.linkUrl}" ${targetAttr} class="block-action-btn" style="width:100%; text-align:center;">${block.linkText || 'Ver más'}</a>`;
+            }
+
+            const actionButtonHtml = (mType !== 'link' && block.linkUrl)
+                ? `<a href="${block.linkUrl}" target="_blank" class="block-action-btn">${block.linkText || 'Ver más'}</a>`
+                : '';
+
+            blockSection.innerHTML = `
+                ${block.description || mType === 'link' ? '' : ''}
+                ${mType !== 'link' ? `<h2>${block.title}</h2>` : ''}
+                ${mediaHtml}
+                ${block.description ? `<p>${block.description}</p>` : ''}
+                ${actionButtonHtml}
+            `;
+
+            blockSection.querySelectorAll('.block-action-btn').forEach(btn => {
+                const href = btn.getAttribute('href');
+                if (!href) return;
+                try {
+                    const parsedUrl = new URL(href, window.location.href);
+                    if (parsedUrl.host === window.location.host) {
+                        const params = parsedUrl.searchParams;
+                        const targetView = params.get('view');
+                        const targetProd = params.get('prod') || params.get('product') || params.get('p');
+                        const targetCat = params.get('cat') || params.get('category');
+                        if (targetView || targetProd || targetCat) {
+                            btn.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                if (targetView) {
+                                    const viewIdMap = { 'nosotros': 'view-about', 'buscar': 'view-search', 'avisos': 'view-notifications', 'perfil': 'view-profile', 'alquileres': 'view-rentals', 'admin': 'view-admin', 'catalogo': 'view-catalogo', 'calcular': 'view-calculator', 'home': 'view-home', 'categorias': 'view-categories', 'carrito': 'view-cart', 'videos': 'view-videos' };
+                                    const viewId = viewIdMap[targetView] || targetView;
+                                    if (window.navigateToView) window.navigateToView(viewId);
+                                } else if (targetProd) {
+                                    if (window.findProductById && window.showProductDetail) {
+                                        const found = window.findProductById(targetProd);
+                                        if (found) window.showProductDetail(found.product, found.catName);
+                                    }
+                                } else if (targetCat) {
+                                    if (window.navigateToCategoryFeed) window.navigateToCategoryFeed(targetCat);
+                                }
+                            });
+                        }
+                    }
+                } catch (err) {}
+            });
+
+            container.appendChild(blockSection);
+            if (idx < sessionArr.length - 1) {
+                const hr = document.createElement('hr');
+                hr.className = 'block-divider';
+                container.appendChild(hr);
+            }
+        });
+    };
+
     window.renderGlobalSocialLinks = function() {
         const linksMap = window.socialLinks || {};
         const redes = ['instagram', 'tiktok', 'facebook', 'youtube', 'whatsapp', 'mercadolibre'];
         const template = document.getElementById('social-links-template');
         const containers = document.querySelectorAll('.social-links-container');
-        
         if (template) {
             containers.forEach(container => {
-                container.innerHTML = ''; // Clear previous
+                container.innerHTML = '';
                 const clone = template.content.cloneNode(true);
-                
                 redes.forEach(red => {
                     const btn = clone.querySelector(`.social-link-${red}`);
                     if (btn) {
@@ -1767,160 +1882,9 @@ window.safeRender = function(fn, name) {
         }
     };
 
-    function renderNosotrosBlocksCliente() {
-
-        if (!nosotrosBlocksContainer) return;
-        nosotrosBlocksContainer.innerHTML = '';
-
-        if (sessionNosotros.length === 0) {
-            nosotrosBlocksContainer.innerHTML = '<p class="text-muted" style="text-align:center; padding: 2rem 0;">No hay bloques de información cargados.</p>';
-            return;
-        }
-
-        sessionNosotros.forEach((block, idx) => {
-            const blockSection = document.createElement('section');
-            blockSection.className = 'nosotros-block';
-
-            // ── Generar HTML del bloque de media según tipo ──
-            let mediaHtml = '';
-            const mType = block.mediaType || (block.image ? 'image' : 'none');
-
-            if (mType === 'image' && block.image) {
-                mediaHtml = `
-                <div class="block-image-wrapper" style="position:relative;">
-                    <img src="${block.image}" alt="${block.title}" class="nosotros-img lazy-img" loading="lazy" onload="this.classList.add('loaded')">
-                </div>`;
-
-            } else if (mType === 'video' && block.videoUrl) {
-                const ytId = extractYouTubeId(block.videoUrl);
-                if (ytId) {
-                    mediaHtml = `
-                    <div class="block-video-wrapper">
-                        <iframe
-                            src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=0&modestbranding=1&rel=0"
-                            allow="autoplay; encrypted-media"
-                            allowfullscreen
-                            loading="lazy"
-                            title="${block.title}"
-                        ></iframe>
-                        <div class="block-video-shield"></div>
-                    </div>`;
-                }
-
-            } else if (mType === 'map' && block.mapQuery) {
-                const encodedQuery = encodeURIComponent(block.mapQuery);
-                const mapsEmbedUrl = `https://maps.google.com/maps?q=${encodedQuery}&output=embed&z=15`;
-                const mapsOpenUrl = `https://maps.google.com/maps?q=${encodedQuery}`;
-                mediaHtml = `
-                <div class="block-map-wrapper">
-                    <iframe
-                        src="${mapsEmbedUrl}"
-                        allowfullscreen
-                        loading="lazy"
-                        title="${block.mapQuery}"
-                    ></iframe>
-                    <a href="${mapsOpenUrl}" target="_blank" class="block-map-link" title="Abrir en Google Maps">
-                        <span class="block-map-badge">
-                            <span class="material-symbols-outlined" style="font-size:1rem;">navigation</span>
-                            Cómo llegar
-                        </span>
-                    </a>
-                </div>`;
-            }
-
-            // Si el tipo es 'link', mostrar el botón como contenido principal
-            if (mType === 'link' && block.linkUrl) {
-                const target = block.linkNewTab !== false ? 'target="_blank" rel="noopener"' : '';
-                mediaHtml = `<a href="${block.linkUrl}" ${target} class="block-action-btn" style="width:100%; text-align:center;">${block.linkText || 'Ver más'}</a>`;
-            }
-
-            // Botón de acción extra (retrocompat con viejos bloques que tenían linkUrl)
-            const actionButtonHtml = (mType !== 'link' && block.linkUrl)
-                ? `<a href="${block.linkUrl}" target="_blank" class="block-action-btn">${block.linkText || 'Ver más'}</a>`
-                : '';
-
-            blockSection.innerHTML = `
-                ${block.description || mType === 'link' ? '' : ''}
-                ${mType !== 'link' ? `<h2>${block.title}</h2>` : ''}
-                ${mediaHtml}
-                ${block.description ? `<p>${block.description}</p>` : ''}
-                ${actionButtonHtml}
-            `;
-
-            // Interceptar enlaces internos para navegación SPA sin recargar
-            blockSection.querySelectorAll('.block-action-btn').forEach(btn => {
-                const href = btn.getAttribute('href');
-                if (!href) return;
-
-                try {
-                    const parsedUrl = new URL(href, window.location.href);
-
-                    // Si el host es el mismo, es un enlace interno de la app
-                    if (parsedUrl.host === window.location.host) {
-                        const params = parsedUrl.searchParams;
-
-                        const targetView = params.get('view');
-                        const targetProd = params.get('prod') || params.get('product') || params.get('p');
-                        const targetCat = params.get('cat') || params.get('category');
-
-                        if (targetView || targetProd || targetCat) {
-                            btn.addEventListener('click', (e) => {
-                                e.preventDefault();
-
-                                if (targetView) {
-                                    const viewIdMap = {
-                                        'nosotros': 'view-about',
-                                        'buscar': 'view-search',
-                                        'avisos': 'view-notifications',
-                                        'perfil': 'view-profile',
-                                        'alquileres': 'view-rentals',
-                                        'admin': 'view-admin',
-                                        'catalogo': 'view-catalogo',
-                                        'calcular': 'view-calculator',
-                                        'home': 'view-home',
-                                        'categorias': 'view-categories',
-                                        'carrito': 'view-cart',
-                                        'videos': 'view-videos'
-                                    };
-                                    const viewId = viewIdMap[targetView] || targetView;
-                                    if (window.navigateToView) window.navigateToView(viewId);
-                                } else if (targetProd) {
-                                    if (window.findProductById && window.showProductDetail) {
-                                        const found = window.findProductById(targetProd);
-                                        if (found) {
-                                            window.showProductDetail(found.product, found.catName);
-                                        }
-                                    }
-                                } else if (targetCat) {
-                                    if (window.navigateToCategoryFeed) {
-                                        window.navigateToCategoryFeed(targetCat);
-                                    }
-                                }
-                            });
-                        }
-                    }
-                } catch (err) {
-                    console.error("Error parsing block link for SPA navigation:", err);
-                }
-            });
-
-            nosotrosBlocksContainer.appendChild(blockSection);
-
-            if (idx < sessionNosotros.length - 1) {
-                const hr = document.createElement('hr');
-                hr.className = 'block-divider';
-                nosotrosBlocksContainer.appendChild(hr);
-            }
-        });
-    }
-
-    // Utilitario: extraer ID de YouTube de cualquier formato de URL
     function extractYouTubeId(url) {
         if (!url) return null;
-        const patterns = [
-            /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{11})/,
-            /youtube\.com\/shorts\/([\w-]{11})/
-        ];
+        const patterns = [ /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{11})/, /youtube\.com\/shorts\/([\w-]{11})/ ];
         for (const p of patterns) {
             const m = url.match(p);
             if (m) return m[1];
@@ -1929,33 +1893,22 @@ window.safeRender = function(fn, name) {
     }
 
     // 3. Renderizado Lista Admin
-    // 3. Renderizado Lista Admin (Compact Cards UI)
-    function renderAdminNosotrosList() {
-        if (!adminNosotrosList) return;
-        adminNosotrosList.innerHTML = '';
+    window.renderAdminInfoList = function(target) {
+        const listEl = document.getElementById('admin-' + target + '-list');
+        if (!listEl) return;
+        listEl.innerHTML = '';
+        
+        const sessionArr = target === 'avisos' ? window.sessionAvisos : window.sessionNosotros;
 
-        if (sessionNosotros.length === 0) {
-            adminNosotrosList.innerHTML = '<p class="text-muted" style="padding: 1rem 0;">No hay bloques cargados.</p>';
+        if (sessionArr.length === 0) {
+            listEl.innerHTML = '<p class="text-muted" style="padding: 1rem 0;">No hay bloques cargados.</p>';
             return;
         }
 
-        sessionNosotros.forEach((block, idx) => {
+        sessionArr.forEach((block, idx) => {
             const card = document.createElement('div');
-            card.style.cssText = `
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0.75rem 1rem;
-                background: white;
-                border-radius: var(--radius-md);
-                border: 1.5px solid #E8ECF0;
-                margin-bottom: 0.6rem;
-                gap: 1rem;
-                box-shadow: var(--shadow-sm);
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
-            `;
+            card.style.cssText = `display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; background: white; border-radius: var(--radius-md); border: 1.5px solid #E8ECF0; margin-bottom: 0.6rem; gap: 1rem; box-shadow: var(--shadow-sm); transition: transform 0.2s ease, box-shadow 0.2s ease;`;
 
-            // Miniatura de la imagen (WebP o placeholder/icono según tipo)
             let thumbHtml = '';
             const mType = block.mediaType || (block.image ? 'image' : 'none');
             if (mType === 'image' && block.image) {
@@ -1965,16 +1918,13 @@ window.safeRender = function(fn, name) {
                 const ytThumb = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : 'img/logo_provisional.png';
                 thumbHtml = `<img src="${ytThumb}" style="width: 44px; height: 44px; object-fit: cover; border-radius: 8px; border: 1px solid #E2E8F0;">`;
             } else if (mType === 'map' && block.mapQuery) {
-                thumbHtml = `
-                <div style="width: 44px; height: 44px; border-radius: 8px; background: #e0f2fe; border: 1px solid #bae6fd; display: flex; align-items: center; justify-content: center; color: #0284c7;">
-                    <span class="material-symbols-outlined" style="font-size: 22px;">map</span>
-                </div>`;
+                thumbHtml = `<div style="width: 44px; height: 44px; border-radius: 8px; background: #e0f2fe; border: 1px solid #bae6fd; display: flex; align-items: center; justify-content: center; color: #0284c7;"><span class="material-symbols-outlined" style="font-size: 22px;">map</span></div>`;
             } else {
                 thumbHtml = `<img src="img/logo_provisional.png" style="width: 44px; height: 44px; object-fit: cover; border-radius: 8px; border: 1px solid #E2E8F0;">`;
             }
 
             const isFirst = idx === 0;
-            const isLast = idx === sessionNosotros.length - 1;
+            const isLast = idx === sessionArr.length - 1;
 
             card.innerHTML = `
                 <div style="display:flex; align-items:center; gap: 0.8rem; overflow: hidden; flex: 1;">
@@ -1989,76 +1939,90 @@ window.safeRender = function(fn, name) {
                     <button type="button" class="btn-up-block action-btn" style="padding: 0.4rem;" ${isFirst ? 'disabled' : ''} title="Subir"><span class="material-symbols-outlined" style="font-size: 18px; color: ${isFirst ? '#cbd5e1' : 'var(--primary-color)'}">arrow_upward</span></button>
                     <button type="button" class="btn-down-block action-btn" style="padding: 0.4rem;" ${isLast ? 'disabled' : ''} title="Bajar"><span class="material-symbols-outlined" style="font-size: 18px; color: ${isLast ? '#cbd5e1' : 'var(--primary-color)'}">arrow_downward</span></button>
                     <button type="button" class="btn-delete-block action-btn del" style="padding: 0.4rem;" title="Eliminar"><span class="material-symbols-outlined" style="font-size: 18px;">delete</span></button>
-                </div>
-            `;
+                </div>`;
 
-            card.querySelector('.btn-edit-block').addEventListener('click', () => openNosotrosForm(idx));
-            card.querySelector('.btn-up-block').addEventListener('click', () => moveNosotrosBlockUp(idx));
-            card.querySelector('.btn-down-block').addEventListener('click', () => moveNosotrosBlockDown(idx));
-            card.querySelector('.btn-delete-block').addEventListener('click', () => deleteNosotrosBlock(idx));
+            card.querySelector('.btn-edit-block').addEventListener('click', () => openInfoForm(target, idx));
+            card.querySelector('.btn-up-block').addEventListener('click', () => moveInfoBlockUp(target, idx));
+            card.querySelector('.btn-down-block').addEventListener('click', () => moveInfoBlockDown(target, idx));
+            card.querySelector('.btn-delete-block').addEventListener('click', () => deleteInfoBlock(target, idx));
 
-            adminNosotrosList.appendChild(card);
+            listEl.appendChild(card);
         });
-    }
+    };
 
-    function moveNosotrosBlockUp(idx) {
+    function moveInfoBlockUp(target, idx) {
+        const arr = target === 'avisos' ? window.sessionAvisos : window.sessionNosotros;
         if (idx > 0) {
-            [sessionNosotros[idx], sessionNosotros[idx - 1]] = [sessionNosotros[idx - 1], sessionNosotros[idx]];
-            saveNosotrosToLocalStorage();
-            renderAdminNosotrosList();
-            renderNosotrosBlocksCliente();
+            [arr[idx], arr[idx - 1]] = [arr[idx - 1], arr[idx]];
+            currentInfoTarget = target;
+            saveInfoToLocalStorage();
+            renderAdminInfoList(target);
+            renderInfoBlocksCliente(target);
         }
     }
 
-    function moveNosotrosBlockDown(idx) {
-        if (idx < sessionNosotros.length - 1) {
-            [sessionNosotros[idx], sessionNosotros[idx + 1]] = [sessionNosotros[idx + 1], sessionNosotros[idx]];
-            saveNosotrosToLocalStorage();
-            renderAdminNosotrosList();
-            renderNosotrosBlocksCliente();
+    function moveInfoBlockDown(target, idx) {
+        const arr = target === 'avisos' ? window.sessionAvisos : window.sessionNosotros;
+        if (idx < arr.length - 1) {
+            [arr[idx], arr[idx + 1]] = [arr[idx + 1], arr[idx]];
+            currentInfoTarget = target;
+            saveInfoToLocalStorage();
+            renderAdminInfoList(target);
+            renderInfoBlocksCliente(target);
         }
     }
 
-    // 4. Abrir Formulario
-    function openNosotrosForm(idx = null) {
-        editingNosotrosIndex = idx;
+    function deleteInfoBlock(target, idx) {
+        const arr = target === 'avisos' ? window.sessionAvisos : window.sessionNosotros;
+        if (confirm(`¿Seguro que querés eliminar el bloque "${arr[idx].title}"?`)) {
+            arr.splice(idx, 1);
+            currentInfoTarget = target;
+            saveInfoToLocalStorage();
+            renderAdminInfoList(target);
+            renderInfoBlocksCliente(target);
+        }
+    }
+
+    window.openInfoForm = function(target, idx = null) {
+        currentInfoTarget = target;
+        editingInfoIndex = idx;
+        
+        const arr = getSessionArray();
+        
         const titleInput       = document.getElementById('admin-nosotros-title');
         const descriptionInput = document.getElementById('admin-nosotros-description');
         const hiddenUrlInput   = document.getElementById('admin-nosotros-image-url');
         const videoUrlInput    = document.getElementById('admin-nosotros-video-url');
         const mapQueryInput    = document.getElementById('admin-nosotros-map-query');
 
-        // Limpiar todos los inputs
         titleInput.value       = '';
         descriptionInput.value = '';
         hiddenUrlInput.value   = '';
         if (videoUrlInput) videoUrlInput.value = '';
         if (mapQueryInput) mapQueryInput.value = '';
-        if (inputNosotrosImage) inputNosotrosImage.value = '';
-        if (nosotrosImagePreview) nosotrosImagePreview.innerHTML = '';
+        if (inputInfoImage) inputInfoImage.value = '';
+        if (infoImagePreview) infoImagePreview.innerHTML = '';
+        
         const videoPreview = document.getElementById('nosotros-video-preview');
         const mapPreview   = document.getElementById('nosotros-map-preview');
         if (videoPreview) { videoPreview.innerHTML = ''; videoPreview.style.display = 'none'; }
         if (mapPreview)   { mapPreview.innerHTML = '';   mapPreview.style.display = 'none'; }
 
-        // Limpiar lista de enlaces
         renderNosotrosLinksList([]);
 
-        // Tipo de medio por defecto: imagen
         let mediaType = 'image';
 
         if (idx !== null) {
-            const block = sessionNosotros[idx];
+            const block = arr[idx];
             titleInput.value       = block.title;
             descriptionInput.value = block.description;
             mediaType = block.mediaType || 'image';
-            // Cargar enlaces si existen
             renderNosotrosLinksList(block.links || (block.linkUrl ? [{ text: block.linkText || 'Ver más', url: block.linkUrl }] : []));
 
             if (mediaType === 'image') {
                 hiddenUrlInput.value = block.image || '';
-                if (block.image && nosotrosImagePreview) {
-                    nosotrosImagePreview.innerHTML = `<img src="${block.image}" style="width:100%; border-radius:8px; border:1px solid #ddd;">`;
+                if (block.image && infoImagePreview) {
+                    infoImagePreview.innerHTML = `<img src="${block.image}" style="width:100%; border-radius:8px; border:1px solid #ddd;">`;
                 }
             } else if (mediaType === 'video') {
                 if (videoUrlInput) videoUrlInput.value = block.videoUrl || '';
@@ -2084,63 +2048,51 @@ window.safeRender = function(fn, name) {
                 if (linkUrlEl)    linkUrlEl.value      = block.linkUrl    || '';
                 if (linkNewTabEl) linkNewTabEl.checked = block.linkNewTab !== false;
             }
-            document.getElementById('admin-nosotros-form-title').textContent = `Editar Bloque: ${block.title}`;
+            document.getElementById('admin-nosotros-form-title').textContent = `Editar Bloque (${target.toUpperCase()}): ${block.title}`;
         } else {
-            document.getElementById('admin-nosotros-form-title').textContent = '➕ Agregar Nuevo Bloque de Nosotros';
+            document.getElementById('admin-nosotros-form-title').textContent = `➕ Agregar Nuevo Bloque en ${target.toUpperCase()}`;
         }
 
-        // Activar la pestaña correcta
         switchMediaPanel(mediaType);
 
-        if (adminNosotrosModal) {
-            adminNosotrosModal.style.display = 'flex';
-            adminNosotrosModal.scrollIntoView({ behavior: 'smooth' });
+        if (adminInfoModal) {
+            adminInfoModal.style.display = 'flex';
+            adminInfoModal.scrollIntoView({ behavior: 'smooth' });
         }
-    }
+    };
 
-    // 5. Eliminar Bloque
-    function deleteNosotrosBlock(idx) {
-        if (confirm(`¿Seguro que querés eliminar el bloque "${sessionNosotros[idx].title}"?`)) {
-            sessionNosotros.splice(idx, 1);
-            saveNosotrosToLocalStorage();
-            renderAdminNosotrosList();
-        }
-    }
-
-    // 6. Subir imagen localmente o usar servidor (con conversión WebP automática)
-    if (inputNosotrosImage && nosotrosImagePreview) {
-        inputNosotrosImage.addEventListener('change', async (e) => {
+    if (inputInfoImage && infoImagePreview) {
+        inputInfoImage.addEventListener('change', async (e) => {
             const file = e.target.files[0];
             if (!file) return;
 
-            if (btnSaveNosotrosBlock) {
-                btnSaveNosotrosBlock.disabled = true;
-                btnSaveNosotrosBlock.textContent = '⏳ Procesando imagen...';
+            if (btnSaveInfoBlock) {
+                btnSaveInfoBlock.disabled = true;
+                btnSaveInfoBlock.textContent = '⏳ Procesando imagen...';
             }
 
             try {
                 const { file: webpFile, dataUrl } = await convertImageToWebP(file);
-                nosotrosImagePreview.innerHTML = `
+                infoImagePreview.innerHTML = `
                     <img src="${dataUrl}" style="width:100%; border-radius:8px; border:1px solid #ddd;">
                     <small style="color: #27ae60; font-size: 0.75rem;">✅ Convertida a WebP</small>
                 `;
-                const uploadedPath = await uploadImageToServer(webpFile, 'nosotros', 'bloque');
+                const uploadedPath = await uploadImageToServer(webpFile, currentInfoTarget, 'bloque');
                 if (uploadedPath) {
                     document.getElementById('admin-nosotros-image-url').value = uploadedPath;
                 }
             } catch (err) {
                 console.error('Error convirtiendo imagen:', err);
-                nosotrosImagePreview.innerHTML = '<small style="color:red;">⚠️ Error procesando imagen.</small>';
+                infoImagePreview.innerHTML = '<small style="color:red;">⚠️ Error procesando imagen.</small>';
             } finally {
-                if (btnSaveNosotrosBlock) {
-                    btnSaveNosotrosBlock.disabled = false;
-                    btnSaveNosotrosBlock.textContent = 'Guardar Bloque de Nosotros';
+                if (btnSaveInfoBlock) {
+                    btnSaveInfoBlock.disabled = false;
+                    btnSaveInfoBlock.textContent = 'Guardar Bloque';
                 }
             }
         });
     }
 
-    // ── Selector de tipo de medio: lógica de cambio de panel ──
     function switchMediaPanel(type) {
         const panels = { image: 'nosotros-panel-image', video: 'nosotros-panel-video', map: 'nosotros-panel-map', link: 'nosotros-panel-link' };
         Object.entries(panels).forEach(([key, id]) => {
@@ -2148,13 +2100,12 @@ window.safeRender = function(fn, name) {
             if (panel) panel.style.display = (key === type) ? 'block' : 'none';
         });
 
-        // Ocultar título y descripción si el tipo es 'link' (solo es un botón)
         const titleGroup = document.getElementById('admin-nosotros-title')?.closest('.form-group');
         const descGroup  = document.getElementById('admin-nosotros-description')?.closest('.form-group');
         const isLink = type === 'link';
         if (titleGroup) titleGroup.style.display = isLink ? 'none' : '';
         if (descGroup)  descGroup.style.display  = isLink ? 'none' : '';
-        // Actualizar botones activos
+        
         const selector = document.getElementById('nosotros-media-type-selector');
         if (selector) {
             selector.querySelectorAll('.media-type-btn').forEach(btn => {
@@ -2163,7 +2114,6 @@ window.safeRender = function(fn, name) {
         }
     }
 
-    // Eventos de los botones de selección de tipo
     const mediaTypeSelector = document.getElementById('nosotros-media-type-selector');
     if (mediaTypeSelector) {
         mediaTypeSelector.addEventListener('click', (e) => {
@@ -2173,7 +2123,6 @@ window.safeRender = function(fn, name) {
         });
     }
 
-    // Vista previa en vivo del video de YouTube
     const videoUrlInput = document.getElementById('admin-nosotros-video-url');
     if (videoUrlInput) {
         videoUrlInput.addEventListener('blur', () => {
@@ -2190,7 +2139,6 @@ window.safeRender = function(fn, name) {
         });
     }
 
-    // Vista previa del mapa al presionar el botón
     const btnPreviewMap = document.getElementById('btn-preview-map');
     if (btnPreviewMap) {
         btnPreviewMap.addEventListener('click', () => {
@@ -2203,18 +2151,14 @@ window.safeRender = function(fn, name) {
         });
     }
 
-
-    // 7. Guardar Bloque
-    if (btnSaveNosotrosBlock) {
-        btnSaveNosotrosBlock.addEventListener('click', async () => {
-            // Detectar qué panel está activo primero
+    if (btnSaveInfoBlock) {
+        btnSaveInfoBlock.addEventListener('click', async () => {
             const activeTypeBtn = document.querySelector('#nosotros-media-type-selector .media-type-btn.active');
             const mediaType = activeTypeBtn ? activeTypeBtn.dataset.type : 'image';
 
             const title       = document.getElementById('admin-nosotros-title').value.trim();
             const description = document.getElementById('admin-nosotros-description').value.trim();
 
-            // Para tipo 'link' no se requiere título ni descripción
             if (mediaType !== 'link' && (!title || !description)) {
                 alert('Por favor completá los campos obligatorios (Título y Descripción).');
                 return;
@@ -2229,11 +2173,9 @@ window.safeRender = function(fn, name) {
             }
 
             const newBlock = {
-                // Para link: usar linkText como título interno (para la lista del admin)
                 title:       mediaType === 'link' ? (linkText || 'Enlace') : title,
                 description: mediaType === 'link' ? '' : description,
                 mediaType,
-                // Campos condicionales por tipo
                 image:    mediaType === 'image' ? (document.getElementById('admin-nosotros-image-url').value || 'img/logo_provisional.png') : '',
                 videoUrl: mediaType === 'video' ? (document.getElementById('admin-nosotros-video-url')?.value.trim() || '') : '',
                 mapQuery: mediaType === 'map'   ? (document.getElementById('admin-nosotros-map-query')?.value.trim() || '') : '',
@@ -2242,7 +2184,6 @@ window.safeRender = function(fn, name) {
                 linkNewTab: mediaType === 'link' ? (document.getElementById('admin-nosotros-link-newtab')?.checked !== false) : true,
             };
 
-            // Validaciones por tipo
             if (mediaType === 'video' && !extractYouTubeId(newBlock.videoUrl)) {
                 alert('Por favor ingresá una URL válida de YouTube.');
                 return;
@@ -2252,22 +2193,21 @@ window.safeRender = function(fn, name) {
                 return;
             }
 
-            if (editingNosotrosIndex !== null) {
-                sessionNosotros[editingNosotrosIndex] = newBlock;
+            const arr = getSessionArray();
+            if (editingInfoIndex !== null) {
+                arr[editingInfoIndex] = newBlock;
             } else {
-                sessionNosotros.push(newBlock);
+                arr.push(newBlock);
             }
 
-            saveNosotrosToLocalStorage();
-            if (adminNosotrosModal) adminNosotrosModal.style.display = 'none';
-            renderAdminNosotrosList();
-            renderNosotrosBlocksCliente();
-            alert('✅ Bloque de Nosotros guardado exitosamente.');
+            saveInfoToLocalStorage();
+            if (adminInfoModal) adminInfoModal.style.display = 'none';
+            renderAdminInfoList(currentInfoTarget);
+            renderInfoBlocksCliente(currentInfoTarget);
+            alert(`✅ Bloque guardado exitosamente.`);
         });
     }
 
-    // 8. Eventos de botones Nosotros
-    // Función para renderizar la lista dinámica de enlaces en el formulario
     function renderNosotrosLinksList(links = []) {
         const container = document.getElementById('nosotros-links-list');
         if (!container) return;
@@ -2283,10 +2223,10 @@ window.safeRender = function(fn, name) {
         row.style.cssText = 'display:flex; flex-direction:column; gap:0.35rem; background:#f8f9fb; border:1.5px solid #E8ECF0; border-radius:10px; padding:0.75rem;';
         row.innerHTML = `
             <div style="display:flex; gap:0.5rem; align-items:center;">
-                <input type="text" class="link-text-input" placeholder="Nombre del enlace (ej: WhatsApp)" value="${text}" style="flex:1; padding:0.45rem 0.7rem; border:1.5px solid #E8ECF0; border-radius:8px; font-size:0.85rem; font-family:var(--font-main);">
+                <input type="text" class="link-text-input" placeholder="Nombre del enlace" value="${text}" style="flex:1; padding:0.45rem 0.7rem; border:1.5px solid #E8ECF0; border-radius:8px; font-size:0.85rem; font-family:var(--font-main);">
                 <button type="button" class="btn-remove-link" title="Eliminar" style="background:none; border:none; cursor:pointer; color:#e53e3e; padding:0.3rem; flex-shrink:0;"><span class="material-symbols-outlined" style="font-size:20px;">delete</span></button>
             </div>
-            <input type="url" class="link-url-input" placeholder="URL (ej: https://wa.me/549...)" value="${url}" style="width:100%; padding:0.45rem 0.7rem; border:1.5px solid #E8ECF0; border-radius:8px; font-size:0.85rem; font-family:var(--font-main); box-sizing:border-box;">
+            <input type="url" class="link-url-input" placeholder="URL" value="${url}" style="width:100%; padding:0.45rem 0.7rem; border:1.5px solid #E8ECF0; border-radius:8px; font-size:0.85rem; font-family:var(--font-main); box-sizing:border-box;">
         `;
         row.querySelector('.btn-remove-link').addEventListener('click', () => row.remove());
         container.appendChild(row);
@@ -2297,15 +2237,22 @@ window.safeRender = function(fn, name) {
         btnAddNosotrosLink.addEventListener('click', () => addNosotrosLinkRow());
     }
 
-    if (btnAddNosotrosBlock) {
-        btnAddNosotrosBlock.addEventListener('click', () => openNosotrosForm());
-    }
+    document.querySelectorAll('.btn-add-info-block, #btn-add-nosotros-block, #btn-add-avisos-block').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const tgt = e.target.closest('button').dataset.target || 'nosotros';
+            openInfoForm(tgt);
+        });
+    });
 
-    if (btnCancelNosotros) {
-        btnCancelNosotros.addEventListener('click', () => {
-            if (adminNosotrosModal) adminNosotrosModal.style.display = 'none';
+    if (btnCancelInfo) {
+        btnCancelInfo.addEventListener('click', () => {
+            if (adminInfoModal) adminInfoModal.style.display = 'none';
         });
     }
+
+    // Inicializaciones Globales
+    window.renderAdminNosotrosList = () => { renderAdminInfoList('nosotros'); renderAdminInfoList('avisos'); };
+    window.renderNosotrosBlocksCliente = () => { renderInfoBlocksCliente('nosotros'); renderInfoBlocksCliente('avisos'); };
 
     // API Helpers
     async function saveProductsToServer() {
@@ -2432,12 +2379,12 @@ window.hideAllViews = hideAllViews;
 window.renderHome = safeRender(renderHome, 'renderHome');
 window.renderSectionContent = safeRender(renderSectionContent, 'renderSectionContent');
 window.showProductDetail = safeRender(showProductDetail, 'showProductDetail');
-window.renderNosotrosBlocksCliente = safeRender(renderNosotrosBlocksCliente, 'renderNosotrosBlocksCliente');
+
 
 // Inicializar links globales si ya existen
 if (window.renderGlobalSocialLinks) {
     window.renderGlobalSocialLinks();
-}window.renderAvisosCliente = safeRender(renderAvisosCliente, 'renderAvisosCliente');
+}
 window.renderRentals = safeRender(renderRentals, 'renderRentals');
 window.showRentalDetail = safeRender(showRentalDetail, 'showRentalDetail');
 window.saveRentalsToServer = saveRentalsToServer;

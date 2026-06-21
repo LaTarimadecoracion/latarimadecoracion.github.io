@@ -303,16 +303,15 @@
             </div>
         </div>
 
-        <!-- View 4: Notificaciones -->
+        <!-- View 4: Notificaciones / Avisos -->
         <section id="view-notifications" class="view">
-            <div class="view-content" style="padding: 1rem 1rem 2rem;">
-                <!-- Empty State -->
-                <div id="notif-empty-state" class="avisos-empty" style="display: none;">
-                    <span class="material-symbols-outlined">notifications_none</span>
-                    <p>No hay novedades por el momento.</p>
+            <div class="view-content" style="padding: 1rem;">
+                
+                <!-- Contenedor dinámico de bloques de Avisos -->
+                <div id="avisos-blocks-container">
+                    <!-- Inyectado dinámicamente por JS -->
                 </div>
-                <!-- Cards de avisos (inyectadas por avisos.js) -->
-                <div class="avisos-feed" id="notification-list-container"></div>
+
             </div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
@@ -767,14 +766,14 @@
                                 <div class="admin-card">
                                     <header class="admin-page-header">
                                         <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">view_carousel</span>
-                                            Contenido de Avisos
+                                            <span class="material-symbols-outlined">notifications_active</span>
+                                            Bloques de Avisos
                                         </h3>
                                         <div class="admin-header-actions">
-                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="avisos">➕ Agregar Componente</button>
+                                            <button type="button" id="btn-add-avisos-block" class="btn-primary" data-target="avisos">➕ Agregar Aviso</button>
                                         </div>
                                     </header>
-                                    <div id="admin-components-avisos" class="sections-list-stack"></div>
+                                    <div id="admin-avisos-list" class="sections-list-stack"></div>
                                 </div>
                             </div>
 
@@ -1383,7 +1382,7 @@
     <script src="js/data.js?v=5"></script>
     <script src="js/ui.js?v=10"></script>
     <script src="js/admin.js?v=6"></script>
-    <script src="js/avisos.js?v=5"></script>
+    <!-- Módulo de avisos eliminado, lógica unificada en ui.js -->
     <script src="js/carrito.js?v=5"></script>
     <script src="js/main.js?v=5"></script>
     <script src="js/categorias.js?v=1"></script>
