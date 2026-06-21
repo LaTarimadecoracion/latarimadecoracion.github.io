@@ -305,41 +305,14 @@
 
         <!-- View 4: Notificaciones -->
         <section id="view-notifications" class="view">
-            <div class="view-content">
-                
-                <!-- Push Notification Banner -->
-                <div class="push-banner" style="background: var(--primary-color); color: white; padding: 1.5rem; margin: 1rem 1.5rem; border-radius: var(--radius-md); text-align: center; box-shadow: var(--shadow-sm);">
-                    <span class="material-symbols-outlined" style="font-size: 32px; margin-bottom: 0.5rem;">campaign</span>
-                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">¿Querés enterarte antes que nadie cuando sumemos productos?</h4>
-                    <button id="btn-enable-push" class="btn-outline" style="background: white; color: var(--primary-color); border: none; margin-top: 0.5rem; width: auto; padding: 0.6rem 1.2rem; font-size: 0.9rem;">
-                        Activar Notificaciones
-                    </button>
+            <div class="view-content" style="padding: 1rem 1rem 2rem;">
+                <!-- Empty State -->
+                <div id="notif-empty-state" class="avisos-empty" style="display: none;">
+                    <span class="material-symbols-outlined">notifications_none</span>
+                    <p>No hay novedades por el momento.</p>
                 </div>
-
-                <!-- Empty State (oculto por defecto si hay notificaciones) -->
-                <div id="notif-empty-state" class="center-content text-muted" style="display: none; padding: 3rem 1.5rem;">
-                    <span class="material-symbols-outlined large-icon" style="opacity: 0.5;">carpenter</span>
-                    <p>Por ahora estás al día. ¡Te avisaremos cuando haya viruta fresca en el taller!</p>
-                </div>
-
-                <div class="notification-list" id="notification-list-container">
-                    <div class="notification-item unread">
-                        <div class="notif-icon"><span class="material-symbols-outlined">celebration</span></div>
-                        <div class="notif-text">
-                            <h4>¡Nuevo Lanzamiento!</h4>
-                            <p>Ya están disponibles los podios reforzados en preventa exclusiva.</p>
-                            <span class="notif-time">Hace 2 horas</span>
-                        </div>
-                    </div>
-                    <div class="notification-item">
-                        <div class="notif-icon"><span class="material-symbols-outlined">local_shipping</span></div>
-                        <div class="notif-text">
-                            <h4>Envíos gratis</h4>
-                            <p>Esta semana tenemos envíos gratis en CABA y GBA para compras superiores a $50.000.</p>
-                            <span class="notif-time">Hace 2 días</span>
-                        </div>
-                    </div>
-                </div>
+                <!-- Cards de avisos (inyectadas por avisos.js) -->
+                <div class="avisos-feed" id="notification-list-container"></div>
             </div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>

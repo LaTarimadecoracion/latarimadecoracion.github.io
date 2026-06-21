@@ -1,31 +1,7 @@
 // js/avisos.js
 // --- DECOUPLED PLUG-AND-PLAY NOTIFICATIONS (AVISOS) MODULE ---
 
-(function() {
-    // 1. Estado Interno Desacoplado con Tipos por Defecto
-    const defaultAvisos = [
-        {
-            id: 'aviso-1',
-            type: 'text',
-            title: '¡Nuevo Lanzamiento!',
-            description: 'Ya están disponibles los podios reforzados en preventa exclusiva.',
-            icon: 'celebration',
-            time: 'Hace 2 horas',
-            linkText: 'Ver podios',
-            linkUrl: '#'
-        },
-        {
-            id: 'aviso-2',
-            type: 'text',
-            title: 'Envíos gratis',
-            description: 'Esta semana tenemos envíos gratis en CABA y GBA para compras superiores a $50.000.',
-            icon: 'local_shipping',
-            time: 'Hace 2 días',
-            linkText: 'Explorar Catálogo',
-            linkUrl: '#'
-        }
-    ];
-
+    // Sin avisos por defecto: solo se muestra lo cargado desde el panel admin
     let avisos = [];
 
     // 2. Persistencia en Disco y LocalStorage Aislada
@@ -38,8 +14,7 @@
                 if (localData) {
                     avisos = JSON.parse(localData);
                 } else {
-                    avisos = [...defaultAvisos];
-                    localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(avisos));
+                    avisos = []; // Sin datos del admin → lista vacía
                 }
                 if (window.siteConfig) {
                     window.siteConfig.sessionAvisos = [...avisos];
@@ -47,7 +22,7 @@
             }
         } catch (e) {
             console.error('[Avisos Module] Error cargando notificaciones:', e);
-            avisos = [...defaultAvisos];
+            avisos = [];
         }
     }
 
@@ -93,39 +68,28 @@
         return (match && match[2].length === 11) ? match[2] : urlOrId;
     }
 
-    // 3. Renderizado Cliente Multimodal y Tolerante a Fallos (Try-Catch Individual)
+    // 3. Renderizado Cliente — Feed de Cards
     function renderAvisos() {
-        // Diagnóstico de Datos
-        console.log('Datos cargados (avisos):', avisos);
-
-        // Búsqueda inteligente del contenedor
         let notifContainer = document.getElementById('notification-list-container');
-        
+
         if (!notifContainer) {
             const mainView = document.getElementById('view-avisos') || document.getElementById('view-notifications');
             if (mainView) {
-                notifContainer = mainView.querySelector('.notification-list') || mainView.querySelector('#notification-list-container');
-                if (!notifContainer) {
-                    notifContainer = document.createElement('div');
-                    notifContainer.id = 'notification-list-container';
-                    notifContainer.className = 'notification-list';
-                    const contentEl = mainView.querySelector('.view-content') || mainView;
-                    contentEl.appendChild(notifContainer);
-                    console.log('[Avisos Module] Contenedor #notification-list-container creado dinámicamente.');
-                }
+                notifContainer = document.createElement('div');
+                notifContainer.id = 'notification-list-container';
+                notifContainer.className = 'avisos-feed';
+                const contentEl = mainView.querySelector('.view-content') || mainView;
+                contentEl.appendChild(notifContainer);
             }
         }
 
         const emptyState = document.getElementById('notif-empty-state');
-        if (!notifContainer) {
-            console.error('[Avisos Module] Error crítico: No se encontró ningún contenedor válido.');
-            return;
-        }
+        if (!notifContainer) return;
 
         notifContainer.innerHTML = '';
 
         if (avisos.length === 0) {
-            if (emptyState) emptyState.style.display = 'block';
+            if (emptyState) emptyState.style.display = 'flex';
             notifContainer.style.display = 'none';
             return;
         }
@@ -133,154 +97,79 @@
         if (emptyState) emptyState.style.display = 'none';
         notifContainer.style.display = 'flex';
 
-        avisos.forEach(aviso => {
-            // Cada aviso corre dentro de su try...catch independiente para evitar caídas masivas
+        avisos.forEach((aviso, i) => {
             try {
                 const card = document.createElement('div');
-                card.className = 'notification-item unread';
-                card.style.cssText = 'animation: fadeIn 0.3s ease-out; display: flex; gap: 1rem;';
+                card.className = 'aviso-card';
+                card.style.animationDelay = `${i * 0.07}s`;
 
-                // REGLA DE ORO: Si un campo opcional está vacío, no se inyecta su HTML al DOM
-                // 1. Ícono Opcional
-                let iconHTML = '';
-                if (aviso.icon && aviso.icon.trim() !== '') {
-                    iconHTML = `<div class="notif-icon"><span class="material-symbols-outlined">${aviso.icon.trim()}</span></div>`;
-                }
-
-                // 2. Título Opcional
-                let titleHTML = '';
-                if (aviso.title && aviso.title.trim() !== '') {
-                    titleHTML = `<h4 style="margin: 0 0 0.3rem 0; font-weight:700; color:var(--text-main);">${aviso.title.trim()}</h4>`;
-                }
-
-                // 3. Tiempo Transcurrido Opcional
-                let timeHTML = '';
-                if (aviso.time && aviso.time.trim() !== '') {
-                    timeHTML = `<span class="notif-time" style="display:block; margin-top:0.3rem; font-size:0.75rem; color:var(--text-muted);">${aviso.time.trim()}</span>`;
-                }
-
-                // 4. Enlace Opcional (Botón) - Inyectado al final si posee linkText y linkUrl
-                let linkHTML = '';
-                if (aviso.linkText && aviso.linkText.trim() !== '' && aviso.linkUrl && aviso.linkUrl.trim() !== '') {
-                    linkHTML = `
-                        <a href="${aviso.linkUrl.trim()}" target="_blank" class="btn-aviso" style="
-                            display: inline-flex;
-                            align-items: center;
-                            justify-content: center;
-                            background: var(--primary-color, #c0510a);
-                            color: white !important;
-                            text-decoration: none !important;
-                            font-size: 0.8rem;
-                            font-weight: 700;
-                            padding: 0.45rem 0.9rem;
-                            border-radius: 8px;
-                            margin-top: 0.6rem;
-                            gap: 4px;
-                            transition: background 0.2s ease;
-                            border: none;
-                            width: max-content;
-                            box-shadow: var(--shadow-sm);
-                            cursor: pointer;
-                        ">
-                            ${aviso.linkText.trim()}
-                            <span class="material-symbols-outlined" style="font-size:14px;">open_in_new</span>
-                        </a>
-                    `;
-                }
-
-                // 5. Renderizado Específico según Tipo
-                let bodyHTML = '';
-                switch (aviso.type) {
-                    case 'image':
-                        if (aviso.imageUrl) {
-                            bodyHTML = `
-                                <div style="border-radius:8px; overflow:hidden; margin:0.4rem 0; box-shadow:var(--shadow-sm); border:1px solid #E2E8F0;">
-                                    <img src="${aviso.imageUrl}" style="width:100%; height:auto; display:block; max-height:160px; object-fit:cover;" loading="lazy">
+                // --- Imagen superior (image / product / video) ---
+                let mediaHTML = '';
+                if (aviso.type === 'image' && aviso.imageUrl) {
+                    mediaHTML = `<div class="aviso-card-media"><img src="${aviso.imageUrl}" alt="" loading="lazy"></div>`;
+                } else if (aviso.type === 'video') {
+                    const ytId = extractYouTubeId(aviso.youtubeId);
+                    if (ytId) {
+                        mediaHTML = `
+                            <div class="aviso-card-media aviso-card-video">
+                                <iframe src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=0&mute=1&modestbranding=1&rel=0"
+                                    allow="encrypted-media" allowfullscreen loading="lazy"
+                                    style="width:100%;height:100%;border:none;"></iframe>
+                            </div>`;
+                    }
+                } else if (aviso.type === 'product') {
+                    const res = findProductById(aviso.productId);
+                    if (res) {
+                        const { product, catName } = res;
+                        const cover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                        mediaHTML = `
+                            <div class="aviso-card-media aviso-card-product-media" data-prod-id="${product.id}">
+                                <img src="${cover}" alt="${product.title}" loading="lazy">
+                                <div class="aviso-card-product-overlay">
+                                    <span class="aviso-card-cat-tag">${catName}</span>
+                                    <span class="aviso-card-product-cta">Ver producto</span>
                                 </div>
-                            `;
-                        }
-                        break;
-                    case 'video':
-                        const ytId = extractYouTubeId(aviso.youtubeId);
-                        if (ytId) {
-                            bodyHTML = `
-                                <div style="position:relative; width:100%; height:160px; border-radius:8px; overflow:hidden; margin:0.4rem 0; box-shadow:var(--shadow-sm);">
-                                    <iframe
-                                        src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=0&modestbranding=1&rel=0"
-                                        allow="autoplay; encrypted-media"
-                                        allowfullscreen
-                                        style="width: 100%; height: 100%; border: none;"
-                                    ></iframe>
-                                    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background:transparent; z-index:10;"></div>
-                                </div>
-                            `;
-                        }
-                        break;
-                    case 'product':
-                        const res = findProductById(aviso.productId);
-                        if (res) {
-                            const { product, catName } = res;
-                            const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
-                            bodyHTML = `
-                                <div class="feed-card" style="margin:0.4rem 0; cursor:pointer; width:100%; border:1px solid #E2E8F0; box-shadow:var(--shadow-sm);">
-                                    <div class="feed-card-photo" style="background-image: url('${productCover}'); height:130px;">
-                                        <div class="feed-card-gradient"></div>
-                                        <div class="feed-card-info">
-                                            <span class="feed-card-cat">${catName}</span>
-                                            <h3 class="feed-card-title" style="font-size:0.95rem; margin:2px 0 0 0;">${product.title}</h3>
-                                        </div>
-                                        <span class="feed-card-variants-badge" style="background: var(--primary-color, #c0510a); color: white; border: none; font-weight: 700; font-size: 0.62rem; padding: 0.2rem 0.55rem; border-radius: 50px;">
-                                            Ver Producto
-                                        </span>
-                                    </div>
-                                </div>
-                            `;
-                        } else {
-                            bodyHTML = `
-                                <div style="padding: 0.6rem; background: #fff8f0; border: 1px dashed #f5c299; border-radius: 8px; margin: 0.4rem 0; font-size: 0.78rem; color: var(--text-muted);">
-                                    <span class="material-symbols-outlined" style="font-size:15px; vertical-align:middle; margin-right:4px;">image_not_supported</span>
-                                    Producto destacado no disponible
-                                </div>
-                            `;
-                        }
-                        break;
-                    case 'text':
-                    default:
-                        if (aviso.description) {
-                            bodyHTML = `<p style="margin:0; font-size:0.88rem; color:var(--text-main); line-height:1.45;">${aviso.description}</p>`;
-                        }
-                        break;
+                            </div>`;
+                    }
                 }
+
+                // --- Cuerpo: etiqueta tipo + título + descripción ---
+                const typeLabel = { text: 'Novedad', image: 'Imágen', video: 'Video', product: 'Producto destacado' }[aviso.type] || 'Novedad';
+                const titleHTML  = aviso.title?.trim()       ? `<h3 class="aviso-card-title">${aviso.title.trim()}</h3>` : '';
+                const descHTML   = aviso.description?.trim() ? `<p class="aviso-card-desc">${aviso.description.trim()}</p>` : '';
+                const timeHTML   = aviso.time?.trim()        ? `<span class="aviso-card-time">${aviso.time.trim()}</span>` : '';
+                const linkHTML   = (aviso.linkText?.trim() && aviso.linkUrl?.trim())
+                    ? `<a href="${aviso.linkUrl.trim()}" target="_blank" class="aviso-card-btn">${aviso.linkText.trim()} <span class="material-symbols-outlined" style="font-size:13px;">open_in_new</span></a>`
+                    : '';
 
                 card.innerHTML = `
-                    ${iconHTML}
-                    <div class="notif-text" style="flex:1; width:100%; overflow:hidden; display:flex; flex-direction:column;">
+                    ${mediaHTML}
+                    <div class="aviso-card-body">
+                        <div class="aviso-card-meta">
+                            <span class="aviso-card-type-tag">${typeLabel}</span>
+                            ${timeHTML}
+                        </div>
                         ${titleHTML}
-                        ${bodyHTML}
-                        ${timeHTML}
+                        ${descHTML}
                         ${linkHTML}
                     </div>
                 `;
 
-                // Asignar evento al producto si aplica
+                // Click en producto → abre detalle
                 if (aviso.type === 'product') {
-                    const res = findProductById(aviso.productId);
-                    if (res) {
-                        const cardEl = card.querySelector('.feed-card');
-                        if (cardEl) {
-                            cardEl.addEventListener('click', (e) => {
-                                e.stopPropagation();
-                                if (window.showProductDetail) {
-                                    window.showProductDetail(res.product, res.catName);
-                                }
-                            });
-                        }
+                    const mediaEl = card.querySelector('.aviso-card-product-media');
+                    if (mediaEl) {
+                        mediaEl.style.cursor = 'pointer';
+                        mediaEl.addEventListener('click', () => {
+                            const res = findProductById(aviso.productId);
+                            if (res && window.showProductDetail) window.showProductDetail(res.product, res.catName);
+                        });
                     }
                 }
 
                 notifContainer.appendChild(card);
             } catch (err) {
-                console.error('[Avisos Module] Error renderizando aviso individual:', err, aviso);
+                console.error('[Avisos Module] Error renderizando aviso:', err, aviso);
             }
         });
     }
