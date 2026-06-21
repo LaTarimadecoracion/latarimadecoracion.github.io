@@ -41,7 +41,7 @@ window.renderCategoriesMenu = function() {
         catCard.innerHTML = `
             <div class="feed-card-photo-container">
                 <div class="feed-card-img-wrapper" style="position:relative;">
-                    <img src="${catCover}" class="feed-card-img lazy-img" alt="${cat.name}" loading="lazy" onload="this.classList.add('loaded')">
+                    <img src="${catCover}" class="feed-card-img lazy-img" alt="${cat.name}" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
                 </div>
                 <div class="feed-card-gradient"></div>
                 <div class="feed-card-info" style="bottom: 0; left: 0; right: 0; padding: 0.35rem 0.5rem; text-align: center;">
