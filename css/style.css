@@ -1989,8 +1989,10 @@ button, .btn-primary, .btn-outline {
 }
 
 .nav-label {
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 0.65rem;
+    font-weight: 600;
+    margin-top: 2px;
+    letter-spacing: -0.2px;
 }
 
 .nav-item.active {
@@ -2041,7 +2043,244 @@ button, .btn-primary, .btn-outline {
     z-index: 10;
 }
 
-/* Pulsating heart micro-animation for the badge */
+/* Grilla Responsiva para Menú de Categorías */
+.categories-grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .categories-grid-responsive {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* ---------------------------------------------------
+   TIKTOK-STYLE IMMERSIVE VIDEO MODAL 
+----------------------------------------------------- */
+.tiktok-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh; /* Para navegadores móviles */
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+}
+
+.tiktok-close {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.4);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+}
+
+.tiktok-feed-container {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none; /* Firefox */
+}
+.tiktok-feed-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.tiktok-video-item {
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    position: relative;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tiktok-video-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* UI Superpuesta */
+.tiktok-ui-right {
+    position: absolute;
+    right: 15px;
+    bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 10;
+}
+
+.tiktok-action-btn {
+    background: none;
+    border: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+.tiktok-action-btn .material-symbols-outlined {
+    font-size: 32px;
+    margin-bottom: 4px;
+}
+.tiktok-action-btn span.label {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.tiktok-ui-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    pointer-events: none; /* Para que los clicks pasen al video si hacen click fuera del botón */
+}
+
+.tiktok-ui-top {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    left: 70px; /* Dejar espacio para la flecha de volver */
+    z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    pointer-events: none;
+}
+
+.tiktok-product-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: left;
+}
+
+.tiktok-btn-product {
+    display: inline-block;
+    background: var(--primary-color, #c0510a);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.3);
+    pointer-events: auto; /* Reactivar clicks para el botón */
+    transition: transform 0.2s ease;
+    width: 75%;
+    text-align: center;
+}
+.tiktok-btn-product:active {
+    transform: scale(0.95);
+}
+
+/* ---------------------------------------------------
+   VIDEO THUMBNAIL CARDS (9:16 ASPECT RATIO)
+----------------------------------------------------- */
+.video-thumbnail-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-thumbnail-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.video-thumbnail-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-thumbnail-card-img.loaded {
+    opacity: 1;
+}
+
+.video-thumbnail-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    z-index: 5;
+}
+
+.video-thumbnail-info {
+    position: absolute;
+    bottom: 12px;
+    left: 10px;
+    right: 10px;
+    z-index: 10;
+    color: white;
+}
+
+.video-thumbnail-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* Icono de play cuando está pausado */
+.tiktok-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    color: rgba(255,255,255,0.6);
+    pointer-events: none;
+    display: none;
+    z-index: 5;
+}
+
+/* Animación de latido para el corazón */
 @keyframes heartPulse {
     0% { transform: scale(1); }
     15% { transform: scale(1.3); }
@@ -2753,10 +2992,12 @@ button, .btn-primary, .btn-outline {
     border-bottom: 1px solid #1E293B;
     flex-shrink: 0;
     z-index: 310;
+    position: sticky;
+    top: 0;
 }
 
 .admin-sidebar-header {
-    display: none; /* Oculto en móvil horizontal, visible en desktop */
+    display: flex; /* Visible siempre */
     padding: 1.5rem;
     align-items: center;
     gap: 0.75rem;
@@ -2884,60 +3125,21 @@ button, .btn-primary, .btn-outline {
 }
 
 @media (min-width: 992px) {
+    /* Mantenemos el diseño horizontal de móvil pero centrado y más amplio */
     .admin-layout {
-        flex-direction: row;
+        flex-direction: column;
     }
     .admin-sidebar {
-        width: 260px;
-        height: 100vh;
-        position: sticky;
-        top: 0;
-        border-bottom: none;
-        border-right: 1px solid #1E293B;
-    }
-    .admin-sidebar-header {
-        display: flex;
+        width: 100%;
+        height: auto;
     }
     .admin-nav {
-        flex-direction: column;
-        padding: 1.25rem 0.75rem;
-        overflow-x: visible;
-        gap: 0.5rem;
+        justify-content: center;
+        padding: 0.75rem;
     }
     .admin-nav-btn {
+        padding: 0.6rem 1.25rem;
         font-size: 0.88rem;
-        padding: 0.75rem 1rem;
-        width: 100%;
-    }
-    .admin-sidebar-footer {
-        display: block;
-        margin-top: auto;
-        padding: 1.25rem 0.75rem;
-        border-top: 1px solid #1E293B;
-    }
-    .btn-sidebar-close {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        width: 100%;
-        padding: 0.75rem 1rem;
-        background: transparent;
-        border: 1px solid #334155;
-        color: #94A3B8;
-        border-radius: 8px;
-        font-family: var(--font-main);
-        font-size: 0.88rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-    .btn-sidebar-close:hover {
-        background: #EF4444;
-        border-color: #EF4444;
-        color: white;
-    }
-    .admin-mobile-header {
-        display: none;
     }
     .admin-content-inner {
         padding: 2.25rem;
@@ -3461,4 +3663,115 @@ button, .btn-primary, .btn-outline {
 @keyframes skeleton-loading {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
+}
+
+/* =========================================
+   ADMIN LOCAL - DESIGN SYSTEM (V2)
+   ========================================= */
+
+.admin-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.admin-page-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #E2E8F0;
+    padding-bottom: 1rem;
+}
+
+.admin-header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.admin-header-title .material-symbols-outlined {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.admin-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.admin-pill-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    background: #F8FAFC;
+    padding: 0.4rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #E2E8F0;
+    width: fit-content;
+}
+
+.admin-pill-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #64748B;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.admin-pill-tab:hover {
+    color: var(--primary-color);
+}
+
+.admin-pill-tab.active {
+    background: #FFFFFF;
+    color: var(--primary-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.admin-grid-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .admin-card {
+        padding: 1rem;
+    }
+    .admin-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .admin-header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .admin-pill-tabs {
+        width: 100%;
+        border-radius: 12px;
+    }
+    .admin-pill-tab {
+        flex: 1;
+        justify-content: center;
+        border-radius: 8px;
+    }
 }

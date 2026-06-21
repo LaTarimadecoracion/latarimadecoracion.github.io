@@ -46,16 +46,19 @@ window.safeRender = function(fn, name) {
         bottomNav.innerHTML = '';
 
         const sectionsMapping = [
-            { key: 'home', target: 'view-home', id: null },
-            { key: 'profile', target: 'view-profile', id: null },
-            { key: 'search', target: 'view-search', id: null },
-            { key: 'avisos', target: 'view-notifications', id: 'nav-notif-btn' },
-            { key: 'nosotros', target: 'view-about', id: null }
+            { key: 'home', target: 'view-home', id: null, defaultIcon: 'home', label: 'INICIO' },
+            { key: 'categories', target: 'view-categories', id: null, defaultIcon: 'category', label: 'CATEGORÍAS' },
+            { key: 'cart', target: 'view-profile', id: null, defaultIcon: 'shopping_cart', label: 'CARRITO' },
+            { key: 'videos', target: 'view-videos', id: null, defaultIcon: 'play_circle', label: 'VIDEOS' },
+            { key: 'nosotros', target: 'view-about', id: null, defaultIcon: 'info', label: 'NOSOTROS' }
         ];
 
         sectionsMapping.forEach(sec => {
             const config = appConfig[sec.key];
-            if (!config || config.visible === false) return;
+            // Si el admin configuró ocultar una sección existente, se oculta. Si es nueva (categories/videos), se muestra.
+            if (config && config.visible === false) return;
+            
+            const iconToUse = (config && config.icon) ? config.icon : sec.defaultIcon;
 
             const a = document.createElement('a');
             a.href = '#';
@@ -69,23 +72,17 @@ window.safeRender = function(fn, name) {
                 a.classList.add('active');
             }
 
-            if (sec.key === 'avisos') {
+            if (sec.key === 'cart') {
                 a.innerHTML = `
-                    <div class="icon-wrapper">
-                        <span class="material-symbols-outlined">${config.icon}</span>
-                        <span class="badge" id="nav-badge"></span>
-                    </div>
-                `;
-            } else if (sec.key === 'profile') {
-                a.innerHTML = `
-                    <div class="icon-wrapper">
-                        <span class="material-symbols-outlined">${config.icon}</span>
+                    <div class="cart-icon-wrapper" style="position: relative; display: inline-flex;"><span class="material-symbols-outlined">${iconToUse}</span>
                         <span class="cart-fav-badge" id="fav-badge" style="display: none;">0</span>
                     </div>
+                    <span class="nav-label">${sec.label}</span>
                 `;
             } else {
                 a.innerHTML = `
-                    <span class="material-symbols-outlined">${config.icon}</span>
+                    <span class="material-symbols-outlined">${iconToUse}</span>
+                    <span class="nav-label">${sec.label}</span>
                 `;
             }
 
@@ -498,7 +495,17 @@ window.safeRender = function(fn, name) {
 
         if (targetView) {
             targetView.classList.add('active');
-            document.getElementById('app-container').scrollTop = 0;
+            
+            const appContainer = document.getElementById('app-container');
+            if (appContainer) {
+                appContainer.scrollTop = 0;
+                // Desactivar scroll del parent si estamos en el iframe
+                if (viewId === 'view-catalogo') {
+                    appContainer.style.overflowY = 'hidden';
+                } else {
+                    appContainer.style.overflowY = 'auto';
+                }
+            }
             
             // Renderizado dinámico condicional al navegar
             if (viewId === 'view-about') {
@@ -532,7 +539,8 @@ window.safeRender = function(fn, name) {
                 'view-notifications': 'avisos',
                 'view-profile': 'perfil',
                 'view-rentals': 'alquileres',
-                'view-admin': 'admin'
+                'view-admin': 'admin',
+                'view-catalogo': 'catalogo'
             };
             
             const viewName = prettyNames[viewId] || '';
@@ -1574,9 +1582,9 @@ window.safeRender = function(fn, name) {
         });
     }
 
-    const btnCloseAdminMobile = document.getElementById('btn-close-admin-mobile');
-    if (btnCloseAdminMobile) {
-        btnCloseAdminMobile.addEventListener('click', (e) => {
+    const btnCloseAdminHeader = document.getElementById('btn-close-admin-header');
+    if (btnCloseAdminHeader) {
+        btnCloseAdminHeader.addEventListener('click', (e) => {
             e.preventDefault();
             navigationHistory = [];
             navigateToView('view-home');

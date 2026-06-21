@@ -10,6 +10,7 @@ const productsData = [
                 "title": "Baranda desmontable Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "image": "img/migrados/barandas/baranda-desmontable-clasica/4.webp",
+                "video": "https://www.w3schools.com/html/mov_bbb.mp4",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
@@ -189,7 +190,7 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "views": 2
+                "views": 31
             },
             {
                 "id": "baranda-desmontable-montessori",
@@ -500,7 +501,7 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "views": 3
+                "views": 5
             },
             {
                 "id": "baranda-desmontable-triple",
@@ -594,7 +595,7 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "views": 0
+                "views": 2
             }
         ]
     },
@@ -716,7 +717,7 @@ const productsData = [
                     }
                 ],
                 "last_modified": 1780602269740,
-                "views": 0
+                "views": 4
             },
             {
                 "id": "baranda-sommier-triple",
@@ -796,7 +797,7 @@ const productsData = [
                     }
                 ],
                 "last_modified": 1780602364722,
-                "views": 0
+                "views": 3
             }
         ]
     },
@@ -1052,7 +1053,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 2
             }
         ]
     },
@@ -1114,7 +1115,8 @@ const productsData = [
                     "eventos corporativos"
                 ],
                 "last_modified": 1780774148299,
-                "primaryCatId": "Podios"
+                "primaryCatId": "Podios",
+                "views": 0
             },
             {
                 "id": "podio-premiacion--3-modulos-",
@@ -1143,7 +1145,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1780774911579,
-                "primaryCatId": "Podios"
+                "primaryCatId": "Podios",
+                "views": 11
             },
             {
                 "id": "podios-individuales",
@@ -1377,7 +1380,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 1
             },
             {
                 "id": "hexagonales",
@@ -1539,7 +1542,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 1
             },
             {
                 "id": "mensulas",
@@ -1617,7 +1620,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 1
+                "views": 2
             },
             {
                 "id": "estantes",
@@ -1712,6 +1715,7 @@ const productsData = [
                 "id": "fanal",
                 "title": "Fanal",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
                 "image": "img/migrados/otros/fanal/Fanal.webp",
                 "acabados_groups": [
                     {
@@ -1744,7 +1748,9 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "tags": [],
+                "last_modified": 1782000854868,
+                "primaryCatId": "decoracion"
             },
             {
                 "id": "organizador-tribuna-x3",
@@ -1860,7 +1866,7 @@ const productsData = [
                 ],
                 "last_modified": 1780707364726,
                 "primaryCatId": "Interior",
-                "views": 0
+                "views": 2
             },
             {
                 "id": "deck-cuadrado",
@@ -1953,7 +1959,7 @@ const productsData = [
                 ],
                 "last_modified": 1780708146541,
                 "primaryCatId": "Muebles-y-Jardín",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "silla-infantil",
@@ -2136,7 +2142,7 @@ const productsData = [
                 ],
                 "last_modified": 1780708146541,
                 "primaryCatId": "Muebles-y-Jardín",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "deck-rectangular",
@@ -2200,7 +2206,7 @@ const productsData = [
                 ],
                 "last_modified": 1780708127230,
                 "primaryCatId": "Muebles-y-Jardín",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "mesa-plegabe",
@@ -2310,7 +2316,7 @@ const productsData = [
                 ],
                 "last_modified": 1780707364726,
                 "primaryCatId": "Interior",
-                "views": 0
+                "views": 2
             },
             {
                 "id": "cesto-de-basura",
@@ -2344,7 +2350,7 @@ const productsData = [
                 ],
                 "last_modified": 1780707328639,
                 "primaryCatId": "exterior",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -2422,7 +2428,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1780709044058,
                 "primaryCatId": "Hogar",
-                "views": 6
+                "views": 7
             }
         ]
     },
@@ -2516,7 +2522,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 2
             },
             {
                 "id": "verdulero-mediano",
@@ -2657,7 +2663,7 @@ const productsData = [
                 ],
                 "last_modified": 1780707364726,
                 "primaryCatId": "Interior",
-                "views": 0
+                "views": 2
             },
             {
                 "id": "perchero-1",
@@ -2749,7 +2755,7 @@ const productsData = [
                 ],
                 "last_modified": 1780708127230,
                 "primaryCatId": "Muebles-y-Jardín",
-                "views": 0
+                "views": 1
             }
         ]
     },
@@ -2783,7 +2789,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1780708312773,
                 "primaryCatId": "infantil",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "banquito-de-plaza",
@@ -2883,7 +2889,7 @@ const productsData = [
                 ],
                 "last_modified": 1780707364726,
                 "primaryCatId": "Interior",
-                "views": 0
+                "views": 2
             },
             {
                 "id": "perchero-1",
@@ -3050,7 +3056,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1780708904153,
                 "primaryCatId": "Hogar",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "Platos - Cuencos",
@@ -3096,7 +3102,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1780709044058,
                 "primaryCatId": "Hogar",
-                "views": 6
+                "views": 7
             }
         ]
     },
@@ -3168,7 +3174,7 @@ const productsData = [
                 ],
                 "last_modified": 1780708127230,
                 "primaryCatId": "Muebles-y-Jardín",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "deck-cuadrado",
@@ -3261,7 +3267,7 @@ const productsData = [
                 ],
                 "last_modified": 1780708146541,
                 "primaryCatId": "Muebles-y-Jardín",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -3339,7 +3345,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1780709044058,
                 "primaryCatId": "Hogar",
-                "views": 6
+                "views": 7
             }
         ]
     },
@@ -3373,7 +3379,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1780708312773,
                 "primaryCatId": "infantil",
-                "views": 0
+                "views": 1
             }
         ]
     }

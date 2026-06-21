@@ -13,12 +13,15 @@ if (!window.siteConfig) {
         activeTheme: "classic",
         appConfig: {
             home: { title: "La Tarima", subtitle: "Diseño en madera", icon: "home", visible: true, contentStack: [] },
-            search: { title: "Explorar", subtitle: "Encontrá lo que buscás", icon: "search", visible: true, contentStack: [] },
-            profile: { title: "Tu Perfil", subtitle: "Gestioná tus datos", icon: "person", visible: true },
+            categories: { title: "Categorías", subtitle: "Nuestras líneas de productos", icon: "category", visible: true, contentStack: [] },
+            cart: { title: "Carrito", subtitle: "Tus productos seleccionados", icon: "shopping_cart", visible: true },
+            videos: { title: "Videos", subtitle: "Descubrí nuestro contenido", icon: "play_circle", visible: true },
+            catalogo: { title: "Catálogo", subtitle: "Catálogo completo", icon: "menu_book", visible: true },
             avisos: { title: "Avisos", subtitle: "Novedades del taller", icon: "notifications", visible: true, contentStack: [] },
-            nosotros: { title: "Pasión por la madera", subtitle: "Conocé quiénes somos", icon: "info", visible: true }
+            nosotros: { title: "Pasión por la madera", subtitle: "Conocé quiénes somos", icon: "info", visible: true },
+            search: { title: "Explorar", subtitle: "Encontrá lo que buscás", icon: "search", visible: true }
         },
-        contentRegistry: { home: [], search: [], avisos: [] },
+        contentRegistry: { home: [], categories: [], avisos: [], cart: [], videos: [], catalogo: [], nosotros: [], search: [] },
         homeConfig: {
             order: ['categorias', 'novedades', 'buscados'],
             sections: {
@@ -62,9 +65,9 @@ try {
         Object.keys(parsed).forEach(key => {
             if (!window.appConfig[key]) window.appConfig[key] = parsed[key];
         });
-        if (window.appConfig.home && !window.appConfig.home.contentStack) window.appConfig.home.contentStack = [];
-        if (window.appConfig.search && !window.appConfig.search.contentStack) window.appConfig.search.contentStack = [];
-        if (window.appConfig.avisos && !window.appConfig.avisos.contentStack) window.appConfig.avisos.contentStack = [];
+        ['home', 'categories', 'avisos', 'cart', 'videos', 'catalogo', 'nosotros', 'search'].forEach(k => {
+            if (window.appConfig[k] && !window.appConfig[k].contentStack) window.appConfig[k].contentStack = [];
+        });
     }
 } catch (e) {
     console.error("Error loading appConfig fallback:", e);
@@ -76,9 +79,10 @@ try {
     const savedRegistry = localStorage.getItem('contentRegistry');
     if (savedRegistry) {
         const parsed = JSON.parse(savedRegistry);
-        if (!window.contentRegistry.home.length) window.contentRegistry.home = parsed.home || [];
-        if (!window.contentRegistry.search.length) window.contentRegistry.search = parsed.search || [];
-        if (!window.contentRegistry.avisos.length) window.contentRegistry.avisos = parsed.avisos || [];
+        ['home', 'categories', 'avisos', 'cart', 'videos', 'catalogo', 'nosotros', 'search'].forEach(k => {
+            if (!window.contentRegistry[k]) window.contentRegistry[k] = [];
+            if (!window.contentRegistry[k].length && parsed[k]) window.contentRegistry[k] = parsed[k];
+        });
     }
 } catch (e) {
     console.error("Error loading contentRegistry fallback:", e);
@@ -255,32 +259,6 @@ function updateHeader(viewId, context = null) {
         }
     }
 
-    if (viewId === 'view-home') {
-        dynamicTitle.textContent = appConfig.home.title;
-        dynamicSubtitle.textContent = appConfig.home.subtitle;
-    } else if (viewId === 'view-product-detail') {
-        dynamicTitle.textContent = context?.title || 'Detalle del Producto';
-        dynamicSubtitle.textContent = context?.category || appConfig.home.title;
-    } else if (viewId === 'view-category-feed') {
-        dynamicTitle.textContent = context?.name || 'Categoría';
-        dynamicSubtitle.textContent = 'Diseño en madera';
-    } else if (viewId === 'view-search') {
-        dynamicTitle.textContent = appConfig.search.title;
-        dynamicSubtitle.textContent = appConfig.search.subtitle;
-    } else if (viewId === 'view-profile') {
-        dynamicTitle.textContent = appConfig.profile.title;
-        dynamicSubtitle.textContent = appConfig.profile.subtitle;
-    } else if (viewId === 'view-notifications') {
-        dynamicTitle.textContent = appConfig.avisos.title;
-        dynamicSubtitle.textContent = appConfig.avisos.subtitle;
-    } else if (viewId === 'view-about') {
-        dynamicTitle.textContent = appConfig.nosotros.title;
-        dynamicSubtitle.textContent = appConfig.nosotros.subtitle;
-    } else if (viewId === 'view-rentals') {
-        dynamicTitle.textContent = 'Alquileres';
-        dynamicSubtitle.textContent = 'Productos para eventos';
-    } else if (viewId === 'view-admin') {
-        dynamicTitle.textContent = 'Panel de Administración';
-        dynamicSubtitle.textContent = 'Gestión de catálogo';
-    }
+    // El título "LA TARIMA" ahora es fijo en todas las vistas, por pedido del usuario.
+    // Solo mostramos u ocultamos el botón de atrás (lógica superior ya lo hace).
 }

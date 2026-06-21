@@ -228,7 +228,7 @@ window.safeAdminRun = function(fn) {
                 btn.addEventListener('click', () => {
                     currentAdminTab = tab;
                     if (tab === 'pages') {
-                        switchAdminSubtab('structure');
+                        switchAdminSubtab('page-home');
                     }
                     renderAdminUX();
                 });
@@ -236,7 +236,7 @@ window.safeAdminRun = function(fn) {
         });
 
         // --- LISTENERS DE SUB-PESTAÑAS DE PÁGINAS ---
-        const subtabBtns = document.querySelectorAll('.subtab-btn');
+        const subtabBtns = document.querySelectorAll('.admin-pill-tab');
         subtabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const targetSubtab = btn.getAttribute('data-subtab');
@@ -315,12 +315,13 @@ window.safeAdminRun = function(fn) {
             });
         }
 
-        const btnAddSectionComp = document.getElementById('btn-add-section-component');
-        if (btnAddSectionComp) {
-            btnAddSectionComp.addEventListener('click', () => {
-                openComponentForm();
+        const btnAddSectionComps = document.querySelectorAll('.btn-add-view-component');
+        btnAddSectionComps.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const section = btn.getAttribute('data-target-page');
+                openComponentForm(section);
             });
-        }
+        });
 
         const btnCancelSectionComp = document.getElementById('btn-cancel-section-component');
         const compModal = document.getElementById('admin-component-modal');
@@ -405,7 +406,7 @@ window.safeAdminRun = function(fn) {
 
         if (btnSaveSectionComp && compModal) {
             btnSaveSectionComp.addEventListener('click', async () => {
-                const section = document.getElementById('admin-view-builder-select').value;
+                const section = document.getElementById('admin-component-form').getAttribute('data-target-section') || 'home';
                 const compId = document.getElementById('admin-comp-id').value;
                 const type = document.getElementById('admin-comp-type').value;
 
@@ -480,7 +481,7 @@ window.safeAdminRun = function(fn) {
                     if (window.renderAdminHomeSectionsList) window.renderAdminHomeSectionsList();
                     renderHome();
                 }
-                else if (section === 'search') runSearch();
+                else if (section === 'categories') runSearch();
                 else if (section === 'avisos') renderAvisosCliente();
 
                 // Re-render list
@@ -676,7 +677,7 @@ window.safeAdminRun = function(fn) {
     }
 
     function switchAdminSubtab(subtabId) {
-        const subtabBtns = document.querySelectorAll('.subtab-btn');
+        const subtabBtns = document.querySelectorAll('.admin-pill-tab');
         subtabBtns.forEach(btn => {
             if (btn.getAttribute('data-subtab') === subtabId) {
                 btn.classList.add('active');
@@ -685,7 +686,7 @@ window.safeAdminRun = function(fn) {
             }
         });
 
-        const subviews = ['structure', 'home-design', 'about-social'];
+        const subviews = ['page-home', 'page-categories', 'page-avisos', 'page-nosotros', 'page-cart', 'page-videos', 'page-catalogo', 'page-search'];
         subviews.forEach(key => {
             const el = document.getElementById(`subview-${key}`);
             if (el) {
@@ -765,69 +766,80 @@ window.safeAdminRun = function(fn) {
             populateAdminSocialLinks();
 
             // Sincronizar subvista activa
-            const activeBtn = document.querySelector('.subtab-btn.active');
-            const activeSubtab = activeBtn ? activeBtn.getAttribute('data-subtab') : 'structure';
+            const activeBtn = document.querySelector('.admin-pill-tab.active');
+            const activeSubtab = activeBtn ? activeBtn.getAttribute('data-subtab') : 'page-home';
             switchAdminSubtab(activeSubtab);
         } else if (currentAdminTab === 'maintenance') {
             // Se mantiene el diseño estático inicial
         }
     }
 
-    function renderAdminConfig() {
-        const configList = document.getElementById('admin-config-list');
-        if (!configList) return;
-        configList.innerHTML = '';
+    function renderSingleAdminConfig(key, containerId) {
+        const configContainer = document.getElementById(containerId);
+        if (!configContainer) return;
+        configContainer.innerHTML = '';
 
-        const keys = ['home', 'search', 'profile', 'avisos', 'nosotros'];
+        const config = appConfig[key];
+        if (!config) return;
+
         const sectionLabels = {
             home: "Inicio (Home)",
-            search: "Buscador (Explorar)",
-            profile: "Perfil (Mi Cuenta)",
+            categories: "Categorías",
+            cart: "Carrito de Compras",
+            videos: "Videos (TikTok Style)",
+            catalogo: "Catálogo General (Iframe)",
             avisos: "Avisos (Novedades)",
             nosotros: "Nosotros (Historia/Contacto)"
         };
 
-        keys.forEach(key => {
-            const config = appConfig[key];
-            if (!config) return;
-            const card = document.createElement('div');
-            card.style.cssText = `
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0.85rem 1.2rem;
-                background: white;
-                border-radius: var(--radius-md);
-                border: 1.5px solid #E8ECF0;
-                gap: 1rem;
-                box-shadow: var(--shadow-sm);
-            `;
+        const card = document.createElement('div');
+        card.style.cssText = `
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1.2rem;
+            background: white;
+            border-radius: var(--radius-md);
+            border: 1.5px solid #E8ECF0;
+            gap: 1rem;
+            box-shadow: var(--shadow-sm);
+        `;
 
-            const isVisible = config.visible !== false;
+        const isVisible = config.visible !== false;
 
-            card.innerHTML = `
-                <div style="display:flex; align-items:center; gap: 0.9rem; overflow: hidden; flex: 1;">
-                    <div style="width: 44px; height: 44px; border-radius: 8px; background: #f4f6f9; display: flex; align-items: center; justify-content: center; color: var(--primary-color); flex-shrink: 0;">
-                        <span class="material-symbols-outlined" style="font-size: 24px;">${config.icon}</span>
-                    </div>
-                    <div style="overflow: hidden; flex: 1;">
-                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); font-weight: 600; display: block;">${sectionLabels[key]}</span>
-                        <strong style="font-size:0.95rem; color:var(--text-main); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px;">${config.title}</strong>
-                        <p style="font-size:0.8rem; color:var(--text-muted); margin: 2px 0 0 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${config.subtitle}</p>
-                    </div>
+        card.innerHTML = `
+            <div style="display:flex; align-items:center; gap: 0.9rem; overflow: hidden; flex: 1;">
+                <div style="width: 44px; height: 44px; border-radius: 8px; background: #f4f6f9; display: flex; align-items: center; justify-content: center; color: var(--primary-color); flex-shrink: 0;">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">${config.icon}</span>
                 </div>
-                <div style="display: flex; align-items: center; gap: 0.8rem; flex-shrink:0;">
-                    <span style="background: ${isVisible ? '#e6fffa' : '#fff5f5'}; color: ${isVisible ? '#087f5b' : '#c92a2a'}; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600;">
-                        ${isVisible ? 'Activa' : 'Inactiva'}
-                    </span>
-                    <button type="button" class="btn-edit-config action-btn edit" style="padding: 0.45rem;" title="Editar"><span class="material-symbols-outlined" style="font-size: 18px;">edit</span></button>
+                <div style="overflow: hidden; flex: 1;">
+                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); font-weight: 600; display: block;">${sectionLabels[key]}</span>
+                    <strong style="font-size:0.95rem; color:var(--text-main); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px;">${config.title}</strong>
+                    <p style="font-size:0.8rem; color:var(--text-muted); margin: 2px 0 0 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${config.subtitle}</p>
                 </div>
-            `;
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.8rem; flex-shrink:0;">
+                <span style="background: ${isVisible ? '#e6fffa' : '#fff5f5'}; color: ${isVisible ? '#087f5b' : '#c92a2a'}; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600;">
+                    ${isVisible ? 'Activa' : 'Inactiva'}
+                </span>
+                <button type="button" class="btn-edit-config action-btn edit" style="padding: 0.45rem;" title="Editar"><span class="material-symbols-outlined" style="font-size: 18px;">edit</span></button>
+            </div>
+        `;
 
-            card.querySelector('.btn-edit-config').addEventListener('click', () => openAppConfigForm(key));
+        card.querySelector('.btn-edit-config').addEventListener('click', () => openAppConfigForm(key));
+        configContainer.appendChild(card);
+    }
 
-            configList.appendChild(card);
-        });
+    function renderAdminConfig() {
+        renderSingleAdminConfig('home', 'admin-config-menu-home');
+        renderSingleAdminConfig('categories', 'admin-config-menu-categories');
+        renderSingleAdminConfig('avisos', 'admin-config-menu-avisos');
+        renderSingleAdminConfig('nosotros', 'admin-config-menu-nosotros');
+        
+        renderSingleAdminConfig('cart', 'admin-config-menu-cart');
+        renderSingleAdminConfig('videos', 'admin-config-menu-videos');
+        renderSingleAdminConfig('catalogo', 'admin-config-menu-catalog');
+        renderSingleAdminConfig('search', 'admin-config-menu-search');
     }
 
     function openAppConfigForm(key) {
@@ -1780,6 +1792,7 @@ window.safeAdminRun = function(fn) {
         document.getElementById('admin-id').value          = existingProd?.id          || '';
         document.getElementById('admin-title').value       = existingProd?.title       || '';
         document.getElementById('admin-description').value = existingProd?.description || '';
+        document.getElementById('admin-video').value       = existingProd?.video       || '';
 
         // ── Poblar checkboxes de categorías y marcar principal ──
         const assignedCategoryIds = [];
@@ -1927,11 +1940,13 @@ window.safeAdminRun = function(fn) {
 
             const tagsRaw    = document.getElementById('admin-tags').value.trim();
             const tagsList   = tagsRaw ? tagsRaw.split(',').map(s => s.trim()).filter(s => s) : [];
+            const pVideo     = document.getElementById('admin-video').value.trim();
 
             const product = {
                 id:          idVal,
                 title:       document.getElementById('admin-title').value.trim(),
                 description: document.getElementById('admin-description').value.trim(),
+                video:       pVideo !== '' ? pVideo : undefined,
                 image:       finalAcabadosGroups[0]?.cover_image || 'img/logo_provisional.png',
                 acabados_groups: finalAcabadosGroups,
                 tags:        tagsList,
@@ -2141,9 +2156,18 @@ window.safeAdminRun = function(fn) {
         const rawQuery = searchInput ? searchInput.value : '';
         const query = normalizeForSearch(rawQuery).trim();
 
+        const activeView = document.querySelector('.view.active');
+        if (activeView && activeView.id === 'view-catalogo') {
+            const iframe = document.querySelector('#view-catalogo iframe');
+            if (iframe && iframe.contentWindow && iframe.contentWindow.filterCatalogAZ) {
+                iframe.contentWindow.filterCatalogAZ(query);
+            }
+            return;
+        }
+
         // Si no hay consulta de búsqueda, renderizar la landing inspiradora del constructor
         if (!query) {
-            const hasDynamicContent = renderSectionContent('search', searchResultsContainer);
+            const hasDynamicContent = renderSectionContent('categories', searchResultsContainer);
             if (hasDynamicContent) {
                 if (searchEmptyState) searchEmptyState.style.display = 'none';
                 return;
@@ -2351,13 +2375,12 @@ window.safeAdminRun = function(fn) {
         });
     }
     // --- LÓGICA DEL RENDERIZADO DEL CONSTRUCTOR EN EL ADMIN ---
-    function renderAdminViewBuilderList() {
-        const oldListContainer = document.getElementById('admin-section-components-list');
+    function renderSingleAdminViewBuilderList(section) {
+        const oldListContainer = document.getElementById(`admin-components-${section}`);
         if (!oldListContainer) return;
         const listContainer = oldListContainer.cloneNode(false);
         oldListContainer.parentNode.replaceChild(listContainer, oldListContainer);
 
-        const section = document.getElementById('admin-view-builder-select')?.value || 'home';
         const stack = contentRegistry[section] || [];
 
         if (stack.length === 0) {
@@ -2466,7 +2489,7 @@ window.safeAdminRun = function(fn) {
                 card.setAttribute('draggable', 'false');
             });
 
-            card.querySelector('.btn-edit-comp').addEventListener('click', () => openComponentForm(comp.id));
+            card.querySelector('.btn-edit-comp').addEventListener('click', () => openComponentForm(section, comp.id));
             card.querySelector('.btn-delete-comp').addEventListener('click', () => deleteComponent(section, idx));
 
             listContainer.appendChild(card);
@@ -2506,13 +2529,23 @@ window.safeAdminRun = function(fn) {
             
             // Guardar en caliente en disco
             saveContentRegistry();
-            renderAdminViewBuilderList();
+            renderSingleAdminViewBuilderList(section);
             showAdminToast('✅ Componentes reordenados y guardados físicamente');
         });
     }
 
-    function openComponentForm(compId = null) {
-        const section = document.getElementById('admin-view-builder-select')?.value || 'home';
+    function renderAdminViewBuilderList() {
+        renderSingleAdminViewBuilderList('home');
+        renderSingleAdminViewBuilderList('categories');
+        renderSingleAdminViewBuilderList('avisos');
+        renderSingleAdminViewBuilderList('cart');
+        renderSingleAdminViewBuilderList('videos');
+        renderSingleAdminViewBuilderList('catalogo');
+        renderSingleAdminViewBuilderList('search');
+    }
+
+    function openComponentForm(section, compId = null) {
+        document.getElementById('admin-component-form').setAttribute('data-target-section', section);
         
         // Cargar listado de productos del catálogo en el select
         const prodSelect = document.getElementById('admin-comp-product-select');
@@ -2624,10 +2657,10 @@ window.safeAdminRun = function(fn) {
             if (window.renderAdminHomeSectionsList) window.renderAdminHomeSectionsList();
             renderHome();
         }
-        else if (section === 'search') runSearch();
+        else if (section === 'categories') runSearch();
         else if (section === 'avisos') renderAvisosCliente();
 
-        renderAdminViewBuilderList();
+        renderSingleAdminViewBuilderList(section);
     }
 
     function deleteComponent(section, index) {
@@ -2642,7 +2675,7 @@ window.safeAdminRun = function(fn) {
             if (window.renderAdminHomeSectionsList) window.renderAdminHomeSectionsList();
             renderHome();
         }
-        else if (section === 'search') runSearch();
+        else if (section === 'categories') runSearch();
         else if (section === 'avisos') renderAvisosCliente();
 
         renderAdminViewBuilderList();

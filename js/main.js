@@ -37,10 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.loadProductViews) {
         window.loadProductViews().finally(() => {
             if (window.renderHome) window.renderHome();
+            if (window.renderCategoriesMenu) window.renderCategoriesMenu();
+            if (window.renderVideosView) window.renderVideosView();
             if (window.renderAvisosCliente) window.renderAvisosCliente();
         });
     } else {
         if (window.renderHome) window.renderHome();
+        if (window.renderCategoriesMenu) window.renderCategoriesMenu();
+        if (window.renderVideosView) window.renderVideosView();
         if (window.renderAvisosCliente) window.renderAvisosCliente();
     }
 
@@ -241,7 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'avisos': 'view-notifications',
                 'perfil': 'view-profile',
                 'alquileres': 'view-rentals',
-                'admin': 'view-admin'
+                'admin': 'view-admin',
+                'catalogo': 'view-catalogo'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             setTimeout(() => {
@@ -306,7 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'avisos': 'view-notifications',
                 'perfil': 'view-profile',
                 'alquileres': 'view-rentals',
-                'admin': 'view-admin'
+                'admin': 'view-admin',
+                'catalogo': 'view-catalogo'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             if (window.navigateToView) {

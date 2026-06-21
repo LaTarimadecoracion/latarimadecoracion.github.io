@@ -3,8 +3,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const catalogListContainer = document.getElementById('catalog-list');
-    const searchInput = document.getElementById('catalog-search-input');
-    const resultsCounter = document.getElementById('catalog-results-counter');
     const emptyState = document.getElementById('catalog-empty-state');
 
     const WHATSAPP_PHONE = "5491167007723";
@@ -128,18 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (emptyState) emptyState.style.display = 'none';
-
-        // Calcular total de variantes en la selección actual
-        let totalVariants = 0;
-        productsToRender.forEach(p => {
-            totalVariants += countProductVariants(p);
-        });
-
-        if (resultsCounter) {
-            const prodText = productsToRender.length === 1 ? 'producto' : 'productos';
-            const varText = totalVariants === 1 ? 'variante' : 'variantes';
-            resultsCounter.textContent = `${productsToRender.length} ${prodText} · ${totalVariants} ${varText}`;
-        }
 
         productsToRender.forEach((product, idx) => {
             const row = document.createElement('div');
@@ -288,91 +274,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Filtrar por término de búsqueda
-    const normalizeForSearch = (str) => {
-        if (!str || typeof str !== 'string') return '';
-        return str
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLowerCase();
-    };
-
-    let selectedCategory = 'all';
-
-    function renderCategoryChips() {
-        const chipsContainer = document.getElementById('catalog-filter-chips');
-        if (!chipsContainer) return;
-
-        // Extraer categorías únicas presentes en los productos
-        const categories = new Set();
-        allProducts.forEach(p => {
-            if (p.categoryName) categories.add(p.categoryName);
-        });
-
-        const sortedCategories = Array.from(categories).sort();
-
-        let chipsHTML = `
-            <button class="catalog-chip ${selectedCategory === 'all' ? 'active' : ''}" data-category="all">
-                Todos
-            </button>
-        `;
-
-        sortedCategories.forEach(cat => {
-            chipsHTML += `
-                <button class="catalog-chip ${selectedCategory === cat ? 'active' : ''}" data-category="${cat}">
-                    ${cat}
-                </button>
-            `;
-        });
-
-        chipsContainer.innerHTML = chipsHTML;
-
-        // Registrar listeners de click
-        chipsContainer.querySelectorAll('.catalog-chip').forEach(chip => {
-            chip.addEventListener('click', (e) => {
-                selectedCategory = chip.dataset.category;
-                
-                // Actualizar clases active
-                chipsContainer.querySelectorAll('.catalog-chip').forEach(c => c.classList.remove('active'));
-                chip.classList.add('active');
-
-                // Filtrar de inmediato
-                filterProducts();
-            });
-        });
-    }
-
-    function filterProducts() {
-        const query = normalizeForSearch(searchInput.value).trim();
+    // 5. Filtrar por término de búsqueda (Llamado desde el main window)
+    window.filterCatalogAZ = function(query) {
+        if (!query) {
+            renderCatalogList(allProducts);
+            return;
+        }
         
-        let filtered = allProducts;
-
-        // 1. Filtrar por categoría seleccionada
-        if (selectedCategory !== 'all') {
-            filtered = filtered.filter(p => p.categoryName === selectedCategory);
-        }
-
-        // 2. Filtrar por texto de búsqueda
-        if (query) {
-            filtered = filtered.filter(p => {
-                const matchesTitle = normalizeForSearch(p.title).includes(query);
-                const matchesDesc = normalizeForSearch(p.description).includes(query);
-                const matchesCat = normalizeForSearch(p.categoryName).includes(query);
-                const matchesTags = p.tags && p.tags.some(tag => normalizeForSearch(tag).includes(query));
-
-                return matchesTitle || matchesDesc || matchesCat || matchesTags;
-            });
-        }
+        // Normalizar query ya viene hecho desde el padre, pero por las dudas
+        const q = query.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+        
+        const filtered = allProducts.filter(p => {
+            const t = (p.title || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            const d = (p.description || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            const c = (p.categoryName || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            
+            return t.includes(q) || d.includes(q) || c.includes(q);
+        });
 
         renderCatalogList(filtered);
-    }
+    };
 
     // Inicializar
     loadProducts();
-    renderCategoryChips();
     renderCatalogList(allProducts);
-
-    if (searchInput) {
-        searchInput.addEventListener('input', filterProducts);
-    }
 });

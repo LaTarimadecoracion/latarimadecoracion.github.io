@@ -1,0 +1,306 @@
+// js/videos.js
+
+/**
+ * Módulo para la vista de Videos Inmersivos.
+ * Genera una grilla de miniaturas y un reproductor estilo TikTok a pantalla completa.
+ */
+
+window.renderVideosView = function() {
+    const gridContainer = document.getElementById('videos-grid-container');
+    if (!gridContainer) return;
+
+    gridContainer.innerHTML = '';
+
+    // Extraer todos los productos que tengan un video definido
+    let videoProducts = [];
+    const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) 
+        ? sessionProducts 
+        : (typeof productsData !== 'undefined' ? productsData : []);
+
+    sourceData.forEach(cat => {
+        if (cat.products) {
+            cat.products.forEach(prod => {
+                if (prod.video) {
+                    videoProducts.push({ product: prod, catName: cat.name });
+                }
+            });
+        }
+    });
+
+    if (videoProducts.length === 0) {
+        gridContainer.innerHTML = '<p class="text-muted" style="grid-column: 1 / -1; text-align: center;">Por el momento no hay videos disponibles.</p>';
+        return;
+    }
+
+    // Dibujar Grilla de Miniaturas
+    videoProducts.forEach((item, index) => {
+        const prod = item.product;
+        const card = document.createElement('div');
+        card.className = 'video-thumbnail-card';
+
+        const cover = Array.isArray(prod.image) ? prod.image[0] : (prod.image || 'img/logo_provisional.png');
+        
+        // Diseño de tarjeta vertical 9:16
+        card.innerHTML = `
+            <img src="${cover}" class="video-thumbnail-card-img lazy-img" alt="${prod.title}" loading="lazy" onload="this.classList.add('loaded')">
+            
+            <!-- Icono Play superpuesto en el centro -->
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">
+                <span class="material-symbols-outlined" style="font-size: 48px; color: white; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));">play_circle</span>
+            </div>
+            
+            <div class="video-thumbnail-gradient"></div>
+            <div class="video-thumbnail-info">
+                <h3 class="video-thumbnail-title">${prod.title}</h3>
+            </div>
+        `;
+
+        // Al tocar miniatura, abrir modal en el índice correcto
+        card.addEventListener('click', () => {
+            openImmersiveVideo(videoProducts, index);
+        });
+
+        // Animación de Hover
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-3px)';
+            card.style.boxShadow = '0 6px 15px rgba(0,0,0,0.08)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = 'none';
+        });
+
+        gridContainer.appendChild(card);
+    });
+};
+
+// Referencias del DOM
+let tiktokModal = null;
+let tiktokFeedContainer = null;
+let tiktokCloseBtn = null;
+let videoObserver = null;
+
+// Abrir reproductor inmersivo
+function openImmersiveVideo(videoList, startIndex) {
+    tiktokModal = document.getElementById('tiktok-video-modal');
+    tiktokFeedContainer = document.getElementById('tiktok-feed-container');
+    tiktokCloseBtn = document.getElementById('tiktok-close-btn');
+
+    if (!tiktokModal || !tiktokFeedContainer) return;
+
+    // Limpiar contenedor previo
+    tiktokFeedContainer.innerHTML = '';
+
+    // Crear elementos de video
+    videoList.forEach((item, i) => {
+        const prod = item.product;
+        const videoSrc = prod.video;
+        
+        const videoItem = document.createElement('div');
+        videoItem.className = 'tiktok-video-item';
+        videoItem.id = `tiktok-video-${i}`;
+
+        // El poster será la imagen del producto
+        const posterSrc = Array.isArray(prod.image) ? prod.image[0] : (prod.image || '');
+
+        // Detectar si es YouTube
+        const ytMatch = videoSrc.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|shorts\/))([\w-]{11})/);
+        const ytId = ytMatch ? ytMatch[1] : null;
+
+        let mediaHTML = '';
+        if (ytId) {
+            // Reproductor iframe de YouTube optimizado para vertical
+            mediaHTML = `
+                <iframe 
+                    class="tiktok-video-element yt-iframe"
+                    data-src="https://www.youtube.com/embed/${ytId}?enablejsapi=1&autoplay=1&controls=0&rel=0&showinfo=0&loop=1&playlist=${ytId}&modestbranding=1&playsinline=1&mute=1" 
+                    src=""
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                ></iframe>
+            `;
+        } else {
+            mediaHTML = `
+                <video 
+                    src="${videoSrc}" 
+                    poster="${posterSrc}"
+                    loop 
+                    muted
+                    playsinline 
+                    preload="metadata"
+                    class="tiktok-video-element mp4-video"
+                ></video>
+            `;
+        }
+
+        videoItem.innerHTML = `
+            ${mediaHTML}
+            
+            <span class="material-symbols-outlined tiktok-play-icon">play_arrow</span>
+            <span class="material-symbols-outlined tiktok-mute-icon" style="position: absolute; top: 20px; right: 20px; font-size: 28px; color: rgba(255,255,255,0.8); z-index: 15; background: rgba(0,0,0,0.3); border-radius: 50%; padding: 6px; pointer-events: none; backdrop-filter: blur(2px);">volume_off</span>
+
+            <!-- Información Superior (Título) -->
+            <div class="tiktok-ui-top">
+                <div class="tiktok-product-title">${prod.title}</div>
+            </div>
+
+            <!-- Botones a la derecha -->
+            <div class="tiktok-ui-right">
+                <button class="tiktok-action-btn" onclick="shareProduct('${prod.title}', '${prod.id}')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); margin-bottom: 2px;" alt="WhatsApp">
+                    <span class="label">Compartir</span>
+                </button>
+            </div>
+
+            <!-- Información inferior (Botón central) -->
+            <div class="tiktok-ui-bottom">
+                <div class="tiktok-btn-product" id="btn-go-product-${i}">
+                    Ver detalles del producto
+                </div>
+            </div>
+        `;
+
+        tiktokFeedContainer.appendChild(videoItem);
+
+        // Click para pausar/reproducir
+        const videoElement = videoItem.querySelector('video');
+        const iframeElement = videoItem.querySelector('iframe');
+        const playIcon = videoItem.querySelector('.tiktok-play-icon');
+        const muteIcon = videoItem.querySelector('.tiktok-mute-icon');
+        
+        // Estado interno de reproducción para iframes
+        let isPlaying = false;
+
+        videoItem.addEventListener('click', (e) => {
+            if (e.target.closest('.tiktok-ui-right') || e.target.closest('.tiktok-ui-bottom')) return;
+
+            if (videoElement) {
+                if (videoElement.muted) {
+                    videoElement.muted = false; // Al tocar por primera vez, desmuteamos
+                    if (muteIcon) muteIcon.style.display = 'none';
+                }
+                
+                if (videoElement.paused) {
+                    videoElement.play();
+                    playIcon.style.display = 'none';
+                } else {
+                    videoElement.pause();
+                    playIcon.style.display = 'block';
+                }
+            } else if (iframeElement) {
+                if (!isPlaying) {
+                    // Primer toque: si está muteado, desmutear
+                    if (!iframeElement.dataset.unmuted) {
+                        iframeElement.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+                        iframeElement.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[100]}', '*');
+                        iframeElement.dataset.unmuted = 'true';
+                        if (muteIcon) muteIcon.style.display = 'none';
+                    }
+                    
+                    iframeElement.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                    playIcon.style.display = 'none';
+                    isPlaying = true;
+                } else {
+                    iframeElement.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                    playIcon.style.display = 'block';
+                    isPlaying = false;
+                }
+            }
+        });
+
+        // Botón "Ir al producto"
+        const btnGoProduct = videoItem.querySelector(`#btn-go-product-${i}`);
+        if (btnGoProduct) {
+            btnGoProduct.addEventListener('click', () => {
+                closeImmersiveVideo(); // Cerrar videos primero
+                if (window.showProductDetail) {
+                    window.showProductDetail(prod, item.catName);
+                }
+            });
+        }
+    });
+
+    // Mostrar Modal
+    tiktokModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Evitar scroll del body
+
+    // Scroll inmediato al index seleccionado
+    setTimeout(() => {
+        const targetElement = document.getElementById(`tiktok-video-${startIndex}`);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'instant' });
+        }
+        setupIntersectionObserver();
+    }, 50);
+
+    // Cerrar modal
+    tiktokCloseBtn.onclick = closeImmersiveVideo;
+}
+
+// Configurar el Intersection Observer para AutoPlay
+function setupIntersectionObserver() {
+    if (videoObserver) videoObserver.disconnect();
+
+    const options = {
+        root: tiktokFeedContainer,
+        rootMargin: '0px',
+        threshold: 0.6 // El video debe estar al menos al 60% visible para reproducirse
+    };
+
+    videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target.querySelector('video');
+            const iframe = entry.target.querySelector('iframe');
+            const playIcon = entry.target.querySelector('.tiktok-play-icon');
+
+            if (entry.isIntersecting) {
+                if (video) {
+                    video.play().catch(e => console.log('Autoplay prevent:', e));
+                }
+                if (iframe) {
+                    if (!iframe.getAttribute('src')) {
+                        // Primera vez: asignamos el src que tiene autoplay=1 nativo de YouTube
+                        iframe.setAttribute('src', iframe.getAttribute('data-src'));
+                    } else {
+                        // Ya cargado: enviamos el comando de play
+                        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                    }
+                }
+                if (playIcon) playIcon.style.display = 'none';
+            } else {
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+                if (iframe) {
+                    if (iframe.getAttribute('src')) {
+                        // Si ya tiene src, lo pausamos
+                        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                        iframe.contentWindow.postMessage('{"event":"command","func":"seekTo","args":[0, true]}', '*');
+                    }
+                }
+            }
+        });
+    }, options);
+
+    const videoItems = document.querySelectorAll('.tiktok-video-item');
+    videoItems.forEach(item => videoObserver.observe(item));
+}
+
+// Función para cerrar modal
+function closeImmersiveVideo() {
+    if (tiktokModal) tiktokModal.style.display = 'none';
+    document.body.style.overflow = '';
+    if (tiktokFeedContainer) tiktokFeedContainer.innerHTML = ''; // Limpiar y detener videos
+    if (videoObserver) videoObserver.disconnect();
+}
+
+// Compartir por WhatsApp global (Producto)
+window.shareProduct = function(title, prodId) {
+    const url = window.location.origin + window.location.pathname + '?prod=' + prodId;
+    const text = '¡Mira este increíble producto que encontré: ' + title + '! ' + url;
+    const whatsappUrl = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text);
+    window.open(whatsappUrl, '_blank');
+};

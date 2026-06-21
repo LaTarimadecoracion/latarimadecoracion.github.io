@@ -42,70 +42,7 @@ body {
     width: 100%;
 }
 
-/* Barra de Búsqueda Premium */
-.catalog-search-section {
-    margin-bottom: 2.25rem;
-    animation: fadeIn 0.8s ease both;
-    animation-delay: 0.15s;
-}
 
-.catalog-search-wrapper {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 1rem 1.5rem;
-    border-radius: var(--radius-pill);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    border: 1.5px solid rgba(180, 132, 108, 0.12);
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.catalog-search-wrapper:focus-within {
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 30px rgba(180, 132, 108, 0.14);
-    transform: translateY(-2px);
-    background: #ffffff;
-}
-
-.catalog-search-icon {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-right: 0.85rem;
-    opacity: 0.8;
-}
-
-.catalog-search-input {
-    border: none;
-    outline: none;
-    flex: 1;
-    font-family: var(--font-main);
-    font-size: 1.1rem;
-    background: transparent;
-    color: var(--text-main);
-    font-weight: 500;
-}
-
-.catalog-search-input::placeholder {
-    color: #a0aec0;
-}
-
-/* Chip de Resultados */
-.catalog-results-counter {
-    display: inline-block;
-    font-size: 0.78rem;
-    font-weight: 700;
-    background: rgba(180, 132, 108, 0.12);
-    color: var(--primary-color);
-    padding: 0.35rem 0.9rem;
-    border-radius: 50px;
-    margin-top: 0.8rem;
-    margin-left: 1rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    box-shadow: 0 2px 8px rgba(180, 132, 108, 0.05);
-}
 
 /* Filas del Catálogo (Cards Premium) */
 .catalog-list {
@@ -425,46 +362,4 @@ body {
     }
 }
 
-/* --- ESTILOS PREMIUM PARA CHIPS DE FILTRADO --- */
-.catalog-filter-chips {
-    display: flex;
-    gap: 0.5rem;
-    overflow-x: auto;
-    padding: 0.5rem 0.2rem;
-    margin-top: 1rem;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE */
-}
 
-.catalog-filter-chips::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
-
-.catalog-chip {
-    padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.7);
-    border: 1.5px solid rgba(180, 132, 108, 0.15);
-    border-radius: 50px;
-    color: var(--text-main);
-    font-family: var(--font-main);
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-}
-
-.catalog-chip:hover {
-    background: rgba(180, 132, 108, 0.08);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    transform: translateY(-1px);
-}
-
-.catalog-chip.active {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    color: white;
-    box-shadow: 0 4px 12px rgba(180, 132, 108, 0.2);
-}
