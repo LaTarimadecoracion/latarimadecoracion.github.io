@@ -198,17 +198,13 @@
 
 
 
-    <!-- Modal de Ayuda para Medidas -->
-    <div id="modalAyuda" class="modal-clean" style="display: none;" aria-hidden="true" role="dialog">
-        <div class="modal-overlay"></div>
-        <div class="modal-container">
-            <button id="btnCloseModal" class="modal-close-btn" aria-label="Cerrar modal">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-            <div class="modal-content">
-                <img src="img/Medidas.webp" alt="Diagrama de ayuda para tomar las medidas A, B y C" class="modal-img" />
-            </div>
-        </div>
+    <!-- Modal de Ayuda para Medidas — pantalla completa -->
+    <div id="modalAyuda" class="modal-fullscreen" style="display: none;" aria-hidden="true" role="dialog">
+        <div class="modal-overlay" id="modalOverlayEl"></div>
+        <button id="btnCloseModal" class="modal-fs-close" aria-label="Cerrar">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <img src="img/Medidas.webp" alt="Diagrama de ayuda para tomar las medidas A, B y C" class="modal-fs-img" />
     </div>
 
     <script>
@@ -244,6 +240,15 @@
             const inputB = document.getElementById('medidaB');
             const inputC = document.getElementById('medidaC');
             const btn = document.getElementById('btnCalcular');
+
+            // Enter navega de A→B→C entre los inputs
+            [[inputA, inputB], [inputB, inputC]].forEach(([from, to]) => {
+                if (from && to) {
+                    from.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter') { e.preventDefault(); to.focus(); to.select(); }
+                    });
+                }
+            });
             const out = document.getElementById('resultadoCalculo');
             const tablaBarandaBody = document.querySelector('#tablaBaranda tbody');
             const STORAGE_USER_SEL = 'userSelectedModeloV1';
@@ -522,7 +527,7 @@
             const btnVerAyuda = document.getElementById('btnVerAyuda');
             const modalAyuda = document.getElementById('modalAyuda');
             const btnCloseModal = document.getElementById('btnCloseModal');
-            const modalOverlay = modalAyuda ? modalAyuda.querySelector('.modal-overlay') : null;
+            const modalOverlay = document.getElementById('modalOverlayEl');
 
             if (btnVerAyuda && modalAyuda) {
                 const abrirModal = (e) => {

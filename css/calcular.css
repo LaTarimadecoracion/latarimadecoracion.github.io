@@ -441,100 +441,74 @@
     transform: translateY(-1px);
 }
 
-/* Modal de Ayuda (Estilo Premium 2.0) */
-.modal-clean {
+/* Modal de ayuda — pantalla completa */
+.modal-fullscreen {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-    box-sizing: border-box;
-    animation: fadeInModal 0.25s ease forwards;
+    animation: fadeInModal 0.2s ease forwards;
 }
 
-.modal-overlay {
+.modal-fullscreen .modal-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    background: rgba(10, 8, 6, 0.82);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* Imagen a pantalla completa */
+.modal-fs-img {
+    position: relative;
+    z-index: 2001;
+    max-width: 100%;
+    max-height: 100dvh;
     width: 100%;
     height: 100%;
-    background: rgba(26, 21, 19, 0.55);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    object-fit: contain;
+    display: block;
+    animation: scaleInModal 0.25s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
 }
 
-.modal-container {
-    position: relative;
-    background: #FFFFFF;
-    border-radius: 20px;
-    max-width: 95%;
-    max-height: 85vh;
-    width: 580px;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
-    z-index: 2001;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    animation: scaleInModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-.modal-close-btn {
-    position: absolute;
+/* Botón cerrar flotante */
+.modal-fs-close {
+    position: fixed;
     top: 14px;
     right: 14px;
-    background: rgba(255, 255, 255, 0.9);
+    z-index: 2100;
+    background: rgba(255, 255, 255, 0.92);
     border: none;
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: var(--text-main);
-    z-index: 10;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: #1a1512;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
     transition: all 0.2s ease;
 }
 
-.modal-close-btn:hover {
+.modal-fs-close:hover {
     background: var(--primary-color);
-    color: #FFFFFF;
+    color: #fff;
     transform: scale(1.08) rotate(90deg);
-}
-
-.modal-content {
-    padding: 1rem;
-    overflow: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #FAF9F6;
-}
-
-.modal-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    display: block;
-    object-fit: contain;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 @keyframes fadeInModal {
     from { opacity: 0; }
-    to { opacity: 1; }
+    to   { opacity: 1; }
 }
 
 @keyframes scaleInModal {
-    from { transform: scale(0.92); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from { transform: scale(0.96); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
 }
+
 
 /* Pestañas de Vista (Visualizador) */
 .vista-tabs {
