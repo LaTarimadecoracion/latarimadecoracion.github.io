@@ -2063,7 +2063,8 @@ window.safeAdminRun = function(fn) {
                                 acabado: acabado.acabado_name,
                                 // Guardar la imagen específica de la variante para un resultado visual premium
                                 image: acabado.cover_image || product.image,
-                                tags: product.tags || []
+                                tags: product.tags || [],
+                                medidas: acabado.medidas_variants ? acabado.medidas_variants.map(mv => mv.medida || '') : []
                             });
                             indexedAnyVariant = true;
                         }
@@ -2079,7 +2080,8 @@ window.safeAdminRun = function(fn) {
                         nombre: product.title,
                         acabado: '',
                         image: product.image,
-                        tags: product.tags || []
+                        tags: product.tags || [],
+                        medidas: product.medidas_variants ? product.medidas_variants.map(mv => mv.medida || '') : []
                     });
                 }
             });
@@ -2146,12 +2148,17 @@ window.safeAdminRun = function(fn) {
         let results = [];
 
         indexed.forEach(item => {
-            // Coincidir consulta con título, acabado, descripción original o tags (normalizando acentos)
+            // Coincidir consulta con título, acabado, descripción original, tags o medidas (normalizando acentos y espacios en medidas)
             const matchesQuery = !query ||
                 normalizeForSearch(item.nombre).includes(query) ||
                 (item.acabado && normalizeForSearch(item.acabado).includes(query)) ||
                 (item.product.description && normalizeForSearch(item.product.description).includes(query)) ||
-                (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(query)));
+                (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(query))) ||
+                (item.medidas && item.medidas.some(medida => {
+                    const normMedida = normalizeForSearch(medida).replace(/\s+/g, '');
+                    const normQuery = query.replace(/\s+/g, '');
+                    return normMedida.includes(normQuery);
+                }));
 
             if (matchesQuery) {
                 const key = `${item.id}::${item.acabado}`;
