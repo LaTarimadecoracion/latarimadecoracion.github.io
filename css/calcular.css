@@ -705,7 +705,32 @@
 
 .inputs-compact-footer {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Botón limpiar campos */
+.btn-clear-fields {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.btn-clear-fields:hover {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.06);
 }
 
 /* Mobile: apilar en 2 columnas si es muy angosto */

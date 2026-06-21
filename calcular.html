@@ -100,6 +100,10 @@
                         </div>
 
                         <div class="inputs-compact-footer">
+                            <button id="btnLimpiar" class="btn-clear-fields" type="button" aria-label="Limpiar campos">
+                                <span class="material-symbols-outlined" style="font-size:15px; vertical-align:middle;">backspace</span>
+                                Nueva medición
+                            </button>
                             <button id="btnVerAyuda" class="btn-help-link" type="button" aria-label="Ver imagen de ayuda">
                                 <span class="material-symbols-outlined" style="font-size:15px; vertical-align:middle;">image</span>
                                 Ver imagen de referencia
@@ -249,6 +253,28 @@
                     });
                 }
             });
+
+            // Botón "Nueva medición" — limpia todo de una vez
+            const btnLimpiar = document.getElementById('btnLimpiar');
+            if (btnLimpiar) {
+                btnLimpiar.addEventListener('click', () => {
+                    inputA.value = '';
+                    inputB.value = '';
+                    inputC.value = '';
+                    try { localStorage.removeItem('lastMedidasBC'); localStorage.removeItem('userSelectedModeloV1'); } catch(e) {}
+                    const out2 = document.getElementById('resultadoCalculo');
+                    const tabla = document.querySelector('#tablaBaranda tbody');
+                    const resumen = document.getElementById('resumenUnificado');
+                    const visor = document.getElementById('cardVisualizador');
+                    if (out2) out2.style.display = 'none';
+                    if (tabla) tabla.innerHTML = '';
+                    if (resumen) resumen.style.display = 'none';
+                    if (visor) visor.style.display = 'none';
+                    inputA.focus();
+                });
+            }
+
+
             const out = document.getElementById('resultadoCalculo');
             const tablaBarandaBody = document.querySelector('#tablaBaranda tbody');
             const STORAGE_USER_SEL = 'userSelectedModeloV1';
