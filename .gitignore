@@ -16,3 +16,7 @@ Thumbs.db
 .gemini/
 .idea/
 .vscode/
+
+# Local build artifacts
+dist/
+minify-local.js
