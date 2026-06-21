@@ -69,75 +69,46 @@
             <div class="view-content-clean">
                 
                 <!-- Panel de ingreso de medidas -->
-                    <div id="panelMedidas" class="calc-panel-v2">
+                    <div id="panelMedidas" class="calc-panel">
 
-                        <!-- Encabezado del panel -->
-                        <div class="guide-header">
-                            <span class="material-symbols-outlined guide-header-icon">straighten</span>
-                            <div>
-                                <h2 class="guide-title">Tomá las medidas de tu cama</h2>
-                                <p class="guide-subtitle">Necesitás una cinta métrica. Solo son 3 medidas rápidas.</p>
+                        <!-- 3 inputs en una fila compacta -->
+                        <div class="inputs-compact">
+                            <div class="input-compact-group">
+                                <label for="medidaA" class="input-compact-label">
+                                    <span class="input-compact-badge" style="background:#e07c40;">A</span>
+                                    Ancho tirante
+                                </label>
+                                <input id="medidaA" name="medidaA" type="number" min="0" step="0.5" inputmode="decimal" placeholder="ej: 4.5" aria-label="Ancho del tirante (A)" class="input-compact-field" />
+                                <span class="input-compact-unit">cm</span>
                             </div>
-                            <button id="btnVerAyuda" class="btn-help-icon" type="button" aria-label="Ver imagen de ayuda">
-                                <span class="material-symbols-outlined">help_outline</span>
+                            <div class="input-compact-group">
+                                <label for="medidaB" class="input-compact-label">
+                                    <span class="input-compact-badge" style="background:#3b82f6;">B</span>
+                                    Alto tirante
+                                </label>
+                                <input id="medidaB" name="medidaB" type="number" min="0" step="0.5" inputmode="decimal" placeholder="ej: 10" aria-label="Alto del tirante (B)" class="input-compact-field" />
+                                <span class="input-compact-unit">cm</span>
+                            </div>
+                            <div class="input-compact-group">
+                                <label for="medidaC" class="input-compact-label">
+                                    <span class="input-compact-badge" style="background:#16a34a;">C</span>
+                                    Tirante + colchón
+                                </label>
+                                <input id="medidaC" name="medidaC" type="number" min="0" step="0.5" inputmode="decimal" placeholder="ej: 20" aria-label="Alto tirante + colchón (C)" class="input-compact-field" />
+                                <span class="input-compact-unit">cm</span>
+                            </div>
+                        </div>
+
+                        <div class="inputs-compact-footer">
+                            <button id="btnVerAyuda" class="btn-help-link" type="button" aria-label="Ver imagen de ayuda">
+                                <span class="material-symbols-outlined" style="font-size:15px; vertical-align:middle;">image</span>
+                                Ver imagen de referencia
                             </button>
                         </div>
 
-
-                        <!-- Pasos de ingreso -->
-                        <div class="guide-steps">
-
-                            <!-- PASO 1: Medida A -->
-                            <div class="guide-step" id="step-A" data-step="A">
-                                <div class="step-badge" style="--step-color: #e07c40;">A</div>
-                                <div class="step-body">
-                                    <div class="step-label">Ancho del tirante</div>
-                                    <div class="step-hint">La tabla lateral de la cama medida de frente a fondo (cm)</div>
-                                    <div class="step-input-row">
-                                        <button class="btn-stepper" data-field="medidaA" data-dir="-1" aria-label="Reducir A" tabindex="-1">−</button>
-                                        <input id="medidaA" name="medidaA" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej: 4.5" aria-label="Ancho del tirante (A)" class="step-input" />
-                                        <button class="btn-stepper" data-field="medidaA" data-dir="1" aria-label="Aumentar A" tabindex="-1">+</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- PASO 2: Medida B -->
-                            <div class="guide-step" id="step-B" data-step="B">
-                                <div class="step-badge" style="--step-color: #3b82f6;">B</div>
-                                <div class="step-body">
-                                    <div class="step-label">Alto del tirante</div>
-                                    <div class="step-hint">Desde el piso de la cama hasta la superficie del tirante (cm)</div>
-                                    <div class="step-input-row">
-                                        <button class="btn-stepper" data-field="medidaB" data-dir="-1" aria-label="Reducir B" tabindex="-1">−</button>
-                                        <input id="medidaB" name="medidaB" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej: 10" aria-label="Alto del tirante (B)" class="step-input" />
-                                        <button class="btn-stepper" data-field="medidaB" data-dir="1" aria-label="Aumentar B" tabindex="-1">+</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- PASO 3: Medida C -->
-                            <div class="guide-step" id="step-C" data-step="C">
-                                <div class="step-badge" style="--step-color: #16a34a;">C</div>
-                                <div class="step-body">
-                                    <div class="step-label">Alto del tirante + colchón</div>
-                                    <div class="step-hint">Desde el piso hasta la <strong>superficie del colchón</strong> (cm)</div>
-                                    <div class="step-input-row">
-                                        <button class="btn-stepper" data-field="medidaC" data-dir="-1" aria-label="Reducir C" tabindex="-1">−</button>
-                                        <input id="medidaC" name="medidaC" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej: 20" aria-label="Alto tirante + colchón (C)" class="step-input" />
-                                        <button class="btn-stepper" data-field="medidaC" data-dir="1" aria-label="Aumentar C" tabindex="-1">+</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Botón oculto para compatibilidad con el script -->
                         <div style="display:none;"><button id="btnCalcular">Calcular</button></div>
-
-                        <div class="panel-disclaimer-clean" style="margin-top: 1.25rem;">
-                            Regla clave: buscamos una <strong>protección útil</strong> (lo que sobresale sobre el colchón) dentro del rango objetivo de cada modelo. Si B &lt; 8 cm reducimos el agarre y esa diferencia pasa a la abertura. Si B &gt; 8 cm la abertura efectiva se achica.
-                        </div>
                     </div>
+
 
                     <!-- Tabla de Resultados -->
                     <div class="results-table-container">
