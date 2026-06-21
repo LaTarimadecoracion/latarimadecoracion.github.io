@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXNJV3XERK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-JXNJV3XERK');
+    </script>
+
+    
+    
+
+    
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://latarimadecoracion.github.io/">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LA TARIMA - Decoración</title>
+    
+    
+    <meta name="theme-color" content="#FAF9F6">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/logo_provisional.png">
+
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" id="meta-og-title" content="LA TARIMA - Carpintería Premium">
+    <meta property="og:description" id="meta-og-desc" content="Muebles infantiles y de diseño a medida. Diseños escandinavos y premium para el hogar.">
+    <meta property="og:image" id="meta-og-image" content="https://latarimadecoracion.github.io/img/logo_provisional.png">
+    <meta property="og:url" content="https://latarimadecoracion.github.io/">
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LA TARIMA - Carpintería Premium">
+    <meta name="twitter:description" content="Muebles infantiles y de diseño a medida. Diseños escandinavos y premium para el hogar.">
+    <meta name="twitter:image" content="https://latarimadecoracion.github.io/img/logo_provisional.png">
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    
+    <link rel="stylesheet" href="css/style.css?v=24">
+
+</head>
+<body>
+
+    
+    <div id="splash-screen">
+        <div class="splash-content">
+            <img src="img/logo_provisional.png" alt="La Tarima Logo" class="splash-logo">
+            <h1 class="splash-title">LA TARIMA</h1>
+            <p class="splash-subtitle">Carpintería Online</p>
+        </div>
+    </div>
+
+    
+    <header class="main-header-bar" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; gap: 8px; background: var(--bg-color); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); width: 100%; box-sizing: border-box;">
+        
+        
+        <div style="display: flex; align-items: center; gap: 4px; flex-shrink: 0;">
+            <button id="btn-back" class="back-nav-btn" style="display: none; padding: 4px; margin: 0; position: relative; left: auto; top: auto; transform: none;">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 id="dynamic-main-title" class="brand-title" style="margin: 0; font-size: 0.95rem; line-height: 1.1; font-weight: 900; letter-spacing: -0.5px; text-align: center;">LA<br>TARIMA</h1>
+            <p id="dynamic-subtitle" class="brand-subtitle" style="display: none;">Diseño en madera para tu hogar</p>
+        </div>
+
+        
+        <div class="search-bar-container" style="flex: 1; margin: 0; padding: 0.4rem 0.6rem; min-width: 0;">
+            <span class="material-symbols-outlined search-icon" style="font-size: 18px;">search</span>
+            <input type="text" id="search-input" placeholder="Buscar..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && window.navigateToView) window.navigateToView('view-search');" style="font-size: 0.9rem; padding: 0;">
+        </div>
+
+        
+        <div class="header-actions" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+            
+            <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-catalogo');" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" title="Catálogo A-Z">
+                <span class="material-symbols-outlined" style="font-size: 18px;">list_alt</span>
+            </a>
+            
+            <button id="nav-notif-btn-header" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" onclick="if(window.navigateToView) window.navigateToView('view-notifications');" title="Avisos">
+                <span class="material-symbols-outlined" style="font-size: 18px; color: #FFB300;">notifications</span>
+                <span class="badge" id="header-nav-badge" style="position: absolute; top: -2px; right: -2px; background: red; color: white; border-radius: 50%; padding: 2px 4px; font-size: 0.6rem; display: none;"></span>
+            </button>
+        </div>
+        
+    </header>
+    <main id="app-container">
+
+        
+        <section id="view-home" class="view active">
+
+
+            <div class="home-content">
+                
+                <div id="home-top-stack" style="display:none;"></div>
+
+                
+                <section class="home-section full-width">
+                    <div id="carousel-categories" class="carousel-categories">
+                        
+                    </div>
+                </section>
+
+                
+                <section class="home-section full-width">
+                    <h2 class="section-title" style="padding: 0 1.5rem;">Nuevos Diseños 2026</h2>
+                    <div id="home-new-designs-list" class="carousel-categories">
+                        
+                    </div>
+                </section>
+
+                
+                <section class="home-section full-width">
+                    <h2 class="section-title">Los más buscados</h2>
+                    <div id="home-product-list" class="carousel-categories">
+                        
+                    </div>
+                </section>
+
+                
+                <div id="home-bottom-stack" style="display:none;"></div>
+            </div>
+        </section>
+
+        
+        <section id="view-product-detail" class="view detail-view">
+            
+            <div id="detail-header-info" style="padding: 1.25rem 1.5rem 0.5rem; text-align: left;">
+                <h2 id="detail-title" style="margin: 0 0 0.15rem 0; font-size: 1.4rem; font-weight: 800; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
+                <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: var(--primary-color, #c0510a); text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-main);"></span>
+            </div>
+            <div class="detail-img-container"></div>
+            <div class="detail-content">
+                <p id="detail-description" class="detail-description product-description-text"></p>
+                
+                <div id="detail-attributes-container"></div>
+
+                <div id="detail-price-display" class="detail-price" style="display:none;"></div>
+                
+                <div class="detail-actions mt-2" id="detail-actions-container">
+                    <a id="btn-buy-shipping" href="#" target="_blank" class="btn-primary giant-btn" style="display:none;">
+                        <span class="material-symbols-outlined">local_shipping</span>
+                        Comprar con Envío
+                    </a>
+                    <a id="btn-buy-pickup" href="#" target="_blank" class="btn-outline giant-btn whatsapp-btn">
+                        <span class="material-symbols-outlined">chat</span>
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            
+            <div class="detail-related-section" style="border-top: 1px solid rgba(180, 132, 108, 0.1); padding-top: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                <div class="section-header-premium" style="padding: 0 1.5rem 0.4rem; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a); font-size: 1.5rem; vertical-align: middle;">star</span>
+                    <div>
+                        <h2 class="section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; padding:0;">Los más buscados</h2>
+                        <p class="section-subtitle" style="font-size: 0.8rem; color: var(--text-muted); margin: 2px 0 0 0; padding:0;">Otros preferidos de nuestros clientes</p>
+                    </div>
+                </div>
+                <div id="detail-related-product-list" class="carousel-categories" style="padding: 0 1.25rem 0.5rem;">
+                    
+                </div>
+            </div>
+            
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        
+        <section id="view-category-feed" class="view">
+            <div id="category-feed-container" class="category-feed-list">
+                
+            </div>
+            <div id="category-feed-empty" class="center-content text-muted" style="display:none; padding:3rem 1.5rem;">
+                <span class="material-symbols-outlined large-icon" style="opacity:0.4;">inventory_2</span>
+                <p>Esta categoría todavía no tiene productos.<br>¡Volvé pronto!</p>
+            </div>
+        </section>
+
+        
+        <section id="view-profile" class="view">
+            <div class="view-content center-content">
+                <span class="material-symbols-outlined large-icon">account_circle</span>
+                <h3>Bienvenido a La Tarima</h3>
+                <p>Ingresá para guardar tus favoritos y ver tus consultas.</p>
+                <button class="btn-primary mt-2">Iniciar Sesión</button>
+                <button class="btn-outline mt-1">Registrarme</button>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        
+        <section id="view-search" class="view">
+            <div class="view-content">
+                
+                
+                <div id="search-results-container" class="product-feed">
+                    
+                </div>
+                
+                <div id="search-empty-state" class="center-content text-muted" style="display: none; padding: 3rem 1.5rem;">
+                    <span class="material-symbols-outlined large-icon" style="opacity: 0.4;">search_off</span>
+                    <p>No encontramos productos con esa búsqueda.<br>Intentá con otra palabra clave.</p>
+                </div>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        
+        <section id="view-rentals" class="view">
+            <div class="view-content">
+                
+                <div class="search-bar-container" style="margin-bottom: 0.75rem;">
+                    <span class="material-symbols-outlined search-icon">search</span>
+                    <input type="text" id="rentals-search-input" placeholder="Buscar alquileres por nombre o descripción..." class="search-input" autocomplete="off">
+                </div>
+                
+                <div id="rentals-results-container" class="product-feed">
+                    
+                </div>
+                
+                <div id="rentals-empty-state" class="center-content text-muted" style="display: none; padding: 3rem 1.5rem;">
+                    <span class="material-symbols-outlined large-icon" style="opacity: 0.4;">search_off</span>
+                    <p>No encontramos alquileres con esa búsqueda.<br>Intentá con otra palabra clave.</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="view-categories" class="view">
+            <div class="view-content" style="padding: 1rem;">
+                <div id="categories-menu-container" class="categories-grid-responsive">
+                    
+                </div>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        
+        <section id="view-videos" class="view">
+            <div class="view-content" style="padding: 1rem;">
+                <div id="videos-grid-container" class="categories-grid-responsive">
+                    
+                </div>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        
+        <section id="view-catalogo" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe src="catalogo.html" style="width: 100%; flex: 1; border: none; display: block;" title="Catálogo A-Z"></iframe>
+            </div>
+        </section>
+
+        
+        <div id="tiktok-video-modal" class="tiktok-modal" style="display: none;">
+            
+            <button id="tiktok-close-btn" class="tiktok-close">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            
+            
+            <div id="tiktok-feed-container" class="tiktok-feed-container">
+                
+            </div>
+        </div>
+
+        
+        <div id="rental-detail-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-content" style="max-width: 500px; padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div style="position: relative; padding-top: 66%; background: var(--bg-body, #f7f6f3);">
+                    <img id="rental-detail-image" src="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" alt="">
+                    <button id="btn-close-rental-detail" style="position: absolute; top: 12px; right: 12px; border: none; background: rgba(0,0,0,0.5); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">close</span>
+                    </button>
+                </div>
+                <div style="padding: 1.5rem; overflow-y: auto;">
+                    <h3 id="rental-detail-title" style="margin: 0 0 0.5rem 0; font-size: 1.4rem; color: var(--text-color);"></h3>
+                    <div id="rental-detail-price" style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 1rem;"></div>
+                    <p id="rental-detail-description" style="margin: 0 0 1.5rem 0; line-height: 1.5; color: var(--text-muted); font-size: 0.95rem;"></p>
+                    <a id="btn-rent-whatsapp" href="#" target="_blank" class="btn-primary giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; text-decoration: none;">
+                        <span class="material-symbols-outlined">chat</span>
+                        Consultar Alquiler por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        
+        <section id="view-notifications" class="view">
+            <div class="view-content">
+                
+                
+                <div class="push-banner" style="background: var(--primary-color); color: white; padding: 1.5rem; margin: 1rem 1.5rem; border-radius: var(--radius-md); text-align: center; box-shadow: var(--shadow-sm);">
+                    <span class="material-symbols-outlined" style="font-size: 32px; margin-bottom: 0.5rem;">campaign</span>
+                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">¿Querés enterarte antes que nadie cuando sumemos productos?</h4>
+                    <button id="btn-enable-push" class="btn-outline" style="background: white; color: var(--primary-color); border: none; margin-top: 0.5rem; width: auto; padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                        Activar Notificaciones
+                    </button>
+                </div>
+
+                
+                <div id="notif-empty-state" class="center-content text-muted" style="display: none; padding: 3rem 1.5rem;">
+                    <span class="material-symbols-outlined large-icon" style="opacity: 0.5;">carpenter</span>
+                    <p>Por ahora estás al día. ¡Te avisaremos cuando haya viruta fresca en el taller!</p>
+                </div>
+
+                <div class="notification-list" id="notification-list-container">
+                    <div class="notification-item unread">
+                        <div class="notif-icon"><span class="material-symbols-outlined">celebration</span></div>
+                        <div class="notif-text">
+                            <h4>¡Nuevo Lanzamiento!</h4>
+                            <p>Ya están disponibles los podios reforzados en preventa exclusiva.</p>
+                            <span class="notif-time">Hace 2 horas</span>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notif-icon"><span class="material-symbols-outlined">local_shipping</span></div>
+                        <div class="notif-text">
+                            <h4>Envíos gratis</h4>
+                            <p>Esta semana tenemos envíos gratis en CABA y GBA para compras superiores a $50.000.</p>
+                            <span class="notif-time">Hace 2 días</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        
+        <section id="view-about" class="view">
+            <div class="view-content" style="padding: 1rem;">
+                
+                
+                <div id="nosotros-blocks-container">
+                    
+                </div>
+
+
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        <template id="social-links-template">
+            <div class="social-links mt-2" style="margin-top: 3rem; text-align: center;">
+                <p class="text-muted" style="margin-bottom: 1rem; font-weight: 500; font-size: 0.95rem;">Seguinos en redes:</p>
+                <div class="social-icons-row" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                    
+                    <a href="https://instagram.com" target="_blank" class="social-icon-btn social-link-instagram" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    
+                    <a href="https://tiktok.com" target="_blank" class="social-icon-btn social-link-tiktok" title="TikTok">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                    </a>
+                    
+                    <a href="https://facebook.com" target="_blank" class="social-icon-btn social-link-facebook" title="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    
+                    <a href="https://youtube.com" target="_blank" class="social-icon-btn social-link-youtube" title="YouTube">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    
+                    <a href="https://wa.me/5491167007723" target="_blank" class="social-icon-btn social-link-whatsapp" title="WhatsApp">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                    
+                    <a href="#" target="_blank" class="social-icon-btn social-link-mercadolibre" title="Mercado Libre">
+                        <svg width="24" height="24" viewBox="0 0 640 512" fill="currentColor"><path d="M272.2 64.6l-51.1 51.1c-15.3 4.2-29.5 11.9-41.5 22.5L153 161.9C142.8 171 129.5 176 115.8 176L96 176l0 128c20.4 .6 39.8 8.9 54.3 23.4l35.6 35.6 7 7c0 0 0 0 0 0L219.9 397c6.2 6.2 16.4 6.2 22.6 0c1.7-1.7 3-3.7 3.7-5.8c2.8-7.7 9.3-13.5 17.3-15.3s16.4 .6 22.2 6.5L296.5 393c11.6 11.6 30.4 11.6 41.9 0c5.4-5.4 8.3-12.3 8.6-19.4c.4-8.8 5.6-16.6 13.6-20.4s17.3-3 24.4 2.1c9.4 6.7 22.5 5.8 30.9-2.6c9.4-9.4 9.4-24.6 0-33.9L340.1 243l-35.8 33c-27.3 25.2-69.2 25.6-97 .9c-31.7-28.2-32.4-77.4-1.6-106.5l70.1-66.2C303.2 78.4 339.4 64 377.1 64c36.1 0 71 13.3 97.9 37.2L505.1 128l38.9 0 40 0 40 0c8.8 0 16 7.2 16 16l0 208c0 17.7-14.3 32-32 32l-32 0c-11.8 0-22.2-6.4-27.7-16l-84.9 0c-3.4 6.7-7.9 13.1-13.5 18.7c-17.1 17.1-40.8 23.8-63 20.1c-3.6 7.3-8.5 14.1-14.6 20.2c-27.3 27.3-70 30-100.4 8.1c-25.1 20.8-62.5 19.5-86-4.1L159 404l-7-7-35.6-35.6c-5.5-5.5-12.7-8.7-20.4-9.3C96 369.7 81.6 384 64 384l-32 0c-17.7 0-32-14.3-32-32L0 144c0-8.8 7.2-16 16-16l40 0 40 0 19.8 0c2 0 3.9-.7 5.3-2l26.5-23.6C175.5 77.7 211.4 64 248.7 64L259 64c4.4 0 8.9 .2 13.2 .6zM544 320l0-144-48 0c-5.9 0-11.6-2.2-15.9-6.1l-36.9-32.8c-18.2-16.2-41.7-25.1-66.1-25.1c-25.4 0-49.8 9.7-68.3 27.1l-70.1 66.2c-10.3 9.8-10.1 26.3 .5 35.7c9.3 8.3 23.4 8.1 32.5-.3l71.9-66.4c9.7-9 24.9-8.4 33.9 1.4s8.4 24.9-1.4 33.9l-.8 .8 74.4 74.4c10 10 16.5 22.3 19.4 35.1l74.8 0zM64 336a16 16 0 1 0 -32 0 16 16 0 1 0 32 0zm528 16a16 16 0 1 0 0-32 16 16 0 1 0 0 32z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </template>
+
+        
+        <section id="view-admin" class="view admin-view">
+            <div class="admin-layout">
+                
+                <aside class="admin-sidebar">
+                    <div class="admin-sidebar-header">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div class="logo-wrapper">
+                                <span class="material-symbols-outlined logo-icon">shield_person</span>
+                            </div>
+                            <div class="admin-sidebar-info">
+                                <h3>Admin Local</h3>
+                                <p>La Tarima 2.0</p>
+                            </div>
+                        </div>
+                        <button type="button" id="btn-close-admin-header" class="btn-close-mobile" style="background: rgba(255,255,255,0.1); color: white; margin-left: auto;">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <nav class="admin-nav">
+                        <button type="button" id="tab-btn-dashboard" class="admin-nav-btn active">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            <span>Dashboard</span>
+                        </button>
+                        <button type="button" id="tab-btn-catalog" class="admin-nav-btn">
+                            <span class="material-symbols-outlined">inventory_2</span>
+                            <span>Catálogo</span>
+                        </button>
+                        <button type="button" id="tab-btn-pages" class="admin-nav-btn">
+                            <span class="material-symbols-outlined">view_quilt</span>
+                            <span>Páginas & Menús</span>
+                        </button>
+                        <button type="button" id="tab-btn-maintenance" class="admin-nav-btn">
+                            <span class="material-symbols-outlined">construction</span>
+                            <span>Mantenimiento</span>
+                        </button>
+                    </nav>
+                    <div class="admin-sidebar-footer">
+                        <button type="button" id="btn-close-admin" class="btn-sidebar-close">
+                            <span class="material-symbols-outlined">logout</span>
+                            <span>Salir del Panel</span>
+                        </button>
+                    </div>
+                </aside>
+
+                
+                <main class="admin-main">
+
+                    <div class="admin-content-inner">
+                        
+                        <div id="admin-dashboard-view" class="admin-section-view">
+                            <div class="welcome-header">
+                                <h2>¡Hola, Administrador! 👋</h2>
+                                <p>Gestioná tu catálogo, la composición del Home y la configuración visual del sitio desde un solo lugar.</p>
+                            </div>
+
+                            
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-card-icon" style="background: rgba(180, 132, 108, 0.1); color: var(--primary-color);">
+                                        <span class="material-symbols-outlined">folder</span>
+                                    </div>
+                                    <div class="stat-card-info">
+                                        <span class="stat-label">Categorías</span>
+                                        <h3 id="stat-total-categories">0</h3>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-card-icon" style="background: rgba(49, 130, 206, 0.1); color: #3182CE;">
+                                        <span class="material-symbols-outlined">inventory_2</span>
+                                    </div>
+                                    <div class="stat-card-info">
+                                        <span class="stat-label">Productos</span>
+                                        <h3 id="stat-total-products">0</h3>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-card-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
+                                        <span class="material-symbols-outlined">palette</span>
+                                    </div>
+                                    <div class="stat-card-info">
+                                        <span class="stat-label">Tema Activo</span>
+                                        <h3 id="stat-active-theme">Clásico</h3>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-card-icon" style="background: rgba(234, 179, 8, 0.1); color: #eab308;">
+                                        <span class="material-symbols-outlined">trending_up</span>
+                                    </div>
+                                    <div class="stat-card-info">
+                                        <span class="stat-label">Visitas Totales</span>
+                                        <h3 id="stat-total-views">0</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="dashboard-columns">
+                                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                    <div class="admin-card action-panel">
+                                        <header class="admin-page-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem;">
+                                            <h3 class="admin-header-title">
+                                                <span class="material-symbols-outlined">bolt</span>
+                                                Acceso Rápido
+                                            </h3>
+                                        </header>
+                                        <div class="quick-shortcuts">
+                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-catalog').click(); setTimeout(() => { const btn = document.getElementById('btn-open-add-category'); if (btn) btn.click(); }, 100);">
+                                                <span class="material-symbols-outlined">create_new_folder</span>
+                                                <span>Nueva Categoría</span>
+                                            </button>
+                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-catalog').click(); setTimeout(() => { window.currentAdminPhase = 'products'; window.renderAdminUX(); }, 100);">
+                                                <span class="material-symbols-outlined">add_box</span>
+                                                <span>Ver Productos</span>
+                                            </button>
+                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-pages').click();">
+                                                <span class="material-symbols-outlined">sort</span>
+                                                <span>Ordenar Home</span>
+                                            </button>
+                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-maintenance').click();">
+                                                <span class="material-symbols-outlined">auto_fix_high</span>
+                                                <span>Limpiar Disco</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="admin-card theme-selector-panel">
+                                        <header class="admin-page-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem;">
+                                            <h3 class="admin-header-title">
+                                                <span class="material-symbols-outlined">palette</span>
+                                                Temática de la Web
+                                            </h3>
+                                        </header>
+                                        <p class="section-desc" style="margin-bottom: 0.8rem;">Elegí una skin temática para decorar tu tienda instantáneamente.</p>
+                                        <div class="form-group" style="margin-bottom: 0;">
+                                            <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Skin / Tema Activo:</label>
+                                            <select id="admin-theme-select" class="premium-select">
+                                                <option value="classic">🌲 Madera Clásica (Default)</option>
+                                                <option value="sobrio">⚫ Sobrio V1 (Negro, Blanco y Gris)</option>
+                                                <option value="mundial">⚽ Mes Mundialista (Celeste y Blanco)</option>
+                                                <option value="navidad">🎅 Navidad (Rojo y Verde)</option>
+                                                <option value="halloween">🎃 Halloween (Naranja y Violeta)</option>
+                                                <option value="valentin">💖 San Valentín (Rosa y Corazones)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="admin-card popular-panel">
+                                    <header class="admin-page-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem;">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">trending_up</span>
+                                            Productos Más Visitados
+                                        </h3>
+                                    </header>
+                                    <div class="popular-products-list" id="dashboard-top-products-list">
+                                        <div class="dashboard-empty-state">
+                                            <span class="material-symbols-outlined">monitoring</span>
+                                            <p>No hay datos de visitas registrados todavía.</p>
+                                        </div>
+                                    </div>
+
+                                    <header class="admin-page-header" style="margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.5rem;">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">pie_chart</span>
+                                            Visitas por Categoría
+                                        </h3>
+                                    </header>
+                                    <div class="popular-products-list" id="dashboard-categories-views-list">
+                                        <div class="dashboard-empty-state">
+                                            <span class="material-symbols-outlined">pie_chart</span>
+                                            <p>No hay visitas registradas todavía.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div id="admin-catalog-view" class="admin-section-view" style="display: none;">
+                            
+                            <div id="admin-categories-view">
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">inventory_2</span>
+                                            Estanterías por Categoría
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" id="btn-open-add-category" class="btn-primary">➕ Nueva Categoría</button>
+                                        </div>
+                                    </header>
+                                    <div id="admin-category-tree" class="category-tree-container">
+                                        
+                                    </div>
+                                </div>
+
+                                
+                                <div id="admin-rentals-view" class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">key</span>
+                                            Alquileres (Sistema Aparte)
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" id="btn-open-add-rental" class="btn-primary">➕ Nuevo Alquiler</button>
+                                        </div>
+                                    </header>
+                                    <div class="admin-table-responsive">
+                                        <table class="admin-products-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Foto</th>
+                                                    <th>Producto</th>
+                                                    <th>Precio</th>
+                                                    <th style="text-align: center;">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="admin-rentals-table-body">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div id="admin-products-view" class="admin-card" style="display: none;">
+                                <header class="admin-page-header">
+                                    <h3 id="admin-products-title" class="admin-header-title">
+                                        <span class="material-symbols-outlined">inventory_2</span>
+                                        Productos
+                                    </h3>
+                                    <div class="admin-header-actions">
+                                        <button type="button" id="btn-back-to-categories" class="btn-outline" style="padding: 0.4rem 1rem; width: auto; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;">
+                                            <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span> Volver
+                                        </button>
+                                        <button type="button" id="btn-add-product-main" class="btn-primary">➕ Nuevo Producto</button>
+                                    </div>
+                                </header>
+
+                                
+                                <div class="admin-filters-bar">
+                                    <div class="search-wrapper">
+                                        <span class="material-symbols-outlined">search</span>
+                                        <input type="text" id="admin-search" placeholder="Buscar por nombre o SKU...">
+                                    </div>
+                                    <div class="filter-wrapper">
+                                        <select id="admin-category-filter">
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="admin-table-responsive">
+                                    <table class="admin-products-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Foto</th>
+                                                <th>Producto / SKU</th>
+                                                <th>Categoría</th>
+                                                <th style="text-align: center;">Variantes</th>
+                                                <th style="text-align: center;">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="admin-products-table-body">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                
+                                <div class="admin-pagination-container">
+                                    <button type="button" id="btn-admin-prev" class="btn-outline">
+                                        <span class="material-symbols-outlined">chevron_left</span> Anterior
+                                    </button>
+                                    <span id="admin-page-indicator">Página 1 de 1</span>
+                                    <button type="button" id="btn-admin-next" class="btn-outline">
+                                        Siguiente <span class="material-symbols-outlined">chevron_right</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div id="admin-pages-view" class="admin-section-view" style="display: none;">
+                            
+                            <div class="admin-pill-tabs">
+                                <button type="button" class="admin-pill-tab active" data-subtab="page-home">
+                                    <span class="material-symbols-outlined">home</span>
+                                    <span>Inicio</span>
+                                </button>
+                                <button type="button" class="admin-pill-tab" data-subtab="page-categories">
+                                    <span class="material-symbols-outlined">category</span>
+                                    <span>Categorías</span>
+                                </button>
+                                <button type="button" class="admin-pill-tab" data-subtab="page-avisos">
+                                    <span class="material-symbols-outlined">campaign</span>
+                                    <span>Avisos</span>
+                                </button>
+                                <button type="button" class="admin-pill-tab" data-subtab="page-nosotros">
+                                    <span class="material-symbols-outlined">info</span>
+                                    <span>Nosotros</span>
+                                </button>
+                                <button type="button" class="admin-pill-tab" data-subtab="page-cart">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                    <span>Carrito</span>
+                                </button>
+                                <button type="button" class="admin-pill-tab" data-subtab="page-videos">
+                                    <span class="material-symbols-outlined">smart_display</span>
+                                    <span>Videos</span>
+                                </button>
+                                <button type="button" class="admin-pill-tab" data-subtab="page-catalogo">
+                                    <span class="material-symbols-outlined">menu_book</span>
+                                    <span>Catálogo</span>
+                                </button>
+                                <button type="button" class="admin-pill-tab" data-subtab="page-search">
+                                    <span class="material-symbols-outlined">search</span>
+                                    <span>Buscar</span>
+                                </button>
+                            </div>
+
+                            
+                            <div id="subview-page-home" class="admin-subview" style="display: block;">
+                                
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">settings</span>
+                                            Configuración en Menú
+                                        </h3>
+                                    </header>
+                                    <div id="admin-config-menu-home" class="sections-list-stack"></div>
+                                </div>
+                                
+                                
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">format_list_numbered</span>
+                                            Orden de Secciones del Inicio
+                                        </h3>
+                                    </header>
+                                    <p class="section-desc">Ordená y renombra las secciones principales del Home.</p>
+                                    <div id="admin-home-sections-list" class="sections-list-stack"></div>
+                                </div>
+
+                                
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">view_carousel</span>
+                                            Banners Promocionales (Inicio)
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="home">➕ Agregar Componente</button>
+                                        </div>
+                                    </header>
+                                    <div id="admin-components-home" class="sections-list-stack"></div>
+                                </div>
+                            </div>
+
+                            
+                            <div id="subview-page-categories" class="admin-subview" style="display: none;">
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">settings</span>
+                                            Configuración en Menú
+                                        </h3>
+                                    </header>
+                                    <div id="admin-config-menu-categories" class="sections-list-stack"></div>
+                                </div>
+
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">view_carousel</span>
+                                            Banners Superiores (Categorías)
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="categories">➕ Agregar Componente</button>
+                                        </div>
+                                    </header>
+                                    <div id="admin-components-categories" class="sections-list-stack"></div>
+                                </div>
+                            </div>
+
+                            
+                            <div id="subview-page-avisos" class="admin-subview" style="display: none;">
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">settings</span>
+                                            Configuración en Menú
+                                        </h3>
+                                    </header>
+                                    <div id="admin-config-menu-avisos" class="sections-list-stack"></div>
+                                </div>
+
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">view_carousel</span>
+                                            Contenido de Avisos
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="avisos">➕ Agregar Componente</button>
+                                        </div>
+                                    </header>
+                                    <div id="admin-components-avisos" class="sections-list-stack"></div>
+                                </div>
+                            </div>
+
+                            
+                            <div id="subview-page-nosotros" class="admin-subview" style="display: none;">
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">settings</span>
+                                            Configuración en Menú
+                                        </h3>
+                                    </header>
+                                    <div id="admin-config-menu-nosotros" class="sections-list-stack"></div>
+                                </div>
+
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">history_edu</span>
+                                            Bloques de Historia
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" id="btn-add-nosotros-block" class="btn-primary">➕ Agregar Bloque</button>
+                                        </div>
+                                    </header>
+                                    <div id="admin-nosotros-list" class="sections-list-stack"></div>
+                                </div>
+
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">share</span>
+                                            Redes Sociales & Contacto
+                                        </h3>
+                                    </header>
+                                    <form id="admin-social-form" class="admin-form">
+                                        <div class="admin-grid-form">
+                                            <div class="form-group">
+                                                <label>Instagram</label>
+                                                <input type="text" id="admin-social-instagram" placeholder="https://instagram.com/tu_cuenta">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>TikTok</label>
+                                                <input type="text" id="admin-social-tiktok" placeholder="https://tiktok.com/@tu_cuenta">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Facebook</label>
+                                                <input type="text" id="admin-social-facebook" placeholder="https://facebook.com/tu_pagina">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>YouTube</label>
+                                                <input type="text" id="admin-social-youtube" placeholder="https://youtube.com/@tu_canal">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>WhatsApp</label>
+                                                <input type="text" id="admin-social-whatsapp" placeholder="https://wa.me/549...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Mercado Libre</label>
+                                                <input type="text" id="admin-social-mercadolibre" placeholder="https://listado.mercadolibre.com.ar/...">
+                                            </div>
+                                        </div>
+                                        <div style="text-align: right; margin-top: 1rem;">
+                                            <button type="submit" id="btn-save-social" class="btn-primary">💾 Guardar Redes Sociales</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            
+                            <div id="subview-page-cart" class="admin-subview" style="display: none;">
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">settings</span>
+                                            Configuración en Menú
+                                        </h3>
+                                    </header>
+                                    <div id="admin-config-menu-cart" class="sections-list-stack"></div>
+                                </div>
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">view_carousel</span>
+                                            Banners y Componentes (Carrito)
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="cart">➕ Agregar Componente</button>
+                                        </div>
+                                    </header>
+                                    <div id="admin-components-cart" class="sections-list-stack"></div>
+                                </div>
+                            </div>
+
+                            
+                            <div id="subview-page-videos" class="admin-subview" style="display: none;">
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">settings</span>
+                                            Configuración en Menú
+                                        </h3>
+                                    </header>
+                                    <div id="admin-config-menu-videos" class="sections-list-stack"></div>
+                                </div>
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">view_carousel</span>
+                                            Banners y Componentes (Videos)
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="videos">➕ Agregar Componente</button>
+                                        </div>
+                                    </header>
+                                    <div id="admin-components-videos" class="sections-list-stack"></div>
+                                </div>
+                            </div>
+
+                            
+                            <div id="subview-page-catalogo" class="admin-subview" style="display: none;">
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">settings</span>
+                                            Configuración en Menú
+                                        </h3>
+                                    </header>
+                                    <div id="admin-config-menu-catalog" class="sections-list-stack"></div>
+                                </div>
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">view_carousel</span>
+                                            Banners y Componentes (Catálogo)
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="catalogo">➕ Agregar Componente</button>
+                                        </div>
+                                    </header>
+                                    <div id="admin-components-catalogo" class="sections-list-stack"></div>
+                                </div>
+                            </div>
+
+                            
+                            <div id="subview-page-search" class="admin-subview" style="display: none;">
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">settings</span>
+                                            Configuración en Menú
+                                        </h3>
+                                    </header>
+                                    <div id="admin-config-menu-search" class="sections-list-stack"></div>
+                                </div>
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">view_carousel</span>
+                                            Banners y Componentes (Buscar)
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="search">➕ Agregar Componente</button>
+                                        </div>
+                                    </header>
+                                    <div id="admin-components-search" class="sections-list-stack"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div id="admin-maintenance-view" class="admin-section-view" style="display: none;">
+                            <div class="admin-nosotros-section maintenance-card">
+                                <h3>
+                                    <span class="material-symbols-outlined">build</span>
+                                    Mantenimiento del Catálogo
+                                </h3>
+                                <p class="section-desc">Convierte imágenes a <strong>WebP</strong> (calidad 80%) y elimina archivos de imagen huérfanos del disco.</p>
+                                <button type="button" id="btn-run-maintenance" class="btn-primary btn-run-clean" style="width: 100%;">
+                                    <span class="material-symbols-outlined" style="font-size:1.2rem;">auto_fix_high</span>
+                                    Ejecutar Limpieza y Conversión WebP
+                                </button>
+                                
+                                
+                                <div id="maintenance-result" class="maintenance-console-container" style="display: none;">
+                                    <div id="maintenance-summary" class="console-summary-row"></div>
+                                    <pre id="maintenance-log" class="console-output"></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </section>
+
+    </main>
+
+    
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-target="view-home">
+            <span class="material-symbols-outlined">home</span>
+            <span class="nav-label">INICIO</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-categories">
+            <span class="material-symbols-outlined">category</span>
+            <span class="nav-label">CATEGORÍAS</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-profile">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <span class="nav-label">CARRITO</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-videos">
+            <span class="material-symbols-outlined">play_circle</span>
+            <span class="nav-label">VIDEOS</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-about">
+            <span class="material-symbols-outlined">info</span>
+            <span class="nav-label">NOSOTROS</span>
+        </a>
+    </nav>
+    <div id="admin-toast" class="admin-toast"></div>
+
+                
+                <div id="admin-nosotros-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-nosotros-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Agregar / Editar Bloque de Nosotros</h3>
+                            <button type="button" id="btn-cancel-nosotros" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-nosotros-form" class="admin-form">
+                            
+                            <div class="form-group">
+                                <label>Título del Bloque</label>
+                                <input type="text" id="admin-nosotros-title" placeholder="ej: Presentación" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Tipo de Contenido Visual</label>
+                                <div class="media-type-selector" id="nosotros-media-type-selector">
+                                    <button type="button" class="media-type-btn active" data-type="image">
+                                        <span class="material-symbols-outlined">image</span>
+                                        Imagen
+                                    </button>
+                                    <button type="button" class="media-type-btn" data-type="video">
+                                        <span class="material-symbols-outlined">smart_display</span>
+                                        Video
+                                    </button>
+                                    <button type="button" class="media-type-btn" data-type="map">
+                                        <span class="material-symbols-outlined">location_on</span>
+                                        Mapa
+                                    </button>
+                                    <button type="button" class="media-type-btn" data-type="link">
+                                        <span class="material-symbols-outlined">link</span>
+                                        Enlace
+                                    </button>
+                                </div>
+                            </div>
+
+                            
+                            <div id="nosotros-panel-image" class="nosotros-media-panel form-group">
+                                <label>Subir Foto</label>
+                                <input type="file" id="admin-nosotros-image" accept="image/*">
+                                <input type="hidden" id="admin-nosotros-image-url">
+                                <div id="nosotros-image-preview" style="margin-top:0.5rem; max-width:100%;"></div>
+                            </div>
+
+                            
+                            <div id="nosotros-panel-video" class="nosotros-media-panel form-group" style="display:none;">
+                                <label>URL del Video de YouTube</label>
+                                <input type="text" id="admin-nosotros-video-url" placeholder="ej: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                                <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Se reproducirá automáticamente en silencio y en bucle.</small>
+                                <div id="nosotros-video-preview" style="margin-top:0.75rem; border-radius: 10px; overflow:hidden; display:none;"></div>
+                            </div>
+
+                            
+                            <div id="nosotros-panel-map" class="nosotros-media-panel form-group" style="display:none;">
+                                <label>Lugar a mostrar en el mapa</label>
+                                <input type="text" id="admin-nosotros-map-query" placeholder="ej: Hurlingham, Buenos Aires, Argentina">
+                                <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Al hacer clic en el mapa se abrirá Google Maps para navegar hasta allí.</small>
+                                <div id="nosotros-map-preview" style="margin-top:0.75rem; border-radius: 10px; overflow:hidden; display:none;"></div>
+                                <button type="button" id="btn-preview-map" class="btn-outline" style="margin-top:0.5rem; width:auto; padding:0.4rem 1rem; font-size:0.85rem;">🗺️ Vista Previa del Mapa</button>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Descripción del Bloque</label>
+                                <textarea id="admin-nosotros-description" rows="4" placeholder="Escribí el texto aquí..." required></textarea>
+                            </div>
+                            
+                            <div id="nosotros-panel-link" class="nosotros-media-panel form-group" style="display:none;">
+                                <label>Nombre del botón</label>
+                                <input type="text" id="admin-nosotros-link-text" placeholder="ej: Contactarnos por WhatsApp">
+                                <label style="margin-top:0.75rem;">URL del enlace</label>
+                                <input type="url" id="admin-nosotros-link-url" placeholder="ej: https://wa.me/549...">
+                                <label style="display:flex; align-items:center; gap:0.5rem; margin-top:0.85rem; cursor:pointer; font-weight:500; font-size:0.9rem;">
+                                    <input type="checkbox" id="admin-nosotros-link-newtab" style="width:18px; height:18px; accent-color:var(--primary-color); cursor:pointer;" checked>
+                                    Abrir en nueva pestaña
+                                </label>
+                                <small style="color:var(--text-muted); font-size:0.78rem; margin-top:2px; display:block;">Si está marcado, el enlace se abre en otra pestaña. Si no, redirige desde la misma.</small>
+                            </div>
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-nosotros-block" class="btn-primary" style="width: 100%; max-width: none;">Guardar Bloque de Nosotros</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                
+                <div id="admin-category-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-category-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Crear Nueva Categoría</h3>
+                            <button type="button" id="btn-cancel-category" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-cat-form" class="admin-form">
+                            <div class="form-group">
+                                <label>ID (Slug)</label>
+                                <input type="text" id="admin-cat-id" placeholder="ej: linea-infantil" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre visible</label>
+                                <input type="text" id="admin-cat-name" placeholder="ej: Línea Infantil" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Foto de Portada</label>
+                                <input type="file" id="admin-cat-image" accept="image/*">
+                            </div>
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-cat" class="btn-primary" style="width: 100%; max-width: none;">Guardar Categoría</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                
+                <div id="admin-product-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Cargar / Editar Producto</h3>
+                            <button type="button" id="btn-cancel-product" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+
+                        <form id="admin-form" class="admin-form">
+                            
+                            <div class="form-group">
+                                <label>ID del Producto (Slug)</label>
+                                <input type="text" id="admin-id" placeholder="ej: cama-casita-natural" required>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label>Título</label>
+                                <input type="text" id="admin-title" placeholder="ej: Cama Casita" required>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label style="display:flex; align-items:center; gap:0.4rem;">
+                                    <span class="material-symbols-outlined" style="font-size:16px; color:var(--primary-color);">folder_open</span>
+                                    Categoría
+                                </label>
+                                <div id="product-categories-checkboxes" style="display:flex; flex-direction:column; gap:0.6rem; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; background:white; font-family:var(--font-main); font-size:0.95rem; max-height: 200px; overflow-y: auto;">
+                                    
+                                </div>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <textarea id="admin-description" rows="3" required></textarea>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label style="display:flex; align-items:center; gap:0.4rem;">
+                                    <span class="material-symbols-outlined" style="font-size:16px; color:var(--primary-color);">smart_display</span>
+                                    URL del Video (Opcional)
+                                </label>
+                                <input type="text" id="admin-video" placeholder="ej: img/videos/mi-video.mp4" style="font-family: monospace; font-size: 0.85rem;">
+                                <small style="color: #64748b; font-size: 0.75rem; display: block; margin-top: 4px;">Pega aquí la ruta del archivo MP4 local para habilitar la vista inmersiva.</small>
+                            </div>
+
+                            
+                            <div class="form-group" style="margin-top: 1.5rem;">
+                                <label style="font-size:1.1rem; color:var(--primary-color); display:flex; align-items:center; gap:0.5rem;">
+                                    <span class="material-symbols-outlined">palette</span>
+                                    Grupos de Acabados / Colores
+                                </label>
+                                <div id="admin-acabados-groups" style="display:flex; flex-direction:column; gap:1.5rem; margin-top:1rem;">
+                                    
+                                </div>
+                                <button type="button" id="btn-add-acabado-group" class="btn-outline mt-2" style="width:100%; max-width:none; padding:0.8rem; border-style:dashed;">+ Agregar Grupo de Acabado / Color</button>
+                            </div>
+
+                            
+                            <div class="form-group attr-group" style="background:#f8f9fb;padding:1rem;border-radius:10px;border:1.5px solid #E8ECF0;">
+                                <label style="text-transform:none;letter-spacing:0;font-size:0.95rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
+                                    <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-color);">tune</span>
+                                    Variante Opcional (Datos Técnicos)
+                                </label>
+                                <div class="form-group" style="margin-bottom:0.5rem;">
+                                    <label style="font-size:0.82rem;margin-bottom:0.3rem;display:block;">Nombre de la variante</label>
+                                    <input type="text" id="admin-opt-label" placeholder="ej: Espesor de agarre">
+                                </div>
+                                <div class="form-group" style="margin-bottom:0;">
+                                    <label style="font-size:0.82rem;margin-bottom:0.3rem;display:block;">Opciones (separadas por coma)</label>
+                                    <input type="text" id="admin-opt-options" placeholder="ej: 20mm, 30mm, 40mm">
+                                </div>
+                            </div>
+
+                            
+                            <div class="form-group attr-group" style="background:#f8f9fb;padding:1rem;border-radius:10px;border:1.5px solid #E8ECF0;margin-top:1rem;">
+                                <label style="text-transform:none;letter-spacing:0;font-size:0.95rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
+                                    <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-color);">sell</span>
+                                    Etiquetas de Búsqueda (Opcional)
+                                </label>
+                                <div class="form-group" style="margin-bottom:0;">
+                                    <label style="font-size:0.82rem;margin-bottom:0.3rem;display:block;">Etiquetas (separadas por coma)</label>
+                                    <input type="text" id="admin-tags" placeholder="ej: mesa para patio, mesita de madera, exterior">
+                                </div>
+                            </div>
+
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-generate-json" class="btn-primary">Guardar Producto en Servidor</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                
+                <div id="admin-rental-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content" style="max-width: 550px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-rental-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Cargar / Editar Alquiler</h3>
+                            <button type="button" id="btn-cancel-rental" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+
+                        <form id="admin-rental-form" class="admin-form">
+                            
+                            <div class="form-group">
+                                <label>ID del Alquiler (Slug único)</label>
+                                <input type="text" id="admin-rental-id" placeholder="ej: podio-reforzado-alquiler" required>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label>Título del Producto</label>
+                                <input type="text" id="admin-rental-title" placeholder="ej: Podio Reforzado para Eventos" required>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label>Descripción / Detalles</label>
+                                <textarea id="admin-rental-description" rows="3" placeholder="Detalles del alquiler, medidas, etc..." required></textarea>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label>Precio de Alquiler (ej: $15.000 / día)</label>
+                                <input type="text" id="admin-rental-price" placeholder="ej: $12.000 / día o Consultar">
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label>Foto del Producto (WebP automático)</label>
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <input type="file" id="admin-rental-image-file" accept="image/*" style="display: none;">
+                                    <button type="button" class="btn-outline" style="width: auto; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 6px;" onclick="document.getElementById('admin-rental-image-file').click();">
+                                        <span class="material-symbols-outlined">upload_file</span> Seleccionar Foto
+                                    </button>
+                                    <span id="admin-rental-image-name" class="text-muted" style="font-size: 0.85rem;">Ninguna foto seleccionada</span>
+                                </div>
+                                <input type="hidden" id="admin-rental-image-url">
+                                <div id="admin-rental-image-preview-container" style="margin-top: 0.75rem; display: none;">
+                                    <img id="admin-rental-image-preview" src="" style="max-height: 120px; border-radius: 8px; border: 1px solid #E2E8F0;" alt="Vista previa">
+                                </div>
+                            </div>
+
+                            <button type="submit" id="btn-save-rental-submit" class="btn-primary mt-2" style="width: 100%;">Guardar Producto de Alquiler</button>
+                        </form>
+                    </div>
+                </div>
+
+                
+                <div id="admin-app-config-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-app-config-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Editar Configuración de Sección</h3>
+                            <button type="button" id="btn-cancel-app-config" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-app-config-form" class="admin-form">
+                            <input type="hidden" id="admin-config-section-key">
+                            <div class="form-group">
+                                <label>Título de la Sección</label>
+                                <input type="text" id="admin-config-title" placeholder="ej: La Tarima" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Subtítulo de la Sección</label>
+                                <input type="text" id="admin-config-subtitle" placeholder="ej: Diseño en madera" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Ícono de la Sección (Material Icon)</label>
+                                <input type="text" id="admin-config-icon" placeholder="ej: home" required>
+                                <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Podés usar nombres de <a href="https://fonts.google.com/icons" target="_blank" style="color:var(--primary-color);">Material Icons</a> como: home, search, person, notifications, info.</small>
+                                <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px; padding: 8px 12px; background: rgba(255, 149, 0, 0.08); border-left: 3px solid #ff9500; border-radius: 6px;">
+                                    <span class="material-symbols-outlined" style="color: #ff9500; font-size: 1.1rem; line-height: 1; font-variation-settings: 'FILL' 1;">warning</span>
+                                    <small style="color: #c07000; font-size: 0.75rem; font-weight: 600; margin: 0; display: block; line-height: 1.3;">
+                                        <strong>Nota de Diseño:</strong> Este ícono será el único elemento visual en la barra de navegación del cliente ("Icon Only"). No se mostrarán etiquetas de texto en el menú.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 1rem;">
+                                <label style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="admin-config-visible" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span>Sección Activa (Visible en menú)</span>
+                                </label>
+                            </div>
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-app-config" class="btn-primary" style="width: 100%; max-width: none;">Guardar Configuración</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                
+                <div id="admin-component-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-component-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Agregar / Editar Componente</h3>
+                            <button type="button" id="btn-cancel-section-component" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-component-form" class="admin-form">
+                            <input type="hidden" id="admin-comp-id">
+                            
+                            
+                            <div class="form-group">
+                                <label>Tipo de Componente</label>
+                                <select id="admin-comp-type" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; transition:border-color 0.2s ease; appearance:auto; cursor:pointer;">
+                                    <option value="banner">🌅 Banner Promocional</option>
+                                    <option value="product">⭐️ Destacar Producto</option>
+                                    <option value="video">🎥 Video de Promoción</option>
+                                </select>
+                            </div>
+
+                            
+                            <div class="form-group" id="admin-comp-position-group" style="display: none;">
+                                <label>Posición del Componente</label>
+                                <select id="admin-comp-position" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; transition:border-color 0.2s ease; appearance:auto; cursor:pointer;">
+                                    <option value="bottom">⬇️ Inferior (Después de los carruseles)</option>
+                                    <option value="top">⬆️ Superior (Antes de los carruseles)</option>
+                                </select>
+                            </div>
+
+
+                            
+                            <div id="comp-panel-banner" class="comp-media-panel form-group">
+                                <div class="form-group" style="margin-bottom:1rem;">
+                                    <label>Foto del Banner</label>
+                                    <input type="file" id="admin-comp-banner-image" accept="image/*">
+                                    <input type="hidden" id="admin-comp-banner-image-url">
+                                    <div id="comp-banner-preview" style="margin-top:0.5rem; max-width:100%;"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enlace / Link de Acción (Opcional)</label>
+                                    <input type="text" id="admin-comp-banner-link" placeholder="ej: https://maps.google.com/...">
+                                </div>
+                            </div>
+
+                            
+                            <div id="comp-panel-product" class="comp-media-panel form-group" style="display:none;">
+                                <div class="form-group" style="margin-bottom:1rem;">
+                                    <label>Seleccionar Producto</label>
+                                    <select id="admin-comp-product-select" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; appearance:auto; cursor:pointer;">
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mensaje de Alerta / Badge (ej: ¡Novedad de la semana!)</label>
+                                    <input type="text" id="admin-comp-product-badge" placeholder="ej: ¡Súper Venta!">
+                                </div>
+                            </div>
+
+                            
+                            <div id="comp-panel-video" class="comp-media-panel form-group" style="display:none;">
+                                <div class="form-group">
+                                    <label>URL del Video de YouTube</label>
+                                    <input type="text" id="admin-comp-video-url" placeholder="ej: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                                    <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Se reproducirá automáticamente en silencio y en bucle.</small>
+                                    <div id="comp-video-preview" style="margin-top:0.75rem; border-radius:10px; overflow:hidden; display:none;"></div>
+                                </div>
+                            </div>
+
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-section-component" class="btn-primary" style="width: 100%; max-width: none;">Guardar Componente</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+    
+    <script src="js/confetti-arg.js?v=1"></script>
+    <script src="js/header-deco-arg.js?v=3"></script>
+    <script src="js/site-config.js?v=5"></script>
+    <script src="js/products-data.js?v=5"></script>
+    <script src="js/rentals-data.js?v=5"></script>
+    <script src="js/data.js?v=5"></script>
+    <script src="js/ui.js?v=10"></script>
+    <script src="js/admin.js?v=6"></script>
+    <script src="js/avisos.js?v=5"></script>
+    <script src="js/carrito.js?v=5"></script>
+    <script src="js/main.js?v=5"></script>
+    <script src="js/categorias.js?v=1"></script>
+    <script src="js/videos.js?v=1"></script>
+    <script src="js/pwa-banner.js?v=2"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js?v=7').then((registration) => {
+                    console.log('✅ ServiceWorker registration successful with scope: ', registration.scope);
+                }, (err) => {
+                    console.log('❌ ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
