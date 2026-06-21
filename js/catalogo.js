@@ -114,26 +114,36 @@ document.addEventListener('DOMContentLoaded', () => {
         return count;
     }
 
-    // 4. Renderizar la lista en el DOM
-    function renderCatalogList(productsToRender) {
-        if (!catalogListContainer) return;
-        catalogListContainer.innerHTML = '';
+    let itemsToShow = 12;
+    let currentFilteredProducts = [];
 
-        if (productsToRender.length === 0) {
+    // 4. Renderizar la lista en el DOM con soporte de paginación (scroll infinito)
+    function renderCatalogList(productsToRender, append = false) {
+        if (!catalogListContainer) return;
+        
+        if (!append) {
+            catalogListContainer.innerHTML = '';
+            itemsToShow = 12;
+            currentFilteredProducts = productsToRender;
+        }
+
+        if (currentFilteredProducts.length === 0) {
             if (emptyState) emptyState.style.display = 'flex';
-            if (resultsCounter) resultsCounter.textContent = 'No se encontraron productos';
             return;
         }
 
         if (emptyState) emptyState.style.display = 'none';
 
-        productsToRender.forEach((product, idx) => {
+        const startIdx = catalogListContainer.childElementCount;
+        const batch = currentFilteredProducts.slice(startIdx, itemsToShow);
+
+        batch.forEach((product, idx) => {
             const row = document.createElement('div');
             row.className = 'catalog-row';
             row.dataset.productId = product.id;
             
-            // Retardo de animación en cascada para carga premium
-            row.style.animationDelay = `${(idx % 15) * 0.05}s`;
+            // Retardo de animación en cascada para carga premium (basado en índice absoluto)
+            row.style.animationDelay = `${((startIdx + idx) % 15) * 0.05}s`;
 
             // Obtener variantes de envío
             const shippingVariants = getShippingVariants(product);
@@ -147,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const detailUrl = `./?prod=${product.id}`;
             infoCol.innerHTML = `
                 <a href="${detailUrl}" class="catalog-thumb-link">
-                    <img src="${product.image}" class="catalog-thumb" alt="${product.title}" onerror="this.onerror=null; this.src='img/logo_provisional.png';">
+                    <img src="${product.image}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='img/logo_provisional.png';">
                 </a>
                 <div class="catalog-details">
                     <span class="catalog-category-tag">${product.categoryName}</span>
@@ -281,7 +291,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Normalizar query ya viene hecho desde el padre, pero por las dudas
         const q = query.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
         
         const filtered = allProducts.filter(p => {
@@ -294,6 +303,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         renderCatalogList(filtered);
     };
+
+    // 6. Configurar Scroll Infinito sobre el scroll de la propia ventana del iframe
+    window.addEventListener('scroll', () => {
+        const threshold = 300; // Pixeles antes de llegar al final para gatillar
+        const scrollHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const clientHeight = window.innerHeight;
+
+        const position = scrollHeight - scrollTop - clientHeight;
+        if (position < threshold) {
+            if (itemsToShow < currentFilteredProducts.length) {
+                itemsToShow += 12;
+                renderCatalogList(currentFilteredProducts, true);
+            }
+        }
+    });
 
     // Inicializar
     loadProducts();

@@ -1,14 +1,24 @@
-const CACHE_NAME = 'tarima-cache-v7';
+const CACHE_NAME = 'tarima-cache-v8';
 const STATIC_ASSETS = [
     './',
     './index.html',
+    './catalogo.html',
     './css/style.css',
+    './css/catalogo.css',
     './js/ui.js',
     './js/data.js',
     './js/products-data.js',
     './js/rentals-data.js',
     './js/site-config.js',
-    './js/main.js'
+    './js/main.js',
+    './js/catalogo.js',
+    './js/carrito.js',
+    './js/avisos.js',
+    './js/videos.js',
+    './js/categorias.js',
+    './manifest.json',
+    './favicon.ico',
+    './img/logo_provisional.png'
 ];
 
 self.addEventListener('install', (event) => {

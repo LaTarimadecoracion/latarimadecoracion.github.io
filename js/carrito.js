@@ -151,81 +151,86 @@
             style.textContent = `
                 #view-profile .view-content {
                     display: block !important;
-                    padding: 1.5rem !important;
-                    overflow-y: auto;
-                    height: 100%;
-                    background: #fdfdfd;
+                    padding: 1rem !important;
                 }
                 .profile-card-header {
-                    background: white;
-                    border-radius: var(--radius-md, 12px);
-                    padding: 1.5rem 1.25rem;
-                    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
-                    border: 1.5px solid #E8ECF0;
+                    background: var(--surface-color, white);
+                    border-radius: 8px;
+                    padding: 1rem 1.25rem;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.02), 0 2px 8px rgba(0,0,0,0.02);
+                    border: 1px solid #EAEBE9;
                     display: flex;
-                    flex-direction: column;
+                    flex-direction: row;
                     align-items: center;
-                    text-align: center;
+                    justify-content: space-between;
+                    gap: 1rem;
                     position: relative;
-                    transition: all 0.2s ease;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 }
                 .profile-card-header:hover {
                     border-color: var(--primary-color, #c0510a);
+                    box-shadow: 0 6px 24px rgba(192, 81, 10, 0.05);
+                }
+                .profile-header-left {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.85rem;
+                    text-align: left;
                 }
                 .profile-settings-btn {
-                    position: absolute;
-                    top: 1rem;
-                    right: 1rem;
-                    background: none;
+                    background: #f5f4f0;
                     border: none;
+                    border-radius: 6px;
+                    width: 38px;
+                    height: 38px;
                     cursor: pointer;
-                    color: var(--text-muted, #64748b);
+                    color: #6d675b;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    transition: color 0.2s, transform 0.2s;
+                    transition: all 0.2s ease;
                 }
                 .profile-settings-btn:hover {
-                    color: var(--primary-color, #c0510a);
+                    background: var(--primary-color, #c0510a);
+                    color: white;
                     transform: rotate(45deg);
                 }
                 .profile-avatar-circle {
-                    width: 72px;
-                    height: 72px;
-                    border-radius: 50%;
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 8px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     color: white;
-                    font-size: 32px;
-                    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+                    font-size: 22px;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
                     flex-shrink: 0;
                     background-size: cover;
                     background-position: center;
-                    margin-bottom: 0.8rem;
                 }
                 .profile-info h3 {
                     margin: 0;
-                    font-size: 1.15rem;
+                    font-size: 1rem;
                     font-weight: 700;
-                    color: var(--text-main, #334155);
+                    color: #2c2520;
                 }
                 .profile-info p {
-                    margin: 4px 0 0 0;
-                    font-size: 0.8rem;
-                    color: var(--text-muted, #64748b);
+                    margin: 2px 0 0 0;
+                    font-size: 0.78rem;
+                    color: #8c857b;
                 }
                 .profile-edit-form {
-                    background: white;
-                    border-radius: var(--radius-md, 12px);
-                    padding: 1.25rem;
-                    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
-                    border: 1.5px solid #E8ECF0;
+                    background: var(--surface-color, white);
+                    border-radius: 8px;
+                    padding: 1.5rem;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+                    border: 1px solid #EAEBE9;
                     margin-top: 1rem;
                     display: flex;
                     flex-direction: column;
-                    gap: 0.8rem;
-                    animation: slideDown 0.2s ease-out;
+                    gap: 1rem;
+                    animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 }
                 @keyframes slideDown {
                     from { opacity: 0; transform: translateY(-8px); }
@@ -239,7 +244,7 @@
                 }
                 .avatar-option {
                     height: 40px;
-                    border-radius: 8px;
+                    border-radius: 4px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -254,127 +259,204 @@
                 }
                 .cart-section {
                     margin-top: 1.75rem;
-                    margin-bottom: 5.5rem;
+                    margin-bottom: 0px;
                 }
                 .cart-section h4 {
-                    font-size: 0.85rem;
+                    font-size: 0.8rem;
                     text-transform: uppercase;
-                    letter-spacing: 0.6px;
-                    color: var(--text-muted, #64748b);
-                    margin-bottom: 0.85rem;
-                    font-weight: 700;
+                    letter-spacing: 1px;
+                    color: #8c857b;
+                    margin-bottom: 1rem;
+                    font-weight: 800;
                     display: flex;
                     align-items: center;
-                    gap: 6px;
+                    gap: 8px;
                 }
                 .cart-item-row {
-                    background: white;
-                    border-radius: 12px;
-                    padding: 0.9rem;
-                    border: 1.5px solid #E8ECF0;
+                    background: var(--surface-color, white);
+                    border-radius: 8px;
+                    padding: 1rem;
+                    border: 1px solid #EAEBE9;
                     display: flex;
-                    flex-direction: column;
-                    gap: 0.8rem;
-                    margin-bottom: 0.8rem;
-                    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
-                    animation: fadeIn 0.2s ease;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 1.25rem;
+                    margin-bottom: 0.9rem;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.015);
+                    transition: all 0.25s ease;
+                    animation: fadeIn 0.3s ease;
+                }
+                .cart-item-row:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+                    border-color: #d8d3c9;
                 }
                 .cart-item-clickable-area {
                     display: flex;
-                    align-items: flex-start;
+                    align-items: center;
                     gap: 1rem;
-                    width: 100%;
+                    flex: 1;
                     cursor: pointer;
                     overflow: hidden;
                 }
                 .cart-item-thumb {
-                    width: 56px;
-                    height: 56px;
-                    border-radius: 8px;
+                    width: 68px;
+                    height: 68px;
+                    border-radius: 6px;
                     background-size: cover;
                     background-position: center;
-                    border: 1px solid #E2E8F0;
+                    border: 1px solid #EAEBE9;
                     flex-shrink: 0;
+                    transition: transform 0.25s ease;
+                }
+                .cart-item-row:hover .cart-item-thumb {
+                    transform: scale(1.05);
                 }
                 .cart-item-details {
                     flex: 1;
                     overflow: hidden;
+                    text-align: left;
                 }
                 .cart-item-details h5 {
                     margin: 0 0 4px 0;
-                    font-size: 0.9rem;
+                    font-size: 0.95rem;
                     font-weight: 700;
-                    color: var(--text-main, #334155);
+                    color: #2c2520;
                     line-height: 1.3;
                 }
                 .cart-item-details p {
-                    margin: 2px 0 0 0;
+                    margin: 0;
                     font-size: 0.78rem;
-                    color: var(--text-muted, #64748b);
-                    line-height: 1.5;
+                    color: #6d675b;
+                    line-height: 1.4;
+                }
+                .cart-item-details .item-tag {
+                    display: inline-block;
+                    font-size: 0.7rem;
+                    color: #c0510a;
+                    background: #fdf5ef;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    margin-top: 4px;
+                    font-weight: 600;
+                }
+                .cart-item-actions-group {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    flex-shrink: 0;
                 }
                 .cart-item-qty-control {
                     display: flex;
                     align-items: center;
-                    gap: 4px;
-                    background: #f8fafc;
-                    border-radius: 20px;
-                    padding: 3px 6px;
-                    border: 1.5px solid #e2e8f0;
+                    gap: 6px;
+                    background: #f5f4f0;
+                    border-radius: 6px;
+                    padding: 4px 8px;
+                    border: 1px solid #EAEBE9;
                     transition: all 0.2s ease;
                 }
                 .cart-item-qty-control:hover {
                     border-color: #cbd5e1;
+                    background: #ebeae6;
                 }
                 .qty-btn {
-                    background: none;
+                    background: var(--surface-color, white);
                     border: none;
-                    width: 26px;
-                    height: 26px;
+                    width: 28px;
+                    height: 28px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     cursor: pointer;
-                    color: #64748b;
-                    font-weight: 700;
-                    font-size: 16px;
-                    padding: 0;
-                    border-radius: 50%;
-                    transition: background 0.2s, color 0.2s, transform 0.1s;
+                    color: #6d675b;
+                    font-weight: 800;
+                    font-size: 15px;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                    transition: all 0.2s ease;
                 }
                 .qty-btn:hover {
-                    background: #e2e8f0;
-                    color: #1e293b;
-                }
-                .qty-btn:active {
-                    transform: scale(0.9);
+                    background: #c0510a;
+                    color: white;
                 }
                 .qty-val {
                     font-size: 0.85rem;
                     font-weight: 700;
-                    min-width: 20px;
+                    min-width: 22px;
                     text-align: center;
-                    color: #1e293b;
+                    color: #2c2520;
                 }
                 .cart-item-del-btn {
-                    background: none;
+                    background: #fff1f2;
                     border: none;
-                    padding: 0.4rem;
-                    cursor: pointer;
-                    color: #e11d48;
-                    opacity: 0.7;
+                    border-radius: 6px;
+                    width: 38px;
+                    height: 38px;
                     display: flex;
                     align-items: center;
-                    transition: opacity 0.2s;
+                    justify-content: center;
+                    cursor: pointer;
+                    color: #e11d48;
+                    transition: all 0.2s ease;
                 }
                 .cart-item-del-btn:hover {
-                    opacity: 1;
+                    background: #ffe4e6;
+                    color: #be123c;
+                    transform: scale(1.05);
                 }
                 .cart-actions-bar {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.6rem;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 0.8rem;
                     margin-top: 1.5rem;
+                }
+                .cart-actions-bar #btn-cart-share {
+                    grid-column: span 2;
+                }
+                .giant-btn {
+                    border-radius: 6px;
+                    padding: 0.9rem 1.5rem;
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                    letter-spacing: 0.3px;
+                    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+                }
+                .giant-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+                }
+                @media (max-width: 600px) {
+                    .profile-card-header {
+                        padding: 0.85rem 1rem;
+                    }
+                    .cart-item-row {
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 0.8rem;
+                        padding: 0.85rem;
+                    }
+                    .cart-item-clickable-area {
+                        align-items: flex-start;
+                    }
+                    .cart-item-thumb {
+                        width: 60px;
+                        height: 60px;
+                    }
+                    .cart-item-actions-group {
+                        justify-content: space-between;
+                        border-top: 1px solid #f5f4f0;
+                        padding-top: 0.6rem;
+                        margin-top: 0.2rem;
+                    }
+                    .cart-actions-bar {
+                        grid-template-columns: 1fr;
+                    }
+                    .cart-actions-bar #btn-cart-share {
+                        grid-column: span 1;
+                    }
                 }
             `;
             document.head.appendChild(style);
@@ -419,11 +501,11 @@
                                             ${item.medida ? `<span style="display:block; margin-bottom: 2px;">Medida: <strong>${item.medida}</strong></span>` : ''}
                                             ${item.opcion ? `<span style="display:block; margin-bottom: 2px;">${item.opcionLabel || 'Opción'}: <strong>${item.opcion}</strong></span>` : ''}
                                         </p>
-                                        <p style="font-size:0.72rem; color:#94a3b8; margin: 4px 0 0 0;">${item.catName}</p>
+                                        <span class="item-tag">${item.catName}</span>
                                     </div>
                                 </div>
-                                <!-- Quantity & Delete Right Actions Group -->
-                                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 12px; border-top: 1px solid #f1f5f9; padding-top: 0.8rem; margin-top: 0.2rem;">
+                                <!-- Quantity & Delete Actions Group -->
+                                <div class="cart-item-actions-group">
                                     <!-- Qty Control -->
                                     <div class="cart-item-qty-control">
                                         <button type="button" class="qty-btn qty-minus" data-index="${idx}">-</button>
@@ -431,7 +513,7 @@
                                         <button type="button" class="qty-btn qty-plus" data-index="${idx}">+</button>
                                     </div>
                                     <!-- Delete Button -->
-                                    <button type="button" class="cart-item-del-btn" data-index="${idx}" title="Quitar de la lista de deseos" style="background: #fff1f2; border-radius: 8px; padding: 6px; color: #e11d48;">
+                                    <button type="button" class="cart-item-del-btn" data-index="${idx}" title="Quitar de la lista de deseos">
                                         <span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
                                     </button>
                                 </div>
@@ -446,9 +528,9 @@
                             </button>
                             <button type="button" id="btn-cart-checkout-pickup" class="btn-outline giant-btn" style="display:flex; align-items:center; justify-content:center; gap:8px; border-color:#f5c299; background:white; color:#c0510a;">
                                 <span class="material-symbols-outlined">storefront</span>
-                                Retirar por Taller (Hurlingham)
+                                Retirar por Taller
                             </button>
-                            <button type="button" id="btn-cart-share" class="btn-outline giant-btn" style="display:flex; align-items:center; justify-content:center; gap:8px; border-color:#cbd5e1; background:white; color:#475569; margin-top: 4px;">
+                            <button type="button" id="btn-cart-share" class="btn-outline giant-btn" style="display:flex; align-items:center; justify-content:center; gap:8px; border-color:#cbd5e1; background:white; color:#475569;">
                                 <span class="material-symbols-outlined">share</span>
                                 Compartir esta Lista / Carrito
                             </button>
@@ -459,27 +541,27 @@
 
             // Estructura de cabecera de perfil centrado + engranaje en esquina superior derecha
             viewContainer.innerHTML = `
-                <!-- Cabecera de Perfil (Centrada + Engranaje Config) -->
+                <!-- Cabecera de Perfil Compacta (Avatar y datos a la izq, config a la derecha) -->
                 <div class="profile-card-header">
-                    <!-- Botón de Engranaje de Configuración en Esquina Superior Derecha -->
-                    <button type="button" class="profile-settings-btn" id="btn-toggle-profile-settings" title="Configurar Perfil">
-                        <span class="material-symbols-outlined" style="font-size: 24px;">settings</span>
-                    </button>
-
-                    <!-- Avatar Centrado -->
-                    ${userData.photo ? `
-                        <div class="profile-avatar-circle" style="background-image: url('${userData.photo}'); border: 2.5px solid var(--primary-color, #c0510a);"></div>
-                    ` : `
-                        <div class="profile-avatar-circle" style="background: ${curPreset.gradient};">
-                            <span class="material-symbols-outlined" style="font-size: 32px;">${curPreset.icon}</span>
+                    <div class="profile-header-left">
+                        <!-- Avatar Compacto -->
+                        ${userData.photo ? `
+                            <div class="profile-avatar-circle" style="background-image: url('${userData.photo}'); border: 2px solid var(--primary-color, #c0510a);"></div>
+                        ` : `
+                            <div class="profile-avatar-circle" style="background: ${curPreset.gradient};">
+                                <span class="material-symbols-outlined" style="font-size: 24px;">${curPreset.icon}</span>
+                            </div>
+                        `}
+                        <!-- Datos del Perfil -->
+                        <div class="profile-info">
+                            <h3>${displayName}</h3>
+                            <p>${userData.phone.trim() ? `📞 ${userData.phone.trim()}` : 'Sin celular configurado'}</p>
                         </div>
-                    `}
-
-                    <!-- Datos del Perfil Centrados Abajo -->
-                    <div class="profile-info">
-                        <h3>${displayName}</h3>
-                        <p>${userData.phone.trim() ? `📞 ${userData.phone.trim()}` : 'Sin celular configurado'}</p>
                     </div>
+                    <!-- Botón de Engranaje de Configuración a la Derecha -->
+                    <button type="button" class="profile-settings-btn" id="btn-toggle-profile-settings" title="Configurar Perfil">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">settings</span>
+                    </button>
                 </div>
 
                 <!-- Formulario de Configuración de Datos (Oculto por defecto, campos ordenados por despacho) -->

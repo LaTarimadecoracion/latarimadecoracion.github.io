@@ -195,7 +195,7 @@
                         if (aviso.imageUrl) {
                             bodyHTML = `
                                 <div style="border-radius:8px; overflow:hidden; margin:0.4rem 0; box-shadow:var(--shadow-sm); border:1px solid #E2E8F0;">
-                                    <img src="${aviso.imageUrl}" style="width:100%; height:auto; display:block; max-height:160px; object-fit:cover;">
+                                    <img src="${aviso.imageUrl}" style="width:100%; height:auto; display:block; max-height:160px; object-fit:cover;" loading="lazy">
                                 </div>
                             `;
                         }
