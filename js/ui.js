@@ -1753,8 +1753,13 @@ window.safeRender = function(fn, name) {
                 </div>`;
             }
 
-            const actionButtonHtml = block.linkUrl
-                ? `<a href="${block.linkUrl}" target="_blank" class="block-action-btn">${block.linkText || 'Ver más'}</a>`
+            // Soportar array de links (nuevo) y retrocompatibilidad con linkUrl/linkText (viejo)
+            const allLinks = block.links && block.links.length
+                ? block.links
+                : (block.linkUrl ? [{ text: block.linkText || 'Ver más', url: block.linkUrl }] : []);
+
+            const actionButtonHtml = allLinks.length
+                ? allLinks.map(l => `<a href="${l.url}" target="_blank" class="block-action-btn">${l.text}</a>`).join('')
                 : '';
 
             blockSection.innerHTML = `
@@ -1904,6 +1909,9 @@ window.safeRender = function(fn, name) {
         if (videoPreview) { videoPreview.innerHTML = ''; videoPreview.style.display = 'none'; }
         if (mapPreview)   { mapPreview.innerHTML = '';   mapPreview.style.display = 'none'; }
 
+        // Limpiar lista de enlaces
+        renderNosotrosLinksList([]);
+
         // Tipo de medio por defecto: imagen
         let mediaType = 'image';
 
@@ -1914,6 +1922,8 @@ window.safeRender = function(fn, name) {
             linkUrlInput.value     = block.linkUrl  || '';
             linkTextInput.value    = block.linkText || '';
             mediaType = block.mediaType || 'image';
+            // Cargar enlaces si existen
+            renderNosotrosLinksList(block.links || (block.linkUrl ? [{ text: block.linkText || 'Ver más', url: block.linkUrl }] : []));
 
             if (mediaType === 'image') {
                 hiddenUrlInput.value = block.image || '';
@@ -2055,13 +2065,20 @@ window.safeRender = function(fn, name) {
         btnSaveNosotrosBlock.addEventListener('click', async () => {
             const title       = document.getElementById('admin-nosotros-title').value.trim();
             const description = document.getElementById('admin-nosotros-description').value.trim();
-            const linkUrl     = document.getElementById('nosotros-link-url').value.trim();
-            const linkText    = document.getElementById('nosotros-link-text').value.trim();
 
             if (!title || !description) {
                 alert('Por favor completa los campos obligatorios (Título y Descripción).');
                 return;
             }
+
+            // Leer enlaces desde la lista dinámica
+            const linkRows = document.querySelectorAll('#nosotros-links-list .nosotros-link-row');
+            const links = [];
+            linkRows.forEach(row => {
+                const text = row.querySelector('.link-text-input')?.value.trim();
+                const url  = row.querySelector('.link-url-input')?.value.trim();
+                if (text && url) links.push({ text, url });
+            });
 
             // Detectar qué panel está activo
             const activeTypeBtn = document.querySelector('#nosotros-media-type-selector .media-type-btn.active');
@@ -2070,8 +2087,10 @@ window.safeRender = function(fn, name) {
             const newBlock = {
                 title,
                 description,
-                linkUrl,
-                linkText,
+                links,
+                // Backward compat
+                linkUrl:  links[0]?.url  || '',
+                linkText: links[0]?.text || '',
                 mediaType,
                 // Campos condicionales
                 image:    mediaType === 'image' ? (document.getElementById('admin-nosotros-image-url').value || 'img/logo_provisional.png') : '',
@@ -2103,6 +2122,36 @@ window.safeRender = function(fn, name) {
     }
 
     // 8. Eventos de botones Nosotros
+    // Función para renderizar la lista dinámica de enlaces en el formulario
+    function renderNosotrosLinksList(links = []) {
+        const container = document.getElementById('nosotros-links-list');
+        if (!container) return;
+        container.innerHTML = '';
+        links.forEach((link, i) => addNosotrosLinkRow(link.text || '', link.url || ''));
+    }
+
+    function addNosotrosLinkRow(text = '', url = '') {
+        const container = document.getElementById('nosotros-links-list');
+        if (!container) return;
+        const row = document.createElement('div');
+        row.className = 'nosotros-link-row';
+        row.style.cssText = 'display:flex; flex-direction:column; gap:0.35rem; background:#f8f9fb; border:1.5px solid #E8ECF0; border-radius:10px; padding:0.75rem;';
+        row.innerHTML = `
+            <div style="display:flex; gap:0.5rem; align-items:center;">
+                <input type="text" class="link-text-input" placeholder="Nombre del enlace (ej: WhatsApp)" value="${text}" style="flex:1; padding:0.45rem 0.7rem; border:1.5px solid #E8ECF0; border-radius:8px; font-size:0.85rem; font-family:var(--font-main);">
+                <button type="button" class="btn-remove-link" title="Eliminar" style="background:none; border:none; cursor:pointer; color:#e53e3e; padding:0.3rem; flex-shrink:0;"><span class="material-symbols-outlined" style="font-size:20px;">delete</span></button>
+            </div>
+            <input type="url" class="link-url-input" placeholder="URL (ej: https://wa.me/549...)" value="${url}" style="width:100%; padding:0.45rem 0.7rem; border:1.5px solid #E8ECF0; border-radius:8px; font-size:0.85rem; font-family:var(--font-main); box-sizing:border-box;">
+        `;
+        row.querySelector('.btn-remove-link').addEventListener('click', () => row.remove());
+        container.appendChild(row);
+    }
+
+    const btnAddNosotrosLink = document.getElementById('btn-add-nosotros-link');
+    if (btnAddNosotrosLink) {
+        btnAddNosotrosLink.addEventListener('click', () => addNosotrosLinkRow());
+    }
+
     if (btnAddNosotrosBlock) {
         btnAddNosotrosBlock.addEventListener('click', () => openNosotrosForm());
     }

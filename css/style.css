@@ -1340,13 +1340,23 @@ button, .btn-primary, .btn-outline {
     border-radius: var(--radius-pill);
     text-decoration: none;
     transition: background-color 0.2s ease, transform 0.2s ease;
-    width: 100%;
     box-shadow: var(--shadow-sm);
 }
 
 .block-action-btn:hover {
     background-color: var(--primary-hover);
     transform: scale(1.01);
+}
+
+/* Contenedor cuando hay múltiples botones de acción */
+.nosotros-block .block-action-btn + .block-action-btn {
+    margin-top: 0;
+}
+
+.nosotros-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
 .block-divider {

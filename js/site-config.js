@@ -33,7 +33,7 @@ window.siteConfig = {
             "contentStack": []
         },
         "nosotros": {
-            "title": "La Tarima",
+            "title": "NOSOTROS",
             "subtitle": "Conocé quiénes somos",
             "icon": "storefront",
             "visible": true

@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css?v=23">
+    <link rel="stylesheet" href="css/style.css?v=24">
 
 </head>
 <body>
@@ -1088,15 +1088,13 @@
                                 <label>Descripción del Bloque</label>
                                 <textarea id="admin-nosotros-description" rows="4" placeholder="Escribí el texto aquí..." required></textarea>
                             </div>
-                            <!-- Enlace / Link de Acción -->
+                            <!-- ─ SECCIÓN DE ENLACES ─ -->
                             <div class="form-group">
-                                <label>Enlace / URL de Acción (Opcional)</label>
-                                <input type="text" id="nosotros-link-url" placeholder="ej: https://maps.google.com/...">
-                            </div>
-                            <!-- Texto del Botón -->
-                            <div class="form-group">
-                                <label>Texto del Botón (Opcional)</label>
-                                <input type="text" id="nosotros-link-text" placeholder="Ej: Ver en Google Maps">
+                                <label style="display:flex; justify-content:space-between; align-items:center;">
+                                    <span>🔗 Agregar Enlaces (Opcional)</span>
+                                    <button type="button" id="btn-add-nosotros-link" class="btn-outline" style="padding:0.3rem 0.8rem; font-size:0.8rem; width:auto;">+ Agregar</button>
+                                </label>
+                                <div id="nosotros-links-list" style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.5rem;"></div>
                             </div>
                             <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
                                 <button type="button" id="btn-save-nosotros-block" class="btn-primary" style="width: 100%; max-width: none;">Guardar Bloque de Nosotros</button>
