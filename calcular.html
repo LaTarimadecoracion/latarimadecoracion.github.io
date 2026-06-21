@@ -196,6 +196,15 @@
 
     <script>
         (function () {
+            // Si no está dentro de un iframe (carga directa), redirigir a la SPA con ?view=calcular
+            if (window.self === window.top) {
+                const query = window.location.search;
+                const path = window.location.pathname.replace(/calcular\.html$/, '');
+                const targetUrl = window.location.origin + path + '?view=calcular' + (query ? '&' + query.substring(1) : '');
+                window.location.replace(targetUrl);
+                return;
+            }
+
             // Si está dentro de un iframe (modo SPA), ocultar cabecera duplicada y ajustar márgenes
             if (window.self !== window.top) {
                 const header = document.querySelector('.main-header-bar');
