@@ -350,14 +350,25 @@ document.addEventListener('pointerdown', (e) => {
         const p = document.createElement('div');
         p.className = 'confetti-particle';
 
-        // Confetis perfectamente cuadrados (estilo papel cortado de tribuna)
         const size = Math.random() * 8 + 6; // 6px a 14px
         const color = colors[Math.floor(Math.random() * colors.length)];
 
-        p.style.width = `${size}px`;
-        p.style.height = `${size}px`;
-        p.style.backgroundColor = color;
-        p.style.borderRadius = '0px'; // 100% Cuadrado sin bordes redondeados
+        if (activeTheme === 'valentin') {
+            // Lluvia de corazones para San Valentín
+            p.textContent = '❤';
+            p.style.color = color;
+            p.style.fontSize = `${Math.random() * 10 + 12}px`; // 12px a 22px
+            p.style.display = 'flex';
+            p.style.alignItems = 'center';
+            p.style.justifyContent = 'center';
+            p.style.backgroundColor = 'transparent';
+        } else {
+            // Confetis perfectamente cuadrados (estilo papel cortado de tribuna)
+            p.style.width = `${size}px`;
+            p.style.height = `${size}px`;
+            p.style.backgroundColor = color;
+            p.style.borderRadius = '0px'; // 100% Cuadrado sin bordes redondeados
+        }
 
         // Posición de origen (donde se hizo click/tap)
         p.style.left = `${e.clientX - size / 2}px`;
