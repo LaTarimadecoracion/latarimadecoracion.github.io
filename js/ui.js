@@ -1765,9 +1765,10 @@ window.safeRender = function(fn, name) {
                 : '';
 
             blockSection.innerHTML = `
-                <h2>${block.title}</h2>
+                ${block.description || mType === 'link' ? '' : ''}
+                ${mType !== 'link' ? `<h2>${block.title}</h2>` : ''}
                 ${mediaHtml}
-                <p>${block.description}</p>
+                ${block.description ? `<p>${block.description}</p>` : ''}
                 ${actionButtonHtml}
             `;
             nosotrosBlocksContainer.appendChild(blockSection);
@@ -2013,6 +2014,13 @@ window.safeRender = function(fn, name) {
             const panel = document.getElementById(id);
             if (panel) panel.style.display = (key === type) ? 'block' : 'none';
         });
+
+        // Ocultar título y descripción si el tipo es 'link' (solo es un botón)
+        const titleGroup = document.getElementById('admin-nosotros-title')?.closest('.form-group');
+        const descGroup  = document.getElementById('admin-nosotros-description')?.closest('.form-group');
+        const isLink = type === 'link';
+        if (titleGroup) titleGroup.style.display = isLink ? 'none' : '';
+        if (descGroup)  descGroup.style.display  = isLink ? 'none' : '';
         // Actualizar botones activos
         const selector = document.getElementById('nosotros-media-type-selector');
         if (selector) {
@@ -2066,28 +2074,38 @@ window.safeRender = function(fn, name) {
     // 7. Guardar Bloque
     if (btnSaveNosotrosBlock) {
         btnSaveNosotrosBlock.addEventListener('click', async () => {
+            // Detectar qué panel está activo primero
+            const activeTypeBtn = document.querySelector('#nosotros-media-type-selector .media-type-btn.active');
+            const mediaType = activeTypeBtn ? activeTypeBtn.dataset.type : 'image';
+
             const title       = document.getElementById('admin-nosotros-title').value.trim();
             const description = document.getElementById('admin-nosotros-description').value.trim();
 
-            if (!title || !description) {
+            // Para tipo 'link' no se requiere título ni descripción
+            if (mediaType !== 'link' && (!title || !description)) {
                 alert('Por favor completá los campos obligatorios (Título y Descripción).');
                 return;
             }
 
-            // Detectar qué panel está activo
-            const activeTypeBtn = document.querySelector('#nosotros-media-type-selector .media-type-btn.active');
-            const mediaType = activeTypeBtn ? activeTypeBtn.dataset.type : 'image';
+            const linkText = mediaType === 'link' ? (document.getElementById('admin-nosotros-link-text')?.value.trim() || 'Ver más') : '';
+            const linkUrl  = mediaType === 'link' ? (document.getElementById('admin-nosotros-link-url')?.value.trim() || '') : '';
+
+            if (mediaType === 'link' && !linkUrl) {
+                alert('Por favor ingresá la URL del enlace.');
+                return;
+            }
 
             const newBlock = {
-                title,
-                description,
+                // Para link: usar linkText como título interno (para la lista del admin)
+                title:       mediaType === 'link' ? (linkText || 'Enlace') : title,
+                description: mediaType === 'link' ? '' : description,
                 mediaType,
                 // Campos condicionales por tipo
                 image:    mediaType === 'image' ? (document.getElementById('admin-nosotros-image-url').value || 'img/logo_provisional.png') : '',
                 videoUrl: mediaType === 'video' ? (document.getElementById('admin-nosotros-video-url')?.value.trim() || '') : '',
                 mapQuery: mediaType === 'map'   ? (document.getElementById('admin-nosotros-map-query')?.value.trim() || '') : '',
-                linkUrl:  mediaType === 'link'  ? (document.getElementById('admin-nosotros-link-url')?.value.trim() || '') : '',
-                linkText: mediaType === 'link'  ? (document.getElementById('admin-nosotros-link-text')?.value.trim() || 'Ver más') : '',
+                linkUrl,
+                linkText,
                 linkNewTab: mediaType === 'link' ? (document.getElementById('admin-nosotros-link-newtab')?.checked !== false) : true,
             };
 
