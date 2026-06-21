@@ -1308,13 +1308,14 @@ button, .btn-primary, .btn-outline {
     width: 100%;
     border-radius: var(--radius-md);
     overflow: hidden;
-    max-height: 220px;
+    background: var(--bg-body, #f7f6f3);
 }
 
 .nosotros-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
     display: block;
 }
 
