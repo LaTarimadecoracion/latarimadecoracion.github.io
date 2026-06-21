@@ -1976,8 +1976,6 @@ button, .btn-primary, .btn-outline {
     align-items: center;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
     z-index: 999;
-    border-top-left-radius: var(--radius-lg);
-    border-top-right-radius: var(--radius-lg);
 }
 
 
