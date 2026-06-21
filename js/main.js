@@ -354,10 +354,9 @@ document.addEventListener('pointerdown', (e) => {
         const color = colors[Math.floor(Math.random() * colors.length)];
 
         if (activeTheme === 'valentin') {
-            // Lluvia de corazones para San Valentín
-            p.textContent = '❤';
-            p.style.color = color;
-            p.style.fontSize = `${Math.random() * 10 + 12}px`; // 12px a 22px
+            // Lluvia de rosas rojas para San Valentín
+            p.textContent = '🌹';
+            p.style.fontSize = `${Math.random() * 10 + 14}px`; // 14px a 24px (mejor escala para ver los detalles de la rosa)
             p.style.display = 'flex';
             p.style.alignItems = 'center';
             p.style.justifyContent = 'center';
