@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return count;
     }
 
-    let itemsToShow = 12;
+    let itemsToShow = 1;
     let currentFilteredProducts = [];
 
     // 4. Renderizar la lista en el DOM con soporte de paginación (scroll infinito)
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!append) {
             catalogListContainer.innerHTML = '';
-            itemsToShow = 12;
+            itemsToShow = 1;
             currentFilteredProducts = productsToRender;
         }
 
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 6. Configurar Scroll Infinito sobre el scroll de la propia ventana del iframe
     window.addEventListener('scroll', () => {
-        const threshold = 300; // Pixeles antes de llegar al final para gatillar
+        const threshold = 400; // Pixeles antes de llegar al final para gatillar
         const scrollHeight = document.documentElement.scrollHeight;
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const clientHeight = window.innerHeight;
@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const position = scrollHeight - scrollTop - clientHeight;
         if (position < threshold) {
             if (itemsToShow < currentFilteredProducts.length) {
-                itemsToShow += 12;
+                itemsToShow += 1;
                 renderCatalogList(currentFilteredProducts, true);
             }
         }
