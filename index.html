@@ -1056,6 +1056,10 @@
                                         <span class="material-symbols-outlined">location_on</span>
                                         Mapa
                                     </button>
+                                    <button type="button" class="media-type-btn" data-type="link">
+                                        <span class="material-symbols-outlined">link</span>
+                                        Enlace
+                                    </button>
                                 </div>
                             </div>
 
@@ -1088,13 +1092,12 @@
                                 <label>Descripción del Bloque</label>
                                 <textarea id="admin-nosotros-description" rows="4" placeholder="Escribí el texto aquí..." required></textarea>
                             </div>
-                            <!-- ─ SECCIÓN DE ENLACES ─ -->
-                            <div class="form-group">
-                                <label style="display:flex; justify-content:space-between; align-items:center;">
-                                    <span>🔗 Agregar Enlaces (Opcional)</span>
-                                    <button type="button" id="btn-add-nosotros-link" class="btn-outline" style="padding:0.3rem 0.8rem; font-size:0.8rem; width:auto;">+ Agregar</button>
-                                </label>
-                                <div id="nosotros-links-list" style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.5rem;"></div>
+                            <!-- Panel: Enlace solitario -->
+                            <div id="nosotros-panel-link" class="nosotros-media-panel form-group" style="display:none;">
+                                <label>Nombre del botón</label>
+                                <input type="text" id="admin-nosotros-link-text" placeholder="ej: Contactarnos por WhatsApp">
+                                <label style="margin-top:0.75rem;">URL del enlace</label>
+                                <input type="url" id="admin-nosotros-link-url" placeholder="ej: https://wa.me/549...">
                             </div>
                             <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
                                 <button type="button" id="btn-save-nosotros-block" class="btn-primary" style="width: 100%; max-width: none;">Guardar Bloque de Nosotros</button>

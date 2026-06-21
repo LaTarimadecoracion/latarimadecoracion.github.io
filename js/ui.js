@@ -1753,13 +1753,14 @@ window.safeRender = function(fn, name) {
                 </div>`;
             }
 
-            // Soportar array de links (nuevo) y retrocompatibilidad con linkUrl/linkText (viejo)
-            const allLinks = block.links && block.links.length
-                ? block.links
-                : (block.linkUrl ? [{ text: block.linkText || 'Ver más', url: block.linkUrl }] : []);
+            // Si el tipo es 'link', mostrar el botón como contenido principal
+            if (mType === 'link' && block.linkUrl) {
+                mediaHtml = `<a href="${block.linkUrl}" target="_blank" class="block-action-btn" style="width:100%; text-align:center;">${block.linkText || 'Ver más'}</a>`;
+            }
 
-            const actionButtonHtml = allLinks.length
-                ? allLinks.map(l => `<a href="${l.url}" target="_blank" class="block-action-btn">${l.text}</a>`).join('')
+            // Botón de acción extra (retrocompat con viejos bloques que tenían linkUrl)
+            const actionButtonHtml = (mType !== 'link' && block.linkUrl)
+                ? `<a href="${block.linkUrl}" target="_blank" class="block-action-btn">${block.linkText || 'Ver más'}</a>`
                 : '';
 
             blockSection.innerHTML = `
@@ -1940,6 +1941,11 @@ window.safeRender = function(fn, name) {
                     mapPreview.innerHTML = `<iframe src="https://maps.google.com/maps?q=${enc}&output=embed&z=15" style="width:100%; height:200px; border:none; border-radius:8px;"></iframe>`;
                     mapPreview.style.display = 'block';
                 }
+            } else if (mediaType === 'link') {
+                const linkTextEl = document.getElementById('admin-nosotros-link-text');
+                const linkUrlEl  = document.getElementById('admin-nosotros-link-url');
+                if (linkTextEl) linkTextEl.value = block.linkText || '';
+                if (linkUrlEl)  linkUrlEl.value  = block.linkUrl  || '';
             }
             document.getElementById('admin-nosotros-form-title').textContent = `Editar Bloque: ${block.title}`;
         } else {
@@ -1999,7 +2005,7 @@ window.safeRender = function(fn, name) {
 
     // ── Selector de tipo de medio: lógica de cambio de panel ──
     function switchMediaPanel(type) {
-        const panels = { image: 'nosotros-panel-image', video: 'nosotros-panel-video', map: 'nosotros-panel-map' };
+        const panels = { image: 'nosotros-panel-image', video: 'nosotros-panel-video', map: 'nosotros-panel-map', link: 'nosotros-panel-link' };
         Object.entries(panels).forEach(([key, id]) => {
             const panel = document.getElementById(id);
             if (panel) panel.style.display = (key === type) ? 'block' : 'none';
@@ -2061,18 +2067,9 @@ window.safeRender = function(fn, name) {
             const description = document.getElementById('admin-nosotros-description').value.trim();
 
             if (!title || !description) {
-                alert('Por favor completa los campos obligatorios (Título y Descripción).');
+                alert('Por favor completá los campos obligatorios (Título y Descripción).');
                 return;
             }
-
-            // Leer enlaces desde la lista dinámica
-            const linkRows = document.querySelectorAll('#nosotros-links-list .nosotros-link-row');
-            const links = [];
-            linkRows.forEach(row => {
-                const text = row.querySelector('.link-text-input')?.value.trim();
-                const url  = row.querySelector('.link-url-input')?.value.trim();
-                if (text && url) links.push({ text, url });
-            });
 
             // Detectar qué panel está activo
             const activeTypeBtn = document.querySelector('#nosotros-media-type-selector .media-type-btn.active');
@@ -2081,15 +2078,13 @@ window.safeRender = function(fn, name) {
             const newBlock = {
                 title,
                 description,
-                links,
-                // Backward compat
-                linkUrl:  links[0]?.url  || '',
-                linkText: links[0]?.text || '',
                 mediaType,
-                // Campos condicionales
+                // Campos condicionales por tipo
                 image:    mediaType === 'image' ? (document.getElementById('admin-nosotros-image-url').value || 'img/logo_provisional.png') : '',
                 videoUrl: mediaType === 'video' ? (document.getElementById('admin-nosotros-video-url')?.value.trim() || '') : '',
-                mapQuery: mediaType === 'map'   ? (document.getElementById('admin-nosotros-map-query')?.value.trim() || '') : ''
+                mapQuery: mediaType === 'map'   ? (document.getElementById('admin-nosotros-map-query')?.value.trim() || '') : '',
+                linkUrl:  mediaType === 'link'  ? (document.getElementById('admin-nosotros-link-url')?.value.trim() || '') : '',
+                linkText: mediaType === 'link'  ? (document.getElementById('admin-nosotros-link-text')?.value.trim() || 'Ver más') : '',
             };
 
             // Validaciones por tipo
