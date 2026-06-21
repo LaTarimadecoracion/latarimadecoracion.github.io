@@ -353,7 +353,7 @@ body {
     }
     
     .catalog-category-tag {
-        font-size: 0.65rem;
+        display: none;
     }
 
     .catalog-variant-col {
