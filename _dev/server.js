@@ -301,7 +301,7 @@ app.post('/api/save-site-config', (req, res) => {
 });
 
 // Archivo físico para almacenar conteo de vistas
-const VIEWS_FILE = path.join(ROOT_DIR, 'views-stats.json');
+const VIEWS_FILE = path.join(__dirname, 'views-stats.json');
 
 // Helper para leer vistas
 const readViewsStats = () => {

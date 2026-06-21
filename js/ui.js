@@ -470,17 +470,61 @@ window.safeRender = function(fn, name) {
         const currentActiveView = Array.from(views).find(v => v.classList.contains('active'));
         const currentActiveViewId = currentActiveView ? currentActiveView.id : null;
 
-        if (!isBack && currentActiveViewId && currentActiveViewId !== viewId) {
+        // Interceptar navegación hacia atrás para recargar el producto o categoría correspondiente si ha cambiado
+        if (isBack) {
+            if (viewId === 'view-product-detail' && context && context.productId) {
+                const currentProductId = document.getElementById('view-product-detail')?.dataset.productId;
+                if (currentProductId !== context.productId) {
+                    if (window.findProductById && window.showProductDetail) {
+                        const foundData = window.findProductById(context.productId);
+                        if (foundData) {
+                            window.showProductDetail(foundData.product, foundData.catName, '', '', '', true);
+                            return;
+                        }
+                    }
+                }
+            } else if (viewId === 'view-category-feed' && context && context.categoryId) {
+                const currentCategoryId = document.getElementById('view-category-feed')?.dataset.categoryId;
+                if (currentCategoryId !== context.categoryId) {
+                    if (window.navigateToCategoryFeed) {
+                        window.navigateToCategoryFeed(context.categoryId, true);
+                        return;
+                    }
+                }
+            }
+        }
+
+        // Detectar si estamos navegando al mismo tipo de vista pero con diferente contenido (producto o categoría)
+        let isDifferentContent = false;
+        if (currentActiveViewId === viewId) {
+            if (viewId === 'view-product-detail') {
+                const currentProductId = document.getElementById('view-product-detail')?.dataset.productId;
+                const targetProductId = context?.productId;
+                if (currentProductId && targetProductId && currentProductId !== targetProductId) {
+                    isDifferentContent = true;
+                }
+            } else if (viewId === 'view-category-feed') {
+                const currentCategoryId = document.getElementById('view-category-feed')?.dataset.categoryId;
+                const targetCategoryId = context?.categoryId;
+                if (currentCategoryId && targetCategoryId && currentCategoryId !== targetCategoryId) {
+                    isDifferentContent = true;
+                }
+            }
+        }
+
+        if (!isBack && currentActiveViewId && (currentActiveViewId !== viewId || isDifferentContent)) {
             // Guardar en el historial la vista previa con su contexto anterior
             let previousContext = null;
             if (currentActiveViewId === 'view-product-detail') {
                 previousContext = {
                     title: document.getElementById('detail-title')?.textContent,
-                    category: document.getElementById('detail-category')?.textContent
+                    category: document.getElementById('detail-category')?.textContent,
+                    productId: document.getElementById('view-product-detail')?.dataset.productId
                 };
             } else if (currentActiveViewId === 'view-category-feed') {
                 previousContext = {
-                    name: dynamicTitle.textContent
+                    name: dynamicTitle.textContent,
+                    categoryId: document.getElementById('view-category-feed')?.dataset.categoryId
                 };
             }
             navigationHistory.push({ viewId: currentActiveViewId, context: previousContext });
@@ -495,6 +539,14 @@ window.safeRender = function(fn, name) {
 
         if (targetView) {
             targetView.classList.add('active');
+            
+            // Asignar datasets para identificar el contenido cargado actualmente
+            if (viewId === 'view-product-detail' && context && context.productId) {
+                targetView.dataset.productId = context.productId;
+            }
+            if (viewId === 'view-category-feed' && context && context.categoryId) {
+                targetView.dataset.categoryId = context.categoryId;
+            }
             
             const appContainer = document.getElementById('app-container');
             if (appContainer) {
@@ -988,7 +1040,10 @@ window.safeRender = function(fn, name) {
         }
     }
 
-    function showProductDetail(product, categoryName, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '') {
+    function showProductDetail(product, categoryName, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '', isBack = false) {
+        if (viewDetail) {
+            viewDetail.dataset.productId = product.id;
+        }
         // Asignar título y categoría principal en el cuerpo
         if (detailTitle) {
             detailTitle.textContent = product.title;
@@ -1014,7 +1069,7 @@ window.safeRender = function(fn, name) {
             let queryStr = initialParams.toString().replace(/=(?=&|$)/g, '');
             const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + (queryStr ? `?${queryStr}` : '');
             const comesFromLegacy = (urlParams.get('p') === product.id || urlParams.get('product') === product.id);
-            if (comesFromLegacy) {
+            if (comesFromLegacy || isBack) {
                 window.history.replaceState({ viewId: 'view-product-detail', productId: product.id }, document.title, cleanUrl);
             } else {
                 window.history.pushState({ viewId: 'view-product-detail', productId: product.id }, document.title, cleanUrl);
@@ -1552,8 +1607,9 @@ window.safeRender = function(fn, name) {
 
         navigateToView('view-product-detail', {
             title: product.title,
-            category: categoryName
-        }, false);
+            category: categoryName,
+            productId: product.id
+        }, isBack);
     }
 
     // 5. Admin Panel Logic

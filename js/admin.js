@@ -2232,11 +2232,19 @@ window.safeAdminRun = function(fn) {
     const categoryFeedList = document.getElementById('category-feed-container');
     const categoryFeedEmpty = document.getElementById('category-feed-empty');
 
-    function navigateToCategoryFeed(categoryId) {
+    function navigateToCategoryFeed(categoryId, isBack = false) {
+        if (categoryFeedView) {
+            categoryFeedView.dataset.categoryId = categoryId;
+        }
+
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('cat') !== categoryId) {
             const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + `?cat=${categoryId}`;
-            window.history.pushState({ viewId: 'view-category-feed', categoryId }, document.title, cleanUrl);
+            if (isBack) {
+                window.history.replaceState({ viewId: 'view-category-feed', categoryId }, document.title, cleanUrl);
+            } else {
+                window.history.pushState({ viewId: 'view-category-feed', categoryId }, document.title, cleanUrl);
+            }
         }
 
         const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : productsData;
@@ -2283,7 +2291,7 @@ window.safeAdminRun = function(fn) {
         }
 
         // Navegar: ocultar todo y mostrar solo el feed de categoría
-        navigateToView('view-category-feed', { name: cat.name }, false);
+        navigateToView('view-category-feed', { name: cat.name, categoryId: categoryId }, isBack);
     }
 
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
