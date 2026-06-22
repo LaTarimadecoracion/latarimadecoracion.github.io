@@ -279,7 +279,7 @@ function updateHeader(viewId, context = null) {
 }
 
 // User Theme Selector Logic
-document.addEventListener('DOMContentLoaded', () => {
+window.initThemeSelector = function() {
     const themeButtons = document.querySelectorAll('.user-theme-btn');
     const resetBtn = document.getElementById('btn-reset-user-theme');
     
@@ -321,4 +321,8 @@ document.addEventListener('DOMContentLoaded', () => {
             updateActiveThemeBtn(defaultTheme);
         });
     }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.initThemeSelector();
 });

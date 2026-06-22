@@ -677,6 +677,40 @@
                         </div>
                     </div>
 
+                    <hr style="margin: 2rem 0; border:none; border-top: 1.5px solid #EEF0F3; width: 100%;">
+                    
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Apariencia y Tema</label>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.5rem 0;">Tu selección reemplazará al tema festivo predeterminado.</p>
+                        
+                        <div id="user-theme-selector" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+                            <!-- Se marcará como activo vía JS -->
+                            <button type="button" class="btn-outline user-theme-btn" data-theme="classic" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#cbd5e1; border-radius: 8px;">
+                                <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">auto_awesome</span> Clásico
+                            </button>
+                            <button type="button" class="btn-outline user-theme-btn" data-theme="sobrio" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#cbd5e1; border-radius: 8px;">
+                                <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">dark_mode</span> Sobrio Oscuro
+                            </button>
+                            <button type="button" class="btn-outline user-theme-btn" data-theme="navidad" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#cbd5e1; border-radius: 8px;">
+                                <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">park</span> Navidad
+                            </button>
+                            <button type="button" class="btn-outline user-theme-btn" data-theme="halloween" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#cbd5e1; border-radius: 8px;">
+                                <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">cruelty_free</span> Halloween
+                            </button>
+                            <button type="button" class="btn-outline user-theme-btn" data-theme="valentin" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#cbd5e1; border-radius: 8px;">
+                                <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">favorite</span> San Valentín
+                            </button>
+                            <button type="button" class="btn-outline user-theme-btn" data-theme="mundial" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#cbd5e1; border-radius: 8px;">
+                                <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">sports_soccer</span> Mundial
+                            </button>
+                        </div>
+                        <button type="button" id="btn-reset-user-theme" class="btn-outline" style="width: 100%; margin-top: 0.5rem; padding: 0.4rem; font-size: 0.75rem; border: none; background: none; color: var(--text-muted); text-decoration: underline;">
+                            Usar tema predeterminado del sitio
+                        </button>
+                    </div>
+
+                    <hr style="margin: 1.5rem 0 1rem 0; border:none; border-top: 1.5px solid #EEF0F3; width: 100%;">
+
                     <button type="button" id="btn-save-profile-local" class="btn-primary" style="margin-top:0.4rem; padding:0.6rem; font-size:0.85rem; font-weight:bold;">Guardar Datos</button>
                 </div>
 
@@ -1016,6 +1050,11 @@
                     }
                 });
             }
+            // Init Theme Selector events within the newly created DOM
+            if (window.initThemeSelector) {
+                window.initThemeSelector();
+            }
+
         } catch (e) {
             console.error('[Carrito Module] Error rendering Perfil-Carrito view:', e);
         }
@@ -1155,6 +1194,11 @@
             if (window.CarritoModule && window.CarritoModule.init) {
                 window.CarritoModule.init();
             }
+            // Init Theme Selector events within the newly created DOM
+            if (window.initThemeSelector) {
+                window.initThemeSelector();
+            }
+
         } catch (e) {
             console.error('[Carrito Module] Error en initCarritoModule:', e);
         }
