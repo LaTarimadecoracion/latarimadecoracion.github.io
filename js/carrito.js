@@ -236,6 +236,16 @@
                     from { opacity: 0; transform: translateY(-8px); }
                     to { opacity: 1; transform: translateY(0); }
                 }
+                .profile-form-grid {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 1rem 1.5rem;
+                }
+                @media (min-width: 768px) {
+                    .profile-form-grid {
+                        grid-template-columns: 1fr 1fr;
+                    }
+                }
                 .avatar-selector-grid {
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
@@ -607,41 +617,43 @@
                     </div>
 
                     <!-- Campos del Formulario ordenados por despacho -->
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Nombre y Apellido / Apodo</label>
-                        <input type="text" id="edit-user-name" value="${userData.name}" placeholder="ej: Juan Pérez" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                    </div>
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">DNI (Despacho / Facturación)</label>
-                        <input type="text" id="edit-user-dni" value="${userData.dni}" placeholder="ej: 34.567.890" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                    </div>
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Celular (WhatsApp)</label>
-                        <input type="tel" id="edit-user-phone" value="${userData.phone}" placeholder="ej: 11 6700 7723" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                    </div>
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Teléfono Alternativo / Fijo</label>
-                        <input type="tel" id="edit-user-tel" value="${userData.tel}" placeholder="ej: 011 4452-1234" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                    </div>
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Correo Electrónico</label>
-                        <input type="email" id="edit-user-email" value="${userData.email}" placeholder="ej: juan@mail.com" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                    </div>
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Domicilio Particular Completo y entre calles</label>
-                        <input type="text" id="edit-user-address" value="${userData.address}" placeholder="ej: Av. Vergara 1234, e/ Paso y Arenales" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                    </div>
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Localidad</label>
-                        <input type="text" id="edit-user-locality" value="${userData.locality}" placeholder="ej: Hurlingham" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                    </div>
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Provincia</label>
-                        <input type="text" id="edit-user-province" value="${userData.province}" placeholder="ej: Buenos Aires" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                    </div>
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Código Postal</label>
-                        <input type="text" id="edit-user-zipCode" value="${userData.zipCode}" placeholder="ej: 1686" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
+                    <div class="profile-form-grid">
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Nombre y Apellido / Apodo</label>
+                            <input type="text" id="edit-user-name" value="${userData.name}" placeholder="ej: Juan Pérez" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">DNI (Despacho / Facturación)</label>
+                            <input type="text" id="edit-user-dni" value="${userData.dni}" placeholder="ej: 34.567.890" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Celular (WhatsApp)</label>
+                            <input type="tel" id="edit-user-phone" value="${userData.phone}" placeholder="ej: 11 6700 7723" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Teléfono Alternativo / Fijo</label>
+                            <input type="tel" id="edit-user-tel" value="${userData.tel}" placeholder="ej: 011 4452-1234" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:4px; grid-column: 1 / -1;">
+                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Correo Electrónico</label>
+                            <input type="email" id="edit-user-email" value="${userData.email}" placeholder="ej: juan@mail.com" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:4px; grid-column: 1 / -1;">
+                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Domicilio Particular Completo y entre calles</label>
+                            <input type="text" id="edit-user-address" value="${userData.address}" placeholder="ej: Av. Vergara 1234, e/ Paso y Arenales" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Localidad</label>
+                            <input type="text" id="edit-user-locality" value="${userData.locality}" placeholder="ej: Hurlingham" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:4px;">
+                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Provincia</label>
+                            <input type="text" id="edit-user-province" value="${userData.province}" placeholder="ej: Buenos Aires" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:4px; grid-column: 1 / -1;">
+                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Código Postal</label>
+                            <input type="text" id="edit-user-zipCode" value="${userData.zipCode}" placeholder="ej: 1686" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
+                        </div>
                     </div>
                     
                     <div style="display:flex; flex-direction:column; gap:4px;">
