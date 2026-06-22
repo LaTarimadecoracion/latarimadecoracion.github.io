@@ -530,9 +530,10 @@
                 }
                 
                 window.productGalleryAutoScrollInterval = setInterval(() => {
-                    // Check if carousel is still in the DOM (view is open)
-                    if (!document.body.contains(carousel)) {
+                    // Check if carousel is still visible. If hidden (modal closed), clear it!
+                    if (!document.body.contains(carousel) || !carousel.offsetParent) {
                         clearInterval(window.productGalleryAutoScrollInterval);
+                        window.productGalleryAutoScrollInterval = null;
                         return;
                     }
                     
@@ -551,16 +552,19 @@
                     });
                 }, 3500);
 
-                // Stop auto-scroll instantly if user interacts
+                // Stop auto-scroll instantly if user interacts anywhere in the view
                 const stopAutoScroll = () => {
                     if (window.productGalleryAutoScrollInterval) {
                         clearInterval(window.productGalleryAutoScrollInterval);
                         window.productGalleryAutoScrollInterval = null;
                     }
                 };
-                carousel.addEventListener('touchstart', stopAutoScroll, {passive: true});
-                carousel.addEventListener('mousedown', stopAutoScroll, {passive: true});
-                carousel.addEventListener('wheel', stopAutoScroll, {passive: true});
+                const detailView = document.getElementById('view-product-detail');
+                if (detailView) {
+                    detailView.addEventListener('touchstart', stopAutoScroll, {passive: true, once: true});
+                    detailView.addEventListener('mousedown', stopAutoScroll, {passive: true, once: true});
+                    detailView.addEventListener('wheel', stopAutoScroll, {passive: true, once: true});
+                }
             }
         }
 
