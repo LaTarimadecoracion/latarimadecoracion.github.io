@@ -475,6 +475,67 @@
                         grid-column: span 1;
                     }
                 }
+
+                /* ── Dark Mode overrides para el módulo Carrito/Perfil ── */
+                body.theme-dark .profile-card-header {
+                    background: var(--surface-color, #1C1916);
+                    border-color: rgba(255, 220, 160, 0.12);
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+                }
+                body.theme-dark .profile-card-header:hover {
+                    border-color: var(--primary-color);
+                    box-shadow: 0 6px 24px rgba(212, 149, 106, 0.15);
+                }
+                body.theme-dark .profile-settings-btn {
+                    background: var(--surface-raised, #252018);
+                    color: var(--text-muted, #9E9080);
+                }
+                body.theme-dark .cart-empty-motivator {
+                    background: linear-gradient(145deg, var(--surface-color, #1C1916), var(--surface-raised, #252018)) !important;
+                    border-color: rgba(255, 220, 160, 0.12) !important;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
+                }
+                body.theme-dark .cart-item-row {
+                    background: var(--surface-color, #1C1916);
+                    border-color: rgba(255, 220, 160, 0.09);
+                }
+                body.theme-dark .cart-item-details h5 {
+                    color: var(--text-main, #EDE5D8);
+                }
+                body.theme-dark .cart-item-details p,
+                body.theme-dark .cart-item-details span {
+                    color: var(--text-muted, #9E9080);
+                }
+                body.theme-dark .cart-item-details .item-tag {
+                    background: rgba(212, 149, 106, 0.15);
+                    color: var(--primary-color, #D4956A);
+                }
+                body.theme-dark .cart-item-qty-control {
+                    background: var(--surface-raised, #252018);
+                    border-color: rgba(255, 220, 160, 0.12);
+                }
+                body.theme-dark .qty-btn {
+                    background: var(--surface-float, #2E2820);
+                    color: var(--text-main, #EDE5D8);
+                }
+                body.theme-dark .qty-val {
+                    color: var(--text-main, #EDE5D8);
+                }
+                body.theme-dark .cart-item-del-btn {
+                    background: rgba(225, 29, 72, 0.12);
+                    color: #f87171;
+                }
+                body.theme-dark .cart-item-del-btn:hover {
+                    background: rgba(225, 29, 72, 0.25);
+                    color: #fca5a5;
+                }
+                body.theme-dark .cart-item-actions-group {
+                    border-top-color: rgba(255, 220, 160, 0.09);
+                }
+                body.theme-dark .wishlist-empty-state,
+                body.theme-dark [class*="empty-state"] {
+                    color: var(--text-muted, #9E9080);
+                }
             `;
             document.head.appendChild(style);
         } catch (e) {
@@ -497,8 +558,8 @@
             let cartListHTML = '';
             if (cartItems.length === 0) {
                 cartListHTML = `
-                    <div class="cart-empty-motivator" style="padding: 2.5rem 1.5rem; text-align: center; border-radius: 20px; background: linear-gradient(145deg, #ffffff, #fdfbf9); border: 1px solid rgba(180,132,108,0.2); box-shadow: 0 10px 30px rgba(180,132,108,0.06); margin-top:1.5rem;">
-                        <div style="width: 80px; height: 80px; background: #fff5ed; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
+                    <div class="cart-empty-motivator" style="padding: 2.5rem 1.5rem; text-align: center; border-radius: 20px; background: linear-gradient(145deg, var(--surface-color, #fff), var(--surface-raised, #fdfbf9)); border: 1px solid rgba(180,132,108,0.2); box-shadow: 0 10px 30px rgba(180,132,108,0.06); margin-top:1.5rem;">
+                        <div style="width: 80px; height: 80px; background: var(--secondary-color, #fff5ed); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
                             <span class="material-symbols-outlined" style="font-size: 42px; color:var(--primary-color, #c0510a);">shopping_bag</span>
                         </div>
                         <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin:0 0 0.5rem 0;">¡Tu carrito está esperando!</h3>
@@ -684,8 +745,9 @@
                         <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.5rem 0;">Tu selección reemplazará al tema festivo predeterminado.</p>
                         
                         <div style="position:relative;">
-                            <select id="user-theme-select" style="width:100%; padding: 0.75rem; font-size: 0.9rem; font-family: var(--font-main); border: 1.5px solid #cbd5e1; border-radius: 8px; appearance: none; background: #fff url('data:image/svg+xml;utf8,<svg fill=\"%2364748b\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>') no-repeat right 0.75rem center; cursor: pointer; color: var(--text-main);">
+                            <select id="user-theme-select" style="width:100%; padding: 0.75rem; font-size: 0.9rem; font-family: var(--font-main); border: 1.5px solid #cbd5e1; border-radius: 8px; appearance: none; background: var(--surface-color) url('data:image/svg+xml;utf8,<svg fill=\"%2364748b\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>') no-repeat right 0.75rem center; cursor: pointer; color: var(--text-main);">
                                 <option value="classic">✨ Clásico</option>
+                                <option value="dark">🌙 Modo Oscuro</option>
                                 <option value="sobrio">🌑 Sobrio Oscuro</option>
                                 <option value="navidad">🎄 Navidad</option>
                                 <option value="halloween">🦇 Halloween</option>
