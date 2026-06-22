@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mainCol.style.flexDirection = 'column';
             mainCol.style.flex = '1';
             mainCol.style.minWidth = '0';
-            mainCol.style.gap = '0.75rem';
+            mainCol.style.gap = '0.25rem';
 
             // 2.1 Título (Fila superior)
             const titleRow = document.createElement('div');
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const optionsRow = document.createElement('div');
             optionsRow.style.display = 'flex';
             optionsRow.style.alignItems = 'center';
-            optionsRow.style.gap = '1rem';
+            optionsRow.style.gap = '0.5rem';
             optionsRow.style.flexWrap = 'wrap';
             optionsRow.style.justifyContent = 'space-between';
 
@@ -221,10 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     currentShippingLink = shippingVariants[0].link;
                     currentWhatsAppLink = getWhatsAppUrl(product.title, shippingVariants[0].label);
-                    variantCol.innerHTML = `<span style="font-size:0.85rem; color:var(--text-muted); font-weight:500; display:block; padding: 0.5rem 0;">${shippingVariants[0].label}</span>`;
+                    variantCol.innerHTML = `<span style="font-size:0.85rem; color:var(--text-muted); font-weight:500; display:block; padding: 0.2rem 0;">${shippingVariants[0].label}</span>`;
                 }
             } else {
-                variantCol.innerHTML = `<span style="font-size:0.85rem; color:var(--text-muted); font-style:italic; display:block; padding: 0.5rem 0;">Consultar envío</span>`;
+                variantCol.innerHTML = `<span style="font-size:0.85rem; color:var(--text-muted); font-style:italic; display:block; padding: 0.2rem 0;">Consultar envío</span>`;
             }
             optionsRow.appendChild(variantCol);
 
