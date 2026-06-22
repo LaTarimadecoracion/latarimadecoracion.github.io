@@ -36,24 +36,25 @@ if (!window.siteConfig) {
     };
 }
 
-// Paleta completa del modo oscuro — Carbón Cálido
+// Paleta del modo oscuro — Dark Premium
+// Fondos neutros, bordes blancos, acento madera SOLO en interactivos
 const DARK_THEME_VARS = {
-    '--bg-color':       '#0F0D0B',
-    '--surface-color':  '#1C1916',
-    '--surface-raised': '#252018',
-    '--surface-float':  '#2E2820',
-    '--text-main':      '#EDE5D8',
-    '--text-muted':     '#9E9080',
-    '--text-faint':     '#5A5048',
-    '--primary-color':  '#D4956A',
-    '--primary-hover':  '#E8A87A',
-    '--accent-color':   '#F0C080',
-    '--secondary-color':'#3A3028',
-    '--shadow-sm':      '0 2px 8px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.4)',
-    '--shadow-md':      '0 4px 20px rgba(0,0,0,0.65), 0 2px 8px rgba(0,0,0,0.5)',
-    '--shadow-lg':      '0 12px 40px rgba(0,0,0,0.80), 0 4px 16px rgba(0,0,0,0.6)',
-    '--border-color':   'rgba(255, 220, 160, 0.09)',
-    '--border-strong':  'rgba(255, 220, 160, 0.15)',
+    '--bg-color':        '#111111',
+    '--surface-color':   '#1A1A1A',
+    '--surface-raised':  '#232323',
+    '--surface-float':   '#2C2C2C',
+    '--text-main':       '#F2F2F2',
+    '--text-muted':      '#888888',
+    '--text-faint':      '#4A4A4A',
+    '--primary-color':   '#C8855A',
+    '--primary-hover':   '#DC9B6E',
+    '--accent-color':    '#E8AE80',
+    '--secondary-color': '#2A2A2A',
+    '--shadow-sm':       '0 1px 3px rgba(0,0,0,0.5)',
+    '--shadow-md':       '0 4px 16px rgba(0,0,0,0.6)',
+    '--shadow-lg':       '0 12px 32px rgba(0,0,0,0.75)',
+    '--border-color':    'rgba(255,255,255,0.07)',
+    '--border-strong':   'rgba(255,255,255,0.12)',
 };
 
 // Función para aplicar la skin de forma reactiva en el body
