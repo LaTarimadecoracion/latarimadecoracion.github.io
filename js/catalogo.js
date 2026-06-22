@@ -151,28 +151,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Crear columnas
             // Columna 1: Info Producto (Miniatura, Título, Categoría)
-            const infoCol = document.createElement('div');
-            infoCol.className = 'catalog-info-col';
-            
+            // ====== NUEVO LAYOUT: Fila 1 Titulo, Fila 2 Opciones ======
+            // 1. Imagen (Thumbnail)
             const detailUrl = `./?prod=${product.id}`;
-            infoCol.innerHTML = `
-                <a href="${detailUrl}" class="catalog-thumb-link" target="_parent">
-                    <img src="${product.image}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='img/logo_provisional.png';">
+            const thumbLink = document.createElement('a');
+            thumbLink.href = detailUrl;
+            thumbLink.className = 'catalog-thumb-link';
+            thumbLink.target = '_parent';
+            thumbLink.innerHTML = `<img src="${product.image}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='img/logo_provisional.png';">`;
+            row.appendChild(thumbLink);
+
+            // 2. Columna principal (flex-column)
+            const mainCol = document.createElement('div');
+            mainCol.style.display = 'flex';
+            mainCol.style.flexDirection = 'column';
+            mainCol.style.flex = '1';
+            mainCol.style.minWidth = '0';
+            mainCol.style.gap = '0.75rem';
+
+            // 2.1 Título (Fila superior)
+            const titleRow = document.createElement('div');
+            titleRow.innerHTML = `
+                <a href="${detailUrl}" class="catalog-title-link" target="_parent" style="white-space: normal;">
+                    <h3 class="catalog-title" style="white-space: normal; overflow: visible;">${product.title}</h3>
                 </a>
-                <div class="catalog-details">
-                    <!-- <span class="catalog-category-tag">${product.categoryName}</span> -->
-                    <a href="${detailUrl}" class="catalog-title-link" target="_parent">
-                        <h3 class="catalog-title">${product.title}</h3>
-                    </a>
-                </div>
             `;
-            row.appendChild(infoCol);
+            mainCol.appendChild(titleRow);
+
+            // 2.2 Opciones y botones (Fila inferior)
+            const optionsRow = document.createElement('div');
+            optionsRow.style.display = 'flex';
+            optionsRow.style.alignItems = 'center';
+            optionsRow.style.gap = '1rem';
+            optionsRow.style.flexWrap = 'wrap';
+            optionsRow.style.justifyContent = 'space-between';
 
             // Variables de enlaces
             let currentShippingLink = '';
             let currentWhatsAppLink = getWhatsAppUrl(product.title);
 
-            // Columna 2: Selector de Variantes (Solo si hay múltiples links de envío)
+            // Columna de Variante
             const variantCol = document.createElement('div');
             variantCol.className = 'catalog-variant-col';
 
@@ -184,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const select = document.createElement('select');
                     select.className = 'catalog-select';
                     
-                    // Buscar variante predeterminada o usar la primera
                     let defaultIdx = shippingVariants.findIndex(v => v.isDefault);
                     if (defaultIdx === -1) defaultIdx = 0;
 
@@ -202,22 +219,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     selectWrapper.appendChild(select);
                     variantCol.appendChild(selectWrapper);
                 } else {
-                    // Si tiene un único link de envío, se muestra su descripción estática de variante o queda vacío
                     currentShippingLink = shippingVariants[0].link;
                     currentWhatsAppLink = getWhatsAppUrl(product.title, shippingVariants[0].label);
-                    variantCol.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted); font-weight:500; display:block; text-align:center; padding: 0.5rem 0;">${shippingVariants[0].label}</span>`;
+                    variantCol.innerHTML = `<span style="font-size:0.85rem; color:var(--text-muted); font-weight:500; display:block; padding: 0.5rem 0;">${shippingVariants[0].label}</span>`;
                 }
             } else {
-                // Sin envío: texto descriptivo
-                variantCol.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted); font-style:italic; display:block; text-align:center; padding: 0.5rem 0;">Consultar envío</span>`;
+                variantCol.innerHTML = `<span style="font-size:0.85rem; color:var(--text-muted); font-style:italic; display:block; padding: 0.5rem 0;">Consultar envío</span>`;
             }
-            row.appendChild(variantCol);
+            optionsRow.appendChild(variantCol);
 
-            // Columna 3: Botones de Acción (Envío, WhatsApp)
+            // Columna de Botones de Acción
             const actionsCol = document.createElement('div');
             actionsCol.className = 'catalog-actions-col';
 
-            // Botón MercadoLibre/Envío
             const btnShipping = document.createElement('a');
             btnShipping.className = 'catalog-btn catalog-btn-shipping';
             btnShipping.target = '_blank';
@@ -225,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hasShipping) {
                 btnShipping.href = currentShippingLink;
             } else {
-                btnShipping.style.display = 'none'; // Se oculta si no tiene link
+                btnShipping.style.display = 'none';
             }
             btnShipping.addEventListener('click', () => {
                 try {
@@ -239,33 +253,30 @@ document.addEventListener('DOMContentLoaded', () => {
                             }]
                         });
                     }
-                } catch (e) { /* Ignore adblocker errors */ }
+                } catch (e) { }
             });
             actionsCol.appendChild(btnShipping);
 
-            // Botón WhatsApp
             const btnWpp = document.createElement('a');
             btnWpp.className = 'catalog-btn catalog-btn-wpp';
             btnWpp.href = currentWhatsAppLink;
             btnWpp.target = '_blank';
-            btnWpp.innerHTML = `<span class="material-symbols-outlined">forum</span> Consultar`;
-            btnWpp.addEventListener('click', () => {
-                try {
-                    if (typeof gtag === 'function') {
-                        gtag('event', 'contact', {
-                            method: 'WhatsApp',
-                            event_category: 'Engagement',
-                            event_label: 'Consultar WhatsApp Catálogo A-Z',
-                            item_id: product.id,
-                            item_name: product.title,
-                            item_category: product.categoryName
-                        });
-                    }
-                } catch (e) { /* Ignore adblocker errors */ }
-            });
+            btnWpp.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp"> Consultar`;
             actionsCol.appendChild(btnWpp);
 
-            row.appendChild(actionsCol);
+            // Manejo de eventos del selector
+            if (variantCol.querySelector('select')) {
+                variantCol.querySelector('select').addEventListener('change', (e) => {
+                    const selIdx = e.target.value;
+                    const selectedVar = shippingVariants[selIdx];
+                    btnShipping.href = selectedVar.link;
+                    btnWpp.href = getWhatsAppUrl(product.title, selectedVar.label);
+                });
+            }
+
+            optionsRow.appendChild(actionsCol);
+            mainCol.appendChild(optionsRow);
+            row.appendChild(mainCol);
 
             // Vincular listener de cambio al select si existe para actualizar links en caliente
             const selectEl = variantCol.querySelector('.catalog-select');
