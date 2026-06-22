@@ -157,7 +157,7 @@ function openImmersiveVideo(videoList, startIndex) {
         const catName = item.catName || "";
         const isFav = () => {
             try {
-                const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
+                const favs = JSON.parse(localStorage.getItem("cartItems") || "[]");
                 return favs.some(f => f.id === prod.id);
             } catch (e) { return false; }
         };
