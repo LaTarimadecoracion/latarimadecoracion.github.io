@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Crear columnas
             // Columna 1: Info Producto (Miniatura, Título, Categoría)
-            // ====== NUEVO LAYOUT: Fila 1 Titulo, Fila 2 Opciones ======
+            // ====== NUEVO LAYOUT LISTA COMPACTA ======
             // 1. Imagen (Thumbnail)
             const detailUrl = `./?prod=${product.id}`;
             const thumbLink = document.createElement('a');
@@ -161,36 +161,28 @@ document.addEventListener('DOMContentLoaded', () => {
             thumbLink.innerHTML = `<img src="${product.image}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='img/logo_provisional.png';">`;
             row.appendChild(thumbLink);
 
-            // 2. Columna principal (flex-column)
-            const mainCol = document.createElement('div');
-            mainCol.style.display = 'flex';
-            mainCol.style.flexDirection = 'column';
-            mainCol.style.flex = '1';
-            mainCol.style.minWidth = '0';
-            mainCol.style.gap = '0.25rem';
+            // 2. Textos (Titulo + Opciones) -> flex: 1
+            const textCol = document.createElement('div');
+            textCol.style.display = 'flex';
+            textCol.style.flexDirection = 'column';
+            textCol.style.flex = '1';
+            textCol.style.minWidth = '0';
+            textCol.style.justifyContent = 'center';
 
-            // 2.1 Título (Fila superior)
+            // 2.1 Título
             const titleRow = document.createElement('div');
             titleRow.innerHTML = `
                 <a href="${detailUrl}" class="catalog-title-link" target="_parent" style="white-space: normal;">
-                    <h3 class="catalog-title" style="white-space: normal; overflow: visible;">${product.title}</h3>
+                    <h3 class="catalog-title" style="white-space: normal; overflow: visible; font-size: 1.05rem; margin-bottom: 2px;">${product.title}</h3>
                 </a>
             `;
-            mainCol.appendChild(titleRow);
-
-            // 2.2 Opciones y botones (Fila inferior)
-            const optionsRow = document.createElement('div');
-            optionsRow.style.display = 'flex';
-            optionsRow.style.alignItems = 'center';
-            optionsRow.style.gap = '0.5rem';
-            optionsRow.style.flexWrap = 'wrap';
-            optionsRow.style.justifyContent = 'space-between';
+            textCol.appendChild(titleRow);
 
             // Variables de enlaces
             let currentShippingLink = '';
             let currentWhatsAppLink = getWhatsAppUrl(product.title);
 
-            // Columna de Variante
+            // 2.2 Variante
             const variantCol = document.createElement('div');
             variantCol.className = 'catalog-variant-col';
 
@@ -198,9 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (shippingVariants.length > 1) {
                     const selectWrapper = document.createElement('div');
                     selectWrapper.className = 'catalog-select-wrapper';
+                    selectWrapper.style.marginTop = '0.1rem';
+                    selectWrapper.style.maxWidth = '200px';
 
                     const select = document.createElement('select');
                     select.className = 'catalog-select';
+                    select.style.padding = '0.2rem 1.2rem 0.2rem 0.5rem';
                     
                     let defaultIdx = shippingVariants.findIndex(v => v.isDefault);
                     if (defaultIdx === -1) defaultIdx = 0;
@@ -221,21 +216,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     currentShippingLink = shippingVariants[0].link;
                     currentWhatsAppLink = getWhatsAppUrl(product.title, shippingVariants[0].label);
-                    variantCol.innerHTML = `<span style="font-size:0.85rem; color:var(--text-muted); font-weight:500; display:block; padding: 0.2rem 0;">${shippingVariants[0].label}</span>`;
+                    variantCol.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted); font-weight:500;">${shippingVariants[0].label}</span>`;
                 }
             } else {
-                variantCol.innerHTML = `<span style="font-size:0.85rem; color:var(--text-muted); font-style:italic; display:block; padding: 0.2rem 0;">Consultar envío</span>`;
+                variantCol.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted); font-style:italic;">Consultar envío</span>`;
             }
-            optionsRow.appendChild(variantCol);
+            textCol.appendChild(variantCol);
+            row.appendChild(textCol);
 
-            // Columna de Botones de Acción
+            // 3. Columna de Botones de Acción (Stackeados en PC)
             const actionsCol = document.createElement('div');
             actionsCol.className = 'catalog-actions-col';
 
             const btnShipping = document.createElement('a');
             btnShipping.className = 'catalog-btn catalog-btn-shipping';
             btnShipping.target = '_blank';
-            btnShipping.innerHTML = `<span class="material-symbols-outlined">local_shipping</span> Envío`;
+            btnShipping.innerHTML = `<span class="material-symbols-outlined" style="font-size:1.1rem;">local_shipping</span> Envío`;
             if (hasShipping) {
                 btnShipping.href = currentShippingLink;
             } else {
@@ -261,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnWpp.className = 'catalog-btn catalog-btn-wpp';
             btnWpp.href = currentWhatsAppLink;
             btnWpp.target = '_blank';
-            btnWpp.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" style="width: 18px; height: 18px; object-fit: cover; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"> Consultar`;
+            btnWpp.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" style="width: 14px; height: 14px; object-fit: cover; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"> Consultar`;
             actionsCol.appendChild(btnWpp);
 
             // Manejo de eventos del selector
@@ -274,9 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            optionsRow.appendChild(actionsCol);
-            mainCol.appendChild(optionsRow);
-            row.appendChild(mainCol);
+            row.appendChild(actionsCol);
 
             // Vincular listener de cambio al select si existe para actualizar links en caliente
             const selectEl = variantCol.querySelector('.catalog-select');
