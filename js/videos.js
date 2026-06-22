@@ -165,8 +165,23 @@ function openImmersiveVideo(videoList, startIndex) {
                 <div class="tiktok-product-title">${prod.title}</div>
             </div>
 
+                    const isFav = () => {
+            try {
+                const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+                return favs.some(f => f.id === prod.id);
+            } catch (e) { return false; }
+        };
+        const heartIcon = isFav() ? 'favorite' : 'favorite_border';
+        const heartClass = isFav() ? 'is-fav' : '';
+
             <!-- Botones a la derecha -->
             <div class="tiktok-ui-right">
+                <button class="tiktok-action-btn tk-fav-btn ${heartClass}" data-prod-id="${prod.id}" style="transition: transform 0.2s;">
+                    <div class="tk-icon-bg" style="width: 36px; height: 36px; border-radius: 50%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); margin: 0 auto 2px auto; backdrop-filter: blur(2px); transition: background 0.2s;">
+                        <span class="material-symbols-outlined tk-heart-icon" style="font-size: 22px; color: ${isFav() ? 'var(--primary-color, #c0510a)' : 'white'};">${heartIcon}</span>
+                    </div>
+                    <span class="label">Guardar</span>
+                </button>
                 <button class="tiktok-action-btn" onclick="shareProduct('${prod.title}', '${prod.id}')">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); margin-bottom: 2px;" alt="WhatsApp">
                     <span class="label">Compartir</span>
@@ -182,6 +197,37 @@ function openImmersiveVideo(videoList, startIndex) {
         `;
 
         tiktokFeedContainer.appendChild(videoItem);
+
+        // Fav logic
+        const favBtn = videoItem.querySelector('.tk-fav-btn');
+        if (favBtn) {
+            favBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evitar pausar el video
+                if (window.CarritoModule && window.CarritoModule.toggle) {
+                    window.CarritoModule.toggle(prod, '', catName, '', '', '');
+                    
+                    // Update icon
+                    const isNowFav = isFav();
+                    const iconEl = favBtn.querySelector('.tk-heart-icon');
+                    if (isNowFav) {
+                        favBtn.classList.add('is-fav');
+                        favBtn.classList.add('pulse-heart');
+                        if (iconEl) {
+                            iconEl.textContent = 'favorite';
+                            iconEl.style.color = 'var(--primary-color, #c0510a)';
+                        }
+                        setTimeout(() => favBtn.classList.remove('pulse-heart'), 500);
+                    } else {
+                        favBtn.classList.remove('is-fav');
+                        if (iconEl) {
+                            iconEl.textContent = 'favorite_border';
+                            iconEl.style.color = 'white';
+                        }
+                    }
+                    if (window.updateFavoritesBadge) window.updateFavoritesBadge();
+                }
+            });
+        }
 
         // Click para pausar/reproducir
         const videoElement = videoItem.querySelector('video');
