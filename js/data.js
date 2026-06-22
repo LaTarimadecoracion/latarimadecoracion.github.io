@@ -36,25 +36,24 @@ if (!window.siteConfig) {
     };
 }
 
-// Paleta del modo oscuro — Dark Premium
-// Fondos neutros, bordes blancos, acento madera SOLO en interactivos
+// Modo Oscuro = Sobrio Oscuro: negro/blanco/gris, madera solo en CTAs
 const DARK_THEME_VARS = {
-    '--bg-color':        '#111111',
+    '--bg-color':        '#0F0F0F',
     '--surface-color':   '#1A1A1A',
-    '--surface-raised':  '#232323',
-    '--surface-float':   '#2C2C2C',
-    '--text-main':       '#F2F2F2',
-    '--text-muted':      '#888888',
-    '--text-faint':      '#4A4A4A',
-    '--primary-color':   '#C8855A',
-    '--primary-hover':   '#DC9B6E',
-    '--accent-color':    '#E8AE80',
-    '--secondary-color': '#2A2A2A',
-    '--shadow-sm':       '0 1px 3px rgba(0,0,0,0.5)',
-    '--shadow-md':       '0 4px 16px rgba(0,0,0,0.6)',
-    '--shadow-lg':       '0 12px 32px rgba(0,0,0,0.75)',
+    '--surface-raised':  '#242424',
+    '--surface-float':   '#2E2E2E',
+    '--text-main':       '#EFEFEF',
+    '--text-muted':      '#787878',
+    '--text-faint':      '#404040',
+    '--primary-color':   '#B4846C',
+    '--primary-hover':   '#C99278',
+    '--accent-color':    '#B4846C',
+    '--secondary-color': '#232323',
+    '--shadow-sm':       '0 1px 4px rgba(0,0,0,0.6)',
+    '--shadow-md':       '0 4px 16px rgba(0,0,0,0.7)',
+    '--shadow-lg':       '0 12px 32px rgba(0,0,0,0.8)',
     '--border-color':    'rgba(255,255,255,0.07)',
-    '--border-strong':   'rgba(255,255,255,0.12)',
+    '--border-strong':   'rgba(255,255,255,0.13)',
 };
 
 // Función para aplicar la skin de forma reactiva en el body

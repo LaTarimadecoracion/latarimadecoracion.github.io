@@ -70,37 +70,32 @@ body.theme-valentin {
     --bg-color: #FFF2F5;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MODO OSCURO — Dark Premium
-   Fondos neutros profundos, bordes blancos sutiles.
-   El acento madera/ámbar aparece SOLO en interactivos.
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ━━ MODO OSCURO — Sobrio Oscuro ━━
+   Espíritu del tema Sobrio pero invertido:
+   fondo negro, texto blanco, todo gris neutro.
+   Color madera solo en botones de acción. */
 body.theme-dark {
-    /* Fondos neutros oscuros — sin tinte marrón */
-    --bg-color:       #111111;
-    --surface-color:  #1A1A1A;
-    --surface-raised: #232323;
-    --surface-float:  #2C2C2C;
+    --bg-color:        #0F0F0F;
+    --surface-color:   #1A1A1A;
+    --surface-raised:  #242424;
+    --surface-float:   #2E2E2E;
 
-    /* Texto limpio */
-    --text-main:  #F2F2F2;
-    --text-muted: #888888;
-    --text-faint: #4A4A4A;
+    --text-main:       #EFEFEF;
+    --text-muted:      #787878;
+    --text-faint:      #404040;
 
-    /* Acento madera — solo para botones e interactivos */
-    --primary-color:   #C8855A;
-    --primary-hover:   #DC9B6E;
-    --accent-color:    #E8AE80;
-    --secondary-color: #2A2A2A;
+    /* Acento madera solo para CTAs — igual que Sobrio usa negro como acento */
+    --primary-color:   #B4846C;
+    --primary-hover:   #C99278;
+    --accent-color:    #B4846C;
+    --secondary-color: #232323;
 
-    /* Sombras profundas neutras */
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.4);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.6);
-    --shadow-lg: 0 12px 32px rgba(0,0,0,0.75);
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.6);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.7);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,0.8);
 
-    /* Bordes BLANCOS con baja opacidad — estándar de todo dark mode */
-    --border-color:  rgba(255, 255, 255, 0.07);
-    --border-strong: rgba(255, 255, 255, 0.12);
+    --border-color:  rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.13);
 }
 
 /* Base Reset */
