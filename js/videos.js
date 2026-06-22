@@ -107,9 +107,13 @@ function openImmersiveVideo(videoList, startIndex) {
         const ytMatch = videoSrc.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|shorts\/))([\w-]{11})/);
         const ytId = ytMatch ? ytMatch[1] : null;
 
+        // Detectar si es TikTok
+        const tkMatch = videoSrc.match(/(?:tiktok\.com\/.*\/video\/|tiktok\.com\/v\/)(\d+)/);
+        const tkId = tkMatch ? tkMatch[1] : null;
+
         let mediaHTML = '';
         if (ytId) {
-            // Reproductor iframe de YouTube optimizado para vertical
+            // Reproductor iframe de YouTube
             mediaHTML = `
                 <iframe 
                     class="tiktok-video-element yt-iframe"
@@ -119,6 +123,19 @@ function openImmersiveVideo(videoList, startIndex) {
                     allow="autoplay; encrypted-media" 
                     allowfullscreen
                     style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                ></iframe>
+            `;
+        } else if (tkId) {
+            // Reproductor iframe de TikTok
+            mediaHTML = `
+                <iframe 
+                    class="tiktok-video-element tk-iframe"
+                    data-src="https://www.tiktok.com/embed/v2/${tkId}" 
+                    src=""
+                    frameborder="0" 
+                    allow="encrypted-media;" 
+                    allowfullscreen
+                    style="width: 100%; height: 100%; object-fit: cover;"
                 ></iframe>
             `;
         } else {
@@ -190,6 +207,10 @@ function openImmersiveVideo(videoList, startIndex) {
                     playIcon.style.display = 'block';
                 }
             } else if (iframeElement) {
+                if (iframeElement.classList.contains('tk-iframe')) {
+                    // Para TikTok, el iframe intercepta sus propios clicks, no hacemos nada extra.
+                    return;
+                }
                 if (!isPlaying) {
                     // Primer toque: si está muteado, desmutear
                     if (!iframeElement.dataset.unmuted) {
@@ -261,11 +282,13 @@ function setupIntersectionObserver() {
                 }
                 if (iframe) {
                     if (!iframe.getAttribute('src')) {
-                        // Primera vez: asignamos el src que tiene autoplay=1 nativo de YouTube
                         iframe.setAttribute('src', iframe.getAttribute('data-src'));
                     } else {
-                        // Ya cargado: enviamos el comando de play
-                        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                        if (iframe.classList.contains('yt-iframe')) {
+                            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                        } else if (iframe.classList.contains('tk-iframe')) {
+                            // TikTok no tiene API simple, recargamos el src si estaba vacío
+                        }
                     }
                 }
                 if (playIcon) playIcon.style.display = 'none';
@@ -276,9 +299,13 @@ function setupIntersectionObserver() {
                 }
                 if (iframe) {
                     if (iframe.getAttribute('src')) {
-                        // Si ya tiene src, lo pausamos
-                        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                        iframe.contentWindow.postMessage('{"event":"command","func":"seekTo","args":[0, true]}', '*');
+                        if (iframe.classList.contains('yt-iframe')) {
+                            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                            iframe.contentWindow.postMessage('{"event":"command","func":"seekTo","args":[0, true]}', '*');
+                        } else if (iframe.classList.contains('tk-iframe')) {
+                            // Para pausar TikTok vaciamos el src (detiene la reproducción)
+                            iframe.setAttribute('src', '');
+                        }
                     }
                 }
             }

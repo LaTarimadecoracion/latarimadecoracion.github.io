@@ -9,8 +9,8 @@ const productsData = [
                 "id": "baranda-desmontable-clasica",
                 "title": "Baranda desmontable Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
+                "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
                 "image": "img/migrados/barandas/baranda-desmontable-clasica/4.webp",
-                "video": "https://www.w3schools.com/html/mov_bbb.mp4",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
@@ -166,6 +166,8 @@ const productsData = [
                         ]
                     }
                 ],
+                "tags": [],
+                "last_modified": 1782086688191,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -190,7 +192,7 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "views": 31
+                "primaryCatId": "Barandas"
             },
             {
                 "id": "baranda-desmontable-montessori",
@@ -1193,6 +1195,7 @@ const productsData = [
                 "id": "steps---cajones",
                 "title": "Steps / Cajones",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
                 "image": "img/migrados/otros/steps---cajones/stepscajones.webp",
                 "acabados_groups": [
                     {
@@ -1264,8 +1267,18 @@ const productsData = [
                         ]
                     }
                 ],
-                "last_modified": 1780589686041,
-                "views": 0
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente"
+                ],
+                "last_modified": 1782086406799,
+                "primaryCatId": "Steps"
             },
             {
                 "id": "cajones-profesional",

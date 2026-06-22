@@ -25,7 +25,7 @@ window.renderCategoriesMenu = function() {
     // Ordenar categorías según su orden configurado
     const sortedCategories = [...sourceData].sort((a, b) => (a.order || 0) - (b.order || 0));
 
-    sortedCategories.forEach(cat => {
+    sortedCategories.forEach((cat, index) => {
         const catCard = document.createElement('div');
         catCard.className = 'feed-card';
         // Ajustamos márgenes para que la grilla los maneje limpios

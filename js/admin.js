@@ -391,14 +391,20 @@ window.safeAdminRun = function(fn) {
         const compVideoInput = document.getElementById('admin-comp-video-url');
         if (compVideoInput) {
             compVideoInput.addEventListener('blur', () => {
-                const ytId = extractYouTubeId(compVideoInput.value.trim());
+                const url = compVideoInput.value.trim();
+                const ytId = extractYouTubeId(url);
+                const tkId = window.extractTikTokId ? window.extractTikTokId(url) : null;
                 const preview = document.getElementById('comp-video-preview');
                 if (!preview) return;
+                
                 if (ytId) {
                     preview.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=0&mute=1&modestbranding=1&rel=0" allowfullscreen style="width:100%; height:120px; border:none; border-radius:8px;"></iframe>`;
                     preview.style.display = 'block';
+                } else if (tkId) {
+                    preview.innerHTML = `<iframe src="https://www.tiktok.com/embed/v2/${tkId}" allowfullscreen style="width:100%; height:120px; border:none; border-radius:8px;"></iframe>`;
+                    preview.style.display = 'block';
                 } else {
-                    preview.innerHTML = '<small style="color:red;">⚠️ URL de YouTube no válida.</small>';
+                    preview.innerHTML = '<small style="color:red;">⚠️ URL de YouTube o TikTok no válida.</small>';
                     preview.style.display = 'block';
                 }
             });
@@ -441,8 +447,9 @@ window.safeAdminRun = function(fn) {
 
                 } else if (type === 'video') {
                     const url = document.getElementById('admin-comp-video-url').value.trim();
-                    if (!extractYouTubeId(url)) {
-                        alert('Por favor, ingresá una URL válida de YouTube.');
+                    const isValid = extractYouTubeId(url) || (window.extractTikTokId && window.extractTikTokId(url));
+                    if (!isValid) {
+                        alert('Por favor, ingresá una URL válida de YouTube o TikTok.');
                         btnSaveSectionComp.disabled = false;
                         btnSaveSectionComp.textContent = 'Guardar Componente';
                         return;
@@ -2233,9 +2240,7 @@ window.safeAdminRun = function(fn) {
     const categoryFeedEmpty = document.getElementById('category-feed-empty');
 
     function navigateToCategoryFeed(categoryId, isBack = false) {
-        if (categoryFeedView) {
-            categoryFeedView.dataset.categoryId = categoryId;
-        }
+        
 
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('cat') !== categoryId) {
@@ -2252,6 +2257,15 @@ window.safeAdminRun = function(fn) {
 
         const cat = sourceData.find(c => c.id === categoryId);
         if (!cat) return;
+
+        if (isBack) {
+            const categoryFeedView = document.getElementById('view-category-feed');
+            if (categoryFeedView) categoryFeedView.dataset.categoryId = categoryId;
+        }
+
+        if (window.navigateToView) {
+            window.navigateToView('view-category-feed', { categoryId: categoryId, name: cat.name }, isBack);
+        }
 
         // Configurar atributos para compartir categoría
         if (window.btnShareHeader) {
@@ -3160,3 +3174,53 @@ window.renderAdminViewBuilderList = safeAdminRun(renderAdminViewBuilderList);
 window.renderAdminHomeSectionsList = safeAdminRun(renderAdminHomeSectionsList);
 window.renderAdminRentals = safeAdminRun(renderAdminRentals);
 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btnRunMaintenance = document.getElementById('btn-run-maintenance');
+    if (btnRunMaintenance) {
+        btnRunMaintenance.addEventListener('click', async () => {
+            const confirmMsg = '⚠️ ATENCIÓN: Esta operación:\n\n• Convertirá imágenes .jpg/.png a .webp en disco\n• Eliminará archivos de imagen que no figuren en la base de datos\n• Actualizará products-data.js con las rutas .webp\n\n¿Querés continuar?';
+            if (!confirm(confirmMsg)) return;
+
+            const resultPanel   = document.getElementById('maintenance-result');
+            const summaryEl     = document.getElementById('maintenance-summary');
+            const logEl         = document.getElementById('maintenance-log');
+
+            btnRunMaintenance.disabled    = true;
+            btnRunMaintenance.textContent = '⏳ Ejecutando mantenimiento...';
+
+            try {
+                const response = await fetch('/api/maintenance/clean-and-convert', { method: 'POST' });
+                const data     = await response.json();
+
+                resultPanel.style.display = 'block';
+                resultPanel.scrollIntoView({ behavior: 'smooth' });
+
+                if (data.success) {
+                    const s = data.summary;
+                    summaryEl.innerHTML = `
+                        <span style="background:#27ae60; color:white; padding:0.3rem 0.7rem; border-radius:20px; font-size:0.8rem; font-weight:600;">✅ Mantenidas: ${s.imagenes_mantenidas}</span>
+                        <span style="background:#2980b9; color:white; padding:0.3rem 0.7rem; border-radius:20px; font-size:0.8rem; font-weight:600;">🔄 Convertidas: ${s.convertidas_a_webp}</span>
+                        <span style="background:#c0510a; color:white; padding:0.3rem 0.7rem; border-radius:20px; font-size:0.8rem; font-weight:600;">🗑️ Eliminadas: ${s.huerfanos_eliminados}</span>
+                    `;
+                    logEl.textContent = data.log.join('\n');
+                    if (s.convertidas_a_webp > 0 || s.huerfanos_eliminados > 0) {
+                        summaryEl.innerHTML += '<br><small style="color:#f0e68c; font-size:0.75rem; margin-top:0.5rem; display:block;">⚡ Recargá el servidor para que los cambios en products-data.js entren en efecto.</small>';
+                    }
+                } else {
+                    summaryEl.innerHTML = `<span style="color:#ff6b6b; font-weight:600;">❌ Error: ${data.error}</span>`;
+                    logEl.textContent   = (data.log || []).join('\n');
+                }
+
+            } catch (err) {
+                resultPanel.style.display = 'block';
+                summaryEl.innerHTML = `<span style="color:#ff6b6b;">❌ No se pudo conectar con el servidor: ${err.message}</span>`;
+                logEl.textContent   = '';
+            } finally {
+                btnRunMaintenance.disabled    = false;
+                btnRunMaintenance.innerHTML   = '<span class="material-symbols-outlined" style="font-size:1.1rem; vertical-align:middle;">auto_fix_high</span> Ejecutar Limpieza y Conversión WebP';
+            }
+        });
+    }
+});
