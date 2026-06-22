@@ -95,8 +95,8 @@ window.safeRender = function(fn, name) {
         carousel.classList.add('grabbing');
 
         // Temporarily disable scroll snapping so programmatically setting scrollLeft is smooth
-        carousel.style.scrollSnapType = 'none';
-        carousel.style.scrollBehavior = 'auto'; // Disable CSS transition scroll-behavior during manual drag
+        carousel.style.setProperty('scroll-snap-type', 'none', 'important');
+        carousel.style.setProperty('scroll-behavior', 'auto', 'important');
 
         startX = e.pageX;
         scrollLeft = carousel.scrollLeft;
@@ -119,7 +119,7 @@ window.safeRender = function(fn, name) {
         activeCarousel = null;
 
         // Restore scroll behavior
-        carousel.style.scrollBehavior = '';
+        carousel.style.removeProperty('scroll-behavior');
 
         if (Math.abs(velocity) > 0.5) {
             let momentum = velocity * 15;
@@ -132,13 +132,13 @@ window.safeRender = function(fn, name) {
                     requestAnimationFrame(step);
                 } else {
                     console.log("💤 Momentum scroll finished. Restoring scroll-snap.");
-                    carousel.style.scrollSnapType = '';
+                    carousel.style.removeProperty('scroll-snap-type');
                 }
             };
             requestAnimationFrame(step);
         } else {
             console.log("Restoring scroll-snap immediately.");
-            carousel.style.scrollSnapType = '';
+            carousel.style.removeProperty('scroll-snap-type');
         }
     };
 

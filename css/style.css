@@ -2212,7 +2212,8 @@ button, .btn-primary, .btn-outline {
 .product-detail-carousel {
     display: flex !important;
     overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important; /* Efecto imán: se frena justo en cada foto */
+    scroll-snap-type: x mandatory; /* No !important so JS can disable it while dragging */
+    scroll-behavior: smooth; /* Smooth scrolling when using arrows or snap */
     width: 100% !important;
     height: auto !important; /* Altura elástica auto-adaptativa según la foto */
     aspect-ratio: 1200 / 791; /* Mantiene la proporción física nítida */
