@@ -480,10 +480,23 @@
             let cartListHTML = '';
             if (cartItems.length === 0) {
                 cartListHTML = `
-                    <div style="padding: 3rem 1rem; text-align: center; color: var(--text-muted, #64748b); border: 1.5px dashed #E8ECF0; border-radius: 12px; background: white; margin-top:0.5rem;">
-                        <span class="material-symbols-outlined" style="font-size: 38px; opacity:0.4; display:block; margin-bottom:0.5rem; color:var(--primary-color, #c0510a);">favorite_border</span>
-                        <p style="font-size:0.85rem; margin:0; font-weight: 600;">Tu lista de deseos está vacía.</p>
-                        <p style="font-size:0.75rem; color:#94a3b8; margin:4px 0 0 0;">¡Explorá el catálogo y agregá viruta fresca!</p>
+                    <div class="cart-empty-motivator" style="padding: 2.5rem 1.5rem; text-align: center; border-radius: 20px; background: linear-gradient(145deg, #ffffff, #fdfbf9); border: 1px solid rgba(180,132,108,0.2); box-shadow: 0 10px 30px rgba(180,132,108,0.06); margin-top:1.5rem;">
+                        <div style="width: 80px; height: 80px; background: #fff5ed; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
+                            <span class="material-symbols-outlined" style="font-size: 42px; color:var(--primary-color, #c0510a);">shopping_bag</span>
+                        </div>
+                        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin:0 0 0.5rem 0;">¡Tu carrito está esperando!</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin:0 0 1.5rem 0; line-height:1.5;">Descubrí muebles únicos diseñados en madera maciza que transformarán tu hogar.</p>
+                        
+                        <div style="display:flex; flex-direction:column; gap:0.75rem; max-width: 280px; margin: 0 auto;">
+                            <button type="button" class="btn-primary" onclick="document.querySelector('.nav-item[data-target=\\'view-categories\\']').click()" style="display:flex; align-items:center; justify-content:center; gap:8px; border-radius: 50px; padding: 0.8rem 1rem; font-size:0.95rem; font-weight: 700; width: 100%;">
+                                <span class="material-symbols-outlined" style="font-size: 1.2rem;">category</span>
+                                Explorar Catálogo
+                            </button>
+                            <button type="button" class="btn-outline" onclick="document.querySelector('.nav-item[data-target=\\'view-videos\\']').click()" style="display:flex; align-items:center; justify-content:center; gap:8px; border-radius: 50px; padding: 0.8rem 1rem; font-size:0.95rem; font-weight: 700; width: 100%; border-color: rgba(180,132,108,0.3); color: var(--primary-color, #c0510a);">
+                                <span class="material-symbols-outlined" style="font-size: 1.2rem;">play_circle</span>
+                                Ver Videos Inspiradores
+                            </button>
+                        </div>
                     </div>
                 `;
             } else {
