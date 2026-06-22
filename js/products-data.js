@@ -1329,6 +1329,7 @@ const productsData = [
                 "id": "estantes-montessori",
                 "title": "Estantes Montessori",
                 "description": "Organización creativa y estilo para tus paredes.",
+                "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
                 "image": "img/migrados/decoracion/estantes-montessori/1.webp",
                 "acabados_groups": [
                     {
@@ -1393,7 +1394,9 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 1
+                "tags": [],
+                "last_modified": 1782087372455,
+                "primaryCatId": "Estantes"
             },
             {
                 "id": "hexagonales",

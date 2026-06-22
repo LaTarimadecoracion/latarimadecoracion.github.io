@@ -71,24 +71,33 @@ window.siteConfig = {
     },
     "sessionNosotros": [
         {
-            "title": "Pasión por la madera",
-            "description": "Somos una carpintería especializada en crear productos únicos, seguros y con diseño para tu hogar. Ubicados en Hurlingham, Buenos Aires.",
-            "linkUrl": "https://wa.me/5491167007723",
-            "linkText": "Contactarnos por WhatsApp",
+            "title": "¡Bienvenidos a La Tarima!",
+            "description": "Gracias por pasar por la web de nuestro emprendimiento familiar. Nos gusta definirnos como una carpintería online: diseñamos y fabricamos muebles y trabajos a pedido, adaptándonos a lo que buscás.\n\nPresupuestos sin cargo.\n\nAsesoramiento personalizado en cada proyecto.\n\nDiseñamos desde Hurlingham, Buenos Aires, para toda la zona. \n\n¡Escribinos y armemos tu próximo proyecto!",
             "mediaType": "image",
             "image": "img/nosotros/bloque/1780267473632-imagen.webp",
             "videoUrl": "",
-            "mapQuery": ""
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Contáctanos por WhatsApp",
+                    "url": "https://wa.me/5491167007723",
+                    "newTab": true
+                }
+            ],
+            "linkUrl": "https://wa.me/5491167007723",
+            "linkText": "Contáctanos por WhatsApp",
+            "linkNewTab": true
         },
         {
             "title": "Ubicación en Hurlingham",
-            "description": "Nuestro taller se encuentra en el corazón de Hurlingham, provincia de Buenos Aires. Diseñamos muebles premium con maderas seleccionadas para garantizar máxima durabilidad.",
-            "linkUrl": "",
-            "linkText": "",
+            "description": "Nuestro taller se encuentra en el corazón de Hurlingham, provincia de Buenos Aires.",
             "mediaType": "map",
             "image": "",
             "videoUrl": "",
-            "mapQuery": "vergara y jaureche, hurlingham, buenos aires, argentina"
+            "mapQuery": "vergara y jaureche, hurlingham, buenos aires, argentina",
+            "linkUrl": "",
+            "linkText": "",
+            "linkNewTab": true
         },
         {
             "title": "Catalogo completo",
