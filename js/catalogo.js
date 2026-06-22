@@ -156,12 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const detailUrl = `./?prod=${product.id}`;
             infoCol.innerHTML = `
-                <a href="${detailUrl}" class="catalog-thumb-link">
+                <a href="${detailUrl}" class="catalog-thumb-link" target="_parent">
                     <img src="${product.image}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='img/logo_provisional.png';">
                 </a>
                 <div class="catalog-details">
-                    <span class="catalog-category-tag">${product.categoryName}</span>
-                    <a href="${detailUrl}" class="catalog-title-link">
+                    <!-- <span class="catalog-category-tag">${product.categoryName}</span> -->
+                    <a href="${detailUrl}" class="catalog-title-link" target="_parent">
                         <h3 class="catalog-title">${product.title}</h3>
                     </a>
                 </div>
