@@ -47,8 +47,9 @@ window.applyTheme = function(themeName) {
     }
 };
 
-// Cargar tema activo inicial (primero del servidor, luego local como respaldo)
-window.activeTheme = window.siteConfig.activeTheme || localStorage.getItem('activeTheme') || 'classic';
+// Cargar tema activo inicial (primero usuario local, luego del servidor, luego classic)
+window.userSelectedTheme = localStorage.getItem('userSelectedTheme');
+window.activeTheme = window.userSelectedTheme || window.siteConfig.activeTheme || localStorage.getItem('activeTheme') || 'classic';
 window.applyTheme(window.activeTheme);
 
 // 1. App Configurator: Dynamic Identity and Navigation State
@@ -276,3 +277,48 @@ function updateHeader(viewId, context = null) {
         }
     }
 }
+
+// User Theme Selector Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const themeButtons = document.querySelectorAll('.user-theme-btn');
+    const resetBtn = document.getElementById('btn-reset-user-theme');
+    
+    function updateActiveThemeBtn(theme) {
+        themeButtons.forEach(btn => {
+            if (btn.dataset.theme === theme) {
+                btn.style.borderColor = 'var(--primary-color)';
+                btn.style.background = 'var(--primary-color)';
+                btn.style.color = '#fff';
+            } else {
+                btn.style.borderColor = '#e0e0e0';
+                btn.style.background = 'transparent';
+                btn.style.color = 'inherit';
+            }
+        });
+    }
+
+    // Set initial active state based on activeTheme
+    updateActiveThemeBtn(window.activeTheme);
+
+    themeButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const theme = e.currentTarget.dataset.theme;
+            localStorage.setItem('userSelectedTheme', theme);
+            window.userSelectedTheme = theme;
+            window.activeTheme = theme;
+            window.applyTheme(theme);
+            updateActiveThemeBtn(theme);
+        });
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            localStorage.removeItem('userSelectedTheme');
+            window.userSelectedTheme = null;
+            const defaultTheme = window.siteConfig.activeTheme || localStorage.getItem('activeTheme') || 'classic';
+            window.activeTheme = defaultTheme;
+            window.applyTheme(defaultTheme);
+            updateActiveThemeBtn(defaultTheme);
+        });
+    }
+});

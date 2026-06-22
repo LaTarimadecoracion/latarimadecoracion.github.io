@@ -204,6 +204,41 @@
                 <p>Ingresá para guardar tus favoritos y ver tus consultas.</p>
                 <button class="btn-primary mt-2">Iniciar Sesión</button>
                 <button class="btn-outline mt-1">Registrarme</button>
+
+                <hr style="margin: 2.5rem 0 1.5rem 0; width: 100%; border:none; border-top: 1.5px solid #EEF0F3;">
+                
+                <div style="width: 100%; text-align: left; background: #f8f9fb; padding: 1.25rem; border-radius: 12px; border: 1px solid #E8ECF0;">
+                    <h4 style="margin:0 0 0.5rem 0; color: var(--text-main); font-size: 1rem; display: flex; align-items: center; gap: 0.4rem;">
+                        <span class="material-symbols-outlined" style="font-size: 20px; color: var(--primary-color);">palette</span>
+                        Apariencia y Tema
+                    </h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">Elegí el estilo visual de la aplicación. Tu selección guardada reemplazará al tema festivo actual.</p>
+                    
+                    <div id="user-theme-selector" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+                        <!-- Se marcará como .active el que corresponda vía JS -->
+                        <button type="button" class="btn-outline user-theme-btn" data-theme="classic" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#e0e0e0;">
+                            <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">auto_awesome</span> Clásico
+                        </button>
+                        <button type="button" class="btn-outline user-theme-btn" data-theme="sobrio" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#e0e0e0;">
+                            <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">dark_mode</span> Sobrio Oscuro
+                        </button>
+                        <button type="button" class="btn-outline user-theme-btn" data-theme="navidad" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#e0e0e0;">
+                            <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">park</span> Navidad
+                        </button>
+                        <button type="button" class="btn-outline user-theme-btn" data-theme="halloween" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#e0e0e0;">
+                            <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">cruelty_free</span> Halloween
+                        </button>
+                        <button type="button" class="btn-outline user-theme-btn" data-theme="valentin" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#e0e0e0;">
+                            <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">favorite</span> San Valentín
+                        </button>
+                        <button type="button" class="btn-outline user-theme-btn" data-theme="mundial" style="text-align: left; padding: 0.6rem; justify-content: flex-start; font-size:0.8rem; border-color:#e0e0e0;">
+                            <span class="material-symbols-outlined" style="margin-right: 0.4rem; font-size: 18px;">sports_soccer</span> Mundial
+                        </button>
+                    </div>
+                    <button type="button" id="btn-reset-user-theme" class="btn-outline" style="width: 100%; margin-top: 0.75rem; padding: 0.4rem; font-size: 0.75rem; border: none; background: none; color: var(--text-muted); text-decoration: underline;">
+                        Usar tema predeterminado del sitio
+                    </button>
+                </div>
             </div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
@@ -992,7 +1027,7 @@
             <span class="nav-label">CATEGORÍAS</span>
         </a>
         <a href="#" class="nav-item" data-target="view-profile">
-            <span class="material-symbols-outlined">shopping_cart</span>
+            <span id="nav-cart-icon" class="material-symbols-outlined">shopping_cart</span>
             <span class="nav-label">CARRITO</span>
         </a>
         <a href="#" class="nav-item" data-target="view-videos">

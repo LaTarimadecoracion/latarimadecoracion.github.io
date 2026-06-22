@@ -132,6 +132,13 @@
                     qty: 1
                 });
                 console.log(`[Carrito] Agregado a favoritos: ${product.title} (${acabado})`);
+                const navCartIcon = document.getElementById('nav-cart-icon');
+                if (navCartIcon) {
+                    navCartIcon.classList.remove('cart-bounce-anim');
+                    // Forzar reflow para reiniciar la animación
+                    void navCartIcon.offsetWidth;
+                    navCartIcon.classList.add('cart-bounce-anim');
+                }
             }
             saveCartItems();
             
