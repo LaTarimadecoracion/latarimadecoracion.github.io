@@ -38,7 +38,7 @@ if (!window.siteConfig) {
 
 // Función para aplicar la skin de forma reactiva en el body
 window.applyTheme = function(themeName) {
-    document.body.classList.remove('theme-sobrio', 'theme-mundial', 'theme-navidad', 'theme-halloween', 'theme-valentin');
+    document.body.classList.remove('theme-dark', 'theme-sobrio', 'theme-mundial', 'theme-navidad', 'theme-halloween', 'theme-valentin');
     if (themeName && themeName !== 'classic') {
         document.body.classList.add(`theme-${themeName}`);
     }

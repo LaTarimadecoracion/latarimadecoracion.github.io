@@ -515,6 +515,7 @@ window.safeAdminRun = function(fn) {
         const activeThemeName = window.activeTheme || 'classic';
         const themeLabels = {
             classic: "🌲 Madera Clásica",
+            dark: "🌙 Modo Oscuro",
             sobrio: "⚫ Sobrio V1",
             mundial: "⚽ Mes Mundialista",
             navidad: "🎅 Navidad",

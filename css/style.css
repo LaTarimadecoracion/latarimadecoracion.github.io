@@ -70,6 +70,23 @@ body.theme-valentin {
     --bg-color: #FFF2F5;
 }
 
+/* Modo Oscuro (Dark Mode puro) */
+body.theme-dark {
+    --bg-color: #121212;
+    --surface-color: #1E1E1E;
+    --text-main: #E2E8F0;
+    --text-muted: #94A3B8;
+    --primary-color: #B4846C; /* Mantener color madera/tierra */
+    --primary-hover: #9E7058;
+    --secondary-color: #334155;
+    --accent-color: #E5A97D;
+    
+    /* Adaptar bordes si es necesario usando variables, pero si están hardcodeados, esto puede no afectar algunos. Los iremos viendo. */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.5);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.6);
+    --shadow-lg: 0 10px 24px rgba(0,0,0,0.8);
+}
+
 /* Base Reset */
 * {
     margin: 0;
@@ -3667,4 +3684,254 @@ button, .btn-primary, .btn-outline {
 }
 .cart-bounce-anim {
     animation: cartBounce 0.5s ease-in-out;
+}
+
+/* =========================================
+   DARK MODE OVERRIDES (theme-dark)
+   Correcciones para elementos con colores hardcodeados
+   ========================================= */
+
+body.theme-dark .app-header {
+    background: #1E1E1E;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+body.theme-dark .bottom-nav {
+    background: #1E1E1E;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+body.theme-dark .nav-item-label {
+    color: var(--text-muted);
+}
+
+body.theme-dark .nav-item.active .nav-item-label {
+    color: var(--primary-color);
+}
+
+body.theme-dark .view-pane {
+    background: var(--bg-color);
+}
+
+body.theme-dark .product-card {
+    background: var(--surface-color);
+    border-color: rgba(255,255,255,0.07);
+}
+
+body.theme-dark .product-card-name,
+body.theme-dark .card-product-name {
+    color: var(--text-main);
+}
+
+body.theme-dark .product-card-price,
+body.theme-dark .card-product-price {
+    color: var(--primary-color);
+}
+
+/* Sidebar / Drawers */
+body.theme-dark .cart-sidebar,
+body.theme-dark .profile-sidebar,
+body.theme-dark .detail-view-overlay {
+    background: var(--surface-color);
+}
+
+body.theme-dark .cart-sidebar-header,
+body.theme-dark .profile-sidebar-header {
+    background: var(--surface-color);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Detail view */
+body.theme-dark .detail-sheet {
+    background: var(--surface-color);
+}
+
+body.theme-dark .detail-header {
+    background: var(--surface-color);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+body.theme-dark .detail-title {
+    color: var(--text-main);
+}
+
+body.theme-dark .detail-price {
+    color: var(--primary-color);
+}
+
+/* Selector de atributo */
+body.theme-dark .attr-select {
+    background: #2A2A2A;
+    color: var(--text-main);
+    border-color: rgba(255,255,255,0.15);
+}
+
+/* Variant buttons */
+body.theme-dark .variant-btn {
+    background: #2A2A2A;
+    color: var(--text-main);
+    border-color: rgba(255,255,255,0.15);
+}
+
+body.theme-dark .variant-btn:hover {
+    border-color: rgba(255,255,255,0.4);
+}
+
+body.theme-dark .variant-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Categoria cards */
+body.theme-dark .category-card {
+    background: var(--surface-color);
+    border-color: rgba(255,255,255,0.07);
+}
+
+body.theme-dark .category-card-name {
+    color: var(--text-main);
+}
+
+/* Profile sections */
+body.theme-dark .profile-section {
+    background: var(--surface-color);
+    border-color: rgba(255,255,255,0.08);
+}
+
+body.theme-dark .profile-section-title {
+    color: var(--text-main);
+}
+
+/* Order/product list items */
+body.theme-dark .order-item,
+body.theme-dark .cart-item {
+    background: var(--surface-color);
+    border-bottom-color: rgba(255,255,255,0.07);
+}
+
+body.theme-dark .cart-item-name,
+body.theme-dark .order-item-name {
+    color: var(--text-main);
+}
+
+/* Input elements */
+body.theme-dark input[type="text"],
+body.theme-dark input[type="email"],
+body.theme-dark input[type="tel"],
+body.theme-dark input[type="number"],
+body.theme-dark input[type="password"],
+body.theme-dark textarea,
+body.theme-dark select {
+    background: #2A2A2A;
+    color: var(--text-main);
+    border-color: rgba(255,255,255,0.15);
+}
+
+body.theme-dark input::placeholder,
+body.theme-dark textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* Accordion cards (acabados) */
+body.theme-dark .acabado-group-card {
+    background: #252525;
+    border-color: rgba(255,255,255,0.07);
+}
+
+body.theme-dark .medida-admin-row {
+    background: #252525;
+    border-color: rgba(255,255,255,0.07);
+}
+
+body.theme-dark .medida-inputs-container input[type="text"] {
+    background: #333 !important;
+    color: var(--text-main) !important;
+    border-color: rgba(255,255,255,0.15) !important;
+}
+
+/* Modal / overlays */
+body.theme-dark .modal-overlay {
+    background: rgba(0,0,0,0.8);
+}
+
+body.theme-dark .modal-content,
+body.theme-dark .aviso-modal-content {
+    background: var(--surface-color);
+    color: var(--text-main);
+}
+
+/* Section headers */
+body.theme-dark .section-header-title,
+body.theme-dark .section-title {
+    color: var(--text-main);
+}
+
+body.theme-dark .section-subtitle {
+    color: var(--text-muted);
+}
+
+/* Badges and pills */
+body.theme-dark .badge {
+    background: var(--primary-color);
+}
+
+/* Search bar */
+body.theme-dark .search-bar-container {
+    background: #2A2A2A;
+    border-color: rgba(255,255,255,0.1);
+}
+
+body.theme-dark .search-input {
+    background: transparent;
+    color: var(--text-main);
+}
+
+body.theme-dark .search-input::placeholder {
+    color: var(--text-muted);
+}
+
+/* Botones primarios ya heredan las variables, pero overrides específicos */
+body.theme-dark .btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+body.theme-dark .btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+body.theme-dark .btn-outline {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Admin pill tabs */
+body.theme-dark .admin-pill-tab.active {
+    background: #2A2A2A;
+    color: var(--primary-color);
+}
+
+body.theme-dark .admin-pill-tabs {
+    background: #1A1A1A;
+}
+
+/* Admin cards */
+body.theme-dark .admin-card {
+    background: var(--surface-color);
+    border-color: rgba(255,255,255,0.07);
+}
+
+/* Scrollbars */
+body.theme-dark ::-webkit-scrollbar-track {
+    background: #1A1A1A;
+}
+
+body.theme-dark ::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+body.theme-dark ::-webkit-scrollbar-thumb:hover {
+    background: #666;
 }
