@@ -165,14 +165,7 @@ function openImmersiveVideo(videoList, startIndex) {
                 <div class="tiktok-product-title">${prod.title}</div>
             </div>
 
-                    const isFav = () => {
-            try {
-                const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
-                return favs.some(f => f.id === prod.id);
-            } catch (e) { return false; }
-        };
-        const heartIcon = isFav() ? 'favorite' : 'favorite_border';
-        const heartClass = isFav() ? 'is-fav' : '';
+
 
             <!-- Botones a la derecha -->
             <div class="tiktok-ui-right">
