@@ -521,6 +521,47 @@
             
             const acabado = grupo.acabado_name || 'Único';
             setupGalleryActions(acabado);
+
+            // Auto-scroll logic for the gallery
+            const carousel = detailImgContainer.querySelector('.product-detail-carousel');
+            if (carousel && images.length > 1) {
+                if (window.productGalleryAutoScrollInterval) {
+                    clearInterval(window.productGalleryAutoScrollInterval);
+                }
+                
+                window.productGalleryAutoScrollInterval = setInterval(() => {
+                    // Check if carousel is still in the DOM (view is open)
+                    if (!document.body.contains(carousel)) {
+                        clearInterval(window.productGalleryAutoScrollInterval);
+                        return;
+                    }
+                    
+                    const slideWidth = carousel.clientWidth;
+                    if (slideWidth === 0) return; // View might be hidden
+                    
+                    const currentSlide = Math.round(carousel.scrollLeft / slideWidth);
+                    let nextSlide = currentSlide + 1;
+                    if (nextSlide >= images.length) {
+                        nextSlide = 0; // Loop back to start
+                    }
+                    
+                    carousel.scrollTo({
+                        left: slideWidth * nextSlide,
+                        behavior: 'smooth'
+                    });
+                }, 3500);
+
+                // Stop auto-scroll instantly if user interacts
+                const stopAutoScroll = () => {
+                    if (window.productGalleryAutoScrollInterval) {
+                        clearInterval(window.productGalleryAutoScrollInterval);
+                        window.productGalleryAutoScrollInterval = null;
+                    }
+                };
+                carousel.addEventListener('touchstart', stopAutoScroll, {passive: true});
+                carousel.addEventListener('mousedown', stopAutoScroll, {passive: true});
+                carousel.addEventListener('wheel', stopAutoScroll, {passive: true});
+            }
         }
 
         function updateGroupView(index) {
