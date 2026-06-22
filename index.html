@@ -1071,8 +1071,9 @@
                                 <label>Descripción del Bloque</label>
                                 <textarea id="admin-nosotros-description" rows="4" placeholder="Escribí el texto aquí..." required></textarea>
                             </div>
-                            <!-- Panel: Enlace solitario -->
-                            <div id="nosotros-panel-link" class="nosotros-media-panel form-group" style="display:none;">
+                            <!-- Enlace Opcional (Siempre visible) -->
+                            <div class="form-group" style="background:#f8f9fb; padding:15px; border-radius:10px; border:1px solid #E8ECF0; margin-top:10px;">
+                                <h4 style="margin:0 0 10px 0; font-size:0.95rem; color:var(--primary-color);">Enlace (Opcional)</h4>
                                 <label>Nombre del botón</label>
                                 <input type="text" id="admin-nosotros-link-text" placeholder="ej: Contactarnos por WhatsApp">
                                 <label style="margin-top:0.75rem;">URL del enlace</label>
@@ -1081,7 +1082,7 @@
                                     <input type="checkbox" id="admin-nosotros-link-newtab" style="width:18px; height:18px; accent-color:var(--primary-color); cursor:pointer;" checked>
                                     Abrir en nueva pestaña
                                 </label>
-                                <small style="color:var(--text-muted); font-size:0.78rem; margin-top:2px; display:block;">Si está marcado, el enlace se abre en otra pestaña. Si no, redirige desde la misma.</small>
+                                <small style="color:var(--text-muted); font-size:0.78rem; margin-top:4px; display:block;">Podés agregar un botón debajo de la imagen/video, o si seleccionás tipo "Enlace" arriba, solo se mostrará el botón.</small>
                             </div>
                             <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
                                 <button type="button" id="btn-save-nosotros-block" class="btn-primary" style="width: 100%; max-width: none;">Guardar Bloque de Nosotros</button>

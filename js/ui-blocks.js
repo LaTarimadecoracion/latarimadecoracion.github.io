@@ -293,6 +293,13 @@
         if (videoUrlInput) videoUrlInput.value = '';
         if (mapQueryInput) mapQueryInput.value = '';
         if (inputInfoImage) inputInfoImage.value = '';
+        
+        const linkTextEl   = document.getElementById('admin-nosotros-link-text');
+        const linkUrlEl    = document.getElementById('admin-nosotros-link-url');
+        const linkNewTabEl = document.getElementById('admin-nosotros-link-newtab');
+        if (linkTextEl)   linkTextEl.value = '';
+        if (linkUrlEl)    linkUrlEl.value = '';
+        if (linkNewTabEl) linkNewTabEl.checked = true;
         if (infoImagePreview) infoImagePreview.innerHTML = '';
         
         const videoPreview = document.getElementById('nosotros-video-preview');
@@ -332,14 +339,16 @@
                     mapPreview.innerHTML = `<iframe src="https://maps.google.com/maps?q=${enc}&output=embed&z=15" style="width:100%; height:200px; border:none; border-radius:8px;"></iframe>`;
                     mapPreview.style.display = 'block';
                 }
-            } else if (mediaType === 'link') {
-                const linkTextEl   = document.getElementById('admin-nosotros-link-text');
-                const linkUrlEl    = document.getElementById('admin-nosotros-link-url');
-                const linkNewTabEl = document.getElementById('admin-nosotros-link-newtab');
-                if (linkTextEl)   linkTextEl.value     = block.linkText   || '';
-                if (linkUrlEl)    linkUrlEl.value      = block.linkUrl    || '';
-                if (linkNewTabEl) linkNewTabEl.checked = block.linkNewTab !== false;
             }
+            
+            // Always populate link fields regardless of media type
+            const linkTextEl   = document.getElementById('admin-nosotros-link-text');
+            const linkUrlEl    = document.getElementById('admin-nosotros-link-url');
+            const linkNewTabEl = document.getElementById('admin-nosotros-link-newtab');
+            if (linkTextEl)   linkTextEl.value     = block.linkText   || '';
+            if (linkUrlEl)    linkUrlEl.value      = block.linkUrl    || '';
+            if (linkNewTabEl) linkNewTabEl.checked = block.linkNewTab !== false;
+
             document.getElementById('admin-nosotros-form-title').textContent = `Editar Bloque (${target.toUpperCase()}): ${block.title}`;
         } else {
             document.getElementById('admin-nosotros-form-title').textContent = `➕ Agregar Nuevo Bloque en ${target.toUpperCase()}`;
@@ -437,8 +446,8 @@
                 return;
             }
 
-            const linkText = mediaType === 'link' ? (document.getElementById('admin-nosotros-link-text')?.value.trim() || 'Ver más') : '';
-            const linkUrl  = mediaType === 'link' ? (document.getElementById('admin-nosotros-link-url')?.value.trim() || '') : '';
+            const linkText = document.getElementById('admin-nosotros-link-text')?.value.trim() || (mediaType === 'link' ? 'Ver más' : '');
+            const linkUrl  = document.getElementById('admin-nosotros-link-url')?.value.trim() || '';
 
             if (mediaType === 'link' && !linkUrl) {
                 alert('Por favor ingresá la URL del enlace.');
@@ -454,7 +463,7 @@
                 mapQuery: mediaType === 'map'   ? (document.getElementById('admin-nosotros-map-query')?.value.trim() || '') : '',
                 linkUrl,
                 linkText,
-                linkNewTab: mediaType === 'link' ? (document.getElementById('admin-nosotros-link-newtab')?.checked !== false) : true,
+                linkNewTab: document.getElementById('admin-nosotros-link-newtab')?.checked !== false,
             };
 
             if (mediaType === 'video' && !extractYouTubeId(newBlock.videoUrl)) {
