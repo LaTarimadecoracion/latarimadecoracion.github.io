@@ -91,13 +91,23 @@
                 </div>`;
             }
 
-            if (mType === 'link' && block.linkUrl) {
-                const targetAttr = block.linkNewTab !== false ? 'target="_blank" rel="noopener"' : '';
-                mediaHtml = `<a href="${block.linkUrl}" ${targetAttr} class="block-action-btn" style="width:100%; text-align:center;">${block.linkText || 'Ver más'}</a>`;
+            let linksToRender = block.links || [];
+            if (linksToRender.length === 0 && block.linkUrl) {
+                linksToRender = [{ url: block.linkUrl, text: block.linkText || 'Ver más', newTab: block.linkNewTab !== false }];
             }
 
-            const actionButtonHtml = (mType !== 'link' && block.linkUrl)
-                ? `<a href="${block.linkUrl}" target="_blank" class="block-action-btn">${block.linkText || 'Ver más'}</a>`
+            if (mType === 'link') {
+                mediaHtml = '<div style="display:flex; flex-direction:column; gap:0.5rem;">' + linksToRender.map(l => {
+                    const targetAttr = l.newTab !== false ? 'target="_blank" rel="noopener"' : '';
+                    return `<a href="${l.url}" ${targetAttr} class="block-action-btn" style="width:100%; text-align:center;">${l.text || 'Ver más'}</a>`;
+                }).join('') + '</div>';
+            }
+
+            const actionButtonHtml = (mType !== 'link' && linksToRender.length > 0)
+                ? '<div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.5rem;">' + linksToRender.map(l => {
+                    const targetAttr = l.newTab !== false ? 'target="_blank" rel="noopener"' : '';
+                    return `<a href="${l.url}" ${targetAttr} class="block-action-btn">${l.text || 'Ver más'}</a>`;
+                  }).join('') + '</div>'
                 : '';
 
             blockSection.innerHTML = `
@@ -293,13 +303,6 @@
         if (videoUrlInput) videoUrlInput.value = '';
         if (mapQueryInput) mapQueryInput.value = '';
         if (inputInfoImage) inputInfoImage.value = '';
-        
-        const linkTextEl   = document.getElementById('admin-nosotros-link-text');
-        const linkUrlEl    = document.getElementById('admin-nosotros-link-url');
-        const linkNewTabEl = document.getElementById('admin-nosotros-link-newtab');
-        if (linkTextEl)   linkTextEl.value = '';
-        if (linkUrlEl)    linkUrlEl.value = '';
-        if (linkNewTabEl) linkNewTabEl.checked = true;
         if (infoImagePreview) infoImagePreview.innerHTML = '';
         
         const videoPreview = document.getElementById('nosotros-video-preview');
@@ -316,7 +319,7 @@
             titleInput.value       = block.title;
             descriptionInput.value = block.description;
             mediaType = block.mediaType || 'image';
-            renderNosotrosLinksList(block.links || (block.linkUrl ? [{ text: block.linkText || 'Ver más', url: block.linkUrl }] : []));
+            renderNosotrosLinksList(block.links || (block.linkUrl ? [{ text: block.linkText || 'Ver más', url: block.linkUrl, newTab: block.linkNewTab !== false }] : []));
 
             if (mediaType === 'image') {
                 hiddenUrlInput.value = block.image || '';
@@ -341,14 +344,6 @@
                 }
             }
             
-            // Always populate link fields regardless of media type
-            const linkTextEl   = document.getElementById('admin-nosotros-link-text');
-            const linkUrlEl    = document.getElementById('admin-nosotros-link-url');
-            const linkNewTabEl = document.getElementById('admin-nosotros-link-newtab');
-            if (linkTextEl)   linkTextEl.value     = block.linkText   || '';
-            if (linkUrlEl)    linkUrlEl.value      = block.linkUrl    || '';
-            if (linkNewTabEl) linkNewTabEl.checked = block.linkNewTab !== false;
-
             document.getElementById('admin-nosotros-form-title').textContent = `Editar Bloque (${target.toUpperCase()}): ${block.title}`;
         } else {
             document.getElementById('admin-nosotros-form-title').textContent = `➕ Agregar Nuevo Bloque en ${target.toUpperCase()}`;
@@ -446,24 +441,33 @@
                 return;
             }
 
-            const linkText = document.getElementById('admin-nosotros-link-text')?.value.trim() || (mediaType === 'link' ? 'Ver más' : '');
-            const linkUrl  = document.getElementById('admin-nosotros-link-url')?.value.trim() || '';
+            const linkRows = document.querySelectorAll('#nosotros-links-list .nosotros-link-row');
+            const links = Array.from(linkRows).map(row => {
+                const txt = row.querySelector('.link-text-input').value.trim();
+                const url = row.querySelector('.link-url-input').value.trim();
+                const newTab = row.querySelector('.link-newtab-input').checked;
+                return { text: txt || (mediaType === 'link' ? 'Ver más' : ''), url, newTab };
+            }).filter(l => l.url); // Solo guardamos los que tienen URL
 
-            if (mediaType === 'link' && !linkUrl) {
-                alert('Por favor ingresá la URL del enlace.');
+            if (mediaType === 'link' && links.length === 0) {
+                alert('Por favor agregá al menos un enlace con URL.');
                 return;
             }
 
+            const firstLink = links[0] || {};
+
             const newBlock = {
-                title:       mediaType === 'link' ? (linkText || 'Enlace') : title,
+                title:       mediaType === 'link' ? (firstLink.text || 'Enlace') : title,
                 description: mediaType === 'link' ? '' : description,
                 mediaType,
                 image:    mediaType === 'image' ? (document.getElementById('admin-nosotros-image-url').value || 'img/logo_provisional.png') : '',
                 videoUrl: mediaType === 'video' ? (document.getElementById('admin-nosotros-video-url')?.value.trim() || '') : '',
                 mapQuery: mediaType === 'map'   ? (document.getElementById('admin-nosotros-map-query')?.value.trim() || '') : '',
-                linkUrl,
-                linkText,
-                linkNewTab: document.getElementById('admin-nosotros-link-newtab')?.checked !== false,
+                links,
+                // Retrocompatibilidad
+                linkUrl: firstLink.url || '',
+                linkText: firstLink.text || '',
+                linkNewTab: firstLink.newTab !== false,
             };
 
             if (mediaType === 'video' && !extractYouTubeId(newBlock.videoUrl)) {
@@ -496,31 +500,67 @@
         const container = document.getElementById('nosotros-links-list');
         if (!container) return;
         container.innerHTML = '';
-        links.forEach((link, i) => addNosotrosLinkRow(link.text || '', link.url || ''));
+        links.forEach((link, i) => addNosotrosLinkRow(link.text || '', link.url || '', link.newTab !== false));
     }
 
 
 
-    function addNosotrosLinkRow(text = '', url = '') {
+    function addNosotrosLinkRow(text = '', url = '', newTab = true) {
         const container = document.getElementById('nosotros-links-list');
         if (!container) return;
         const row = document.createElement('div');
         row.className = 'nosotros-link-row';
-        row.style.cssText = 'display:flex; flex-direction:column; gap:0.35rem; background:#f8f9fb; border:1.5px solid #E8ECF0; border-radius:10px; padding:0.75rem;';
+        row.draggable = true;
+        row.style.cssText = 'display:flex; flex-direction:column; gap:0.35rem; background:#fff; border:1.5px solid #E8ECF0; border-radius:10px; padding:0.75rem; cursor:grab; position:relative;';
         row.innerHTML = `
             <div style="display:flex; gap:0.5rem; align-items:center;">
+                <span class="material-symbols-outlined drag-handle" style="color:#aaa; font-size:20px; cursor:grab;">drag_indicator</span>
                 <input type="text" class="link-text-input" placeholder="Nombre del enlace" value="${text}" style="flex:1; padding:0.45rem 0.7rem; border:1.5px solid #E8ECF0; border-radius:8px; font-size:0.85rem; font-family:var(--font-main);">
                 <button type="button" class="btn-remove-link" title="Eliminar" style="background:none; border:none; cursor:pointer; color:#e53e3e; padding:0.3rem; flex-shrink:0;"><span class="material-symbols-outlined" style="font-size:20px;">delete</span></button>
             </div>
-            <input type="url" class="link-url-input" placeholder="URL" value="${url}" style="width:100%; padding:0.45rem 0.7rem; border:1.5px solid #E8ECF0; border-radius:8px; font-size:0.85rem; font-family:var(--font-main); box-sizing:border-box;">
+            <div style="display:flex; gap:0.5rem; align-items:center; padding-left:28px;">
+                <input type="url" class="link-url-input" placeholder="URL" value="${url}" style="flex:1; padding:0.45rem 0.7rem; border:1.5px solid #E8ECF0; border-radius:8px; font-size:0.85rem; font-family:var(--font-main); box-sizing:border-box;">
+            </div>
+            <label style="display:flex; align-items:center; gap:0.5rem; margin-top:0.3rem; margin-left:28px; cursor:pointer; font-weight:500; font-size:0.8rem; color:var(--text-muted);">
+                <input type="checkbox" class="link-newtab-input" style="width:14px; height:14px; accent-color:var(--primary-color); cursor:pointer;" ${newTab ? 'checked' : ''}>
+                Abrir en nueva pestaña
+            </label>
         `;
         row.querySelector('.btn-remove-link').addEventListener('click', () => row.remove());
+        
+        row.addEventListener('dragstart', (e) => {
+            row.classList.add('dragging');
+            row.style.opacity = '0.5';
+            e.dataTransfer.effectAllowed = 'move';
+        });
+        row.addEventListener('dragend', () => {
+            row.classList.remove('dragging');
+            row.style.opacity = '1';
+        });
+        
         container.appendChild(row);
     }
 
 
 
     const btnAddNosotrosLink = document.getElementById('btn-add-nosotros-link');
+    if (btnAddNosotrosLink) {
+        btnAddNosotrosLink.addEventListener('click', () => addNosotrosLinkRow());
+    }
+
+    const linksContainer = document.getElementById('nosotros-links-list');
+    if (linksContainer) {
+        linksContainer.addEventListener('dragover', e => {
+            e.preventDefault();
+            const draggingRow = document.querySelector('.nosotros-link-row.dragging');
+            if (!draggingRow) return;
+            const siblings = [...linksContainer.querySelectorAll('.nosotros-link-row:not(.dragging)')];
+            let nextSibling = siblings.find(sibling => {
+                return e.clientY <= sibling.getBoundingClientRect().top + sibling.offsetHeight / 2;
+            });
+            linksContainer.insertBefore(draggingRow, nextSibling);
+        });
+    }
 
 
 
