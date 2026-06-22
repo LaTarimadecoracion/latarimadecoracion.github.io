@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnWpp.className = 'catalog-btn catalog-btn-wpp';
             btnWpp.href = currentWhatsAppLink;
             btnWpp.target = '_blank';
-            btnWpp.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp"> Consultar`;
+            btnWpp.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" style="width: 18px; height: 18px; object-fit: cover; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"> Consultar`;
             actionsCol.appendChild(btnWpp);
 
             // Manejo de eventos del selector
