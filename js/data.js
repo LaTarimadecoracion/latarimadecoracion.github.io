@@ -36,16 +36,52 @@ if (!window.siteConfig) {
     };
 }
 
+// Paleta completa del modo oscuro — Carbón Cálido
+const DARK_THEME_VARS = {
+    '--bg-color':       '#0F0D0B',
+    '--surface-color':  '#1C1916',
+    '--surface-raised': '#252018',
+    '--surface-float':  '#2E2820',
+    '--text-main':      '#EDE5D8',
+    '--text-muted':     '#9E9080',
+    '--text-faint':     '#5A5048',
+    '--primary-color':  '#D4956A',
+    '--primary-hover':  '#E8A87A',
+    '--accent-color':   '#F0C080',
+    '--secondary-color':'#3A3028',
+    '--shadow-sm':      '0 2px 8px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.4)',
+    '--shadow-md':      '0 4px 20px rgba(0,0,0,0.65), 0 2px 8px rgba(0,0,0,0.5)',
+    '--shadow-lg':      '0 12px 40px rgba(0,0,0,0.80), 0 4px 16px rgba(0,0,0,0.6)',
+    '--border-color':   'rgba(255, 220, 160, 0.09)',
+    '--border-strong':  'rgba(255, 220, 160, 0.15)',
+};
+
 // Función para aplicar la skin de forma reactiva en el body
 window.applyTheme = function(themeName) {
+    const root = document.documentElement;
+
+    // 1. Limpiar variables de modo oscuro del :root (para cuando se sale del dark)
+    Object.keys(DARK_THEME_VARS).forEach(v => root.style.removeProperty(v));
+
+    // 2. Quitar todas las clases de tema del body
     document.body.classList.remove('theme-dark', 'theme-sobrio', 'theme-mundial', 'theme-navidad', 'theme-halloween', 'theme-valentin');
+
+    // 3. Aplicar el tema seleccionado
     if (themeName && themeName !== 'classic') {
         document.body.classList.add(`theme-${themeName}`);
     }
+
+    // 4. Para el modo oscuro, inyectar variables directo en :root
+    //    así afecta TODOS los elementos, incluyendo los que tienen inline style con var()
+    if (themeName === 'dark') {
+        Object.entries(DARK_THEME_VARS).forEach(([k, v]) => root.style.setProperty(k, v));
+    }
+
     if (window.updateGarlandVisibility) {
         window.updateGarlandVisibility();
     }
 };
+
 
 // Cargar tema activo inicial (primero usuario local, luego del servidor, luego classic)
 window.userSelectedTheme = localStorage.getItem('userSelectedTheme');
