@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return count;
     }
 
-    let itemsToShow = 8;
+    let itemsToShow = 30;
     let currentFilteredProducts = [];
 
     // 4. Renderizar la lista en el DOM con soporte de paginación (scroll infinito)
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const position = scrollHeight - scrollTop - clientHeight;
         if (position < threshold) {
             if (itemsToShow < currentFilteredProducts.length) {
-                itemsToShow += 1;
+                itemsToShow += 30;
                 renderCatalogList(currentFilteredProducts, true);
             }
         }

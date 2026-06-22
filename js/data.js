@@ -36,47 +36,12 @@ if (!window.siteConfig) {
     };
 }
 
-// Modo Oscuro = Sobrio Oscuro: negro/blanco/gris, madera solo en CTAs
-const DARK_THEME_VARS = {
-    '--bg-color':        '#0F0F0F',
-    '--surface-color':   '#1A1A1A',
-    '--surface-raised':  '#242424',
-    '--surface-float':   '#2E2E2E',
-    '--text-main':       '#EFEFEF',
-    '--text-muted':      '#787878',
-    '--text-faint':      '#404040',
-    '--primary-color':   '#B4846C',
-    '--primary-hover':   '#C99278',
-    '--accent-color':    '#B4846C',
-    '--secondary-color': '#232323',
-    '--shadow-sm':       '0 1px 4px rgba(0,0,0,0.6)',
-    '--shadow-md':       '0 4px 16px rgba(0,0,0,0.7)',
-    '--shadow-lg':       '0 12px 32px rgba(0,0,0,0.8)',
-    '--border-color':    'rgba(255,255,255,0.07)',
-    '--border-strong':   'rgba(255,255,255,0.13)',
-};
-
 // Función para aplicar la skin de forma reactiva en el body
 window.applyTheme = function(themeName) {
-    const root = document.documentElement;
-
-    // 1. Limpiar variables de modo oscuro del :root (para cuando se sale del dark)
-    Object.keys(DARK_THEME_VARS).forEach(v => root.style.removeProperty(v));
-
-    // 2. Quitar todas las clases de tema del body
-    document.body.classList.remove('theme-dark', 'theme-sobrio', 'theme-mundial', 'theme-navidad', 'theme-halloween', 'theme-valentin');
-
-    // 3. Aplicar el tema seleccionado
+    document.body.classList.remove('theme-sobrio', 'theme-mundial', 'theme-navidad', 'theme-halloween', 'theme-valentin');
     if (themeName && themeName !== 'classic') {
         document.body.classList.add(`theme-${themeName}`);
     }
-
-    // 4. Para el modo oscuro, inyectar variables directo en :root
-    //    así afecta TODOS los elementos, incluyendo los que tienen inline style con var()
-    if (themeName === 'dark') {
-        Object.entries(DARK_THEME_VARS).forEach(([k, v]) => root.style.setProperty(k, v));
-    }
-
     if (window.updateGarlandVisibility) {
         window.updateGarlandVisibility();
     }

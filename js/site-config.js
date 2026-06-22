@@ -3,7 +3,7 @@
 // Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.
 
 window.siteConfig = {
-    "activeTheme": "mundial",
+    "activeTheme": "valentin",
     "appConfig": {
         "home": {
             "title": "La Tarima",
@@ -77,13 +77,6 @@ window.siteConfig = {
             "image": "img/nosotros/bloque/1780267473632-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
-            "links": [
-                {
-                    "text": "Contáctanos por WhatsApp",
-                    "url": "https://wa.me/5491167007723",
-                    "newTab": true
-                }
-            ],
             "linkUrl": "https://wa.me/5491167007723",
             "linkText": "Contáctanos por WhatsApp",
             "linkNewTab": true

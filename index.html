@@ -55,32 +55,9 @@
     <script>
         (function() {
             try {
-                var saved = localStorage.getItem('userSelectedTheme') || localStorage.getItem('activeTheme') || 'classic';
+                var saved = localStorage.getItem('activeTheme') || 'classic';
                 if (saved && saved !== 'classic') {
                     document.body.classList.add('theme-' + saved);
-                }
-                // Para el modo oscuro, inyectar variables en :root inmediatamente
-                // así los inline styles con var() también cambian desde el primer render
-                if (saved === 'dark') {
-                    var root = document.documentElement;
-                    var dark = {
-                        '--bg-color':        '#0F0F0F',
-                        '--surface-color':   '#1A1A1A',
-                        '--surface-raised':  '#242424',
-                        '--surface-float':   '#2E2E2E',
-                        '--text-main':       '#EFEFEF',
-                        '--text-muted':      '#787878',
-                        '--primary-color':   '#B4846C',
-                        '--primary-hover':   '#C99278',
-                        '--accent-color':    '#B4846C',
-                        '--secondary-color': '#232323',
-                        '--shadow-sm':       '0 1px 4px rgba(0,0,0,0.6)',
-                        '--shadow-md':       '0 4px 16px rgba(0,0,0,0.7)',
-                        '--shadow-lg':       '0 12px 32px rgba(0,0,0,0.8)',
-                        '--border-color':    'rgba(255,255,255,0.07)',
-                        '--border-strong':   'rgba(255,255,255,0.13)',
-                    };
-                    for (var k in dark) root.style.setProperty(k, dark[k]);
                 }
             } catch(e) {}
         })();
