@@ -506,7 +506,7 @@
                         <p style="font-size: 0.9rem; color: var(--text-muted); margin:0 0 1.5rem 0; line-height:1.5;">Descubrí muebles únicos diseñados en madera maciza que transformarán tu hogar.</p>
                         
                         <div style="display:flex; flex-direction:column; gap:0.75rem; max-width: 280px; margin: 0 auto;">
-                            <button type="button" class="btn-primary" onclick="document.querySelector('.nav-item[data-target=\\'view-categories\\']').click()" style="display:flex; align-items:center; justify-content:center; gap:8px; border-radius: 50px; padding: 0.8rem 1rem; font-size:0.95rem; font-weight: 700; width: 100%;">
+                            <button type="button" class="btn-primary" onclick="if(window.navigateToView) window.navigateToView('view-catalogo')" style="display:flex; align-items:center; justify-content:center; gap:8px; border-radius: 50px; padding: 0.8rem 1rem; font-size:0.95rem; font-weight: 700; width: 100%;">
                                 <span class="material-symbols-outlined" style="font-size: 1.2rem;">category</span>
                                 Explorar Catálogo
                             </button>

@@ -154,11 +154,29 @@ document.addEventListener('DOMContentLoaded', () => {
             // ====== NUEVO LAYOUT LISTA COMPACTA ======
             // 1. Imagen (Thumbnail)
             const detailUrl = `./?prod=${product.id}`;
+
+            const handleProductClick = (e) => {
+                e.preventDefault();
+                try {
+                    if (window.parent && typeof window.parent.showProductDetail === 'function' && typeof window.parent.findProductById === 'function') {
+                        const foundData = window.parent.findProductById(product.id);
+                        if (foundData) {
+                            window.parent.showProductDetail(foundData.product, foundData.catName);
+                            return;
+                        }
+                    }
+                } catch (err) {
+                    console.error('Error opening product detail via parent:', err);
+                }
+                window.parent.location.href = detailUrl;
+            };
+
             const thumbLink = document.createElement('a');
             thumbLink.href = detailUrl;
             thumbLink.className = 'catalog-thumb-link';
             thumbLink.target = '_parent';
             thumbLink.innerHTML = `<img src="${product.image}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='img/logo_provisional.png';">`;
+            thumbLink.addEventListener('click', handleProductClick);
             row.appendChild(thumbLink);
 
             // 2. Textos (Titulo + Opciones) -> flex: 1
@@ -171,11 +189,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 2.1 Título
             const titleRow = document.createElement('div');
-            titleRow.innerHTML = `
-                <a href="${detailUrl}" class="catalog-title-link" target="_parent" style="white-space: normal;">
-                    <h3 class="catalog-title" style="white-space: normal; overflow: visible; font-size: 1.05rem; margin-bottom: 2px;">${product.title}</h3>
-                </a>
-            `;
+            const titleLink = document.createElement('a');
+            titleLink.href = detailUrl;
+            titleLink.className = 'catalog-title-link';
+            titleLink.target = '_parent';
+            titleLink.style.whiteSpace = 'normal';
+            titleLink.innerHTML = `<h3 class="catalog-title" style="white-space: normal; overflow: visible; font-size: 1.05rem; margin-bottom: 2px;">${product.title}</h3>`;
+            titleLink.addEventListener('click', handleProductClick);
+            titleRow.appendChild(titleLink);
             textCol.appendChild(titleRow);
 
             // Variables de enlaces
