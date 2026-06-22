@@ -1,5 +1,7 @@
 // js/videos.js
 
+window.globalVideosUnmuted = false;
+
 /**
  * Módulo para la vista de Videos Inmersivos.
  * Genera una grilla de miniaturas y un reproductor estilo TikTok a pantalla completa.
@@ -144,7 +146,7 @@ function openImmersiveVideo(videoList, startIndex) {
                     src="${videoSrc}" 
                     poster="${posterSrc}"
                     loop 
-                    muted
+                    ${window.globalVideosUnmuted ? '' : 'muted'}
                     playsinline 
                     preload="metadata"
                     class="tiktok-video-element mp4-video"
@@ -156,7 +158,7 @@ function openImmersiveVideo(videoList, startIndex) {
             ${mediaHTML}
             
             <span class="material-symbols-outlined tiktok-play-icon">play_arrow</span>
-            <span class="material-symbols-outlined tiktok-mute-icon" style="position: absolute; top: 20px; right: 20px; font-size: 28px; color: rgba(255,255,255,0.8); z-index: 15; background: rgba(0,0,0,0.3); border-radius: 50%; padding: 6px; pointer-events: none; backdrop-filter: blur(2px);">volume_off</span>
+            <span class="material-symbols-outlined tiktok-mute-icon" style="position: absolute; top: 20px; right: 20px; font-size: 28px; color: rgba(255,255,255,0.8); z-index: 15; background: rgba(0,0,0,0.3); border-radius: 50%; padding: 6px; pointer-events: none; backdrop-filter: blur(2px); ${window.globalVideosUnmuted ? 'display: none;' : ''}">volume_off</span>
 
             <!-- Información Superior (Título) -->
             <div class="tiktok-ui-top">
@@ -193,10 +195,32 @@ function openImmersiveVideo(videoList, startIndex) {
         videoItem.addEventListener('click', (e) => {
             if (e.target.closest('.tiktok-ui-right') || e.target.closest('.tiktok-ui-bottom')) return;
 
+            // Global unmute logic
+            const applyGlobalUnmute = () => {
+                if (!window.globalVideosUnmuted) {
+                    window.globalVideosUnmuted = true;
+                    // Unmute all loaded mp4s
+                    document.querySelectorAll('.tiktok-video-element.mp4-video').forEach(v => {
+                        v.muted = false;
+                    });
+                    // Unmute all loaded iframes
+                    document.querySelectorAll('.tiktok-video-element.yt-iframe').forEach(ifr => {
+                        ifr.dataset.unmuted = 'true';
+                        if (ifr.contentWindow && ifr.getAttribute('src')) {
+                            ifr.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+                            ifr.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[100]}', '*');
+                        }
+                    });
+                    // Hide all mute icons
+                    document.querySelectorAll('.tiktok-mute-icon').forEach(icon => {
+                        icon.style.display = 'none';
+                    });
+                }
+            };
+
             if (videoElement) {
                 if (videoElement.muted) {
-                    videoElement.muted = false; // Al tocar por primera vez, desmuteamos
-                    if (muteIcon) muteIcon.style.display = 'none';
+                    applyGlobalUnmute();
                 }
                 
                 if (videoElement.paused) {
@@ -212,12 +236,9 @@ function openImmersiveVideo(videoList, startIndex) {
                     return;
                 }
                 if (!isPlaying) {
-                    // Primer toque: si está muteado, desmutear
+                    // Primer toque: si está muteado, desmutear a todos globalmente
                     if (!iframeElement.dataset.unmuted) {
-                        iframeElement.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
-                        iframeElement.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[100]}', '*');
-                        iframeElement.dataset.unmuted = 'true';
-                        if (muteIcon) muteIcon.style.display = 'none';
+                        applyGlobalUnmute();
                     }
                     
                     iframeElement.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
@@ -282,7 +303,12 @@ function setupIntersectionObserver() {
                 }
                 if (iframe) {
                     if (!iframe.getAttribute('src')) {
-                        iframe.setAttribute('src', iframe.getAttribute('data-src'));
+                        let tSrc = iframe.getAttribute('data-src');
+                        if (window.globalVideosUnmuted && iframe.classList.contains('yt-iframe')) {
+                            tSrc = tSrc.replace('&mute=1', '&mute=0');
+                            iframe.dataset.unmuted = 'true';
+                        }
+                        iframe.setAttribute('src', tSrc);
                     } else {
                         if (iframe.classList.contains('yt-iframe')) {
                             iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
