@@ -51,7 +51,17 @@
 
 </head>
 <body>
-
+    <!-- Script Anti-FOUC para Temáticas (Evita flashazo de color por defecto) -->
+    <script>
+        (function() {
+            try {
+                var theme = localStorage.getItem('activeTheme') || 'classic';
+                if (theme && theme !== 'classic') {
+                    document.body.classList.add('theme-' + theme);
+                }
+            } catch(e) {}
+        })();
+    </script>
     <!-- Splash Screen -->
     <div id="splash-screen">
         <div class="splash-content">
