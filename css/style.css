@@ -3671,3 +3671,437 @@ button, .btn-primary, .btn-outline {
     animation: cartBounce 0.5s ease-in-out;
 }
 
+
+/* Custom details/summary style for collapsed panels in forms */
+details.form-group summary::-webkit-details-marker {
+    display: none;
+}
+details.form-group summary {
+    outline: none;
+}
+details[open] summary .expand-arrow {
+    transform: rotate(180deg);
+}
+
+/* Minimalist overrides for admin panel forms and modals */
+.admin-view {
+    font-family: var(--font-main) !important;
+    background-color: #F8FAFC !important;
+}
+
+/* Sleek Flat Cards */
+.admin-card {
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    padding: 1.25rem !important;
+    margin-bottom: 1.25rem !important;
+}
+
+/* Modern Headers */
+.admin-page-header {
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 1.25rem !important;
+}
+
+.admin-header-title {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    color: #1E293B !important;
+}
+
+.admin-header-title .material-symbols-outlined {
+    font-size: 1.35rem !important;
+    color: var(--primary-color) !important;
+}
+
+/* Minimalist Buttons for Admin Space */
+.admin-view .btn-primary,
+.admin-view .btn-outline,
+[id^="admin-"] .modal-content .btn-primary,
+[id^="admin-"] .modal-content .btn-outline {
+    padding: 0.5rem 1rem !important;
+    border-radius: 6px !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    max-width: none !important;
+    height: 36px !important;
+    box-shadow: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    transition: all 0.15s ease !important;
+}
+
+.admin-view .btn-primary,
+[id^="admin-"] .modal-content .btn-primary {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.admin-view .btn-primary:hover,
+[id^="admin-"] .modal-content .btn-primary:hover {
+    background-color: var(--primary-hover) !important;
+}
+
+.admin-view .btn-outline,
+[id^="admin-"] .modal-content .btn-outline {
+    background-color: transparent !important;
+    border: 1px solid #E2E8F0 !important;
+    color: #475569 !important;
+}
+
+.admin-view .btn-outline:hover,
+[id^="admin-"] .modal-content .btn-outline:hover {
+    background-color: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #1E293B !important;
+}
+
+/* Clean Tab Bar */
+.admin-pill-tabs {
+    background: #F1F5F9 !important;
+    padding: 0.25rem !important;
+    border-radius: 8px !important;
+    border: none !important;
+}
+
+.admin-pill-tab {
+    padding: 0.4rem 0.85rem !important;
+    border-radius: 6px !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    color: #64748B !important;
+}
+
+.admin-pill-tab.active {
+    background: #FFFFFF !important;
+    color: var(--primary-color) !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+}
+
+/* Form Inputs & Labels */
+.admin-form input[type="text"],
+.admin-form input[type="number"],
+.admin-form select,
+.admin-form textarea,
+.admin-filters-bar .search-wrapper input,
+.admin-filters-bar .filter-wrapper select {
+    padding: 0.45rem 0.65rem !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 6px !important;
+    font-size: 0.85rem !important;
+    background-color: #FFFFFF !important;
+    color: #1E293B !important;
+    box-shadow: none !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+    height: 36px !important;
+    box-sizing: border-box !important;
+}
+
+.admin-form textarea {
+    height: auto !important;
+    min-height: 80px !important;
+}
+
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus,
+.admin-filters-bar .search-wrapper input:focus,
+.admin-filters-bar .filter-wrapper select:focus {
+    border-color: var(--primary-color) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(180, 132, 108, 0.12) !important;
+}
+
+.admin-form label {
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    color: #475569 !important;
+    margin-bottom: 0.2rem !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
+.admin-form .form-group {
+    margin-bottom: 0.8rem !important;
+}
+
+/* Category Shelves */
+.category-tree-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+}
+
+.cat-shelf {
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+
+.cat-shelf-header {
+    padding: 0.75rem 1rem !important;
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+}
+
+.cat-shelf-cover {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+}
+
+.cat-shelf-name {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    color: #1E293B !important;
+}
+
+.cat-shelf-count {
+    font-size: 0.75rem !important;
+}
+
+/* Table Redesign */
+.admin-table-responsive {
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
+    margin-bottom: 1rem !important;
+}
+
+.admin-products-table {
+    border-collapse: collapse !important;
+    background: #FFFFFF !important;
+}
+
+.admin-products-table th {
+    background: #F8FAFC !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: #64748B !important;
+    padding: 0.6rem 0.85rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+.admin-products-table td {
+    border-bottom: 1px solid #F1F5F9 !important;
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.85rem !important;
+    color: #334155 !important;
+}
+
+.admin-products-table tr:hover td {
+    background-color: #F8FAFC !important;
+}
+
+/* Filters Bar */
+.admin-filters-bar {
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    padding: 0.75rem !important;
+    gap: 0.75rem !important;
+}
+
+.admin-filters-bar .search-wrapper input {
+    padding-left: 2.25rem !important;
+}
+
+.admin-filters-bar .search-wrapper span {
+    font-size: 18px !important;
+    left: 10px !important;
+}
+
+/* Variant Rows & Measures (Flat) */
+.medida-admin-row {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+    border-radius: 0 !important;
+    padding: 0.4rem 0 !important;
+    margin-bottom: 0.25rem !important;
+    box-shadow: none !important;
+    gap: 0.5rem !important;
+}
+
+.medida-admin-row:last-child {
+    border-bottom: none !important;
+}
+
+.medida-inputs-container {
+    gap: 6px !important;
+}
+
+.medida-inputs-container input[type="text"] {
+    height: 32px !important;
+    padding: 4px 8px !important;
+    font-size: 0.8rem !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 4px !important;
+}
+
+.medida-inputs-container input[type="text"]:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 2px rgba(180, 132, 108, 0.1) !important;
+}
+
+.medida-default-radio {
+    accent-color: var(--primary-color) !important;
+}
+
+.btn-clone-medida,
+.btn-remove-medida {
+    width: 28px !important;
+    height: 28px !important;
+    padding: 0 !important;
+    border-radius: 4px !important;
+}
+
+/* Finished Goods (Acabado) Card overrides */
+.acabado-group-card {
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    background: #FFFFFF !important;
+    margin-bottom: 0.75rem !important;
+    overflow: hidden !important;
+}
+
+.acabado-group-header {
+    background: #F8FAFC !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding: 0.5rem 0.75rem !important;
+}
+
+.acabado-group-header h4 {
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    color: #1E293B !important;
+}
+
+/* Dropzone tweaks */
+.image-drop-zone {
+    border: 1px dashed #CBD5E1 !important;
+    border-radius: 8px !important;
+    padding: 1.25rem !important;
+    background: #FAF9F6 !important;
+}
+
+/* Details summary overrides */
+details.form-group {
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 6px !important;
+    background: #FFFFFF !important;
+}
+
+details.form-group[open] {
+    border-color: #CBD5E1 !important;
+}
+
+/* Stack category modal on top of product modal */
+#admin-category-modal {
+    z-index: 1200 !important;
+}
+
+/* Modal Sizing Controls & Grid Columns */
+.modal-content.size-sm {
+    max-width: 650px !important;
+}
+
+.modal-content.size-md {
+    max-width: 1000px !important;
+}
+
+.modal-content.size-lg {
+    max-width: 95% !important;
+    width: 95% !important;
+    max-height: 95vh !important;
+}
+
+/* Modal size tab buttons styling */
+.modal-size-tab {
+    transition: all 0.15s ease !important;
+}
+.modal-size-tab:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Responsive side-by-side columns inside form */
+.admin-form-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+/* Selector de ancho del panel de administración en PC (oculto en móvil) */
+.admin-width-selector {
+    display: none !important;
+}
+
+/* Selector de tamaño de modal (oculto en móvil) */
+.modal-size-tabs {
+    display: none !important;
+}
+
+@media (min-width: 992px) {
+    /* Split into two columns ONLY when modal is medium or large AND we are on a desktop screen */
+    .modal-content.size-md .admin-form-columns,
+    .modal-content.size-lg .admin-form-columns {
+        display: grid !important;
+        grid-template-columns: 1fr 1.2fr !important; /* Slightly more space for finishes on the right */
+        gap: 1.5rem !important;
+        align-items: start !important;
+    }
+
+    /* Selector de ancho del panel de administración en PC */
+    .admin-width-selector {
+        display: flex !important;
+    }
+    
+    .modal-size-tabs {
+        display: flex !important;
+    }
+
+    /* Override normal max-width of .admin-view from 800px to 1200px or 100% */
+    .admin-view.width-normal {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: 100% !important;
+        max-width: 1200px !important;
+    }
+
+    .admin-view.width-full {
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Ancho estándar centrado (1200px) */
+    .admin-layout.width-normal .admin-content-inner {
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Ancho completo expandido al 100% */
+    .admin-layout.width-full .admin-content-inner {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding-left: 2.25rem !important;
+        padding-right: 2.25rem !important;
+    }
+}

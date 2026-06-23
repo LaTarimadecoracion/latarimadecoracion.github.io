@@ -166,8 +166,22 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
-                "last_modified": 1782086688191,
+                "tags": [
+                    "baranda",
+                    "seguridad",
+                    "cama",
+                    "baranda para cama",
+                    "baranda de seguridad",
+                    "baranda para geriatrico",
+                    "baranda",
+                    "resistentes",
+                    "duras",
+                    "madera",
+                    "medidas",
+                    "amplias",
+                    "grandes"
+                ],
+                "last_modified": 1782176549131,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [

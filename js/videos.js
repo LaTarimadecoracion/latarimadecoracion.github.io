@@ -401,7 +401,9 @@ function closeImmersiveVideo() {
 
 // Compartir por WhatsApp global (Producto)
 window.shareProduct = function(title, prodId) {
-    const url = window.location.origin + window.location.pathname + '?prod=' + prodId;
+    const originPath = window.location.origin + window.location.pathname;
+    const baseUrl = originPath.endsWith('/') ? originPath : originPath + '/';
+    const url = `${baseUrl}p/${prodId}.html`;
     const text = '¡Mira este increíble producto que encontré: ' + title + '! ' + url;
     const whatsappUrl = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text);
     window.open(whatsappUrl, '_blank');

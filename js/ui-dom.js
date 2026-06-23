@@ -210,55 +210,7 @@
     }
 
 
-    const btnRunMaintenance = document.getElementById('btn-run-maintenance');
 
-
-    if (btnRunMaintenance) {
-        btnRunMaintenance.addEventListener('click', async () => {
-            const confirmMsg = '⚠️ ATENCIÓN: Esta operación:\n\n• Convertirá imágenes .jpg/.png a .webp en disco\n• Eliminará archivos de imagen que no figuren en la base de datos\n• Actualizará products-data.js con las rutas .webp\n\n¿Querés continuar?';
-            if (!confirm(confirmMsg)) return;
-
-            const resultPanel   = document.getElementById('maintenance-result');
-            const summaryEl     = document.getElementById('maintenance-summary');
-            const logEl         = document.getElementById('maintenance-log');
-
-            btnRunMaintenance.disabled    = true;
-            btnRunMaintenance.textContent = '⏳ Ejecutando mantenimiento...';
-
-            try {
-                const response = await fetch('/api/maintenance/clean-and-convert', { method: 'POST' });
-                const data     = await response.json();
-
-                resultPanel.style.display = 'block';
-                resultPanel.scrollIntoView({ behavior: 'smooth' });
-
-                if (data.success) {
-                    const s = data.summary;
-                    summaryEl.innerHTML = `
-                        <span style="background:#27ae60; color:white; padding:0.3rem 0.7rem; border-radius:20px; font-size:0.8rem; font-weight:600;">✅ Mantenidas: ${s.imagenes_mantenidas}</span>
-                        <span style="background:#2980b9; color:white; padding:0.3rem 0.7rem; border-radius:20px; font-size:0.8rem; font-weight:600;">🔄 Convertidas: ${s.convertidas_a_webp}</span>
-                        <span style="background:#c0510a; color:white; padding:0.3rem 0.7rem; border-radius:20px; font-size:0.8rem; font-weight:600;">🗑️ Eliminadas: ${s.huerfanos_eliminados}</span>
-                    `;
-                    logEl.textContent = data.log.join('\n');
-                    // Si se hicieron cambios, recargar products-data.js
-                    if (s.convertidas_a_webp > 0 || s.huerfanos_eliminados > 0) {
-                        summaryEl.innerHTML += '<br><small style="color:#f0e68c; font-size:0.75rem; margin-top:0.5rem; display:block;">⚡ Recargá el servidor para que los cambios en products-data.js entren en efecto.</small>';
-                    }
-                } else {
-                    summaryEl.innerHTML = `<span style="color:#ff6b6b; font-weight:600;">❌ Error: ${data.error}</span>`;
-                    logEl.textContent   = (data.log || []).join('\n');
-                }
-
-            } catch (err) {
-                resultPanel.style.display = 'block';
-                summaryEl.innerHTML = `<span style="color:#ff6b6b;">❌ No se pudo conectar con el servidor: ${err.message}</span>`;
-                logEl.textContent   = '';
-            } finally {
-                btnRunMaintenance.disabled    = false;
-                btnRunMaintenance.innerHTML   = '<span class="material-symbols-outlined" style="font-size:1.1rem; vertical-align:middle;">auto_fix_high</span> Ejecutar Limpieza y Conversión WebP';
-            }
-        });
-    }
 
 
     if (mediaTypeSelector) {

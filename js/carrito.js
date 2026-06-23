@@ -970,7 +970,7 @@
                         ].join(':');
                     }).join(';');
 
-                    const shareUrl = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/')}?cart=${encodedCart}`;
+                    const shareUrl = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/').replace(/\/$/, '')}/p/carrito.html?cart=${encodedCart}`;
                     const shareText = `¡Hola! Te comparto mi lista de deseos de La Tarima 🛒\nTotal de productos: ${cartItems.length}`;
 
                     const copyTextToClipboard = (textToCopy) => {

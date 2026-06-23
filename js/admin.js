@@ -1333,6 +1333,42 @@ window.safeAdminRun = function(fn) {
         btnCancelProduct.addEventListener('click', () => { productModal.style.display = 'none'; });
     }
 
+    // Lógica para cambiar el tamaño/resolución del modal del producto
+    const modalContent = document.getElementById('admin-product-modal-content');
+    const sizeTabs = document.querySelectorAll('.modal-size-tab');
+
+    function applyModalSize(size) {
+        if (!modalContent) return;
+        modalContent.classList.remove('size-sm', 'size-md', 'size-lg');
+        modalContent.classList.add(`size-${size}`);
+
+        sizeTabs.forEach(tab => {
+            if (tab.getAttribute('data-size') === size) {
+                tab.classList.add('active');
+                tab.style.background = '#FFF';
+                tab.style.fontWeight = '600';
+                tab.style.color = 'var(--text-main)';
+            } else {
+                tab.classList.remove('active');
+                tab.style.background = 'transparent';
+                tab.style.fontWeight = '500';
+                tab.style.color = '#64748B';
+            }
+        });
+    }
+
+    // Cargar la preferencia de resolución guardada
+    const savedSize = localStorage.getItem('adminProductModalSize') || 'sm';
+    applyModalSize(savedSize);
+
+    sizeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const size = tab.getAttribute('data-size');
+            applyModalSize(size);
+            localStorage.setItem('adminProductModalSize', size);
+        });
+    });
+
     // Helper: Encontrar el elemento más cercano para arrastrar y soltar (Drag and Drop)
     function getDragAfterElement(container, y, selector = '.medida-admin-row') {
         const draggableElements = [...container.querySelectorAll(`${selector}:not(.dragging)`)];
@@ -3173,54 +3209,45 @@ window.renderAdminUX = safeAdminRun(renderAdminUX);
 window.renderAdminViewBuilderList = safeAdminRun(renderAdminViewBuilderList);
 window.renderAdminHomeSectionsList = safeAdminRun(renderAdminHomeSectionsList);
 window.renderAdminRentals = safeAdminRun(renderAdminRentals);
+// --- LÓGICA DE ANCHO DEL PANEL DE ADMINISTRACIÓN (PC) ---
+const adminLayoutContainer = document.getElementById('admin-layout-container');
+const adminWidthTabs = document.querySelectorAll('.admin-width-tab');
 
+function applyAdminPanelWidth(width) {
+    if (!adminLayoutContainer) return;
+    adminLayoutContainer.classList.remove('width-normal', 'width-full');
+    adminLayoutContainer.classList.add(`width-${width}`);
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    const btnRunMaintenance = document.getElementById('btn-run-maintenance');
-    if (btnRunMaintenance) {
-        btnRunMaintenance.addEventListener('click', async () => {
-            const confirmMsg = '⚠️ ATENCIÓN: Esta operación:\n\n• Convertirá imágenes .jpg/.png a .webp en disco\n• Eliminará archivos de imagen que no figuren en la base de datos\n• Actualizará products-data.js con las rutas .webp\n\n¿Querés continuar?';
-            if (!confirm(confirmMsg)) return;
-
-            const resultPanel   = document.getElementById('maintenance-result');
-            const summaryEl     = document.getElementById('maintenance-summary');
-            const logEl         = document.getElementById('maintenance-log');
-
-            btnRunMaintenance.disabled    = true;
-            btnRunMaintenance.textContent = '⏳ Ejecutando mantenimiento...';
-
-            try {
-                const response = await fetch('/api/maintenance/clean-and-convert', { method: 'POST' });
-                const data     = await response.json();
-
-                resultPanel.style.display = 'block';
-                resultPanel.scrollIntoView({ behavior: 'smooth' });
-
-                if (data.success) {
-                    const s = data.summary;
-                    summaryEl.innerHTML = `
-                        <span style="background:#27ae60; color:white; padding:0.3rem 0.7rem; border-radius:20px; font-size:0.8rem; font-weight:600;">✅ Mantenidas: ${s.imagenes_mantenidas}</span>
-                        <span style="background:#2980b9; color:white; padding:0.3rem 0.7rem; border-radius:20px; font-size:0.8rem; font-weight:600;">🔄 Convertidas: ${s.convertidas_a_webp}</span>
-                        <span style="background:#c0510a; color:white; padding:0.3rem 0.7rem; border-radius:20px; font-size:0.8rem; font-weight:600;">🗑️ Eliminadas: ${s.huerfanos_eliminados}</span>
-                    `;
-                    logEl.textContent = data.log.join('\n');
-                    if (s.convertidas_a_webp > 0 || s.huerfanos_eliminados > 0) {
-                        summaryEl.innerHTML += '<br><small style="color:#f0e68c; font-size:0.75rem; margin-top:0.5rem; display:block;">⚡ Recargá el servidor para que los cambios en products-data.js entren en efecto.</small>';
-                    }
-                } else {
-                    summaryEl.innerHTML = `<span style="color:#ff6b6b; font-weight:600;">❌ Error: ${data.error}</span>`;
-                    logEl.textContent   = (data.log || []).join('\n');
-                }
-
-            } catch (err) {
-                resultPanel.style.display = 'block';
-                summaryEl.innerHTML = `<span style="color:#ff6b6b;">❌ No se pudo conectar con el servidor: ${err.message}</span>`;
-                logEl.textContent   = '';
-            } finally {
-                btnRunMaintenance.disabled    = false;
-                btnRunMaintenance.innerHTML   = '<span class="material-symbols-outlined" style="font-size:1.1rem; vertical-align:middle;">auto_fix_high</span> Ejecutar Limpieza y Conversión WebP';
-            }
-        });
+    // Aplicar también a la vista general .admin-view
+    const viewAdmin = document.getElementById('view-admin');
+    if (viewAdmin) {
+        viewAdmin.classList.remove('width-normal', 'width-full');
+        viewAdmin.classList.add(`width-${width}`);
     }
+
+    adminWidthTabs.forEach(tab => {
+        if (tab.getAttribute('data-width') === width) {
+            tab.classList.add('active');
+            tab.style.background = '#FFF';
+            tab.style.fontWeight = '600';
+            tab.style.color = '#0F172A';
+        } else {
+            tab.classList.remove('active');
+            tab.style.background = 'transparent';
+            tab.style.fontWeight = '500';
+            tab.style.color = '#94A3B8';
+        }
+    });
+}
+
+// Cargar la preferencia de ancho del panel de administración
+const savedAdminWidth = localStorage.getItem('adminPanelPreferredWidth') || 'normal';
+applyAdminPanelWidth(savedAdminWidth);
+
+adminWidthTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const width = tab.getAttribute('data-width');
+        applyAdminPanelWidth(width);
+        localStorage.setItem('adminPanelPreferredWidth', width);
+    });
 });

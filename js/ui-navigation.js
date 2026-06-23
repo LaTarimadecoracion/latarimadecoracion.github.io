@@ -177,6 +177,17 @@
                 targetView.dataset.categoryId = context.categoryId;
             }
             
+            // Ocultar cabecera y barra de navegación inferior si entramos al panel de administración
+            const headerBar = document.querySelector('.main-header-bar');
+            const bottomNav = document.querySelector('.bottom-nav');
+            if (viewId === 'view-admin') {
+                if (headerBar) headerBar.style.setProperty('display', 'none', 'important');
+                if (bottomNav) bottomNav.style.setProperty('display', 'none', 'important');
+            } else {
+                if (headerBar) headerBar.style.display = 'flex';
+                if (bottomNav) bottomNav.style.display = 'flex';
+            }
+
             const appContainer = document.getElementById('app-container');
             if (appContainer) {
                 appContainer.scrollTop = 0;
