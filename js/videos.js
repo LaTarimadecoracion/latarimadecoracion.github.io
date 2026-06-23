@@ -143,12 +143,12 @@ function openImmersiveVideo(videoList, startIndex) {
         } else {
             mediaHTML = `
                 <video 
-                    src="${videoSrc}" 
+                    data-src="${videoSrc}" 
                     poster="${posterSrc}"
                     loop 
                     ${window.globalVideosUnmuted ? '' : 'muted'}
                     playsinline 
-                    preload="metadata"
+                    preload="none"
                     class="tiktok-video-element mp4-video"
                 ></video>
             `;
@@ -348,6 +348,11 @@ function setupIntersectionObserver() {
 
             if (entry.isIntersecting) {
                 if (video) {
+                    if (!video.getAttribute('src')) {
+                        const sourceUrl = video.getAttribute('data-src');
+                        video.setAttribute('src', sourceUrl);
+                        video.load();
+                    }
                     video.play().catch(e => console.log('Autoplay prevent:', e));
                 }
                 if (iframe) {
@@ -370,7 +375,11 @@ function setupIntersectionObserver() {
             } else {
                 if (video) {
                     video.pause();
-                    video.currentTime = 0;
+                    if (video.getAttribute('src')) {
+                        // Vaciar el src y recargar para liberar ancho de banda y memoria inmediatamente
+                        video.removeAttribute('src');
+                        video.load();
+                    }
                 }
                 if (iframe) {
                     if (iframe.getAttribute('src')) {
