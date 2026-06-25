@@ -49,15 +49,22 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css?v=27">
 
+    <!-- Configuration (Cargada antes para evitar FOUC/flashazo) -->
+    <script src="js/site-config.js?v=5"></script>
+
 </head>
 <body>
     <!-- Script Anti-FOUC para Temáticas (Evita flashazo de color por defecto) -->
     <script>
         (function() {
             try {
-                var saved = localStorage.getItem('activeTheme') || 'classic';
-                if (saved && saved !== 'classic') {
-                    document.body.classList.add('theme-' + saved);
+                var userSelected = localStorage.getItem('userSelectedTheme');
+                var serverTheme = window.siteConfig ? window.siteConfig.activeTheme : null;
+                var localTheme = localStorage.getItem('activeTheme');
+                
+                var themeToApply = userSelected || serverTheme || localTheme || 'classic';
+                if (themeToApply && themeToApply !== 'classic') {
+                    document.body.classList.add('theme-' + themeToApply);
                 }
             } catch(e) {}
         })();
@@ -229,11 +236,7 @@
         <!-- View 3b: Alquileres (Acceso exclusivo por URL) -->
         <section id="view-rentals" class="view">
             <div class="view-content">
-                <!-- Barra de búsqueda -->
-                <div class="search-bar-container" style="margin-bottom: 0.75rem;">
-                    <span class="material-symbols-outlined search-icon">search</span>
-                    <input type="text" id="rentals-search-input" placeholder="Buscar alquileres por nombre o descripción..." class="search-input" autocomplete="off">
-                </div>
+
                 <!-- Resultados de búsqueda (feed inmersivo) -->
                 <div id="rentals-results-container" class="product-feed">
                     <!-- Tarjetas de alquileres inyectadas por JS -->
@@ -244,6 +247,7 @@
                     <p>No encontramos alquileres con esa búsqueda.<br>Intentá con otra palabra clave.</p>
                 </div>
             </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
         <!-- View 4: Categorías -->
@@ -1132,8 +1136,14 @@
                                         <input type="text" id="admin-title" placeholder="ej: Cama Casita" required>
                                     </div>
 
+                                    <!-- Precio de Alquiler (Solo visible en Modo Alquiler) -->
+                                    <div class="form-group" id="admin-product-rental-price-group" style="display: none;">
+                                        <label>Precio de Alquiler (ej: $15.000 / día)</label>
+                                        <input type="text" id="admin-product-rental-price" placeholder="ej: $12.000 / día o Consultar">
+                                    </div>
+
                                     <!-- Categoría -->
-                                    <details class="form-group" style="border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.8rem; background: #F8FAFC; margin-bottom: 0.8rem; cursor: pointer; transition: all 0.2s ease;">
+                                    <details id="admin-product-categories-details" class="form-group" style="border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.8rem; background: #F8FAFC; margin-bottom: 0.8rem; cursor: pointer; transition: all 0.2s ease;">
                                         <summary style="display: flex; align-items: center; justify-content: space-between; font-weight: 600; color: var(--text-main); list-style: none; user-select: none; font-size: 0.85rem;">
                                             <span style="display: flex; align-items: center; gap: 0.4rem;">
                                                 <span class="material-symbols-outlined" style="font-size:18px; color:var(--primary-color);">folder_open</span>
@@ -1402,7 +1412,6 @@
     <!-- Scripts -->
     <script src="js/confetti-arg.js?v=1"></script>
     <script src="js/header-deco-arg.js?v=3"></script>
-    <script src="js/site-config.js?v=5"></script>
     <script src="js/products-data.js?v=5"></script>
     <script src="js/rentals-data.js?v=5"></script>
     <script src="js/data.js?v=5"></script>
@@ -1411,10 +1420,10 @@
     <script src="js/ui-core.js?v=1"></script>
     <script src="js/ui-navigation.js?v=2"></script>
     <script src="js/ui-home.js?v=1"></script>
-    <script src="js/ui-catalog.js?v=1"></script>
-    <script src="js/ui-rentals.js?v=1"></script>
+    <script src="js/ui-catalog.js?v=2"></script>
+    <script src="js/ui-rentals.js?v=2"></script>
     <script src="js/ui-blocks.js?v=1"></script>
-    <script src="js/admin.js?v=10"></script>
+    <script src="js/admin.js?v=11"></script>
     <!-- Módulo de avisos eliminado, lógica unificada en ui.js -->
     <script src="js/carrito.js?v=6"></script>
     <script src="js/main.js?v=5"></script>

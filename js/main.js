@@ -227,9 +227,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (window.findProductById && window.showProductDetail) {
                     const foundData = window.findProductById(prodId);
                     if (foundData) {
-                        console.log(`[Router] Producto compartido detectado: ${prodId}. Abriendo modal.`);
-                        const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
-                        window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
+                        const catObj = window.sessionProducts ? window.sessionProducts.find(c => c.name === foundData.catName || c.id === foundData.catName) : null;
+                        const isCatVisible = !catObj || catObj.visible !== false;
+                        if (foundData.product.visible !== false && isCatVisible) {
+                            console.log(`[Router] Producto compartido detectado: ${prodId}. Abriendo modal.`);
+                            const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
+                            window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
+                        } else {
+                            console.warn(`[Router] El producto con ID '${prodId}' o su categoría están ocultos.`);
+                        }
                     } else {
                         console.warn(`[Router] Producto con ID '${prodId}' no encontrado en el catálogo.`);
                     }
@@ -245,6 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'avisos': 'view-notifications',
                 'perfil': 'view-profile',
                 'alquileres': 'view-rentals',
+                'alquiles': 'view-rentals',
+                'rentas': 'view-rentals',
                 'admin': 'view-admin',
                 'catalogo': 'view-catalogo',
                 'calcular': 'view-calculator'
@@ -254,6 +262,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (window.navigateToView) {
                     console.log(`[Router] Navegación solicitada por URL a: ${targetViewId}`);
                     window.navigateToView(targetViewId);
+                }
+            }, 150);
+        }
+
+        // Soporte para rutas limpias SPA: /alquileres, /alquiles, /rentas
+        const cleanPath = window.location.pathname.toLowerCase().replace(/\/$/, '');
+        if (cleanPath.endsWith('/alquiles') || cleanPath.endsWith('/alquileres') || cleanPath.endsWith('/rentas')) {
+            setTimeout(() => {
+                if (window.navigateToView) {
+                    console.log(`[Router] Ruta limpia detectada: ${cleanPath}. Redirigiendo a Alquileres.`);
+                    window.navigateToView('view-rentals');
                 }
             }, 150);
         }
@@ -293,8 +312,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.findProductById && window.showProductDetail) {
                 const foundData = window.findProductById(prodId);
                 if (foundData) {
-                    const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
-                    window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
+                    const catObj = window.sessionProducts ? window.sessionProducts.find(c => c.name === foundData.catName || c.id === foundData.catName) : null;
+                    const isCatVisible = !catObj || catObj.visible !== false;
+                    if (foundData.product.visible !== false && isCatVisible) {
+                        const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
+                        window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
+                    }
                 }
             }
         } else if (catId) {
@@ -312,6 +335,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'avisos': 'view-notifications',
                 'perfil': 'view-profile',
                 'alquileres': 'view-rentals',
+                'alquiles': 'view-rentals',
+                'rentas': 'view-rentals',
                 'admin': 'view-admin',
                 'catalogo': 'view-catalogo',
                 'calcular': 'view-calculator',

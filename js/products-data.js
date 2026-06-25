@@ -2,7 +2,7 @@ const productsData = [
     {
         "id": "Barandas",
         "name": "Barandas desmontables",
-        "image": "img/barandas-desmontables/portada-1780289452096-imagen.webp",
+        "image": "img/barandas-desmontables/portada-1782416646750-imagen.webp",
         "order": 0,
         "products": [
             {
@@ -612,8 +612,49 @@ const productsData = [
                     ]
                 },
                 "views": 2
+            },
+            {
+                "id": "baranda-reforzada-geriatricos",
+                "title": "Barandas desmontable - Refuerzos con bulones",
+                "description": "",
+                "image": "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                        "images_list": [
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399630822-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399630951-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399631066-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "170 x 55 cm",
+                                "link": "",
+                                "default": false
+                            }
+                        ]
+                    },
+                    {
+                        "acabado_name": "Barnizado",
+                        "cover_image": "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782416896821-imagen.webp",
+                        "images_list": [
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782416896821-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782416896941-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782416897057-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782416897160-imagen.webp"
+                        ],
+                        "medidas_variants": []
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782416897270,
+                "primaryCatId": "Barandas",
+                "visible": true
             }
-        ]
+        ],
+        "visible": true
     },
     {
         "id": "barandas-sommier",
@@ -1307,7 +1348,9 @@ const productsData = [
                             "img/steps---cajones/steps---cajones---profesionales/1780590450688-imagen.webp",
                             "img/steps---cajones/steps---cajones---profesionales/1780589892571-imagen.webp",
                             "img/steps---cajones/steps---cajones---profesionales/1780589892697-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1780589892809-imagen.webp"
+                            "img/steps---cajones/steps---cajones---profesionales/1780589892809-imagen.webp",
+                            "img/steps---cajones/steps---cajones---profesionales/1782417150808-imagen.webp",
+                            "img/steps---cajones/steps---cajones---profesionales/1782417150969-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1328,8 +1371,9 @@ const productsData = [
                         ]
                     }
                 ],
-                "last_modified": 1780590450835,
-                "views": 0
+                "tags": [],
+                "last_modified": 1782417151111,
+                "primaryCatId": "Steps"
             }
         ]
     },
@@ -1864,6 +1908,7 @@ const productsData = [
                 "id": "Mueble-Multifunción",
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
+                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
                 "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
                 "acabados_groups": [
                     {
@@ -1894,9 +1939,8 @@ const productsData = [
                     "muebles minimalistas",
                     "carpinteria artesanal"
                 ],
-                "last_modified": 1780707364726,
-                "primaryCatId": "Interior",
-                "views": 2
+                "last_modified": 1782408743227,
+                "primaryCatId": "Interior"
             },
             {
                 "id": "deck-cuadrado",
@@ -2314,6 +2358,7 @@ const productsData = [
                 "id": "Mueble-Multifunción",
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
+                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
                 "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
                 "acabados_groups": [
                     {
@@ -2344,9 +2389,8 @@ const productsData = [
                     "muebles minimalistas",
                     "carpinteria artesanal"
                 ],
-                "last_modified": 1780707364726,
-                "primaryCatId": "Interior",
-                "views": 2
+                "last_modified": 1782408743227,
+                "primaryCatId": "Interior"
             },
             {
                 "id": "cesto-de-basura",
@@ -2661,6 +2705,7 @@ const productsData = [
                 "id": "Mueble-Multifunción",
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
+                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
                 "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
                 "acabados_groups": [
                     {
@@ -2691,9 +2736,8 @@ const productsData = [
                     "muebles minimalistas",
                     "carpinteria artesanal"
                 ],
-                "last_modified": 1780707364726,
-                "primaryCatId": "Interior",
-                "views": 2
+                "last_modified": 1782408743227,
+                "primaryCatId": "Interior"
             },
             {
                 "id": "perchero-1",
@@ -2887,6 +2931,7 @@ const productsData = [
                 "id": "Mueble-Multifunción",
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
+                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
                 "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
                 "acabados_groups": [
                     {
@@ -2917,9 +2962,8 @@ const productsData = [
                     "muebles minimalistas",
                     "carpinteria artesanal"
                 ],
-                "last_modified": 1780707364726,
-                "primaryCatId": "Interior",
-                "views": 2
+                "last_modified": 1782408743227,
+                "primaryCatId": "Interior"
             },
             {
                 "id": "perchero-1",

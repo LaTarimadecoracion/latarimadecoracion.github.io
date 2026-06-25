@@ -1711,6 +1711,25 @@ button, .btn-primary, .btn-outline {
     background: rgba(107,114,128,0.12);
 }
 
+/* ── View / Visibility Button ── */
+.action-btn.view {
+    color: #4A5568;
+}
+
+.action-btn.view:hover,
+.action-btn.view:active {
+    background: rgba(74,85,104,0.1);
+}
+
+.action-btn.view.hidden-mode {
+    color: #E53E3E;
+}
+
+.action-btn.view.hidden-mode:hover,
+.action-btn.view.hidden-mode:active {
+    background: rgba(229,62,62,0.1);
+}
+
 /* ── Add Product CTA ── */
 .shelf-add-btn {
     display: flex;
@@ -2856,6 +2875,21 @@ button, .btn-primary, .btn-outline {
 .product-detail-img.loaded {
     opacity: 1;
 }
+
+/* Una vez cargada la imagen (.loaded), hacemos los fondos del contenedor transparentes 
+   para evitar bordes de colores en fotos que no tengan la proporción exacta */
+.feed-card-photo:has(.loaded),
+.feed-card-photo-container:has(.loaded),
+.category-card:has(.loaded),
+.product-detail-slide:has(.loaded),
+.product-detail-carousel:has(.loaded),
+.detail-img-container:has(.loaded),
+.block-image-wrapper:has(.loaded) {
+    background: transparent !important;
+    background-color: transparent !important;
+    animation: none !important;
+}
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    ADMIN PANEL V2 — Modern Design System (SPA Layout)

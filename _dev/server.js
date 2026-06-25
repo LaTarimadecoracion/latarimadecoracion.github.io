@@ -354,7 +354,7 @@ app.post('/api/upload-image', upload.single('image'), async (req, res) => {
         try {
             const TARGET_WIDTH = 1200;
             const TARGET_HEIGHT = 791;
-            const BACKGROUND_COLOR = { r: 245, g: 242, b: 238, alpha: 1 };
+            const BACKGROUND_COLOR = { r: 255, g: 255, b: 255, alpha: 1 };
 
             const inputBuffer = fs.readFileSync(req.file.path);
             const processedBuffer = await sharp(inputBuffer)
@@ -419,7 +419,7 @@ app.post('/api/categories/edit', upload.single('image'), async (req, res) => {
             try {
                 const TARGET_WIDTH = 1200;
                 const TARGET_HEIGHT = 791;
-                const BACKGROUND_COLOR = { r: 245, g: 242, b: 238, alpha: 1 };
+                const BACKGROUND_COLOR = { r: 255, g: 255, b: 255, alpha: 1 };
 
                 const inputBuffer = fs.readFileSync(req.file.path);
                 const processedBuffer = await sharp(inputBuffer)

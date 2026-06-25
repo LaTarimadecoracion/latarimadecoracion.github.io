@@ -7,8 +7,8 @@ const sharp = require('sharp');
 const TARGET_WIDTH = 1200;
 const TARGET_HEIGHT = 791;
 
-// Color de fondo warm lino para los rellenos laterales/verticales (#F5F2EE)
-const BACKGROUND_COLOR = { r: 245, g: 242, b: 238, alpha: 1 };
+// Color de fondo blanco para los rellenos laterales/verticales (#FFFFFF)
+const BACKGROUND_COLOR = { r: 255, g: 255, b: 255, alpha: 1 };
 
 async function resizeAndPadImage(relPath) {
     if (!relPath) return;

@@ -292,6 +292,7 @@
                     if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
                         const sortedCategories = [...sourceData].sort((a, b) => (a.order || 0) - (b.order || 0));
                         sortedCategories.forEach(cat => {
+                            if (cat.visible === false) return;
                             const catCard = document.createElement('div');
                             catCard.className = 'category-card';
                             const catCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
@@ -324,8 +325,10 @@
                         let allProducts = [];
                         const seenIds = new Set();
                         sourceData.forEach(cat => {
+                            if (cat.visible === false) return;
                             if (cat.products) {
                                 cat.products.forEach(product => {
+                                    if (product.visible === false) return;
                                     if (!seenIds.has(product.id)) {
                                         seenIds.add(product.id);
                                         const res = findProductById(product.id);
@@ -371,8 +374,10 @@
                         let allProducts = [];
                         const seenIds = new Set();
                         sourceData.forEach(cat => {
+                            if (cat.visible === false) return;
                             if (cat.products) {
                                 cat.products.forEach(product => {
+                                    if (product.visible === false) return;
                                     if (!seenIds.has(product.id)) {
                                         seenIds.add(product.id);
                                         const res = findProductById(product.id);

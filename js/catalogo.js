@@ -10,16 +10,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Cargar y procesar los productos
     function loadProducts() {
-        const sourceProducts = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0)
-            ? window.sessionProducts
-            : (typeof window.productsData !== 'undefined' ? window.productsData : []);
+        let parentProducts = null;
+        try {
+            if (window.parent && window.parent !== window && window.parent.sessionProducts) {
+                parentProducts = window.parent.sessionProducts;
+            }
+        } catch (e) {
+            console.warn('[Catalogo] No se pudo acceder a window.parent.sessionProducts:', e);
+        }
+
+        const sourceProducts = (parentProducts && parentProducts.length > 0)
+            ? parentProducts
+            : ((typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0)
+                ? window.sessionProducts
+                : (typeof window.productsData !== 'undefined' ? window.productsData : []));
 
         const seenIds = new Set();
         allProducts = [];
 
         sourceProducts.forEach(category => {
+            if (category.visible === false) return;
             if (category.products) {
                 category.products.forEach(product => {
+                    if (product.visible === false) return;
                     if (!seenIds.has(product.id)) {
                         seenIds.add(product.id);
                         
@@ -309,6 +322,12 @@ document.addEventListener('DOMContentLoaded', () => {
             catalogListContainer.appendChild(row);
         });
     }
+
+    // Función para refrescar el catálogo con la data actualizada
+    window.refreshCatalog = function() {
+        loadProducts();
+        renderCatalogList(allProducts);
+    };
 
     // 5. Filtrar por término de búsqueda (Llamado desde el main window)
     window.filterCatalogAZ = function(query) {

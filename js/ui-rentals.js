@@ -21,6 +21,7 @@
             resultsContainer.innerHTML = '';
 
             const filtered = sourceRentals.filter(rental => {
+                if (rental.visible === false) return false;
                 const title = (rental.title || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                 const description = (rental.description || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                 return !query || title.includes(query) || description.includes(query);
@@ -54,7 +55,11 @@
                 `;
 
                 card.addEventListener('click', () => {
-                    showRentalDetail(rental);
+                    if (window.showProductDetail) {
+                        window.showProductDetail(rental, 'Alquileres');
+                    } else {
+                        showRentalDetail(rental);
+                    }
                 });
 
                 resultsContainer.appendChild(card);

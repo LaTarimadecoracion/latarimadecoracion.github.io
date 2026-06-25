@@ -26,6 +26,7 @@ window.renderCategoriesMenu = function() {
     const sortedCategories = [...sourceData].sort((a, b) => (a.order || 0) - (b.order || 0));
 
     sortedCategories.forEach((cat, index) => {
+        if (cat.visible === false) return;
         const catCard = document.createElement('div');
         catCard.className = 'feed-card';
         // Ajustamos márgenes para que la grilla los maneje limpios

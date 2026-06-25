@@ -937,7 +937,10 @@ window.safeAdminRun = function(fn) {
             
             row.innerHTML = `
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
-                    <div style="width: 44px; height: 44px; border-radius: 8px; background-image: url('${p.image}'); background-size: cover; background-position: center; border: 1px solid #E2E8F0;"></div>
+                    <div style="display: flex; align-items: center; gap: 0.6rem;">
+                        ${dragHandleHtml}
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background-image: url('${p.image}'); background-size: cover; background-position: center; border: 1px solid #E2E8F0; flex-shrink: 0;"></div>
+                    </div>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
                     <strong style="color: var(--text-main); font-size: 0.9rem; display: block;">${p.title}</strong>
@@ -955,7 +958,9 @@ window.safeAdminRun = function(fn) {
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle; text-align: center;">
                     <div style="display: flex; gap: 0.4rem; justify-content: center; align-items: center;">
-                        ${dragHandleHtml}
+                        <button class="action-btn view btn-toggle-prod-visibility ${p.visible !== false ? '' : 'hidden-mode'}" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="${p.visible !== false ? 'Ocultar producto' : 'Mostrar producto'}" style="padding: 0.35rem; font-size: 0.85rem;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">${p.visible !== false ? 'visibility' : 'visibility_off'}</span>
+                        </button>
                         <button class="action-btn edit btn-edit-prod-new" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="Editar" style="padding: 0.35rem; font-size: 0.85rem;"><span class="material-symbols-outlined" style="font-size: 16px;">edit</span></button>
                         <button class="action-btn clone btn-clone-prod-new" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="Clonar" style="padding: 0.35rem; font-size: 0.85rem;"><span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span></button>
                         <button class="action-btn del btn-del-prod-new" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="Eliminar" style="padding: 0.35rem; font-size: 0.85rem;"><span class="material-symbols-outlined" style="font-size: 16px;">delete</span></button>
@@ -985,6 +990,29 @@ window.safeAdminRun = function(fn) {
                     row.setAttribute('draggable', 'false');
                 });
             }
+
+            row.querySelector('.btn-toggle-prod-visibility').addEventListener('click', async (e) => {
+                const btn = e.target.closest('.btn-toggle-prod-visibility');
+                const cIdx = parseInt(btn.getAttribute('data-cat'));
+                const pIdx = parseInt(btn.getAttribute('data-prod'));
+                const targetProd = sessionProducts[cIdx].products[pIdx];
+                const newVisibleState = (targetProd.visible !== false) ? false : true;
+                
+                // Cambiar la visibilidad globalmente en todas las categorías para mantener consistencia
+                sessionProducts.forEach(cat => {
+                    if (cat.products) {
+                        cat.products.forEach(p => {
+                            if (p.id === targetProd.id) {
+                                p.visible = newVisibleState;
+                            }
+                        });
+                    }
+                });
+                
+                showAdminToast(newVisibleState ? '👁️ Producto visible' : '👁️ Producto oculto');
+                await saveProductsToServer();
+                renderAdminProducts();
+            });
 
             row.querySelector('.btn-edit-prod-new').addEventListener('click', (e) => {
                 const cIdx = parseInt(e.currentTarget.getAttribute('data-cat'));
@@ -1108,6 +1136,9 @@ window.safeAdminRun = function(fn) {
                         </span>
                     </div>
                     <div class="product-row-actions" onclick="event.stopPropagation();">
+                        <button class="btn-toggle-cat-visibility action-btn view ${cat.visible !== false ? '' : 'hidden-mode'}" data-cat="${catIndex}" title="${cat.visible !== false ? 'Ocultar categoría' : 'Mostrar categoría'}" style="padding: 0.35rem; font-size: 0.85rem;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">${cat.visible !== false ? 'visibility' : 'visibility_off'}</span>
+                        </button>
                         <button class="btn-edit-cat action-btn edit" data-cat="${catIndex}" title="Editar categoría"><span class="material-symbols-outlined">edit</span></button>
                         <button class="btn-clone-cat action-btn clone" data-cat="${catIndex}" title="Clonar categoría"><span class="material-symbols-outlined">content_copy</span></button>
                         <button class="btn-del-cat shelf-del-btn" data-cat="${catIndex}" title="Eliminar categoría">
@@ -1152,6 +1183,18 @@ window.safeAdminRun = function(fn) {
         });
 
         // ── Event Listeners de Categorías ──
+
+        adminCategoryTreeEl.querySelectorAll('.btn-toggle-cat-visibility').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                const cIdx = parseInt(e.currentTarget.getAttribute('data-cat'));
+                const cat = sessionProducts[cIdx];
+                cat.visible = (cat.visible !== false) ? false : true;
+                
+                showAdminToast(cat.visible ? '👁️ Categoría visible' : '👁️ Categoría oculta');
+                await saveProductsToServer();
+                renderAdminUX();
+            });
+        });
 
         adminCategoryTreeEl.querySelectorAll('.btn-del-cat').forEach(btn => {
             btn.addEventListener('click', async (e) => {
@@ -1822,6 +1865,10 @@ window.safeAdminRun = function(fn) {
     let sourceCategoryIdx = null; // tracks which category the product came from
 
     function openProductForm(cIdx, existingProd = null) {
+        if (cIdx !== null) {
+            window.isRentalMode = false;
+        }
+
         targetCategoryIdForProduct = cIdx;
         sourceCategoryIdx = cIdx;                          // guardar categoría de origen
         editingProductId  = existingProd ? existingProd.id : null;
@@ -1831,70 +1878,84 @@ window.safeAdminRun = function(fn) {
         activeGroupsUI = [];
         groupCounter = 0;
 
+        // Mostrar / Ocultar campos específicos de Alquiler
+        const rentalPriceGroup = document.getElementById('admin-product-rental-price-group');
+        const categoriesDetails = document.getElementById('admin-product-categories-details');
+        if (rentalPriceGroup) rentalPriceGroup.style.display = window.isRentalMode ? 'block' : 'none';
+        if (categoriesDetails) categoriesDetails.style.display = window.isRentalMode ? 'none' : 'block';
+
+        if (window.isRentalMode) {
+            document.getElementById('admin-product-rental-price').value = existingProd?.price || '';
+        }
+
         // Campos globales
         document.getElementById('admin-id').value          = existingProd?.id          || '';
         document.getElementById('admin-title').value       = existingProd?.title       || '';
         document.getElementById('admin-description').value = existingProd?.description || '';
         document.getElementById('admin-video').value       = existingProd?.video       || '';
 
-        // ── Poblar checkboxes de categorías y marcar principal ──
+        // ── Poblar checkboxes de categorías y marcar principal (solo si no es alquiler) ──
         const assignedCategoryIds = [];
         let primaryCategoryId = existingProd?.primaryCatId || null;
 
-        if (existingProd) {
-            sessionProducts.forEach(cat => {
-                if (cat.products && cat.products.some(p => p.id === existingProd.id)) {
-                    assignedCategoryIds.push(cat.id);
+        if (!window.isRentalMode) {
+            if (existingProd) {
+                sessionProducts.forEach(cat => {
+                    if (cat.products && cat.products.some(p => p.id === existingProd.id)) {
+                        assignedCategoryIds.push(cat.id);
+                    }
+                });
+                if (!primaryCategoryId && assignedCategoryIds.length > 0) {
+                    primaryCategoryId = assignedCategoryIds[0];
                 }
-            });
-            if (!primaryCategoryId && assignedCategoryIds.length > 0) {
-                primaryCategoryId = assignedCategoryIds[0];
-            }
-        } else {
-            const currentCatId = sessionProducts[cIdx]?.id;
-            if (currentCatId) {
-                assignedCategoryIds.push(currentCatId);
-                primaryCategoryId = currentCatId;
+            } else {
+                const currentCatId = sessionProducts[cIdx]?.id;
+                if (currentCatId) {
+                    assignedCategoryIds.push(currentCatId);
+                    primaryCategoryId = currentCatId;
+                }
             }
         }
 
         const checkboxesContainer = document.getElementById('product-categories-checkboxes');
         if (checkboxesContainer) {
             checkboxesContainer.innerHTML = '';
-            sessionProducts.forEach((cat) => {
-                const isChecked = assignedCategoryIds.includes(cat.id);
-                const isPrimary = cat.id === primaryCategoryId;
+            if (!window.isRentalMode) {
+                sessionProducts.forEach((cat) => {
+                    const isChecked = assignedCategoryIds.includes(cat.id);
+                    const isPrimary = cat.id === primaryCategoryId;
 
-                const row = document.createElement('div');
-                row.style.cssText = 'display:flex; align-items:center; justify-content:space-between; padding:0.4rem 0; border-bottom:1px solid #F0F2F5;';
+                    const row = document.createElement('div');
+                    row.style.cssText = 'display:flex; align-items:center; justify-content:space-between; padding:0.4rem 0; border-bottom:1px solid #F0F2F5;';
 
-                const checkboxLabel = document.createElement('label');
-                checkboxLabel.style.cssText = 'display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:500; color:var(--text-main); margin:0;';
-                checkboxLabel.innerHTML = `
-                    <input type="checkbox" class="cat-checkbox" value="${cat.id}" ${isChecked ? 'checked' : ''} style="width:18px; height:18px; cursor:pointer;">
-                    <span>${cat.name}</span>
-                `;
+                    const checkboxLabel = document.createElement('label');
+                    checkboxLabel.style.cssText = 'display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:500; color:var(--text-main); margin:0;';
+                    checkboxLabel.innerHTML = `
+                        <input type="checkbox" class="cat-checkbox" value="${cat.id}" ${isChecked ? 'checked' : ''} style="width:18px; height:18px; cursor:pointer;">
+                        <span>${cat.name}</span>
+                    `;
 
-                const radioLabel = document.createElement('label');
-                radioLabel.style.cssText = 'display:flex; align-items:center; gap:4px; font-size:0.8rem; color:var(--text-muted); cursor:pointer; margin:0;';
-                radioLabel.innerHTML = `
-                    <input type="radio" name="primary-category" class="cat-primary-radio" value="${cat.id}" ${isPrimary ? 'checked' : ''} style="width:16px; height:16px; cursor:pointer;">
-                    <span>Principal</span>
-                `;
+                    const radioLabel = document.createElement('label');
+                    radioLabel.style.cssText = 'display:flex; align-items:center; gap:4px; font-size:0.8rem; color:var(--text-muted); cursor:pointer; margin:0;';
+                    radioLabel.innerHTML = `
+                        <input type="radio" name="primary-category" class="cat-primary-radio" value="${cat.id}" ${isPrimary ? 'checked' : ''} style="width:16px; height:16px; cursor:pointer;">
+                        <span>Principal</span>
+                    `;
 
-                row.appendChild(checkboxLabel);
-                row.appendChild(radioLabel);
-                checkboxesContainer.appendChild(row);
+                    row.appendChild(checkboxLabel);
+                    row.appendChild(radioLabel);
+                    checkboxesContainer.appendChild(row);
 
-                const radioInput = radioLabel.querySelector('.cat-primary-radio');
-                const checkboxInput = checkboxLabel.querySelector('.cat-checkbox');
+                    const radioInput = radioLabel.querySelector('.cat-primary-radio');
+                    const checkboxInput = checkboxLabel.querySelector('.cat-checkbox');
 
-                radioInput.addEventListener('change', () => {
-                    if (radioInput.checked) {
-                        checkboxInput.checked = true;
-                    }
+                    radioInput.addEventListener('change', () => {
+                        if (radioInput.checked) {
+                            checkboxInput.checked = true;
+                        }
+                    });
                 });
-            });
+            }
         }
 
         // Variante opcional
@@ -1923,9 +1984,17 @@ window.safeAdminRun = function(fn) {
         }
 
         const isClon = existingProd && existingProd.id && existingProd.id.endsWith('-copia');
-        adminFormTitle.textContent = existingProd
-            ? (isClon ? `📋 Clonando: ${existingProd.title}` : `Editando: ${existingProd.title}`)
-            : `Nuevo Producto en ${sessionProducts[cIdx].name}`;
+        let titleText = '';
+        if (window.isRentalMode) {
+            titleText = existingProd
+                ? (isClon ? `📋 Clonando Alquiler: ${existingProd.title}` : `Editando Alquiler: ${existingProd.title}`)
+                : `Nuevo Alquiler`;
+        } else {
+            titleText = existingProd
+                ? (isClon ? `📋 Clonando: ${existingProd.title}` : `Editando: ${existingProd.title}`)
+                : `Nuevo Producto en ${sessionProducts[cIdx].name}`;
+        }
+        adminFormTitle.textContent = titleText;
         productModal.style.display = 'flex';
         productModal.scrollIntoView({ behavior: 'smooth' });
     }
@@ -1941,7 +2010,7 @@ window.safeAdminRun = function(fn) {
             btnGenerateJson.textContent = 'Guardando...';
 
             const pTitle  = document.getElementById('admin-title').value;
-            const catName = sessionProducts[targetCategoryIdForProduct].name;
+            const catName = window.isRentalMode ? 'alquileres' : sessionProducts[targetCategoryIdForProduct].name;
 
             const finalAcabadosGroups = [];
 
@@ -2000,7 +2069,53 @@ window.safeAdminRun = function(fn) {
                 product.optional_variant = { label: optLabel, options: optOptions };
             }
 
-            // Obtener categorías seleccionadas y principal
+            if (window.isRentalMode) {
+                product.price = document.getElementById('admin-product-rental-price').value.trim();
+                product.primaryCatId = 'alquileres';
+
+                // Validar duplicado de ID en rentals si es nuevo
+                if (!editingProductId) {
+                    if (sessionRentals.some(r => r.id === product.id)) {
+                        alert(`Ya existe un alquiler con el ID "${product.id}". Cambiá el ID e intentá de nuevo.`);
+                        btnGenerateJson.disabled = false;
+                        btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+                        return;
+                    }
+                }
+
+                // Buscar estado de visibilidad existente
+                let existingVisibleState = undefined;
+                const found = sessionRentals.find(r => r.id === (editingProductId || product.id));
+                if (found && found.visible !== undefined) {
+                    existingVisibleState = found.visible;
+                }
+                if (existingVisibleState !== undefined) {
+                    product.visible = existingVisibleState;
+                }
+
+                // Guardar/Actualizar en sessionRentals
+                const matchIndex = sessionRentals.findIndex(r => r.id === (editingProductId || product.id));
+                if (matchIndex !== -1) {
+                    sessionRentals[matchIndex] = product;
+                } else {
+                    sessionRentals.push(product);
+                }
+
+                showAdminToast(editingProductId ? '✅ Alquiler actualizado correctamente' : '✅ Alquiler creado correctamente');
+
+                if (window.saveRentalsToServer) {
+                    await window.saveRentalsToServer();
+                }
+
+                productModal.style.display = 'none';
+                renderAdminRentals();
+
+                btnGenerateJson.disabled    = false;
+                btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+                return;
+            }
+
+            // Obtener categorías seleccionadas y principal (solo modo normal)
             const checkboxesContainer = document.getElementById('product-categories-checkboxes');
             const selectedCatIds = [...checkboxesContainer.querySelectorAll('.cat-checkbox:checked')].map(cb => cb.value);
             const primaryRadio = checkboxesContainer.querySelector('.cat-primary-radio:checked');
@@ -2040,6 +2155,21 @@ window.safeAdminRun = function(fn) {
                     btnGenerateJson.textContent = 'Guardar Producto en Servidor';
                     return;
                 }
+            }
+
+            // Buscar si ya existe el producto para heredar su estado de visibilidad
+            let existingVisibleState = undefined;
+            for (const cat of sessionProducts) {
+                if (cat.products) {
+                    const found = cat.products.find(p => p.id === (editingProductId || product.id));
+                    if (found && found.visible !== undefined) {
+                        existingVisibleState = found.visible;
+                        break;
+                    }
+                }
+            }
+            if (existingVisibleState !== undefined) {
+                product.visible = existingVisibleState;
             }
 
             // Aplicar cambios en todas las categorías de sessionProducts
@@ -2090,8 +2220,10 @@ window.safeAdminRun = function(fn) {
             : (typeof productsData !== 'undefined' ? productsData : []);
 
         sourceProducts.forEach(cat => {
+            if (cat.visible === false) return;
             if (!cat.products) return;
             cat.products.forEach(product => {
+                if (product.visible === false) return;
                 let indexedAnyVariant = false;
 
                 // 1. Indexar cada variante/acabado virtual por separado
@@ -2292,7 +2424,7 @@ window.safeAdminRun = function(fn) {
         if (typeof sourceData === 'undefined') return;
 
         const cat = sourceData.find(c => c.id === categoryId);
-        if (!cat) return;
+        if (!cat || cat.visible === false) return;
 
         if (isBack) {
             const categoryFeedView = document.getElementById('view-category-feed');
@@ -2318,6 +2450,7 @@ window.safeAdminRun = function(fn) {
             if (categoryFeedEmpty) categoryFeedEmpty.style.display = 'none';
 
             cat.products.forEach(product => {
+                if (product.visible === false) return;
                 const card = document.createElement('div');
                 card.className = 'feed-card';
                 const productCover = Array.isArray(product.image) ? product.image[0] : product.image;
@@ -2981,7 +3114,8 @@ window.safeAdminRun = function(fn) {
         const btnOpenAddRental = document.getElementById('btn-open-add-rental');
         if (btnOpenAddRental) {
             btnOpenAddRental.addEventListener('click', () => {
-                openRentalForm(null);
+                window.isRentalMode = true;
+                openProductForm(null, null);
             });
         }
 
@@ -3096,10 +3230,10 @@ window.safeAdminRun = function(fn) {
     }
 
     function renderAdminRentals() {
-        const tableBody = document.getElementById('admin-rentals-table-body');
-        if (!tableBody) return;
-
-        tableBody.innerHTML = '';
+        const oldTableBody = document.getElementById('admin-rentals-table-body');
+        if (!oldTableBody) return;
+        const tableBody = oldTableBody.cloneNode(false);
+        oldTableBody.parentNode.replaceChild(tableBody, oldTableBody);
 
         const sourceRentals = typeof sessionRentals !== 'undefined' ? sessionRentals : [];
 
@@ -3116,33 +3250,85 @@ window.safeAdminRun = function(fn) {
 
         sourceRentals.forEach((rental, index) => {
             const tr = document.createElement('tr');
+            tr.className = 'rental-admin-row';
+            tr.style.borderBottom = '1px solid #EEF0F3';
+            tr.setAttribute('data-index', index);
+            tr.setAttribute('draggable', 'false');
+
             const imgUrl = rental.image || 'img/logo_provisional.png';
+            const isVisible = rental.visible !== false;
+
+            const dragHandleHtml = `<div class="rental-drag-handle" title="Mantén presionado para arrastrar y reordenar" style="padding: 0.35rem; background: #e2e8f0; color: #4a5568; border: none; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; cursor: grab;"><span class="material-symbols-outlined" style="font-size: 16px;">drag_indicator</span></div>`;
 
             tr.innerHTML = `
-                <td>
-                    <img src="${imgUrl}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px; border: 1px solid #E2E8F0;" onerror="this.src='img/logo_provisional.png';">
+                <td style="padding: 0.75rem 1rem; vertical-align: middle;">
+                    <div style="display: flex; align-items: center; gap: 0.6rem;">
+                        ${dragHandleHtml}
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background-image: url('${imgUrl}'); background-size: cover; background-position: center; border: 1px solid #E2E8F0; flex-shrink: 0;"></div>
+                    </div>
                 </td>
-                <td>
-                    <strong style="color: var(--text-main); font-size: 0.95rem;">${rental.title}</strong>
-                    <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">ID: ${rental.id}</div>
+                <td style="padding: 0.75rem 1rem; vertical-align: middle;">
+                    <strong style="color: var(--text-main); font-size: 0.9rem; display: block;">${rental.title}</strong>
+                    <small style="color: var(--text-muted); font-size: 0.75rem; font-family: monospace; display: block; margin-top: 2px;">ID: ${rental.id}</small>
                 </td>
-                <td>
-                    <span style="font-weight: 600; color: var(--primary-color);">${rental.price || 'Consultar'}</span>
+                <td style="padding: 0.75rem 1rem; vertical-align: middle;">
+                    <span style="background: #edf2f7; color: #4a5568; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.78rem; font-weight: 500;">
+                        ${rental.price || 'Consultar'}
+                    </span>
                 </td>
-                <td style="text-align: center;">
-                    <div style="display: flex; gap: 8px; justify-content: center;">
-                        <button class="action-btn edit btn-edit-rental" data-index="${index}" title="Editar alquiler">
-                            <span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
+                <td style="padding: 0.75rem 1rem; vertical-align: middle; text-align: center;">
+                    <div style="display: flex; gap: 0.4rem; justify-content: center; align-items: center;">
+                        <button class="action-btn view btn-toggle-rental-visibility ${isVisible ? '' : 'hidden-mode'}" title="${isVisible ? 'Ocultar alquiler' : 'Mostrar alquiler'}" style="padding: 0.35rem; font-size: 0.85rem;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">${isVisible ? 'visibility' : 'visibility_off'}</span>
                         </button>
-                        <button class="action-btn delete btn-delete-rental" data-index="${index}" style="background: rgba(220, 38, 38, 0.08); color: #DC2626;" title="Eliminar alquiler">
-                            <span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+                        <button class="action-btn edit btn-edit-rental" title="Editar" style="padding: 0.35rem; font-size: 0.85rem;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">edit</span>
+                        </button>
+                        <button class="action-btn clone btn-clone-rental" title="Clonar" style="padding: 0.35rem; font-size: 0.85rem;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span>
+                        </button>
+                        <button class="action-btn del btn-delete-rental" title="Eliminar" style="padding: 0.35rem; font-size: 0.85rem;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
                         </button>
                     </div>
                 </td>
             `;
 
+            const handle = tr.querySelector('.rental-drag-handle');
+            handle.addEventListener('mousedown', () => tr.setAttribute('draggable', 'true'));
+            handle.addEventListener('touchstart', () => tr.setAttribute('draggable', 'true'));
+            handle.addEventListener('mouseup', () => tr.setAttribute('draggable', 'false'));
+            handle.addEventListener('touchend', () => tr.setAttribute('draggable', 'false'));
+
+            tr.addEventListener('dragstart', (e) => {
+                tr.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', index);
+            });
+
+            tr.addEventListener('dragend', () => {
+                tr.classList.remove('dragging');
+                tr.setAttribute('draggable', 'false');
+            });
+
+            tr.querySelector('.btn-toggle-rental-visibility').addEventListener('click', async () => {
+                const newVisibleState = (rental.visible !== false) ? false : true;
+                rental.visible = newVisibleState;
+
+                showAdminToast(newVisibleState ? '👁️ Alquiler visible' : '👁️ Alquiler oculto');
+                if (window.saveRentalsToServer) {
+                    await window.saveRentalsToServer();
+                }
+                renderAdminRentals();
+            });
+
             tr.querySelector('.btn-edit-rental').addEventListener('click', () => {
-                openRentalForm(rental);
+                window.isRentalMode = true;
+                openProductForm(null, rental);
+            });
+
+            tr.querySelector('.btn-clone-rental').addEventListener('click', () => {
+                cloneRental(rental);
             });
 
             tr.querySelector('.btn-delete-rental').addEventListener('click', async () => {
@@ -3158,6 +3344,64 @@ window.safeAdminRun = function(fn) {
 
             tableBody.appendChild(tr);
         });
+
+        // Habilitar dragover y drop en el tbody clonado
+        tableBody.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            const draggingRow = tableBody.querySelector('.dragging');
+            if (!draggingRow) return;
+            
+            const afterElement = getDragAfterElement(tableBody, e.clientY, '.rental-admin-row');
+            if (afterElement == null) {
+                tableBody.appendChild(draggingRow);
+            } else {
+                tableBody.insertBefore(draggingRow, afterElement);
+            }
+        });
+        
+        tableBody.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            const draggingRow = tableBody.querySelector('.dragging');
+            if (!draggingRow) return;
+            
+            const rows = [...tableBody.querySelectorAll('.rental-admin-row')];
+            const oldRentalsList = [...sessionRentals];
+            const newRentalsList = [];
+            
+            rows.forEach(r => {
+                const originalIdx = parseInt(r.getAttribute('data-index'));
+                if (!isNaN(originalIdx) && oldRentalsList[originalIdx]) {
+                    newRentalsList.push(oldRentalsList[originalIdx]);
+                }
+            });
+            
+            window.sessionRentals.length = 0;
+            newRentalsList.forEach(r => window.sessionRentals.push(r));
+            
+            if (window.saveRentalsToServer) {
+                await window.saveRentalsToServer();
+            }
+            renderAdminRentals();
+            showAdminToast('✅ Alquileres reordenados y guardados físicamente');
+        });
+    }
+
+    function cloneRental(rental) {
+        if (!rental) return;
+
+        const cloned = JSON.parse(JSON.stringify(rental));
+        cloned.id = `${cloned.id}-copia`;
+        cloned.title = `${cloned.title} (Copia)`;
+
+        window.isRentalMode = true;
+        openProductForm(null, cloned);
+
+        editingProductId = null;
+
+        const modal = document.getElementById('admin-product-modal');
+        if (modal) modal.style.display = 'flex';
+
+        showAdminToast('📋 Editá el clon y guardalo para añadirlo a alquileres');
     }
 
     function openRentalForm(rental = null) {

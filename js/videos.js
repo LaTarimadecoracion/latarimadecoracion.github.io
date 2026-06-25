@@ -13,21 +13,31 @@ window.renderVideosView = function() {
 
     gridContainer.innerHTML = '';
 
-    // Extraer todos los productos que tengan un video definido
+    // Extraer todos los productos que tengan un video definido sin duplicados
     let videoProducts = [];
+    const seenIds = new Set();
     const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) 
         ? sessionProducts 
         : (typeof productsData !== 'undefined' ? productsData : []);
 
     sourceData.forEach(cat => {
+        if (cat.visible === false) return;
         if (cat.products) {
             cat.products.forEach(prod => {
-                if (prod.video) {
+                if (prod.visible === false) return;
+                if (prod.video && !seenIds.has(prod.id)) {
+                    seenIds.add(prod.id);
                     videoProducts.push({ product: prod, catName: cat.name });
                 }
             });
         }
     });
+
+    // Mezclar el array de forma aleatoria (Algoritmo Fisher-Yates) para generar sensación de novedad
+    for (let i = videoProducts.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [videoProducts[i], videoProducts[j]] = [videoProducts[j], videoProducts[i]];
+    }
 
     if (videoProducts.length === 0) {
         gridContainer.innerHTML = '<p class="text-muted" style="grid-column: 1 / -1; text-align: center;">Por el momento no hay videos disponibles.</p>';

@@ -314,7 +314,14 @@
         }
         
         detailDescription.textContent = product.description;
-        if (priceDisplay) priceDisplay.style.display = 'none';
+        if (priceDisplay) {
+            if (product.price) {
+                priceDisplay.style.display = 'block';
+                priceDisplay.textContent = `Precio de Alquiler: ${product.price}`;
+            } else {
+                priceDisplay.style.display = 'none';
+            }
+        }
 
         attrContainer.innerHTML = '';
 
@@ -345,6 +352,11 @@
             if (grupo.acabado_name && grupo.acabado_name !== 'Único') parts.push(`Acabado: ${grupo.acabado_name}`);
             if (medidaText) parts.push(`Medida: ${medidaText}`);
             if (optText && optLabel) parts.push(`${optLabel}: ${optText}`);
+
+            if (categoryName === 'Alquileres' || product.primaryCatId === 'alquileres') {
+                const price = product.price || 'Consultar';
+                return `¡Hola La Tarima! Quiero consultar para alquilar: ${parts.join(', ')} (${price}). ¿Está disponible?`;
+            }
 
             return `¡Hola La Tarima! Quiero consultar por el producto: ${parts.join(', ')}. ¿Me podés pasar más info y disponibilidad?`;
         }
@@ -699,8 +711,10 @@
                 let allProductsList = [];
                 const seenIds = new Set();
                 sourceData.forEach(cat => {
+                    if (cat.visible === false) return;
                     if (cat.products) {
                         cat.products.forEach(p => {
+                            if (p.visible === false) return;
                             if (!seenIds.has(p.id) && p.id !== product.id) { // Excluir producto actual
                                 seenIds.add(p.id);
                                 const res = findProductById(p.id);

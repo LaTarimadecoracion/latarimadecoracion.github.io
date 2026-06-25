@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXNJV3XERK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JXNJV3XERK');
+    </script>
+
+    
+    
+
+    
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://latarimadecoracion.github.io/calcular.html">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calcular Alto Ideal - LA TARIMA</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/icon-180.png">
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    
+    <link rel="stylesheet" href="css/style.css?v=25">
+    <link rel="stylesheet" href="css/calcular.css?v=5">
+    <style>
+        body {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+        .bg-glow {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    
+    <header class="main-header-bar">
+        <a href="./" class="back-nav-btn" title="Volver al Inicio">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        
+        <div class="header-titles-wrapper">
+            <h1 class="brand-title">LA TARIMA</h1>
+            <p class="brand-subtitle">Calculadora de Altura Ideal</p>
+        </div>
+    </header>
+
+    
+    <main id="app-container">
+        <section id="view-calculator" class="view active">
+            <div class="view-content-clean">
+                
+                
+                    <div id="panelMedidas" class="calc-panel">
+
+                        
+                        <div class="inputs-compact">
+                            <div class="input-compact-group">
+                                <label for="medidaA" class="input-compact-label">
+                                    <span class="input-compact-badge" style="background:#e07c40;">A</span>
+                                    Ancho tirante
+                                </label>
+                                <input id="medidaA" name="medidaA" type="number" min="0" step="0.5" inputmode="decimal" placeholder="ej: 4.5" aria-label="Ancho del tirante (A)" class="input-compact-field" />
+                                <span class="input-compact-unit">cm</span>
+                            </div>
+                            <div class="input-compact-group">
+                                <label for="medidaB" class="input-compact-label">
+                                    <span class="input-compact-badge" style="background:#3b82f6;">B</span>
+                                    Alto tirante
+                                </label>
+                                <input id="medidaB" name="medidaB" type="number" min="0" step="0.5" inputmode="decimal" placeholder="ej: 10" aria-label="Alto del tirante (B)" class="input-compact-field" />
+                                <span class="input-compact-unit">cm</span>
+                            </div>
+                            <div class="input-compact-group">
+                                <label for="medidaC" class="input-compact-label">
+                                    <span class="input-compact-badge" style="background:#16a34a;">C</span>
+                                    Tirante + colchón
+                                </label>
+                                <input id="medidaC" name="medidaC" type="number" min="0" step="0.5" inputmode="decimal" placeholder="ej: 20" aria-label="Alto tirante + colchón (C)" class="input-compact-field" />
+                                <span class="input-compact-unit">cm</span>
+                            </div>
+                        </div>
+
+                        <div class="inputs-compact-footer">
+                            <button id="btnLimpiar" class="btn-clear-fields" type="button" aria-label="Limpiar campos">
+                                <span class="material-symbols-outlined" style="font-size:15px; vertical-align:middle;">backspace</span>
+                                Nueva medición
+                            </button>
+                            <button id="btnVerAyuda" class="btn-help-link" type="button" aria-label="Ver imagen de ayuda">
+                                <span class="material-symbols-outlined" style="font-size:15px; vertical-align:middle;">image</span>
+                                Ver imagen de referencia
+                            </button>
+                        </div>
+
+                        <div style="display:none;"><button id="btnCalcular">Calcular</button></div>
+                    </div>
+
+
+                    
+                    <div class="results-table-container">
+                        <table id="tablaBaranda" class="results-table-clean">
+                            <thead>
+                                <tr>
+                                    <th>Modelo</th>
+                                    <th style="text-align: right;">Protección útil</th>
+                                    <th style="text-align: right;">Alto sugerido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                    
+                    
+                    <div id="resumenUnificado" role="status" aria-live="polite" class="result-summary-box" style="display:none;">
+                        
+                    </div>
+
+                    
+                    <div id="resultadoCalculo" role="status" aria-live="polite" class="calc-error-box" style="display:none;"></div>
+
+                    
+                    <div class="visualizer-card" id="cardVisualizador" style="display:none;">
+                        <h3 class="summary-box-title">Visualización en tiempo real</h3>
+                        <p class="calc-intro-text" style="margin-bottom: 1rem;">
+                            Mirá cómo se adapta el modelo seleccionado en tu cama según las medidas ingresadas.
+                        </p>
+                        
+                        <div class="vista-tabs">
+                            <button id="btnBarandaActual" class="vista-tab" type="button">Baranda Actual (Estándar)</button>
+                            <button id="btnBarandaRecomendada" class="vista-tab active" type="button">Baranda Recomendada (Ajustada)</button>
+                        </div>
+
+                        <div id="canvas-container-clean">
+                            <svg id="diagrama" viewBox="0 0 900 480" style="width: 100%; height: auto; display: block; background: #FFFFFF; border-radius: 12px; border: 1px solid rgba(180, 132, 108, 0.12);">
+                                
+                            </svg>
+                        </div>
+                        
+                        <div class="summary-box-actions" style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+                            <button id="btnDescargar" class="btn-copy-clean">
+                                <span class="material-symbols-outlined" style="font-size: 16px;">download</span>
+                                Descargar diagrama
+                            </button>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="social-links mt-2" style="margin-top: 3rem; text-align: center; padding-bottom: 2rem;">
+                        <p class="text-muted" style="margin-bottom: 1rem; font-weight: 500; font-size: 0.95rem;">Seguinos en redes:</p>
+                        <div class="social-icons-row" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                            
+                            <a href="https://instagram.com" target="_blank" class="social-icon-btn social-link-instagram" title="Instagram">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            </a>
+                            
+                            <a href="https://tiktok.com" target="_blank" class="social-icon-btn social-link-tiktok" title="TikTok">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                            </a>
+                            
+                            <a href="https://facebook.com" target="_blank" class="social-icon-btn social-link-facebook" title="Facebook">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            </a>
+                            
+                            <a href="https://youtube.com" target="_blank" class="social-icon-btn social-link-youtube" title="YouTube">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                            </a>
+                            
+                            <a href="https://wa.me/5491167007723" target="_blank" class="social-icon-btn social-link-whatsapp" title="WhatsApp">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            </a>
+                            
+                            <a href="#" target="_blank" class="social-icon-btn social-link-mercadolibre" title="Mercado Libre">
+                                <svg width="24" height="24" viewBox="0 0 640 512" fill="currentColor"><path d="M272.2 64.6l-51.1 51.1c-15.3 4.2-29.5 11.9-41.5 22.5L153 161.9C142.8 171 129.5 176 115.8 176L96 176l0 128c20.4 .6 39.8 8.9 54.3 23.4l35.6 35.6 7 7c0 0 0 0 0 0L219.9 397c6.2 6.2 16.4 6.2 22.6 0c1.7-1.7 3-3.7 3.7-5.8c2.8-7.7 9.3-13.5 17.3-15.3s16.4 .6 22.2 6.5L296.5 393c11.6 11.6 30.4 11.6 41.9 0c5.4-5.4 8.3-12.3 8.6-19.4c.4-8.8 5.6-16.6 13.6-20.4s17.3-3 24.4 2.1c9.4 6.7 22.5 5.8 30.9-2.6c9.4-9.4 9.4-24.6 0-33.9L340.1 243l-35.8 33c-27.3 25.2-69.2 25.6-97 .9c-31.7-28.2-32.4-77.4-1.6-106.5l70.1-66.2C303.2 78.4 339.4 64 377.1 64c36.1 0 71 13.3 97.9 37.2L505.1 128l38.9 0 40 0 40 0c8.8 0 16 7.2 16 16l0 208c0 17.7-14.3 32-32 32l-32 0c-11.8 0-22.2-6.4-27.7-16l-84.9 0c-3.4 6.7-7.9 13.1-13.5 18.7c-17.1 17.1-40.8 23.8-63 20.1c-3.6 7.3-8.5 14.1-14.6 20.2c-27.3 27.3-70 30-100.4 8.1c-25.1 20.8-62.5 19.5-86-4.1L159 404l-7-7-35.6-35.6c-5.5-5.5-12.7-8.7-20.4-9.3C96 369.7 81.6 384 64 384l-32 0c-17.7 0-32-14.3-32-32L0 144c0-8.8 7.2-16 16-16l40 0 40 0 19.8 0c2 0 3.9-.7 5.3-2l26.5-23.6C175.5 77.7 211.4 64 248.7 64L259 64c4.4 0 8.9 .2 13.2 .6zM544 320l0-144-48 0c-5.9 0-11.6-2.2-15.9-6.1l-36.9-32.8c-18.2-16.2-41.7-25.1-66.1-25.1c-25.4 0-49.8 9.7-68.3 27.1l-70.1 66.2c-10.3 9.8-10.1 26.3 .5 35.7c9.3 8.3 23.4 8.1 32.5-.3l71.9-66.4c9.7-9 24.9-8.4 33.9 1.4s8.4 24.9-1.4 33.9l-.8 .8 74.4 74.4c10 10 16.5 22.3 19.4 35.1l74.8 0zM64 336a16 16 0 1 0 -32 0 16 16 0 1 0 32 0zm528 16a16 16 0 1 0 0-32 16 16 0 1 0 0 32z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                
+            </div>
+        </section>
+    </main>
+
+
+
+    
+    <div id="modalAyuda" class="modal-fullscreen" style="display: none;" aria-hidden="true" role="dialog">
+        <div class="modal-overlay" id="modalOverlayEl"></div>
+        <button id="btnCloseModal" class="modal-fs-close" aria-label="Cerrar">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <img src="img/Medidas.webp" alt="Diagrama de ayuda para tomar las medidas A, B y C" class="modal-fs-img" />
+    </div>
+
+    <script>
+        (function () {
+            // Si no está dentro de un iframe (carga directa), redirigir a la SPA con ?view=calcular
+            if (window.self === window.top) {
+                const query = window.location.search;
+                const path = window.location.pathname.replace(/calcular\.html$/, '');
+                const targetUrl = window.location.origin + path + '?view=calcular' + (query ? '&' + query.substring(1) : '');
+                window.location.replace(targetUrl);
+                return;
+            }
+
+            // Si está dentro de un iframe (modo SPA), sincronizar clase del body para el tema, ocultar cabecera duplicada y ajustar márgenes
+            if (window.self !== window.top) {
+                if (window.parent && window.parent.document.body) {
+                    document.body.className = window.parent.document.body.className;
+                }
+                const header = document.querySelector('.main-header-bar');
+                if (header) header.style.display = 'none';
+                
+                document.body.style.paddingTop = '0';
+                document.body.style.marginTop = '0';
+                const appContainer = document.getElementById('app-container');
+                if (appContainer) {
+                    appContainer.style.paddingTop = '0';
+                    appContainer.style.marginTop = '0';
+                    appContainer.style.height = '100vh';
+                }
+            }
+
+            const inputA = document.getElementById('medidaA');
+            const inputB = document.getElementById('medidaB');
+            const inputC = document.getElementById('medidaC');
+            const btn = document.getElementById('btnCalcular');
+
+            // Enter navega de A→B→C entre los inputs
+            [[inputA, inputB], [inputB, inputC]].forEach(([from, to]) => {
+                if (from && to) {
+                    from.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter') { e.preventDefault(); to.focus(); to.select(); }
+                    });
+                }
+            });
+
+            // Botón "Nueva medición" — limpia todo de una vez
+            const btnLimpiar = document.getElementById('btnLimpiar');
+            if (btnLimpiar) {
+                btnLimpiar.addEventListener('click', () => {
+                    inputA.value = '';
+                    inputB.value = '';
+                    inputC.value = '';
+                    try { localStorage.removeItem('lastMedidasBC'); localStorage.removeItem('userSelectedModeloV1'); } catch(e) {}
+                    const out2 = document.getElementById('resultadoCalculo');
+                    const tabla = document.querySelector('#tablaBaranda tbody');
+                    const resumen = document.getElementById('resumenUnificado');
+                    const visor = document.getElementById('cardVisualizador');
+                    if (out2) out2.style.display = 'none';
+                    if (tabla) tabla.innerHTML = '';
+                    if (resumen) resumen.style.display = 'none';
+                    if (visor) visor.style.display = 'none';
+                    inputA.focus();
+                });
+            }
+
+
+            const out = document.getElementById('resultadoCalculo');
+            const tablaBarandaBody = document.querySelector('#tablaBaranda tbody');
+            const STORAGE_USER_SEL = 'userSelectedModeloV1';
+            const STORAGE_KEYS = { medidas: 'lastMedidasBC' };
+            let recomendadoActual = null;
+            let activeModeloNombre = null;
+            let vistaActual = 'recomendada';
+            
+            function saveUserSelection(nombre) { localStorage.setItem(STORAGE_USER_SEL, nombre || ''); }
+            function loadUserSelection() { try { return localStorage.getItem(STORAGE_USER_SEL) || ''; } catch (e) { return ''; } }
+            
+            function loadMedidas() { try { const s = localStorage.getItem(STORAGE_KEYS.medidas); return s ? JSON.parse(s) : {}; } catch (e) { return {}; } }
+            function saveMedidas(A, B, C) { localStorage.setItem(STORAGE_KEYS.medidas, JSON.stringify({ A, B, C })); }
+
+            const resumenUnificado = document.getElementById('resumenUnificado');
+
+            function ejecutar() {
+                const A = parseFloat(inputA.value);
+                const B = parseFloat(inputB.value);
+                const C = parseFloat(inputC.value);
+                if (isNaN(B) || isNaN(C)) {
+                    out.style.display = 'none';
+                    tablaBarandaBody.innerHTML = '';
+                    resumenUnificado.style.display = 'none';
+                    document.getElementById('cardVisualizador').style.display = 'none';
+                    return;
+                }
+                out.style.display = 'none';
+
+                if (C < B) {
+                    tablaBarandaBody.innerHTML = '';
+                    resumenUnificado.style.display = 'none';
+                    document.getElementById('cardVisualizador').style.display = 'none';
+                    out.style.display = 'block';
+                    out.innerHTML = '<span class="error-msg">C no puede ser menor que B. Revisá las medidas.</span>';
+                    return;
+                }
+
+                // ================= CONFIG DINÁMICA MODELOS =================
+                const modelosConfig = [
+                    { nombre: 'Clásica 45', nominal: 45, agarre: 8, soporte: 20, minAbertura: 5, targetProt: 20, rangeProt: [15, 25] },
+                    { nombre: 'Clásica 60', nominal: 60, agarre: 8, soporte: 20, minAbertura: 5, targetProt: 35, rangeProt: [33, 37] },
+                    { nombre: 'Montessori 45', nominal: 45, agarre: 8, soporte: 20, minAbertura: 5, targetProt: 15, rangeProt: [15, 20] },
+                    { nombre: 'Simple 35', nominal: 35, agarre: 8, soporte: 7, minAbertura: 5, targetProt: 10, rangeProt: [10, 12], minProteccion: 10 }
+                ];
+
+                function calcModeloAvanzado(m) {
+                    const agarreReal = B > m.agarre ? m.agarre : B;
+                    const deltaB = B > m.agarre ? (B - m.agarre) : 0;
+                    const nuevoC = C - deltaB;
+                    let alturaIdeal = nuevoC + m.targetProt;
+                    const estructuraMin = agarreReal + m.soporte + m.minAbertura;
+                    if (alturaIdeal < estructuraMin) alturaIdeal = estructuraMin;
+                    let abertura = alturaIdeal - (agarreReal + m.soporte);
+                    if (abertura < m.minAbertura) { alturaIdeal = estructuraMin; abertura = m.minAbertura; }
+                    let proteccion = alturaIdeal - nuevoC;
+                    if (m.minProteccion && proteccion < m.minProteccion) {
+                        alturaIdeal = nuevoC + m.minProteccion;
+                        abertura = alturaIdeal - (agarreReal + m.soporte);
+                        proteccion = alturaIdeal - nuevoC;
+                    }
+                    const [pMin, pMax] = m.rangeProt;
+                    let estado = proteccion < pMin ? 'Baja' : (proteccion > pMax ? 'Alta' : 'Óptima');
+                    const colorClass = estado === 'Óptima' ? 'status-optima' : (estado === 'Baja' ? 'status-baja' : 'status-alta');
+                    let nota;
+                    if (m.minProteccion && proteccion < m.minProteccion) nota = `Elevada para mínimo ${m.minProteccion} cm`;
+                    else if (Math.abs(alturaIdeal - m.nominal) > 0.5) nota = `Ajustada desde ${m.nominal} cm`;
+                    else nota = 'Sin ajuste';
+                    let aberturaFormula = B - m.agarre; if (aberturaFormula < 0) aberturaFormula = 0;
+                    const proteccionNominal = m.nominal - nuevoC;
+                    const diff = Math.abs(proteccionNominal - m.targetProt);
+                    return { ...m, agarreReal, abertura: +abertura.toFixed(1), aberturaFormula: +aberturaFormula.toFixed(1), alturaSugerida: +alturaIdeal.toFixed(1), proteccion: +proteccion.toFixed(1), estado, colorClass, nota, rango: `${pMin}–${pMax}`, proteccionNominal: +proteccionNominal.toFixed(1), diffTarget: +diff.toFixed(1) };
+                }
+                
+                const evalAvanzado = modelosConfig.map(calcModeloAvanzado);
+                window._lastEvalAvanzado = evalAvanzado;
+                let cand = evalAvanzado.filter(x => x.estado === 'Óptima'); if (!cand.length) cand = evalAvanzado.slice();
+                const recomendadoAv = cand.sort((a, b) => Math.abs(a.proteccion - a.targetProt) - Math.abs(b.proteccion - b.targetProt))[0];
+                recomendadoActual = recomendadoAv;
+                
+                const filasAv = evalAvanzado.map(e => {
+                    const filaClase = e.estado === 'Óptima' ? 'fila-recomendada' : 'fila-no-recommend';
+                    return `
+                        <tr data-modelo="${e.nombre}" class="${filaClase}">
+                            <td>
+                                <div class="row-title">${e.nombre}</div>
+                                <div class="row-sub">Rango ${e.rango} (target ${e.targetProt})</div>
+                            </td>
+                            <td style="text-align:right;">
+                                <div class="row-title">${e.proteccion} cm <span class="row-status ${e.colorClass}">(${e.estado})</span></div>
+                                <div class="row-sub">Abertura: ${e.abertura} cm</div>
+                            </td>
+                            <td style="text-align:right;">
+                                <div class="row-title">${e.alturaSugerida} cm</div>
+                                <div class="row-sub">${e.nota}</div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+                tablaBarandaBody.innerHTML = filasAv;
+                
+                Array.from(tablaBarandaBody.querySelectorAll('tr')).forEach(tr => {
+                    tr.style.cursor = 'pointer';
+                });
+
+                const storedSel = loadUserSelection();
+                if (storedSel) {
+                    const encontrado = evalAvanzado.find(m => m.nombre === storedSel);
+                    if (encontrado) { 
+                        renderResumenUnificado(encontrado);
+                        marcarFilaSeleccionada(storedSel, recomendadoAv.nombre);
+                    }
+                    else { saveUserSelection(''); renderResumenUnificado(recomendadoAv); }
+                } else {
+                    renderResumenUnificado(recomendadoAv);
+                }
+
+                attachRowSelection();
+            }
+
+            function attachRowSelection() {
+                if (tablaBarandaBody._rowSelectionAttached) return;
+                tablaBarandaBody._rowSelectionAttached = true;
+                tablaBarandaBody.addEventListener('click', function (e) {
+                    const tr = e.target.closest('tr'); if (!tr) return;
+                    const nombre = tr.getAttribute('data-modelo'); if (!nombre) return;
+                    const evals = window._lastEvalAvanzado || [];
+                    const modelo = evals.find(m => m.nombre === nombre); if (!modelo) return;
+                    renderResumenUnificado(modelo);
+                    saveUserSelection(nombre);
+                });
+            }
+
+            function renderResumenUnificado(modelo) {
+                if (!modelo) modelo = recomendadoActual;
+                if (!modelo) {
+                    resumenUnificado.style.display = 'none';
+                    document.getElementById('cardVisualizador').style.display = 'none';
+                    return;
+                }
+
+                const esRecomendado = recomendadoActual && modelo.nombre === recomendadoActual.nombre;
+                
+                // Calcular el estado del modelo en su altura estándar (nominal)
+                const [pMin, pMax] = modelo.rangeProt;
+                const estadoNominal = modelo.proteccionNominal < pMin ? 'Baja' : (modelo.proteccionNominal > pMax ? 'Alta' : 'Óptima');
+                
+                let evalTexto = '';
+                if (esRecomendado) {
+                    evalTexto = `Este modelo es el <strong>ideal</strong> para tus medidas porque ofrece una protección útil óptima de <strong>${modelo.proteccion} cm</strong> sobre el colchón (dentro del rango recomendado de ${modelo.rango} cm).`;
+                } else {
+                    if (estadoNominal === 'Óptima') {
+                        evalTexto = `Este modelo en su altura estándar es <strong>adecuado</strong> porque ofrece una protección útil de <strong>${modelo.proteccionNominal} cm</strong> sobre el colchón (dentro del rango de ${modelo.rango} cm). Sin embargo, la opción oficial recomendada es más cercana al valor de seguridad ideal.`;
+                    } else if (estadoNominal === 'Baja') {
+                        evalTexto = `<span class="error-msg" style="color:#b91c1c; font-weight:700;">No es ideal estándar:</span> En su altura de fábrica de ${modelo.nominal} cm, quedaría bajo. La protección útil sobre el colchón sería de solo <strong>${modelo.proteccionNominal} cm</strong> (por debajo del mínimo recomendado de ${pMin} cm).`;
+                    } else { // Alta
+                        evalTexto = `<span class="error-msg" style="color:#b91c1c; font-weight:700;">No es ideal estándar:</span> En su altura de fábrica de ${modelo.nominal} cm, quedaría muy alto. La protección útil sobre el colchón sería de <strong>${modelo.proteccionNominal} cm</strong> (por encima del máximo recomendado de ${pMax} cm).`;
+                    }
+                }
+
+                let propuestaAltura = '';
+                const diffNominal = Math.abs(modelo.alturaSugerida - modelo.nominal);
+                if (diffNominal > 0.5) {
+                    if (modelo.estado === 'Óptima') {
+                        propuestaAltura = `Para alcanzar la protección recomendada de <strong>${modelo.targetProt} cm</strong> con este modelo, sugerimos pedirlo con una <strong>altura personalizada de ${modelo.alturaSugerida} cm</strong> en el taller (en lugar del alto estándar de ${modelo.nominal} cm).`;
+                    } else {
+                        propuestaAltura = `Incluso pidiéndolo con la altura mínima de <strong>${modelo.alturaSugerida} cm</strong> en el taller, la protección útil será de <strong>${modelo.proteccion} cm</strong> (por encima del rango recomendado de ${modelo.rango} cm).`;
+                    }
+                } else {
+                    propuestaAltura = `Este modelo en su altura estándar de <strong>${modelo.nominal} cm</strong> se adapta perfectamente a tu colchón.`;
+                }
+
+                resumenUnificado.innerHTML = `
+                    <h3 class="summary-box-title" style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>${esRecomendado ? 'Recomendación Oficial' : 'Tu Elección'}: ${modelo.nombre}</span>
+                        ${esRecomendado ? '<span class="badge-rec">Recomendado</span>' : ''}
+                    </h3>
+                    <div class="summary-box-content">
+                        <div class="summary-line">${evalTexto}</div>
+                        <div class="summary-line" style="margin-top: 6px; border-left: 3px solid var(--primary-color); padding-left: 8px; font-size: 0.85rem; color: var(--text-muted);">${propuestaAltura}</div>
+                        <div id="desgloseIntermedio" style="margin-top:10px; font-size:0.8rem;">
+                            Agarre real: <strong>${modelo.agarreReal} cm</strong> | Protección sobre el colchón: <strong>${modelo.proteccion} cm</strong> | Alto sugerido: <strong>${modelo.alturaSugerida} cm</strong>
+                        </div>
+                    </div>
+                    <div class="summary-box-actions" style="margin-top: 1rem;">
+                        <button id="btnCopiarResumen" class="btn-copy-clean">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span>
+                            Copiar resumen
+                        </button>
+                        ${!esRecomendado ? `
+                            <button id="btnRestablecer" class="btn-reset-clean">
+                                <span class="material-symbols-outlined" style="font-size: 14px; vertical-align: middle;">restart_alt</span>
+                                Volver al recomendado
+                            </button>
+                        ` : ''}
+                        <span id="copyOk" style="display:none; margin-left:10px;">Copiado ✔</span>
+                    </div>
+                `;
+                resumenUnificado.style.display = 'block';
+                document.getElementById('cardVisualizador').style.display = 'block';
+                activeModeloNombre = modelo.nombre;
+                marcarFilaSeleccionada(modelo.nombre, recomendadoActual?.nombre);
+                dibujarBaranda();
+
+                document.getElementById('btnCopiarResumen').addEventListener('click', () => {
+                    // Track copy summary event
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'copy_summary', {
+                            event_category: 'Engagement',
+                            event_label: 'Copiar Resumen Calculadora',
+                            modelo_baranda: modelo.nombre
+                        });
+                    }
+
+                    const texto = `La Tarima - Cálculo de Baranda\nModelo: ${modelo.nombre}\nMedidas del cliente: A (ancho tirante) = ${inputA.value || 'N/C'} cm, B (alto tirante) = ${inputB.value} cm, C (alto tirante + colchón) = ${inputC.value} cm\nProtección útil: ${modelo.proteccion} cm\nAbertura resultante: ${modelo.abertura} cm\nAltura sugerida a encargar: ${modelo.alturaSugerida} cm (${modelo.nota})`;
+                    const copyOk = document.getElementById('copyOk');
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(texto).then(() => {
+                            copyOk.style.display = 'inline';
+                            setTimeout(() => copyOk.style.display = 'none', 1800);
+                        });
+                    } else {
+                        const ta = document.createElement('textarea');
+                        ta.value = texto; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+                        copyOk.style.display = 'inline';
+                        setTimeout(() => copyOk.style.display = 'none', 1800);
+                    }
+                });
+
+                if (!esRecomendado) {
+                    document.getElementById('btnRestablecer').addEventListener('click', () => {
+                        saveUserSelection('');
+                        marcarFilaSeleccionada('', recomendadoActual.nombre);
+                        renderResumenUnificado(recomendadoActual);
+                    });
+                }
+            }
+
+            function marcarFilaSeleccionada(nombreSel, nombreRec) {
+                tablaBarandaBody.querySelectorAll('tr').forEach(tr => {
+                    tr.classList.remove('fila-seleccionada');
+                    const n = tr.getAttribute('data-modelo');
+                    if (n === nombreSel) { tr.classList.add('fila-seleccionada'); }
+                });
+            }
+
+            if (btn) {
+                btn.addEventListener('click', (e) => { e.preventDefault(); ejecutar(); });
+            }
+            
+            ['input', 'change'].forEach(evt => {
+                inputA.addEventListener(evt, () => {
+                    const A = parseFloat(inputA.value);
+                    const B = parseFloat(inputB.value);
+                    const C = parseFloat(inputC.value);
+                    saveMedidas(A, B, C);
+                    ejecutar();
+                });
+                inputB.addEventListener(evt, () => {
+                    const A = parseFloat(inputA.value);
+                    const B = parseFloat(inputB.value);
+                    const C = parseFloat(inputC.value);
+                    saveMedidas(A, B, C);
+                    ejecutar();
+                });
+                inputC.addEventListener(evt, () => {
+                    const A = parseFloat(inputA.value);
+                    const B = parseFloat(inputB.value);
+                    const C = parseFloat(inputC.value);
+                    saveMedidas(A, B, C);
+                    ejecutar();
+                });
+            });
+
+            // Modal de ayuda
+            const btnVerAyuda = document.getElementById('btnVerAyuda');
+            const modalAyuda = document.getElementById('modalAyuda');
+            const btnCloseModal = document.getElementById('btnCloseModal');
+            const modalOverlay = document.getElementById('modalOverlayEl');
+
+            if (btnVerAyuda && modalAyuda) {
+                const abrirModal = (e) => {
+                    if (e) e.preventDefault();
+                    modalAyuda.style.display = 'flex';
+                    modalAyuda.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                };
+
+                const cerrarModal = (e) => {
+                    if (e) e.preventDefault();
+                    modalAyuda.style.display = 'none';
+                    modalAyuda.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                };
+
+                btnVerAyuda.addEventListener('click', abrirModal);
+                if (btnCloseModal) btnCloseModal.addEventListener('click', cerrarModal);
+                if (modalOverlay) modalOverlay.addEventListener('click', cerrarModal);
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modalAyuda.style.display === 'flex') {
+                        cerrarModal();
+                    }
+                });
+            }
+
+            // ── Diagrama guía: resaltar cota activa al hacer foco en cada input ──
+            (function initGuideInteractions() {
+                const cotas = { A: 'cota-A', B: 'cota-B', C: 'cota-C' };
+                const parts = { A: 'dg-tirante', B: 'dg-tirante', C: 'dg-colchon' };
+                const colors = { A: '#e07c40', B: '#3b82f6', C: '#16a34a' };
+
+                function highlightStep(step) {
+                    // Resetear todas las cotas y pasos
+                    Object.values(cotas).forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) el.style.opacity = '0.2';
+                    });
+                    ['dg-tirante', 'dg-colchon'].forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) { el.style.transition = 'filter 0.3s ease'; el.style.filter = ''; }
+                    });
+                    document.querySelectorAll('.guide-step').forEach(s => s.classList.remove('is-active'));
+
+                    if (!step) return;
+
+                    // Activar cota del diagrama
+                    const cotaEl = document.getElementById(cotas[step]);
+                    if (cotaEl) cotaEl.style.opacity = '1';
+
+                    // Resaltar parte de la cama correspondiente
+                    const partEl = document.getElementById(parts[step]);
+                    if (partEl) partEl.style.filter = `drop-shadow(0 0 5px ${colors[step]}88)`;
+
+                    // Resaltar el paso
+                    const stepEl = document.getElementById('step-' + step);
+                    if (stepEl) stepEl.classList.add('is-active');
+                }
+
+                // Bindings de foco en cada input
+                [
+                    { input: inputA, step: 'A' },
+                    { input: inputB, step: 'B' },
+                    { input: inputC, step: 'C' }
+                ].forEach(({ input, step }) => {
+                    if (!input) return;
+                    input.addEventListener('focus', () => highlightStep(step));
+                    input.addEventListener('blur', () => highlightStep(null));
+                    // También activar al hacer clic en el contenedor del paso
+                    const stepEl = document.getElementById('step-' + step);
+                    if (stepEl) {
+                        stepEl.addEventListener('click', (e) => {
+                            if (!e.target.classList.contains('btn-stepper')) {
+                                input.focus();
+                            }
+                        });
+                    }
+                });
+
+                // Botones +/-
+                document.querySelectorAll('.btn-stepper').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const fieldId = btn.getAttribute('data-field');
+                        const dir = parseFloat(btn.getAttribute('data-dir'));
+                        const field = document.getElementById(fieldId);
+                        if (!field) return;
+                        const currentVal = parseFloat(field.value) || 0;
+                        const step = parseFloat(field.step) || 0.5;
+                        const newVal = Math.max(0, Math.round((currentVal + dir * step) * 10) / 10);
+                        field.value = newVal;
+                        field.dispatchEvent(new Event('input', { bubbles: true }));
+                        field.dispatchEvent(new Event('change', { bubbles: true }));
+                    });
+                });
+            })();
+
+            // Visualizador Interactivo de Baranda
+            const modelosVisualizador = {
+                'Clásica 45': {
+                    nombre: 'Clásica 45',
+                    altoTotal: 45, agarre: 8,
+                    listones: [{ posicion: 0, grosor: 7 }, { posicion: 13, grosor: 7 }],
+                    separacionParantes: 10, umbralParanteExtra: 160
+                },
+                'Clásica 60': {
+                    nombre: 'Clásica 60',
+                    altoTotal: 60, agarre: 8,
+                    listones: [{ posicion: 0, grosor: 7 }, { posicion: 13, grosor: 7 }, { posicion: 26, grosor: 7 }],
+                    separacionParantes: 10, umbralParanteExtra: 160
+                },
+                'Montessori 45': {
+                    nombre: 'Montessori 45',
+                    altoTotal: 45, agarre: 8, estilo: 'reja',
+                    listones: [{ posicion: 0, grosor: 4 }, { posicion: 33, grosor: 4 }],
+                    parantesRelleno: { grosor: 2, separacionMax: 10 },
+                    separacionParantes: 10, umbralParanteExtra: 1000
+                },
+                'Simple 35': {
+                    nombre: 'Simple 35',
+                    altoTotal: 35, agarre: 8,
+                    listones: [{ posicion: 0, grosor: 7 }],
+                    separacionParantes: 10, umbralParanteExtra: 160
+                }
+            };
+
+            function dibujarBaranda() {
+                const svg = document.getElementById('diagrama');
+                if (!svg) return;
+                svg.innerHTML = '';
+                definirMarcadores(svg);
+
+                const B = parseFloat(inputB.value);
+                const C = parseFloat(inputC.value);
+                if (isNaN(B) || isNaN(C) || C < B) return;
+
+                const evals = window._lastEvalAvanzado || [];
+                let evalModelo = evals.find(m => m.nombre === activeModeloNombre);
+                if (!evalModelo && evals.length > 0) {
+                    evalModelo = evals[0];
+                }
+
+                const nominalHeight = evalModelo ? evalModelo.nominal : (modelosVisualizador[activeModeloNombre || 'Clásica 45']?.altoTotal || 45);
+                const sugeridaHeight = evalModelo ? evalModelo.alturaSugerida : nominalHeight;
+                const H = (vistaActual === 'actual') ? nominalHeight : sugeridaHeight;
+
+                const modeloVisual = modelosVisualizador[activeModeloNombre] || modelosVisualizador['Clásica 45'];
+
+                dibujarVistaFrente(svg, B, C, modeloVisual, H);
+            }
+
+            function dibujarVistaFrente(svg, B, C, modelo, H) {
+                const largoCama = 190;
+                const largoBaranda = 110;
+                const posicionBaranda = 40;
+
+                const escala = 3.5;
+                const margenX = 140;
+                const margenY = 60;
+                const grosorColchon = C - B;
+                const anchoCama = largoCama * escala;
+
+                const nominalHeight = modelo.altoTotal;
+                const agarreEfectivo = Math.min(modelo.agarre, B);
+                const baseY = margenY + nominalHeight * escala;
+
+                const anchoTotalSVG = anchoCama + margenX + 50;
+                const altoTotalSVG = baseY + (B > agarreEfectivo ? B : agarreEfectivo) * escala + 50;
+                
+                const yRailTop = baseY - H * escala;
+                const minY = Math.min(0, yRailTop - 30);
+                const heightSVG = altoTotalSVG - minY;
+                
+                svg.setAttribute('viewBox', `0 ${minY} ${anchoTotalSVG} ${heightSVG}`);
+                
+                // 1. Tirante Cama (Fondo)
+                const tirante = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                tirante.setAttribute('x', margenX);
+                tirante.setAttribute('y', baseY - agarreEfectivo * escala);
+                tirante.setAttribute('width', anchoCama);
+                tirante.setAttribute('height', B * escala);
+                tirante.setAttribute('fill', 'url(#gradTirante)');
+                tirante.setAttribute('stroke', '#999');
+                svg.appendChild(tirante);
+
+                // 2. Colchón
+                const colchon = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                colchon.setAttribute('x', margenX);
+                colchon.setAttribute('y', baseY - agarreEfectivo * escala - grosorColchon * escala);
+                colchon.setAttribute('width', anchoCama);
+                colchon.setAttribute('height', grosorColchon * escala);
+                colchon.setAttribute('fill', 'url(#gradColchon)');
+                colchon.setAttribute('stroke', '#ddd');
+                svg.appendChild(colchon);
+
+                // Etiquetas de cama
+                [{ text: 'TIRANTE CAMA', y: baseY - agarreEfectivo * escala + (B * escala) / 2 }, 
+                 { text: 'COLCHÓN', y: baseY - agarreEfectivo * escala - (grosorColchon * escala) / 2 }].forEach(label => {
+                    const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    txt.setAttribute('x', margenX + anchoCama / 2);
+                    txt.setAttribute('y', label.y + 5);
+                    txt.setAttribute('text-anchor', 'middle');
+                    txt.setAttribute('fill', '#666');
+                    txt.setAttribute('font-size', '11');
+                    txt.setAttribute('font-weight', 'bold');
+                    txt.setAttribute('opacity', '0.5');
+                    txt.textContent = label.text;
+                    svg.appendChild(txt);
+                });
+
+                // 3. Baranda
+                const anchoBaranda = largoBaranda * escala;
+                const offsetBaranda = posicionBaranda * escala;
+
+                const grupoBaranda = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+                // Listones
+                modelo.listones.forEach(liston => {
+                    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    rect.setAttribute('x', margenX + offsetBaranda);
+                    rect.setAttribute('y', baseY - (H - liston.posicion) * escala);
+                    rect.setAttribute('width', anchoBaranda);
+                    rect.setAttribute('height', liston.grosor * escala);
+                    rect.setAttribute('fill', 'url(#gradMaderaH)');
+                    rect.setAttribute('stroke', '#8b6f47');
+                    grupoBaranda.appendChild(rect);
+                });
+
+                // Parantes
+                const numP = 2;
+                const distBC = 13.5;
+                const posP = [distBC, largoBaranda - distBC];
+
+                if (modelo.estilo === 'reja') {
+                    const pR = modelo.parantesRelleno;
+                    const distL = (largoBaranda - (modelo.separacionParantes * 2) - (7 * 2));
+                    const cantE = Math.ceil(distL / (pR.separacionMax + pR.grosor));
+                    const distEq = distL / cantE;
+                    for (let i = 1; i < cantE; i++) {
+                        const posR = (modelo.separacionParantes + 7) + (i * distEq);
+                        const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                        r.setAttribute('x', margenX + offsetBaranda + (posR - pR.grosor / 2) * escala);
+                        r.setAttribute('y', baseY - (H - 4) * escala);
+                        r.setAttribute('width', pR.grosor * escala);
+                        r.setAttribute('height', (H - 8 - 4) * escala);
+                        r.setAttribute('fill', 'url(#gradMaderaV)');
+                        r.setAttribute('stroke', '#8b6f47');
+                        r.setAttribute('opacity', '0.8');
+                        grupoBaranda.appendChild(r);
+                    }
+                }
+
+                posP.forEach(p => {
+                    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    rect.setAttribute('x', margenX + offsetBaranda + (p - 3.5) * escala);
+                    rect.setAttribute('y', baseY - H * escala);
+                    rect.setAttribute('width', 7 * escala);
+                    rect.setAttribute('height', H * escala);
+                    rect.setAttribute('fill', 'url(#gradMaderaV)');
+                    rect.setAttribute('stroke', '#6b5537');
+                    grupoBaranda.appendChild(rect);
+                });
+
+                // Etiqueta de la baranda
+                const labelB = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                labelB.setAttribute('x', margenX + offsetBaranda + anchoBaranda / 2);
+                labelB.setAttribute('y', baseY - (H + 4) * escala);
+                labelB.setAttribute('text-anchor', 'middle');
+                labelB.setAttribute('font-size', '13');
+                labelB.setAttribute('font-weight', 'bold');
+                labelB.setAttribute('fill', '#a67c52');
+                labelB.textContent = modelo.nombre;
+                grupoBaranda.appendChild(labelB);
+
+                svg.appendChild(grupoBaranda);
+
+                // Cota de largo
+                agregarCotaHorizontal(svg, margenX + offsetBaranda, baseY + B * escala + 25, anchoBaranda, `Largo Baranda: ${largoBaranda} cm`);
+
+                // 4. Abertura Seguridad
+                const colchonY = baseY - agarreEfectivo * escala - grosorColchon * escala;
+                const lastL = modelo.listones[modelo.listones.length - 1];
+                const listonY = baseY - (H - (lastL.posicion + lastL.grosor)) * escala;
+                const aberturaCm = (colchonY - listonY) / escala;
+
+                let colorAbertura;
+                if (aberturaCm <= 0) {
+                    colorAbertura = '#16a34a';
+                } else if (aberturaCm <= 5) {
+                    colorAbertura = '#d97706';
+                } else {
+                    colorAbertura = '#dc2626';
+                }
+                dibujarCotaAbertura(svg, margenX + anchoCama + 30, colchonY, listonY, aberturaCm, colorAbertura);
+
+                // 5. Protección útil
+                const proteccionCm = H - agarreEfectivo - grosorColchon;
+                const xProt = margenX + offsetBaranda + anchoBaranda + 20;
+                
+                let colorLineProt = '#16a34a';
+                let colorTextProt = '#15803d';
+                let markerIdProt = 'flechaVGreen';
+                if (proteccionCm < 10) {
+                    colorLineProt = '#dc2626';
+                    colorTextProt = '#b91c1c';
+                    markerIdProt = 'flechaVRed';
+                }
+
+                agregarCotaVerticalColor(
+                    svg,
+                    xProt,
+                    Math.min(yRailTop, colchonY),
+                    Math.abs(colchonY - yRailTop),
+                    `Protección: ${proteccionCm.toFixed(1)} cm`,
+                    colorLineProt,
+                    colorTextProt,
+                    markerIdProt,
+                    true
+                );
+
+                // Cotas verticales
+                // Total (C) at x = margenX - 105
+                agregarCotaVertical(svg, margenX - 105, colchonY, C * escala, `Total (C): ${C.toFixed(1)} cm`);
+                
+                // Tirante (B) at x = margenX - 55
+                agregarCotaVertical(svg, margenX - 55, baseY - agarreEfectivo * escala, B * escala, `Tirante (B): ${B.toFixed(1)} cm`);
+                
+                // Colchón (C-B) at x = margenX - 55
+                agregarCotaVertical(svg, margenX - 55, colchonY, grosorColchon * escala, `Colchón: ${grosorColchon.toFixed(1)} cm`);
+            }
+
+            function dibujarVistaLateral(svg, B, C, modelo) {
+                const escala = 5;
+                const margenIzq = 120;
+                const margenInf = 320;
+
+                svg.setAttribute('viewBox', '0 0 500 400');
+
+                // Piso
+                const piso = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                piso.setAttribute('x1', margenIzq - 50);
+                piso.setAttribute('y1', margenInf);
+                piso.setAttribute('x2', margenIzq + 250);
+                piso.setAttribute('y2', margenInf);
+                piso.setAttribute('stroke', '#333');
+                piso.setAttribute('stroke-width', '3');
+                svg.appendChild(piso);
+
+                // Tirante
+                const tirante = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                tirante.setAttribute('x', margenIzq + 30);
+                tirante.setAttribute('y', margenInf - B * escala);
+                tirante.setAttribute('width', 150);
+                tirante.setAttribute('height', B * escala);
+                tirante.setAttribute('fill', '#e0e0e0');
+                tirante.setAttribute('stroke', '#999');
+                tirante.setAttribute('stroke-width', '2');
+                svg.appendChild(tirante);
+
+                // Colchón
+                const colchon = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                colchon.setAttribute('x', margenIzq + 40);
+                colchon.setAttribute('y', margenInf - C * escala);
+                colchon.setAttribute('width', 130);
+                colchon.setAttribute('height', (C - B) * escala);
+                colchon.setAttribute('fill', 'url(#gradColchon)');
+                colchon.setAttribute('stroke', '#ddd');
+                colchon.setAttribute('stroke-width', '2');
+                svg.appendChild(colchon);
+
+                // Baranda
+                const agarreLocal = Math.min(modelo.agarre, B);
+                const baranda = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                baranda.setAttribute('x', margenIzq + 20);
+                baranda.setAttribute('y', margenInf - C * escala - (modelo.altoTotal - modelo.agarre - (C - B)) * escala + (modelo.agarre - agarreLocal) * escala);
+                baranda.setAttribute('width', 15);
+                baranda.setAttribute('height', modelo.altoTotal * escala);
+                baranda.setAttribute('fill', 'url(#gradMaderaV)');
+                baranda.setAttribute('stroke', '#5d4e3a');
+                baranda.setAttribute('stroke-width', '2');
+                svg.appendChild(baranda);
+            }
+
+            function dibujarCotaAbertura(svg, x, y1, y2, val, color) {
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', x); line.setAttribute('y1', y1); line.setAttribute('x2', x); line.setAttribute('y2', y2);
+                line.setAttribute('stroke', color); line.setAttribute('stroke-width', '2');
+                line.setAttribute('marker-start', 'url(#flechaAbertura)'); line.setAttribute('marker-end', 'url(#flechaAbertura)');
+                svg.appendChild(line);
+
+                const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                txt.setAttribute('x', x + 10); txt.setAttribute('y', (y1 + y2) / 2 + 5);
+                txt.setAttribute('fill', color); txt.setAttribute('font-size', '12'); txt.setAttribute('font-weight', 'bold');
+                
+                const labelText = val < 0 ? `Solape: ${Math.abs(val).toFixed(1)} cm` : `Abertura: ${val.toFixed(1)} cm`;
+                txt.textContent = labelText;
+                svg.appendChild(txt);
+
+                const m = document.querySelector('#flechaAbertura path');
+                if (m) m.setAttribute('fill', color);
+            }
+
+            function agregarCotaHorizontal(svg, x, y, ancho, texto) {
+                const grupo = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+                const linea = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                linea.setAttribute('x1', x);
+                linea.setAttribute('y1', y);
+                linea.setAttribute('x2', x + ancho);
+                linea.setAttribute('y2', y);
+                linea.setAttribute('stroke', '#a67c52');
+                linea.setAttribute('stroke-width', '1.5');
+                linea.setAttribute('marker-start', 'url(#flechaH)');
+                linea.setAttribute('marker-end', 'url(#flechaH)');
+                grupo.appendChild(linea);
+
+                const textoSVG = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                textoSVG.setAttribute('x', x + ancho / 2);
+                textoSVG.setAttribute('y', y - 8);
+                textoSVG.setAttribute('text-anchor', 'middle');
+                textoSVG.setAttribute('font-size', '11');
+                textoSVG.setAttribute('fill', '#5d4037');
+                textoSVG.setAttribute('font-weight', 'bold');
+                textoSVG.textContent = texto;
+
+                const bbox = { width: texto.length * 7, height: 14 };
+                const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                bg.setAttribute('x', (x + ancho / 2) - bbox.width / 2);
+                bg.setAttribute('y', y - 19);
+                bg.setAttribute('width', bbox.width);
+                bg.setAttribute('height', bbox.height);
+                bg.setAttribute('fill', 'rgba(255,255,255,0.8)');
+                bg.setAttribute('rx', '3');
+                grupo.appendChild(bg);
+                grupo.appendChild(textoSVG);
+
+                svg.appendChild(grupo);
+            }
+
+            function agregarCotaVerticalColor(svg, x, y, alto, texto, colorLine, colorText, markerId, alignRight = false) {
+                const grupo = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+                const linea = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                linea.setAttribute('x1', x);
+                linea.setAttribute('y1', y);
+                linea.setAttribute('x2', x);
+                linea.setAttribute('y2', y + alto);
+                linea.setAttribute('stroke', colorLine);
+                linea.setAttribute('stroke-width', '1.5');
+                linea.setAttribute('marker-start', `url(#${markerId})`);
+                linea.setAttribute('marker-end', `url(#${markerId})`);
+                grupo.appendChild(linea);
+
+                const textoSVG = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                const textX = alignRight ? x + 12 : x - 12;
+                textoSVG.setAttribute('x', textX);
+                textoSVG.setAttribute('y', y + alto / 2 + 4);
+                textoSVG.setAttribute('text-anchor', alignRight ? 'start' : 'end');
+                textoSVG.setAttribute('font-size', '11');
+                textoSVG.setAttribute('fill', colorText);
+                textoSVG.setAttribute('font-weight', 'bold');
+                textoSVG.textContent = texto;
+
+                const bbox = { width: texto.length * 6.5, height: 14 };
+                const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                const bgX = alignRight ? x + 10 : x - 15 - bbox.width;
+                bg.setAttribute('x', bgX);
+                bg.setAttribute('y', y + alto / 2 - 7);
+                bg.setAttribute('width', bbox.width + 5);
+                bg.setAttribute('height', bbox.height);
+                bg.setAttribute('fill', 'rgba(255,255,255,0.85)');
+                bg.setAttribute('rx', '3');
+                grupo.appendChild(bg);
+                grupo.appendChild(textoSVG);
+
+                svg.appendChild(grupo);
+            }
+
+            function agregarCotaVertical(svg, x, y, alto, texto) {
+                agregarCotaVerticalColor(svg, x, y, alto, texto, '#a67c52', '#5d4037', 'flechaV', false);
+            }
+
+            function definirMarcadores(svg) {
+                if (document.getElementById('flechaH')) return;
+
+                const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+
+                const gradH = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+                gradH.id = 'gradMaderaH'; gradH.setAttribute('x1', '0%'); gradH.setAttribute('y1', '0%'); gradH.setAttribute('x2', '0%'); gradH.setAttribute('y2', '100%');
+                gradH.innerHTML = '<stop offset="0%" style="stop-color:#c4a484"/><stop offset="50%" style="stop-color:#a67c52"/><stop offset="100%" style="stop-color:#8b6f47"/>';
+                defs.appendChild(gradH);
+
+                const gradV = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+                gradV.id = 'gradMaderaV'; gradV.setAttribute('x1', '0%'); gradV.setAttribute('y1', '0%'); gradV.setAttribute('x2', '100%'); gradV.setAttribute('y2', '0%');
+                gradV.innerHTML = '<stop offset="0%" style="stop-color:#8b6f47"/><stop offset="50%" style="stop-color:#a67c52"/><stop offset="100%" style="stop-color:#6b5537"/>';
+                defs.appendChild(gradV);
+
+                const gradColchon = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+                gradColchon.id = 'gradColchon'; gradColchon.setAttribute('x1', '0%'); gradColchon.setAttribute('y1', '0%'); gradColchon.setAttribute('x2', '0%'); gradColchon.setAttribute('y2', '100%');
+                gradColchon.innerHTML = '<stop offset="0%" style="stop-color:#ffffff"/><stop offset="100%" style="stop-color:#f8f0e0"/>';
+                defs.appendChild(gradColchon);
+
+                const gradTirante = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+                gradTirante.id = 'gradTirante'; gradTirante.setAttribute('x1', '0%'); gradTirante.setAttribute('y1', '0%'); gradTirante.setAttribute('x2', '0%'); gradTirante.setAttribute('y2', '100%');
+                gradTirante.innerHTML = '<stop offset="0%" style="stop-color:#e0e0e0"/><stop offset="100%" style="stop-color:#b0b0b0"/>';
+                defs.appendChild(gradTirante);
+
+                const markerH = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+                markerH.setAttribute('id', 'flechaH'); markerH.setAttribute('markerWidth', '6'); markerH.setAttribute('markerHeight', '6');
+                markerH.setAttribute('refX', '3'); markerH.setAttribute('refY', '3'); markerH.setAttribute('orient', 'auto');
+                const pathH = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                pathH.setAttribute('d', 'M0,0 L6,3 L0,6 z'); pathH.setAttribute('fill', '#a67c52');
+                markerH.appendChild(pathH); defs.appendChild(markerH);
+
+                const markerV = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+                markerV.setAttribute('id', 'flechaV'); markerV.setAttribute('markerWidth', '6'); markerV.setAttribute('markerHeight', '6');
+                markerV.setAttribute('refX', '3'); markerV.setAttribute('refY', '3'); markerV.setAttribute('orient', 'auto');
+                const pathV = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                pathV.setAttribute('d', 'M0,0 L6,3 L0,6 z'); pathV.setAttribute('fill', '#a67c52');
+                markerV.appendChild(pathV); defs.appendChild(markerV);
+
+                const markerVGreen = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+                markerVGreen.setAttribute('id', 'flechaVGreen'); markerVGreen.setAttribute('markerWidth', '6'); markerVGreen.setAttribute('markerHeight', '6');
+                markerVGreen.setAttribute('refX', '3'); markerVGreen.setAttribute('refY', '3'); markerVGreen.setAttribute('orient', 'auto');
+                const pathVGreen = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                pathVGreen.setAttribute('d', 'M0,0 L6,3 L0,6 z'); pathVGreen.setAttribute('fill', '#16a34a');
+                markerVGreen.appendChild(pathVGreen); defs.appendChild(markerVGreen);
+
+                const markerVRed = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+                markerVRed.setAttribute('id', 'flechaVRed'); markerVRed.setAttribute('markerWidth', '6'); markerVRed.setAttribute('markerHeight', '6');
+                markerVRed.setAttribute('refX', '3'); markerVRed.setAttribute('refY', '3'); markerVRed.setAttribute('orient', 'auto');
+                const pathVRed = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                pathVRed.setAttribute('d', 'M0,0 L6,3 L0,6 z'); pathVRed.setAttribute('fill', '#dc2626');
+                markerVRed.appendChild(pathVRed); defs.appendChild(markerVRed);
+
+                const markerAbertura = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+                markerAbertura.setAttribute('id', 'flechaAbertura'); markerAbertura.setAttribute('markerWidth', '6'); markerAbertura.setAttribute('markerHeight', '6');
+                markerAbertura.setAttribute('refX', '3'); markerAbertura.setAttribute('refY', '3'); markerAbertura.setAttribute('orient', 'auto');
+                const pathAbertura = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                pathAbertura.setAttribute('d', 'M0,0 L6,3 L0,6 z');
+                markerAbertura.appendChild(pathAbertura); defs.appendChild(markerAbertura);
+
+                svg.insertBefore(defs, svg.firstChild);
+            }
+
+            // Toggles de vista y exportación del diagrama
+            const btnBarandaActual = document.getElementById('btnBarandaActual');
+            const btnBarandaRecomendada = document.getElementById('btnBarandaRecomendada');
+
+            if (btnBarandaActual && btnBarandaRecomendada) {
+                btnBarandaActual.addEventListener('click', () => {
+                    btnBarandaActual.classList.add('active');
+                    btnBarandaRecomendada.classList.remove('active');
+                    vistaActual = 'actual';
+                    dibujarBaranda();
+                });
+
+                btnBarandaRecomendada.addEventListener('click', () => {
+                    btnBarandaActual.classList.remove('active');
+                    btnBarandaRecomendada.classList.add('active');
+                    vistaActual = 'recomendada';
+                    dibujarBaranda();
+                });
+            }
+
+
+            document.getElementById('btnDescargar').addEventListener('click', () => {
+                // Track diagram download
+                if (typeof gtag === 'function') {
+                    gtag('event', 'download_diagram', {
+                        event_category: 'Engagement',
+                        event_label: 'Descargar Diagrama Calculadora'
+                    });
+                }
+
+                const svgElement = document.getElementById('diagrama');
+                if (!svgElement) return;
+                const multiplier = 4;
+                const svgData = new XMLSerializer().serializeToString(svgElement);
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                const svgSize = svgElement.viewBox.baseVal;
+                canvas.width = svgSize.width * multiplier;
+                canvas.height = svgSize.height * multiplier;
+
+                const img = new Image();
+                img.onload = () => {
+                    ctx.fillStyle = "white";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                    const link = document.createElement('a');
+                    link.download = `la-tarima-diagrama-${Date.now()}.png`;
+                    link.href = canvas.toDataURL('image/png', 1.0);
+                    link.click();
+                };
+                img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+            });
+
+            function initCalculator() {
+                const last = loadMedidas();
+                if (last.A != null) inputA.value = last.A;
+                if (last.B != null) inputB.value = last.B;
+                if (last.C != null) inputC.value = last.C;
+                if (inputB.value !== '' && inputC.value !== '') {
+                    ejecutar();
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                window.addEventListener('DOMContentLoaded', initCalculator);
+            } else {
+                initCalculator();
+            }
+        })();
+    </script>
+</body>
+
+</html>

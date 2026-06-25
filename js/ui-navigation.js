@@ -200,7 +200,18 @@
             }
             
             // Renderizado dinámico condicional al navegar
-            if (viewId === 'view-about') {
+            if (viewId === 'view-home') {
+                if (window.renderHome) window.renderHome();
+            } else if (viewId === 'view-categories') {
+                if (window.renderCategoriesMenu) window.renderCategoriesMenu();
+            } else if (viewId === 'view-videos') {
+                if (window.renderVideosView) window.renderVideosView();
+            } else if (viewId === 'view-catalogo') {
+                const iframe = document.querySelector('#view-catalogo iframe');
+                if (iframe && iframe.contentWindow && typeof iframe.contentWindow.refreshCatalog === 'function') {
+                    iframe.contentWindow.refreshCatalog();
+                }
+            } else if (viewId === 'view-about') {
                 renderNosotrosBlocksCliente();
             } else if (viewId === 'view-notifications') {
                 renderAvisosCliente();
@@ -239,13 +250,11 @@
                 'view-calculator': 'calcular'
             };
             
-            const viewName = prettyNames[viewId] || '';
-            let query = '';
-            if (viewId !== 'view-home' && viewName) {
-                query = `?view=${viewName}`;
-            }
+            let basePath = window.location.pathname.replace(/\/index\.html$/, '/');
+            // Limpiar sufijos de rutas limpias SPA si existen
+            basePath = basePath.replace(/\/(alquiles|alquileres|rentas|rentales)\/?$/, '/');
             
-            const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + query;
+            const cleanUrl = basePath + query;
             if (!isBack) {
                 window.history.pushState({ viewId }, document.title, cleanUrl);
             } else {
