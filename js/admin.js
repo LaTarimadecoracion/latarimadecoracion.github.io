@@ -199,16 +199,29 @@ window.safeAdminRun = function(fn) {
         }
 
         const btnOpenAddCategory = document.getElementById('btn-open-add-category');
+        const btnCreateCatInline = document.getElementById('btn-create-cat-inline');
+
+        const openCategoryModalHandler = () => {
+            editingCategoryIndex = null;
+            oldCategoryName = null;
+            const adminCatForm = document.getElementById('admin-cat-form');
+            if (adminCatForm) adminCatForm.reset();
+            const formTitle = document.getElementById('admin-category-form-title');
+            if (formTitle) formTitle.innerHTML = 'Crear Nueva Categoría';
+            const btnSaveCat = document.getElementById('btn-save-cat');
+            if (btnSaveCat) btnSaveCat.textContent = "Guardar Categoría";
+            const catModal = document.getElementById('admin-category-modal');
+            if (catModal) catModal.style.display = 'flex';
+        };
+
         if (btnOpenAddCategory) {
-            btnOpenAddCategory.addEventListener('click', () => {
-                editingCategoryIndex = null;
-                oldCategoryName = null;
-                document.getElementById('admin-cat-form').reset();
-                const formTitle = document.getElementById('admin-category-form-title');
-                if (formTitle) formTitle.innerHTML = 'Crear Nueva Categoría';
-                document.getElementById('btn-save-cat').textContent = "Guardar Categoría";
-                const catModal = document.getElementById('admin-category-modal');
-                if (catModal) catModal.style.display = 'flex';
+            btnOpenAddCategory.addEventListener('click', openCategoryModalHandler);
+        }
+        
+        if (btnCreateCatInline) {
+            btnCreateCatInline.addEventListener('click', (e) => {
+                e.stopPropagation(); // Avoid closing/toggling the details block if nested
+                openCategoryModalHandler();
             });
         }
 

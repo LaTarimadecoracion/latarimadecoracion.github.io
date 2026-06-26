@@ -1748,6 +1748,33 @@ const productsData = [
                     }
                 ],
                 "views": 0
+            },
+            {
+                "id": "especiero",
+                "title": "Especiero",
+                "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                        "images_list": [
+                            "img/decoracion/especiero/1780323432120-imagen.webp",
+                            "img/decoracion/especiero/1780323432226-imagen.webp",
+                            "img/decoracion/especiero/1780323432328-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30 x 30 x 10 cm",
+                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
+                                "default": true
+                            }
+                        ]
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782487172767,
+                "primaryCatId": "decoracion"
             }
         ]
     },
@@ -1874,9 +1901,8 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780708579332,
-                "primaryCatId": "decoracion",
-                "views": 0
+                "last_modified": 1782487172767,
+                "primaryCatId": "decoracion"
             },
             {
                 "id": "banquito-de-plaza",
@@ -2797,6 +2823,33 @@ const productsData = [
                 "last_modified": 1780708127230,
                 "primaryCatId": "Muebles-y-Jardín",
                 "views": 1
+            },
+            {
+                "id": "especiero",
+                "title": "Especiero",
+                "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                        "images_list": [
+                            "img/decoracion/especiero/1780323432120-imagen.webp",
+                            "img/decoracion/especiero/1780323432226-imagen.webp",
+                            "img/decoracion/especiero/1780323432328-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30 x 30 x 10 cm",
+                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
+                                "default": true
+                            }
+                        ]
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782487172767,
+                "primaryCatId": "decoracion"
             }
         ]
     },
@@ -3013,6 +3066,33 @@ const productsData = [
                 "last_modified": 1780708199604,
                 "primaryCatId": "infantil",
                 "views": 0
+            },
+            {
+                "id": "especiero",
+                "title": "Especiero",
+                "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                        "images_list": [
+                            "img/decoracion/especiero/1780323432120-imagen.webp",
+                            "img/decoracion/especiero/1780323432226-imagen.webp",
+                            "img/decoracion/especiero/1780323432328-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30 x 30 x 10 cm",
+                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
+                                "default": true
+                            }
+                        ]
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782487172767,
+                "primaryCatId": "decoracion"
             }
         ]
     },
@@ -3144,6 +3224,33 @@ const productsData = [
                 "last_modified": 1780709044058,
                 "primaryCatId": "Hogar",
                 "views": 7
+            },
+            {
+                "id": "especiero",
+                "title": "Especiero",
+                "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                        "images_list": [
+                            "img/decoracion/especiero/1780323432120-imagen.webp",
+                            "img/decoracion/especiero/1780323432226-imagen.webp",
+                            "img/decoracion/especiero/1780323432328-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30 x 30 x 10 cm",
+                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
+                                "default": true
+                            }
+                        ]
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782487172767,
+                "primaryCatId": "decoracion"
             }
         ]
     },
