@@ -1797,7 +1797,7 @@ const productsData = [
                     "decorativo",
                     "ordenar"
                 ],
-                "last_modified": 1782488571854,
+                "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
             }
         ]
@@ -1949,7 +1949,7 @@ const productsData = [
                     "decorativo",
                     "ordenar"
                 ],
-                "last_modified": 1782488571854,
+                "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
             },
             {
@@ -2920,7 +2920,7 @@ const productsData = [
                     "decorativo",
                     "ordenar"
                 ],
-                "last_modified": 1782488571854,
+                "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
             }
         ]
@@ -3187,7 +3187,7 @@ const productsData = [
                     "decorativo",
                     "ordenar"
                 ],
-                "last_modified": 1782488571854,
+                "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
             }
         ]
@@ -3369,7 +3369,7 @@ const productsData = [
                     "decorativo",
                     "ordenar"
                 ],
-                "last_modified": 1782488571854,
+                "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
             }
         ]
@@ -3656,6 +3656,58 @@ const productsData = [
         "name": "Cocina",
         "image": "img/cocina/portada-imagen.webp",
         "order": 16,
-        "products": []
+        "products": [
+            {
+                "id": "especiero",
+                "title": "Especiero",
+                "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
+                "image": "img/interiores/especiero/1782487819564-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
+                        "images_list": [
+                            "img/interiores/especiero/1782487819564-imagen.webp",
+                            "img/interiores/especiero/1782487819702-imagen.webp",
+                            "img/interiores/especiero/1782487819842-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30 x 30 x 10 cm",
+                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
+                                "default": true
+                            },
+                            {
+                                "medida": "30 x 60 x 10 cm",
+                                "link": "",
+                                "default": false
+                            },
+                            {
+                                "medida": "34 x 34 x 10 cm",
+                                "link": "",
+                                "default": false
+                            },
+                            {
+                                "medida": "34 x 60 x 10 cm",
+                                "link": "",
+                                "default": false
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Estante",
+                    "especiero",
+                    "condimentos",
+                    "organizador",
+                    "cocina",
+                    "mueble",
+                    "decorativo",
+                    "ordenar"
+                ],
+                "last_modified": 1782490964547,
+                "primaryCatId": "decoracion"
+            }
+        ]
     }
 ];
