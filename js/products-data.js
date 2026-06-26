@@ -1753,15 +1753,15 @@ const productsData = [
                 "id": "especiero",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                "image": "img/interiores/especiero/1782487819564-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
                         "images_list": [
-                            "img/decoracion/especiero/1780323432120-imagen.webp",
-                            "img/decoracion/especiero/1780323432226-imagen.webp",
-                            "img/decoracion/especiero/1780323432328-imagen.webp"
+                            "img/interiores/especiero/1782487819564-imagen.webp",
+                            "img/interiores/especiero/1782487819702-imagen.webp",
+                            "img/interiores/especiero/1782487819842-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1772,8 +1772,17 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
-                "last_modified": 1782487172767,
+                "tags": [
+                    "Estante",
+                    "especiero",
+                    "condimentos",
+                    "organizador",
+                    "cocina",
+                    "mueble",
+                    "decorativo",
+                    "ordenar"
+                ],
+                "last_modified": 1782487819983,
                 "primaryCatId": "decoracion"
             }
         ]
@@ -1881,15 +1890,15 @@ const productsData = [
                 "id": "especiero",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                "image": "img/interiores/especiero/1782487819564-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
                         "images_list": [
-                            "img/decoracion/especiero/1780323432120-imagen.webp",
-                            "img/decoracion/especiero/1780323432226-imagen.webp",
-                            "img/decoracion/especiero/1780323432328-imagen.webp"
+                            "img/interiores/especiero/1782487819564-imagen.webp",
+                            "img/interiores/especiero/1782487819702-imagen.webp",
+                            "img/interiores/especiero/1782487819842-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1900,8 +1909,17 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
-                "last_modified": 1782487172767,
+                "tags": [
+                    "Estante",
+                    "especiero",
+                    "condimentos",
+                    "organizador",
+                    "cocina",
+                    "mueble",
+                    "decorativo",
+                    "ordenar"
+                ],
+                "last_modified": 1782487819983,
                 "primaryCatId": "decoracion"
             },
             {
@@ -2828,15 +2846,15 @@ const productsData = [
                 "id": "especiero",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                "image": "img/interiores/especiero/1782487819564-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
                         "images_list": [
-                            "img/decoracion/especiero/1780323432120-imagen.webp",
-                            "img/decoracion/especiero/1780323432226-imagen.webp",
-                            "img/decoracion/especiero/1780323432328-imagen.webp"
+                            "img/interiores/especiero/1782487819564-imagen.webp",
+                            "img/interiores/especiero/1782487819702-imagen.webp",
+                            "img/interiores/especiero/1782487819842-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2847,8 +2865,17 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
-                "last_modified": 1782487172767,
+                "tags": [
+                    "Estante",
+                    "especiero",
+                    "condimentos",
+                    "organizador",
+                    "cocina",
+                    "mueble",
+                    "decorativo",
+                    "ordenar"
+                ],
+                "last_modified": 1782487819983,
                 "primaryCatId": "decoracion"
             }
         ]
@@ -3071,15 +3098,15 @@ const productsData = [
                 "id": "especiero",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                "image": "img/interiores/especiero/1782487819564-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
                         "images_list": [
-                            "img/decoracion/especiero/1780323432120-imagen.webp",
-                            "img/decoracion/especiero/1780323432226-imagen.webp",
-                            "img/decoracion/especiero/1780323432328-imagen.webp"
+                            "img/interiores/especiero/1782487819564-imagen.webp",
+                            "img/interiores/especiero/1782487819702-imagen.webp",
+                            "img/interiores/especiero/1782487819842-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3090,8 +3117,17 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
-                "last_modified": 1782487172767,
+                "tags": [
+                    "Estante",
+                    "especiero",
+                    "condimentos",
+                    "organizador",
+                    "cocina",
+                    "mueble",
+                    "decorativo",
+                    "ordenar"
+                ],
+                "last_modified": 1782487819983,
                 "primaryCatId": "decoracion"
             }
         ]
@@ -3229,15 +3265,15 @@ const productsData = [
                 "id": "especiero",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                "image": "img/interiores/especiero/1782487819564-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/especiero/1780323432120-imagen.webp",
+                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
                         "images_list": [
-                            "img/decoracion/especiero/1780323432120-imagen.webp",
-                            "img/decoracion/especiero/1780323432226-imagen.webp",
-                            "img/decoracion/especiero/1780323432328-imagen.webp"
+                            "img/interiores/especiero/1782487819564-imagen.webp",
+                            "img/interiores/especiero/1782487819702-imagen.webp",
+                            "img/interiores/especiero/1782487819842-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3248,8 +3284,17 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
-                "last_modified": 1782487172767,
+                "tags": [
+                    "Estante",
+                    "especiero",
+                    "condimentos",
+                    "organizador",
+                    "cocina",
+                    "mueble",
+                    "decorativo",
+                    "ordenar"
+                ],
+                "last_modified": 1782487819983,
                 "primaryCatId": "decoracion"
             }
         ]
@@ -3530,5 +3575,12 @@ const productsData = [
                 "views": 1
             }
         ]
+    },
+    {
+        "id": "muebles-de-cocina",
+        "name": "Cocina",
+        "image": "img/cocina/portada-imagen.webp",
+        "order": 16,
+        "products": []
     }
 ];

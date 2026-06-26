@@ -254,6 +254,11 @@
             // Limpiar sufijos de rutas limpias SPA si existen
             basePath = basePath.replace(/\/(alquiles|alquileres|rentas|rentales)\/?$/, '/');
             
+            let query = '';
+            if (prettyNames[viewId]) {
+                query = '?sec=' + prettyNames[viewId];
+            }
+            
             const cleanUrl = basePath + query;
             if (!isBack) {
                 window.history.pushState({ viewId }, document.title, cleanUrl);
