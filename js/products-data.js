@@ -2,7 +2,7 @@ const productsData = [
     {
         "id": "Barandas",
         "name": "Barandas desmontables",
-        "image": "img/barandas-desmontables/portada-1782416646750-imagen.webp",
+        "image": "img/barandas-desmontables/portada-1782437522433-imagen.webp",
         "order": 0,
         "products": [
             {
@@ -10,17 +10,19 @@ const productsData = [
                 "title": "Baranda desmontable Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
-                "image": "img/migrados/barandas/baranda-desmontable-clasica/4.webp",
+                "image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/barandas/baranda-desmontable-clasica/4.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-desmontable-clasica/4.webp",
-                            "img/migrados/barandas/baranda-desmontable-clasica/5.webp",
-                            "img/migrados/barandas/baranda-desmontable-clasica/6.webp",
-                            "img/migrados/barandas/baranda-desmontable-clasica/3.webp",
-                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289562852-imagen.webp"
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453680-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453830-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453980-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454194-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454360-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454504-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -77,15 +79,15 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/migrados/barandas/baranda-desmontable-clasica/1.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437454681-imagen.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-desmontable-clasica/1.webp",
-                            "img/migrados/barandas/baranda-desmontable-clasica/2.webp",
-                            "img/migrados/barandas/baranda-desmontable-clasica/3.webp",
-                            "img/migrados/barandas/baranda-desmontable-clasica/4.webp",
-                            "img/migrados/barandas/baranda-desmontable-clasica/5.webp",
-                            "img/migrados/barandas/baranda-desmontable-clasica/6.webp",
-                            "img/migrados/barandas/baranda-desmontable-clasica/7.webp"
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454856-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455011-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455164-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455315-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455464-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455607-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -130,7 +132,7 @@ const productsData = [
                             "img/barandas-desmontables/baranda-desmontable-clasica/1780289706528-imagen.webp",
                             "img/barandas-desmontables/baranda-desmontable-clasica/1780289706661-imagen.webp",
                             "img/barandas-desmontables/baranda-desmontable-clasica/1780289706798-imagen.webp",
-                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706952-imagen.webp"
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455785-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -181,7 +183,7 @@ const productsData = [
                     "amplias",
                     "grandes"
                 ],
-                "last_modified": 1782176549131,
+                "last_modified": 1782437455957,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -212,16 +214,16 @@ const productsData = [
                 "id": "baranda-desmontable-montessori",
                 "title": "Baranda de seguridad - Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
-                "image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1780243787631-imagen.webp",
+                "image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1780243787631-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
                         "images_list": [
-                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780243787631-imagen.webp",
-                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780243787626-imagen.webp",
-                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780243787620-imagen.webp",
-                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780243787637-imagen.webp"
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687226-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687407-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687542-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -311,7 +313,7 @@ const productsData = [
                             "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859334-imagen.webp",
                             "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859445-imagen.webp",
                             "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289633113-imagen.webp",
-                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289633237-imagen.webp"
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438785271-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -393,15 +395,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---clasica/1780199217953-1.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---clasica/1780199217953-1.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---clasica/1780199217962-2.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---clasica/1780199217969-3.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---clasica/1780199217974-4.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---clasica/1780199217980-5.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---clasica/1780199217986-6.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---clasica/1780199217991-7.webp"
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763850-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438764011-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438764144-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -482,7 +481,8 @@ const productsData = [
                         ]
                     }
                 ],
-                "last_modified": 1780590611975,
+                "tags": [],
+                "last_modified": 1782438785449,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -517,7 +517,7 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "views": 5
+                "primaryCatId": "Barandas"
             },
             {
                 "id": "baranda-desmontable-triple",
@@ -2542,61 +2542,28 @@ const productsData = [
                 "id": "verdule-para-mesada",
                 "title": "Verdule para Mesada",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/migrados/organizacion/verdule-para-mesada/Verdule para Mesada.webp",
+                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/organizacion/verdule-para-mesada/Verdule para Mesada.webp",
+                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
                         "images_list": [
-                            "img/migrados/organizacion/verdule-para-mesada/Verdule para Mesada.webp",
-                            "img/migrados/organizacion/verdule-para-mesada/Verdulero Mediano.webp",
-                            "img/migrados/organizacion/verdule-para-mesada/Verdulero x3 con Techito.webp",
-                            "img/migrados/organizacion/verdule-para-mesada/Verdulero x3.webp"
+                            "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                            "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
+                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Único",
+                                "medida": "Chico",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
-                                "default": true
-                            }
-                        ]
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/migrados/organizacion/verdule-para-mesada/Verdule para Mesada.webp",
-                        "images_list": [
-                            "img/migrados/organizacion/verdule-para-mesada/Verdule para Mesada.webp",
-                            "img/migrados/organizacion/verdule-para-mesada/Verdulero Mediano.webp",
-                            "img/migrados/organizacion/verdule-para-mesada/Verdulero x3 con Techito.webp",
-                            "img/migrados/organizacion/verdule-para-mesada/Verdulero x3.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Barnizado",
-                                "link": "",
-                                "default": true
-                            }
-                        ]
-                    },
-                    {
-                        "acabado_name": "Tintado",
-                        "cover_image": "img/migrados/organizacion/verdule-para-mesada/Verdule para Mesada.webp",
-                        "images_list": [
-                            "img/migrados/organizacion/verdule-para-mesada/Verdule para Mesada.webp",
-                            "img/migrados/organizacion/verdule-para-mesada/Verdulero Mediano.webp",
-                            "img/migrados/organizacion/verdule-para-mesada/Verdulero x3 con Techito.webp",
-                            "img/migrados/organizacion/verdule-para-mesada/Verdulero x3.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Tintado",
-                                "link": "",
                                 "default": true
                             }
                         ]
                     }
                 ],
-                "views": 2
+                "tags": [],
+                "last_modified": 1782439355523,
+                "primaryCatId": "organizacion"
             },
             {
                 "id": "verdulero-mediano",
