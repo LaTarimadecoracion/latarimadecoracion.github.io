@@ -1372,6 +1372,38 @@ window.safeAdminRun = function(fn) {
     }
 
     // ═════════════════════════════════════════════════
+    //  ADMIN — Link Icon Modal (Nuevo)
+    // ═════════════════════════════════════════════════
+    const linkModal = document.getElementById('admin-link-modal');
+    const linkLabelInput = document.getElementById('admin-link-label');
+    const btnCancelLinkModal = document.getElementById('btn-cancel-link-modal');
+    const btnSaveLinkModal = document.getElementById('btn-save-link-modal');
+    
+    let currentRowEditingLink = null;
+
+    if (linkModal) {
+        btnCancelLinkModal.addEventListener('click', () => {
+            linkModal.style.display = 'none';
+            currentRowEditingLink = null;
+        });
+
+        btnSaveLinkModal.addEventListener('click', () => {
+            if (currentRowEditingLink) {
+                const newLabel = linkLabelInput.value.trim();
+                const selectedIconEl = document.querySelector('input[name="admin_link_icon"]:checked');
+                const selectedIcon = selectedIconEl ? selectedIconEl.value : 'local_shipping';
+                const isHighlight = document.getElementById('admin-link-highlight').checked;
+                
+                currentRowEditingLink.dataset.linkLabel = newLabel;
+                currentRowEditingLink.dataset.iconType = selectedIcon;
+                currentRowEditingLink.dataset.highlight = isHighlight ? 'true' : 'false';
+            }
+            linkModal.style.display = 'none';
+            currentRowEditingLink = null;
+        });
+    }
+
+    // ═════════════════════════════════════════════════
     //  ADMIN — Formulario de Producto (nuevo sistema limpio)
     // ═════════════════════════════════════════════════
     const productModal      = document.getElementById('admin-product-modal');
@@ -1440,11 +1472,52 @@ window.safeAdminRun = function(fn) {
         }, { offset: Number.NEGATIVE_INFINITY }).element;
     }
 
+    // Helper para asignar colores a grupos de variantes idénticas
+    function updateMedidaGroupColors(container) {
+        if (!container) return;
+        const rows = [...container.querySelectorAll('.medida-admin-row')];
+        const counts = {};
+        rows.forEach(row => {
+            const val = row.querySelector('.medida-valor').value.trim().toLowerCase();
+            if (val) counts[val] = (counts[val] || 0) + 1;
+        });
+
+        const stringToHue = (str) => {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            return Math.abs(hash) % 360;
+        };
+
+        rows.forEach(row => {
+            const val = row.querySelector('.medida-valor').value.trim().toLowerCase();
+            if (val && counts[val] > 1) {
+                const hue = stringToHue(val);
+                row.style.setProperty('border-left', `5px solid hsl(${hue}, 70%, 55%)`, 'important');
+                row.style.setProperty('background-color', `hsl(${hue}, 60%, 95%)`, 'important');
+            } else {
+                row.style.setProperty('border-left', `1px solid transparent`, 'important');
+                row.style.setProperty('background-color', `transparent`, 'important');
+                row.style.setProperty('border-bottom', `1px solid #F1F5F9`, 'important'); // Keep the separator
+            }
+        });
+    }
+
     // Helper: Crear fila de Medida con soporte Drag & Drop y diseño horizontal amplio de igual medida
-    function createMedidaRow(groupId, medida = '', link = '', isDefault = false) {
+    function createMedidaRow(groupId, medida = '', link = '', isDefault = false, isHidden = false, linkLabel = '', iconType = 'local_shipping', highlight = false) {
         const row = document.createElement('div');
         row.className = 'medida-admin-row';
         row.setAttribute('draggable', 'false'); // Deshabilitado por defecto, activado al tocar el handle
+        if (isHidden) {
+            row.style.opacity = '0.5';
+            row.style.textDecoration = 'line-through';
+        }
+        row.dataset.hidden = isHidden ? 'true' : 'false';
+        row.dataset.linkLabel = linkLabel;
+        row.dataset.iconType = iconType;
+        row.dataset.highlight = highlight ? 'true' : 'false';
+
         row.innerHTML = `
             <div class="medida-drag-handle" title="Mantén presionado para arrastrar y reordenar" style="display: flex; align-items: center; justify-content: center; cursor: grab; padding: 4px; flex-shrink: 0;">
                 <span class="material-symbols-outlined" style="font-size: 20px; color: var(--text-muted);">drag_indicator</span>
@@ -1454,31 +1527,90 @@ window.safeAdminRun = function(fn) {
                 <input type="text" class="medida-valor" placeholder="Medida (ej: 140x45 cm)" value="${medida}">
                 <input type="text" class="medida-link" placeholder="Link de pago (vacío = WA)" value="${link}">
             </div>
-            <button type="button" class="btn-clone-medida"
-                    style="background:none;border:none;cursor:pointer;color:var(--primary-color);padding:0.4rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="Clonar variante">
-                <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span>
-            </button>
-            <button type="button" class="btn-remove-medida"
-                    style="background:none;border:none;cursor:pointer;color:#EF4444;font-size:1.4rem;line-height:1;padding:0.4rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="Eliminar">&times;</button>
+            <div class="medida-actions" style="display: flex; gap: 0.25rem; align-items: center; flex-shrink: 0;">
+                <button type="button" class="btn-toggle-medida-visibility"
+                        style="background:none;border:none;cursor:pointer;color:var(--text-muted);padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="${isHidden ? 'Mostrar link' : 'Ocultar link'}">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">${isHidden ? 'visibility_off' : 'visibility'}</span>
+                </button>
+                <button type="button" class="btn-edit-link-label"
+                        style="background:none;border:none;cursor:pointer;color:var(--primary-color);padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="Editar ícono y texto del botón">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
+                </button>
+                <button type="button" class="btn-clone-medida"
+                        style="background:none;border:none;cursor:pointer;color:var(--primary-color);padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="Clonar variante">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span>
+                </button>
+                <button type="button" class="btn-remove-medida"
+                        style="background:none;border:none;cursor:pointer;color:#EF4444;font-size:1.4rem;line-height:1;padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="Eliminar">&times;</button>
+            </div>
         `;
 
-        row.querySelector('.btn-remove-medida').addEventListener('click', () => row.remove());
+        const btnToggleVis = row.querySelector('.btn-toggle-medida-visibility');
+        btnToggleVis.addEventListener('click', () => {
+            const currentHidden = row.dataset.hidden === 'true';
+            if (currentHidden) {
+                row.dataset.hidden = 'false';
+                row.style.opacity = '1';
+                row.style.textDecoration = 'none';
+                btnToggleVis.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>';
+                btnToggleVis.title = 'Ocultar link';
+            } else {
+                row.dataset.hidden = 'true';
+                row.style.opacity = '0.5';
+                row.style.textDecoration = 'line-through';
+                btnToggleVis.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px;">visibility_off</span>';
+                btnToggleVis.title = 'Mostrar link';
+            }
+        });
+
+        const btnEditLabel = row.querySelector('.btn-edit-link-label');
+        btnEditLabel.addEventListener('click', () => {
+            currentRowEditingLink = row;
+            const currentLabel = row.dataset.linkLabel || "";
+            const currentIcon = row.dataset.iconType || "local_shipping";
+            const currentHighlight = row.dataset.highlight === 'true';
+            
+            document.getElementById('admin-link-label').value = currentLabel;
+            const iconRadio = document.querySelector(`input[name="admin_link_icon"][value="${currentIcon}"]`);
+            if (iconRadio) iconRadio.checked = true;
+            document.getElementById('admin-link-highlight').checked = currentHighlight;
+            
+            document.getElementById('admin-link-modal').style.display = 'flex';
+        });
+
+        const valInput = row.querySelector('.medida-valor');
+        valInput.addEventListener('input', () => {
+            const container = row.closest('.group-medidas-rows');
+            if (container) updateMedidaGroupColors(container);
+        });
+
+        row.querySelector('.btn-remove-medida').addEventListener('click', () => {
+            const container = row.closest('.group-medidas-rows');
+            row.remove();
+            if (container) updateMedidaGroupColors(container);
+        });
         
         row.querySelector('.btn-clone-medida').addEventListener('click', () => {
             const currentMedida = row.querySelector('.medida-valor').value.trim();
             const currentLink = row.querySelector('.medida-link').value.trim();
+            const currentHidden = row.dataset.hidden === 'true';
+            const currentLabel = row.dataset.linkLabel;
+            const currentIcon = row.dataset.iconType;
+            const currentHighlight = row.dataset.highlight === 'true';
             
             // Crear nueva fila clonada
-            const newRow = createMedidaRow(groupId, currentMedida, currentLink, false);
+            const newRow = createMedidaRow(groupId, currentMedida, currentLink, false, currentHidden, currentLabel, currentIcon, currentHighlight);
             
             // Insertar exactamente debajo de la original en el DOM
             row.after(newRow);
+            const container = row.closest('.group-medidas-rows');
+            if (container) updateMedidaGroupColors(container);
             
             // Foco en el primer campo del clon y seleccionar texto
-            const valInput = newRow.querySelector('.medida-valor');
-            if (valInput) {
-                valInput.focus();
-                valInput.select();
+            const newValInput = newRow.querySelector('.medida-valor');
+            if (newValInput) {
+                newValInput.focus();
+                newValInput.select();
             }
         });
         
@@ -1667,15 +1799,19 @@ window.safeAdminRun = function(fn) {
         activeGroupsUI.push(gState);
 
         const card = document.createElement('div');
-        card.className = 'acabado-group-card'; // starts collapsed
+        const isHidden = groupData && groupData.hidden;
+        card.className = `acabado-group-card ${isHidden ? 'is-hidden-acabado' : ''}`; // starts collapsed
         card.id = groupId;
         card.innerHTML = `
-            <div class="acabado-group-header">
+            <div class="acabado-group-header" ${isHidden ? 'style="opacity: 0.6;"' : ''}>
                 <h4 class="group-header-title">
                     <span class="material-symbols-outlined" style="font-size:18px;">palette</span>
-                    <span class="group-header-text">${groupData && groupData.acabado_name ? groupData.acabado_name : 'Nuevo Acabado'}</span>
+                    <span class="group-header-text" ${isHidden ? 'style="text-decoration: line-through;"' : ''}>${groupData && groupData.acabado_name ? groupData.acabado_name : 'Nuevo Acabado'}</span>
                 </h4>
                 <div class="header-actions" onclick="event.stopPropagation();">
+                    <button type="button" class="btn-toggle-visibility" title="Ocultar/Mostrar Acabado" style="background: transparent; border: none; color: var(--text-muted, #718096); cursor: pointer; padding: 6px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">${groupData && groupData.hidden ? 'visibility_off' : 'visibility'}</span>
+                    </button>
                     <button type="button" class="btn-clone-group" title="Duplicar Acabado Completo">
                         <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span>
                     </button>
@@ -1736,6 +1872,25 @@ window.safeAdminRun = function(fn) {
             titleText.textContent = e.target.value.trim() || 'Nuevo Acabado';
         });
 
+        const btnToggleVis = card.querySelector('.btn-toggle-visibility');
+        if (btnToggleVis) {
+            btnToggleVis.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isHiddenNow = card.classList.toggle('is-hidden-acabado');
+                const icon = btnToggleVis.querySelector('.material-symbols-outlined');
+                
+                if (isHiddenNow) {
+                    icon.textContent = 'visibility_off';
+                    header.style.opacity = '0.6';
+                    titleText.style.textDecoration = 'line-through';
+                } else {
+                    icon.textContent = 'visibility';
+                    header.style.opacity = '1';
+                    titleText.style.textDecoration = 'none';
+                }
+            });
+        }
+
         card.querySelector('.btn-remove-group').addEventListener('click', () => {
             if (confirm('¿Seguro que querés eliminar este grupo de acabado entero?')) {
                 card.remove();
@@ -1760,7 +1915,8 @@ window.safeAdminRun = function(fn) {
             const cloneData = {
                 acabado_name: nameInput.value.trim() ? `${nameInput.value.trim()} Copia` : 'Copia de Acabado',
                 images_list: gState.images ? [...gState.images] : [],
-                medidas_variants: clonedMedidas
+                medidas_variants: clonedMedidas,
+                hidden: card.classList.contains('is-hidden-acabado')
             };
 
             // Call UI builder to create the duplicate group
@@ -1858,12 +2014,14 @@ window.safeAdminRun = function(fn) {
 
         card.querySelector('.btn-add-medida-row').addEventListener('click', () => {
             medidasContainer.appendChild(createMedidaRow(groupId));
+            updateMedidaGroupColors(medidasContainer);
         });
 
         if (groupData && groupData.medidas_variants) {
             groupData.medidas_variants.forEach(m => {
-                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default));
+                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight));
             });
+            updateMedidaGroupColors(medidasContainer);
         }
 
         adminAcabadosGroupsContainer.appendChild(card);
@@ -2047,7 +2205,11 @@ window.safeAdminRun = function(fn) {
                 const medidasVariants = [...medidasContainer.querySelectorAll('.medida-admin-row')].map(row => ({
                     medida: row.querySelector('.medida-valor').value.trim(),
                     link:   row.querySelector('.medida-link').value.trim(),
-                    default: row.querySelector('.medida-default-radio').checked
+                    default: row.querySelector('.medida-default-radio').checked,
+                    hidden: row.dataset.hidden === 'true',
+                    linkLabel: row.dataset.linkLabel || '',
+                    iconType: row.dataset.iconType || 'local_shipping',
+                    highlight: row.dataset.highlight === 'true'
                 })).filter(r => r.medida !== '');
 
 
@@ -2055,7 +2217,8 @@ window.safeAdminRun = function(fn) {
                     acabado_name: card.querySelector('.group-acabado-name').value.trim(),
                     cover_image: gState.images[0] || 'img/logo_provisional.png',
                     images_list: gState.images.length > 0 ? [...gState.images] : [],
-                    medidas_variants: medidasVariants
+                    medidas_variants: medidasVariants,
+                    hidden: card.classList.contains('is-hidden-acabado')
                 });
             }
 
@@ -2921,12 +3084,44 @@ window.safeAdminRun = function(fn) {
                                 </span>
                             </div>
                         </div>
+                        <div style="display: flex; gap: 0.35rem; flex-shrink:0;">
+                            <button type="button" class="btn-edit-comp action-btn edit" style="padding: 0.4rem;" title="Editar"><span class="material-symbols-outlined" style="font-size: 18px;">edit</span></button>
+                            <button type="button" class="btn-delete-comp action-btn del" style="padding: 0.4rem;" title="Eliminar"><span class="material-symbols-outlined" style="font-size: 18px;">delete</span></button>
+                        </div>
                     </div>
                 `;
+
+                const btnEdit = card.querySelector('.btn-edit-comp');
+                const btnDelete = card.querySelector('.btn-delete-comp');
+                
+                if (btnEdit) {
+                    btnEdit.addEventListener('click', () => {
+                        openComponentForm('home', comp.id);
+                    });
+                }
+                if (btnDelete) {
+                    btnDelete.addEventListener('click', () => {
+                        const idx = homeStack.findIndex(c => c.id === comp.id);
+                        if (idx !== -1) {
+                            deleteComponent('home', idx);
+                        }
+                    });
+                }
 
             } else {
                 // Sección predeterminada estática
                 const section = sectionsData[sectionId] || { title: sectionId, subtitle: '', icon: 'folder' };
+                
+                let extraInputs = '';
+                if (sectionId === 'novedades' || sectionId === 'buscados') {
+                    const currentLimit = section.limit || (sectionId === 'novedades' ? 5 : 8);
+                    extraInputs = `
+                        <div style="grid-column: span 3; margin-top: 4px;">
+                            <label style="font-size: 0.72rem; font-weight:600; display:block; margin-bottom: 4px; color: var(--text-muted);">Cantidad de productos a mostrar</label>
+                            <input type="number" class="input-section-limit" value="${currentLimit}" min="1" max="100" style="width:100%; padding:0.5rem 0.75rem; font-size:0.8rem; border:1.5px solid #E2E8F0; border-radius:8px; font-family:var(--font-main);" data-id="${sectionId}">
+                        </div>
+                    `;
+                }
                 
                 card.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -2951,6 +3146,7 @@ window.safeAdminRun = function(fn) {
                             <label style="font-size: 0.72rem; font-weight:600; display:block; margin-bottom: 4px; color: var(--text-muted);">Ícono (Material)</label>
                             <input type="text" class="input-section-icon" value="${section.icon}" style="width:100%; padding:0.5rem 0.75rem; font-size:0.8rem; border:1.5px solid #E2E8F0; border-radius:8px; font-family:var(--font-main);" data-id="${sectionId}">
                         </div>
+                        ${extraInputs}
                     </div>
                 `;
 
@@ -2970,6 +3166,18 @@ window.safeAdminRun = function(fn) {
                     handleInputChange('icon', e);
                     renderAdminHomeSectionsList();
                 });
+                
+                const limitInput = card.querySelector('.input-section-limit');
+                if (limitInput) {
+                    limitInput.addEventListener('change', (e) => {
+                        const val = parseInt(e.target.value, 10);
+                        if (!isNaN(val) && val > 0) {
+                            homeConfig.sections[sectionId].limit = val;
+                            saveHomeConfig();
+                            if (window.renderHome) window.renderHome();
+                        }
+                    });
+                }
             }
 
             // Habilitar arrastre solo cuando se interactúa con el handle

@@ -3,7 +3,7 @@
 // Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.
 
 window.siteConfig = {
-    "activeTheme": "valentin",
+    "activeTheme": "mundial",
     "appConfig": {
         "home": {
             "title": "La Tarima",
@@ -48,6 +48,7 @@ window.siteConfig = {
     "homeConfig": {
         "order": [
             "categorias",
+            "comp-1782536785924",
             "novedades",
             "buscados"
         ],
@@ -60,12 +61,14 @@ window.siteConfig = {
             "novedades": {
                 "title": "Nuevos Diseños 2026",
                 "subtitle": "Novedades del taller",
-                "icon": "auto_awesome"
+                "icon": "auto_awesome",
+                "limit": 10
             },
             "buscados": {
                 "title": "Los más buscados",
                 "subtitle": "Los preferidos de nuestros clientes",
-                "icon": "favorite"
+                "icon": "favorite",
+                "limit": 10
             }
         }
     },

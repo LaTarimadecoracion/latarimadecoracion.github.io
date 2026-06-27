@@ -1366,6 +1366,18 @@ button, .btn-primary, .btn-outline {
     text-decoration: none;
 }
 
+@keyframes highlight-pulse-cta {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(192, 81, 10, 0.7); }
+    50% { transform: scale(1.03); box-shadow: 0 0 20px 8px rgba(192, 81, 10, 0.2); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(192, 81, 10, 0); }
+}
+
+.btn-highlight-pulse {
+    animation: highlight-pulse-cta 2s infinite ease-in-out !important;
+    position: relative;
+    z-index: 10;
+}
+
 .whatsapp-btn {
     border-color: #25D366;
     color: #25D366;

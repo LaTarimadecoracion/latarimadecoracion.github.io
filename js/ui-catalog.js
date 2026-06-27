@@ -301,7 +301,7 @@
         }
 
         // 1. Identificar grupos de acabado
-        let grupos = product.acabados_groups || [];
+        let grupos = (product.acabados_groups || []).filter(g => !g.hidden);
         
         // --- COMPATIBILITY FALLBACK ---
         if (grupos.length === 0) {
@@ -342,15 +342,14 @@
         }
         let currentGroupIndex = initialGroupIndex;
 
-        function buildWA(grupo, medidaIndex) {
-            const medidaText = grupo.medidas_variants[medidaIndex]?.medida || '';
+        function buildWA(grupo, medidaName) {
             const selOpt = divOpt.querySelector('select');
             const optText = selOpt ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
             const optLabel = product.optional_variant?.label || '';
 
             let parts = [`*${product.title}*`];
             if (grupo.acabado_name && grupo.acabado_name !== 'Único') parts.push(`Acabado: ${grupo.acabado_name}`);
-            if (medidaText) parts.push(`Medida: ${medidaText}`);
+            if (medidaName) parts.push(`Medida: ${medidaName}`);
             if (optText && optLabel) parts.push(`${optLabel}: ${optText}`);
 
             if (categoryName === 'Alquileres' || product.primaryCatId === 'alquileres') {
@@ -361,15 +360,58 @@
             return `¡Hola La Tarima! Quiero consultar por el producto: ${parts.join(', ')}. ¿Me podés pasar más info y disponibilidad?`;
         }
 
-        function updateBuyButton(grupo, medidaIndex) {
-            const link = grupo.medidas_variants[medidaIndex]?.link?.trim();
-            if (link) {
-                btnShipping.href = link;
-                btnShipping.style.display = 'flex';
-            } else {
-                btnShipping.style.display = 'none';
+        function updateBuyButton(grupo, medidaName) {
+            const container = document.getElementById('dynamic-shipping-links-container');
+            if (container) {
+                container.innerHTML = '';
+                
+                let linksToRender = [];
+                if (grupo.medidas_variants && grupo.medidas_variants.length > 0) {
+                    linksToRender = grupo.medidas_variants.filter(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
+                }
+                
+                if (linksToRender.length > 0) {
+                    linksToRender.forEach(variant => {
+                        const link = (variant.link || '').trim();
+                        if (link) {
+                            let linkLabel = variant.linkLabel || "Comprar con envío";
+                            let iconType = variant.iconType || "local_shipping";
+
+                            const btn = document.createElement('a');
+                            btn.href = link;
+                            btn.target = "_blank";
+                            btn.className = "btn-primary giant-btn" + (variant.highlight ? " btn-highlight-pulse" : "");
+                            btn.style.display = "flex";
+                            btn.innerHTML = `<span class="material-symbols-outlined">${iconType}</span><span>${linkLabel}</span>`;
+                            
+                            // Re-bind Google Analytics event
+                            btn.onclick = () => {
+                                try {
+                                    if (typeof gtag === 'function') {
+                                        gtag('event', 'begin_checkout', {
+                                            currency: 'ARS',
+                                            items: [{
+                                                item_id: product.id,
+                                                item_name: product.title,
+                                                item_category: categoryName
+                                            }]
+                                        });
+                                    }
+                                } catch (e) { /* Ignore */ }
+                            };
+                            
+                            container.appendChild(btn);
+                        }
+                    });
+                }
+                
+                if (container.children.length === 0) {
+                    container.style.display = 'none';
+                } else {
+                    container.style.display = 'flex';
+                }
             }
-            if (btnPickup) btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildWA(grupo, medidaIndex))}`;
+            if (btnPickup) btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildWA(grupo, medidaName))}`;
         }
 
         function setupGalleryActions(acabado) {
@@ -599,34 +641,47 @@
 
             // 2. Re-render Medidas Select (Cascade)
             divMedida.innerHTML = '';
-            let defaultIdx = 0;
+            let defaultMedidaName = '';
             if (grupo.medidas_variants && grupo.medidas_variants.length > 0) {
+                const uniqueMedidas = [];
+                grupo.medidas_variants.forEach(m => {
+                    if (m.hidden === true) return;
+                    const name = (m.medida || '').trim();
+                    if (!uniqueMedidas.includes(name)) uniqueMedidas.push(name);
+                });
+
                 if (preselectedMedida) {
-                    const matchedMedIdx = grupo.medidas_variants.findIndex(m => (m.medida || '').trim().toLowerCase() === (preselectedMedida || '').trim().toLowerCase());
-                    if (matchedMedIdx !== -1) defaultIdx = matchedMedIdx;
-                } else {
-                    const defIndex = grupo.medidas_variants.findIndex(m => m.default === true);
-                    if (defIndex !== -1) defaultIdx = defIndex;
+                    const matchedName = uniqueMedidas.find(n => n.toLowerCase() === (preselectedMedida || '').trim().toLowerCase());
+                    if (matchedName) defaultMedidaName = matchedName;
+                }
+                
+                if (!defaultMedidaName) {
+                    const defIndex = grupo.medidas_variants.findIndex(m => m.default === true && m.hidden !== true);
+                    if (defIndex !== -1) {
+                        defaultMedidaName = (grupo.medidas_variants[defIndex].medida || '').trim();
+                    } else {
+                        defaultMedidaName = uniqueMedidas[0] || '';
+                    }
                 }
 
                 divMedida.className = 'variant-selector-wrapper mt-1';
                 divMedida.innerHTML = `
                     <label class="variant-label">📏 Medida</label>
                     <select class="variant-select-cascade">
-                        ${grupo.medidas_variants.map((m, i) => `
-                            <option value="${i}" ${i === defaultIdx ? 'selected' : ''}>${m.medida}</option>
+                        ${uniqueMedidas.map(name => `
+                            <option value="${name}" ${name === defaultMedidaName ? 'selected' : ''}>${name}</option>
                         `).join('')}
                     </select>
                 `;
                 divMedida.querySelector('select').addEventListener('change', (e) => {
-                    updateBuyButton(grupo, parseInt(e.target.value));
+                    updateBuyButton(grupo, e.target.value);
                     updateFavState();
                     updateUrlWithVariants();
                 });
             }
 
             // Initial button update for this group
-            updateBuyButton(grupo, defaultIdx);
+            updateBuyButton(grupo, defaultMedidaName);
 
             // Update Favorites button state
             updateFavState();
@@ -681,8 +736,8 @@
             `;
             divOpt.querySelector('select').addEventListener('change', () => {
                 const selMedida = divMedida.querySelector('select');
-                const mIdx = selMedida ? parseInt(selMedida.value) : 0;
-                updateBuyButton(grupos[currentGroupIndex], mIdx);
+                const sName = selMedida ? selMedida.value : '';
+                updateBuyButton(grupos[currentGroupIndex], sName);
                 updateFavState();
                 updateUrlWithVariants();
             });

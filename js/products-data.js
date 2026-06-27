@@ -28,54 +28,115 @@ const productsData = [
                             {
                                 "medida": "200 x 45 cm",
                                 "link": "",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "190 x 45 cm",
                                 "link": "",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "180 x 45 cm",
                                 "link": "",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "140 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2102398740-baranda-de-seguridad-para-cama-infantil-adultos-140x45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-932165982-baranda-de-seguridad-para-cama-infantil-adultos-reforzada-_JM",
-                                "default": true
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": true,
+                                "btnColor": "#c0510a"
+                            },
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://www.google.com/",
+                                "default": false,
+                                "hidden": true,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1370369419-baranda-de-seguridad-para-cama-infantil-adultos-100x45cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1140300239-baranda-de-seguridad-para-cama-infantil-adultos-90x45-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1166496084-baranda-de-seguridad-para-cama-infantil-adultos-80x45cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1511557955-baranda-para-cama-desmontable-70-x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1372978437-baranda-de-seguridad-para-cama-infantil-adultos-60x45cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             }
-                        ]
+                        ],
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
@@ -93,34 +154,65 @@ const productsData = [
                             {
                                 "medida": "110 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2013955994-baranda-para-cama-barnizada-110-x-45-cm-_JM",
-                                "default": true
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2371339468-baranda-para-cama-barnizada-100-x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2371261458-baranda-para-cama-barnizada-90x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2371326668-baranda-para-cama-barnizada-80x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2371404684-baranda-para-cama-barnizada-70x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2371249088-baranda-para-cama-barnizada-60x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             }
-                        ]
+                        ],
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Blanca",
@@ -138,34 +230,65 @@ const productsData = [
                             {
                                 "medida": "110 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1137924749-baranda-seguridad-para-cama-ninos-bebes-adultos-blanca-_JM",
-                                "default": true
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2228815130-baranda-para-cama-color-blanca-100-x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2228698300-baranda-para-cama-color-blanca-90-x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2228776168-baranda-para-cama-color-blanca-80-x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "btnColor": ""
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -183,7 +306,7 @@ const productsData = [
                     "amplias",
                     "grandes"
                 ],
-                "last_modified": 1782437455957,
+                "last_modified": 1782535887973,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -2190,6 +2313,70 @@ const productsData = [
                 "last_modified": 1780708812530,
                 "primaryCatId": "Muebles-y-Jardín",
                 "views": 0
+            },
+            {
+                "id": "deck-rectangular",
+                "title": "Deck rectangular",
+                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
+                "image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "images_list": [
+                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "25 x 50 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM",
+                                "default": true
+                            },
+                            {
+                                "medida": "25 x 50 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM",
+                                "default": false
+                            },
+                            {
+                                "medida": "25 x 50 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
+                                "default": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Base de madera para macetas",
+                    "Deck para plantas",
+                    "Portamacetero de madera",
+                    "Soporte para macetas madera",
+                    "Tarima para plantas",
+                    "Elevador de macetas madera",
+                    "Portamacetero nordico",
+                    "Decoracion con plantas balcon",
+                    "Deck de pino para macetas",
+                    "Estilo rustico jardin",
+                    "Huerta y jardin madera",
+                    "Portamacetas minimalista",
+                    "Organizador de macetas exterior",
+                    "Base madera para balcon",
+                    "Muebles de jardin madera",
+                    "Tarima para plantas interior",
+                    "Protector de piso para macetas",
+                    "Porta macetas",
+                    "Porta maceteros madera",
+                    "Base para plantas exterior",
+                    "Deck de madera",
+                    "Tarimas de madera",
+                    "Decoracion de exteriores",
+                    "Jardin urbano",
+                    "Organizador de plantas",
+                    "Estantes para macetas"
+                ],
+                "last_modified": 1782532915656,
+                "primaryCatId": "Muebles-y-Jardín"
             }
         ]
     },
@@ -2321,7 +2508,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
                                 "default": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -2352,9 +2540,8 @@ const productsData = [
                     "Organizador de plantas",
                     "Estantes para macetas"
                 ],
-                "last_modified": 1780708127230,
-                "primaryCatId": "Muebles-y-Jardín",
-                "views": 1
+                "last_modified": 1782532915656,
+                "primaryCatId": "Muebles-y-Jardín"
             },
             {
                 "id": "mesa-plegabe",
@@ -2807,70 +2994,6 @@ const productsData = [
                 "last_modified": 1780707190575,
                 "primaryCatId": "Interior",
                 "views": 0
-            },
-            {
-                "id": "deck-rectangular",
-                "title": "Deck rectangular",
-                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
-                "image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                        "images_list": [
-                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "25 x 50 cm (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM",
-                                "default": true
-                            },
-                            {
-                                "medida": "25 x 50 cm (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM",
-                                "default": false
-                            },
-                            {
-                                "medida": "25 x 50 cm (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
-                                "default": false
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "Base de madera para macetas",
-                    "Deck para plantas",
-                    "Portamacetero de madera",
-                    "Soporte para macetas madera",
-                    "Tarima para plantas",
-                    "Elevador de macetas madera",
-                    "Portamacetero nordico",
-                    "Decoracion con plantas balcon",
-                    "Deck de pino para macetas",
-                    "Estilo rustico jardin",
-                    "Huerta y jardin madera",
-                    "Portamacetas minimalista",
-                    "Organizador de macetas exterior",
-                    "Base madera para balcon",
-                    "Muebles de jardin madera",
-                    "Tarima para plantas interior",
-                    "Protector de piso para macetas",
-                    "Porta macetas",
-                    "Porta maceteros madera",
-                    "Base para plantas exterior",
-                    "Deck de madera",
-                    "Tarimas de madera",
-                    "Decoracion de exteriores",
-                    "Jardin urbano",
-                    "Organizador de plantas",
-                    "Estantes para macetas"
-                ],
-                "last_modified": 1780708127230,
-                "primaryCatId": "Muebles-y-Jardín",
-                "views": 1
             },
             {
                 "id": "especiero",
@@ -3409,7 +3532,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
                                 "default": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -3440,9 +3564,8 @@ const productsData = [
                     "Organizador de plantas",
                     "Estantes para macetas"
                 ],
-                "last_modified": 1780708127230,
-                "primaryCatId": "Muebles-y-Jardín",
-                "views": 1
+                "last_modified": 1782532915656,
+                "primaryCatId": "Muebles-y-Jardín"
             },
             {
                 "id": "deck-cuadrado",

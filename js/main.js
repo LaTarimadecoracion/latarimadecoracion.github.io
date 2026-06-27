@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const cleanKey = key.trim().toLowerCase();
             if (!cleanKey) return;
             
-            let grupos = product.acabados_groups || [];
+            let grupos = (product.acabados_groups || []).filter(g => !g.hidden);
             if (grupos.length === 0) {
                 const singleAcabado = (product.acabado || 'Único').trim().toLowerCase();
                 if (cleanKey === singleAcabado) {
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 150);
         }
 
-        const viewParam = urlParams.get('view');
+        const viewParam = urlParams.get('view') || urlParams.get('sec');
         if (viewParam) {
             const viewIdMap = {
                 'nosotros': 'view-about',
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('popstate', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const prodId = urlParams.get('prod') || urlParams.get('product') || urlParams.get('p');
-        const viewParam = urlParams.get('view');
+        const viewParam = urlParams.get('view') || urlParams.get('sec');
         const catId = urlParams.get('cat') || urlParams.get('category');
         const cartParam = urlParams.get('cart');
         

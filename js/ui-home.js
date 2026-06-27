@@ -1,4 +1,79 @@
+    function setupInfiniteCarousel(containerEl, itemsArray, renderItemFunc) {
+        if (!itemsArray || itemsArray.length === 0) return false;
+        
+        const appendBatch = (prepend = false) => {
+            const fragment = document.createDocumentFragment();
+            itemsArray.forEach(item => {
+                fragment.appendChild(renderItemFunc(item));
+            });
+            
+            if (prepend) {
+                const oldScrollLeft = containerEl.scrollLeft;
+                const oldScrollWidth = containerEl.scrollWidth;
+                
+                // Deshabilitar momentaneamente el snap para evitar saltos visuales en iOS/Safari
+                const originalSnap = containerEl.style.scrollSnapType || getComputedStyle(containerEl).scrollSnapType;
+                containerEl.style.scrollSnapType = 'none';
+                
+                containerEl.insertBefore(fragment, containerEl.firstElementChild);
+                
+                const newScrollWidth = containerEl.scrollWidth;
+                containerEl.scrollLeft = oldScrollLeft + (newScrollWidth - oldScrollWidth);
+                
+                // Restaurar snap
+                setTimeout(() => {
+                    containerEl.style.scrollSnapType = originalSnap;
+                }, 10);
+            } else {
+                containerEl.appendChild(fragment);
+            }
+        };
 
+        // Batch inicial
+        appendBatch();
+
+        // Si hay pocos elementos, agregamos uno más al principio para que se pueda ir a la izquierda desde el inicio
+        // Esto permite que el usuario arranque en el medio del infinito
+        appendBatch(true);
+        // Hacemos un setTimeout para scrollear hacia el primer elemento "real" inicial,
+        // ocultando el lote que pusimos a la izquierda
+        setTimeout(() => {
+            const originalSnap = containerEl.style.scrollSnapType || getComputedStyle(containerEl).scrollSnapType;
+            containerEl.style.scrollSnapType = 'none';
+            // Scrollear al inicio del segundo lote (que era el original)
+            const cardWidth = containerEl.firstElementChild ? containerEl.firstElementChild.offsetWidth + 10 : 0;
+            containerEl.scrollLeft = cardWidth * itemsArray.length;
+            setTimeout(() => { containerEl.style.scrollSnapType = originalSnap; }, 10);
+        }, 10);
+
+        if (typeof IntersectionObserver !== 'undefined') {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    
+                    if (entry.target === containerEl.lastElementChild) {
+                        observer.unobserve(entry.target);
+                        appendBatch(false);
+                        const newLast = containerEl.lastElementChild;
+                        if (newLast) observer.observe(newLast);
+                    } else if (entry.target === containerEl.firstElementChild) {
+                        observer.unobserve(entry.target);
+                        appendBatch(true);
+                        const newFirst = containerEl.firstElementChild;
+                        if (newFirst) observer.observe(newFirst);
+                    }
+                });
+            }, { root: containerEl, rootMargin: '0px 300px 0px 300px', threshold: 0 });
+            
+            setTimeout(() => {
+                const initialFirst = containerEl.firstElementChild;
+                const initialLast = containerEl.lastElementChild;
+                if (initialFirst) observer.observe(initialFirst);
+                if (initialLast) observer.observe(initialLast);
+            }, 100);
+        }
+        return true;
+    }
 
     function renderSectionContent(sectionId, containerEl, customStack = null) {
         if (!containerEl) return;
@@ -291,8 +366,8 @@
                     const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
                     if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
                         const sortedCategories = [...sourceData].sort((a, b) => (a.order || 0) - (b.order || 0));
-                        sortedCategories.forEach(cat => {
-                            if (cat.visible === false) return;
+                        const visibleCategories = sortedCategories.filter(cat => cat.visible !== false);
+                        setupInfiniteCarousel(containerEl, visibleCategories, (cat) => {
                             const catCard = document.createElement('div');
                             catCard.className = 'category-card';
                             const catCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
@@ -307,7 +382,7 @@
                             catCard.addEventListener('click', () => {
                                 if (window.navigateToCategoryFeed) window.navigateToCategoryFeed(cat.id);
                             });
-                            containerEl.appendChild(catCard);
+                            return catCard;
                         });
                     } else {
                         containerEl.innerHTML = '<p class="text-muted">No hay categorías disponibles.</p>';
@@ -338,10 +413,11 @@
                             }
                         });
 
+                        const limit = config.limit ? parseInt(config.limit, 10) : 5;
                         const latestProducts = [...allProducts]
                             .sort((a, b) => getProductTimestamp(b.product) - getProductTimestamp(a.product))
-                            .slice(0, 5);
-                        latestProducts.forEach(({ product, catName }) => {
+                            .slice(0, limit);
+                        setupInfiniteCarousel(containerEl, latestProducts, ({ product, catName }) => {
                             const card = document.createElement('div');
                             card.className = 'category-card';
                             const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
@@ -356,7 +432,7 @@
                             card.addEventListener('click', () => {
                                 if (window.showProductDetail) window.showProductDetail(product, catName);
                             });
-                            containerEl.appendChild(card);
+                            return card;
                         });
                     } else {
                         containerEl.innerHTML = '<p class="text-muted">No hay novedades disponibles.</p>';
@@ -388,10 +464,11 @@
                         });
 
                         // Selección aleatoria para mantener el home dinámico (sin base de datos)
+                        const limit = config.limit ? parseInt(config.limit, 10) : 8;
                         const randomSelections = [...allProducts]
                             .sort(() => 0.5 - Math.random())
-                            .slice(0, 8);
-                        randomSelections.forEach(({ product, catName }) => {
+                            .slice(0, limit);
+                        setupInfiniteCarousel(containerEl, randomSelections, ({ product, catName }) => {
                             const pCard = document.createElement('div');
                             pCard.className = 'category-card';
                             const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
@@ -406,7 +483,7 @@
                             pCard.addEventListener('click', () => {
                                 if (window.showProductDetail) window.showProductDetail(product, catName);
                             });
-                            containerEl.appendChild(pCard);
+                            return pCard;
                         });
                     } else {
                         containerEl.innerHTML = '<p class="text-muted">No hay productos disponibles.</p>';

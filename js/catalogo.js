@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const variants = [];
         
         if (product.acabados_groups && product.acabados_groups.length > 0) {
-            product.acabados_groups.forEach(group => {
+            product.acabados_groups.filter(g => !g.hidden).forEach(group => {
                 const acabadoName = group.acabado_name || '';
                 if (group.medidas_variants) {
                     group.medidas_variants.forEach(v => {
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function countProductVariants(product) {
         let count = 0;
         if (product.acabados_groups && product.acabados_groups.length > 0) {
-            product.acabados_groups.forEach(group => {
+            product.acabados_groups.filter(g => !g.hidden).forEach(group => {
                 if (group.medidas_variants && group.medidas_variants.length > 0) {
                     count += group.medidas_variants.length;
                 } else {
