@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
     
-    <link rel="stylesheet" href="css/style.css?v=25">
+    <link rel="stylesheet" href="/css/style.css?v=25">
     
     <style>
         html, body {
@@ -542,7 +542,7 @@
                 <h1>Catálogo Mayorista</h1>
                 <p>Precios directos de fábrica en efectivo o transferencia bancaria.</p>
             </div>
-            <a href="index.html" class="btn-back">
+            <a href="/" class="btn-back">
                 <span class="material-symbols-outlined">arrow_back</span>
                 Volver a la Web pública
             </a>
@@ -645,9 +645,9 @@
     </div>
 
     
-    <script src="js/site-config.js?v=4"></script>
-    <script src="js/products-data.js?v=4"></script>
-    <script src="js/data.js?v=4"></script>
+    <script src="/js/site-config.js?v=4"></script>
+    <script src="/js/products-data.js?v=4"></script>
+    <script src="/js/data.js?v=4"></script>
 
     
     <script>
@@ -878,20 +878,30 @@
 
                 thumbnailsContainer.innerHTML = '';
                 
+                const sanitizeImgSrc = (src) => {
+                    if (!src) return '';
+                    if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('/')) {
+                        return src;
+                    }
+                    return '/' + src;
+                };
+                
                 if (row.images && row.images.length > 0) {
-                    mainImg.src = row.images[0];
+                    const firstImage = sanitizeImgSrc(row.images[0]);
+                    mainImg.src = firstImage;
                     row.images.forEach((imgSrc, idx) => {
+                        const sanitized = sanitizeImgSrc(imgSrc);
                         const thumb = document.createElement('div');
                         thumb.className = 'gallery-item';
-                        thumb.innerHTML = `<img src="${imgSrc}">`;
+                        thumb.innerHTML = `<img src="${sanitized}">`;
                         
                         thumb.addEventListener('click', () => {
-                            mainImg.src = imgSrc;
+                            mainImg.src = sanitized;
                         });
                         thumbnailsContainer.appendChild(thumb);
                     });
                 } else {
-                    mainImg.src = 'img/logo_provisional.png';
+                    mainImg.src = '/img/logo_provisional.png';
                 }
 
                 modalGallery.style.display = 'flex';
