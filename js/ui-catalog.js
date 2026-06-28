@@ -694,26 +694,25 @@
         // Acabado Selector (Horizontal Buttons)
         if (grupos.length > 1 || (grupos.length === 1 && grupos[0].acabado_name !== 'Único')) {
             divAcabado.className = 'variant-selector-wrapper';
+            
+            // Si hay exactamente 2 acabados, dividimos al 50%. Si hay cualquier otro número, dividimos al 33.33%.
+            const btnWidth = grupos.length === 2 ? 'calc(50% - 4px)' : 'calc(33.333% - 6px)';
+            
             divAcabado.innerHTML = `
                 <label class="variant-label">🎨 Color / Acabado</label>
-                <div class="variant-buttons-container" id="acabado-buttons-container">
+                <div class="variant-buttons-container" id="acabado-buttons-container" style="display: flex; flex-wrap: wrap; gap: 8px; overflow-x: visible;">
                     ${grupos.map((g, i) => {
                         const imgUrl = g.cover_image || (g.images_list && g.images_list.length > 0 ? g.images_list[0] : null);
                         return `
-                            <button type="button" class="variant-btn ${i === currentGroupIndex ? 'active' : ''}" data-index="${i}" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.35rem 0.75rem; border-radius: 30px; flex: 1; font-size: 0.82rem; white-space: nowrap;">
-                                ${imgUrl ? `<img src="${imgUrl}" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(255,255,255,0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.15);">` : ''}
-                                <span>${g.acabado_name}</span>
+                            <button type="button" class="variant-btn ${i === currentGroupIndex ? 'active' : ''}" data-index="${i}" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.35rem 0.5rem; border-radius: 30px; flex: 0 0 ${btnWidth}; width: ${btnWidth}; max-width: ${btnWidth}; font-size: 0.82rem; white-space: nowrap; box-sizing: border-box;">
+                                ${imgUrl ? `<img src="${imgUrl}" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(255,255,255,0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.15); flex-shrink: 0;">` : ''}
+                                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${g.acabado_name}</span>
                             </button>
                         `;
                     }).join('')}
                 </div>
             `;
             const btnContainer = divAcabado.querySelector('#acabado-buttons-container');
-            
-            // Enable drag-to-scroll for horizontal scrolling on desktop!
-            if (typeof window.enableDragToScroll === 'function') {
-                window.enableDragToScroll(btnContainer);
-            }
 
             btnContainer.addEventListener('click', (e) => {
                 const btn = e.target.closest('.variant-btn');
