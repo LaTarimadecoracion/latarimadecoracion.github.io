@@ -3,7 +3,21 @@
 // --- ORCHESTRATOR ---
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Splash Screen removed for faster loading experience
+    // 1. Event-driven Splash Screen logic
+    const hideSplashScreen = () => {
+        const splash = document.getElementById('splash-screen');
+        if (splash && splash.style.display !== 'none' && splash.style.opacity !== '0') {
+            splash.style.transition = 'opacity 0.3s ease, visibility 0.3s';
+            splash.style.opacity = '0';
+            splash.style.visibility = 'hidden';
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 300);
+        }
+    };
+
+    // Safety fallback to hide splash screen if anything stalls
+    setTimeout(hideSplashScreen, 1500);
 
     // 2. Global DOM Cache
     window.navItems = document.querySelectorAll('.nav-item');
@@ -23,12 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.renderCategoriesMenu) window.renderCategoriesMenu();
             if (window.renderVideosView) window.renderVideosView();
             if (window.renderNosotrosBlocksCliente) window.renderNosotrosBlocksCliente();
+            hideSplashScreen();
         });
     } else {
         if (window.renderHome) window.renderHome();
         if (window.renderCategoriesMenu) window.renderCategoriesMenu();
         if (window.renderVideosView) window.renderVideosView();
         if (window.renderNosotrosBlocksCliente) window.renderNosotrosBlocksCliente();
+        hideSplashScreen();
     }
 
     // Módulo Avisos Autónomo
