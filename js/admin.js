@@ -2044,6 +2044,16 @@ window.safeAdminRun = function(fn) {
         sourceCategoryIdx = cIdx;                          // guardar categoría de origen
         editingProductId  = existingProd ? existingProd.id : null;
 
+        // Mostrar u ocultar checkbox de publicación automática en Novedades/Avisos
+        const autoAvisoContainer = document.getElementById('admin-product-auto-aviso-container');
+        if (autoAvisoContainer) {
+            autoAvisoContainer.style.display = existingProd ? 'none' : 'flex';
+        }
+        const autoAvisoCheck = document.getElementById('admin-product-auto-aviso');
+        if (autoAvisoCheck) {
+            autoAvisoCheck.checked = true;
+        }
+
         // Limpiar estado de grupos
         if (adminAcabadosGroupsContainer) adminAcabadosGroupsContainer.innerHTML = '';
         activeGroupsUI = [];
@@ -2279,32 +2289,37 @@ window.safeAdminRun = function(fn) {
 
                 // Auto-crear aviso si es un alquiler totalmente nuevo
                 if (!editingProductId) {
-                    const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
-                    const newAvisoBlock = {
-                        title: `¡Nuevo Alquiler: ${product.title}!`,
-                        description: `Sumamos un nuevo artículo a nuestra sección de alquileres. ¡Hacé clic para conocer todos los detalles de ${product.title}!`,
-                        mediaType: 'image',
-                        image: productCover,
-                        videoUrl: '',
-                        mapQuery: '',
-                        links: [
-                            {
-                                text: 'Ver Alquiler',
-                                url: `?view=view-product-detail&prod=${product.id}`,
-                                newTab: false
-                            }
-                        ],
-                        linkUrl: `?view=view-product-detail&prod=${product.id}`,
-                        linkText: 'Ver Alquiler',
-                        linkNewTab: false,
-                        timestamp: Date.now()
-                    };
+                    const autoAvisoCheck = document.getElementById('admin-product-auto-aviso');
+                    const shouldPublish = autoAvisoCheck ? autoAvisoCheck.checked : true;
+                    
+                    if (shouldPublish) {
+                        const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                        const newAvisoBlock = {
+                            title: `¡Nuevo Alquiler: ${product.title}!`,
+                            description: `Sumamos un nuevo artículo a nuestra sección de alquileres. ¡Hacé clic para conocer todos los detalles de ${product.title}!`,
+                            mediaType: 'image',
+                            image: productCover,
+                            videoUrl: '',
+                            mapQuery: '',
+                            links: [
+                                {
+                                    text: 'Ver Alquiler',
+                                    url: `?view=view-product-detail&prod=${product.id}`,
+                                    newTab: false
+                                }
+                            ],
+                            linkUrl: `?view=view-product-detail&prod=${product.id}`,
+                            linkText: 'Ver Alquiler',
+                            linkNewTab: false,
+                            timestamp: Date.now()
+                        };
 
-                    if (typeof window.sessionAvisos !== 'undefined') {
-                        window.sessionAvisos.unshift(newAvisoBlock);
-                        localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
-                        if (window.syncSiteConfigWithServer) {
-                            window.syncSiteConfigWithServer();
+                        if (typeof window.sessionAvisos !== 'undefined') {
+                            window.sessionAvisos.unshift(newAvisoBlock);
+                            localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
+                            if (window.syncSiteConfigWithServer) {
+                                window.syncSiteConfigWithServer();
+                            }
                         }
                     }
                 }
@@ -2401,32 +2416,37 @@ window.safeAdminRun = function(fn) {
 
             // Auto-crear aviso si es un producto totalmente nuevo
             if (!editingProductId) {
-                const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
-                const newAvisoBlock = {
-                    title: `¡Nuevo Ingreso: ${product.title}!`,
-                    description: `Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de ${product.title}!`,
-                    mediaType: 'image',
-                    image: productCover,
-                    videoUrl: '',
-                    mapQuery: '',
-                    links: [
-                        {
-                            text: 'Ver Producto',
-                            url: `?view=view-product-detail&prod=${product.id}`,
-                            newTab: false
-                        }
-                    ],
-                    linkUrl: `?view=view-product-detail&prod=${product.id}`,
-                    linkText: 'Ver Producto',
-                    linkNewTab: false,
-                    timestamp: Date.now()
-                };
+                const autoAvisoCheck = document.getElementById('admin-product-auto-aviso');
+                const shouldPublish = autoAvisoCheck ? autoAvisoCheck.checked : true;
+                
+                if (shouldPublish) {
+                    const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                    const newAvisoBlock = {
+                        title: `¡Nuevo Ingreso: ${product.title}!`,
+                        description: `Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de ${product.title}!`,
+                        mediaType: 'image',
+                        image: productCover,
+                        videoUrl: '',
+                        mapQuery: '',
+                        links: [
+                            {
+                                text: 'Ver Producto',
+                                url: `?view=view-product-detail&prod=${product.id}`,
+                                newTab: false
+                            }
+                        ],
+                        linkUrl: `?view=view-product-detail&prod=${product.id}`,
+                        linkText: 'Ver Producto',
+                        linkNewTab: false,
+                        timestamp: Date.now()
+                    };
 
-                if (typeof window.sessionAvisos !== 'undefined') {
-                    window.sessionAvisos.unshift(newAvisoBlock);
-                    localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
-                    if (window.syncSiteConfigWithServer) {
-                        window.syncSiteConfigWithServer();
+                    if (typeof window.sessionAvisos !== 'undefined') {
+                        window.sessionAvisos.unshift(newAvisoBlock);
+                        localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
+                        if (window.syncSiteConfigWithServer) {
+                            window.syncSiteConfigWithServer();
+                        }
                     }
                 }
             }
@@ -3705,6 +3725,16 @@ window.safeAdminRun = function(fn) {
         imgPreviewContainer.style.display = 'none';
         imgPreview.src = '';
         imgUrlInput.value = '';
+
+        // Mostrar u ocultar checkbox de publicación automática en Novedades/Avisos para alquileres
+        const autoAvisoContainer = document.getElementById('admin-rental-auto-aviso-container');
+        if (autoAvisoContainer) {
+            autoAvisoContainer.style.display = rental ? 'none' : 'flex';
+        }
+        const autoAvisoCheck = document.getElementById('admin-rental-auto-aviso');
+        if (autoAvisoCheck) {
+            autoAvisoCheck.checked = true;
+        }
 
         if (rental) {
             editingRentalId = rental.id;
