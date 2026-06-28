@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redireccionando...</title>
+    <script>
+        (function() {
+            var pathname = window.location.pathname.toLowerCase();
+            if (pathname.endsWith('/')) pathname = pathname.slice(0, -1);
+
+            var isMayorista = pathname.endsWith('/web/mayorista') || pathname.endsWith('/mayorista') || pathname.endsWith('/mayoristas');
+            
+            var basePath = '/';
+            if (isMayorista) {
+                var idx = pathname.indexOf('/web/mayorista');
+                if (idx === -1) idx = pathname.indexOf('/mayorista');
+                if (idx === -1) idx = pathname.indexOf('/mayoristas');
+                if (idx !== -1) {
+                    basePath = window.location.pathname.substring(0, idx) + '/';
+                }
+            } else {
+                var segments = window.location.pathname.split('/').filter(Boolean);
+                if (segments.length > 0) {
+                    var first = segments[0].toLowerCase();
+                    if (first !== 'web' && first !== 'mayorista' && first !== 'mayoristas') {
+                        basePath = '/' + segments[0] + '/';
+                    }
+                }
+            }
+
+            if (isMayorista) {
+                window.location.replace(window.location.origin + basePath + 'mayorista.html');
+            } else {
+                window.location.replace(window.location.origin + basePath);
+            }
+        })();
+    </script>
+</head>
+<body>
+    <p>Redireccionando...</p>
+</body>
+</html>

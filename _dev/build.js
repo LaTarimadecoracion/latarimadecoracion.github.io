@@ -41,7 +41,7 @@ async function build() {
     }
 
     // 3. Minificar HTMLs
-    const htmlFiles = ['index.html', 'catalogo.html', 'calcular.html', 'visualizador.html', 'mayorista.html'];
+    const htmlFiles = ['index.html', 'catalogo.html', 'calcular.html', 'visualizador.html', 'mayorista.html', '404.html'];
     for (const html of htmlFiles) {
         const htmlSrc = path.join(srcDir, html);
         if (fs.existsSync(htmlSrc)) {

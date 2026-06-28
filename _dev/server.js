@@ -712,7 +712,26 @@ app.post('/api/maintenance/clean-and-convert', async (req, res) => {
 });
 
 // Fallback to index.html for SPA routing
-app.get('*', serveIndexWithOG);
+// Catch-all route to handle clean mayorista URLs and redirect unrecognized routes to root
+app.get('*', (req, res) => {
+    const cleanUrl = req.path.toLowerCase().replace(/\/$/, '');
+    
+    // Rutas del catálogo mayorista sin .html visible
+    if (cleanUrl === '/web/mayorista' || cleanUrl === '/mayorista' || cleanUrl === '/mayoristas') {
+        const mayoristaPath = path.join(ROOT_DIR, 'mayorista.html');
+        if (fs.existsSync(mayoristaPath)) {
+            return res.sendFile(mayoristaPath);
+        }
+    }
+    
+    // Si contiene parámetros de producto para Open Graph, sirve index con OG
+    if (req.query.prod || req.query.product || req.query.p) {
+        return serveIndexWithOG(req, res);
+    }
+
+    // Cualquier otra ruta no existente, redirige al inicio
+    res.redirect('/');
+});
 
 
 const os = require('os');
