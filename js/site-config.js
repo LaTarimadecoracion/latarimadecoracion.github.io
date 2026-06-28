@@ -132,25 +132,6 @@ window.siteConfig = {
             "timestamp": 1782607703040
         },
         {
-            "title": "¡Nuevo Ingreso: Baúl de madera de pino de Mediano!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Baúl de madera de pino de Mediano!",
-            "mediaType": "image",
-            "image": "img/infantil/baul-de-madera-de-pino-de-mediano/1782607215928-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=baul-madera-mediano",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=baul-madera-mediano",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1782607216397
-        },
-        {
             "title": "¡Nuevo Ingreso: Mesa Plegable - Redonda!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesa Plegable - Redonda!",
             "mediaType": "image",
@@ -168,25 +149,6 @@ window.siteConfig = {
             "linkText": "Ver Producto",
             "linkNewTab": false,
             "timestamp": 1782606636520
-        },
-        {
-            "title": "¡Nuevo Ingreso: Mesita plegable base redonda!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesita plegable base redonda!",
-            "mediaType": "image",
-            "image": "img/exterior/mesita-plegable-base-redonda/1782605968870-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=mesa-plegable-redonda-chica",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=mesa-plegable-redonda-chica",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1782605969177
         },
         {
             "title": "¡Nuevo Ingreso: Mesa Plegabe!",
