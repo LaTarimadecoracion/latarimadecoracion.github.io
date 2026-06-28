@@ -696,11 +696,11 @@
             divAcabado.className = 'variant-selector-wrapper';
             divAcabado.innerHTML = `
                 <label class="variant-label">🎨 Color / Acabado</label>
-                <div class="variant-buttons-container" id="acabado-buttons-container" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <div class="variant-buttons-container" id="acabado-buttons-container">
                     ${grupos.map((g, i) => {
                         const imgUrl = g.cover_image || (g.images_list && g.images_list.length > 0 ? g.images_list[0] : null);
                         return `
-                            <button type="button" class="variant-btn ${i === currentGroupIndex ? 'active' : ''}" data-index="${i}" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.35rem 0.75rem; border-radius: 30px; flex: unset; font-size: 0.82rem;">
+                            <button type="button" class="variant-btn ${i === currentGroupIndex ? 'active' : ''}" data-index="${i}" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.35rem 0.75rem; border-radius: 30px; flex: 1 0 auto; font-size: 0.82rem; white-space: nowrap;">
                                 ${imgUrl ? `<img src="${imgUrl}" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(255,255,255,0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.15);">` : ''}
                                 <span>${g.acabado_name}</span>
                             </button>
@@ -709,6 +709,12 @@
                 </div>
             `;
             const btnContainer = divAcabado.querySelector('#acabado-buttons-container');
+            
+            // Enable drag-to-scroll for horizontal scrolling on desktop!
+            if (typeof window.enableDragToScroll === 'function') {
+                window.enableDragToScroll(btnContainer);
+            }
+
             btnContainer.addEventListener('click', (e) => {
                 const btn = e.target.closest('.variant-btn');
                 if (!btn) return;
