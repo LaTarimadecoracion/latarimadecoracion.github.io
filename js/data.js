@@ -3,12 +3,52 @@
 // Navegación inteligente - Historial de vistas
 window.navigationHistory = [];
 
+// Helper to get max modification timestamp of products
+function getMaxProductTimestamp(arr) {
+    let max = 0;
+    if (Array.isArray(arr)) {
+        arr.forEach(cat => {
+            if (cat.products && Array.isArray(cat.products)) {
+                cat.products.forEach(p => {
+                    if (p.last_modified && !isNaN(p.last_modified)) {
+                        max = Math.max(max, Number(p.last_modified));
+                    }
+                });
+            }
+        });
+    }
+    return max;
+}
+
+// Helper to get max modification timestamp of rentals
+function getMaxRentalTimestamp(arr) {
+    let max = 0;
+    if (Array.isArray(arr)) {
+        arr.forEach(r => {
+            if (r.last_modified && !isNaN(r.last_modified)) {
+                max = Math.max(max, Number(r.last_modified));
+            }
+        });
+    }
+    return max;
+}
+
 // Estado global de Productos
 window.sessionProducts = typeof productsData !== 'undefined' ? [...productsData] : [];
 try {
-    const localProducts = localStorage.getItem('sessionProductsAutonomo');
-    if (localProducts) {
-        window.sessionProducts = JSON.parse(localProducts);
+    const localProductsStr = localStorage.getItem('sessionProductsAutonomo');
+    if (localProductsStr) {
+        const localProducts = JSON.parse(localProductsStr);
+        const localMax = getMaxProductTimestamp(localProducts);
+        const serverMax = getMaxProductTimestamp(window.sessionProducts);
+        
+        if (localMax >= serverMax) {
+            window.sessionProducts = localProducts;
+            console.log('[Data fallback] Cargados productos de localStorage (versión local es más nueva o igual).');
+        } else {
+            console.log('[Data fallback] Ignorados productos de localStorage porque la base de datos del servidor es más nueva.');
+            localStorage.removeItem('sessionProductsAutonomo');
+        }
     }
 } catch (e) {
     console.error('Error loading sessionProducts fallback:', e);
@@ -16,9 +56,19 @@ try {
 
 window.sessionRentals = typeof rentalsData !== 'undefined' ? [...rentalsData] : [];
 try {
-    const localRentals = localStorage.getItem('sessionRentalsAutonomo');
-    if (localRentals) {
-        window.sessionRentals = JSON.parse(localRentals);
+    const localRentalsStr = localStorage.getItem('sessionRentalsAutonomo');
+    if (localRentalsStr) {
+        const localRentals = JSON.parse(localRentalsStr);
+        const localMax = getMaxRentalTimestamp(localRentals);
+        const serverMax = getMaxRentalTimestamp(window.sessionRentals);
+        
+        if (localMax >= serverMax) {
+            window.sessionRentals = localRentals;
+            console.log('[Data fallback] Cargados alquileres de localStorage (versión local es más nueva o igual).');
+        } else {
+            console.log('[Data fallback] Ignorados alquileres de localStorage porque la base de datos del servidor es más nueva.');
+            localStorage.removeItem('sessionRentalsAutonomo');
+        }
     }
 } catch (e) {
     console.error('Error loading sessionRentals fallback:', e);
