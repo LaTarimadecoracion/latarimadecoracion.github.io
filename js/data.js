@@ -212,6 +212,20 @@ try {
     console.error("Error loading sessionAvisos fallback:", e);
 }
 
+// De-duplicar avisos por título o combinación de título y enlace para prevenir repetidos en caché
+if (Array.isArray(window.sessionAvisos)) {
+    const seenAvisos = new Set();
+    window.sessionAvisos = window.sessionAvisos.filter(aviso => {
+        if (!aviso) return false;
+        const key = `${(aviso.title || '').trim().toLowerCase()}_${(aviso.linkUrl || '').trim().toLowerCase()}`;
+        if (seenAvisos.has(key)) {
+            return false;
+        }
+        seenAvisos.add(key);
+        return true;
+    });
+}
+
 // 4. CONFIGURACIÓN DE ORDEN Y CONTROL DE SECCIONES DEL HOME
 window.homeConfig = window.siteConfig.homeConfig || {
     order: ['categorias', 'novedades', 'buscados'],

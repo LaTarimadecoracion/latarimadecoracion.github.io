@@ -2613,6 +2613,13 @@ window.safeAdminRun = function(fn) {
             }
         });
 
+        // Ordenar resultados de A a Z por nombre
+        results.sort((a, b) => {
+            const nameA = (a.nombre || '').toLowerCase();
+            const nameB = (b.nombre || '').toLowerCase();
+            return nameA.localeCompare(nameB, 'es', { sensitivity: 'base' });
+        });
+
         searchResultsContainer.innerHTML = '';
 
         if (results.length === 0) {
