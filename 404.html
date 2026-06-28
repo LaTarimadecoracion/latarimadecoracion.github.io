@@ -12,20 +12,11 @@
             var isMayorista = pathname.endsWith('/web/mayorista') || pathname.endsWith('/mayorista') || pathname.endsWith('/mayoristas');
             
             var basePath = '/';
-            if (isMayorista) {
-                var idx = pathname.indexOf('/web/mayorista');
-                if (idx === -1) idx = pathname.indexOf('/mayorista');
-                if (idx === -1) idx = pathname.indexOf('/mayoristas');
-                if (idx !== -1) {
-                    basePath = window.location.pathname.substring(0, idx) + '/';
-                }
-            } else {
-                var segments = window.location.pathname.split('/').filter(Boolean);
-                if (segments.length > 0) {
-                    var first = segments[0].toLowerCase();
-                    if (first !== 'web' && first !== 'mayorista' && first !== 'mayoristas') {
-                        basePath = '/' + segments[0] + '/';
-                    }
+            var segments = window.location.pathname.split('/').filter(Boolean);
+            if (segments.length > 0) {
+                // Si el primer segmento es exactamente el nombre del repositorio
+                if (segments[0].toLowerCase() === 'latarimadecoracion.github.io') {
+                    basePath = '/latarimadecoracion.github.io/';
                 }
             }
 
