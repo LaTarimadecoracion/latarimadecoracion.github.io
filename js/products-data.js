@@ -3088,6 +3088,28 @@ const productsData = [
                 "views": 1
             },
             {
+                "id": "baul-madera-mediano",
+                "title": "Baúl de madera de pino - Mediano",
+                "description": "Baúl de madera de pino ideal para el guardado de juguetes u organización infantil.",
+                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782607703040,
+                "primaryCatId": "infantil"
+            },
+            {
                 "id": "banquito-de-plaza",
                 "title": "Banquito de Plaza",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
