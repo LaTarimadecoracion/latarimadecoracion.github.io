@@ -75,6 +75,7 @@ function initAdminUX20() {
     if (typeof window.initSocialLinksAdmin === 'function') window.initSocialLinksAdmin();
     if (typeof window.initThemeAdmin === 'function') window.initThemeAdmin();
     if (typeof window.initRentalsAdmin === 'function') window.initRentalsAdmin();
+    if (typeof window.initMayoristaAdmin === 'function') window.initMayoristaAdmin();
 }
 
     async function renderAdminDashboard() {
@@ -267,7 +268,7 @@ function initAdminUX20() {
             }
         });
 
-        const subviews = ['page-home', 'page-categories', 'page-avisos', 'page-nosotros', 'page-cart', 'page-videos', 'page-catalogo', 'page-search'];
+        const subviews = ['page-home', 'page-categories', 'page-avisos', 'page-nosotros', 'page-cart', 'page-videos', 'page-catalogo', 'page-search', 'page-mayorista'];
         subviews.forEach(key => {
             const el = document.getElementById(`subview-${key}`);
             if (el) {

@@ -716,6 +716,10 @@
                                     <span class="material-symbols-outlined">search</span>
                                     <span>Buscar</span>
                                 </button>
+                                <button type="button" class="admin-pill-tab" data-subtab="page-mayorista">
+                                    <span class="material-symbols-outlined">store</span>
+                                    <span>Mayorista</span>
+                                </button>
                             </div>
 
                             
@@ -962,6 +966,52 @@
                                         </div>
                                     </header>
                                     <div id="admin-components-search" class="sections-list-stack"></div>
+                                </div>
+                            </div>
+
+                            
+                            <div id="subview-page-mayorista" class="admin-subview" style="display: none;">
+                                <div class="admin-card">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">store</span>
+                                            Configuración Catálogo Mayorista
+                                        </h3>
+                                    </header>
+                                    <form id="admin-mayorista-form" style="display: flex; flex-direction: column; gap: 1.25rem; padding: 0.5rem 0;">
+                                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                                            <div class="form-group">
+                                                <label for="admin-may-alias" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Alias de Transferencia</label>
+                                                <input type="text" id="admin-may-alias" placeholder="ej: la.tarima.deco" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="admin-may-cbu" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">CBU/CVU de Transferencia</label>
+                                                <input type="text" id="admin-may-cbu" placeholder="22 dígitos" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="admin-may-titular" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Titular de la Cuenta</label>
+                                                <input type="text" id="admin-may-titular" placeholder="Nombre completo" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="admin-may-bank" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Banco / Plataforma</label>
+                                                <input type="text" id="admin-may-bank" placeholder="ej: Banco Galicia, Mercado Pago" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="admin-may-markup" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Recargo Mercado Pago (%)</label>
+                                                <input type="number" id="admin-may-markup" placeholder="10" min="0" max="100" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="admin-may-terms" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Términos y Condiciones Generales</label>
+                                            <textarea id="admin-may-terms" placeholder="Escribe aquí las condiciones de venta..." rows="6" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
+                                        </div>
+                                        <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
+                                            <button type="button" id="btn-save-mayorista-config" class="btn-primary" style="padding: 0.6rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 8px; cursor: pointer; border: none; font-weight: 600;">
+                                                <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
+                                                Guardar Configuración
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -1,10 +1,11 @@
-const CACHE_NAME = 'tarima-cache-v10';
+const CACHE_NAME = 'tarima-cache-v11';
 const STATIC_ASSETS = [
     './',
     './index.html',
     './catalogo.html',
     './calcular.html',
     './visualizador.html',
+    './mayorista.html',
     './css/style.css',
     './css/catalogo.css',
     './css/calcular.css',

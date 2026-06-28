@@ -103,6 +103,15 @@ if (!window.siteConfig) {
     };
 }
 
+window.siteConfig.mayoristaConfig = window.siteConfig.mayoristaConfig || {
+    markupPercent: 10,
+    cbu: "1234567890123456789012",
+    alias: "la.tarima.deco",
+    bank: "Banco Nación",
+    titular: "Juan Pérez",
+    terms: "Condiciones de Venta Mayorista:\n1. Compra mínima de $100.000.\n2. Los precios no incluyen IVA.\n3. Retiro por taller o envío a convenir.\n4. Demora estimada de entrega de 15 a 20 días."
+};
+
 // Función para aplicar la skin de forma reactiva en el body
 window.applyTheme = function(themeName) {
     document.body.classList.remove('theme-sobrio', 'theme-mundial', 'theme-navidad', 'theme-halloween', 'theme-valentin');

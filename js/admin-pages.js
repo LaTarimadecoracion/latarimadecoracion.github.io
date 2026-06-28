@@ -1026,3 +1026,53 @@ adminWidthTabs.forEach(tab => {
         localStorage.setItem('adminPanelPreferredWidth', width);
     });
 });
+
+window.initMayoristaAdmin = function() {
+    const aliasInput = document.getElementById('admin-may-alias');
+    const cbuInput = document.getElementById('admin-may-cbu');
+    const titularInput = document.getElementById('admin-may-titular');
+    const bankInput = document.getElementById('admin-may-bank');
+    const markupInput = document.getElementById('admin-may-markup');
+    const termsTextarea = document.getElementById('admin-may-terms');
+    const saveBtn = document.getElementById('btn-save-mayorista-config');
+
+    if (!aliasInput || !saveBtn) return;
+
+    // Cargar config actual
+    const cfg = window.siteConfig.mayoristaConfig || {};
+    aliasInput.value = cfg.alias || '';
+    cbuInput.value = cfg.cbu || '';
+    titularInput.value = cfg.titular || '';
+    bankInput.value = cfg.bank || '';
+    markupInput.value = cfg.markupPercent !== undefined ? cfg.markupPercent : 10;
+    termsTextarea.value = cfg.terms || '';
+
+    // Manejador del botón Guardar
+    saveBtn.addEventListener('click', async () => {
+        saveBtn.disabled = true;
+        const originalText = saveBtn.innerHTML;
+        saveBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px; animation: spin 1s linear infinite;">sync</span> Guardando...';
+
+        window.siteConfig.mayoristaConfig = {
+            alias: aliasInput.value.trim(),
+            cbu: cbuInput.value.trim(),
+            titular: titularInput.value.trim(),
+            bank: bankInput.value.trim(),
+            markupPercent: parseInt(markupInput.value.trim()) || 0,
+            terms: termsTextarea.value
+        };
+
+        try {
+            if (window.syncSiteConfigWithServer) {
+                await window.syncSiteConfigWithServer();
+            }
+            alert('¡Configuración mayorista guardada con éxito!');
+        } catch (e) {
+            console.error('[Admin Mayorista] Error al guardar config:', e);
+            alert('Hubo un error al guardar la configuración en el servidor.');
+        } finally {
+            saveBtn.disabled = false;
+            saveBtn.innerHTML = originalText;
+        }
+    });
+};

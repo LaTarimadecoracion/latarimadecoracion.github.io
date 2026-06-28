@@ -48,7 +48,7 @@
     }
 
     // Helper: Crear fila de Medida con soporte Drag & Drop y diseño horizontal amplio de igual medida
-    function createMedidaRow(groupId, medida = '', link = '', isDefault = false, isHidden = false, linkLabel = '', iconType = 'local_shipping', highlight = false) {
+    function createMedidaRow(groupId, medida = '', link = '', isDefault = false, isHidden = false, linkLabel = '', iconType = 'local_shipping', highlight = false, price = '', conditions = '') {
         const row = document.createElement('div');
         row.className = 'medida-admin-row';
         row.setAttribute('draggable', 'false'); // Deshabilitado por defecto, activado al tocar el handle
@@ -67,8 +67,10 @@
             </div>
             <input type="radio" name="default-medida-${groupId}" class="medida-default-radio" title="Marcar como variante por defecto" ${isDefault ? 'checked' : ''} style="margin: 0 0.25rem; cursor: pointer; accent-color: var(--primary-color); width: 1.2rem; height: 1.2rem; flex-shrink: 0;">
             <div class="medida-inputs-container">
-                <input type="text" class="medida-valor" placeholder="Medida (ej: 140x45 cm)" value="${medida}">
-                <input type="text" class="medida-link" placeholder="Link de pago (vacío = WA)" value="${link}">
+                <input type="text" class="medida-valor" placeholder="Medida (ej: 140x45 cm)" value="${medida}" style="flex: 1 1 20%;">
+                <input type="text" class="medida-link" placeholder="Link de pago (vacío = WA)" value="${link}" style="flex: 1 1 35%;">
+                <input type="number" class="medida-precio" placeholder="Precio ($)" value="${price}" style="flex: 1 1 20%;" min="0">
+                <input type="text" class="medida-condiciones" placeholder="Condiciones (ej: A pedido)" value="${conditions}" style="flex: 1 1 25%;">
             </div>
             <div class="medida-actions" style="display: flex; gap: 0.25rem; align-items: center; flex-shrink: 0;">
                 <button type="button" class="btn-toggle-medida-visibility"
@@ -140,9 +142,11 @@
             const currentLabel = row.dataset.linkLabel;
             const currentIcon = row.dataset.iconType;
             const currentHighlight = row.dataset.highlight === 'true';
+            const currentPrice = row.querySelector('.medida-precio') ? row.querySelector('.medida-precio').value.trim() : '';
+            const currentConditions = row.querySelector('.medida-condiciones') ? row.querySelector('.medida-condiciones').value.trim() : '';
             
             // Crear nueva fila clonada
-            const newRow = createMedidaRow(groupId, currentMedida, currentLink, false, currentHidden, currentLabel, currentIcon, currentHighlight);
+            const newRow = createMedidaRow(groupId, currentMedida, currentLink, false, currentHidden, currentLabel, currentIcon, currentHighlight, currentPrice, currentConditions);
             
             // Insertar exactamente debajo de la original en el DOM
             row.after(newRow);
@@ -562,7 +566,7 @@
 
         if (groupData && groupData.medidas_variants) {
             groupData.medidas_variants.forEach(m => {
-                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight));
+                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight, m.price !== undefined ? m.price : '', m.conditions !== undefined ? m.conditions : ''));
             });
             updateMedidaGroupColors(medidasContainer);
         }
@@ -755,15 +759,20 @@
                 gState.images = uploadedImages;
 
                 const medidasContainer = card.querySelector('.group-medidas-rows');
-                const medidasVariants = [...medidasContainer.querySelectorAll('.medida-admin-row')].map(row => ({
-                    medida: row.querySelector('.medida-valor').value.trim(),
-                    link:   row.querySelector('.medida-link').value.trim(),
-                    default: row.querySelector('.medida-default-radio').checked,
-                    hidden: row.dataset.hidden === 'true',
-                    linkLabel: row.dataset.linkLabel || '',
-                    iconType: row.dataset.iconType || 'local_shipping',
-                    highlight: row.dataset.highlight === 'true'
-                })).filter(r => r.medida !== '');
+                const medidasVariants = [...medidasContainer.querySelectorAll('.medida-admin-row')].map(row => {
+                    const priceVal = row.querySelector('.medida-precio') ? row.querySelector('.medida-precio').value.trim() : '';
+                    return {
+                        medida: row.querySelector('.medida-valor').value.trim(),
+                        link:   row.querySelector('.medida-link').value.trim(),
+                        default: row.querySelector('.medida-default-radio').checked,
+                        hidden: row.dataset.hidden === 'true',
+                        linkLabel: row.dataset.linkLabel || '',
+                        iconType: row.dataset.iconType || 'local_shipping',
+                        highlight: row.dataset.highlight === 'true',
+                        price: priceVal !== '' ? parseFloat(priceVal) : '',
+                        conditions: row.querySelector('.medida-condiciones') ? row.querySelector('.medida-condiciones').value.trim() : ''
+                    };
+                }).filter(r => r.medida !== '');
 
 
                 finalAcabadosGroups.push({
