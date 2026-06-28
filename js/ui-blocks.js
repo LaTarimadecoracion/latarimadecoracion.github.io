@@ -131,15 +131,21 @@
                         if (targetView || targetProd || targetCat) {
                             btn.addEventListener('click', (e) => {
                                 e.preventDefault();
-                                if (targetView) {
+                                if (targetProd && window.findProductById && window.showProductDetail) {
+                                    const found = window.findProductById(targetProd);
+                                    if (found) {
+                                        window.showProductDetail(found.product, found.catName);
+                                    } else {
+                                        if (targetView) {
+                                            const viewIdMap = { 'nosotros': 'view-about', 'buscar': 'view-search', 'avisos': 'view-notifications', 'perfil': 'view-profile', 'alquileres': 'view-rentals', 'admin': 'view-admin', 'catalogo': 'view-catalogo', 'calcular': 'view-calculator', 'home': 'view-home', 'categorias': 'view-categories', 'carrito': 'view-cart', 'videos': 'view-videos' };
+                                            const viewId = viewIdMap[targetView] || targetView;
+                                            if (window.navigateToView) window.navigateToView(viewId);
+                                        }
+                                    }
+                                } else if (targetView) {
                                     const viewIdMap = { 'nosotros': 'view-about', 'buscar': 'view-search', 'avisos': 'view-notifications', 'perfil': 'view-profile', 'alquileres': 'view-rentals', 'admin': 'view-admin', 'catalogo': 'view-catalogo', 'calcular': 'view-calculator', 'home': 'view-home', 'categorias': 'view-categories', 'carrito': 'view-cart', 'videos': 'view-videos' };
                                     const viewId = viewIdMap[targetView] || targetView;
                                     if (window.navigateToView) window.navigateToView(viewId);
-                                } else if (targetProd) {
-                                    if (window.findProductById && window.showProductDetail) {
-                                        const found = window.findProductById(targetProd);
-                                        if (found) window.showProductDetail(found.product, found.catName);
-                                    }
                                 } else if (targetCat) {
                                     if (window.navigateToCategoryFeed) window.navigateToCategoryFeed(targetCat);
                                 }
@@ -453,7 +459,6 @@
                 alert('Por favor agregá al menos un enlace con URL.');
                 return;
             }
-
             const firstLink = links[0] || {};
 
             const newBlock = {
@@ -470,6 +475,17 @@
                 linkNewTab: firstLink.newTab !== false,
             };
 
+            const arr = getSessionArray();
+            if (editingInfoIndex !== null) {
+                // Keep the old timestamp if it exists, otherwise it will just stay undefined (old blocks)
+                if (arr[editingInfoIndex] && arr[editingInfoIndex].timestamp) {
+                    newBlock.timestamp = arr[editingInfoIndex].timestamp;
+                }
+            } else {
+                // If it's a new block (e.g., a new aviso), assign the current time
+                newBlock.timestamp = Date.now();
+            }
+
             if (mediaType === 'video' && !extractYouTubeId(newBlock.videoUrl)) {
                 alert('Por favor ingresá una URL válida de YouTube.');
                 return;
@@ -479,7 +495,6 @@
                 return;
             }
 
-            const arr = getSessionArray();
             if (editingInfoIndex !== null) {
                 arr[editingInfoIndex] = newBlock;
             } else {

@@ -113,11 +113,16 @@
             });
             const data = await response.json();
             if (!data.success) {
-                alert('Hubo un error al guardar los alquileres en el servidor: ' + data.message);
+                console.error('Hubo un error al guardar los alquileres en el servidor: ' + data.message);
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('No se pudo conectar con el servidor local para guardar alquileres.');
+            console.error('Error de conexión con el servidor local:', error);
+            try {
+                localStorage.setItem('sessionRentalsAutonomo', JSON.stringify(window.sessionRentals));
+                console.log('Alquileres guardados en localStorage como respaldo.');
+            } catch (lsError) {
+                console.error('No se pudo guardar el respaldo de alquileres en localStorage', lsError);
+            }
         }
     }
 

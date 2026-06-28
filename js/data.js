@@ -5,7 +5,24 @@ window.navigationHistory = [];
 
 // Estado global de Productos
 window.sessionProducts = typeof productsData !== 'undefined' ? [...productsData] : [];
+try {
+    const localProducts = localStorage.getItem('sessionProductsAutonomo');
+    if (localProducts) {
+        window.sessionProducts = JSON.parse(localProducts);
+    }
+} catch (e) {
+    console.error('Error loading sessionProducts fallback:', e);
+}
+
 window.sessionRentals = typeof rentalsData !== 'undefined' ? [...rentalsData] : [];
+try {
+    const localRentals = localStorage.getItem('sessionRentalsAutonomo');
+    if (localRentals) {
+        window.sessionRentals = JSON.parse(localRentals);
+    }
+} catch (e) {
+    console.error('Error loading sessionRentals fallback:', e);
+}
 
 // Garantizar que existan las estructuras de siteConfig del servidor
 if (!window.siteConfig) {

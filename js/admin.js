@@ -2163,7 +2163,7 @@ window.safeAdminRun = function(fn) {
         } else {
             titleText = existingProd
                 ? (isClon ? `📋 Clonando: ${existingProd.title}` : `Editando: ${existingProd.title}`)
-                : `Nuevo Producto en ${sessionProducts[cIdx].name}`;
+                : `Nuevo Producto en ${cIdx !== null ? sessionProducts[cIdx].name : 'Catálogo General'}`;
         }
         adminFormTitle.textContent = titleText;
         productModal.style.display = 'flex';
@@ -2181,7 +2181,7 @@ window.safeAdminRun = function(fn) {
             btnGenerateJson.textContent = 'Guardando...';
 
             const pTitle  = document.getElementById('admin-title').value;
-            const catName = window.isRentalMode ? 'alquileres' : sessionProducts[targetCategoryIdForProduct].name;
+            const catName = window.isRentalMode ? 'alquileres' : (targetCategoryIdForProduct !== null ? sessionProducts[targetCategoryIdForProduct].name : 'general');
 
             const finalAcabadosGroups = [];
 
@@ -2277,6 +2277,37 @@ window.safeAdminRun = function(fn) {
                     sessionRentals.push(product);
                 }
 
+                // Auto-crear aviso si es un alquiler totalmente nuevo
+                if (!editingProductId) {
+                    const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                    const newAvisoBlock = {
+                        title: `¡Nuevo Alquiler: ${product.title}!`,
+                        description: `Sumamos un nuevo artículo a nuestra sección de alquileres. ¡Hacé clic para conocer todos los detalles de ${product.title}!`,
+                        mediaType: 'image',
+                        image: productCover,
+                        videoUrl: '',
+                        mapQuery: '',
+                        links: [
+                            {
+                                text: 'Ver Alquiler',
+                                url: `?view=view-product-detail&prod=${product.id}`,
+                                newTab: false
+                            }
+                        ],
+                        linkUrl: `?view=view-product-detail&prod=${product.id}`,
+                        linkText: 'Ver Alquiler',
+                        linkNewTab: false,
+                        timestamp: Date.now()
+                    };
+
+                    if (typeof window.sessionAvisos !== 'undefined') {
+                        window.sessionAvisos.unshift(newAvisoBlock);
+                        localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
+                        if (window.syncSiteConfigWithServer) {
+                            window.syncSiteConfigWithServer();
+                        }
+                    }
+                }
                 showAdminToast(editingProductId ? '✅ Alquiler actualizado correctamente' : '✅ Alquiler creado correctamente');
 
                 if (window.saveRentalsToServer) {
@@ -2367,6 +2398,38 @@ window.safeAdminRun = function(fn) {
                     }
                 }
             });
+
+            // Auto-crear aviso si es un producto totalmente nuevo
+            if (!editingProductId) {
+                const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                const newAvisoBlock = {
+                    title: `¡Nuevo Ingreso: ${product.title}!`,
+                    description: `Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de ${product.title}!`,
+                    mediaType: 'image',
+                    image: productCover,
+                    videoUrl: '',
+                    mapQuery: '',
+                    links: [
+                        {
+                            text: 'Ver Producto',
+                            url: `?view=view-product-detail&prod=${product.id}`,
+                            newTab: false
+                        }
+                    ],
+                    linkUrl: `?view=view-product-detail&prod=${product.id}`,
+                    linkText: 'Ver Producto',
+                    linkNewTab: false,
+                    timestamp: Date.now()
+                };
+
+                if (typeof window.sessionAvisos !== 'undefined') {
+                    window.sessionAvisos.unshift(newAvisoBlock);
+                    localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
+                    if (window.syncSiteConfigWithServer) {
+                        window.syncSiteConfigWithServer();
+                    }
+                }
+            }
 
             showAdminToast(editingProductId ? '✅ Producto actualizado en todas las categorías' : '✅ Producto agregado a las categorías');
 

@@ -43,12 +43,16 @@ window.siteConfig = {
     "contentRegistry": {
         "home": [],
         "search": [],
-        "avisos": []
+        "avisos": [],
+        "categories": [],
+        "cart": [],
+        "videos": [],
+        "catalogo": [],
+        "nosotros": []
     },
     "homeConfig": {
         "order": [
             "categorias",
-            "comp-1782536785924",
             "novedades",
             "buscados"
         ],
@@ -109,43 +113,99 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
-            "id": "aviso-1",
-            "type": "text",
-            "title": "¡Nuevo Lanzamiento!",
-            "icon": "celebration",
-            "time": "Hace 2 horas",
-            "linkText": "",
-            "linkUrl": "",
-            "description": "Ya están disponibles los podios reforzados en preventa exclusiva.",
-            "imageUrl": "",
-            "youtubeId": "",
-            "productId": ""
+            "title": "¡Nuevo Ingreso: Baúl de madera de pino - Mediano!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Baúl de madera de pino - Mediano!",
+            "mediaType": "image",
+            "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=baul-madera-mediano",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=baul-madera-mediano",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1782607703040
         },
         {
-            "id": "aviso-2",
-            "type": "text",
-            "title": "Envíos gratis",
-            "icon": "local_shipping",
-            "time": "Hace 2 días",
-            "linkText": "",
-            "linkUrl": "",
-            "description": "Esta semana tenemos envíos gratis en CABA y GBA para compras superiores a $500.000.",
-            "imageUrl": "",
-            "youtubeId": "",
-            "productId": ""
+            "title": "¡Nuevo Ingreso: Baúl de madera de pino de Mediano!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Baúl de madera de pino de Mediano!",
+            "mediaType": "image",
+            "image": "img/infantil/baul-de-madera-de-pino-de-mediano/1782607215928-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=baul-madera-mediano",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=baul-madera-mediano",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1782607216397
         },
         {
-            "id": "aviso-1780267628576",
-            "type": "video",
-            "title": "",
-            "icon": "campaign",
-            "time": "",
-            "linkText": "",
-            "linkUrl": "",
-            "description": "",
-            "imageUrl": "",
-            "youtubeId": "https://youtu.be/RXUtc6yk8ME?list=RDRXUtc6yk8ME",
-            "productId": ""
+            "title": "¡Nuevo Ingreso: Mesa Plegable - Redonda!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesa Plegable - Redonda!",
+            "mediaType": "image",
+            "image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=mesa-plegable-redonda-chica",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=mesa-plegable-redonda-chica",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1782606636520
+        },
+        {
+            "title": "¡Nuevo Ingreso: Mesita plegable base redonda!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesita plegable base redonda!",
+            "mediaType": "image",
+            "image": "img/exterior/mesita-plegable-base-redonda/1782605968870-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=mesa-plegable-redonda-chica",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=mesa-plegable-redonda-chica",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1782605969177
+        },
+        {
+            "title": "¡Nuevo Ingreso: Mesa Plegabe!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesa Plegabe!",
+            "mediaType": "image",
+            "image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=mesa-plegabe",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=mesa-plegabe",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1782601059276
         }
     ],
     "socialLinks": {

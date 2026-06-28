@@ -55,6 +55,75 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Error inicializando AvisosModule:", e);
     }
 
+    // --- Sistema de Notificaciones In-App (Avisos) ---
+    function checkUnreadAvisos() {
+        if (!window.sessionAvisos || window.sessionAvisos.length === 0) return;
+        
+        const lastRead = parseInt(localStorage.getItem('lastReadAvisoTimestamp') || '0', 10);
+        
+        const latestAviso = window.sessionAvisos.reduce((max, aviso) => {
+            const ts = (aviso && aviso.timestamp) || 0;
+            return ts > max ? ts : max;
+        }, 0);
+
+        if (latestAviso > lastRead) {
+            // Activar campanita
+            const badge = document.getElementById('header-nav-badge');
+            if (badge) badge.style.display = 'block';
+            
+            const btn = document.getElementById('nav-notif-btn-header');
+            if (btn) btn.classList.add('pulse-notif');
+
+            // Mostrar el Toast (MSN style)
+            showAvisoToast();
+        }
+    }
+
+    function showAvisoToast() {
+        if (document.getElementById('aviso-toast')) return;
+
+        const toast = document.createElement('div');
+        toast.id = 'aviso-toast';
+        toast.className = 'toast-notification';
+        toast.innerHTML = `
+            <div class="toast-icon"><span class="material-symbols-outlined">notifications_active</span></div>
+            <div class="toast-content">
+                <strong>¡Novedades!</strong>
+                <span>Tenés un nuevo aviso disponible.</span>
+            </div>
+            <button class="toast-close"><span class="material-symbols-outlined">close</span></button>
+        `;
+
+        document.body.appendChild(toast);
+
+        toast.addEventListener('click', (e) => {
+            if (e.target.closest('.toast-close')) return;
+            if (window.navigateToView) window.navigateToView('view-notifications');
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 400);
+        });
+
+        toast.querySelector('.toast-close').addEventListener('click', (e) => {
+            e.stopPropagation();
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 400);
+        });
+
+        requestAnimationFrame(() => {
+            setTimeout(() => toast.classList.add('show'), 100);
+        });
+
+        setTimeout(() => {
+            if (document.body.contains(toast)) {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }
+        }, 5000);
+    }
+
+    setTimeout(checkUnreadAvisos, 800);
+    // -------------------------------------------------
+
     const listInit = document.getElementById('admin-section-components-list');
     if (listInit && window.renderAdminViewBuilderList) {
         window.renderAdminViewBuilderList();

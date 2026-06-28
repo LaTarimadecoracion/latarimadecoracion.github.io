@@ -4151,3 +4151,126 @@ details.form-group[open] {
         padding-right: 2.25rem !important;
     }
 }
+
+/* ── Avisos In-App Notifications ── */
+.toast-notification {
+    position: fixed;
+    bottom: -100px;
+    right: 1.5rem;
+    z-index: 9999;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    opacity: 0;
+    max-width: 320px;
+}
+
+.toast-notification.show {
+    bottom: 2rem;
+    opacity: 1;
+}
+
+.toast-notification .toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 179, 0, 0.15);
+    color: #FFB300;
+    flex-shrink: 0;
+}
+
+.toast-notification .toast-icon .material-symbols-outlined {
+    font-size: 20px;
+    animation: ringBell 2s infinite ease-in-out;
+}
+
+.toast-notification .toast-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.toast-notification .toast-content strong {
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.toast-notification .toast-content span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.toast-notification .toast-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    margin-left: auto;
+}
+
+.toast-notification .toast-close:hover {
+    background: rgba(0,0,0,0.05);
+    color: var(--text-color);
+}
+
+.toast-notification .toast-close .material-symbols-outlined {
+    font-size: 18px;
+}
+
+/* Campanita Animación */
+@keyframes ringBell {
+    0%, 100% { transform: rotate(0); }
+    10% { transform: rotate(15deg); }
+    20% { transform: rotate(-10deg); }
+    30% { transform: rotate(5deg); }
+    40% { transform: rotate(-5deg); }
+    50% { transform: rotate(0); }
+}
+
+.pulse-notif {
+    position: relative;
+}
+
+.pulse-notif::before {
+    content: '';
+    position: absolute;
+    top: -2px; right: -2px; bottom: -2px; left: -2px;
+    border-radius: 50%;
+    border: 2px solid #ff3b30;
+    animation: pulseRing 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    pointer-events: none;
+}
+
+@keyframes pulseRing {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .toast-notification {
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+        bottom: -100px;
+    }
+    
+    .toast-notification.show {
+        bottom: 80px; /* Arriba del bottom-nav */
+    }
+}

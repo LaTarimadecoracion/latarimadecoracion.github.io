@@ -214,7 +214,18 @@
             } else if (viewId === 'view-about') {
                 renderNosotrosBlocksCliente();
             } else if (viewId === 'view-notifications') {
-                renderAvisosCliente();
+                // Marcar avisos como leídos
+                const badge = document.getElementById('header-nav-badge');
+                if (badge) badge.style.display = 'none';
+                const btn = document.getElementById('nav-notif-btn-header');
+                if (btn) btn.classList.remove('pulse-notif');
+                localStorage.setItem('lastReadAvisoTimestamp', Date.now().toString());
+
+                if (window.renderInfoBlocksCliente) {
+                    window.renderInfoBlocksCliente('avisos');
+                } else if (typeof renderAvisosCliente !== 'undefined') {
+                    renderAvisosCliente();
+                }
             } else if (viewId === 'view-rentals') {
                 renderRentals();
             } else if (viewId === 'view-admin') {

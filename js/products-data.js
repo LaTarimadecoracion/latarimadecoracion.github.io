@@ -2079,27 +2079,32 @@ const productsData = [
                 "id": "banquito-de-plaza",
                 "title": "Banquito de Plaza",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp",
+                "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp",
+                        "cover_image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
                         "images_list": [
-                            "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp"
+                            "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/infantil/banquito-de-plaza/1782606557223-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Doble",
                                 "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780708180941,
-                "primaryCatId": "infantil",
-                "views": 0
+                "last_modified": 1782606557364,
+                "primaryCatId": "infantil"
             },
             {
                 "id": "Mueble-Multifunción",
@@ -2544,76 +2549,35 @@ const productsData = [
                 "primaryCatId": "Muebles-y-Jardín"
             },
             {
-                "id": "mesa-plegabe",
-                "title": "Mesa Plegabe",
-                "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/migrados/otros/mesa-plegabe/Fanal.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/migrados/otros/mesa-plegabe/Fanal.webp",
-                        "images_list": [
-                            "img/migrados/otros/mesa-plegabe/Fanal.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "64 x 45 x 36 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709-mesa-peglabe-playera-jardin-_JM?searchVariation=186882426581#polycard_client=search-nordic&searchVariation=186882426581&search_layout=grid&position=8&type=item&tracking_id=d54c9c84-c40e-4a07-97d6-b60aee6f63bb",
-                                "default": true
-                            }
-                        ]
-                    }
-                ],
-                "views": 0
-            },
-            {
-                "id": "mesa-plegabe---portavasos",
-                "title": "Mesa Plegabe - Portavasos",
-                "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/migrados/otros/mesa-plegabe---portavasos/Fanal.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/migrados/otros/mesa-plegabe---portavasos/Fanal.webp",
-                        "images_list": [
-                            "img/migrados/otros/mesa-plegabe---portavasos/Fanal.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "64 x 45 x 36 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709-mesa-peglabe-playera-jardin-_JM?searchVariation=186882426581#polycard_client=search-nordic&searchVariation=186882426581&search_layout=grid&position=8&type=item&tracking_id=d54c9c84-c40e-4a07-97d6-b60aee6f63bb",
-                                "default": true
-                            }
-                        ]
-                    }
-                ],
-                "views": 0
-            },
-            {
                 "id": "banquito-de-plaza",
                 "title": "Banquito de Plaza",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp",
+                "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp",
+                        "cover_image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
                         "images_list": [
-                            "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp"
+                            "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/infantil/banquito-de-plaza/1782606557223-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Doble",
                                 "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780708180941,
-                "primaryCatId": "infantil",
-                "views": 0
+                "last_modified": 1782606557364,
+                "primaryCatId": "infantil"
             },
             {
                 "id": "Mueble-Multifunción",
@@ -2764,6 +2728,49 @@ const productsData = [
                 "last_modified": 1780709044058,
                 "primaryCatId": "Hogar",
                 "views": 7
+            },
+            {
+                "id": "mesa-plegabe",
+                "title": "Mesa Plegabe",
+                "description": "",
+                "image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                        "images_list": [
+                            "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                            "img/exterior/mesa-plegabe/1782601058954-imagen.webp",
+                            "img/exterior/mesa-plegabe/1782601059141-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782601059276,
+                "primaryCatId": "exterior"
+            },
+            {
+                "id": "mesa-plegable-redonda-chica",
+                "title": "Mesa Plegable - Redonda",
+                "description": "",
+                "image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                        "images_list": [
+                            "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                            "img/exterior/mesa-plegable---redonda/1782606636382-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782606636520,
+                "primaryCatId": "exterior"
             }
         ]
     },
@@ -3084,27 +3091,32 @@ const productsData = [
                 "id": "banquito-de-plaza",
                 "title": "Banquito de Plaza",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp",
+                "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp",
+                        "cover_image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
                         "images_list": [
-                            "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp"
+                            "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/infantil/banquito-de-plaza/1782606557223-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Doble",
                                 "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780708180941,
-                "primaryCatId": "infantil",
-                "views": 0
+                "last_modified": 1782606557364,
+                "primaryCatId": "infantil"
             },
             {
                 "id": "silla-infantil",
@@ -3212,27 +3224,32 @@ const productsData = [
                 "id": "banquito-de-plaza",
                 "title": "Banquito de Plaza",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp",
+                "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp",
+                        "cover_image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
                         "images_list": [
-                            "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp"
+                            "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/infantil/banquito-de-plaza/1782606557223-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Doble",
                                 "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780708180941,
-                "primaryCatId": "infantil",
-                "views": 0
+                "last_modified": 1782606557364,
+                "primaryCatId": "infantil"
             },
             {
                 "id": "silla-infantil",
@@ -3325,27 +3342,32 @@ const productsData = [
                 "id": "banquito-de-plaza",
                 "title": "Banquito de Plaza",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp",
+                "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp",
+                        "cover_image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
                         "images_list": [
-                            "img/migrados/infantil/banquito-de-plaza/Banquito de Plaza.webp"
+                            "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/infantil/banquito-de-plaza/1782606557223-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Doble",
                                 "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780708180941,
-                "primaryCatId": "infantil",
-                "views": 0
+                "last_modified": 1782606557364,
+                "primaryCatId": "infantil"
             },
             {
                 "id": "silla-infantil",
@@ -3400,7 +3422,7 @@ const productsData = [
             },
             {
                 "id": "Platos - Cuencos",
-                "title": "",
+                "title": "Cuencos",
                 "description": "",
                 "image": "img/hogar/portada-imagen.webp",
                 "acabados_groups": [
@@ -3412,13 +3434,13 @@ const productsData = [
                             "img/hogar/portada-imagen.webp",
                             "img/hogar/portada-imagen.webp"
                         ],
-                        "medidas_variants": []
+                        "medidas_variants": [],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780708978310,
-                "primaryCatId": "Hogar",
-                "views": 1
+                "last_modified": 1782599241373,
+                "primaryCatId": "Hogar"
             },
             {
                 "id": "Platos-madera",

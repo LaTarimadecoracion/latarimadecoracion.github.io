@@ -823,11 +823,17 @@
             });
             const data = await response.json();
             if (!data.success) {
-                alert('Hubo un error al guardar en el servidor: ' + data.message);
+                console.error('Hubo un error al guardar en el servidor: ' + data.message);
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('No se pudo conectar con el servidor local para guardar.');
+            console.error('Error de conexión con el servidor local:', error);
+            // Guardar localmente para evitar pérdida de datos ante recargas (ej: Live Server)
+            try {
+                localStorage.setItem('sessionProductsAutonomo', JSON.stringify(window.sessionProducts));
+                console.log('Productos guardados en localStorage como respaldo.');
+            } catch (lsError) {
+                console.error('No se pudo guardar el respaldo en localStorage', lsError);
+            }
         }
     }
 
