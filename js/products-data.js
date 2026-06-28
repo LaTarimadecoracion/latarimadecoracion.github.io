@@ -3224,7 +3224,7 @@ const productsData = [
     {
         "id": "infantil",
         "name": "Infantil",
-        "image": "img/migrados/infantil/general/Banquito de Plaza.webp",
+        "image": "img/infantil/portada-1782623289958-imagen.webp",
         "order": 11,
         "products": [
             {
@@ -3565,7 +3565,7 @@ const productsData = [
     {
         "id": "Hogar",
         "name": "Hogar",
-        "image": "img/hogar/portada-imagen.webp",
+        "image": "img/hogar/portada-1782623440825-imagen.webp",
         "order": 13,
         "products": [
             {

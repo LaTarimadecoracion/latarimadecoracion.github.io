@@ -1006,11 +1006,6 @@
         });
     }
 
-    // 6. Search View — Real-time search
-    const searchInput = document.getElementById('search-input');
-    const searchResultsContainer = document.getElementById('search-results-container');
-    const searchEmptyState = document.getElementById('search-empty-state');
-
     // --- BUSCADOR CONSCIENTE DE LAS VARIANTES (ACABADOS) ---
     
     // Función interna para generar el índice virtual de productos y variantes
