@@ -775,6 +775,50 @@ const productsData = [
                 "last_modified": 1782416897270,
                 "primaryCatId": "Barandas",
                 "visible": true
+            },
+            {
+                "id": "Posa-Tortas",
+                "title": "Posa Torta De Madera Torneado Candy Bar",
+                "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
+                "image": "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                        "images_list": [
+                            "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                            "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590872-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "22 Diam X 21 Alto",
+                                "link": "https://www.mercadolibre.com.ar/posa-torta-de-madera-torneado-candy-bar-22-diam-x-21-alto/up/MLAU3618805830?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=15&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7&wid=MLA1590370469&sid=search",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "posa",
+                    "tortas",
+                    "candy",
+                    "bar",
+                    "decoracion",
+                    "pasteles",
+                    "fiesta",
+                    "15 años",
+                    "bebes",
+                    "cumpleaños",
+                    "torneado",
+                    "madera"
+                ],
+                "last_modified": 1782622636991,
+                "primaryCatId": "Barandas"
             }
         ],
         "visible": true
@@ -2336,17 +2380,47 @@ const productsData = [
                             {
                                 "medida": "25 x 50 cm (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM",
-                                "default": true
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            },
+                            {
+                                "medida": "30 x 40 cm (1 Unidad)",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-30-x-40-cm/up/MLAU3974458202?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=8&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            },
+                            {
+                                "medida": "30 x 80 cm (1 Unidad)",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-80-x-30-cm/up/MLAU3755092617?pdp_filters=seller_id%3A618512819#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=fallback_same-seller&reco_client=vip-seller_items-above&reco_item_pos=0&reco_backend_type=low_level&reco_id=1226f72d-4e83-430a-bc23-cab333cafa92&wid=MLA2813675242&sid=recos",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
                         ],
                         "hidden": false
@@ -2380,7 +2454,7 @@ const productsData = [
                     "Organizador de plantas",
                     "Estantes para macetas"
                 ],
-                "last_modified": 1782532915656,
+                "last_modified": 1782622157535,
                 "primaryCatId": "Muebles-y-Jardín"
             },
             {
@@ -2533,17 +2607,47 @@ const productsData = [
                             {
                                 "medida": "25 x 50 cm (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM",
-                                "default": true
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            },
+                            {
+                                "medida": "30 x 40 cm (1 Unidad)",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-30-x-40-cm/up/MLAU3974458202?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=8&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            },
+                            {
+                                "medida": "30 x 80 cm (1 Unidad)",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-80-x-30-cm/up/MLAU3755092617?pdp_filters=seller_id%3A618512819#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=fallback_same-seller&reco_client=vip-seller_items-above&reco_item_pos=0&reco_backend_type=low_level&reco_id=1226f72d-4e83-430a-bc23-cab333cafa92&wid=MLA2813675242&sid=recos",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
                         ],
                         "hidden": false
@@ -2577,7 +2681,7 @@ const productsData = [
                     "Organizador de plantas",
                     "Estantes para macetas"
                 ],
-                "last_modified": 1782532915656,
+                "last_modified": 1782622157535,
                 "primaryCatId": "Muebles-y-Jardín"
             },
             {
@@ -3705,17 +3809,47 @@ const productsData = [
                             {
                                 "medida": "25 x 50 cm (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM",
-                                "default": true
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
-                                "default": false
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            },
+                            {
+                                "medida": "30 x 40 cm (1 Unidad)",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-30-x-40-cm/up/MLAU3974458202?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=8&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            },
+                            {
+                                "medida": "30 x 80 cm (1 Unidad)",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-80-x-30-cm/up/MLAU3755092617?pdp_filters=seller_id%3A618512819#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=fallback_same-seller&reco_client=vip-seller_items-above&reco_item_pos=0&reco_backend_type=low_level&reco_id=1226f72d-4e83-430a-bc23-cab333cafa92&wid=MLA2813675242&sid=recos",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
                         ],
                         "hidden": false
@@ -3749,7 +3883,7 @@ const productsData = [
                     "Organizador de plantas",
                     "Estantes para macetas"
                 ],
-                "last_modified": 1782532915656,
+                "last_modified": 1782622157535,
                 "primaryCatId": "Muebles-y-Jardín"
             },
             {

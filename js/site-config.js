@@ -113,6 +113,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Posa Torta De Madera Torneado Candy Bar!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Posa Torta De Madera Torneado Candy Bar!",
+            "mediaType": "image",
+            "image": "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Posa-Tortas",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Posa-Tortas",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1782622590998
+        },
+        {
             "title": "¡Nuevo Ingreso: Baúl de madera de pino - Mediano!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Baúl de madera de pino - Mediano!",
             "mediaType": "image",
