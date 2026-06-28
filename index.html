@@ -574,11 +574,20 @@
                                             <span class="material-symbols-outlined">inventory_2</span>
                                             Estanterías por Categoría
                                         </h3>
-                                        <div class="admin-header-actions">
+                                        <div class="admin-header-actions" style="gap: 8px;">
+                                            <button type="button" id="btn-admin-show-all-products" class="btn-outline" style="padding: 0.4rem 1rem; width: auto; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;">🔍 Ver Todos los Productos</button>
                                             <button type="button" id="btn-open-add-category" class="btn-primary">➕ Nueva Categoría</button>
                                         </div>
                                     </header>
-                                    <div id="admin-category-tree" class="category-tree-container">
+                                    <div style="padding: 1rem 1.25rem 0.5rem 1.25rem;">
+                                        <div class="admin-filters-bar" style="padding: 0; background: transparent; border: none; box-shadow: none; margin-bottom: 0;">
+                                            <div class="search-wrapper" style="flex: 1; max-width: none;">
+                                                <span class="material-symbols-outlined">search</span>
+                                                <input type="text" id="admin-category-tree-search" placeholder="Buscar producto en cualquier estantería...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="admin-category-tree" class="category-tree-container" style="margin-top: 0.5rem;">
                                         <!-- Árbol inyectado dinámicamente -->
                                     </div>
                                 </div>

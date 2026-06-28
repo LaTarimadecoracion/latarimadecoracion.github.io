@@ -266,6 +266,51 @@ window.safeAdminRun = function(fn) {
             });
         }
 
+        // Buscador global de productos desde la vista de Estanterías/Categorías
+        const categoryTreeSearch = document.getElementById('admin-category-tree-search');
+        if (categoryTreeSearch) {
+            categoryTreeSearch.addEventListener('input', (e) => {
+                const query = e.target.value;
+                if (query.trim()) {
+                    selectedCategoryIdForProducts = 'all';
+                    currentAdminPhase = 'products';
+                    adminCurrentPage = 1;
+                    adminSearchQuery = query;
+
+                    // Limpiar el buscador inicial para que no quede retenido
+                    categoryTreeSearch.value = '';
+
+                    // Sincronizar el input de la vista de productos
+                    const mainSearch = document.getElementById('admin-search');
+                    if (mainSearch) {
+                        mainSearch.value = query;
+                        renderAdminUX();
+                        mainSearch.focus();
+                        const len = mainSearch.value.length;
+                        mainSearch.setSelectionRange(len, len);
+                    } else {
+                        renderAdminUX();
+                    }
+                }
+            });
+        }
+
+        // Botón "Ver Todos los Productos" en la vista de Estanterías/Categorías
+        const btnShowAllProducts = document.getElementById('btn-admin-show-all-products');
+        if (btnShowAllProducts) {
+            btnShowAllProducts.addEventListener('click', () => {
+                selectedCategoryIdForProducts = 'all';
+                currentAdminPhase = 'products';
+                adminCurrentPage = 1;
+                adminSearchQuery = '';
+
+                const mainSearch = document.getElementById('admin-search');
+                if (mainSearch) mainSearch.value = '';
+
+                renderAdminUX();
+            });
+        }
+
         // --- LISTENERS DEL MODAL DE CONFIGURACIÓN ---
         const btnCancelAppConfig = document.getElementById('btn-cancel-app-config');
         const appConfigModal = document.getElementById('admin-app-config-modal');
