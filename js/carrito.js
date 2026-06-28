@@ -551,6 +551,21 @@
                             </div>
                         `).join('')}
                         
+                        <!-- Datos de Envío Autocompletados (Propuesta 14) -->
+                        <div class="cart-shipping-preview-card" style="padding: 1rem; background: #f8fafc; border-radius: 8px; border: 1.5px solid #e2e8f0; margin-bottom: 0.85rem; margin-top: 0.5rem; text-align: left;">
+                            <h4 style="margin: 0 0 0.5rem 0; font-size: 0.9rem; font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 6px;">
+                                <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary-color, #c0510a);">local_shipping</span>
+                                Datos de Entrega (Envío)
+                            </h4>
+                            <div id="cart-shipping-summary" style="font-size: 0.82rem; color: #475569; line-height: 1.45;">
+                                ${userData.name ? `<strong>Destinatario:</strong> ${userData.name}<br>` : ''}
+                                ${userData.address ? `<strong>Domicilio:</strong> ${userData.address}, ${userData.locality || ''} (${userData.province || ''})` : '<span style="color:#e11d48; font-weight:600; display:flex; align-items:center; gap:4px;"><span class="material-symbols-outlined" style="font-size:16px;">warning</span> Falta completar dirección de envío</span>'}
+                            </div>
+                            <button type="button" id="btn-edit-cart-shipping" style="background: transparent; border: none; color: var(--primary-color, #c0510a); font-size: 0.8rem; font-weight: 600; cursor: pointer; padding: 6px 0 0 0; text-decoration: underline; font-family: var(--font-main);">
+                                Editar datos de envío
+                            </button>
+                        </div>
+
                         <!-- Acciones Directas Doble Camino (Sin formularios intermedios) -->
                         <div class="cart-actions-bar">
                             <button type="button" id="btn-cart-checkout-shipping" class="btn-primary giant-btn" style="display:flex; align-items:center; justify-content:center; gap:8px;">
@@ -880,12 +895,113 @@
                 });
             });
 
+            // --- MEJORAS UX/UI (Propuesta 14) ---
+            // Formulario de Envío rápido en Carrito
+            const btnEditShipping = document.getElementById('btn-edit-cart-shipping');
+            if (btnEditShipping) {
+                btnEditShipping.addEventListener('click', () => {
+                    let formOverlay = document.getElementById('cart-shipping-modal');
+                    if (!formOverlay) {
+                        formOverlay = document.createElement('div');
+                        formOverlay.id = 'cart-shipping-modal';
+                        formOverlay.style.cssText = `
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100vw;
+                            height: 100vh;
+                            background: rgba(15, 23, 42, 0.6);
+                            z-index: 99999;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            backdrop-filter: blur(4px);
+                        `;
+                        formOverlay.innerHTML = `
+                            <div style="background: white; width: 90%; max-width: 400px; padding: 1.5rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 1rem; box-sizing: border-box; font-family: var(--font-main);">
+                                <h3 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 6px;">
+                                    <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a);">local_shipping</span>
+                                    Datos de Envío
+                                </h3>
+                                <div style="display:flex; flex-direction:column; gap:4px;">
+                                    <label style="font-size:0.75rem; font-weight:600; color:#475569;">Nombre y Apellido</label>
+                                    <input type="text" id="cart-ship-name" placeholder="ej: Juan Pérez" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; width:100%; box-sizing:border-box;">
+                                </div>
+                                <div style="display:flex; flex-direction:column; gap:4px;">
+                                    <label style="font-size:0.75rem; font-weight:600; color:#475569;">Domicilio Particular Completo</label>
+                                    <input type="text" id="cart-ship-address" placeholder="ej: Av. Vergara 1234, e/ Paso y Arenales" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; width:100%; box-sizing:border-box;">
+                                </div>
+                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                    <div style="display:flex; flex-direction:column; gap:4px;">
+                                        <label style="font-size:0.75rem; font-weight:600; color:#475569;">Localidad</label>
+                                        <input type="text" id="cart-ship-locality" placeholder="ej: Hurlingham" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; width:100%; box-sizing:border-box;">
+                                    </div>
+                                    <div style="display:flex; flex-direction:column; gap:4px;">
+                                        <label style="font-size:0.75rem; font-weight:600; color:#475569;">Provincia</label>
+                                        <input type="text" id="cart-ship-province" placeholder="ej: Buenos Aires" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; width:100%; box-sizing:border-box;">
+                                    </div>
+                                </div>
+                                <div style="display:flex; gap: 8px; justify-content: flex-end; margin-top: 0.5rem;">
+                                    <button type="button" id="btn-cancel-cart-ship" style="padding: 0.5rem 1rem; font-size: 0.85rem; background: #e2e8f0; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; color: #475569; font-family: var(--font-main);">Cancelar</button>
+                                    <button type="button" id="btn-save-cart-ship" style="padding: 0.5rem 1rem; font-size: 0.85rem; background: var(--primary-color, #c0510a); border: none; border-radius: 8px; font-weight: 600; cursor: pointer; color: white; font-family: var(--font-main);">Guardar</button>
+                                </div>
+                            </div>
+                        `;
+                        document.body.appendChild(formOverlay);
+                        
+                        formOverlay.querySelector('#btn-cancel-cart-ship').addEventListener('click', () => {
+                            formOverlay.style.display = 'none';
+                        });
+                        
+                        formOverlay.querySelector('#btn-save-cart-ship').addEventListener('click', () => {
+                            const nameVal = formOverlay.querySelector('#cart-ship-name').value.trim();
+                            const addrVal = formOverlay.querySelector('#cart-ship-address').value.trim();
+                            const locVal = formOverlay.querySelector('#cart-ship-locality').value.trim();
+                            const provVal = formOverlay.querySelector('#cart-ship-province').value.trim();
+                            
+                            // Guardar datos
+                            userData.name = nameVal;
+                            userData.address = addrVal;
+                            userData.locality = locVal;
+                            userData.province = provVal;
+                            saveUserData();
+                            
+                            // Actualizar resumen en DOM
+                            const summaryEl = document.getElementById('cart-shipping-summary');
+                            if (summaryEl) {
+                                summaryEl.innerHTML = `
+                                    ${nameVal ? `<strong>Destinatario:</strong> ${nameVal}<br>` : ''}
+                                    ${addrVal ? `<strong>Domicilio:</strong> ${addrVal}, ${locVal} (${provVal})` : '<span style="color:#e11d48; font-weight:600; display:flex; align-items:center; gap:4px;"><span class="material-symbols-outlined" style="font-size:16px;">warning</span> Falta completar dirección de envío</span>'}
+                                `;
+                            }
+                            
+                            formOverlay.style.display = 'none';
+                        });
+                    }
+                    
+                    formOverlay.querySelector('#cart-ship-name').value = userData.name || '';
+                    formOverlay.querySelector('#cart-ship-address').value = userData.address || '';
+                    formOverlay.querySelector('#cart-ship-locality').value = userData.locality || '';
+                    formOverlay.querySelector('#cart-ship-province').value = userData.province || '';
+                    formOverlay.style.display = 'flex';
+                });
+            }
+
             // --- Doble Flujo de Acciones de WhatsApp Simplificado ---
             // A. Botón "Solicitar Envío" (Directo, sin formulario intermedio)
             const btnShipping = document.getElementById('btn-cart-checkout-shipping');
             if (btnShipping) {
                 btnShipping.addEventListener('click', () => {
                     loadUserData();
+                    
+                    // Validación interactiva de datos de envío (Propuesta 14)
+                    if (!userData.address.trim() || !userData.name.trim()) {
+                        // Forzar el popup de edición
+                        if (btnEditShipping) {
+                            btnEditShipping.click();
+                        }
+                        return;
+                    }
                     
                     // Detalle de productos favoritos con cantidad dinámica
                     const itemsText = cartItems.map(item => `- ${item.qty || 1}x ${item.title} (Acabado: ${item.acabado}) [${item.catName}]`).join('\n');

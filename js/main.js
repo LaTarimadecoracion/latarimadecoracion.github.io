@@ -30,6 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar renders
     if (window.renderBottomNav) window.renderBottomNav();
     
+    const initAllDragToScroll = () => {
+        if (typeof window.enableDragToScroll === 'function') {
+            document.querySelectorAll('.carousel-categories').forEach(el => window.enableDragToScroll(el));
+        }
+    };
+
     // Cargar estadísticas de vistas antes de pintar el home para que el ordenamiento sea real y transparente
     if (window.loadProductViews) {
         window.loadProductViews().finally(() => {
@@ -37,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.renderCategoriesMenu) window.renderCategoriesMenu();
             if (window.renderVideosView) window.renderVideosView();
             if (window.renderNosotrosBlocksCliente) window.renderNosotrosBlocksCliente();
+            initAllDragToScroll();
             hideSplashScreen();
         });
     } else {
@@ -44,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.renderCategoriesMenu) window.renderCategoriesMenu();
         if (window.renderVideosView) window.renderVideosView();
         if (window.renderNosotrosBlocksCliente) window.renderNosotrosBlocksCliente();
+        initAllDragToScroll();
         hideSplashScreen();
     }
 

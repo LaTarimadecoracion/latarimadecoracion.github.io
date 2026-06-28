@@ -494,6 +494,11 @@
                 console.error(`[Fault Tolerance] Error renderizando sección '${sectionId}':`, err);
             }
         });
+
+        // Re-inicializar drag-to-scroll en todos los carruseles creados
+        if (typeof window.enableDragToScroll === 'function') {
+            document.querySelectorAll('.carousel-categories').forEach(el => window.enableDragToScroll(el));
+        }
     }
 
 

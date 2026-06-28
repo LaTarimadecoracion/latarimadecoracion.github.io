@@ -546,18 +546,18 @@
         function renderGallery(grupo) {
             const images = grupo.images_list && grupo.images_list.length > 0 ? grupo.images_list : [grupo.cover_image];
             let galleryHTML = `<div class="product-detail-carousel">`;
-            images.forEach((imgUrl, index) => {
-                if(!imgUrl) return;
-                galleryHTML += `
-                    <div class="product-detail-slide">
-                        <div class="product-gallery-img-wrapper" style="position:relative;">
-                            <img src="${imgUrl}" class="product-detail-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
-                        </div>
-                        <span class="slide-indicator">${index + 1} / ${images.length}</span>
-                    </div>
-                `;
-            });
-            galleryHTML += `</div>`;
+             images.forEach((imgUrl, index) => {
+                 if(!imgUrl) return;
+                 galleryHTML += `
+                     <div class="product-detail-slide" onclick="if(window.openLightbox) window.openLightbox('${imgUrl}')" style="cursor: zoom-in;">
+                         <div class="product-gallery-img-wrapper" style="position:relative;">
+                             <img src="${imgUrl}" class="product-detail-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
+                         </div>
+                         <span class="slide-indicator">${index + 1} / ${images.length}</span>
+                     </div>
+                 `;
+             });
+             galleryHTML += `</div>`;
             
             // Inyectar el contenedor flotante de acciones (Instagram-Style)
             galleryHTML += `
@@ -696,12 +696,16 @@
             divAcabado.className = 'variant-selector-wrapper';
             divAcabado.innerHTML = `
                 <label class="variant-label">🎨 Color / Acabado</label>
-                <div class="variant-buttons-container" id="acabado-buttons-container">
-                    ${grupos.map((g, i) => `
-                        <button type="button" class="variant-btn ${i === currentGroupIndex ? 'active' : ''}" data-index="${i}">
-                            ${g.acabado_name}
-                        </button>
-                    `).join('')}
+                <div class="variant-buttons-container" id="acabado-buttons-container" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    ${grupos.map((g, i) => {
+                        const imgUrl = g.cover_image || (g.images_list && g.images_list.length > 0 ? g.images_list[0] : null);
+                        return `
+                            <button type="button" class="variant-btn ${i === currentGroupIndex ? 'active' : ''}" data-index="${i}" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.35rem 0.75rem; border-radius: 30px; flex: unset; font-size: 0.82rem;">
+                                ${imgUrl ? `<img src="${imgUrl}" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(255,255,255,0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.15);">` : ''}
+                                <span>${g.acabado_name}</span>
+                            </button>
+                        `;
+                    }).join('')}
                 </div>
             `;
             const btnContainer = divAcabado.querySelector('#acabado-buttons-container');
