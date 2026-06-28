@@ -1979,29 +1979,34 @@ const productsData = [
                 "id": "perchero-1",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
-                "image": "img/decoracion/perchero-1/1780323485456-imagen.webp",
+                "image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/perchero-1/1780323485456-imagen.webp",
+                        "cover_image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
                         "images_list": [
-                            "img/decoracion/perchero-1/1780323485456-imagen.webp",
-                            "img/decoracion/perchero-1/1780323485567-imagen.webp",
-                            "img/decoracion/perchero-1/1780323485667-imagen.webp"
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224140-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224273-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224400-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "1 Unidad",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2015388606-perchero-de-pie-torneado-reforzado-8-ganchos-_JM",
-                                "default": true
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780707190575,
-                "primaryCatId": "Interior",
-                "views": 0
+                "last_modified": 1782624224532,
+                "primaryCatId": "Interior"
             },
             {
                 "id": "fanal",
@@ -3112,29 +3117,34 @@ const productsData = [
                 "id": "perchero-1",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
-                "image": "img/decoracion/perchero-1/1780323485456-imagen.webp",
+                "image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/perchero-1/1780323485456-imagen.webp",
+                        "cover_image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
                         "images_list": [
-                            "img/decoracion/perchero-1/1780323485456-imagen.webp",
-                            "img/decoracion/perchero-1/1780323485567-imagen.webp",
-                            "img/decoracion/perchero-1/1780323485667-imagen.webp"
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224140-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224273-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224400-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "1 Unidad",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2015388606-perchero-de-pie-torneado-reforzado-8-ganchos-_JM",
-                                "default": true
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780707190575,
-                "primaryCatId": "Interior",
-                "views": 0
+                "last_modified": 1782624224532,
+                "primaryCatId": "Interior"
             },
             {
                 "id": "especiero",
@@ -3394,29 +3404,34 @@ const productsData = [
                 "id": "perchero-1",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
-                "image": "img/decoracion/perchero-1/1780323485456-imagen.webp",
+                "image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/perchero-1/1780323485456-imagen.webp",
+                        "cover_image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
                         "images_list": [
-                            "img/decoracion/perchero-1/1780323485456-imagen.webp",
-                            "img/decoracion/perchero-1/1780323485567-imagen.webp",
-                            "img/decoracion/perchero-1/1780323485667-imagen.webp"
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224140-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224273-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224400-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "1 Unidad",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2015388606-perchero-de-pie-torneado-reforzado-8-ganchos-_JM",
-                                "default": true
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780707190575,
-                "primaryCatId": "Interior",
-                "views": 0
+                "last_modified": 1782624224532,
+                "primaryCatId": "Interior"
             },
             {
                 "id": "banquito-de-plaza",
