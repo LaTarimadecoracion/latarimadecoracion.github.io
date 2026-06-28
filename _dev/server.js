@@ -16,8 +16,9 @@ if (!fs.existsSync(rentalsDbPath)) {
     fs.writeFileSync(rentalsDbPath, 'const rentalsData = [];\n', 'utf8');
 }
 
-// Configure body parser for JSON
-app.use(express.json());
+// Configure body parser for JSON (with higher limit to support large product arrays)
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // Helper function to serve index.html with dynamic Open Graph tags
 const serveIndexWithOG = (req, res) => {

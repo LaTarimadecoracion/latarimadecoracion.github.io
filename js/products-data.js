@@ -2382,6 +2382,38 @@ const productsData = [
                 ],
                 "last_modified": 1782532915656,
                 "primaryCatId": "Muebles-y-Jardín"
+            },
+            {
+                "id": "baul-madera-mediano",
+                "title": "Baúl de madera de pino - Mediano",
+                "description": "",
+                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "90 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782609484647,
+                "primaryCatId": "infantil"
             }
         ]
     },
@@ -2709,25 +2741,23 @@ const productsData = [
                 "id": "Platos-madera",
                 "title": "Platons de Madera - Asado",
                 "description": "",
-                "image": "img/hogar/platons-de-madera---asado/1780709043350-imagen.webp",
+                "image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/platons-de-madera---asado/1780709043350-imagen.webp",
+                        "cover_image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
                         "images_list": [
-                            "img/hogar/platons-de-madera---asado/1780709043350-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043517-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043656-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043792-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043931-imagen.webp"
+                            "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                            "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
+                            "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
                         ],
-                        "medidas_variants": []
+                        "medidas_variants": [],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780709044058,
-                "primaryCatId": "Hogar",
-                "views": 7
+                "last_modified": 1782621039609,
+                "primaryCatId": "Hogar"
             },
             {
                 "id": "mesa-plegabe",
@@ -3052,6 +3082,38 @@ const productsData = [
                 ],
                 "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
+            },
+            {
+                "id": "baul-madera-mediano",
+                "title": "Baúl de madera de pino - Mediano",
+                "description": "",
+                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "90 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782609484647,
+                "primaryCatId": "infantil"
             }
         ]
     },
@@ -3086,28 +3148,6 @@ const productsData = [
                 "last_modified": 1780708312773,
                 "primaryCatId": "infantil",
                 "views": 1
-            },
-            {
-                "id": "baul-madera-mediano",
-                "title": "Baúl de madera de pino - Mediano",
-                "description": "Baúl de madera de pino ideal para el guardado de juguetes u organización infantil.",
-                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
-                        "images_list": [
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1782607703040,
-                "primaryCatId": "infantil"
             },
             {
                 "id": "banquito-de-plaza",
@@ -3167,6 +3207,38 @@ const productsData = [
                 "last_modified": 1780708199604,
                 "primaryCatId": "infantil",
                 "views": 0
+            },
+            {
+                "id": "baul-madera-mediano",
+                "title": "Baúl de madera de pino - Mediano",
+                "description": "",
+                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "90 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782609484647,
+                "primaryCatId": "infantil"
             }
         ]
     },
@@ -3351,6 +3423,38 @@ const productsData = [
                 ],
                 "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
+            },
+            {
+                "id": "baul-madera-mediano",
+                "title": "Baúl de madera de pino - Mediano",
+                "description": "",
+                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "90 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782609484647,
+                "primaryCatId": "infantil"
             }
         ]
     },
@@ -3446,47 +3550,52 @@ const productsData = [
                 "id": "Platos - Cuencos",
                 "title": "Cuencos",
                 "description": "",
-                "image": "img/hogar/portada-imagen.webp",
+                "image": "img/hogar/cuencos/1782610904255-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/portada-imagen.webp",
+                        "cover_image": "img/hogar/cuencos/1782610904255-imagen.webp",
                         "images_list": [
-                            "img/hogar/portada-imagen.webp",
-                            "img/hogar/portada-imagen.webp",
-                            "img/hogar/portada-imagen.webp"
+                            "img/hogar/cuencos/1782610904255-imagen.webp",
+                            "img/hogar/cuencos/1782610904423-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1782599241373,
+                "tags": [
+                    "plato",
+                    "cuenco",
+                    "madera",
+                    "algarrobo",
+                    "vajilla",
+                    "locro",
+                    "patrio"
+                ],
+                "last_modified": 1782621035755,
                 "primaryCatId": "Hogar"
             },
             {
                 "id": "Platos-madera",
                 "title": "Platons de Madera - Asado",
                 "description": "",
-                "image": "img/hogar/platons-de-madera---asado/1780709043350-imagen.webp",
+                "image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/platons-de-madera---asado/1780709043350-imagen.webp",
+                        "cover_image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
                         "images_list": [
-                            "img/hogar/platons-de-madera---asado/1780709043350-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043517-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043656-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043792-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043931-imagen.webp"
+                            "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                            "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
+                            "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
                         ],
-                        "medidas_variants": []
+                        "medidas_variants": [],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780709044058,
-                "primaryCatId": "Hogar",
-                "views": 7
+                "last_modified": 1782621039609,
+                "primaryCatId": "Hogar"
             },
             {
                 "id": "especiero",
@@ -3538,6 +3647,38 @@ const productsData = [
                 ],
                 "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
+            },
+            {
+                "id": "baul-madera-mediano",
+                "title": "Baúl de madera de pino - Mediano",
+                "description": "",
+                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "90 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782609484647,
+                "primaryCatId": "infantil"
             }
         ]
     },
@@ -3762,25 +3903,23 @@ const productsData = [
                 "id": "Platos-madera",
                 "title": "Platons de Madera - Asado",
                 "description": "",
-                "image": "img/hogar/platons-de-madera---asado/1780709043350-imagen.webp",
+                "image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/platons-de-madera---asado/1780709043350-imagen.webp",
+                        "cover_image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
                         "images_list": [
-                            "img/hogar/platons-de-madera---asado/1780709043350-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043517-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043656-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043792-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1780709043931-imagen.webp"
+                            "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                            "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
+                            "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
                         ],
-                        "medidas_variants": []
+                        "medidas_variants": [],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780709044058,
-                "primaryCatId": "Hogar",
-                "views": 7
+                "last_modified": 1782621039609,
+                "primaryCatId": "Hogar"
             }
         ]
     },
@@ -3815,6 +3954,38 @@ const productsData = [
                 "last_modified": 1780708312773,
                 "primaryCatId": "infantil",
                 "views": 1
+            },
+            {
+                "id": "baul-madera-mediano",
+                "title": "Baúl de madera de pino - Mediano",
+                "description": "",
+                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "90 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782609484647,
+                "primaryCatId": "infantil"
             }
         ]
     },
