@@ -1067,18 +1067,26 @@ window.initMayoristaAdmin = function() {
         };
         window.siteConfig.mayoristaConfig = window.mayoristaConfig;
 
+        let savedOnServer = false;
+        // Guardar inmediatamente en localStorage como respaldo local
+        localStorage.setItem('mayoristaConfig', JSON.stringify(window.mayoristaConfig));
+
         try {
             if (window.syncSiteConfigWithServer) {
                 await window.syncSiteConfigWithServer();
+                savedOnServer = true;
             }
-            alert('¡Configuración mayorista guardada con éxito!');
         } catch (e) {
-            console.error('[Admin Mayorista] Error al guardar config:', e);
-            alert('Hubo un error al guardar la configuración en el servidor.');
-        } finally {
-            saveBtn.disabled = false;
-            saveBtn.innerHTML = originalText;
+            console.warn('[Admin Mayorista] Servidor offline. Guardado local en localStorage:', e);
         }
+
+        if (savedOnServer) {
+            alert('¡Configuración mayorista guardada con éxito en el servidor y disco!');
+        } else {
+            alert('¡Guardado localmente en el navegador! (El servidor de base de datos local está apagado, pero tus cambios seguirán vigentes mientras pruebes en este navegador)');
+        }
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = originalText;
     });
 
     // RENDERIZAR TABLA DE PRECIOS MASIVOS

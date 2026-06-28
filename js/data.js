@@ -103,7 +103,15 @@ if (!window.siteConfig) {
     };
 }
 
-window.mayoristaConfig = window.siteConfig.mayoristaConfig || {
+let localMayorista = null;
+try {
+    const cachedMay = localStorage.getItem('mayoristaConfig');
+    if (cachedMay) localMayorista = JSON.parse(cachedMay);
+} catch (e) {
+    console.error("Error loading mayoristaConfig from localStorage:", e);
+}
+
+window.mayoristaConfig = localMayorista || window.siteConfig.mayoristaConfig || {
     markupPercent: 10,
     cbu: "1234567890123456789012",
     alias: "la.tarima.deco",
@@ -288,6 +296,9 @@ window.syncSiteConfigWithServer = async function() {
             mayoristaConfig: window.mayoristaConfig
         };
 
+        // Guardar en localStorage como respaldo local
+        localStorage.setItem('mayoristaConfig', JSON.stringify(window.mayoristaConfig));
+
         const res = await fetch('/api/save-site-config', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -296,11 +307,13 @@ window.syncSiteConfigWithServer = async function() {
         const data = await res.json();
         if (!data.success) {
             console.error('[Data Sync] Error guardando config en el servidor:', data.message);
+            throw new Error(data.message || 'Error guardando config');
         } else {
             console.log('[Data Sync] Configuración sincronizada y guardada en disco.');
         }
     } catch (e) {
         console.error('[Data Sync] Error en red sincronizando config:', e);
+        throw e;
     }
 };
 
