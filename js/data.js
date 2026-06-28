@@ -103,7 +103,7 @@ if (!window.siteConfig) {
     };
 }
 
-window.siteConfig.mayoristaConfig = window.siteConfig.mayoristaConfig || {
+window.mayoristaConfig = window.siteConfig.mayoristaConfig || {
     markupPercent: 10,
     cbu: "1234567890123456789012",
     alias: "la.tarima.deco",
@@ -111,6 +111,7 @@ window.siteConfig.mayoristaConfig = window.siteConfig.mayoristaConfig || {
     titular: "Juan Pérez",
     terms: "Condiciones de Venta Mayorista:\n1. Compra mínima de $100.000.\n2. Los precios no incluyen IVA.\n3. Retiro por taller o envío a convenir.\n4. Demora estimada de entrega de 15 a 20 días."
 };
+window.siteConfig.mayoristaConfig = window.mayoristaConfig;
 
 // Función para aplicar la skin de forma reactiva en el body
 window.applyTheme = function(themeName) {
@@ -283,7 +284,8 @@ window.syncSiteConfigWithServer = async function() {
             homeConfig: window.homeConfig,
             sessionNosotros: window.sessionNosotros,
             sessionAvisos: window.sessionAvisos,
-            socialLinks: window.socialLinks
+            socialLinks: window.socialLinks,
+            mayoristaConfig: window.mayoristaConfig
         };
 
         const res = await fetch('/api/save-site-config', {

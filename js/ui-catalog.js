@@ -847,6 +847,7 @@
     }
 
 
+window.saveProductsToServer = saveProductsToServer;
 window.showProductDetail = safeRender(showProductDetail, 'showProductDetail');
 
 

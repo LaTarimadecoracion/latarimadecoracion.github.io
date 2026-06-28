@@ -1036,10 +1036,14 @@ window.initMayoristaAdmin = function() {
     const termsTextarea = document.getElementById('admin-may-terms');
     const saveBtn = document.getElementById('btn-save-mayorista-config');
 
+    const searchInput = document.getElementById('admin-may-search');
+    const tbody = document.getElementById('admin-may-prices-tbody');
+    const savePricesBtn = document.getElementById('btn-save-bulk-prices');
+
     if (!aliasInput || !saveBtn) return;
 
     // Cargar config actual
-    const cfg = window.siteConfig.mayoristaConfig || {};
+    const cfg = window.mayoristaConfig || window.siteConfig.mayoristaConfig || {};
     aliasInput.value = cfg.alias || '';
     cbuInput.value = cfg.cbu || '';
     titularInput.value = cfg.titular || '';
@@ -1047,13 +1051,13 @@ window.initMayoristaAdmin = function() {
     markupInput.value = cfg.markupPercent !== undefined ? cfg.markupPercent : 10;
     termsTextarea.value = cfg.terms || '';
 
-    // Manejador del botón Guardar
+    // Manejador del botón Guardar Configuración
     saveBtn.addEventListener('click', async () => {
         saveBtn.disabled = true;
         const originalText = saveBtn.innerHTML;
         saveBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px; animation: spin 1s linear infinite;">sync</span> Guardando...';
 
-        window.siteConfig.mayoristaConfig = {
+        window.mayoristaConfig = {
             alias: aliasInput.value.trim(),
             cbu: cbuInput.value.trim(),
             titular: titularInput.value.trim(),
@@ -1061,6 +1065,7 @@ window.initMayoristaAdmin = function() {
             markupPercent: parseInt(markupInput.value.trim()) || 0,
             terms: termsTextarea.value
         };
+        window.siteConfig.mayoristaConfig = window.mayoristaConfig;
 
         try {
             if (window.syncSiteConfigWithServer) {
@@ -1075,4 +1080,192 @@ window.initMayoristaAdmin = function() {
             saveBtn.innerHTML = originalText;
         }
     });
+
+    // RENDERIZAR TABLA DE PRECIOS MASIVOS
+    function renderBulkPrices(filterText = '') {
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        const query = filterText.toLowerCase().trim();
+        const seenKeys = new Set();
+
+        const productsList = window.sessionProducts || [];
+
+        productsList.forEach(category => {
+            if (!category.products) return;
+            category.products.forEach(product => {
+                const prodTitle = product.title || '';
+
+                if (product.acabados_groups && product.acabados_groups.length > 0) {
+                    product.acabados_groups.forEach(group => {
+                        const acabName = group.acabado_name || '';
+                        if (group.medidas_variants) {
+                            group.medidas_variants.forEach(variant => {
+                                const key = `${product.id}__${acabName}__${variant.medida}`;
+                                if (seenKeys.has(key)) return;
+
+                                // Filtrado
+                                const matchTitle = prodTitle.toLowerCase().includes(query);
+                                const matchAcabado = acabName.toLowerCase().includes(query);
+                                const matchMedida = variant.medida.toLowerCase().includes(query);
+                                if (query && !matchTitle && !matchAcabado && !matchMedida) return;
+
+                                seenKeys.add(key);
+
+                                const tr = document.createElement('tr');
+                                tr.style.borderBottom = '1px solid #E2E8F0';
+                                tr.innerHTML = `
+                                    <td style="padding: 10px 14px; font-weight: 500;">
+                                        ${prodTitle}
+                                        <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">
+                                            ${acabName} - ${variant.medida}
+                                        </span>
+                                    </td>
+                                    <td style="padding: 10px 14px;">
+                                        <input type="number" class="bulk-price-input" 
+                                               data-prod-id="${product.id}" 
+                                               data-acabado="${acabName}" 
+                                               data-medida="${variant.medida}" 
+                                               value="${variant.price !== undefined ? variant.price : ''}" 
+                                               style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0">
+                                    </td>
+                                    <td style="padding: 10px 14px;">
+                                        <input type="text" class="bulk-cond-input" 
+                                               data-prod-id="${product.id}" 
+                                               data-acabado="${acabName}" 
+                                               data-medida="${variant.medida}" 
+                                               value="${variant.conditions !== undefined ? variant.conditions : ''}" 
+                                               style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;">
+                                    </td>
+                                `;
+                                tbody.appendChild(tr);
+                            });
+                        }
+                    });
+                } else if (product.medidas_variants) {
+                    product.medidas_variants.forEach(variant => {
+                        const key = `${product.id}__Único__${variant.medida}`;
+                        if (seenKeys.has(key)) return;
+
+                        // Filtrado
+                        const matchTitle = prodTitle.toLowerCase().includes(query);
+                        const matchMedida = variant.medida.toLowerCase().includes(query);
+                        if (query && !matchTitle && !matchMedida) return;
+
+                        seenKeys.add(key);
+
+                        const tr = document.createElement('tr');
+                        tr.style.borderBottom = '1px solid #E2E8F0';
+                        tr.innerHTML = `
+                            <td style="padding: 10px 14px; font-weight: 500;">
+                                ${prodTitle}
+                                <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">
+                                    ${variant.medida}
+                                </span>
+                            </td>
+                            <td style="padding: 10px 14px;">
+                                <input type="number" class="bulk-price-input" 
+                                       data-prod-id="${product.id}" 
+                                       data-acabado="Único" 
+                                       data-medida="${variant.medida}" 
+                                       value="${variant.price !== undefined ? variant.price : ''}" 
+                                       style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0">
+                            </td>
+                            <td style="padding: 10px 14px;">
+                                <input type="text" class="bulk-cond-input" 
+                                       data-prod-id="${product.id}" 
+                                       data-acabado="Único" 
+                                       data-medida="${variant.medida}" 
+                                       value="${variant.conditions !== undefined ? variant.conditions : ''}" 
+                                       style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;">
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+            });
+        });
+    }
+
+    // Inicializar renders y listeners
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            renderBulkPrices(e.target.value);
+        });
+    }
+
+    if (savePricesBtn) {
+        savePricesBtn.addEventListener('click', async () => {
+            savePricesBtn.disabled = true;
+            const originalText = savePricesBtn.innerHTML;
+            savePricesBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px; animation: spin 1s linear infinite;">sync</span> Guardando Precios...';
+
+            // Armar mapas de valores
+            const priceInputs = tbody.querySelectorAll('.bulk-price-input');
+            const condInputs = tbody.querySelectorAll('.bulk-cond-input');
+
+            const priceMap = {};
+            const condMap = {};
+
+            priceInputs.forEach(input => {
+                const key = `${input.dataset.prodId}__${input.dataset.acabado}__${input.dataset.medida}`;
+                const val = input.value.trim();
+                priceMap[key] = val !== '' ? parseFloat(val) : '';
+            });
+
+            condInputs.forEach(input => {
+                const key = `${input.dataset.prodId}__${input.dataset.acabado}__${input.dataset.medida}`;
+                condMap[key] = input.value.trim();
+            });
+
+            // Actualizar la estructura global window.sessionProducts
+            const productsList = window.sessionProducts || [];
+            productsList.forEach(category => {
+                if (!category.products) return;
+                category.products.forEach(product => {
+                    if (product.acabados_groups && product.acabados_groups.length > 0) {
+                        product.acabados_groups.forEach(group => {
+                            const acabName = group.acabado_name || '';
+                            if (group.medidas_variants) {
+                                group.medidas_variants.forEach(variant => {
+                                    const key = `${product.id}__${acabName}__${variant.medida}`;
+                                    if (priceMap[key] !== undefined) {
+                                        variant.price = priceMap[key];
+                                        variant.conditions = condMap[key] || '';
+                                    }
+                                });
+                            }
+                        });
+                    } else if (product.medidas_variants) {
+                        product.medidas_variants.forEach(variant => {
+                            const key = `${product.id}__Único__${variant.medida}`;
+                            if (priceMap[key] !== undefined) {
+                                variant.price = priceMap[key];
+                                variant.conditions = condMap[key] || '';
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Guardar al servidor local en disco
+            try {
+                if (window.saveProductsToServer) {
+                    await window.saveProductsToServer();
+                    alert('¡Precios y condiciones guardados correctamente!');
+                } else {
+                    alert('Error: No se encontró la función saveProductsToServer.');
+                }
+            } catch (err) {
+                console.error('[Bulk Price Editor] Error guardando productos:', err);
+                alert('Ocurrió un error al guardar los precios en el servidor.');
+            } finally {
+                savePricesBtn.disabled = false;
+                savePricesBtn.innerHTML = originalText;
+                renderBulkPrices(searchInput ? searchInput.value : '');
+            }
+        });
+    }
+
+    // Renderizado inicial
+    renderBulkPrices();
 };

@@ -1013,6 +1013,39 @@
                                         </div>
                                     </form>
                                 </div>
+
+                                <div class="admin-card" style="margin-top: 1.5rem;">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">payments</span>
+                                            Precios y Condiciones de Productos (Edición Masiva)
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" id="btn-save-bulk-prices" class="btn-primary" style="padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                                                <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
+                                                Guardar Cambios de Precios
+                                            </button>
+                                        </div>
+                                    </header>
+                                    <div style="margin: 1rem 0; position: relative;">
+                                        <span class="material-symbols-outlined" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 20px;">search</span>
+                                        <input type="text" id="admin-may-search" placeholder="Filtrar productos..." style="width: 100%; padding: 0.5rem 0.5rem 0.5rem 2.2rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.88rem; box-sizing: border-box;">
+                                    </div>
+                                    <div style="max-height: 500px; overflow-y: auto; border: 1.5px solid #E8ECF0; border-radius: 12px;">
+                                        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+                                            <thead>
+                                                <tr style="background: #F8FAFC; border-bottom: 1.5px solid #E2E8F0; font-weight: 600; color: #475569;">
+                                                    <th style="padding: 10px 14px;">Producto (Variante / Medida)</th>
+                                                    <th style="padding: 10px 14px; width: 150px;">Precio Mayorista ($)</th>
+                                                    <th style="padding: 10px 14px; width: 250px;">Condiciones / Stock</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="admin-may-prices-tbody">
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

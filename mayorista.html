@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="css/style.css?v=25">
     
     <style>
+        html, body {
+            overflow: auto !important;
+            height: auto !important;
+        }
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #FAF9F6;
@@ -663,7 +667,7 @@
             const chkAcceptTerms = document.getElementById('chk-accept-terms');
             const btnSendWhatsapp = document.getElementById('btn-send-whatsapp');
 
-            const mayoristaConfig = window.siteConfig.mayoristaConfig || {};
+            const mayoristaConfig = window.mayoristaConfig || window.siteConfig.mayoristaConfig || {};
 
             let allRows = []; // Todas las filas expandidas por variante
             let currentCart = {}; // id_unico -> { title, price, quantity, conditions }
@@ -672,6 +676,7 @@
             function loadVariants() {
                 const sourceProducts = window.sessionProducts || window.productsData || [];
                 allRows = [];
+                const seenRowIds = new Set();
 
                 sourceProducts.forEach(category => {
                     if (category.visible === false) return;
@@ -694,6 +699,8 @@
 
                                         // Generar ID único para la variante
                                         const rowId = `${product.id}__${group.acabado_name}__${variant.medida}`;
+                                        if (seenRowIds.has(rowId)) return;
+                                        seenRowIds.add(rowId);
                                         
                                         allRows.push({
                                             rowId: rowId,
@@ -720,6 +727,9 @@
                                     if (variant.hidden) return;
 
                                     const rowId = `${product.id}__Único__${variant.medida}`;
+                                    if (seenRowIds.has(rowId)) return;
+                                    seenRowIds.add(rowId);
+
                                     allRows.push({
                                         rowId: rowId,
                                         productId: product.id,
