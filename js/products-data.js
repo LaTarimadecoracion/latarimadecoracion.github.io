@@ -2476,7 +2476,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 1000,
                                 "conditions": ""
                             }
                         ],
@@ -3153,7 +3153,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 1000,
                                 "conditions": ""
                             }
                         ],
@@ -3765,7 +3765,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 1000,
                                 "conditions": ""
                             }
                         ],
@@ -3945,7 +3945,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 1000,
                                 "conditions": ""
                             }
                         ],
@@ -4109,7 +4109,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 1000,
                                 "conditions": ""
                             }
                         ],

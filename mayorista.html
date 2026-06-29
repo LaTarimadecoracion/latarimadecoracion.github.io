@@ -158,7 +158,7 @@
 
         .table-header {
             display: grid;
-            grid-template-columns: 4.5fr 1fr 1.8fr 2fr 2fr;
+            grid-template-columns: 42% 10% 16% 16% 16%;
             background: color-mix(in srgb, var(--text-main) 3%, var(--surface-color, #F8FAFC));
             border-bottom: 1px solid var(--border-color, #E2E8F0);
             padding: 0.75rem 1.25rem;
@@ -171,7 +171,7 @@
 
         .table-row {
             display: grid;
-            grid-template-columns: 4.5fr 1fr 1.8fr 2fr 2fr;
+            grid-template-columns: 42% 10% 16% 16% 16%;
             padding: 0.85rem 1.25rem;
             border-bottom: 1px solid var(--border-color, #F1F5F9);
             align-items: center;
@@ -703,6 +703,14 @@
                 <div style="flex: 1 1 300px; display: flex; flex-direction: column; justify-content: space-between;">
                     
                     <div>
+                        <!-- Resumen del Carrito Editable -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Resumen de Productos</div>
+                            <div id="checkout-cart-list" style="max-height: 250px; overflow-y: auto; background: #ffffff; border: 1px solid #E2E8F0; border-radius: 8px; padding: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);">
+                                <!-- Inyectado por JS -->
+                            </div>
+                        </div>
+
                         <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Detalle de Importes</div>
                         
                         <div style="background: #ffffff; border: 1px solid #E2E8F0; border-radius: 8px; padding: 1.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);">
@@ -733,8 +741,11 @@
                             <span style="font-size: 0.85rem; color: #475569; line-height: 1.4;">Declaro haber leído y acepto las condiciones comerciales y términos de la compra.</span>
                         </label>
                         
-                        <button type="button" id="btn-send-whatsapp" disabled style="width: 100%; background: #0F172A; color: #ffffff; border: none; padding: 1rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s, opacity 0.2s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif;">
+                        <button type="button" id="btn-send-whatsapp" disabled style="width: 100%; background: #0F172A; color: #ffffff; border: none; padding: 1rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s, opacity 0.2s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif; margin-bottom: 0.75rem;">
                             Confirmar y Enviar Pedido
+                        </button>
+                        <button type="button" id="btn-continue-shopping" style="width: 100%; background: #F1F5F9; color: #334155; border: 1px solid #E2E8F0; padding: 0.75rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: 'Outfit', sans-serif;">
+                            Seguir Comprando
                         </button>
                         <div style="text-align: center; margin-top: 0.75rem; font-size: 0.75rem; color: #94A3B8;">
                             Será redirigido a WhatsApp para concretar la operación
@@ -781,6 +792,13 @@
             const modalCheckout = document.getElementById('modal-checkout');
             const btnCloseGallery = document.getElementById('btn-close-gallery');
             const btnCloseCheckout = document.getElementById('btn-close-checkout');
+            const btnContinueShopping = document.getElementById('btn-continue-shopping');
+            
+            if (btnContinueShopping) {
+                btnContinueShopping.addEventListener('click', () => {
+                    modalCheckout.style.display = 'none';
+                });
+            }
 
             // Form checkout
             const chkAcceptTerms = document.getElementById('chk-accept-terms');
@@ -1013,6 +1031,77 @@
                 modalGallery.style.display = 'flex';
             }
 
+            // Renderizar resumen del carrito en checkout
+            function renderCheckoutCart() {
+                const listEl = document.getElementById('checkout-cart-list');
+                if (!listEl) return;
+                
+                listEl.innerHTML = '';
+                
+                const items = Object.entries(currentCart);
+                if (items.length === 0) {
+                    listEl.innerHTML = '<div style="padding: 1rem; text-align: center; color: #94A3B8; font-size: 0.85rem;">El carrito está vacío</div>';
+                    btnSendWhatsapp.disabled = true;
+                    return;
+                }
+                
+                items.forEach(([id, item]) => {
+                    const div = document.createElement('div');
+                    div.style.display = 'flex';
+                    div.style.justifyContent = 'space-between';
+                    div.style.alignItems = 'center';
+                    div.style.padding = '0.5rem';
+                    div.style.borderBottom = '1px solid #F1F5F9';
+                    div.style.fontSize = '0.85rem';
+                    
+                    div.innerHTML = `
+                        <div style="flex: 1; padding-right: 1rem;">
+                            <div style="font-weight: 500; color: #334155; line-height: 1.2;">${item.title}</div>
+                            <div style="color: #64748B; font-size: 0.75rem; margin-top: 2px;">$${item.price.toLocaleString('es-AR')} c/u</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="number" class="checkout-qty-input" data-id="${id}" value="${item.quantity}" min="0" style="width: 45px; height: 26px; border: 1px solid #CBD5E1; border-radius: 4px; text-align: center; font-family: 'Outfit', sans-serif; color: #0F172A;">
+                            <div style="font-weight: 600; color: #0F172A; width: 65px; text-align: right;">$${(item.price * item.quantity).toLocaleString('es-AR')}</div>
+                        </div>
+                    `;
+                    listEl.appendChild(div);
+                });
+                
+                // Listeners para los inputs dentro del modal
+                listEl.querySelectorAll('.checkout-qty-input').forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        let newVal = Math.max(0, parseInt(e.target.value) || 0);
+                        e.target.value = newVal;
+                        const rowId = e.target.getAttribute('data-id');
+                        
+                        // Actualizar en currentCart
+                        if (newVal > 0) {
+                            currentCart[rowId].quantity = newVal;
+                        } else {
+                            delete currentCart[rowId];
+                        }
+                        
+                        // Sincronizar con el input en el catálogo principal si existe
+                        const mainInput = document.querySelector(`.quantity-input[data-id="${rowId}"]`);
+                        if (mainInput) {
+                            mainInput.value = newVal;
+                            const subtotalEl = document.getElementById(`subtotal-${rowId}`);
+                            if (subtotalEl) {
+                                const rowData = allRows.find(r => r.rowId === rowId);
+                                if (rowData) {
+                                    subtotalEl.textContent = newVal > 0 ? \`$\${(rowData.price * newVal).toLocaleString('es-AR')}\` : '$0';
+                                }
+                            }
+                        }
+                        
+                        // Repintar totales globales
+                        recalculateGrandTotal();
+                        updateCheckoutTotals();
+                        renderCheckoutCart(); // re-render para reflejar item borrado o subtotal actualizado
+                    });
+                });
+            }
+
             // 5. Checkout
             function updateCheckoutTotals() {
                 const subtotal = Object.values(currentCart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -1111,6 +1200,7 @@
                 btnSendWhatsapp.disabled = true;
 
                 updateCheckoutTotals();
+                renderCheckoutCart();
 
                 modalCheckout.style.display = 'flex';
             });
