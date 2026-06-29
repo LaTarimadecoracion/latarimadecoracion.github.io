@@ -1,83 +1,85 @@
     function setupInfiniteCarousel(containerEl, itemsArray, renderItemFunc) {
         if (!itemsArray || itemsArray.length === 0) return false;
         
-        const appendBatch = (prepend = false) => {
-            const fragment = document.createDocumentFragment();
+        // Limpiamos el contenedor para evitar duplicados residuales
+        containerEl.innerHTML = '';
+
+        // Si hay 2 o menos elementos, simplemente los renderizamos de forma fija
+        if (itemsArray.length <= 2) {
             itemsArray.forEach(item => {
-                fragment.appendChild(renderItemFunc(item));
+                containerEl.appendChild(renderItemFunc(item));
             });
-            
-            if (prepend) {
-                const oldScrollLeft = containerEl.scrollLeft;
-                const oldScrollWidth = containerEl.scrollWidth;
-                
-                // Deshabilitar momentaneamente el snap para evitar saltos visuales en iOS/Safari si no se está arrastrando
-                const isDragging = containerEl.classList.contains('grabbing');
-                let originalSnap;
-                if (!isDragging) {
-                    originalSnap = containerEl.style.scrollSnapType || getComputedStyle(containerEl).scrollSnapType;
-                    containerEl.style.scrollSnapType = 'none';
-                }
-                
-                containerEl.insertBefore(fragment, containerEl.firstElementChild);
-                
-                const newScrollWidth = containerEl.scrollWidth;
-                containerEl.scrollLeft = oldScrollLeft + (newScrollWidth - oldScrollWidth);
-                
-                // Restaurar snap si no se está arrastrando
-                if (!isDragging) {
-                    setTimeout(() => {
-                        containerEl.style.scrollSnapType = originalSnap;
-                    }, 10);
-                }
-            } else {
-                containerEl.appendChild(fragment);
-            }
+            return true;
+        }
+
+        // Triplicamos el bloque de ítems: [Copia Izquierda] [Original en el Centro] [Copia Derecha]
+        const triplicatedArray = [...itemsArray, ...itemsArray, ...itemsArray];
+        
+        const fragment = document.createDocumentFragment();
+        triplicatedArray.forEach(item => {
+            fragment.appendChild(renderItemFunc(item));
+        });
+        containerEl.appendChild(fragment);
+
+        let cardWidth = 0;
+        let blockWidth = 0;
+
+        const updateDimensions = () => {
+            const firstChild = containerEl.firstElementChild;
+            if (!firstChild) return;
+            // 10px es el gap entre tarjetas definido en la hoja de estilos
+            cardWidth = firstChild.offsetWidth + 10;
+            blockWidth = cardWidth * itemsArray.length;
         };
 
-        // Batch inicial
-        appendBatch();
-
-        // Si hay pocos elementos, agregamos uno más al principio para que se pueda ir a la izquierda desde el inicio
-        // Esto permite que el usuario arranque en el medio del infinito
-        appendBatch(true);
-        // Hacemos un setTimeout para scrollear hacia el primer elemento "real" inicial,
-        // ocultando el lote que pusimos a la izquierda
-        setTimeout(() => {
-            const originalSnap = containerEl.style.scrollSnapType || getComputedStyle(containerEl).scrollSnapType;
-            containerEl.style.scrollSnapType = 'none';
-            // Scrollear al inicio del segundo lote (que era el original)
-            const cardWidth = containerEl.firstElementChild ? containerEl.firstElementChild.offsetWidth + 10 : 0;
-            containerEl.scrollLeft = cardWidth * itemsArray.length;
-            setTimeout(() => { containerEl.style.scrollSnapType = originalSnap; }, 10);
-        }, 10);
-
-        if (typeof IntersectionObserver !== 'undefined') {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    
-                    if (entry.target === containerEl.lastElementChild) {
-                        observer.unobserve(entry.target);
-                        appendBatch(false);
-                        const newLast = containerEl.lastElementChild;
-                        if (newLast) observer.observe(newLast);
-                    } else if (entry.target === containerEl.firstElementChild) {
-                        observer.unobserve(entry.target);
-                        appendBatch(true);
-                        const newFirst = containerEl.firstElementChild;
-                        if (newFirst) observer.observe(newFirst);
-                    }
-                });
-            }, { root: containerEl, rootMargin: '0px 300px 0px 300px', threshold: 0 });
-            
+        const resetToCenter = () => {
+            if (blockWidth === 0) return;
+            containerEl.style.setProperty('scroll-behavior', 'auto', 'important');
+            containerEl.scrollLeft = blockWidth;
             setTimeout(() => {
-                const initialFirst = containerEl.firstElementChild;
-                const initialLast = containerEl.lastElementChild;
-                if (initialFirst) observer.observe(initialFirst);
-                if (initialLast) observer.observe(initialLast);
-            }, 100);
-        }
+                containerEl.style.removeProperty('scroll-behavior');
+            }, 50);
+        };
+
+        // Medir y posicionar inicialmente una vez inyectado en el DOM
+        setTimeout(() => {
+            updateDimensions();
+            resetToCenter();
+        }, 100);
+
+        let isJumping = false;
+        containerEl.addEventListener('scroll', () => {
+            if (cardWidth === 0 || blockWidth === 0 || isJumping) return;
+
+            const scrollLeft = containerEl.scrollLeft;
+
+            // Si entra a la copia izquierda (Lote 1), saltar de inmediato al centro
+            if (scrollLeft < cardWidth) {
+                isJumping = true;
+                containerEl.style.setProperty('scroll-behavior', 'auto', 'important');
+                containerEl.scrollLeft = scrollLeft + blockWidth;
+                setTimeout(() => {
+                    containerEl.style.removeProperty('scroll-behavior');
+                    isJumping = false;
+                }, 50);
+            }
+            // Si entra a la copia derecha (Lote 3), saltar de inmediato al centro
+            else if (scrollLeft > (blockWidth * 2) - containerEl.clientWidth) {
+                isJumping = true;
+                containerEl.style.setProperty('scroll-behavior', 'auto', 'important');
+                containerEl.scrollLeft = scrollLeft - blockWidth;
+                setTimeout(() => {
+                    containerEl.style.removeProperty('scroll-behavior');
+                    isJumping = false;
+                }, 50);
+            }
+        }, { passive: true });
+
+        // Recalcular si cambia el tamaño de pantalla (orientación del celular, etc)
+        window.addEventListener('resize', () => {
+            updateDimensions();
+        });
+
         return true;
     }
 
