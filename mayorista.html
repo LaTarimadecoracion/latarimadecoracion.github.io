@@ -636,24 +636,76 @@
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <!-- Información de CBU -->
+            <div class="modal-body" style="max-height: 70vh; overflow-y: auto; padding: 1.25rem 1.5rem;">
+                <!-- Términos y Condiciones -->
                 <div class="info-block">
-                    <div class="info-title">🏦 Datos para Transferencia</div>
-                    <div class="info-content" id="checkout-bank-details">
+                    <div class="info-title">📄 Condiciones del Catálogo</div>
+                    <div class="info-content" id="checkout-terms-text" style="max-height: 140px; overflow-y: auto; font-size: 0.88rem; border-top: 1px solid #E2E8F0; padding-top: 6px; white-space: pre-line; color: var(--text-main);">
                         <!-- Inyectado por JS -->
                     </div>
                 </div>
 
-                <!-- Términos y Condiciones -->
-                <div class="info-block">
-                    <div class="info-title">📄 Condiciones del Catálogo</div>
-                    <div class="info-content" id="checkout-terms-text" style="max-height: 180px; overflow-y: auto; font-size: 0.88rem; border-top: 1px solid #E2E8F0; padding-top: 6px;">
+                <!-- Aclaración de Descuentos -->
+                <div class="info-block" id="checkout-discounts-block" style="margin-top: 1rem;">
+                    <div class="info-title">🏷️ Descuentos Especiales</div>
+                    <div class="info-content" id="checkout-discounts-text" style="max-height: 100px; overflow-y: auto; font-size: 0.88rem; border-top: 1px solid #E2E8F0; padding-top: 6px; white-space: pre-line; color: var(--text-main);">
                         <!-- Inyectado por JS -->
                     </div>
                 </div>
+
+                <!-- Forma de Pago -->
+                <div class="info-block" style="margin-top: 1rem;">
+                    <div class="info-title">💳 Forma de Pago</div>
+                    <div class="payment-methods-selector" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+                        <label class="payment-method-option" id="pay-opt-efectivo" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color, #E2E8F0); border-radius: 8px; padding: 0.75rem 1rem; cursor: pointer; transition: all 0.15s ease;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="radio" name="payment-method" value="efectivo" checked style="accent-color: var(--primary-color);">
+                                <span style="font-weight: 600; color: var(--text-main); font-size: 0.9rem;">Efectivo (al retirar)</span>
+                            </div>
+                            <span style="font-size: 0.78rem; color: #27ae60; font-weight: 600;">Sin recargo (0%)</span>
+                        </label>
+                        <label class="payment-method-option" id="pay-opt-transferencia" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color, #E2E8F0); border-radius: 8px; padding: 0.75rem 1rem; cursor: pointer; transition: all 0.15s ease;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="radio" name="payment-method" value="transferencia" style="accent-color: var(--primary-color);">
+                                <span style="font-weight: 600; color: var(--text-main); font-size: 0.9rem;">Transferencia Bancaria</span>
+                            </div>
+                            <span style="font-size: 0.78rem; color: #c0510a; font-weight: 600;" id="checkout-surcharge-transfer-badge">+21%</span>
+                        </label>
+                        <label class="payment-method-option" id="pay-opt-mercadopago" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color, #E2E8F0); border-radius: 8px; padding: 0.75rem 1rem; cursor: pointer; transition: all 0.15s ease;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <input type="radio" name="payment-method" value="mercadopago" style="accent-color: var(--primary-color);">
+                                <span style="font-weight: 600; color: var(--text-main); font-size: 0.9rem;">Mercado Pago</span>
+                            </div>
+                            <span style="font-size: 0.78rem; color: #c0510a; font-weight: 600;" id="checkout-surcharge-mp-badge">+31%</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Información de CBU (Solo visible para Transferencia) -->
+                <div class="info-block" id="checkout-bank-block" style="margin-top: 1rem; display: none;">
+                    <div class="info-title">🏦 Datos para Transferencia</div>
+                    <div class="info-content" id="checkout-bank-details" style="font-size: 0.85rem; line-height: 1.5; color: var(--text-main); border-top: 1px solid #E2E8F0; padding-top: 6px;">
+                        <!-- Inyectado por JS -->
+                    </div>
+                </div>
+
+                <!-- Desglose de Totales -->
+                <div class="info-block" style="margin-top: 1.25rem; background: color-mix(in srgb, var(--text-main) 1.5%, var(--surface-color, #F8FAFC)); padding: 1rem; border-radius: 8px; border: 1px dashed var(--border-color, #E2E8F0);">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 6px; color: var(--text-muted);">
+                        <span>Subtotal productos:</span>
+                        <span id="checkout-subtotal-val" style="font-weight: 600; font-variant-numeric: tabular-nums;">$0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 6px; color: var(--text-muted);" id="checkout-surcharge-row">
+                        <span>Recargo (<span id="checkout-surcharge-label">Transferencia</span>):</span>
+                        <span id="checkout-surcharge-val" style="font-weight: 600; color: #c0510a; font-variant-numeric: tabular-nums;">$0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 1.05rem; font-weight: 700; color: var(--text-main); border-top: 1px solid var(--border-color, #E2E8F0); padding-top: 8px; margin-top: 8px;">
+                        <span>Total a Abonar:</span>
+                        <span id="checkout-grand-total-val" style="color: var(--primary-color); font-variant-numeric: tabular-nums;">$0</span>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="padding: 1rem 1.5rem;">
                 <label class="checkbox-container">
                     <input type="checkbox" id="chk-accept-terms">
                     <span>He leído y acepto los términos y condiciones de compra indicados arriba.</span>
@@ -663,6 +715,7 @@
                     Enviar pedido por WhatsApp
                 </button>
             </div>
+        </div>
     </div>
 
     <!-- MODAL 3: Condiciones de Venta -->
@@ -933,6 +986,65 @@
             }
 
             // 5. Checkout
+            function updateCheckoutTotals() {
+                const subtotal = Object.values(currentCart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const selectedMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+                let surchargePercent = 0;
+                let surchargeLabel = 'Efectivo';
+                
+                const tfSurcharge = mayoristaConfig.surchargeTransfer !== undefined ? parseInt(mayoristaConfig.surchargeTransfer) : 21;
+                const mpSurcharge = mayoristaConfig.markupPercent !== undefined ? parseInt(mayoristaConfig.markupPercent) : 31;
+
+                if (selectedMethod === 'transferencia') {
+                    surchargePercent = tfSurcharge;
+                    surchargeLabel = 'Transferencia';
+                } else if (selectedMethod === 'mercadopago') {
+                    surchargePercent = mpSurcharge;
+                    surchargeLabel = 'Mercado Pago';
+                }
+
+                const surchargeVal = Math.round(subtotal * (surchargePercent / 100));
+                const grandTotal = subtotal + surchargeVal;
+
+                document.getElementById('checkout-subtotal-val').textContent = `$${subtotal.toLocaleString('es-AR')}`;
+                
+                const surchargeRow = document.getElementById('checkout-surcharge-row');
+                if (surchargePercent > 0) {
+                    surchargeRow.style.display = 'flex';
+                    document.getElementById('checkout-surcharge-label').textContent = `${surchargeLabel} ${surchargePercent}%`;
+                    document.getElementById('checkout-surcharge-val').textContent = `+$${surchargeVal.toLocaleString('es-AR')}`;
+                } else {
+                    surchargeRow.style.display = 'none';
+                }
+
+                document.getElementById('checkout-grand-total-val').textContent = `$${grandTotal.toLocaleString('es-AR')}`;
+
+                // Mostrar u ocultar datos bancarios según el medio
+                const bankBlock = document.getElementById('checkout-bank-block');
+                if (selectedMethod === 'transferencia') {
+                    bankBlock.style.display = 'block';
+                } else {
+                    bankBlock.style.display = 'none';
+                }
+                
+                // Actualizar estilos de los contenedores
+                document.querySelectorAll('.payment-method-option').forEach(opt => {
+                    const radio = opt.querySelector('input[type="radio"]');
+                    if (radio.checked) {
+                        opt.style.borderColor = 'var(--primary-color)';
+                        opt.style.background = 'color-mix(in srgb, var(--primary-color) 6%, white)';
+                    } else {
+                        opt.style.borderColor = 'var(--border-color, #E2E8F0)';
+                        opt.style.background = 'transparent';
+                    }
+                });
+            }
+
+            document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
+                radio.addEventListener('change', updateCheckoutTotals);
+            });
+
             submitOrderBtn.addEventListener('click', () => {
                 // Rellenar datos bancarios
                 const bankDetailsEl = document.getElementById('checkout-bank-details');
@@ -947,8 +1059,30 @@
                 const termsTextEl = document.getElementById('checkout-terms-text');
                 termsTextEl.textContent = mayoristaConfig.terms || 'Condiciones de Venta:\n- Retiro por taller.\n- Pago por transferencia bancaria anticipada o efectivo al retirar.';
 
+                // Rellenar descuentos
+                const discountsTextEl = document.getElementById('checkout-discounts-text');
+                const discountsBlock = document.getElementById('checkout-discounts-block');
+                if (mayoristaConfig.discounts && mayoristaConfig.discounts.trim() !== '') {
+                    discountsTextEl.textContent = mayoristaConfig.discounts;
+                    discountsBlock.style.display = 'block';
+                } else {
+                    discountsBlock.style.display = 'none';
+                }
+
+                // Configurar valores y badges de recargos
+                const tfPercent = mayoristaConfig.surchargeTransfer !== undefined ? mayoristaConfig.surchargeTransfer : 21;
+                const mpPercent = mayoristaConfig.markupPercent !== undefined ? mayoristaConfig.markupPercent : 31;
+                document.getElementById('checkout-surcharge-transfer-badge').textContent = `+${tfPercent}%`;
+                document.getElementById('checkout-surcharge-mp-badge').textContent = `+${mpPercent}%`;
+
+                // Resetear medio de pago por defecto a Efectivo
+                const defaultRadio = document.querySelector('input[name="payment-method"][value="efectivo"]');
+                if (defaultRadio) defaultRadio.checked = true;
+
                 chkAcceptTerms.checked = false;
                 btnSendWhatsapp.disabled = true;
+
+                updateCheckoutTotals();
 
                 modalCheckout.style.display = 'flex';
             });
@@ -958,6 +1092,21 @@
             });
 
             btnSendWhatsapp.addEventListener('click', () => {
+                const selectedMethod = document.querySelector('input[name="payment-method"]:checked').value;
+                let surchargePercent = 0;
+                let surchargeLabel = 'Efectivo';
+                
+                const tfSurcharge = mayoristaConfig.surchargeTransfer !== undefined ? parseInt(mayoristaConfig.surchargeTransfer) : 21;
+                const mpSurcharge = mayoristaConfig.markupPercent !== undefined ? parseInt(mayoristaConfig.markupPercent) : 31;
+
+                if (selectedMethod === 'transferencia') {
+                    surchargePercent = tfSurcharge;
+                    surchargeLabel = 'Transferencia';
+                } else if (selectedMethod === 'mercadopago') {
+                    surchargePercent = mpSurcharge;
+                    surchargeLabel = 'Mercado Pago';
+                }
+
                 let msg = `*LA TARIMA - NUEVO PEDIDO MAYORISTA*\n`;
                 msg += `------------------------------------------\n`;
                 msg += `Fecha: ${new Date().toLocaleDateString('es-AR')}\n\n`;
@@ -977,8 +1126,16 @@
                     index++;
                 });
 
+                const surchargeVal = Math.round(total * (surchargePercent / 100));
+                const grandTotal = total + surchargeVal;
+
                 msg += `------------------------------------------\n`;
-                msg += `*TOTAL DEL PEDIDO: $${total.toLocaleString('es-AR')}*\n`;
+                msg += `Subtotal productos: $${total.toLocaleString('es-AR')}\n`;
+                msg += `Forma de pago: *${selectedMethod.toUpperCase()}*\n`;
+                if (surchargePercent > 0) {
+                    msg += `Recargo ${surchargeLabel} (${surchargePercent}%): +$${surchargeVal.toLocaleString('es-AR')}\n`;
+                }
+                msg += `*TOTAL A ABONAR: $${grandTotal.toLocaleString('es-AR')}*\n`;
                 msg += `------------------------------------------\n`;
                 msg += `_He leído y acepto los términos y condiciones de compra._\n\n`;
                 msg += `Solicito confirmación de disponibilidad para realizar el pago correspondiente.`;

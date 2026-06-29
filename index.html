@@ -1004,13 +1004,21 @@
                                                 <input type="text" id="admin-may-bank" placeholder="ej: Banco Galicia, Mercado Pago" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
                                             </div>
                                             <div class="form-group">
+                                                <label for="admin-may-surcharge-transfer" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Recargo Transferencia (%)</label>
+                                                <input type="number" id="admin-may-surcharge-transfer" placeholder="21" min="0" max="100" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="admin-may-markup" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Recargo Mercado Pago (%)</label>
-                                                <input type="number" id="admin-may-markup" placeholder="10" min="0" max="100" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                                <input type="number" id="admin-may-markup" placeholder="31" min="0" max="100" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="admin-may-terms" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Términos y Condiciones Generales</label>
                                             <textarea id="admin-may-terms" placeholder="Escribe aquí las condiciones de venta..." rows="6" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="admin-may-discounts" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Aclaración de Descuentos (Checkout)</label>
+                                            <textarea id="admin-may-discounts" placeholder="Escribe aquí la aclaración de descuentos..." rows="3" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
                                         </div>
                                         <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
                                             <button type="button" id="btn-save-mayorista-config" class="btn-primary" style="padding: 0.6rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 8px; cursor: pointer; border: none; font-weight: 600;">

@@ -1038,8 +1038,10 @@ window.initMayoristaAdmin = function() {
     const cbuInput = document.getElementById('admin-may-cbu');
     const titularInput = document.getElementById('admin-may-titular');
     const bankInput = document.getElementById('admin-may-bank');
+    const surchargeTransferInput = document.getElementById('admin-may-surcharge-transfer');
     const markupInput = document.getElementById('admin-may-markup');
     const termsTextarea = document.getElementById('admin-may-terms');
+    const discountsTextarea = document.getElementById('admin-may-discounts');
     const saveBtn = document.getElementById('btn-save-mayorista-config');
 
     const searchInput = document.getElementById('admin-may-search');
@@ -1054,8 +1056,10 @@ window.initMayoristaAdmin = function() {
     cbuInput.value = cfg.cbu || '';
     titularInput.value = cfg.titular || '';
     bankInput.value = cfg.bank || '';
-    markupInput.value = cfg.markupPercent !== undefined ? cfg.markupPercent : 10;
+    surchargeTransferInput.value = cfg.surchargeTransfer !== undefined ? cfg.surchargeTransfer : 21;
+    markupInput.value = cfg.markupPercent !== undefined ? cfg.markupPercent : 31;
     termsTextarea.value = cfg.terms || '';
+    discountsTextarea.value = cfg.discounts || '';
 
     // Manejador del botón Guardar Configuración
     saveBtn.addEventListener('click', async () => {
@@ -1068,8 +1072,10 @@ window.initMayoristaAdmin = function() {
             cbu: cbuInput.value.trim(),
             titular: titularInput.value.trim(),
             bank: bankInput.value.trim(),
-            markupPercent: parseInt(markupInput.value.trim()) || 0,
-            terms: termsTextarea.value
+            surchargeTransfer: parseInt(surchargeTransferInput.value.trim()) || 0,
+            markupPercent: parseInt(markupInput.value.trim()) || 0, // Recargo MP
+            terms: termsTextarea.value,
+            discounts: discountsTextarea.value
         };
         window.siteConfig.mayoristaConfig = window.mayoristaConfig;
 
