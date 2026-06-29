@@ -192,7 +192,7 @@
             if (appContainer) {
                 appContainer.scrollTop = 0;
                 // Desactivar scroll del parent si estamos en el iframe
-                if (viewId === 'view-catalogo' || viewId === 'view-calculator') {
+                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista') {
                     appContainer.style.overflowY = 'hidden';
                 } else {
                     appContainer.style.overflowY = 'auto';
@@ -258,7 +258,8 @@
                 'view-categories': 'categorias',
                 'view-videos': 'videos',
                 'view-cart': 'carrito',
-                'view-calculator': 'calcular'
+                'view-calculator': 'calcular',
+                'view-mayorista': 'mayorista'
             };
             
             let basePath = window.location.pathname.replace(/\/index\.html$/, '/');

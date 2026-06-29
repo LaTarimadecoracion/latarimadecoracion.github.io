@@ -331,7 +331,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'rentas': 'view-rentals',
                 'admin': 'view-admin',
                 'catalogo': 'view-catalogo',
-                'calcular': 'view-calculator'
+                'calcular': 'view-calculator',
+                'mayorista': 'view-mayorista'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             setTimeout(() => {
@@ -418,7 +419,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'calcular': 'view-calculator',
                 'categorias': 'view-categories',
                 'videos': 'view-videos',
-                'carrito': 'view-cart'
+                'carrito': 'view-cart',
+                'mayorista': 'view-mayorista'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             if (window.navigateToView) {
