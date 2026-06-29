@@ -464,6 +464,12 @@ window.initProductsAdmin = function() {
                 iframe.contentWindow.filterCatalogAZ(query);
             }
             return;
+        } else if (activeView && activeView.id === 'view-mayorista') {
+            const iframe = document.querySelector('#view-mayorista iframe');
+            if (iframe && iframe.contentWindow && iframe.contentWindow.filterWholesaleCatalog) {
+                iframe.contentWindow.filterWholesaleCatalog(query);
+            }
+            return;
         }
 
         // Si no hay consulta de búsqueda, renderizar la landing inspiradora del constructor
