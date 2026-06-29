@@ -146,38 +146,41 @@
             color: #94A3B8;
         }
 
-        /* Grilla / Tabla */
+        /* Grilla / Tabla Estilo Planilla B2B */
         .catalog-table-wrapper {
             background: var(--surface-color, white);
-            border-radius: 16px;
-            border: 1.5px solid var(--border-color, #E8ECF0);
-            box-shadow: var(--shadow-md);
+            border-radius: 12px;
+            border: 1px solid var(--border-color, #E2E8F0);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
             overflow: hidden;
             margin-bottom: 2rem;
         }
 
         .table-header {
             display: grid;
-            grid-template-columns: 4.5fr 1.2fr 2fr 2fr 2fr;
+            grid-template-columns: 4.5fr 1fr 1.8fr 2fr 2fr;
             background: color-mix(in srgb, var(--text-main) 3%, var(--surface-color, #F8FAFC));
-            border-bottom: 1.5px solid var(--border-color, #E2E8F0);
-            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color, #E2E8F0);
+            padding: 0.75rem 1.25rem;
             font-weight: 700;
             color: var(--text-muted, #475569);
-            font-size: 0.88rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
 
         .table-row {
             display: grid;
-            grid-template-columns: 4.5fr 1.2fr 2fr 2fr 2fr;
-            padding: 1.2rem 1.5rem;
-            border-bottom: 1.5px solid var(--border-color, #F1F5F9);
+            grid-template-columns: 4.5fr 1fr 1.8fr 2fr 2fr;
+            padding: 0.85rem 1.25rem;
+            border-bottom: 1px solid var(--border-color, #F1F5F9);
             align-items: center;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             color: var(--text-main);
             transition: background 0.15s ease;
+        }
+        .table-row:nth-child(even) {
+            background: color-mix(in srgb, var(--text-main) 1%, var(--surface-color, white));
         }
         .table-row:last-child {
             border-bottom: none;
@@ -189,96 +192,85 @@
         .prod-info {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
         .prod-title {
             font-weight: 600;
             color: var(--text-main, #0F172A);
-            font-size: 1.05rem;
+            font-size: 0.95rem;
         }
         .prod-meta {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             color: var(--text-muted, #64748B);
-            background: var(--border-color, #F1F5F9);
-            padding: 2px 8px;
-            border-radius: 10px;
-            display: inline-block;
-            align-self: flex-start;
-            font-weight: 500;
+            font-weight: 400;
         }
 
-        .col-ver, .col-condiciones, .col-precio, .col-cantidad, .col-total {
+        .col-ver, .col-precio, .col-cantidad, .col-total {
             display: flex;
             align-items: center;
         }
 
         .btn-ver-fotos {
-            background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+            background: transparent;
             color: var(--primary-color);
-            border: none;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
+            border: 1px solid var(--border-color, #CBD5E1);
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
             flex-shrink: 0;
         }
         .btn-ver-fotos:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .condiciones-tag {
-            font-size: 0.85rem;
-            color: var(--text-muted, #475569);
-            font-style: italic;
-            word-break: break-word;
+            background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+            border-color: var(--primary-color);
         }
 
         .price-val {
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-main, #0F172A);
-            font-size: 1.05rem;
+            font-size: 0.95rem;
+            font-variant-numeric: tabular-nums;
         }
 
-        /* Contador de Cantidad */
+        /* Contador de Cantidad Ultra Minimalista */
         .quantity-control {
             display: inline-flex;
             align-items: center;
-            border: 1.5px solid var(--border-color, #CBD5E1);
-            border-radius: 8px;
+            border: 1px solid var(--border-color, #CBD5E1);
+            border-radius: 6px;
             overflow: hidden;
             background: var(--surface-color, white);
-            height: 36px;
+            height: 30px;
         }
         .quantity-btn {
-            background: var(--border-color, #F1F5F9);
+            background: color-mix(in srgb, var(--text-main) 2%, var(--surface-color, #F8FAFC));
             border: none;
-            width: 32px;
+            width: 28px;
             height: 100%;
             cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-main, #475569);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted, #64748B);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: background 0.15s ease;
         }
         .quantity-btn:hover {
-            background: color-mix(in srgb, var(--text-main) 12%, var(--surface-color, #E2E8F0));
+            background: color-mix(in srgb, var(--text-main) 8%, var(--surface-color, #E2E8F0));
         }
         .quantity-input {
-            width: 44px;
+            width: 36px;
             height: 100%;
             border: none;
-            border-left: 1.5px solid var(--border-color, #CBD5E1);
-            border-right: 1.5px solid var(--border-color, #CBD5E1);
+            border-left: 1px solid var(--border-color, #CBD5E1);
+            border-right: 1px solid var(--border-color, #CBD5E1);
             text-align: center;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             font-family: inherit;
             color: var(--text-main, #0F172A);
@@ -290,9 +282,10 @@
         }
 
         .total-val {
-            font-weight: 800;
-            color: var(--primary-color);
-            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main, #0F172A);
+            font-size: 0.95rem;
+            font-variant-numeric: tabular-nums;
         }
 
         /* Barra Flotante Inferior */
@@ -302,32 +295,31 @@
             left: 0;
             right: 0;
             background: var(--surface-color, white);
-            border-top: 1.5px solid var(--border-color, #E2E8F0);
-            box-shadow: 0 -8px 24px rgba(0,0,0,0.06);
-            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-color, #E2E8F0);
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.03);
+            padding: 0.75rem 1.5rem;
             z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(10px);
-            background: color-mix(in srgb, var(--surface-color) 92%, transparent);
         }
         .footer-total-info {
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 1px;
         }
         .footer-total-label {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--text-muted, #64748B);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .footer-total-value {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--primary-color);
+            font-variant-numeric: tabular-nums;
         }
         .btn-finalize-order {
             background: var(--primary-color);
@@ -512,12 +504,12 @@
             .table-row {
                 grid-template-columns: 1fr;
                 gap: 12px;
-                border: 1.5px solid var(--border-color, #E2E8F0);
-                border-radius: 16px;
-                margin-bottom: 1rem;
-                padding: 1.2rem;
+                border: 1px solid var(--border-color, #E2E8F0);
+                border-radius: 8px;
+                margin-bottom: 0.75rem;
+                padding: 0.85rem 1rem;
                 background: var(--surface-color, white);
-                box-shadow: var(--shadow-sm);
+                box-shadow: none;
             }
             .col-ver, .col-precio, .col-cantidad, .col-total {
                 display: flex;
