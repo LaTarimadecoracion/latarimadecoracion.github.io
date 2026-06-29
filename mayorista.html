@@ -629,91 +629,119 @@
 
     <!-- MODAL 2: Finalización de Pedido y Términos -->
     <div id="modal-checkout" class="modal-overlay">
-        <div class="modal-card" style="max-width: 500px;">
-            <div class="modal-header">
-                <h3>Finalizar Compra Mayorista</h3>
-                <button type="button" class="modal-close-btn" id="btn-close-checkout">
+        <div class="modal-card" style="max-width: 850px; width: 95%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);">
+            <div class="modal-header" style="border-bottom: 1px solid #E2E8F0; padding: 1.25rem 2rem; background-color: #ffffff;">
+                <h3 style="font-weight: 600; font-size: 1.25rem; color: #0F172A; margin: 0; letter-spacing: -0.025em;">Resumen de Pedido Mayorista</h3>
+                <button type="button" class="modal-close-btn" id="btn-close-checkout" style="color: #64748B; background: transparent; transition: color 0.2s;">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            <div class="modal-body" style="max-height: 70vh; overflow-y: auto; padding: 1.25rem 1.5rem;">
-                <!-- Términos y Condiciones -->
-                <div class="info-block">
-                    <div class="info-title">📄 Condiciones del Catálogo</div>
-                    <div class="info-content" id="checkout-terms-text" style="max-height: 140px; overflow-y: auto; font-size: 0.88rem; border-top: 1px solid #E2E8F0; padding-top: 6px; white-space: pre-line; color: var(--text-main);">
-                        <!-- Inyectado por JS -->
+            
+            <div class="modal-body" style="display: flex; flex-wrap: wrap; gap: 2.5rem; padding: 2rem; max-height: 75vh; overflow-y: auto; background-color: #F8FAFC;">
+                
+                <!-- COLUMNA IZQUIERDA: Información y Pagos -->
+                <div style="flex: 1 1 350px; display: flex; flex-direction: column; gap: 1.5rem;">
+                    
+                    <!-- Términos y Condiciones -->
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Condiciones Comerciales</div>
+                        <div id="checkout-terms-text" style="font-size: 0.85rem; line-height: 1.5; color: #334155; white-space: pre-line; background: #ffffff; padding: 1rem; border-radius: 6px; border: 1px solid #E2E8F0;">
+                            <!-- Inyectado por JS -->
+                        </div>
+                    </div>
+
+                    <!-- Aclaración de Descuentos -->
+                    <div id="checkout-discounts-block" style="display: none;">
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Descuentos Aplicables</div>
+                        <div id="checkout-discounts-text" style="font-size: 0.85rem; line-height: 1.5; color: #334155; white-space: pre-line; background: #ffffff; padding: 1rem; border-radius: 6px; border: 1px solid #E2E8F0;">
+                            <!-- Inyectado por JS -->
+                        </div>
+                    </div>
+
+                    <!-- Forma de Pago -->
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Método de Pago</div>
+                        <div class="payment-methods-selector" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            
+                            <label class="payment-method-option" id="pay-opt-efectivo" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0.875rem 1rem; cursor: pointer; transition: all 0.2s ease; background: #ffffff;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <input type="radio" name="payment-method" value="efectivo" checked style="accent-color: #0F172A; width: 1.1rem; height: 1.1rem; cursor: pointer;">
+                                    <span style="font-weight: 500; color: #1E293B; font-size: 0.9rem;">Efectivo (al retirar)</span>
+                                </div>
+                                <span style="font-size: 0.75rem; color: #475569; font-weight: 500;">Sin recargo</span>
+                            </label>
+                            
+                            <label class="payment-method-option" id="pay-opt-transferencia" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0.875rem 1rem; cursor: pointer; transition: all 0.2s ease; background: #ffffff;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <input type="radio" name="payment-method" value="transferencia" style="accent-color: #0F172A; width: 1.1rem; height: 1.1rem; cursor: pointer;">
+                                    <span style="font-weight: 500; color: #1E293B; font-size: 0.9rem;">Transferencia Bancaria</span>
+                                </div>
+                                <span style="font-size: 0.75rem; color: #475569; font-weight: 500;" id="checkout-surcharge-transfer-badge">+21%</span>
+                            </label>
+                            
+                            <label class="payment-method-option" id="pay-opt-mercadopago" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0.875rem 1rem; cursor: pointer; transition: all 0.2s ease; background: #ffffff;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <input type="radio" name="payment-method" value="mercadopago" style="accent-color: #0F172A; width: 1.1rem; height: 1.1rem; cursor: pointer;">
+                                    <span style="font-weight: 500; color: #1E293B; font-size: 0.9rem;">Mercado Pago</span>
+                                </div>
+                                <span style="font-size: 0.75rem; color: #475569; font-weight: 500;" id="checkout-surcharge-mp-badge">+31%</span>
+                            </label>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Información de CBU (Solo visible para Transferencia) -->
+                    <div id="checkout-bank-block" style="display: none;">
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Datos Bancarios</div>
+                        <div id="checkout-bank-details" style="font-size: 0.85rem; line-height: 1.6; color: #334155; background: #ffffff; padding: 1rem; border-radius: 6px; border: 1px solid #E2E8F0;">
+                            <!-- Inyectado por JS -->
+                        </div>
                     </div>
                 </div>
 
-                <!-- Aclaración de Descuentos -->
-                <div class="info-block" id="checkout-discounts-block" style="margin-top: 1rem;">
-                    <div class="info-title">🏷️ Descuentos Especiales</div>
-                    <div class="info-content" id="checkout-discounts-text" style="max-height: 100px; overflow-y: auto; font-size: 0.88rem; border-top: 1px solid #E2E8F0; padding-top: 6px; white-space: pre-line; color: var(--text-main);">
-                        <!-- Inyectado por JS -->
-                    </div>
-                </div>
-
-                <!-- Forma de Pago -->
-                <div class="info-block" style="margin-top: 1rem;">
-                    <div class="info-title">💳 Forma de Pago</div>
-                    <div class="payment-methods-selector" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
-                        <label class="payment-method-option" id="pay-opt-efectivo" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color, #E2E8F0); border-radius: 8px; padding: 0.75rem 1rem; cursor: pointer; transition: all 0.15s ease;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="radio" name="payment-method" value="efectivo" checked style="accent-color: var(--primary-color);">
-                                <span style="font-weight: 600; color: var(--text-main); font-size: 0.9rem;">Efectivo (al retirar)</span>
+                <!-- COLUMNA DERECHA: Totales y Acción -->
+                <div style="flex: 1 1 300px; display: flex; flex-direction: column; justify-content: space-between;">
+                    
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Detalle de Importes</div>
+                        
+                        <div style="background: #ffffff; border: 1px solid #E2E8F0; border-radius: 8px; padding: 1.25rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);">
+                            
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.75rem; color: #475569;">
+                                <span>Subtotal de productos</span>
+                                <span id="checkout-subtotal-val" style="font-weight: 500; font-variant-numeric: tabular-nums; color: #1E293B;">$0</span>
                             </div>
-                            <span style="font-size: 0.78rem; color: #27ae60; font-weight: 600;">Sin recargo (0%)</span>
-                        </label>
-                        <label class="payment-method-option" id="pay-opt-transferencia" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color, #E2E8F0); border-radius: 8px; padding: 0.75rem 1rem; cursor: pointer; transition: all 0.15s ease;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="radio" name="payment-method" value="transferencia" style="accent-color: var(--primary-color);">
-                                <span style="font-weight: 600; color: var(--text-main); font-size: 0.9rem;">Transferencia Bancaria</span>
+                            
+                            <div id="checkout-surcharge-row" style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.75rem; color: #475569;">
+                                <span>Recargo (<span id="checkout-surcharge-label">Transferencia</span>)</span>
+                                <span id="checkout-surcharge-val" style="font-weight: 500; font-variant-numeric: tabular-nums; color: #1E293B;">$0</span>
                             </div>
-                            <span style="font-size: 0.78rem; color: #c0510a; font-weight: 600;" id="checkout-surcharge-transfer-badge">+21%</span>
-                        </label>
-                        <label class="payment-method-option" id="pay-opt-mercadopago" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color, #E2E8F0); border-radius: 8px; padding: 0.75rem 1rem; cursor: pointer; transition: all 0.15s ease;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <input type="radio" name="payment-method" value="mercadopago" style="accent-color: var(--primary-color);">
-                                <span style="font-weight: 600; color: var(--text-main); font-size: 0.9rem;">Mercado Pago</span>
+                            
+                            <div style="height: 1px; background: #E2E8F0; margin: 1rem 0;"></div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <span style="font-size: 0.95rem; font-weight: 600; color: #0F172A;">Total a Abonar</span>
+                                <span id="checkout-grand-total-val" style="font-size: 1.5rem; font-weight: 700; color: #0F172A; font-variant-numeric: tabular-nums; letter-spacing: -0.025em;">$0</span>
                             </div>
-                            <span style="font-size: 0.78rem; color: #c0510a; font-weight: 600;" id="checkout-surcharge-mp-badge">+31%</span>
+                            
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer; margin-bottom: 1.25rem;">
+                            <input type="checkbox" id="chk-accept-terms" style="margin-top: 0.2rem; accent-color: #0F172A; width: 1rem; height: 1rem; cursor: pointer;">
+                            <span style="font-size: 0.85rem; color: #475569; line-height: 1.4;">Declaro haber leído y acepto las condiciones comerciales y términos de la compra.</span>
                         </label>
+                        
+                        <button type="button" id="btn-send-whatsapp" disabled style="width: 100%; background: #0F172A; color: #ffffff; border: none; padding: 1rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s, opacity 0.2s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif;">
+                            Confirmar y Enviar Pedido
+                        </button>
+                        <div style="text-align: center; margin-top: 0.75rem; font-size: 0.75rem; color: #94A3B8;">
+                            Será redirigido a WhatsApp para concretar la operación
+                        </div>
                     </div>
-                </div>
 
-                <!-- Información de CBU (Solo visible para Transferencia) -->
-                <div class="info-block" id="checkout-bank-block" style="margin-top: 1rem; display: none;">
-                    <div class="info-title">🏦 Datos para Transferencia</div>
-                    <div class="info-content" id="checkout-bank-details" style="font-size: 0.85rem; line-height: 1.5; color: var(--text-main); border-top: 1px solid #E2E8F0; padding-top: 6px;">
-                        <!-- Inyectado por JS -->
-                    </div>
                 </div>
-
-                <!-- Desglose de Totales -->
-                <div class="info-block" style="margin-top: 1.25rem; background: color-mix(in srgb, var(--text-main) 1.5%, var(--surface-color, #F8FAFC)); padding: 1rem; border-radius: 8px; border: 1px dashed var(--border-color, #E2E8F0);">
-                    <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 6px; color: var(--text-muted);">
-                        <span>Subtotal productos:</span>
-                        <span id="checkout-subtotal-val" style="font-weight: 600; font-variant-numeric: tabular-nums;">$0</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 6px; color: var(--text-muted);" id="checkout-surcharge-row">
-                        <span>Recargo (<span id="checkout-surcharge-label">Transferencia</span>):</span>
-                        <span id="checkout-surcharge-val" style="font-weight: 600; color: #c0510a; font-variant-numeric: tabular-nums;">$0</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 1.05rem; font-weight: 700; color: var(--text-main); border-top: 1px solid var(--border-color, #E2E8F0); padding-top: 8px; margin-top: 8px;">
-                        <span>Total a Abonar:</span>
-                        <span id="checkout-grand-total-val" style="color: var(--primary-color); font-variant-numeric: tabular-nums;">$0</span>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer" style="padding: 1rem 1.5rem;">
-                <label class="checkbox-container">
-                    <input type="checkbox" id="chk-accept-terms">
-                    <span>He leído y acepto los términos y condiciones de compra indicados arriba.</span>
-                </label>
-                <button type="button" id="btn-send-whatsapp" class="btn-finalize-order" style="width: 100%; justify-content: center;" disabled>
-                    <span class="material-symbols-outlined">chat</span>
-                    Enviar pedido por WhatsApp
-                </button>
             </div>
         </div>
     </div>
@@ -1032,11 +1060,11 @@
                 document.querySelectorAll('.payment-method-option').forEach(opt => {
                     const radio = opt.querySelector('input[type="radio"]');
                     if (radio.checked) {
-                        opt.style.borderColor = 'var(--primary-color)';
-                        opt.style.background = 'color-mix(in srgb, var(--primary-color) 6%, white)';
+                        opt.style.borderColor = '#0F172A';
+                        opt.style.background = '#F8FAFC';
                     } else {
-                        opt.style.borderColor = 'var(--border-color, #E2E8F0)';
-                        opt.style.background = 'transparent';
+                        opt.style.borderColor = '#CBD5E1';
+                        opt.style.background = '#ffffff';
                     }
                 });
             }
