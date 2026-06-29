@@ -205,28 +205,34 @@
             font-weight: 400;
         }
 
-        .col-ver, .col-precio, .col-cantidad, .col-total {
+        .table-header div:not(:first-child) {
+            text-align: center;
+        }
+
+        .col-ver, .col-precio, .col-cantidad {
             display: flex;
             align-items: center;
+            justify-content: center;
+        }
+        .col-total {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
 
         .btn-ver-fotos {
-            background: transparent;
             color: var(--primary-color);
-            border: 1px solid var(--border-color, #CBD5E1);
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
+            font-size: 26px !important;
             cursor: pointer;
+            transition: all 0.15s ease;
+            user-select: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.15s ease;
-            flex-shrink: 0;
         }
         .btn-ver-fotos:hover {
-            background: color-mix(in srgb, var(--primary-color) 8%, transparent);
-            border-color: var(--primary-color);
+            transform: scale(1.15);
+            filter: brightness(1.1);
         }
 
         .price-val {
@@ -855,9 +861,7 @@
                             <span class="prod-meta">${row.acabadoName} - ${row.medida}</span>
                         </div>
                         <div class="col-ver">
-                            <button type="button" class="btn-ver-fotos" data-id="${row.rowId}" title="Ver fotos">
-                                <span class="material-symbols-outlined" style="font-size: 18px; margin: 0;">image</span>
-                            </button>
+                            <span class="material-symbols-outlined btn-ver-fotos" data-id="${row.rowId}" title="Ver fotos">image</span>
                         </div>
                         <div class="col-precio">
                             <span class="price-val">${priceLabel}</span>
