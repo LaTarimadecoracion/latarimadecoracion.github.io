@@ -242,39 +242,12 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* Contador de Cantidad Ultra Minimalista */
-        .quantity-control {
-            display: inline-flex;
-            align-items: center;
+        /* Entrada de Cantidad Ultra Minimalista */
+        .quantity-input {
+            width: 50px;
+            height: 28px;
             border: 1px solid var(--border-color, #CBD5E1);
             border-radius: 6px;
-            overflow: hidden;
-            background: var(--surface-color, white);
-            height: 30px;
-        }
-        .quantity-btn {
-            background: color-mix(in srgb, var(--text-main) 2%, var(--surface-color, #F8FAFC));
-            border: none;
-            width: 28px;
-            height: 100%;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-muted, #64748B);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.15s ease;
-        }
-        .quantity-btn:hover {
-            background: color-mix(in srgb, var(--text-main) 8%, var(--surface-color, #E2E8F0));
-        }
-        .quantity-input {
-            width: 36px;
-            height: 100%;
-            border: none;
-            border-left: 1px solid var(--border-color, #CBD5E1);
-            border-right: 1px solid var(--border-color, #CBD5E1);
             text-align: center;
             font-size: 0.9rem;
             font-weight: 600;
@@ -282,9 +255,11 @@
             color: var(--text-main, #0F172A);
             background: var(--surface-color, white);
             box-sizing: border-box;
+            transition: border-color 0.15s ease;
         }
         .quantity-input:focus {
             outline: none;
+            border-color: var(--primary-color);
         }
 
         .total-val {
@@ -867,21 +842,15 @@
                             <span class="price-val">${priceLabel}</span>
                         </div>
                         <div class="col-cantidad">
-                            <div class="quantity-control">
-                                <button type="button" class="quantity-btn dec-btn" data-id="${row.rowId}">-</button>
-                                <input type="number" class="quantity-input" data-id="${row.rowId}" value="${qty}" min="0">
-                                <button type="button" class="quantity-btn inc-btn" data-id="${row.rowId}">+</button>
-                            </div>
+                            <input type="number" class="quantity-input" data-id="${row.rowId}" value="${qty}" min="0">
                         </div>
                         <div class="col-total">
                             <span class="total-val" id="subtotal-${row.rowId}">${subtotalLabel}</span>
                         </div>
                     `;
 
-                    // Listeners de los botones +/- y del input
+                    // Listeners de los botones y del input
                     const input = tr.querySelector('.quantity-input');
-                    const decBtn = tr.querySelector('.dec-btn');
-                    const incBtn = tr.querySelector('.inc-btn');
                     const verBtn = tr.querySelector('.btn-ver-fotos');
 
                     const updateQty = (newVal) => {
@@ -906,8 +875,7 @@
                         recalculateGrandTotal();
                     };
 
-                    decBtn.addEventListener('click', () => updateQty(parseInt(input.value) - 1));
-                    incBtn.addEventListener('click', () => updateQty(parseInt(input.value) + 1));
+                    input.addEventListener('input', (e) => updateQty(e.target.value));
                     input.addEventListener('change', (e) => updateQty(e.target.value));
 
                     verBtn.addEventListener('click', () => openGalleryModal(row));
