@@ -3095,7 +3095,7 @@ button, .btn-primary, .btn-outline {
     flex: 1;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     /* Mantenemos el diseño horizontal de móvil pero centrado y más amplio */
     .admin-layout {
         flex-direction: column;
@@ -3198,7 +3198,7 @@ button, .btn-primary, .btn-outline {
     grid-template-columns: 1fr;
     gap: 1.5rem;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     .dashboard-columns {
         grid-template-columns: 2fr 3fr;
     }
@@ -4144,7 +4144,7 @@ details.form-group[open] {
     display: none !important;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     /* Split into two columns ONLY when modal is medium or large AND we are on a desktop screen */
     .modal-content.size-md .admin-form-columns,
     .modal-content.size-lg .admin-form-columns {
