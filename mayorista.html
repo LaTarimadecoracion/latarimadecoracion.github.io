@@ -158,7 +158,7 @@
 
         .table-header {
             display: grid;
-            grid-template-columns: 42% 10% 16% 16% 16%;
+            grid-template-columns: minmax(0, 4.5fr) minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 2fr) minmax(0, 2fr);
             background: color-mix(in srgb, var(--text-main) 3%, var(--surface-color, #F8FAFC));
             border-bottom: 1px solid var(--border-color, #E2E8F0);
             padding: 0.75rem 1.25rem;
@@ -171,7 +171,7 @@
 
         .table-row {
             display: grid;
-            grid-template-columns: 42% 10% 16% 16% 16%;
+            grid-template-columns: minmax(0, 4.5fr) minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 2fr) minmax(0, 2fr);
             padding: 0.85rem 1.25rem;
             border-bottom: 1px solid var(--border-color, #F1F5F9);
             align-items: center;
