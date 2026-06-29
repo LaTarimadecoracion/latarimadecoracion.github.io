@@ -230,6 +230,89 @@
         header.prepend(garland);
     }
 
+    let audioInstance = null;
+
+    function buildSpeakerButton() {
+        const existing = document.getElementById('lt-speaker-btn');
+        if (existing) return;
+
+        // Crear el botón flotante
+        const btn = document.createElement('div');
+        btn.id = 'lt-speaker-btn';
+        btn.style.cssText = `
+            position: fixed;
+            bottom: calc(var(--nav-height) + 20px + var(--safe-area-bottom));
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #4A90E2;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(74, 144, 226, 0.4);
+            cursor: pointer;
+            z-index: 9999;
+            border: 2px solid #FFFFFF;
+            transition: transform 0.2s ease, background 0.2s ease;
+        `;
+        
+        btn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 24px;">volume_off</span>`;
+
+        // Efecto hover y active
+        btn.addEventListener('mouseenter', () => {
+            btn.style.transform = 'scale(1.08)';
+            btn.style.background = '#357ABD';
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'scale(1)';
+            btn.style.background = '#4A90E2';
+        });
+        btn.addEventListener('mousedown', () => {
+            btn.style.transform = 'scale(0.95)';
+        });
+        btn.addEventListener('mouseup', () => {
+            btn.style.transform = 'scale(1.08)';
+        });
+
+        // Crear audio si no existe
+        if (!audioInstance) {
+            audioInstance = document.createElement('audio');
+            audioInstance.id = 'lt-mundial-audio';
+            audioInstance.loop = true;
+            audioInstance.src = 'audio/muchachos.mp3';
+        }
+
+        // Toggle play/pause al hacer click
+        btn.addEventListener('click', () => {
+            if (audioInstance.paused) {
+                audioInstance.play().then(() => {
+                    btn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 24px;">volume_up</span>`;
+                    btn.style.boxShadow = '0 0 15px rgba(74, 144, 226, 0.7)';
+                }).catch(err => {
+                    console.error("No se pudo reproducir muchachos.mp3: ", err);
+                    alert("Por favor, colocá un archivo 'muchachos.mp3' en la carpeta 'audio/' de la raíz del proyecto para escuchar el himno/tema.");
+                });
+            } else {
+                audioInstance.pause();
+                btn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 24px;">volume_off</span>`;
+                btn.style.boxShadow = '0 4px 14px rgba(74, 144, 226, 0.4)';
+            }
+        });
+
+        document.body.appendChild(btn);
+    }
+
+    function removeSpeakerButton() {
+        const btn = document.getElementById('lt-speaker-btn');
+        if (btn) btn.remove();
+        if (audioInstance) {
+            audioInstance.pause();
+            audioInstance = null;
+        }
+    }
+
     // Actualizar la visibilidad de la guirnalda de forma reactiva según la temática activa
     window.updateGarlandVisibility = function() {
         const header = document.querySelector('.main-header-bar');
@@ -240,8 +323,10 @@
 
         if (activeTheme === 'mundial') {
             buildGarland(header);
+            buildSpeakerButton();
         } else {
             if (garland) garland.remove();
+            removeSpeakerButton();
         }
     };
 

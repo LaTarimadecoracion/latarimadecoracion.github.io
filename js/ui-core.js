@@ -46,6 +46,7 @@ window.safeRender = function(fn, name) {
     let isDown = false;
     let startX;
     let scrollLeft;
+    let lastDragX = 0;
     let activeCarousel = null;
     let velocity = 0;
     let lastTime = 0;
@@ -100,6 +101,7 @@ window.safeRender = function(fn, name) {
 
         startX = e.pageX;
         scrollLeft = carousel.scrollLeft;
+        lastDragX = e.pageX;
 
         lastTime = Date.now();
         lastX = e.pageX;
@@ -151,12 +153,15 @@ window.safeRender = function(fn, name) {
         e.preventDefault();
 
         const x = e.pageX;
-        const walk = (x - startX) * 1.5;
-        activeCarousel.scrollLeft = scrollLeft - walk;
+        const deltaXDrag = x - lastDragX;
+        lastDragX = x;
+
+        // Apply relative drag scrolling to avoid resetting positions modified by infinite scroll prepend
+        activeCarousel.scrollLeft = activeCarousel.scrollLeft - deltaXDrag * 1.5;
         
         // Log dragging progress occasionally
         if (Math.random() < 0.1) {
-            console.log(`Dragging... DeltaX: ${x - startX}, scrollLeft: ${activeCarousel.scrollLeft}`);
+            console.log(`Dragging... DeltaXDrag: ${deltaXDrag}, scrollLeft: ${activeCarousel.scrollLeft}`);
         }
 
         const now = Date.now();

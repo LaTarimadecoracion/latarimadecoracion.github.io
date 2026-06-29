@@ -46,6 +46,19 @@
 </head>
 
 <body>
+    <!-- Script Anti-FOUC para Temáticas -->
+    <script>
+        (function() {
+            try {
+                var userSelected = localStorage.getItem('userSelectedTheme');
+                var localTheme = localStorage.getItem('activeTheme');
+                var themeToApply = userSelected || localTheme || 'classic';
+                if (themeToApply && themeToApply !== 'classic') {
+                    document.body.classList.add('theme-' + themeToApply);
+                }
+            } catch(e) {}
+        })();
+    </script>
 
     <!-- Auras de fondo premium -->
     <div class="bg-glow bg-glow-1"></div>

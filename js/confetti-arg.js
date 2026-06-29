@@ -27,7 +27,7 @@
         'top:0', 'left:0',
         'width:100%', 'height:100%',
         'pointer-events:none',
-        'z-index:0',               // detrás de todo el contenido
+        'z-index:99999',             // por encima de todo el contenido
         'overflow:hidden',
     ].join(';');
     document.body.prepend(canvas);

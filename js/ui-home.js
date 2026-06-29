@@ -11,19 +11,25 @@
                 const oldScrollLeft = containerEl.scrollLeft;
                 const oldScrollWidth = containerEl.scrollWidth;
                 
-                // Deshabilitar momentaneamente el snap para evitar saltos visuales en iOS/Safari
-                const originalSnap = containerEl.style.scrollSnapType || getComputedStyle(containerEl).scrollSnapType;
-                containerEl.style.scrollSnapType = 'none';
+                // Deshabilitar momentaneamente el snap para evitar saltos visuales en iOS/Safari si no se está arrastrando
+                const isDragging = containerEl.classList.contains('grabbing');
+                let originalSnap;
+                if (!isDragging) {
+                    originalSnap = containerEl.style.scrollSnapType || getComputedStyle(containerEl).scrollSnapType;
+                    containerEl.style.scrollSnapType = 'none';
+                }
                 
                 containerEl.insertBefore(fragment, containerEl.firstElementChild);
                 
                 const newScrollWidth = containerEl.scrollWidth;
                 containerEl.scrollLeft = oldScrollLeft + (newScrollWidth - oldScrollWidth);
                 
-                // Restaurar snap
-                setTimeout(() => {
-                    containerEl.style.scrollSnapType = originalSnap;
-                }, 10);
+                // Restaurar snap si no se está arrastrando
+                if (!isDragging) {
+                    setTimeout(() => {
+                        containerEl.style.scrollSnapType = originalSnap;
+                    }, 10);
+                }
             } else {
                 containerEl.appendChild(fragment);
             }

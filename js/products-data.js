@@ -775,50 +775,6 @@ const productsData = [
                 "last_modified": 1782416897270,
                 "primaryCatId": "Barandas",
                 "visible": true
-            },
-            {
-                "id": "Posa-Tortas",
-                "title": "Posa Torta De Madera Torneado Candy Bar",
-                "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
-                "image": "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
-                        "images_list": [
-                            "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
-                            "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590872-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "22 Diam X 21 Alto",
-                                "link": "https://www.mercadolibre.com.ar/posa-torta-de-madera-torneado-candy-bar-22-diam-x-21-alto/up/MLAU3618805830?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=15&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7&wid=MLA1590370469&sid=search",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "posa",
-                    "tortas",
-                    "candy",
-                    "bar",
-                    "decoracion",
-                    "pasteles",
-                    "fiesta",
-                    "15 años",
-                    "bebes",
-                    "cumpleaños",
-                    "torneado",
-                    "madera"
-                ],
-                "last_modified": 1782622636991,
-                "primaryCatId": "Barandas"
             }
         ],
         "visible": true
@@ -2493,6 +2449,52 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1782609484647,
                 "primaryCatId": "infantil"
+            },
+            {
+                "id": "Posa-Tortas",
+                "title": "Posa Torta De Madera Torneado Candy Bar",
+                "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
+                "image": "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                        "images_list": [
+                            "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                            "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590872-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "22 Diam X 21 Alto",
+                                "link": "https://www.mercadolibre.com.ar/posa-torta-de-madera-torneado-candy-bar-22-diam-x-21-alto/up/MLAU3618805830?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=15&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7&wid=MLA1590370469&sid=search",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "conditions": ""
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "posa",
+                    "tortas",
+                    "candy",
+                    "bar",
+                    "decoracion",
+                    "pasteles",
+                    "fiesta",
+                    "15 años",
+                    "bebes",
+                    "cumpleaños",
+                    "torneado",
+                    "madera"
+                ],
+                "last_modified": 1782693473245,
+                "primaryCatId": "decoracion"
             }
         ]
     },

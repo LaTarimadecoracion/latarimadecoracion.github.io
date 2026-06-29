@@ -1,13 +1,14 @@
 :root {
     /* Color Palette */
-    --bg-color: #FAF9F6;
+    --bg-color: #FDFCF9; /* Alabastro limpio y cálido */
     --surface-color: #FFFFFF;
     --text-main: #2D3748;
     --text-muted: #718096;
-    --primary-color: #B4846C; /* Warm Wood/Earthy Tone */
-    --primary-hover: #9E7058;
+    --primary-color: #A0715B; /* Terracota madera cálido premium */
+    --primary-hover: #8C5E49;
     --secondary-color: #E2E8F0;
-    --accent-color: #E5A97D;
+    --accent-color: #E8B895; /* Durazno crema suave */
+    --header-bg: rgba(253, 252, 249, 0.90);
     
     /* Typography */
     --font-main: 'Outfit', sans-serif;
@@ -16,58 +17,68 @@
     --nav-height: 70px;
     --safe-area-bottom: env(safe-area-inset-bottom, 0px);
     
-    /* Shadows & Effects */
-    --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-    --shadow-lg: 0 10px 24px rgba(0,0,0,0.12);
+    /* Shadows & Effects (Suavizados y Modernizados) */
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 8px 24px rgba(160, 113, 91, 0.05);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.05);
     --radius-md: 16px;
     --radius-lg: 24px;
     --radius-pill: 50px;
     
     /* Transitions */
-    --transition-fast: 0.2s ease;
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ── TEMÁTICAS / SKINS DE LA WEB ── */
-/* Sobrio V1 (Negro, Blanco y Gris) */
+/* Sobrio V1 (Edición de Lujo / Minimalist Luxury) */
 body.theme-sobrio {
-    --primary-color: #1A1A1A;
-    --primary-hover: #333333;
-    --accent-color: #4A5568;
-    --bg-color: #FFFFFF;
+    --primary-color: #0F172A; /* Pizarra oscuro premium */
+    --primary-hover: #1E293B;
+    --accent-color: #64748B;
+    --bg-color: #F8FAFC; /* Gris frío de estudio de diseño */
+    --header-bg: rgba(248, 250, 252, 0.90);
+    --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.04);
 }
 
-/* Mes Mundialista (Celeste y Dorado) */
+/* Mes Mundialista (Celeste y Oro Elegant) */
 body.theme-mundial {
-    --primary-color: #74ACDF;
-    --primary-hover: #5992C6;
-    --accent-color: #F6B828;
-    --bg-color: #F0F6FA;
+    --primary-color: #4A90E2; /* Celeste vibrante premium */
+    --primary-hover: #357ABD;
+    --accent-color: #D4AF37; /* Oro metálico elegante */
+    --bg-color: #F3F8FC; /* Blanco hielo sutil */
+    --header-bg: rgba(243, 248, 252, 0.90);
+    --shadow-md: 0 8px 24px rgba(74, 144, 226, 0.06);
 }
 
-/* Navidad (Rojo y Verde) */
+/* Navidad (Crimson and Sage) */
 body.theme-navidad {
-    --primary-color: #C22A2A;
-    --primary-hover: #A32020;
-    --accent-color: #1A6C37;
-    --bg-color: #FAF5F5;
+    --primary-color: #A62626; /* Rojo carmesí festivo */
+    --primary-hover: #8C1E1E;
+    --accent-color: #2C5E3B; /* Verde pino / sabio */
+    --bg-color: #FAF7F2; /* Marfil acogedor */
+    --header-bg: rgba(250, 247, 242, 0.90);
+    --shadow-md: 0 8px 24px rgba(166, 38, 38, 0.05);
 }
 
-/* Halloween (Naranja y Violeta) */
+/* Halloween (Burnt Pumpkin and Plum) */
 body.theme-halloween {
-    --primary-color: #E65100;
-    --primary-hover: #D84315;
-    --accent-color: #5E35B1;
-    --bg-color: #FBF4EF;
+    --primary-color: #C8521B; /* Naranja calabaza quemada */
+    --primary-hover: #B34710;
+    --accent-color: #5E3A8C; /* Violeta ciruela profundo */
+    --bg-color: #FAF5F0; /* Crema de arena */
+    --header-bg: rgba(250, 245, 240, 0.90);
+    --shadow-md: 0 8px 24px rgba(200, 82, 27, 0.05);
 }
 
-/* San Valentín (Rosa y Rosa Pastel) */
+/* San Valentín (Blush Rose and Cherry) */
 body.theme-valentin {
-    --primary-color: #E91E63;
-    --primary-hover: #C2185B;
-    --accent-color: #F48FB1;
-    --bg-color: #FFF2F5;
+    --primary-color: #D84B6F; /* Rosa pétalo vintage */
+    --primary-hover: #C24C65;
+    --accent-color: #F0A3B5; /* Rosa algodón pastel */
+    --bg-color: #FFF5F6; /* Blanco ruborizado */
+    --header-bg: rgba(255, 245, 246, 0.90);
+    --shadow-md: 0 8px 24px rgba(216, 75, 111, 0.05);
 }
 
 
@@ -115,27 +126,38 @@ h3 { font-size: 1.25rem; }
 /* Buttons */
 button, .btn-primary, .btn-outline {
     font-family: var(--font-main);
-    font-weight: 500;
-    font-size: 1rem;
-    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.6rem;
     border-radius: var(--radius-pill);
     cursor: pointer;
-    transition: var(--transition-fast);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
     border: none;
     outline: none;
     width: 100%;
     max-width: 300px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: -0.01em;
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
     color: white;
     box-shadow: var(--shadow-md);
 }
 
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(160, 113, 91, 0.12);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--primary-color) 15%, transparent);
+}
+
 .btn-primary:active {
-    background-color: var(--primary-hover);
-    transform: scale(0.98);
+    transform: translateY(0) scale(0.975);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-outline {
@@ -144,8 +166,16 @@ button, .btn-primary, .btn-outline {
     color: var(--primary-color);
 }
 
+.btn-outline:hover {
+    background-color: rgba(160, 113, 91, 0.04);
+    background-color: color-mix(in srgb, var(--primary-color) 4%, transparent);
+    transform: translateY(-2px);
+}
+
 .btn-outline:active {
-    background-color: rgba(180, 132, 108, 0.1);
+    background-color: rgba(160, 113, 91, 0.10);
+    background-color: color-mix(in srgb, var(--primary-color) 10%, transparent);
+    transform: translateY(0) scale(0.975);
 }
 
 /* Splash Screen */
@@ -233,7 +263,7 @@ button, .btn-primary, .btn-outline {
     text-align: center;      /* Centra las líneas de texto */
     padding: 12px 20px;
     box-sizing: border-box;
-    background: rgba(250, 249, 246, 0.96);
+    background: var(--header-bg, rgba(253, 252, 249, 0.90));
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
@@ -645,10 +675,18 @@ button, .btn-primary, .btn-outline {
     display: flex;
     align-items: center;
     background: var(--surface-color);
-    padding: 0.8rem 1rem;
+    padding: 0.6rem 1rem;
     border-radius: var(--radius-pill);
+    border: 1.5px solid rgba(0, 0, 0, 0.04);
     box-shadow: var(--shadow-sm);
     margin: 1rem 1.5rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.search-bar-container:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(160, 113, 91, 0.08);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 12%, transparent);
 }
 
 .search-input {
@@ -656,9 +694,10 @@ button, .btn-primary, .btn-outline {
     outline: none;
     flex: 1;
     font-family: var(--font-main);
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin-left: 0.5rem;
     background: transparent;
+    color: var(--text-main);
 }
 
 .filter-chips {

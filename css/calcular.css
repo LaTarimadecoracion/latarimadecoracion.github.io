@@ -85,7 +85,7 @@
 
 .input-group-clean input:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(180, 132, 108, 0.12);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 12%, transparent);
 }
 
 /* Diagrama Explicativo */
@@ -103,7 +103,7 @@
 .diagram-container-clean svg {
     border-radius: 8px;
     background: #FFFFFF;
-    border: 1px solid rgba(180, 132, 108, 0.08);
+    border: 1px solid color-mix(in srgb, var(--primary-color) 8%, transparent);
     flex-shrink: 0;
 }
 
@@ -118,7 +118,7 @@
     font-size: 0.72rem;
     color: var(--text-muted);
     line-height: 1.4;
-    border-left: 2px solid rgba(180, 132, 108, 0.25);
+    border-left: 2px solid color-mix(in srgb, var(--primary-color) 25%, transparent);
     padding-left: 10px;
 }
 
@@ -138,20 +138,20 @@
 }
 
 .results-table-clean th {
-    background: rgba(180, 132, 108, 0.07);
+    background: color-mix(in srgb, var(--primary-color) 7%, transparent);
     color: var(--primary-color);
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.75rem;
     letter-spacing: 0.8px;
     padding: 0.95rem 1.15rem;
-    border-bottom: 1px solid rgba(180, 132, 108, 0.1);
+    border-bottom: 1px solid color-mix(in srgb, var(--primary-color) 10%, transparent);
 }
 
 .results-table-clean td {
     padding: 0.95rem 1.15rem;
     font-size: 0.88rem;
-    border-bottom: 1px solid rgba(180, 132, 108, 0.05);
+    border-bottom: 1px solid color-mix(in srgb, var(--primary-color) 5%, transparent);
     color: var(--text-main);
     vertical-align: middle;
 }
@@ -161,7 +161,7 @@
 }
 
 .results-table-clean tbody tr:hover {
-    background: rgba(180, 132, 108, 0.03);
+    background: color-mix(in srgb, var(--primary-color) 3%, transparent);
 }
 
 /* Fila Recomendada (Verde Vivo) */
@@ -346,9 +346,9 @@
 }
 
 .btn-copy-clean {
-    background: rgba(180, 132, 108, 0.07);
+    background: color-mix(in srgb, var(--primary-color) 7%, transparent);
     color: var(--primary-color);
-    border: 1.5px solid rgba(180, 132, 108, 0.15);
+    border: 1.5px solid color-mix(in srgb, var(--primary-color) 15%, transparent);
     padding: 0.4rem 1.1rem;
     font-size: 0.78rem;
     font-family: var(--font-main);
@@ -365,7 +365,7 @@
     background: var(--primary-color);
     color: #FFFFFF;
     border-color: var(--primary-color);
-    box-shadow: 0 4px 12px rgba(180, 132, 108, 0.15);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--primary-color) 15%, transparent);
 }
 
 #copyOk {
@@ -432,11 +432,11 @@
     transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
-    border: 1px dashed rgba(180, 132, 108, 0.3);
+    border: 1px dashed color-mix(in srgb, var(--primary-color) 30%, transparent);
 }
 
 .btn-help-link:hover {
-    background: rgba(180, 132, 108, 0.08);
+    background: color-mix(in srgb, var(--primary-color) 8%, transparent);
     border-color: var(--primary-color);
     transform: translateY(-1px);
 }
@@ -532,7 +532,7 @@
 }
 
 .vista-tab:hover {
-    background: rgba(180, 132, 108, 0.05);
+    background: color-mix(in srgb, var(--primary-color) 5%, transparent);
     color: var(--primary-color);
     border-color: var(--primary-color);
 }
@@ -541,17 +541,17 @@
     background: var(--primary-color);
     color: #FFFFFF;
     border-color: var(--primary-color);
-    box-shadow: 0 4px 12px rgba(180, 132, 108, 0.15);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--primary-color) 15%, transparent);
 }
 
 /* Tarjeta del Visualizador */
 .visualizer-card {
     background: rgba(255, 255, 255, 0.55);
-    border: 1px solid rgba(180, 132, 108, 0.12);
+    border: 1px solid color-mix(in srgb, var(--primary-color) 12%, transparent);
     border-radius: 20px;
     padding: 1.5rem;
     margin-top: 2rem;
-    box-shadow: 0 4px 20px rgba(180, 132, 108, 0.02);
+    box-shadow: 0 4px 20px color-mix(in srgb, var(--primary-color) 2%, transparent);
 }
 
 #canvas-container-clean {
@@ -693,7 +693,7 @@
 
 .input-compact-field:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(180, 132, 108, 0.12);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 12%, transparent);
 }
 
 .input-compact-unit {
