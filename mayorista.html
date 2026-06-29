@@ -579,7 +579,7 @@
             <div class="table-header">
                 <div>Producto / Variante</div>
                 <div>Ver</div>
-                <div>Precio Unit.</div>
+                <div id="sort-price-header" style="cursor: pointer; display: flex; align-items: center; gap: 4px; user-select: none; width: fit-content;" title="Ordenar por precio">Precio Unit. <span class="material-symbols-outlined" id="sort-price-icon" style="font-size: 16px; transition: transform 0.2s;">unfold_more</span></div>
                 <div>Cantidad</div>
                 <div>Subtotal</div>
             </div>
@@ -808,6 +808,7 @@
 
             let allRows = []; // Todas las filas expandidas por variante
             let currentCart = {}; // id_unico -> { title, price, quantity, conditions }
+            let currentSortPrice = null; // 'asc', 'desc', null
 
             // 1. Procesar la base de datos y expandir todas las combinaciones Producto + Variante + Medida
             function loadVariants() {
@@ -903,6 +904,13 @@
                     const matchMedida = r.medida.toLowerCase().includes(cleanQuery);
                     return matchTitle || matchCategory || matchAcabado || matchMedida;
                 });
+
+                // Ordenar si corresponde
+                if (currentSortPrice === 'asc') {
+                    filtered.sort((a, b) => a.price - b.price);
+                } else if (currentSortPrice === 'desc') {
+                    filtered.sort((a, b) => b.price - a.price);
+                }
 
                 if (filtered.length === 0) {
                     rowsContainer.innerHTML = `
@@ -1302,6 +1310,29 @@
             if (searchInput) {
                 searchInput.addEventListener('input', (e) => {
                     renderTable(e.target.value);
+                });
+            }
+
+            // Evento Ordenar por Precio
+            const sortHeader = document.getElementById('sort-price-header');
+            const sortIcon = document.getElementById('sort-price-icon');
+            if (sortHeader) {
+                sortHeader.addEventListener('click', () => {
+                    if (currentSortPrice === null) {
+                        currentSortPrice = 'asc';
+                        sortIcon.textContent = 'arrow_upward';
+                        sortIcon.style.color = 'var(--primary-color)';
+                    } else if (currentSortPrice === 'asc') {
+                        currentSortPrice = 'desc';
+                        sortIcon.textContent = 'arrow_downward';
+                        sortIcon.style.color = 'var(--primary-color)';
+                    } else {
+                        currentSortPrice = null;
+                        sortIcon.textContent = 'unfold_more';
+                        sortIcon.style.color = '';
+                    }
+                    const q = searchInput ? searchInput.value : '';
+                    renderTable(q);
                 });
             }
 
