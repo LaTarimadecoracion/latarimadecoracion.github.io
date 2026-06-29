@@ -1089,7 +1089,7 @@
                             if (subtotalEl) {
                                 const rowData = allRows.find(r => r.rowId === rowId);
                                 if (rowData) {
-                                    subtotalEl.textContent = newVal > 0 ? \`$\${(rowData.price * newVal).toLocaleString('es-AR')}\` : '$0';
+                                    subtotalEl.textContent = newVal > 0 ? `$${(rowData.price * newVal).toLocaleString('es-AR')}` : '$0';
                                 }
                             }
                         }
