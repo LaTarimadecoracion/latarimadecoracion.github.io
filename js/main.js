@@ -497,4 +497,44 @@ document.addEventListener('pointerdown', (e) => {
         // Limpieza tras 3.5s (duración de la fiesta de confeti en cámara lenta)
         setTimeout(() => p.remove(), 3500);
     }
+
+    // --- Redirección y Sincronización de Scroll en Vistas con Iframe ---
+    // Permite hacer scroll desde cualquier lugar de la pantalla (márgenes grises, cabecera, navegación inferior)
+    window.addEventListener('wheel', (e) => {
+        const activeView = document.querySelector('.view.active');
+        if (activeView) {
+            if (activeView.id === 'view-mayorista' || activeView.id === 'view-catalogo') {
+                const iframe = activeView.querySelector('iframe');
+                if (iframe && iframe.contentWindow) {
+                    iframe.contentWindow.scrollBy(0, e.deltaY);
+                }
+            } else {
+                // Si el mouse está fuera de #app-container, desplazarlo igualmente
+                if (!e.target.closest('#app-container')) {
+                    const appContainer = document.getElementById('app-container');
+                    if (appContainer) {
+                        appContainer.scrollTop += e.deltaY;
+                    }
+                }
+            }
+        }
+    }, { passive: true });
+
+    let touchStartY = 0;
+    window.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+        const activeView = document.querySelector('.view.active');
+        if (activeView && (activeView.id === 'view-mayorista' || activeView.id === 'view-catalogo')) {
+            const iframe = activeView.querySelector('iframe');
+            if (iframe && iframe.contentWindow) {
+                const touchY = e.touches[0].clientY;
+                const deltaY = touchStartY - touchY;
+                iframe.contentWindow.scrollBy(0, deltaY);
+                touchStartY = touchY;
+            }
+        }
+    }, { passive: true });
 });
