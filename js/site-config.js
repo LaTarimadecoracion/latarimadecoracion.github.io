@@ -196,5 +196,13 @@ window.siteConfig = {
         "youtube": "https://www.youtube.com/@latarimadecoracion",
         "whatsapp": "https://wa.me/5491167007723",
         "mercadolibre": "https://www.mercadolibre.com.ar/pagina/latarima"
+    },
+    "mayoristaConfig": {
+        "markupPercent": 10,
+        "cbu": "1234567890123456789012",
+        "alias": "la.tarima.deco",
+        "bank": "Banco Nación",
+        "titular": "Juan Pérez",
+        "terms": "Condiciones de Venta Mayorista:\n1. Compra mínima de $100.000.\n2. Los precios no incluyen IVA.\n3. Retiro por taller o envío a convenir.\n4. Demora estimada de entrega de 15 a 20 días."
     }
 };

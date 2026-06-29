@@ -354,7 +354,4 @@ window.renderAdminUX = safeAdminRun(renderAdminUX);
 window.renderAdminViewBuilderList = safeAdminRun(renderAdminViewBuilderList);
 window.renderAdminHomeSectionsList = safeAdminRun(renderAdminHomeSectionsList);
 window.renderAdminRentals = safeAdminRun(renderAdminRentals);
-// --- LÓGICA DE ANCHO DEL PANEL DE ADMINISTRACIÓN (PC) ---
-const adminLayoutContainer = document.getElementById('admin-layout-container');
-const adminWidthTabs = document.querySelectorAll('.admin-width-tab');
 

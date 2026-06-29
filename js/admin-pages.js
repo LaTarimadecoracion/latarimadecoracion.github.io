@@ -989,7 +989,10 @@ window.initPagesAdmin = function() {
 
 
 function applyAdminPanelWidth(width) {
+    const adminLayoutContainer = document.getElementById('admin-layout-container');
+    const adminWidthTabs = document.querySelectorAll('.admin-width-tab');
     if (!adminLayoutContainer) return;
+    
     adminLayoutContainer.classList.remove('width-normal', 'width-full');
     adminLayoutContainer.classList.add(`width-${width}`);
 
@@ -1000,32 +1003,35 @@ function applyAdminPanelWidth(width) {
         viewAdmin.classList.add(`width-${width}`);
     }
 
-    adminWidthTabs.forEach(tab => {
-        if (tab.getAttribute('data-width') === width) {
-            tab.classList.add('active');
-            tab.style.background = '#FFF';
-            tab.style.fontWeight = '600';
-            tab.style.color = '#0F172A';
-        } else {
-            tab.classList.remove('active');
-            tab.style.background = 'transparent';
-            tab.style.fontWeight = '500';
-            tab.style.color = '#94A3B8';
-        }
-    });
+    if (adminWidthTabs) {
+        adminWidthTabs.forEach(tab => {
+            if (tab.getAttribute('data-width') === width) {
+                tab.classList.add('active');
+                tab.style.background = '#FFF';
+                tab.style.fontWeight = '600';
+                tab.style.color = '#0F172A';
+            } else {
+                tab.classList.remove('active');
+                tab.style.background = 'transparent';
+                tab.style.fontWeight = '500';
+                tab.style.color = '#94A3B8';
+            }
+        });
+    }
 }
 
 // Cargar la preferencia de ancho del panel de administración
 const savedAdminWidth = localStorage.getItem('adminPanelPreferredWidth') || 'normal';
 applyAdminPanelWidth(savedAdminWidth);
 
-adminWidthTabs.forEach(tab => {
+document.querySelectorAll('.admin-width-tab').forEach(tab => {
     tab.addEventListener('click', () => {
         const width = tab.getAttribute('data-width');
         applyAdminPanelWidth(width);
         localStorage.setItem('adminPanelPreferredWidth', width);
     });
 });
+
 
 window.initMayoristaAdmin = function() {
     const aliasInput = document.getElementById('admin-may-alias');
