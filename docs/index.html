@@ -1003,26 +1003,19 @@
                                                 <label for="admin-may-bank" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Banco / Plataforma</label>
                                                 <input type="text" id="admin-may-bank" placeholder="ej: Banco Galicia, Mercado Pago" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="admin-may-surcharge-transfer" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Recargo Transferencia (%)</label>
-                                                <input type="number" id="admin-may-surcharge-transfer" placeholder="21" min="0" max="100" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                        </div>
+                                        
+                                        
+                                        <div style="border-top: 1.5px solid #E2E8F0; margin-top: 1rem; padding-top: 1.5rem;">
+                                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                                <h4 style="margin: 0; font-size: 0.95rem; font-weight: 600; color: #1E293B;">Métodos de Pago y Condiciones</h4>
+                                                <button type="button" id="btn-add-payment-method" style="padding: 0.4rem 0.8rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 0.85rem; font-weight: 500;">
+                                                    <span class="material-symbols-outlined" style="font-size: 16px;">add</span> Agregar Método
+                                                </button>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="admin-may-markup" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Recargo Mercado Pago (%)</label>
-                                                <input type="number" id="admin-may-markup" placeholder="31" min="0" max="100" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                            <div id="admin-payment-methods-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                                                
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="admin-may-terms-efectivo" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Condiciones (Efectivo)</label>
-                                            <textarea id="admin-may-terms-efectivo" placeholder="Escribe aquí las condiciones para Efectivo..." rows="3" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="admin-may-terms-transferencia" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Condiciones (Transferencia)</label>
-                                            <textarea id="admin-may-terms-transferencia" placeholder="Escribe aquí las condiciones para Transferencia..." rows="3" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="admin-may-terms-mercadopago" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Condiciones (Mercado Pago)</label>
-                                            <textarea id="admin-may-terms-mercadopago" placeholder="Escribe aquí las condiciones para Mercado Pago..." rows="3" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="admin-may-discounts" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Aclaración de Descuentos (Checkout)</label>

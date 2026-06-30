@@ -1038,11 +1038,8 @@ window.initMayoristaAdmin = function() {
     const cbuInput = document.getElementById('admin-may-cbu');
     const titularInput = document.getElementById('admin-may-titular');
     const bankInput = document.getElementById('admin-may-bank');
-    const surchargeTransferInput = document.getElementById('admin-may-surcharge-transfer');
-    const markupInput = document.getElementById('admin-may-markup');
-    const termsEfectivo = document.getElementById('admin-may-terms-efectivo');
-    const termsTransferencia = document.getElementById('admin-may-terms-transferencia');
-    const termsMercadopago = document.getElementById('admin-may-terms-mercadopago');
+    const paymentMethodsContainer = document.getElementById('admin-payment-methods-list');
+    const btnAddPaymentMethod = document.getElementById('btn-add-payment-method');
     const discountsTextarea = document.getElementById('admin-may-discounts');
     const saveBtn = document.getElementById('btn-save-mayorista-config');
 
@@ -1058,11 +1055,78 @@ window.initMayoristaAdmin = function() {
     cbuInput.value = cfg.cbu || '';
     titularInput.value = cfg.titular || '';
     bankInput.value = cfg.bank || '';
-    surchargeTransferInput.value = cfg.surchargeTransfer !== undefined ? cfg.surchargeTransfer : 21;
-    markupInput.value = cfg.markupPercent !== undefined ? cfg.markupPercent : 31;
-    if (termsEfectivo) termsEfectivo.value = cfg.terms_efectivo || cfg.terms || '';
-    if (termsTransferencia) termsTransferencia.value = cfg.terms_transferencia || cfg.terms || '';
-    if (termsMercadopago) termsMercadopago.value = cfg.terms_mercadopago || cfg.terms || '';
+    let currentPaymentMethods = cfg.paymentMethods;
+    if (!currentPaymentMethods || !Array.isArray(currentPaymentMethods)) {
+        // Migración desde formato viejo a nuevo array dinámico
+        currentPaymentMethods = [
+            { id: 'efectivo', name: 'Efectivo', surcharge: 0, conditions: cfg.terms_efectivo || cfg.terms || '' },
+            { id: 'transferencia', name: 'Transferencia', surcharge: cfg.surchargeTransfer !== undefined ? cfg.surchargeTransfer : 21, conditions: cfg.terms_transferencia || cfg.terms || '' },
+            { id: 'mercadopago', name: 'Mercado Pago', surcharge: cfg.markupPercent !== undefined ? cfg.markupPercent : 31, conditions: cfg.terms_mercadopago || cfg.terms || '' }
+        ];
+    }
+
+    function renderPaymentMethods() {
+        if (!paymentMethodsContainer) return;
+        paymentMethodsContainer.innerHTML = '';
+        currentPaymentMethods.forEach((pm, idx) => {
+            const card = document.createElement('div');
+            card.style.cssText = 'border: 1px solid #E2E8F0; border-radius: 8px; padding: 1rem; background: #F8FAFC; position: relative;';
+            card.innerHTML = `
+                <button type="button" class="btn-del-pm" data-index="${idx}" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: #EF4444; cursor: pointer; font-size: 1.2rem;" title="Eliminar Método">&times;</button>
+                <div style="display: grid; grid-template-columns: 1fr 120px; gap: 1rem; margin-bottom: 0.8rem;">
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 500; color: #64748B; margin-bottom: 0.2rem;">Nombre del Método</label>
+                        <input type="text" class="pm-name" data-index="${idx}" value="${pm.name}" placeholder="Ej: Cuenta DNI" style="width: 100%; padding: 0.5rem; border: 1px solid #CBD5E1; border-radius: 6px; box-sizing: border-box;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 500; color: #64748B; margin-bottom: 0.2rem;">Recargo (%)</label>
+                        <input type="number" class="pm-surcharge" data-index="${idx}" value="${pm.surcharge}" placeholder="0" min="0" style="width: 100%; padding: 0.5rem; border: 1px solid #CBD5E1; border-radius: 6px; box-sizing: border-box;">
+                    </div>
+                </div>
+                <div>
+                    <label style="display: block; font-size: 0.8rem; font-weight: 500; color: #64748B; margin-bottom: 0.2rem;">Condiciones específicas</label>
+                    <textarea class="pm-conditions" data-index="${idx}" rows="2" placeholder="Términos para este método..." style="width: 100%; padding: 0.5rem; border: 1px solid #CBD5E1; border-radius: 6px; resize: vertical; box-sizing: border-box;">${pm.conditions}</textarea>
+                </div>
+            `;
+            paymentMethodsContainer.appendChild(card);
+        });
+
+        // Add Listeners
+        paymentMethodsContainer.querySelectorAll('.pm-name').forEach(inp => inp.addEventListener('input', (e) => {
+            const idx = parseInt(e.target.dataset.index);
+            currentPaymentMethods[idx].name = e.target.value;
+            currentPaymentMethods[idx].id = e.target.value.toLowerCase().replace(/[^a-z0-9]/g, '');
+        }));
+        paymentMethodsContainer.querySelectorAll('.pm-surcharge').forEach(inp => inp.addEventListener('input', (e) => {
+            const idx = parseInt(e.target.dataset.index);
+            currentPaymentMethods[idx].surcharge = parseInt(e.target.value) || 0;
+        }));
+        paymentMethodsContainer.querySelectorAll('.pm-conditions').forEach(inp => inp.addEventListener('input', (e) => {
+            const idx = parseInt(e.target.dataset.index);
+            currentPaymentMethods[idx].conditions = e.target.value;
+        }));
+        paymentMethodsContainer.querySelectorAll('.btn-del-pm').forEach(btn => btn.addEventListener('click', (e) => {
+            const idx = parseInt(e.target.dataset.index);
+            if(confirm('¿Seguro que deseas eliminar este método de pago?')) {
+                currentPaymentMethods.splice(idx, 1);
+                renderPaymentMethods();
+            }
+        }));
+    }
+
+    if (btnAddPaymentMethod) {
+        btnAddPaymentMethod.addEventListener('click', () => {
+            currentPaymentMethods.push({
+                id: 'metodo_' + Date.now(),
+                name: 'Nuevo Método',
+                surcharge: 0,
+                conditions: ''
+            });
+            renderPaymentMethods();
+        });
+    }
+
+    renderPaymentMethods();
     discountsTextarea.value = cfg.discounts || '';
 
     // Manejador del botón Guardar Configuración
@@ -1076,11 +1140,7 @@ window.initMayoristaAdmin = function() {
             cbu: cbuInput.value.trim(),
             titular: titularInput.value.trim(),
             bank: bankInput.value.trim(),
-            surchargeTransfer: parseInt(surchargeTransferInput.value.trim()) || 0,
-            markupPercent: parseInt(markupInput.value.trim()) || 0, // Recargo MP
-            terms_efectivo: termsEfectivo ? termsEfectivo.value : '',
-            terms_transferencia: termsTransferencia ? termsTransferencia.value : '',
-            terms_mercadopago: termsMercadopago ? termsMercadopago.value : '',
+            paymentMethods: currentPaymentMethods,
             discounts: discountsTextarea.value
         };
         window.siteConfig.mayoristaConfig = window.mayoristaConfig;
