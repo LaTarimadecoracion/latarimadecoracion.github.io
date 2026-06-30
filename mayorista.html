@@ -597,9 +597,10 @@
             <span class="material-symbols-outlined" style="font-size: 20px; color: var(--primary-color);">info</span>
             <span>Ver Condiciones</span>
         </button>
-        <div class="footer-total-info" style="margin-left: auto; margin-right: 1.5rem;">
+        <div class="footer-total-info" style="margin-left: auto; margin-right: 1.5rem; text-align: right; align-items: flex-end;">
             <span class="footer-total-label">Total del Pedido</span>
             <span class="footer-total-value" id="order-grand-total">$0</span>
+            <span id="order-total-savings" style="font-size: 0.8rem; color: #10B981; font-weight: 700; display: none; margin-top: -2px;">Ahorraste $0</span>
         </div>
         <button type="button" id="btn-submit-order" class="btn-finalize-order" disabled>
             <span class="material-symbols-outlined">shopping_cart_checkout</span>
@@ -744,9 +745,14 @@
                         <button type="button" id="btn-send-whatsapp" disabled style="width: 100%; background: #0F172A; color: #ffffff; border: none; padding: 0.7rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: background 0.2s, opacity 0.2s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif; margin-bottom: 0.5rem;">
                             Confirmar y Enviar Pedido
                         </button>
-                        <button type="button" id="btn-continue-shopping" style="width: 100%; background: #F1F5F9; color: #334155; border: 1px solid #E2E8F0; padding: 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: 'Outfit', sans-serif;">
-                            Seguir Comprando
-                        </button>
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <button type="button" id="btn-continue-shopping" style="flex: 1; background: #F1F5F9; color: #334155; border: 1px solid #E2E8F0; padding: 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: 'Outfit', sans-serif;">
+                                Seguir Comprando
+                            </button>
+                            <button type="button" id="btn-save-local-order" style="flex: 1; background: #ECFDF5; color: #10B981; border: 1px solid #A7F3D0; padding: 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: 'Outfit', sans-serif;">
+                                Guardar Pedido
+                            </button>
+                        </div>
                         <div style="text-align: center; margin-top: 0.5rem; font-size: 0.7rem; color: #94A3B8;">
                             Será redirigido a WhatsApp para concretar la operación
                         </div>
@@ -793,10 +799,28 @@
             const btnCloseGallery = document.getElementById('btn-close-gallery');
             const btnCloseCheckout = document.getElementById('btn-close-checkout');
             const btnContinueShopping = document.getElementById('btn-continue-shopping');
+            const btnSaveLocalOrder = document.getElementById('btn-save-local-order');
             
             if (btnContinueShopping) {
                 btnContinueShopping.addEventListener('click', () => {
                     modalCheckout.style.display = 'none';
+                });
+            }
+            if (btnSaveLocalOrder) {
+                btnSaveLocalOrder.addEventListener('click', () => {
+                    try {
+                        localStorage.setItem('savedMayoristaCart', JSON.stringify(currentCart));
+                        btnSaveLocalOrder.innerHTML = '¡Guardado!';
+                        btnSaveLocalOrder.style.background = '#10B981';
+                        btnSaveLocalOrder.style.color = '#ffffff';
+                        btnSaveLocalOrder.style.borderColor = '#10B981';
+                        setTimeout(() => {
+                            btnSaveLocalOrder.innerHTML = 'Guardar Pedido';
+                            btnSaveLocalOrder.style.background = '#ECFDF5';
+                            btnSaveLocalOrder.style.color = '#10B981';
+                            btnSaveLocalOrder.style.borderColor = '#A7F3D0';
+                        }, 2000);
+                    } catch(e) {}
                 });
             }
 
@@ -808,6 +832,13 @@
 
             let allRows = []; // Todas las filas expandidas por variante
             let currentCart = {}; // id_unico -> { title, price, quantity, conditions }
+            
+            try {
+                const saved = localStorage.getItem('savedMayoristaCart');
+                if (saved) {
+                    currentCart = JSON.parse(saved);
+                }
+            } catch(e) {}
             let currentSortPrice = null; // 'asc', 'desc', null
 
             // 1. Procesar la base de datos y expandir todas las combinaciones Producto + Variante + Medida
@@ -850,7 +881,8 @@
                                             images: images,
                                             cover: cover,
                                             price: parseFloat(variant.price) || 0,
-                                            conditions: variant.conditions || 'Sin condiciones especiales'
+                                            conditions: variant.conditions || 'Sin condiciones especiales',
+                                            volumeDiscounts: variant.volumeDiscounts || []
                                         });
                                     });
                                 }
@@ -878,7 +910,8 @@
                                         images: images,
                                         cover: cover,
                                         price: parseFloat(variant.price) || 0,
-                                        conditions: variant.conditions || 'Sin condiciones especiales'
+                                        conditions: variant.conditions || 'Sin condiciones especiales',
+                                        volumeDiscounts: variant.volumeDiscounts || []
                                     });
                                 });
                             }
@@ -895,14 +928,14 @@
                 if (!rowsContainer) return;
                 
                 rowsContainer.innerHTML = '';
-                const cleanQuery = filterText.trim().toLowerCase();
+                const rawQuery = filterText.trim().toLowerCase();
+                const cleanQuery = rawQuery.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                const searchTerms = cleanQuery.split(/\s+/).filter(t => t.length > 0);
 
                 const filtered = allRows.filter(r => {
-                    const matchTitle = r.productTitle.toLowerCase().includes(cleanQuery);
-                    const matchCategory = r.categoryName.toLowerCase().includes(cleanQuery);
-                    const matchAcabado = r.acabadoName.toLowerCase().includes(cleanQuery);
-                    const matchMedida = r.medida.toLowerCase().includes(cleanQuery);
-                    return matchTitle || matchCategory || matchAcabado || matchMedida;
+                    if (searchTerms.length === 0) return true;
+                    const combinedText = `${r.productTitle} ${r.categoryName} ${r.acabadoName} ${r.medida}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    return searchTerms.every(term => combinedText.includes(term));
                 });
 
                 // Ordenar si corresponde
@@ -929,13 +962,25 @@
                     tr.dataset.id = row.rowId;
 
                     const qty = currentCart[row.rowId] ? currentCart[row.rowId].quantity : 0;
-                    const priceLabel = row.price > 0 ? `$${row.price.toLocaleString('es-AR')}` : 'Consultar';
-                    const subtotal = row.price * qty;
-                    const subtotalLabel = subtotal > 0 ? `$${subtotal.toLocaleString('es-AR')}` : '$0';
-
+                    
                     const prodNameFull = row.acabadoName.toLowerCase() !== 'único' 
                         ? `${row.productTitle} (${row.acabadoName} - ${row.medida})`
                         : `${row.productTitle} (${row.medida})`;
+
+                    let priceLabelHTML = '';
+                    let colCantidadHTML = '';
+                    let colTotalHTML = '';
+                    if (row.price > 0) {
+                        priceLabelHTML = `<span class="price-val">$${row.price.toLocaleString('es-AR')}</span>`;
+                        colCantidadHTML = `<input type="number" class="quantity-input" data-id="${row.rowId}" value="${qty}" min="0">`;
+                        const subtotal = row.price * qty;
+                        const subtotalLabel = subtotal > 0 ? `$${subtotal.toLocaleString('es-AR')}` : '$0';
+                        colTotalHTML = `<span class="total-val" id="subtotal-${row.rowId}">${subtotalLabel}</span>`;
+                    } else {
+                        priceLabelHTML = `<span class="price-val btn-consult-wpp" data-title="${prodNameFull}" style="cursor: pointer; color: var(--primary-color); font-weight: 600; text-decoration: underline;">Consultar</span>`;
+                        colCantidadHTML = `<input type="number" class="quantity-input" value="" disabled style="opacity: 0.35; pointer-events: none; background: #F8FAFC;">`;
+                        colTotalHTML = `<span class="total-val">-</span>`;
+                    }
 
                     tr.innerHTML = `
                         <div class="prod-info">
@@ -946,59 +991,108 @@
                             <span class="material-symbols-outlined btn-ver-fotos" data-id="${row.rowId}" title="Ver fotos">image</span>
                         </div>
                         <div class="col-precio">
-                            <span class="price-val">${priceLabel}</span>
+                            ${priceLabelHTML}
                         </div>
                         <div class="col-cantidad">
-                            <input type="number" class="quantity-input" data-id="${row.rowId}" value="${qty}" min="0">
+                            ${colCantidadHTML}
                         </div>
                         <div class="col-total">
-                            <span class="total-val" id="subtotal-${row.rowId}">${subtotalLabel}</span>
+                            ${colTotalHTML}
                         </div>
                     `;
 
                     // Listeners de los botones y del input
-                    const input = tr.querySelector('.quantity-input');
+                    const consultBtn = tr.querySelector('.btn-consult-wpp');
                     const verBtn = tr.querySelector('.btn-ver-fotos');
 
-                    const updateQty = (newVal) => {
-                        newVal = Math.max(0, parseInt(newVal) || 0);
-                        input.value = newVal;
+                    if (consultBtn) {
+                        consultBtn.addEventListener('click', () => {
+                            const waPhone = "5491167007723";
+                            const msg = `Hola! Quería consultar el precio y stock de: ${prodNameFull}`;
+                            window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(msg)}`, '_blank');
+                        });
+                    }
 
-                        if (newVal > 0) {
-                            currentCart[row.rowId] = {
-                                title: prodNameFull,
-                                price: row.price,
-                                quantity: newVal,
-                                conditions: row.conditions
-                            };
-                        } else {
-                            delete currentCart[row.rowId];
-                        }
+                    if (row.price > 0) {
+                        const input = tr.querySelector('.quantity-input');
+                        const updateQty = (newVal) => {
+                            newVal = Math.max(0, parseInt(newVal) || 0);
+                            input.value = newVal;
 
-                        // Actualizar subtotal
-                        const sub = row.price * newVal;
-                        document.getElementById(`subtotal-${row.rowId}`).textContent = sub > 0 ? `$${sub.toLocaleString('es-AR')}` : '$0';
+                            // Aplicar descuentos por cantidad
+                            let appliedDiscount = 0;
+                            if (row.volumeDiscounts && Array.isArray(row.volumeDiscounts)) {
+                                row.volumeDiscounts.forEach(rule => {
+                                    if (newVal >= rule.minQty && rule.discountPercent > appliedDiscount) {
+                                        appliedDiscount = rule.discountPercent;
+                                    }
+                                });
+                            }
+                            const finalPrice = appliedDiscount > 0 ? row.price * (1 - (appliedDiscount / 100)) : row.price;
 
-                        recalculateGrandTotal();
-                    };
+                            // Actualizar UI del precio
+                            const priceSpan = tr.querySelector('.price-val');
+                            if (priceSpan) {
+                                if (appliedDiscount > 0) {
+                                    priceSpan.innerHTML = `<del style="font-size:0.8em; color:#94a3b8;">$${row.price.toLocaleString('es-AR')}</del> $${finalPrice.toLocaleString('es-AR')}`;
+                                } else {
+                                    priceSpan.textContent = `$${row.price.toLocaleString('es-AR')}`;
+                                }
+                            }
 
-                    input.addEventListener('input', (e) => updateQty(e.target.value));
-                    input.addEventListener('change', (e) => updateQty(e.target.value));
+                            if (newVal > 0) {
+                                currentCart[row.rowId] = {
+                                    title: prodNameFull,
+                                    price: finalPrice,
+                                    originalPrice: row.price,
+                                    quantity: newVal,
+                                    conditions: row.conditions
+                                };
+                            } else {
+                                delete currentCart[row.rowId];
+                            }
+
+                            // Actualizar subtotal
+                            const sub = finalPrice * newVal;
+                            document.getElementById(`subtotal-${row.rowId}`).textContent = sub > 0 ? `$${sub.toLocaleString('es-AR')}` : '$0';
+
+                            recalculateGrandTotal();
+                        };
+
+                        input.addEventListener('input', (e) => updateQty(e.target.value));
+                        input.addEventListener('change', (e) => updateQty(e.target.value));
+                    }
 
                     verBtn.addEventListener('click', () => openGalleryModal(row));
 
                     rowsContainer.appendChild(tr);
                 });
+                
+                recalculateGrandTotal();
             }
 
             // 3. Recalcular el total general
             function recalculateGrandTotal() {
                 let grandTotal = 0;
+                let originalGrandTotal = 0;
                 Object.values(currentCart).forEach(item => {
                     grandTotal += item.price * item.quantity;
+                    originalGrandTotal += (item.originalPrice || item.price) * item.quantity;
                 });
 
                 grandTotalEl.textContent = `$${grandTotal.toLocaleString('es-AR')}`;
+                
+                const savingsEl = document.getElementById('order-total-savings');
+                if (savingsEl) {
+                    const savings = originalGrandTotal - grandTotal;
+                    if (savings > 0) {
+                        savingsEl.textContent = `Ahorraste $${savings.toLocaleString('es-AR')}`;
+                        savingsEl.style.display = 'block';
+                    } else {
+                        savingsEl.style.display = 'none';
+                    }
+                }
+
                 submitOrderBtn.disabled = grandTotal === 0;
             }
 
@@ -1062,14 +1156,25 @@
                     div.style.borderBottom = '1px solid #F1F5F9';
                     div.style.fontSize = '0.85rem';
                     
+                    let savingsHTML = '';
+                    let priceHTML = `$${item.price.toLocaleString('es-AR')} c/u`;
+                    if (item.originalPrice && item.originalPrice > item.price) {
+                        const savedTotal = (item.originalPrice - item.price) * item.quantity;
+                        priceHTML = `<del style="color:#94A3B8;">$${item.originalPrice.toLocaleString('es-AR')}</del> <span style="color:#10B981; font-weight:600;">$${item.price.toLocaleString('es-AR')}</span> c/u`;
+                        savingsHTML = `<div style="color: #10B981; font-size: 0.7rem; font-weight: 600; text-align: right; margin-top: 2px; letter-spacing: -0.2px;">Ahorro descuento: $${savedTotal.toLocaleString('es-AR')}</div>`;
+                    }
+
                     div.innerHTML = `
                         <div style="flex: 1; padding-right: 1rem;">
                             <div style="font-weight: 500; color: #334155; line-height: 1.2;">${item.title}</div>
-                            <div style="color: #64748B; font-size: 0.75rem; margin-top: 2px;">$${item.price.toLocaleString('es-AR')} c/u</div>
+                            <div style="color: #64748B; font-size: 0.75rem; margin-top: 2px;">${priceHTML}</div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <input type="number" class="checkout-qty-input" data-id="${id}" value="${item.quantity}" min="0" style="width: 45px; height: 26px; border: 1px solid #CBD5E1; border-radius: 4px; text-align: center; font-family: 'Outfit', sans-serif; color: #0F172A;">
-                            <div style="font-weight: 600; color: #0F172A; width: 65px; text-align: right;">$${(item.price * item.quantity).toLocaleString('es-AR')}</div>
+                        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="number" class="checkout-qty-input" data-id="${id}" value="${item.quantity}" min="0" style="width: 45px; height: 26px; border: 1px solid #CBD5E1; border-radius: 4px; text-align: center; font-family: 'Outfit', sans-serif; color: #0F172A;">
+                                <div style="font-weight: 600; color: #0F172A; width: 65px; text-align: right;">$${(item.price * item.quantity).toLocaleString('es-AR')}</div>
+                            </div>
+                            ${savingsHTML}
                         </div>
                     `;
                     listEl.appendChild(div);
@@ -1083,23 +1188,30 @@
                         const rowId = e.target.getAttribute('data-id');
                         
                         // Actualizar en currentCart
-                        if (newVal > 0) {
+                        const rowData = allRows.find(r => r.rowId === rowId);
+                        
+                        if (newVal > 0 && rowData) {
+                            let appliedDiscount = 0;
+                            if (rowData.volumeDiscounts && Array.isArray(rowData.volumeDiscounts)) {
+                                rowData.volumeDiscounts.forEach(rule => {
+                                    if (newVal >= rule.minQty && rule.discountPercent > appliedDiscount) {
+                                        appliedDiscount = rule.discountPercent;
+                                    }
+                                });
+                            }
+                            const finalPrice = appliedDiscount > 0 ? rowData.price * (1 - (appliedDiscount / 100)) : rowData.price;
                             currentCart[rowId].quantity = newVal;
-                        } else {
+                            currentCart[rowId].price = finalPrice;
+                            currentCart[rowId].originalPrice = rowData.price;
+                        } else if (newVal <= 0) {
                             delete currentCart[rowId];
                         }
                         
-                        // Sincronizar con el input en el catálogo principal si existe
+                        // Sincronizar con el input en el catálogo principal si existe y forzar su repintado visual
                         const mainInput = document.querySelector(`.quantity-input[data-id="${rowId}"]`);
                         if (mainInput) {
                             mainInput.value = newVal;
-                            const subtotalEl = document.getElementById(`subtotal-${rowId}`);
-                            if (subtotalEl) {
-                                const rowData = allRows.find(r => r.rowId === rowId);
-                                if (rowData) {
-                                    subtotalEl.textContent = newVal > 0 ? `$${(rowData.price * newVal).toLocaleString('es-AR')}` : '$0';
-                                }
-                            }
+                            mainInput.dispatchEvent(new Event('change'));
                         }
                         
                         // Repintar totales globales
@@ -1273,6 +1385,7 @@
                 // Cerrar modal y limpiar carrito
                 modalCheckout.style.display = 'none';
                 currentCart = {};
+                try { localStorage.removeItem('savedMayoristaCart'); } catch(e) {}
                 document.querySelectorAll('.quantity-input').forEach(i => i.value = 0);
                 document.querySelectorAll('.total-val').forEach(v => v.textContent = '$0');
                 recalculateGrandTotal();

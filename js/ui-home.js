@@ -4,81 +4,13 @@
         // Limpiamos el contenedor para evitar duplicados residuales
         containerEl.innerHTML = '';
 
-        // Si hay 2 o menos elementos, simplemente los renderizamos de forma fija
-        if (itemsArray.length <= 2) {
-            itemsArray.forEach(item => {
-                containerEl.appendChild(renderItemFunc(item));
-            });
-            return true;
-        }
-
-        // Triplicamos el bloque de ítems: [Copia Izquierda] [Original en el Centro] [Copia Derecha]
-        const triplicatedArray = [...itemsArray, ...itemsArray, ...itemsArray];
-        
+        // En lugar de triplicar y forzar saltos (lo cual causa flickering grave en celulares
+        // por conflicto con el momentum scrolling nativo), usamos una lista nativa simple.
         const fragment = document.createDocumentFragment();
-        triplicatedArray.forEach(item => {
+        itemsArray.forEach(item => {
             fragment.appendChild(renderItemFunc(item));
         });
         containerEl.appendChild(fragment);
-
-        let cardWidth = 0;
-        let blockWidth = 0;
-
-        const updateDimensions = () => {
-            const firstChild = containerEl.firstElementChild;
-            if (!firstChild) return;
-            // 10px es el gap entre tarjetas definido en la hoja de estilos
-            cardWidth = firstChild.offsetWidth + 10;
-            blockWidth = cardWidth * itemsArray.length;
-        };
-
-        const resetToCenter = () => {
-            if (blockWidth === 0) return;
-            containerEl.style.setProperty('scroll-behavior', 'auto', 'important');
-            containerEl.scrollLeft = blockWidth;
-            setTimeout(() => {
-                containerEl.style.removeProperty('scroll-behavior');
-            }, 50);
-        };
-
-        // Medir y posicionar inicialmente una vez inyectado en el DOM
-        setTimeout(() => {
-            updateDimensions();
-            resetToCenter();
-        }, 100);
-
-        let isJumping = false;
-        containerEl.addEventListener('scroll', () => {
-            if (cardWidth === 0 || blockWidth === 0 || isJumping) return;
-
-            const scrollLeft = containerEl.scrollLeft;
-
-            // Si entra a la copia izquierda (Lote 1), saltar de inmediato al centro
-            if (scrollLeft < cardWidth) {
-                isJumping = true;
-                containerEl.style.setProperty('scroll-behavior', 'auto', 'important');
-                containerEl.scrollLeft = scrollLeft + blockWidth;
-                setTimeout(() => {
-                    containerEl.style.removeProperty('scroll-behavior');
-                    isJumping = false;
-                }, 50);
-            }
-            // Si entra a la copia derecha (Lote 3), saltar de inmediato al centro
-            else if (scrollLeft > (blockWidth * 2) - containerEl.clientWidth) {
-                isJumping = true;
-                containerEl.style.setProperty('scroll-behavior', 'auto', 'important');
-                containerEl.scrollLeft = scrollLeft - blockWidth;
-                setTimeout(() => {
-                    containerEl.style.removeProperty('scroll-behavior');
-                    isJumping = false;
-                }, 50);
-            }
-        }, { passive: true });
-
-        // Recalcular si cambia el tamaño de pantalla (orientación del celular, etc)
-        window.addEventListener('resize', () => {
-            updateDimensions();
-        });
 
         return true;
     }

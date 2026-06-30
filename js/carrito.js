@@ -585,8 +585,36 @@
                 `;
             }
 
+            let wholesaleBannerHTML = '';
+            try {
+                const savedWholesaleStr = localStorage.getItem('savedMayoristaCart');
+                if (savedWholesaleStr) {
+                    const savedWholesale = JSON.parse(savedWholesaleStr);
+                    const wholesaleKeys = Object.keys(savedWholesale);
+                    if (wholesaleKeys.length > 0) {
+                        wholesaleBannerHTML = `
+                            <div style="background: linear-gradient(135deg, #0F172A, #1E293B); padding: 1rem; border-radius: 12px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1);">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(16, 185, 129, 0.3);">
+                                        <span class="material-symbols-outlined" style="color: #10B981; font-size: 20px;">local_mall</span>
+                                    </div>
+                                    <div>
+                                        <h4 style="margin: 0; color: #F8FAFC; font-size: 0.85rem; font-weight: 600;">Pedido Mayorista Guardado</h4>
+                                        <p style="margin: 2px 0 0 0; color: #94A3B8; font-size: 0.75rem;">${wholesaleKeys.length} items listos.</p>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="window.location.href='mayorista.html'" style="background: #10B981; color: #ffffff; border: none; padding: 0.4rem 0.75rem; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 700; font-family: var(--font-main);">
+                                    Retomar
+                                </button>
+                            </div>
+                        `;
+                    }
+                }
+            } catch(e) {}
+
             // Estructura de cabecera de perfil centrado + engranaje en esquina superior derecha
             viewContainer.innerHTML = `
+                ${wholesaleBannerHTML}
                 <!-- Cabecera de Perfil Compacta (Avatar y datos a la izq, config a la derecha) -->
                 <div class="profile-card-header">
                     <div class="profile-header-left">

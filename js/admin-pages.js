@@ -1101,11 +1101,111 @@ window.initMayoristaAdmin = function() {
         saveBtn.innerHTML = originalText;
     });
 
+    // --- LÓGICA MODAL DESCUENTOS POR VOLUMEN ---
+    const volModal = document.getElementById('modal-volume-discounts');
+    const volCloseBtn = document.getElementById('btn-close-volume-modal');
+    const volSaveBtn = document.getElementById('btn-save-vol-modal');
+    const volTbody = document.getElementById('vol-rules-tbody');
+    const volEmptyMsg = document.getElementById('vol-rules-empty');
+    const btnAddVolRule = document.getElementById('btn-add-vol-rule');
+    const inputVolMin = document.getElementById('vol-min-qty');
+    const inputVolPct = document.getElementById('vol-discount-pct');
+    
+    let currentDiscountInputs = [];
+    let currentDiscountRules = [];
+
+    function renderVolRules() {
+        volTbody.innerHTML = '';
+        if (currentDiscountRules.length === 0) {
+            volEmptyMsg.style.display = 'block';
+        } else {
+            volEmptyMsg.style.display = 'none';
+            // Sort by minQty desc
+            currentDiscountRules.sort((a, b) => b.minQty - a.minQty);
+            currentDiscountRules.forEach((rule, index) => {
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid #E2E8F0';
+                tr.innerHTML = `
+                    <td style="padding: 8px;">${rule.minQty} un.</td>
+                    <td style="padding: 8px;">${rule.discountPercent}%</td>
+                    <td style="padding: 8px; text-align: right;">
+                        <button type="button" class="btn-del-vol-rule" data-index="${index}" style="background: none; border: none; color: #EF4444; cursor: pointer; font-size: 1.1rem;">&times;</button>
+                    </td>
+                `;
+                volTbody.appendChild(tr);
+            });
+
+            volTbody.querySelectorAll('.btn-del-vol-rule').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const idx = parseInt(e.target.dataset.index);
+                    currentDiscountRules.splice(idx, 1);
+                    renderVolRules();
+                });
+            });
+        }
+    }
+
+    if (volCloseBtn && volSaveBtn && btnAddVolRule) {
+        volCloseBtn.addEventListener('click', () => {
+            volModal.style.display = 'none';
+        });
+
+        volSaveBtn.addEventListener('click', () => {
+            if (currentDiscountInputs && currentDiscountInputs.length > 0) {
+                currentDiscountInputs.forEach(input => {
+                    input.value = JSON.stringify(currentDiscountRules);
+                });
+            }
+            volModal.style.display = 'none';
+        });
+
+        btnAddVolRule.addEventListener('click', () => {
+            const minQty = parseInt(inputVolMin.value);
+            const discountPct = parseInt(inputVolPct.value);
+            if (isNaN(minQty) || isNaN(discountPct) || minQty < 2 || discountPct < 1 || discountPct > 99) {
+                alert('Ingrese valores válidos (Mínimo 2 unidades, Descuento entre 1% y 99%)');
+                return;
+            }
+            // Evitar duplicados de cantidad mínima
+            const existingIndex = currentDiscountRules.findIndex(r => r.minQty === minQty);
+            if (existingIndex >= 0) {
+                currentDiscountRules[existingIndex].discountPercent = discountPct;
+            } else {
+                currentDiscountRules.push({ minQty, discountPercent: discountPct });
+            }
+            inputVolMin.value = '';
+            inputVolPct.value = '';
+            renderVolRules();
+        });
+    }
+
+    function openVolumeDiscountsModal(hiddenInputs, titleStr) {
+        const inputsArray = (hiddenInputs instanceof NodeList || Array.isArray(hiddenInputs)) ? Array.from(hiddenInputs) : [hiddenInputs];
+        currentDiscountInputs = inputsArray;
+        
+        try {
+            currentDiscountRules = JSON.parse(inputsArray[0].value);
+            if (!Array.isArray(currentDiscountRules)) currentDiscountRules = [];
+        } catch(e) {
+            currentDiscountRules = [];
+        }
+        
+        const titleEl = volModal.querySelector('.modal-header h3');
+        if (titleEl) titleEl.textContent = 'Descuentos - ' + titleStr;
+        
+        inputVolMin.value = '';
+        inputVolPct.value = '';
+        renderVolRules();
+        volModal.style.display = 'flex';
+    }
+
     // RENDERIZAR TABLA DE PRECIOS MASIVOS
     function renderBulkPrices(filterText = '') {
         if (!tbody) return;
         tbody.innerHTML = '';
-        const query = filterText.toLowerCase().trim();
+        const rawQuery = filterText.trim().toLowerCase();
+        const cleanQuery = rawQuery.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const searchTerms = cleanQuery.split(/\s+/).filter(t => t.length > 0);
         const seenKeys = new Set();
 
         const productsList = window.sessionProducts || [];
@@ -1123,17 +1223,21 @@ window.initMayoristaAdmin = function() {
                                 const key = `${product.id}__${acabName}__${variant.medida}`;
                                 if (seenKeys.has(key)) return;
 
-                                // Filtrado
-                                const matchTitle = prodTitle.toLowerCase().includes(query);
-                                const matchAcabado = acabName.toLowerCase().includes(query);
-                                const matchMedida = variant.medida.toLowerCase().includes(query);
-                                if (query && !matchTitle && !matchAcabado && !matchMedida) return;
+                                // Filtrado Inteligente
+                                if (searchTerms.length > 0) {
+                                    const combinedText = `${prodTitle} ${acabName} ${variant.medida}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                                    const matchAll = searchTerms.every(term => combinedText.includes(term));
+                                    if (!matchAll) return;
+                                }
 
                                 seenKeys.add(key);
 
                                 const tr = document.createElement('tr');
                                 tr.style.borderBottom = '1px solid #E2E8F0';
                                 tr.innerHTML = `
+                                    <td style="padding: 10px 14px; text-align: center;">
+                                        <input type="checkbox" class="row-select-chk" style="cursor: pointer; width: 16px; height: 16px;">
+                                    </td>
                                     <td style="padding: 10px 14px; font-weight: 500;">
                                         ${prodTitle}
                                         <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">
@@ -1156,8 +1260,28 @@ window.initMayoristaAdmin = function() {
                                                value="${variant.conditions !== undefined ? variant.conditions : ''}" 
                                                style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;">
                                     </td>
+                                    <td style="padding: 10px 14px;">
+                                        <input type="hidden" class="bulk-discount-input" 
+                                               data-prod-id="${product.id}" 
+                                               data-acabado="${acabName}" 
+                                               data-medida="${variant.medida}" 
+                                               value='${JSON.stringify(variant.volumeDiscounts || [])}'>
+                                        <button type="button" class="btn-config-discount" style="padding: 4px 8px; background: #F1F5F9; border: 1px solid #CBD5E1; border-radius: 4px; font-size: 0.8rem; cursor: pointer; color: #334155;">⚙️ Configurar</button>
+                                    </td>
                                 `;
                                 tbody.appendChild(tr);
+
+                                const btnConfig = tr.querySelector('.btn-config-discount');
+                                const discountInput = tr.querySelector('.bulk-discount-input');
+                                const chk = tr.querySelector('.row-select-chk');
+
+                                btnConfig.addEventListener('click', () => {
+                                    openVolumeDiscountsModal(discountInput, `${prodTitle} (${acabName} - ${variant.medida})`);
+                                });
+
+                                chk.addEventListener('change', (e) => {
+                                    tr.style.background = e.target.checked ? '#EFF6FF' : '';
+                                });
                             });
                         }
                     });
@@ -1166,16 +1290,21 @@ window.initMayoristaAdmin = function() {
                         const key = `${product.id}__Único__${variant.medida}`;
                         if (seenKeys.has(key)) return;
 
-                        // Filtrado
-                        const matchTitle = prodTitle.toLowerCase().includes(query);
-                        const matchMedida = variant.medida.toLowerCase().includes(query);
-                        if (query && !matchTitle && !matchMedida) return;
+                        // Filtrado Inteligente
+                        if (searchTerms.length > 0) {
+                            const combinedText = `${prodTitle} Único ${variant.medida}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                            const matchAll = searchTerms.every(term => combinedText.includes(term));
+                            if (!matchAll) return;
+                        }
 
                         seenKeys.add(key);
 
                         const tr = document.createElement('tr');
                         tr.style.borderBottom = '1px solid #E2E8F0';
                         tr.innerHTML = `
+                            <td style="padding: 10px 14px; text-align: center;">
+                                <input type="checkbox" class="row-select-chk" style="cursor: pointer; width: 16px; height: 16px;">
+                            </td>
                             <td style="padding: 10px 14px; font-weight: 500;">
                                 ${prodTitle}
                                 <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">
@@ -1198,8 +1327,28 @@ window.initMayoristaAdmin = function() {
                                        value="${variant.conditions !== undefined ? variant.conditions : ''}" 
                                        style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;">
                             </td>
+                            <td style="padding: 10px 14px;">
+                                <input type="hidden" class="bulk-discount-input" 
+                                       data-prod-id="${product.id}" 
+                                       data-acabado="Único" 
+                                       data-medida="${variant.medida}" 
+                                       value='${JSON.stringify(variant.volumeDiscounts || [])}'>
+                                <button type="button" class="btn-config-discount" style="padding: 4px 8px; background: #F1F5F9; border: 1px solid #CBD5E1; border-radius: 4px; font-size: 0.8rem; cursor: pointer; color: #334155;">⚙️ Configurar</button>
+                            </td>
                         `;
                         tbody.appendChild(tr);
+
+                        const btnConfig = tr.querySelector('.btn-config-discount');
+                        const discountInput = tr.querySelector('.bulk-discount-input');
+                        const chk = tr.querySelector('.row-select-chk');
+
+                        btnConfig.addEventListener('click', () => {
+                            openVolumeDiscountsModal(discountInput, `${prodTitle} (${variant.medida})`);
+                        });
+
+                        chk.addEventListener('change', (e) => {
+                            tr.style.background = e.target.checked ? '#EFF6FF' : '';
+                        });
                     });
                 }
             });
@@ -1222,9 +1371,11 @@ window.initMayoristaAdmin = function() {
             // Armar mapas de valores
             const priceInputs = tbody.querySelectorAll('.bulk-price-input');
             const condInputs = tbody.querySelectorAll('.bulk-cond-input');
+            const discountInputs = tbody.querySelectorAll('.bulk-discount-input');
 
             const priceMap = {};
             const condMap = {};
+            const discountMap = {};
 
             priceInputs.forEach(input => {
                 const key = `${input.dataset.prodId}__${input.dataset.acabado}__${input.dataset.medida}`;
@@ -1235,6 +1386,15 @@ window.initMayoristaAdmin = function() {
             condInputs.forEach(input => {
                 const key = `${input.dataset.prodId}__${input.dataset.acabado}__${input.dataset.medida}`;
                 condMap[key] = input.value.trim();
+            });
+
+            discountInputs.forEach(input => {
+                const key = `${input.dataset.prodId}__${input.dataset.acabado}__${input.dataset.medida}`;
+                try {
+                    discountMap[key] = JSON.parse(input.value);
+                } catch(e) {
+                    discountMap[key] = [];
+                }
             });
 
             // Actualizar la estructura global window.sessionProducts
@@ -1251,6 +1411,7 @@ window.initMayoristaAdmin = function() {
                                     if (priceMap[key] !== undefined) {
                                         variant.price = priceMap[key];
                                         variant.conditions = condMap[key] || '';
+                                        if (discountMap[key]) variant.volumeDiscounts = discountMap[key];
                                     }
                                 });
                             }
@@ -1261,6 +1422,7 @@ window.initMayoristaAdmin = function() {
                             if (priceMap[key] !== undefined) {
                                 variant.price = priceMap[key];
                                 variant.conditions = condMap[key] || '';
+                                if (discountMap[key]) variant.volumeDiscounts = discountMap[key];
                             }
                         });
                     }
@@ -1283,6 +1445,108 @@ window.initMayoristaAdmin = function() {
                 savePricesBtn.innerHTML = originalText;
                 renderBulkPrices(searchInput ? searchInput.value : '');
             }
+        });
+    }
+
+    const btnBulkDiscountSelected = document.getElementById('btn-bulk-discount-selected');
+    const chkSelectAllBulk = document.getElementById('chk-select-all-bulk');
+
+    if (chkSelectAllBulk) {
+        chkSelectAllBulk.addEventListener('change', (e) => {
+            if (tbody) {
+                const chks = tbody.querySelectorAll('.row-select-chk');
+                chks.forEach(chk => {
+                    chk.checked = e.target.checked;
+                    const tr = chk.closest('tr');
+                    if (tr) tr.style.background = e.target.checked ? '#EFF6FF' : '';
+                });
+            }
+        });
+    }
+
+    if (btnBulkDiscountSelected) {
+        btnBulkDiscountSelected.addEventListener('click', () => {
+            if (!tbody) return;
+            const selectedRows = Array.from(tbody.querySelectorAll('.row-select-chk:checked')).map(chk => chk.closest('tr'));
+            if (selectedRows.length === 0) {
+                alert('No hay productos seleccionados.');
+                return;
+            }
+            const discountInputs = selectedRows.map(row => row.querySelector('.bulk-discount-input'));
+            openVolumeDiscountsModal(discountInputs, `${selectedRows.length} productos seleccionados`);
+        });
+    }
+
+    // --- LOGICA MODIFICADOR DE PRECIOS MASIVOS ---
+    const btnBulkPriceModifier = document.getElementById('btn-bulk-price-modifier');
+    const modalBulkPriceModifier = document.getElementById('modal-bulk-price-modifier');
+    const btnClosePriceModifier = document.getElementById('btn-close-price-modifier');
+    const btnCancelPriceModifier = document.getElementById('btn-cancel-price-modifier');
+    const btnApplyPriceModifier = document.getElementById('btn-apply-price-modifier');
+    const priceModifierTitle = document.getElementById('price-modifier-title');
+    const priceModAction = document.getElementById('price-mod-action');
+    const priceModType = document.getElementById('price-mod-type');
+    const priceModValue = document.getElementById('price-mod-value');
+
+    let currentPriceModifierRows = [];
+
+    if (btnBulkPriceModifier && modalBulkPriceModifier) {
+        btnBulkPriceModifier.addEventListener('click', () => {
+            if (!tbody) return;
+            const selectedRows = Array.from(tbody.querySelectorAll('.row-select-chk:checked')).map(chk => chk.closest('tr'));
+            if (selectedRows.length === 0) {
+                alert('No hay productos seleccionados para modificar.');
+                return;
+            }
+            currentPriceModifierRows = selectedRows;
+            priceModifierTitle.textContent = `Se modificarán los precios de ${selectedRows.length} productos seleccionados.`;
+            priceModValue.value = '';
+            modalBulkPriceModifier.style.display = 'flex';
+        });
+
+        const closeModModal = () => {
+            modalBulkPriceModifier.style.display = 'none';
+        };
+
+        btnClosePriceModifier.addEventListener('click', closeModModal);
+        btnCancelPriceModifier.addEventListener('click', closeModModal);
+
+        btnApplyPriceModifier.addEventListener('click', () => {
+            const val = parseFloat(priceModValue.value);
+            if (isNaN(val) || val < 0) {
+                alert('Ingrese un valor numérico válido mayor o igual a 0.');
+                return;
+            }
+            
+            const action = priceModAction.value; // 'increase' | 'decrease'
+            const type = priceModType.value; // 'percentage' | 'fixed'
+
+            currentPriceModifierRows.forEach(row => {
+                const inputPrice = row.querySelector('.bulk-price-input');
+                if (inputPrice) {
+                    let currentPrice = parseFloat(inputPrice.value) || 0;
+                    
+                    let newPrice = currentPrice;
+
+                    if (type === 'percentage') {
+                        const factor = val / 100;
+                        if (action === 'increase') newPrice += currentPrice * factor;
+                        else newPrice -= currentPrice * factor;
+                    } else { // fixed
+                        if (action === 'increase') newPrice += val;
+                        else newPrice -= val;
+                    }
+
+                    if (newPrice < 0) newPrice = 0;
+
+                    // Redondeo comercial automático a múltiplo de 10
+                    newPrice = Math.round(newPrice / 10) * 10;
+
+                    inputPrice.value = newPrice;
+                }
+            });
+
+            closeModModal();
         });
     }
 
