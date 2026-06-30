@@ -1040,7 +1040,9 @@ window.initMayoristaAdmin = function() {
     const bankInput = document.getElementById('admin-may-bank');
     const surchargeTransferInput = document.getElementById('admin-may-surcharge-transfer');
     const markupInput = document.getElementById('admin-may-markup');
-    const termsTextarea = document.getElementById('admin-may-terms');
+    const termsEfectivo = document.getElementById('admin-may-terms-efectivo');
+    const termsTransferencia = document.getElementById('admin-may-terms-transferencia');
+    const termsMercadopago = document.getElementById('admin-may-terms-mercadopago');
     const discountsTextarea = document.getElementById('admin-may-discounts');
     const saveBtn = document.getElementById('btn-save-mayorista-config');
 
@@ -1058,7 +1060,9 @@ window.initMayoristaAdmin = function() {
     bankInput.value = cfg.bank || '';
     surchargeTransferInput.value = cfg.surchargeTransfer !== undefined ? cfg.surchargeTransfer : 21;
     markupInput.value = cfg.markupPercent !== undefined ? cfg.markupPercent : 31;
-    termsTextarea.value = cfg.terms || '';
+    if (termsEfectivo) termsEfectivo.value = cfg.terms_efectivo || cfg.terms || '';
+    if (termsTransferencia) termsTransferencia.value = cfg.terms_transferencia || cfg.terms || '';
+    if (termsMercadopago) termsMercadopago.value = cfg.terms_mercadopago || cfg.terms || '';
     discountsTextarea.value = cfg.discounts || '';
 
     // Manejador del botón Guardar Configuración
@@ -1074,7 +1078,9 @@ window.initMayoristaAdmin = function() {
             bank: bankInput.value.trim(),
             surchargeTransfer: parseInt(surchargeTransferInput.value.trim()) || 0,
             markupPercent: parseInt(markupInput.value.trim()) || 0, // Recargo MP
-            terms: termsTextarea.value,
+            terms_efectivo: termsEfectivo ? termsEfectivo.value : '',
+            terms_transferencia: termsTransferencia ? termsTransferencia.value : '',
+            terms_mercadopago: termsMercadopago ? termsMercadopago.value : '',
             discounts: discountsTextarea.value
         };
         window.siteConfig.mayoristaConfig = window.mayoristaConfig;
@@ -1245,20 +1251,20 @@ window.initMayoristaAdmin = function() {
                                         </span>
                                     </td>
                                     <td style="padding: 10px 14px;">
+                                        <input type="number" class="bulk-cost-input" 
+                                               data-prod-id="${product.id}" 
+                                               data-acabado="${acabName}" 
+                                               data-medida="${variant.medida}" 
+                                               value="${variant.cost_price !== undefined ? variant.cost_price : ''}" 
+                                               style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0" placeholder="0">
+                                    </td>
+                                    <td style="padding: 10px 14px;">
                                         <input type="number" class="bulk-price-input" 
                                                data-prod-id="${product.id}" 
                                                data-acabado="${acabName}" 
                                                data-medida="${variant.medida}" 
                                                value="${variant.price !== undefined ? variant.price : ''}" 
                                                style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0">
-                                    </td>
-                                    <td style="padding: 10px 14px;">
-                                        <input type="text" class="bulk-cond-input" 
-                                               data-prod-id="${product.id}" 
-                                               data-acabado="${acabName}" 
-                                               data-medida="${variant.medida}" 
-                                               value="${variant.conditions !== undefined ? variant.conditions : ''}" 
-                                               style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;">
                                     </td>
                                     <td style="padding: 10px 14px;">
                                         <input type="hidden" class="bulk-discount-input" 
@@ -1312,20 +1318,20 @@ window.initMayoristaAdmin = function() {
                                 </span>
                             </td>
                             <td style="padding: 10px 14px;">
+                                        <input type="number" class="bulk-cost-input" 
+                                               data-prod-id="${product.id}" 
+                                               data-acabado="Único" 
+                                               data-medida="${variant.medida}" 
+                                               value="${variant.cost_price !== undefined ? variant.cost_price : ''}" 
+                                               style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0" placeholder="0">
+                            </td>
+                            <td style="padding: 10px 14px;">
                                 <input type="number" class="bulk-price-input" 
                                        data-prod-id="${product.id}" 
                                        data-acabado="Único" 
                                        data-medida="${variant.medida}" 
                                        value="${variant.price !== undefined ? variant.price : ''}" 
                                        style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0">
-                            </td>
-                            <td style="padding: 10px 14px;">
-                                <input type="text" class="bulk-cond-input" 
-                                       data-prod-id="${product.id}" 
-                                       data-acabado="Único" 
-                                       data-medida="${variant.medida}" 
-                                       value="${variant.conditions !== undefined ? variant.conditions : ''}" 
-                                       style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;">
                             </td>
                             <td style="padding: 10px 14px;">
                                 <input type="hidden" class="bulk-discount-input" 
@@ -1369,23 +1375,24 @@ window.initMayoristaAdmin = function() {
             savePricesBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px; animation: spin 1s linear infinite;">sync</span> Guardando Precios...';
 
             // Armar mapas de valores
+            const costInputs = tbody.querySelectorAll('.bulk-cost-input');
             const priceInputs = tbody.querySelectorAll('.bulk-price-input');
-            const condInputs = tbody.querySelectorAll('.bulk-cond-input');
             const discountInputs = tbody.querySelectorAll('.bulk-discount-input');
 
+            const costMap = {};
             const priceMap = {};
-            const condMap = {};
             const discountMap = {};
+
+            costInputs.forEach(input => {
+                const key = `${input.dataset.prodId}__${input.dataset.acabado}__${input.dataset.medida}`;
+                const val = input.value.trim();
+                costMap[key] = val !== '' ? parseFloat(val) : '';
+            });
 
             priceInputs.forEach(input => {
                 const key = `${input.dataset.prodId}__${input.dataset.acabado}__${input.dataset.medida}`;
                 const val = input.value.trim();
                 priceMap[key] = val !== '' ? parseFloat(val) : '';
-            });
-
-            condInputs.forEach(input => {
-                const key = `${input.dataset.prodId}__${input.dataset.acabado}__${input.dataset.medida}`;
-                condMap[key] = input.value.trim();
             });
 
             discountInputs.forEach(input => {
@@ -1408,10 +1415,13 @@ window.initMayoristaAdmin = function() {
                             if (group.medidas_variants) {
                                 group.medidas_variants.forEach(variant => {
                                     const key = `${product.id}__${acabName}__${variant.medida}`;
-                                    if (priceMap[key] !== undefined) {
-                                        variant.price = priceMap[key];
-                                        variant.conditions = condMap[key] || '';
+                                    if (priceMap[key] !== undefined || costMap[key] !== undefined) {
+                                        if (priceMap[key] !== undefined) variant.price = priceMap[key];
+                                        if (costMap[key] !== undefined) variant.cost_price = costMap[key];
                                         if (discountMap[key]) variant.volumeDiscounts = discountMap[key];
+                                        
+                                        // Delete local condition if it exists as we moved to global
+                                        delete variant.conditions;
                                     }
                                 });
                             }
@@ -1419,10 +1429,13 @@ window.initMayoristaAdmin = function() {
                     } else if (product.medidas_variants) {
                         product.medidas_variants.forEach(variant => {
                             const key = `${product.id}__Único__${variant.medida}`;
-                            if (priceMap[key] !== undefined) {
-                                variant.price = priceMap[key];
-                                variant.conditions = condMap[key] || '';
+                            if (priceMap[key] !== undefined || costMap[key] !== undefined) {
+                                if (priceMap[key] !== undefined) variant.price = priceMap[key];
+                                if (costMap[key] !== undefined) variant.cost_price = costMap[key];
                                 if (discountMap[key]) variant.volumeDiscounts = discountMap[key];
+                                
+                                // Delete local condition if it exists as we moved to global
+                                delete variant.conditions;
                             }
                         });
                     }

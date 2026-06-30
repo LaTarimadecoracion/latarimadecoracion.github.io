@@ -1265,6 +1265,18 @@
                     bankBlock.style.display = 'none';
                 }
                 
+                // Actualizar términos dinámicamente según medio de pago
+                const termsTextEl = document.getElementById('checkout-terms-text');
+                if (termsTextEl) {
+                    if (selectedMethod === 'efectivo') {
+                        termsTextEl.textContent = mayoristaConfig.terms_efectivo || mayoristaConfig.terms || 'Condiciones de Efectivo.';
+                    } else if (selectedMethod === 'transferencia') {
+                        termsTextEl.textContent = mayoristaConfig.terms_transferencia || mayoristaConfig.terms || 'Condiciones de Transferencia.';
+                    } else if (selectedMethod === 'mercadopago') {
+                        termsTextEl.textContent = mayoristaConfig.terms_mercadopago || mayoristaConfig.terms || 'Condiciones de Mercado Pago.';
+                    }
+                }
+                
                 // Actualizar estilos de los contenedores
                 document.querySelectorAll('.payment-method-option').forEach(opt => {
                     const radio = opt.querySelector('input[type="radio"]');
@@ -1292,9 +1304,7 @@
                     <strong>CBU/CVU:</strong> ${mayoristaConfig.cbu || '1234567890123456789012'} <span style="font-size:0.75rem; color:var(--primary-color); cursor:pointer; font-weight:700;" onclick="navigator.clipboard.writeText('${mayoristaConfig.cbu || '1234567890123456789012'}'); alert('CBU copiado!');"> (Copiar)</span>
                 `;
 
-                // Rellenar términos
-                const termsTextEl = document.getElementById('checkout-terms-text');
-                termsTextEl.textContent = mayoristaConfig.terms || 'Condiciones de Venta:\n- Retiro por taller.\n- Pago por transferencia bancaria anticipada o efectivo al retirar.';
+                // Términos ahora se rellenan dinámicamente en updateCheckoutTotals
 
                 // Rellenar descuentos
                 const discountsTextEl = document.getElementById('checkout-discounts-text');
@@ -1399,7 +1409,15 @@
 
             if (btnShowConditions && modalConditions && conditionsModalText) {
                 btnShowConditions.addEventListener('click', () => {
-                    conditionsModalText.textContent = mayoristaConfig.terms || 'Condiciones de Venta:\n- Retiro por taller.\n- Pago por transferencia bancaria anticipada o efectivo al retirar.';
+                    const selectedMethod = document.querySelector('input[name="payment-method"]:checked');
+                    const methodVal = selectedMethod ? selectedMethod.value : 'efectivo';
+                    if (methodVal === 'efectivo') {
+                        conditionsModalText.textContent = mayoristaConfig.terms_efectivo || mayoristaConfig.terms || 'Condiciones de Efectivo.';
+                    } else if (methodVal === 'transferencia') {
+                        conditionsModalText.textContent = mayoristaConfig.terms_transferencia || mayoristaConfig.terms || 'Condiciones de Transferencia.';
+                    } else if (methodVal === 'mercadopago') {
+                        conditionsModalText.textContent = mayoristaConfig.terms_mercadopago || mayoristaConfig.terms || 'Condiciones de Mercado Pago.';
+                    }
                     modalConditions.style.display = 'flex';
                 });
             }
