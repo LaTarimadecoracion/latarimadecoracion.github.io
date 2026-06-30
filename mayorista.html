@@ -1279,7 +1279,14 @@
                 // Actualizar términos dinámicamente según medio de pago
                 const termsTextEl = document.getElementById('checkout-terms-text');
                 if (termsTextEl && pm) {
-                    termsTextEl.textContent = pm.conditions;
+                    const escapedContent = pm.conditions
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
+                    const urlRegex = /(https?:\/\/[^\s]+)/g;
+                    termsTextEl.innerHTML = escapedContent.replace(urlRegex, function(url) {
+                        return `<a href="${url}" target="_blank" style="color: var(--primary-color); text-decoration: underline; font-weight: 600;">${url}</a>`;
+                    });
                 }
                 
                 // Actualizar estilos de los contenedores
@@ -1402,7 +1409,15 @@
                     const selectedMethodId = document.querySelector('input[name="payment-method"]:checked')?.value;
                     const pm = pmList.find(p => p.id === selectedMethodId) || pmList[0];
                     if (pm) {
-                        conditionsModalText.textContent = pm.conditions || 'Sin condiciones particulares.';
+                        const rawText = pm.conditions || 'Sin condiciones particulares.';
+                        const escapedContent = rawText
+                            .replace(/&/g, "&amp;")
+                            .replace(/</g, "&lt;")
+                            .replace(/>/g, "&gt;");
+                        const urlRegex = /(https?:\/\/[^\s]+)/g;
+                        conditionsModalText.innerHTML = escapedContent.replace(urlRegex, function(url) {
+                            return `<a href="${url}" target="_blank" style="color: var(--primary-color); text-decoration: underline; font-weight: 600;">${url}</a>`;
+                        });
                     }
                     modalConditions.style.display = 'flex';
                 });
