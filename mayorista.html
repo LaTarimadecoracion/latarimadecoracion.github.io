@@ -1279,13 +1279,18 @@
                 // Actualizar términos dinámicamente según medio de pago
                 const termsTextEl = document.getElementById('checkout-terms-text');
                 if (termsTextEl && pm) {
-                    const escapedContent = pm.conditions
+                    const rawText = pm.conditions || '';
+                    const escapedContent = rawText
                         .replace(/&/g, "&amp;")
                         .replace(/</g, "&lt;")
                         .replace(/>/g, "&gt;");
-                    const urlRegex = /(https?:\/\/[^\s]+)/g;
+                    const urlRegex = /(https?:\/\/[^\s]+|(?:www\.|link\.)[^\s]+)/g;
                     termsTextEl.innerHTML = escapedContent.replace(urlRegex, function(url) {
-                        return `<a href="${url}" target="_blank" style="color: var(--primary-color); text-decoration: underline; font-weight: 600;">${url}</a>`;
+                        let href = url;
+                        if (!href.startsWith('http')) {
+                            href = 'https://' + href;
+                        }
+                        return `<a href="${href}" target="_blank" style="color: #2563EB; text-decoration: underline; font-weight: 600;">${url}</a>`;
                     });
                 }
                 
@@ -1414,9 +1419,13 @@
                             .replace(/&/g, "&amp;")
                             .replace(/</g, "&lt;")
                             .replace(/>/g, "&gt;");
-                        const urlRegex = /(https?:\/\/[^\s]+)/g;
+                        const urlRegex = /(https?:\/\/[^\s]+|(?:www\.|link\.)[^\s]+)/g;
                         conditionsModalText.innerHTML = escapedContent.replace(urlRegex, function(url) {
-                            return `<a href="${url}" target="_blank" style="color: var(--primary-color); text-decoration: underline; font-weight: 600;">${url}</a>`;
+                            let href = url;
+                            if (!href.startsWith('http')) {
+                                href = 'https://' + href;
+                            }
+                            return `<a href="${href}" target="_blank" style="color: #2563EB; text-decoration: underline; font-weight: 600;">${url}</a>`;
                         });
                     }
                     modalConditions.style.display = 'flex';
