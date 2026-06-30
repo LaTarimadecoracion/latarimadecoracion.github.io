@@ -217,7 +217,7 @@ function generateSeoStubs(productsArray) {
     <meta name="twitter:description" content="${desc}">
     <meta name="twitter:image" content="${imageUrl}">
     
-    <meta http-equiv="refresh" content="0; url=https://latarimadecoracion.github.io/?prod=${product.id}">
+    
     <script>
         var q = window.location.search;
         var p = "https://latarimadecoracion.github.io/?prod=${product.id}";

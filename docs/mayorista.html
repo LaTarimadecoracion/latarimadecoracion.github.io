@@ -158,7 +158,7 @@
 
         .table-header {
             display: grid;
-            grid-template-columns: 4.5fr 1fr 1.8fr 2fr 2fr;
+            grid-template-columns: minmax(0, 4.5fr) minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 2fr) minmax(0, 2fr);
             background: color-mix(in srgb, var(--text-main) 3%, var(--surface-color, #F8FAFC));
             border-bottom: 1px solid var(--border-color, #E2E8F0);
             padding: 0.75rem 1.25rem;
@@ -171,7 +171,7 @@
 
         .table-row {
             display: grid;
-            grid-template-columns: 4.5fr 1fr 1.8fr 2fr 2fr;
+            grid-template-columns: minmax(0, 4.5fr) minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 2fr) minmax(0, 2fr);
             padding: 0.85rem 1.25rem;
             border-bottom: 1px solid var(--border-color, #F1F5F9);
             align-items: center;
@@ -579,7 +579,7 @@
             <div class="table-header">
                 <div>Producto / Variante</div>
                 <div>Ver</div>
-                <div>Precio Unit.</div>
+                <div id="sort-price-header" style="cursor: pointer; display: flex; align-items: center; gap: 4px; user-select: none; width: fit-content;" title="Ordenar por precio">Precio Unit. <span class="material-symbols-outlined" id="sort-price-icon" style="font-size: 16px; transition: transform 0.2s;">unfold_more</span></div>
                 <div>Cantidad</div>
                 <div>Subtotal</div>
             </div>
@@ -597,9 +597,10 @@
             <span class="material-symbols-outlined" style="font-size: 20px; color: var(--primary-color);">info</span>
             <span>Ver Condiciones</span>
         </button>
-        <div class="footer-total-info" style="margin-left: auto; margin-right: 1.5rem;">
+        <div class="footer-total-info" style="margin-left: auto; margin-right: 1.5rem; text-align: right; align-items: flex-end;">
             <span class="footer-total-label">Total del Pedido</span>
             <span class="footer-total-value" id="order-grand-total">$0</span>
+            <span id="order-total-savings" style="font-size: 0.8rem; color: #10B981; font-weight: 700; display: none; margin-top: -2px;">Ahorraste $0</span>
         </div>
         <button type="button" id="btn-submit-order" class="btn-finalize-order" disabled>
             <span class="material-symbols-outlined">shopping_cart_checkout</span>
@@ -629,40 +630,137 @@
 
     
     <div id="modal-checkout" class="modal-overlay">
-        <div class="modal-card" style="max-width: 500px;">
-            <div class="modal-header">
-                <h3>Finalizar Compra Mayorista</h3>
-                <button type="button" class="modal-close-btn" id="btn-close-checkout">
+        <div class="modal-card" style="max-width: 850px; width: 95%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);">
+            <div class="modal-header" style="border-bottom: 1px solid #E2E8F0; padding: 1.25rem 2rem; background-color: #ffffff;">
+                <h3 style="font-weight: 600; font-size: 1.25rem; color: #0F172A; margin: 0; letter-spacing: -0.025em;">Resumen de Pedido Mayorista</h3>
+                <button type="button" class="modal-close-btn" id="btn-close-checkout" style="color: #64748B; background: transparent; transition: color 0.2s;">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            <div class="modal-body">
+            
+            <div class="modal-body" style="display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1.25rem; max-height: 90vh; overflow-y: auto; background-color: #F8FAFC;">
                 
-                <div class="info-block">
-                    <div class="info-title">🏦 Datos para Transferencia</div>
-                    <div class="info-content" id="checkout-bank-details">
-                        
+                
+                <div style="flex: 1 1 350px; display: flex; flex-direction: column; gap: 1rem;">
+                    
+                    
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Resumen de Productos</div>
+                        <div id="checkout-cart-list" style="max-height: 250px; overflow-y: auto; background: #ffffff; border: 1px solid #E2E8F0; border-radius: 8px; padding: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);">
+                            
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Condiciones Comerciales</div>
+                        <div id="checkout-terms-text" style="font-size: 0.8rem; line-height: 1.4; color: #334155; white-space: pre-line; background: #ffffff; padding: 0.75rem; border-radius: 6px; border: 1px solid #E2E8F0;">
+                            
+                        </div>
+                    </div>
+
+                    
+                    <div id="checkout-discounts-block" style="display: none;">
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Descuentos Aplicables</div>
+                        <div id="checkout-discounts-text" style="font-size: 0.8rem; line-height: 1.4; color: #334155; white-space: pre-line; background: #ffffff; padding: 0.75rem; border-radius: 6px; border: 1px solid #E2E8F0;">
+                            
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Método de Pago</div>
+                        <div class="payment-methods-selector" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                            
+                            <label class="payment-method-option" id="pay-opt-efectivo" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0.6rem 0.75rem; cursor: pointer; transition: all 0.2s ease; background: #ffffff;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <input type="radio" name="payment-method" value="efectivo" checked style="accent-color: #0F172A; width: 1.1rem; height: 1.1rem; cursor: pointer;">
+                                    <span style="font-weight: 500; color: #1E293B; font-size: 0.85rem;">Efectivo (al retirar)</span>
+                                </div>
+                                <span style="font-size: 0.7rem; color: #475569; font-weight: 500;">Sin recargo</span>
+                            </label>
+                            
+                            <label class="payment-method-option" id="pay-opt-transferencia" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0.6rem 0.75rem; cursor: pointer; transition: all 0.2s ease; background: #ffffff;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <input type="radio" name="payment-method" value="transferencia" style="accent-color: #0F172A; width: 1.1rem; height: 1.1rem; cursor: pointer;">
+                                    <span style="font-weight: 500; color: #1E293B; font-size: 0.85rem;">Transferencia Bancaria</span>
+                                </div>
+                                <span style="font-size: 0.7rem; color: #475569; font-weight: 500;" id="checkout-surcharge-transfer-badge">+21%</span>
+                            </label>
+                            
+                            <label class="payment-method-option" id="pay-opt-mercadopago" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0.6rem 0.75rem; cursor: pointer; transition: all 0.2s ease; background: #ffffff;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <input type="radio" name="payment-method" value="mercadopago" style="accent-color: #0F172A; width: 1.1rem; height: 1.1rem; cursor: pointer;">
+                                    <span style="font-weight: 500; color: #1E293B; font-size: 0.85rem;">Mercado Pago</span>
+                                </div>
+                                <span style="font-size: 0.7rem; color: #475569; font-weight: 500;" id="checkout-surcharge-mp-badge">+31%</span>
+                            </label>
+                            
+                        </div>
+                    </div>
+
+                    
+                    <div id="checkout-bank-block" style="display: none;">
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Datos Bancarios</div>
+                        <div id="checkout-bank-details" style="font-size: 0.85rem; line-height: 1.6; color: #334155; background: #ffffff; padding: 1rem; border-radius: 6px; border: 1px solid #E2E8F0;">
+                            
+                        </div>
                     </div>
                 </div>
 
                 
-                <div class="info-block">
-                    <div class="info-title">📄 Condiciones del Catálogo</div>
-                    <div class="info-content" id="checkout-terms-text" style="max-height: 180px; overflow-y: auto; font-size: 0.88rem; border-top: 1px solid #E2E8F0; padding-top: 6px;">
+                <div style="flex: 1 1 300px; display: flex; flex-direction: column; justify-content: space-between;">
+                    
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Detalle de Importes</div>
                         
+                        <div style="background: #ffffff; border: 1px solid #E2E8F0; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);">
+                            
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem; color: #475569;">
+                                <span>Subtotal de productos</span>
+                                <span id="checkout-subtotal-val" style="font-weight: 500; font-variant-numeric: tabular-nums; color: #1E293B;">$0</span>
+                            </div>
+                            
+                            <div id="checkout-surcharge-row" style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem; color: #475569;">
+                                <span>Recargo (<span id="checkout-surcharge-label">Transferencia</span>)</span>
+                                <span id="checkout-surcharge-val" style="font-weight: 500; font-variant-numeric: tabular-nums; color: #1E293B;">$0</span>
+                            </div>
+                            
+                            <div style="height: 1px; background: #E2E8F0; margin: 0.75rem 0;"></div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <span style="font-size: 0.9rem; font-weight: 600; color: #0F172A;">Total a Abonar</span>
+                                <span id="checkout-grand-total-val" style="font-size: 1.25rem; font-weight: 700; color: #0F172A; font-variant-numeric: tabular-nums; letter-spacing: -0.025em;">$0</span>
+                            </div>
+                            
+                        </div>
                     </div>
+
+                    <div style="margin-top: 1.25rem;">
+                        <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; margin-bottom: 0.8rem;">
+                            <input type="checkbox" id="chk-accept-terms" style="margin-top: 0.1rem; accent-color: #0F172A; width: 0.9rem; height: 0.9rem; cursor: pointer;">
+                            <span style="font-size: 0.75rem; color: #475569; line-height: 1.3;">Declaro haber leído y acepto las condiciones comerciales y términos de la compra.</span>
+                        </label>
+                        
+                        <button type="button" id="btn-send-whatsapp" disabled style="width: 100%; background: #0F172A; color: #ffffff; border: none; padding: 0.7rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: background 0.2s, opacity 0.2s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif; margin-bottom: 0.5rem;">
+                            Confirmar y Enviar Pedido
+                        </button>
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <button type="button" id="btn-continue-shopping" style="flex: 1; background: #F1F5F9; color: #334155; border: 1px solid #E2E8F0; padding: 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: 'Outfit', sans-serif;">
+                                Seguir Comprando
+                            </button>
+                            <button type="button" id="btn-save-local-order" style="flex: 1; background: #ECFDF5; color: #10B981; border: 1px solid #A7F3D0; padding: 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: 'Outfit', sans-serif;">
+                                Guardar Pedido
+                            </button>
+                        </div>
+                        <div style="text-align: center; margin-top: 0.5rem; font-size: 0.7rem; color: #94A3B8;">
+                            Será redirigido a WhatsApp para concretar la operación
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="modal-footer">
-                <label class="checkbox-container">
-                    <input type="checkbox" id="chk-accept-terms">
-                    <span>He leído y acepto los términos y condiciones de compra indicados arriba.</span>
-                </label>
-                <button type="button" id="btn-send-whatsapp" class="btn-finalize-order" style="width: 100%; justify-content: center;" disabled>
-                    <span class="material-symbols-outlined">chat</span>
-                    Enviar pedido por WhatsApp
-                </button>
-            </div>
+        </div>
     </div>
 
     
@@ -700,6 +798,31 @@
             const modalCheckout = document.getElementById('modal-checkout');
             const btnCloseGallery = document.getElementById('btn-close-gallery');
             const btnCloseCheckout = document.getElementById('btn-close-checkout');
+            const btnContinueShopping = document.getElementById('btn-continue-shopping');
+            const btnSaveLocalOrder = document.getElementById('btn-save-local-order');
+            
+            if (btnContinueShopping) {
+                btnContinueShopping.addEventListener('click', () => {
+                    modalCheckout.style.display = 'none';
+                });
+            }
+            if (btnSaveLocalOrder) {
+                btnSaveLocalOrder.addEventListener('click', () => {
+                    try {
+                        localStorage.setItem('savedMayoristaCart', JSON.stringify(currentCart));
+                        btnSaveLocalOrder.innerHTML = '¡Guardado!';
+                        btnSaveLocalOrder.style.background = '#10B981';
+                        btnSaveLocalOrder.style.color = '#ffffff';
+                        btnSaveLocalOrder.style.borderColor = '#10B981';
+                        setTimeout(() => {
+                            btnSaveLocalOrder.innerHTML = 'Guardar Pedido';
+                            btnSaveLocalOrder.style.background = '#ECFDF5';
+                            btnSaveLocalOrder.style.color = '#10B981';
+                            btnSaveLocalOrder.style.borderColor = '#A7F3D0';
+                        }, 2000);
+                    } catch(e) {}
+                });
+            }
 
             // Form checkout
             const chkAcceptTerms = document.getElementById('chk-accept-terms');
@@ -709,6 +832,14 @@
 
             let allRows = []; // Todas las filas expandidas por variante
             let currentCart = {}; // id_unico -> { title, price, quantity, conditions }
+            
+            try {
+                const saved = localStorage.getItem('savedMayoristaCart');
+                if (saved) {
+                    currentCart = JSON.parse(saved);
+                }
+            } catch(e) {}
+            let currentSortPrice = null; // 'asc', 'desc', null
 
             // 1. Procesar la base de datos y expandir todas las combinaciones Producto + Variante + Medida
             function loadVariants() {
@@ -750,7 +881,8 @@
                                             images: images,
                                             cover: cover,
                                             price: parseFloat(variant.price) || 0,
-                                            conditions: variant.conditions || 'Sin condiciones especiales'
+                                            conditions: variant.conditions || 'Sin condiciones especiales',
+                                            volumeDiscounts: variant.volumeDiscounts || []
                                         });
                                     });
                                 }
@@ -778,7 +910,8 @@
                                         images: images,
                                         cover: cover,
                                         price: parseFloat(variant.price) || 0,
-                                        conditions: variant.conditions || 'Sin condiciones especiales'
+                                        conditions: variant.conditions || 'Sin condiciones especiales',
+                                        volumeDiscounts: variant.volumeDiscounts || []
                                     });
                                 });
                             }
@@ -795,15 +928,22 @@
                 if (!rowsContainer) return;
                 
                 rowsContainer.innerHTML = '';
-                const cleanQuery = filterText.trim().toLowerCase();
+                const rawQuery = filterText.trim().toLowerCase();
+                const cleanQuery = rawQuery.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                const searchTerms = cleanQuery.split(/\s+/).filter(t => t.length > 0);
 
                 const filtered = allRows.filter(r => {
-                    const matchTitle = r.productTitle.toLowerCase().includes(cleanQuery);
-                    const matchCategory = r.categoryName.toLowerCase().includes(cleanQuery);
-                    const matchAcabado = r.acabadoName.toLowerCase().includes(cleanQuery);
-                    const matchMedida = r.medida.toLowerCase().includes(cleanQuery);
-                    return matchTitle || matchCategory || matchAcabado || matchMedida;
+                    if (searchTerms.length === 0) return true;
+                    const combinedText = `${r.productTitle} ${r.categoryName} ${r.acabadoName} ${r.medida}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    return searchTerms.every(term => combinedText.includes(term));
                 });
+
+                // Ordenar si corresponde
+                if (currentSortPrice === 'asc') {
+                    filtered.sort((a, b) => a.price - b.price);
+                } else if (currentSortPrice === 'desc') {
+                    filtered.sort((a, b) => b.price - a.price);
+                }
 
                 if (filtered.length === 0) {
                     rowsContainer.innerHTML = `
@@ -822,13 +962,25 @@
                     tr.dataset.id = row.rowId;
 
                     const qty = currentCart[row.rowId] ? currentCart[row.rowId].quantity : 0;
-                    const priceLabel = row.price > 0 ? `$${row.price.toLocaleString('es-AR')}` : 'Consultar';
-                    const subtotal = row.price * qty;
-                    const subtotalLabel = subtotal > 0 ? `$${subtotal.toLocaleString('es-AR')}` : '$0';
-
+                    
                     const prodNameFull = row.acabadoName.toLowerCase() !== 'único' 
                         ? `${row.productTitle} (${row.acabadoName} - ${row.medida})`
                         : `${row.productTitle} (${row.medida})`;
+
+                    let priceLabelHTML = '';
+                    let colCantidadHTML = '';
+                    let colTotalHTML = '';
+                    if (row.price > 0) {
+                        priceLabelHTML = `<span class="price-val">$${row.price.toLocaleString('es-AR')}</span>`;
+                        colCantidadHTML = `<input type="number" class="quantity-input" data-id="${row.rowId}" value="${qty}" min="0">`;
+                        const subtotal = row.price * qty;
+                        const subtotalLabel = subtotal > 0 ? `$${subtotal.toLocaleString('es-AR')}` : '$0';
+                        colTotalHTML = `<span class="total-val" id="subtotal-${row.rowId}">${subtotalLabel}</span>`;
+                    } else {
+                        priceLabelHTML = `<span class="price-val btn-consult-wpp" data-title="${prodNameFull}" style="cursor: pointer; color: var(--primary-color); font-weight: 600; text-decoration: underline;">Consultar</span>`;
+                        colCantidadHTML = `<input type="number" class="quantity-input" value="" disabled style="opacity: 0.35; pointer-events: none; background: #F8FAFC;">`;
+                        colTotalHTML = `<span class="total-val">-</span>`;
+                    }
 
                     tr.innerHTML = `
                         <div class="prod-info">
@@ -839,59 +991,108 @@
                             <span class="material-symbols-outlined btn-ver-fotos" data-id="${row.rowId}" title="Ver fotos">image</span>
                         </div>
                         <div class="col-precio">
-                            <span class="price-val">${priceLabel}</span>
+                            ${priceLabelHTML}
                         </div>
                         <div class="col-cantidad">
-                            <input type="number" class="quantity-input" data-id="${row.rowId}" value="${qty}" min="0">
+                            ${colCantidadHTML}
                         </div>
                         <div class="col-total">
-                            <span class="total-val" id="subtotal-${row.rowId}">${subtotalLabel}</span>
+                            ${colTotalHTML}
                         </div>
                     `;
 
                     // Listeners de los botones y del input
-                    const input = tr.querySelector('.quantity-input');
+                    const consultBtn = tr.querySelector('.btn-consult-wpp');
                     const verBtn = tr.querySelector('.btn-ver-fotos');
 
-                    const updateQty = (newVal) => {
-                        newVal = Math.max(0, parseInt(newVal) || 0);
-                        input.value = newVal;
+                    if (consultBtn) {
+                        consultBtn.addEventListener('click', () => {
+                            const waPhone = "5491167007723";
+                            const msg = `Hola! Quería consultar el precio y stock de: ${prodNameFull}`;
+                            window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(msg)}`, '_blank');
+                        });
+                    }
 
-                        if (newVal > 0) {
-                            currentCart[row.rowId] = {
-                                title: prodNameFull,
-                                price: row.price,
-                                quantity: newVal,
-                                conditions: row.conditions
-                            };
-                        } else {
-                            delete currentCart[row.rowId];
-                        }
+                    if (row.price > 0) {
+                        const input = tr.querySelector('.quantity-input');
+                        const updateQty = (newVal) => {
+                            newVal = Math.max(0, parseInt(newVal) || 0);
+                            input.value = newVal;
 
-                        // Actualizar subtotal
-                        const sub = row.price * newVal;
-                        document.getElementById(`subtotal-${row.rowId}`).textContent = sub > 0 ? `$${sub.toLocaleString('es-AR')}` : '$0';
+                            // Aplicar descuentos por cantidad
+                            let appliedDiscount = 0;
+                            if (row.volumeDiscounts && Array.isArray(row.volumeDiscounts)) {
+                                row.volumeDiscounts.forEach(rule => {
+                                    if (newVal >= rule.minQty && rule.discountPercent > appliedDiscount) {
+                                        appliedDiscount = rule.discountPercent;
+                                    }
+                                });
+                            }
+                            const finalPrice = appliedDiscount > 0 ? row.price * (1 - (appliedDiscount / 100)) : row.price;
 
-                        recalculateGrandTotal();
-                    };
+                            // Actualizar UI del precio
+                            const priceSpan = tr.querySelector('.price-val');
+                            if (priceSpan) {
+                                if (appliedDiscount > 0) {
+                                    priceSpan.innerHTML = `<del style="font-size:0.8em; color:#94a3b8;">$${row.price.toLocaleString('es-AR')}</del> $${finalPrice.toLocaleString('es-AR')}`;
+                                } else {
+                                    priceSpan.textContent = `$${row.price.toLocaleString('es-AR')}`;
+                                }
+                            }
 
-                    input.addEventListener('input', (e) => updateQty(e.target.value));
-                    input.addEventListener('change', (e) => updateQty(e.target.value));
+                            if (newVal > 0) {
+                                currentCart[row.rowId] = {
+                                    title: prodNameFull,
+                                    price: finalPrice,
+                                    originalPrice: row.price,
+                                    quantity: newVal,
+                                    conditions: row.conditions
+                                };
+                            } else {
+                                delete currentCart[row.rowId];
+                            }
+
+                            // Actualizar subtotal
+                            const sub = finalPrice * newVal;
+                            document.getElementById(`subtotal-${row.rowId}`).textContent = sub > 0 ? `$${sub.toLocaleString('es-AR')}` : '$0';
+
+                            recalculateGrandTotal();
+                        };
+
+                        input.addEventListener('input', (e) => updateQty(e.target.value));
+                        input.addEventListener('change', (e) => updateQty(e.target.value));
+                    }
 
                     verBtn.addEventListener('click', () => openGalleryModal(row));
 
                     rowsContainer.appendChild(tr);
                 });
+                
+                recalculateGrandTotal();
             }
 
             // 3. Recalcular el total general
             function recalculateGrandTotal() {
                 let grandTotal = 0;
+                let originalGrandTotal = 0;
                 Object.values(currentCart).forEach(item => {
                     grandTotal += item.price * item.quantity;
+                    originalGrandTotal += (item.originalPrice || item.price) * item.quantity;
                 });
 
                 grandTotalEl.textContent = `$${grandTotal.toLocaleString('es-AR')}`;
+                
+                const savingsEl = document.getElementById('order-total-savings');
+                if (savingsEl) {
+                    const savings = originalGrandTotal - grandTotal;
+                    if (savings > 0) {
+                        savingsEl.textContent = `Ahorraste $${savings.toLocaleString('es-AR')}`;
+                        savingsEl.style.display = 'block';
+                    } else {
+                        savingsEl.style.display = 'none';
+                    }
+                }
+
                 submitOrderBtn.disabled = grandTotal === 0;
             }
 
@@ -932,7 +1133,155 @@
                 modalGallery.style.display = 'flex';
             }
 
+            // Renderizar resumen del carrito en checkout
+            function renderCheckoutCart() {
+                const listEl = document.getElementById('checkout-cart-list');
+                if (!listEl) return;
+                
+                listEl.innerHTML = '';
+                
+                const items = Object.entries(currentCart);
+                if (items.length === 0) {
+                    listEl.innerHTML = '<div style="padding: 1rem; text-align: center; color: #94A3B8; font-size: 0.85rem;">El carrito está vacío</div>';
+                    btnSendWhatsapp.disabled = true;
+                    return;
+                }
+                
+                items.forEach(([id, item]) => {
+                    const div = document.createElement('div');
+                    div.style.display = 'flex';
+                    div.style.justifyContent = 'space-between';
+                    div.style.alignItems = 'center';
+                    div.style.padding = '0.5rem';
+                    div.style.borderBottom = '1px solid #F1F5F9';
+                    div.style.fontSize = '0.85rem';
+                    
+                    let savingsHTML = '';
+                    let priceHTML = `$${item.price.toLocaleString('es-AR')} c/u`;
+                    if (item.originalPrice && item.originalPrice > item.price) {
+                        const savedTotal = (item.originalPrice - item.price) * item.quantity;
+                        priceHTML = `<del style="color:#94A3B8;">$${item.originalPrice.toLocaleString('es-AR')}</del> <span style="color:#10B981; font-weight:600;">$${item.price.toLocaleString('es-AR')}</span> c/u`;
+                        savingsHTML = `<div style="color: #10B981; font-size: 0.7rem; font-weight: 600; text-align: right; margin-top: 2px; letter-spacing: -0.2px;">Ahorro descuento: $${savedTotal.toLocaleString('es-AR')}</div>`;
+                    }
+
+                    div.innerHTML = `
+                        <div style="flex: 1; padding-right: 1rem;">
+                            <div style="font-weight: 500; color: #334155; line-height: 1.2;">${item.title}</div>
+                            <div style="color: #64748B; font-size: 0.75rem; margin-top: 2px;">${priceHTML}</div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="number" class="checkout-qty-input" data-id="${id}" value="${item.quantity}" min="0" style="width: 45px; height: 26px; border: 1px solid #CBD5E1; border-radius: 4px; text-align: center; font-family: 'Outfit', sans-serif; color: #0F172A;">
+                                <div style="font-weight: 600; color: #0F172A; width: 65px; text-align: right;">$${(item.price * item.quantity).toLocaleString('es-AR')}</div>
+                            </div>
+                            ${savingsHTML}
+                        </div>
+                    `;
+                    listEl.appendChild(div);
+                });
+                
+                // Listeners para los inputs dentro del modal
+                listEl.querySelectorAll('.checkout-qty-input').forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        let newVal = Math.max(0, parseInt(e.target.value) || 0);
+                        e.target.value = newVal;
+                        const rowId = e.target.getAttribute('data-id');
+                        
+                        // Actualizar en currentCart
+                        const rowData = allRows.find(r => r.rowId === rowId);
+                        
+                        if (newVal > 0 && rowData) {
+                            let appliedDiscount = 0;
+                            if (rowData.volumeDiscounts && Array.isArray(rowData.volumeDiscounts)) {
+                                rowData.volumeDiscounts.forEach(rule => {
+                                    if (newVal >= rule.minQty && rule.discountPercent > appliedDiscount) {
+                                        appliedDiscount = rule.discountPercent;
+                                    }
+                                });
+                            }
+                            const finalPrice = appliedDiscount > 0 ? rowData.price * (1 - (appliedDiscount / 100)) : rowData.price;
+                            currentCart[rowId].quantity = newVal;
+                            currentCart[rowId].price = finalPrice;
+                            currentCart[rowId].originalPrice = rowData.price;
+                        } else if (newVal <= 0) {
+                            delete currentCart[rowId];
+                        }
+                        
+                        // Sincronizar con el input en el catálogo principal si existe y forzar su repintado visual
+                        const mainInput = document.querySelector(`.quantity-input[data-id="${rowId}"]`);
+                        if (mainInput) {
+                            mainInput.value = newVal;
+                            mainInput.dispatchEvent(new Event('change'));
+                        }
+                        
+                        // Repintar totales globales
+                        recalculateGrandTotal();
+                        updateCheckoutTotals();
+                        renderCheckoutCart(); // re-render para reflejar item borrado o subtotal actualizado
+                    });
+                });
+            }
+
             // 5. Checkout
+            function updateCheckoutTotals() {
+                const subtotal = Object.values(currentCart).reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const selectedMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+                let surchargePercent = 0;
+                let surchargeLabel = 'Efectivo';
+                
+                const tfSurcharge = mayoristaConfig.surchargeTransfer !== undefined ? parseInt(mayoristaConfig.surchargeTransfer) : 21;
+                const mpSurcharge = mayoristaConfig.markupPercent !== undefined ? parseInt(mayoristaConfig.markupPercent) : 31;
+
+                if (selectedMethod === 'transferencia') {
+                    surchargePercent = tfSurcharge;
+                    surchargeLabel = 'Transferencia';
+                } else if (selectedMethod === 'mercadopago') {
+                    surchargePercent = mpSurcharge;
+                    surchargeLabel = 'Mercado Pago';
+                }
+
+                const surchargeVal = Math.round(subtotal * (surchargePercent / 100));
+                const grandTotal = subtotal + surchargeVal;
+
+                document.getElementById('checkout-subtotal-val').textContent = `$${subtotal.toLocaleString('es-AR')}`;
+                
+                const surchargeRow = document.getElementById('checkout-surcharge-row');
+                if (surchargePercent > 0) {
+                    surchargeRow.style.display = 'flex';
+                    document.getElementById('checkout-surcharge-label').textContent = `${surchargeLabel} ${surchargePercent}%`;
+                    document.getElementById('checkout-surcharge-val').textContent = `+$${surchargeVal.toLocaleString('es-AR')}`;
+                } else {
+                    surchargeRow.style.display = 'none';
+                }
+
+                document.getElementById('checkout-grand-total-val').textContent = `$${grandTotal.toLocaleString('es-AR')}`;
+
+                // Mostrar u ocultar datos bancarios según el medio
+                const bankBlock = document.getElementById('checkout-bank-block');
+                if (selectedMethod === 'transferencia') {
+                    bankBlock.style.display = 'block';
+                } else {
+                    bankBlock.style.display = 'none';
+                }
+                
+                // Actualizar estilos de los contenedores
+                document.querySelectorAll('.payment-method-option').forEach(opt => {
+                    const radio = opt.querySelector('input[type="radio"]');
+                    if (radio.checked) {
+                        opt.style.borderColor = '#0F172A';
+                        opt.style.background = '#F8FAFC';
+                    } else {
+                        opt.style.borderColor = '#CBD5E1';
+                        opt.style.background = '#ffffff';
+                    }
+                });
+            }
+
+            document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
+                radio.addEventListener('change', updateCheckoutTotals);
+            });
+
             submitOrderBtn.addEventListener('click', () => {
                 // Rellenar datos bancarios
                 const bankDetailsEl = document.getElementById('checkout-bank-details');
@@ -947,8 +1296,31 @@
                 const termsTextEl = document.getElementById('checkout-terms-text');
                 termsTextEl.textContent = mayoristaConfig.terms || 'Condiciones de Venta:\n- Retiro por taller.\n- Pago por transferencia bancaria anticipada o efectivo al retirar.';
 
+                // Rellenar descuentos
+                const discountsTextEl = document.getElementById('checkout-discounts-text');
+                const discountsBlock = document.getElementById('checkout-discounts-block');
+                if (mayoristaConfig.discounts && mayoristaConfig.discounts.trim() !== '') {
+                    discountsTextEl.textContent = mayoristaConfig.discounts;
+                    discountsBlock.style.display = 'block';
+                } else {
+                    discountsBlock.style.display = 'none';
+                }
+
+                // Configurar valores y badges de recargos
+                const tfPercent = mayoristaConfig.surchargeTransfer !== undefined ? mayoristaConfig.surchargeTransfer : 21;
+                const mpPercent = mayoristaConfig.markupPercent !== undefined ? mayoristaConfig.markupPercent : 31;
+                document.getElementById('checkout-surcharge-transfer-badge').textContent = `+${tfPercent}%`;
+                document.getElementById('checkout-surcharge-mp-badge').textContent = `+${mpPercent}%`;
+
+                // Resetear medio de pago por defecto a Efectivo
+                const defaultRadio = document.querySelector('input[name="payment-method"][value="efectivo"]');
+                if (defaultRadio) defaultRadio.checked = true;
+
                 chkAcceptTerms.checked = false;
                 btnSendWhatsapp.disabled = true;
+
+                updateCheckoutTotals();
+                renderCheckoutCart();
 
                 modalCheckout.style.display = 'flex';
             });
@@ -958,6 +1330,21 @@
             });
 
             btnSendWhatsapp.addEventListener('click', () => {
+                const selectedMethod = document.querySelector('input[name="payment-method"]:checked').value;
+                let surchargePercent = 0;
+                let surchargeLabel = 'Efectivo';
+                
+                const tfSurcharge = mayoristaConfig.surchargeTransfer !== undefined ? parseInt(mayoristaConfig.surchargeTransfer) : 21;
+                const mpSurcharge = mayoristaConfig.markupPercent !== undefined ? parseInt(mayoristaConfig.markupPercent) : 31;
+
+                if (selectedMethod === 'transferencia') {
+                    surchargePercent = tfSurcharge;
+                    surchargeLabel = 'Transferencia';
+                } else if (selectedMethod === 'mercadopago') {
+                    surchargePercent = mpSurcharge;
+                    surchargeLabel = 'Mercado Pago';
+                }
+
                 let msg = `*LA TARIMA - NUEVO PEDIDO MAYORISTA*\n`;
                 msg += `------------------------------------------\n`;
                 msg += `Fecha: ${new Date().toLocaleDateString('es-AR')}\n\n`;
@@ -977,8 +1364,16 @@
                     index++;
                 });
 
+                const surchargeVal = Math.round(total * (surchargePercent / 100));
+                const grandTotal = total + surchargeVal;
+
                 msg += `------------------------------------------\n`;
-                msg += `*TOTAL DEL PEDIDO: $${total.toLocaleString('es-AR')}*\n`;
+                msg += `Subtotal productos: $${total.toLocaleString('es-AR')}\n`;
+                msg += `Forma de pago: *${selectedMethod.toUpperCase()}*\n`;
+                if (surchargePercent > 0) {
+                    msg += `Recargo ${surchargeLabel} (${surchargePercent}%): +$${surchargeVal.toLocaleString('es-AR')}\n`;
+                }
+                msg += `*TOTAL A ABONAR: $${grandTotal.toLocaleString('es-AR')}*\n`;
                 msg += `------------------------------------------\n`;
                 msg += `_He leído y acepto los términos y condiciones de compra._\n\n`;
                 msg += `Solicito confirmación de disponibilidad para realizar el pago correspondiente.`;
@@ -990,6 +1385,7 @@
                 // Cerrar modal y limpiar carrito
                 modalCheckout.style.display = 'none';
                 currentCart = {};
+                try { localStorage.removeItem('savedMayoristaCart'); } catch(e) {}
                 document.querySelectorAll('.quantity-input').forEach(i => i.value = 0);
                 document.querySelectorAll('.total-val').forEach(v => v.textContent = '$0');
                 recalculateGrandTotal();
@@ -1027,6 +1423,29 @@
             if (searchInput) {
                 searchInput.addEventListener('input', (e) => {
                     renderTable(e.target.value);
+                });
+            }
+
+            // Evento Ordenar por Precio
+            const sortHeader = document.getElementById('sort-price-header');
+            const sortIcon = document.getElementById('sort-price-icon');
+            if (sortHeader) {
+                sortHeader.addEventListener('click', () => {
+                    if (currentSortPrice === null) {
+                        currentSortPrice = 'asc';
+                        sortIcon.textContent = 'arrow_upward';
+                        sortIcon.style.color = 'var(--primary-color)';
+                    } else if (currentSortPrice === 'asc') {
+                        currentSortPrice = 'desc';
+                        sortIcon.textContent = 'arrow_downward';
+                        sortIcon.style.color = 'var(--primary-color)';
+                    } else {
+                        currentSortPrice = null;
+                        sortIcon.textContent = 'unfold_more';
+                        sortIcon.style.color = '';
+                    }
+                    const q = searchInput ? searchInput.value : '';
+                    renderTable(q);
                 });
             }
 

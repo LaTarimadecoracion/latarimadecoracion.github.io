@@ -1004,13 +1004,21 @@
                                                 <input type="text" id="admin-may-bank" placeholder="ej: Banco Galicia, Mercado Pago" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
                                             </div>
                                             <div class="form-group">
+                                                <label for="admin-may-surcharge-transfer" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Recargo Transferencia (%)</label>
+                                                <input type="number" id="admin-may-surcharge-transfer" placeholder="21" min="0" max="100" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="admin-may-markup" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Recargo Mercado Pago (%)</label>
-                                                <input type="number" id="admin-may-markup" placeholder="10" min="0" max="100" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                                <input type="number" id="admin-may-markup" placeholder="31" min="0" max="100" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="admin-may-terms" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Términos y Condiciones Generales</label>
                                             <textarea id="admin-may-terms" placeholder="Escribe aquí las condiciones de venta..." rows="6" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="admin-may-discounts" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Aclaración de Descuentos (Checkout)</label>
+                                            <textarea id="admin-may-discounts" placeholder="Escribe aquí la aclaración de descuentos..." rows="3" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
                                         </div>
                                         <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
                                             <button type="button" id="btn-save-mayorista-config" class="btn-primary" style="padding: 0.6rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 8px; cursor: pointer; border: none; font-weight: 600;">
@@ -1027,7 +1035,15 @@
                                             <span class="material-symbols-outlined">payments</span>
                                             Precios y Condiciones de Productos (Edición Masiva)
                                         </h3>
-                                        <div class="admin-header-actions">
+                                        <div class="admin-header-actions" style="display: flex; gap: 8px;">
+                                            <button type="button" id="btn-bulk-price-modifier" style="padding: 0.5rem 1rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                                                <span class="material-symbols-outlined" style="font-size: 18px;">trending_up</span>
+                                                Modificar Precios
+                                            </button>
+                                            <button type="button" id="btn-bulk-discount-selected" style="padding: 0.5rem 1rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                                                <span class="material-symbols-outlined" style="font-size: 18px;">settings</span>
+                                                Descuentos a Seleccionados
+                                            </button>
                                             <button type="button" id="btn-save-bulk-prices" class="btn-primary" style="padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
                                                 <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
                                                 Guardar Cambios de Precios
@@ -1042,9 +1058,13 @@
                                         <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; min-width: 600px;">
                                             <thead>
                                                 <tr style="background: #F8FAFC; border-bottom: 1.5px solid #E2E8F0; font-weight: 600; color: #475569;">
+                                                    <th style="padding: 10px 14px; width: 40px; text-align: center;">
+                                                        <input type="checkbox" id="chk-select-all-bulk" style="cursor: pointer; width: 16px; height: 16px;">
+                                                    </th>
                                                     <th style="padding: 10px 14px;">Producto (Variante / Medida)</th>
                                                     <th style="padding: 10px 14px; width: 150px;">Precio Mayorista ($)</th>
                                                     <th style="padding: 10px 14px; width: 250px;">Condiciones / Stock</th>
+                                                    <th style="padding: 10px 14px; width: 150px;">Descuentos</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="admin-may-prices-tbody">
@@ -1640,6 +1660,85 @@
                     </div>
                 </div>
 
+
+    
+    <div id="modal-volume-discounts" class="modal-overlay" style="display: none; align-items: center; justify-content: center; z-index: 9999;">
+        <div class="modal-card" style="max-width: 500px; width: 90%; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+            <div class="modal-header" style="padding: 1rem 1.5rem; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0; font-size: 1.1rem; color: #0F172A;">Configurar Descuentos por Cantidad</h3>
+                <button type="button" id="btn-close-volume-modal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748B;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 1.5rem;">
+                <div style="display: flex; gap: 1rem; align-items: flex-end; margin-bottom: 1.5rem;">
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Cantidad Mínima</label>
+                        <input type="number" id="vol-min-qty" min="2" style="width: 100%; padding: 8px; border: 1px solid #CBD5E1; border-radius: 6px;" placeholder="Ej: 10">
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Descuento (%)</label>
+                        <input type="number" id="vol-discount-pct" min="1" max="99" style="width: 100%; padding: 8px; border: 1px solid #CBD5E1; border-radius: 6px;" placeholder="Ej: 15">
+                    </div>
+                    <button type="button" id="btn-add-vol-rule" style="padding: 8px 16px; background: #0F172A; color: white; border: none; border-radius: 6px; cursor: pointer;">Agregar</button>
+                </div>
+                
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid #E2E8F0;">
+                            <th style="text-align: left; padding: 8px;">A partir de...</th>
+                            <th style="text-align: left; padding: 8px;">Descuento</th>
+                            <th style="text-align: right; padding: 8px;">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vol-rules-tbody">
+                        
+                    </tbody>
+                </table>
+                <p id="vol-rules-empty" style="text-align: center; color: #94A3B8; font-size: 0.85rem; margin-top: 1rem;">No hay descuentos configurados.</p>
+            </div>
+            <div class="modal-footer" style="padding: 1rem 1.5rem; border-top: 1px solid #E2E8F0; text-align: right; background: #F8FAFC;">
+                <button type="button" id="btn-save-vol-modal" style="padding: 8px 24px; background: #0F172A; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Guardar y Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="modal-bulk-price-modifier" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.4); z-index: 100000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+        <div style="background: white; border-radius: 12px; width: 90%; max-width: 400px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); overflow: hidden;">
+            <div class="modal-header" style="padding: 16px 20px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; background: #F8FAFC;">
+                <h3 style="margin: 0; font-size: 1.1rem; color: #0F172A; font-weight: 600;">Modificar Precios</h3>
+                <button type="button" id="btn-close-price-modifier" style="background: none; border: none; color: #64748B; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 4px; border-radius: 4px;">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div style="padding: 20px;">
+                <p id="price-modifier-title" style="margin: 0 0 16px 0; font-size: 0.9rem; color: #475569;"></p>
+                <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 6px;">Acción</label>
+                        <select id="price-mod-action" style="width: 100%; padding: 8px; border: 1.5px solid #E2E8F0; border-radius: 6px;">
+                            <option value="increase">Aumentar (+)</option>
+                            <option value="decrease">Descontar (-)</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 6px;">Tipo</label>
+                        <select id="price-mod-type" style="width: 100%; padding: 8px; border: 1.5px solid #E2E8F0; border-radius: 6px;">
+                            <option value="percentage">Porcentaje (%)</option>
+                            <option value="fixed">Monto Fijo ($)</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 6px;">Valor</label>
+                    <input type="number" id="price-mod-value" placeholder="Ej: 15" style="width: 100%; padding: 10px; border: 1.5px solid #E2E8F0; border-radius: 6px; font-size: 1rem; box-sizing: border-box;" min="0" step="any">
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 8px;">
+                    <button type="button" id="btn-cancel-price-modifier" style="padding: 8px 16px; border: 1px solid #CBD5E1; background: white; border-radius: 6px; cursor: pointer; color: #475569; font-weight: 500;">Cancelar</button>
+                    <button type="button" id="btn-apply-price-modifier" class="btn-primary" style="padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; color: white; font-weight: 600;">Aplicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     
     <script src="js/confetti-arg.js?v=1" defer></script>
