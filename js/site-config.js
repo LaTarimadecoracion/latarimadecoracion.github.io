@@ -202,9 +202,26 @@ window.siteConfig = {
         "cbu": "1234567890123456789012",
         "titular": "Juan Pérez",
         "bank": "Banco Nación",
-        "surchargeTransfer": 21,
-        "markupPercent": 10,
-        "terms": "Condiciones de Venta Mayorista:\n1. Compra mínima de $100.000.\n2. Los precios no incluyen IVA.\n3. Retiro por taller o envío a convenir.\n4. Demora estimada de entrega de 15 a 20 días.",
+        "paymentMethods": [
+            {
+                "id": "efectivo",
+                "name": "Efectivo",
+                "surcharge": 0,
+                "conditions": "Condiciones de Venta Mayorista:\n1. Compra mínima de $100.000.\n2. Los precios no incluyen IVA.\n3. Retiro por taller o envío a convenir.\n4. Demora estimada de entrega de 15 a 20 días."
+            },
+            {
+                "id": "transferencia",
+                "name": "Transferencia",
+                "surcharge": 21,
+                "conditions": "Condiciones de Venta Mayorista:\n1. Compra mínima de $100.000.\n2. Los precios no incluyen IVA.\n3. Retiro por taller o envío a convenir.\n4. Demora estimada de entrega de 15 a 20 días."
+            },
+            {
+                "id": "mercadopago",
+                "name": "Mercado Pago",
+                "surcharge": 10,
+                "conditions": "Condiciones de Venta Mayorista:\n1. Compra mínima de $100.000.\n\n2. Los precios no incluyen IVA.\n3. Retiro por taller o envío a convenir.\n4. Demora estimada de entrega de 15 a 20 días.\n\nlink.mercadopago.com.ar/latarimadeco"
+            }
+        ],
         "discounts": ""
     }
 };

@@ -35,7 +35,6 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 60000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -49,7 +48,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -61,7 +61,6 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -75,7 +74,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "180 x 45 cm",
@@ -87,7 +87,6 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -101,7 +100,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -113,7 +113,6 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -127,7 +126,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -139,7 +139,6 @@ const productsData = [
                                 "highlight": true,
                                 "btnColor": "#c0510a",
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -153,7 +152,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -165,7 +165,6 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -179,7 +178,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -191,7 +191,6 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -205,7 +204,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -217,7 +217,6 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -231,7 +230,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -243,7 +243,6 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -257,7 +256,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -269,7 +269,6 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -283,7 +282,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -295,7 +295,6 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -309,7 +308,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -337,8 +337,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -350,8 +350,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -363,8 +363,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -376,8 +376,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -389,8 +389,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -402,8 +402,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -431,8 +431,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -444,8 +444,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -457,8 +457,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -470,8 +470,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -483,8 +483,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -496,8 +496,8 @@ const productsData = [
                                 "highlight": false,
                                 "btnColor": "",
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -566,7 +566,6 @@ const productsData = [
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -580,14 +579,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "190 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -601,14 +600,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "180 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -622,14 +621,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "170 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -643,14 +642,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "160 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -664,14 +663,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "150 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -685,14 +684,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "140 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -706,14 +705,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "130 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -727,14 +726,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "120 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -748,14 +747,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
                                 "link": "",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -769,14 +768,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -790,14 +789,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -811,14 +810,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -832,14 +831,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -853,14 +852,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -874,7 +873,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -896,120 +896,120 @@ const productsData = [
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "190 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "180 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "170 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "160 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "150 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "140 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "130 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "120 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
                                 "link": "",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -1028,120 +1028,120 @@ const productsData = [
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "190 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "180 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "170 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "160 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "150 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "140 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "130 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "120 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
                                 "link": "",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -1202,7 +1202,6 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1168350423-baranda-para-cama-bebes-ninos-adultos-110-x-60-cm-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1216,14 +1215,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 60 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1393562489-baranda-para-cama-bebes-ninos-adultos-70-x-60-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1237,7 +1236,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -1253,16 +1253,16 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 60 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -1281,16 +1281,16 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1393165069-baranda-seguridad-para-cama-blanca-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 60 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1393165069-baranda-seguridad-para-cama-blanca-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -1343,7 +1343,6 @@ const productsData = [
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1357,7 +1356,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -1407,7 +1407,6 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-140x45-cm/up/MLAU3372086081?pdp_filters=item_id:MLA2277988838",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1421,14 +1420,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "130 x 45 cm",
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-130x45-cm/up/MLAU3372085021?pdp_filters=item_id:MLA2277685204",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1442,14 +1441,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-cama-universal-110-x-45-cm/up/MLAU3269858321#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=30&type=product&tracking_id=a22ec83d-c5e7-4dd1-aff8-61c0645d8dc4&wid=MLA1508195513&sid=search",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1463,14 +1462,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2277798420-baranda-de-seguridad-para-sommier-100x45-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1484,14 +1483,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-90x45-cm/up/MLAU3378213128?pdp_filters=item_id:MLA2277798442",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1505,14 +1504,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-80x45-cm/up/MLAU3372077063?pdp_filters=item_id:MLA1516468901",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1526,7 +1525,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -1545,32 +1545,32 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -1588,32 +1588,32 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -1641,7 +1641,6 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-la-tarima-140x60cm-plegable/up/MLAU3734270229?pdp_filters=item_id:MLA2792477832",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1655,14 +1654,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "110 x 60 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1439861656-baranda-de-seguridad-para-cama-sommier-110x60cm-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1676,14 +1675,14 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 60 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1393562489-baranda-para-cama-bebes-ninos-adultos-70-x-60-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1697,7 +1696,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -1716,16 +1716,16 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 60 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1348081575-baranda-de-seguridad-para-sommier-110-x-60-cm-blanca-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -1744,16 +1744,16 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1348081575-baranda-de-seguridad-para-sommier-110-x-60-cm-blanca-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 60 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1348081575-baranda-de-seguridad-para-sommier-110-x-60-cm-blanca-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -1788,7 +1788,6 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1241768126-baranda-para-cama-montessori-60x45-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1802,7 +1801,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -1829,7 +1829,6 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1145213600-baranda-para-cama-barral-seguridad-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1843,7 +1842,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -1870,7 +1870,6 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1380333706-baranda-de-seguridad-para-cama-infantil-60x35cm-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
                                 "volumeDiscounts": [
                                     {
                                         "minQty": 30,
@@ -1884,7 +1883,8 @@ const productsData = [
                                         "minQty": 10,
                                         "discountPercent": 5
                                     }
-                                ]
+                                ],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -1919,32 +1919,32 @@ const productsData = [
                                 "link": "",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "110 a 150 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 a 100 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "0 a 60 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -1997,8 +1997,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1562167173-vinoteca-cava-bodega-madera-mueble-5-vinos-rustica-campo-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2025,8 +2025,8 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/vinoteca-cava-bodega-madera-mueble-9-vinos-rustica-campo/up/MLAU3969313254",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2053,8 +2053,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2630634704-vinoteca-cava-bodega-madera-mueble-13-vinos-rustica-campo-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2081,8 +2081,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1561953897-vinoteca-cava-bodega-madera-mueble-17-vinos-rustica-campo-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2119,8 +2119,8 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/podio-de-premiacion-profesional--3-niveles/up/MLAU3923567631",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2177,8 +2177,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2235353348-podio-de-premiacion-profesional-3-niveles-reforzados-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2206,24 +2206,24 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2351358716-podio-de-premiacion-profesional-60-x-40-x-40-cm-n-1-_JM?has_official_store=false&highlight=false&searchVariation=190710551513&headerTopBrand=false#polycard_client=search-nordic&searchVariation=190710551513&search_layout=grid&position=2&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 x 40 x 30",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2242326346-podio-de-premiacion-profesional-60-x-40-x-30-cm-n-2-_JM?has_official_store=false&highlight=false&searchVariation=184697351002&headerTopBrand=false#polycard_client=search-nordic&searchVariation=184697351002&search_layout=grid&position=3&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 x 40 x 20",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2351255318-podio-de-premiacion-profesional-60-x-40-x-20-cm-n-3-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2261,88 +2261,88 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1513002287-step-funcional-plataforma-fitness-cajon-50x28x9-cm-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "50x28x16",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2072143834-step-funcional-plataforma-fitness-cajon-50x28x16-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "50x28x23",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1372002007-step-plataforma-fitness-50x28x23-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "50x50x9",
                                 "link": "https://www.mercadolibre.com.ar/step-madera-la-tarima-50x50-cm-plataforma-fitness/up/MLAU256659868",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40x28x9",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40x28x16",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40x28x23",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40x28x30",
                                 "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30x28x9",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30x28x16",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30x28x23",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2383,24 +2383,24 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "70 x 28 x 12 cm",
                                 "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 x 28 x 9",
                                 "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2438,80 +2438,80 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "10 x 10 x 80 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "10 x 10 x 100 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Combo x3 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2538,32 +2538,32 @@ const productsData = [
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Mediano",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Combo",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1487292863-estantes-x3-set-repisas-madera-hexagonos-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Chico",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2588,72 +2588,72 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1546524765-estante-flotante-nordico-madera-100x10cm-la-tarima-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 (Combo x2)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "100 (Combo x3)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1546434559-estante-flotante-nordico-madera-80x10cm-la-tarima-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 (Combo x2)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "80 (Combo x3)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2066246148-estante-flotante-nordico-madera-60x10cm-la-tarima-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 (Combo x2)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "60 (Combo x3)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2678,8 +2678,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2278025688-estante-triangulo-x-3-unidades-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2704,32 +2704,32 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508934203-estante-cuadrado-combo-x3un-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Grande",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Mediano",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Chico",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2754,96 +2754,96 @@ const productsData = [
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "45 x 45 (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1248080101-mensula-madera-45x45cm-para-escritorios-nordicos-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "45 x 45 (Combo x6)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40 x 40 (Combo x12)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40 x 40 (Combo x2)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40 x 40 (Combo x6)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 (Combo x12)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1377475740-mensula-de-madera-la-tarima-30-x-30-cm-nordico-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 (Combo x6)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "20 x 20 (Combo x12)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "20 x 20 (Combo x2)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "20 x 20 (Combo x6)",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2868,56 +2868,56 @@ const productsData = [
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "20 x 80 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "20 x 100 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 60 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 80 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 100 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Otras medidas",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -2944,32 +2944,32 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -3020,8 +3020,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -3050,32 +3050,32 @@ const productsData = [
                                 "link": "",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Grande",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Mediano",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "Chico",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -3103,8 +3103,8 @@ const productsData = [
                                 "link": "",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -3131,32 +3131,32 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -3197,8 +3197,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 21000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -3230,8 +3230,8 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -3267,72 +3267,72 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2308177372-deck-base-macetas-madera-40-x-40-cm-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40 x 40 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416155916-deck-base-macetas-madera-40-x-40-cm-x2-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40 x 40 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416156026-deck-base-macetas-madera-40-x-40-cm-x3-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 cm (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 25 cm (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2399572790-deck-base-macetas-madera-25-x-25-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 25 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416155670-deck-base-macetas-madera-25-x-25-cm-x2-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 25 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2415986866-deck-base-macetas-madera-25-x-25-cm-x-3-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -3389,8 +3389,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1516454739-silla-infantil-colonial-_JM?searchVariation=189959819515#polycard_client=search-nordic&searchVariation=189959819515&search_layout=grid&position=3&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -3421,8 +3421,8 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/porta-macetas-colgante-de-madera-eucalipto-26-x-26-cm/up/MLAU3980462508?pdp_filters=item_id:MLA1791659295",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -3480,8 +3480,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x2)",
@@ -3492,8 +3492,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x3)",
@@ -3504,8 +3504,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 40 cm (1 Unidad)",
@@ -3516,8 +3516,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 80 cm (1 Unidad)",
@@ -3528,8 +3528,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -3590,8 +3590,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -3624,8 +3624,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -3674,72 +3674,72 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2308177372-deck-base-macetas-madera-40-x-40-cm-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40 x 40 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416155916-deck-base-macetas-madera-40-x-40-cm-x2-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40 x 40 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416156026-deck-base-macetas-madera-40-x-40-cm-x3-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 cm (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 25 cm (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2399572790-deck-base-macetas-madera-25-x-25-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 25 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416155670-deck-base-macetas-madera-25-x-25-cm-x2-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 25 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2415986866-deck-base-macetas-madera-25-x-25-cm-x-3-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -3799,8 +3799,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x2)",
@@ -3811,8 +3811,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x3)",
@@ -3823,8 +3823,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 40 cm (1 Unidad)",
@@ -3835,8 +3835,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 80 cm (1 Unidad)",
@@ -3847,8 +3847,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -3908,8 +3908,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 21000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -3941,8 +3941,8 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -3980,8 +3980,8 @@ const productsData = [
                                 "link": "",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4018,8 +4018,8 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/porta-macetas-colgante-de-madera-eucalipto-26-x-26-cm/up/MLAU3980462508?pdp_filters=item_id:MLA1791659295",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4148,8 +4148,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4176,8 +4176,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4204,8 +4204,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508818831-organizador-verdulero-frutero-pino-3-estantes-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4233,8 +4233,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2414802538-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4262,8 +4262,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2168998242-estante-esquinero-torneado-3-estantes-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -4279,8 +4279,8 @@ const productsData = [
                                 "link": "",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     },
@@ -4296,8 +4296,8 @@ const productsData = [
                                 "link": "",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4326,8 +4326,8 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4370,8 +4370,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -4401,32 +4401,32 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4468,8 +4468,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -4505,8 +4505,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1514956491-yenga-torre-alta-de-madera-63-piezas-la-carpinteria-_JM#polycard_client=search-nordic&search_layout=grid&position=2&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636&wid=MLA1514956491&sid=search",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4539,8 +4539,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 21000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -4570,8 +4570,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1516454739-silla-infantil-colonial-_JM?searchVariation=189959819515#polycard_client=search-nordic&searchVariation=189959819515&search_layout=grid&position=3&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4605,8 +4605,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -4646,8 +4646,8 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4690,8 +4690,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -4724,8 +4724,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 21000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -4755,8 +4755,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1516454739-silla-infantil-colonial-_JM?searchVariation=189959819515#polycard_client=search-nordic&searchVariation=189959819515&search_layout=grid&position=3&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4786,32 +4786,32 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -4853,8 +4853,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -4895,8 +4895,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 21000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -4926,8 +4926,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1516454739-silla-infantil-colonial-_JM?searchVariation=189959819515#polycard_client=search-nordic&searchVariation=189959819515&search_layout=grid&position=3&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -5031,32 +5031,32 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -5098,8 +5098,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -5140,8 +5140,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x2)",
@@ -5152,8 +5152,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 50 cm (Combo x3)",
@@ -5164,8 +5164,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 40 cm (1 Unidad)",
@@ -5176,8 +5176,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 80 cm (1 Unidad)",
@@ -5188,8 +5188,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -5244,72 +5244,72 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2308177372-deck-base-macetas-madera-40-x-40-cm-_JM",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40 x 40 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416155916-deck-base-macetas-madera-40-x-40-cm-x2-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "40 x 40 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416156026-deck-base-macetas-madera-40-x-40-cm-x3-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 cm (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 30 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 25 cm (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2399572790-deck-base-macetas-madera-25-x-25-cm-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 25 cm (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416155670-deck-base-macetas-madera-25-x-25-cm-x2-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "25 x 25 cm (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2415986866-deck-base-macetas-madera-25-x-25-cm-x-3-un-_JM",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -5367,8 +5367,8 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/porta-macetas-colgante-de-madera-eucalipto-26-x-26-cm/up/MLAU3980462508?pdp_filters=item_id:MLA1791659295",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -5451,8 +5451,8 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1514956491-yenga-torre-alta-de-madera-63-piezas-la-carpinteria-_JM#polycard_client=search-nordic&search_layout=grid&position=2&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636&wid=MLA1514956491&sid=search",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
@@ -5486,8 +5486,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ],
                         "hidden": false
@@ -5525,32 +5525,32 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
                                 "default": true,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
                                 "price": 10000,
-                                "conditions": "",
-                                "volumeDiscounts": []
+                                "volumeDiscounts": [],
+                                "cost_price": ""
                             }
                         ]
                     }
