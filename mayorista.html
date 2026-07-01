@@ -721,6 +721,11 @@
                         <button type="button" id="btn-send-whatsapp" disabled style="width: 100%; background: #0F172A; color: #ffffff; border: none; padding: 0.7rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: background 0.2s, opacity 0.2s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif; margin-bottom: 0.5rem;">
                             Confirmar y Enviar Pedido
                         </button>
+                        
+                        <!-- Botón de Pago Dinámico (Inyectado por JS) -->
+                        <div id="checkout-dynamic-pay-btn-container" style="display: none; margin-bottom: 0.5rem;">
+                        </div>
+
                         <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
                             <button type="button" id="btn-continue-shopping" style="flex: 1; background: #F1F5F9; color: #334155; border: 1px solid #E2E8F0; padding: 0.5rem; border-radius: 6px; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: 'Outfit', sans-serif;">
                                 Seguir Comprando
@@ -1278,6 +1283,7 @@
                 
                 // Actualizar términos dinámicamente según medio de pago
                 const termsTextEl = document.getElementById('checkout-terms-text');
+                const btnContainer = document.getElementById('checkout-dynamic-pay-btn-container');
                 if (termsTextEl && pm) {
                     const rawText = pm.conditions || '';
                     const escapedContent = rawText
@@ -1292,6 +1298,28 @@
                         }
                         return `<a href="${href}" target="_blank" style="color: #2563EB; text-decoration: underline; font-weight: 600;">${url}</a>`;
                     });
+
+                    // Lógica para el botón de pago
+                    let paymentUrl = null;
+                    const match = rawText.match(/(https?:\/\/[^\s]+|(?:www\.|link\.)[^\s]+)/);
+                    if (match) {
+                        paymentUrl = match[0];
+                        if (!paymentUrl.startsWith('http')) paymentUrl = 'https://' + paymentUrl;
+                    }
+                    
+                    if (paymentUrl && btnContainer) {
+                        let btnText = "Pagar Online";
+                        let btnColor = "#2563EB";
+                        if (pm.name.toLowerCase().includes("mercado pago") || pm.name.toLowerCase().includes("mercadopago")) {
+                            btnText = "Pagar con Mercado Pago";
+                            btnColor = "#009EE3";
+                        }
+                        btnContainer.innerHTML = `<a href="${paymentUrl}" target="_blank" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; width: 100%; box-sizing: border-box; background: ${btnColor}; color: white; padding: 0.7rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: opacity 0.2s;"><span class="material-symbols-outlined" style="font-size: 1.2rem;">account_balance_wallet</span> ${btnText}</a>`;
+                        btnContainer.style.display = 'block';
+                    } else if (btnContainer) {
+                        btnContainer.style.display = 'none';
+                        btnContainer.innerHTML = '';
+                    }
                 }
                 
                 // Actualizar estilos de los contenedores
