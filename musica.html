@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>
+        // Clean URL by removing .html extension (only if loaded as the main window)
+        if (window.self === window.top && window.location.pathname.endsWith('.html')) {
+            let cleanPath = window.location.pathname;
+            if (cleanPath.endsWith('index.html')) {
+                cleanPath = cleanPath.substring(0, cleanPath.length - 10);
+            } else {
+                cleanPath = cleanPath.substring(0, cleanPath.length - 5);
+            }
+            window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Música - LA TARIMA</title>

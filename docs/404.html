@@ -9,7 +9,13 @@
             var pathname = window.location.pathname.toLowerCase();
             if (pathname.endsWith('/')) pathname = pathname.slice(0, -1);
 
-            var isMayorista = pathname.endsWith('/web/mayorista') || pathname.endsWith('/mayorista') || pathname.endsWith('/mayoristas');
+            var cleanPath = pathname;
+            if (cleanPath.endsWith('.html')) {
+                cleanPath = cleanPath.slice(0, -5);
+            }
+
+            var isMayorista = cleanPath.endsWith('/web/mayorista') || cleanPath.endsWith('/mayorista') || cleanPath.endsWith('/mayoristas');
+            var isMusica = cleanPath.endsWith('/musica') || cleanPath.endsWith('/music') || cleanPath.endsWith('/enganchados') || cleanPath.endsWith('/musicas');
             
             var basePath = '/';
             var segments = window.location.pathname.split('/').filter(Boolean);
@@ -22,6 +28,8 @@
 
             if (isMayorista) {
                 window.location.replace(window.location.origin + basePath + 'mayorista.html');
+            } else if (isMusica) {
+                window.location.replace(window.location.origin + basePath + 'musica.html');
             } else {
                 window.location.replace(window.location.origin + basePath);
             }
