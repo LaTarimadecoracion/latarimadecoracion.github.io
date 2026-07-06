@@ -2,15 +2,14 @@
 <html lang="es">
 <head>
     <script>
-        // Clean URL by removing .html extension (only if loaded as the main window)
-        if (window.self === window.top && window.location.pathname.endsWith('.html')) {
-            let cleanPath = window.location.pathname;
-            if (cleanPath.endsWith('index.html')) {
-                cleanPath = cleanPath.substring(0, cleanPath.length - 10);
-            } else {
-                cleanPath = cleanPath.substring(0, cleanPath.length - 5);
+        // Redirect to main site with music section active if loaded directly (not in an iframe)
+        if (window.self === window.top) {
+            var basePath = '/';
+            var segments = window.location.pathname.split('/').filter(Boolean);
+            if (segments.length > 0 && segments[0].toLowerCase() === 'latarimadecoracion.github.io') {
+                basePath = '/latarimadecoracion.github.io/';
             }
-            window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+            window.location.replace(window.location.origin + basePath + '?sec=musica');
         }
     </script>
     <meta charset="UTF-8">
