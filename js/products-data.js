@@ -76,7 +76,590 @@ const productsData = [
         "image": "img/carpinteria-/portada-1783038461695-imagen.webp",
         "visible": false,
         "order": 2,
-        "products": []
+        "products": [
+            {
+                "id": "baranda-desmontable-montessori",
+                "title": "Baranda de seguridad - Montessori",
+                "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
+                "image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                        "images_list": [
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687226-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687407-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687542-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "200 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "190 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "180 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "170 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "160 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "150 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "140 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "130 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "120 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-110x45-desmontable/up/MLAU244203090?pdp_filters=item_id:MLA1467804894",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-100x45-desmontable/up/MLAU3438278874?pdp_filters=item_id:MLA2371249298",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-100x45-desmontable/up/MLAU3438278874?pdp_filters=item_id:MLA2371249298",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-80x45-desmontable/up/MLAU233718554?pdp_filters=item_id:MLA1369581373",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "70 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1539322017-baranda-para-cama-montessori-70x45-desmontable-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "60 x 45 cm",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-60x45-desmontable/up/MLAU3438284744?pdp_filters=item_id:MLA1539346903",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Blanca",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
+                        "images_list": [
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541858852-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859223-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859334-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859445-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289633113-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438785271-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "200 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "190 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "180 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "170 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "160 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "150 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "140 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "130 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "120 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "70 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "60 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Barnizado",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
+                        "images_list": [
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763850-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438764011-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438764144-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "200 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "190 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "180 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "170 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "160 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "150 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "140 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "130 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "120 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "70 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            },
+                            {
+                                "medida": "60 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "conditions": ""
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783374627651,
+                "optional_variant": {
+                    "label": "Espesor del tirante (opcional)",
+                    "options": [
+                        "1.8 cm",
+                        "1.9 cm",
+                        "2 cm",
+                        "2.1 cm",
+                        "2.2 cm",
+                        "2.3 cm",
+                        "2.4 cm",
+                        "2.5 cm",
+                        "2.6 cm",
+                        "2.7 cm",
+                        "2.8 cm",
+                        "2.9 cm",
+                        "3 cm",
+                        "3.1 cm",
+                        "3.2 cm",
+                        "3.3 cm",
+                        "3.4 cm",
+                        "3.5 cm",
+                        "3.6 cm",
+                        "3.7 cm",
+                        "3.8 cm",
+                        "3.9 cm",
+                        "4 cm",
+                        "4.1 cm",
+                        "4.2 cm",
+                        "4.3 cm",
+                        "4.4 cm",
+                        "4.5 cm",
+                        "Otras medidas"
+                    ]
+                },
+                "primaryCatId": "Barandas"
+            }
+        ]
     },
     {
         "id": "Barandas",
@@ -644,318 +1227,169 @@ const productsData = [
                                 "medida": "200 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "190 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "180 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "170 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "160 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "150 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "140 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "130 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "120 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-110x45-desmontable/up/MLAU244203090?pdp_filters=item_id:MLA1467804894",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-100x45-desmontable/up/MLAU3438278874?pdp_filters=item_id:MLA2371249298",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-100x45-desmontable/up/MLAU3438278874?pdp_filters=item_id:MLA2371249298",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-80x45-desmontable/up/MLAU233718554?pdp_filters=item_id:MLA1369581373",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
-                                "link": "",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1539322017-baranda-para-cama-montessori-70x45-desmontable-_JM",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-60x45-desmontable/up/MLAU3438284744?pdp_filters=item_id:MLA1539346903",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "conditions": ""
                             }
-                        ]
+                        ],
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Blanca",
@@ -974,123 +1408,169 @@ const productsData = [
                                 "medida": "200 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "190 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "180 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "170 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "160 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "150 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "140 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "130 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "120 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
                                 "link": "",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             }
-                        ]
+                        ],
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
@@ -1106,127 +1586,173 @@ const productsData = [
                                 "medida": "200 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "190 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "180 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "170 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "160 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "150 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "140 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "130 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "120 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
                                 "link": "",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "conditions": ""
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782438785449,
+                "last_modified": 1783374627651,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
