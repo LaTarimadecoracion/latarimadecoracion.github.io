@@ -769,12 +769,38 @@ window.initPagesAdmin = function() {
                 const section = sectionsData[sectionId] || { title: sectionId, subtitle: '', icon: 'folder' };
                 
                 let extraInputs = '';
-                if (sectionId === 'novedades' || sectionId === 'buscados') {
+                if (sectionId === 'categorias' || sectionId === 'novedades' || sectionId === 'buscados') {
+                    const showLimit = (sectionId === 'novedades' || sectionId === 'buscados');
                     const currentLimit = section.limit || (sectionId === 'novedades' ? 5 : 8);
-                    extraInputs = `
-                        <div style="grid-column: span 3; margin-top: 4px;">
-                            <label style="font-size: 0.72rem; font-weight:600; display:block; margin-bottom: 4px; color: var(--text-muted);">Cantidad de productos a mostrar</label>
+                    const rubrosList = window.rubros || [];
+                    const selectedRubros = section.rubros || (section.rubro ? [section.rubro] : rubrosList.map(r => r.id));
+
+                    const rubroCheckboxes = rubrosList.map(r => {
+                        const isChecked = selectedRubros.includes(r.id);
+                        return `
+                            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; cursor: pointer; user-select: none; color: var(--text-main); font-weight: 500;">
+                                <input type="checkbox" class="input-section-rubro-check" value="${r.id}" ${isChecked ? 'checked' : ''} style="cursor: pointer; accent-color: var(--primary-color); width: 14px; height: 14px;">
+                                ${r.name}
+                            </label>
+                        `;
+                    }).join(' ');
+
+                    const limitHTML = showLimit ? `
+                        <div>
+                            <label style="font-size: 0.72rem; font-weight:600; display:block; margin-bottom: 4px; color: var(--text-muted);">Cantidad de productos</label>
                             <input type="number" class="input-section-limit" value="${currentLimit}" min="1" max="100" style="width:100%; padding:0.5rem 0.75rem; font-size:0.8rem; border:1.5px solid #E2E8F0; border-radius:8px; font-family:var(--font-main);" data-id="${sectionId}">
+                        </div>
+                    ` : '';
+
+                    extraInputs = `
+                        <div style="grid-column: span 3; margin-top: 4px; display: grid; grid-template-columns: ${showLimit ? '1fr 2fr' : '1fr'}; gap: 8px; align-items: start;">
+                            ${limitHTML}
+                            <div>
+                                <label style="font-size: 0.72rem; font-weight:600; display:block; margin-bottom: 4px; color: var(--text-muted);">Rubros a mostrar</label>
+                                <div class="rubro-checks-container" style="display: flex; flex-wrap: wrap; gap: 10px; padding: 0.45rem 0.75rem; border: 1.5px solid #E2E8F0; border-radius: 8px; background: white; min-height: 35px; align-items: center; box-sizing: border-box;" data-id="${sectionId}">
+                                    ${rubroCheckboxes}
+                                </div>
+                            </div>
                         </div>
                     `;
                 }
@@ -832,6 +858,19 @@ window.initPagesAdmin = function() {
                             saveHomeConfig();
                             if (window.renderHome) window.renderHome();
                         }
+                    });
+                }
+                
+                const checksContainer = card.querySelector('.rubro-checks-container');
+                if (checksContainer) {
+                    checksContainer.addEventListener('change', () => {
+                        const checkedIds = Array.from(checksContainer.querySelectorAll('.input-section-rubro-check:checked'))
+                            .map(input => input.value);
+                        homeConfig.sections[sectionId].rubros = checkedIds;
+                        // Borrar parámetro singular obsoleto
+                        delete homeConfig.sections[sectionId].rubro;
+                        saveHomeConfig();
+                        if (window.renderHome) window.renderHome();
                     });
                 }
             }
@@ -1046,8 +1085,64 @@ window.initMayoristaAdmin = function() {
     const searchInput = document.getElementById('admin-may-search');
     const tbody = document.getElementById('admin-may-prices-tbody');
     const savePricesBtn = document.getElementById('btn-save-bulk-prices');
+    const rubrosContainer = document.getElementById('admin-may-rubros-container');
 
     if (!aliasInput || !saveBtn) return;
+
+    // Configurar Navegación de Sub-pestañas (Precios vs Configuración)
+    const subTabs = document.querySelectorAll('#subview-page-mayorista .admin-sub-tab');
+    const subTabContents = document.querySelectorAll('#subview-page-mayorista .admin-subtab-content');
+    subTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remover active de todos los tabs
+            subTabs.forEach(t => t.classList.remove('active'));
+            // Ocultar todos los contenidos
+            subTabContents.forEach(c => c.style.display = 'none');
+
+            // Activar tab actual
+            tab.classList.add('active');
+            // Mostrar contenido correspondiente
+            const targetId = tab.dataset.subtabTarget;
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+                targetContent.style.display = 'block';
+            }
+        });
+    });
+
+    let currentRubro = '';
+    const rubrosList = window.siteConfig && window.siteConfig.rubros
+        ? window.siteConfig.rubros.filter(r => r.visible !== false)
+        : [];
+    if (rubrosList.length > 0) {
+        currentRubro = rubrosList[0].id;
+    }
+
+    function renderAdminRubrosTabs() {
+        if (!rubrosContainer) return;
+        rubrosContainer.innerHTML = '';
+        if (rubrosList.length <= 1) {
+            rubrosContainer.style.display = 'none';
+            return;
+        } else {
+            rubrosContainer.style.display = 'flex';
+        }
+        rubrosList.forEach(r => {
+            const tab = document.createElement('button');
+            tab.type = 'button';
+            tab.className = r.id === currentRubro ? 'rubros-tab active' : 'rubros-tab';
+            tab.textContent = r.name;
+            const pct = (100 / rubrosList.length).toFixed(4);
+            tab.style.width = pct + '%';
+            tab.style.flex = `0 0 ${pct}%`;
+            tab.addEventListener('click', () => {
+                currentRubro = r.id;
+                renderAdminRubrosTabs();
+                renderBulkPrices(searchInput ? searchInput.value : '');
+            });
+            rubrosContainer.appendChild(tab);
+        });
+    }
 
     // Cargar config actual
     const cfg = window.mayoristaConfig || window.siteConfig.mayoristaConfig || {};
@@ -1278,13 +1373,16 @@ window.initMayoristaAdmin = function() {
 
         productsList.forEach(category => {
             if (!category.products) return;
+            const catRubro = category.rubro || 'carpinteria';
+            if (currentRubro && catRubro !== currentRubro) return;
+
             category.products.forEach(product => {
                 const prodTitle = product.title || '';
 
                 if (product.acabados_groups && product.acabados_groups.length > 0) {
                     product.acabados_groups.forEach(group => {
-                        const acabName = group.acabado_name || '';
-                        if (group.medidas_variants) {
+                        const acabName = group.acabado_name || 'Único';
+                        if (group.medidas_variants && group.medidas_variants.length > 0) {
                             group.medidas_variants.forEach(variant => {
                                 const key = `${product.id}__${acabName}__${variant.medida}`;
                                 if (seenKeys.has(key)) return;
@@ -1349,16 +1447,145 @@ window.initMayoristaAdmin = function() {
                                     tr.style.background = e.target.checked ? '#EFF6FF' : '';
                                 });
                             });
+                        } else {
+                            // Fallback: Grupo sin variantes
+                            const key = `${product.id}__${acabName}__Único`;
+                            if (seenKeys.has(key)) return;
+
+                            if (searchTerms.length > 0) {
+                                const combinedText = `${prodTitle} ${acabName} Único`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                                const matchAll = searchTerms.every(term => combinedText.includes(term));
+                                if (!matchAll) return;
+                            }
+
+                            seenKeys.add(key);
+
+                            const tr = document.createElement('tr');
+                            tr.style.borderBottom = '1px solid #E2E8F0';
+                            tr.innerHTML = `
+                                <td style="padding: 10px 14px; text-align: center;">
+                                    <input type="checkbox" class="row-select-chk" style="cursor: pointer; width: 16px; height: 16px;">
+                                </td>
+                                <td style="padding: 10px 14px; font-weight: 500;">
+                                    ${prodTitle}
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">
+                                        ${acabName} - Único
+                                    </span>
+                                </td>
+                                <td style="padding: 10px 14px;">
+                                    <input type="number" class="bulk-cost-input" 
+                                           data-prod-id="${product.id}" 
+                                           data-acabado="${acabName}" 
+                                           data-medida="Único" 
+                                           value="" 
+                                           style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0" placeholder="0">
+                                </td>
+                                <td style="padding: 10px 14px;">
+                                    <input type="number" class="bulk-price-input" 
+                                           data-prod-id="${product.id}" 
+                                           data-acabado="${acabName}" 
+                                           data-medida="Único" 
+                                           value="" 
+                                           style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0">
+                                </td>
+                                <td style="padding: 10px 14px;">
+                                    <input type="hidden" class="bulk-discount-input" 
+                                           data-prod-id="${product.id}" 
+                                           data-acabado="${acabName}" 
+                                           data-medida="Único" 
+                                           value='[]'>
+                                    <button type="button" class="btn-config-discount" style="padding: 4px 8px; background: #F1F5F9; border: 1px solid #CBD5E1; border-radius: 4px; font-size: 0.8rem; cursor: pointer; color: #334155;">⚙️ Configurar</button>
+                                </td>
+                            `;
+                            tbody.appendChild(tr);
+
+                            const btnConfig = tr.querySelector('.btn-config-discount');
+                            const discountInput = tr.querySelector('.bulk-discount-input');
+                            const chk = tr.querySelector('.row-select-chk');
+
+                            btnConfig.addEventListener('click', () => {
+                                openVolumeDiscountsModal(discountInput, `${prodTitle} (${acabName} - Único)`);
+                            });
+
+                            chk.addEventListener('change', (e) => {
+                                tr.style.background = e.target.checked ? '#EFF6FF' : '';
+                            });
                         }
                     });
-                } else if (product.medidas_variants) {
-                    product.medidas_variants.forEach(variant => {
-                        const key = `${product.id}__Único__${variant.medida}`;
+                } else {
+                    // Compatibilidad legacy / productos sin acabados pero con medidas
+                    if (product.medidas_variants && product.medidas_variants.length > 0) {
+                        product.medidas_variants.forEach(variant => {
+                            const key = `${product.id}__Único__${variant.medida}`;
+                            if (seenKeys.has(key)) return;
+
+                            // Filtrado Inteligente
+                            if (searchTerms.length > 0) {
+                                const combinedText = `${prodTitle} Único ${variant.medida}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                                const matchAll = searchTerms.every(term => combinedText.includes(term));
+                                if (!matchAll) return;
+                            }
+
+                            seenKeys.add(key);
+
+                            const tr = document.createElement('tr');
+                            tr.style.borderBottom = '1px solid #E2E8F0';
+                            tr.innerHTML = `
+                                <td style="padding: 10px 14px; text-align: center;">
+                                    <input type="checkbox" class="row-select-chk" style="cursor: pointer; width: 16px; height: 16px;">
+                                </td>
+                                <td style="padding: 10px 14px; font-weight: 500;">
+                                    ${prodTitle}
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">
+                                        ${variant.medida}
+                                    </span>
+                                </td>
+                                <td style="padding: 10px 14px;">
+                                            <input type="number" class="bulk-cost-input" 
+                                                   data-prod-id="${product.id}" 
+                                                   data-acabado="Único" 
+                                                   data-medida="${variant.medida}" 
+                                                   value="${variant.cost_price !== undefined ? variant.cost_price : ''}" 
+                                                   style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0" placeholder="0">
+                                </td>
+                                <td style="padding: 10px 14px;">
+                                    <input type="number" class="bulk-price-input" 
+                                           data-prod-id="${product.id}" 
+                                           data-acabado="Único" 
+                                           data-medida="${variant.medida}" 
+                                           value="${variant.price !== undefined ? variant.price : ''}" 
+                                           style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0">
+                                </td>
+                                <td style="padding: 10px 14px;">
+                                    <input type="hidden" class="bulk-discount-input" 
+                                           data-prod-id="${product.id}" 
+                                           data-acabado="Único" 
+                                           data-medida="${variant.medida}" 
+                                           value='${JSON.stringify(variant.volumeDiscounts || [])}'>
+                                    <button type="button" class="btn-config-discount" style="padding: 4px 8px; background: #F1F5F9; border: 1px solid #CBD5E1; border-radius: 4px; font-size: 0.8rem; cursor: pointer; color: #334155;">⚙️ Configurar</button>
+                                </td>
+                            `;
+                            tbody.appendChild(tr);
+
+                            const btnConfig = tr.querySelector('.btn-config-discount');
+                            const discountInput = tr.querySelector('.bulk-discount-input');
+                            const chk = tr.querySelector('.row-select-chk');
+
+                            btnConfig.addEventListener('click', () => {
+                                openVolumeDiscountsModal(discountInput, `${prodTitle} (${variant.medida})`);
+                            });
+
+                            chk.addEventListener('change', (e) => {
+                                tr.style.background = e.target.checked ? '#EFF6FF' : '';
+                            });
+                        });
+                    } else {
+                        // Fallback: Producto simple sin medidas ni acabados
+                        const key = `${product.id}__Único__Único`;
                         if (seenKeys.has(key)) return;
 
-                        // Filtrado Inteligente
                         if (searchTerms.length > 0) {
-                            const combinedText = `${prodTitle} Único ${variant.medida}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                            const combinedText = `${prodTitle} Único Único`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                             const matchAll = searchTerms.every(term => combinedText.includes(term));
                             if (!matchAll) return;
                         }
@@ -1374,31 +1601,31 @@ window.initMayoristaAdmin = function() {
                             <td style="padding: 10px 14px; font-weight: 500;">
                                 ${prodTitle}
                                 <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">
-                                    ${variant.medida}
+                                    Único
                                 </span>
                             </td>
                             <td style="padding: 10px 14px;">
-                                        <input type="number" class="bulk-cost-input" 
-                                               data-prod-id="${product.id}" 
-                                               data-acabado="Único" 
-                                               data-medida="${variant.medida}" 
-                                               value="${variant.cost_price !== undefined ? variant.cost_price : ''}" 
-                                               style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0" placeholder="0">
+                                <input type="number" class="bulk-cost-input" 
+                                       data-prod-id="${product.id}" 
+                                       data-acabado="Único" 
+                                       data-medida="Único" 
+                                       value="${product.price !== undefined ? product.price : ''}" 
+                                       style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0" placeholder="0">
                             </td>
                             <td style="padding: 10px 14px;">
                                 <input type="number" class="bulk-price-input" 
                                        data-prod-id="${product.id}" 
                                        data-acabado="Único" 
-                                       data-medida="${variant.medida}" 
-                                       value="${variant.price !== undefined ? variant.price : ''}" 
+                                       data-medida="Único" 
+                                       value="${product.price !== undefined ? product.price : ''}" 
                                        style="width: 100%; padding: 4px 8px; border: 1.5px solid #E2E8F0; border-radius: 6px; box-sizing: border-box;" min="0">
                             </td>
                             <td style="padding: 10px 14px;">
                                 <input type="hidden" class="bulk-discount-input" 
                                        data-prod-id="${product.id}" 
                                        data-acabado="Único" 
-                                       data-medida="${variant.medida}" 
-                                       value='${JSON.stringify(variant.volumeDiscounts || [])}'>
+                                       data-medida="Único" 
+                                       value='[]'>
                                 <button type="button" class="btn-config-discount" style="padding: 4px 8px; background: #F1F5F9; border: 1px solid #CBD5E1; border-radius: 4px; font-size: 0.8rem; cursor: pointer; color: #334155;">⚙️ Configurar</button>
                             </td>
                         `;
@@ -1409,13 +1636,13 @@ window.initMayoristaAdmin = function() {
                         const chk = tr.querySelector('.row-select-chk');
 
                         btnConfig.addEventListener('click', () => {
-                            openVolumeDiscountsModal(discountInput, `${prodTitle} (${variant.medida})`);
+                            openVolumeDiscountsModal(discountInput, `${prodTitle} (Único)`);
                         });
 
                         chk.addEventListener('change', (e) => {
                             tr.style.background = e.target.checked ? '#EFF6FF' : '';
                         });
-                    });
+                    }
                 }
             });
         });
@@ -1471,33 +1698,58 @@ window.initMayoristaAdmin = function() {
                 category.products.forEach(product => {
                     if (product.acabados_groups && product.acabados_groups.length > 0) {
                         product.acabados_groups.forEach(group => {
-                            const acabName = group.acabado_name || '';
-                            if (group.medidas_variants) {
+                            const acabName = group.acabado_name || 'Único';
+                            
+                            // Si el grupo no tiene variantes de medidas, pero se le ingresó precio/costo en la grilla:
+                            const fallbackKey = `${product.id}__${acabName}__Único`;
+                            if ((!group.medidas_variants || group.medidas_variants.length === 0) && (priceMap[fallbackKey] !== undefined || costMap[fallbackKey] !== undefined)) {
+                                group.medidas_variants = [{
+                                    medida: 'Único',
+                                    price: priceMap[fallbackKey] !== undefined ? priceMap[fallbackKey] : '',
+                                    cost_price: costMap[fallbackKey] !== undefined ? costMap[fallbackKey] : '',
+                                    volumeDiscounts: discountMap[fallbackKey] || [],
+                                    default: true,
+                                    hidden: false,
+                                    link: ''
+                                }];
+                            } else if (group.medidas_variants) {
                                 group.medidas_variants.forEach(variant => {
                                     const key = `${product.id}__${acabName}__${variant.medida}`;
                                     if (priceMap[key] !== undefined || costMap[key] !== undefined) {
                                         if (priceMap[key] !== undefined) variant.price = priceMap[key];
                                         if (costMap[key] !== undefined) variant.cost_price = costMap[key];
                                         if (discountMap[key]) variant.volumeDiscounts = discountMap[key];
-                                        
-                                        // Delete local condition if it exists as we moved to global
                                         delete variant.conditions;
                                     }
                                 });
                             }
                         });
-                    } else if (product.medidas_variants) {
-                        product.medidas_variants.forEach(variant => {
-                            const key = `${product.id}__Único__${variant.medida}`;
-                            if (priceMap[key] !== undefined || costMap[key] !== undefined) {
-                                if (priceMap[key] !== undefined) variant.price = priceMap[key];
-                                if (costMap[key] !== undefined) variant.cost_price = costMap[key];
-                                if (discountMap[key]) variant.volumeDiscounts = discountMap[key];
-                                
-                                // Delete local condition if it exists as we moved to global
-                                delete variant.conditions;
-                            }
-                        });
+                    } else {
+                        // Caso sin acabados_groups (o vacío)
+                        const fallbackKey = `${product.id}__Único__Único`;
+                        
+                        // Si el producto no tiene variantes de medidas, pero se le ingresó precio/costo en la grilla:
+                        if ((!product.medidas_variants || product.medidas_variants.length === 0) && (priceMap[fallbackKey] !== undefined || costMap[fallbackKey] !== undefined)) {
+                            product.medidas_variants = [{
+                                medida: 'Único',
+                                price: priceMap[fallbackKey] !== undefined ? priceMap[fallbackKey] : '',
+                                cost_price: costMap[fallbackKey] !== undefined ? costMap[fallbackKey] : '',
+                                volumeDiscounts: discountMap[fallbackKey] || [],
+                                default: true,
+                                hidden: false,
+                                link: ''
+                            }];
+                        } else if (product.medidas_variants) {
+                            product.medidas_variants.forEach(variant => {
+                                const key = `${product.id}__Único__${variant.medida}`;
+                                if (priceMap[key] !== undefined || costMap[key] !== undefined) {
+                                    if (priceMap[key] !== undefined) variant.price = priceMap[key];
+                                    if (costMap[key] !== undefined) variant.cost_price = costMap[key];
+                                    if (discountMap[key]) variant.volumeDiscounts = discountMap[key];
+                                    delete variant.conditions;
+                                }
+                            });
+                        }
                     }
                 });
             });
@@ -1624,5 +1876,6 @@ window.initMayoristaAdmin = function() {
     }
 
     // Renderizado inicial
+    renderAdminRubrosTabs();
     renderBulkPrices();
 };

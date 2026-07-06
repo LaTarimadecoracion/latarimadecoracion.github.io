@@ -637,8 +637,16 @@
                     primaryCategoryId = assignedCategoryIds[0];
                 }
             } else {
-                const currentCatId = sessionProducts[cIdx]?.id;
+                let currentCatId = sessionProducts[cIdx]?.id;
                 if (currentCatId) {
+                    // Si la categoría de origen es la de respaldo "Todos los productos", buscamos la primera categoría real del rubro
+                    if (currentCatId.endsWith('-todos')) {
+                        const rubroId = sessionProducts[cIdx]?.rubro || 'carpinteria';
+                        const firstRealCat = sessionProducts.find(c => (c.rubro || 'carpinteria') === rubroId && !c.id.endsWith('-todos'));
+                        if (firstRealCat) {
+                            currentCatId = firstRealCat.id;
+                        }
+                    }
                     assignedCategoryIds.push(currentCatId);
                     primaryCategoryId = currentCatId;
                 }
@@ -649,8 +657,12 @@
         if (checkboxesContainer) {
             checkboxesContainer.innerHTML = '';
             if (!window.isRentalMode) {
+                const primaryCatObj = sessionProducts.find(c => c.id === primaryCategoryId);
+                const activeRubroId = primaryCatObj ? (primaryCatObj.rubro || 'carpinteria') : 'carpinteria';
+
                 sessionProducts.forEach((cat) => {
-                    const isChecked = assignedCategoryIds.includes(cat.id);
+                    const isDefaultTodos = cat.id.endsWith('-todos');
+                    const isChecked = isDefaultTodos ? (cat.id === `${activeRubroId}-todos`) : assignedCategoryIds.includes(cat.id);
                     const isPrimary = cat.id === primaryCategoryId;
 
                     const row = document.createElement('div');
@@ -659,13 +671,13 @@
                     const checkboxLabel = document.createElement('label');
                     checkboxLabel.style.cssText = 'display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:500; color:var(--text-main); margin:0;';
                     checkboxLabel.innerHTML = `
-                        <input type="checkbox" class="cat-checkbox" value="${cat.id}" ${isChecked ? 'checked' : ''} style="width:18px; height:18px; cursor:pointer;">
-                        <span>${cat.name}</span>
+                        <input type="checkbox" class="cat-checkbox" value="${cat.id}" ${isChecked ? 'checked' : ''} ${isDefaultTodos ? 'disabled' : ''} style="width:18px; height:18px; cursor:pointer;">
+                        <span>${cat.name} ${isDefaultTodos ? '<span style="font-size:0.72rem; color:var(--primary-color); opacity:0.8;">(Obligatorio)</span>' : ''}</span>
                     `;
 
                     const radioLabel = document.createElement('label');
                     radioLabel.style.cssText = 'display:flex; align-items:center; gap:4px; font-size:0.8rem; color:var(--text-muted); cursor:pointer; margin:0;';
-                    radioLabel.innerHTML = `
+                    radioLabel.innerHTML = isDefaultTodos ? `<span style="font-size: 0.72rem; font-style: italic; opacity:0.6;">Resguardo</span>` : `
                         <input type="radio" name="primary-category" class="cat-primary-radio" value="${cat.id}" ${isPrimary ? 'checked' : ''} style="width:16px; height:16px; cursor:pointer;">
                         <span>Principal</span>
                     `;
@@ -674,14 +686,25 @@
                     row.appendChild(radioLabel);
                     checkboxesContainer.appendChild(row);
 
-                    const radioInput = radioLabel.querySelector('.cat-primary-radio');
+                    const radioInput = row.querySelector('.cat-primary-radio');
                     const checkboxInput = checkboxLabel.querySelector('.cat-checkbox');
 
-                    radioInput.addEventListener('change', () => {
-                        if (radioInput.checked) {
-                            checkboxInput.checked = true;
-                        }
-                    });
+                    if (radioInput) {
+                        radioInput.addEventListener('change', () => {
+                            if (radioInput.checked) {
+                                checkboxInput.checked = true;
+
+                                const targetCatObj = sessionProducts.find(c => c.id === cat.id);
+                                const targetRubroId = targetCatObj ? (targetCatObj.rubro || 'carpinteria') : 'carpinteria';
+
+                                checkboxesContainer.querySelectorAll('.cat-checkbox').forEach(cb => {
+                                    if (cb.value.endsWith('-todos')) {
+                                        cb.checked = (cb.value === `${targetRubroId}-todos`);
+                                    }
+                                });
+                            }
+                        });
+                    }
                 });
             }
         }
@@ -891,9 +914,26 @@
 
             // Obtener categorías seleccionadas y principal (solo modo normal)
             const checkboxesContainer = document.getElementById('product-categories-checkboxes');
-            const selectedCatIds = [...checkboxesContainer.querySelectorAll('.cat-checkbox:checked')].map(cb => cb.value);
+            let selectedCatIds = [...checkboxesContainer.querySelectorAll('.cat-checkbox:checked')].map(cb => cb.value);
             const primaryRadio = checkboxesContainer.querySelector('.cat-primary-radio:checked');
             const primaryCatId = primaryRadio ? primaryRadio.value : null;
+
+            if (!primaryCatId) {
+                alert('Debes elegir una categoría como la Principal.');
+                btnGenerateJson.disabled = false;
+                btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+                return;
+            }
+
+            // Identificar rubro de la categoría principal para forzar su Todos los productos
+            const primaryCatObj = sessionProducts.find(c => c.id === primaryCatId);
+            const primaryRubroId = primaryCatObj ? (primaryCatObj.rubro || 'carpinteria') : 'carpinteria';
+            const defaultTodosId = `${primaryRubroId}-todos`;
+
+            // Forzar que el array contenga el "Todos los productos" de su rubro
+            if (!selectedCatIds.includes(defaultTodosId)) {
+                selectedCatIds.push(defaultTodosId);
+            }
 
             if (selectedCatIds.length === 0) {
                 alert('Debes seleccionar al menos una categoría.');

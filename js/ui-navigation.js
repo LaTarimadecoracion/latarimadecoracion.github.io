@@ -192,7 +192,7 @@
             if (appContainer) {
                 appContainer.scrollTop = 0;
                 // Desactivar scroll del parent si estamos en el iframe
-                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista') {
+                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-musica') {
                     appContainer.style.overflowY = 'hidden';
                 } else {
                     appContainer.style.overflowY = 'auto';
@@ -208,8 +208,26 @@
                 if (window.renderVideosView) window.renderVideosView();
             } else if (viewId === 'view-catalogo') {
                 const iframe = document.querySelector('#view-catalogo iframe');
-                if (iframe && iframe.contentWindow && typeof iframe.contentWindow.refreshCatalog === 'function') {
-                    iframe.contentWindow.refreshCatalog();
+                if (iframe && iframe.contentWindow) {
+                    if (typeof iframe.contentWindow.refreshCatalog === 'function') {
+                        iframe.contentWindow.refreshCatalog();
+                    } else {
+                        iframe.contentWindow.location.reload();
+                    }
+                }
+            } else if (viewId === 'view-mayorista') {
+                const iframe = document.querySelector('#view-mayorista iframe');
+                if (iframe && iframe.contentWindow) {
+                    iframe.contentWindow.location.reload();
+                }
+            } else if (viewId === 'view-musica') {
+                const iframe = document.querySelector('#view-musica iframe');
+                if (iframe && iframe.contentWindow) {
+                    if (typeof iframe.contentWindow.refreshTrackList === 'function') {
+                        iframe.contentWindow.refreshTrackList();
+                    } else {
+                        iframe.contentWindow.location.reload();
+                    }
                 }
             } else if (viewId === 'view-about') {
                 renderNosotrosBlocksCliente();
@@ -226,6 +244,8 @@
                 } else if (typeof renderAvisosCliente !== 'undefined') {
                     renderAvisosCliente();
                 }
+            } else if (viewId === 'view-search') {
+                if (window.runSearch) window.runSearch();
             } else if (viewId === 'view-rentals') {
                 renderRentals();
             } else if (viewId === 'view-admin') {
@@ -259,7 +279,8 @@
                 'view-videos': 'videos',
                 'view-cart': 'carrito',
                 'view-calculator': 'calcular',
-                'view-mayorista': 'mayorista'
+                'view-mayorista': 'mayorista',
+                'view-musica': 'musica'
             };
             
             let basePath = window.location.pathname.replace(/\/index\.html$/, '/');

@@ -109,16 +109,34 @@ window.initProductsAdmin = function() {
 
         // Aggregate matching products
         let prods = [];
+        const isFilteringTodos = selectedCategoryIdForProducts && selectedCategoryIdForProducts.endsWith('-todos');
+        const targetRubroId = isFilteringTodos ? selectedCategoryIdForProducts.replace('-todos', '') : '';
+
         sessionProducts.forEach((cat, catIdx) => {
-            if (selectedCategoryIdForProducts === 'all' || !selectedCategoryIdForProducts || cat.id === selectedCategoryIdForProducts) {
+            let matches = false;
+            if (selectedCategoryIdForProducts === 'all' || !selectedCategoryIdForProducts) {
+                matches = true;
+            } else if (isFilteringTodos) {
+                // Si filtramos por la categoría general del rubro, incluimos todas las categorías de ese rubro
+                const catRubro = cat.rubro || 'carpinteria';
+                matches = (catRubro === targetRubroId);
+            } else {
+                matches = (cat.id === selectedCategoryIdForProducts);
+            }
+
+            if (matches) {
                 cat.products.forEach((prod, pIdx) => {
-                    prods.push({
-                        ...prod,
-                        catIndex: catIdx,
-                        prodIndex: pIdx,
-                        categoryName: cat.name,
-                        categoryId: cat.id
-                    });
+                    // Evitar duplicar en la grilla del admin si el producto está en múltiples categorías (como la de resguardo y la real)
+                    const alreadyAdded = prods.some(p => p.id === prod.id);
+                    if (!alreadyAdded) {
+                        prods.push({
+                            ...prod,
+                            catIndex: catIdx,
+                            prodIndex: pIdx,
+                            categoryName: cat.name,
+                            categoryId: cat.id
+                        });
+                    }
                 });
             }
         });
@@ -264,14 +282,16 @@ window.initProductsAdmin = function() {
             row.querySelector('.btn-del-prod-new').addEventListener('click', async (e) => {
                 const cIdx = parseInt(e.currentTarget.getAttribute('data-cat'));
                 const pIdx = parseInt(e.currentTarget.getAttribute('data-prod'));
-                const catName = sessionProducts[cIdx].name;
-                const prodTitle = sessionProducts[cIdx].products[pIdx].title;
+                const catObj = sessionProducts[cIdx];
+                const catName = catObj.name;
+                const catRubro = catObj.rubro || 'carpinteria';
+                const prodTitle = catObj.products[pIdx].title;
                 if (confirm(`¿Eliminar "${prodTitle}"?`)) {
                     try {
                         await fetch('/api/products/delete', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ title: prodTitle, category: catName })
+                            body: JSON.stringify({ title: prodTitle, category: catName, rubro: catRubro })
                         });
                     } catch (error) {
                         console.error('Error al limpiar archivos de producto', error);
@@ -450,10 +470,61 @@ window.initProductsAdmin = function() {
             .toLowerCase();
     };
 
+    // Estado del rubro activo en la vista de búsqueda
+    window.activeSearchRubro = 'carpinteria';
+
+    function renderSearchRubrosTabs() {
+        const container = document.getElementById('search-rubros-tabs-container');
+        if (!container) return;
+
+        const rubrosList = (window.siteConfig && window.siteConfig.rubros) || [
+            { id: "carpinteria", name: "Carpintería", icon: "🪵" }
+        ];
+
+        // Solo mostrar rubros visibles
+        const visibleRubros = rubrosList.filter(r => r.visible !== false);
+
+        if (visibleRubros.length <= 1) {
+            container.classList.add('single-rubro');
+            container.innerHTML = '';
+            // Si solo hay uno, asegurar que sea el activo para el filtrado lógico
+            if (visibleRubros.length === 1) {
+                window.activeSearchRubro = visibleRubros[0].id;
+            }
+            return;
+        } else {
+            container.classList.remove('single-rubro');
+        }
+
+        container.innerHTML = '';
+        visibleRubros.forEach(r => {
+            const isActive = r.id === window.activeSearchRubro;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = isActive ? 'rubros-tab active' : 'rubros-tab';
+            
+            // Forzar ancho geométrico exacto por JS inline
+            const pct = (100 / visibleRubros.length).toFixed(4);
+            btn.style.width = pct + '%';
+            btn.style.flex = `0 0 ${pct}%`;
+
+            btn.innerHTML = r.name;
+            btn.addEventListener('click', () => {
+                window.activeSearchRubro = r.id;
+                renderSearchRubrosTabs();
+                runSearch();
+            });
+            container.appendChild(btn);
+        });
+    }
+
     function runSearch() {
         const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : productsData;
         if (!searchResultsContainer || typeof sourceData === 'undefined') return;
         
+        // Dibujar los tabs del buscador si no se han dibujado
+        renderSearchRubrosTabs();
+
         const rawQuery = searchInput ? searchInput.value : '';
         const query = normalizeForSearch(rawQuery).trim();
 
@@ -472,19 +543,56 @@ window.initProductsAdmin = function() {
             return;
         }
 
-        // Si no hay consulta de búsqueda, renderizar la landing inspiradora del constructor
+        // Si no hay consulta de búsqueda, renderizar las CATEGORÍAS del rubro activo
         if (!query) {
-            const hasDynamicContent = renderSectionContent('categories', searchResultsContainer);
-            if (hasDynamicContent) {
-                if (searchEmptyState) searchEmptyState.style.display = 'none';
+            searchResultsContainer.innerHTML = '';
+            
+            // Filtrar categorías reales del rubro activo que sean visibles
+            const relevantCats = sourceData.filter(c => 
+                (c.rubro || 'carpinteria') === window.activeSearchRubro && 
+                c.visible !== false && 
+                !c.id.endsWith('-todos')
+            );
+
+            if (relevantCats.length === 0) {
+                if (searchEmptyState) searchEmptyState.style.display = 'flex';
                 return;
             }
+            if (searchEmptyState) searchEmptyState.style.display = 'none';
+
+            // Dibujar las categorías como cards premium con acceso directo
+            relevantCats.forEach(cat => {
+                const card = document.createElement('div');
+                card.className = 'feed-card';
+                card.innerHTML = `
+                    <div class="feed-card-photo-container">
+                        <img src="${cat.image}" class="feed-card-img" alt="${cat.name}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.src='img/logo_provisional.png';">
+                        <div class="feed-card-gradient"></div>
+                        <div class="feed-card-info">
+                            <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.8); font-weight:700;">Estantería</span>
+                            <h3 class="feed-card-title" style="margin-top:2px;">${cat.name}</h3>
+                            <span class="feed-card-variants-badge" style="background:rgba(255,255,255,0.2); backdrop-filter:blur(4px);">${cat.products.length} productos</span>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => {
+                    if (window.navigateToCategoryFeed) {
+                        window.navigateToCategoryFeed(cat.id);
+                    }
+                });
+                searchResultsContainer.appendChild(card);
+            });
+            return;
         }
 
         const indexed = getIndexedProducts();
         let results = [];
 
         indexed.forEach(item => {
+            // Filtrar por rubro del producto
+            const itemRubro = item.cat ? (item.cat.rubro || 'carpinteria') : 'carpinteria';
+            if (itemRubro !== window.activeSearchRubro) return;
+
             // Dividir la consulta de búsqueda en términos individuales (ej: "blanca 110" -> ["blanca", "110"])
             const queryTerms = query.split(/\s+/).filter(Boolean);
 
@@ -593,7 +701,7 @@ window.initProductsAdmin = function() {
         if (typeof sourceData === 'undefined') return;
 
         const cat = sourceData.find(c => c.id === categoryId);
-        if (!cat || cat.visible === false) return;
+        if (!cat) return;
 
         if (isBack) {
             const categoryFeedView = document.getElementById('view-category-feed');
@@ -613,13 +721,42 @@ window.initProductsAdmin = function() {
         // Limpiar el feed anterior
         if (categoryFeedList) categoryFeedList.innerHTML = '';
 
-        if (!cat.products || cat.products.length === 0) {
+        // Obtener productos (si es categoría general de resguardo, unificar dinámicamente)
+        let categoryProducts = [];
+        if (categoryId.endsWith('-todos')) {
+            const rubroId = categoryId.replace('-todos', '');
+            const otherCategories = sourceData.filter(c => (c.rubro || 'carpinteria') === rubroId && !c.id.endsWith('-todos') && c.visible !== false);
+            
+            const seenIds = new Set();
+            otherCategories.forEach(c => {
+                if (c.products) {
+                    c.products.forEach(p => {
+                        if (!seenIds.has(p.id) && p.visible !== false) {
+                            seenIds.add(p.id);
+                            categoryProducts.push(p);
+                        }
+                    });
+                }
+            });
+            // Añadir los que estén guardados físicamente aquí
+            if (cat.products) {
+                cat.products.forEach(p => {
+                    if (!seenIds.has(p.id) && p.visible !== false) {
+                        seenIds.add(p.id);
+                        categoryProducts.push(p);
+                    }
+                });
+            }
+        } else {
+            categoryProducts = (cat.products || []).filter(p => p.visible !== false);
+        }
+
+        if (categoryProducts.length === 0) {
             if (categoryFeedEmpty) categoryFeedEmpty.style.display = 'flex';
         } else {
             if (categoryFeedEmpty) categoryFeedEmpty.style.display = 'none';
 
-            cat.products.forEach(product => {
-                if (product.visible === false) return;
+            categoryProducts.forEach(product => {
                 const card = document.createElement('div');
                 card.className = 'feed-card';
                 const productCover = Array.isArray(product.image) ? product.image[0] : product.image;
@@ -659,21 +796,25 @@ window.initProductsAdmin = function() {
 
     // Attach search input listener
     if (searchInput) {
-        searchInput.addEventListener('input', runSearch);
+        searchInput.addEventListener('input', () => {
+            window.runSearch();
+        });
     }
 
     // Initialize search when tab is clicked (reset to "all" on direct nav tab click)
     const searchNavItem = document.querySelector('.nav-item[data-target="view-search"]');
     if (searchNavItem) {
         searchNavItem.addEventListener('click', () => {
-            // Only reset if NOT navigating from a category card (navigateToSearch sets it first)
-            // We reset on next tick so navigateToSearch (if called) has priority
             setTimeout(() => {
-                runSearch();
+                window.runSearch();
             }, 0);
         });
     }
 
+    // Exponer al scope global
+    window.runSearch = runSearch;
+    window.renderSearchRubrosTabs = renderSearchRubrosTabs;
+
     // Initialize search view on first load so it's ready
-    runSearch();
+    window.runSearch();
 

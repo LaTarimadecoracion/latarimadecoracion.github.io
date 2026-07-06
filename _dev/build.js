@@ -10,11 +10,20 @@ async function build() {
     const srcDir = path.join(__dirname, '..');
     const distDir = path.join(srcDir, 'docs');
 
+    // Escanear música para generar list.json actualizado
+    const scanMusica = require('./scan-musica');
+    try {
+        console.log('🎵 Escaneando carpeta de música...');
+        scanMusica(srcDir);
+    } catch (err) {
+        console.error('❌ Error escaneando música:', err);
+    }
+
     console.log('🧹 Limpiando carpeta docs...');
     fs.emptyDirSync(distDir);
 
     // 1. Copiar carpetas estáticas que no requieren minificación
-    const foldersToCopy = ['img', 'GASTOS', 'p', 'audio'];
+    const foldersToCopy = ['img', 'GASTOS', 'p', 'audio', 'Musica'];
     for (const folder of foldersToCopy) {
         const folderSrc = path.join(srcDir, folder);
         if (fs.existsSync(folderSrc)) {
@@ -41,7 +50,7 @@ async function build() {
     }
 
     // 3. Minificar HTMLs
-    const htmlFiles = ['index.html', 'catalogo.html', 'calcular.html', 'visualizador.html', 'mayorista.html', '404.html'];
+    const htmlFiles = ['index.html', 'catalogo.html', 'calcular.html', 'visualizador.html', 'mayorista.html', 'musica.html', '404.html'];
     for (const html of htmlFiles) {
         const htmlSrc = path.join(srcDir, html);
         if (fs.existsSync(htmlSrc)) {

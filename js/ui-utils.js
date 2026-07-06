@@ -68,6 +68,21 @@
         if (productTitle) {
             formData.append('title', productTitle.trim());
         }
+        
+        // Obtener el rubro activo si estamos en el Admin
+        let activeRubro = 'carpinteria';
+        const rubroSelect = document.getElementById('admin-cat-rubro');
+        if (rubroSelect) {
+            activeRubro = rubroSelect.value;
+        } else if (typeof sessionProducts !== 'undefined' && typeof selectedCategoryIdForProducts !== 'undefined') {
+            // Intentar deducir el rubro de la categoría actual si se está subiendo una foto de producto
+            const catObj = sessionProducts.find(c => c.id === selectedCategoryIdForProducts);
+            if (catObj && catObj.rubro) {
+                activeRubro = catObj.rubro;
+            }
+        }
+        formData.append('rubro', activeRubro);
+
         // Al final agregamos la imagen (ya convertida a WebP antes de llegar acá)
         formData.append('image', file);
         
@@ -89,6 +104,14 @@
         formData.append('id', id);
         formData.append('oldName', oldName);
         formData.append('newName', newName);
+        
+        let activeRubro = 'carpinteria';
+        const rubroSelect = document.getElementById('admin-cat-rubro');
+        if (rubroSelect) {
+            activeRubro = rubroSelect.value;
+        }
+        formData.append('rubro', activeRubro);
+
         if (currentImageUrl) formData.append('currentImageUrl', currentImageUrl);
         if (file) formData.append('image', file);
         

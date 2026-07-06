@@ -16,6 +16,14 @@ if (!fs.existsSync(rentalsDbPath)) {
     fs.writeFileSync(rentalsDbPath, 'const rentalsData = [];\n', 'utf8');
 }
 
+// Escanear carpeta de música en el arranque
+const scanMusica = require('./scan-musica');
+try {
+    scanMusica(ROOT_DIR);
+} catch (err) {
+    console.error('❌ Error escaneando música al arrancar el servidor:', err);
+}
+
 // Configure body parser for JSON (with higher limit to support large product arrays)
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
@@ -137,11 +145,14 @@ const sanitizeFolderName = (name) => {
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         // Obtenemos los datos sanitizados
+        const rubroFolder = req.body.rubro && req.body.rubro !== 'carpinteria' ? sanitizeFolderName(req.body.rubro) : '';
         const catFolder = sanitizeFolderName(req.body.category) || 'general';
         const prodFolder = sanitizeFolderName(req.body.title);
 
-        // Construimos la ruta base: img/categoria
-        let targetDir = path.join(ROOT_DIR, 'img', catFolder);
+        // Construimos la ruta base: img/[rubro]/[categoria] o img/[categoria]
+        let targetDir = rubroFolder 
+            ? path.join(ROOT_DIR, 'img', rubroFolder, catFolder)
+            : path.join(ROOT_DIR, 'img', catFolder);
 
         // Si es un producto, le sumamos su subcarpeta
         if (prodFolder) {
@@ -374,10 +385,11 @@ app.post('/api/upload-image', upload.single('image'), async (req, res) => {
             console.error('⚠️ Error al estandarizar la imagen con Sharp:', sharpError.message);
         }
 
+        const rubroFolder = req.body.rubro && req.body.rubro !== 'carpinteria' ? sanitizeFolderName(req.body.rubro) : '';
         const catFolder = sanitizeFolderName(req.body.category) || 'general';
         const prodFolder = sanitizeFolderName(req.body.title);
         
-        let publicPath = `img/${catFolder}/`;
+        let publicPath = rubroFolder ? `img/${rubroFolder}/${catFolder}/` : `img/${catFolder}/`;
         if (prodFolder) publicPath += `${prodFolder}/`;
         
         const imagePath = publicPath + req.file.filename;
@@ -393,25 +405,33 @@ app.post('/api/upload-image', upload.single('image'), async (req, res) => {
 
 app.post('/api/categories/edit', upload.single('image'), async (req, res) => {
     try {
-        const { id, oldName, newName, currentImageUrl } = req.body;
+        const { id, oldName, newName, currentImageUrl, rubro } = req.body;
         
+        const rubroFolder = rubro && rubro !== 'carpinteria' ? sanitizeFolderName(rubro) : '';
         const oldFolder = sanitizeFolderName(oldName);
         const newFolder = sanitizeFolderName(newName);
         
-        const oldDirPath = path.join(ROOT_DIR, 'img', oldFolder);
-        const newDirPath = path.join(ROOT_DIR, 'img', newFolder);
+        const oldDirPath = rubroFolder 
+            ? path.join(ROOT_DIR, 'img', rubroFolder, oldFolder)
+            : path.join(ROOT_DIR, 'img', oldFolder);
+            
+        const newDirPath = rubroFolder 
+            ? path.join(ROOT_DIR, 'img', rubroFolder, newFolder)
+            : path.join(ROOT_DIR, 'img', newFolder);
 
         // CASO 1: Si el nombre cambió, renombramos la carpeta física (tenga o no nueva foto)
         if (oldFolder !== newFolder && fs.existsSync(oldDirPath)) {
             fs.renameSync(oldDirPath, newDirPath);
         }
 
-        const publicPath = `img/${newFolder}/`;
+        const publicPath = rubroFolder ? `img/${rubroFolder}/${newFolder}/` : `img/${newFolder}/`;
         let finalImageUrl = currentImageUrl; 
 
         // Si el nombre de la carpeta cambió, actualizamos la ruta base de la imagen vieja
         if (oldFolder !== newFolder && currentImageUrl) {
-            finalImageUrl = currentImageUrl.replace(`img/${oldFolder}/`, `img/${newFolder}/`);
+            const oldImgPrefix = rubroFolder ? `img/${rubroFolder}/${oldFolder}/` : `img/${oldFolder}/`;
+            const newImgPrefix = rubroFolder ? `img/${rubroFolder}/${newFolder}/` : `img/${newFolder}/`;
+            finalImageUrl = currentImageUrl.replace(oldImgPrefix, newImgPrefix);
         }
 
         // CASO 2: Si el usuario SÍ subió una nueva foto de portada
@@ -464,13 +484,16 @@ app.post('/api/categories/edit', upload.single('image'), async (req, res) => {
 
 app.post('/api/products/delete', (req, res) => {
     try {
-        const { title, category } = req.body;
+        const { title, category, rubro } = req.body;
         
+        const rubroFolder = rubro && rubro !== 'carpinteria' ? sanitizeFolderName(rubro) : '';
         const catFolder = sanitizeFolderName(category);
         const prodFolder = sanitizeFolderName(title);
 
         if (catFolder && prodFolder) {
-            const productDirPath = path.join(ROOT_DIR, 'img', catFolder, prodFolder);
+            const productDirPath = rubroFolder
+                ? path.join(ROOT_DIR, 'img', rubroFolder, catFolder, prodFolder)
+                : path.join(ROOT_DIR, 'img', catFolder, prodFolder);
 
             // REGLA DE ORO: Borrado físico recursivo de la carpeta del producto
             if (fs.existsSync(productDirPath)) {
@@ -488,11 +511,14 @@ app.post('/api/products/delete', (req, res) => {
 
 app.post('/api/categories/delete', (req, res) => {
     try {
-        const { name } = req.body;
+        const { name, rubro } = req.body;
+        const rubroFolder = rubro && rubro !== 'carpinteria' ? sanitizeFolderName(rubro) : '';
         const catFolder = sanitizeFolderName(name);
 
         if (catFolder) {
-            const categoryDirPath = path.join(ROOT_DIR, 'img', catFolder);
+            const categoryDirPath = rubroFolder
+                ? path.join(ROOT_DIR, 'img', rubroFolder, catFolder)
+                : path.join(ROOT_DIR, 'img', catFolder);
 
             // REGLA DE ORO: Borrado físico recursivo de la carpeta madre de la categoría
             if (fs.existsSync(categoryDirPath)) {

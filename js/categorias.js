@@ -5,7 +5,55 @@
  * Dibuja una grilla con todas las categorías disponibles.
  */
 
+window.activeCategoriesRubro = 'carpinteria';
+
+window.renderCategoriesRubrosTabs = function() {
+    const container = document.getElementById('categories-rubros-tabs-container');
+    if (!container) return;
+
+    const rubrosList = (window.siteConfig && window.siteConfig.rubros) || [
+        { id: "carpinteria", name: "Carpintería" }
+    ];
+
+    const visibleRubros = rubrosList.filter(r => r.visible !== false);
+
+    if (visibleRubros.length <= 1) {
+        container.classList.add('single-rubro');
+        container.innerHTML = '';
+        if (visibleRubros.length === 1) {
+            window.activeCategoriesRubro = visibleRubros[0].id;
+        }
+        return;
+    } else {
+        container.classList.remove('single-rubro');
+    }
+
+    container.innerHTML = '';
+    visibleRubros.forEach(r => {
+        const isActive = r.id === window.activeCategoriesRubro;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = isActive ? 'rubros-tab active' : 'rubros-tab';
+        
+        // Forzar ancho geométrico exacto por JS inline
+        const pct = (100 / visibleRubros.length).toFixed(4);
+        btn.style.width = pct + '%';
+        btn.style.flex = `0 0 ${pct}%`;
+
+        btn.innerHTML = r.name;
+        btn.addEventListener('click', () => {
+            window.activeCategoriesRubro = r.id;
+            window.renderCategoriesRubrosTabs();
+            window.renderCategoriesMenu();
+        });
+        container.appendChild(btn);
+    });
+};
+
 window.renderCategoriesMenu = function() {
+    // Dibujar primero las pestañas adaptativas
+    window.renderCategoriesRubrosTabs();
+
     const container = document.getElementById('categories-menu-container');
     if (!container) return;
 
@@ -25,8 +73,22 @@ window.renderCategoriesMenu = function() {
     // Ordenar categorías según su orden configurado
     const sortedCategories = [...sourceData].sort((a, b) => (a.order || 0) - (b.order || 0));
 
+    // Obtener lista de rubros visibles para saber si filtramos
+    const rubrosList = (window.siteConfig && window.siteConfig.rubros) || [{ id: 'carpinteria', name: 'Carpintería' }];
+    const visibleRubros = rubrosList.filter(r => r.visible !== false);
+
     sortedCategories.forEach((cat, index) => {
         if (cat.visible === false) return;
+        
+        // Excluir la categoría virtual obligatoria
+        if (cat.id.endsWith('-todos')) return;
+
+        // Filtrar por rubro si hay más de uno disponible
+        if (visibleRubros.length > 1) {
+            const catRubro = cat.rubro || 'carpinteria';
+            if (catRubro !== window.activeCategoriesRubro) return;
+        }
+
         const catCard = document.createElement('div');
         catCard.className = 'feed-card';
         // Ajustamos márgenes para que la grilla los maneje limpios

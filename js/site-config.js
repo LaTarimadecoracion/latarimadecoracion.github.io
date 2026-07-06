@@ -60,13 +60,19 @@ window.siteConfig = {
             "categorias": {
                 "title": "Categorías",
                 "subtitle": "Nuestras líneas de productos",
-                "icon": "table_restaurant"
+                "icon": "table_restaurant",
+                "rubros": [
+                    "carpinteria"
+                ]
             },
             "novedades": {
                 "title": "Nuevos Diseños 2026",
                 "subtitle": "Novedades del taller",
                 "icon": "auto_awesome",
-                "limit": 10
+                "limit": 10,
+                "rubros": [
+                    "carpinteria"
+                ]
             },
             "buscados": {
                 "title": "Los más buscados",
@@ -218,10 +224,28 @@ window.siteConfig = {
             {
                 "id": "mercadopago",
                 "name": "Mercado Pago",
-                "surcharge": 10,
+                "surcharge": 35,
                 "conditions": "Condiciones de Venta Mayorista:\n1. Compra mínima de $100.000.\n\n2. Los precios no incluyen IVA.\n3. Retiro por taller o envío a convenir.\n4. Demora estimada de entrega de 15 a 20 días.\n\nlink.mercadopago.com.ar/latarimadeco"
             }
         ],
         "discounts": ""
-    }
+    },
+    "rubros": [
+        {
+            "id": "carpinteria",
+            "name": "Carpintería",
+            "icon": "🪵"
+        },
+        {
+            "id": "papelera-cotillon",
+            "name": "Papelera",
+            "icon": "person",
+            "visible": false
+        },
+        {
+            "id": "jabon",
+            "name": "Jabon",
+            "visible": false
+        }
+    ]
 };

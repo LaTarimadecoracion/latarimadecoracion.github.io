@@ -305,8 +305,20 @@
                     // Rellenar categorías
                     const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
                     if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
+                        const targetRubros = config.rubros || (config.rubro && config.rubro !== 'all' ? [config.rubro] : null);
                         const sortedCategories = [...sourceData].sort((a, b) => (a.order || 0) - (b.order || 0));
-                        const visibleCategories = sortedCategories.filter(cat => cat.visible !== false);
+                        const visibleCategories = sortedCategories.filter(cat => {
+                            if (cat.visible === false) return false;
+                            
+                            // Excluir la categoría virtual de resguardo del carrusel principal de la Home
+                            if (cat.id.endsWith('-todos')) return false;
+
+                            // Validar pertenencia de rubro
+                            const catRubro = cat.rubro || 'carpinteria';
+                            if (targetRubros && !targetRubros.includes(catRubro)) return false;
+
+                            return true;
+                        });
                         setupInfiniteCarousel(containerEl, visibleCategories, (cat) => {
                             const catCard = document.createElement('div');
                             catCard.className = 'category-card';
@@ -339,8 +351,16 @@
                     if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
                         let allProducts = [];
                         const seenIds = new Set();
+                        
+                        const targetRubros = config.rubros || (config.rubro && config.rubro !== 'all' ? [config.rubro] : null);
+
                         sourceData.forEach(cat => {
                             if (cat.visible === false) return;
+                            
+                            // Validar rubro de la categoría
+                            const catRubro = cat.rubro || 'carpinteria';
+                            if (targetRubros && !targetRubros.includes(catRubro)) return;
+
                             if (cat.products) {
                                 cat.products.forEach(product => {
                                     if (product.visible === false) return;
@@ -389,8 +409,16 @@
                     if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
                         let allProducts = [];
                         const seenIds = new Set();
+                        
+                        const targetRubros = config.rubros || (config.rubro && config.rubro !== 'all' ? [config.rubro] : null);
+
                         sourceData.forEach(cat => {
                             if (cat.visible === false) return;
+
+                            // Validar rubro de la categoría
+                            const catRubro = cat.rubro || 'carpinteria';
+                            if (targetRubros && !targetRubros.includes(catRubro)) return;
+
                             if (cat.products) {
                                 cat.products.forEach(product => {
                                     if (product.visible === false) return;

@@ -19,15 +19,18 @@
     <link rel="stylesheet" href="css/style.css?v=25">
     
     <style>
+        /* ============================================================
+           MAYORISTA — ESTILOS PREMIUM B2B
+           ============================================================ */
+
         html, body {
             overflow-y: auto !important;
             overflow-x: hidden !important;
             height: auto !important;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
-        html::-webkit-scrollbar, body::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
-        }
+        html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-color, #FAF9F6);
@@ -35,180 +38,206 @@
             padding: 0;
             min-height: 100vh;
             color: var(--text-main, #1E293B);
-            padding-bottom: 90px; /* Espacio para la barra flotante */
+            padding-bottom: 100px;
         }
 
-        /* Estilos específicos para modo iframe */
+        /* ── Modo iframe ─────────────────────────────────────── */
         body.in-iframe {
             background: transparent !important;
             background-color: transparent !important;
             padding-bottom: 20px !important;
         }
-        body.in-iframe .bg-glow {
-            display: none !important;
-        }
-        body.in-iframe .header-wrapper {
-            display: none !important;
-        }
-        body.in-iframe .container {
-            padding-top: 1rem !important; /* reducir espacio superior */
-        }
+        body.in-iframe .bg-glow { display: none !important; }
+        body.in-iframe .header-wrapper { display: none !important; }
+        body.in-iframe .container { padding: 0.5rem 12px !important; }
 
+        /* ── Auras de fondo ──────────────────────────────────── */
         .bg-glow {
             position: fixed;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            background: radial-gradient(circle, color-mix(in srgb, var(--primary-color) 8%, transparent) 0%, transparent 70%);
+            background: radial-gradient(circle, color-mix(in srgb, var(--primary-color) 6%, transparent) 0%, transparent 70%);
             z-index: -1;
             pointer-events: none;
         }
-        .bg-glow-1 { top: -100px; left: -100px; }
-        .bg-glow-2 { bottom: -100px; right: -100px; }
+        .bg-glow-1 { top: -150px; left: -150px; }
+        .bg-glow-2 { bottom: -150px; right: -150px; }
 
+        /* ── Layout ──────────────────────────────────────────── */
         .container {
-            max-width: 1200px;
+            width: 100%;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 2rem 12px;
+            box-sizing: border-box;
         }
 
+        /* ============================================================
+           HEADER PREMIUM
+           ============================================================ */
         .header-wrapper {
             margin-bottom: 2rem;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
-        .header-info h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
+        .header-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .header-brand-top {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .header-brand-name {
+            font-size: 1.6rem;
+            font-weight: 800;
             color: var(--text-main, #0F172A);
-            margin: 0 0 0.5rem 0;
-            letter-spacing: -0.5px;
-        }
-        .header-info p {
-            color: var(--text-muted, #64748B);
-            margin: 0;
-            font-size: 1.05rem;
+            letter-spacing: -0.04em;
+            line-height: 1;
         }
 
-        .btn-back {
+        .badge-mayorista {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: var(--surface-color, white);
-            border: 1.5px solid var(--border-color, #E2E8F0);
-            padding: 0.6rem 1rem;
-            border-radius: 10px;
-            color: var(--text-main, #475569);
-            font-weight: 600;
-            text-decoration: none;
+            gap: 5px;
+            background: var(--primary-color);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.65rem;
+            border-radius: 6px;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .header-tagline {
             font-size: 0.9rem;
-            transition: all 0.2s ease;
-            box-shadow: var(--shadow-sm);
-        }
-        .btn-back:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            transform: translateY(-1px);
+            color: var(--text-muted, #64748B);
+            font-weight: 400;
+            line-height: 1.4;
+            max-width: 420px;
         }
 
-        /* Buscador */
-        .search-container {
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        .search-input {
-            width: 100%;
-            padding: 1rem 1rem 1rem 3rem;
-            border: 1.5px solid var(--border-color, #E2E8F0);
-            border-radius: 12px;
-            font-size: 1.05rem;
-            font-family: inherit;
+        /* Mini panel de estado del carrito en el header */
+        .header-cart-status {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+            padding: 0.8rem 1.2rem;
             background: var(--surface-color, white);
-            color: var(--text-main);
-            box-shadow: var(--shadow-sm);
-            box-sizing: border-box;
-            transition: all 0.2s ease;
+            border: 1.5px solid var(--border-color, #E2E8F0);
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            min-width: 160px;
         }
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 15%, transparent);
+        .header-cart-status-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted, #94A3B8);
         }
-        .search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #94A3B8;
+        .header-cart-status-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .header-cart-status-items {
+            font-size: 0.75rem;
+            color: var(--text-muted, #64748B);
+            font-weight: 500;
         }
 
-        /* Grilla / Tabla Estilo Planilla B2B */
+        /* Línea divisoria de header */
+        .header-divider {
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-color, #E2E8F0) 0%, transparent 100%);
+            margin-bottom: 2rem;
+        }
+
+
+
+        /* ============================================================
+           TABLA / CATÁLOGO B2B
+           ============================================================ */
         .catalog-table-wrapper {
             background: var(--surface-color, white);
-            border-radius: 12px;
+            border-radius: 16px;
             border: 1px solid var(--border-color, #E2E8F0);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02);
             overflow: hidden;
             margin-bottom: 2rem;
         }
 
         .table-header {
             display: grid;
-            grid-template-columns: minmax(0, 4.5fr) minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 2fr) minmax(0, 2fr);
-            background: color-mix(in srgb, var(--text-main) 3%, var(--surface-color, #F8FAFC));
-            border-bottom: 1px solid var(--border-color, #E2E8F0);
-            padding: 0.75rem 1.25rem;
+            grid-template-columns: minmax(0, 4.5fr) minmax(0, 0.8fr) minmax(0, 2fr) minmax(0, 1.8fr) minmax(0, 2fr);
+            background: color-mix(in srgb, var(--text-main) 4%, var(--surface-color, #F8FAFC));
+            border-bottom: 2px solid var(--border-color, #E2E8F0);
+            padding: 0.7rem 1.5rem;
             font-weight: 700;
             color: var(--text-muted, #475569);
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.1em;
         }
+        .table-header div:not(:first-child) { text-align: center; }
 
         .table-row {
             display: grid;
-            grid-template-columns: minmax(0, 4.5fr) minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 2fr) minmax(0, 2fr);
-            padding: 0.85rem 1.25rem;
+            grid-template-columns: minmax(0, 4.5fr) minmax(0, 0.8fr) minmax(0, 2fr) minmax(0, 1.8fr) minmax(0, 2fr);
+            padding: 0.8rem 1.5rem;
             border-bottom: 1px solid var(--border-color, #F1F5F9);
             align-items: center;
             font-size: 0.92rem;
             color: var(--text-main);
-            transition: background 0.15s ease;
+            transition: background 0.15s ease, box-shadow 0.15s ease;
+            position: relative;
         }
         .table-row:nth-child(even) {
-            background: color-mix(in srgb, var(--text-main) 1%, var(--surface-color, white));
+            background: color-mix(in srgb, var(--text-main) 1.5%, var(--surface-color, white));
         }
-        .table-row:last-child {
-            border-bottom: none;
-        }
+        .table-row:last-child { border-bottom: none; }
         .table-row:hover {
-            background: color-mix(in srgb, var(--primary-color) 4%, var(--surface-color, #FAFAFC));
+            background: color-mix(in srgb, var(--primary-color) 5%, var(--surface-color, #FAFAFC)) !important;
+            box-shadow: inset 3px 0 0 var(--primary-color);
         }
 
+        /* ── Celda de producto ───────────────────────────────── */
         .prod-info {
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 3px;
         }
         .prod-title {
             font-weight: 600;
             color: var(--text-main, #0F172A);
-            font-size: 0.95rem;
+            font-size: 0.93rem;
+            line-height: 1.2;
         }
         .prod-meta {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-muted, #64748B);
             font-weight: 400;
         }
 
-        .table-header div:not(:first-child) {
-            text-align: center;
-        }
-
+        /* ── Botón ver fotos ─────────────────────────────────── */
         .col-ver, .col-precio, .col-cantidad {
             display: flex;
             align-items: center;
@@ -221,124 +250,253 @@
         }
 
         .btn-ver-fotos {
-            color: var(--primary-color);
-            font-size: 26px !important;
+            color: var(--text-muted, #94A3B8);
+            font-size: 22px !important;
             cursor: pointer;
-            transition: all 0.15s ease;
+            transition: all 0.18s ease;
             user-select: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: transparent;
         }
         .btn-ver-fotos:hover {
-            transform: scale(1.15);
-            filter: brightness(1.1);
+            color: var(--primary-color);
+            background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+            transform: scale(1.08);
         }
 
+        /* ── Precio ──────────────────────────────────────────── */
+        .col-precio {
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
         .price-val {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-main, #0F172A);
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-variant-numeric: tabular-nums;
+            letter-spacing: -0.01em;
         }
 
-        /* Entrada de Cantidad Ultra Minimalista */
+        /* Badge descuento por volumen — próximo escalón */
+        .vol-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 0.63rem;
+            font-weight: 700;
+            color: #059669;
+            background: #ECFDF5;
+            border: 1px solid #A7F3D0;
+            border-radius: 4px;
+            padding: 1px 5px;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        /* Badge cuando ya alcanzó el máximo descuento — celebratorio */
+        .vol-badge-achieved {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 0.63rem;
+            font-weight: 700;
+            color: #92400E;
+            background: #FEF3C7;
+            border: 1px solid #FCD34D;
+            border-radius: 4px;
+            padding: 1px 6px;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            text-transform: uppercase;
+            animation: badgePop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes badgePop {
+            from { transform: scale(0.7); opacity: 0; }
+            to   { transform: scale(1);   opacity: 1; }
+        }
+
+        /* ── Cantidad ────────────────────────────────────────── */
         .quantity-input {
-            width: 50px;
-            height: 28px;
-            border: 1px solid var(--border-color, #CBD5E1);
-            border-radius: 6px;
+            width: 56px;
+            height: 32px;
+            border: 1.5px solid var(--border-color, #CBD5E1);
+            border-radius: 8px;
             text-align: center;
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
             font-family: inherit;
             color: var(--text-main, #0F172A);
             background: var(--surface-color, white);
             box-sizing: border-box;
-            transition: border-color 0.15s ease;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+            font-variant-numeric: tabular-nums;
         }
         .quantity-input:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 12%, transparent);
+        }
+        .quantity-input.has-value {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: color-mix(in srgb, var(--primary-color) 4%, var(--surface-color, white));
         }
 
+        /* ── Subtotal ────────────────────────────────────────── */
         .total-val {
             font-weight: 700;
-            color: var(--text-main, #0F172A);
+            color: var(--text-muted, #94A3B8);
             font-size: 0.95rem;
             font-variant-numeric: tabular-nums;
+            transition: color 0.2s ease;
+        }
+        .total-val.has-value {
+            color: var(--text-main, #0F172A);
+            font-size: 1rem;
         }
 
-        /* Barra Flotante Inferior */
+        /* Empty state */
+        .empty-state {
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--text-muted, #64748B);
+        }
+        .empty-state-icon {
+            font-size: 52px !important;
+            opacity: 0.3;
+            display: block;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+        .empty-state strong {
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--text-main);
+        }
+        .empty-state p {
+            margin: 0;
+            font-size: 0.88rem;
+        }
+
+        /* ============================================================
+           BARRA FLOTANTE INFERIOR
+           ============================================================ */
         .floating-footer-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             background: var(--surface-color, white);
-            border-top: 1px solid var(--border-color, #E2E8F0);
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.03);
-            padding: 0.75rem 1.5rem;
+            border-top: 1.5px solid var(--border-color, #E2E8F0);
+            box-shadow: 0 -6px 24px rgba(0,0,0,0.07);
+            padding: 0.85rem 2rem;
             z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
         }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* ── Resumen de items ──────────────────────────────────── */
+        .footer-items-count {
+            font-size: 0.78rem;
+            color: var(--text-muted, #64748B);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .footer-items-count strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        /* Total */
         .footer-total-info {
             display: flex;
             flex-direction: column;
             gap: 1px;
+            text-align: right;
+            margin-left: auto;
+            margin-right: 1.5rem;
         }
         .footer-total-label {
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             color: var(--text-muted, #64748B);
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.1em;
         }
         .footer-total-value {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: var(--primary-color);
             font-variant-numeric: tabular-nums;
+            letter-spacing: -0.03em;
+            line-height: 1;
         }
+        #order-total-savings {
+            font-size: 0.72rem;
+            color: #10B981;
+            font-weight: 700;
+            display: none;
+        }
+
+        /* Botón CTA Finalizar */
         .btn-finalize-order {
             background: var(--primary-color);
             color: white;
             border: none;
-            padding: 0.85rem 2rem;
+            padding: 0.85rem 1.75rem;
             border-radius: 12px;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1rem;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px color-mix(in srgb, var(--primary-color) 30%, transparent);
+            box-shadow: 0 4px 14px color-mix(in srgb, var(--primary-color) 35%, transparent);
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-family: inherit;
         }
-        .btn-finalize-order:hover {
+        .btn-finalize-order:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px color-mix(in srgb, var(--primary-color) 40%, transparent);
-            filter: brightness(1.05);
+            box-shadow: 0 8px 20px color-mix(in srgb, var(--primary-color) 45%, transparent);
+            filter: brightness(1.06);
+        }
+        .btn-finalize-order:active:not(:disabled) {
+            transform: translateY(0);
         }
         .btn-finalize-order:disabled {
-            background: #CBD5E1;
-            color: #94A3B8;
+            background: color-mix(in srgb, var(--text-main) 15%, var(--surface-color));
+            color: var(--text-muted, #94A3B8);
             cursor: not-allowed;
-            transform: none;
             box-shadow: none;
         }
 
-        /* Modales */
+        /* ============================================================
+           MODALES
+           ============================================================ */
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(4px);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             display: none;
             align-items: center;
             justify-content: center;
@@ -351,70 +509,73 @@
             border-radius: 20px;
             max-width: 550px;
             width: 100%;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.18), 0 0 0 1px var(--border-color, #E2E8F0);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            max-height: 85vh;
+            max-height: 88vh;
             animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: scale(0.97) translateY(8px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .modal-header {
             padding: 1.25rem 1.5rem;
-            border-bottom: 1.5px solid var(--border-color, #F1F5F9);
+            border-bottom: 1px solid var(--border-color, #F1F5F9);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: var(--surface-color);
         }
         .modal-header h3 {
             margin: 0;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-main, #0F172A);
         }
         .modal-close-btn {
-            background: none;
+            background: color-mix(in srgb, var(--text-main) 5%, var(--surface-color));
             border: none;
             cursor: pointer;
-            color: #94A3B8;
+            color: var(--text-muted, #94A3B8);
             display: flex;
             align-items: center;
             justify-content: center;
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            transition: background 0.15s ease;
+            transition: all 0.15s ease;
         }
         .modal-close-btn:hover {
-            background: var(--border-color, #F1F5F9);
+            background: color-mix(in srgb, var(--text-main) 10%, var(--surface-color));
+            color: var(--text-main);
         }
 
         .modal-body {
             padding: 1.5rem;
             overflow-y: auto;
             flex: 1;
+            background: var(--surface-color);
         }
 
         .modal-footer {
             padding: 1.25rem 1.5rem;
-            border-top: 1.5px solid var(--border-color, #F1F5F9);
-            background: color-mix(in srgb, var(--text-main) 2%, var(--surface-color, #F8FAFC));
+            border-top: 1px solid var(--border-color, #F1F5F9);
+            background: color-mix(in srgb, var(--text-main) 2%, var(--surface-color));
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        /* Estilos de Lightbox / Visualizador */
+        /* Modal galería */
         .gallery-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 12px;
-            margin-top: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
         }
         .gallery-item {
             aspect-ratio: 1;
@@ -422,76 +583,105 @@
             overflow: hidden;
             border: 1.5px solid var(--border-color, #E2E8F0);
             cursor: pointer;
-            position: relative;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .gallery-item:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 15%, transparent);
         }
         .gallery-item img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             transition: transform 0.25s ease;
         }
-        .gallery-item:hover img {
-            transform: scale(1.06);
-        }
+        .gallery-item:hover img { transform: scale(1.06); }
 
-        /* Condiciones Modal */
+        /* Modal condiciones / info blocks */
         .info-block {
-            background: color-mix(in srgb, var(--text-main) 2%, var(--surface-color, #F8FAFC));
-            border: 1.5px solid var(--border-color, #E2E8F0);
-            border-radius: 12px;
+            background: color-mix(in srgb, var(--text-main) 2%, var(--surface-color));
+            border: 1px solid var(--border-color, #E2E8F0);
+            border-radius: 10px;
             padding: 1rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
         .info-title {
             font-weight: 700;
-            font-size: 0.88rem;
+            font-size: 0.72rem;
             color: var(--text-muted, #475569);
             text-transform: uppercase;
+            letter-spacing: 0.08em;
             margin-bottom: 6px;
-            letter-spacing: 0.5px;
         }
         .info-content {
-            font-size: 0.95rem;
-            color: var(--text-main, #0F172A);
-            line-height: 1.5;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            line-height: 1.55;
             white-space: pre-line;
         }
 
-        /* Checkbox */
+        /* Modal checkout — métodos de pago */
+        .payment-method-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1.5px solid var(--border-color, #CBD5E1);
+            border-radius: 8px;
+            padding: 0.6rem 0.85rem;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            background: var(--surface-color, white);
+            font-family: inherit;
+        }
+        .payment-method-option:hover {
+            border-color: var(--primary-color);
+            background: color-mix(in srgb, var(--primary-color) 3%, var(--surface-color));
+        }
+        .payment-method-option.selected {
+            border-color: var(--primary-color);
+            background: color-mix(in srgb, var(--primary-color) 5%, var(--surface-color));
+        }
+
+        /* Checkbox genérico */
         .checkbox-container {
             display: flex;
             align-items: flex-start;
             gap: 10px;
             cursor: pointer;
-            font-size: 0.92rem;
-            color: var(--text-muted, #475569);
+            font-size: 0.9rem;
+            color: var(--text-muted);
             font-weight: 500;
             user-select: none;
-            padding: 4px 0;
         }
         .checkbox-container input {
-            margin-top: 3px;
+            margin-top: 2px;
             cursor: pointer;
             accent-color: var(--primary-color);
-            width: 16px;
-            height: 16px;
+            width: 15px; height: 15px;
         }
 
-        /* Estilos Adaptativos Móviles */
+        /* ============================================================
+           RESPONSIVE MÓVIL
+           ============================================================ */
         @media (max-width: 768px) {
-            .table-header {
-                display: none;
-            }
+            .container { padding: 1.25rem 1rem; }
+
+            .header-cart-status { min-width: auto; }
+            .header-cart-status-value { font-size: 1.25rem; }
+
+            .table-header { display: none; }
+
             .table-row {
                 grid-template-columns: 1fr;
-                gap: 12px;
+                gap: 10px;
                 border: 1px solid var(--border-color, #E2E8F0);
-                border-radius: 8px;
-                margin-bottom: 0.75rem;
-                padding: 0.85rem 1rem;
-                background: var(--surface-color, white);
-                box-shadow: none;
+                border-radius: 10px;
+                margin-bottom: 0.6rem;
+                padding: 0.9rem 1rem;
+                background: var(--surface-color);
             }
+            .table-row:nth-child(even) { background: var(--surface-color); }
+            .table-row:hover { box-shadow: none; }
+
             .col-ver, .col-precio, .col-cantidad, .col-total {
                 display: flex;
                 justify-content: space-between;
@@ -499,41 +689,21 @@
                 border-bottom: 1px dashed var(--border-color, #E2E8F0);
                 padding-bottom: 8px;
             }
-            .col-total {
-                border-bottom: none;
-                padding-bottom: 0;
-            }
-            
-            .col-ver::before { content: "Vista Previa:"; font-weight: 600; color: var(--text-muted, #64748B); font-size: 0.85rem; }
-            .col-precio::before { content: "Precio Unitario:"; font-weight: 600; color: var(--text-muted, #64748B); font-size: 0.85rem; }
-            .col-cantidad::before { content: "Cantidad:"; font-weight: 600; color: var(--text-muted, #64748B); font-size: 0.85rem; }
-            .col-total::before { content: "Subtotal:"; font-weight: 600; color: var(--text-muted, #64748B); font-size: 0.85rem; }
+            .col-precio { flex-direction: row; }
+            .col-total { border-bottom: none; padding-bottom: 0; }
 
-            .header-info h1 {
-                font-size: 1.8rem;
-            }
-            .floating-footer-bar {
-                padding: 0.85rem 1.2rem;
-            }
-            .btn-finalize-order {
-                padding: 0.75rem 1.2rem;
-                font-size: 0.95rem;
-            }
-            
-            #btn-show-conditions span:not(.material-symbols-outlined) {
-                display: none;
-            }
-            #btn-show-conditions {
-                padding: 0.6rem !important;
-                width: 38px;
-                height: 38px;
-                justify-content: center;
-                border-radius: 50% !important;
-            }
-            .floating-footer-bar {
-                padding: 0.85rem 1.2rem;
-                gap: 8px;
-            }
+            .col-ver::before     { content: "Vista previa:"; font-weight: 600; color: var(--text-muted); font-size: 0.82rem; }
+            .col-precio::before  { content: "Precio unit.:"; font-weight: 600; color: var(--text-muted); font-size: 0.82rem; }
+            .col-cantidad::before{ content: "Cantidad:";     font-weight: 600; color: var(--text-muted); font-size: 0.82rem; }
+            .col-total::before   { content: "Subtotal:";     font-weight: 600; color: var(--text-muted); font-size: 0.82rem; }
+
+            .floating-footer-bar { padding: 0.75rem 1rem; }
+            .footer-sep { display: none; }
+            .footer-items-count { display: none; }
+            .footer-total-info { margin-right: 0.75rem; }
+            .footer-total-value { font-size: 1.35rem; }
+            .btn-finalize-order { padding: 0.75rem 1.1rem; font-size: 0.9rem; }
+            .btn-finalize-order span { display: none; }
         }
     </style>
 </head>
@@ -563,48 +733,69 @@
     <div class="bg-glow bg-glow-2"></div>
 
     <div class="container">
-        <!-- Encabezado de la página -->
+
+        <!-- ═══════════════════════════════════════════════════
+             HEADER PREMIUM
+        ════════════════════════════════════════════════════ -->
         <header class="header-wrapper">
-            <div class="header-info">
-                <h1>Catálogo Mayorista</h1>
-                <p>Precios directos de fábrica en efectivo o transferencia bancaria.</p>
+            <div class="header-brand">
+                <div class="header-brand-top">
+                    <span class="header-brand-name">La Tarima</span>
+                    <span class="badge-mayorista">
+                        <span class="material-symbols-outlined" style="font-size: 10px;">verified</span>
+                        Canal Mayorista
+                    </span>
+                </div>
+                <p class="header-tagline">Precios directos de fábrica · Efectivo y transferencia · Mínimos por variante</p>
+            </div>
+
+            <!-- Estado del carrito -->
+            <div class="header-cart-status" id="header-cart-panel">
+                <span class="header-cart-status-label">Total del pedido</span>
+                <span class="header-cart-status-value" id="header-total-display">$0</span>
+                <span class="header-cart-status-items" id="header-items-display">Sin productos seleccionados</span>
             </div>
         </header>
 
+        <!-- Selector de Rubros -->
+        <div class="rubros-tabs-bar" id="rubros-tabs-container" style="margin-top: 0; margin-bottom: 0.65rem;"></div>
 
-
-        <!-- Tabla / Listado de variantes -->
+        <!-- ═══════════════════════════════════════════════════
+             TABLA / CATÁLOGO
+        ════════════════════════════════════════════════════ -->
         <div class="catalog-table-wrapper">
-            <!-- Encabezados de tabla (Ocultos en móvil) -->
+            <!-- Encabezados (ocultos en móvil) -->
             <div class="table-header">
                 <div>Producto / Variante</div>
                 <div>Ver</div>
-                <div id="sort-price-header" style="cursor: pointer; display: flex; align-items: center; gap: 4px; user-select: none; width: fit-content;" title="Ordenar por precio">Precio Unit. <span class="material-symbols-outlined" id="sort-price-icon" style="font-size: 16px; transition: transform 0.2s;">unfold_more</span></div>
+                <div id="sort-price-header" style="cursor:pointer; display:flex; align-items:center; gap:4px; user-select:none; justify-content:center;" title="Ordenar por precio">
+                    Precio Unit.
+                    <span class="material-symbols-outlined" id="sort-price-icon" style="font-size:15px; transition: transform 0.2s;">unfold_more</span>
+                </div>
                 <div>Cantidad</div>
-                <div>Subtotal</div>
+                <div style="text-align:right;">Subtotal</div>
             </div>
 
-            <!-- Contenedor del listado inyectado por JS -->
-            <div id="catalog-rows-container">
-                <!-- Se inyecta dinámicamente -->
-            </div>
+            <!-- Filas inyectadas por JS -->
+            <div id="catalog-rows-container"></div>
         </div>
+
     </div>
 
-    <!-- Barra Flotante Inferior -->
+    <!-- ═══════════════════════════════════════════════════════
+         BARRA FLOTANTE INFERIOR
+    ══════════════════════════════════════════════════════════ -->
     <div class="floating-footer-bar">
-        <button type="button" id="btn-show-conditions" class="btn-outline" style="padding: 0.6rem 1rem; border-radius: 10px; display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; border: 1.5px solid var(--border-color); background: var(--surface-color); color: var(--text-main);">
-            <span class="material-symbols-outlined" style="font-size: 20px; color: var(--primary-color);">info</span>
-            <span>Ver Condiciones</span>
-        </button>
-        <div class="footer-total-info" style="margin-left: auto; margin-right: 1.5rem; text-align: right; align-items: flex-end;">
-            <span class="footer-total-label">Total del Pedido</span>
+
+        <div class="footer-total-info">
+            <span class="footer-total-label">Total del pedido</span>
             <span class="footer-total-value" id="order-grand-total">$0</span>
-            <span id="order-total-savings" style="font-size: 0.8rem; color: #10B981; font-weight: 700; display: none; margin-top: -2px;">Ahorraste $0</span>
+            <span id="order-total-savings">Ahorraste $0</span>
         </div>
+
         <button type="button" id="btn-submit-order" class="btn-finalize-order" disabled>
-            <span class="material-symbols-outlined">shopping_cart_checkout</span>
-            Finalizar Compra
+            <span class="material-symbols-outlined">arrow_forward</span>
+            Finalizar Pedido
         </button>
     </div>
 
@@ -630,122 +821,116 @@
 
     <!-- MODAL 2: Finalización de Pedido y Términos -->
     <div id="modal-checkout" class="modal-overlay">
-        <div class="modal-card" style="max-width: 850px; width: 95%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);">
-            <div class="modal-header" style="border-bottom: 1px solid #E2E8F0; padding: 1.25rem 2rem; background-color: #ffffff;">
-                <h3 style="font-weight: 600; font-size: 1.25rem; color: #0F172A; margin: 0; letter-spacing: -0.025em;">Resumen de Pedido Mayorista</h3>
-                <button type="button" class="modal-close-btn" id="btn-close-checkout" style="color: #64748B; background: transparent; transition: color 0.2s;">
+        <div class="modal-card" style="max-width: 870px; width: 96%; border-radius: 18px;">
+
+            <div class="modal-header" style="padding: 1.35rem 1.75rem;">
+                <div>
+                    <h3 style="margin: 0 0 2px 0; font-size: 1.15rem;">Resumen de Pedido Mayorista</h3>
+                    <p style="margin: 0; font-size: 0.78rem; color: var(--text-muted);">Revisá tu pedido antes de enviarlo</p>
+                </div>
+                <button type="button" class="modal-close-btn" id="btn-close-checkout">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            
-            <div class="modal-body" style="display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1.25rem; max-height: 90vh; overflow-y: auto; background-color: #F8FAFC;">
-                
-                <!-- COLUMNA IZQUIERDA: Información y Pagos -->
-                <div style="flex: 1 1 350px; display: flex; flex-direction: column; gap: 1rem;">
-                    
-                    <!-- Resumen del Carrito Editable -->
+
+            <div class="modal-body" style="display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1.5rem; background: color-mix(in srgb, var(--text-main) 2%, var(--bg-color, #F8FAFC));">
+
+                <!-- COLUMNA IZQUIERDA -->
+                <div style="flex: 1 1 340px; display: flex; flex-direction: column; gap: 1.25rem;">
+
+                    <!-- Resumen productos -->
                     <div>
-                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Resumen de Productos</div>
-                        <div id="checkout-cart-list" style="max-height: 250px; overflow-y: auto; background: #ffffff; border: 1px solid #E2E8F0; border-radius: 8px; padding: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);">
+                        <div class="info-title" style="margin-bottom: 0.5rem;">Productos seleccionados</div>
+                        <div id="checkout-cart-list" style="max-height: 240px; overflow-y: auto; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
                             <!-- Inyectado por JS -->
                         </div>
                     </div>
 
-                    <!-- Forma de Pago -->
+                    <!-- Método de pago -->
                     <div>
-                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Método de Pago</div>
-                        <div id="checkout-payment-methods-container" class="payment-methods-selector" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                        <div class="info-title" style="margin-bottom: 0.5rem;">Método de pago</div>
+                        <div id="checkout-payment-methods-container" style="display: flex; flex-direction: column; gap: 0.4rem;">
                             <!-- Inyectado por JS -->
                         </div>
                     </div>
 
-                    <!-- Términos y Condiciones -->
+                    <!-- Condiciones comerciales -->
                     <div>
-                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Condiciones Comerciales</div>
-                        <div id="checkout-terms-text" style="font-size: 0.8rem; line-height: 1.4; color: #334155; white-space: pre-line; background: #ffffff; padding: 0.75rem; border-radius: 6px; border: 1px solid #E2E8F0;">
+                        <div class="info-title" style="margin-bottom: 0.5rem;">Condiciones comerciales</div>
+                        <div id="checkout-terms-text" style="font-size: 0.82rem; line-height: 1.5; color: var(--text-main); white-space: pre-line; background: var(--surface-color); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--border-color);">
                             <!-- Inyectado por JS -->
                         </div>
                     </div>
 
-                    <!-- Información de CBU (Solo visible para Transferencia) -->
+                    <!-- Datos bancarios (Transferencia) -->
                     <div id="checkout-bank-block" style="display: none;">
-                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Datos Bancarios</div>
-                        <div id="checkout-bank-details" style="font-size: 0.85rem; line-height: 1.6; color: #334155; background: #ffffff; padding: 1rem; border-radius: 6px; border: 1px solid #E2E8F0;">
+                        <div class="info-title" style="margin-bottom: 0.5rem;">Datos bancarios</div>
+                        <div id="checkout-bank-details" style="font-size: 0.85rem; line-height: 1.7; color: var(--text-main); background: var(--surface-color); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
                             <!-- Inyectado por JS -->
                         </div>
                     </div>
 
-                    <!-- Aclaración de Descuentos -->
+                    <!-- Descuentos -->
                     <div id="checkout-discounts-block" style="display: none;">
-                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Descuentos Aplicables</div>
-                        <div id="checkout-discounts-text" style="font-size: 0.8rem; line-height: 1.4; color: #334155; white-space: pre-line; background: #ffffff; padding: 0.75rem; border-radius: 6px; border: 1px solid #E2E8F0;">
+                        <div class="info-title" style="margin-bottom: 0.5rem;">Descuentos aplicables</div>
+                        <div id="checkout-discounts-text" style="font-size: 0.82rem; line-height: 1.5; color: var(--text-main); white-space: pre-line; background: var(--surface-color); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--border-color);">
                             <!-- Inyectado por JS -->
                         </div>
                     </div>
                 </div>
 
-                <!-- COLUMNA DERECHA: Totales y Acción -->
-                <div style="flex: 1 1 300px; display: flex; flex-direction: column; justify-content: space-between;">
-                    
+                <!-- COLUMNA DERECHA -->
+                <div style="flex: 1 1 280px; display: flex; flex-direction: column; justify-content: space-between;">
+
+                    <!-- Detalle de importes -->
                     <div>
-                        <div style="font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748B; margin-bottom: 0.5rem;">Detalle de Importes</div>
-                        
-                        <div style="background: #ffffff; border: 1px solid #E2E8F0; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);">
-                            
-                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem; color: #475569;">
+                        <div class="info-title" style="margin-bottom: 0.5rem;">Detalle de importes</div>
+                        <div style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.55rem; color: var(--text-muted);">
                                 <span>Subtotal de productos</span>
-                                <span id="checkout-subtotal-val" style="font-weight: 500; font-variant-numeric: tabular-nums; color: #1E293B;">$0</span>
+                                <span id="checkout-subtotal-val" style="font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text-main);">$0</span>
                             </div>
-                            
-                            <div id="checkout-surcharge-row" style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem; color: #475569;">
+                            <div id="checkout-surcharge-row" style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.55rem; color: var(--text-muted);">
                                 <span>Recargo (<span id="checkout-surcharge-label">Transferencia</span>)</span>
-                                <span id="checkout-surcharge-val" style="font-weight: 500; font-variant-numeric: tabular-nums; color: #1E293B;">$0</span>
+                                <span id="checkout-surcharge-val" style="font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text-main);">$0</span>
                             </div>
-                            
-                            <div style="height: 1px; background: #E2E8F0; margin: 0.75rem 0;"></div>
-                            
+                            <div style="height: 1px; background: var(--border-color); margin: 0.85rem 0;"></div>
                             <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                                <span style="font-size: 0.9rem; font-weight: 600; color: #0F172A;">Total a Abonar</span>
-                                <span id="checkout-grand-total-val" style="font-size: 1.25rem; font-weight: 700; color: #0F172A; font-variant-numeric: tabular-nums; letter-spacing: -0.025em;">$0</span>
+                                <span style="font-size: 0.92rem; font-weight: 600; color: var(--text-main);">Total a abonar</span>
+                                <span id="checkout-grand-total-val" style="font-size: 1.3rem; font-weight: 800; color: var(--primary-color); font-variant-numeric: tabular-nums; letter-spacing: -0.03em;">$0</span>
                             </div>
-                            
                         </div>
                     </div>
 
-                    <div style="margin-top: 1.25rem;">
-                        <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; margin-bottom: 0.8rem;">
-                            <input type="checkbox" id="chk-accept-terms" style="margin-top: 0.1rem; accent-color: #0F172A; width: 0.9rem; height: 0.9rem; cursor: pointer;">
-                            <span style="font-size: 0.75rem; color: #475569; line-height: 1.3;">Declaro haber leído y acepto las condiciones comerciales y términos de la compra.</span>
+                    <!-- Aceptar y enviar -->
+                    <div style="margin-top: 1.5rem;">
+                        <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; margin-bottom: 1rem;">
+                            <input type="checkbox" id="chk-accept-terms" style="margin-top: 2px; accent-color: var(--primary-color); width: 15px; height: 15px; cursor: pointer;">
+                            <span style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Declaro haber leído y acepto las condiciones comerciales y los términos de compra.</span>
                         </label>
-                        
-                        <!-- Acciones Principales -->
-                        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem;">
-                            
-                            <!-- Botón 1: Enviar por WhatsApp -->
-                            <button type="button" id="btn-send-whatsapp" disabled style="width: 100%; background: #0F172A; color: #ffffff; border: none; padding: 0.8rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background 0.2s, opacity 0.2s, transform 0.1s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-                                <span class="material-symbols-outlined" style="font-size: 1.25rem;">send</span>
+
+                        <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.25rem;">
+                            <!-- WhatsApp -->
+                            <button type="button" id="btn-send-whatsapp" disabled style="width: 100%; background: #128C7E; color: white; border: none; padding: 0.85rem; border-radius: 10px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif; box-shadow: 0 4px 12px rgba(18,140,126,0.3); opacity: 0.55;">
+                                <span class="material-symbols-outlined" style="font-size: 1.2rem;">send</span>
                                 Enviar Pedido por WhatsApp
                             </button>
-                            <div style="text-align: center; margin-top: -0.2rem; margin-bottom: 0.2rem; font-size: 0.7rem; color: #94A3B8;">
-                                *Será redirigido a WhatsApp para concretar la operación
-                            </div>
-                            
-                            <!-- Botón 2: Pago Dinámico (Inyectado por JS) -->
-                            <div id="checkout-dynamic-pay-btn-container" style="display: none; margin-top: 0.25rem;">
-                            </div>
+                            <p style="margin: -0.15rem 0 0 0; text-align: center; font-size: 0.68rem; color: var(--text-muted);">*Serás redirigido a WhatsApp para concretar la operación</p>
+
+                            <!-- Botón de pago dinámico (inyectado por JS) -->
+                            <div id="checkout-dynamic-pay-btn-container" style="display: none; margin-top: 0.1rem;"></div>
                         </div>
 
-                        <!-- Acciones Secundarias -->
-                        <div style="display: flex; gap: 0.5rem; border-top: 1px solid #E2E8F0; padding-top: 1rem; margin-top: 0.5rem;">
-                            <button type="button" id="btn-continue-shopping" style="flex: 1; background: transparent; color: #64748B; border: 1.5px solid #CBD5E1; padding: 0.6rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: 'Outfit', sans-serif;">
-                                Seguir Comprando
+                        <!-- Acciones secundarias -->
+                        <div style="display: flex; gap: 0.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                            <button type="button" id="btn-continue-shopping" style="flex: 1; background: transparent; color: var(--text-muted); border: 1.5px solid var(--border-color); padding: 0.6rem; border-radius: 8px; font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: inherit;">
+                                Seguir comprando
                             </button>
-                            <button type="button" id="btn-save-local-order" style="flex: 1; background: #F8FAFC; color: #10B981; border: 1.5px solid #10B981; padding: 0.6rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: 'Outfit', sans-serif;">
-                                Guardar Pedido
+                            <button type="button" id="btn-save-local-order" style="flex: 1; background: #ECFDF5; color: #059669; border: 1.5px solid #A7F3D0; padding: 0.6rem; border-radius: 8px; font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: inherit;">
+                                Guardar pedido
                             </button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -755,13 +940,13 @@
     <div id="modal-conditions" class="modal-overlay">
         <div class="modal-card" style="max-width: 500px;">
             <div class="modal-header">
-                <h3>📄 Condiciones de Venta</h3>
+                <h3>Condiciones de Venta</h3>
                 <button type="button" class="modal-close-btn" id="btn-close-conditions">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            <div class="modal-body" style="padding: 1.5rem 1.8rem;">
-                <div class="info-content" id="conditions-modal-text" style="font-size: 0.95rem; line-height: 1.6; white-space: pre-line; color: var(--text-main);">
+            <div class="modal-body">
+                <div class="info-content" id="conditions-modal-text" style="font-size: 0.92rem; line-height: 1.65; white-space: pre-line; color: var(--text-main);">
                     <!-- Inyectado por JS -->
                 </div>
             </div>
@@ -820,6 +1005,7 @@
 
             let allRows = []; // Todas las filas expandidas por variante
             let currentCart = {}; // id_unico -> { title, price, quantity, conditions }
+            let currentRubro = 'carpinteria'; // Rubro seleccionado por defecto
             
             try {
                 const saved = localStorage.getItem('savedMayoristaCart');
@@ -829,15 +1015,91 @@
             } catch(e) {}
             let currentSortPrice = null; // 'asc', 'desc', null
 
+            // Dibujar dinámicamente las pestañas de Rubros
+            function renderRubrosTabs() {
+                const container = document.getElementById('rubros-tabs-container');
+                if (!container) return;
+                
+                // Obtener rubros desde el parent en tiempo real
+                let parentConfig = null;
+                try {
+                    if (window.parent && window.parent !== window && window.parent.siteConfig) {
+                        parentConfig = window.parent.siteConfig;
+                    }
+                } catch(e) {}
+
+                const activeConfig = parentConfig || window.siteConfig || {};
+                const rubrosList = (activeConfig.rubros || [
+                    { id: "carpinteria", name: "Carpintería" }
+                ]).filter(r => r.visible !== false); // Filtrar solo los visibles
+
+                if (rubrosList.length <= 1) {
+                    container.classList.add('single-rubro');
+                    container.innerHTML = '';
+                    if (rubrosList.length === 1) {
+                        currentRubro = rubrosList[0].id;
+                    }
+                    return;
+                } else {
+                    container.classList.remove('single-rubro');
+                }
+
+                // Si el rubro seleccionado quedó oculto, volver al primero visible disponible
+                const activeStillVisible = rubrosList.some(r => r.id === currentRubro);
+                if (!activeStillVisible && rubrosList.length > 0) {
+                    currentRubro = rubrosList[0].id;
+                }
+                
+                container.innerHTML = '';
+                
+                rubrosList.forEach(r => {
+                    const tab = document.createElement('button');
+                    tab.type = 'button';
+                    tab.className = r.id === currentRubro ? 'rubros-tab active' : 'rubros-tab';
+                    
+                    // Forzar ancho geométrico exacto por JS inline
+                    const pct = (100 / rubrosList.length).toFixed(4);
+                    tab.style.width = pct + '%';
+                    tab.style.flex = `0 0 ${pct}%`;
+
+                    tab.innerHTML = r.name;
+                    tab.addEventListener('click', () => {
+                        currentRubro = r.id;
+                        // Actualizar clases active de los tabs
+                        container.querySelectorAll('.rubros-tab').forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        // Volver a renderizar la tabla con el rubro seleccionado
+                        const q = searchInput ? searchInput.value : '';
+                        renderTable(q);
+                    });
+                    container.appendChild(tab);
+                });
+            }
+
             // 1. Procesar la base de datos y expandir todas las combinaciones Producto + Variante + Medida
             function loadVariants() {
-                const sourceProducts = window.sessionProducts || window.productsData || [];
+                let parentProducts = null;
+                try {
+                    if (window.parent && window.parent !== window && window.parent.sessionProducts) {
+                        parentProducts = window.parent.sessionProducts;
+                    }
+                } catch (e) {
+                    console.warn('[Mayorista] No se pudo acceder a window.parent.sessionProducts:', e);
+                }
+
+                const sourceProducts = (parentProducts && parentProducts.length > 0)
+                    ? parentProducts
+                    : ((typeof sessionProducts !== 'undefined' && sessionProducts.length > 0)
+                        ? sessionProducts
+                        : (typeof productsData !== 'undefined' ? productsData : []));
+
                 allRows = [];
                 const seenRowIds = new Set();
 
                 sourceProducts.forEach(category => {
-                    if (category.visible === false) return;
                     if (!category.products) return;
+
+                    const catRubro = category.rubro || 'carpinteria'; // Identificar rubro de la categoría
 
                     category.products.forEach(product => {
                         if (product.visible === false) return;
@@ -864,7 +1126,8 @@
                                             productId: product.id,
                                             productTitle: product.title,
                                             categoryName: category.name,
-                                            acabadoName: group.acabado_name,
+                                            categoryRubro: catRubro, // Guardar rubro de la categoría
+                                            acabadoName: group.acabado_name || 'Único',
                                             medida: variant.medida,
                                             images: images,
                                             cover: cover,
@@ -873,6 +1136,26 @@
                                             volumeDiscounts: variant.volumeDiscounts || []
                                         });
                                     });
+                                } else {
+                                    // Fallback: Grupo de acabado sin variantes de medidas
+                                    const rowId = `${product.id}__${group.acabado_name}__Único`;
+                                    if (!seenRowIds.has(rowId)) {
+                                        seenRowIds.add(rowId);
+                                        allRows.push({
+                                            rowId: rowId,
+                                            productId: product.id,
+                                            productTitle: product.title,
+                                            categoryName: category.name,
+                                            categoryRubro: catRubro,
+                                            acabadoName: group.acabado_name || 'Único',
+                                            medida: 'Único',
+                                            images: images,
+                                            cover: cover,
+                                            price: 0,
+                                            conditions: 'Sin condiciones especiales',
+                                            volumeDiscounts: []
+                                        });
+                                    }
                                 }
                             });
                         } else {
@@ -893,6 +1176,7 @@
                                         productId: product.id,
                                         productTitle: product.title,
                                         categoryName: category.name,
+                                        categoryRubro: catRubro, // Guardar rubro de la categoría
                                         acabadoName: 'Único',
                                         medida: variant.medida,
                                         images: images,
@@ -902,6 +1186,26 @@
                                         volumeDiscounts: variant.volumeDiscounts || []
                                     });
                                 });
+                            } else {
+                                // Fallback: Producto simple sin medidas ni acabados
+                                const rowId = `${product.id}__Único__Único`;
+                                if (!seenRowIds.has(rowId)) {
+                                    seenRowIds.add(rowId);
+                                    allRows.push({
+                                        rowId: rowId,
+                                        productId: product.id,
+                                        productTitle: product.title,
+                                        categoryName: category.name,
+                                        categoryRubro: catRubro,
+                                        acabadoName: 'Único',
+                                        medida: 'Único',
+                                        images: images,
+                                        cover: cover,
+                                        price: parseFloat(product.price) || 0,
+                                        conditions: 'Sin condiciones especiales',
+                                        volumeDiscounts: []
+                                    });
+                                }
                             }
                         }
                     });
@@ -921,6 +1225,9 @@
                 const searchTerms = cleanQuery.split(/\s+/).filter(t => t.length > 0);
 
                 const filtered = allRows.filter(r => {
+                    // Filtrar por el rubro actual seleccionado
+                    if (r.categoryRubro !== currentRubro) return false;
+                    
                     if (searchTerms.length === 0) return true;
                     const combinedText = `${r.productTitle} ${r.categoryName} ${r.acabadoName} ${r.medida}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                     return searchTerms.every(term => combinedText.includes(term));
@@ -933,12 +1240,13 @@
                     filtered.sort((a, b) => b.price - a.price);
                 }
 
+
                 if (filtered.length === 0) {
                     rowsContainer.innerHTML = `
-                        <div style="padding: 3rem 1.5rem; text-align: center; color: #64748B;">
-                            <span class="material-symbols-outlined" style="font-size: 48px; opacity: 0.5; display: block; margin-bottom: 0.5rem;">search_off</span>
-                            <strong style="font-size: 1.1rem; display: block;">No se encontraron productos</strong>
-                            <p style="margin: 4px 0 0 0; font-size: 0.9rem;">Probá buscando con otros términos.</p>
+                        <div class="empty-state">
+                            <span class="material-symbols-outlined empty-state-icon">search_off</span>
+                            <strong>No se encontraron productos</strong>
+                            <p>Probá buscando con otros términos o quitá los filtros.</p>
                         </div>
                     `;
                     return;
@@ -956,18 +1264,36 @@
                         : `${row.productTitle} (${row.medida})`;
 
                     let priceLabelHTML = '';
+                    let volBadgeHTML = '';
                     let colCantidadHTML = '';
                     let colTotalHTML = '';
+                    const hasQty = qty > 0;
+
                     if (row.price > 0) {
-                        priceLabelHTML = `<span class="price-val">$${row.price.toLocaleString('es-AR')}</span>`;
-                        colCantidadHTML = `<input type="number" class="quantity-input" data-id="${row.rowId}" value="${qty}" min="0">`;
+                        // Badge dinámico: muestra el PRÓXIMO escalón de descuento por volumen
+                        if (row.volumeDiscounts && row.volumeDiscounts.length > 0) {
+                            // Ordenar por minQty ascendente para encontrar el siguiente nivel
+                            const sortedTiers = [...row.volumeDiscounts].sort((a, b) => a.minQty - b.minQty);
+                            const nextTier = sortedTiers.find(t => qty < t.minQty);
+                            if (nextTier) {
+                                volBadgeHTML = `<span class="vol-badge" id="vol-badge-${row.rowId}">↓ desc. x&nbsp;${nextTier.minQty}+</span>`;
+                            } else {
+                                // Ya está en el máximo — mostrar el descuento logrado
+                                const maxTier = sortedTiers[sortedTiers.length - 1];
+                                volBadgeHTML = `<span class="vol-badge-achieved" id="vol-badge-${row.rowId}">🎉 -${maxTier.discountPercent}% aplicado</span>`;
+                            }
+                        }
+                        priceLabelHTML = `<span class="price-val">$${row.price.toLocaleString('es-AR')}</span>${volBadgeHTML}`;
+                        const qtyInputClass = hasQty ? 'quantity-input has-value' : 'quantity-input';
+                        colCantidadHTML = `<input type="number" class="${qtyInputClass}" data-id="${row.rowId}" value="${qty}" min="0">`;
                         const subtotal = row.price * qty;
+                        const subtotalClass = hasQty ? 'total-val has-value' : 'total-val';
                         const subtotalLabel = subtotal > 0 ? `$${subtotal.toLocaleString('es-AR')}` : '$0';
-                        colTotalHTML = `<span class="total-val" id="subtotal-${row.rowId}">${subtotalLabel}</span>`;
+                        colTotalHTML = `<span class="${subtotalClass}" id="subtotal-${row.rowId}">${subtotalLabel}</span>`;
                     } else {
                         priceLabelHTML = `<span class="price-val btn-consult-wpp" data-title="${prodNameFull}" style="cursor: pointer; color: var(--primary-color); font-weight: 600; text-decoration: underline;">Consultar</span>`;
-                        colCantidadHTML = `<input type="number" class="quantity-input" value="" disabled style="opacity: 0.35; pointer-events: none; background: #F8FAFC;">`;
-                        colTotalHTML = `<span class="total-val">-</span>`;
+                        colCantidadHTML = `<input type="number" class="quantity-input" value="" disabled style="opacity: 0.3; pointer-events: none;">`;
+                        colTotalHTML = `<span class="total-val">—</span>`;
                     }
 
                     tr.innerHTML = `
@@ -1028,6 +1354,32 @@
                                 }
                             }
 
+                            // Actualizar badge de descuento por volumen al próximo escalón
+                            const volBadgeEl = document.getElementById(`vol-badge-${row.rowId}`);
+                            if (volBadgeEl && row.volumeDiscounts && row.volumeDiscounts.length > 0) {
+                                const sortedTiers = [...row.volumeDiscounts].sort((a, b) => a.minQty - b.minQty);
+                                const nextTier = sortedTiers.find(t => newVal < t.minQty);
+                                if (nextTier) {
+                                    // Todavía hay un escalón más arriba
+                                    volBadgeEl.className = 'vol-badge';
+                                    volBadgeEl.textContent = `↓ desc. x ${nextTier.minQty}+`;
+                                    volBadgeEl.style.display = '';
+                                } else {
+                                    // ¡Llegó al máximo! — mostrar descuento logrado con estilo celebratorio
+                                    const maxTier = sortedTiers[sortedTiers.length - 1];
+                                    volBadgeEl.className = 'vol-badge-achieved';
+                                    volBadgeEl.textContent = `🎉 -${maxTier.discountPercent}% aplicado`;
+                                    volBadgeEl.style.display = '';
+                                }
+                            }
+
+                            // Clases dinámicas has-value en input y subtotal
+                            if (newVal > 0) {
+                                input.classList.add('has-value');
+                            } else {
+                                input.classList.remove('has-value');
+                            }
+
                             if (newVal > 0) {
                                 currentCart[row.rowId] = {
                                     title: prodNameFull,
@@ -1042,7 +1394,11 @@
 
                             // Actualizar subtotal
                             const sub = finalPrice * newVal;
-                            document.getElementById(`subtotal-${row.rowId}`).textContent = sub > 0 ? `$${sub.toLocaleString('es-AR')}` : '$0';
+                            const subtotalSpan = document.getElementById(`subtotal-${row.rowId}`);
+                            if (subtotalSpan) {
+                                subtotalSpan.textContent = sub > 0 ? `$${sub.toLocaleString('es-AR')}` : '$0';
+                                subtotalSpan.classList.toggle('has-value', newVal > 0);
+                            }
 
                             recalculateGrandTotal();
                         };
@@ -1063,13 +1419,16 @@
             function recalculateGrandTotal() {
                 let grandTotal = 0;
                 let originalGrandTotal = 0;
-                Object.values(currentCart).forEach(item => {
+                const cartItems = Object.values(currentCart);
+                cartItems.forEach(item => {
                     grandTotal += item.price * item.quantity;
                     originalGrandTotal += (item.originalPrice || item.price) * item.quantity;
                 });
 
+                // Barra flotante — total
                 grandTotalEl.textContent = `$${grandTotal.toLocaleString('es-AR')}`;
-                
+
+                // Barra flotante — ahorros
                 const savingsEl = document.getElementById('order-total-savings');
                 if (savingsEl) {
                     const savings = originalGrandTotal - grandTotal;
@@ -1078,6 +1437,31 @@
                         savingsEl.style.display = 'block';
                     } else {
                         savingsEl.style.display = 'none';
+                    }
+                }
+
+                // Barra flotante — contador de items
+                const footerItemsLabel = document.getElementById('footer-items-label');
+                if (footerItemsLabel) {
+                    const itemCount = cartItems.length;
+                    if (itemCount === 0) {
+                        footerItemsLabel.textContent = 'Sin selección';
+                    } else {
+                        footerItemsLabel.innerHTML = `<strong>${itemCount}</strong> artículo${itemCount !== 1 ? 's' : ''}`;
+                    }
+                }
+
+                // Header — panel de estado
+                const headerTotal = document.getElementById('header-total-display');
+                const headerItems = document.getElementById('header-items-display');
+                if (headerTotal) headerTotal.textContent = `$${grandTotal.toLocaleString('es-AR')}`;
+                if (headerItems) {
+                    const itemCount = cartItems.length;
+                    const unitCount = cartItems.reduce((s, i) => s + i.quantity, 0);
+                    if (itemCount === 0) {
+                        headerItems.textContent = 'Sin productos seleccionados';
+                    } else {
+                        headerItems.textContent = `${itemCount} variante${itemCount !== 1 ? 's' : ''} · ${unitCount} unidad${unitCount !== 1 ? 'es' : ''}`;
                     }
                 }
 
@@ -1228,15 +1612,14 @@
                 
                 pmList.forEach((pm, index) => {
                     const label = document.createElement('label');
-                    label.className = 'payment-method-option';
-                    label.style.cssText = 'display: flex; align-items: center; justify-content: space-between; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0.6rem 0.75rem; cursor: pointer; transition: all 0.2s ease; background: #ffffff;';
-                    
+                    label.className = index === 0 ? 'payment-method-option selected' : 'payment-method-option';
+
                     const checked = index === 0 ? 'checked' : '';
                     let surchargeBadge = '';
                     if (pm.surcharge > 0) {
-                        surchargeBadge = `<span style="font-size: 0.7rem; color: #475569; font-weight: 500;">+${pm.surcharge}%</span>`;
+                        surchargeBadge = `<span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">+${pm.surcharge}%</span>`;
                     } else {
-                        surchargeBadge = `<span style="font-size: 0.7rem; color: #475569; font-weight: 500;">Sin recargo</span>`;
+                        surchargeBadge = `<span style="font-size: 0.72rem; color: #059669; font-weight: 600;">Sin recargo</span>`;
                     }
                     
                     label.innerHTML = `
@@ -1329,15 +1712,13 @@
                     }
                 }
                 
-                // Actualizar estilos de los contenedores
+                // Actualizar clases de los contenedores
                 document.querySelectorAll('.payment-method-option').forEach(opt => {
                     const radio = opt.querySelector('input[type="radio"]');
-                    if (radio.checked) {
-                        opt.style.borderColor = '#0F172A';
-                        opt.style.background = '#F8FAFC';
+                    if (radio && radio.checked) {
+                        opt.classList.add('selected');
                     } else {
-                        opt.style.borderColor = '#CBD5E1';
-                        opt.style.background = '#ffffff';
+                        opt.classList.remove('selected');
                     }
                 });
             }
@@ -1381,7 +1762,9 @@
             });
 
             chkAcceptTerms.addEventListener('change', (e) => {
-                btnSendWhatsapp.disabled = !e.target.checked;
+                const enabled = e.target.checked;
+                btnSendWhatsapp.disabled = !enabled;
+                btnSendWhatsapp.style.opacity = enabled ? '1' : '0.55';
             });
 
             btnSendWhatsapp.addEventListener('click', () => {
@@ -1440,38 +1823,13 @@
             // Cerrar Modales
             const modalConditions = document.getElementById('modal-conditions');
             const btnCloseConditions = document.getElementById('btn-close-conditions');
-            const btnShowConditions = document.getElementById('btn-show-conditions');
-            const conditionsModalText = document.getElementById('conditions-modal-text');
-
-            if (btnShowConditions && modalConditions && conditionsModalText) {
-                btnShowConditions.addEventListener('click', () => {
-                    const pmList = window.checkoutPaymentMethods || [];
-                    const selectedMethodId = document.querySelector('input[name="payment-method"]:checked')?.value;
-                    const pm = pmList.find(p => p.id === selectedMethodId) || pmList[0];
-                    if (pm) {
-                        const rawText = pm.conditions || 'Sin condiciones particulares.';
-                        const escapedContent = rawText
-                            .replace(/&/g, "&amp;")
-                            .replace(/</g, "&lt;")
-                            .replace(/>/g, "&gt;");
-                        const urlRegex = /(https?:\/\/[^\s]+|(?:www\.|link\.)[^\s]+)/g;
-                        conditionsModalText.innerHTML = escapedContent.replace(urlRegex, function(url) {
-                            let href = url;
-                            if (!href.startsWith('http')) {
-                                href = 'https://' + href;
-                            }
-                            return `<a href="${href}" target="_blank" style="color: #2563EB; text-decoration: underline; font-weight: 600;">${url}</a>`;
-                        });
-                    }
-                    modalConditions.style.display = 'flex';
-                });
-            }
 
             if (btnCloseConditions && modalConditions) {
                 btnCloseConditions.addEventListener('click', () => {
                     modalConditions.style.display = 'none';
                 });
             }
+
 
             btnCloseGallery.addEventListener('click', () => { modalGallery.style.display = 'none'; });
             btnCloseCheckout.addEventListener('click', () => { modalCheckout.style.display = 'none'; });
@@ -1513,6 +1871,7 @@
             }
 
             // Inicializar página
+            renderRubrosTabs();
             loadVariants();
             renderTable();
 

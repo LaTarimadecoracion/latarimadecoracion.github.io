@@ -221,7 +221,9 @@
         <!-- View 3: Buscar -->
         <section id="view-search" class="view">
             <div class="view-content">
-                <!-- Se ha movido la barra de búsqueda y filtros a la cabecera (header) global -->
+                <!-- Tabs de Rubros para el buscador B2B/B2C -->
+                <div id="search-rubros-tabs-container" class="rubros-tabs-bar"></div>
+                
                 <!-- Resultados de búsqueda (feed inmersivo) -->
                 <div id="search-results-container" class="product-feed">
                     <!-- Feed inyectado por JS -->
@@ -254,8 +256,11 @@
 
         <!-- View 4: Categorías -->
         <section id="view-categories" class="view">
-            <div class="view-content" style="padding: 1rem;">
-                <div id="categories-menu-container" class="categories-grid-responsive">
+            <div class="view-content" style="padding: 0;">
+                <!-- Tabs de Rubros para Categorías -->
+                <div id="categories-rubros-tabs-container" class="rubros-tabs-bar"></div>
+                
+                <div id="categories-menu-container" class="categories-grid-responsive" style="padding: 1rem;">
                     <!-- Categories injected by categorias.js -->
                 </div>
             </div>
@@ -290,6 +295,13 @@
         <section id="view-mayorista" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="mayorista.html" style="width: 100%; flex: 1; border: none; display: block;" title="Catálogo Mayorista"></iframe>
+            </div>
+        </section>
+
+        <!-- View 9: Música Iframe -->
+        <section id="view-musica" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe src="musica.html" style="width: 100%; flex: 1; border: none; display: block;" title="Música y Enganchados"></iframe>
             </div>
         </section>
 
@@ -978,100 +990,119 @@
 
                             <!-- PÁGINA: MAYORISTA -->
                             <div id="subview-page-mayorista" class="admin-subview" style="display: none;">
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">store</span>
-                                            Configuración Catálogo Mayorista
-                                        </h3>
-                                    </header>
-                                    <form id="admin-mayorista-form" style="display: flex; flex-direction: column; gap: 1.25rem; padding: 0.5rem 0;">
-                                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-                                            <div class="form-group">
-                                                <label for="admin-may-alias" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Alias de Transferencia</label>
-                                                <input type="text" id="admin-may-alias" placeholder="ej: la.tarima.deco" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="admin-may-cbu" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">CBU/CVU de Transferencia</label>
-                                                <input type="text" id="admin-may-cbu" placeholder="22 dígitos" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="admin-may-titular" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Titular de la Cuenta</label>
-                                                <input type="text" id="admin-may-titular" placeholder="Nombre completo" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="admin-may-bank" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Banco / Plataforma</label>
-                                                <input type="text" id="admin-may-bank" placeholder="ej: Banco Galicia, Mercado Pago" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Métodos de Pago Dinámicos -->
-                                        <div style="border-top: 1.5px solid #E2E8F0; margin-top: 1rem; padding-top: 1.5rem;">
-                                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                                                <h4 style="margin: 0; font-size: 0.95rem; font-weight: 600; color: #1E293B;">Métodos de Pago y Condiciones</h4>
-                                                <button type="button" id="btn-add-payment-method" style="padding: 0.4rem 0.8rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 0.85rem; font-weight: 500;">
-                                                    <span class="material-symbols-outlined" style="font-size: 16px;">add</span> Agregar Método
-                                                </button>
-                                            </div>
-                                            <div id="admin-payment-methods-list" style="display: flex; flex-direction: column; gap: 1rem;">
-                                                <!-- Los métodos de pago se inyectarán aquí vía JS -->
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="admin-may-discounts" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Aclaración de Descuentos (Checkout)</label>
-                                            <textarea id="admin-may-discounts" placeholder="Escribe aquí la aclaración de descuentos..." rows="3" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
-                                        </div>
-                                        <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
-                                            <button type="button" id="btn-save-mayorista-config" class="btn-primary" style="padding: 0.6rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 8px; cursor: pointer; border: none; font-weight: 600;">
-                                                <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
-                                                Guardar Configuración
-                                            </button>
-                                        </div>
-                                    </form>
+                                <!-- Barra de sub-pestañas interna -->
+                                <div class="admin-sub-tabs-bar" style="display: flex; gap: 8px; margin-bottom: 1.25rem; border-bottom: 1.5px solid #E2E8F0; padding-bottom: 0.5rem;">
+                                    <button type="button" class="admin-sub-tab active" data-subtab-target="admin-may-prices-subtab" style="padding: 0.6rem 1.25rem; border: none; background: transparent; font-size: 0.9rem; font-weight: 600; color: #64748B; cursor: pointer; display: flex; align-items: center; gap: 6px; border-radius: 6px; transition: all 0.2s;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">payments</span>
+                                        Precios de Productos
+                                    </button>
+                                    <button type="button" class="admin-sub-tab" data-subtab-target="admin-may-config-subtab" style="padding: 0.6rem 1.25rem; border: none; background: transparent; font-size: 0.9rem; font-weight: 600; color: #64748B; cursor: pointer; display: flex; align-items: center; gap: 6px; border-radius: 6px; transition: all 0.2s;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">settings</span>
+                                        Métodos de Pago y Datos
+                                    </button>
                                 </div>
 
-                                <div class="admin-card" style="margin-top: 1.5rem;">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">payments</span>
-                                            Precios y Condiciones de Productos (Edición Masiva)
-                                        </h3>
-                                        <div class="admin-header-actions" style="display: flex; gap: 8px;">
-                                            <button type="button" id="btn-bulk-price-modifier" style="padding: 0.5rem 1rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
-                                                <span class="material-symbols-outlined" style="font-size: 18px;">trending_up</span>
-                                                Modificar Precios
-                                            </button>
-                                            <button type="button" id="btn-bulk-discount-selected" style="padding: 0.5rem 1rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
-                                                <span class="material-symbols-outlined" style="font-size: 18px;">settings</span>
-                                                Descuentos a Seleccionados
-                                            </button>
-                                            <button type="button" id="btn-save-bulk-prices" class="btn-primary" style="padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
-                                                <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
-                                                Guardar Cambios de Precios
-                                            </button>
+                                <!-- PESTAÑA 1: TABLA DE PRECIOS MASIVOS -->
+                                <div id="admin-may-prices-subtab" class="admin-subtab-content">
+                                    <div class="admin-card">
+                                        <header class="admin-page-header">
+                                            <h3 class="admin-header-title">
+                                                <span class="material-symbols-outlined">payments</span>
+                                                Precios y Condiciones de Productos (Edición Masiva)
+                                            </h3>
+                                            <div class="admin-header-actions" style="display: flex; gap: 8px;">
+                                                <button type="button" id="btn-bulk-price-modifier" style="padding: 0.5rem 1rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                                                    <span class="material-symbols-outlined" style="font-size: 18px;">trending_up</span>
+                                                    Modificar Precios
+                                                </button>
+                                                <button type="button" id="btn-bulk-discount-selected" style="padding: 0.5rem 1rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                                                    <span class="material-symbols-outlined" style="font-size: 18px;">settings</span>
+                                                    Descuentos a Seleccionados
+                                                </button>
+                                                <button type="button" id="btn-save-bulk-prices" class="btn-primary" style="padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                                                    <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
+                                                    Guardar Cambios de Precios
+                                                </button>
+                                            </div>
+                                        </header>
+                                        <div id="admin-may-rubros-container" class="rubros-tabs-bar" style="margin-top: 0.5rem; margin-bottom: 0.65rem;"></div>
+                                        <div style="margin: 1rem 0; position: relative;">
+                                            <span class="material-symbols-outlined" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 20px;">search</span>
+                                            <input type="text" id="admin-may-search" placeholder="Filtrar productos..." style="width: 100%; padding: 0.5rem 0.5rem 0.5rem 2.2rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.88rem; box-sizing: border-box;">
                                         </div>
-                                    </header>
-                                    <div style="margin: 1rem 0; position: relative;">
-                                        <span class="material-symbols-outlined" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 20px;">search</span>
-                                        <input type="text" id="admin-may-search" placeholder="Filtrar productos..." style="width: 100%; padding: 0.5rem 0.5rem 0.5rem 2.2rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.88rem; box-sizing: border-box;">
+                                        <div style="max-height: 500px; overflow-y: auto; overflow-x: auto; border: 1.5px solid #E8ECF0; border-radius: 12px;">
+                                            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; min-width: 600px;">
+                                                <thead>
+                                                    <tr style="background: #F8FAFC; border-bottom: 1.5px solid #E2E8F0; font-weight: 600; color: #475569;">
+                                                        <th style="padding: 10px 14px; width: 40px; text-align: center;">
+                                                            <input type="checkbox" id="chk-select-all-bulk" style="cursor: pointer; width: 16px; height: 16px;">
+                                                        </th>
+                                                        <th style="padding: 10px 14px;">Producto (Variante / Medida)</th>
+                                                        <th style="padding: 10px 14px; width: 120px;">Costo ($)</th>
+                                                        <th style="padding: 10px 14px; width: 150px;">Precio Mayorista ($)</th>
+                                                        <th style="padding: 10px 14px; width: 150px;">Descuentos</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="admin-may-prices-tbody">
+                                                    <!-- Cargado dinámicamente -->
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                    <div style="max-height: 500px; overflow-y: auto; overflow-x: auto; border: 1.5px solid #E8ECF0; border-radius: 12px;">
-                                        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; min-width: 600px;">
-                                            <thead>
-                                                <tr style="background: #F8FAFC; border-bottom: 1.5px solid #E2E8F0; font-weight: 600; color: #475569;">
-                                                    <th style="padding: 10px 14px; width: 40px; text-align: center;">
-                                                        <input type="checkbox" id="chk-select-all-bulk" style="cursor: pointer; width: 16px; height: 16px;">
-                                                    </th>
-                                                    <th style="padding: 10px 14px;">Producto (Variante / Medida)</th>
-                                                    <th style="padding: 10px 14px; width: 120px;">Costo ($)</th>
-                                                    <th style="padding: 10px 14px; width: 150px;">Precio Mayorista ($)</th>
-                                                    <th style="padding: 10px 14px; width: 150px;">Descuentos</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="admin-may-prices-tbody">
-                                                <!-- Cargado dinámicamente -->
-                                            </tbody>
-                                        </table>
+                                </div>
+
+                                <!-- PESTAÑA 2: CONFIGURACIÓN GENERAL Y CUENTAS -->
+                                <div id="admin-may-config-subtab" class="admin-subtab-content" style="display: none;">
+                                    <div class="admin-card">
+                                        <header class="admin-page-header">
+                                            <h3 class="admin-header-title">
+                                                <span class="material-symbols-outlined">store</span>
+                                                Configuración Catálogo Mayorista
+                                            </h3>
+                                        </header>
+                                        <form id="admin-mayorista-form" style="display: flex; flex-direction: column; gap: 1.25rem; padding: 0.5rem 0;">
+                                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                                                <div class="form-group">
+                                                    <label for="admin-may-alias" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Alias de Transferencia</label>
+                                                    <input type="text" id="admin-may-alias" placeholder="ej: la.tarima.deco" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="admin-may-cbu" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">CBU/CVU de Transferencia</label>
+                                                    <input type="text" id="admin-may-cbu" placeholder="22 dígitos" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="admin-may-titular" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Titular de la Cuenta</label>
+                                                    <input type="text" id="admin-may-titular" placeholder="Nombre completo" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="admin-may-bank" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Banco / Plataforma</label>
+                                                    <input type="text" id="admin-may-bank" placeholder="ej: Banco Galicia, Mercado Pago" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Métodos de Pago Dinámicos -->
+                                            <div style="border-top: 1.5px solid #E2E8F0; margin-top: 1rem; padding-top: 1.5rem;">
+                                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                                    <h4 style="margin: 0; font-size: 0.95rem; font-weight: 600; color: #1E293B;">Métodos de Pago y Condiciones</h4>
+                                                    <button type="button" id="btn-add-payment-method" style="padding: 0.4rem 0.8rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 0.85rem; font-weight: 500;">
+                                                        <span class="material-symbols-outlined" style="font-size: 16px;">add</span> Agregar Método
+                                                    </button>
+                                                </div>
+                                                <div id="admin-payment-methods-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                                                    <!-- Los métodos de pago se inyectarán aquí vía JS -->
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="admin-may-discounts" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Aclaración de Descuentos (Checkout)</label>
+                                                <textarea id="admin-may-discounts" placeholder="Escribe aquí la aclaración de descuentos..." rows="3" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
+                                            </div>
+                                            <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
+                                                <button type="button" id="btn-save-mayorista-config" class="btn-primary" style="padding: 0.6rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 8px; cursor: pointer; border: none; font-weight: 600;">
+                                                    <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
+                                                    Guardar Configuración
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -1208,6 +1239,15 @@
                             <div class="form-group">
                                 <label>Nombre visible</label>
                                 <input type="text" id="admin-cat-name" placeholder="ej: Línea Infantil" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Rubro al que pertenece</label>
+                                <div style="display: flex; gap: 8px; align-items: center;">
+                                    <select id="admin-cat-rubro" style="flex-grow: 1; padding: 0.5rem; border: 1.5px solid var(--border-color, #E2E8F0); border-radius: 8px; font-family: inherit; font-size: 0.9rem;">
+                                        <!-- Cargado dinámicamente -->
+                                    </select>
+                                    <button type="button" id="btn-admin-add-rubro" class="btn-outline" style="width: auto; height: 38px; padding: 0 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: bold; border-radius: 8px;" title="Crear nuevo rubro">+</button>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Foto de Portada</label>
@@ -1738,6 +1778,29 @@
                     <button type="button" id="btn-apply-price-modifier" class="btn-primary" style="padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; color: white; font-weight: 600;">Aplicar</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal Crear Nuevo Rubro -->
+    <div id="admin-rubro-modal" class="modal-overlay" style="display: none; z-index: 100001; align-items: center; justify-content: center; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(2px);">
+        <div class="modal-content" style="max-width: 400px; width: 90%;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                <h3 id="admin-rubro-modal-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Crear Nuevo Rubro</h3>
+                <button type="button" id="btn-cancel-rubro" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+            </div>
+            <form id="admin-rubro-form" class="admin-form">
+                <div class="form-group">
+                    <label>ID del Rubro (Slug sin espacios)</label>
+                    <input type="text" id="admin-rubro-id" placeholder="ej: pintureria" required style="width: 100%;">
+                </div>
+                <div class="form-group">
+                    <label>Nombre del Rubro</label>
+                    <input type="text" id="admin-rubro-name" placeholder="ej: Pinturería" required style="width: 100%;">
+                </div>
+                <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                    <button type="button" id="btn-save-rubro" class="btn-primary" style="width: 100%; max-width: none;">Guardar Rubro</button>
+                </div>
+            </form>
         </div>
     </div>
 

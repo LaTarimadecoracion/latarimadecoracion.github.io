@@ -305,12 +305,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (foundData) {
                         const catObj = window.sessionProducts ? window.sessionProducts.find(c => c.name === foundData.catName || c.id === foundData.catName) : null;
                         const isCatVisible = !catObj || catObj.visible !== false;
-                        if (foundData.product.visible !== false && isCatVisible) {
+                        if (foundData.product.visible !== false) {
                             console.log(`[Router] Producto compartido detectado: ${prodId}. Abriendo modal.`);
                             const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
                             window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
                         } else {
-                            console.warn(`[Router] El producto con ID '${prodId}' o su categoría están ocultos.`);
+                            console.warn(`[Router] El producto con ID '${prodId}' está oculto.`);
                         }
                     } else {
                         console.warn(`[Router] Producto con ID '${prodId}' no encontrado en el catálogo.`);
@@ -332,7 +332,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'admin': 'view-admin',
                 'catalogo': 'view-catalogo',
                 'calcular': 'view-calculator',
-                'mayorista': 'view-mayorista'
+                'mayorista': 'view-mayorista',
+                'musica': 'view-musica'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             setTimeout(() => {
@@ -391,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (foundData) {
                     const catObj = window.sessionProducts ? window.sessionProducts.find(c => c.name === foundData.catName || c.id === foundData.catName) : null;
                     const isCatVisible = !catObj || catObj.visible !== false;
-                    if (foundData.product.visible !== false && isCatVisible) {
+                    if (foundData.product.visible !== false) {
                         const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
                         window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
                     }
@@ -420,7 +421,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'categorias': 'view-categories',
                 'videos': 'view-videos',
                 'carrito': 'view-cart',
-                'mayorista': 'view-mayorista'
+                'mayorista': 'view-mayorista',
+                'musica': 'view-musica'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             if (window.navigateToView) {

@@ -1,9 +1,88 @@
 const productsData = [
     {
+        "id": "jabon-todos",
+        "name": "Todos los productos",
+        "rubro": "jabon",
+        "image": "img/logo_provisional.png",
+        "visible": true,
+        "order": 0,
+        "products": [
+            {
+                "id": "Jabon",
+                "title": "Jabon",
+                "description": "",
+                "image": "img/jabon/jabon/1783112841873-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/jabon/jabon/1783112841873-imagen.webp",
+                        "images_list": [
+                            "img/jabon/jabon/1783112841873-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783112841985,
+                "primaryCatId": "Jabon"
+            }
+        ]
+    },
+    {
+        "id": "papelera-cotillon-todos",
+        "name": "Todos los productos",
+        "rubro": "papelera-cotillon",
+        "image": "img/logo_provisional.png",
+        "visible": false,
+        "order": 1,
+        "products": [
+            {
+                "id": "Films-negro",
+                "title": "Film Strech Negro",
+                "description": "",
+                "image": "img/embalaje/film-strech-negro/1783039460338-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Negro",
+                        "cover_image": "img/embalaje/film-strech-negro/1783039460338-imagen.webp",
+                        "images_list": [
+                            "img/embalaje/film-strech-negro/1783039460338-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "price": 1000,
+                                "cost_price": 1000,
+                                "volumeDiscounts": [],
+                                "default": true,
+                                "hidden": false,
+                                "link": ""
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783039460509,
+                "primaryCatId": "Papelera-Cotillon"
+            }
+        ]
+    },
+    {
+        "id": "carpinteria-todos",
+        "name": "Carpintería ",
+        "rubro": "carpinteria",
+        "image": "img/carpinteria-/portada-1783038461695-imagen.webp",
+        "visible": false,
+        "order": 2,
+        "products": []
+    },
+    {
         "id": "Barandas",
         "name": "Barandas desmontables",
         "image": "img/barandas-desmontables/portada-1782437522433-imagen.webp",
-        "order": 0,
+        "order": 3,
         "products": [
             {
                 "id": "baranda-desmontable-clasica",
@@ -1385,7 +1464,7 @@ const productsData = [
         "id": "barandas-sommier",
         "name": "Barandas para Sommier",
         "image": "img/barandas-para-sommier/portada-1780602491510-imagen.webp",
-        "order": 1,
+        "order": 4,
         "products": [
             {
                 "id": "baranda-sommier-clasica",
@@ -1767,7 +1846,7 @@ const productsData = [
         "id": "Barandas-fijas",
         "name": "Barandas Fijas",
         "image": "img/barandas-fijas/portada-1780542786240-imagen.webp",
-        "order": 2,
+        "order": 5,
         "products": [
             {
                 "id": "baranda-fija-clasica",
@@ -1898,7 +1977,7 @@ const productsData = [
         "id": "muebles",
         "name": "Escaleras",
         "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 3,
+        "order": 6,
         "products": [
             {
                 "id": "escaleras",
@@ -1975,7 +2054,7 @@ const productsData = [
         "id": "Vinotecas",
         "name": "Vinotecas - Bodegas",
         "image": "img/vinotecas---bodegas/portada-1780289410168-imagen.webp",
-        "order": 4,
+        "order": 7,
         "products": [
             {
                 "id": "chico",
@@ -2095,7 +2174,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 5,
+        "order": 8,
         "products": [
             {
                 "id": "podio-profesional",
@@ -2236,7 +2315,7 @@ const productsData = [
         "id": "Steps",
         "name": "Steps / Cajones",
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 6,
+        "order": 9,
         "products": [
             {
                 "id": "steps---cajones",
@@ -2415,7 +2494,7 @@ const productsData = [
         "id": "Estantes",
         "name": "Estantes",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 7,
+        "order": 10,
         "products": [
             {
                 "id": "estantes-montessori",
@@ -2993,7 +3072,7 @@ const productsData = [
         "id": "decoracion",
         "name": "Decoracion",
         "image": "img/decoracion/portada-1780775663430-imagen.webp",
-        "order": 8,
+        "order": 11,
         "products": [
             {
                 "id": "perchero-1",
@@ -3654,7 +3733,7 @@ const productsData = [
         "id": "exterior",
         "name": "Exterior",
         "image": "img/exterior/portada-1780775296111-imagen.webp",
-        "order": 9,
+        "order": 12,
         "products": [
             {
                 "id": "deck-cuadrado",
@@ -4125,7 +4204,7 @@ const productsData = [
         "id": "organizacion",
         "name": "Organizadores",
         "image": "img/organizadores/portada-1780775974452-imagen.webp",
-        "order": 10,
+        "order": 13,
         "products": [
             {
                 "id": "verdulero-clasico",
@@ -4485,7 +4564,7 @@ const productsData = [
         "id": "infantil",
         "name": "Infantil",
         "image": "img/infantil/portada-1782623289958-imagen.webp",
-        "order": 11,
+        "order": 14,
         "products": [
             {
                 "id": "jenga",
@@ -4622,7 +4701,7 @@ const productsData = [
         "id": "Interior",
         "name": "Interiores",
         "image": "img/interiores/portada-imagen.webp",
-        "order": 12,
+        "order": 15,
         "products": [
             {
                 "id": "Mueble-Multifunción",
@@ -4870,7 +4949,7 @@ const productsData = [
         "id": "Hogar",
         "name": "Hogar",
         "image": "img/hogar/portada-1782623440825-imagen.webp",
-        "order": 13,
+        "order": 16,
         "products": [
             {
                 "id": "banquito-de-plaza",
@@ -5115,7 +5194,7 @@ const productsData = [
         "id": "Muebles-y-Jardín",
         "name": "Jardín",
         "image": "img/jardin/portada-imagen.webp",
-        "order": 14,
+        "order": 17,
         "products": [
             {
                 "id": "deck-rectangular",
@@ -5430,8 +5509,8 @@ const productsData = [
     {
         "id": "Juguetes",
         "name": "Juguetes",
-        "image": "img/juguetes/portada-imagen.webp",
-        "order": 15,
+        "image": "img/juguetes/portada-1783038439545-imagen.webp",
+        "order": 18,
         "products": [
             {
                 "id": "jenga",
@@ -5497,13 +5576,14 @@ const productsData = [
                 "last_modified": 1782609484647,
                 "primaryCatId": "infantil"
             }
-        ]
+        ],
+        "rubro": "carpinteria"
     },
     {
         "id": "muebles-de-cocina",
         "name": "Cocina",
         "image": "img/cocina/portada-imagen.webp",
-        "order": 16,
+        "order": 19,
         "products": [
             {
                 "id": "especiero",
@@ -5567,6 +5647,74 @@ const productsData = [
                 ],
                 "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
+            }
+        ]
+    },
+    {
+        "id": "Papelera-Cotillon",
+        "name": "Embalaje",
+        "image": "img/papelera-cotillon/embalaje/portada-imagen.webp",
+        "rubro": "papelera-cotillon",
+        "order": 20,
+        "products": [
+            {
+                "id": "Films-negro",
+                "title": "Film Strech Negro",
+                "description": "",
+                "image": "img/embalaje/film-strech-negro/1783039460338-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Negro",
+                        "cover_image": "img/embalaje/film-strech-negro/1783039460338-imagen.webp",
+                        "images_list": [
+                            "img/embalaje/film-strech-negro/1783039460338-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "price": 1000,
+                                "cost_price": 1000,
+                                "volumeDiscounts": [],
+                                "default": true,
+                                "hidden": false,
+                                "link": ""
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783039460509,
+                "primaryCatId": "Papelera-Cotillon"
+            }
+        ]
+    },
+    {
+        "id": "Jabon",
+        "name": "Jabon",
+        "image": "img/jabon/jabon/portada-imagen.webp",
+        "rubro": "jabon",
+        "order": 21,
+        "products": [
+            {
+                "id": "Jabon",
+                "title": "Jabon",
+                "description": "",
+                "image": "img/jabon/jabon/1783112841873-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/jabon/jabon/1783112841873-imagen.webp",
+                        "images_list": [
+                            "img/jabon/jabon/1783112841873-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783112841985,
+                "primaryCatId": "Jabon"
             }
         ]
     }

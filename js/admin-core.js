@@ -2,8 +2,8 @@
 // --- ADMIN CORE MODULE ---
 
 // Admin State
-    let editingCategoryIndex = null;
-    let oldCategoryName = null;
+    window.editingCategoryIndex = null;
+    window.oldCategoryName = null;
     let lastDragTime = 0; // Evita conflictos entre clic y arrastre en las miniaturas de fotos
 
     // ── Nosotros State & Defaults ──

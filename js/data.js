@@ -282,6 +282,11 @@ try {
     console.error("Error loading homeConfig fallback:", e);
 }
 
+// 4c. Rubros de productos (Carpintería, Pinturería, Ferretería, etc.)
+window.rubros = window.siteConfig.rubros || [
+    { id: "carpinteria", name: "Carpintería" }
+];
+
 // 5. Motor de Sincronización en Red con Servidor Local (Físico en Disco)
 window.syncSiteConfigWithServer = async function() {
     try {
@@ -293,7 +298,8 @@ window.syncSiteConfigWithServer = async function() {
             sessionNosotros: window.sessionNosotros,
             sessionAvisos: window.sessionAvisos,
             socialLinks: window.socialLinks,
-            mayoristaConfig: window.mayoristaConfig
+            mayoristaConfig: window.mayoristaConfig,
+            rubros: window.rubros
         };
 
         // Guardar en localStorage como respaldo local

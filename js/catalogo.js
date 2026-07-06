@@ -8,8 +8,77 @@ document.addEventListener('DOMContentLoaded', () => {
     const WHATSAPP_PHONE = "5491167007723";
     let allProducts = [];
 
+    // Rubro activo del catálogo
+    let activeCatalogRubro = 'carpinteria';
+
+    function renderCatalogRubrosTabs() {
+        const container = document.getElementById('catalog-rubros-tabs-container');
+        if (!container) return;
+
+        // Obtener rubros de parent o local
+        let rubrosList = [];
+        try {
+            if (window.parent && window.parent.siteConfig && window.parent.siteConfig.rubros) {
+                rubrosList = window.parent.siteConfig.rubros;
+            } else if (window.siteConfig && window.siteConfig.rubros) {
+                rubrosList = window.siteConfig.rubros;
+            }
+        } catch (e) {
+            if (window.siteConfig && window.siteConfig.rubros) {
+                rubrosList = window.siteConfig.rubros;
+            }
+        }
+
+        if (rubrosList.length === 0) {
+            rubrosList = [{ id: 'carpinteria', name: 'Carpintería' }];
+        }
+
+        const visibleRubros = rubrosList.filter(r => r.visible !== false);
+
+        if (visibleRubros.length <= 1) {
+            container.classList.add('single-rubro');
+            container.innerHTML = '';
+            if (visibleRubros.length === 1) {
+                activeCatalogRubro = visibleRubros[0].id;
+            }
+            return;
+        } else {
+            container.classList.remove('single-rubro');
+        }
+
+        // Si el rubro seleccionado no está visible, volver al primero disponible
+        const activeStillVisible = visibleRubros.some(r => r.id === activeCatalogRubro);
+        if (!activeStillVisible && visibleRubros.length > 0) {
+            activeCatalogRubro = visibleRubros[0].id;
+        }
+
+        container.innerHTML = '';
+        visibleRubros.forEach(r => {
+            const isActive = r.id === activeCatalogRubro;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = isActive ? 'rubros-tab active' : 'rubros-tab';
+            
+            // Forzar ancho geométrico exacto por JS inline
+            const pct = (100 / visibleRubros.length).toFixed(4);
+            btn.style.width = pct + '%';
+            btn.style.flex = `0 0 ${pct}%`;
+
+            btn.innerHTML = r.name;
+            btn.addEventListener('click', () => {
+                activeCatalogRubro = r.id;
+                renderCatalogRubrosTabs();
+                loadProducts();
+                renderCatalogList(allProducts);
+            });
+            container.appendChild(btn);
+        });
+    }
+
     // 1. Cargar y procesar los productos
     function loadProducts() {
+        renderCatalogRubrosTabs();
+
         let parentProducts = null;
         try {
             if (window.parent && window.parent !== window && window.parent.sessionProducts) {
@@ -21,15 +90,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const sourceProducts = (parentProducts && parentProducts.length > 0)
             ? parentProducts
-            : ((typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0)
-                ? window.sessionProducts
-                : (typeof window.productsData !== 'undefined' ? window.productsData : []));
+            : ((typeof sessionProducts !== 'undefined' && sessionProducts.length > 0)
+                ? sessionProducts
+                : (typeof productsData !== 'undefined' ? productsData : []));
+
+        // Obtener rubros visibles para saber si filtramos
+        let rubrosList = [];
+        try {
+            if (window.parent && window.parent.siteConfig && window.parent.siteConfig.rubros) {
+                rubrosList = window.parent.siteConfig.rubros;
+            } else if (window.siteConfig && window.siteConfig.rubros) {
+                rubrosList = window.siteConfig.rubros;
+            }
+        } catch (e) {}
+        const visibleRubros = rubrosList.filter(r => r.visible !== false);
 
         const seenIds = new Set();
         allProducts = [];
 
         sourceProducts.forEach(category => {
-            if (category.visible === false) return;
+
+            // Filtrar por rubro si hay más de uno visible
+            if (visibleRubros.length > 1) {
+                const catRubro = category.rubro || 'carpinteria';
+                if (catRubro !== activeCatalogRubro) return;
+            }
+
             if (category.products) {
                 category.products.forEach(product => {
                     if (product.visible === false) return;
@@ -364,6 +450,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Exponer función de refresco para el parent
+    window.refreshCatalog = function() {
+        loadProducts();
+        renderCatalogList(allProducts);
+    };
 
     // Inicializar
     loadProducts();

@@ -57,10 +57,12 @@
 
     <!-- Cabecera removida para modo iframe -->
 
-    <div class="catalog-container">
+    <div class="catalog-container" style="padding: 0; display: flex; flex-direction: column;">
+        <!-- Tabs de Rubros para el Catálogo General A-Z -->
+        <div id="catalog-rubros-tabs-container" class="rubros-tabs-bar" style="margin-top: 0;"></div>
 
         <!-- Listado de Productos -->
-        <main id="catalog-list" class="catalog-list">
+        <main id="catalog-list" class="catalog-list" style="padding: 1rem;">
             <!-- Inyectado dinámicamente por js/catalogo.js -->
         </main>
 

@@ -708,6 +708,55 @@ button, .btn-primary, .btn-outline {
     scrollbar-width: none;
 }
 .filter-chips::-webkit-scrollbar { display: none; }
+#search-rubros-tabs-container::-webkit-scrollbar { display: none; }
+
+/* Barra de Rubros Plana y Minimalista por Secciones */
+.rubros-tabs-bar {
+    display: flex;
+    background: #F8FAFC;
+    border-bottom: 1.5px solid #E2E8F0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-bottom: 0.65rem;
+}
+.rubros-tabs-bar.single-rubro {
+    display: none !important;
+}
+
+.rubros-tabs-bar .rubros-tab {
+    flex: 1; /* Distribuye espacio por igual (50%, 33.3%, 25% etc) */
+    height: 38px;
+    padding: 0 10px;
+    background: transparent;
+    border: none;
+    border-right: 1px solid #E2E8F0;
+    border-radius: 0;
+    color: #475569;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.rubros-tabs-bar .rubros-tab:last-child {
+    border-right: none;
+}
+
+.rubros-tabs-bar .rubros-tab.active {
+    background: #FFFFFF;
+    color: var(--primary-color);
+    font-weight: 700;
+    border-top: 3px solid var(--primary-color);
+    padding-top: 0; /* Compensa la línea superior del active */
+}
+
 
 .chip {
     padding: 0.5rem 1rem;
@@ -1521,6 +1570,56 @@ button, .btn-primary, .btn-outline {
 .admin-empty-tree p {
     font-size: 0.9rem;
     line-height: 1.6;
+}
+
+/* ── Rubros Grouping in Admin Tree ── */
+.admin-rubro-group {
+    background: var(--surface-color, white);
+    border: 1px solid var(--border-color, #E2E8F0);
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+.admin-rubro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1.25rem;
+    background: color-mix(in srgb, var(--text-main) 3%, var(--surface-color, #F8FAFC));
+    border-bottom: 1px solid var(--border-color, #E2E8F0);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+.admin-rubro-header:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 4%, var(--surface-color, #F8FAFC));
+}
+.admin-rubro-header .rubro-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.admin-rubro-header .expand-arrow {
+    font-size: 20px;
+    color: var(--text-muted);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.admin-rubro-group.collapsed .expand-arrow {
+    transform: rotate(-90deg);
+}
+.admin-rubro-group.collapsed .admin-rubro-shelf-list {
+    display: none;
+}
+.admin-rubro-shelf-list {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-height: 40px; /* Soporte para drag & drop */
 }
 
 /* ━━━━━ CATEGORY SHELF ━━━━━ */
@@ -3716,6 +3815,40 @@ button, .btn-primary, .btn-outline {
     background: #FFFFFF;
     color: var(--primary-color);
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Sub-pestañas de Administración (Mayorista) */
+.admin-sub-tabs-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.25rem;
+    border-bottom: 1.5px solid #E2E8F0;
+    padding-bottom: 0.5rem;
+}
+
+.admin-sub-tab {
+    padding: 0.6rem 1.25rem;
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #64748B;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.admin-sub-tab:hover {
+    color: var(--primary-color);
+    background: #F1F5F9;
+}
+
+.admin-sub-tab.active {
+    background: var(--primary-color) !important;
+    color: #FFFFFF !important;
 }
 
 .admin-grid-form {
