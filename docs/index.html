@@ -1840,11 +1840,39 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js?v=7').then((registration) => {
-                    console.log('✅ ServiceWorker registration successful with scope: ', registration.scope);
-                }, (err) => {
-                    console.log('❌ ServiceWorker registration failed: ', err);
+                // Registramos sw.js directamente sin query strings
+                navigator.serviceWorker.register('./sw.js').then((registration) => {
+                    console.log('✅ ServiceWorker registrado con éxito:', registration.scope);
+
+                    // 1. Forzar búsqueda de actualizaciones al iniciar (cuando entra de cero)
+                    registration.update();
+
+                    // 2. Comprobar actualizaciones al regresar a la app (cambio de pestaña o desbloqueo del celu)
+                    document.addEventListener('visibilitychange', () => {
+                        if (document.visibilityState === 'visible') {
+                            registration.update();
+                            console.log('[PWA] App activa: comprobando actualizaciones en el servidor...');
+                        }
+                    });
+                }).catch((err) => {
+                    console.error('❌ Error registrando el ServiceWorker:', err);
                 });
+            });
+
+            // 3. Detectar cuando el nuevo Service Worker toma el control de la página (actualización completada)
+            let refreshing = false;
+            const hasController = !!navigator.serviceWorker.controller;
+
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                if (refreshing) return;
+                
+                // Si ya había un Service Worker activo controlando la página, significa que es una nueva versión.
+                // Recargamos la página silenciosamente para aplicar los cambios de catálogo y lógica.
+                if (hasController) {
+                    refreshing = true;
+                    console.log('[PWA] Nueva versión activada. Recargando página de forma silenciosa...');
+                    window.location.reload();
+                }
             });
         }
     </script>
