@@ -4278,14 +4278,7 @@ details.form-group[open] {
 }
 
 @media (min-width: 768px) {
-    /* Split into two columns ONLY when modal is medium or large AND we are on a desktop screen */
-    .modal-content.size-md .admin-form-columns,
-    .modal-content.size-lg .admin-form-columns {
-        display: grid !important;
-        grid-template-columns: 1fr 1.2fr !important; /* Slightly more space for finishes on the right */
-        gap: 1.5rem !important;
-        align-items: start !important;
-    }
+
 
     /* Selector de ancho del panel de administración en PC */
     .admin-width-selector {

@@ -1758,7 +1758,7 @@ window.initMayoristaAdmin = function() {
             try {
                 if (window.saveProductsToServer) {
                     await window.saveProductsToServer();
-                    alert('¡Precios y condiciones guardados correctamente!');
+                    alert('¡Precios guardados correctamente!');
                 } else {
                     alert('Error: No se encontró la función saveProductsToServer.');
                 }

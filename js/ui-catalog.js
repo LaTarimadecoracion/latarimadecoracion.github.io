@@ -314,14 +314,7 @@
         }
         
         detailDescription.textContent = product.description;
-        if (priceDisplay) {
-            if (product.price) {
-                priceDisplay.style.display = 'block';
-                priceDisplay.textContent = `Precio de Alquiler: ${product.price}`;
-            } else {
-                priceDisplay.style.display = 'none';
-            }
-        }
+        // El precio se actualizará dinámicamente en updateBuyButton según la variante seleccionada
 
         attrContainer.innerHTML = '';
 
@@ -347,17 +340,42 @@
             const optText = selOpt ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
             const optLabel = product.optional_variant?.label || '';
 
-            let parts = [`*${product.title}*`];
-            if (grupo.acabado_name && grupo.acabado_name !== 'Único') parts.push(`Acabado: ${grupo.acabado_name}`);
-            if (medidaName) parts.push(`Medida: ${medidaName}`);
-            if (optText && optLabel) parts.push(`${optLabel}: ${optText}`);
-
+            // Si es un alquiler
             if (categoryName === 'Alquileres' || product.primaryCatId === 'alquileres') {
                 const price = product.price || 'Consultar';
-                return `¡Hola La Tarima! Quiero consultar para alquilar: ${parts.join(', ')} (${price}). ¿Está disponible?`;
+                let parts = [`• Producto: *${product.title}*`];
+                if (grupo.acabado_name && grupo.acabado_name !== 'Único') parts.push(`• Acabado: ${grupo.acabado_name}`);
+                if (medidaName) parts.push(`• Medida: ${medidaName}`);
+                if (optText && optLabel) parts.push(`• ${optLabel}: ${optText}`);
+                parts.push(`• Precio: ${price}`);
+
+                return `¡Hola La Tarima! Quiero consultar para alquilar:\n\n${parts.join('\n')}\n\n¿Está disponible?`;
             }
 
-            return `¡Hola La Tarima! Quiero consultar por el producto: ${parts.join(', ')}. ¿Me podés pasar más info y disponibilidad?`;
+            // Si es un producto de venta
+            let parts = [`• Producto: *${product.title}*`];
+            if (grupo.acabado_name && grupo.acabado_name !== 'Único') {
+                parts.push(`• Acabado: ${grupo.acabado_name}`);
+            }
+            if (medidaName) {
+                parts.push(`• Medida: ${medidaName}`);
+            }
+            if (optText && optLabel) {
+                parts.push(`• ${optLabel}: ${optText}`);
+            }
+
+            // Buscar si la variante tiene un precio visible configurado
+            const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
+            if (activeVariant && activeVariant.showPrice === true && activeVariant.price !== undefined && activeVariant.price !== '') {
+                const formatter = new Intl.NumberFormat('es-AR', {
+                    style: 'currency',
+                    currency: 'ARS',
+                    minimumFractionDigits: 0
+                });
+                parts.push(`• Precio: ${formatter.format(activeVariant.price)}`);
+            }
+
+            return `¡Hola La Tarima! Quiero consultar por el siguiente producto:\n\n${parts.join('\n')}\n\n¿Me podés pasar más info y disponibilidad?`;
         }
 
         function updateBuyButton(grupo, medidaName) {
@@ -376,6 +394,12 @@
                         if (link) {
                             let linkLabel = variant.linkLabel || "Comprar con envío";
                             let iconType = variant.iconType || "local_shipping";
+
+                            const wrapper = document.createElement('div');
+                            wrapper.style.display = "flex";
+                            wrapper.style.flexDirection = "column";
+                            wrapper.style.gap = "4px";
+                            wrapper.style.width = "100%";
 
                             const btn = document.createElement('a');
                             btn.href = link;
@@ -400,7 +424,30 @@
                                 } catch (e) { /* Ignore */ }
                             };
                             
-                            container.appendChild(btn);
+                            // Leyenda por defecto según URL
+                            let legendText = (variant.legend || '').trim();
+                            if (!legendText) {
+                                const lLower = link.toLowerCase();
+                                if (lLower.includes('mercadolibre.com') || lLower.includes('ml.com') || lLower.includes('mpago.')) {
+                                    legendText = "Redirige a Mercado Libre (tarjeta, cuotas y envíos a todo el país)";
+                                } else if (lLower.includes('wa.me') || lLower.includes('whatsapp.com')) {
+                                    legendText = "Chateá con nosotros directamente por WhatsApp";
+                                } else {
+                                    legendText = "Redirige a plataforma de pago externa segura";
+                                }
+                            }
+
+                            const legendEl = document.createElement('span');
+                            legendEl.style.fontSize = "0.75rem";
+                            legendEl.style.color = "#64748B";
+                            legendEl.style.textAlign = "center";
+                            legendEl.style.marginTop = "2px";
+                            legendEl.style.fontStyle = "italic";
+                            legendEl.innerText = legendText;
+
+                            wrapper.appendChild(btn);
+                            wrapper.appendChild(legendEl);
+                            container.appendChild(wrapper);
                         }
                     });
                 }
@@ -411,6 +458,85 @@
                     container.style.display = 'flex';
                 }
             }
+
+            // Actualizar visualización de precio
+            if (priceDisplay) {
+                const isRental = categoryName === 'Alquileres' || product.primaryCatId === 'alquileres';
+                if (isRental) {
+                    if (product.price) {
+                        priceDisplay.style.display = 'block';
+                        priceDisplay.style.textAlign = 'right';
+                        priceDisplay.innerHTML = `<span style="font-size:0.9rem; color:#64748B; font-weight:500;">Precio de Alquiler:</span> <span style="font-size:1.6rem; font-weight:800; color:var(--primary-color);">${product.price}</span>`;
+                    } else {
+                        priceDisplay.style.display = 'none';
+                    }
+                } else {
+                    const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
+                    if (activeVariant && activeVariant.showPrice === true && activeVariant.price !== undefined && activeVariant.price !== '') {
+                        priceDisplay.style.display = 'flex';
+                        priceDisplay.style.justifyContent = 'flex-end';
+                        priceDisplay.style.alignItems = 'center';
+                        priceDisplay.style.gap = '8px';
+                        priceDisplay.style.position = 'relative';
+
+                        const formatter = new Intl.NumberFormat('es-AR', {
+                            style: 'currency',
+                            currency: 'ARS',
+                            minimumFractionDigits: 0
+                        });
+                        const formattedPrice = formatter.format(activeVariant.price);
+                        
+                        priceDisplay.innerHTML = `
+                            <span style="font-size:1.6rem; font-weight:800; color:var(--primary-color); line-height: 1.2;">${formattedPrice}</span>
+                            <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
+                                <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 4px;">help_outline</span>
+                                <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 250px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
+                                    Precio en efectivo/transferencia para retirar por el taller (no incluye impuestos ni envío).
+                                    <div style="position: absolute; top: 100%; right: 8px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid #1E293B;"></div>
+                                </div>
+                            </div>
+                        `;
+
+                        // Funcionalidad interactiva del tooltip (hover + click en móviles)
+                        const wrapper = priceDisplay.querySelector('.price-info-wrapper');
+                        const tooltip = priceDisplay.querySelector('.price-tooltip');
+                        const icon = priceDisplay.querySelector('.price-info-icon');
+
+                        if (wrapper && tooltip && icon) {
+                            const showTooltip = () => {
+                                icon.style.color = 'var(--primary-color)';
+                                tooltip.style.display = 'block';
+                                setTimeout(() => { tooltip.style.opacity = '1'; }, 10);
+                            };
+                            const hideTooltip = () => {
+                                icon.style.color = '#94A3B8';
+                                tooltip.style.opacity = '0';
+                                setTimeout(() => { tooltip.style.display = 'none'; }, 200);
+                            };
+
+                            wrapper.addEventListener('mouseenter', showTooltip);
+                            wrapper.addEventListener('mouseleave', hideTooltip);
+
+                            icon.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                const isVisible = tooltip.style.display === 'block' && tooltip.style.opacity === '1';
+                                if (isVisible) {
+                                    hideTooltip();
+                                } else {
+                                    showTooltip();
+                                }
+                            });
+
+                            document.addEventListener('click', () => {
+                                hideTooltip();
+                            });
+                        }
+                    } else {
+                        priceDisplay.style.display = 'none';
+                    }
+                }
+            }
+
             if (btnPickup) btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildWA(grupo, medidaName))}`;
         }
 

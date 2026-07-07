@@ -48,7 +48,7 @@
     }
 
     // Helper: Crear fila de Medida con soporte Drag & Drop y diseño horizontal amplio de igual medida
-    function createMedidaRow(groupId, medida = '', link = '', isDefault = false, isHidden = false, linkLabel = '', iconType = 'local_shipping', highlight = false, price = '', conditions = '') {
+    function createMedidaRow(groupId, medida = '', link = '', isDefault = false, isHidden = false, linkLabel = '', iconType = 'local_shipping', highlight = false, price = '', legend = '', showPrice = false) {
         const row = document.createElement('div');
         row.className = 'medida-admin-row';
         row.setAttribute('draggable', 'false'); // Deshabilitado por defecto, activado al tocar el handle
@@ -60,17 +60,27 @@
         row.dataset.linkLabel = linkLabel;
         row.dataset.iconType = iconType;
         row.dataset.highlight = highlight ? 'true' : 'false';
+        row.dataset.showPrice = showPrice ? 'true' : 'false';
 
         row.innerHTML = `
             <div class="medida-drag-handle" title="Mantén presionado para arrastrar y reordenar" style="display: flex; align-items: center; justify-content: center; cursor: grab; padding: 4px; flex-shrink: 0;">
                 <span class="material-symbols-outlined" style="font-size: 20px; color: var(--text-muted);">drag_indicator</span>
             </div>
             <input type="radio" name="default-medida-${groupId}" class="medida-default-radio" title="Marcar como variante por defecto" ${isDefault ? 'checked' : ''} style="margin: 0 0.25rem; cursor: pointer; accent-color: var(--primary-color); width: 1.2rem; height: 1.2rem; flex-shrink: 0;">
-            <div class="medida-inputs-container">
-                <input type="text" class="medida-valor" placeholder="Medida (ej: 140x45 cm)" value="${medida}" style="flex: 1 1 20%;">
-                <input type="text" class="medida-link" placeholder="Link de pago (vacío = WA)" value="${link}" style="flex: 1 1 35%;">
-                <input type="number" class="medida-precio" placeholder="Precio ($)" value="${price}" style="flex: 1 1 20%;" min="0">
-                <input type="text" class="medida-condiciones" placeholder="Condiciones (ej: A pedido)" value="${conditions}" style="flex: 1 1 25%;">
+            <div class="medida-inputs-container" style="flex-direction: column !important; gap: 6px !important; align-items: stretch !important;">
+                <div style="display: flex; gap: 10px; width: 100%; align-items: center;">
+                    <input type="text" class="medida-valor" placeholder="Medida (ej: 140x45 cm)" value="${medida}" style="flex: 30 !important; min-width: 0 !important; width: auto !important;">
+                    <input type="text" class="medida-link" placeholder="Link de pago (vacío = WA)" value="${link}" style="flex: 50 !important; min-width: 0 !important; width: auto !important;">
+                    <input type="number" class="medida-precio" placeholder="Precio ($)" value="${price}" style="flex: 20 !important; min-width: 0 !important; width: auto !important;" min="0">
+                    <button type="button" class="btn-toggle-price-visibility"
+                            style="background:none;border:none;cursor:pointer;color:${showPrice ? 'var(--primary-color)' : 'var(--text-muted)'};padding:0.4rem;display:flex;align-items:center;justify-content:center;flex: 0 0 auto !important; width: 32px !important; height: 32px !important;" 
+                            title="${showPrice ? 'Ocultar precio en catálogo' : 'Mostrar precio en catálogo'}">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">${showPrice ? 'visibility' : 'visibility_off'}</span>
+                    </button>
+                </div>
+                <div style="display: flex; width: 100%;">
+                    <input type="text" class="medida-leyenda" placeholder="Leyenda debajo del botón (ej: Envío gratis, vacío = automático)" value="${legend}" style="flex: 1 1 100%;">
+                </div>
             </div>
             <div class="medida-actions" style="display: flex; gap: 0.25rem; align-items: center; flex-shrink: 0;">
                 <button type="button" class="btn-toggle-medida-visibility"
@@ -105,6 +115,22 @@
                 row.style.textDecoration = 'line-through';
                 btnToggleVis.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px;">visibility_off</span>';
                 btnToggleVis.title = 'Mostrar link';
+            }
+        });
+
+        const btnTogglePriceVis = row.querySelector('.btn-toggle-price-visibility');
+        btnTogglePriceVis.addEventListener('click', () => {
+            const currentShowPrice = row.dataset.showPrice === 'true';
+            if (currentShowPrice) {
+                row.dataset.showPrice = 'false';
+                btnTogglePriceVis.querySelector('.material-symbols-outlined').textContent = 'visibility_off';
+                btnTogglePriceVis.style.color = 'var(--text-muted)';
+                btnTogglePriceVis.title = 'Mostrar precio en catálogo';
+            } else {
+                row.dataset.showPrice = 'true';
+                btnTogglePriceVis.querySelector('.material-symbols-outlined').textContent = 'visibility';
+                btnTogglePriceVis.style.color = 'var(--primary-color)';
+                btnTogglePriceVis.title = 'Ocultar precio en catálogo';
             }
         });
 
@@ -143,10 +169,11 @@
             const currentIcon = row.dataset.iconType;
             const currentHighlight = row.dataset.highlight === 'true';
             const currentPrice = row.querySelector('.medida-precio') ? row.querySelector('.medida-precio').value.trim() : '';
-            const currentConditions = row.querySelector('.medida-condiciones') ? row.querySelector('.medida-condiciones').value.trim() : '';
+            const currentLegend = row.querySelector('.medida-leyenda') ? row.querySelector('.medida-leyenda').value.trim() : '';
+            const currentShowPrice = row.dataset.showPrice === 'true';
             
             // Crear nueva fila clonada
-            const newRow = createMedidaRow(groupId, currentMedida, currentLink, false, currentHidden, currentLabel, currentIcon, currentHighlight, currentPrice, currentConditions);
+            const newRow = createMedidaRow(groupId, currentMedida, currentLink, false, currentHidden, currentLabel, currentIcon, currentHighlight, currentPrice, currentLegend, currentShowPrice);
             
             // Insertar exactamente debajo de la original en el DOM
             row.after(newRow);
@@ -566,7 +593,7 @@
 
         if (groupData && groupData.medidas_variants) {
             groupData.medidas_variants.forEach(m => {
-                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight, m.price !== undefined ? m.price : '', m.conditions !== undefined ? m.conditions : ''));
+                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight, m.price !== undefined ? m.price : '', m.legend !== undefined ? m.legend : '', m.showPrice !== undefined ? m.showPrice : false));
             });
             updateMedidaGroupColors(medidasContainer);
         }
@@ -793,7 +820,8 @@
                         iconType: row.dataset.iconType || 'local_shipping',
                         highlight: row.dataset.highlight === 'true',
                         price: priceVal !== '' ? parseFloat(priceVal) : '',
-                        conditions: row.querySelector('.medida-condiciones') ? row.querySelector('.medida-condiciones').value.trim() : ''
+                        legend: row.querySelector('.medida-leyenda') ? row.querySelector('.medida-leyenda').value.trim() : '',
+                        showPrice: row.dataset.showPrice === 'true'
                     };
                 }).filter(r => r.medida !== '');
 

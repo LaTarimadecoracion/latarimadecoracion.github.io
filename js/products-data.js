@@ -658,6 +658,380 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas"
+            },
+            {
+                "id": "baranda-desmontable-clasica",
+                "title": "Baranda desmontable Clásica",
+                "description": "Seguridad y comodidad superior para la cama de los más chicos.",
+                "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
+                "image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                        "images_list": [
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453680-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453830-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453980-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454194-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454360-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454504-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "200 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "190 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "180 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "140 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2102398740-baranda-de-seguridad-para-cama-infantil-adultos-140x45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-932165982-baranda-de-seguridad-para-cama-infantil-adultos-reforzada-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": true,
+                                "price": 27000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://www.google.com/",
+                                "default": false,
+                                "hidden": true,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1370369419-baranda-de-seguridad-para-cama-infantil-adultos-100x45cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1140300239-baranda-de-seguridad-para-cama-infantil-adultos-90x45-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1166496084-baranda-de-seguridad-para-cama-infantil-adultos-80x45cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "70 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1511557955-baranda-para-cama-desmontable-70-x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "60 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1372978437-baranda-de-seguridad-para-cama-infantil-adultos-60x45cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Barnizado",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                        "images_list": [
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454856-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455011-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455164-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455315-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455464-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455607-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2013955994-baranda-para-cama-barnizada-110-x-45-cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371339468-baranda-para-cama-barnizada-100-x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371261458-baranda-para-cama-barnizada-90x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371326668-baranda-para-cama-barnizada-80x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "70 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371404684-baranda-para-cama-barnizada-70x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "60 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371249088-baranda-para-cama-barnizada-60x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Blanca",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1780289706066-imagen.webp",
+                        "images_list": [
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706066-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706218-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706376-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706528-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706661-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706798-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455785-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1137924749-baranda-seguridad-para-cama-ninos-bebes-adultos-blanca-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228815130-baranda-para-cama-color-blanca-100-x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228698300-baranda-para-cama-color-blanca-90-x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228776168-baranda-para-cama-color-blanca-80-x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "70 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "60 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "baranda",
+                    "seguridad",
+                    "cama",
+                    "baranda para cama",
+                    "baranda de seguridad",
+                    "baranda para geriatrico",
+                    "baranda",
+                    "resistentes",
+                    "duras",
+                    "madera",
+                    "medidas",
+                    "amplias",
+                    "grandes"
+                ],
+                "last_modified": 1783393350475,
+                "optional_variant": {
+                    "label": "Espesor del tirante (opcional)",
+                    "options": [
+                        "1.8 cm",
+                        "1.9 cm",
+                        "2 cm",
+                        "2.1 cm",
+                        "2.2 cm",
+                        "2.3 cm",
+                        "2.4 cm",
+                        "2.5 cm",
+                        "2.6 cm",
+                        "2.7 cm",
+                        "2.8 cm",
+                        "2.9 cm",
+                        "3 cm",
+                        "3.1 cm",
+                        "3.2 cm",
+                        "3.3 cm",
+                        "3.4 cm",
+                        "3.5 cm",
+                        "Otras medidas"
+                    ]
+                },
+                "primaryCatId": "Barandas"
             }
         ]
     },
@@ -695,23 +1069,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 60000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -721,23 +1081,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "180 x 45 cm",
@@ -747,23 +1093,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -773,23 +1105,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -799,23 +1117,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": true,
-                                "btnColor": "#c0510a",
-                                "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "price": 27000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -825,23 +1129,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -851,23 +1141,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -877,23 +1153,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -903,23 +1165,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -929,23 +1177,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -955,23 +1189,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
@@ -997,10 +1217,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -1010,10 +1229,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1023,10 +1241,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1036,10 +1253,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1049,10 +1265,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1062,10 +1277,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
@@ -1091,10 +1305,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -1104,10 +1317,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1117,10 +1329,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1130,10 +1341,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1143,10 +1353,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1156,10 +1365,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "btnColor": "",
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
@@ -1180,7 +1388,7 @@ const productsData = [
                     "amplias",
                     "grandes"
                 ],
-                "last_modified": 1782535887973,
+                "last_modified": 1783393350475,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
