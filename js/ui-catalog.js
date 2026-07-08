@@ -934,7 +934,7 @@
 
                 divMedida.className = 'variant-selector-wrapper mt-1';
                 divMedida.innerHTML = `
-                    <label class="variant-label">📏 Medida</label>
+                    <label class="variant-label">📏 Medida / Variantes</label>
                     <select class="variant-select-cascade">
                         ${uniqueMedidas.map(name => `
                             <option value="${name}" ${name === defaultMedidaName ? 'selected' : ''}>${name}</option>

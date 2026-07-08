@@ -689,26 +689,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 60000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -720,26 +701,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 60000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -751,26 +713,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -782,26 +725,7 @@ const productsData = [
                                 "highlight": true,
                                 "price": 27000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -813,26 +737,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 27000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -844,26 +749,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 26000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -875,26 +761,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 25000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -906,26 +773,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 24000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -937,26 +785,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 23000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -984,26 +813,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -1015,26 +825,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1046,26 +837,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1077,26 +849,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1108,26 +861,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1139,26 +873,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -1178,7 +893,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "110 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1137924749-baranda-seguridad-para-cama-ninos-bebes-adultos-blanca-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -1186,30 +901,11 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228815130-baranda-para-cama-color-blanca-100-x-45-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -1217,30 +913,11 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228698300-baranda-para-cama-color-blanca-90-x-45-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -1248,30 +925,11 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228776168-baranda-para-cama-color-blanca-80-x-45-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -1279,30 +937,11 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -1310,30 +949,11 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -1341,26 +961,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -1381,7 +982,7 @@ const productsData = [
                     "amplias",
                     "grandes"
                 ],
-                "last_modified": 1783472130191,
+                "last_modified": 1783553872414,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -1501,6 +1102,375 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles"
+            },
+            {
+                "id": "perchero-1",
+                "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
+                "description": "Funcionalidad y elegancia para organizar tu entrada.",
+                "image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
+                        "images_list": [
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224140-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224273-imagen.webp",
+                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224400-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Unidad",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2015388606-perchero-de-pie-torneado-reforzado-8-ganchos-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783551671921,
+                "primaryCatId": "Interior"
+            },
+            {
+                "id": "banquito-de-plaza",
+                "title": "Banquito de Plaza",
+                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
+                "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                        "images_list": [
+                            "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/infantil/banquito-de-plaza/1782606557223-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Doble",
+                                "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783551854112,
+                "primaryCatId": "infantil"
+            },
+            {
+                "id": "baranda-sommier-clasica",
+                "title": "Baranda sommier Clásica",
+                "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
+                "image": "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
+                        "images_list": [
+                            "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
+                            "img/barandas-para-sommier/baranda-sommier-clasica/1780602269617-imagen.webp",
+                            "img/migrados/barandas/baranda-sommier-clasica/02.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "200 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 65000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "190 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 65000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "140 x 45 cm",
+                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-140x45-cm/up/MLAU3372086081?pdp_filters=item_id:MLA2277988838",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "130 x 45 cm",
+                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-130x45-cm/up/MLAU3372085021?pdp_filters=item_id:MLA2277685204",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-cama-universal-110-x-45-cm/up/MLAU3269858321#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=30&type=product&tracking_id=a22ec83d-c5e7-4dd1-aff8-61c0645d8dc4&wid=MLA1508195513&sid=search",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2277798420-baranda-de-seguridad-para-sommier-100x45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-90x45-cm/up/MLAU3378213128?pdp_filters=item_id:MLA2277798442",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-80x45-cm/up/MLAU3372077063?pdp_filters=item_id:MLA1516468901",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Barnizado",
+                        "cover_image": "img/migrados/barandas/baranda-sommier-clasica/01.webp",
+                        "images_list": [
+                            "img/migrados/barandas/baranda-sommier-clasica/01.webp",
+                            "img/migrados/barandas/baranda-sommier-clasica/02.webp",
+                            "img/migrados/barandas/baranda-sommier-clasica/03.webp",
+                            "img/migrados/barandas/baranda-sommier-clasica/04.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Blanca",
+                        "cover_image": "img/barandas-para-sommier/baranda-sommier-clasica/1780589141478-imagen.webp",
+                        "images_list": [
+                            "img/barandas-para-sommier/baranda-sommier-clasica/1780589141478-imagen.webp",
+                            "img/barandas-para-sommier/baranda-sommier-clasica/1780589141607-imagen.webp",
+                            "img/barandas-para-sommier/baranda-sommier-clasica/1780589141755-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783552725327,
+                "primaryCatId": "barandas-sommier"
+            },
+            {
+                "id": "baul-madera-mediano",
+                "title": "Baúl de madera de pino - Mediano",
+                "description": "",
+                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "100 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 50 x 50 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "60 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783553543093,
+                "primaryCatId": "infantil"
             }
         ]
     },
@@ -1540,26 +1510,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 60000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -1571,26 +1522,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 60000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -1602,26 +1534,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -1633,26 +1546,7 @@ const productsData = [
                                 "highlight": true,
                                 "price": 27000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -1664,26 +1558,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 27000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1695,26 +1570,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 26000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1726,26 +1582,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 25000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1757,26 +1594,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 24000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1788,26 +1606,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 23000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -1835,26 +1634,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -1866,26 +1646,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1897,26 +1658,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1928,26 +1670,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1959,26 +1682,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1990,26 +1694,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -2029,7 +1714,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "110 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1137924749-baranda-seguridad-para-cama-ninos-bebes-adultos-blanca-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -2037,30 +1722,11 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228815130-baranda-para-cama-color-blanca-100-x-45-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -2068,30 +1734,11 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228698300-baranda-para-cama-color-blanca-90-x-45-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -2099,30 +1746,11 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228776168-baranda-para-cama-color-blanca-80-x-45-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -2130,30 +1758,11 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -2161,30 +1770,11 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2228646150-baranda-para-cama-color-blanca-70-x-45-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -2192,26 +1782,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 50,
-                                        "discountPercent": 20
-                                    },
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 10
-                                    },
-                                    {
-                                        "minQty": 2,
-                                        "discountValue": 2000
-                                    }
-                                ]
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -2232,7 +1803,7 @@ const productsData = [
                     "amplias",
                     "grandes"
                 ],
-                "last_modified": 1783472130191,
+                "last_modified": 1783553872414,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -3060,132 +2631,103 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
+                                "medida": "200 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 65000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "190 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 65000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
                                 "medida": "140 x 45 cm",
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-140x45-cm/up/MLAU3372086081?pdp_filters=item_id:MLA2277988838",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "130 x 45 cm",
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-130x45-cm/up/MLAU3372085021?pdp_filters=item_id:MLA2277685204",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "110 x 45 cm",
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-cama-universal-110-x-45-cm/up/MLAU3269858321#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=30&type=product&tracking_id=a22ec83d-c5e7-4dd1-aff8-61c0645d8dc4&wid=MLA1508195513&sid=search",
                                 "default": true,
-                                "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2277798420-baranda-de-seguridad-para-sommier-100x45-cm-_JM",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-90x45-cm/up/MLAU3378213128?pdp_filters=item_id:MLA2277798442",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-80x45-cm/up/MLAU3372077063?pdp_filters=item_id:MLA1516468901",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
@@ -3201,35 +2743,52 @@ const productsData = [
                                 "medida": "110 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
                                 "default": true,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Blanca",
@@ -3244,39 +2803,57 @@ const productsData = [
                                 "medida": "110 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
                                 "default": true,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "last_modified": 1780602269740,
-                "views": 4
+                "tags": [],
+                "last_modified": 1783552725327,
+                "primaryCatId": "barandas-sommier"
             },
             {
                 "id": "baranda-sommier-triple",
@@ -4719,16 +4296,16 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782624224532,
+                "last_modified": 1783551671921,
                 "primaryCatId": "Interior"
             },
             {
@@ -4896,16 +4473,16 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 21000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 33000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782606557364,
+                "last_modified": 1783551854112,
                 "primaryCatId": "infantil"
             },
             {
@@ -5282,23 +4859,47 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "90 x 50 x 50 cm",
+                                "medida": "100 x 50 x 50 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 60000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 50 x 50 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "60 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782609484647,
+                "last_modified": 1783553543093,
                 "primaryCatId": "infantil"
             },
             {
@@ -5607,16 +5208,16 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 21000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 33000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782606557364,
+                "last_modified": 1783551854112,
                 "primaryCatId": "infantil"
             },
             {
@@ -6069,16 +5670,16 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782624224532,
+                "last_modified": 1783551671921,
                 "primaryCatId": "Interior"
             },
             {
@@ -6160,23 +5761,47 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "90 x 50 x 50 cm",
+                                "medida": "100 x 50 x 50 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 60000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 50 x 50 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "60 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782609484647,
+                "last_modified": 1783553543093,
                 "primaryCatId": "infantil"
             }
         ]
@@ -6238,16 +5863,16 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 21000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 33000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782606557364,
+                "last_modified": 1783551854112,
                 "primaryCatId": "infantil"
             },
             {
@@ -6297,23 +5922,47 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "90 x 50 x 50 cm",
+                                "medida": "100 x 50 x 50 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 60000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 50 x 50 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "60 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782609484647,
+                "last_modified": 1783553543093,
                 "primaryCatId": "infantil"
             }
         ]
@@ -6389,16 +6038,16 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782624224532,
+                "last_modified": 1783551671921,
                 "primaryCatId": "Interior"
             },
             {
@@ -6423,16 +6072,16 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 21000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 33000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782606557364,
+                "last_modified": 1783551854112,
                 "primaryCatId": "infantil"
             },
             {
@@ -6545,23 +6194,47 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "90 x 50 x 50 cm",
+                                "medida": "100 x 50 x 50 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 60000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 50 x 50 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "60 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782609484647,
+                "last_modified": 1783553543093,
                 "primaryCatId": "infantil"
             }
         ]
@@ -6594,16 +6267,16 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 21000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 33000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782606557364,
+                "last_modified": 1783551854112,
                 "primaryCatId": "infantil"
             },
             {
@@ -6790,23 +6463,47 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "90 x 50 x 50 cm",
+                                "medida": "100 x 50 x 50 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 60000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 50 x 50 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "60 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782609484647,
+                "last_modified": 1783553543093,
                 "primaryCatId": "infantil"
             }
         ]
@@ -7178,23 +6875,47 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "90 x 50 x 50 cm",
+                                "medida": "100 x 50 x 50 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "price": 60000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 50 x 50 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "60 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782609484647,
+                "last_modified": 1783553543093,
                 "primaryCatId": "infantil"
             }
         ],
