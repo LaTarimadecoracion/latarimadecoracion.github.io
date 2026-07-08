@@ -349,7 +349,7 @@ window.initPagesAdmin = function() {
     }
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error: ', err));
+            navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).catch(err => console.log('SW error: ', err));
         });
     }
     if (btnEnablePush) {

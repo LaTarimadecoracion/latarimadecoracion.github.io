@@ -1858,8 +1858,8 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                // Registramos sw.js directamente sin query strings
-                navigator.serviceWorker.register('./sw.js').then((registration) => {
+                // Registramos sw.js directamente sin query strings con updateViaCache: 'none'
+                navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then((registration) => {
                     console.log('✅ ServiceWorker registrado con éxito:', registration.scope);
 
                     // 1. Forzar búsqueda de actualizaciones al iniciar (cuando entra de cero)
@@ -1885,11 +1885,13 @@
                 if (refreshing) return;
                 
                 // Si ya había un Service Worker activo controlando la página, significa que es una nueva versión.
-                // Recargamos la página silenciosamente para aplicar los cambios de catálogo y lógica.
+                // Recargamos la página con un timestamp para evitar servir archivos viejos cacheantes.
                 if (hasController) {
                     refreshing = true;
-                    console.log('[PWA] Nueva versión activada. Recargando página de forma silenciosa...');
-                    window.location.reload();
+                    console.log('[PWA] Nueva versión activada. Recargando con bypass de caché...');
+                    const newUrl = new URL(window.location.href);
+                    newUrl.searchParams.set('u', Date.now().toString());
+                    window.location.replace(newUrl.toString());
                 }
             });
         }
