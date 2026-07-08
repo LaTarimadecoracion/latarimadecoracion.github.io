@@ -420,13 +420,38 @@
                 });
                 
                 const unitPrice = activeVariant.price;
-                const totalPrice = unitPrice * qtyVal;
                 
-                if (qtyVal > 1) {
-                    parts.push(`• Precio Unitario: ${formatter.format(unitPrice)}`);
-                    parts.push(`• Precio Total: ${formatter.format(totalPrice)}`);
+                // Buscar descuento por volumen aplicable
+                let discountPercent = 0;
+                let discountRule = null;
+                if (activeVariant.volumeDiscounts && Array.isArray(activeVariant.volumeDiscounts) && activeVariant.volumeDiscounts.length > 0) {
+                    const sortedRules = [...activeVariant.volumeDiscounts].sort((a, b) => b.minQty - a.minQty);
+                    for (const rule of sortedRules) {
+                        if (qtyVal >= rule.minQty) {
+                            discountRule = rule;
+                            discountPercent = rule.discountPercent;
+                            break;
+                        }
+                    }
+                }
+                
+                if (discountPercent > 0) {
+                    const discountedUnitPrice = unitPrice * (1 - discountPercent / 100);
+                    const totalPrice = discountedUnitPrice * qtyVal;
+                    const originalTotalPrice = unitPrice * qtyVal;
+                    
+                    parts.push(`• Precio Unitario (Lista): ${formatter.format(unitPrice)}`);
+                    parts.push(`• Descuento aplicado: ${discountPercent}% OFF (a partir de ${discountRule.minQty} un.)`);
+                    parts.push(`• Precio Unitario (c/desc): ${formatter.format(discountedUnitPrice)}`);
+                    parts.push(`• Precio Total: ${formatter.format(totalPrice)} (antes: ${formatter.format(originalTotalPrice)})`);
                 } else {
-                    parts.push(`• Precio: ${formatter.format(unitPrice)}`);
+                    const totalPrice = unitPrice * qtyVal;
+                    if (qtyVal > 1) {
+                        parts.push(`• Precio Unitario: ${formatter.format(unitPrice)}`);
+                        parts.push(`• Precio Total: ${formatter.format(totalPrice)}`);
+                    } else {
+                        parts.push(`• Precio: ${formatter.format(unitPrice)}`);
+                    }
                 }
             }
 
@@ -547,19 +572,60 @@
                         
                         const qtyValEl = document.getElementById('qty-value');
                         const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
-                        const totalPrice = activeVariant.price * qtyVal;
-                        const formattedPrice = formatter.format(totalPrice);
                         
-                        priceDisplay.innerHTML = `
-                            <span style="font-size:1.6rem; font-weight:800; color:var(--primary-color); line-height: 1.2;">${formattedPrice}</span>
-                            <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
-                                <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 4px;">help_outline</span>
-                                <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 250px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
-                                    Precio en efectivo/transferencia para retirar por el taller (no incluye impuestos ni envío).
-                                    <div style="position: absolute; top: 100%; right: 8px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid #1E293B;"></div>
+                        // Buscar descuento por volumen aplicable
+                        let discountPercent = 0;
+                        if (activeVariant.volumeDiscounts && Array.isArray(activeVariant.volumeDiscounts) && activeVariant.volumeDiscounts.length > 0) {
+                            const sortedRules = [...activeVariant.volumeDiscounts].sort((a, b) => b.minQty - a.minQty);
+                            for (const rule of sortedRules) {
+                                if (qtyVal >= rule.minQty) {
+                                    discountPercent = rule.discountPercent;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (discountPercent > 0) {
+                            const discountedUnitPrice = activeVariant.price * (1 - discountPercent / 100);
+                            const originalTotalPrice = activeVariant.price * qtyVal;
+                            const totalPrice = discountedUnitPrice * qtyVal;
+                            
+                            const formattedOriginalPrice = formatter.format(originalTotalPrice);
+                            const formattedTotalPrice = formatter.format(totalPrice);
+                            
+                            priceDisplay.innerHTML = `
+                                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                                    <div style="display: flex; align-items: center; gap: 6px;">
+                                        <span style="text-decoration: line-through; color: #94A3B8; font-size: 0.95rem; font-weight: 500;">${formattedOriginalPrice}</span>
+                                        <span style="background-color: #10B981; color: white; font-size: 0.72rem; font-weight: 700; padding: 2px 6px; border-radius: 12px; font-family: var(--font-main);">${discountPercent}% OFF</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 4px;">
+                                        <span style="font-size:1.6rem; font-weight:800; color:#10B981; line-height: 1.2;">${formattedTotalPrice}</span>
+                                        <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
+                                            <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 4px;">help_outline</span>
+                                            <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 250px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
+                                                Precio en efectivo/transferencia para retirar por el taller (no incluye impuestos ni envío).
+                                                <div style="position: absolute; top: 100%; right: 8px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid #1E293B;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        `;
+                            `;
+                        } else {
+                            const totalPrice = activeVariant.price * qtyVal;
+                            const formattedPrice = formatter.format(totalPrice);
+                            
+                            priceDisplay.innerHTML = `
+                                <span style="font-size:1.6rem; font-weight:800; color:var(--primary-color); line-height: 1.2;">${formattedPrice}</span>
+                                <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
+                                    <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 4px;">help_outline</span>
+                                    <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 250px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
+                                        Precio en efectivo/transferencia para retirar por el taller (no incluye impuestos ni envío).
+                                        <div style="position: absolute; top: 100%; right: 8px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid #1E293B;"></div>
+                                    </div>
+                                </div>
+                            `;
+                        }
 
                         // Funcionalidad interactiva del tooltip (hover + click en móviles)
                         const wrapper = priceDisplay.querySelector('.price-info-wrapper');
