@@ -689,7 +689,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 60000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -699,21 +699,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 60000,
                                 "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "180 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -723,9 +711,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -740,18 +728,6 @@ const productsData = [
                                 "showPrice": true
                             },
                             {
-                                "medida": "110 x 45 cm",
-                                "link": "https://www.google.com/",
-                                "default": false,
-                                "hidden": true,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1370369419-baranda-de-seguridad-para-cama-infantil-adultos-100x45cm-_JM",
                                 "default": false,
@@ -759,9 +735,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 27000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -771,9 +747,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 26000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -783,9 +759,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 25000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -795,9 +771,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 24000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -807,9 +783,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 23000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -835,9 +811,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -847,9 +823,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -859,9 +835,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -871,9 +847,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -883,9 +859,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -895,9 +871,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -923,9 +899,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -935,9 +911,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -947,9 +923,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -959,9 +935,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -971,9 +947,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -983,9 +959,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -1006,7 +982,7 @@ const productsData = [
                     "amplias",
                     "grandes"
                 ],
-                "last_modified": 1783393350475,
+                "last_modified": 1783472130191,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -1071,7 +1047,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 60000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -1081,21 +1057,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 60000,
                                 "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "180 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -1105,9 +1069,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -1122,18 +1086,6 @@ const productsData = [
                                 "showPrice": true
                             },
                             {
-                                "medida": "110 x 45 cm",
-                                "link": "https://www.google.com/",
-                                "default": false,
-                                "hidden": true,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
                                 "medida": "100 x 45 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1370369419-baranda-de-seguridad-para-cama-infantil-adultos-100x45cm-_JM",
                                 "default": false,
@@ -1141,9 +1093,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 27000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1153,9 +1105,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 26000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1165,9 +1117,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 25000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1177,9 +1129,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 24000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1189,9 +1141,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 23000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -1217,9 +1169,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -1229,9 +1181,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1241,9 +1193,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1253,9 +1205,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1265,9 +1217,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1277,9 +1229,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -1305,9 +1257,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -1317,9 +1269,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1329,9 +1281,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1341,9 +1293,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1353,9 +1305,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1365,9 +1317,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -1388,7 +1340,7 @@ const productsData = [
                     "amplias",
                     "grandes"
                 ],
-                "last_modified": 1783393350475,
+                "last_modified": 1783472130191,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [

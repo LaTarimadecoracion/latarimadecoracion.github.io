@@ -320,11 +320,21 @@
 
         // Contenedores internos para selectores
         const divAcabado = document.createElement('div');
+        const divSelectorsRow = document.createElement('div');
+        divSelectorsRow.className = 'selectors-row';
         const divMedida = document.createElement('div');
         const divOpt = document.createElement('div');
+        
         attrContainer.appendChild(divAcabado);
-        attrContainer.appendChild(divMedida);
-        attrContainer.appendChild(divOpt);
+        attrContainer.appendChild(divSelectorsRow);
+        divSelectorsRow.appendChild(divMedida);
+        divSelectorsRow.appendChild(divOpt);
+
+        // Resetear la cantidad a 1
+        const qtyValEl = document.getElementById('qty-value');
+        if (qtyValEl) {
+            qtyValEl.textContent = '1';
+        }
 
         let initialGroupIndex = 0;
         if (preselectedAcabado && grupos.length > 0) {
@@ -335,10 +345,42 @@
         }
         let currentGroupIndex = initialGroupIndex;
 
+        // Configurar los botones de cantidad
+        const btnMinus = document.getElementById('btn-qty-minus');
+        const btnPlus = document.getElementById('btn-qty-plus');
+        if (btnMinus && btnPlus && qtyValEl) {
+            btnMinus.onclick = (e) => {
+                e.preventDefault();
+                let qty = parseInt(qtyValEl.textContent || '1');
+                if (qty > 1) {
+                    qty--;
+                    qtyValEl.textContent = qty;
+                    // Actualizar precio y link de WhatsApp
+                    const selMedida = divMedida.querySelector('select');
+                    const mName = selMedida ? selMedida.value : '';
+                    updateBuyButton(grupos[currentGroupIndex], mName);
+                }
+            };
+            btnPlus.onclick = (e) => {
+                e.preventDefault();
+                let qty = parseInt(qtyValEl.textContent || '1');
+                qty++;
+                qtyValEl.textContent = qty;
+                // Actualizar precio y link de WhatsApp
+                const selMedida = divMedida.querySelector('select');
+                const mName = selMedida ? selMedida.value : '';
+                updateBuyButton(grupos[currentGroupIndex], mName);
+            };
+        }
+
+
         function buildWA(grupo, medidaName) {
             const selOpt = divOpt.querySelector('select');
             const optText = selOpt ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
             const optLabel = product.optional_variant?.label || '';
+
+            const qtyValEl = document.getElementById('qty-value');
+            const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
 
             // Si es un alquiler
             if (categoryName === 'Alquileres' || product.primaryCatId === 'alquileres') {
@@ -347,6 +389,7 @@
                 if (grupo.acabado_name && grupo.acabado_name !== 'Único') parts.push(`• Acabado: ${grupo.acabado_name}`);
                 if (medidaName) parts.push(`• Medida: ${medidaName}`);
                 if (optText && optLabel) parts.push(`• ${optLabel}: ${optText}`);
+                if (qtyVal > 1) parts.push(`• Cantidad: ${qtyVal}`);
                 parts.push(`• Precio: ${price}`);
 
                 return `¡Hola La Tarima! Quiero consultar para alquilar:\n\n${parts.join('\n')}\n\n¿Está disponible?`;
@@ -363,6 +406,9 @@
             if (optText && optLabel) {
                 parts.push(`• ${optLabel}: ${optText}`);
             }
+            if (qtyVal > 1) {
+                parts.push(`• Cantidad: ${qtyVal}`);
+            }
 
             // Buscar si la variante tiene un precio visible configurado
             const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
@@ -372,7 +418,16 @@
                     currency: 'ARS',
                     minimumFractionDigits: 0
                 });
-                parts.push(`• Precio: ${formatter.format(activeVariant.price)}`);
+                
+                const unitPrice = activeVariant.price;
+                const totalPrice = unitPrice * qtyVal;
+                
+                if (qtyVal > 1) {
+                    parts.push(`• Precio Unitario: ${formatter.format(unitPrice)}`);
+                    parts.push(`• Precio Total: ${formatter.format(totalPrice)}`);
+                } else {
+                    parts.push(`• Precio: ${formatter.format(unitPrice)}`);
+                }
             }
 
             return `¡Hola La Tarima! Quiero consultar por el siguiente producto:\n\n${parts.join('\n')}\n\n¿Me podés pasar más info y disponibilidad?`;
@@ -462,13 +517,17 @@
             // Actualizar visualización de precio
             if (priceDisplay) {
                 const isRental = categoryName === 'Alquileres' || product.primaryCatId === 'alquileres';
+                const rowEl = priceDisplay.closest('.price-quantity-row');
+                
                 if (isRental) {
                     if (product.price) {
                         priceDisplay.style.display = 'block';
                         priceDisplay.style.textAlign = 'right';
                         priceDisplay.innerHTML = `<span style="font-size:0.9rem; color:#64748B; font-weight:500;">Precio de Alquiler:</span> <span style="font-size:1.6rem; font-weight:800; color:var(--primary-color);">${product.price}</span>`;
+                        if (rowEl) rowEl.style.display = 'flex';
                     } else {
                         priceDisplay.style.display = 'none';
+                        if (rowEl) rowEl.style.display = 'none';
                     }
                 } else {
                     const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
@@ -478,13 +537,18 @@
                         priceDisplay.style.alignItems = 'center';
                         priceDisplay.style.gap = '8px';
                         priceDisplay.style.position = 'relative';
+                        if (rowEl) rowEl.style.display = 'flex';
 
                         const formatter = new Intl.NumberFormat('es-AR', {
                             style: 'currency',
                             currency: 'ARS',
                             minimumFractionDigits: 0
                         });
-                        const formattedPrice = formatter.format(activeVariant.price);
+                        
+                        const qtyValEl = document.getElementById('qty-value');
+                        const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
+                        const totalPrice = activeVariant.price * qtyVal;
+                        const formattedPrice = formatter.format(totalPrice);
                         
                         priceDisplay.innerHTML = `
                             <span style="font-size:1.6rem; font-weight:800; color:var(--primary-color); line-height: 1.2;">${formattedPrice}</span>
@@ -533,6 +597,7 @@
                         }
                     } else {
                         priceDisplay.style.display = 'none';
+                        if (rowEl) rowEl.style.display = 'none';
                     }
                 }
             }
@@ -799,11 +864,14 @@
                         `).join('')}
                     </select>
                 `;
+                divMedida.style.display = 'block';
                 divMedida.querySelector('select').addEventListener('change', (e) => {
                     updateBuyButton(grupo, e.target.value);
                     updateFavState();
                     updateUrlWithVariants();
                 });
+            } else {
+                divMedida.style.display = 'none';
             }
 
             // Initial button update for this group
@@ -869,6 +937,7 @@
                     `).join('')}
                 </select>
             `;
+            divOpt.style.display = 'block';
             divOpt.querySelector('select').addEventListener('change', () => {
                 const selMedida = divMedida.querySelector('select');
                 const sName = selMedida ? selMedida.value : '';
@@ -876,6 +945,9 @@
                 updateFavState();
                 updateUrlWithVariants();
             });
+        } else {
+            divOpt.innerHTML = '';
+            divOpt.style.display = 'none';
         }
 
         // Initialize view with preselected group index
