@@ -1432,7 +1432,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 55000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 150 a 200 cm",
@@ -1444,7 +1444,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 50000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Inclinada 100 a 150 cm",
@@ -1456,7 +1456,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 100 a 150 cm",
@@ -1468,7 +1468,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Inclinada 0 a 100 cm",
@@ -1480,7 +1480,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 35000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 0 a 100 cm",
@@ -1492,14 +1492,14 @@ const productsData = [
                                 "highlight": false,
                                 "price": 30000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783477753839,
+                "last_modified": 1783477948902,
                 "primaryCatId": "muebles"
             }
         ]
@@ -3581,7 +3581,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 55000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 150 a 200 cm",
@@ -3593,7 +3593,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 50000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Inclinada 100 a 150 cm",
@@ -3605,7 +3605,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 100 a 150 cm",
@@ -3617,7 +3617,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Inclinada 0 a 100 cm",
@@ -3629,7 +3629,7 @@ const productsData = [
                                 "highlight": false,
                                 "price": 35000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 0 a 100 cm",
@@ -3641,14 +3641,14 @@ const productsData = [
                                 "highlight": false,
                                 "price": 30000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783477753839,
+                "last_modified": 1783477948902,
                 "primaryCatId": "muebles"
             },
             {
