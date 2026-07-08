@@ -689,7 +689,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 60000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -701,7 +716,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 60000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -713,7 +743,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -725,7 +770,22 @@ const productsData = [
                                 "highlight": true,
                                 "price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -737,7 +797,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -749,7 +824,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 26000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -761,7 +851,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -773,7 +878,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 24000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -785,7 +905,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 23000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -813,7 +948,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -825,7 +975,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -837,7 +1002,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -849,7 +1029,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -861,7 +1056,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -873,7 +1083,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -901,7 +1126,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -913,7 +1153,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -925,7 +1180,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -937,7 +1207,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -949,7 +1234,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -961,7 +1261,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -1047,7 +1362,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 60000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -1059,7 +1389,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 60000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -1071,7 +1416,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -1083,7 +1443,22 @@ const productsData = [
                                 "highlight": true,
                                 "price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -1095,7 +1470,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1107,7 +1497,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 26000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1119,7 +1524,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1131,7 +1551,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 24000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1143,7 +1578,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 23000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -1171,7 +1621,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -1183,7 +1648,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1195,7 +1675,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1207,7 +1702,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1219,7 +1729,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1231,7 +1756,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -1259,7 +1799,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -1271,7 +1826,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -1283,7 +1853,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -1295,7 +1880,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -1307,7 +1907,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -1319,7 +1934,22 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 50,
+                                        "discountPercent": 20
+                                    },
+                                    {
+                                        "minQty": 30,
+                                        "discountPercent": 15
+                                    },
+                                    {
+                                        "minQty": 20,
+                                        "discountPercent": 10
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
