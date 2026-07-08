@@ -51,6 +51,11 @@ body.theme-mundial {
     --shadow-md: 0 8px 24px rgba(74, 144, 226, 0.06);
 }
 
+/* Borde inferior celeste sutil para la cabecera mundialista */
+body.theme-mundial .main-header-bar {
+    border-bottom: 1px solid rgba(74, 144, 226, 0.25);
+}
+
 /* Navidad (Crimson and Sage) */
 body.theme-navidad {
     --primary-color: #A62626; /* Rojo carmesí festivo */
@@ -362,6 +367,96 @@ button, .btn-primary, .btn-outline {
         -1.5px  1.5px 0 #fff,
          1.5px  1.5px 0 #fff,
          0px 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Copa mundialista: 3 estrellas doradas de Argentina debajo del título de cabecera */
+body.theme-mundial .brand-title::after {
+    content: "★★★";
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1;
+    margin: 3px auto 0 auto;
+    letter-spacing: 2.5px;
+    color: var(--accent-color, #D4AF37);
+    text-shadow: none; /* Evitamos la sombra blanca del título principal en las estrellas */
+    font-family: Arial, sans-serif;
+    animation: stars-neon-heartbeat 2.2s infinite ease-in-out;
+}
+
+@keyframes stars-neon-heartbeat {
+    0%, 100% {
+        opacity: 0.8;
+        text-shadow: 0 0 2px rgba(212, 175, 55, 0.7), 0 0 4px rgba(74, 144, 226, 0.5);
+    }
+    14% {
+        opacity: 1;
+        text-shadow: 0 0 4px #D4AF37, 0 0 8px #4A90E2, 0 0 12px rgba(74, 144, 226, 0.7);
+    }
+    28% {
+        opacity: 0.85;
+        text-shadow: 0 0 3px rgba(212, 175, 55, 0.8), 0 0 6px rgba(74, 144, 226, 0.6);
+    }
+    42% {
+        opacity: 1;
+        text-shadow: 0 0 5px #D4AF37, 0 0 10px #4A90E2, 0 0 15px rgba(74, 144, 226, 0.8);
+    }
+    70% {
+        opacity: 0.8;
+        text-shadow: 0 0 2px rgba(212, 175, 55, 0.7), 0 0 4px rgba(74, 144, 226, 0.5);
+    }
+}
+
+/* Neon latente estilo latido de corazón en el título mundialista */
+body.theme-mundial .brand-title {
+    animation: title-neon-heartbeat 2.2s infinite ease-in-out;
+}
+
+@keyframes title-neon-heartbeat {
+    0%, 100% {
+        text-shadow: 
+            -1px -1px 0 #fff,
+             1px -1px 0 #fff,
+            -1px  1px 0 #fff,
+             1px  1px 0 #fff,
+             0 0 4px rgba(74, 144, 226, 0.4);
+    }
+    14% {
+        text-shadow: 
+            -1px -1px 0 #fff,
+             1px -1px 0 #fff,
+            -1px  1px 0 #fff,
+             1px  1px 0 #fff,
+             0 0 10px rgba(74, 144, 226, 0.85),
+             0 0 20px rgba(74, 144, 226, 0.5),
+             0 0 8px rgba(212, 175, 55, 0.4);
+    }
+    28% {
+        text-shadow: 
+            -1px -1px 0 #fff,
+             1px -1px 0 #fff,
+            -1px  1px 0 #fff,
+             1px  1px 0 #fff,
+             0 0 6px rgba(74, 144, 226, 0.5),
+             0 0 12px rgba(74, 144, 226, 0.25);
+    }
+    42% {
+        text-shadow: 
+            -1px -1px 0 #fff,
+             1px -1px 0 #fff,
+            -1px  1px 0 #fff,
+             1px  1px 0 #fff,
+             0 0 12px rgba(74, 144, 226, 0.95),
+             0 0 24px rgba(74, 144, 226, 0.6),
+             0 0 12px rgba(212, 175, 55, 0.5);
+    }
+    70% {
+        text-shadow: 
+            -1px -1px 0 #fff,
+             1px -1px 0 #fff,
+            -1px  1px 0 #fff,
+             1px  1px 0 #fff,
+             0 0 4px rgba(74, 144, 226, 0.4);
+    }
 }
 
 .brand-subtitle {
