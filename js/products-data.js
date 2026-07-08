@@ -703,6 +703,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -730,6 +734,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -757,6 +765,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -784,6 +796,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -811,6 +827,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -838,6 +858,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -865,6 +889,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -892,6 +920,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -919,6 +951,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             }
@@ -962,6 +998,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -989,6 +1029,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1016,6 +1060,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1043,6 +1091,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1070,6 +1122,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1097,6 +1153,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             }
@@ -1140,6 +1200,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1167,6 +1231,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1194,6 +1262,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1221,6 +1293,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1248,6 +1324,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1275,6 +1355,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             }
@@ -1323,6 +1407,100 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas"
+            },
+            {
+                "id": "escaleras",
+                "title": "Escaleras para cama",
+                "description": "Seguridad y firmeza absoluta para alcanzar cada nivel.",
+                "image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                        "images_list": [
+                            "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                            "img/escaleras/escaleras-para-cama/1780288089987-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Inclinada 150 a 200 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Vertical 150 a 200 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Inclinada 100 a 150 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Vertical 100 a 150 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Inclinada 0 a 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Vertical 0 a 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783477753839,
+                "primaryCatId": "muebles"
             }
         ]
     },
@@ -1376,6 +1554,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1403,6 +1585,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1430,6 +1616,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1457,6 +1647,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1484,6 +1678,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1511,6 +1709,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1538,6 +1740,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1565,6 +1771,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1592,6 +1802,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             }
@@ -1635,6 +1849,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1662,6 +1880,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1689,6 +1911,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1716,6 +1942,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1743,6 +1973,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1770,6 +2004,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             }
@@ -1813,6 +2051,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1840,6 +2082,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1867,6 +2113,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1894,6 +2144,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1921,6 +2175,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             },
@@ -1948,6 +2206,10 @@ const productsData = [
                                     {
                                         "minQty": 20,
                                         "discountPercent": 10
+                                    },
+                                    {
+                                        "minQty": 2,
+                                        "discountValue": 2000
                                     }
                                 ]
                             }
@@ -3310,41 +3572,84 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "150 a 200 cm",
+                                "medida": "Inclinada 150 a 200 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Vertical 150 a 200 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Inclinada 100 a 150 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Vertical 100 a 150 cm",
                                 "link": "",
                                 "default": true,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
-                                "medida": "110 a 150 cm",
+                                "medida": "Inclinada 0 a 100 cm",
                                 "link": "",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
-                                "medida": "60 a 100 cm",
+                                "medida": "Vertical 0 a 100 cm",
                                 "link": "",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "0 a 60 cm",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 0
+                "tags": [],
+                "last_modified": 1783477753839,
+                "primaryCatId": "muebles"
             },
             {
                 "id": "escalera-altillo",

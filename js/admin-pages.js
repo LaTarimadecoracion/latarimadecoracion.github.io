@@ -1286,9 +1286,10 @@ window.initMayoristaAdmin = function() {
             currentDiscountRules.forEach((rule, index) => {
                 const tr = document.createElement('tr');
                 tr.style.borderBottom = '1px solid #E2E8F0';
+                const discountText = rule.discountPercent !== undefined ? `${rule.discountPercent}%` : `$${rule.discountValue}`;
                 tr.innerHTML = `
                     <td style="padding: 8px;">${rule.minQty} un.</td>
-                    <td style="padding: 8px;">${rule.discountPercent}%</td>
+                    <td style="padding: 8px;">${discountText}</td>
                     <td style="padding: 8px; text-align: right;">
                         <button type="button" class="btn-del-vol-rule" data-index="${index}" style="background: none; border: none; color: #EF4444; cursor: pointer; font-size: 1.1rem;">&times;</button>
                     </td>
@@ -1307,11 +1308,55 @@ window.initMayoristaAdmin = function() {
     }
 
     if (volCloseBtn && volSaveBtn && btnAddVolRule) {
+        // Selector de tipo y etiqueta dinámica
+        const selectType = document.getElementById('vol-discount-type');
+        const lblValue = document.getElementById('lbl-vol-value');
+        if (selectType && lblValue) {
+            selectType.addEventListener('change', () => {
+                if (selectType.value === 'percent') {
+                    lblValue.textContent = 'Descuento (%)';
+                    inputVolPct.placeholder = 'Ej: 15';
+                    inputVolPct.max = '99';
+                } else {
+                    lblValue.textContent = 'Descuento ($)';
+                    inputVolPct.placeholder = 'Ej: 2000';
+                    inputVolPct.removeAttribute('max');
+                }
+            });
+        }
+
         volCloseBtn.addEventListener('click', () => {
             volModal.style.display = 'none';
         });
 
         volSaveBtn.addEventListener('click', () => {
+            // Auto-agregar si el usuario escribió datos pero olvidó presionar "Agregar"
+            const minQty = parseInt(inputVolMin.value);
+            const val = parseInt(inputVolPct.value);
+            const type = selectType ? selectType.value : 'percent';
+
+            if (!isNaN(minQty) && !isNaN(val) && minQty >= 2 && val >= 1) {
+                if (type === 'percent' && val <= 99) {
+                    const existingIndex = currentDiscountRules.findIndex(r => r.minQty === minQty);
+                    if (existingIndex >= 0) {
+                        delete currentDiscountRules[existingIndex].discountPercent;
+                        delete currentDiscountRules[existingIndex].discountValue;
+                        currentDiscountRules[existingIndex].discountPercent = val;
+                    } else {
+                        currentDiscountRules.push({ minQty, discountPercent: val });
+                    }
+                } else if (type === 'fixed') {
+                    const existingIndex = currentDiscountRules.findIndex(r => r.minQty === minQty);
+                    if (existingIndex >= 0) {
+                        delete currentDiscountRules[existingIndex].discountPercent;
+                        delete currentDiscountRules[existingIndex].discountValue;
+                        currentDiscountRules[existingIndex].discountValue = val;
+                    } else {
+                        currentDiscountRules.push({ minQty, discountValue: val });
+                    }
+                }
+            }
+
             if (currentDiscountInputs && currentDiscountInputs.length > 0) {
                 currentDiscountInputs.forEach(input => {
                     input.value = JSON.stringify(currentDiscountRules);
@@ -1322,17 +1367,38 @@ window.initMayoristaAdmin = function() {
 
         btnAddVolRule.addEventListener('click', () => {
             const minQty = parseInt(inputVolMin.value);
-            const discountPct = parseInt(inputVolPct.value);
-            if (isNaN(minQty) || isNaN(discountPct) || minQty < 2 || discountPct < 1 || discountPct > 99) {
-                alert('Ingrese valores válidos (Mínimo 2 unidades, Descuento entre 1% y 99%)');
-                return;
+            const val = parseInt(inputVolPct.value);
+            const type = selectType ? selectType.value : 'percent';
+
+            if (type === 'percent') {
+                if (isNaN(minQty) || isNaN(val) || minQty < 2 || val < 1 || val > 99) {
+                    alert('Ingrese valores válidos (Mínimo 2 unidades, Descuento entre 1% y 99%)');
+                    return;
+                }
+            } else {
+                if (isNaN(minQty) || isNaN(val) || minQty < 2 || val < 1) {
+                    alert('Ingrese valores válidos (Mínimo 2 unidades, Monto mayor a 0)');
+                    return;
+                }
             }
+
             // Evitar duplicados de cantidad mínima
             const existingIndex = currentDiscountRules.findIndex(r => r.minQty === minQty);
             if (existingIndex >= 0) {
-                currentDiscountRules[existingIndex].discountPercent = discountPct;
+                // Limpiar llaves anteriores para evitar conflictos de tipo
+                delete currentDiscountRules[existingIndex].discountPercent;
+                delete currentDiscountRules[existingIndex].discountValue;
+                if (type === 'percent') {
+                    currentDiscountRules[existingIndex].discountPercent = val;
+                } else {
+                    currentDiscountRules[existingIndex].discountValue = val;
+                }
             } else {
-                currentDiscountRules.push({ minQty, discountPercent: discountPct });
+                if (type === 'percent') {
+                    currentDiscountRules.push({ minQty, discountPercent: val });
+                } else {
+                    currentDiscountRules.push({ minQty, discountValue: val });
+                }
             }
             inputVolMin.value = '';
             inputVolPct.value = '';
@@ -1356,6 +1422,16 @@ window.initMayoristaAdmin = function() {
         
         inputVolMin.value = '';
         inputVolPct.value = '';
+
+        const selectType = document.getElementById('vol-discount-type');
+        const lblValue = document.getElementById('lbl-vol-value');
+        if (selectType && lblValue) {
+            selectType.value = 'percent';
+            lblValue.textContent = 'Descuento (%)';
+            inputVolPct.placeholder = 'Ej: 15';
+            inputVolPct.max = '99';
+        }
+        
         renderVolRules();
         volModal.style.display = 'flex';
     }

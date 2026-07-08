@@ -1726,16 +1726,23 @@
                 <button type="button" id="btn-close-volume-modal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748B;">&times;</button>
             </div>
             <div class="modal-body" style="padding: 1.5rem;">
-                <div style="display: flex; gap: 1rem; align-items: flex-end; margin-bottom: 1.5rem;">
-                    <div style="flex: 1;">
-                        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Cantidad Mínima</label>
+                <div style="display: flex; gap: 1rem; align-items: flex-end; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 90px;">
+                        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Cant. Mínima</label>
                         <input type="number" id="vol-min-qty" min="2" style="width: 100%; padding: 8px; border: 1px solid #CBD5E1; border-radius: 6px;" placeholder="Ej: 10">
                     </div>
-                    <div style="flex: 1;">
-                        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Descuento (%)</label>
+                    <div style="flex: 1; min-width: 120px;">
+                        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Tipo Descuento</label>
+                        <select id="vol-discount-type" style="width: 100%; padding: 8px; border: 1px solid #CBD5E1; border-radius: 6px; background: white; height: 38px;">
+                            <option value="percent">Porcentaje (%)</option>
+                            <option value="fixed">Monto Fijo ($)</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1; min-width: 90px;">
+                        <label id="lbl-vol-value" style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Descuento (%)</label>
                         <input type="number" id="vol-discount-pct" min="1" max="99" style="width: 100%; padding: 8px; border: 1px solid #CBD5E1; border-radius: 6px;" placeholder="Ej: 15">
                     </div>
-                    <button type="button" id="btn-add-vol-rule" style="padding: 8px 16px; background: #0F172A; color: white; border: none; border-radius: 6px; cursor: pointer;">Agregar</button>
+                    <button type="button" id="btn-add-vol-rule" style="padding: 8px 16px; background: #0F172A; color: white; border: none; border-radius: 6px; cursor: pointer; height: 38px;">Agregar</button>
                 </div>
                 
                 <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">

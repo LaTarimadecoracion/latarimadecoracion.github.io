@@ -575,29 +575,40 @@
                         
                         // Buscar descuento por volumen aplicable
                         let discountPercent = 0;
+                        let discountValue = 0;
+                        let totalDiscountAmount = 0;
+                        let discountRule = null;
+                        
                         if (activeVariant.volumeDiscounts && Array.isArray(activeVariant.volumeDiscounts) && activeVariant.volumeDiscounts.length > 0) {
                             const sortedRules = [...activeVariant.volumeDiscounts].sort((a, b) => b.minQty - a.minQty);
                             for (const rule of sortedRules) {
                                 if (qtyVal >= rule.minQty) {
-                                    discountPercent = rule.discountPercent;
+                                    discountRule = rule;
+                                    if (rule.discountPercent !== undefined) {
+                                        discountPercent = rule.discountPercent;
+                                        totalDiscountAmount = (activeVariant.price * qtyVal) * (discountPercent / 100);
+                                    } else if (rule.discountValue !== undefined) {
+                                        discountValue = rule.discountValue;
+                                        totalDiscountAmount = Math.floor(qtyVal / rule.minQty) * discountValue;
+                                    }
                                     break;
                                 }
                             }
                         }
 
-                        if (discountPercent > 0) {
-                            const discountedUnitPrice = activeVariant.price * (1 - discountPercent / 100);
+                        if (totalDiscountAmount > 0) {
                             const originalTotalPrice = activeVariant.price * qtyVal;
-                            const totalPrice = discountedUnitPrice * qtyVal;
+                            const totalPrice = originalTotalPrice - totalDiscountAmount;
                             
                             const formattedOriginalPrice = formatter.format(originalTotalPrice);
                             const formattedTotalPrice = formatter.format(totalPrice);
+                            const badgeText = discountPercent > 0 ? `${discountPercent}% OFF` : `-$${formatter.format(totalDiscountAmount).replace('$', '').trim()}`;
                             
                             priceDisplay.innerHTML = `
                                 <div style="display: flex; flex-direction: column; align-items: flex-end;">
                                     <div style="display: flex; align-items: center; gap: 6px;">
                                         <span style="text-decoration: line-through; color: #94A3B8; font-size: 0.95rem; font-weight: 500;">${formattedOriginalPrice}</span>
-                                        <span style="background-color: #10B981; color: white; font-size: 0.72rem; font-weight: 700; padding: 2px 6px; border-radius: 12px; font-family: var(--font-main);">${discountPercent}% OFF</span>
+                                        <span style="background-color: #10B981; color: white; font-size: 0.72rem; font-weight: 700; padding: 2px 6px; border-radius: 12px; font-family: var(--font-main);">${badgeText}</span>
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 4px;">
                                         <span style="font-size:1.6rem; font-weight:800; color:#10B981; line-height: 1.2;">${formattedTotalPrice}</span>
