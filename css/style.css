@@ -2819,9 +2819,10 @@ button, .btn-primary, .btn-outline {
     border-color: #000;
 }
 
-/* Compact side-by-side dropdown selectors */
+/* Compact dropdown selectors (stacked on mobile, side-by-side on desktop) */
 .selectors-row {
     display: flex;
+    flex-direction: column;
     gap: 12px;
     margin-top: 10px;
     margin-bottom: 12px;
@@ -2832,19 +2833,37 @@ button, .btn-primary, .btn-outline {
     min-width: 0;
 }
 .selectors-row .variant-selector-wrapper {
-    margin-bottom: 0;
+    margin-bottom: 8px;
 }
 .selectors-row .variant-label {
-    font-size: 0.75rem;
-    margin-bottom: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
     letter-spacing: 0.5px;
 }
 .selectors-row .variant-select-cascade {
-    margin-top: 4px;
-    padding: 10px 30px 10px 12px;
-    font-size: 0.88rem;
-    background-position: right 10px center;
-    background-size: 14px;
+    margin-top: 6px;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+}
+
+@media (min-width: 600px) {
+    .selectors-row {
+        flex-direction: row;
+    }
+    .selectors-row .variant-selector-wrapper {
+        margin-bottom: 0;
+    }
+    .selectors-row .variant-label {
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+    .selectors-row .variant-select-cascade {
+        margin-top: 4px;
+        padding: 10px 30px 10px 12px;
+        font-size: 0.88rem;
+        background-position: right 10px center;
+        background-size: 14px;
+    }
 }
 
 /* Price and Quantity Row */
