@@ -52,16 +52,28 @@
                 // Rewrite product images
                 if (window.oldCategoryName !== name) {
                     const sanitize = (n) => n ? n.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-') : '';
+                    const rubroFolder = rubroVal && rubroVal !== 'carpinteria' ? sanitize(rubroVal) : '';
                     const oldFolderSanitized = sanitize(window.oldCategoryName);
                     const newFolderSanitized = sanitize(name);
-                    const oldPathPrefix = `img/${oldFolderSanitized}/`;
-                    const newPathPrefix = `img/${newFolderSanitized}/`;
+                    const oldPathPrefix = rubroFolder ? `img/${rubroFolder}/${oldFolderSanitized}/` : `img/${oldFolderSanitized}/`;
+                    const newPathPrefix = rubroFolder ? `img/${rubroFolder}/${newFolderSanitized}/` : `img/${newFolderSanitized}/`;
 
                     sessionProducts[window.editingCategoryIndex].products.forEach(p => {
                         if (typeof p.image === 'string') {
                             p.image = p.image.replace(oldPathPrefix, newPathPrefix);
                         } else if (Array.isArray(p.image)) {
-                            p.image = p.image.map(img => img.replace(oldPathPrefix, newPathPrefix));
+                            p.image = p.image.map(img => typeof img === 'string' ? img.replace(oldPathPrefix, newPathPrefix) : img);
+                        }
+
+                        if (p.acabados_groups && Array.isArray(p.acabados_groups)) {
+                            p.acabados_groups.forEach(group => {
+                                if (typeof group.cover_image === 'string') {
+                                    group.cover_image = group.cover_image.replace(oldPathPrefix, newPathPrefix);
+                                }
+                                if (Array.isArray(group.images_list)) {
+                                    group.images_list = group.images_list.map(img => typeof img === 'string' ? img.replace(oldPathPrefix, newPathPrefix) : img);
+                                }
+                            });
                         }
                     });
                 }
