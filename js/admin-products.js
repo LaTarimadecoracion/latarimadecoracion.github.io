@@ -569,19 +569,6 @@ window.initProductsAdmin = function() {
             });
 
             if (matchesQuery) {
-                // Si la consulta está vacía, limitamos a un resultado por producto (evita listar el mismo producto por cada acabado)
-                if (!query) {
-                    const existingProduct = results.find(r => r.id === item.id);
-                    if (existingProduct) {
-                        const currentIsPrimary = item.product.primaryCatId === item.cat.id;
-                        if (currentIsPrimary) {
-                            const idx = results.indexOf(existingProduct);
-                            results[idx] = item;
-                        }
-                        return;
-                    }
-                }
-
                 const key = `${item.id}::${item.acabado}`;
                 const existingIndex = results.findIndex(r => `${r.id}::${r.acabado}` === key);
                 if (existingIndex !== -1) {
