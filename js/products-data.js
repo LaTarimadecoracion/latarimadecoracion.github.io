@@ -11,16 +11,16 @@ const productsData = [
                 "id": "baranda-desmontable-montessori",
                 "title": "Baranda desmontable: Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
-                "image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                "image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687226-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687407-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687542-imagen.webp"
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687226-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687407-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687542-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -208,15 +208,15 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541858852-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859223-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859334-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859445-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289633113-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438785271-imagen.webp"
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541858852-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859223-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859334-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859445-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289633113-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438785271-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -404,12 +404,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763850-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438764011-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438764144-imagen.webp"
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763850-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438764011-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438764144-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -639,19 +639,19 @@ const productsData = [
                 "title": "Baranda desmontable: Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
-                "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                "image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453680-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453830-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453980-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454194-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454360-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454504-imagen.webp"
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453680-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453830-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453980-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454194-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454360-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454504-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -767,15 +767,15 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437454681-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454856-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455011-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455164-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455315-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455464-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455607-imagen.webp"
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454856-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455011-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455164-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455315-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455464-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455607-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -855,15 +855,15 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1780289706066-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706218-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706376-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706528-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706661-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706798-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455785-imagen.webp"
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706066-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706218-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706376-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706528-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706661-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706798-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455785-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1443,414 +1443,15 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783553543093,
-                "primaryCatId": "infantil"
-            },
-            {
-                "id": "especiero",
-                "title": "Especiero",
-                "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-                "image": "img/interiores/especiero/1782487819564-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
-                        "images_list": [
-                            "img/interiores/especiero/1782487819564-imagen.webp",
-                            "img/interiores/especiero/1782487819702-imagen.webp",
-                            "img/interiores/especiero/1782487819842-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30 x 30 x 10 cm",
-                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
-                                "default": true,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30 x 60 x 10 cm",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "34 x 34 x 10 cm",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "34 x 60 x 10 cm",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            }
-                        ]
-                    }
-                ],
                 "tags": [
-                    "Estante",
-                    "especiero",
-                    "condimentos",
-                    "organizador",
-                    "cocina",
-                    "mueble",
-                    "decorativo",
-                    "ordenar"
+                    "baul",
+                    "cofre",
+                    "organizar",
+                    "juguetes",
+                    "ropa"
                 ],
-                "last_modified": 1782490964547,
-                "primaryCatId": "decoracion"
-            },
-            {
-                "id": "deck-rectangular",
-                "title": "Deck rectangular",
-                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
-                "image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                        "images_list": [
-                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "25 x 50 cm (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "25 x 50 cm (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "25 x 50 cm (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30 x 40 cm (1 Unidad)",
-                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-30-x-40-cm/up/MLAU3974458202?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=8&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30 x 80 cm (1 Unidad)",
-                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-80-x-30-cm/up/MLAU3755092617?pdp_filters=seller_id%3A618512819#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=fallback_same-seller&reco_client=vip-seller_items-above&reco_item_pos=0&reco_backend_type=low_level&reco_id=1226f72d-4e83-430a-bc23-cab333cafa92&wid=MLA2813675242&sid=recos",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "Base de madera para macetas",
-                    "Deck para plantas",
-                    "Portamacetero de madera",
-                    "Soporte para macetas madera",
-                    "Tarima para plantas",
-                    "Elevador de macetas madera",
-                    "Portamacetero nordico",
-                    "Decoracion con plantas balcon",
-                    "Deck de pino para macetas",
-                    "Estilo rustico jardin",
-                    "Huerta y jardin madera",
-                    "Portamacetas minimalista",
-                    "Organizador de macetas exterior",
-                    "Base madera para balcon",
-                    "Muebles de jardin madera",
-                    "Tarima para plantas interior",
-                    "Protector de piso para macetas",
-                    "Porta macetas",
-                    "Porta maceteros madera",
-                    "Base para plantas exterior",
-                    "Deck de madera",
-                    "Tarimas de madera",
-                    "Decoracion de exteriores",
-                    "Jardin urbano",
-                    "Organizador de plantas",
-                    "Estantes para macetas"
-                ],
-                "last_modified": 1782622157535,
-                "primaryCatId": "Muebles-y-Jardín"
-            },
-            {
-                "id": "deck-cuadrado",
-                "title": "Deck cuadrado",
-                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
-                "image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
-                        "images_list": [
-                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40 x 40 cm (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2308177372-deck-base-macetas-madera-40-x-40-cm-_JM",
-                                "default": true,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40 x 40 cm (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416155916-deck-base-macetas-madera-40-x-40-cm-x2-un-_JM",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40 x 40 cm (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416156026-deck-base-macetas-madera-40-x-40-cm-x3-un-_JM",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30 x 30 cm (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30 x 30 cm (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30 x 30 cm (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "25 x 25 cm (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2399572790-deck-base-macetas-madera-25-x-25-cm-_JM",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "25 x 25 cm (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416155670-deck-base-macetas-madera-25-x-25-cm-x2-un-_JM",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "25 x 25 cm (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415986866-deck-base-macetas-madera-25-x-25-cm-x-3-un-_JM",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "Base de madera para macetas",
-                    "Deck para plantas",
-                    "Portamacetero de madera",
-                    "Soporte para macetas madera",
-                    "Tarima para plantas",
-                    "Elevador de macetas madera",
-                    "Portamacetero nordico",
-                    "Decoracion con plantas balcon",
-                    "Deck de pino para macetas",
-                    "Estilo rustico jardin",
-                    "Huerta y jardin madera",
-                    "Portamacetas minimalista",
-                    "Organizador de macetas exterior",
-                    "Base madera para balcon",
-                    "Muebles de jardin madera",
-                    "Tarima para plantas interior",
-                    "Protector de piso para macetas",
-                    "Porta macetas",
-                    "Porta maceteros madera",
-                    "Base para plantas exterior",
-                    "Deck de madera",
-                    "Tarimas de madera",
-                    "Decoracion de exteriores",
-                    "Jardin urbano",
-                    "Organizador de plantas",
-                    "Estantes para macetas"
-                ],
-                "last_modified": 1780708146541,
-                "primaryCatId": "Muebles-y-Jardín",
-                "views": 1
-            },
-            {
-                "id": "macetas-colgante-eucalipto",
-                "title": "Macetas colgante de eucalipto",
-                "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
-                "image": "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
-                        "images_list": [
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708812159-imagen.webp",
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708812280-imagen.webp",
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708812400-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "26 x 26 x 11 cm",
-                                "link": "https://www.mercadolibre.com.ar/porta-macetas-colgante-de-madera-eucalipto-26-x-26-cm/up/MLAU3980462508?pdp_filters=item_id:MLA1791659295",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "Porta maceta colgante de madera",
-                    "Portamacetas colgante",
-                    "Soporte colgante para plantas",
-                    "Macetero colgante madera",
-                    "Decoracion con plantas interior",
-                    "Portamaceteros de pared",
-                    "Estante colgante para plantas",
-                    "Porta maceta de madera maciza",
-                    "Decoracion nordica hogar",
-                    "Organizador de plantas vertical",
-                    "Macetas colgantes interior",
-                    "Adornos de madera para pared",
-                    "Portamacetas minimalista",
-                    "Estilo nordico decoracion",
-                    "Plantas colgantes balcon",
-                    "Diseño de interiores madera",
-                    "Base para plantas colgantes",
-                    "Accesorios para plantas interior",
-                    "Porta macetero artesanal",
-                    "Estante flotante macetas",
-                    "Decoracion de ambientes",
-                    "Muebles de pino para plantas",
-                    "Huertas verticales madera",
-                    "Regalos decoracion hogar"
-                ],
-                "last_modified": 1780708812530,
-                "primaryCatId": "Muebles-y-Jardín",
-                "views": 0
-            },
-            {
-                "id": "Platos-madera",
-                "title": "Platons de Madera - Asado",
-                "description": "",
-                "image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
-                        "images_list": [
-                            "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1782621039609,
-                "primaryCatId": "Hogar"
-            },
-            {
-                "id": "banquito-de-plaza",
-                "title": "Banquito de Plaza",
-                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
-                        "images_list": [
-                            "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
-                            "img/infantil/banquito-de-plaza/1782606557223-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Doble",
-                                "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1783551854112,
-                "primaryCatId": "infantil"
+                "last_modified": 1783617580222,
+                "primaryCatId": "Organizadores"
             },
             {
                 "id": "silla-infantil",
@@ -1882,6 +1483,434 @@ const productsData = [
                 "last_modified": 1780708199604,
                 "primaryCatId": "infantil",
                 "views": 0
+            },
+            {
+                "id": "especiero",
+                "title": "Especiero",
+                "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
+                "image": "img/interiores/especiero/1782487819564-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
+                        "images_list": [
+                            "img/interiores/especiero/1782487819564-imagen.webp",
+                            "img/interiores/especiero/1782487819702-imagen.webp",
+                            "img/interiores/especiero/1782487819842-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30 x 30 x 10 cm",
+                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 60 x 10 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "34 x 34 x 10 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "34 x 60 x 10 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Estante",
+                    "especiero",
+                    "condimentos",
+                    "organizador",
+                    "cocina",
+                    "mueble",
+                    "decorativo",
+                    "ordenar"
+                ],
+                "last_modified": 1783617596816,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "deck-cuadrado",
+                "title": "Deck cuadrado",
+                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
+                "image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "images_list": [
+                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40 x 40 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2308177372-deck-base-macetas-madera-40-x-40-cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "40 x 40 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416155916-deck-base-macetas-madera-40-x-40-cm-x2-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "40 x 40 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416156026-deck-base-macetas-madera-40-x-40-cm-x3-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 30 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 30 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 30 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "25 x 25 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2399572790-deck-base-macetas-madera-25-x-25-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "25 x 25 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416155670-deck-base-macetas-madera-25-x-25-cm-x2-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "25 x 25 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415986866-deck-base-macetas-madera-25-x-25-cm-x-3-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Base de madera para macetas",
+                    "Deck para plantas",
+                    "Portamacetero de madera",
+                    "Soporte para macetas madera",
+                    "Tarima para plantas",
+                    "Elevador de macetas madera",
+                    "Portamacetero nordico",
+                    "Decoracion con plantas balcon",
+                    "Deck de pino para macetas",
+                    "Estilo rustico jardin",
+                    "Huerta y jardin madera",
+                    "Portamacetas minimalista",
+                    "Organizador de macetas exterior",
+                    "Base madera para balcon",
+                    "Muebles de jardin madera",
+                    "Tarima para plantas interior",
+                    "Protector de piso para macetas",
+                    "Porta macetas",
+                    "Porta maceteros madera",
+                    "Base para plantas exterior",
+                    "Deck de madera",
+                    "Tarimas de madera",
+                    "Decoracion de exteriores",
+                    "Jardin urbano",
+                    "Organizador de plantas",
+                    "Estantes para macetas"
+                ],
+                "last_modified": 1783618243134,
+                "primaryCatId": "jardin-patio"
+            },
+            {
+                "id": "deck-rectangular",
+                "title": "Deck rectangular",
+                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
+                "image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "images_list": [
+                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "25 x 50 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "25 x 50 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "25 x 50 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 40 cm (1 Unidad)",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-30-x-40-cm/up/MLAU3974458202?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=8&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 80 cm (1 Unidad)",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-80-x-30-cm/up/MLAU3755092617?pdp_filters=seller_id%3A618512819#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=fallback_same-seller&reco_client=vip-seller_items-above&reco_item_pos=0&reco_backend_type=low_level&reco_id=1226f72d-4e83-430a-bc23-cab333cafa92&wid=MLA2813675242&sid=recos",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Base de madera para macetas",
+                    "Deck para plantas",
+                    "Portamacetero de madera",
+                    "Soporte para macetas madera",
+                    "Tarima para plantas",
+                    "Elevador de macetas madera",
+                    "Portamacetero nordico",
+                    "Decoracion con plantas balcon",
+                    "Deck de pino para macetas",
+                    "Estilo rustico jardin",
+                    "Huerta y jardin madera",
+                    "Portamacetas minimalista",
+                    "Organizador de macetas exterior",
+                    "Base madera para balcon",
+                    "Muebles de jardin madera",
+                    "Tarima para plantas interior",
+                    "Protector de piso para macetas",
+                    "Porta macetas",
+                    "Porta maceteros madera",
+                    "Base para plantas exterior",
+                    "Deck de madera",
+                    "Tarimas de madera",
+                    "Decoracion de exteriores",
+                    "Jardin urbano",
+                    "Organizador de plantas",
+                    "Estantes para macetas"
+                ],
+                "last_modified": 1783618237200,
+                "primaryCatId": "jardin-patio"
+            },
+            {
+                "id": "macetas-colgante-eucalipto",
+                "title": "Macetas colgante de eucalipto",
+                "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
+                "image": "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
+                        "images_list": [
+                            "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
+                            "img/jardin/macetas-colgante-de-eucalipto/1780708812159-imagen.webp",
+                            "img/jardin/macetas-colgante-de-eucalipto/1780708812280-imagen.webp",
+                            "img/jardin/macetas-colgante-de-eucalipto/1780708812400-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "26 x 26 x 11 cm",
+                                "link": "https://www.mercadolibre.com.ar/porta-macetas-colgante-de-madera-eucalipto-26-x-26-cm/up/MLAU3980462508?pdp_filters=item_id:MLA1791659295",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Porta maceta colgante de madera",
+                    "Portamacetas colgante",
+                    "Soporte colgante para plantas",
+                    "Macetero colgante madera",
+                    "Decoracion con plantas interior",
+                    "Portamaceteros de pared",
+                    "Estante colgante para plantas",
+                    "Porta maceta de madera maciza",
+                    "Decoracion nordica hogar",
+                    "Organizador de plantas vertical",
+                    "Macetas colgantes interior",
+                    "Adornos de madera para pared",
+                    "Portamacetas minimalista",
+                    "Estilo nordico decoracion",
+                    "Plantas colgantes balcon",
+                    "Diseño de interiores madera",
+                    "Base para plantas colgantes",
+                    "Accesorios para plantas interior",
+                    "Porta macetero artesanal",
+                    "Estante flotante macetas",
+                    "Decoracion de ambientes",
+                    "Muebles de pino para plantas",
+                    "Huertas verticales madera",
+                    "Regalos decoracion hogar"
+                ],
+                "last_modified": 1783618250710,
+                "primaryCatId": "jardin-patio"
+            },
+            {
+                "id": "Platos-madera",
+                "title": "Platons de Madera - Asado",
+                "description": "",
+                "image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                        "images_list": [
+                            "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                            "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
+                            "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1782621039609,
+                "primaryCatId": "Hogar"
             },
             {
                 "id": "Mate",
@@ -1936,150 +1965,6 @@ const productsData = [
                 "primaryCatId": "Hogar"
             },
             {
-                "id": "Platos-madera",
-                "title": "Platons de Madera - Asado",
-                "description": "",
-                "image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
-                        "images_list": [
-                            "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1782621039609,
-                "primaryCatId": "Hogar"
-            },
-            {
-                "id": "especiero",
-                "title": "Especiero",
-                "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-                "image": "img/interiores/especiero/1782487819564-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
-                        "images_list": [
-                            "img/interiores/especiero/1782487819564-imagen.webp",
-                            "img/interiores/especiero/1782487819702-imagen.webp",
-                            "img/interiores/especiero/1782487819842-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30 x 30 x 10 cm",
-                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
-                                "default": true,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30 x 60 x 10 cm",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "34 x 34 x 10 cm",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "34 x 60 x 10 cm",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "Estante",
-                    "especiero",
-                    "condimentos",
-                    "organizador",
-                    "cocina",
-                    "mueble",
-                    "decorativo",
-                    "ordenar"
-                ],
-                "last_modified": 1782490964547,
-                "primaryCatId": "decoracion"
-            },
-            {
-                "id": "baul-madera-mediano",
-                "title": "Baúl de madera de pino - Mediano",
-                "description": "",
-                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
-                        "images_list": [
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "100 x 50 x 50 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "80 x 50 x 50 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 55000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "60 x 50 x 50 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1783553543093,
-                "primaryCatId": "infantil"
-            },
-            {
                 "id": "Mueble-Multifunción",
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
@@ -2119,6 +2004,143 @@ const productsData = [
                 ],
                 "last_modified": 1782408743227,
                 "primaryCatId": "Interior"
+            },
+            {
+                "id": "jenga",
+                "title": "Jenga",
+                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
+                "image": "img/migrados/infantil/jenga/jenga.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/infantil/jenga/jenga.webp",
+                        "images_list": [
+                            "img/migrados/infantil/jenga/jenga.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "63 Piezas",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1514956491-yenga-torre-alta-de-madera-63-piezas-la-carpinteria-_JM#polycard_client=search-nordic&search_layout=grid&position=2&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636&wid=MLA1514956491&sid=search",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783618282902,
+                "primaryCatId": "Juguetes"
+            },
+            {
+                "id": "verdulero-clasico",
+                "title": "Verdulero Clasico",
+                "description": "Verdulero con estante superior",
+                "image": "img/migrados/organizacion/verdulero-clasico/1.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/organizacion/verdulero-clasico/1.webp",
+                        "images_list": [
+                            "img/migrados/organizacion/verdulero-clasico/1.webp",
+                            "img/migrados/organizacion/verdulero-clasico/2.webp",
+                            "img/migrados/organizacion/verdulero-clasico/3.webp",
+                            "img/migrados/organizacion/verdulero-clasico/4.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Cargando...",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783618293336,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "verdule-para-mesada",
+                "title": "Verdule para Mesada",
+                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                            "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
+                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Chico",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783618298429,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "verdulero-mediano",
+                "title": "Verdulero Mediano",
+                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+                "image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/verdulero-mediano/1780708412753-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818831-organizador-verdulero-frutero-pino-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783618305845,
+                "primaryCatId": "Organizadores"
             },
             {
                 "id": "perchero-1",
@@ -2563,9 +2585,9 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizacion/verdulero-mediano/1780708412753-imagen.webp",
+                        "cover_image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
                         "images_list": [
-                            "img/organizacion/verdulero-mediano/1780708412753-imagen.webp"
+                            "img/organizadores/verdulero-mediano/1780708412753-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2592,9 +2614,9 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizacion/verdulero-x3/1780708453865-imagen.webp",
+                        "cover_image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
                         "images_list": [
-                            "img/organizacion/verdulero-x3/1780708453865-imagen.webp"
+                            "img/organizadores/verdulero-x3/1780708453865-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3969,14 +3991,14 @@ const productsData = [
                 "id": "Posa-Tortas",
                 "title": "Posa Torta De Madera Torneado Candy Bar",
                 "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
-                "image": "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                "image": "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
-                            "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590872-imagen.webp"
+                            "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                            "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590872-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4323,12 +4345,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanco",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-triple/1780542227331-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-triple/1780542227331-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-triple/1780542227331-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-triple/1780542227529-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-triple/1780542227646-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-triple/1780542227773-imagen.webp"
+                            "img/barandas-desmontables/baranda-desmontable-triple/1780542227331-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-triple/1780542227529-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-triple/1780542227646-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-triple/1780542227773-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4701,7 +4723,257 @@ const productsData = [
         "image": "img/organizadores/portada-imagen.webp",
         "rubro": "carpinteria",
         "order": 3,
-        "products": []
+        "products": [
+            {
+                "id": "baul-madera-mediano",
+                "title": "Baúl de madera de pino - Mediano",
+                "description": "",
+                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
+                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "100 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "80 x 50 x 50 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "60 x 50 x 50 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "baul",
+                    "cofre",
+                    "organizar",
+                    "juguetes",
+                    "ropa"
+                ],
+                "last_modified": 1783617580222,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "especiero",
+                "title": "Especiero",
+                "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
+                "image": "img/interiores/especiero/1782487819564-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
+                        "images_list": [
+                            "img/interiores/especiero/1782487819564-imagen.webp",
+                            "img/interiores/especiero/1782487819702-imagen.webp",
+                            "img/interiores/especiero/1782487819842-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30 x 30 x 10 cm",
+                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 60 x 10 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "34 x 34 x 10 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "34 x 60 x 10 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Estante",
+                    "especiero",
+                    "condimentos",
+                    "organizador",
+                    "cocina",
+                    "mueble",
+                    "decorativo",
+                    "ordenar"
+                ],
+                "last_modified": 1783617596816,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "verdulero-clasico",
+                "title": "Verdulero Clasico",
+                "description": "Verdulero con estante superior",
+                "image": "img/migrados/organizacion/verdulero-clasico/1.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/organizacion/verdulero-clasico/1.webp",
+                        "images_list": [
+                            "img/migrados/organizacion/verdulero-clasico/1.webp",
+                            "img/migrados/organizacion/verdulero-clasico/2.webp",
+                            "img/migrados/organizacion/verdulero-clasico/3.webp",
+                            "img/migrados/organizacion/verdulero-clasico/4.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Cargando...",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783618293336,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "verdule-para-mesada",
+                "title": "Verdule para Mesada",
+                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                            "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
+                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Chico",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783618298429,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "verdulero-mediano",
+                "title": "Verdulero Mediano",
+                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+                "image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/verdulero-mediano/1780708412753-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818831-organizador-verdulero-frutero-pino-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783618305845,
+                "primaryCatId": "Organizadores"
+            }
+        ]
     },
     {
         "id": "Barandas",
@@ -4714,19 +4986,19 @@ const productsData = [
                 "title": "Baranda desmontable: Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
-                "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                "image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453680-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453830-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453980-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454194-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454360-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454504-imagen.webp"
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453680-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453830-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437453980-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454194-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454360-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454504-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4842,15 +5114,15 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1782437454681-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454856-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455011-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455164-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455315-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455464-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455607-imagen.webp"
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437454856-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455011-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455164-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455315-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455464-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455607-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4930,15 +5202,15 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-clasica/1780289706066-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706218-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706376-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706528-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706661-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706798-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455785-imagen.webp"
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706066-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706218-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706376-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706528-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706661-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1780289706798-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-clasica/1782437455785-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -5063,16 +5335,16 @@ const productsData = [
                 "id": "baranda-desmontable-montessori",
                 "title": "Baranda desmontable: Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
-                "image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                "image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687226-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687407-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687542-imagen.webp"
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687226-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687407-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438687542-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -5260,15 +5532,15 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541858852-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859223-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859334-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859445-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289633113-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438785271-imagen.webp"
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541858852-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859223-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859334-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780541859445-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1780289633113-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438785271-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -5456,12 +5728,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763850-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438764011-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438764144-imagen.webp"
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438763850-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438764011-imagen.webp",
+                            "img/barandas-desmontables/baranda-de-seguridad---montessori/1782438764144-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -5762,12 +6034,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanco",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-triple/1780542227331-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/baranda-desmontable-triple/1780542227331-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-triple/1780542227331-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-triple/1780542227529-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-triple/1780542227646-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-triple/1780542227773-imagen.webp"
+                            "img/barandas-desmontables/baranda-desmontable-triple/1780542227331-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-triple/1780542227529-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-triple/1780542227646-imagen.webp",
+                            "img/barandas-desmontables/baranda-desmontable-triple/1780542227773-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6207,12 +6479,12 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630822-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630951-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399631066-imagen.webp"
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399630822-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399630951-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782399631066-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6240,12 +6512,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782416896821-imagen.webp",
+                        "cover_image": "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782416896821-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782416896821-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782416896941-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782416897057-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782416897160-imagen.webp"
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782416896821-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782416896941-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782416897057-imagen.webp",
+                            "img/barandas-desmontables/barandas-desmontable---refuerzos-con-bulones/1782416897160-imagen.webp"
                         ],
                         "medidas_variants": []
                     }
@@ -6362,10 +6634,131 @@ const productsData = [
         "rubro": "carpinteria"
     },
     {
+        "id": "muebles",
+        "name": "Escaleras",
+        "image": "img/escaleras/portada-1780288150186-imagen.webp",
+        "order": 5,
+        "products": [
+            {
+                "id": "escaleras",
+                "title": "Escaleras para cama",
+                "description": "Seguridad y firmeza absoluta para alcanzar cada nivel.",
+                "image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                        "images_list": [
+                            "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                            "img/escaleras/escaleras-para-cama/1780288089987-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Inclinada 150 a 200 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Vertical 150 a 200 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Inclinada 100 a 150 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Vertical 100 a 150 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Inclinada 0 a 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Vertical 0 a 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783477948902,
+                "primaryCatId": "muebles"
+            },
+            {
+                "id": "escalera-altillo",
+                "title": "Escaleras para altillos",
+                "description": "",
+                "image": "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
+                        "images_list": [
+                            "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
+                            "img/escaleras/escaleras-para-altillos/1780287625629-imagen.webp"
+                        ],
+                        "medidas_variants": []
+                    }
+                ],
+                "views": 0
+            }
+        ],
+        "rubro": "carpinteria"
+    },
+    {
         "id": "Steps",
         "name": "Steps / Cajones",
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 7,
+        "order": 6,
         "products": [
             {
                 "id": "steps---cajones",
@@ -6544,7 +6937,7 @@ const productsData = [
         "id": "Estantes",
         "name": "Estantes",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 8,
+        "order": 7,
         "products": [
             {
                 "id": "estantes-montessori",
@@ -7072,35 +7465,52 @@ const productsData = [
                                 "medida": "30 x 30 x 10 cm",
                                 "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -7113,8 +7523,8 @@ const productsData = [
                     "decorativo",
                     "ordenar"
                 ],
-                "last_modified": 1782490964547,
-                "primaryCatId": "decoracion"
+                "last_modified": 1783617596816,
+                "primaryCatId": "Organizadores"
             }
         ]
     },
@@ -7122,7 +7532,7 @@ const productsData = [
         "id": "Juguetes",
         "name": "Juguetes",
         "image": "img/juguetes/portada-1783038439545-imagen.webp",
-        "order": 9,
+        "order": 8,
         "products": [
             {
                 "id": "jenga",
@@ -7141,17 +7551,21 @@ const productsData = [
                                 "medida": "63 Piezas",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1514956491-yenga-torre-alta-de-madera-63-piezas-la-carpinteria-_JM#polycard_client=search-nordic&search_layout=grid&position=2&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636&wid=MLA1514956491&sid=search",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1780708312773,
-                "primaryCatId": "infantil",
-                "views": 1
+                "last_modified": 1783618282902,
+                "primaryCatId": "Juguetes"
             },
             {
                 "id": "baul-madera-mediano",
@@ -7208,139 +7622,359 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783553543093,
-                "primaryCatId": "infantil"
+                "tags": [
+                    "baul",
+                    "cofre",
+                    "organizar",
+                    "juguetes",
+                    "ropa"
+                ],
+                "last_modified": 1783617580222,
+                "primaryCatId": "Organizadores"
             }
         ],
         "rubro": "carpinteria"
     },
     {
-        "id": "muebles",
-        "name": "Escaleras",
-        "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 10,
+        "id": "jardin-patio",
+        "name": "Jardín",
+        "image": "img/jardin/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 9,
         "products": [
             {
-                "id": "escaleras",
-                "title": "Escaleras para cama",
-                "description": "Seguridad y firmeza absoluta para alcanzar cada nivel.",
-                "image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                "id": "deck-rectangular",
+                "title": "Deck rectangular",
+                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
+                "image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
                         "images_list": [
-                            "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
-                            "img/escaleras/escaleras-para-cama/1780288089987-imagen.webp"
+                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Inclinada 150 a 200 cm",
-                                "link": "",
+                                "medida": "25 x 50 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 55000,
+                                "price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": false
                             },
                             {
-                                "medida": "Vertical 150 a 200 cm",
-                                "link": "",
+                                "medida": "25 x 50 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 50000,
+                                "price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": false
                             },
                             {
-                                "medida": "Inclinada 100 a 150 cm",
-                                "link": "",
+                                "medida": "25 x 50 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": false
                             },
                             {
-                                "medida": "Vertical 100 a 150 cm",
-                                "link": "",
+                                "medida": "30 x 40 cm (1 Unidad)",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-30-x-40-cm/up/MLAU3974458202?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=8&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 80 cm (1 Unidad)",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-80-x-30-cm/up/MLAU3755092617?pdp_filters=seller_id%3A618512819#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=fallback_same-seller&reco_client=vip-seller_items-above&reco_item_pos=0&reco_backend_type=low_level&reco_id=1226f72d-4e83-430a-bc23-cab333cafa92&wid=MLA2813675242&sid=recos",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 10000,
                                 "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "Inclinada 0 a 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "Vertical 0 a 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 30000,
-                                "legend": "",
-                                "showPrice": true
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783477948902,
-                "primaryCatId": "muebles"
+                "tags": [
+                    "Base de madera para macetas",
+                    "Deck para plantas",
+                    "Portamacetero de madera",
+                    "Soporte para macetas madera",
+                    "Tarima para plantas",
+                    "Elevador de macetas madera",
+                    "Portamacetero nordico",
+                    "Decoracion con plantas balcon",
+                    "Deck de pino para macetas",
+                    "Estilo rustico jardin",
+                    "Huerta y jardin madera",
+                    "Portamacetas minimalista",
+                    "Organizador de macetas exterior",
+                    "Base madera para balcon",
+                    "Muebles de jardin madera",
+                    "Tarima para plantas interior",
+                    "Protector de piso para macetas",
+                    "Porta macetas",
+                    "Porta maceteros madera",
+                    "Base para plantas exterior",
+                    "Deck de madera",
+                    "Tarimas de madera",
+                    "Decoracion de exteriores",
+                    "Jardin urbano",
+                    "Organizador de plantas",
+                    "Estantes para macetas"
+                ],
+                "last_modified": 1783618237200,
+                "primaryCatId": "jardin-patio"
             },
             {
-                "id": "escalera-altillo",
-                "title": "Escaleras para altillos",
-                "description": "",
-                "image": "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
+                "id": "deck-cuadrado",
+                "title": "Deck cuadrado",
+                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
+                "image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
+                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
-                            "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
-                            "img/escaleras/escaleras-para-altillos/1780287625629-imagen.webp"
+                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
                         ],
-                        "medidas_variants": []
+                        "medidas_variants": [
+                            {
+                                "medida": "40 x 40 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2308177372-deck-base-macetas-madera-40-x-40-cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "40 x 40 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416155916-deck-base-macetas-madera-40-x-40-cm-x2-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "40 x 40 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416156026-deck-base-macetas-madera-40-x-40-cm-x3-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 30 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 30 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 30 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "25 x 25 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2399572790-deck-base-macetas-madera-25-x-25-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "25 x 25 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416155670-deck-base-macetas-madera-25-x-25-cm-x2-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "25 x 25 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415986866-deck-base-macetas-madera-25-x-25-cm-x-3-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 0
+                "tags": [
+                    "Base de madera para macetas",
+                    "Deck para plantas",
+                    "Portamacetero de madera",
+                    "Soporte para macetas madera",
+                    "Tarima para plantas",
+                    "Elevador de macetas madera",
+                    "Portamacetero nordico",
+                    "Decoracion con plantas balcon",
+                    "Deck de pino para macetas",
+                    "Estilo rustico jardin",
+                    "Huerta y jardin madera",
+                    "Portamacetas minimalista",
+                    "Organizador de macetas exterior",
+                    "Base madera para balcon",
+                    "Muebles de jardin madera",
+                    "Tarima para plantas interior",
+                    "Protector de piso para macetas",
+                    "Porta macetas",
+                    "Porta maceteros madera",
+                    "Base para plantas exterior",
+                    "Deck de madera",
+                    "Tarimas de madera",
+                    "Decoracion de exteriores",
+                    "Jardin urbano",
+                    "Organizador de plantas",
+                    "Estantes para macetas"
+                ],
+                "last_modified": 1783618243134,
+                "primaryCatId": "jardin-patio"
+            },
+            {
+                "id": "macetas-colgante-eucalipto",
+                "title": "Macetas colgante de eucalipto",
+                "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
+                "image": "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
+                        "images_list": [
+                            "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
+                            "img/jardin/macetas-colgante-de-eucalipto/1780708812159-imagen.webp",
+                            "img/jardin/macetas-colgante-de-eucalipto/1780708812280-imagen.webp",
+                            "img/jardin/macetas-colgante-de-eucalipto/1780708812400-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "26 x 26 x 11 cm",
+                                "link": "https://www.mercadolibre.com.ar/porta-macetas-colgante-de-madera-eucalipto-26-x-26-cm/up/MLAU3980462508?pdp_filters=item_id:MLA1791659295",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Porta maceta colgante de madera",
+                    "Portamacetas colgante",
+                    "Soporte colgante para plantas",
+                    "Macetero colgante madera",
+                    "Decoracion con plantas interior",
+                    "Portamaceteros de pared",
+                    "Estante colgante para plantas",
+                    "Porta maceta de madera maciza",
+                    "Decoracion nordica hogar",
+                    "Organizador de plantas vertical",
+                    "Macetas colgantes interior",
+                    "Adornos de madera para pared",
+                    "Portamacetas minimalista",
+                    "Estilo nordico decoracion",
+                    "Plantas colgantes balcon",
+                    "Diseño de interiores madera",
+                    "Base para plantas colgantes",
+                    "Accesorios para plantas interior",
+                    "Porta macetero artesanal",
+                    "Estante flotante macetas",
+                    "Decoracion de ambientes",
+                    "Muebles de pino para plantas",
+                    "Huertas verticales madera",
+                    "Regalos decoracion hogar"
+                ],
+                "last_modified": 1783618250710,
+                "primaryCatId": "jardin-patio"
             }
-        ],
-        "rubro": "carpinteria"
+        ]
     },
     {
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 11,
+        "order": 10,
         "products": [
             {
                 "id": "podio-profesional",
@@ -7484,7 +8118,7 @@ const productsData = [
         "rubro": "papelera-cotillon",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 12,
+        "order": 11,
         "products": [
             {
                 "id": "Films-negro",
@@ -7523,7 +8157,7 @@ const productsData = [
         "name": "Embalaje",
         "image": "img/papelera-cotillon/embalaje/portada-imagen.webp",
         "rubro": "papelera-cotillon",
-        "order": 13,
+        "order": 12,
         "products": [
             {
                 "id": "Films-negro",
@@ -7555,15 +8189,16 @@ const productsData = [
                 "last_modified": 1783039460509,
                 "primaryCatId": "Papelera-Cotillon"
             }
-        ]
+        ],
+        "visible": false
     },
     {
         "id": "jabon-todos",
         "name": "Todos los productos",
         "rubro": "jabon",
         "image": "img/logo_provisional.png",
-        "visible": true,
-        "order": 14,
+        "visible": false,
+        "order": 13,
         "products": [
             {
                 "id": "Jabon",
@@ -7592,7 +8227,7 @@ const productsData = [
         "name": "Jabon",
         "image": "img/jabon/jabon/portada-imagen.webp",
         "rubro": "jabon",
-        "order": 15,
+        "order": 14,
         "products": [
             {
                 "id": "Jabon",
@@ -7614,6 +8249,7 @@ const productsData = [
                 "last_modified": 1783112841985,
                 "primaryCatId": "Jabon"
             }
-        ]
+        ],
+        "visible": false
     }
 ];
