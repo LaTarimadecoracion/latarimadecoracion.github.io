@@ -391,7 +391,7 @@ window.initProductsAdmin = function() {
             : (typeof productsData !== 'undefined' ? productsData : []);
 
         sourceProducts.forEach(cat => {
-            if (cat.visible === false) return;
+            if (cat.visible === false && !cat.id.endsWith('-todos')) return;
             if (!cat.products) return;
             cat.products.forEach(product => {
                 if (product.visible === false) return;
@@ -572,8 +572,11 @@ window.initProductsAdmin = function() {
                 const key = `${item.id}::${item.acabado}`;
                 const existingIndex = results.findIndex(r => `${r.id}::${r.acabado}` === key);
                 if (existingIndex !== -1) {
+                    const existingIsVirtual = results[existingIndex].cat.id.endsWith('-todos');
+                    const currentIsVirtual = item.cat.id.endsWith('-todos');
                     const currentIsPrimary = item.product.primaryCatId === item.cat.id;
-                    if (currentIsPrimary) {
+                    
+                    if (currentIsPrimary || (existingIsVirtual && !currentIsVirtual)) {
                         results[existingIndex] = item;
                     }
                 } else {
