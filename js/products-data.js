@@ -4386,6 +4386,76 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas"
+            },
+            {
+                "id": "perchero-pared-doblegancho",
+                "title": "Perchero de pared",
+                "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
+                "image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                            "img/percheros/perchero-de-pared/1783617272637-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "3 Ganchos",
+                                "link": "https://www.mercadolibre.com.ar/perchero-pared-por-3-gancho-doble-en-pino/up/MLAU3276272833?pdp_filters=item_id:MLA1508779537",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "5 Ganchos",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508082125-perchero-de-pared-5-ganchos-dobles-natural-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "7 Ganchos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "perchero",
+                    "pared",
+                    "grande",
+                    "lindo",
+                    "madera",
+                    "decoracion",
+                    "ordenar",
+                    "ropa",
+                    "entrada",
+                    "casa",
+                    "hogar"
+                ],
+                "last_modified": 1783617272723,
+                "primaryCatId": "Percheros"
             }
         ]
     },
@@ -4551,6 +4621,76 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783615900570,
+                "primaryCatId": "Percheros"
+            },
+            {
+                "id": "perchero-pared-doblegancho",
+                "title": "Perchero de pared",
+                "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
+                "image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                            "img/percheros/perchero-de-pared/1783617272637-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "3 Ganchos",
+                                "link": "https://www.mercadolibre.com.ar/perchero-pared-por-3-gancho-doble-en-pino/up/MLAU3276272833?pdp_filters=item_id:MLA1508779537",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "5 Ganchos",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508082125-perchero-de-pared-5-ganchos-dobles-natural-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "7 Ganchos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "perchero",
+                    "pared",
+                    "grande",
+                    "lindo",
+                    "madera",
+                    "decoracion",
+                    "ordenar",
+                    "ropa",
+                    "entrada",
+                    "casa",
+                    "hogar"
+                ],
+                "last_modified": 1783617272723,
                 "primaryCatId": "Percheros"
             }
         ]

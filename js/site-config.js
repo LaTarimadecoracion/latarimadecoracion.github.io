@@ -119,6 +119,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Perchero de pared!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero de pared!",
+            "mediaType": "image",
+            "image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=perchero-pared-doblegancho",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=perchero-pared-doblegancho",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783617272723
+        },
+        {
             "title": "¡Nuevo Ingreso: Posa Torta De Madera Torneado Candy Bar!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Posa Torta De Madera Torneado Candy Bar!",
             "mediaType": "image",
