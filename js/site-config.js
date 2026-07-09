@@ -213,7 +213,7 @@ window.siteConfig = {
                 "id": "efectivo",
                 "name": "Efectivo",
                 "surcharge": 0,
-                "conditions": "Condiciones de Venta Mayorista:\n1. Compra mínima de $100.000.\n2. Los precios no incluyen IVA.\n3. Retiro por taller o envío a convenir.\n4. Demora estimada de entrega de 15 a 20 días."
+                "conditions": "Condiciones de compra en efectivo.\n\n1 - Únicamente se abona en nuestro local o taller.\n2 - El precio no incluye envió\n3 - El precio es sin IVA, si lo necesita, deberá sumarle el 21% correspondiente.\n4 - Si necesita envió, debe consultar antes para realizar una cotización previa.\n5 - Tiempo de entrega: Si el producto esta listo, se lo puede llegar en el momento, caso contrario un asesor podrá darle un estimado de entrega.\n"
             },
             {
                 "id": "transferencia",
