@@ -543,48 +543,6 @@ window.initProductsAdmin = function() {
             return;
         }
 
-        // Si no hay consulta de búsqueda, renderizar las CATEGORÍAS del rubro activo
-        if (!query) {
-            searchResultsContainer.innerHTML = '';
-            
-            // Filtrar categorías reales del rubro activo que sean visibles
-            const relevantCats = sourceData.filter(c => 
-                (c.rubro || 'carpinteria') === window.activeSearchRubro && 
-                c.visible !== false && 
-                !c.id.endsWith('-todos')
-            );
-
-            if (relevantCats.length === 0) {
-                if (searchEmptyState) searchEmptyState.style.display = 'flex';
-                return;
-            }
-            if (searchEmptyState) searchEmptyState.style.display = 'none';
-
-            // Dibujar las categorías como cards premium con acceso directo
-            relevantCats.forEach(cat => {
-                const card = document.createElement('div');
-                card.className = 'feed-card';
-                card.innerHTML = `
-                    <div class="feed-card-photo-container">
-                        <img src="${cat.image}" class="feed-card-img" alt="${cat.name}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.src='img/logo_provisional.png';">
-                        <div class="feed-card-gradient"></div>
-                        <div class="feed-card-info">
-                            <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.8); font-weight:700;">Estantería</span>
-                            <h3 class="feed-card-title" style="margin-top:2px;">${cat.name}</h3>
-                            <span class="feed-card-variants-badge" style="background:rgba(255,255,255,0.2); backdrop-filter:blur(4px);">${cat.products.length} productos</span>
-                        </div>
-                    </div>
-                `;
-                card.addEventListener('click', () => {
-                    if (window.navigateToCategoryFeed) {
-                        window.navigateToCategoryFeed(cat.id);
-                    }
-                });
-                searchResultsContainer.appendChild(card);
-            });
-            return;
-        }
-
         const indexed = getIndexedProducts();
         let results = [];
 
@@ -611,6 +569,19 @@ window.initProductsAdmin = function() {
             });
 
             if (matchesQuery) {
+                // Si la consulta está vacía, limitamos a un resultado por producto (evita listar el mismo producto por cada acabado)
+                if (!query) {
+                    const existingProduct = results.find(r => r.id === item.id);
+                    if (existingProduct) {
+                        const currentIsPrimary = item.product.primaryCatId === item.cat.id;
+                        if (currentIsPrimary) {
+                            const idx = results.indexOf(existingProduct);
+                            results[idx] = item;
+                        }
+                        return;
+                    }
+                }
+
                 const key = `${item.id}::${item.acabado}`;
                 const existingIndex = results.findIndex(r => `${r.id}::${r.acabado}` === key);
                 if (existingIndex !== -1) {
