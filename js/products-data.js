@@ -4215,7 +4215,7 @@ const productsData = [
             },
             {
                 "id": "baranda-simple",
-                "title": "Baranda Fija - Simple",
+                "title": "Baranda Fija: Simple",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
                 "image": "img/barandas-fijas/baranda-simple/1780542765336-imagen.webp",
                 "acabados_groups": [
@@ -4244,7 +4244,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783616615128,
+                "last_modified": 1783616752912,
                 "primaryCatId": "Barandas"
             },
             {
@@ -6185,7 +6185,7 @@ const productsData = [
             },
             {
                 "id": "baranda-simple",
-                "title": "Baranda Fija - Simple",
+                "title": "Baranda Fija: Simple",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
                 "image": "img/barandas-fijas/baranda-simple/1780542765336-imagen.webp",
                 "acabados_groups": [
@@ -6214,7 +6214,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783616615128,
+                "last_modified": 1783616752912,
                 "primaryCatId": "Barandas"
             }
         ],
