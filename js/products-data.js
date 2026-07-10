@@ -1144,9 +1144,20 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783551854112,
-                "primaryCatId": "infantil"
+                "tags": [
+                    "sillon",
+                    "banquito",
+                    "banca",
+                    "plaza",
+                    "niños",
+                    "candy",
+                    "bar",
+                    "niños",
+                    "chicos",
+                    "decoracion"
+                ],
+                "last_modified": 1783635754620,
+                "primaryCatId": "sillas-sillones"
             },
             {
                 "id": "baranda-sommier-clasica",
@@ -1472,17 +1483,29 @@ const productsData = [
                                 "medida": "Colonial (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1516454739-silla-infantil-colonial-_JM?searchVariation=189959819515#polycard_client=search-nordic&searchVariation=189959819515&search_layout=grid&position=3&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1780708199604,
-                "primaryCatId": "infantil",
-                "views": 0
+                "tags": [
+                    "silla",
+                    "infantil",
+                    "niños",
+                    "chica",
+                    "pequeña",
+                    "sillita",
+                    "madera"
+                ],
+                "last_modified": 1783635806092,
+                "primaryCatId": "sillas-sillones"
             },
             {
                 "id": "especiero",
@@ -1909,8 +1932,8 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1782621039609,
-                "primaryCatId": "Hogar"
+                "last_modified": 1783636734098,
+                "primaryCatId": "productos-algarrobo"
             },
             {
                 "id": "Mate",
@@ -1927,13 +1950,23 @@ const productsData = [
                             "img/hogar/mate/1780708903884-imagen.webp",
                             "img/hogar/mate/1780708904016-imagen.webp"
                         ],
-                        "medidas_variants": []
+                        "medidas_variants": [],
+                        "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1780708904153,
-                "primaryCatId": "Hogar",
-                "views": 1
+                "tags": [
+                    "mate",
+                    "algarrobo",
+                    "madera",
+                    "matero",
+                    "argentino",
+                    "argento",
+                    "mates",
+                    "yerba",
+                    "tomar"
+                ],
+                "last_modified": 1783642447708,
+                "primaryCatId": "productos-algarrobo"
             },
             {
                 "id": "Platos - Cuencos",
@@ -1961,8 +1994,8 @@ const productsData = [
                     "locro",
                     "patrio"
                 ],
-                "last_modified": 1782621035755,
-                "primaryCatId": "Hogar"
+                "last_modified": 1783636741117,
+                "primaryCatId": "productos-algarrobo"
             },
             {
                 "id": "Mueble-Multifunción",
@@ -1985,11 +2018,16 @@ const productsData = [
                                 "medida": "60 x 45 x 30 cm",
                                 "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -2002,8 +2040,8 @@ const productsData = [
                     "muebles minimalistas",
                     "carpinteria artesanal"
                 ],
-                "last_modified": 1782408743227,
-                "primaryCatId": "Interior"
+                "last_modified": 1783637039050,
+                "primaryCatId": "Mesas-madera"
             },
             {
                 "id": "jenga",
@@ -2034,8 +2072,18 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783618282902,
+                "tags": [
+                    "jenga",
+                    "yenga",
+                    "madera",
+                    "juguetes",
+                    "juegos de mesa",
+                    "mesa",
+                    "juegos",
+                    "piezas",
+                    "maderitas"
+                ],
+                "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes"
             },
             {
@@ -2070,8 +2118,16 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783618293336,
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero"
+                ],
+                "last_modified": 1783637106226,
                 "primaryCatId": "Organizadores"
             },
             {
@@ -2105,8 +2161,18 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783618298429,
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "candry",
+                    "bar"
+                ],
+                "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores"
             },
             {
@@ -2138,8 +2204,18 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783618305845,
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "candry",
+                    "bar"
+                ],
+                "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores"
             },
             {
@@ -2623,17 +2699,31 @@ const productsData = [
                                 "medida": "Único",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2414802538-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1780708454015,
-                "primaryCatId": "organizacion",
-                "views": 0
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "candry",
+                    "bar"
+                ],
+                "last_modified": 1783637154745,
+                "primaryCatId": "Organizadores"
             },
             {
                 "id": "esquinero-x3",
@@ -2652,11 +2742,16 @@ const productsData = [
                                 "medida": "Único",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2168998242-estante-esquinero-torneado-3-estantes-_JM",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
@@ -2669,11 +2764,16 @@ const productsData = [
                                 "medida": "Barnizado",
                                 "link": "",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Tintado",
@@ -2686,14 +2786,29 @@ const productsData = [
                                 "medida": "Tintado",
                                 "link": "",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 0
+                "tags": [
+                    "esquinero",
+                    "organizador",
+                    "muebles",
+                    "madera",
+                    "pared",
+                    "decorar",
+                    "ropa"
+                ],
+                "last_modified": 1783637176778,
+                "primaryCatId": "Organizadores"
             },
             {
                 "id": "Mueble-Multifunción",
@@ -3332,9 +3447,20 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1782601059276,
-                "primaryCatId": "exterior"
+                "tags": [
+                    "mesa",
+                    "mesita",
+                    "madera",
+                    "plegable",
+                    "jardin",
+                    "playa",
+                    "picnic",
+                    "salida",
+                    "bosque",
+                    "viaje"
+                ],
+                "last_modified": 1783637216140,
+                "primaryCatId": "Mesas-madera"
             },
             {
                 "id": "mesa-plegable-redonda-chica",
@@ -3353,9 +3479,20 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1782606636520,
-                "primaryCatId": "exterior"
+                "tags": [
+                    "mesa",
+                    "mesita",
+                    "madera",
+                    "plegable",
+                    "jardin",
+                    "playa",
+                    "picnic",
+                    "salida",
+                    "bosque",
+                    "viaje"
+                ],
+                "last_modified": 1783637228097,
+                "primaryCatId": "Mesas-madera"
             },
             {
                 "id": "perchero-1",
@@ -3411,40 +3548,69 @@ const productsData = [
                                 "medida": "x3 Un",
                                 "link": "",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "Grande",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "Mediano",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             },
                             {
                                 "medida": "Chico",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1782000854868,
-                "primaryCatId": "decoracion"
+                "tags": [
+                    "decorar",
+                    "jardin",
+                    "fanales",
+                    "candy",
+                    "bar",
+                    "blanco",
+                    "negro",
+                    "iluminacion",
+                    "santos",
+                    "imagen",
+                    "altar"
+                ],
+                "last_modified": 1783637265113,
+                "primaryCatId": "jardin-patio"
             },
             {
                 "id": "organizador-tribuna-x3",
@@ -3464,14 +3630,30 @@ const productsData = [
                                 "medida": "Único",
                                 "link": "",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 0
+                "tags": [
+                    "tribuna",
+                    "mini",
+                    "candy",
+                    "bar",
+                    "poner cositas",
+                    "madera",
+                    "decorar",
+                    "emprendedores"
+                ],
+                "last_modified": 1783637306441,
+                "primaryCatId": "Organizadores"
             },
             {
                 "id": "especiero",
@@ -4010,8 +4192,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
@@ -4031,8 +4213,8 @@ const productsData = [
                     "torneado",
                     "madera"
                 ],
-                "last_modified": 1782693473245,
-                "primaryCatId": "decoracion"
+                "last_modified": 1783637318873,
+                "primaryCatId": "Organizadores"
             },
             {
                 "id": "baranda-sommier-triple",
@@ -4478,6 +4660,316 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros"
+            },
+            {
+                "id": "Estantes-Cortes-Madera",
+                "title": "Cortes de madera",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "image": "img/migrados/decoracion/estantes/estantes.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/decoracion/estantes/estantes.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes/estantes.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "20 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "20 x 80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "20 x 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Otras medidas",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Estante",
+                    "cortes",
+                    "madera",
+                    "a medida",
+                    "retazos",
+                    "medidas",
+                    "placas",
+                    "paneles"
+                ],
+                "last_modified": 1783635269180,
+                "primaryCatId": "Estantes"
+            },
+            {
+                "id": "chico",
+                "title": "Vinoteca - 5 Vinos",
+                "description": "Cavas y bodegas rústicas de madera.",
+                "image": "img/migrados/organizacion/chico/1760662516.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Tintado",
+                        "cover_image": "img/migrados/organizacion/chico/1760662516.webp",
+                        "images_list": [
+                            "img/migrados/organizacion/chico/1760662516.webp",
+                            "img/migrados/organizacion/chico/1760662574.webp",
+                            "img/migrados/organizacion/chico/1760662633.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "5 Vinos",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1562167173-vinoteca-cava-bodega-madera-mueble-5-vinos-rustica-campo-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "vinos",
+                    "vino",
+                    "vinoteca",
+                    "bodega",
+                    "bodegon",
+                    "organizar",
+                    "chupi",
+                    "botellas",
+                    "fernet",
+                    "cerveza",
+                    "decorar",
+                    "papa",
+                    "regalo"
+                ],
+                "last_modified": 1783637374473,
+                "primaryCatId": "Vinotecas"
+            },
+            {
+                "id": "9-vinos",
+                "title": "Vinoteca - 9 Vinos",
+                "description": "Cavas y bodegas rústicas de madera.",
+                "image": "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406683-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Tintado",
+                        "cover_image": "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406683-imagen.webp",
+                        "images_list": [
+                            "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406683-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406413-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406548-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Mediano",
+                                "link": "https://www.mercadolibre.com.ar/vinoteca-cava-bodega-madera-mueble-9-vinos-rustica-campo/up/MLAU3969313254",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "vinos",
+                    "vino",
+                    "vinoteca",
+                    "bodega",
+                    "bodegon",
+                    "organizar",
+                    "chupi",
+                    "botellas",
+                    "fernet",
+                    "cerveza",
+                    "decorar",
+                    "papa",
+                    "regalo"
+                ],
+                "last_modified": 1783637378825,
+                "primaryCatId": "Vinotecas"
+            },
+            {
+                "id": "17-vinos",
+                "title": "Vinoteca - 17 Vinos",
+                "description": "Cavas y bodegas rústicas de madera.",
+                "image": "img/migrados/organizacion/17-vinos/1760660580.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Tintado",
+                        "cover_image": "img/migrados/organizacion/17-vinos/1760660580.webp",
+                        "images_list": [
+                            "img/migrados/organizacion/17-vinos/1760660580.webp",
+                            "img/migrados/organizacion/17-vinos/1760660435.webp",
+                            "img/migrados/organizacion/17-vinos/envio.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Grande",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1561953897-vinoteca-cava-bodega-madera-mueble-17-vinos-rustica-campo-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "vinos",
+                    "vino",
+                    "vinoteca",
+                    "bodega",
+                    "bodegon",
+                    "organizar",
+                    "chupi",
+                    "botellas",
+                    "fernet",
+                    "cerveza",
+                    "decorar",
+                    "papa",
+                    "regalo"
+                ],
+                "last_modified": 1783637382534,
+                "primaryCatId": "Vinotecas"
+            },
+            {
+                "id": "13-vinos",
+                "title": "Vinoteca - 13 Vinos",
+                "description": "Cavas y bodegas rústicas de madera.",
+                "image": "img/migrados/organizacion/13-vinos/1.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Tintado",
+                        "cover_image": "img/migrados/organizacion/13-vinos/1.webp",
+                        "images_list": [
+                            "img/migrados/organizacion/13-vinos/1.webp",
+                            "img/migrados/organizacion/13-vinos/0.webp",
+                            "img/migrados/organizacion/13-vinos/2.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Mediano",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2630634704-vinoteca-cava-bodega-madera-mueble-13-vinos-rustica-campo-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "vinos",
+                    "vino",
+                    "vinoteca",
+                    "bodega",
+                    "bodegon",
+                    "organizar",
+                    "chupi",
+                    "botellas",
+                    "fernet",
+                    "cerveza",
+                    "decorar",
+                    "papa",
+                    "regalo"
+                ],
+                "last_modified": 1783637386473,
+                "primaryCatId": "Vinotecas"
             }
         ]
     },
@@ -4506,14 +4998,35 @@ const productsData = [
                                 "medida": "5 Vinos",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1562167173-vinoteca-cava-bodega-madera-mueble-5-vinos-rustica-campo-_JM",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 0
+                "tags": [
+                    "vinos",
+                    "vino",
+                    "vinoteca",
+                    "bodega",
+                    "bodegon",
+                    "organizar",
+                    "chupi",
+                    "botellas",
+                    "fernet",
+                    "cerveza",
+                    "decorar",
+                    "papa",
+                    "regalo"
+                ],
+                "last_modified": 1783637374473,
+                "primaryCatId": "Vinotecas"
             },
             {
                 "id": "9-vinos",
@@ -4534,14 +5047,35 @@ const productsData = [
                                 "medida": "Mediano",
                                 "link": "https://www.mercadolibre.com.ar/vinoteca-cava-bodega-madera-mueble-9-vinos-rustica-campo/up/MLAU3969313254",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 0
+                "tags": [
+                    "vinos",
+                    "vino",
+                    "vinoteca",
+                    "bodega",
+                    "bodegon",
+                    "organizar",
+                    "chupi",
+                    "botellas",
+                    "fernet",
+                    "cerveza",
+                    "decorar",
+                    "papa",
+                    "regalo"
+                ],
+                "last_modified": 1783637378825,
+                "primaryCatId": "Vinotecas"
             },
             {
                 "id": "13-vinos",
@@ -4562,14 +5096,35 @@ const productsData = [
                                 "medida": "Mediano",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2630634704-vinoteca-cava-bodega-madera-mueble-13-vinos-rustica-campo-_JM",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 0
+                "tags": [
+                    "vinos",
+                    "vino",
+                    "vinoteca",
+                    "bodega",
+                    "bodegon",
+                    "organizar",
+                    "chupi",
+                    "botellas",
+                    "fernet",
+                    "cerveza",
+                    "decorar",
+                    "papa",
+                    "regalo"
+                ],
+                "last_modified": 1783637386473,
+                "primaryCatId": "Vinotecas"
             },
             {
                 "id": "17-vinos",
@@ -4590,14 +5145,35 @@ const productsData = [
                                 "medida": "Grande",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1561953897-vinoteca-cava-bodega-madera-mueble-17-vinos-rustica-campo-_JM",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 2
+                "tags": [
+                    "vinos",
+                    "vino",
+                    "vinoteca",
+                    "bodega",
+                    "bodegon",
+                    "organizar",
+                    "chupi",
+                    "botellas",
+                    "fernet",
+                    "cerveza",
+                    "decorar",
+                    "papa",
+                    "regalo"
+                ],
+                "last_modified": 1783637382534,
+                "primaryCatId": "Vinotecas"
             }
         ],
         "rubro": "carpinteria"
@@ -4901,8 +5477,16 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783618293336,
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero"
+                ],
+                "last_modified": 1783637106226,
                 "primaryCatId": "Organizadores"
             },
             {
@@ -4936,8 +5520,18 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783618298429,
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "candry",
+                    "bar"
+                ],
+                "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores"
             },
             {
@@ -4969,8 +5563,282 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783618305845,
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "candry",
+                    "bar"
+                ],
+                "last_modified": 1783637126403,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "Mueble-Multifunción",
+                "title": "Mueble Multifunción - Estilo Nórdico",
+                "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
+                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
+                "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                        "images_list": [
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094497-imagen.webp",
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094652-imagen.webp",
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094874-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 45 x 30 cm",
+                                "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Mueble multifuncion",
+                    "estilo nordico",
+                    "banco zapatero",
+                    "mesa ratona pino",
+                    "mueble bajo tv",
+                    "organizacion hogar",
+                    "muebles minimalistas",
+                    "carpinteria artesanal"
+                ],
+                "last_modified": 1783637039050,
+                "primaryCatId": "Mesas-madera"
+            },
+            {
+                "id": "verdulero-x3",
+                "title": "Verdulero x3",
+                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+                "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/verdulero-x3/1780708453865-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2414802538-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "candry",
+                    "bar"
+                ],
+                "last_modified": 1783637154745,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "esquinero-x3",
+                "title": "Esquinero x3",
+                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+                "image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                        "images_list": [
+                            "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2168998242-estante-esquinero-torneado-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Barnizado",
+                        "cover_image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                        "images_list": [
+                            "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Barnizado",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Tintado",
+                        "cover_image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                        "images_list": [
+                            "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Tintado",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "esquinero",
+                    "organizador",
+                    "muebles",
+                    "madera",
+                    "pared",
+                    "decorar",
+                    "ropa"
+                ],
+                "last_modified": 1783637176778,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "organizador-tribuna-x3",
+                "title": "Organizador Tribuna X3",
+                "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "image": "img/decoracion/organizador-tribuna-x3/1780323408539-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/decoracion/organizador-tribuna-x3/1780323408539-imagen.webp",
+                        "images_list": [
+                            "img/decoracion/organizador-tribuna-x3/1780323408539-imagen.webp",
+                            "img/decoracion/organizador-tribuna-x3/1780323408690-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "tribuna",
+                    "mini",
+                    "candy",
+                    "bar",
+                    "poner cositas",
+                    "madera",
+                    "decorar",
+                    "emprendedores"
+                ],
+                "last_modified": 1783637306441,
+                "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "Posa-Tortas",
+                "title": "Posa Torta De Madera Torneado Candy Bar",
+                "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
+                "image": "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                        "images_list": [
+                            "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                            "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590872-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "22 Diam X 21 Alto",
+                                "link": "https://www.mercadolibre.com.ar/posa-torta-de-madera-torneado-candy-bar-22-diam-x-21-alto/up/MLAU3618805830?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=15&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7&wid=MLA1590370469&sid=search",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "posa",
+                    "tortas",
+                    "candy",
+                    "bar",
+                    "decoracion",
+                    "pasteles",
+                    "fiesta",
+                    "15 años",
+                    "bebes",
+                    "cumpleaños",
+                    "torneado",
+                    "madera"
+                ],
+                "last_modified": 1783637318873,
                 "primaryCatId": "Organizadores"
             }
         ]
@@ -7525,6 +8393,120 @@ const productsData = [
                 ],
                 "last_modified": 1783617596816,
                 "primaryCatId": "Organizadores"
+            },
+            {
+                "id": "Estantes-Cortes-Madera",
+                "title": "Cortes de madera",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "image": "img/migrados/decoracion/estantes/estantes.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/decoracion/estantes/estantes.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes/estantes.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "20 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "20 x 80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "20 x 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Otras medidas",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Estante",
+                    "cortes",
+                    "madera",
+                    "a medida",
+                    "retazos",
+                    "medidas",
+                    "placas",
+                    "paneles"
+                ],
+                "last_modified": 1783635269180,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -7563,8 +8545,18 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "last_modified": 1783618282902,
+                "tags": [
+                    "jenga",
+                    "yenga",
+                    "madera",
+                    "juguetes",
+                    "juegos de mesa",
+                    "mesa",
+                    "juegos",
+                    "piezas",
+                    "maderitas"
+                ],
+                "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes"
             },
             {
@@ -7636,11 +8628,108 @@ const productsData = [
         "rubro": "carpinteria"
     },
     {
+        "id": "sillas-sillones",
+        "name": "Sillas y sillones",
+        "image": "img/sillas-y-sillones/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 9,
+        "products": [
+            {
+                "id": "banquito-de-plaza",
+                "title": "Banquito de Plaza",
+                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
+                "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                        "images_list": [
+                            "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/infantil/banquito-de-plaza/1782606557223-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Doble",
+                                "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "sillon",
+                    "banquito",
+                    "banca",
+                    "plaza",
+                    "niños",
+                    "candy",
+                    "bar",
+                    "niños",
+                    "chicos",
+                    "decoracion"
+                ],
+                "last_modified": 1783635754620,
+                "primaryCatId": "sillas-sillones"
+            },
+            {
+                "id": "silla-infantil",
+                "title": "Silla infantil",
+                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
+                "image": "img/infantil/silla-infantil/1780323571344-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/infantil/silla-infantil/1780323571344-imagen.webp",
+                        "images_list": [
+                            "img/infantil/silla-infantil/1780323571344-imagen.webp",
+                            "img/migrados/infantil/silla-infantil/Silla infantil.webp",
+                            "img/infantil/silla-infantil/1780323571488-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Colonial (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1516454739-silla-infantil-colonial-_JM?searchVariation=189959819515#polycard_client=search-nordic&searchVariation=189959819515&search_layout=grid&position=3&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "silla",
+                    "infantil",
+                    "niños",
+                    "chica",
+                    "pequeña",
+                    "sillita",
+                    "madera"
+                ],
+                "last_modified": 1783635806092,
+                "primaryCatId": "sillas-sillones"
+            }
+        ]
+    },
+    {
         "id": "jardin-patio",
         "name": "Jardín",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 9,
+        "order": 10,
         "products": [
             {
                 "id": "deck-rectangular",
@@ -7967,6 +9056,181 @@ const productsData = [
                 ],
                 "last_modified": 1783618250710,
                 "primaryCatId": "jardin-patio"
+            },
+            {
+                "id": "fanal",
+                "title": "Fanal",
+                "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
+                "image": "img/migrados/otros/fanal/Fanal.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/otros/fanal/Fanal.webp",
+                        "images_list": [
+                            "img/migrados/otros/fanal/Fanal.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "x3 Un",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Grande",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Mediano",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Chico",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "decorar",
+                    "jardin",
+                    "fanales",
+                    "candy",
+                    "bar",
+                    "blanco",
+                    "negro",
+                    "iluminacion",
+                    "santos",
+                    "imagen",
+                    "altar"
+                ],
+                "last_modified": 1783637265113,
+                "primaryCatId": "jardin-patio"
+            }
+        ]
+    },
+    {
+        "id": "productos-algarrobo",
+        "name": "Todo Algarrobo",
+        "image": "img/todo-algarrobo/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 11,
+        "products": [
+            {
+                "id": "Platos-madera",
+                "title": "Platons de Madera - Asado",
+                "description": "",
+                "image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                        "images_list": [
+                            "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                            "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
+                            "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783636734098,
+                "primaryCatId": "productos-algarrobo"
+            },
+            {
+                "id": "Platos - Cuencos",
+                "title": "Cuencos",
+                "description": "",
+                "image": "img/hogar/cuencos/1782610904255-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/cuencos/1782610904255-imagen.webp",
+                        "images_list": [
+                            "img/hogar/cuencos/1782610904255-imagen.webp",
+                            "img/hogar/cuencos/1782610904423-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "plato",
+                    "cuenco",
+                    "madera",
+                    "algarrobo",
+                    "vajilla",
+                    "locro",
+                    "patrio"
+                ],
+                "last_modified": 1783636741117,
+                "primaryCatId": "productos-algarrobo"
+            },
+            {
+                "id": "Mate",
+                "title": "Mate",
+                "description": "",
+                "image": "img/hogar/mate/1780708903622-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Algarrobo",
+                        "cover_image": "img/hogar/mate/1780708903622-imagen.webp",
+                        "images_list": [
+                            "img/hogar/mate/1780708903622-imagen.webp",
+                            "img/hogar/mate/1780708903756-imagen.webp",
+                            "img/hogar/mate/1780708903884-imagen.webp",
+                            "img/hogar/mate/1780708904016-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mate",
+                    "algarrobo",
+                    "madera",
+                    "matero",
+                    "argentino",
+                    "argento",
+                    "mates",
+                    "yerba",
+                    "tomar"
+                ],
+                "last_modified": 1783642447708,
+                "primaryCatId": "productos-algarrobo"
             }
         ]
     },
@@ -7974,7 +9238,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 10,
+        "order": 12,
         "products": [
             {
                 "id": "podio-profesional",
@@ -8118,7 +9382,7 @@ const productsData = [
         "rubro": "papelera-cotillon",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 11,
+        "order": 13,
         "products": [
             {
                 "id": "Films-negro",
@@ -8157,7 +9421,7 @@ const productsData = [
         "name": "Embalaje",
         "image": "img/papelera-cotillon/embalaje/portada-imagen.webp",
         "rubro": "papelera-cotillon",
-        "order": 12,
+        "order": 14,
         "products": [
             {
                 "id": "Films-negro",
@@ -8198,7 +9462,7 @@ const productsData = [
         "rubro": "jabon",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 13,
+        "order": 15,
         "products": [
             {
                 "id": "Jabon",
@@ -8227,7 +9491,7 @@ const productsData = [
         "name": "Jabon",
         "image": "img/jabon/jabon/portada-imagen.webp",
         "rubro": "jabon",
-        "order": 14,
+        "order": 16,
         "products": [
             {
                 "id": "Jabon",
@@ -8251,5 +9515,125 @@ const productsData = [
             }
         ],
         "visible": false
+    },
+    {
+        "id": "Mesas-madera",
+        "name": "Mesas de madera",
+        "image": "img/mesas-de-madera/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 17,
+        "products": [
+            {
+                "id": "Mueble-Multifunción",
+                "title": "Mueble Multifunción - Estilo Nórdico",
+                "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
+                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
+                "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                        "images_list": [
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094497-imagen.webp",
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094652-imagen.webp",
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094874-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 45 x 30 cm",
+                                "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Mueble multifuncion",
+                    "estilo nordico",
+                    "banco zapatero",
+                    "mesa ratona pino",
+                    "mueble bajo tv",
+                    "organizacion hogar",
+                    "muebles minimalistas",
+                    "carpinteria artesanal"
+                ],
+                "last_modified": 1783637039050,
+                "primaryCatId": "Mesas-madera"
+            },
+            {
+                "id": "mesa-plegabe",
+                "title": "Mesa Plegabe",
+                "description": "",
+                "image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                        "images_list": [
+                            "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                            "img/exterior/mesa-plegabe/1782601058954-imagen.webp",
+                            "img/exterior/mesa-plegabe/1782601059141-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mesa",
+                    "mesita",
+                    "madera",
+                    "plegable",
+                    "jardin",
+                    "playa",
+                    "picnic",
+                    "salida",
+                    "bosque",
+                    "viaje"
+                ],
+                "last_modified": 1783637216140,
+                "primaryCatId": "Mesas-madera"
+            },
+            {
+                "id": "mesa-plegable-redonda-chica",
+                "title": "Mesa Plegable - Redonda",
+                "description": "",
+                "image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                        "images_list": [
+                            "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                            "img/exterior/mesa-plegable---redonda/1782606636382-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mesa",
+                    "mesita",
+                    "madera",
+                    "plegable",
+                    "jardin",
+                    "playa",
+                    "picnic",
+                    "salida",
+                    "bosque",
+                    "viaje"
+                ],
+                "last_modified": 1783637228097,
+                "primaryCatId": "Mesas-madera"
+            }
+        ]
     }
 ];

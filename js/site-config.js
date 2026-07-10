@@ -119,6 +119,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Cortes de madera!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Cortes de madera!",
+            "mediaType": "image",
+            "image": "img/migrados/decoracion/estantes/estantes.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Estantes-Cortes-Madera",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Estantes-Cortes-Madera",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783635269181
+        },
+        {
             "title": "¡Nuevo Ingreso: Perchero de pared!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero de pared!",
             "mediaType": "image",

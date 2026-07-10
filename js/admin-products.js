@@ -775,6 +775,7 @@ window.initProductsAdmin = function() {
     // Exponer al scope global
     window.runSearch = runSearch;
     window.renderSearchRubrosTabs = renderSearchRubrosTabs;
+    window.navigateToCategoryFeed = navigateToCategoryFeed;
 
     // Initialize search view on first load so it's ready
     window.runSearch();

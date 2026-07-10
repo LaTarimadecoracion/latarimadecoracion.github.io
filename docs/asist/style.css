@@ -1,0 +1,1196 @@
+/* AutoFlow Core Stylesheets */
+:root {
+    --bg-dark: #0f172a;
+    --bg-card: rgba(30, 41, 59, 0.7);
+    --bg-card-hover: rgba(30, 41, 59, 0.85);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color-focus: #3b82f6;
+    
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    
+    --color-primary: #3b82f6;
+    --color-primary-glow: rgba(59, 130, 246, 0.35);
+    --color-accent: #10b981;
+    --color-accent-glow: rgba(16, 185, 129, 0.35);
+    --color-danger: #ef4444;
+    --color-danger-glow: rgba(239, 68, 68, 0.35);
+    --color-dark: #1e293b;
+    --color-dark-glow: rgba(30, 41, 59, 0.35);
+    
+    --socket-in: #f59e0b;
+    --socket-out: #10b981;
+    
+    --transition-speed: 0.2s;
+    --font-stack: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+    font-family: var(--font-stack);
+    color: var(--text-main);
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* App Header Layout */
+.app-header {
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    z-index: 10;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 24px;
+}
+
+.logo-text h1 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, #60a5fa, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo-text p {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border-color);
+    margin: 0 4px;
+}
+
+/* Buttons Styling */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: var(--font-stack);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all var(--transition-speed) ease;
+    color: white;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    box-shadow: 0 0 12px var(--color-primary-glow);
+}
+.btn-primary:hover {
+    background: #2563eb;
+    box-shadow: 0 0 16px var(--color-primary-glow);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: transparent;
+    border-color: var(--border-color);
+}
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-accent {
+    background: var(--color-accent);
+    box-shadow: 0 0 12px var(--color-accent-glow);
+}
+.btn-accent:hover {
+    background: #059669;
+    box-shadow: 0 0 16px var(--color-accent-glow);
+    transform: translateY(-1px);
+}
+
+.btn-dark {
+    background: var(--color-dark);
+    border-color: var(--border-color);
+}
+.btn-dark:hover {
+    background: #334155;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-danger {
+    background: var(--color-danger);
+    box-shadow: 0 0 12px var(--color-danger-glow);
+}
+.btn-danger:hover {
+    background: #dc2626;
+    box-shadow: 0 0 16px var(--color-danger-glow);
+}
+
+/* App Main Container */
+.app-container {
+    height: calc(100% - 65px);
+    width: 100%;
+    position: relative;
+}
+
+/* Canvas Viewport */
+.canvas-viewport {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    cursor: grab;
+    background-color: #0b0f19;
+}
+
+.canvas-viewport:active {
+    cursor: grabbing;
+}
+
+/* Workspace wrapper that transforms */
+.canvas-workspace {
+    width: 10000px;
+    height: 10000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+}
+
+/* Connections SVG Layer */
+.connections-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.connection-path {
+    fill: none;
+    stroke: #3b82f6;
+    stroke-width: 3;
+    pointer-events: stroke;
+    cursor: pointer;
+    transition: stroke 0.2s, stroke-width 0.2s;
+}
+
+.connection-path:hover {
+    stroke: #60a5fa;
+    stroke-width: 5;
+    filter: url(#glow);
+}
+
+.connection-path.selected {
+    stroke: #ef4444;
+    stroke-width: 4;
+}
+
+.temp-wire {
+    fill: none;
+    stroke: #f59e0b;
+    stroke-width: 3;
+    stroke-dasharray: 6 4;
+}
+
+/* HTML Rule Nodes Container */
+.nodes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Let clicks pass through empty canvas */
+    z-index: 2;
+}
+
+/* Individual Rule Cards (Nodes) */
+.node-card {
+    position: absolute;
+    width: 300px;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    pointer-events: auto; /* Enable interaction with card */
+    cursor: default;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.node-card:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: var(--bg-card-hover);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.6);
+}
+
+.node-card.selected {
+    border-color: var(--border-color-focus);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.node-card.disabled-rule {
+    opacity: 0.6;
+    border-style: dashed;
+}
+
+/* Sockets on the Nodes */
+.socket {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #0f172a;
+    border: 3.5px solid #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: crosshair;
+    z-index: 5;
+    transition: transform var(--transition-speed), border-color var(--transition-speed);
+}
+
+.socket:hover {
+    transform: translateX(-50%) scale(1.3);
+}
+
+.socket-in {
+    top: -8px;
+    border-color: var(--socket-in);
+    box-shadow: 0 0 8px var(--socket-in);
+}
+
+.socket-out {
+    bottom: -8px;
+    border-color: var(--socket-out);
+    box-shadow: 0 0 8px var(--socket-out);
+}
+
+/* Rule Card Header */
+.node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move; /* Drag handler */
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    gap: 8px;
+}
+
+.node-title-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.node-label-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-family: var(--font-stack);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.node-label-input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    outline: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.node-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Switch toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 18px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #475569;
+    transition: .3s;
+    border-radius: 9px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--color-accent);
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+.btn-delete-node {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 4px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.btn-delete-node:hover {
+    color: var(--color-danger);
+    background: rgba(239, 68, 68, 0.15);
+}
+
+.btn-duplicate-node {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 4px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.btn-duplicate-node:hover {
+    color: var(--color-primary);
+    background: rgba(59, 130, 246, 0.15);
+}
+
+/* Form Fields inside Cards */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-input, .form-textarea, .form-select {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: var(--text-main);
+    font-family: var(--font-stack);
+    font-size: 12.5px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--border-color-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 50px;
+    font-family: inherit;
+    line-height: 1.4;
+}
+
+/* Advanced Panel toggle */
+.advanced-toggle {
+    font-size: 11px;
+    color: var(--color-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+    align-self: flex-start;
+    font-weight: 600;
+}
+
+.advanced-panel {
+    display: none; /* Toggled via class in JS */
+    border-top: 1px dashed var(--border-color);
+    padding-top: 10px;
+    margin-top: 4px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.advanced-panel.show {
+    display: flex;
+}
+
+/* Days selection */
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.day-checkbox {
+    display: none;
+}
+
+.day-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    font-size: 10px;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    background: rgba(15, 23, 42, 0.4);
+}
+
+.day-checkbox:checked + .day-label {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+/* Conditions list */
+.conditions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.condition-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.condition-item input[type="checkbox"] {
+    accent-color: var(--color-primary);
+}
+
+/* HUD Navigation buttons */
+.canvas-hud {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 10;
+}
+
+.canvas-hud button {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.85);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+}
+
+.canvas-hud button:hover {
+    background: #334155;
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Help HUD bottom left */
+.help-hud {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.help-hud strong {
+    color: var(--text-main);
+}
+
+/* Toast notifications */
+.notification-toast {
+    position: fixed;
+    top: 80px;
+    right: 24px;
+    background: rgba(30, 41, 59, 0.95);
+    border-left: 4px solid var(--color-primary);
+    color: var(--text-main);
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5);
+    z-index: 100;
+    transform: translateX(120%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.notification-toast.show {
+    transform: translateX(0);
+}
+
+.notification-toast.success {
+    border-left-color: var(--color-accent);
+}
+
+.notification-toast.error {
+    border-left-color: var(--color-danger);
+}
+
+/* ----------------------------------------------------
+   CHAT SIMULATOR INTERFACE STYLES
+   ---------------------------------------------------- */
+.simulator-panel {
+    position: absolute;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), left 0.4s cubic-bezier(0.16, 1, 0.3, 1), top 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Docking Left */
+.simulator-panel.dock-left {
+    left: 0; top: 0; right: auto; bottom: auto;
+    width: 360px; height: 100%;
+    transform: translateX(-100%);
+    border-right: 1px solid var(--border-color);
+}
+.simulator-panel.dock-left.open {
+    transform: translateX(0);
+}
+
+/* Docking Right */
+.simulator-panel.dock-right {
+    left: auto; top: 0; right: 0; bottom: auto;
+    width: 360px; height: 100%;
+    transform: translateX(100%);
+    border-left: 1px solid var(--border-color);
+}
+.simulator-panel.dock-right.open {
+    transform: translateX(0);
+}
+
+/* Docking Top */
+.simulator-panel.dock-top {
+    left: 0; top: 0; right: auto; bottom: auto;
+    width: 100%; height: 320px;
+    transform: translateY(-100%);
+    border-bottom: 1px solid var(--border-color);
+}
+.simulator-panel.dock-top.open {
+    transform: translateY(0);
+}
+
+/* Docking Bottom */
+.simulator-panel.dock-bottom {
+    left: 0; top: auto; right: auto; bottom: 0;
+    width: 100%; height: 320px;
+    transform: translateY(100%);
+    border-top: 1px solid var(--border-color);
+}
+.simulator-panel.dock-bottom.open {
+    transform: translateY(0);
+}
+
+/* Floating Window */
+.simulator-panel.dock-floating {
+    left: 100px; top: 120px; right: auto; bottom: auto;
+    width: 360px; height: 500px;
+    transform: scale(0);
+    transform-origin: top left;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+.simulator-panel.dock-floating.open {
+    transform: scale(1);
+}
+
+/* Position Switcher Select */
+.select-sim-pos {
+    width: 110px;
+    height: 28px;
+    font-size: 11px;
+    padding: 2px 6px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-main);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.select-sim-pos:focus {
+    border-color: var(--border-color-focus);
+}
+
+/* Toggle Tabs depending on position */
+.simulator-toggle-tab {
+    position: absolute;
+    z-index: 25;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-stack);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
+    transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1), top 0.4s cubic-bezier(0.16, 1, 0.3, 1), bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1), right 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
+}
+
+.simulator-toggle-tab.open {
+    display: none; /* Hide when panel is open */
+}
+
+.simulator-toggle-tab.dock-left {
+    left: 0; top: 150px; right: auto; bottom: auto;
+    padding: 14px 10px;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    border-radius: 0 8px 8px 0;
+}
+
+.simulator-toggle-tab.dock-right {
+    left: auto; top: 150px; right: 0; bottom: auto;
+    padding: 14px 10px;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    border-radius: 8px 0 0 8px;
+}
+
+.simulator-toggle-tab.dock-top {
+    left: 50%; top: 0; right: auto; bottom: auto;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    writing-mode: horizontal-tb;
+    border-radius: 0 0 8px 8px;
+}
+
+.simulator-toggle-tab.dock-bottom {
+    left: 50%; top: auto; right: auto; bottom: 0;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    writing-mode: horizontal-tb;
+    border-radius: 8px 8px 0 0;
+}
+
+.simulator-toggle-tab.dock-floating {
+    left: 20px; top: auto; right: auto; bottom: 20px;
+    padding: 12px 22px;
+    writing-mode: horizontal-tb;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+}
+
+.simulator-toggle-tab:hover {
+    background: #2563eb;
+}
+
+/* Simulator Header */
+.simulator-header {
+    height: 65px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.6);
+}
+
+.simulator-title h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.simulator-title p {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.simulator-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-reset-sim {
+    background: var(--color-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+}
+
+.btn-reset-sim:hover {
+    background: #334155;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-close-sim {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.btn-close-sim:hover {
+    color: var(--color-danger);
+    background: rgba(239, 68, 68, 0.15);
+}
+
+/* Chat History Area */
+.simulator-chat-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-behavior: smooth;
+    background: #090d16;
+}
+
+/* Messages Bubbles */
+.chat-message {
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.45;
+    word-break: break-word;
+    box-sizing: border-box;
+}
+
+.chat-message.client {
+    align-self: flex-end;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 12px 12px 0 12px;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+    max-width: 85%;
+}
+
+.chat-message.bot {
+    align-self: flex-start;
+    background: var(--color-dark);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 12px 12px 12px 0;
+    white-space: pre-wrap; /* critical to preserve line breaks! */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 100%;
+}
+
+.chat-system-message {
+    align-self: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 8px 0;
+}
+
+/* Typing Indicator */
+.typing-indicator-wrapper {
+    display: none; /* Flex when active */
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(15, 23, 42, 0.4);
+    border-top: 1px solid var(--border-color);
+}
+
+.typing-indicator-wrapper.active {
+    display: flex;
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+}
+
+.typing-indicator span {
+    width: 6px;
+    height: 6px;
+    background: var(--text-muted);
+    border-radius: 50%;
+    animation: typing-bounce 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+.typing-text {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+@keyframes typing-bounce {
+    0%, 80%, 100% { 
+        transform: scale(0);
+    } 40% { 
+        transform: scale(1.0);
+    }
+}
+
+/* Input Footer */
+.simulator-input-area {
+    padding: 12px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 8px;
+    background: rgba(15, 23, 42, 0.6);
+}
+
+#simulator-input {
+    flex-grow: 1;
+    background: rgba(9, 13, 22, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: var(--text-main);
+    font-family: var(--font-stack);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#simulator-input:focus {
+    border-color: var(--border-color-focus);
+}
+
+.simulator-input-area button {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family: var(--font-stack);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.simulator-input-area button:hover {
+    background: #2563eb;
+}
+
+/* ----------------------------------------------------
+   HELP / VARIABLES GUIDE MODAL STYLES
+   ---------------------------------------------------- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: none; /* Flex when open */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+.modal-content {
+    background: #1e293b;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 650px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: modal-appear 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes modal-appear {
+    from {
+        transform: translateY(20px) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: var(--color-danger);
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-intro {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.variable-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.variable-section h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #60a5fa;
+}
+
+.section-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Variables Table */
+.variables-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    text-align: left;
+}
+
+.variables-table th, .variables-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.variables-table th {
+    background: rgba(255, 255, 255, 0.03);
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.variables-table td {
+    color: var(--text-muted);
+}
+
+.variables-table td code {
+    background: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, Monaco, monospace;
+    font-weight: 600;
+}
+
+.text-info-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.syntax-example {
+    background: #0f172a;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px 14px;
+}
+
+.syntax-example code {
+    color: #34d399;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 12.5px;
+}
+
+/* Redirection (go_to_rule) connections */
+.connection-path.redirection-wire {
+    stroke: #f59e0b; /* Orange color */
+    stroke-dasharray: 6 5;
+    stroke-width: 2.5;
+}
+
+.connection-path.redirection-wire:hover {
+    stroke: #fbbf24;
+    stroke-width: 4.5;
+    filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
+}
+
