@@ -45,16 +45,19 @@
 
     // Load Rules: LocalStorage (Preview Mode) -> CSV File -> Fallbacks
     async function loadRules() {
-        // 1. Try local storage (allows real-time updates from visual editor on the same domain)
+        // 1. Try local storage (allows real-time updates from visual editor on the same domain in development)
         try {
-            const saved = localStorage.getItem("autoflow_state");
-            if (saved) {
-                const data = JSON.parse(saved);
-                if (data.rules && data.rules.length > 0) {
-                    console.log("🪵 [Asistente] Cargadas reglas desde localStorage (Modo Preview).");
-                    const rulesMap = new Map(data.rules);
-                    cleanRulesData(rulesMap);
-                    return rulesMap;
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            if (isLocal) {
+                const saved = localStorage.getItem("autoflow_state");
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.rules && data.rules.length > 0) {
+                        console.log("🪵 [Asistente] Cargadas reglas desde localStorage (Modo Preview).");
+                        const rulesMap = new Map(data.rules);
+                        cleanRulesData(rulesMap);
+                        return rulesMap;
+                    }
                 }
             }
         } catch(e) {
