@@ -321,11 +321,6 @@
             </div>
             <div class="assistant-input-area">
                 <input type="text" class="assistant-input" placeholder="Escribí una consulta..." autocomplete="off">
-                <button class="assistant-send-btn" title="Enviar mensaje">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
-                    </svg>
-                </button>
             </div>
         `;
 
@@ -364,14 +359,16 @@
             chatWindowEl.classList.remove("open");
         });
 
-        // Send button click
-        sendBtnEl.addEventListener("click", () => {
-            const val = inputEl.value.trim();
-            if (val) {
-                handleClientMessage(val);
-                inputEl.value = "";
-            }
-        });
+        // Send button click (if present)
+        if (sendBtnEl) {
+            sendBtnEl.addEventListener("click", () => {
+                const val = inputEl.value.trim();
+                if (val) {
+                    handleClientMessage(val);
+                    inputEl.value = "";
+                }
+            });
+        }
 
         // Input enter key
         inputEl.addEventListener("keydown", (e) => {
