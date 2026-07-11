@@ -470,6 +470,33 @@ window.initProductsAdmin = function() {
             .toLowerCase();
     };
 
+    // Levenshtein distance string similarity ratio
+    const getSimilarityRatio = (str1, str2) => {
+        const s1 = str1.toLowerCase().trim();
+        const s2 = str2.toLowerCase().trim();
+        if (s1 === s2) return 1.0;
+        if (s1.length === 0 || s2.length === 0) return 0.0;
+        
+        const track = Array(s2.length + 1).fill(null).map(() => Array(s1.length + 1).fill(null));
+        for (let i = 0; i <= s1.length; i += 1) track[0][i] = i;
+        for (let j = 0; j <= s2.length; j += 1) track[j][0] = j;
+        
+        for (let j = 1; j <= s2.length; j += 1) {
+            for (let i = 1; i <= s1.length; i += 1) {
+                const indicator = s1[i - 1] === s2[j - 1] ? 0 : 1;
+                track[j][i] = Math.min(
+                    track[j - 1][i] + 1, // deletion
+                    track[j][i - 1] + 1, // insertion
+                    track[j - 1][i - 1] + indicator // substitution
+                );
+            }
+        }
+        
+        const distance = track[s2.length][s1.length];
+        const maxLength = Math.max(s1.length, s2.length);
+        return (maxLength - distance) / maxLength;
+    };
+
     // Estado del rubro activo en la vista de búsqueda
     window.activeSearchRubro = 'carpinteria';
 
@@ -556,16 +583,46 @@ window.initProductsAdmin = function() {
 
             // Coincidir si cada uno de los términos buscados está en al menos uno de los campos
             const matchesQuery = queryTerms.length === 0 || queryTerms.every(term => {
-                return normalizeForSearch(item.nombre).includes(term) ||
+                const termNorm = term.replace(/\s+/g, '');
+                
+                // Helper: check if two words share a common root/prefix of at least 4 chars
+                const sharesRoot = (a, b) => {
+                    const minLen = Math.min(a.length, b.length);
+                    if (minLen < 4) return false;
+                    const prefixLen = Math.min(minLen, Math.max(4, Math.floor(minLen * 0.7)));
+                    return a.substring(0, prefixLen) === b.substring(0, prefixLen);
+                };
+
+                // 1. Direct contains check (handles "mesa" inside "mesita" and vice versa)
+                const directMatch = normalizeForSearch(item.nombre).includes(term) ||
                     (item.cat && item.cat.name && normalizeForSearch(item.cat.name).includes(term)) ||
                     (item.acabado && normalizeForSearch(item.acabado).includes(term)) ||
                     (item.product.description && normalizeForSearch(item.product.description).includes(term)) ||
                     (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(term))) ||
                     (item.medidas && item.medidas.some(medida => {
                         const normMedida = normalizeForSearch(medida).replace(/\s+/g, '');
-                        const normTerm = term.replace(/\s+/g, '');
-                        return normMedida.includes(normTerm);
+                        return normMedida.includes(termNorm);
                     }));
+
+                if (directMatch) return true;
+
+                // 2. Reverse contains / prefix / Levenshtein similarity check
+                const nombreNorm = normalizeForSearch(item.nombre);
+                const nombreWords = nombreNorm.split(/\s+/);
+                const catWords = item.cat && item.cat.name ? normalizeForSearch(item.cat.name).split(/\s+/) : [];
+                const allWords = nombreWords.concat(catWords);
+
+                for (let word of allWords) {
+                    if (word.length < 3) continue;
+                    // term contains word or word contains term
+                    if (term.includes(word) || word.includes(term)) return true;
+                    // shared root/prefix
+                    if (sharesRoot(term, word)) return true;
+                    // Levenshtein similarity
+                    if (word.length >= 3 && getSimilarityRatio(term, word) >= 0.65) return true;
+                }
+
+                return false;
             });
 
             if (matchesQuery) {
