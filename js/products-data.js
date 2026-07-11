@@ -596,7 +596,32 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda desmontable",
+                    "baranda montessori",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "barrera cama",
+                    "proteccion cama",
+                    "baranda anticaida",
+                    "seguridad infantil",
+                    "colecho",
+                    "anticaidas",
+                    "estilo montessori"
+                ],
                 "last_modified": 1783616692617,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
@@ -949,13 +974,33 @@ const productsData = [
                     "baranda para cama",
                     "baranda de seguridad",
                     "baranda para geriatrico",
-                    "baranda",
                     "resistentes",
                     "duras",
                     "madera",
                     "medidas",
                     "amplias",
-                    "grandes"
+                    "grandes",
+                    "barandas",
+                    "baranda desmontable",
+                    "baranda clasica",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "barrera cama",
+                    "proteccion cama",
+                    "baranda anticaida",
+                    "seguridad infantil",
+                    "colecho",
+                    "anticaidas"
                 ],
                 "last_modified": 1783616700840,
                 "optional_variant": {
@@ -1074,7 +1119,23 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "escalera",
+                    "escaleras",
+                    "escaleras pintor",
+                    "escalera madera",
+                    "escalera pino",
+                    "subir",
+                    "alcanzar",
+                    "plegable",
+                    "tijera",
+                    "pintor",
+                    "decorativa",
+                    "biblioteca",
+                    "escalones",
+                    "escalon",
+                    "peldaños"
+                ],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles"
             },
@@ -1110,7 +1171,24 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "perchero",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "abrigo",
+                    "camperas",
+                    "entrada",
+                    "recibidor",
+                    "pared",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion"
+                ],
                 "last_modified": 1783615900570,
                 "primaryCatId": "Percheros"
             },
@@ -1395,7 +1473,31 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda sommier",
+                    "baranda clasica",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "barrera cama",
+                    "proteccion cama",
+                    "baranda anticaida",
+                    "seguridad infantil",
+                    "colecho",
+                    "anticaidas"
+                ],
                 "last_modified": 1783616653865,
                 "primaryCatId": "Barandas"
             },
@@ -1459,7 +1561,20 @@ const productsData = [
                     "cofre",
                     "organizar",
                     "juguetes",
-                    "ropa"
+                    "ropa",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado"
                 ],
                 "last_modified": 1783617580222,
                 "primaryCatId": "Organizadores"
@@ -1582,7 +1697,17 @@ const productsData = [
                     "cocina",
                     "mueble",
                     "decorativo",
-                    "ordenar"
+                    "ordenar",
+                    "especieros",
+                    "especiero cocina",
+                    "especiero madera",
+                    "especiero pino",
+                    "organizar",
+                    "especias",
+                    "porta condimentos",
+                    "estante cocina",
+                    "pared cocina",
+                    "organizacion cocina"
                 ],
                 "last_modified": 1783617596816,
                 "primaryCatId": "Organizadores"
@@ -1738,7 +1863,24 @@ const productsData = [
                     "Decoracion de exteriores",
                     "Jardin urbano",
                     "Organizador de plantas",
-                    "Estantes para macetas"
+                    "Estantes para macetas",
+                    "deck",
+                    "decks",
+                    "deck cuadrado",
+                    "baldosa",
+                    "baldosas",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "piso",
+                    "impregnado",
+                    "piso madera",
+                    "baldosas deck",
+                    "deck eucalipto"
                 ],
                 "last_modified": 1783618243134,
                 "primaryCatId": "jardin-patio"
@@ -1847,7 +1989,24 @@ const productsData = [
                     "Decoracion de exteriores",
                     "Jardin urbano",
                     "Organizador de plantas",
-                    "Estantes para macetas"
+                    "Estantes para macetas",
+                    "deck",
+                    "decks",
+                    "deck rectangular",
+                    "baldosa",
+                    "baldosas",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "piso",
+                    "impregnado",
+                    "piso madera",
+                    "baldosas deck",
+                    "deck eucalipto"
                 ],
                 "last_modified": 1783618237200,
                 "primaryCatId": "jardin-patio"
@@ -1908,7 +2067,23 @@ const productsData = [
                     "Decoracion de ambientes",
                     "Muebles de pino para plantas",
                     "Huertas verticales madera",
-                    "Regalos decoracion hogar"
+                    "Regalos decoracion hogar",
+                    "maceta",
+                    "macetas",
+                    "macetero",
+                    "macetas colgantes",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "porta macetas",
+                    "colgante",
+                    "decoracion jardin",
+                    "plantas",
+                    "flores"
                 ],
                 "last_modified": 1783618250710,
                 "primaryCatId": "jardin-patio"
@@ -2081,7 +2256,18 @@ const productsData = [
                     "mesa",
                     "juegos",
                     "piezas",
-                    "maderitas"
+                    "maderitas",
+                    "juego",
+                    "juego mesa",
+                    "juego madera",
+                    "diversion",
+                    "familiar",
+                    "bloques",
+                    "torres",
+                    "gigante",
+                    "infantil",
+                    "entretenimiento",
+                    "bloques de madera"
                 ],
                 "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes"
@@ -2125,7 +2311,18 @@ const productsData = [
                     "mueble de cocina",
                     "cosina",
                     "frutas",
-                    "frutero"
+                    "frutero",
+                    "verduleros",
+                    "verdulero clasico",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "verdulería",
+                    "frutería",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "carro verdulero"
                 ],
                 "last_modified": 1783637106226,
                 "primaryCatId": "Organizadores"
@@ -2170,7 +2367,17 @@ const productsData = [
                     "frutas",
                     "frutero",
                     "candry",
-                    "bar"
+                    "bar",
+                    "verduleros",
+                    "verdulero mesada",
+                    "verdulero mini",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "panera"
                 ],
                 "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores"
@@ -2213,7 +2420,18 @@ const productsData = [
                     "frutas",
                     "frutero",
                     "candry",
-                    "bar"
+                    "bar",
+                    "verduleros",
+                    "verdulero mediano",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "verdulería",
+                    "frutería",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "carro verdulero"
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores"
@@ -2250,7 +2468,24 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "perchero",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "abrigo",
+                    "camperas",
+                    "entrada",
+                    "recibidor",
+                    "pared",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion"
+                ],
                 "last_modified": 1783551671921,
                 "primaryCatId": "Interior"
             },
@@ -2377,7 +2612,17 @@ const productsData = [
                     "cocina",
                     "mueble",
                     "decorativo",
-                    "ordenar"
+                    "ordenar",
+                    "especieros",
+                    "especiero cocina",
+                    "especiero madera",
+                    "especiero pino",
+                    "organizar",
+                    "especias",
+                    "porta condimentos",
+                    "estante cocina",
+                    "pared cocina",
+                    "organizacion cocina"
                 ],
                 "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
@@ -2437,7 +2682,23 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baul",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "cofre",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado"
+                ],
                 "last_modified": 1783553543093,
                 "primaryCatId": "infantil"
             },
@@ -2465,7 +2726,22 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "jenga",
+                    "yenga",
+                    "juego",
+                    "juego mesa",
+                    "juego madera",
+                    "diversion",
+                    "familiar",
+                    "bloques",
+                    "torres",
+                    "gigante",
+                    "infantil",
+                    "entretenimiento",
+                    "piezas",
+                    "bloques de madera"
+                ],
                 "last_modified": 1780708312773,
                 "primaryCatId": "infantil",
                 "views": 1
@@ -2590,7 +2866,23 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baul",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "cofre",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado"
+                ],
                 "last_modified": 1783553543093,
                 "primaryCatId": "infantil"
             },
@@ -2621,7 +2913,24 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 0,
+                "tags": [
+                    "verdulero",
+                    "verduleros",
+                    "verdulero clasico",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "organizar",
+                    "verduras",
+                    "frutas",
+                    "cajones",
+                    "verdulería",
+                    "frutería",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "carro verdulero"
+                ]
             },
             {
                 "id": "verdule-para-mesada",
@@ -2649,7 +2958,22 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "verdulero",
+                    "verduleros",
+                    "verdulero mesada",
+                    "verdulero mini",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "organizar",
+                    "verduras",
+                    "frutas",
+                    "cajones",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "panera"
+                ],
                 "last_modified": 1782439355523,
                 "primaryCatId": "organizacion"
             },
@@ -2677,7 +3001,23 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "verdulero",
+                    "verduleros",
+                    "verdulero mediano",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "organizar",
+                    "verduras",
+                    "frutas",
+                    "cajones",
+                    "verdulería",
+                    "frutería",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "carro verdulero"
+                ],
                 "last_modified": 1780708412846,
                 "primaryCatId": "organizacion",
                 "views": 0
@@ -2883,7 +3223,24 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "perchero",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "abrigo",
+                    "camperas",
+                    "entrada",
+                    "recibidor",
+                    "pared",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion"
+                ],
                 "last_modified": 1783551671921,
                 "primaryCatId": "Interior"
             },
@@ -2945,7 +3302,17 @@ const productsData = [
                     "cocina",
                     "mueble",
                     "decorativo",
-                    "ordenar"
+                    "ordenar",
+                    "especieros",
+                    "especiero cocina",
+                    "especiero madera",
+                    "especiero pino",
+                    "organizar",
+                    "especias",
+                    "porta condimentos",
+                    "estante cocina",
+                    "pared cocina",
+                    "organizacion cocina"
                 ],
                 "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
@@ -3005,7 +3372,23 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baul",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "cofre",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado"
+                ],
                 "last_modified": 1783553543093,
                 "primaryCatId": "infantil"
             },
@@ -3123,7 +3506,24 @@ const productsData = [
                     "Decoracion de exteriores",
                     "Jardin urbano",
                     "Organizador de plantas",
-                    "Estantes para macetas"
+                    "Estantes para macetas",
+                    "deck",
+                    "decks",
+                    "deck cuadrado",
+                    "baldosa",
+                    "baldosas",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "piso",
+                    "impregnado",
+                    "piso madera",
+                    "baldosas deck",
+                    "deck eucalipto"
                 ],
                 "last_modified": 1780708146541,
                 "primaryCatId": "Muebles-y-Jardín",
@@ -3233,7 +3633,24 @@ const productsData = [
                     "Decoracion de exteriores",
                     "Jardin urbano",
                     "Organizador de plantas",
-                    "Estantes para macetas"
+                    "Estantes para macetas",
+                    "deck",
+                    "decks",
+                    "deck rectangular",
+                    "baldosa",
+                    "baldosas",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "piso",
+                    "impregnado",
+                    "piso madera",
+                    "baldosas deck",
+                    "deck eucalipto"
                 ],
                 "last_modified": 1782622157535,
                 "primaryCatId": "Muebles-y-Jardín"
@@ -3353,8 +3770,17 @@ const productsData = [
                     "canasto",
                     "para",
                     "la",
-                    "basura",
-                    "canasto para la basura."
+                    "canasto para la basura.",
+                    "cesto",
+                    "tacho de basura",
+                    "pino",
+                    "oficina",
+                    "baño",
+                    "cocina",
+                    "papelero",
+                    "organizador",
+                    "canasto basura",
+                    "basurero"
                 ],
                 "last_modified": 1783729396929,
                 "primaryCatId": "jardin-patio"
@@ -3410,7 +3836,23 @@ const productsData = [
                     "Decoracion de ambientes",
                     "Muebles de pino para plantas",
                     "Huertas verticales madera",
-                    "Regalos decoracion hogar"
+                    "Regalos decoracion hogar",
+                    "maceta",
+                    "macetas",
+                    "macetero",
+                    "macetas colgantes",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "porta macetas",
+                    "colgante",
+                    "decoracion jardin",
+                    "plantas",
+                    "flores"
                 ],
                 "last_modified": 1780708812530,
                 "primaryCatId": "Muebles-y-Jardín",
@@ -3535,7 +3977,24 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "perchero",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "abrigo",
+                    "camperas",
+                    "entrada",
+                    "recibidor",
+                    "pared",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion"
+                ],
                 "last_modified": 1783551671921,
                 "primaryCatId": "Interior"
             },
@@ -3722,7 +4181,17 @@ const productsData = [
                     "cocina",
                     "mueble",
                     "decorativo",
-                    "ordenar"
+                    "ordenar",
+                    "especieros",
+                    "especiero cocina",
+                    "especiero madera",
+                    "especiero pino",
+                    "organizar",
+                    "especias",
+                    "porta condimentos",
+                    "estante cocina",
+                    "pared cocina",
+                    "organizacion cocina"
                 ],
                 "last_modified": 1782490964547,
                 "primaryCatId": "decoracion"
@@ -3916,7 +4385,24 @@ const productsData = [
                     "Decoracion de exteriores",
                     "Jardin urbano",
                     "Organizador de plantas",
-                    "Estantes para macetas"
+                    "Estantes para macetas",
+                    "deck",
+                    "decks",
+                    "deck cuadrado",
+                    "baldosa",
+                    "baldosas",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "piso",
+                    "impregnado",
+                    "piso madera",
+                    "baldosas deck",
+                    "deck eucalipto"
                 ],
                 "last_modified": 1780708146541,
                 "primaryCatId": "Muebles-y-Jardín",
@@ -4004,7 +4490,23 @@ const productsData = [
                     "Decoracion de ambientes",
                     "Muebles de pino para plantas",
                     "Huertas verticales madera",
-                    "Regalos decoracion hogar"
+                    "Regalos decoracion hogar",
+                    "maceta",
+                    "macetas",
+                    "macetero",
+                    "macetas colgantes",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "porta macetas",
+                    "colgante",
+                    "decoracion jardin",
+                    "plantas",
+                    "flores"
                 ],
                 "last_modified": 1780708812530,
                 "primaryCatId": "Muebles-y-Jardín",
@@ -4114,7 +4616,24 @@ const productsData = [
                     "Decoracion de exteriores",
                     "Jardin urbano",
                     "Organizador de plantas",
-                    "Estantes para macetas"
+                    "Estantes para macetas",
+                    "deck",
+                    "decks",
+                    "deck rectangular",
+                    "baldosa",
+                    "baldosas",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "piso",
+                    "impregnado",
+                    "piso madera",
+                    "baldosas deck",
+                    "deck eucalipto"
                 ],
                 "last_modified": 1782622157535,
                 "primaryCatId": "Muebles-y-Jardín"
@@ -4174,7 +4693,23 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baul",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "cofre",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado"
+                ],
                 "last_modified": 1783553543093,
                 "primaryCatId": "infantil"
             },
@@ -4354,7 +4889,31 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda sommier",
+                    "baranda triple",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "barrera cama",
+                    "proteccion cama",
+                    "baranda anticaida",
+                    "seguridad infantil",
+                    "colecho",
+                    "anticaidas"
+                ],
                 "last_modified": 1783616640275,
                 "primaryCatId": "Barandas"
             },
@@ -4388,7 +4947,25 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda fija",
+                    "baranda clasica",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla"
+                ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas"
             },
@@ -4422,7 +4999,25 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda montessori",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "estilo montessori"
+                ],
                 "last_modified": 1783616746091,
                 "primaryCatId": "Barandas"
             },
@@ -4456,7 +5051,24 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda simple",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla"
+                ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas"
             },
@@ -4572,7 +5184,31 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda desmontable",
+                    "baranda triple",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "barrera cama",
+                    "proteccion cama",
+                    "baranda anticaida",
+                    "seguridad infantil",
+                    "colecho",
+                    "anticaidas"
+                ],
                 "last_modified": 1783616662488,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
@@ -4665,7 +5301,21 @@ const productsData = [
                     "ropa",
                     "entrada",
                     "casa",
-                    "hogar"
+                    "hogar",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "doble gancho",
+                    "abrigo",
+                    "camperas",
+                    "recibidor",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion"
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros"
@@ -4828,7 +5478,27 @@ const productsData = [
                     "cerveza",
                     "decorar",
                     "papa",
-                    "regalo"
+                    "regalo",
+                    "vinotecas",
+                    "vinoteca chica",
+                    "vinoteca de pared",
+                    "vinoteca madera",
+                    "vinoteca pino",
+                    "cava",
+                    "cavas",
+                    "bodegas",
+                    "botellero",
+                    "copas",
+                    "copero",
+                    "portacopas",
+                    "bar",
+                    "barra",
+                    "bebidas",
+                    "estante vinos",
+                    "porta botellas",
+                    "decoracion bar",
+                    "cava vinos",
+                    "mini bar"
                 ],
                 "last_modified": 1783637374473,
                 "primaryCatId": "Vinotecas"
@@ -4877,7 +5547,27 @@ const productsData = [
                     "cerveza",
                     "decorar",
                     "papa",
-                    "regalo"
+                    "regalo",
+                    "vinotecas",
+                    "vinoteca 9 vinos",
+                    "vinoteca grande",
+                    "vinoteca madera",
+                    "vinoteca pino",
+                    "cava",
+                    "cavas",
+                    "bodegas",
+                    "botellero",
+                    "copas",
+                    "copero",
+                    "portacopas",
+                    "bar",
+                    "barra",
+                    "bebidas",
+                    "estante vinos",
+                    "porta botellas",
+                    "decoracion bar",
+                    "cava vinos",
+                    "mueble bar"
                 ],
                 "last_modified": 1783637378825,
                 "primaryCatId": "Vinotecas"
@@ -4926,7 +5616,27 @@ const productsData = [
                     "cerveza",
                     "decorar",
                     "papa",
-                    "regalo"
+                    "regalo",
+                    "vinotecas",
+                    "vinoteca 17 vinos",
+                    "vinoteca gigante",
+                    "vinoteca madera",
+                    "vinoteca pino",
+                    "cava",
+                    "cavas",
+                    "bodegas",
+                    "botellero",
+                    "copas",
+                    "copero",
+                    "portacopas",
+                    "bar",
+                    "barra",
+                    "bebidas",
+                    "estante vinos",
+                    "porta botellas",
+                    "decoracion bar",
+                    "cava vinos",
+                    "mueble bar"
                 ],
                 "last_modified": 1783637382534,
                 "primaryCatId": "Vinotecas"
@@ -4975,7 +5685,27 @@ const productsData = [
                     "cerveza",
                     "decorar",
                     "papa",
-                    "regalo"
+                    "regalo",
+                    "vinotecas",
+                    "vinoteca 13 vinos",
+                    "vinoteca grande",
+                    "vinoteca madera",
+                    "vinoteca pino",
+                    "cava",
+                    "cavas",
+                    "bodegas",
+                    "botellero",
+                    "copas",
+                    "copero",
+                    "portacopas",
+                    "bar",
+                    "barra",
+                    "bebidas",
+                    "estante vinos",
+                    "porta botellas",
+                    "decoracion bar",
+                    "cava vinos",
+                    "mueble bar"
                 ],
                 "last_modified": 1783637386473,
                 "primaryCatId": "Vinotecas"
@@ -5032,7 +5762,27 @@ const productsData = [
                     "cerveza",
                     "decorar",
                     "papa",
-                    "regalo"
+                    "regalo",
+                    "vinotecas",
+                    "vinoteca chica",
+                    "vinoteca de pared",
+                    "vinoteca madera",
+                    "vinoteca pino",
+                    "cava",
+                    "cavas",
+                    "bodegas",
+                    "botellero",
+                    "copas",
+                    "copero",
+                    "portacopas",
+                    "bar",
+                    "barra",
+                    "bebidas",
+                    "estante vinos",
+                    "porta botellas",
+                    "decoracion bar",
+                    "cava vinos",
+                    "mini bar"
                 ],
                 "last_modified": 1783637374473,
                 "primaryCatId": "Vinotecas"
@@ -5081,7 +5831,27 @@ const productsData = [
                     "cerveza",
                     "decorar",
                     "papa",
-                    "regalo"
+                    "regalo",
+                    "vinotecas",
+                    "vinoteca 9 vinos",
+                    "vinoteca grande",
+                    "vinoteca madera",
+                    "vinoteca pino",
+                    "cava",
+                    "cavas",
+                    "bodegas",
+                    "botellero",
+                    "copas",
+                    "copero",
+                    "portacopas",
+                    "bar",
+                    "barra",
+                    "bebidas",
+                    "estante vinos",
+                    "porta botellas",
+                    "decoracion bar",
+                    "cava vinos",
+                    "mueble bar"
                 ],
                 "last_modified": 1783637378825,
                 "primaryCatId": "Vinotecas"
@@ -5130,7 +5900,27 @@ const productsData = [
                     "cerveza",
                     "decorar",
                     "papa",
-                    "regalo"
+                    "regalo",
+                    "vinotecas",
+                    "vinoteca 13 vinos",
+                    "vinoteca grande",
+                    "vinoteca madera",
+                    "vinoteca pino",
+                    "cava",
+                    "cavas",
+                    "bodegas",
+                    "botellero",
+                    "copas",
+                    "copero",
+                    "portacopas",
+                    "bar",
+                    "barra",
+                    "bebidas",
+                    "estante vinos",
+                    "porta botellas",
+                    "decoracion bar",
+                    "cava vinos",
+                    "mueble bar"
                 ],
                 "last_modified": 1783637386473,
                 "primaryCatId": "Vinotecas"
@@ -5179,7 +5969,27 @@ const productsData = [
                     "cerveza",
                     "decorar",
                     "papa",
-                    "regalo"
+                    "regalo",
+                    "vinotecas",
+                    "vinoteca 17 vinos",
+                    "vinoteca gigante",
+                    "vinoteca madera",
+                    "vinoteca pino",
+                    "cava",
+                    "cavas",
+                    "bodegas",
+                    "botellero",
+                    "copas",
+                    "copero",
+                    "portacopas",
+                    "bar",
+                    "barra",
+                    "bebidas",
+                    "estante vinos",
+                    "porta botellas",
+                    "decoracion bar",
+                    "cava vinos",
+                    "mueble bar"
                 ],
                 "last_modified": 1783637382534,
                 "primaryCatId": "Vinotecas"
@@ -5226,7 +6036,24 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "perchero",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "abrigo",
+                    "camperas",
+                    "entrada",
+                    "recibidor",
+                    "pared",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion"
+                ],
                 "last_modified": 1783615900570,
                 "primaryCatId": "Percheros"
             },
@@ -5295,7 +6122,21 @@ const productsData = [
                     "ropa",
                     "entrada",
                     "casa",
-                    "hogar"
+                    "hogar",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "doble gancho",
+                    "abrigo",
+                    "camperas",
+                    "recibidor",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion"
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros"
@@ -5369,7 +6210,20 @@ const productsData = [
                     "cofre",
                     "organizar",
                     "juguetes",
-                    "ropa"
+                    "ropa",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado"
                 ],
                 "last_modified": 1783617580222,
                 "primaryCatId": "Organizadores"
@@ -5449,7 +6303,17 @@ const productsData = [
                     "cocina",
                     "mueble",
                     "decorativo",
-                    "ordenar"
+                    "ordenar",
+                    "especieros",
+                    "especiero cocina",
+                    "especiero madera",
+                    "especiero pino",
+                    "organizar",
+                    "especias",
+                    "porta condimentos",
+                    "estante cocina",
+                    "pared cocina",
+                    "organizacion cocina"
                 ],
                 "last_modified": 1783617596816,
                 "primaryCatId": "Organizadores"
@@ -5493,7 +6357,18 @@ const productsData = [
                     "mueble de cocina",
                     "cosina",
                     "frutas",
-                    "frutero"
+                    "frutero",
+                    "verduleros",
+                    "verdulero clasico",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "verdulería",
+                    "frutería",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "carro verdulero"
                 ],
                 "last_modified": 1783637106226,
                 "primaryCatId": "Organizadores"
@@ -5538,7 +6413,17 @@ const productsData = [
                     "frutas",
                     "frutero",
                     "candry",
-                    "bar"
+                    "bar",
+                    "verduleros",
+                    "verdulero mesada",
+                    "verdulero mini",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "panera"
                 ],
                 "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores"
@@ -5581,7 +6466,18 @@ const productsData = [
                     "frutas",
                     "frutero",
                     "candry",
-                    "bar"
+                    "bar",
+                    "verduleros",
+                    "verdulero mediano",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "verdulería",
+                    "frutería",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "carro verdulero"
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores"
@@ -6173,13 +7069,33 @@ const productsData = [
                     "baranda para cama",
                     "baranda de seguridad",
                     "baranda para geriatrico",
-                    "baranda",
                     "resistentes",
                     "duras",
                     "madera",
                     "medidas",
                     "amplias",
-                    "grandes"
+                    "grandes",
+                    "barandas",
+                    "baranda desmontable",
+                    "baranda clasica",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "barrera cama",
+                    "proteccion cama",
+                    "baranda anticaida",
+                    "seguridad infantil",
+                    "colecho",
+                    "anticaidas"
                 ],
                 "last_modified": 1783616700840,
                 "optional_variant": {
@@ -6797,7 +7713,32 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda desmontable",
+                    "baranda montessori",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "barrera cama",
+                    "proteccion cama",
+                    "baranda anticaida",
+                    "seguridad infantil",
+                    "colecho",
+                    "anticaidas",
+                    "estilo montessori"
+                ],
                 "last_modified": 1783616692617,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
@@ -6947,7 +7888,31 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda desmontable",
+                    "baranda triple",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "barrera cama",
+                    "proteccion cama",
+                    "baranda anticaida",
+                    "seguridad infantil",
+                    "colecho",
+                    "anticaidas"
+                ],
                 "last_modified": 1783616662488,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
@@ -7211,7 +8176,31 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda sommier",
+                    "baranda clasica",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "barrera cama",
+                    "proteccion cama",
+                    "baranda anticaida",
+                    "seguridad infantil",
+                    "colecho",
+                    "anticaidas"
+                ],
                 "last_modified": 1783616653865,
                 "primaryCatId": "Barandas"
             },
@@ -7344,7 +8333,31 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda sommier",
+                    "baranda triple",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "barrera cama",
+                    "proteccion cama",
+                    "baranda anticaida",
+                    "seguridad infantil",
+                    "colecho",
+                    "anticaidas"
+                ],
                 "last_modified": 1783616640275,
                 "primaryCatId": "Barandas"
             },
@@ -7399,7 +8412,23 @@ const productsData = [
                         "medidas_variants": []
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda reforzada",
+                    "baranda geriatricos",
+                    "baranda adultos",
+                    "baranda ancianos",
+                    "seguridad",
+                    "anticaida",
+                    "madera",
+                    "pino",
+                    "cama ortopedica",
+                    "reforzado",
+                    "clinica",
+                    "hospital",
+                    "barrera"
+                ],
                 "last_modified": 1782416897270,
                 "primaryCatId": "Barandas",
                 "visible": true
@@ -7434,7 +8463,25 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda fija",
+                    "baranda clasica",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla"
+                ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas"
             },
@@ -7468,7 +8515,25 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda montessori",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla",
+                    "estilo montessori"
+                ],
                 "last_modified": 1783616746091,
                 "primaryCatId": "Barandas"
             },
@@ -7502,7 +8567,24 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda simple",
+                    "baranda cama",
+                    "baranda madera",
+                    "baranda pino",
+                    "niños",
+                    "bebes",
+                    "proteccion",
+                    "seguridad",
+                    "anticaida",
+                    "infantil",
+                    "sommier",
+                    "cuna",
+                    "barrera",
+                    "barandilla"
+                ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas"
             }
@@ -7606,7 +8688,23 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "escalera",
+                    "escaleras",
+                    "escaleras pintor",
+                    "escalera madera",
+                    "escalera pino",
+                    "subir",
+                    "alcanzar",
+                    "plegable",
+                    "tijera",
+                    "pintor",
+                    "decorativa",
+                    "biblioteca",
+                    "escalones",
+                    "escalon",
+                    "peldaños"
+                ],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles"
             },
@@ -7626,7 +8724,23 @@ const productsData = [
                         "medidas_variants": []
                     }
                 ],
-                "views": 0
+                "views": 0,
+                "tags": [
+                    "escalera",
+                    "escaleras",
+                    "escalera altillo",
+                    "escalera techo",
+                    "escalera madera",
+                    "escalera pino",
+                    "subir",
+                    "alcanzar",
+                    "altillo",
+                    "techo",
+                    "fija",
+                    "escalones",
+                    "peldaños",
+                    "acceso altillo"
+                ]
             }
         ],
         "rubro": "carpinteria"
@@ -7754,7 +8868,21 @@ const productsData = [
                     "cajon resistente",
                     "cajon para gimnasia",
                     "gym",
-                    "resistente"
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador"
                 ],
                 "last_modified": 1782086406799,
                 "primaryCatId": "Steps"
@@ -7804,7 +8932,19 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "cajon",
+                    "cajones",
+                    "cajon profesional",
+                    "cajon madera",
+                    "cajon pino",
+                    "organizador",
+                    "guardado",
+                    "almacenamiento",
+                    "caja madera",
+                    "caja pino",
+                    "cajonera"
+                ],
                 "last_modified": 1782417151111,
                 "primaryCatId": "Steps"
             }
@@ -7915,7 +9055,24 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "estantes montessori",
+                    "estante niños",
+                    "repisa",
+                    "repisas",
+                    "librero",
+                    "estanteria",
+                    "libros",
+                    "infantil",
+                    "colgar",
+                    "madera",
+                    "pino",
+                    "organizador infantil",
+                    "pared",
+                    "estilo montessori"
+                ],
                 "last_modified": 1782087372455,
                 "primaryCatId": "Estantes"
             },
@@ -7967,7 +9124,24 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 0,
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "hexagonal",
+                    "hexagonos",
+                    "repisa",
+                    "repisas",
+                    "estante flotante",
+                    "estante madera",
+                    "estante pino",
+                    "colgar",
+                    "decoracion",
+                    "pared",
+                    "estilo nordico",
+                    "diseño hexagonal",
+                    "geometrico"
+                ]
             },
             {
                 "id": "librero",
@@ -8057,7 +9231,22 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 0,
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "librero",
+                    "biblioteca",
+                    "estanteria",
+                    "libros",
+                    "repisa",
+                    "repisas",
+                    "madera",
+                    "pino",
+                    "organizacion",
+                    "mueble libros",
+                    "organizador"
+                ]
             },
             {
                 "id": "triangulos",
@@ -8083,7 +9272,22 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 0,
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "triangulo",
+                    "triangulos",
+                    "repisa",
+                    "repisas",
+                    "estante flotante",
+                    "estante madera",
+                    "estante pino",
+                    "colgar",
+                    "decoracion",
+                    "pared",
+                    "geometrico"
+                ]
             },
             {
                 "id": "cuadrados",
@@ -8133,7 +9337,22 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 1
+                "views": 1,
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "cuadrado",
+                    "cuadrados",
+                    "repisa",
+                    "repisas",
+                    "estante flotante",
+                    "estante madera",
+                    "estante pino",
+                    "colgar",
+                    "decoracion",
+                    "pared",
+                    "combo estantes"
+                ]
             },
             {
                 "id": "mensulas",
@@ -8247,7 +9466,17 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 2
+                "views": 2,
+                "tags": [
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula"
+                ]
             },
             {
                 "id": "estantes",
@@ -8321,7 +9550,21 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 0,
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "estante flotante",
+                    "repisa",
+                    "repisas",
+                    "colgar",
+                    "madera",
+                    "pino",
+                    "pared",
+                    "repisa flotante",
+                    "estante madera",
+                    "decoracion"
+                ]
             },
             {
                 "id": "especiero",
@@ -8398,7 +9641,17 @@ const productsData = [
                     "cocina",
                     "mueble",
                     "decorativo",
-                    "ordenar"
+                    "ordenar",
+                    "especieros",
+                    "especiero cocina",
+                    "especiero madera",
+                    "especiero pino",
+                    "organizar",
+                    "especias",
+                    "porta condimentos",
+                    "estante cocina",
+                    "pared cocina",
+                    "organizacion cocina"
                 ],
                 "last_modified": 1783617596816,
                 "primaryCatId": "Organizadores"
@@ -8563,7 +9816,18 @@ const productsData = [
                     "mesa",
                     "juegos",
                     "piezas",
-                    "maderitas"
+                    "maderitas",
+                    "juego",
+                    "juego mesa",
+                    "juego madera",
+                    "diversion",
+                    "familiar",
+                    "bloques",
+                    "torres",
+                    "gigante",
+                    "infantil",
+                    "entretenimiento",
+                    "bloques de madera"
                 ],
                 "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes"
@@ -8628,7 +9892,20 @@ const productsData = [
                     "cofre",
                     "organizar",
                     "juguetes",
-                    "ropa"
+                    "ropa",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado"
                 ],
                 "last_modified": 1783617580222,
                 "primaryCatId": "Organizadores"
@@ -8964,7 +10241,24 @@ const productsData = [
                     "Decoracion de exteriores",
                     "Jardin urbano",
                     "Organizador de plantas",
-                    "Estantes para macetas"
+                    "Estantes para macetas",
+                    "deck",
+                    "decks",
+                    "deck rectangular",
+                    "baldosa",
+                    "baldosas",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "piso",
+                    "impregnado",
+                    "piso madera",
+                    "baldosas deck",
+                    "deck eucalipto"
                 ],
                 "last_modified": 1783618237200,
                 "primaryCatId": "jardin-patio"
@@ -9120,7 +10414,24 @@ const productsData = [
                     "Decoracion de exteriores",
                     "Jardin urbano",
                     "Organizador de plantas",
-                    "Estantes para macetas"
+                    "Estantes para macetas",
+                    "deck",
+                    "decks",
+                    "deck cuadrado",
+                    "baldosa",
+                    "baldosas",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "piso",
+                    "impregnado",
+                    "piso madera",
+                    "baldosas deck",
+                    "deck eucalipto"
                 ],
                 "last_modified": 1783618243134,
                 "primaryCatId": "jardin-patio"
@@ -9181,7 +10492,23 @@ const productsData = [
                     "Decoracion de ambientes",
                     "Muebles de pino para plantas",
                     "Huertas verticales madera",
-                    "Regalos decoracion hogar"
+                    "Regalos decoracion hogar",
+                    "maceta",
+                    "macetas",
+                    "macetero",
+                    "macetas colgantes",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "porta macetas",
+                    "colgante",
+                    "decoracion jardin",
+                    "plantas",
+                    "flores"
                 ],
                 "last_modified": 1783618250710,
                 "primaryCatId": "jardin-patio"
@@ -9308,8 +10635,17 @@ const productsData = [
                     "canasto",
                     "para",
                     "la",
-                    "basura",
-                    "canasto para la basura."
+                    "canasto para la basura.",
+                    "cesto",
+                    "tacho de basura",
+                    "pino",
+                    "oficina",
+                    "baño",
+                    "cocina",
+                    "papelero",
+                    "organizador",
+                    "canasto basura",
+                    "basurero"
                 ],
                 "last_modified": 1783729396929,
                 "primaryCatId": "jardin-patio"
@@ -9467,7 +10803,25 @@ const productsData = [
                     "tarima de premiación",
                     "pintura negra matizada",
                     "uso rudo",
-                    "eventos corporativos"
+                    "eventos corporativos",
+                    "podio",
+                    "podios",
+                    "podio profesional",
+                    "premiacion",
+                    "medallas",
+                    "trofeo",
+                    "trofeos",
+                    "competencia",
+                    "ganador",
+                    "eventos",
+                    "crossfit",
+                    "gimnasio",
+                    "box",
+                    "madera",
+                    "pino",
+                    "cajon",
+                    "cajones",
+                    "saltar"
                 ],
                 "last_modified": 1780774148299,
                 "primaryCatId": "Podios",
@@ -9501,7 +10855,26 @@ const productsData = [
                         ]
                     }
                 ],
-                "tags": [],
+                "tags": [
+                    "podio",
+                    "podios",
+                    "premiacion",
+                    "3 modulos",
+                    "medallas",
+                    "trofeo",
+                    "trofeos",
+                    "competencia",
+                    "ganador",
+                    "eventos",
+                    "crossfit",
+                    "gimnasio",
+                    "box",
+                    "madera",
+                    "pino",
+                    "cajon",
+                    "cajones",
+                    "saltar"
+                ],
                 "last_modified": 1780774911579,
                 "primaryCatId": "Podios",
                 "views": 11
@@ -9546,7 +10919,27 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 0,
+                "tags": [
+                    "podio",
+                    "podios",
+                    "podios individuales",
+                    "premiacion",
+                    "medallas",
+                    "trofeo",
+                    "trofeos",
+                    "competencia",
+                    "ganador",
+                    "eventos",
+                    "crossfit",
+                    "gimnasio",
+                    "box",
+                    "madera",
+                    "pino",
+                    "cajon",
+                    "cajones",
+                    "saltar"
+                ]
             }
         ],
         "rubro": "carpinteria"
