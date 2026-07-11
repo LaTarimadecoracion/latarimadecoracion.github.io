@@ -6492,6 +6492,174 @@ const productsData = [
                 ],
                 "last_modified": 1783741654883,
                 "primaryCatId": "Vinotecas"
+            },
+            {
+                "id": "Colecho_retro_madera",
+                "title": "Colecho Retro",
+                "description": "",
+                "image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                        "images_list": [
+                            "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                            "img/cunas/colecho-retro/1783750658998-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783750659139,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
+                "title": "Corral - Colecho con doble",
+                "description": "Corral - Colecho con doble posición de parrilla",
+                "image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                        "images_list": [
+                            "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                            "img/cunas/corral---colecho-con-doble/1783750731679-imagen.webp",
+                            "img/cunas/corral---colecho-con-doble/1783750731827-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783750731964,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Eco-fija-100x50cm-Modelo-unico",
+                "title": "Eco fija - Modelo único",
+                "description": "Eco fija - 100 x 50 cm - Modelo único",
+                "image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+                        "images_list": [
+                            "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783750807815,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Eco-rebatible",
+                "title": "Eco rebatible",
+                "description": "",
+                "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+                        "images_list": [
+                            "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+                            "img/cunas/eco-rebatible/1783750834793-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783750834936,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "cuna-Rebatible-cajones",
+                "title": "Cuna rebatible con cajones",
+                "description": "",
+                "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                        "images_list": [
+                            "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                            "img/cunas/cuna-rebatible-con-cajones/1783750894277-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783750899703,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Romana-Rebatible-Cajones",
+                "title": "Romana - Rebatible - Cajones",
+                "description": "",
+                "image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                        "images_list": [
+                            "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                            "img/cunas/romana---rebatible---cajones/1783750938079-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783750938226,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Romana - Rebatible - Cajones - en XX",
+                "title": "Romana - Rebatible - Cajones - en XX",
+                "description": "",
+                "image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                        "images_list": [
+                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962973-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783750963119,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Sol - Rebatible - Cajones",
+                "title": "Sol - Rebatible - Cajones",
+                "description": "",
+                "image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                        "images_list": [
+                            "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                            "img/cunas/sol---rebatible---cajones/1783750987098-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1783750987240,
+                "primaryCatId": "cunas-madera-pino"
             }
         ]
     },
@@ -9740,10 +9908,644 @@ const productsData = [
         "rubro": "carpinteria"
     },
     {
+        "id": "cunas-madera-pino",
+        "name": "Cunas",
+        "image": "img/cunas/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 5,
+        "products": [
+            {
+                "id": "Colecho_retro_madera",
+                "title": "Colecho Retro",
+                "description": "",
+                "image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                        "images_list": [
+                            "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                            "img/cunas/colecho-retro/1783750658998-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "colecho",
+                    "colecho retro",
+                    "colecho vintage",
+                    "colecho madera",
+                    "colecho pino",
+                    "cuna colecho",
+                    "mini cuna",
+                    "moises",
+                    "moises colecho",
+                    "colecho seguro",
+                    "colecho apego",
+                    "apego seguro",
+                    "colecho pegado a la cama",
+                    "colecho sommier",
+                    "colecho regulable",
+                    "retro",
+                    "vintage",
+                    "estilo retro",
+                    "estilo vintage",
+                    "nordico",
+                    "diseño retro",
+                    "cuna retro",
+                    "cuna vintage",
+                    "cuna nordica",
+                    "decoracion bebe",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1783750659139,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
+                "title": "Corral - Colecho con doble",
+                "description": "Corral - Colecho con doble posición de parrilla",
+                "image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                        "images_list": [
+                            "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                            "img/cunas/corral---colecho-con-doble/1783750731679-imagen.webp",
+                            "img/cunas/corral---colecho-con-doble/1783750731827-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "corral",
+                    "corralito",
+                    "corral bebe",
+                    "corralito bebe",
+                    "corral madera",
+                    "corral pino",
+                    "cuna corral",
+                    "corral colecho",
+                    "corral ajustable",
+                    "parque de juegos",
+                    "corral seguro",
+                    "corral niños",
+                    "corral grande",
+                    "corral funcional",
+                    "parrilla regulable",
+                    "colecho",
+                    "cuna colecho",
+                    "colecho madera",
+                    "colecho pino",
+                    "colecho regulable",
+                    "colecho ajustable",
+                    "doble posicion",
+                    "cuna funcional",
+                    "parrilla doble",
+                    "altura regulable",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1783750731964,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Eco-fija-100x50cm-Modelo-unico",
+                "title": "Eco fija - Modelo único",
+                "description": "Eco fija - 100 x 50 cm - Modelo único",
+                "image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+                        "images_list": [
+                            "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna eco",
+                    "cuna economica",
+                    "cuna barata",
+                    "cuna fija",
+                    "cuna simple",
+                    "cuna clasica",
+                    "cuna standard",
+                    "cuna pino economica",
+                    "cuna segura",
+                    "cuna pequeña",
+                    "cuna funcional",
+                    "cuna portatil",
+                    "cuna liviana",
+                    "cuna fija pino",
+                    "cuna eco fija",
+                    "100x50",
+                    "100x50cm",
+                    "modelo unico",
+                    "cuna chiquita",
+                    "cuna mediana",
+                    "cuna barata madera",
+                    "cuna barata pino",
+                    "moises grande",
+                    "cuna de pino barata",
+                    "cuna economica madera",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1783750807815,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Eco-rebatible",
+                "title": "Eco rebatible",
+                "description": "",
+                "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+                        "images_list": [
+                            "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+                            "img/cunas/eco-rebatible/1783750834793-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna eco",
+                    "cuna economica",
+                    "cuna barata",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna simple",
+                    "cuna clasica",
+                    "cuna standard",
+                    "cuna pino economica",
+                    "cuna segura",
+                    "cuna funcional",
+                    "cuna portatil",
+                    "cuna rebatible pino",
+                    "cuna eco rebatible",
+                    "baranda movil",
+                    "baranda volcable",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna economica madera",
+                    "cuna economica pino",
+                    "cuna de pino rebatible",
+                    "cuna rebatible madera",
+                    "cuna practica",
+                    "cuna comoda",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1783750834936,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "cuna-Rebatible-cajones",
+                "title": "Cuna rebatible con cajones",
+                "description": "",
+                "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                        "images_list": [
+                            "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                            "img/cunas/cuna-rebatible-con-cajones/1783750894277-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna organizadora",
+                    "cuna guardado",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna multifuncional",
+                    "cuna cajonera",
+                    "cuna guardado abajo",
+                    "cajones integrados",
+                    "cajonera de pino",
+                    "cajonera de madera",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna cajones",
+                    "guardado de ropa bebe",
+                    "organizador cuna",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1783750899703,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Romana-Rebatible-Cajones",
+                "title": "Romana - Rebatible - Cajones",
+                "description": "",
+                "image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                        "images_list": [
+                            "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                            "img/cunas/romana---rebatible---cajones/1783750938079-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna romana",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna romana rebatible",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna romana cajonera",
+                    "cuna guardado abajo",
+                    "estilo romano",
+                    "cuna romana madera",
+                    "cuna romana pino",
+                    "cajonera romana",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna romana",
+                    "cuna decorativa",
+                    "cuna diseño clasico",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1783750938226,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Romana - Rebatible - Cajones - en XX",
+                "title": "Romana - Rebatible - Cajones - en XX",
+                "description": "",
+                "image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                        "images_list": [
+                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962973-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna romana",
+                    "cuna romana en xx",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna romana cajonera",
+                    "cuna guardado abajo",
+                    "diseño en xx",
+                    "detalles en xx",
+                    "cuna romana xx",
+                    "cajonera romana xx",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna romana xx",
+                    "cuna diseño en cruz",
+                    "cuna moderna",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1783750963119,
+                "primaryCatId": "cunas-madera-pino"
+            },
+            {
+                "id": "Sol - Rebatible - Cajones",
+                "title": "Sol - Rebatible - Cajones",
+                "description": "",
+                "image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                        "images_list": [
+                            "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                            "img/cunas/sol---rebatible---cajones/1783750987098-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna sol",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna sol rebatible",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna sol cajonera",
+                    "cuna guardado abajo",
+                    "estilo sol",
+                    "cuna sol madera",
+                    "cuna sol pino",
+                    "cajonera sol",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna sol",
+                    "cuna decorativa",
+                    "cuna diseño sol",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1783750987240,
+                "primaryCatId": "cunas-madera-pino"
+            }
+        ],
+        "visible": true
+    },
+    {
         "id": "muebles",
         "name": "Escaleras",
         "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 5,
+        "order": 6,
         "products": [
             {
                 "id": "escaleras",
@@ -9929,7 +10731,7 @@ const productsData = [
         "id": "Steps",
         "name": "Steps / Cajones",
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 6,
+        "order": 7,
         "products": [
             {
                 "id": "steps---cajones",
@@ -10160,7 +10962,7 @@ const productsData = [
         "id": "Estantes",
         "name": "Estantes",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 7,
+        "order": 8,
         "products": [
             {
                 "id": "estantes-montessori",
@@ -11070,7 +11872,7 @@ const productsData = [
         "id": "Juguetes",
         "name": "Juguetes",
         "image": "img/juguetes/portada-1783038439545-imagen.webp",
-        "order": 8,
+        "order": 9,
         "products": [
             {
                 "id": "jenga",
@@ -11242,7 +12044,7 @@ const productsData = [
         "name": "Sillas y sillones",
         "image": "img/sillas-y-sillones/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 9,
+        "order": 10,
         "products": [
             {
                 "id": "banquito-de-plaza",
@@ -11339,7 +12141,7 @@ const productsData = [
         "name": "Mesas de madera",
         "image": "img/mesas-de-madera/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 10,
+        "order": 11,
         "products": [
             {
                 "id": "Mueble-Multifunción",
@@ -11459,7 +12261,7 @@ const productsData = [
         "name": "Jardín",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 11,
+        "order": 12,
         "products": [
             {
                 "id": "deck-rectangular",
@@ -12059,7 +12861,7 @@ const productsData = [
         "name": "Todo Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 12,
+        "order": 13,
         "products": [
             {
                 "id": "Platos-madera",
@@ -12151,7 +12953,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 13,
+        "order": 14,
         "products": [
             {
                 "id": "podio-profesional",
@@ -12402,7 +13204,7 @@ const productsData = [
         "rubro": "papelera-cotillon",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 14,
+        "order": 15,
         "products": [
             {
                 "id": "Films-negro",
@@ -12441,7 +13243,7 @@ const productsData = [
         "name": "Embalaje",
         "image": "img/papelera-cotillon/embalaje/portada-imagen.webp",
         "rubro": "papelera-cotillon",
-        "order": 15,
+        "order": 16,
         "products": [
             {
                 "id": "Films-negro",
@@ -12482,7 +13284,7 @@ const productsData = [
         "rubro": "jabon",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 16,
+        "order": 17,
         "products": [
             {
                 "id": "Jabon",
@@ -12511,7 +13313,7 @@ const productsData = [
         "name": "Jabon",
         "image": "img/jabon/jabon/portada-imagen.webp",
         "rubro": "jabon",
-        "order": 17,
+        "order": 18,
         "products": [
             {
                 "id": "Jabon",

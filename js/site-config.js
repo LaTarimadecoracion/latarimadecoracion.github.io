@@ -119,6 +119,158 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Sol - Rebatible - Cajones!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Sol - Rebatible - Cajones!",
+            "mediaType": "image",
+            "image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Sol - Rebatible - Cajones",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Sol - Rebatible - Cajones",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783750987240
+        },
+        {
+            "title": "¡Nuevo Ingreso: Romana - Rebatible - Cajones - en XX!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Romana - Rebatible - Cajones - en XX!",
+            "mediaType": "image",
+            "image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Romana - Rebatible - Cajones - en XX",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Romana - Rebatible - Cajones - en XX",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783750963120
+        },
+        {
+            "title": "¡Nuevo Ingreso: Romana - Rebatible - Cajones!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Romana - Rebatible - Cajones!",
+            "mediaType": "image",
+            "image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Romana-Rebatible-Cajones",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Romana-Rebatible-Cajones",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783750938226
+        },
+        {
+            "title": "¡Nuevo Ingreso: Cuna rebatible con cajones!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Cuna rebatible con cajones!",
+            "mediaType": "image",
+            "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=cuna-Rebatible-cajones",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=cuna-Rebatible-cajones",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783750894431
+        },
+        {
+            "title": "¡Nuevo Ingreso: Eco rebatible!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Eco rebatible!",
+            "mediaType": "image",
+            "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Eco-rebatible",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Eco-rebatible",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783750834936
+        },
+        {
+            "title": "¡Nuevo Ingreso: Eco fija - Modelo único!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Eco fija - Modelo único!",
+            "mediaType": "image",
+            "image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Eco-fija-100x50cm-Modelo-unico",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Eco-fija-100x50cm-Modelo-unico",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783750807815
+        },
+        {
+            "title": "¡Nuevo Ingreso: Corral - Colecho con doble!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Corral - Colecho con doble!",
+            "mediaType": "image",
+            "image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Corral-Colecho-con-doble-posicion-de-parrilla",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Corral-Colecho-con-doble-posicion-de-parrilla",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783750731964
+        },
+        {
+            "title": "¡Nuevo Ingreso: Colecho Retro!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Colecho Retro!",
+            "mediaType": "image",
+            "image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Colecho_retro_madera",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Colecho_retro_madera",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783750659139
+        },
+        {
             "title": "¡Nuevo Ingreso: Cortes de madera!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Cortes de madera!",
             "mediaType": "image",
