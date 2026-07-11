@@ -1160,6 +1160,26 @@ function setupToolbarActions() {
         const csvString = generateCSV(CSV_HEADERS, rows);
         downloadFile(csvString, "AutoResponder_Rules_Export.csv", "text/csv");
         showToast("Archivo CSV exportado exitosamente", "success");
+
+        // Guardado automático en el servidor local de desarrollo si está encendido
+        fetch('/api/save-assistant-rules', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ csvText: csvString })
+        }).then(response => {
+            if (!response.ok) throw new Error('Not local server');
+            return response.json();
+        }).then(data => {
+            if (data.success) {
+                showToast("Sincronizado físicamente en asist/Bot-Demo1.csv", "success");
+                console.log("🪵 [AutoFlow] Sincronizado en asist/Bot-Demo1.csv correctamente.");
+            }
+        }).catch(err => {
+            // Fails silently or logs if not on development server
+            console.log("🪵 [AutoFlow] Modo cliente estático, guardado local en el navegador.");
+        });
     });
     
     // Guide Modal

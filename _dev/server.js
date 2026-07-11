@@ -270,6 +270,25 @@ app.post('/api/save-products', (req, res) => {
     }
 });
 
+// API Endpoint to save assistant rules (Bot-Demo1.csv)
+app.post('/api/save-assistant-rules', (req, res) => {
+    try {
+        const { csvText } = req.body;
+        if (typeof csvText !== 'string') {
+            return res.status(400).json({ success: false, message: 'El payload debe contener csvText de tipo string.' });
+        }
+
+        const filePath = path.join(ROOT_DIR, 'asist', 'Bot-Demo1.csv');
+        fs.writeFileSync(filePath, csvText, 'utf8');
+        console.log('✅ asist/Bot-Demo1.csv actualizado correctamente.');
+
+        res.json({ success: true, message: 'Reglas del asistente guardadas exitosamente.' });
+    } catch (error) {
+        console.error('❌ Error guardando reglas del asistente:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+    }
+});
+
 // API Endpoint to save rentalsData JSON
 app.post('/api/save-rentals', (req, res) => {
     try {
