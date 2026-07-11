@@ -3332,11 +3332,16 @@ const productsData = [
                                 "medida": "Barnizado",
                                 "link": "",
                                 "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -3344,11 +3349,15 @@ const productsData = [
                     "basura",
                     "tacho",
                     "campo",
-                    "madera"
+                    "madera",
+                    "canasto",
+                    "para",
+                    "la",
+                    "basura",
+                    "canasto para la basura."
                 ],
-                "last_modified": 1780707328639,
-                "primaryCatId": "exterior",
-                "views": 1
+                "last_modified": 1783729396929,
+                "primaryCatId": "jardin-patio"
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -9257,6 +9266,52 @@ const productsData = [
                     "altar"
                 ],
                 "last_modified": 1783637265113,
+                "primaryCatId": "jardin-patio"
+            },
+            {
+                "id": "cesto-de-basura",
+                "title": "Cesto de Basura",
+                "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "image": "img/decoracion/cesto-de-basura/1780323361192-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Barnizado",
+                        "cover_image": "img/decoracion/cesto-de-basura/1780323361192-imagen.webp",
+                        "images_list": [
+                            "img/decoracion/cesto-de-basura/1780323361192-imagen.webp",
+                            "img/decoracion/cesto-de-basura/1780323361311-imagen.webp",
+                            "img/decoracion/cesto-de-basura/1780323361428-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Barnizado",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cesto de basura",
+                    "basura",
+                    "tacho",
+                    "campo",
+                    "madera",
+                    "canasto",
+                    "para",
+                    "la",
+                    "basura",
+                    "canasto para la basura."
+                ],
+                "last_modified": 1783729396929,
                 "primaryCatId": "jardin-patio"
             }
         ]
