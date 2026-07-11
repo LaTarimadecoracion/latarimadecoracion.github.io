@@ -435,6 +435,35 @@
         // Show typing indicator
         showTypingIndicator(true);
         
+        // 1. Detect dynamic compound queries (e.g. "mesa y escalera", "baranda y estante")
+        const queryTerms = getCleanSearchTerms(text);
+        let isCompoundSearch = false;
+        let searchProducts = [];
+        
+        if (queryTerms.length > 1) {
+            searchProducts = searchStoreProducts(text);
+            // If we found products, check if they belong to different categories
+            if (searchProducts.length > 1) {
+                const uniqueCats = new Set(searchProducts.map(p => p.cat ? p.cat.id : ''));
+                if (uniqueCats.size > 1) {
+                    isCompoundSearch = true;
+                }
+            }
+        }
+
+        if (isCompoundSearch) {
+            setTimeout(() => {
+                showTypingIndicator(false);
+                const fallbackRule = findSearchFallbackRule();
+                let replyText = fallbackRule ? fallbackRule.reply_message : `¡Sí! Encontré estos productos que coinciden en nuestra web:\n\n[producto]\n\n¿Te gustaría ver los detalles de alguno?`;
+                const shortcodes = searchProducts.slice(0, 3).map(p => `[producto:${p.product.id}]`).join(" ");
+                replyText = replyText.replace(/\[producto\]/gi, shortcodes);
+                
+                addChatMessage("bot", replyText, fallbackRule || null);
+            }, 800);
+            return;
+        }
+
         // Match rule
         const matchedRule = findMatchingRule(text);
         
