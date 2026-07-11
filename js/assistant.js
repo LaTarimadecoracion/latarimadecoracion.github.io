@@ -11,7 +11,7 @@
         "pause_type", "pause_value", "disabled", "subrule_of", "go_to_rule", 
         "req_screen_off", "req_charging", "req_silent", "req_do_not_disturb", 
         "req_car_mode", "prev_rule_timeout", "priority_alert", "probability", 
-        "package_names", "label", "web_product", "web_category"
+        "package_names", "label", "web_product", "web_category", "show_as_chip"
     ];
 
     // Assistant State
@@ -30,16 +30,31 @@
 
     // Initialize Widget
     document.addEventListener("DOMContentLoaded", async () => {
-        // Check if assistant is disabled from the editor
-        if (localStorage.getItem("assistant_enabled") === "false") return;
+        // 1. Check if disabled globally via config.json on the server
+        try {
+            const configRes = await fetch("asist/config.json?v=2");
+            if (configRes.ok) {
+                const configData = await configRes.json();
+                if (configData.enabled === false) {
+                    console.log("🪵 [Asistente] Desactivado globalmente por configuración.");
+                    return;
+                }
+            }
+        } catch(e) {
+            console.error("🪵 [Asistente] Error cargando config.json:", e);
+        }
+
+        // 2. Check if disabled locally in development
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        if (isLocal && localStorage.getItem("assistant_enabled") === "false") return;
         
-        // 1. Load Rules
+        // 3. Load Rules
         assistantRules = await loadRules();
         
-        // 2. Create UI Elements
+        // 4. Create UI Elements
         createChatElements();
         
-        // 3. Setup Listeners
+        // 5. Setup Listeners
         setupWidgetEvents();
     });
 

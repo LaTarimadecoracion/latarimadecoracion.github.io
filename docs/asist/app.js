@@ -1100,16 +1100,48 @@ function setupToolbarActions() {
         }
     }
     
+    // Fetch global configuration on startup to sync state
+    fetch('config.json')
+        .then(res => res.json())
+        .then(config => {
+            if (typeof config.enabled === 'boolean') {
+                localStorage.setItem("assistant_enabled", config.enabled ? "true" : "false");
+                updateAssistantToggleUI();
+            }
+        }).catch(err => {
+            console.log("No config.json found or standalone mode.");
+        });
+
     if (btnToggleAssistant) {
         updateAssistantToggleUI();
         btnToggleAssistant.addEventListener("click", () => {
             const isEnabled = localStorage.getItem("assistant_enabled") !== "false";
-            localStorage.setItem("assistant_enabled", isEnabled ? "false" : "true");
+            const nextEnabled = !isEnabled;
+            localStorage.setItem("assistant_enabled", nextEnabled ? "true" : "false");
             updateAssistantToggleUI();
+            
             showToast(
-                isEnabled ? "Asistente desactivado en la web 🔕" : "Asistente activado en la web ✅",
-                isEnabled ? "error" : "success"
+                nextEnabled ? "Asistente activado en la web ✅" : "Asistente desactivado en la web 🔕",
+                nextEnabled ? "success" : "error"
             );
+
+            // Guardar físicamente en asist/config.json si corre en servidor local
+            fetch('/api/save-assistant-config', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ enabled: nextEnabled })
+            }).then(response => {
+                if (!response.ok) throw new Error('Not local server');
+                return response.json();
+            }).then(data => {
+                if (data.success) {
+                    console.log("🪵 [AutoFlow] Configuración de asistente guardada en asist/config.json.");
+                }
+            }).catch(err => {
+                console.log("🪵 [AutoFlow] Modo estático, guardado local en el navegador.");
+            });
         });
     }
     

@@ -289,6 +289,25 @@ app.post('/api/save-assistant-rules', (req, res) => {
     }
 });
 
+// API Endpoint to save assistant global configuration (config.json)
+app.post('/api/save-assistant-config', (req, res) => {
+    try {
+        const { enabled } = req.body;
+        if (typeof enabled !== 'boolean') {
+            return res.status(400).json({ success: false, message: 'El payload debe contener enabled de tipo boolean.' });
+        }
+
+        const filePath = path.join(ROOT_DIR, 'asist', 'config.json');
+        fs.writeFileSync(filePath, JSON.stringify({ enabled }, null, 2), 'utf8');
+        console.log(`✅ asist/config.json actualizado correctamente (enabled: ${enabled}).`);
+
+        res.json({ success: true, message: 'Configuración del asistente guardada exitosamente.' });
+    } catch (error) {
+        console.error('❌ Error guardando configuración del asistente:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+    }
+});
+
 // API Endpoint to save rentalsData JSON
 app.post('/api/save-rentals', (req, res) => {
     try {
