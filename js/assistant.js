@@ -823,9 +823,8 @@
         });
         
         // Apply matching terms logic from runSearch()
-        const results = [];
-        indexed.forEach(item => {
-            const matchesQuery = queryTerms.every(term => {
+        const matchProductWithTerms = (item, terms, logic) => {
+            const checkTerm = (term) => {
                 const termNorm = term.replace(/\s+/g, '');
                 
                 // Helper: check if two words share a common root/prefix of at least 4 chars
@@ -836,7 +835,7 @@
                     return a.substring(0, prefixLen) === b.substring(0, prefixLen);
                 };
                 
-                // 1. Direct contains check (handles "mesa" inside "mesita" and vice versa)
+                // 1. Direct contains check
                 const directMatch = normalizeForSearch(item.nombre).includes(term) ||
                     (item.cat && item.cat.name && normalizeForSearch(item.cat.name).includes(term)) ||
                     (item.acabado && normalizeForSearch(item.acabado).includes(term)) ||
@@ -849,9 +848,7 @@
                 
                 if (directMatch) return true;
                 
-                // 2. Reverse contains: product name word contains the search term as prefix
-                //    e.g. term="mesita" inside nombre="Mesa de Luz" won't match above,
-                //    but we catch it here by checking if any nombre-word contains term OR term contains the word
+                // 2. Reverse contains / Levenshtein / Prefix check
                 const nombreNorm = normalizeForSearch(item.nombre);
                 const nombreWords = nombreNorm.split(/\s+/);
                 const catWords = item.cat && item.cat.name ? normalizeForSearch(item.cat.name).split(/\s+/) : [];
@@ -859,25 +856,45 @@
                 
                 for (let word of allWords) {
                     if (word.length < 3) continue;
-                    // term contains word or word contains term
                     if (term.includes(word) || word.includes(term)) return true;
-                    // shared root/prefix
                     if (sharesRoot(term, word)) return true;
-                    // Levenshtein similarity
                     if (word.length >= 3 && getSimilarityRatio(term, word) >= 0.65) return true;
                 }
                 
                 return false;
-            });
-            
-            if (matchesQuery) {
-                // Deduplicate items by base product ID to avoid sending multiple variants of the same product
-                if (!results.some(r => r.product.id === item.product.id)) {
-                    results.push(item);
-                }
+            };
+
+            if (logic === 'AND') {
+                return terms.every(checkTerm);
+            } else {
+                return terms.some(checkTerm);
+            }
+        };
+
+        // 1. Try AND search
+        let matchedItems = indexed.filter(item => matchProductWithTerms(item, queryTerms, 'AND'));
+        let usedOrLogic = false;
+
+        // 2. Fall back to OR search if no results and query has multiple terms
+        if (matchedItems.length === 0 && queryTerms.length > 1) {
+            matchedItems = indexed.filter(item => matchProductWithTerms(item, queryTerms, 'OR'));
+            usedOrLogic = true;
+        }
+
+        // Deduplicate and return results
+        const results = [];
+        matchedItems.forEach(item => {
+            if (!results.some(r => r.product.id === item.product.id)) {
+                results.push(item);
             }
         });
-        
+
+        if (usedOrLogic) {
+            // Sort by relevance (most term matches first)
+            const countMatches = (item) => queryTerms.filter(term => matchProductWithTerms(item, [term], 'AND')).length;
+            results.sort((a, b) => countMatches(b) - countMatches(a));
+        }
+
         return results.slice(0, 3);
     }
 

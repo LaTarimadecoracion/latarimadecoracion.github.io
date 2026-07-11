@@ -497,6 +497,20 @@ window.initProductsAdmin = function() {
         return (maxLength - distance) / maxLength;
     };
 
+    // Filters out conversational stop words and Spanish punctuation to enable conversational searches
+    const getCleanSearchTerms = (text) => {
+        const stopWords = new Set([
+            "necesito", "quiero", "busco", "comprar", "tenes", "tienen", "hola", "por", "favor", 
+            "gracias", "para", "de", "con", "un", "una", "unos", "unas", "el", "la", "los", "las",
+            "y", "o", "en", "al", "del", "lo"
+        ]);
+        const clean = normalizeForSearch(text)
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?"']/g, " ")
+            .split(/\s+/)
+            .filter(word => word.length > 1 && !stopWords.has(word));
+        return clean;
+    };
+
     // Estado del rubro activo en la vista de búsqueda
     window.activeSearchRubro = 'carpinteria';
 
@@ -571,18 +585,25 @@ window.initProductsAdmin = function() {
         }
 
         const indexed = getIndexedProducts();
-        let results = [];
-
-        indexed.forEach(item => {
-            // Filtrar por rubro del producto
+        
+        // 1. Filtrar por rubro del producto
+        const rubroFiltered = indexed.filter(item => {
             const itemRubro = item.cat ? (item.cat.rubro || 'carpinteria') : 'carpinteria';
-            if (itemRubro !== window.activeSearchRubro) return;
+            return itemRubro === window.activeSearchRubro;
+        });
 
-            // Dividir la consulta de búsqueda en términos individuales (ej: "blanca 110" -> ["blanca", "110"])
-            const queryTerms = query.split(/\s+/).filter(Boolean);
+        // Dividir la consulta en términos limpios (ej: "necesito mesa y baranda" -> ["mesa", "baranda"])
+        const queryTerms = getCleanSearchTerms(rawQuery);
+        
+        if (queryTerms.length === 0) {
+            searchResultsContainer.innerHTML = '';
+            if (searchEmptyState) searchEmptyState.style.display = 'flex';
+            return;
+        }
 
-            // Coincidir si cada uno de los términos buscados está en al menos uno de los campos
-            const matchesQuery = queryTerms.length === 0 || queryTerms.every(term => {
+        // Definimos la función de coincidencia para un producto y términos con una lógica dada ('AND' o 'OR')
+        const matchProductWithTerms = (item, terms, logic) => {
+            const checkTerm = (term) => {
                 const termNorm = term.replace(/\s+/g, '');
                 
                 // Helper: check if two words share a common root/prefix of at least 4 chars
@@ -593,7 +614,7 @@ window.initProductsAdmin = function() {
                     return a.substring(0, prefixLen) === b.substring(0, prefixLen);
                 };
 
-                // 1. Direct contains check (handles "mesa" inside "mesita" and vice versa)
+                // 1. Direct contains check
                 const directMatch = normalizeForSearch(item.nombre).includes(term) ||
                     (item.cat && item.cat.name && normalizeForSearch(item.cat.name).includes(term)) ||
                     (item.acabado && normalizeForSearch(item.acabado).includes(term)) ||
@@ -606,7 +627,7 @@ window.initProductsAdmin = function() {
 
                 if (directMatch) return true;
 
-                // 2. Reverse contains / prefix / Levenshtein similarity check
+                // 2. Levenshtein / Prefix check
                 const nombreNorm = normalizeForSearch(item.nombre);
                 const nombreWords = nombreNorm.split(/\s+/);
                 const catWords = item.cat && item.cat.name ? normalizeForSearch(item.cat.name).split(/\s+/) : [];
@@ -614,40 +635,67 @@ window.initProductsAdmin = function() {
 
                 for (let word of allWords) {
                     if (word.length < 3) continue;
-                    // term contains word or word contains term
                     if (term.includes(word) || word.includes(term)) return true;
-                    // shared root/prefix
                     if (sharesRoot(term, word)) return true;
-                    // Levenshtein similarity
                     if (word.length >= 3 && getSimilarityRatio(term, word) >= 0.65) return true;
                 }
 
                 return false;
-            });
+            };
 
-            if (matchesQuery) {
-                const key = `${item.id}::${item.acabado}`;
-                const existingIndex = results.findIndex(r => `${r.id}::${r.acabado}` === key);
-                if (existingIndex !== -1) {
-                    const existingIsVirtual = results[existingIndex].cat.id.endsWith('-todos');
-                    const currentIsVirtual = item.cat.id.endsWith('-todos');
-                    const currentIsPrimary = item.product.primaryCatId === item.cat.id;
-                    
-                    if (currentIsPrimary || (existingIsVirtual && !currentIsVirtual)) {
-                        results[existingIndex] = item;
-                    }
-                } else {
-                    results.push(item);
+            if (logic === 'AND') {
+                return terms.every(checkTerm);
+            } else {
+                return terms.some(checkTerm);
+            }
+        };
+
+        // 2. Probar búsqueda tipo AND (todos los términos deben coincidir)
+        let matchedItems = rubroFiltered.filter(item => matchProductWithTerms(item, queryTerms, 'AND'));
+        let usedOrLogic = false;
+
+        // 3. Si no hay resultados de tipo AND, usar tipo OR si hay más de un término
+        if (matchedItems.length === 0 && queryTerms.length > 1) {
+            matchedItems = rubroFiltered.filter(item => matchProductWithTerms(item, queryTerms, 'OR'));
+            usedOrLogic = true;
+        }
+
+        // Deduplicar variantes del mismo producto bajo la misma categoría
+        let results = [];
+        matchedItems.forEach(item => {
+            const key = `${item.id}::${item.acabado}`;
+            const existingIndex = results.findIndex(r => `${r.id}::${r.acabado}` === key);
+            if (existingIndex !== -1) {
+                const existingIsVirtual = results[existingIndex].cat.id.endsWith('-todos');
+                const currentIsVirtual = item.cat.id.endsWith('-todos');
+                const currentIsPrimary = item.product.primaryCatId === item.cat.id;
+                
+                if (currentIsPrimary || (existingIsVirtual && !currentIsVirtual)) {
+                    results[existingIndex] = item;
                 }
+            } else {
+                results.push(item);
             }
         });
 
-        // Ordenar resultados de A a Z por nombre
-        results.sort((a, b) => {
-            const nameA = (a.nombre || '').toLowerCase();
-            const nameB = (b.nombre || '').toLowerCase();
-            return nameA.localeCompare(nameB, 'es', { sensitivity: 'base' });
-        });
+        // Ordenar
+        if (usedOrLogic) {
+            // Si usamos OR, ordenar por relevancia: cantidad de términos coincidentes de mayor a menor
+            const countMatches = (item) => queryTerms.filter(term => matchProductWithTerms(item, [term], 'AND')).length;
+            results.sort((a, b) => {
+                const diff = countMatches(b) - countMatches(a);
+                if (diff !== 0) return diff;
+                const nameA = (a.nombre || '').toLowerCase();
+                const nameB = (b.nombre || '').toLowerCase();
+                return nameA.localeCompare(nameB, 'es', { sensitivity: 'base' });
+            });
+        } else {
+            results.sort((a, b) => {
+                const nameA = (a.nombre || '').toLowerCase();
+                const nameB = (b.nombre || '').toLowerCase();
+                return nameA.localeCompare(nameB, 'es', { sensitivity: 'base' });
+            });
+        }
 
         searchResultsContainer.innerHTML = '';
 
