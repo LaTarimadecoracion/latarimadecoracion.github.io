@@ -8725,11 +8725,131 @@ const productsData = [
         ]
     },
     {
+        "id": "Mesas-madera",
+        "name": "Mesas de madera",
+        "image": "img/mesas-de-madera/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 10,
+        "products": [
+            {
+                "id": "Mueble-Multifunción",
+                "title": "Mueble Multifunción - Estilo Nórdico",
+                "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
+                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
+                "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                        "images_list": [
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094497-imagen.webp",
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094652-imagen.webp",
+                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094874-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 45 x 30 cm",
+                                "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Mueble multifuncion",
+                    "estilo nordico",
+                    "banco zapatero",
+                    "mesa ratona pino",
+                    "mueble bajo tv",
+                    "organizacion hogar",
+                    "muebles minimalistas",
+                    "carpinteria artesanal"
+                ],
+                "last_modified": 1783637039050,
+                "primaryCatId": "Mesas-madera"
+            },
+            {
+                "id": "mesa-plegabe",
+                "title": "Mesa Plegabe",
+                "description": "",
+                "image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                        "images_list": [
+                            "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                            "img/exterior/mesa-plegabe/1782601058954-imagen.webp",
+                            "img/exterior/mesa-plegabe/1782601059141-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mesa",
+                    "mesita",
+                    "madera",
+                    "plegable",
+                    "jardin",
+                    "playa",
+                    "picnic",
+                    "salida",
+                    "bosque",
+                    "viaje"
+                ],
+                "last_modified": 1783637216140,
+                "primaryCatId": "Mesas-madera"
+            },
+            {
+                "id": "mesa-plegable-redonda-chica",
+                "title": "Mesa Plegable - Redonda",
+                "description": "",
+                "image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                        "images_list": [
+                            "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                            "img/exterior/mesa-plegable---redonda/1782606636382-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mesa",
+                    "mesita",
+                    "madera",
+                    "plegable",
+                    "jardin",
+                    "playa",
+                    "picnic",
+                    "salida",
+                    "bosque",
+                    "viaje"
+                ],
+                "last_modified": 1783637228097,
+                "primaryCatId": "Mesas-madera"
+            }
+        ]
+    },
+    {
         "id": "jardin-patio",
         "name": "Jardín",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 10,
+        "order": 11,
         "products": [
             {
                 "id": "deck-rectangular",
@@ -9146,7 +9266,7 @@ const productsData = [
         "name": "Todo Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 11,
+        "order": 12,
         "products": [
             {
                 "id": "Platos-madera",
@@ -9238,7 +9358,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 12,
+        "order": 13,
         "products": [
             {
                 "id": "podio-profesional",
@@ -9382,7 +9502,7 @@ const productsData = [
         "rubro": "papelera-cotillon",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 13,
+        "order": 14,
         "products": [
             {
                 "id": "Films-negro",
@@ -9421,7 +9541,7 @@ const productsData = [
         "name": "Embalaje",
         "image": "img/papelera-cotillon/embalaje/portada-imagen.webp",
         "rubro": "papelera-cotillon",
-        "order": 14,
+        "order": 15,
         "products": [
             {
                 "id": "Films-negro",
@@ -9462,7 +9582,7 @@ const productsData = [
         "rubro": "jabon",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 15,
+        "order": 16,
         "products": [
             {
                 "id": "Jabon",
@@ -9491,7 +9611,7 @@ const productsData = [
         "name": "Jabon",
         "image": "img/jabon/jabon/portada-imagen.webp",
         "rubro": "jabon",
-        "order": 16,
+        "order": 17,
         "products": [
             {
                 "id": "Jabon",
@@ -9515,125 +9635,5 @@ const productsData = [
             }
         ],
         "visible": false
-    },
-    {
-        "id": "Mesas-madera",
-        "name": "Mesas de madera",
-        "image": "img/mesas-de-madera/portada-imagen.webp",
-        "rubro": "carpinteria",
-        "order": 17,
-        "products": [
-            {
-                "id": "Mueble-Multifunción",
-                "title": "Mueble Multifunción - Estilo Nórdico",
-                "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
-                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
-                "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
-                        "images_list": [
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094497-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094652-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094874-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "60 x 45 x 30 cm",
-                                "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "Mueble multifuncion",
-                    "estilo nordico",
-                    "banco zapatero",
-                    "mesa ratona pino",
-                    "mueble bajo tv",
-                    "organizacion hogar",
-                    "muebles minimalistas",
-                    "carpinteria artesanal"
-                ],
-                "last_modified": 1783637039050,
-                "primaryCatId": "Mesas-madera"
-            },
-            {
-                "id": "mesa-plegabe",
-                "title": "Mesa Plegabe",
-                "description": "",
-                "image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
-                        "images_list": [
-                            "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
-                            "img/exterior/mesa-plegabe/1782601058954-imagen.webp",
-                            "img/exterior/mesa-plegabe/1782601059141-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mesa",
-                    "mesita",
-                    "madera",
-                    "plegable",
-                    "jardin",
-                    "playa",
-                    "picnic",
-                    "salida",
-                    "bosque",
-                    "viaje"
-                ],
-                "last_modified": 1783637216140,
-                "primaryCatId": "Mesas-madera"
-            },
-            {
-                "id": "mesa-plegable-redonda-chica",
-                "title": "Mesa Plegable - Redonda",
-                "description": "",
-                "image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
-                        "images_list": [
-                            "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
-                            "img/exterior/mesa-plegable---redonda/1782606636382-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mesa",
-                    "mesita",
-                    "madera",
-                    "plegable",
-                    "jardin",
-                    "playa",
-                    "picnic",
-                    "salida",
-                    "bosque",
-                    "viaje"
-                ],
-                "last_modified": 1783637228097,
-                "primaryCatId": "Mesas-madera"
-            }
-        ]
     }
 ];
