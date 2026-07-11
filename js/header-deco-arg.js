@@ -241,8 +241,6 @@
         btn.id = 'lt-speaker-btn';
         btn.style.cssText = `
             position: fixed;
-            bottom: calc(var(--nav-height) + 20px + var(--safe-area-bottom));
-            right: 20px;
             width: 48px;
             height: 48px;
             border-radius: 50%;

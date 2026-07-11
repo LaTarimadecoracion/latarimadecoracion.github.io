@@ -4182,28 +4182,52 @@ const productsData = [
                 "id": "cesto-de-basura",
                 "title": "Cesto de Basura",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/decoracion/cesto-de-basura/1780323361192-imagen.webp",
+                "image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/decoracion/cesto-de-basura/1780323361192-imagen.webp",
+                        "acabado_name": "Natural",
+                        "cover_image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
                         "images_list": [
-                            "img/decoracion/cesto-de-basura/1780323361192-imagen.webp",
-                            "img/decoracion/cesto-de-basura/1780323361311-imagen.webp",
-                            "img/decoracion/cesto-de-basura/1780323361428-imagen.webp"
+                            "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                            "img/carpinteria/cesto-de-basura/1783742426925-imagen.webp",
+                            "img/carpinteria/cesto-de-basura/1783742427140-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Barnizado",
+                                "medida": "Natural",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Barniz + Brea",
+                        "cover_image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                            "img/carpinteria/cesto-de-basura/1783742426925-imagen.webp",
+                            "img/carpinteria/cesto-de-basura/1783742427140-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Barniz + Brea",
                                 "link": "",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 85000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -4241,7 +4265,7 @@ const productsData = [
                     "papelera de madera",
                     "papelera pino"
                 ],
-                "last_modified": 1783729396929,
+                "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio"
             },
             {
@@ -6124,15 +6148,14 @@ const productsData = [
                 "id": "chico",
                 "title": "Vinoteca - 5 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/migrados/organizacion/chico/1760662516.webp",
+                "image": "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/migrados/organizacion/chico/1760662516.webp",
+                        "cover_image": "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
                         "images_list": [
-                            "img/migrados/organizacion/chico/1760662516.webp",
-                            "img/migrados/organizacion/chico/1760662574.webp",
-                            "img/migrados/organizacion/chico/1760662633.webp"
+                            "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139706-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6204,26 +6227,26 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783637374473,
+                "last_modified": 1783741139852,
                 "primaryCatId": "Vinotecas"
             },
             {
                 "id": "9-vinos",
                 "title": "Vinoteca - 9 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406683-imagen.webp",
+                "image": "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406683-imagen.webp",
+                        "cover_image": "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406683-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406413-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406548-imagen.webp"
+                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401450-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401599-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Mediano",
+                                "medida": "9 Vinos",
                                 "link": "https://www.mercadolibre.com.ar/vinoteca-cava-bodega-madera-mueble-9-vinos-rustica-campo/up/MLAU3969313254",
                                 "default": true,
                                 "hidden": false,
@@ -6292,26 +6315,25 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783637378825,
+                "last_modified": 1783741401738,
                 "primaryCatId": "Vinotecas"
             },
             {
                 "id": "17-vinos",
                 "title": "Vinoteca - 17 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/migrados/organizacion/17-vinos/1760660580.webp",
+                "image": "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Tintado",
-                        "cover_image": "img/migrados/organizacion/17-vinos/1760660580.webp",
+                        "acabado_name": "Tinte",
+                        "cover_image": "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
                         "images_list": [
-                            "img/migrados/organizacion/17-vinos/1760660580.webp",
-                            "img/migrados/organizacion/17-vinos/1760660435.webp",
-                            "img/migrados/organizacion/17-vinos/envio.webp"
+                            "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---17-vinos/1783741907006-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Grande",
+                                "medida": "17 Vinos",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1561953897-vinoteca-cava-bodega-madera-mueble-17-vinos-rustica-campo-_JM",
                                 "default": true,
                                 "hidden": false,
@@ -6380,26 +6402,26 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783637382534,
+                "last_modified": 1783741907149,
                 "primaryCatId": "Vinotecas"
             },
             {
                 "id": "13-vinos",
                 "title": "Vinoteca - 13 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/migrados/organizacion/13-vinos/1.webp",
+                "image": "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/migrados/organizacion/13-vinos/1.webp",
+                        "cover_image": "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
                         "images_list": [
-                            "img/migrados/organizacion/13-vinos/1.webp",
-                            "img/migrados/organizacion/13-vinos/0.webp",
-                            "img/migrados/organizacion/13-vinos/2.webp"
+                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654615-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654752-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Mediano",
+                                "medida": "13 Vinos",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2630634704-vinoteca-cava-bodega-madera-mueble-13-vinos-rustica-campo-_JM",
                                 "default": true,
                                 "hidden": false,
@@ -6468,7 +6490,7 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783637386473,
+                "last_modified": 1783741654883,
                 "primaryCatId": "Vinotecas"
             }
         ]
@@ -6483,15 +6505,14 @@ const productsData = [
                 "id": "chico",
                 "title": "Vinoteca - 5 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/migrados/organizacion/chico/1760662516.webp",
+                "image": "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/migrados/organizacion/chico/1760662516.webp",
+                        "cover_image": "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
                         "images_list": [
-                            "img/migrados/organizacion/chico/1760662516.webp",
-                            "img/migrados/organizacion/chico/1760662574.webp",
-                            "img/migrados/organizacion/chico/1760662633.webp"
+                            "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139706-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6563,26 +6584,26 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783637374473,
+                "last_modified": 1783741139852,
                 "primaryCatId": "Vinotecas"
             },
             {
                 "id": "9-vinos",
                 "title": "Vinoteca - 9 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406683-imagen.webp",
+                "image": "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406683-imagen.webp",
+                        "cover_image": "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406683-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406413-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1780286406548-imagen.webp"
+                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401450-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401599-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Mediano",
+                                "medida": "9 Vinos",
                                 "link": "https://www.mercadolibre.com.ar/vinoteca-cava-bodega-madera-mueble-9-vinos-rustica-campo/up/MLAU3969313254",
                                 "default": true,
                                 "hidden": false,
@@ -6651,26 +6672,26 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783637378825,
+                "last_modified": 1783741401738,
                 "primaryCatId": "Vinotecas"
             },
             {
                 "id": "13-vinos",
                 "title": "Vinoteca - 13 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/migrados/organizacion/13-vinos/1.webp",
+                "image": "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/migrados/organizacion/13-vinos/1.webp",
+                        "cover_image": "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
                         "images_list": [
-                            "img/migrados/organizacion/13-vinos/1.webp",
-                            "img/migrados/organizacion/13-vinos/0.webp",
-                            "img/migrados/organizacion/13-vinos/2.webp"
+                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654615-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654752-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Mediano",
+                                "medida": "13 Vinos",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2630634704-vinoteca-cava-bodega-madera-mueble-13-vinos-rustica-campo-_JM",
                                 "default": true,
                                 "hidden": false,
@@ -6739,26 +6760,25 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783637386473,
+                "last_modified": 1783741654883,
                 "primaryCatId": "Vinotecas"
             },
             {
                 "id": "17-vinos",
                 "title": "Vinoteca - 17 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/migrados/organizacion/17-vinos/1760660580.webp",
+                "image": "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Tintado",
-                        "cover_image": "img/migrados/organizacion/17-vinos/1760660580.webp",
+                        "acabado_name": "Tinte",
+                        "cover_image": "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
                         "images_list": [
-                            "img/migrados/organizacion/17-vinos/1760660580.webp",
-                            "img/migrados/organizacion/17-vinos/1760660435.webp",
-                            "img/migrados/organizacion/17-vinos/envio.webp"
+                            "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
+                            "img/vinotecas---bodegas/vinoteca---17-vinos/1783741907006-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Grande",
+                                "medida": "17 Vinos",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1561953897-vinoteca-cava-bodega-madera-mueble-17-vinos-rustica-campo-_JM",
                                 "default": true,
                                 "hidden": false,
@@ -6827,7 +6847,7 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783637382534,
+                "last_modified": 1783741907149,
                 "primaryCatId": "Vinotecas"
             }
         ],
@@ -11946,28 +11966,52 @@ const productsData = [
                 "id": "cesto-de-basura",
                 "title": "Cesto de Basura",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/decoracion/cesto-de-basura/1780323361192-imagen.webp",
+                "image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/decoracion/cesto-de-basura/1780323361192-imagen.webp",
+                        "acabado_name": "Natural",
+                        "cover_image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
                         "images_list": [
-                            "img/decoracion/cesto-de-basura/1780323361192-imagen.webp",
-                            "img/decoracion/cesto-de-basura/1780323361311-imagen.webp",
-                            "img/decoracion/cesto-de-basura/1780323361428-imagen.webp"
+                            "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                            "img/carpinteria/cesto-de-basura/1783742426925-imagen.webp",
+                            "img/carpinteria/cesto-de-basura/1783742427140-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Barnizado",
+                                "medida": "Natural",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Barniz + Brea",
+                        "cover_image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                            "img/carpinteria/cesto-de-basura/1783742426925-imagen.webp",
+                            "img/carpinteria/cesto-de-basura/1783742427140-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Barniz + Brea",
                                 "link": "",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 85000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -12005,7 +12049,7 @@ const productsData = [
                     "papelera de madera",
                     "papelera pino"
                 ],
-                "last_modified": 1783729396929,
+                "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio"
             }
         ]

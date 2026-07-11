@@ -4650,3 +4650,16 @@ details.form-group[open] {
         bottom: 80px; /* Arriba del bottom-nav */
     }
 }
+
+/* ── Botón del Parlante flotante (Posicionado arriba del Asistente) ── */
+#lt-speaker-btn {
+    bottom: calc(var(--nav-height) + 92px + var(--safe-area-bottom));
+    right: 30px;
+}
+
+@media (max-width: 768px) {
+    #lt-speaker-btn {
+        bottom: calc(var(--nav-height) + 88px + var(--safe-area-bottom));
+        right: 20px;
+    }
+}
