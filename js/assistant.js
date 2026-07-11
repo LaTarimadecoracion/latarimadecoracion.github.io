@@ -63,7 +63,7 @@
 
         // 2. Try fetching the Bot-Demo1.csv
         try {
-            const res = await fetch("asist/Bot-Demo1.csv");
+            const res = await fetch("asist/Bot-Demo1.csv?v=2");
             if (res.ok) {
                 const csvText = await res.text();
                 const parsedRules = parseCSVText(csvText);
