@@ -595,7 +595,7 @@ window.initProductsAdmin = function() {
         // Dividir la consulta en términos limpios (ej: "necesito mesa y baranda" -> ["mesa", "baranda"])
         const queryTerms = getCleanSearchTerms(rawQuery);
         
-        if (queryTerms.length === 0) {
+        if (queryTerms.length === 0 && rawQuery.trim() !== '') {
             searchResultsContainer.innerHTML = '';
             if (searchEmptyState) searchEmptyState.style.display = 'flex';
             return;
