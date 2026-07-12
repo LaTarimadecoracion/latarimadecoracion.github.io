@@ -230,7 +230,7 @@ try {
     console.error("Error loading sessionAvisos fallback:", e);
 }
 
-// De-duplicar avisos por título o combinación de título y enlace para prevenir repetidos en caché
+// De-duplicar y sincronizar imágenes de avisos vinculados a productos
 if (Array.isArray(window.sessionAvisos)) {
     const seenAvisos = new Set();
     window.sessionAvisos = window.sessionAvisos.filter(aviso => {
@@ -242,6 +242,54 @@ if (Array.isArray(window.sessionAvisos)) {
         seenAvisos.add(key);
         return true;
     });
+
+    // Sincronizar automáticamente fotos de avisos vinculados a productos/alquileres
+    let avisosMigrated = false;
+    window.sessionAvisos.forEach(aviso => {
+        let prodId = null;
+        if (aviso.linkUrl) {
+            const match = aviso.linkUrl.match(/prod=([^&]+)/);
+            if (match) prodId = match[1];
+        }
+        if (!prodId && aviso.links && aviso.links.length > 0) {
+            aviso.links.forEach(l => {
+                if (l.url) {
+                    const match = l.url.match(/prod=([^&]+)/);
+                    if (match) prodId = match[1];
+                }
+            });
+        }
+
+        if (prodId) {
+            let targetCover = null;
+            if (window.sessionProducts && Array.isArray(window.sessionProducts)) {
+                for (const cat of window.sessionProducts) {
+                    if (cat.products) {
+                        const found = cat.products.find(p => p.id === prodId);
+                        if (found && found.image) {
+                            targetCover = found.image;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (!targetCover && window.sessionRentals && Array.isArray(window.sessionRentals)) {
+                const found = window.sessionRentals.find(r => r.id === prodId);
+                if (found && found.image) {
+                    targetCover = found.image;
+                }
+            }
+
+            if (targetCover && targetCover !== 'img/logo_provisional.png' && aviso.image !== targetCover) {
+                aviso.image = targetCover;
+                avisosMigrated = true;
+            }
+        }
+    });
+
+    if (avisosMigrated) {
+        localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
+    }
 }
 
 // 4. CONFIGURACIÓN DE ORDEN Y CONTROL DE SECCIONES DEL HOME

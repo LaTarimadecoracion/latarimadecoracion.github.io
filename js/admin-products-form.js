@@ -1015,13 +1015,13 @@
                 }
 
                 // Buscar estado de visibilidad existente
-                let existingVisibleState = undefined;
+                let existingRentalVisibleState = undefined;
                 const found = sessionRentals.find(r => r.id === (editingProductId || product.id));
                 if (found && found.visible !== undefined) {
-                    existingVisibleState = found.visible;
+                    existingRentalVisibleState = found.visible;
                 }
-                if (existingVisibleState !== undefined) {
-                    product.visible = existingVisibleState;
+                if (existingRentalVisibleState !== undefined) {
+                    product.visible = existingRentalVisibleState;
                 }
 
                 // Guardar/Actualizar en sessionRentals
@@ -1068,6 +1068,23 @@
                         }
                     }
                 }
+                // Sincronizar avisos vinculados a este alquiler
+                if (window.sessionAvisos && Array.isArray(window.sessionAvisos)) {
+                    let avisosChanged = false;
+                    window.sessionAvisos.forEach(aviso => {
+                        const linksList = aviso.links || [];
+                        const hasLinkToProduct = (aviso.linkUrl && aviso.linkUrl.includes(`prod=${product.id}`)) ||
+                                                 linksList.some(l => l.url && l.url.includes(`prod=${product.id}`));
+                        if (hasLinkToProduct && aviso.image !== product.image) {
+                            aviso.image = product.image;
+                            avisosChanged = true;
+                        }
+                    });
+                    if (avisosChanged) {
+                        localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
+                    }
+                }
+
                 showAdminToast(editingProductId ? '✅ Alquiler actualizado correctamente' : '✅ Alquiler creado correctamente');
 
                 if (window.saveRentalsToServer) {
@@ -1214,6 +1231,23 @@
                             window.syncSiteConfigWithServer();
                         }
                     }
+                }
+            }
+
+            // Sincronizar avisos vinculados a este producto
+            if (window.sessionAvisos && Array.isArray(window.sessionAvisos)) {
+                let avisosChanged = false;
+                window.sessionAvisos.forEach(aviso => {
+                    const linksList = aviso.links || [];
+                    const hasLinkToProduct = (aviso.linkUrl && aviso.linkUrl.includes(`prod=${product.id}`)) ||
+                                             linksList.some(l => l.url && l.url.includes(`prod=${product.id}`));
+                    if (hasLinkToProduct && aviso.image !== product.image) {
+                        aviso.image = product.image;
+                        avisosChanged = true;
+                    }
+                });
+                if (avisosChanged) {
+                    localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
                 }
             }
 
