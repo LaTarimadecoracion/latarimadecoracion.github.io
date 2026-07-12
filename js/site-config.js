@@ -119,6 +119,177 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Sillon Gervasoni - Chicos!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Sillon Gervasoni - Chicos!",
+            "mediaType": "image",
+            "image": "img/logo_provisional.png",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=sillon-gervasoni-simple-chico",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=sillon-gervasoni-simple-chico",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783812414823
+        },
+        {
+            "title": "¡Nuevo Ingreso: Pie de cama romano!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Pie de cama romano!",
+            "mediaType": "image",
+            "image": "img/logo_provisional.png",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=pie-cama-romano",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=pie-cama-romano",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783812340287
+        },
+        {
+            "title": "¡Nuevo Ingreso: Mesas para Candy Bar / Mesa nido!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesas para Candy Bar / Mesa nido!",
+            "mediaType": "image",
+            "image": "img/logo_provisional.png",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Mesas para Candy Bar",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Mesas para Candy Bar",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783812270408
+        },
+        {
+            "title": "¡Nuevo Ingreso: Bodega 6 Vinos!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Bodega 6 Vinos!",
+            "mediaType": "image",
+            "image": "img/logo_provisional.png",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=bodega-madera-6-rectangular",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=bodega-madera-6-rectangular",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783811892712
+        },
+        {
+            "title": "¡Nuevo Ingreso: Estante Hexagonal x3!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Estante Hexagonal x3!",
+            "mediaType": "image",
+            "image": "img/logo_provisional.png",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=estante-hexagonal-x3",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=estante-hexagonal-x3",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783811849072
+        },
+        {
+            "title": "¡Nuevo Ingreso: Perchero 5 - Minimalista!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 5 - Minimalista!",
+            "mediaType": "image",
+            "image": "img/logo_provisional.png",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=perchero-madera-tuvitos5",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=perchero-madera-tuvitos5",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783811755487
+        },
+        {
+            "title": "¡Nuevo Ingreso: Perchero 3 - Minimalista!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 3 - Minimalista!",
+            "mediaType": "image",
+            "image": "img/logo_provisional.png",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=perchero-madera-tuvitos",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=perchero-madera-tuvitos",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783811686087
+        },
+        {
+            "title": "¡Nuevo Ingreso: Perchero 5 - Rustico!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 5 - Rustico!",
+            "mediaType": "image",
+            "image": "img/logo_provisional.png",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Perchero 3 - Rustico-copia",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Perchero 3 - Rustico-copia",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783811464488
+        },
+        {
+            "title": "¡Nuevo Ingreso: Perchero 3 - Rustico!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 3 - Rustico!",
+            "mediaType": "image",
+            "image": "img/logo_provisional.png",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Perchero 3 - Rustico",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Perchero 3 - Rustico",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1783803917673
+        },
+        {
             "title": "¡Nuevo Ingreso: Sol - Rebatible - Cajones!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Sol - Rebatible - Cajones!",
             "mediaType": "image",

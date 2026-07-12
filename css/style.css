@@ -201,12 +201,49 @@ button, .btn-primary, .btn-outline {
     animation: pulse 2s infinite ease-in-out;
 }
 
+.loader-saw-container {
+    position: relative;
+    width: 340px;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.saw-blade {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: spin-saw 6s linear infinite;
+    z-index: 1;
+}
+
+.saw-blade path {
+    fill: #ffffff;
+    opacity: 0.9;
+}
+
 .splash-logo {
-    width: 120px;
-    height: auto;
-    margin-bottom: 1rem;
+    position: absolute;
+    width: 87%;
+    height: 87%;
     border-radius: 50%;
+    z-index: 2;
+    background: white;
     box-shadow: var(--shadow-lg);
+}
+
+@keyframes spin-saw {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 380px) {
+    .loader-saw-container {
+        width: 270px;
+        height: 270px;
+    }
 }
 
 .splash-title {
@@ -3082,7 +3119,8 @@ body.theme-mundial .brand-title {
 .product-admin-row.dragging,
 .view-builder-card.dragging,
 .section-row.dragging,
-.cat-shelf.dragging {
+.cat-shelf.dragging,
+.acabado-group-card.dragging {
     opacity: 0.55 !important;
     border: 1.5px dashed var(--primary-color, #c0510a) !important;
     background-color: #FAF7F2 !important; /* Lino muy suave y cálido de fondo */
@@ -3152,8 +3190,8 @@ body.theme-mundial .brand-title {
     opacity: 1 !important;
 }
 
-/* ── Estilos para Botón de Clonar Grupo de Acabados ── */
-.btn-clone-group {
+/* ── Estilos para Botón de Clonar y Tirador de Grupo de Acabados ── */
+.btn-clone-group, .acabado-drag-handle {
     background: transparent !important;
     border: none !important;
     color: var(--text-muted, #718096) !important;
@@ -3166,12 +3204,17 @@ body.theme-mundial .brand-title {
     transition: all 0.2s ease !important;
 }
 
-.btn-clone-group:hover {
+.acabado-drag-handle {
+    cursor: grab !important;
+}
+
+.btn-clone-group:hover, .acabado-drag-handle:hover {
     color: var(--primary-color, #c0510a) !important;
     background-color: #FAF0E6 !important; /* Fondo lino/almendra suave en hover */
 }
 
-.btn-clone-group .material-symbols-outlined {
+.btn-clone-group .material-symbols-outlined,
+.acabado-drag-handle .material-symbols-outlined {
     font-size: 18px !important;
 }
 

@@ -317,8 +317,12 @@
                     // Buscar la categoría de respaldo
                     const defaultCat = sessionProducts.find(c => c.id === defaultId);
                     if (defaultCat && cat.products && cat.products.length > 0) {
-                        // Mover productos al final
-                        defaultCat.products.push(...cat.products);
+                        // Mover productos al final sin duplicar
+                        cat.products.forEach(p => {
+                            if (!defaultCat.products.some(dp => dp.id === p.id)) {
+                                defaultCat.products.push(p);
+                            }
+                        });
                     }
 
                     // IMPORTANTE: NO llamamos al borrado de fotos físicas para que los productos migrados conserven sus fotos

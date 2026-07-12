@@ -21,6 +21,14 @@ window.initProductsAdmin = function() {
             });
         }
 
+        const statusSelect = document.getElementById('admin-status-filter');
+        if (statusSelect) {
+            statusSelect.addEventListener('change', () => {
+                adminCurrentPage = 1;
+                renderAdminProducts();
+            });
+        }
+
         const btnAdminPrev = document.getElementById('btn-admin-prev');
         if (btnAdminPrev) {
             btnAdminPrev.addEventListener('click', () => {
@@ -141,6 +149,22 @@ window.initProductsAdmin = function() {
             }
         });
 
+        // Status filter
+        const statusSelect = document.getElementById('admin-status-filter');
+        const statusFilter = statusSelect ? statusSelect.value : 'all';
+        
+        const isGhostProduct = (p) => {
+            return !p.image || p.image === 'img/logo_provisional.png';
+        };
+
+        if (statusFilter === 'visibles') {
+            prods = prods.filter(p => p.visible !== false);
+        } else if (statusFilter === 'ocultos') {
+            prods = prods.filter(p => p.visible === false);
+        } else if (statusFilter === 'borradores') {
+            prods = prods.filter(p => isGhostProduct(p));
+        }
+
         // Search filter
         if (adminSearchQuery) {
             const q = adminSearchQuery.toLowerCase();
@@ -188,6 +212,8 @@ window.initProductsAdmin = function() {
             const row = document.createElement('tr');
             row.style.borderBottom = '1px solid #EEF0F3';
             
+            const isGhost = isGhostProduct(p);
+
             row.innerHTML = `
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
                     <div style="display: flex; align-items: center; gap: 0.6rem;">
@@ -197,7 +223,10 @@ window.initProductsAdmin = function() {
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
                     <strong style="color: var(--text-main); font-size: 0.9rem; display: block;">${p.title}</strong>
-                    <small style="color: var(--text-muted); font-size: 0.75rem; font-family: monospace;">SKU: ${p.id}</small>
+                    <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px; flex-wrap: wrap;">
+                        <small style="color: var(--text-muted); font-size: 0.75rem; font-family: monospace;">SKU: ${p.id}</small>
+                        ${isGhost ? `<span class="ghost-badge" style="background: #FEF3C7; color: #D97706; border: 1px solid #FCD34D; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; line-height: 1;"><span class="material-symbols-outlined" style="font-size: 13px;">hide_image</span> Borrador (Sin fotos)</span>` : ''}
+                    </div>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
                     <span style="background: #edf2f7; color: #4a5568; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.78rem; font-weight: 500;">

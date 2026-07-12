@@ -48,7 +48,7 @@
     }
 
     // Helper: Crear fila de Medida con soporte Drag & Drop y diseño horizontal amplio de igual medida
-    function createMedidaRow(groupId, medida = '', link = '', isDefault = false, isHidden = false, linkLabel = '', iconType = 'local_shipping', highlight = false, price = '', legend = '', showPrice = false) {
+    function createMedidaRow(groupId, medida = '', link = '', isDefault = false, isHidden = false, linkLabel = '', iconType = 'local_shipping', highlight = false, price = '', legend = '', showPrice = false, costPrice = '', multiplier = '') {
         const row = document.createElement('div');
         row.className = 'medida-admin-row';
         row.setAttribute('draggable', 'false'); // Deshabilitado por defecto, activado al tocar el handle
@@ -61,6 +61,23 @@
         row.dataset.iconType = iconType;
         row.dataset.highlight = highlight ? 'true' : 'false';
         row.dataset.showPrice = showPrice ? 'true' : 'false';
+
+        let costPriceVal = costPrice;
+        let priceVal = price;
+
+        // Si no hay precio de costo pero sí hay precio de venta, igualamos el costo al precio de venta
+        if ((costPriceVal === '' || parseFloat(costPriceVal) === 0) && priceVal !== '' && parseFloat(priceVal) > 0) {
+            costPriceVal = priceVal;
+        }
+
+        let multValue = multiplier;
+        if (multValue === '' && priceVal !== '' && costPriceVal !== '') {
+            const pNum = parseFloat(priceVal);
+            const cNum = parseFloat(costPriceVal);
+            if (!isNaN(pNum) && !isNaN(cNum) && cNum > 0) {
+                multValue = parseFloat((pNum / cNum).toFixed(2));
+            }
+        }
 
         row.innerHTML = `
             <div class="medida-drag-handle" title="Mantén presionado para arrastrar y reordenar" style="display: flex; align-items: center; justify-content: center; cursor: grab; padding: 4px; flex-shrink: 0;">
@@ -78,8 +95,10 @@
                         <span class="material-symbols-outlined" style="font-size: 18px;">${showPrice ? 'visibility' : 'visibility_off'}</span>
                     </button>
                 </div>
-                <div style="display: flex; width: 100%;">
-                    <input type="text" class="medida-leyenda" placeholder="Leyenda debajo del botón (ej: Envío gratis, vacío = automático)" value="${legend}" style="flex: 1 1 100%;">
+                <div style="display: flex; gap: 10px; width: 100%; align-items: center;">
+                    <input type="text" class="medida-leyenda" placeholder="Leyenda debajo del botón (ej: Envío gratis, vacío = automático)" value="${legend}" style="flex: 60 !important; min-width: 0 !important;">
+                    <input type="number" class="medida-costo" placeholder="Costo ($)" value="${costPriceVal}" style="flex: 20 !important; min-width: 0 !important;" min="0">
+                    <input type="number" class="medida-multiplicador" placeholder="Multipl. (x)" value="${multValue}" style="flex: 20 !important; min-width: 0 !important;" min="0" step="any">
                 </div>
             </div>
             <div class="medida-actions" style="display: flex; gap: 0.25rem; align-items: center; flex-shrink: 0;">
@@ -171,9 +190,11 @@
             const currentPrice = row.querySelector('.medida-precio') ? row.querySelector('.medida-precio').value.trim() : '';
             const currentLegend = row.querySelector('.medida-leyenda') ? row.querySelector('.medida-leyenda').value.trim() : '';
             const currentShowPrice = row.dataset.showPrice === 'true';
+            const currentCost = row.querySelector('.medida-costo') ? row.querySelector('.medida-costo').value.trim() : '';
+            const currentMultiplier = row.querySelector('.medida-multiplicador') ? row.querySelector('.medida-multiplicador').value.trim() : '';
             
             // Crear nueva fila clonada
-            const newRow = createMedidaRow(groupId, currentMedida, currentLink, false, currentHidden, currentLabel, currentIcon, currentHighlight, currentPrice, currentLegend, currentShowPrice);
+            const newRow = createMedidaRow(groupId, currentMedida, currentLink, false, currentHidden, currentLabel, currentIcon, currentHighlight, currentPrice, currentLegend, currentShowPrice, currentCost, currentMultiplier);
             
             // Insertar exactamente debajo de la original en el DOM
             row.after(newRow);
@@ -187,6 +208,50 @@
                 newValInput.select();
             }
         });
+
+        // Configurar cálculos interactivos y bidireccionales entre Costo, Multiplicador y Precio
+        const priceInp = row.querySelector('.medida-precio');
+        const costInp = row.querySelector('.medida-costo');
+        const multInp = row.querySelector('.medida-multiplicador');
+
+        const calculateFromPrice = () => {
+            const price = priceInp.valueAsNumber;
+            const cost = costInp.valueAsNumber;
+            if (!isNaN(price) && !isNaN(cost) && cost > 0) {
+                const mult = price / cost;
+                multInp.value = parseFloat(mult.toFixed(2));
+            } else {
+                multInp.value = '';
+            }
+        };
+
+        const calculateFromMultiplier = () => {
+            const mult = multInp.valueAsNumber;
+            const cost = costInp.valueAsNumber;
+            if (!isNaN(mult) && !isNaN(cost)) {
+                const price = cost * mult;
+                priceInp.value = Math.round(price);
+            }
+        };
+
+        const calculateFromCost = () => {
+            const cost = costInp.valueAsNumber;
+            if (isNaN(cost) || cost <= 0) {
+                return;
+            }
+            const mult = multInp.valueAsNumber;
+            const price = priceInp.valueAsNumber;
+
+            if (!isNaN(mult)) {
+                priceInp.value = Math.round(cost * mult);
+            } else if (!isNaN(price)) {
+                multInp.value = parseFloat((price / cost).toFixed(2));
+            }
+        };
+
+        priceInp.addEventListener('input', calculateFromPrice);
+        multInp.addEventListener('input', calculateFromMultiplier);
+        costInp.addEventListener('input', calculateFromCost);
         
         // Habilitar arrastre solo al sostener el handle (mantiene campos de texto editables)
         const dragHandle = row.querySelector('.medida-drag-handle');
@@ -353,6 +418,20 @@
         });
     }
 
+    // Reordenar activeGroupsUI basándose en el orden real de las tarjetas en el DOM
+    function reorderActiveGroupsUI() {
+        if (!adminAcabadosGroupsContainer) return;
+        const cards = Array.from(adminAcabadosGroupsContainer.querySelectorAll('.acabado-group-card'));
+        const newActiveGroupsUI = [];
+        cards.forEach(c => {
+            const state = activeGroupsUI.find(g => g.id === c.id);
+            if (state) {
+                newActiveGroupsUI.push(state);
+            }
+        });
+        activeGroupsUI = newActiveGroupsUI;
+    }
+
     // Crear DOM para un Grupo de Acabado
     function createAcabadoGroupUI(groupData = null) {
         const groupId = `group-${++groupCounter}`;
@@ -386,6 +465,9 @@
                     <button type="button" class="btn-toggle-visibility" title="Ocultar/Mostrar Acabado" style="background: transparent; border: none; color: var(--text-muted, #718096); cursor: pointer; padding: 6px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
                         <span class="material-symbols-outlined" style="font-size: 18px;">${groupData && groupData.hidden ? 'visibility_off' : 'visibility'}</span>
                     </button>
+                    <div class="acabado-drag-handle" title="Mantener presionado para arrastrar y reordenar acabado">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">reorder</span>
+                    </div>
                     <button type="button" class="btn-clone-group" title="Duplicar Acabado Completo">
                         <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span>
                     </button>
@@ -472,6 +554,29 @@
             }
         });
 
+        // Configurar arrastre de la tarjeta de acabado (Drag & Drop)
+        const dragHandle = card.querySelector('.acabado-drag-handle');
+        if (dragHandle) {
+            dragHandle.addEventListener('mousedown', () => {
+                card.setAttribute('draggable', 'true');
+            });
+            dragHandle.addEventListener('touchstart', () => {
+                card.setAttribute('draggable', 'true');
+            });
+        }
+
+        card.addEventListener('dragstart', (e) => {
+            card.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', '');
+        });
+
+        card.addEventListener('dragend', () => {
+            card.classList.remove('dragging');
+            card.setAttribute('draggable', 'false');
+            reorderActiveGroupsUI();
+        });
+
         // Duplicador de grupo de acabados
         card.querySelector('.btn-clone-group').addEventListener('click', (e) => {
             e.stopPropagation();
@@ -511,6 +616,8 @@
                 // Re-render preview for the cloned card
                 renderGroupPreview(newGroupId);
             }
+
+            reorderActiveGroupsUI(); // Sincronizar orden en memoria
 
             showAdminToast('✅ Acabado duplicado con sus variantes');
         });
@@ -593,7 +700,7 @@
 
         if (groupData && groupData.medidas_variants) {
             groupData.medidas_variants.forEach(m => {
-                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight, m.price !== undefined ? m.price : '', m.legend !== undefined ? m.legend : '', m.showPrice !== undefined ? m.showPrice : false));
+                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight, m.price !== undefined ? m.price : '', m.legend !== undefined ? m.legend : '', m.showPrice !== undefined ? m.showPrice : false, m.cost_price !== undefined ? m.cost_price : ''));
             });
             updateMedidaGroupColors(medidasContainer);
         }
@@ -604,6 +711,21 @@
 
     if (btnAddAcabadoGroup) {
         btnAddAcabadoGroup.addEventListener('click', () => createAcabadoGroupUI());
+    }
+
+    if (adminAcabadosGroupsContainer) {
+        adminAcabadosGroupsContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            const draggingCard = adminAcabadosGroupsContainer.querySelector('.acabado-group-card.dragging');
+            if (!draggingCard) return;
+            
+            const afterElement = getDragAfterElement(adminAcabadosGroupsContainer, e.clientY, '.acabado-group-card');
+            if (afterElement == null) {
+                adminAcabadosGroupsContainer.appendChild(draggingCard);
+            } else {
+                adminAcabadosGroupsContainer.insertBefore(draggingCard, afterElement);
+            }
+        });
     }
 
     // ── Abrir formulario ──
@@ -781,13 +903,31 @@
     const btnGenerateJson = document.getElementById('btn-generate-json');
     if (btnGenerateJson) {
         btnGenerateJson.addEventListener('click', async () => {
-            const idVal = document.getElementById('admin-id').value.trim();
-            if (!idVal) { alert('El ID es obligatorio.'); return; }
+            let idVal = document.getElementById('admin-id').value.trim();
+            const pTitle = document.getElementById('admin-title').value.trim();
+
+            if (!idVal) {
+                if (pTitle) {
+                    // Convertir el título en un slug amigable
+                    idVal = pTitle
+                        .toLowerCase()
+                        .normalize('NFD') // Quitar acentos
+                        .replace(/[\u0300-\u036f]/g, '')
+                        .replace(/[^a-z0-9\s-]/g, '') // Quitar caracteres especiales
+                        .trim()
+                        .replace(/\s+/g, '-') // Cambiar espacios por guiones
+                        .replace(/-+/g, '-'); // Quitar guiones duplicados
+                } else {
+                    // Si tampoco hay título, generamos un ID temporal con timestamp
+                    idVal = 'borrador-' + Date.now();
+                }
+                // Actualizar el input visualmente en el formulario
+                document.getElementById('admin-id').value = idVal;
+            }
 
             btnGenerateJson.disabled    = true;
             btnGenerateJson.textContent = 'Guardando...';
 
-            const pTitle  = document.getElementById('admin-title').value;
             const catName = window.isRentalMode ? 'alquileres' : (targetCategoryIdForProduct !== null ? sessionProducts[targetCategoryIdForProduct].name : 'general');
 
             const finalAcabadosGroups = [];
@@ -811,6 +951,7 @@
                 const medidasContainer = card.querySelector('.group-medidas-rows');
                 const medidasVariants = [...medidasContainer.querySelectorAll('.medida-admin-row')].map(row => {
                     const priceVal = row.querySelector('.medida-precio') ? row.querySelector('.medida-precio').value.trim() : '';
+                    const costVal = row.querySelector('.medida-costo') ? row.querySelector('.medida-costo').value.trim() : '';
                     return {
                         medida: row.querySelector('.medida-valor').value.trim(),
                         link:   row.querySelector('.medida-link').value.trim(),
@@ -820,6 +961,7 @@
                         iconType: row.dataset.iconType || 'local_shipping',
                         highlight: row.dataset.highlight === 'true',
                         price: priceVal !== '' ? parseFloat(priceVal) : '',
+                        cost_price: costVal !== '' ? parseFloat(costVal) : '',
                         legend: row.querySelector('.medida-leyenda') ? row.querySelector('.medida-leyenda').value.trim() : '',
                         showPrice: row.dataset.showPrice === 'true'
                     };
@@ -1010,7 +1152,11 @@
                     }
                 }
             }
-            if (existingVisibleState !== undefined) {
+
+            const hasNoRealImages = !product.image || product.image === 'img/logo_provisional.png';
+            if (hasNoRealImages) {
+                product.visible = false;
+            } else if (existingVisibleState !== undefined) {
                 product.visible = existingVisibleState;
             }
 
