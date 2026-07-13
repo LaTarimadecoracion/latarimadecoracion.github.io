@@ -1605,7 +1605,7 @@ const productsData = [
                 "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "80 x50 x 50 cm",
+                        "acabado_name": "80 x 40 x 40 cm",
                         "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
                         "images_list": [
                             "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
@@ -1614,14 +1614,14 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "80 x 50 x 50 cm",
+                                "medida": "80 x 40 x 40 cm",
                                 "link": "",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 51000,
+                                "price": 68000,
                                 "cost_price": 34000,
                                 "legend": "",
                                 "showPrice": true
@@ -1630,7 +1630,7 @@ const productsData = [
                         "hidden": false
                     },
                     {
-                        "acabado_name": "100 x 50 x 50 cm",
+                        "acabado_name": "100 x 40 x 40 cm",
                         "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
                         "images_list": [
                             "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
@@ -1638,14 +1638,14 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "100 x 50 x 50 cm",
+                                "medida": "100 x 40 x 40 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 54000,
+                                "price": 72000,
                                 "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true
@@ -1654,7 +1654,7 @@ const productsData = [
                         "hidden": false
                     },
                     {
-                        "acabado_name": "60 x 50 x 50 cm",
+                        "acabado_name": "60 x 40 x 40 cm",
                         "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
                         "images_list": [
                             "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
@@ -1663,14 +1663,14 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "60 x 50 x 50 cm",
+                                "medida": "60 x 40 x 40 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 48000,
+                                "price": 64000,
                                 "cost_price": 32000,
                                 "legend": "",
                                 "showPrice": true
@@ -1718,7 +1718,7 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1783803276354,
+                "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores"
             },
             {
@@ -2223,7 +2223,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 18000,
+                                "cost_price": 9000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -2284,7 +2285,7 @@ const productsData = [
                     "macetero de exterior",
                     "colgante eucalipto"
                 ],
-                "last_modified": 1783618250710,
+                "last_modified": 1783907432697,
                 "primaryCatId": "jardin-patio"
             },
             {
@@ -2324,7 +2325,21 @@ const productsData = [
                             "img/hogar/mate/1780708903884-imagen.webp",
                             "img/hogar/mate/1780708904016-imagen.webp"
                         ],
-                        "medidas_variants": [],
+                        "medidas_variants": [
+                            {
+                                "medida": "Mate",
+                                "link": "https://www.mercadolibre.com.ar/mate--algarrobo--criollo/up/MLAU4305469806?pdp_filters=item_id:MLA3596352192",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": 4500,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
                         "hidden": false
                     }
                 ],
@@ -2339,7 +2354,7 @@ const productsData = [
                     "yerba",
                     "tomar"
                 ],
-                "last_modified": 1783642447708,
+                "last_modified": 1783907387290,
                 "primaryCatId": "productos-algarrobo"
             },
             {
@@ -3123,7 +3138,21 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 13000,
+                                "cost_price": 6500,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "28 Diam x 17 Alto",
+                                "link": "https://www.mercadolibre.com.ar/soporte-para-tortas-torneado-de-madera-candy-bar/up/MLAU3610970883",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 14000,
+                                "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -3145,7 +3174,7 @@ const productsData = [
                     "torneado",
                     "madera"
                 ],
-                "last_modified": 1783637318873,
+                "last_modified": 1783908158520,
                 "primaryCatId": "Organizadores"
             },
             {
@@ -4782,7 +4811,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Juego x 3",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/mesas-para-candy-bar-x3/up/MLAU4305282752",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -4791,7 +4820,7 @@ const productsData = [
                                 "price": 80000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Chica",
@@ -4804,7 +4833,7 @@ const productsData = [
                                 "price": 28000,
                                 "cost_price": 14000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Mediana",
@@ -4817,7 +4846,7 @@ const productsData = [
                                 "price": 34000,
                                 "cost_price": 17000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Grande",
@@ -4830,7 +4859,7 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -4900,7 +4929,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783814290687,
+                "last_modified": 1783905193121,
                 "primaryCatId": "Mesas-madera",
                 "visible": true
             },
@@ -4956,25 +4985,25 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Chico",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/silla-gervasoni-pino-natural-1-cuerpo-con-apoyabrazos-ninos/up/MLAU4284162507?pdp_filters=item_id:MLA3596352006",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 36000,
                                 "cost_price": 18000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783814317271,
+                "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
-                "visible": false
+                "visible": true
             }
         ]
     },
@@ -5790,7 +5819,7 @@ const productsData = [
                 "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "80 x50 x 50 cm",
+                        "acabado_name": "80 x 40 x 40 cm",
                         "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
                         "images_list": [
                             "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
@@ -5799,14 +5828,14 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "80 x 50 x 50 cm",
+                                "medida": "80 x 40 x 40 cm",
                                 "link": "",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 51000,
+                                "price": 68000,
                                 "cost_price": 34000,
                                 "legend": "",
                                 "showPrice": true
@@ -5815,7 +5844,7 @@ const productsData = [
                         "hidden": false
                     },
                     {
-                        "acabado_name": "100 x 50 x 50 cm",
+                        "acabado_name": "100 x 40 x 40 cm",
                         "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
                         "images_list": [
                             "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
@@ -5823,14 +5852,14 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "100 x 50 x 50 cm",
+                                "medida": "100 x 40 x 40 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 54000,
+                                "price": 72000,
                                 "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true
@@ -5839,7 +5868,7 @@ const productsData = [
                         "hidden": false
                     },
                     {
-                        "acabado_name": "60 x 50 x 50 cm",
+                        "acabado_name": "60 x 40 x 40 cm",
                         "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
                         "images_list": [
                             "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
@@ -5848,14 +5877,14 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "60 x 50 x 50 cm",
+                                "medida": "60 x 40 x 40 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 48000,
+                                "price": 64000,
                                 "cost_price": 32000,
                                 "legend": "",
                                 "showPrice": true
@@ -5903,7 +5932,7 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1783803276354,
+                "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores"
             },
             {
@@ -6460,7 +6489,21 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 13000,
+                                "cost_price": 6500,
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "28 Diam x 17 Alto",
+                                "link": "https://www.mercadolibre.com.ar/soporte-para-tortas-torneado-de-madera-candy-bar/up/MLAU3610970883",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 14000,
+                                "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -6482,7 +6525,7 @@ const productsData = [
                     "torneado",
                     "madera"
                 ],
-                "last_modified": 1783637318873,
+                "last_modified": 1783908158520,
                 "primaryCatId": "Organizadores"
             }
         ]
@@ -10564,7 +10607,7 @@ const productsData = [
                 "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "80 x50 x 50 cm",
+                        "acabado_name": "80 x 40 x 40 cm",
                         "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
                         "images_list": [
                             "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
@@ -10573,14 +10616,14 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "80 x 50 x 50 cm",
+                                "medida": "80 x 40 x 40 cm",
                                 "link": "",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 51000,
+                                "price": 68000,
                                 "cost_price": 34000,
                                 "legend": "",
                                 "showPrice": true
@@ -10589,7 +10632,7 @@ const productsData = [
                         "hidden": false
                     },
                     {
-                        "acabado_name": "100 x 50 x 50 cm",
+                        "acabado_name": "100 x 40 x 40 cm",
                         "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
                         "images_list": [
                             "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
@@ -10597,14 +10640,14 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "100 x 50 x 50 cm",
+                                "medida": "100 x 40 x 40 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 54000,
+                                "price": 72000,
                                 "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true
@@ -10613,7 +10656,7 @@ const productsData = [
                         "hidden": false
                     },
                     {
-                        "acabado_name": "60 x 50 x 50 cm",
+                        "acabado_name": "60 x 40 x 40 cm",
                         "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
                         "images_list": [
                             "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
@@ -10622,14 +10665,14 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "60 x 50 x 50 cm",
+                                "medida": "60 x 40 x 40 cm",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 48000,
+                                "price": 64000,
                                 "cost_price": 32000,
                                 "legend": "",
                                 "showPrice": true
@@ -10677,7 +10720,7 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1783803276354,
+                "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores"
             }
         ],
@@ -10795,25 +10838,25 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Chico",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/silla-gervasoni-pino-natural-1-cuerpo-con-apoyabrazos-ninos/up/MLAU4284162507?pdp_filters=item_id:MLA3596352006",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 36000,
                                 "cost_price": 18000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783814317271,
+                "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
-                "visible": false
+                "visible": true
             }
         ]
     },
@@ -10951,7 +10994,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Juego x 3",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/mesas-para-candy-bar-x3/up/MLAU4305282752",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -10960,7 +11003,7 @@ const productsData = [
                                 "price": 80000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Chica",
@@ -10973,7 +11016,7 @@ const productsData = [
                                 "price": 28000,
                                 "cost_price": 14000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Mediana",
@@ -10986,7 +11029,7 @@ const productsData = [
                                 "price": 34000,
                                 "cost_price": 17000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "Grande",
@@ -10999,7 +11042,7 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -11069,7 +11112,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783814290687,
+                "last_modified": 1783905193121,
                 "primaryCatId": "Mesas-madera",
                 "visible": true
             }
@@ -11437,7 +11480,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 18000,
+                                "cost_price": 9000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -11498,7 +11542,7 @@ const productsData = [
                     "macetero de exterior",
                     "colgante eucalipto"
                 ],
-                "last_modified": 1783618250710,
+                "last_modified": 1783907432697,
                 "primaryCatId": "jardin-patio"
             },
             {
@@ -11748,7 +11792,21 @@ const productsData = [
                             "img/hogar/mate/1780708903884-imagen.webp",
                             "img/hogar/mate/1780708904016-imagen.webp"
                         ],
-                        "medidas_variants": [],
+                        "medidas_variants": [
+                            {
+                                "medida": "Mate",
+                                "link": "https://www.mercadolibre.com.ar/mate--algarrobo--criollo/up/MLAU4305469806?pdp_filters=item_id:MLA3596352192",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": 4500,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
                         "hidden": false
                     }
                 ],
@@ -11763,7 +11821,7 @@ const productsData = [
                     "yerba",
                     "tomar"
                 ],
-                "last_modified": 1783642447708,
+                "last_modified": 1783907387290,
                 "primaryCatId": "productos-algarrobo"
             }
         ]
