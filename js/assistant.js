@@ -1016,7 +1016,8 @@
                             perfil: { title: "Carrito / Mi Pedido", url: "index.html?view=perfil", icon: "🛒", view: "view-profile" },
                             avisos: { title: "Avisos y Novedades", url: "index.html?view=avisos", icon: "🔔", view: "view-notifications" },
                             videos: { title: "Galería de Videos", url: "index.html?view=videos", icon: "🎥", view: "view-videos" },
-                            buscar: { title: "Buscador de Productos", url: "index.html?view=buscar", icon: "🔍", view: "view-search" }
+                            buscar: { title: "Buscador de Productos", url: "index.html?view=buscar", icon: "🔍", view: "view-search" },
+                            ayudin: { title: "Ayudín y Guías", url: "ayudin.html", icon: "💡", view: "view-ayudin" }
                         };
                         const sect = sections[id] || { title: id, url: "#", icon: "🔗" };
                         btn.style.borderColor = "var(--color-primary, #A0715B)";

@@ -2302,12 +2302,26 @@ const productsData = [
                             "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
                             "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
                         ],
-                        "medidas_variants": [],
+                        "medidas_variants": [
+                            {
+                                "medida": "20 cm",
+                                "link": "https://www.mercadolibre.com.ar/platos-asado-madera-algarrobo-tablita-redonda-calada-20-cm/up/MLAU4328185506?pdp_filters=item_id:MLA3608096788",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": 4500,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783636734098,
+                "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo"
             },
             {
@@ -3993,9 +4007,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 60000,
+                                "cost_price": 30000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -4054,7 +4069,7 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783741139852,
+                "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas"
             },
             {
@@ -4080,9 +4095,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 70000,
+                                "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -4142,7 +4158,7 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783741401738,
+                "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas"
             },
             {
@@ -4167,9 +4183,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 90000,
+                                "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -4229,7 +4246,7 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783741907149,
+                "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas"
             },
             {
@@ -4255,9 +4272,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 80000,
+                                "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -4317,7 +4335,7 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783741654883,
+                "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas"
             },
             {
@@ -5288,9 +5306,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 60000,
+                                "cost_price": 30000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -5349,7 +5368,7 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783741139852,
+                "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas"
             },
             {
@@ -5375,9 +5394,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 70000,
+                                "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -5437,7 +5457,7 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783741401738,
+                "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas"
             },
             {
@@ -5463,9 +5483,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 80000,
+                                "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -5525,7 +5546,7 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783741654883,
+                "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas"
             },
             {
@@ -5550,9 +5571,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 90000,
+                                "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -5612,7 +5634,7 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1783741907149,
+                "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas"
             }
         ],
@@ -11740,12 +11762,26 @@ const productsData = [
                             "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
                             "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
                         ],
-                        "medidas_variants": [],
+                        "medidas_variants": [
+                            {
+                                "medida": "20 cm",
+                                "link": "https://www.mercadolibre.com.ar/platos-asado-madera-algarrobo-tablita-redonda-calada-20-cm/up/MLAU4328185506?pdp_filters=item_id:MLA3608096788",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": 4500,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783636734098,
+                "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo"
             },
             {

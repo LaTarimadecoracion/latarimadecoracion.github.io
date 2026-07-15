@@ -192,7 +192,7 @@
             if (appContainer) {
                 appContainer.scrollTop = 0;
                 // Desactivar scroll del parent si estamos en el iframe
-                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-musica') {
+                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-musica' || viewId === 'view-ayudin') {
                     appContainer.style.overflowY = 'hidden';
                 } else {
                     appContainer.style.overflowY = 'auto';
@@ -228,6 +228,11 @@
                     } else {
                         iframe.contentWindow.location.reload();
                     }
+                }
+            } else if (viewId === 'view-ayudin') {
+                const iframe = document.querySelector('#view-ayudin iframe');
+                if (iframe && iframe.contentWindow) {
+                    iframe.contentWindow.location.reload();
                 }
             } else if (viewId === 'view-about') {
                 renderNosotrosBlocksCliente();
@@ -280,7 +285,8 @@
                 'view-cart': 'carrito',
                 'view-calculator': 'calcular',
                 'view-mayorista': 'mayorista',
-                'view-musica': 'musica'
+                'view-musica': 'musica',
+                'view-ayudin': 'ayudin'
             };
             
             let basePath = window.location.pathname.replace(/\/index\.html$/, '/');
@@ -289,7 +295,7 @@
             
             let query = '';
             if (prettyNames[viewId]) {
-                query = '?sec=' + prettyNames[viewId];
+                query = '?view=' + prettyNames[viewId];
             }
             
             const cleanUrl = basePath + query;

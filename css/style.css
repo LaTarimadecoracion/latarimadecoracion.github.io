@@ -916,16 +916,8 @@ body.theme-mundial .brand-title {
    PRODUCT FEED — Cinematic Immersive Feed (Social Style)
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-/* Contenedor del feed — Formato de Lista Unificada */
-.category-feed-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 1rem 12px 2.5rem;
-    width: 100%;
-    box-sizing: border-box;
-}
-
+/* Contenedor del feed — Formato de Grilla Responsiva */
+.category-feed-list,
 .product-feed {
     display: grid;
     grid-template-columns: 1fr;
@@ -936,12 +928,14 @@ body.theme-mundial .brand-title {
 }
 
 @media (min-width: 600px) {
+    .category-feed-list,
     .product-feed {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
+    .category-feed-list,
     .product-feed {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -3070,7 +3064,7 @@ body.theme-mundial .brand-title {
     }
     
     body {
-        max-width: 800px !important; /* Medida límite premium para App Shell */
+        max-width: 1000px !important; /* Medida límite premium para App Shell */
         margin: 0 auto !important;
         position: relative !important;
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.15) !important;
@@ -3083,7 +3077,7 @@ body.theme-mundial .brand-title {
         right: auto !important;
         transform: translateX(-50%) !important;
         width: 100% !important;
-        max-width: 800px !important;
+        max-width: 1000px !important;
     }
 
     .admin-view {
@@ -3091,7 +3085,7 @@ body.theme-mundial .brand-title {
         right: auto !important;
         transform: translateX(-50%) !important;
         width: 100% !important;
-        max-width: 800px !important;
+        max-width: 1000px !important;
     }
 
     #splash-screen {
@@ -3099,7 +3093,7 @@ body.theme-mundial .brand-title {
         right: auto !important;
         transform: translateX(-50%) !important;
         width: 100% !important;
-        max-width: 800px !important;
+        max-width: 1000px !important;
     }
 
     .carousel-categories .category-card {
@@ -3112,6 +3106,20 @@ body.theme-mundial .brand-title {
         width: calc(800px - 40px) !important;
         min-width: calc(800px - 40px) !important;
         max-width: calc(800px - 40px) !important;
+    }
+
+    /* Mantener carrusel de más buscados con el tamaño actual de sus tarjetas */
+    .los-mas-buscados-container .feed-card {
+        flex: 0 0 600px !important;
+        width: 600px !important;
+        min-width: 600px !important;
+        max-width: 600px !important;
+    }
+
+    /* Mantener el carrusel de fotos del detalle de producto con el tamaño actual centrado */
+    .detail-img-container {
+        max-width: 800px !important;
+        margin: 0 auto !important;
     }
 }
 
@@ -3967,17 +3975,36 @@ body.theme-mundial .brand-title {
 /* Premium Lazy Loading */
 .lazy-img {
     opacity: 0;
-    background-color: #f0f0f0; /* Skeleton gray */
-    background-image: linear-gradient(90deg, #f0f0f0 0px, #f8f8f8 50%, #f0f0f0 100%);
-    background-size: 200% 100%;
-    animation: skeleton-loading 1.5s infinite linear;
     transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .lazy-img.loaded {
     opacity: 1;
-    background-image: none;
-    animation: none;
+}
+
+/* Efecto Shimmer de Carga en los Contenedores Padre */
+.category-card-img-wrapper,
+.product-gallery-img-wrapper,
+.feed-card-photo-container,
+.feed-card-img-wrapper,
+.video-thumbnail-card,
+.block-image-wrapper {
+    background-color: #F5F2EE !important; /* Tono lino de fondo */
+    background-image: linear-gradient(90deg, #F5F2EE 0px, #EBE6DF 50%, #F5F2EE 100%) !important;
+    background-size: 200% 100% !important;
+    animation: skeleton-loading 1.6s infinite linear !important;
+}
+
+/* Detener la animación cuando la imagen interna se ha cargado */
+.category-card-img-wrapper:has(.loaded),
+.product-gallery-img-wrapper:has(.loaded),
+.feed-card-photo-container:has(.loaded),
+.feed-card-img-wrapper:has(.loaded),
+.video-thumbnail-card:has(.loaded),
+.block-image-wrapper:has(.loaded) {
+    background-image: none !important;
+    animation: none !important;
+    background-color: transparent !important;
 }
 
 @keyframes skeleton-loading {

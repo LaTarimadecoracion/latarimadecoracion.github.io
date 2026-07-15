@@ -817,7 +817,7 @@
              images.forEach((imgUrl, index) => {
                  if(!imgUrl) return;
                  galleryHTML += `
-                     <div class="product-detail-slide" onclick="if(window.openLightbox) window.openLightbox('${imgUrl}')" style="cursor: zoom-in;">
+                     <div class="product-detail-slide">
                          <div class="product-gallery-img-wrapper" style="position:relative;">
                              <img src="${imgUrl}" class="product-detail-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
                          </div>

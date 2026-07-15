@@ -333,7 +333,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 'catalogo': 'view-catalogo',
                 'calcular': 'view-calculator',
                 'mayorista': 'view-mayorista',
-                'musica': 'view-musica'
+                'musica': 'view-musica',
+                'ayudin': 'view-ayudin',
+                'help': 'view-ayudin',
+                'herramientas': 'view-ayudin'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             setTimeout(() => {
@@ -505,7 +508,7 @@ document.addEventListener('pointerdown', (e) => {
     window.addEventListener('wheel', (e) => {
         const activeView = document.querySelector('.view.active');
         if (activeView) {
-            if (activeView.id === 'view-mayorista' || activeView.id === 'view-catalogo') {
+            if (activeView.id === 'view-mayorista' || activeView.id === 'view-catalogo' || activeView.id === 'view-ayudin' || activeView.id === 'view-calculator' || activeView.id === 'view-musica') {
                 const iframe = activeView.querySelector('iframe');
                 if (iframe && iframe.contentWindow) {
                     iframe.contentWindow.scrollBy(0, e.deltaY);
@@ -529,7 +532,7 @@ document.addEventListener('pointerdown', (e) => {
 
     window.addEventListener('touchmove', (e) => {
         const activeView = document.querySelector('.view.active');
-        if (activeView && (activeView.id === 'view-mayorista' || activeView.id === 'view-catalogo')) {
+        if (activeView && (activeView.id === 'view-mayorista' || activeView.id === 'view-catalogo' || activeView.id === 'view-ayudin' || activeView.id === 'view-calculator' || activeView.id === 'view-musica')) {
             const iframe = activeView.querySelector('iframe');
             if (iframe && iframe.contentWindow) {
                 const touchY = e.touches[0].clientY;

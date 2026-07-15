@@ -748,7 +748,7 @@ window.initProductsAdmin = function() {
 
             card.innerHTML = `
                 <div class="feed-card-photo-container">
-                    <img src="${productCover}" class="feed-card-img" alt="${nombre}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                    <img src="${productCover}" class="feed-card-img lazy-img" alt="${nombre}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
                     ${acabadoBadge}
                     <div class="feed-card-gradient"></div>
                     <div class="feed-card-info">
@@ -857,7 +857,7 @@ window.initProductsAdmin = function() {
                 const productCover = Array.isArray(product.image) ? product.image[0] : product.image;
                 card.innerHTML = `
                     <div class="feed-card-photo-container">
-                        <img src="${productCover}" class="feed-card-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                        <img src="${productCover}" class="feed-card-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
                         <div class="feed-card-gradient"></div>
                         <div class="feed-card-info">
                             <h3 class="feed-card-title">${product.title}</h3>
