@@ -56,6 +56,23 @@ body.theme-mundial .main-header-bar {
     border-bottom: 1px solid rgba(74, 144, 226, 0.25);
 }
 
+/* Final del Mundial (Oro y Celeste Premium / Golden Championship Edition) */
+body.theme-final-mundial {
+    --primary-color: #D4AF37; /* Oro metálico elegante */
+    --primary-hover: #AA820A; /* Oro oscuro */
+    --accent-color: #4A90E2;  /* Celeste vibrante */
+    --bg-color: #FAF6ED;      /* Crema dorada sutil */
+    --header-bg: rgba(250, 246, 237, 0.90);
+    --shadow-md: 0 8px 24px rgba(212, 175, 55, 0.08);
+}
+
+/* Borde inferior oro sutil para la cabecera final mundialista */
+body.theme-final-mundial .main-header-bar {
+    border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 2px 15px rgba(212, 175, 55, 0.15);
+}
+
+
 /* Navidad (Crimson and Sage) */
 body.theme-navidad {
     --primary-color: #A62626; /* Rojo carmesí festivo */
@@ -495,6 +512,110 @@ body.theme-mundial .brand-title {
              0 0 4px rgba(74, 144, 226, 0.4);
     }
 }
+
+/* Copa mundialista: 3 estrellas doradas y trofeo para la FINAL debajo del título de cabecera */
+body.theme-final-mundial .brand-title::after {
+    content: "⭐ 🏆 ⭐";
+    display: block;
+    font-size: 0.85rem;
+    line-height: 1;
+    margin: 4px auto 0 auto;
+    letter-spacing: 4px;
+    color: #D4AF37;
+    text-shadow: none;
+    font-family: Arial, sans-serif;
+    animation: stars-gold-heartbeat 1.8s infinite ease-in-out;
+}
+
+@keyframes stars-gold-heartbeat {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 3px rgba(212, 175, 55, 0.8), 0 0 6px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 7px #FFD700, 0 0 15px #D4AF37, 0 0 20px rgba(255, 215, 0, 0.9);
+    }
+}
+
+/* Neon latente estilo campeón en el título de la final */
+body.theme-final-mundial .brand-title {
+    animation: title-gold-neon 1.8s infinite ease-in-out;
+}
+
+@keyframes title-gold-neon {
+    0%, 100% {
+        text-shadow: 
+            -1.5px -1.5px 0 #fff,
+             1.5px -1.5px 0 #fff,
+            -1.5px  1.5px 0 #fff,
+             1.5px  1.5px 0 #fff,
+             0 0 5px rgba(212, 175, 55, 0.4);
+    }
+    50% {
+        text-shadow: 
+            -1.5px -1.5px 0 #fff,
+             1.5px -1.5px 0 #fff,
+            -1.5px  1.5px 0 #fff,
+             1.5px  1.5px 0 #fff,
+             0 0 12px rgba(212, 175, 55, 0.85),
+             0 0 20px rgba(255, 215, 0, 0.7);
+    }
+}
+
+/* Botones con degradado dorado premium para la Final del Mundial */
+body.theme-final-mundial button,
+body.theme-final-mundial .btn-primary,
+body.theme-final-mundial .add-to-cart-btn {
+    background: linear-gradient(135deg, #FFE082 0%, #FFD54F 30%, #D4AF37 70%, #AA820A 100%) !important;
+    color: #1A1A1A !important;
+    text-shadow: 0 0.5px 1px rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Brillo diagonal celeste-blanco que cruza el botón */
+body.theme-final-mundial button::after,
+body.theme-final-mundial .btn-primary::after,
+body.theme-final-mundial .add-to-cart-btn::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 40%;
+    height: 140%;
+    background: linear-gradient(
+        105deg,
+        transparent        0%,
+        rgba(200, 232, 255, 0.45) 25%,
+        rgba(255, 255, 255, 0.82) 50%,
+        rgba(200, 232, 255, 0.45) 75%,
+        transparent        100%
+    );
+    transform: translateX(-160%) skewX(-20deg);
+    animation: btnSheenArg 12s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes btnSheenArg {
+    0%   { transform: translateX(-160%) skewX(-20deg); }
+    45%  { transform: translateX(-160%) skewX(-20deg); }
+    65%  { transform: translateX(320%)  skewX(-20deg); }
+    100% { transform: translateX(320%)  skewX(-20deg); }
+}
+
+body.theme-final-mundial button:hover,
+body.theme-final-mundial .btn-primary:hover,
+body.theme-final-mundial .add-to-cart-btn:hover {
+    background: linear-gradient(135deg, #FFF59D 0%, #FFE082 35%, #E5A93B 70%, #C29B27 100%) !important;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.55) !important;
+    transform: translateY(-2px) scale(1.02);
+}
+
 
 .brand-subtitle {
     color: var(--text-muted);
@@ -4719,6 +4840,87 @@ details.form-group[open] {
     .toast-notification.show {
         bottom: 80px; /* Arriba del bottom-nav */
     }
+}
+
+/* ═══════════════════════════════════════════════════════
+   CINTA BANDERA ARGENTINA — Skin Final del Mundial
+   Ribbon decorativo sobre cada foto, celeste y blanco
+   ═══════════════════════════════════════════════════════ */
+
+/* Permitir que el ribbon sobre salga del contenedor de imagen */
+body.theme-final-mundial .category-card-img-wrapper,
+body.theme-final-mundial .product-gallery-img-wrapper,
+body.theme-final-mundial .feed-card-photo-container,
+body.theme-final-mundial .feed-card-img-wrapper,
+body.theme-final-mundial .video-thumbnail-card,
+body.theme-final-mundial .block-image-wrapper {
+    overflow: visible !important;
+}
+
+/* ::before → Cinta bandera argentina sobre la foto */
+body.theme-final-mundial .category-card-img-wrapper::before,
+body.theme-final-mundial .product-gallery-img-wrapper::before,
+body.theme-final-mundial .feed-card-photo-container::before,
+body.theme-final-mundial .feed-card-img-wrapper::before,
+body.theme-final-mundial .video-thumbnail-card::before,
+body.theme-final-mundial .block-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -14px;        /* Flota encima de la imagen */
+    left: -6px;        /* Sobre sale un poco a los lados */
+    right: -6px;
+    height: 30px;
+    z-index: 10;
+    pointer-events: none;
+
+    /* Franja celeste/blanco/celeste horizontal */
+    background:
+        linear-gradient(180deg,
+            #8ec6e6 0%,
+            #75AADB 20%,
+            #75AADB 33%,
+            #f8fbff 33%,
+            #ffffff 50%,
+            #f8fbff 67%,
+            #75AADB 67%,
+            #75AADB 80%,
+            #5b9ac8 100%
+        );
+
+    /* Arco mayor en el centro — la ondulación baja más y muestra la franja blanca */
+    border-radius: 3px 3px 50% 50% / 3px 3px 22px 22px;
+
+    /* Sombra para dar profundidad y sensación de cinta real */
+    box-shadow:
+        0 5px 12px rgba(0, 60, 120, 0.28),
+        0 2px 4px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* ::after → 3 estrellas doradas sobre la cinta bandera */
+body.theme-final-mundial .category-card-img-wrapper::after,
+body.theme-final-mundial .product-gallery-img-wrapper::after,
+body.theme-final-mundial .feed-card-photo-container::after,
+body.theme-final-mundial .feed-card-img-wrapper::after,
+body.theme-final-mundial .video-thumbnail-card::after,
+body.theme-final-mundial .block-image-wrapper::after {
+    content: '\2605 \2605 \2605';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #D4AF37;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    line-height: 1;
+    z-index: 15;
+    pointer-events: none;
+    white-space: nowrap;
+    text-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(212, 175, 55, 0.5);
 }
 
 /* ── Botón del Parlante flotante (Posicionado arriba del Asistente) ── */

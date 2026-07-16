@@ -68,6 +68,11 @@
         background: linear-gradient(180deg, #e8f4fc 0%, #ffffff 50%, #ddeef8 100%);
     }
 
+    /* Banderin oro */
+    .lt-pennant.oro {
+        background: linear-gradient(180deg, #FFE57F 0%, #FFD700 50%, #FFA000 100%);
+    }
+
     /* Animación suave de balanceo — cada banderín con delay distinto */
     @keyframes lt-pennant-sway {
         0%   { transform: rotate(-4deg); }
@@ -138,6 +143,33 @@
     .lt-ribbon:nth-child(2) { animation-delay: -1s; }
     .lt-ribbon:nth-child(3) { animation-delay: -2s; }
 
+    /* Copa de Campeones flotante y brillante */
+    #lt-sol-mayo.lt-championship-cup {
+        animation: lt-cup-float 3.5s ease-in-out infinite, lt-cup-glow 2s ease-in-out infinite alternate !important;
+        transform: translateX(-50%) !important;
+    }
+
+    @keyframes lt-cup-float {
+        0%, 100% { top: 6px; }
+        50%      { top: 12px; }
+    }
+    @keyframes lt-cup-glow {
+        from { filter: drop-shadow(0 2px 5px rgba(255, 215, 0, 0.4)); }
+        to   { filter: drop-shadow(0 4px 15px rgba(255, 215, 0, 0.8)); }
+    }
+
+    @keyframes lt-gold-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+        }
+    }
+
     `;
     document.head.appendChild(style);
 
@@ -173,6 +205,31 @@
       </g>
     </svg>`;
 
+    // Copa del Mundo SVG (para la skin final del mundial)
+    const CHAMPION_CUP_SVG = `
+    <svg id="lt-sol-mayo" class="lt-championship-cup" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="translate(50,50) scale(0.95)">
+        <!-- Base de la Copa -->
+        <path d="M -16 35 L 16 35 L 13 28 L -13 28 Z" fill="#6D4C41" stroke="#4E342E" stroke-width="1.5" />
+        <path d="M -20 42 L 20 42 L 17 35 L -17 35 Z" fill="#D4AF37" stroke="#AA820A" stroke-width="1.5" />
+        <!-- Franja verde representativa del trofeo real -->
+        <rect x="-15.5" y="36.5" width="31" height="2.2" fill="#2E7D32" />
+        <rect x="-17" y="39" width="34" height="2.2" fill="#2E7D32" />
+        <!-- Cuerpo principal del trofeo -->
+        <path d="M -6 28 C -6 16, -14 10, -11 0 C -8 -10, -6 -20, 0 -22 C 6 -20, 8 -10, 11 0 C 14 10, 6 16, 6 28 Z" fill="#FFD700" stroke="#D4AF37" stroke-width="1.5" />
+        <!-- Siluetas que sostienen el mundo -->
+        <path d="M -8 11 C -12 6, -12 -5, -7 -10 C -5 -5, -4 6, -8 11 Z" fill="#D4AF37" />
+        <path d="M 8 11 C 12 6, 12 -5, 7 -10 C 5 -5, 4 6, 8 11 Z" fill="#D4AF37" />
+        <!-- El Mundo -->
+        <circle cx="0" cy="-22" r="14" fill="#80DEEA" stroke="#00ACC1" stroke-width="1.5" />
+        <path d="M -10 -22 C -6 -18, 6 -18, 10 -22 M -12 -25 C -5 -32, 5 -32, 12 -25" fill="none" stroke="#D4AF37" stroke-width="1.5" />
+        <!-- Tres estrellas doradas flotantes arriba -->
+        <path d="M -22 -35 L -20 -31 L -16 -31 L -19 -29 L -18 -25 L -22 -27 L -26 -25 L -25 -29 L -28 -31 L -24 -31 Z" fill="#FFD700" transform="scale(0.4) translate(-10, -10)" />
+        <path d="M 0 -45 L 2 -41 L 6 -41 L 3 -39 L 4 -35 L 0 -37 L -4 -35 L -3 -39 L -6 -41 L -2 -41 Z" fill="#FFD700" transform="scale(0.5) translate(0, -15)" />
+        <path d="M 22 -35 L 24 -31 L 28 -31 L 25 -29 L 26 -25 L 22 -27 L 18 -25 L 19 -29 L 16 -31 L 20 -31 Z" fill="#FFD700" transform="scale(0.4) translate(10, -10)" />
+      </g>
+    </svg>`;
+
     // ── Construir la guirnalda ──────────────────────────────────────
     function buildGarland(header) {
         // Limpiar anterior si existe
@@ -196,15 +253,26 @@
         const pennantW = 22 + 6; // ancho + gap aprox
         const count    = Math.max(8, Math.floor(headerW / pennantW));
 
+        const activeTheme = window.activeTheme || 'classic';
+
         for (let i = 0; i < count; i++) {
             const p = document.createElement('div');
-            p.className = `lt-pennant ${i % 2 === 0 ? 'celeste' : 'blanco'}`;
+            if (activeTheme === 'final-mundial') {
+                const colors = ['celeste', 'blanco', 'oro'];
+                p.className = `lt-pennant ${colors[i % 3]}`;
+            } else {
+                p.className = `lt-pennant ${i % 2 === 0 ? 'celeste' : 'blanco'}`;
+            }
             row.appendChild(p);
         }
         garland.appendChild(row);
 
-        // Sol de Mayo
-        garland.insertAdjacentHTML('beforeend', SOL_SVG);
+        // Sol de Mayo o Copa del Mundo
+        if (activeTheme === 'final-mundial') {
+            garland.insertAdjacentHTML('beforeend', CHAMPION_CUP_SVG);
+        } else {
+            garland.insertAdjacentHTML('beforeend', SOL_SVG);
+        }
 
         // Cintas laterales izquierda
         const leftRibbons = document.createElement('div');
@@ -239,33 +307,63 @@
         // Crear el botón flotante
         const btn = document.createElement('div');
         btn.id = 'lt-speaker-btn';
-        btn.style.cssText = `
-            position: fixed;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #4A90E2;
-            color: #FFFFFF;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 14px rgba(74, 144, 226, 0.4);
-            cursor: pointer;
-            z-index: 9999;
-            border: 2px solid #FFFFFF;
-            transition: transform 0.2s ease, background 0.2s ease;
-        `;
+        
+        const activeTheme = window.activeTheme || 'classic';
+        if (activeTheme === 'final-mundial') {
+            btn.style.cssText = `
+                position: fixed;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #FFD700, #D4AF37);
+                color: #1A1A1A;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.6);
+                cursor: pointer;
+                z-index: 9999;
+                border: 2px solid #FFFFFF;
+                transition: transform 0.2s ease, background 0.2s ease;
+                animation: lt-gold-pulse 1.8s infinite;
+            `;
+        } else {
+            btn.style.cssText = `
+                position: fixed;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                background: #4A90E2;
+                color: #FFFFFF;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 14px rgba(74, 144, 226, 0.4);
+                cursor: pointer;
+                z-index: 9999;
+                border: 2px solid #FFFFFF;
+                transition: transform 0.2s ease, background 0.2s ease;
+            `;
+        }
         
         btn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 24px;">volume_off</span>`;
 
         // Efecto hover y active
         btn.addEventListener('mouseenter', () => {
             btn.style.transform = 'scale(1.08)';
-            btn.style.background = '#357ABD';
+            if (window.activeTheme === 'final-mundial') {
+                btn.style.background = 'linear-gradient(135deg, #FFE4B5, #E5A93B)';
+            } else {
+                btn.style.background = '#357ABD';
+            }
         });
         btn.addEventListener('mouseleave', () => {
             btn.style.transform = 'scale(1)';
-            btn.style.background = '#4A90E2';
+            if (window.activeTheme === 'final-mundial') {
+                btn.style.background = 'linear-gradient(135deg, #FFD700, #D4AF37)';
+            } else {
+                btn.style.background = '#4A90E2';
+            }
         });
         btn.addEventListener('mousedown', () => {
             btn.style.transform = 'scale(0.95)';
@@ -287,7 +385,11 @@
             if (audioInstance.paused) {
                 audioInstance.play().then(() => {
                     btn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 24px;">volume_up</span>`;
-                    btn.style.boxShadow = '0 0 15px rgba(74, 144, 226, 0.7)';
+                    if (window.activeTheme === 'final-mundial') {
+                        btn.style.boxShadow = '0 0 20px rgba(255, 215, 0, 0.9)';
+                    } else {
+                        btn.style.boxShadow = '0 0 15px rgba(74, 144, 226, 0.7)';
+                    }
                 }).catch(err => {
                     console.error("No se pudo reproducir muchachos.mp3: ", err);
                     alert("Por favor, colocá un archivo 'muchachos.mp3' en la carpeta 'audio/' de la raíz del proyecto para escuchar el himno/tema.");
@@ -295,7 +397,11 @@
             } else {
                 audioInstance.pause();
                 btn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 24px;">volume_off</span>`;
-                btn.style.boxShadow = '0 4px 14px rgba(74, 144, 226, 0.4)';
+                if (window.activeTheme === 'final-mundial') {
+                    btn.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.6)';
+                } else {
+                    btn.style.boxShadow = '0 4px 14px rgba(74, 144, 226, 0.4)';
+                }
             }
         });
 
@@ -319,9 +425,26 @@
         const activeTheme = window.activeTheme || 'classic';
         const garland = document.getElementById('lt-garland');
 
-        if (activeTheme === 'mundial') {
+        if (activeTheme === 'mundial' || activeTheme === 'final-mundial') {
             buildGarland(header);
             buildSpeakerButton();
+            
+            // Si ya existe el botón, actualizar sus estilos para la nueva temática
+            const btn = document.getElementById('lt-speaker-btn');
+            if (btn) {
+                const playing = audioInstance && !audioInstance.paused;
+                if (activeTheme === 'final-mundial') {
+                    btn.style.background = 'linear-gradient(135deg, #FFD700, #D4AF37)';
+                    btn.style.color = '#1A1A1A';
+                    btn.style.boxShadow = playing ? '0 0 20px rgba(255, 215, 0, 0.9)' : '0 4px 15px rgba(212, 175, 55, 0.6)';
+                    btn.style.animation = 'lt-gold-pulse 1.8s infinite';
+                } else {
+                    btn.style.background = '#4A90E2';
+                    btn.style.color = '#FFFFFF';
+                    btn.style.boxShadow = playing ? '0 0 15px rgba(74, 144, 226, 0.7)' : '0 4px 14px rgba(74, 144, 226, 0.4)';
+                    btn.style.animation = 'none';
+                }
+            }
         } else {
             if (garland) garland.remove();
             removeSpeakerButton();
@@ -342,9 +465,9 @@
         // Aplicar según el tema activo inicial
         window.updateGarlandVisibility();
 
-        // Reconstruir si cambia el tamaño y estamos en la temática mundialista
+        // Reconstruir si cambia el tamaño y estamos en la temática mundialista o final
         window.addEventListener('resize', () => {
-            if (window.activeTheme === 'mundial') {
+            if (window.activeTheme === 'mundial' || window.activeTheme === 'final-mundial') {
                 buildGarland(header);
             }
         });

@@ -123,7 +123,7 @@ window.siteConfig.mayoristaConfig = window.mayoristaConfig;
 
 // Función para aplicar la skin de forma reactiva en el body
 window.applyTheme = function(themeName) {
-    document.body.classList.remove('theme-sobrio', 'theme-mundial', 'theme-navidad', 'theme-halloween', 'theme-valentin');
+    document.body.classList.remove('theme-sobrio', 'theme-mundial', 'theme-final-mundial', 'theme-navidad', 'theme-halloween', 'theme-valentin');
     if (themeName && themeName !== 'classic') {
         document.body.classList.add(`theme-${themeName}`);
     }
@@ -133,9 +133,12 @@ window.applyTheme = function(themeName) {
 };
 
 
-// Cargar tema activo inicial (primero usuario local, luego del servidor, luego classic)
-window.userSelectedTheme = localStorage.getItem('userSelectedTheme');
-window.activeTheme = window.userSelectedTheme || window.siteConfig.activeTheme || localStorage.getItem('activeTheme') || 'classic';
+// Limpiar residuos de localStorage que pisan la config del servidor
+localStorage.removeItem('activeTheme');
+
+// El tema siempre viene del servidor (site-config.js). userSelectedTheme solo aplica en esa sesión de navegación.
+window.userSelectedTheme = null;
+window.activeTheme = window.siteConfig.activeTheme || 'classic';
 window.applyTheme(window.activeTheme);
 
 // 1. App Configurator: Dynamic Identity and Navigation State

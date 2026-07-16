@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tarima-cache-v31';
+const CACHE_NAME = 'tarima-cache-v33';
 const STATIC_ASSETS = [
     './',
     './index.html',
@@ -10,7 +10,6 @@ const STATIC_ASSETS = [
     './css/style.css',
     './css/catalogo.css',
     './css/calcular.css',
-    './js/site-config.js',
     './js/confetti-arg.js',
     './js/header-deco-arg.js',
     './js/products-data.js',
@@ -64,6 +63,11 @@ self.addEventListener('fetch', (event) => {
 
     // Skip non-GET requests (like POST for admin saves) or chrome-extensions
     if (event.request.method !== 'GET' || !url.protocol.startsWith('http')) {
+        return;
+    }
+
+    // Bypass Service Worker caching for site-config.js to ensure dynamic configs load fresh on localhost
+    if (url.pathname.endsWith('/js/site-config.js') || url.pathname.endsWith('/site-config.js')) {
         return;
     }
 

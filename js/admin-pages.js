@@ -1005,25 +1005,45 @@ window.initPagesAdmin = function() {
 
     function initThemeAdmin() {
         const themeSelect = document.getElementById('admin-theme-select');
+        const saveBtn = document.getElementById('admin-theme-save-btn');
         if (!themeSelect) return;
 
-        themeSelect.addEventListener('change', async function() {
-            const newTheme = this.value;
-            window.activeTheme = newTheme;
-            
-            // Aplicar de inmediato visualmente
+        // Cambiar de inmediato visualmente al cambiar el selector
+        themeSelect.addEventListener('change', function() {
+            const previewTheme = this.value;
+            window.activeTheme = previewTheme;
             if (window.applyTheme) {
-                window.applyTheme(newTheme);
+                window.applyTheme(previewTheme);
             }
-            
-            localStorage.setItem('activeTheme', newTheme);
-
-            if (window.syncSiteConfigWithServer) {
-                await window.syncSiteConfigWithServer();
-            }
-
-            showAdminToast(`✅ Temática aplicada: ${newTheme}`);
         });
+
+        // Guardar definitivamente en el servidor al hacer click en el botón de guardar
+        if (saveBtn) {
+            saveBtn.addEventListener('click', async function() {
+                const selectedTheme = themeSelect.value;
+                window.activeTheme = selectedTheme;
+                // Limpiar TODOS los residuos de localStorage para que el servidor mande
+                localStorage.removeItem('activeTheme');
+                localStorage.removeItem('userSelectedTheme');
+
+                saveBtn.disabled = true;
+                const originalText = saveBtn.querySelector('span:not(.material-symbols-outlined)').innerText;
+                saveBtn.querySelector('span:not(.material-symbols-outlined)').innerText = 'Guardando...';
+
+                try {
+                    if (window.syncSiteConfigWithServer) {
+                        await window.syncSiteConfigWithServer();
+                    }
+                    showAdminToast(`💾 Temática guardada: ${selectedTheme}`);
+                } catch (err) {
+                    console.error('Error guardando temática:', err);
+                    showAdminToast('❌ Error al sincronizar con el servidor');
+                } finally {
+                    saveBtn.disabled = false;
+                    saveBtn.querySelector('span:not(.material-symbols-outlined)').innerText = originalText;
+                }
+            });
+        }
     }
 
 

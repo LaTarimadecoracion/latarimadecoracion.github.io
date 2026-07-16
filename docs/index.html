@@ -47,11 +47,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
     
-    <link rel="stylesheet" href="css/style.css?v=34">
+    <link rel="stylesheet" href="css/style.css?v=47">
     <link rel="stylesheet" href="css/assistant.css?v=2">
 
-    
-    <script src="js/site-config.js?v=6"></script>
+    <script src="js/site-config.js"></script>
 
 </head>
 <body>
@@ -59,11 +58,12 @@
     <script>
         (function() {
             try {
-                var userSelected = localStorage.getItem('userSelectedTheme');
+                // Limpiar residuos locales — el servidor es la única fuente de verdad
+                localStorage.removeItem('activeTheme');
+                localStorage.removeItem('userSelectedTheme');
+
                 var serverTheme = window.siteConfig ? window.siteConfig.activeTheme : null;
-                var localTheme = localStorage.getItem('activeTheme');
-                
-                var themeToApply = userSelected || serverTheme || localTheme || 'classic';
+                var themeToApply = serverTheme || 'classic';
                 if (themeToApply && themeToApply !== 'classic') {
                     document.body.classList.add('theme-' + themeToApply);
                 }
@@ -618,11 +618,16 @@
                                                 <option value="classic">🌲 Madera Clásica (Default)</option>
                                                 <option value="sobrio">⚫ Sobrio V1 (Negro, Blanco y Gris)</option>
                                                 <option value="mundial">⚽ Mes Mundialista (Celeste y Blanco)</option>
+                                                <option value="final-mundial">🏆 ¡Final del Mundial! (Celeste y Oro Premium)</option>
                                                 <option value="navidad">🎅 Navidad (Rojo y Verde)</option>
                                                 <option value="halloween">🎃 Halloween (Naranja y Violeta)</option>
                                                 <option value="valentin">💖 San Valentín (Rosa y Corazones)</option>
                                             </select>
                                         </div>
+                                        <button type="button" id="admin-theme-save-btn" class="btn-primary" style="margin-top: 1rem; width: 100%; max-width: none;">
+                                            <span class="material-symbols-outlined">save</span>
+                                            <span>Guardar Temática</span>
+                                        </button>
                                     </div>
                                 </div>
 
@@ -1893,11 +1898,11 @@
     </div>
 
     
-    <script src="js/confetti-arg.js?v=1" defer></script>
-    <script src="js/header-deco-arg.js?v=3" defer></script>
+    <script src="js/confetti-arg.js?v=2" defer></script>
+    <script src="js/header-deco-arg.js?v=4" defer></script>
     <script src="js/products-data.js?v=5" defer></script>
     <script src="js/rentals-data.js?v=5" defer></script>
-    <script src="js/data.js?v=7" defer></script>
+    <script src="js/data.js?v=9" defer></script>
     <script src="js/ui-dom.js?v=2" defer></script>
     <script src="js/ui-utils.js?v=1" defer></script>
     <script src="js/ui-core.js?v=1" defer></script>
@@ -1913,7 +1918,7 @@
     <script src="js/admin-products.js?v=5" defer></script>
     <script src="js/admin-products-form.js?v=6" defer></script>
     <script src="js/admin-rentals.js?v=1" defer></script>
-    <script src="js/admin-pages.js?v=1" defer></script>
+    <script src="js/admin-pages.js?v=4" defer></script>
     
     <script src="js/carrito.js?v=6" defer></script>
     <script src="js/main.js?v=5" defer></script>

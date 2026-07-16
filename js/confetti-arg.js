@@ -58,8 +58,27 @@
             const W = canvas.width;
             const H = canvas.height;
 
-            this.type  = TYPES[Math.floor(Math.random() * TYPES.length)];
-            this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+            const activeTheme = window.activeTheme || 'classic';
+            let currentColors = COLORS;
+            let currentTypes = TYPES;
+
+            if (activeTheme === 'final-mundial') {
+                currentColors = [
+                    'rgba(117, 179, 220, 0.85)', // celeste bandera
+                    'rgba(255, 255, 255, 0.90)', // blanco
+                    'rgba(255, 215, 0, 0.85)',   // oro brillante (gold)
+                    'rgba(212, 175, 55, 0.85)',  // oro metálico
+                    'rgba(255, 223, 0, 0.75)',   // oro suave
+                    'rgba(176, 224, 230, 0.70)'  // celeste suave
+                ];
+                currentTypes = ['rect', 'ribbon', 'circle', 'star', 'star'];
+            } else {
+                currentColors = COLORS;
+                currentTypes = TYPES;
+            }
+
+            this.type  = currentTypes[Math.floor(Math.random() * currentTypes.length)];
+            this.color = currentColors[Math.floor(Math.random() * currentColors.length)];
 
             // Posición inicial: aleatoria en X, arriba del viewport
             this.x = Math.random() * W;
@@ -73,6 +92,9 @@
                 this.r = 3 + Math.random() * 4;
                 this.w = this.r * 2;
                 this.h = this.r * 2;
+            } else if (this.type === 'star') {
+                this.w = 5 + Math.random() * 5; // Radio de la estrella
+                this.h = this.w;
             } else {
                 this.w = 6 + Math.random() * 6;
                 this.h = 6 + Math.random() * 6;
@@ -116,6 +138,26 @@
             if (this.type === 'circle') {
                 ctx.beginPath();
                 ctx.arc(0, 0, this.r, 0, Math.PI * 2);
+                ctx.fill();
+
+            } else if (this.type === 'star') {
+                ctx.beginPath();
+                let rot = Math.PI / 2 * 3;
+                let step = Math.PI / 5;
+                let outer = this.w;
+                let inner = outer / 2;
+                ctx.moveTo(0, -outer);
+                for (let i = 0; i < 5; i++) {
+                    let x = Math.cos(rot) * outer;
+                    let y = Math.sin(rot) * outer;
+                    ctx.lineTo(x, y);
+                    rot += step;
+                    x = Math.cos(rot) * inner;
+                    y = Math.sin(rot) * inner;
+                    ctx.lineTo(x, y);
+                    rot += step;
+                }
+                ctx.closePath();
                 ctx.fill();
 
             } else if (this.type === 'ribbon') {
@@ -166,6 +208,15 @@
 
     // ── Loop de animación ──────────────────────────────────────────
     function loop() {
+        const activeTheme = window.activeTheme || 'classic';
+        if (activeTheme !== 'mundial' && activeTheme !== 'final-mundial') {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.style.display = 'none';
+            requestAnimationFrame(loop);
+            return;
+        }
+
+        canvas.style.display = 'block';
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         pieces.forEach(p => { p.update(); p.draw(); });
         requestAnimationFrame(loop);

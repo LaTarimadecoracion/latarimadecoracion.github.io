@@ -130,6 +130,14 @@ app.get(['/', '/index.html'], (req, res, next) => {
     next();
 });
 
+// Disable caching specifically for js/site-config.js to allow dynamic theme changes on localhost
+app.get('/js/site-config.js', (req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    next();
+});
+
 // Serve static files from the current directory
 app.use(express.static(ROOT_DIR));
 
