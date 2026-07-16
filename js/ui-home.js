@@ -126,7 +126,7 @@
         
         // 1. Intentar cargar del servidor
         try {
-            const res = await fetch('/api/window.views');
+            const res = await fetch('/api/views');
             if (res.ok) {
                 globalViews = await res.json();
             }
@@ -153,7 +153,7 @@
                     cat.products.forEach(p => {
                         const serverVal = globalViews[p.id] || 0;
                         const localVal = localViews[p.id] || 0;
-                        p.window.views = Math.max(serverVal, localVal);
+                        p.views = Math.max(serverVal, localVal);
                     });
                 }
             });
@@ -176,7 +176,7 @@
                     if (cat.products && Array.isArray(cat.products)) {
                         const p = cat.products.find(prod => prod.id === productId);
                         if (p) {
-                            p.window.views = (p.window.views || 0) + 1;
+                            p.views = (p.views || 0) + 1;
                             return true;
                         }
                     }

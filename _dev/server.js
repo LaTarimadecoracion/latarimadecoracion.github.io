@@ -788,6 +788,14 @@ app.get('*', (req, res) => {
         }
     }
     
+    // Ruta del Editor de Fotos Masivo sin .html visible
+    if (cleanUrl === '/web/edit' || cleanUrl === '/edit' || cleanUrl === '/editor' || cleanUrl === '/web/editor') {
+        const editorPath = path.join(ROOT_DIR, 'Herramientas', 'editor-fotos.html');
+        if (fs.existsSync(editorPath)) {
+            return res.sendFile(editorPath);
+        }
+    }
+    
     // Si contiene parámetros de producto para Open Graph, sirve index con OG
     if (req.query.prod || req.query.product || req.query.p) {
         return serveIndexWithOG(req, res);

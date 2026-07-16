@@ -132,5 +132,15 @@ window.ayudinData = [
                 </ul>
             </div>
         `
+    },
+    {
+        id: "editor-fotos-masivo",
+        title: "Editor de Fotos Masivo (3:2)",
+        description: "Cargá, recortá y reencuadrá múltiples fotos a la vez en formato 3:2 u otros antes de publicarlas.",
+        image: "img/logo_provisional.png",
+        rubro: "emprendedores",
+        actionUrl: "Herramientas/editor-fotos.html",
+        icon: "crop",
+        content: ""
     }
 ];

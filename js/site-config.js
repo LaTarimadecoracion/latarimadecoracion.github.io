@@ -119,10 +119,48 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Perchero nórdico de pared x5!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero nórdico de pared x5!",
+            "mediaType": "image",
+            "image": "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=perchero-nordico-pared-x5",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=perchero-nordico-pared-x5",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1784163562675
+        },
+        {
+            "title": "¡Nuevo Ingreso: Perchero nórdico de pared x3!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero nórdico de pared x3!",
+            "mediaType": "image",
+            "image": "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=perchero-nordico-pared-x3",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=perchero-nordico-pared-x3",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1784161168839
+        },
+        {
             "title": "¡Nuevo Ingreso: Sillon Gervasoni - Chicos!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Sillon Gervasoni - Chicos!",
             "mediaType": "image",
-            "image": "img/logo_provisional.png",
+            "image": "img/borrador/sillon-gervasoni---chicos/1783814275891-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -160,7 +198,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Mesas para Candy Bar / Mesa nido!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesas para Candy Bar / Mesa nido!",
             "mediaType": "image",
-            "image": "img/logo_provisional.png",
+            "image": "img/mesas-de-madera/mesas-para-candy-bar---mesa-nido/1783813269259-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -483,7 +521,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Posa Torta De Madera Torneado Candy Bar!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Posa Torta De Madera Torneado Candy Bar!",
             "mediaType": "image",
-            "image": "img/barandas-desmontables/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+            "image": "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [

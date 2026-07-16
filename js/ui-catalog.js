@@ -1130,3 +1130,4 @@ window.updateActionLinks = updateActionLinks;
 
 
 window.findProductById = findProductById;
+window.getProductTimestamp = getProductTimestamp;

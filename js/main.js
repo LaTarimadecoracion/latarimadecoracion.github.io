@@ -321,6 +321,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const viewParam = urlParams.get('view') || urlParams.get('sec');
         if (viewParam) {
+            if (viewParam === 'edit' || viewParam === 'editor') {
+                window.location.replace('Herramientas/editor-fotos.html');
+                return;
+            }
             const viewIdMap = {
                 'nosotros': 'view-about',
                 'buscar': 'view-search',
@@ -349,6 +353,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Soporte para rutas limpias SPA: /alquileres, /alquiles, /rentas
         const cleanPath = window.location.pathname.toLowerCase().replace(/\/$/, '');
+        if (cleanPath.endsWith('/edit') || cleanPath.endsWith('/editor') || cleanPath.endsWith('/web/edit') || cleanPath.endsWith('/web/editor')) {
+            window.location.replace('Herramientas/editor-fotos.html');
+            return;
+        }
         if (cleanPath.endsWith('/alquiles') || cleanPath.endsWith('/alquileres') || cleanPath.endsWith('/rentas')) {
             setTimeout(() => {
                 if (window.navigateToView) {

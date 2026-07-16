@@ -17,6 +17,7 @@
             var isMayorista = cleanPath.endsWith('/web/mayorista') || cleanPath.endsWith('/mayorista') || cleanPath.endsWith('/mayoristas');
             var isMusica = cleanPath.endsWith('/musica') || cleanPath.endsWith('/music') || cleanPath.endsWith('/enganchados') || cleanPath.endsWith('/musicas');
             var isAyudin = cleanPath.endsWith('/ayudin') || cleanPath.endsWith('/help') || cleanPath.endsWith('/herramientas');
+            var isEdit = cleanPath.endsWith('/web/edit') || cleanPath.endsWith('/edit') || cleanPath.endsWith('/editor') || cleanPath.endsWith('/web/editor');
             
             var basePath = '/';
             var segments = window.location.pathname.split('/').filter(Boolean);
@@ -29,6 +30,8 @@
 
             if (isMayorista) {
                 window.location.replace(window.location.origin + basePath + 'mayorista.html');
+            } else if (isEdit) {
+                window.location.replace(window.location.origin + basePath + 'Herramientas/editor-fotos.html');
             } else if (isAyudin) {
                 window.location.replace(window.location.origin + basePath + '?view=ayudin');
             } else if (isMusica) {
