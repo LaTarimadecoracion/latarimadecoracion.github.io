@@ -7,23 +7,38 @@ window.siteConfig = {
     "appConfig": {
         "home": {
             "title": "La Tarima",
-            "subtitle": "Decoración",
+            "subtitle": "Diseño en madera",
             "icon": "home",
             "visible": true,
             "contentStack": []
         },
-        "search": {
-            "title": "Buscar",
-            "subtitle": "Encontrá tu producto",
-            "icon": "search",
+        "categories": {
+            "title": "Categorías",
+            "subtitle": "Nuestras líneas de productos",
+            "icon": "category",
             "visible": true,
             "contentStack": []
         },
-        "profile": {
-            "title": "Tu Perfil",
-            "subtitle": "Gestioná tus datos",
-            "icon": "account_circle",
-            "visible": true
+        "cart": {
+            "title": "Carrito",
+            "subtitle": "Tus productos seleccionados",
+            "icon": "shopping_cart",
+            "visible": true,
+            "contentStack": []
+        },
+        "videos": {
+            "title": "Videos",
+            "subtitle": "Descubrí nuestro contenido",
+            "icon": "play_circle",
+            "visible": true,
+            "contentStack": []
+        },
+        "catalogo": {
+            "title": "Catálogo",
+            "subtitle": "Catálogo completo",
+            "icon": "menu_book",
+            "visible": true,
+            "contentStack": []
         },
         "avisos": {
             "title": "Avisos",
@@ -33,22 +48,35 @@ window.siteConfig = {
             "contentStack": []
         },
         "nosotros": {
-            "title": "NOSOTROS",
+            "title": "Pasión por la madera",
             "subtitle": "Conocé quiénes somos",
-            "icon": "storefront",
+            "icon": "info",
             "visible": true,
             "contentStack": []
+        },
+        "search": {
+            "title": "Explorar",
+            "subtitle": "Encontrá lo que buscás",
+            "icon": "search",
+            "visible": true,
+            "contentStack": []
+        },
+        "profile": {
+            "title": "Tu Perfil",
+            "subtitle": "Gestioná tus datos",
+            "icon": "account_circle",
+            "visible": true
         }
     },
     "contentRegistry": {
         "home": [],
-        "search": [],
-        "avisos": [],
         "categories": [],
+        "avisos": [],
         "cart": [],
         "videos": [],
         "catalogo": [],
-        "nosotros": []
+        "nosotros": [],
+        "search": []
     },
     "homeConfig": {
         "order": [
@@ -60,50 +88,40 @@ window.siteConfig = {
             "categorias": {
                 "title": "Categorías",
                 "subtitle": "Nuestras líneas de productos",
-                "icon": "table_restaurant",
-                "rubros": [
-                    "carpinteria"
-                ]
+                "icon": "table_restaurant"
             },
             "novedades": {
                 "title": "Nuevos Diseños 2026",
                 "subtitle": "Novedades del taller",
-                "icon": "auto_awesome",
-                "limit": 10,
-                "rubros": [
-                    "carpinteria"
-                ]
+                "icon": "auto_awesome"
             },
             "buscados": {
                 "title": "Los más buscados",
                 "subtitle": "Los preferidos de nuestros clientes",
-                "icon": "favorite",
-                "limit": 10
+                "icon": "favorite"
             }
         }
     },
     "sessionNosotros": [
         {
-            "title": "¡Bienvenidos a La Tarima!",
-            "description": "Gracias por pasar por la web de nuestro emprendimiento familiar. Nos gusta definirnos como una carpintería online: diseñamos y fabricamos muebles y trabajos a pedido, adaptándonos a lo que buscás.\n\nPresupuestos sin cargo.\n\nAsesoramiento personalizado en cada proyecto.\n\nDiseñamos desde Hurlingham, Buenos Aires, para toda la zona. \n\n¡Escribinos y armemos tu próximo proyecto!",
+            "title": "Pasión por la madera",
+            "description": "Somos una carpintería especializada en crear productos únicos, seguros y con diseño para tu hogar. Ubicados en Hurlingham, Buenos Aires.",
+            "linkUrl": "https://wa.me/5491167007723",
+            "linkText": "Contactarnos por WhatsApp",
             "mediaType": "image",
             "image": "img/nosotros/bloque/1780267473632-imagen.webp",
             "videoUrl": "",
-            "mapQuery": "",
-            "linkUrl": "https://wa.me/5491167007723",
-            "linkText": "Contáctanos por WhatsApp",
-            "linkNewTab": true
+            "mapQuery": ""
         },
         {
             "title": "Ubicación en Hurlingham",
-            "description": "Nuestro taller se encuentra en el corazón de Hurlingham, provincia de Buenos Aires.",
+            "description": "Nuestro taller se encuentra en el corazón de Hurlingham, provincia de Buenos Aires. Diseñamos muebles premium con maderas seleccionadas para garantizar máxima durabilidad.",
+            "linkUrl": "",
+            "linkText": "",
             "mediaType": "map",
             "image": "",
             "videoUrl": "",
-            "mapQuery": "vergara y jaureche, hurlingham, buenos aires, argentina",
-            "linkUrl": "",
-            "linkText": "",
-            "linkNewTab": true
+            "mapQuery": "vergara y jaureche, hurlingham, buenos aires, argentina"
         },
         {
             "title": "Catalogo completo",
@@ -595,12 +613,12 @@ window.siteConfig = {
         }
     ],
     "socialLinks": {
-        "instagram": "https://www.instagram.com/latarimadecoracion",
-        "tiktok": "https://www.tiktok.com/@latarimadecoracion",
-        "facebook": "https://www.facebook.com/LaTarimaDecoracion/",
-        "youtube": "https://www.youtube.com/@latarimadecoracion",
-        "whatsapp": "https://wa.me/5491167007723",
-        "mercadolibre": "https://www.mercadolibre.com.ar/pagina/latarima"
+        "instagram": "",
+        "tiktok": "",
+        "facebook": "",
+        "youtube": "",
+        "whatsapp": "",
+        "mercadolibre": ""
     },
     "mayoristaConfig": {
         "alias": "la.tarima.deco",
@@ -632,19 +650,7 @@ window.siteConfig = {
     "rubros": [
         {
             "id": "carpinteria",
-            "name": "Carpintería",
-            "icon": "🪵"
-        },
-        {
-            "id": "papelera-cotillon",
-            "name": "Papelera",
-            "icon": "person",
-            "visible": false
-        },
-        {
-            "id": "jabon",
-            "name": "Jabon",
-            "visible": false
+            "name": "Carpintería"
         }
     ]
 };

@@ -677,7 +677,8 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 29
             },
             {
                 "id": "baranda-desmontable-clasica",
@@ -1066,7 +1067,8 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 112
             },
             {
                 "id": "escaleras",
@@ -1193,7 +1195,8 @@ const productsData = [
                     "cajonera profesional"
                 ],
                 "last_modified": 1783477948902,
-                "primaryCatId": "muebles"
+                "primaryCatId": "muebles",
+                "views": 10
             },
             {
                 "id": "perchero-1",
@@ -1267,7 +1270,8 @@ const productsData = [
                     "percheros de pino"
                 ],
                 "last_modified": 1783803117073,
-                "primaryCatId": "Percheros"
+                "primaryCatId": "Percheros",
+                "views": 8
             },
             {
                 "id": "banquito-de-plaza",
@@ -1312,7 +1316,8 @@ const productsData = [
                     "decoracion"
                 ],
                 "last_modified": 1783635754620,
-                "primaryCatId": "sillas-sillones"
+                "primaryCatId": "sillas-sillones",
+                "views": 15
             },
             {
                 "id": "baranda-sommier-clasica",
@@ -1596,7 +1601,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1783616653865,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 11
             },
             {
                 "id": "baul-madera-mediano",
@@ -1719,7 +1725,8 @@ const productsData = [
                     "baulera pino"
                 ],
                 "last_modified": 1783906817810,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 15
             },
             {
                 "id": "silla-infantil",
@@ -1762,7 +1769,8 @@ const productsData = [
                     "madera"
                 ],
                 "last_modified": 1783635806092,
-                "primaryCatId": "sillas-sillones"
+                "primaryCatId": "sillas-sillones",
+                "views": 2
             },
             {
                 "id": "especiero",
@@ -1866,7 +1874,8 @@ const productsData = [
                     "repisa para condimentos"
                 ],
                 "last_modified": 1783617596816,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 17
             },
             {
                 "id": "deck-cuadrado",
@@ -2055,7 +2064,8 @@ const productsData = [
                     "deck jardin"
                 ],
                 "last_modified": 1783618243134,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 3
             },
             {
                 "id": "deck-rectangular",
@@ -2197,7 +2207,8 @@ const productsData = [
                     "deck jardin"
                 ],
                 "last_modified": 1783618237200,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 11
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -2286,7 +2297,8 @@ const productsData = [
                     "colgante eucalipto"
                 ],
                 "last_modified": 1783907432697,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 3
             },
             {
                 "id": "Platos-madera",
@@ -2322,7 +2334,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1784081486789,
-                "primaryCatId": "productos-algarrobo"
+                "primaryCatId": "productos-algarrobo",
+                "views": 4
             },
             {
                 "id": "Mate",
@@ -2369,7 +2382,8 @@ const productsData = [
                     "tomar"
                 ],
                 "last_modified": 1783907387290,
-                "primaryCatId": "productos-algarrobo"
+                "primaryCatId": "productos-algarrobo",
+                "views": 5
             },
             {
                 "id": "Platos - Cuencos",
@@ -2398,7 +2412,8 @@ const productsData = [
                     "patrio"
                 ],
                 "last_modified": 1783636741117,
-                "primaryCatId": "productos-algarrobo"
+                "primaryCatId": "productos-algarrobo",
+                "views": 17
             },
             {
                 "id": "Mueble-Multifunción",
@@ -2444,7 +2459,8 @@ const productsData = [
                     "carpinteria artesanal"
                 ],
                 "last_modified": 1783637039050,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 10
             },
             {
                 "id": "jenga",
@@ -2509,7 +2525,8 @@ const productsData = [
                     "jenga madera"
                 ],
                 "last_modified": 1783637073874,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 1
             },
             {
                 "id": "verdulero-clasico",
@@ -2579,7 +2596,8 @@ const productsData = [
                     "cesta de frutas"
                 ],
                 "last_modified": 1783637106226,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 1
             },
             {
                 "id": "verdule-para-mesada",
@@ -2651,7 +2669,8 @@ const productsData = [
                     "panera de pino"
                 ],
                 "last_modified": 1783637121354,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 7
             },
             {
                 "id": "verdulero-mediano",
@@ -2720,7 +2739,8 @@ const productsData = [
                     "cesta de frutas"
                 ],
                 "last_modified": 1783637126403,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 5
             },
             {
                 "id": "verdulero-x3",
@@ -2763,7 +2783,8 @@ const productsData = [
                     "bar"
                 ],
                 "last_modified": 1783637154745,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 831
             },
             {
                 "id": "esquinero-x3",
@@ -2848,7 +2869,8 @@ const productsData = [
                     "ropa"
                 ],
                 "last_modified": 1783637176778,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 3
             },
             {
                 "id": "cesto-de-basura",
@@ -2938,7 +2960,8 @@ const productsData = [
                     "papelera pino"
                 ],
                 "last_modified": 1783742622011,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 10
             },
             {
                 "id": "mesa-plegabe",
@@ -2971,7 +2994,8 @@ const productsData = [
                     "viaje"
                 ],
                 "last_modified": 1783637216140,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 2353
             },
             {
                 "id": "mesa-plegable-redonda-chica",
@@ -3003,7 +3027,8 @@ const productsData = [
                     "viaje"
                 ],
                 "last_modified": 1783637228097,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 2
             },
             {
                 "id": "fanal",
@@ -3085,7 +3110,8 @@ const productsData = [
                     "altar"
                 ],
                 "last_modified": 1783637265113,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 13
             },
             {
                 "id": "organizador-tribuna-x3",
@@ -3128,7 +3154,8 @@ const productsData = [
                     "emprendedores"
                 ],
                 "last_modified": 1783637306441,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 0
             },
             {
                 "id": "Posa-Tortas",
@@ -3189,7 +3216,8 @@ const productsData = [
                     "madera"
                 ],
                 "last_modified": 1783908158520,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 10
             },
             {
                 "id": "baranda-sommier-triple",
@@ -3366,7 +3394,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1783616640275,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 2
             },
             {
                 "id": "baranda-fija-clasica",
@@ -3438,7 +3467,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1783616739128,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 4
             },
             {
                 "id": "baranda-montessori",
@@ -3510,7 +3540,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1783616746091,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 2
             },
             {
                 "id": "baranda-simple",
@@ -3581,7 +3612,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1783616752912,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 1
             },
             {
                 "id": "baranda-desmontable-triple",
@@ -3765,7 +3797,8 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 10
             },
             {
                 "id": "perchero-pared-doblegancho",
@@ -3869,7 +3902,8 @@ const productsData = [
                     "percheros de pino"
                 ],
                 "last_modified": 1783617272723,
-                "primaryCatId": "Percheros"
+                "primaryCatId": "Percheros",
+                "views": 1
             },
             {
                 "id": "Estantes-Cortes-Madera",
@@ -3983,7 +4017,8 @@ const productsData = [
                     "paneles"
                 ],
                 "last_modified": 1783635269180,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 0
             },
             {
                 "id": "chico",
@@ -4070,7 +4105,8 @@ const productsData = [
                     "portabotellas de pared"
                 ],
                 "last_modified": 1784083100223,
-                "primaryCatId": "Vinotecas"
+                "primaryCatId": "Vinotecas",
+                "views": 20
             },
             {
                 "id": "9-vinos",
@@ -4159,7 +4195,8 @@ const productsData = [
                     "portabotellas de pared"
                 ],
                 "last_modified": 1784083095519,
-                "primaryCatId": "Vinotecas"
+                "primaryCatId": "Vinotecas",
+                "views": 7
             },
             {
                 "id": "17-vinos",
@@ -4247,7 +4284,8 @@ const productsData = [
                     "portabotellas de pared"
                 ],
                 "last_modified": 1784083083495,
-                "primaryCatId": "Vinotecas"
+                "primaryCatId": "Vinotecas",
+                "views": 7
             },
             {
                 "id": "13-vinos",
@@ -4336,7 +4374,8 @@ const productsData = [
                     "portabotellas de pared"
                 ],
                 "last_modified": 1784083089360,
-                "primaryCatId": "Vinotecas"
+                "primaryCatId": "Vinotecas",
+                "views": 5
             },
             {
                 "id": "Colecho_retro_madera",
@@ -4357,7 +4396,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783750659139,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 1
             },
             {
                 "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
@@ -4379,7 +4419,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783750731964,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 0
             },
             {
                 "id": "Eco-fija-100x50cm-Modelo-unico",
@@ -4399,7 +4440,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783750807815,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 1
             },
             {
                 "id": "Eco-rebatible",
@@ -4434,7 +4476,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1784164102112,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 9
             },
             {
                 "id": "cuna-Rebatible-cajones",
@@ -4455,7 +4498,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783750899703,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 0
             },
             {
                 "id": "Romana-Rebatible-Cajones",
@@ -4476,7 +4520,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783750938226,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 1
             },
             {
                 "id": "Romana - Rebatible - Cajones - en XX",
@@ -4497,7 +4542,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783750963119,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 0
             },
             {
                 "id": "Sol - Rebatible - Cajones",
@@ -4518,19 +4564,25 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783750987240,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 2
             },
             {
                 "id": "Perchero 3 - Rustico",
                 "title": "Perchero 3 - Rustico",
-                "description": "",
-                "image": "img/logo_provisional.png",
+                "description": "Medidas:\n50 x 13 cm",
+                "image": "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
+                        "cover_image": "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
                         "images_list": [
-                            "img/logo_provisional.png"
+                            "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
+                            "img/borrador/perchero-3---rustico/1784347711455-imagen.webp",
+                            "img/borrador/perchero-3---rustico/1784347711581-imagen.webp",
+                            "img/borrador/perchero-3---rustico/1784347711706-imagen.webp",
+                            "img/borrador/perchero-3---rustico/1784347711837-imagen.webp",
+                            "img/borrador/perchero-3---rustico/1784347711968-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4541,66 +4593,79 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 16000,
                                 "cost_price": 8000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783811578879,
-                "primaryCatId": "Borrador",
-                "visible": false
+                "last_modified": 1784391433176,
+                "primaryCatId": "Percheros",
+                "visible": true
             },
             {
-                "id": "Perchero 3 - Rustico-copia",
+                "id": "Perchero 5 - Rusctio - campo decorado",
                 "title": "Perchero 5 - Rustico",
-                "description": "",
-                "image": "img/logo_provisional.png",
+                "description": "Medidas:\n63 x 13 cm",
+                "image": "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
+                        "cover_image": "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
                         "images_list": [
-                            "img/logo_provisional.png"
+                            "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347037492-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347037651-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347037806-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347037966-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347038106-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347038278-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347038433-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347038614-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "5 Ganchos",
+                                "medida": "Rustico 5 Ganchos",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 20000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783811584879,
-                "primaryCatId": "Borrador",
-                "visible": false
+                "last_modified": 1784391421552,
+                "primaryCatId": "Percheros",
+                "visible": true
             },
             {
                 "id": "perchero-madera-tuvitos",
                 "title": "Perchero 6 - Minimalista",
-                "description": "",
-                "image": "img/logo_provisional.png",
+                "description": "Medidas:\n60 x 13 cm",
+                "image": "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
+                        "cover_image": "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
                         "images_list": [
-                            "img/logo_provisional.png"
+                            "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
+                            "img/borrador/perchero-6---minimalista/1784390037952-imagen.webp",
+                            "img/borrador/perchero-6---minimalista/1784390038064-imagen.webp",
+                            "img/borrador/perchero-6---minimalista/1784390038179-imagen.webp",
+                            "img/borrador/perchero-6---minimalista/1784390038295-imagen.webp",
+                            "img/borrador/perchero-6---minimalista/1784390038432-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4611,31 +4676,35 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 13000,
                                 "cost_price": 6500,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783811709272,
-                "primaryCatId": "Borrador",
-                "visible": false
+                "last_modified": 1784391465049,
+                "primaryCatId": "Percheros",
+                "visible": true
             },
             {
                 "id": "perchero-madera-tuvitos5",
                 "title": "Perchero 5 - Minimalista",
-                "description": "",
-                "image": "img/logo_provisional.png",
+                "description": "Medidas:\n50 x 13 cm",
+                "image": "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
+                        "cover_image": "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
                         "images_list": [
-                            "img/logo_provisional.png"
+                            "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
+                            "img/borrador/perchero-5---minimalista/1784389644962-imagen.webp",
+                            "img/borrador/perchero-5---minimalista/1784389645099-imagen.webp",
+                            "img/borrador/perchero-5---minimalista/1784389645246-imagen.webp",
+                            "img/borrador/perchero-5---minimalista/1784389645362-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4646,19 +4715,19 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 12000,
                                 "cost_price": 6000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783811769455,
-                "primaryCatId": "Borrador",
-                "visible": false
+                "last_modified": 1784391454504,
+                "primaryCatId": "Percheros",
+                "visible": true
             },
             {
                 "id": "estante-hexagonal-x3",
@@ -4691,19 +4760,23 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1783811849072,
                 "primaryCatId": "Borrador",
-                "visible": false
+                "visible": false,
+                "views": 0
             },
             {
                 "id": "bodega-madera-6-rectangular",
                 "title": "Bodega 6 Vinos",
-                "description": "",
-                "image": "img/logo_provisional.png",
+                "description": "Medidas\nAlto: 40 cm\nAncho: 30 cm\nProfundidad: 23 cm",
+                "image": "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
+                        "cover_image": "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
                         "images_list": [
-                            "img/logo_provisional.png"
+                            "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
+                            "img/borrador/bodega-6-vinos/1784391190322-imagen.webp",
+                            "img/borrador/bodega-6-vinos/1784391190438-imagen.webp",
+                            "img/borrador/bodega-6-vinos/1784391190550-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4714,19 +4787,19 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 22500,
                                 "cost_price": 15000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1783811931135,
-                "primaryCatId": "Borrador",
-                "visible": false
+                "last_modified": 1784391201352,
+                "primaryCatId": "Vinotecas",
+                "visible": true
             },
             {
                 "id": "hexagonales",
@@ -4825,7 +4898,8 @@ const productsData = [
                 ],
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
-                "visible": false
+                "visible": false,
+                "views": 3
             },
             {
                 "id": "Mesas para Candy Bar",
@@ -5064,7 +5138,8 @@ const productsData = [
                 ],
                 "last_modified": 1784124738165,
                 "primaryCatId": "Mesas-madera",
-                "visible": true
+                "visible": true,
+                "views": 6
             },
             {
                 "id": "pie-cama-romano",
@@ -5099,7 +5174,8 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1783814333600,
                 "primaryCatId": "Borrador",
-                "visible": false
+                "visible": false,
+                "views": 0
             },
             {
                 "id": "sillon-gervasoni-simple-chico",
@@ -5136,7 +5212,8 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "perchero-nordico-pared-x3",
@@ -5275,7 +5352,8 @@ const productsData = [
                     "perchero minimalista madera"
                 ],
                 "last_modified": 1784162786027,
-                "primaryCatId": "Percheros"
+                "primaryCatId": "Percheros",
+                "views": 7
             },
             {
                 "id": "perchero-nordico-pared-x5",
@@ -5416,7 +5494,8 @@ const productsData = [
                     "perchero minimalista madera"
                 ],
                 "last_modified": 1784163988629,
-                "primaryCatId": "Percheros"
+                "primaryCatId": "Percheros",
+                "views": 1
             }
         ]
     },
@@ -5427,146 +5506,6 @@ const productsData = [
         "rubro": "carpinteria",
         "order": 1,
         "products": [
-            {
-                "id": "Perchero 3 - Rustico",
-                "title": "Perchero 3 - Rustico",
-                "description": "",
-                "image": "img/logo_provisional.png",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
-                        "images_list": [
-                            "img/logo_provisional.png"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "3 Ganchos",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": 8000,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1783811578879,
-                "primaryCatId": "Borrador",
-                "visible": false
-            },
-            {
-                "id": "Perchero 3 - Rustico-copia",
-                "title": "Perchero 5 - Rustico",
-                "description": "",
-                "image": "img/logo_provisional.png",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
-                        "images_list": [
-                            "img/logo_provisional.png"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "5 Ganchos",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1783811584879,
-                "primaryCatId": "Borrador",
-                "visible": false
-            },
-            {
-                "id": "perchero-madera-tuvitos",
-                "title": "Perchero 6 - Minimalista",
-                "description": "",
-                "image": "img/logo_provisional.png",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
-                        "images_list": [
-                            "img/logo_provisional.png"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "6 Ganchitos",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": 6500,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1783811709272,
-                "primaryCatId": "Borrador",
-                "visible": false
-            },
-            {
-                "id": "perchero-madera-tuvitos5",
-                "title": "Perchero 5 - Minimalista",
-                "description": "",
-                "image": "img/logo_provisional.png",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
-                        "images_list": [
-                            "img/logo_provisional.png"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "5 Ganchitos",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": 6000,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1783811769455,
-                "primaryCatId": "Borrador",
-                "visible": false
-            },
             {
                 "id": "estante-hexagonal-x3",
                 "title": "Estante Hexagonal x3",
@@ -5598,42 +5537,8 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1783811849072,
                 "primaryCatId": "Borrador",
-                "visible": false
-            },
-            {
-                "id": "bodega-madera-6-rectangular",
-                "title": "Bodega 6 Vinos",
-                "description": "",
-                "image": "img/logo_provisional.png",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
-                        "images_list": [
-                            "img/logo_provisional.png"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "bodega 6 Vinos",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": 15000,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1783811931135,
-                "primaryCatId": "Borrador",
-                "visible": false
+                "visible": false,
+                "views": 0
             },
             {
                 "id": "pie-cama-romano",
@@ -5668,7 +5573,8 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1783814333600,
                 "primaryCatId": "Borrador",
-                "visible": false
+                "visible": false,
+                "views": 0
             }
         ],
         "visible": false
@@ -5764,7 +5670,8 @@ const productsData = [
                     "portabotellas de pared"
                 ],
                 "last_modified": 1784083100223,
-                "primaryCatId": "Vinotecas"
+                "primaryCatId": "Vinotecas",
+                "views": 20
             },
             {
                 "id": "9-vinos",
@@ -5853,7 +5760,8 @@ const productsData = [
                     "portabotellas de pared"
                 ],
                 "last_modified": 1784083095519,
-                "primaryCatId": "Vinotecas"
+                "primaryCatId": "Vinotecas",
+                "views": 7
             },
             {
                 "id": "13-vinos",
@@ -5942,7 +5850,8 @@ const productsData = [
                     "portabotellas de pared"
                 ],
                 "last_modified": 1784083089360,
-                "primaryCatId": "Vinotecas"
+                "primaryCatId": "Vinotecas",
+                "views": 5
             },
             {
                 "id": "17-vinos",
@@ -6030,7 +5939,46 @@ const productsData = [
                     "portabotellas de pared"
                 ],
                 "last_modified": 1784083083495,
-                "primaryCatId": "Vinotecas"
+                "primaryCatId": "Vinotecas",
+                "views": 7
+            },
+            {
+                "id": "bodega-madera-6-rectangular",
+                "title": "Bodega 6 Vinos",
+                "description": "Medidas\nAlto: 40 cm\nAncho: 30 cm\nProfundidad: 23 cm",
+                "image": "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
+                        "images_list": [
+                            "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
+                            "img/borrador/bodega-6-vinos/1784391190322-imagen.webp",
+                            "img/borrador/bodega-6-vinos/1784391190438-imagen.webp",
+                            "img/borrador/bodega-6-vinos/1784391190550-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "bodega 6 Vinos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22500,
+                                "cost_price": 15000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1784391201352,
+                "primaryCatId": "Vinotecas",
+                "visible": true
             }
         ],
         "rubro": "carpinteria"
@@ -6114,7 +6062,8 @@ const productsData = [
                     "percheros de pino"
                 ],
                 "last_modified": 1783803117073,
-                "primaryCatId": "Percheros"
+                "primaryCatId": "Percheros",
+                "views": 8
             },
             {
                 "id": "perchero-pared-doblegancho",
@@ -6218,7 +6167,8 @@ const productsData = [
                     "percheros de pino"
                 ],
                 "last_modified": 1783617272723,
-                "primaryCatId": "Percheros"
+                "primaryCatId": "Percheros",
+                "views": 1
             },
             {
                 "id": "perchero-nordico-pared-x3",
@@ -6357,7 +6307,8 @@ const productsData = [
                     "perchero minimalista madera"
                 ],
                 "last_modified": 1784162786027,
-                "primaryCatId": "Percheros"
+                "primaryCatId": "Percheros",
+                "views": 7
             },
             {
                 "id": "perchero-nordico-pared-x5",
@@ -6498,7 +6449,170 @@ const productsData = [
                     "perchero minimalista madera"
                 ],
                 "last_modified": 1784163988629,
-                "primaryCatId": "Percheros"
+                "primaryCatId": "Percheros",
+                "views": 1
+            },
+            {
+                "id": "Perchero 5 - Rusctio - campo decorado",
+                "title": "Perchero 5 - Rustico",
+                "description": "Medidas:\n63 x 13 cm",
+                "image": "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
+                        "images_list": [
+                            "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347037492-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347037651-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347037806-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347037966-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347038106-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347038278-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347038433-imagen.webp",
+                            "img/percheros/perchero-5---rustico/1784347038614-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Rustico 5 Ganchos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1784391421552,
+                "primaryCatId": "Percheros",
+                "visible": true
+            },
+            {
+                "id": "Perchero 3 - Rustico",
+                "title": "Perchero 3 - Rustico",
+                "description": "Medidas:\n50 x 13 cm",
+                "image": "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
+                        "images_list": [
+                            "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
+                            "img/borrador/perchero-3---rustico/1784347711455-imagen.webp",
+                            "img/borrador/perchero-3---rustico/1784347711581-imagen.webp",
+                            "img/borrador/perchero-3---rustico/1784347711706-imagen.webp",
+                            "img/borrador/perchero-3---rustico/1784347711837-imagen.webp",
+                            "img/borrador/perchero-3---rustico/1784347711968-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "3 Ganchos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 16000,
+                                "cost_price": 8000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1784391433176,
+                "primaryCatId": "Percheros",
+                "visible": true
+            },
+            {
+                "id": "perchero-madera-tuvitos5",
+                "title": "Perchero 5 - Minimalista",
+                "description": "Medidas:\n50 x 13 cm",
+                "image": "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
+                        "images_list": [
+                            "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
+                            "img/borrador/perchero-5---minimalista/1784389644962-imagen.webp",
+                            "img/borrador/perchero-5---minimalista/1784389645099-imagen.webp",
+                            "img/borrador/perchero-5---minimalista/1784389645246-imagen.webp",
+                            "img/borrador/perchero-5---minimalista/1784389645362-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "5 Ganchitos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 12000,
+                                "cost_price": 6000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1784391454504,
+                "primaryCatId": "Percheros",
+                "visible": true
+            },
+            {
+                "id": "perchero-madera-tuvitos",
+                "title": "Perchero 6 - Minimalista",
+                "description": "Medidas:\n60 x 13 cm",
+                "image": "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
+                        "images_list": [
+                            "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
+                            "img/borrador/perchero-6---minimalista/1784390037952-imagen.webp",
+                            "img/borrador/perchero-6---minimalista/1784390038064-imagen.webp",
+                            "img/borrador/perchero-6---minimalista/1784390038179-imagen.webp",
+                            "img/borrador/perchero-6---minimalista/1784390038295-imagen.webp",
+                            "img/borrador/perchero-6---minimalista/1784390038432-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "6 Ganchitos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 13000,
+                                "cost_price": 6500,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1784391465049,
+                "primaryCatId": "Percheros",
+                "visible": true
             }
         ]
     },
@@ -6630,7 +6744,8 @@ const productsData = [
                     "baulera pino"
                 ],
                 "last_modified": 1783906817810,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 15
             },
             {
                 "id": "especiero",
@@ -6734,7 +6849,8 @@ const productsData = [
                     "repisa para condimentos"
                 ],
                 "last_modified": 1783617596816,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 17
             },
             {
                 "id": "verdulero-clasico",
@@ -6804,7 +6920,8 @@ const productsData = [
                     "cesta de frutas"
                 ],
                 "last_modified": 1783637106226,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 1
             },
             {
                 "id": "verdule-para-mesada",
@@ -6876,7 +6993,8 @@ const productsData = [
                     "panera de pino"
                 ],
                 "last_modified": 1783637121354,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 7
             },
             {
                 "id": "verdulero-mediano",
@@ -6945,7 +7063,8 @@ const productsData = [
                     "cesta de frutas"
                 ],
                 "last_modified": 1783637126403,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 5
             },
             {
                 "id": "Mueble-Multifunción",
@@ -6991,7 +7110,8 @@ const productsData = [
                     "carpinteria artesanal"
                 ],
                 "last_modified": 1783637039050,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 10
             },
             {
                 "id": "verdulero-x3",
@@ -7034,7 +7154,8 @@ const productsData = [
                     "bar"
                 ],
                 "last_modified": 1783637154745,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 831
             },
             {
                 "id": "esquinero-x3",
@@ -7119,7 +7240,8 @@ const productsData = [
                     "ropa"
                 ],
                 "last_modified": 1783637176778,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 3
             },
             {
                 "id": "organizador-tribuna-x3",
@@ -7162,7 +7284,8 @@ const productsData = [
                     "emprendedores"
                 ],
                 "last_modified": 1783637306441,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 0
             },
             {
                 "id": "Posa-Tortas",
@@ -7223,7 +7346,8 @@ const productsData = [
                     "madera"
                 ],
                 "last_modified": 1783908158520,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 10
             }
         ]
     },
@@ -7620,7 +7744,8 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 112
             },
             {
                 "id": "baranda-desmontable-montessori",
@@ -8292,7 +8417,8 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 29
             },
             {
                 "id": "baranda-desmontable-triple",
@@ -8476,7 +8602,8 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 10
             },
             {
                 "id": "baranda-sommier-clasica",
@@ -8760,7 +8887,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1783616653865,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 11
             },
             {
                 "id": "baranda-sommier-triple",
@@ -8937,7 +9065,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1783616640275,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 2
             },
             {
                 "id": "baranda-reforzada-geriatricos",
@@ -9021,7 +9150,8 @@ const productsData = [
                 ],
                 "last_modified": 1782416897270,
                 "primaryCatId": "Barandas",
-                "visible": true
+                "visible": true,
+                "views": 10
             },
             {
                 "id": "baranda-fija-clasica",
@@ -9093,7 +9223,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1783616739128,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 4
             },
             {
                 "id": "baranda-montessori",
@@ -9165,7 +9296,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1783616746091,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 2
             },
             {
                 "id": "baranda-simple",
@@ -9236,7 +9368,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1783616752912,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 1
             }
         ],
         "visible": true,
@@ -9325,7 +9458,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1783750659139,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 1
             },
             {
                 "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
@@ -9404,7 +9538,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1783750731964,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 0
             },
             {
                 "id": "Eco-fija-100x50cm-Modelo-unico",
@@ -9481,7 +9616,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1783750807815,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 1
             },
             {
                 "id": "Eco-rebatible",
@@ -9516,7 +9652,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1784164102112,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 9
             },
             {
                 "id": "cuna-Rebatible-cajones",
@@ -9594,7 +9731,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1783750899703,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 0
             },
             {
                 "id": "Romana-Rebatible-Cajones",
@@ -9672,7 +9810,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1783750938226,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 1
             },
             {
                 "id": "Romana - Rebatible - Cajones - en XX",
@@ -9750,7 +9889,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1783750963119,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 0
             },
             {
                 "id": "Sol - Rebatible - Cajones",
@@ -9828,7 +9968,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1783750987240,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 2
             }
         ],
         "visible": true
@@ -9964,7 +10105,8 @@ const productsData = [
                     "cajonera profesional"
                 ],
                 "last_modified": 1783477948902,
-                "primaryCatId": "muebles"
+                "primaryCatId": "muebles",
+                "views": 10
             },
             {
                 "id": "escalera-altillo",
@@ -9982,7 +10124,7 @@ const productsData = [
                         "medidas_variants": []
                     }
                 ],
-                "views": 0,
+                "views": 2,
                 "tags": [
                     "escalera",
                     "escaleras",
@@ -10176,7 +10318,8 @@ const productsData = [
                     "cajonera profesional"
                 ],
                 "last_modified": 1782086406799,
-                "primaryCatId": "Steps"
+                "primaryCatId": "Steps",
+                "views": 1
             },
             {
                 "id": "cajones-profesional",
@@ -10246,7 +10389,8 @@ const productsData = [
                     "caja de almacenamiento"
                 ],
                 "last_modified": 1782417151111,
-                "primaryCatId": "Steps"
+                "primaryCatId": "Steps",
+                "views": 1
             }
         ]
     },
@@ -10390,7 +10534,8 @@ const productsData = [
                     "organizador pared"
                 ],
                 "last_modified": 1782087372455,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 8
             },
             {
                 "id": "hexagonales",
@@ -10489,7 +10634,8 @@ const productsData = [
                 ],
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
-                "visible": false
+                "visible": false,
+                "views": 3
             },
             {
                 "id": "librero",
@@ -10579,7 +10725,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0,
+                "views": 2,
                 "tags": [
                     "estante",
                     "estantes",
@@ -10631,7 +10777,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "tags": [
                     "estante",
                     "estantes",
@@ -10705,7 +10851,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 1,
+                "views": 3,
                 "tags": [
                     "estante",
                     "estantes",
@@ -10843,7 +10989,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 2,
+                "views": 3,
                 "tags": [
                     "mensula",
                     "mensulas",
@@ -10937,7 +11083,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0,
+                "views": 2,
                 "tags": [
                     "estante",
                     "estantes",
@@ -11065,7 +11211,8 @@ const productsData = [
                     "repisa para condimentos"
                 ],
                 "last_modified": 1783617596816,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 17
             },
             {
                 "id": "Estantes-Cortes-Madera",
@@ -11179,7 +11326,8 @@ const productsData = [
                     "paneles"
                 ],
                 "last_modified": 1783635269180,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 0
             }
         ]
     },
@@ -11252,7 +11400,8 @@ const productsData = [
                     "jenga madera"
                 ],
                 "last_modified": 1783637073874,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 1
             },
             {
                 "id": "baul-madera-mediano",
@@ -11375,7 +11524,8 @@ const productsData = [
                     "baulera pino"
                 ],
                 "last_modified": 1783906817810,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 15
             }
         ],
         "rubro": "carpinteria"
@@ -11430,7 +11580,8 @@ const productsData = [
                     "decoracion"
                 ],
                 "last_modified": 1783635754620,
-                "primaryCatId": "sillas-sillones"
+                "primaryCatId": "sillas-sillones",
+                "views": 15
             },
             {
                 "id": "silla-infantil",
@@ -11473,7 +11624,8 @@ const productsData = [
                     "madera"
                 ],
                 "last_modified": 1783635806092,
-                "primaryCatId": "sillas-sillones"
+                "primaryCatId": "sillas-sillones",
+                "views": 2
             },
             {
                 "id": "sillon-gervasoni-simple-chico",
@@ -11510,7 +11662,8 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
-                "visible": true
+                "visible": true,
+                "views": 0
             }
         ]
     },
@@ -11565,7 +11718,8 @@ const productsData = [
                     "carpinteria artesanal"
                 ],
                 "last_modified": 1783637039050,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 10
             },
             {
                 "id": "mesa-plegabe",
@@ -11598,7 +11752,8 @@ const productsData = [
                     "viaje"
                 ],
                 "last_modified": 1783637216140,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 2353
             },
             {
                 "id": "mesa-plegable-redonda-chica",
@@ -11630,7 +11785,8 @@ const productsData = [
                     "viaje"
                 ],
                 "last_modified": 1783637228097,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 2
             },
             {
                 "id": "Mesas para Candy Bar",
@@ -11869,7 +12025,8 @@ const productsData = [
                 ],
                 "last_modified": 1784124738165,
                 "primaryCatId": "Mesas-madera",
-                "visible": true
+                "visible": true,
+                "views": 6
             }
         ]
     },
@@ -12020,7 +12177,8 @@ const productsData = [
                     "deck jardin"
                 ],
                 "last_modified": 1783618237200,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 11
             },
             {
                 "id": "deck-cuadrado",
@@ -12209,7 +12367,8 @@ const productsData = [
                     "deck jardin"
                 ],
                 "last_modified": 1783618243134,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 3
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -12298,7 +12457,8 @@ const productsData = [
                     "colgante eucalipto"
                 ],
                 "last_modified": 1783907432697,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 3
             },
             {
                 "id": "fanal",
@@ -12380,7 +12540,8 @@ const productsData = [
                     "altar"
                 ],
                 "last_modified": 1783637265113,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 13
             },
             {
                 "id": "cesto-de-basura",
@@ -12470,7 +12631,8 @@ const productsData = [
                     "papelera pino"
                 ],
                 "last_modified": 1783742622011,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 10
             }
         ]
     },
@@ -12515,7 +12677,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1784081486789,
-                "primaryCatId": "productos-algarrobo"
+                "primaryCatId": "productos-algarrobo",
+                "views": 4
             },
             {
                 "id": "Platos - Cuencos",
@@ -12544,7 +12707,8 @@ const productsData = [
                     "patrio"
                 ],
                 "last_modified": 1783636741117,
-                "primaryCatId": "productos-algarrobo"
+                "primaryCatId": "productos-algarrobo",
+                "views": 17
             },
             {
                 "id": "Mate",
@@ -12591,7 +12755,8 @@ const productsData = [
                     "tomar"
                 ],
                 "last_modified": 1783907387290,
-                "primaryCatId": "productos-algarrobo"
+                "primaryCatId": "productos-algarrobo",
+                "views": 5
             }
         ]
     },
@@ -12692,7 +12857,7 @@ const productsData = [
                 ],
                 "last_modified": 1780774148299,
                 "primaryCatId": "Podios",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "podio-premiacion--3-modulos-",
@@ -12761,7 +12926,7 @@ const productsData = [
                 ],
                 "last_modified": 1780774911579,
                 "primaryCatId": "Podios",
-                "views": 11
+                "views": 4
             },
             {
                 "id": "podios-individuales",
@@ -12880,7 +13045,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783039460509,
-                "primaryCatId": "Papelera-Cotillon"
+                "primaryCatId": "Papelera-Cotillon",
+                "views": 3
             }
         ]
     },
@@ -12919,7 +13085,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783039460509,
-                "primaryCatId": "Papelera-Cotillon"
+                "primaryCatId": "Papelera-Cotillon",
+                "views": 3
             }
         ],
         "visible": false
@@ -12950,7 +13117,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783112841985,
-                "primaryCatId": "Jabon"
+                "primaryCatId": "Jabon",
+                "views": 1
             }
         ]
     },
@@ -12979,7 +13147,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1783112841985,
-                "primaryCatId": "Jabon"
+                "primaryCatId": "Jabon",
+                "views": 1
             }
         ],
         "visible": false
