@@ -3,7 +3,7 @@
 // Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.
 
 window.siteConfig = {
-    "activeTheme": "final-mundial",
+    "activeTheme": "classic",
     "appConfig": {
         "home": {
             "title": "La Tarima",
@@ -235,7 +235,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Bodega 6 Vinos!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Bodega 6 Vinos!",
             "mediaType": "image",
-            "image": "img/logo_provisional.png",
+            "image": "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -273,7 +273,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Perchero 5 - Minimalista!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 5 - Minimalista!",
             "mediaType": "image",
-            "image": "img/logo_provisional.png",
+            "image": "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -292,7 +292,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Perchero 3 - Minimalista!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 3 - Minimalista!",
             "mediaType": "image",
-            "image": "img/logo_provisional.png",
+            "image": "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -330,7 +330,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Perchero 3 - Rustico!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 3 - Rustico!",
             "mediaType": "image",
-            "image": "img/logo_provisional.png",
+            "image": "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [

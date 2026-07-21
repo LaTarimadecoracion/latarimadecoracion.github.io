@@ -9,7 +9,7 @@ const productsData = [
         "products": [
             {
                 "id": "baranda-desmontable-montessori",
-                "title": "Baranda desmontable: Montessori",
+                "title": "Baranda: Desmontable - Estilo Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
                 "image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
                 "acabados_groups": [
@@ -31,9 +31,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 60000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -43,57 +44,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 60000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "180 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "170 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "160 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "150 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -103,33 +57,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "130 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "120 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -139,9 +70,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 27000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -151,9 +83,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 27000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -163,9 +96,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 26000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -175,9 +109,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 25000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -187,9 +122,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 23999,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -199,9 +135,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 23000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -220,114 +157,6 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "200 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "190 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "180 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "170 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "160 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "150 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "140 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "130 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "120 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
                                 "medida": "110 x 45 cm",
                                 "link": "",
                                 "default": true,
@@ -335,9 +164,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -347,9 +177,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -359,9 +190,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -371,9 +203,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -383,9 +216,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -395,9 +229,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -413,114 +248,6 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "200 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "190 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "180 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "170 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "160 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "150 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "140 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "130 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "120 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
                                 "medida": "110 x 45 cm",
                                 "link": "",
                                 "default": true,
@@ -528,9 +255,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -540,9 +268,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -552,9 +281,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -564,9 +294,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -576,9 +307,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -588,9 +320,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -642,7 +375,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616692617,
+                "last_modified": 1784430002742,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -682,7 +415,7 @@ const productsData = [
             },
             {
                 "id": "baranda-desmontable-clasica",
-                "title": "Baranda desmontable: Clásica",
+                "title": "Baranda: Desmontable Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
                 "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
@@ -709,6 +442,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 60000,
+                                "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -721,6 +455,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 60000,
+                                "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -733,6 +468,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 40000,
+                                "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -745,6 +481,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": true,
                                 "price": 27000,
+                                "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -757,6 +494,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 27000,
+                                "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -769,6 +507,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 26000,
+                                "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -781,6 +520,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 25000,
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -793,6 +533,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 24000,
+                                "cost_price": 24000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -805,94 +546,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 23000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454856-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455011-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455164-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455315-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455464-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455607-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2013955994-baranda-para-cama-barnizada-110-x-45-cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371339468-baranda-para-cama-barnizada-100-x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371261458-baranda-para-cama-barnizada-90x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371326668-baranda-para-cama-barnizada-80x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371404684-baranda-para-cama-barnizada-70x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371249088-baranda-para-cama-barnizada-60x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
+                                "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -921,6 +575,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -933,6 +588,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -945,6 +601,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -957,6 +614,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -969,6 +627,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -981,6 +640,101 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Barnizado",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                        "images_list": [
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454856-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455011-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455164-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455315-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455464-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455607-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2013955994-baranda-para-cama-barnizada-110-x-45-cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371339468-baranda-para-cama-barnizada-100-x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371261458-baranda-para-cama-barnizada-90x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371326668-baranda-para-cama-barnizada-80x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "70 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371404684-baranda-para-cama-barnizada-70x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "60 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371249088-baranda-para-cama-barnizada-60x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -1042,7 +796,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616700840,
+                "last_modified": 1784429974111,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -1068,7 +822,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 112
+                "views": 113
             },
             {
                 "id": "escaleras",
@@ -1321,7 +1075,7 @@ const productsData = [
             },
             {
                 "id": "baranda-sommier-clasica",
-                "title": "Baranda sommier: Clásica",
+                "title": "Baranda: Para camas Sommier",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
                 "image": "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
                 "acabados_groups": [
@@ -1343,6 +1097,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 65000,
+                                "cost_price": 65000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1355,6 +1110,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 65000,
+                                "cost_price": 65000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1367,6 +1123,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1379,6 +1136,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1391,6 +1149,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1403,6 +1162,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1415,6 +1175,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1427,6 +1188,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -1452,6 +1214,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1464,6 +1227,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1476,6 +1240,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1488,6 +1253,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -1512,6 +1278,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1524,6 +1291,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1536,6 +1304,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1548,6 +1317,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -1600,7 +1370,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616653865,
+                "last_modified": 1784430041975,
                 "primaryCatId": "Barandas",
                 "views": 11
             },
@@ -1726,7 +1496,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 15
+                "views": 16
             },
             {
                 "id": "silla-infantil",
@@ -3567,7 +3337,7 @@ const productsData = [
             },
             {
                 "id": "baranda-sommier-triple",
-                "title": "Baranda sommier: Triple",
+                "title": "Baranda: Para camas Sommier - Triple",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
                 "image": "img/migrados/barandas/baranda-sommier-triple/01.webp",
                 "acabados_groups": [
@@ -3589,6 +3359,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -3601,6 +3372,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -3613,6 +3385,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -3638,6 +3411,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -3650,6 +3424,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -3675,6 +3450,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -3687,6 +3463,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -3739,7 +3516,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616640275,
+                "last_modified": 1784430060894,
                 "primaryCatId": "Barandas",
                 "views": 2
             },
@@ -3963,7 +3740,7 @@ const productsData = [
             },
             {
                 "id": "baranda-desmontable-triple",
-                "title": "Baranda desmontable: Triple",
+                "title": "Baranda: Desmontable Clásica - Triple",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "image": "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp",
                 "acabados_groups": [
@@ -3975,28 +3752,69 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "110 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1168350423-baranda-para-cama-bebes-ninos-adultos-110-x-60-cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "70 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1393562489-baranda-para-cama-bebes-ninos-adultos-70-x-60-cm-_JM",
+                                "medida": "200 x 60 cm",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 85000,
+                                "cost_price": 85000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "190 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 85000,
+                                "cost_price": 85000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "140 x 60 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2639109142-baranda-de-seguridad-para-cama-140-x-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 60000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "110 x 60 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "70 x 60 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -4009,6 +3827,45 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
+                                "medida": "200 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "190 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "140 x 60 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2639109142-baranda-de-seguridad-para-cama-140-x-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
                                 "medida": "110 x 60 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
                                 "default": true,
@@ -4016,7 +3873,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -4028,7 +3886,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -4054,6 +3913,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -4066,6 +3926,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -4118,7 +3979,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616662488,
+                "last_modified": 1784430024351,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -4144,7 +4005,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 10
+                "views": 12
             },
             {
                 "id": "perchero-pared-doblegancho",
@@ -4767,7 +4628,7 @@ const productsData = [
             },
             {
                 "id": "Colecho_retro_madera",
-                "title": "Colecho Retro",
+                "title": "Cuna: Colecho Retro",
                 "description": "",
                 "image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
                 "acabados_groups": [
@@ -4796,51 +4657,57 @@ const productsData = [
                     "niños",
                     "madera",
                     "pino",
-                    "maciza",
-                    "mueble",
-                    "moises",
+                    "madera maciza",
+                    "mueble infantil",
                     "colecho",
-                    "retro",
-                    "corral",
-                    "corralito",
-                    "rebatible",
-                    "baranda",
-                    "cajones",
-                    "cajonera",
-                    "romano",
-                    "cuna de pino",
-                    "cuna de madera",
-                    "cuna para bebe",
-                    "cunas de madera",
-                    "cunas de pino",
                     "colecho retro",
                     "colecho vintage",
-                    "corralito de madera",
-                    "cuna con cajones",
-                    "cuna funcional",
-                    "cuna de apego",
-                    "apego seguro",
-                    "habitacion de bebe",
-                    "dormitorio infantil",
-                    "cuna romana",
-                    "cuna sol",
-                    "cuna rebatible",
-                    "baranda rebatible",
-                    "cuna funcional cajones",
-                    "cuna de madera maciza",
-                    "cunas funcionales",
+                    "colecho madera",
+                    "colecho pino",
+                    "cuna colecho",
                     "mini cuna",
+                    "moises",
+                    "moises colecho",
+                    "colecho seguro",
+                    "colecho apego",
+                    "apego seguro",
+                    "colecho pegado a la cama",
+                    "colecho sommier",
+                    "colecho regulable",
+                    "retro",
+                    "vintage",
+                    "estilo retro",
+                    "estilo vintage",
+                    "nordico",
+                    "diseño retro",
+                    "cuna retro",
+                    "cuna vintage",
+                    "cuna nordica",
+                    "decoracion bebe",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
                     "moises de pino",
-                    "corral de madera",
-                    "corral funcional"
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
                 ],
-                "last_modified": 1783750659139,
+                "last_modified": 1784411533338,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1
             },
             {
                 "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
-                "title": "Corral - Colecho con doble",
+                "title": "Cuna: Corral - Colecho con doble",
                 "description": "Corral - Colecho con doble posición de parrilla",
                 "image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
                 "acabados_groups": [
@@ -4870,51 +4737,57 @@ const productsData = [
                     "niños",
                     "madera",
                     "pino",
-                    "maciza",
-                    "mueble",
-                    "moises",
-                    "colecho",
-                    "retro",
+                    "madera maciza",
+                    "mueble infantil",
                     "corral",
                     "corralito",
-                    "rebatible",
-                    "baranda",
-                    "cajones",
-                    "cajonera",
-                    "romano",
-                    "cuna de pino",
-                    "cuna de madera",
-                    "cuna para bebe",
-                    "cunas de madera",
-                    "cunas de pino",
-                    "colecho retro",
-                    "colecho vintage",
-                    "corralito de madera",
-                    "cuna con cajones",
+                    "corral bebe",
+                    "corralito bebe",
+                    "corral madera",
+                    "corral pino",
+                    "cuna corral",
+                    "corral colecho",
+                    "corral ajustable",
+                    "parque de juegos",
+                    "corral seguro",
+                    "corral niños",
+                    "corral grande",
+                    "corral funcional",
+                    "parrilla regulable",
+                    "colecho",
+                    "cuna colecho",
+                    "colecho madera",
+                    "colecho pino",
+                    "colecho regulable",
+                    "colecho ajustable",
+                    "doble posicion",
                     "cuna funcional",
+                    "parrilla doble",
+                    "altura regulable",
+                    "nene",
+                    "nena",
+                    "recien nacido",
                     "cuna de apego",
-                    "apego seguro",
-                    "habitacion de bebe",
-                    "dormitorio infantil",
-                    "cuna romana",
-                    "cuna sol",
-                    "cuna rebatible",
-                    "baranda rebatible",
-                    "cuna funcional cajones",
-                    "cuna de madera maciza",
-                    "cunas funcionales",
-                    "mini cuna",
                     "moises de pino",
-                    "corral de madera",
-                    "corral funcional"
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
                 ],
-                "last_modified": 1783750731964,
+                "last_modified": 1784411542681,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 0
             },
             {
                 "id": "Eco-fija-100x50cm-Modelo-unico",
-                "title": "Eco fija - Modelo único",
+                "title": "Cuna: Eco fija - Modelo único",
                 "description": "Eco fija - 100 x 50 cm - Modelo único",
                 "image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
                 "acabados_groups": [
@@ -4929,64 +4802,70 @@ const productsData = [
                     }
                 ],
                 "tags": [
-                    "eco",
-                    "fija",
-                    "modelo",
-                    "único",
-                    "carpintería",
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
                     "madera",
                     "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "eco de madera",
-                    "eco de pino",
-                    "mueble eco",
-                    "carpintería  eco",
-                    "fija de madera",
-                    "fija de pino",
-                    "mueble fija",
-                    "carpintería  fija",
-                    "modelo de madera",
-                    "modelo de pino",
-                    "mueble modelo",
-                    "carpintería  modelo",
-                    "único de madera",
-                    "único de pino",
-                    "mueble único",
-                    "carpintería  único",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico"
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna eco",
+                    "cuna economica",
+                    "cuna barata",
+                    "cuna fija",
+                    "cuna simple",
+                    "cuna clasica",
+                    "cuna standard",
+                    "cuna pino economica",
+                    "cuna segura",
+                    "cuna pequeña",
+                    "cuna funcional",
+                    "cuna portatil",
+                    "cuna liviana",
+                    "cuna fija pino",
+                    "cuna eco fija",
+                    "100x50",
+                    "100x50cm",
+                    "modelo unico",
+                    "cuna chiquita",
+                    "cuna mediana",
+                    "cuna barata madera",
+                    "cuna barata pino",
+                    "moises grande",
+                    "cuna de pino barata",
+                    "cuna economica madera",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
                 ],
-                "last_modified": 1783750807815,
+                "last_modified": 1784411547881,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1
             },
             {
                 "id": "Eco-rebatible",
-                "title": "Eco rebatible",
+                "title": "Cuna: Eco rebatible",
                 "description": "",
                 "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
                 "acabados_groups": [
@@ -5012,79 +4891,6 @@ const productsData = [
                                 "showPrice": true
                             }
                         ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "eco",
-                    "rebatible",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "eco de madera",
-                    "eco de pino",
-                    "mueble eco",
-                    "carpintería  eco",
-                    "rebatible de madera",
-                    "rebatible de pino",
-                    "mueble rebatible",
-                    "carpintería  rebatible",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais"
-                ],
-                "last_modified": 1784164102112,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 9
-            },
-            {
-                "id": "cuna-Rebatible-cajones",
-                "title": "Cuna rebatible con cajones",
-                "description": "",
-                "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
-                        "images_list": [
-                            "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
-                            "img/cunas/cuna-rebatible-con-cajones/1783750894277-imagen.webp"
-                        ],
-                        "medidas_variants": [],
                         "hidden": false
                     }
                 ],
@@ -5140,13 +4946,92 @@ const productsData = [
                     "corral de madera",
                     "corral funcional"
                 ],
-                "last_modified": 1783750899703,
+                "last_modified": 1784430151878,
+                "primaryCatId": "cunas-madera-pino",
+                "views": 9
+            },
+            {
+                "id": "cuna-Rebatible-cajones",
+                "title": "Cuna: rebatible con cajones",
+                "description": "",
+                "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                        "images_list": [
+                            "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                            "img/cunas/cuna-rebatible-con-cajones/1783750894277-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna organizadora",
+                    "cuna guardado",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna multifuncional",
+                    "cuna cajonera",
+                    "cuna guardado abajo",
+                    "cajones integrados",
+                    "cajonera de pino",
+                    "cajonera de madera",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna cajones",
+                    "guardado de ropa bebe",
+                    "organizador cuna",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1784411560841,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 0
             },
             {
                 "id": "Romana-Rebatible-Cajones",
-                "title": "Romana - Rebatible - Cajones",
+                "title": "Cuna: Romana - Rebatible - Cajones",
                 "description": "",
                 "image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
                 "acabados_groups": [
@@ -5162,64 +5047,70 @@ const productsData = [
                     }
                 ],
                 "tags": [
-                    "romana",
-                    "rebatible",
-                    "cajones",
-                    "carpintería",
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
                     "madera",
                     "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "romana de madera",
-                    "romana de pino",
-                    "mueble romana",
-                    "carpintería  romana",
-                    "rebatible de madera",
-                    "rebatible de pino",
-                    "mueble rebatible",
-                    "carpintería  rebatible",
-                    "cajones de madera",
-                    "cajones de pino",
-                    "mueble cajones",
-                    "carpintería  cajones",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal"
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna romana",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna romana rebatible",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna romana cajonera",
+                    "cuna guardado abajo",
+                    "estilo romano",
+                    "cuna romana madera",
+                    "cuna romana pino",
+                    "cajonera romana",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna romana",
+                    "cuna decorativa",
+                    "cuna diseño clasico",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
                 ],
-                "last_modified": 1783750938226,
+                "last_modified": 1784411566442,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1
             },
             {
                 "id": "Romana - Rebatible - Cajones - en XX",
-                "title": "Romana - Rebatible - Cajones - en XX",
+                "title": "Cuna: Romana - Rebatible - Cajones - en XX",
                 "description": "",
                 "image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
                 "acabados_groups": [
@@ -5235,64 +5126,70 @@ const productsData = [
                     }
                 ],
                 "tags": [
-                    "romana",
-                    "rebatible",
-                    "cajones",
-                    "carpintería",
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
                     "madera",
                     "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "romana de madera",
-                    "romana de pino",
-                    "mueble romana",
-                    "carpintería  romana",
-                    "rebatible de madera",
-                    "rebatible de pino",
-                    "mueble rebatible",
-                    "carpintería  rebatible",
-                    "cajones de madera",
-                    "cajones de pino",
-                    "mueble cajones",
-                    "carpintería  cajones",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal"
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna romana",
+                    "cuna romana en xx",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna romana cajonera",
+                    "cuna guardado abajo",
+                    "diseño en xx",
+                    "detalles en xx",
+                    "cuna romana xx",
+                    "cajonera romana xx",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna romana xx",
+                    "cuna diseño en cruz",
+                    "cuna moderna",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
                 ],
-                "last_modified": 1783750963119,
+                "last_modified": 1784411576658,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 0
             },
             {
                 "id": "Sol - Rebatible - Cajones",
-                "title": "Sol - Rebatible - Cajones",
+                "title": "Cuna: Sol - Rebatible - Cajones",
                 "description": "",
                 "image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
                 "acabados_groups": [
@@ -5308,58 +5205,64 @@ const productsData = [
                     }
                 ],
                 "tags": [
-                    "sol",
-                    "rebatible",
-                    "cajones",
-                    "carpintería",
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
                     "madera",
                     "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "sol de madera",
-                    "sol de pino",
-                    "mueble sol",
-                    "carpintería  sol",
-                    "rebatible de madera",
-                    "rebatible de pino",
-                    "mueble rebatible",
-                    "carpintería  rebatible",
-                    "cajones de madera",
-                    "cajones de pino",
-                    "mueble cajones",
-                    "carpintería  cajones",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal"
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna sol",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna sol rebatible",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna sol cajonera",
+                    "cuna guardado abajo",
+                    "estilo sol",
+                    "cuna sol madera",
+                    "cuna sol pino",
+                    "cajonera sol",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna sol",
+                    "cuna decorativa",
+                    "cuna diseño sol",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
                 ],
-                "last_modified": 1783750987240,
+                "last_modified": 1784411571657,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 2
             },
@@ -5452,7 +5355,8 @@ const productsData = [
                 ],
                 "last_modified": 1784391433176,
                 "primaryCatId": "Percheros",
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "Perchero 5 - Rusctio - campo decorado",
@@ -5546,7 +5450,8 @@ const productsData = [
                 ],
                 "last_modified": 1784391421552,
                 "primaryCatId": "Percheros",
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "perchero-madera-tuvitos",
@@ -5637,7 +5542,8 @@ const productsData = [
                 ],
                 "last_modified": 1784391465049,
                 "primaryCatId": "Percheros",
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "perchero-madera-tuvitos5",
@@ -5727,7 +5633,8 @@ const productsData = [
                 ],
                 "last_modified": 1784391454504,
                 "primaryCatId": "Percheros",
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "estante-hexagonal-x3",
@@ -5901,7 +5808,8 @@ const productsData = [
                 ],
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "hexagonales",
@@ -6700,6 +6608,148 @@ const productsData = [
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
                 "views": 1
+            },
+            {
+                "id": "baranda-reforzada-geriatricos",
+                "title": "Baranda: Desmontable con bulones - Especial",
+                "description": "",
+                "image": "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                        "images_list": [
+                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630822-imagen.webp",
+                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630951-imagen.webp",
+                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399631066-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "170 x 55 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "baranda",
+                    "barandas",
+                    "baranda reforzada",
+                    "baranda geriatricos",
+                    "baranda adultos",
+                    "baranda ancianos",
+                    "seguridad",
+                    "anticaida",
+                    "madera",
+                    "pino",
+                    "cama ortopedica",
+                    "reforzado",
+                    "clinica",
+                    "hospital",
+                    "barrera",
+                    "varanda",
+                    "varandas",
+                    "barada",
+                    "baradas",
+                    "baranda de seguridad adultos",
+                    "barrera adultos",
+                    "protector adultos",
+                    "reja para cuna",
+                    "barandilla adultos",
+                    "baranda ortopedica",
+                    "baranda reforzada pino",
+                    "baranda reforzada madera"
+                ],
+                "last_modified": 1784430109462,
+                "primaryCatId": "Barandas",
+                "visible": true,
+                "views": 10
+            },
+            {
+                "id": "podio-premiacion--3-modulos-",
+                "title": "Podio premiación Profesional",
+                "description": "Podios modulares resistentes para eventos y premiaciones.\n\nMódulo 1: 80 x 40 x 50 cm\nMódulo 2: 80 x 40 x 35 cm\nMódulo 3: 80 x 40 x 20 cm\n\nEnvió gratis a las zonas 1 2 y 3, se puede ver en la ultima foto de la publicación.",
+                "image": "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
+                        "images_list": [
+                            "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion/1780774911040-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion/1780774911168-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion/1780774911301-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion/1780774911452-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion/1784645593411-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único combo",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2235353348-podio-de-premiacion-profesional-3-niveles-reforzados-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 275000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "podio",
+                    "podios",
+                    "premiacion",
+                    "3 modulos",
+                    "medallas",
+                    "trofeo",
+                    "trofeos",
+                    "competencia",
+                    "ganador",
+                    "eventos",
+                    "crossfit",
+                    "gimnasio",
+                    "box",
+                    "madera",
+                    "pino",
+                    "cajon",
+                    "cajones",
+                    "saltar",
+                    "podio de premiacion",
+                    "podio de madera",
+                    "podio crossfit",
+                    "cajon crossfit",
+                    "cajon de salto",
+                    "cajon de madera",
+                    "cajon de premiacion",
+                    "podio primer puesto",
+                    "plataforma de premiacion",
+                    "podio de eventos",
+                    "cajon pliometrico",
+                    "pliometria",
+                    "cajon para saltar",
+                    "box jump",
+                    "cajon jump",
+                    "podios individuales",
+                    "podios de madera"
+                ],
+                "last_modified": 1784645695698,
+                "primaryCatId": "Podios"
             }
         ]
     },
@@ -7335,7 +7385,8 @@ const productsData = [
                 ],
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
-                "visible": true
+                "visible": true,
+                "views": 0
             }
         ],
         "rubro": "carpinteria"
@@ -7901,7 +7952,8 @@ const productsData = [
                 ],
                 "last_modified": 1784391421552,
                 "primaryCatId": "Percheros",
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "Perchero 3 - Rustico",
@@ -7992,7 +8044,8 @@ const productsData = [
                 ],
                 "last_modified": 1784391433176,
                 "primaryCatId": "Percheros",
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "perchero-madera-tuvitos5",
@@ -8082,7 +8135,8 @@ const productsData = [
                 ],
                 "last_modified": 1784391454504,
                 "primaryCatId": "Percheros",
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "perchero-madera-tuvitos",
@@ -8173,7 +8227,8 @@ const productsData = [
                 ],
                 "last_modified": 1784391465049,
                 "primaryCatId": "Percheros",
-                "visible": true
+                "visible": true,
+                "views": 0
             }
         ]
     },
@@ -8306,7 +8361,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 15
+                "views": 16
             },
             {
                 "id": "especiero",
@@ -9088,7 +9143,7 @@ const productsData = [
         "products": [
             {
                 "id": "baranda-desmontable-clasica",
-                "title": "Baranda desmontable: Clásica",
+                "title": "Baranda: Desmontable Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
                 "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
@@ -9115,6 +9170,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 60000,
+                                "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9127,6 +9183,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 60000,
+                                "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9139,6 +9196,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 40000,
+                                "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9151,6 +9209,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": true,
                                 "price": 27000,
+                                "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9163,6 +9222,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 27000,
+                                "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9175,6 +9235,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 26000,
+                                "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9187,6 +9248,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 25000,
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9199,6 +9261,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 24000,
+                                "cost_price": 24000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9211,94 +9274,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 23000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454856-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455011-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455164-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455315-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455464-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455607-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2013955994-baranda-para-cama-barnizada-110-x-45-cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371339468-baranda-para-cama-barnizada-100-x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371261458-baranda-para-cama-barnizada-90x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371326668-baranda-para-cama-barnizada-80x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371404684-baranda-para-cama-barnizada-70x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371249088-baranda-para-cama-barnizada-60x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
+                                "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9327,6 +9303,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9339,6 +9316,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9351,6 +9329,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9363,6 +9342,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9375,6 +9355,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9387,6 +9368,101 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Barnizado",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                        "images_list": [
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454856-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455011-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455164-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455315-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455464-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455607-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "110 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2013955994-baranda-para-cama-barnizada-110-x-45-cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "100 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371339468-baranda-para-cama-barnizada-100-x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "90 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371261458-baranda-para-cama-barnizada-90x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "80 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371326668-baranda-para-cama-barnizada-80x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "70 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371404684-baranda-para-cama-barnizada-70x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "60 x 45 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371249088-baranda-para-cama-barnizada-60x-45-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9448,7 +9524,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616700840,
+                "last_modified": 1784429974111,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -9474,11 +9550,11 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 112
+                "views": 113
             },
             {
                 "id": "baranda-desmontable-montessori",
-                "title": "Baranda desmontable: Montessori",
+                "title": "Baranda: Desmontable - Estilo Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
                 "image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
                 "acabados_groups": [
@@ -9500,9 +9576,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 60000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -9512,57 +9589,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 60000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "180 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "170 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "160 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "150 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -9572,33 +9602,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "130 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "120 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -9608,9 +9615,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 27000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -9620,9 +9628,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 27000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -9632,9 +9641,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 26000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -9644,9 +9654,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 25000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -9656,9 +9667,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 23999,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -9668,9 +9680,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 23000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -9689,114 +9702,6 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "200 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "190 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "180 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "170 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "160 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "150 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "140 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "130 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "120 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
                                 "medida": "110 x 45 cm",
                                 "link": "",
                                 "default": true,
@@ -9804,9 +9709,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -9816,9 +9722,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -9828,9 +9735,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -9840,9 +9748,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -9852,9 +9761,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -9864,9 +9774,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -9882,114 +9793,6 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "200 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "190 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "180 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "170 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "160 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "150 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "140 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "130 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "120 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
                                 "medida": "110 x 45 cm",
                                 "link": "",
                                 "default": true,
@@ -9997,9 +9800,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -10009,9 +9813,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -10021,9 +9826,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -10033,9 +9839,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -10045,9 +9852,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -10057,9 +9865,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 40000,
+                                "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -10111,7 +9920,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616692617,
+                "last_modified": 1784430002742,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -10151,7 +9960,7 @@ const productsData = [
             },
             {
                 "id": "baranda-desmontable-triple",
-                "title": "Baranda desmontable: Triple",
+                "title": "Baranda: Desmontable Clásica - Triple",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "image": "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp",
                 "acabados_groups": [
@@ -10163,28 +9972,69 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "110 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1168350423-baranda-para-cama-bebes-ninos-adultos-110-x-60-cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "70 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1393562489-baranda-para-cama-bebes-ninos-adultos-70-x-60-cm-_JM",
+                                "medida": "200 x 60 cm",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 85000,
+                                "cost_price": 85000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "190 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 85000,
+                                "cost_price": 85000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "140 x 60 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2639109142-baranda-de-seguridad-para-cama-140-x-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 60000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "110 x 60 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "70 x 60 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -10197,6 +10047,45 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
+                                "medida": "200 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "190 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "140 x 60 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2639109142-baranda-de-seguridad-para-cama-140-x-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
                                 "medida": "110 x 60 cm",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
                                 "default": true,
@@ -10204,7 +10093,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -10216,7 +10106,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -10242,6 +10133,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -10254,6 +10146,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -10306,7 +10199,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616662488,
+                "last_modified": 1784430024351,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -10332,11 +10225,11 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 10
+                "views": 12
             },
             {
                 "id": "baranda-sommier-clasica",
-                "title": "Baranda sommier: Clásica",
+                "title": "Baranda: Para camas Sommier",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
                 "image": "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
                 "acabados_groups": [
@@ -10358,6 +10251,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 65000,
+                                "cost_price": 65000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10370,6 +10264,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 65000,
+                                "cost_price": 65000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10382,6 +10277,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10394,6 +10290,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10406,6 +10303,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10418,6 +10316,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10430,6 +10329,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10442,6 +10342,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -10467,6 +10368,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10479,6 +10381,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10491,6 +10394,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10503,6 +10407,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -10527,6 +10432,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10539,6 +10445,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10551,6 +10458,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10563,6 +10471,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -10615,13 +10524,13 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616653865,
+                "last_modified": 1784430041975,
                 "primaryCatId": "Barandas",
                 "views": 11
             },
             {
                 "id": "baranda-sommier-triple",
-                "title": "Baranda sommier: Triple",
+                "title": "Baranda: Para camas Sommier - Triple",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
                 "image": "img/migrados/barandas/baranda-sommier-triple/01.webp",
                 "acabados_groups": [
@@ -10643,6 +10552,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -10655,6 +10565,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -10667,6 +10578,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -10692,6 +10604,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -10704,6 +10617,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -10729,6 +10643,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -10741,6 +10656,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -10793,13 +10709,13 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616640275,
+                "last_modified": 1784430060894,
                 "primaryCatId": "Barandas",
                 "views": 2
             },
             {
                 "id": "baranda-reforzada-geriatricos",
-                "title": "Barandas desmontable - Refuerzos con bulones",
+                "title": "Baranda: Desmontable con bulones - Especial",
                 "description": "",
                 "image": "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
                 "acabados_groups": [
@@ -10817,35 +10733,17 @@ const productsData = [
                                 "medida": "170 x 55 cm",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 30,
-                                        "discountPercent": 15
-                                    },
-                                    {
-                                        "minQty": 20,
-                                        "discountPercent": 7
-                                    },
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 5
-                                    }
-                                ],
-                                "cost_price": ""
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": false
                             }
-                        ]
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782416896821-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782416896821-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782416896941-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782416897057-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782416897160-imagen.webp"
                         ],
-                        "medidas_variants": []
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -10877,7 +10775,7 @@ const productsData = [
                     "baranda reforzada pino",
                     "baranda reforzada madera"
                 ],
-                "last_modified": 1782416897270,
+                "last_modified": 1784430109462,
                 "primaryCatId": "Barandas",
                 "visible": true,
                 "views": 10
@@ -11113,7 +11011,7 @@ const productsData = [
         "products": [
             {
                 "id": "Colecho_retro_madera",
-                "title": "Colecho Retro",
+                "title": "Cuna: Colecho Retro",
                 "description": "",
                 "image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
                 "acabados_groups": [
@@ -11186,13 +11084,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1783750659139,
+                "last_modified": 1784411533338,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1
             },
             {
                 "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
-                "title": "Corral - Colecho con doble",
+                "title": "Cuna: Corral - Colecho con doble",
                 "description": "Corral - Colecho con doble posición de parrilla",
                 "image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
                 "acabados_groups": [
@@ -11266,13 +11164,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1783750731964,
+                "last_modified": 1784411542681,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 0
             },
             {
                 "id": "Eco-fija-100x50cm-Modelo-unico",
-                "title": "Eco fija - Modelo único",
+                "title": "Cuna: Eco fija - Modelo único",
                 "description": "Eco fija - 100 x 50 cm - Modelo único",
                 "image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
                 "acabados_groups": [
@@ -11344,13 +11242,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1783750807815,
+                "last_modified": 1784411547881,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1
             },
             {
                 "id": "Eco-rebatible",
-                "title": "Eco rebatible",
+                "title": "Cuna: Eco rebatible",
                 "description": "",
                 "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
                 "acabados_groups": [
@@ -11431,13 +11329,13 @@ const productsData = [
                     "corral de madera",
                     "corral funcional"
                 ],
-                "last_modified": 1784164102112,
+                "last_modified": 1784430151878,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 9
             },
             {
                 "id": "cuna-Rebatible-cajones",
-                "title": "Cuna rebatible con cajones",
+                "title": "Cuna: rebatible con cajones",
                 "description": "",
                 "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
                 "acabados_groups": [
@@ -11510,13 +11408,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1783750899703,
+                "last_modified": 1784411560841,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 0
             },
             {
                 "id": "Romana-Rebatible-Cajones",
-                "title": "Romana - Rebatible - Cajones",
+                "title": "Cuna: Romana - Rebatible - Cajones",
                 "description": "",
                 "image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
                 "acabados_groups": [
@@ -11589,13 +11487,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1783750938226,
+                "last_modified": 1784411566442,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1
             },
             {
                 "id": "Romana - Rebatible - Cajones - en XX",
-                "title": "Romana - Rebatible - Cajones - en XX",
+                "title": "Cuna: Romana - Rebatible - Cajones - en XX",
                 "description": "",
                 "image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
                 "acabados_groups": [
@@ -11668,13 +11566,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1783750963119,
+                "last_modified": 1784411576658,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 0
             },
             {
                 "id": "Sol - Rebatible - Cajones",
-                "title": "Sol - Rebatible - Cajones",
+                "title": "Cuna: Sol - Rebatible - Cajones",
                 "description": "",
                 "image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
                 "acabados_groups": [
@@ -11747,7 +11645,7 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1783750987240,
+                "last_modified": 1784411571657,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 2
             }
@@ -13347,7 +13245,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 15
+                "views": 16
             }
         ],
         "rubro": "carpinteria"
@@ -14954,8 +14852,8 @@ const productsData = [
             },
             {
                 "id": "podio-premiacion--3-modulos-",
-                "title": "Podio premiación",
-                "description": "Podios modulares resistentes para eventos y premiaciones.",
+                "title": "Podio premiación Profesional",
+                "description": "Podios modulares resistentes para eventos y premiaciones.\n\nMódulo 1: 80 x 40 x 50 cm\nMódulo 2: 80 x 40 x 35 cm\nMódulo 3: 80 x 40 x 20 cm\n\nEnvió gratis a las zonas 1 2 y 3, se puede ver en la ultima foto de la publicación.",
                 "image": "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
                 "acabados_groups": [
                     {
@@ -14966,18 +14864,25 @@ const productsData = [
                             "img/podios-de-premiacion/podio-premiacion/1780774911040-imagen.webp",
                             "img/podios-de-premiacion/podio-premiacion/1780774911168-imagen.webp",
                             "img/podios-de-premiacion/podio-premiacion/1780774911301-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1780774911452-imagen.webp"
+                            "img/podios-de-premiacion/podio-premiacion/1780774911452-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion/1784645593411-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Único combo",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2235353348-podio-de-premiacion-profesional-3-niveles-reforzados-_JM",
                                 "default": true,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 275000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -15017,9 +14922,8 @@ const productsData = [
                     "podios individuales",
                     "podios de madera"
                 ],
-                "last_modified": 1780774911579,
-                "primaryCatId": "Podios",
-                "views": 4
+                "last_modified": 1784645695698,
+                "primaryCatId": "Podios"
             },
             {
                 "id": "podios-individuales",
