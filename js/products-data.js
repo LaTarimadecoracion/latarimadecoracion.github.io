@@ -2388,9 +2388,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 26000,
+                                "cost_price": 6500,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -2448,9 +2449,8 @@ const productsData = [
                     "mueble natural",
                     "hecho a mano"
                 ],
-                "last_modified": 1783637039050,
-                "primaryCatId": "Mesas-madera",
-                "views": 10
+                "last_modified": 1785084728300,
+                "primaryCatId": "Mesas-madera"
             },
             {
                 "id": "jenga",
@@ -3271,7 +3271,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637306441,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "Posa-Tortas",
@@ -5286,7 +5286,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "3 Ganchos",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/perchero-3-ganchos--rustico/up/MLAU4386927211",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -5353,10 +5353,10 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784391433176,
+                "last_modified": 1784773568612,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 1
+                "views": 2
             },
             {
                 "id": "Perchero 5 - Rusctio - campo decorado",
@@ -5381,7 +5381,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Rustico 5 Ganchos",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/perchero-5-ganchos--rustico/up/MLAU4387056305",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -5448,7 +5448,7 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784391421552,
+                "last_modified": 1784773922188,
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 0
@@ -5473,7 +5473,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "6 Ganchitos",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/perchero-6-ganchos--minimalista/up/MLAU4410318352?pdp_filters=item_id:MLA3651569076",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -5540,7 +5540,7 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784391465049,
+                "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 0
@@ -5564,7 +5564,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "5 Ganchitos",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/perchero-5-ganchos--minimalista/up/MLAU4410348762?pdp_filters=item_id:MLA3651569262",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -5631,7 +5631,7 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784391454504,
+                "last_modified": 1784773242756,
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 0
@@ -5908,7 +5908,7 @@ const productsData = [
                 ],
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
-                "visible": false,
+                "visible": true,
                 "views": 3
             },
             {
@@ -6607,7 +6607,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 1
+                "views": 2
             },
             {
                 "id": "baranda-reforzada-geriatricos",
@@ -6749,7 +6749,8 @@ const productsData = [
                     "podios de madera"
                 ],
                 "last_modified": 1784645695698,
-                "primaryCatId": "Podios"
+                "primaryCatId": "Podios",
+                "views": 5
             }
         ]
     },
@@ -7858,7 +7859,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 1
+                "views": 2
             },
             {
                 "id": "Perchero 5 - Rusctio - campo decorado",
@@ -7883,7 +7884,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Rustico 5 Ganchos",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/perchero-5-ganchos--rustico/up/MLAU4387056305",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -7950,7 +7951,7 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784391421552,
+                "last_modified": 1784773922188,
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 0
@@ -7975,7 +7976,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "3 Ganchos",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/perchero-3-ganchos--rustico/up/MLAU4386927211",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -8042,10 +8043,10 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784391433176,
+                "last_modified": 1784773568612,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 1
+                "views": 2
             },
             {
                 "id": "perchero-madera-tuvitos5",
@@ -8066,7 +8067,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "5 Ganchitos",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/perchero-5-ganchos--minimalista/up/MLAU4410348762?pdp_filters=item_id:MLA3651569262",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -8133,7 +8134,7 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784391454504,
+                "last_modified": 1784773242756,
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 0
@@ -8158,7 +8159,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "6 Ganchitos",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/perchero-6-ganchos--minimalista/up/MLAU4410318352?pdp_filters=item_id:MLA3651569076",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -8225,7 +8226,7 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784391465049,
+                "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 0
@@ -8707,9 +8708,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 26000,
+                                "cost_price": 6500,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -8720,7 +8722,7 @@ const productsData = [
                     "multifunción",
                     "estilo",
                     "nórdico",
-                    "organizadores",
+                    "carpintería",
                     "madera",
                     "pino",
                     "carpinteria",
@@ -8744,32 +8746,31 @@ const productsData = [
                     "mueble de madera",
                     "mueble de pino",
                     "mueble mueble",
-                    "organizadores mueble",
+                    "carpintería  mueble",
                     "multifunción de madera",
                     "multifunción de pino",
                     "mueble multifunción",
-                    "organizadores multifunción",
+                    "carpintería  multifunción",
                     "estilo de madera",
                     "estilo de pino",
                     "mueble estilo",
-                    "organizadores estilo",
+                    "carpintería  estilo",
                     "nórdico de madera",
                     "nórdico de pino",
                     "mueble nórdico",
-                    "organizadores nórdico",
-                    "organizadores de madera",
-                    "organizadores de pino",
-                    "mueble organizadores",
-                    "organizadores organizadores",
+                    "carpintería  nórdico",
+                    "carpintería de madera",
+                    "carpintería de pino",
+                    "mueble carpintería",
+                    "carpintería  carpintería",
                     "carpinteria artesanal",
                     "decoracion del hogar",
                     "mueble rustico",
                     "mueble natural",
                     "hecho a mano"
                 ],
-                "last_modified": 1783637039050,
-                "primaryCatId": "Mesas-madera",
-                "views": 10
+                "last_modified": 1785084728300,
+                "primaryCatId": "Mesas-madera"
             },
             {
                 "id": "verdulero-x3",
@@ -9069,7 +9070,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637306441,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "Posa-Tortas",
@@ -12312,7 +12313,7 @@ const productsData = [
                 ],
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
-                "visible": false,
+                "visible": true,
                 "views": 3
             },
             {
@@ -12455,7 +12456,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 1,
+                "views": 2,
                 "tags": [
                     "estante",
                     "estantes",
@@ -13513,9 +13514,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 26000,
+                                "cost_price": 6500,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -13526,7 +13528,7 @@ const productsData = [
                     "multifunción",
                     "estilo",
                     "nórdico",
-                    "mesas",
+                    "carpintería",
                     "madera",
                     "pino",
                     "carpinteria",
@@ -13550,32 +13552,31 @@ const productsData = [
                     "mueble de madera",
                     "mueble de pino",
                     "mueble mueble",
-                    "mesas de madera mueble",
+                    "carpintería  mueble",
                     "multifunción de madera",
                     "multifunción de pino",
                     "mueble multifunción",
-                    "mesas de madera multifunción",
+                    "carpintería  multifunción",
                     "estilo de madera",
                     "estilo de pino",
                     "mueble estilo",
-                    "mesas de madera estilo",
+                    "carpintería  estilo",
                     "nórdico de madera",
                     "nórdico de pino",
                     "mueble nórdico",
-                    "mesas de madera nórdico",
-                    "mesas de madera",
-                    "mesas de pino",
-                    "mueble mesas",
-                    "mesas de madera mesas",
-                    "madera de madera",
-                    "madera de pino",
-                    "mueble madera",
-                    "mesas de madera madera",
-                    "carpinteria artesanal"
+                    "carpintería  nórdico",
+                    "carpintería de madera",
+                    "carpintería de pino",
+                    "mueble carpintería",
+                    "carpintería  carpintería",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano"
                 ],
-                "last_modified": 1783637039050,
-                "primaryCatId": "Mesas-madera",
-                "views": 10
+                "last_modified": 1785084728300,
+                "primaryCatId": "Mesas-madera"
             },
             {
                 "id": "mesa-plegabe",
@@ -14923,7 +14924,8 @@ const productsData = [
                     "podios de madera"
                 ],
                 "last_modified": 1784645695698,
-                "primaryCatId": "Podios"
+                "primaryCatId": "Podios",
+                "views": 5
             },
             {
                 "id": "podios-individuales",
