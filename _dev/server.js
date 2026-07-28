@@ -359,34 +359,61 @@ app.post('/api/save-site-config', (req, res) => {
 });
 
 // API Endpoint to build and publish to GitHub Pages
-app.post('/api/publish-github', (req, res) => {
-    try {
-        console.log('🚀 Iniciando publicación a GitHub...');
-        const { exec } = require('child_process');
-        
-        // Ejecutar compilación y luego git commands
-        const command = 'node _dev/build.js && git add . && git commit -m "Actualización desde Panel de Administración" && git push';
-        
-        exec(command, { cwd: ROOT_DIR }, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`❌ Error en la publicación: ${error.message}`);
-                return res.status(500).json({ 
-                    success: false, 
-                    message: 'Error al compilar o subir a GitHub.', 
-                    error: error.message,
-                    details: stderr || stdout
-                });
-            }
-            console.log('✅ Publicación a GitHub completada exitosamente.');
-            res.json({ 
-                success: true, 
-                message: 'Web compilada y publicada exitosamente en GitHub Pages.',
-                details: stdout
+app.post('/api/publish-github', async (req, res) => {
+    console.log('🚀 Iniciando publicación a GitHub...');
+    const { exec } = require('child_process');
+    const execPromise = (cmd, options = {}) => {
+        return new Promise((resolve, reject) => {
+            exec(cmd, options, (error, stdout, stderr) => {
+                if (error) {
+                    reject({ error, stdout, stderr });
+                } else {
+                    resolve({ stdout, stderr });
+                }
             });
         });
-    } catch (err) {
-        console.error('❌ Error interno en publish-github:', err);
-        res.status(500).json({ success: false, message: 'Error interno al procesar la publicación.' });
+    };
+
+    try {
+        // Paso 1: Compilar
+        console.log('1. Compilando la web...');
+        await execPromise('node _dev/build.js', { cwd: ROOT_DIR });
+
+        // Paso 2: Staging de archivos
+        console.log('2. Staging files...');
+        await execPromise('git add .', { cwd: ROOT_DIR });
+
+        // Paso 3: Comprobar si hay cambios para hacer commit
+        const { stdout: statusOut } = await execPromise('git status --porcelain', { cwd: ROOT_DIR });
+        
+        if (statusOut.trim().length > 0) {
+            console.log('3. Guardando cambios (commit)...');
+            await execPromise('git commit -m "Actualización desde Panel de Administración"', { cwd: ROOT_DIR });
+        } else {
+            console.log('3. No hay cambios pendientes para guardar (omitiendo commit).');
+        }
+
+        // Paso 4: Subir a GitHub
+        console.log('4. Subiendo cambios a GitHub (push)...');
+        const { stdout: pushOut } = await execPromise('git push', { cwd: ROOT_DIR });
+        
+        console.log('✅ Publicación a GitHub completada exitosamente.');
+        res.json({ 
+            success: true, 
+            message: 'Web compilada y publicada exitosamente en GitHub Pages.',
+            details: pushOut
+        });
+
+    } catch (errObj) {
+        console.error('❌ Error en la publicación:', errObj);
+        const errMsg = errObj.error ? errObj.error.message : 'Error desconocido';
+        const errDetails = errObj.stderr || errObj.stdout || '';
+        res.status(500).json({ 
+            success: false, 
+            message: 'Error al compilar o subir a GitHub.', 
+            error: errMsg,
+            details: errDetails
+        });
     }
 });
 
