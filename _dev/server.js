@@ -360,6 +360,18 @@ app.post('/api/save-site-config', (req, res) => {
 
 // API Endpoint to build and publish to GitHub Pages
 app.post('/api/publish-github', async (req, res) => {
+    // Verificar que la petición provenga únicamente de la PC local (localhost)
+    const clientIp = req.ip || req.connection.remoteAddress || '';
+    const isLocalhost = clientIp === '127.0.0.1' || clientIp === '::1' || clientIp === '::ffff:127.0.0.1' || clientIp.endsWith('127.0.0.1');
+    
+    if (!isLocalhost) {
+        console.warn(`⚠️ Intento de publicación denegado desde IP no local: ${clientIp}`);
+        return res.status(403).json({ 
+            success: false, 
+            message: 'Acceso denegado. La publicación a GitHub solo se puede realizar desde la PC local.' 
+        });
+    }
+
     console.log('🚀 Iniciando publicación a GitHub...');
     const { exec } = require('child_process');
     const execPromise = (cmd, options = {}) => {
