@@ -613,12 +613,12 @@ window.siteConfig = {
         }
     ],
     "socialLinks": {
-        "instagram": "",
-        "tiktok": "",
-        "facebook": "",
-        "youtube": "",
-        "whatsapp": "",
-        "mercadolibre": ""
+        "instagram": "https://www.instagram.com/latarimadecoracion",
+        "tiktok": "https://www.tiktok.com/@latarimadecoracion",
+        "facebook": "https://www.facebook.com/LaTarimaDecoracion/",
+        "youtube": "https://www.youtube.com/@latarimadecoracion",
+        "whatsapp": "https://wa.me/5491167007723",
+        "mercadolibre": "https://www.mercadolibre.com.ar/pagina/latarima"
     },
     "mayoristaConfig": {
         "alias": "la.tarima.deco",
