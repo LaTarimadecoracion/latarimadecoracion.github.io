@@ -358,6 +358,38 @@ app.post('/api/save-site-config', (req, res) => {
     }
 });
 
+// API Endpoint to build and publish to GitHub Pages
+app.post('/api/publish-github', (req, res) => {
+    try {
+        console.log('🚀 Iniciando publicación a GitHub...');
+        const { exec } = require('child_process');
+        
+        // Ejecutar compilación y luego git commands
+        const command = 'node _dev/build.js && git add . && git commit -m "Actualización desde Panel de Administración" && git push';
+        
+        exec(command, { cwd: ROOT_DIR }, (error, stdout, stderr) => {
+            if (error) {
+                console.error(`❌ Error en la publicación: ${error.message}`);
+                return res.status(500).json({ 
+                    success: false, 
+                    message: 'Error al compilar o subir a GitHub.', 
+                    error: error.message,
+                    details: stderr || stdout
+                });
+            }
+            console.log('✅ Publicación a GitHub completada exitosamente.');
+            res.json({ 
+                success: true, 
+                message: 'Web compilada y publicada exitosamente en GitHub Pages.',
+                details: stdout
+            });
+        });
+    } catch (err) {
+        console.error('❌ Error interno en publish-github:', err);
+        res.status(500).json({ success: false, message: 'Error interno al procesar la publicación.' });
+    }
+});
+
 // Archivo físico para almacenar conteo de vistas
 const VIEWS_FILE = path.join(__dirname, 'views-stats.json');
 

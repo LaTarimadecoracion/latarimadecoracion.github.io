@@ -74,6 +74,7 @@ function initAdminUX20() {
     if (typeof window.initPagesAdmin === 'function') window.initPagesAdmin();
     if (typeof window.initSocialLinksAdmin === 'function') window.initSocialLinksAdmin();
     if (typeof window.initThemeAdmin === 'function') window.initThemeAdmin();
+    if (typeof window.initGithubPublishAdmin === 'function') window.initGithubPublishAdmin();
     if (typeof window.initRentalsAdmin === 'function') window.initRentalsAdmin();
     if (typeof window.initMayoristaAdmin === 'function') window.initMayoristaAdmin();
 }

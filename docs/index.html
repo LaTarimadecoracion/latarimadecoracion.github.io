@@ -577,6 +577,24 @@
                             
                             <div class="dashboard-columns">
                                 <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                    
+                                    <div class="admin-card github-publish-panel" style="border: 1.5px solid #CBD5E1; background: #F8FAFC; border-radius: var(--radius-md); padding: 1.25rem;">
+                                        <header class="admin-page-header" style="margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0;">
+                                            <h3 class="admin-header-title" style="color: #1E293B; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0;">
+                                                <span class="material-symbols-outlined" style="color: #0F172A; font-size: 1.4rem;">cloud_upload</span>
+                                                Publicar Cambios a Internet
+                                            </h3>
+                                        </header>
+                                        <p style="font-size: 0.8rem; color: #64748B; margin-bottom: 1rem; line-height: 1.4;">
+                                            Hace una copia minificada de tu web y la sube automáticamente a GitHub Pages para que todo el mundo vea las actualizaciones en línea.
+                                        </p>
+                                        <button type="button" id="admin-github-publish-btn" class="btn-primary" style="background: #0F172A; border: none; color: white; width: 100%; max-width: none; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.75rem; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                                            <span class="material-symbols-outlined">publish</span>
+                                            <span>Subir Cambios a Internet (GitHub)</span>
+                                        </button>
+                                        <div id="publish-status-msg" style="margin-top: 0.75rem; font-size: 0.82rem; font-weight: 600; padding: 0.5rem 0.75rem; border-radius: 6px; display: none; line-height: 1.4;"></div>
+                                    </div>
+
                                     <div class="admin-card action-panel">
                                         <header class="admin-page-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem;">
                                             <h3 class="admin-header-title">
