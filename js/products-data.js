@@ -2450,7 +2450,8 @@ const productsData = [
                     "hecho a mano"
                 ],
                 "last_modified": 1785084728300,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 11
             },
             {
                 "id": "jenga",
@@ -3792,7 +3793,7 @@ const productsData = [
                             },
                             {
                                 "medida": "110 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-cama-110x60-cm-la-tarima/up/MLAU3898036346",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -3805,7 +3806,7 @@ const productsData = [
                             },
                             {
                                 "medida": "70 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama--bebes-ninos-adultos-70-x-60-cm/up/MLAU236600873",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -3979,7 +3980,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1784430024351,
+                "last_modified": 1785450532165,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -4004,8 +4005,7 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "primaryCatId": "Barandas",
-                "views": 12
+                "primaryCatId": "Barandas"
             },
             {
                 "id": "perchero-pared-doblegancho",
@@ -8770,7 +8770,8 @@ const productsData = [
                     "hecho a mano"
                 ],
                 "last_modified": 1785084728300,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 11
             },
             {
                 "id": "verdulero-x3",
@@ -10013,7 +10014,7 @@ const productsData = [
                             },
                             {
                                 "medida": "110 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-cama-110x60-cm-la-tarima/up/MLAU3898036346",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -10026,7 +10027,7 @@ const productsData = [
                             },
                             {
                                 "medida": "70 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
+                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama--bebes-ninos-adultos-70-x-60-cm/up/MLAU236600873",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -10200,7 +10201,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1784430024351,
+                "last_modified": 1785450532165,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -10225,8 +10226,7 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "primaryCatId": "Barandas",
-                "views": 12
+                "primaryCatId": "Barandas"
             },
             {
                 "id": "baranda-sommier-clasica",
@@ -13576,7 +13576,8 @@ const productsData = [
                     "hecho a mano"
                 ],
                 "last_modified": 1785084728300,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 11
             },
             {
                 "id": "mesa-plegabe",

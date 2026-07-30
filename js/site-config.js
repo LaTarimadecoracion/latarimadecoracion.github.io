@@ -3,7 +3,7 @@
 // Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.
 
 window.siteConfig = {
-    "activeTheme": "classic",
+    "activeTheme": "sobrio",
     "appConfig": {
         "home": {
             "title": "La Tarima",
@@ -613,12 +613,12 @@ window.siteConfig = {
         }
     ],
     "socialLinks": {
-        "instagram": "https://www.instagram.com/latarimadecoracion",
-        "tiktok": "https://www.tiktok.com/@latarimadecoracion",
-        "facebook": "https://www.facebook.com/LaTarimaDecoracion/",
-        "youtube": "https://www.youtube.com/@latarimadecoracion",
-        "whatsapp": "https://wa.me/5491167007723",
-        "mercadolibre": "https://www.mercadolibre.com.ar/pagina/latarima"
+        "instagram": "",
+        "tiktok": "",
+        "facebook": "",
+        "youtube": "",
+        "whatsapp": "",
+        "mercadolibre": ""
     },
     "mayoristaConfig": {
         "alias": "la.tarima.deco",
