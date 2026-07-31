@@ -133,6 +133,19 @@ window.siteConfig = {
             "linkUrl": "/?view=catalogo",
             "linkText": "Catalogo completo",
             "linkNewTab": false
+        },
+        {
+            "title": "Precios y venta online!",
+            "description": "Los precios de los productos dentro de la pagina no incluyen son solo de compra directa.\nSi va a comprar dentro de cualquier plataforma, o tienda online, a estos mismos se le suman los impuestos y comisiones de dichas paginas.\nCualquier cosa, puede enviarnos un wpp:",
+            "mediaType": "image",
+            "image": "img/logo_provisional.png",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [],
+            "linkUrl": "",
+            "linkText": "",
+            "linkNewTab": true,
+            "timestamp": 1785464761697
         }
     ],
     "sessionAvisos": [
