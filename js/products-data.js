@@ -1496,7 +1496,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 16
+                "views": 28
             },
             {
                 "id": "silla-infantil",
@@ -1688,7 +1688,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617596816,
                 "primaryCatId": "Organizadores",
-                "views": 17
+                "views": 21
             },
             {
                 "id": "deck-cuadrado",
@@ -2517,7 +2517,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes",
-                "views": 1
+                "views": 5
             },
             {
                 "id": "verdulero-clasico",
@@ -2731,7 +2731,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores",
-                "views": 5
+                "views": 7
             },
             {
                 "id": "verdulero-x3",
@@ -3359,10 +3359,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 60000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -3372,10 +3372,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -3385,10 +3385,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 35000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -3517,9 +3517,8 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1784430060894,
-                "primaryCatId": "Barandas",
-                "views": 2
+                "last_modified": 1786057097023,
+                "primaryCatId": "Barandas"
             },
             {
                 "id": "baranda-fija-clasica",
@@ -4005,7 +4004,8 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 25
             },
             {
                 "id": "perchero-pared-doblegancho",
@@ -4355,7 +4355,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 20
+                "views": 21
             },
             {
                 "id": "9-vinos",
@@ -5809,7 +5809,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 0
+                "views": 1
             },
             {
                 "id": "hexagonales",
@@ -6325,7 +6325,7 @@ const productsData = [
                 "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
                 "visible": true,
-                "views": 0
+                "views": 1
             },
             {
                 "id": "perchero-nordico-pared-x3",
@@ -6751,6 +6751,376 @@ const productsData = [
                 "last_modified": 1784645695698,
                 "primaryCatId": "Podios",
                 "views": 5
+            },
+            {
+                "id": "mensulas-escritorio",
+                "title": "Ménsulas para escritorios",
+                "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
+                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "40 x 40 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 47998,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "45 x 45 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50 x 50 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 43000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 62999,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula",
+                    "mensula de pino",
+                    "mensula de madera",
+                    "mensulas de pino",
+                    "mensulas de madera",
+                    "mensula estante",
+                    "soporte estante",
+                    "soporte mensula",
+                    "mensula rustica",
+                    "mensulas rusticas",
+                    "mensula decorativa"
+                ],
+                "last_modified": 1786058695633,
+                "primaryCatId": "Estantes"
+            },
+            {
+                "id": "mensulas",
+                "title": "Ménsulas para estantes",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "20 x 20 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 3000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 5500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 13999,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 30 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 4500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 8500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula",
+                    "mensula de pino",
+                    "mensula de madera",
+                    "mensulas de pino",
+                    "mensulas de madera",
+                    "mensula estante",
+                    "soporte estante",
+                    "soporte mensula",
+                    "mensula rustica",
+                    "mensulas rusticas",
+                    "mensula decorativa"
+                ],
+                "last_modified": 1786058228736,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -7028,7 +7398,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 20
+                "views": 21
             },
             {
                 "id": "9-vinos",
@@ -7387,7 +7757,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 0
+                "views": 1
             }
         ],
         "rubro": "carpinteria"
@@ -8362,7 +8732,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 16
+                "views": 28
             },
             {
                 "id": "especiero",
@@ -8467,7 +8837,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617596816,
                 "primaryCatId": "Organizadores",
-                "views": 17
+                "views": 21
             },
             {
                 "id": "verdulero-clasico",
@@ -8681,7 +9051,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores",
-                "views": 5
+                "views": 7
             },
             {
                 "id": "Mueble-Multifunción",
@@ -9134,6 +9504,376 @@ const productsData = [
                 "last_modified": 1783908158520,
                 "primaryCatId": "Organizadores",
                 "views": 10
+            },
+            {
+                "id": "mensulas-escritorio",
+                "title": "Ménsulas para escritorios",
+                "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
+                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "40 x 40 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 47998,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "45 x 45 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50 x 50 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 43000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 62999,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula",
+                    "mensula de pino",
+                    "mensula de madera",
+                    "mensulas de pino",
+                    "mensulas de madera",
+                    "mensula estante",
+                    "soporte estante",
+                    "soporte mensula",
+                    "mensula rustica",
+                    "mensulas rusticas",
+                    "mensula decorativa"
+                ],
+                "last_modified": 1786058695633,
+                "primaryCatId": "Estantes"
+            },
+            {
+                "id": "mensulas",
+                "title": "Ménsulas para estantes",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "20 x 20 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 3000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 5500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 13999,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 30 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 4500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 8500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula",
+                    "mensula de pino",
+                    "mensula de madera",
+                    "mensulas de pino",
+                    "mensulas de madera",
+                    "mensula estante",
+                    "soporte estante",
+                    "soporte mensula",
+                    "mensula rustica",
+                    "mensulas rusticas",
+                    "mensula decorativa"
+                ],
+                "last_modified": 1786058228736,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -10226,7 +10966,8 @@ const productsData = [
                         "Otras medidas"
                     ]
                 },
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 24
             },
             {
                 "id": "baranda-sommier-clasica",
@@ -10552,10 +11293,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 60000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -10565,10 +11306,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -10578,10 +11319,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10000,
+                                "price": 35000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -10710,9 +11451,8 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1784430060894,
-                "primaryCatId": "Barandas",
-                "views": 2
+                "last_modified": 1786057097023,
+                "primaryCatId": "Barandas"
             },
             {
                 "id": "baranda-reforzada-geriatricos",
@@ -12558,117 +13298,135 @@ const productsData = [
             },
             {
                 "id": "mensulas",
-                "title": "Ménsulas",
+                "title": "Ménsulas para estantes",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/migrados/decoracion/mensulas/mensulas.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "undefined",
+                        "acabado_name": "20 x 20 cm",
                         "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
                         "images_list": [
                             "img/migrados/decoracion/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "45 x 45 (Combo x12)",
+                                "medida": "1 Un.",
                                 "link": "",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 3000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
-                                "medida": "45 x 45 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1248080101-mensula-madera-45x45cm-para-escritorios-nordicos-_JM",
-                                "default": true,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "45 x 45 (Combo x6)",
+                                "medida": "2 Un.",
                                 "link": "",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 5500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
-                                "medida": "40 x 40 (Combo x12)",
+                                "medida": "4 Un.",
                                 "link": "",
                                 "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
-                                "medida": "40 x 40 (Combo x2)",
+                                "medida": "6 Un.",
                                 "link": "",
                                 "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40 x 40 (Combo x6)",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30 x 30 (Combo x12)",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30 x 30 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1377475740-mensula-de-madera-la-tarima-30-x-30-cm-nordico-_JM",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30 x 30 (Combo x6)",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "20 x 20 (Combo x12)",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "20 x 20 (Combo x2)",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "20 x 20 (Combo x6)",
-                                "link": "",
-                                "default": false,
-                                "price": 10000,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 13999,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             }
-                        ]
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 30 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 4500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 8500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 3,
                 "tags": [
                     "mensula",
                     "mensulas",
@@ -12688,7 +13446,9 @@ const productsData = [
                     "mensula rustica",
                     "mensulas rusticas",
                     "mensula decorativa"
-                ]
+                ],
+                "last_modified": 1786058228736,
+                "primaryCatId": "Estantes"
             },
             {
                 "id": "estantes",
@@ -12891,7 +13651,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617596816,
                 "primaryCatId": "Organizadores",
-                "views": 17
+                "views": 21
             },
             {
                 "id": "Estantes-Cortes-Madera",
@@ -13049,6 +13809,222 @@ const productsData = [
                 "last_modified": 1783635269180,
                 "primaryCatId": "Estantes",
                 "views": 0
+            },
+            {
+                "id": "mensulas-escritorio",
+                "title": "Ménsulas para escritorios",
+                "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
+                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "40 x 40 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 47998,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "45 x 45 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50 x 50 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 43000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 62999,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula",
+                    "mensula de pino",
+                    "mensula de madera",
+                    "mensulas de pino",
+                    "mensulas de madera",
+                    "mensula estante",
+                    "soporte estante",
+                    "soporte mensula",
+                    "mensula rustica",
+                    "mensulas rusticas",
+                    "mensula decorativa"
+                ],
+                "last_modified": 1786058695633,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -13122,7 +14098,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes",
-                "views": 1
+                "views": 5
             },
             {
                 "id": "baul-madera-mediano",
@@ -13246,7 +14222,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 16
+                "views": 28
             }
         ],
         "rubro": "carpinteria"
@@ -13478,7 +14454,7 @@ const productsData = [
                 "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
                 "visible": true,
-                "views": 0
+                "views": 1
             }
         ]
     },
@@ -13885,6 +14861,222 @@ const productsData = [
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
                 "views": 6
+            },
+            {
+                "id": "mensulas-escritorio",
+                "title": "Ménsulas para escritorios",
+                "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
+                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "40 x 40 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 47998,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "45 x 45 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50 x 50 cm",
+                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 43000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 62999,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula",
+                    "mensula de pino",
+                    "mensula de madera",
+                    "mensulas de pino",
+                    "mensulas de madera",
+                    "mensula estante",
+                    "soporte estante",
+                    "soporte mensula",
+                    "mensula rustica",
+                    "mensulas rusticas",
+                    "mensula decorativa"
+                ],
+                "last_modified": 1786058695633,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -14968,7 +16160,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0,
+                "views": 5,
                 "tags": [
                     "podio",
                     "podios",

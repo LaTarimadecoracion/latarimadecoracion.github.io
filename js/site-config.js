@@ -150,6 +150,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Ménsulas para escritorios!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Ménsulas para escritorios!",
+            "mediaType": "image",
+            "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=mensulas-escritorio",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=mensulas-escritorio",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786057778167
+        },
+        {
             "title": "¡Nuevo Ingreso: Perchero nórdico de pared x5!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero nórdico de pared x5!",
             "mediaType": "image",
