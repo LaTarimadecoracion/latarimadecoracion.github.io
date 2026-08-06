@@ -374,7 +374,7 @@
         }
 
 
-        function buildWA(grupo, medidaName, tipoEntrega = '') {
+        function buildWA(grupo, medidaName, tipoEntrega = '', shippingData = {}) {
             const selOpt = divOpt.querySelector('select');
             const optText = selOpt ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
             const optLabel = product.optional_variant?.label || '';
@@ -460,6 +460,12 @@
                 parts.push('• Entrega: 🏪 Retiro por el taller');
             } else if (tipoEntrega === 'shipping') {
                 parts.push('• Entrega: 🚚 Necesito envío a domicilio');
+                if (shippingData.localidad) {
+                    parts.push(`• Destino/CP: ${shippingData.localidad}`);
+                }
+                if (shippingData.direccion) {
+                    parts.push(`• Dirección: ${shippingData.direccion}`);
+                }
             }
 
             return `¡Hola La Tarima! Quiero consultar por el siguiente producto:\n\n${parts.join('\n')}\n\n¿Me podés pasar más info y disponibilidad?`;
@@ -507,6 +513,17 @@
                         <span class="delivery-opt-desc">${mlLink ? 'Comprar en Mercado Libre (aplica costos de plataforma y envío)' : 'Te cotizamos el envío por WhatsApp'}</span>
                     </button>
                 </div>
+
+                <!-- Formulario desplegable opcional para datos de envío -->
+                <div id="delivery-shipping-form" style="display:none; width:100%; flex-direction:column; gap:10px; margin-top:12px; text-align:left;">
+                    <p style="font-size:0.82rem; color:#64748B; margin:0 0 2px 0;">📍 Datos para cotizar el envío <span style="color:#94A3B8;">(opcionales)</span>:</p>
+                    <input type="text" id="ship-loc" placeholder="Localidad o Código Postal (ej: Ramos Mejía / 1704)" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
+                    <input type="text" id="ship-dir" placeholder="Dirección de entrega (ej: Av. de Mayo 123)" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
+                    <button id="btn-submit-shipping-wa" class="btn-primary giant-btn" style="width:100%; justify-content:center; margin-top:4px; font-size:0.92rem;">
+                        <span>Enviar consulta por WhatsApp</span>
+                    </button>
+                </div>
+
                 <button class="delivery-modal-cancel" id="dopt-cancel">Cancelar</button>
             `;
 
@@ -536,20 +553,41 @@
 
             // Opción: Necesito envío
             document.getElementById('dopt-shipping').addEventListener('click', () => {
-                closeModal();
                 if (mlLink) {
+                    closeModal();
                     // Producto con link ML → ir directo, sin pasar por WA
                     try {
                         if (typeof gtag === 'function') gtag('event', 'begin_checkout', { currency: 'ARS', items: [{ item_id: product.id, item_name: product.title, item_category: categoryName }] });
                     } catch(e) {}
                     window.open(mlLink, '_blank');
                 } else {
-                    // Sin link ML → WhatsApp con mensaje shipping
-                    const waMsg = buildWA(grupo, medidaName, 'shipping');
-                    try {
-                        if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA - Necesita Envio' });
-                    } catch(e) {}
-                    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                    // Sin link ML → mostrar inputs opcionales de envío dentro del modal
+                    const formContainer = document.getElementById('delivery-shipping-form');
+                    const optionsContainer = sheet.querySelector('.delivery-modal-options');
+                    const titleEl = sheet.querySelector('.delivery-modal-title');
+                    const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
+                    const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
+
+                    if (formContainer) {
+                        if (eyebrowEl) eyebrowEl.textContent = 'Cotizá tu envío';
+                        if (titleEl) titleEl.textContent = 'Datos para el envío';
+                        if (subtitleEl) subtitleEl.textContent = 'Completá estos datos básicos (opcionales) para cotizar el costo de envío. Te lo recomendamos para agilizar tu compra 👌';
+
+                        optionsContainer.style.display = 'none';
+                        formContainer.style.display = 'flex';
+                        document.getElementById('ship-loc')?.focus();
+
+                        document.getElementById('btn-submit-shipping-wa').addEventListener('click', () => {
+                            const localidad = document.getElementById('ship-loc')?.value.trim() || '';
+                            const direccion = document.getElementById('ship-dir')?.value.trim() || '';
+                            closeModal();
+                            const waMsg = buildWA(grupo, medidaName, 'shipping', { localidad, direccion });
+                            try {
+                                if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA - Necesita Envio' });
+                            } catch(e) {}
+                            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                        });
+                    }
                 }
             });
         }
