@@ -134,11 +134,38 @@
         }
         if (detailCategory) {
             let displayCategory = categoryName || '';
+            let targetCatId = null;
             if (product.primaryCatId && typeof window.sessionProducts !== 'undefined') {
                 const primaryCat = window.sessionProducts.find(c => c.id === product.primaryCatId);
-                if (primaryCat) displayCategory = primaryCat.name;
+                if (primaryCat) {
+                    displayCategory = primaryCat.name;
+                    targetCatId = primaryCat.id;
+                }
             }
-            detailCategory.textContent = displayCategory;
+            if (!targetCatId && typeof window.sessionProducts !== 'undefined' && displayCategory) {
+                const foundCat = window.sessionProducts.find(c => c.name.toLowerCase() === displayCategory.toLowerCase());
+                if (foundCat) targetCatId = foundCat.id;
+            }
+            if (!targetCatId && typeof window.sessionProducts !== 'undefined' && product) {
+                const foundCat = window.sessionProducts.find(c => c.products && c.products.some(p => p.id === product.id));
+                if (foundCat) {
+                    targetCatId = foundCat.id;
+                    if (!displayCategory) displayCategory = foundCat.name;
+                }
+            }
+
+            if (displayCategory) {
+                detailCategory.textContent = displayCategory;
+                if (targetCatId) {
+                    detailCategory.dataset.categoryId = targetCatId;
+                    detailCategory.style.cursor = 'pointer';
+                } else {
+                    delete detailCategory.dataset.categoryId;
+                    detailCategory.style.cursor = 'default';
+                }
+            } else {
+                detailCategory.textContent = '';
+            }
         }
 
         // Actualizar URL en el historial si es necesario
@@ -496,7 +523,12 @@
 
             const sheet = document.createElement('div');
             sheet.className = 'delivery-modal-sheet';
+            sheet.style.position = 'relative';
             sheet.innerHTML = `
+                <button class="delivery-modal-back-arrow" id="dopt-back-arrow" title="Volver" style="display:none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button class="delivery-modal-close-x" id="dopt-close-x" title="Cerrar">&times;</button>
                 <div class="delivery-modal-handle"></div>
                 <p class="delivery-modal-eyebrow">Antes de continuar</p>
                 <h3 class="delivery-modal-title">¿Necesitás envío?</h3>
@@ -524,7 +556,24 @@
                     </button>
                 </div>
 
-                <button class="delivery-modal-cancel" id="dopt-cancel">Cancelar</button>
+                <!-- Panel desplegable con información de Retiro por Taller -->
+                <div id="delivery-pickup-info" style="display:none; width:100%; flex-direction:column; gap:12px; margin-top:10px; text-align:left;">
+                    <div style="background:#FFF8F5; border:1.5px solid rgba(160,113,91,0.25); padding:14px; border-radius:14px; font-size:0.85rem; color:#2D3748; line-height:1.5;">
+                        <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
+                            <span>💡 Aclaraciones sobre el precio:</span>
+                        </p>
+                        <p style="margin:0 0 12px 0;">El precio publicado en la web se mantiene pagando en <strong>efectivo o transferencia</strong> <em>(no incluye impuestos ni costo de envío)</em>.</p>
+                        
+                        <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
+                            <span>📍 Ubicación del taller:</span>
+                        </p>
+                        <p style="margin:0;">Hurlingham, Buenos Aires, Argentina<br><span style="color:#718096; font-size:0.8rem;">(Zona céntrica: cerca de Av. Vergara y Av. Jauretche)</span></p>
+                    </div>
+
+                    <button id="btn-submit-pickup-wa" class="btn-primary giant-btn" style="width:100%; justify-content:center; font-size:0.92rem;">
+                        <span>Continuar a WhatsApp 💬</span>
+                    </button>
+                </div>
             `;
 
             overlay.appendChild(sheet);
@@ -538,17 +587,56 @@
                 setTimeout(() => overlay.remove(), 300);
             };
 
-            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-            document.getElementById('dopt-cancel').addEventListener('click', closeModal);
+            const resetToInitialView = () => {
+                const pickupInfo = document.getElementById('delivery-pickup-info');
+                const shippingForm = document.getElementById('delivery-shipping-form');
+                const optionsContainer = sheet.querySelector('.delivery-modal-options');
+                const titleEl = sheet.querySelector('.delivery-modal-title');
+                const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
+                const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
+                const backArrow = document.getElementById('dopt-back-arrow');
 
-            // Opción: Retirar por taller → WhatsApp con mensaje pickup
+                if (pickupInfo) pickupInfo.style.display = 'none';
+                if (shippingForm) shippingForm.style.display = 'none';
+                if (optionsContainer) optionsContainer.style.display = 'flex';
+                if (backArrow) backArrow.style.display = 'none';
+
+                if (eyebrowEl) eyebrowEl.textContent = 'Antes de continuar';
+                if (titleEl) titleEl.textContent = '¿Necesitás envío?';
+                if (subtitleEl) subtitleEl.textContent = 'Elegí una de las opciones para poder continuar';
+            };
+
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+            document.getElementById('dopt-close-x')?.addEventListener('click', closeModal);
+            document.getElementById('dopt-back-arrow')?.addEventListener('click', resetToInitialView);
+
+            // Opción: Retirar por taller → desplegar panel de información de retiro
             document.getElementById('dopt-pickup').addEventListener('click', () => {
-                closeModal();
-                const waMsg = buildWA(grupo, medidaName, 'pickup');
-                try {
-                    if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA - Retiro Taller' });
-                } catch(e) {}
-                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                const pickupInfo = document.getElementById('delivery-pickup-info');
+                const optionsContainer = sheet.querySelector('.delivery-modal-options');
+                const titleEl = sheet.querySelector('.delivery-modal-title');
+                const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
+                const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
+                const backArrow = document.getElementById('dopt-back-arrow');
+
+                if (pickupInfo && optionsContainer) {
+                    if (eyebrowEl) eyebrowEl.textContent = 'Retiro por taller';
+                    if (titleEl) titleEl.textContent = 'Retiro en Hurlingham';
+                    if (subtitleEl) subtitleEl.textContent = 'Ubicación y modalidad de entrega en el taller:';
+                    if (backArrow) backArrow.style.display = 'flex';
+
+                    optionsContainer.style.display = 'none';
+                    pickupInfo.style.display = 'flex';
+
+                    document.getElementById('btn-submit-pickup-wa')?.addEventListener('click', () => {
+                        closeModal();
+                        const waMsg = buildWA(grupo, medidaName, 'pickup');
+                        try {
+                            if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA - Retiro Taller' });
+                        } catch(e) {}
+                        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                    });
+                }
             });
 
             // Opción: Necesito envío
@@ -567,11 +655,13 @@
                     const titleEl = sheet.querySelector('.delivery-modal-title');
                     const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
                     const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
+                    const backArrow = document.getElementById('dopt-back-arrow');
 
                     if (formContainer) {
                         if (eyebrowEl) eyebrowEl.textContent = 'Cotizá tu envío';
                         if (titleEl) titleEl.textContent = 'Datos para el envío';
                         if (subtitleEl) subtitleEl.textContent = 'Completá estos datos básicos (opcionales) para cotizar el costo de envío. Te lo recomendamos para agilizar tu compra 👌';
+                        if (backArrow) backArrow.style.display = 'flex';
 
                         optionsContainer.style.display = 'none';
                         formContainer.style.display = 'flex';
@@ -857,13 +947,8 @@
                 e.stopPropagation();
                 
                 // Construir la URL completa apuntando al archivo SEO estático
-                const currentQuery = window.location.search;
-                const originPath = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/')}`;
-                const baseUrl = originPath.endsWith('/') ? originPath : originPath + '/';
-                const shareUrl = `${baseUrl}p/${product.id}.html${currentQuery}`;
-                
                 const grupo = grupos[currentGroupIndex];
-                const acabadoName = grupo.acabado_name || 'Único';
+                const acabadoName = grupo ? (grupo.acabado_name || 'Único') : 'Único';
                 
                 const selMedida = divMedida.querySelector('select');
                 const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
@@ -878,6 +963,11 @@
                     if (medidaText) selectedDetails += ` - ${medidaText}`;
                     if (optText) selectedDetails += ` - ${optText}`;
                 }
+
+                // Generar URL ultra corta mediante el acortador nativo
+                const shareUrl = window.getShortProductUrl
+                    ? window.getShortProductUrl(product.id, acabadoName !== 'Único' ? acabadoName : '', medidaText, optText)
+                    : window.location.href;
                 
                 const shareText = `Mira lo que encontré en La Tarima 😊\n*${product.title}* (${selectedDetails})`;
                 
@@ -935,18 +1025,18 @@
                     }
                 };
 
+                const fullMessage = `${shareText}\n${shareUrl}`;
+
                 if (navigator.share) {
                     navigator.share({
                         title: product.title,
-                        text: shareText,
-                        url: shareUrl
+                        text: fullMessage
                     }).catch(err => {
                         console.log('Error sharing:', err);
-                        // Falla navigator.share (ej: cancelado o error de contexto), hacemos fallback al portapapeles
-                        copyTextToClipboard(`${shareText}\n${shareUrl}`);
+                        copyTextToClipboard(fullMessage);
                     });
                 } else {
-                    copyTextToClipboard(`${shareText}\n${shareUrl}`);
+                    copyTextToClipboard(fullMessage);
                 }
             });
         }

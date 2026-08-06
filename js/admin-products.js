@@ -752,7 +752,7 @@ window.initProductsAdmin = function() {
                     ${acabadoBadge}
                     <div class="feed-card-gradient"></div>
                     <div class="feed-card-info">
-                        <span class="feed-card-cat">${cat.name}</span>
+                        <span class="feed-card-cat" data-category-id="${cat.id}">${cat.name}</span>
                         <h3 class="feed-card-title">${nombre}</h3>
                     </div>
                 </div>

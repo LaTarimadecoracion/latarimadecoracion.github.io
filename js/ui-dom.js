@@ -154,6 +154,27 @@
 
 
     const detailCategory = document.getElementById('detail-category');
+    if (detailCategory) {
+        detailCategory.addEventListener('click', (e) => {
+            const catId = detailCategory.dataset.categoryId;
+            if (catId && window.navigateToCategoryFeed) {
+                e.stopPropagation();
+                window.navigateToCategoryFeed(catId);
+            }
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        const catBadge = e.target.closest('.feed-card-cat');
+        if (catBadge) {
+            const catId = catBadge.dataset.categoryId;
+            if (catId && window.navigateToCategoryFeed) {
+                e.stopPropagation();
+                e.preventDefault();
+                window.navigateToCategoryFeed(catId);
+            }
+        }
+    }, true);
 
 
     const detailDescription = document.getElementById('detail-description');

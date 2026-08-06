@@ -1474,6 +1474,7 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     font-size: 0.8rem;
     font-weight: 500;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 .detail-price {
@@ -4973,6 +4974,54 @@ body.theme-final-mundial .block-image-wrapper::after {
 
 .delivery-modal-overlay.open .delivery-modal-sheet {
     transform: translateY(0);
+}
+
+.delivery-modal-close-x {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: #F1F5F9;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: #64748B;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.delivery-modal-close-x:hover {
+    background: #E2E8F0;
+    color: #0F172A;
+}
+
+.delivery-modal-back-arrow {
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    background: #F1F5F9;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: #64748B;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.delivery-modal-back-arrow:hover {
+    background: #E2E8F0;
+    color: #0F172A;
 }
 
 .delivery-modal-handle {

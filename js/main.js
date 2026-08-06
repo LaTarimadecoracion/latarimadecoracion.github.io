@@ -296,27 +296,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
         const urlParams = new URLSearchParams(window.location.search);
-        const prodId = urlParams.get('prod') || urlParams.get('product') || urlParams.get('p');
-        if (prodId) {
-            // Pequeño retardo para asegurar que los renders y la UI se asienten en el DOM
-            setTimeout(() => {
-                if (window.findProductById && window.showProductDetail) {
-                    const foundData = window.findProductById(prodId);
-                    if (foundData) {
-                        const catObj = window.sessionProducts ? window.sessionProducts.find(c => c.name === foundData.catName || c.id === foundData.catName) : null;
-                        const isCatVisible = !catObj || catObj.visible !== false;
-                        if (foundData.product.visible !== false) {
-                            console.log(`[Router] Producto compartido detectado: ${prodId}. Abriendo modal.`);
-                            const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
-                            window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
-                        } else {
-                            console.warn(`[Router] El producto con ID '${prodId}' está oculto.`);
+        
+        // 1. Detectar parámetro de URL ultra corta (?s=CODE)
+        const shortCode = urlParams.get('s');
+        if (shortCode && window.TarimaShortener && window.TarimaShortener.decodeShortCode) {
+            const decoded = window.TarimaShortener.decodeShortCode(shortCode);
+            if (decoded && decoded.productId) {
+                setTimeout(() => {
+                    if (window.findProductById && window.showProductDetail) {
+                        const foundData = window.findProductById(decoded.productId);
+                        if (foundData && foundData.product.visible !== false) {
+                            console.log(`[Router] Producto corto detectado (code=${shortCode}): ${decoded.productId}`);
+                            window.showProductDetail(
+                                foundData.product,
+                                foundData.catName,
+                                decoded.preselectedAcabado,
+                                decoded.preselectedMedida,
+                                decoded.preselectedOpcion
+                            );
                         }
-                    } else {
-                        console.warn(`[Router] Producto con ID '${prodId}' no encontrado en el catálogo.`);
                     }
-                }
-            }, 150);
+                }, 150);
+            }
+        } else {
+            // 2. Fallback a parámetros estándar (?prod=, ?p=, ?product=)
+            const prodId = urlParams.get('prod') || urlParams.get('product') || urlParams.get('p');
+            if (prodId) {
+                setTimeout(() => {
+                    if (window.findProductById && window.showProductDetail) {
+                        const foundData = window.findProductById(prodId);
+                        if (foundData) {
+                            const catObj = window.sessionProducts ? window.sessionProducts.find(c => c.name === foundData.catName || c.id === foundData.catName) : null;
+                            if (foundData.product.visible !== false) {
+                                console.log(`[Router] Producto compartido detectado: ${prodId}. Abriendo modal.`);
+                                const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
+                                window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
+                            }
+                        }
+                    }
+                }, 150);
+            }
         }
 
         const viewParam = urlParams.get('view') || urlParams.get('sec');

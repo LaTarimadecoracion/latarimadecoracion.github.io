@@ -248,6 +248,22 @@
             box-shadow: 0 -8px 40px rgba(0,0,0,0.12);
         }
         .delivery-modal-overlay.open .delivery-modal-sheet { transform: translateY(0); }
+        .delivery-modal-close-x {
+            position: absolute; top: 14px; right: 18px;
+            background: #F1F5F9; border: none; width: 32px; height: 32px;
+            border-radius: 50%; font-size: 1.3rem; line-height: 1; color: #64748B;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease; padding: 0;
+        }
+        .delivery-modal-close-x:hover { background: #E2E8F0; color: #0F172A; }
+        .delivery-modal-back-arrow {
+            position: absolute; top: 14px; left: 18px;
+            background: #F1F5F9; border: none; width: 32px; height: 32px;
+            border-radius: 50%; color: #64748B;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease; padding: 0;
+        }
+        .delivery-modal-back-arrow:hover { background: #E2E8F0; color: #0F172A; }
         .delivery-modal-handle { width:40px; height:4px; background:#E2E8F0; border-radius:99px; margin-bottom:8px; }
         .delivery-modal-eyebrow { font-size:0.75rem; font-weight:600; color:#718096; letter-spacing:0.04em; text-transform:uppercase; margin:0; }
         .delivery-modal-title { font-size:1.3rem; font-weight:800; color:#2D3748; margin:4px 0 0; text-align:center; }
@@ -1155,7 +1171,12 @@
 
                 const sheet = document.createElement('div');
                 sheet.className = 'delivery-modal-sheet';
+                sheet.style.position = 'relative';
                 sheet.innerHTML = `
+                    <button class="delivery-modal-back-arrow" id="dopt-back-arrow" title="Volver" style="display:none;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button class="delivery-modal-close-x" id="dopt-close-x" title="Cerrar">&times;</button>
                     <div class="delivery-modal-handle"></div>
                     <p class="delivery-modal-eyebrow">Antes de continuar</p>
                     <h3 class="delivery-modal-title">¿Necesitás envío?</h3>
@@ -1183,7 +1204,24 @@
                         </button>
                     </div>
 
-                    <button class="delivery-modal-cancel" id="dopt-cancel">Cancelar</button>
+                    <!-- Panel desplegable con información de Retiro por Taller -->
+                    <div id="delivery-pickup-info" style="display:none; width:100%; flex-direction:column; gap:12px; margin-top:10px; text-align:left;">
+                        <div style="background:#FFF8F5; border:1.5px solid rgba(160,113,91,0.25); padding:14px; border-radius:14px; font-size:0.85rem; color:#2D3748; line-height:1.5;">
+                            <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
+                                <span>💡 Aclaraciones sobre el precio:</span>
+                            </p>
+                            <p style="margin:0 0 12px 0;">El precio publicado en la web se mantiene pagando en <strong>efectivo o transferencia</strong> <em>(no incluye impuestos ni costo de envío)</em>.</p>
+                            
+                            <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
+                                <span>📍 Ubicación del taller:</span>
+                            </p>
+                            <p style="margin:0;">Hurlingham, Buenos Aires, Argentina<br><span style="color:#718096; font-size:0.8rem;">(Zona céntrica: cerca de Av. Vergara y Av. Jauretche)</span></p>
+                        </div>
+
+                        <button id="btn-submit-pickup-wa" class="btn-primary giant-btn" style="width:100%; justify-content:center; font-size:0.92rem;">
+                            <span>Continuar a WhatsApp 💬</span>
+                        </button>
+                    </div>
                 `;
 
                 overlay.appendChild(sheet);
@@ -1195,15 +1233,54 @@
                     setTimeout(() => overlay.remove(), 300);
                 };
 
+                const resetToInitialView = () => {
+                    const pickupInfo = document.getElementById('delivery-pickup-info');
+                    const shippingForm = document.getElementById('delivery-shipping-form');
+                    const optionsContainer = sheet.querySelector('.delivery-modal-options');
+                    const titleEl = sheet.querySelector('.delivery-modal-title');
+                    const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
+                    const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
+                    const backArrow = document.getElementById('dopt-back-arrow');
+
+                    if (pickupInfo) pickupInfo.style.display = 'none';
+                    if (shippingForm) shippingForm.style.display = 'none';
+                    if (optionsContainer) optionsContainer.style.display = 'flex';
+                    if (backArrow) backArrow.style.display = 'none';
+
+                    if (eyebrowEl) eyebrowEl.textContent = 'Antes de continuar';
+                    if (titleEl) titleEl.textContent = '¿Necesitás envío?';
+                    if (subtitleEl) subtitleEl.textContent = 'Elegí una de las opciones para poder continuar';
+                };
+
                 overlay.addEventListener('click', (ev) => { if (ev.target === overlay) closeModal(); });
-                document.getElementById('dopt-cancel').addEventListener('click', closeModal);
+                document.getElementById('dopt-close-x')?.addEventListener('click', closeModal);
+                document.getElementById('dopt-back-arrow')?.addEventListener('click', resetToInitialView);
 
                 document.getElementById('dopt-pickup').addEventListener('click', () => {
-                    closeModal();
-                    try {
-                        if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA Visualizador - Retiro Taller' });
-                    } catch (err) {}
-                    window.open(`https://wa.me/5491167007723?text=${encodeURIComponent(buildVisualizadorMsg('pickup'))}`, '_blank');
+                    const pickupInfo = document.getElementById('delivery-pickup-info');
+                    const optionsContainer = sheet.querySelector('.delivery-modal-options');
+                    const titleEl = sheet.querySelector('.delivery-modal-title');
+                    const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
+                    const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
+                    const backArrow = document.getElementById('dopt-back-arrow');
+
+                    if (pickupInfo && optionsContainer) {
+                        if (eyebrowEl) eyebrowEl.textContent = 'Retiro por taller';
+                        if (titleEl) titleEl.textContent = 'Retiro en Hurlingham';
+                        if (subtitleEl) subtitleEl.textContent = 'Ubicación y modalidad de entrega en el taller:';
+                        if (backArrow) backArrow.style.display = 'flex';
+
+                        optionsContainer.style.display = 'none';
+                        pickupInfo.style.display = 'flex';
+
+                        document.getElementById('btn-submit-pickup-wa')?.addEventListener('click', () => {
+                            closeModal();
+                            try {
+                                if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA Visualizador - Retiro Taller' });
+                            } catch (err) {}
+                            window.open(`https://wa.me/5491167007723?text=${encodeURIComponent(buildVisualizadorMsg('pickup'))}`, '_blank');
+                        });
+                    }
                 });
 
                 document.getElementById('dopt-shipping').addEventListener('click', () => {
@@ -1212,11 +1289,13 @@
                     const titleEl = sheet.querySelector('.delivery-modal-title');
                     const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
                     const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
+                    const backArrow = document.getElementById('dopt-back-arrow');
 
                     if (formContainer) {
                         if (eyebrowEl) eyebrowEl.textContent = 'Cotizá tu envío';
                         if (titleEl) titleEl.textContent = 'Datos para el envío';
                         if (subtitleEl) subtitleEl.textContent = 'Completá estos datos básicos (opcionales) para cotizar el costo de envío. Te lo recomendamos para agilizar tu compra 👌';
+                        if (backArrow) backArrow.style.display = 'flex';
 
                         optionsContainer.style.display = 'none';
                         formContainer.style.display = 'flex';
