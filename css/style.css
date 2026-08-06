@@ -4935,3 +4935,189 @@ body.theme-final-mundial .block-image-wrapper::after {
         right: 20px;
     }
 }
+
+/* ── Modal de Pre-calificación de Entrega ──────────────────────────────────── */
+.delivery-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding-bottom: var(--safe-area-bottom, 0px);
+}
+
+.delivery-modal-overlay.open {
+    opacity: 1;
+}
+
+.delivery-modal-sheet {
+    background: var(--surface-color, #fff);
+    width: 100%;
+    max-width: 480px;
+    border-radius: 24px 24px 0 0;
+    padding: 12px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transform: translateY(100%);
+    transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.12);
+}
+
+.delivery-modal-overlay.open .delivery-modal-sheet {
+    transform: translateY(0);
+}
+
+.delivery-modal-handle {
+    width: 40px;
+    height: 4px;
+    background: #E2E8F0;
+    border-radius: 99px;
+    margin-bottom: 8px;
+}
+
+.delivery-modal-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted, #718096);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.delivery-modal-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-main, #2D3748);
+    margin: 4px 0 0;
+    text-align: center;
+    font-family: var(--font-main, 'Outfit', sans-serif);
+}
+
+.delivery-modal-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted, #718096);
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.delivery-modal-options {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin-top: 6px;
+}
+
+.delivery-opt-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 20px 12px;
+    border-radius: 18px;
+    border: 2px solid #E2E8F0;
+    background: #F8FAFC;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-main, 'Outfit', sans-serif);
+}
+
+.delivery-opt-btn:hover,
+.delivery-opt-btn:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.delivery-opt-btn:active {
+    transform: scale(0.97);
+}
+
+.delivery-opt-pickup {
+    border-color: rgba(160, 113, 91, 0.35);
+    background: #FFF8F5;
+}
+
+.delivery-opt-pickup:hover {
+    border-color: var(--primary-color, #A0715B);
+    background: #FFF1EB;
+}
+
+.delivery-opt-shipping {
+    border-color: rgba(59, 130, 246, 0.3);
+    background: #F0F7FF;
+}
+
+.delivery-opt-shipping:hover {
+    border-color: #3B82F6;
+    background: #E0EEFF;
+}
+
+.delivery-opt-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.delivery-opt-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-main, #2D3748);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.delivery-opt-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted, #718096);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.delivery-modal-cancel {
+    margin-top: 8px;
+    background: none;
+    border: none;
+    font-size: 0.85rem;
+    color: var(--text-muted, #718096);
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: var(--font-main, 'Outfit', sans-serif);
+    transition: color 0.2s;
+}
+
+.delivery-modal-cancel:hover {
+    color: var(--text-main, #2D3748);
+}
+
+/* En desktop: modal centrado en lugar de bottom sheet */
+@media (min-width: 600px) {
+    .delivery-modal-overlay {
+        align-items: center;
+    }
+
+    .delivery-modal-sheet {
+        border-radius: 24px;
+        max-width: 420px;
+        padding: 28px 32px 32px;
+        transform: translateY(16px) scale(0.97);
+        transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.28s ease;
+        opacity: 0;
+    }
+
+    .delivery-modal-overlay.open .delivery-modal-sheet {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    .delivery-modal-handle {
+        display: none;
+    }
+}

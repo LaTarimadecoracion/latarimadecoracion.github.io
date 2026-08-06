@@ -88,15 +88,6 @@
 
 
 
-    function generateWaMsg(productTitle, productDesc, variantName) {
-        const baseMsg = `Hola La Tarima! Me interesa el producto: ${productTitle} (${productDesc.substring(0, 30)}...). `;
-        if (variantName) {
-            return baseMsg + `Elegí la variante: ${variantName}. ¿Me podrías pasar el presupuesto actual para pasar a retirar por el taller?`;
-        }
-        return baseMsg + `¿Me podrías pasar el presupuesto actual para pasar a retirar por el taller?`;
-    }
-
-
 
     function updateActionLinks(linkMercadoLibre, whatsappMessage) {
         btnBuyShipping.href = linkMercadoLibre || '#';
@@ -284,7 +275,8 @@
         }
 
         if (btnPickup) {
-            btnPickup.onclick = () => {
+            btnPickup.onclick = (e) => {
+                if (e) e.preventDefault();
                 try {
                     if (typeof gtag === 'function') {
                         gtag('event', 'contact', {
@@ -296,7 +288,15 @@
                             item_category: categoryName
                         });
                     }
-                } catch (e) { /* Ignore adblocker errors */ }
+                } catch (err) { /* Ignore adblocker errors */ }
+
+                const grupo = grupos[currentGroupIndex] || grupos[0];
+                const selMedida = divMedida ? divMedida.querySelector('select') : null;
+                const mName = selMedida ? selMedida.value : '';
+                const activeMlVariant = (grupo && grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === mName);
+                const currentMlLink = (activeMlVariant && activeMlVariant.link) ? activeMlVariant.link.trim() : '';
+
+                showDeliveryModal(grupo, mName, currentMlLink);
             };
         }
 
@@ -374,7 +374,7 @@
         }
 
 
-        function buildWA(grupo, medidaName) {
+        function buildWA(grupo, medidaName, tipoEntrega = '') {
             const selOpt = divOpt.querySelector('select');
             const optText = selOpt ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
             const optLabel = product.optional_variant?.label || '';
@@ -455,7 +455,103 @@
                 }
             }
 
+            // Línea de tipo de entrega (solo para productos de venta)
+            if (tipoEntrega === 'pickup') {
+                parts.push('• Entrega: 🏪 Retiro por el taller');
+            } else if (tipoEntrega === 'shipping') {
+                parts.push('• Entrega: 🚚 Necesito envío a domicilio');
+            }
+
             return `¡Hola La Tarima! Quiero consultar por el siguiente producto:\n\n${parts.join('\n')}\n\n¿Me podés pasar más info y disponibilidad?`;
+        }
+
+        // ── Modal de pre-calificación de entrega ──────────────────────────────
+        function showDeliveryModal(grupo, medidaName, mlLink) {
+            // Eliminar modal previo si existe
+            const existing = document.getElementById('delivery-modal-overlay');
+            if (existing) existing.remove();
+
+            const isRental = categoryName === 'Alquileres' || product.primaryCatId === 'alquileres';
+
+            // Los alquileres no tienen este flujo, ir directo a WA
+            if (isRental) {
+                const waMsg = buildWA(grupo, medidaName);
+                try {
+                    if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WhatsApp Producto' });
+                } catch(e) {}
+                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                return;
+            }
+
+            // Crear overlay
+            const overlay = document.createElement('div');
+            overlay.id = 'delivery-modal-overlay';
+            overlay.className = 'delivery-modal-overlay';
+
+            const sheet = document.createElement('div');
+            sheet.className = 'delivery-modal-sheet';
+            sheet.innerHTML = `
+                <div class="delivery-modal-handle"></div>
+                <p class="delivery-modal-eyebrow">Antes de continuar</p>
+                <h3 class="delivery-modal-title">¿Necesitás envío?</h3>
+                <p class="delivery-modal-subtitle">Elegí una de las opciones para poder continuar</p>
+                <div class="delivery-modal-options">
+                    <button class="delivery-opt-btn delivery-opt-pickup" id="dopt-pickup">
+                        <span class="delivery-opt-icon">🏪</span>
+                        <span class="delivery-opt-label">Retirar por el taller</span>
+                        <span class="delivery-opt-desc">Mismo precio publicado en la web (Efectivo / Transferencia)</span>
+                    </button>
+                    <button class="delivery-opt-btn delivery-opt-shipping" id="dopt-shipping">
+                        <span class="delivery-opt-icon">🚚</span>
+                        <span class="delivery-opt-label">Necesito envío</span>
+                        <span class="delivery-opt-desc">${mlLink ? 'Comprar en Mercado Libre (aplica costos de plataforma y envío)' : 'Te cotizamos el envío por WhatsApp'}</span>
+                    </button>
+                </div>
+                <button class="delivery-modal-cancel" id="dopt-cancel">Cancelar</button>
+            `;
+
+            overlay.appendChild(sheet);
+            document.body.appendChild(overlay);
+
+            // Animar entrada
+            requestAnimationFrame(() => overlay.classList.add('open'));
+
+            const closeModal = () => {
+                overlay.classList.remove('open');
+                setTimeout(() => overlay.remove(), 300);
+            };
+
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+            document.getElementById('dopt-cancel').addEventListener('click', closeModal);
+
+            // Opción: Retirar por taller → WhatsApp con mensaje pickup
+            document.getElementById('dopt-pickup').addEventListener('click', () => {
+                closeModal();
+                const waMsg = buildWA(grupo, medidaName, 'pickup');
+                try {
+                    if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA - Retiro Taller' });
+                } catch(e) {}
+                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+            });
+
+            // Opción: Necesito envío
+            document.getElementById('dopt-shipping').addEventListener('click', () => {
+                closeModal();
+                if (mlLink) {
+                    // Producto con link ML → ir directo, sin pasar por WA
+                    try {
+                        if (typeof gtag === 'function') gtag('event', 'begin_checkout', { currency: 'ARS', items: [{ item_id: product.id, item_name: product.title, item_category: categoryName }] });
+                    } catch(e) {}
+                    window.open(mlLink, '_blank');
+                } else {
+                    // Sin link ML → WhatsApp con mensaje shipping
+                    const waMsg = buildWA(grupo, medidaName, 'shipping');
+                    try {
+                        if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA - Necesita Envio' });
+                    } catch(e) {}
+                    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                }
+            });
         }
 
         function updateBuyButton(grupo, medidaName) {
@@ -679,7 +775,13 @@
                 }
             }
 
-            if (btnPickup) btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildWA(grupo, medidaName))}`;
+            // Capturar el link de ML de la variante activa para pasarlo al modal
+            const activeMlVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
+            const currentMlLink = (activeMlVariant && activeMlVariant.link) ? activeMlVariant.link.trim() : '';
+
+            if (btnPickup) {
+                btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildWA(grupo, medidaName, 'pickup'))}`;
+            }
         }
 
         function setupGalleryActions(acabado) {

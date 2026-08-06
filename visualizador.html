@@ -229,6 +229,52 @@
                 transform: translateY(0);
             }
         }
+
+        /* ── Modal de Pre-calificación de Entrega ── */
+        .delivery-modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(15,23,42,0.45);
+            backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+            z-index: 9999; display: flex;
+            align-items: flex-end; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .delivery-modal-overlay.open { opacity: 1; }
+        .delivery-modal-sheet {
+            background: #fff; width: 100%; max-width: 480px;
+            border-radius: 24px 24px 0 0; padding: 12px 24px 32px;
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            transform: translateY(100%); transition: transform 0.32s cubic-bezier(0.32,0.72,0,1);
+            box-shadow: 0 -8px 40px rgba(0,0,0,0.12);
+        }
+        .delivery-modal-overlay.open .delivery-modal-sheet { transform: translateY(0); }
+        .delivery-modal-handle { width:40px; height:4px; background:#E2E8F0; border-radius:99px; margin-bottom:8px; }
+        .delivery-modal-eyebrow { font-size:0.75rem; font-weight:600; color:#718096; letter-spacing:0.04em; text-transform:uppercase; margin:0; }
+        .delivery-modal-title { font-size:1.3rem; font-weight:800; color:#2D3748; margin:4px 0 0; text-align:center; }
+        .delivery-modal-subtitle { font-size:0.85rem; color:#718096; margin:0 0 10px; text-align:center; }
+        .delivery-modal-options { display:flex; gap:12px; width:100%; margin-top:6px; }
+        .delivery-opt-btn {
+            flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;
+            padding:20px 12px; border-radius:18px; border:2px solid #E2E8F0;
+            background:#F8FAFC; cursor:pointer; transition:all 0.2s ease;
+        }
+        .delivery-opt-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+        .delivery-opt-btn:active { transform:scale(0.97); }
+        .delivery-opt-pickup { border-color:rgba(160,113,91,0.35); background:#FFF8F5; }
+        .delivery-opt-pickup:hover { border-color:#A0715B; background:#FFF1EB; }
+        .delivery-opt-shipping { border-color:rgba(59,130,246,0.3); background:#F0F7FF; }
+        .delivery-opt-shipping:hover { border-color:#3B82F6; background:#E0EEFF; }
+        .delivery-opt-icon { font-size:2rem; line-height:1; }
+        .delivery-opt-label { font-size:0.9rem; font-weight:700; color:#2D3748; text-align:center; line-height:1.2; }
+        .delivery-opt-desc { font-size:0.75rem; color:#718096; text-align:center; line-height:1.3; }
+        .delivery-modal-cancel { margin-top:8px; background:none; border:none; font-size:0.85rem; color:#718096; cursor:pointer; padding:8px 16px; border-radius:8px; transition:color 0.2s; }
+        .delivery-modal-cancel:hover { color:#2D3748; }
+        @media (min-width:600px) {
+            .delivery-modal-overlay { align-items:center; }
+            .delivery-modal-sheet { border-radius:24px; max-width:420px; padding:28px 32px 32px; transform:translateY(16px) scale(0.97); transition:transform 0.28s cubic-bezier(0.32,0.72,0,1), opacity 0.28s ease; opacity:0; }
+            .delivery-modal-overlay.open .delivery-modal-sheet { transform:translateY(0) scale(1); opacity:1; }
+            .delivery-modal-handle { display:none; }
+        }
     </style>
 </head>
 
@@ -340,7 +386,7 @@
 
         <nav class="split-btn" aria-label="Acciones de navegación y contacto">
             <a href="./" title="Volver al inicio">INICIO</a>
-            <a href="https://wa.me/5491167007723" class="consultar" target="_blank" rel="noopener"
+            <a href="#" id="btn-consultar-wpp" class="consultar" target="_blank" rel="noopener"
                 title="Consultar por WhatsApp">CONSULTAR</a>
         </nav>
     </div>
@@ -1056,19 +1102,99 @@
             img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
         });
 
-        // Consultar por WhatsApp
-        const consultWppLink = document.querySelector('.split-btn a.consultar');
-        if (consultWppLink) {
-            consultWppLink.addEventListener('click', () => {
-                if (typeof gtag === 'function') {
-                    gtag('event', 'contact', {
-                        method: 'WhatsApp',
-                        event_category: 'Engagement',
-                        event_label: 'Consultar WhatsApp Visualizador'
-                    });
+        // Consultar por WhatsApp — modal de pre-calificación de entrega
+        const btnConsultarWpp = document.getElementById('btn-consultar-wpp');
+        if (btnConsultarWpp) {
+            btnConsultarWpp.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Función que construye el mensaje con la configuración actual
+                function buildVisualizadorMsg(tipoEntrega) {
+                    const tipoCamaEl = document.getElementById('tipoCama');
+                    const modeloGlobalEl = document.getElementById('modeloGlobal');
+                    const medidaBEl = document.getElementById('medidaB');
+                    const medidaCEl = document.getElementById('medidaC');
+
+                    const tipoCamaText = tipoCamaEl ? tipoCamaEl.options[tipoCamaEl.selectedIndex]?.text : '';
+                    const modeloGlobalText = modeloGlobalEl ? modeloGlobalEl.options[modeloGlobalEl.selectedIndex]?.text : '';
+                    const medidaB = medidaBEl ? medidaBEl.value : '';
+                    const medidaC = medidaCEl ? medidaCEl.value : '';
+
+                    let parts = [];
+                    if (tipoCamaText) parts.push(`• Tipo de cama: ${tipoCamaText}`);
+                    if (modeloGlobalText) parts.push(`• Modelo de baranda: ${modeloGlobalText}`);
+                    if (medidaB) parts.push(`• Medida B (agarre): ${medidaB} cm`);
+                    if (medidaC) parts.push(`• Medida C (agarre): ${medidaC} cm`);
+
+                    if (typeof barandas !== 'undefined' && barandas.length > 0) {
+                        barandas.forEach((b, i) => {
+                            const mKey = b.modeloKey || 'clasica45';
+                            const mNombre = (typeof modelos !== 'undefined' && modelos[mKey]) ? modelos[mKey].nombre : mKey;
+                            parts.push(`• Baranda #${i + 1}: ${mNombre} — Largo: ${b.largo} cm`);
+                        });
+                    }
+
+                    if (tipoEntrega === 'pickup') parts.push('• Entrega: 🏪 Retiro por el taller');
+                    if (tipoEntrega === 'shipping') parts.push('• Entrega: 🚚 Necesito envío a domicilio');
+
+                    return `¡Hola La Tarima! Configuré mi baranda en el visualizador y quiero consultar:\n\n${parts.join('\n')}\n\n¿Me podés pasar más info y disponibilidad?`;
                 }
+
+                // Crear overlay del modal
+                const existing = document.getElementById('delivery-modal-overlay');
+                if (existing) existing.remove();
+
+                const overlay = document.createElement('div');
+                overlay.id = 'delivery-modal-overlay';
+                overlay.className = 'delivery-modal-overlay';
+
+                const sheet = document.createElement('div');
+                sheet.className = 'delivery-modal-sheet';
+                sheet.innerHTML = `
+                    <div class="delivery-modal-handle"></div>
+                    <p class="delivery-modal-eyebrow">Antes de continuar</p>
+                    <h3 class="delivery-modal-title">¿Necesitás envío?</h3>
+                    <p class="delivery-modal-subtitle">Elegí una de las opciones para poder continuar</p>
+                    <div class="delivery-modal-options">
+                        <button class="delivery-opt-btn delivery-opt-pickup" id="dopt-pickup">
+                            <span class="delivery-opt-icon">🏪</span>
+                            <span class="delivery-opt-label">Retirar por el taller</span>
+                            <span class="delivery-opt-desc">Mismo precio publicado en la web (Efectivo / Transferencia)</span>
+                        </button>
+                        <button class="delivery-opt-btn delivery-opt-shipping" id="dopt-shipping">
+                            <span class="delivery-opt-icon">🚚</span>
+                            <span class="delivery-opt-label">Necesito envío</span>
+                            <span class="delivery-opt-desc">Te cotizamos el envío por WhatsApp</span>
+                        </button>
+                    </div>
+                    <button class="delivery-modal-cancel" id="dopt-cancel">Cancelar</button>
+                `;
+
+                overlay.appendChild(sheet);
+                document.body.appendChild(overlay);
+                requestAnimationFrame(() => overlay.classList.add('open'));
+
+                const closeModal = () => {
+                    overlay.classList.remove('open');
+                    setTimeout(() => overlay.remove(), 300);
+                };
+
+                overlay.addEventListener('click', (ev) => { if (ev.target === overlay) closeModal(); });
+                document.getElementById('dopt-cancel').addEventListener('click', closeModal);
+
+                const openWA = (tipoEntrega, label) => {
+                    closeModal();
+                    try {
+                        if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: label });
+                    } catch (err) {}
+                    window.open(`https://wa.me/5491167007723?text=${encodeURIComponent(buildVisualizadorMsg(tipoEntrega))}`, '_blank');
+                };
+
+                document.getElementById('dopt-pickup').addEventListener('click', () => openWA('pickup', 'Consultar WA Visualizador - Retiro Taller'));
+                document.getElementById('dopt-shipping').addEventListener('click', () => openWA('shipping', 'Consultar WA Visualizador - Necesita Envio'));
             });
         }
+
 
         // Cargar por primera vez
         actualizarInterfazBarandas();
