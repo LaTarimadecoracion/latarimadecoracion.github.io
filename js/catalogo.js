@@ -1,6 +1,19 @@
 // js/catalogo.js
 // --- LÓGICA DEL CATÁLOGO DE PRODUCTOS A-Z ---
 
+function fixImagePath(path) {
+    if (!path) return '../img/logo_provisional.png';
+    if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
+        return path;
+    }
+    const isInsideAppsFolder = window.location.pathname.includes('/apps/');
+    let clean = path.replace(/^\.\//, '').replace(/^\//, '');
+    if (isInsideAppsFolder && !clean.startsWith('../')) {
+        return '../' + clean;
+    }
+    return clean;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const catalogListContainer = document.getElementById('catalog-list');
     const emptyState = document.getElementById('catalog-empty-state');
@@ -103,34 +116,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 rubrosList = window.siteConfig.rubros;
             }
         } catch (e) {}
-        const visibleRubros = rubrosList.filter(r => r.visible !== false);
 
-        const seenIds = new Set();
         allProducts = [];
 
-        sourceProducts.forEach(category => {
+        sourceProducts.forEach(catObj => {
+            // Filtrar por rubro activo
+            const catRubro = catObj.rubro || 'carpinteria';
+            const isRubroMatch = (rubrosList.length <= 1) || (catRubro === activeCatalogRubro);
 
-            // Filtrar por rubro si hay más de uno visible
-            if (visibleRubros.length > 1) {
-                const catRubro = category.rubro || 'carpinteria';
-                if (catRubro !== activeCatalogRubro) return;
-            }
-
-            if (category.products) {
-                category.products.forEach(product => {
-                    if (product.visible === false) return;
-                    if (!seenIds.has(product.id)) {
-                        seenIds.add(product.id);
-                        
-                        // Determinar la categoría principal o de origen
-                        const primaryCatId = product.primaryCatId || category.id;
-                        const catObj = sourceProducts.find(c => c.id === primaryCatId) || category;
-                        
+            if (catObj.products && (catObj.visible !== false || catObj.id.endsWith('-todos')) && isRubroMatch) {
+                catObj.products.forEach(product => {
+                    if (product.visible !== false) {
+                        const rawImg = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
                         allProducts.push({
                             id: product.id,
                             title: product.title,
                             description: product.description || '',
-                            image: Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png'),
+                            image: fixImagePath(rawImg),
                             categoryName: catObj.name,
                             acabados_groups: product.acabados_groups || [],
                             medidas_variants: product.medidas_variants || [],
@@ -274,7 +276,8 @@ document.addEventListener('DOMContentLoaded', () => {
             thumbLink.href = detailUrl;
             thumbLink.className = 'catalog-thumb-link';
             thumbLink.target = '_parent';
-            thumbLink.innerHTML = `<img src="${product.image}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='img/logo_provisional.png';">`;
+            const fallbackImg = fixImagePath('img/logo_provisional.png');
+            thumbLink.innerHTML = `<img src="${product.image}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackImg}';">`;
             thumbLink.addEventListener('click', handleProductClick);
             row.appendChild(thumbLink);
 

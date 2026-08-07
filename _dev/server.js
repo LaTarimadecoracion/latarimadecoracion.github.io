@@ -2184,9 +2184,27 @@ app.get('*', (req, res) => {
     
     // Rutas del catálogo mayorista sin .html visible
     if (cleanUrl === '/web/mayorista' || cleanUrl === '/mayorista' || cleanUrl === '/mayoristas') {
-        const mayoristaPath = path.join(ROOT_DIR, 'mayorista.html');
+        const mayoristaPath = fs.existsSync(path.join(ROOT_DIR, 'apps', 'mayorista.html'))
+            ? path.join(ROOT_DIR, 'apps', 'mayorista.html')
+            : path.join(ROOT_DIR, 'mayorista.html');
         if (fs.existsSync(mayoristaPath)) {
             return res.sendFile(mayoristaPath);
+        }
+    }
+
+    // Mapeo automático de archivos HTML redirigidos a la carpeta apps/
+    const appNameMap = {
+        '/catalogo.html': 'catalogo.html',
+        '/mayorista.html': 'mayorista.html',
+        '/calcular.html': 'calcular.html',
+        '/musica.html': 'musica.html',
+        '/ayudin.html': 'ayudin.html',
+        '/visualizador.html': 'visualizador.html'
+    };
+    if (appNameMap[cleanUrl]) {
+        const appPath = path.join(ROOT_DIR, 'apps', appNameMap[cleanUrl]);
+        if (fs.existsSync(appPath)) {
+            return res.sendFile(appPath);
         }
     }
     

@@ -197,8 +197,13 @@
                     appContainer.style.paddingBottom = '0px';
                 } else {
                     appContainer.style.overflowY = 'auto';
-                    appContainer.style.paddingBottom = '';
+                    appContainer.style.paddingBottom = '95px';
                 }
+            }
+            
+            // Renderizar links de redes sociales globales en la vista activa
+            if (window.renderGlobalSocialLinks) {
+                window.renderGlobalSocialLinks();
             }
             
             // Renderizado dinámico condicional al navegar

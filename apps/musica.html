@@ -16,14 +16,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Música - LA TARIMA</title>
     
-    
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" />
     
-    
-    <link rel="stylesheet" href="css/style.css?v=25">
+    <!-- CSS Base del Proyecto -->
+    <link rel="stylesheet" href="../css/style.css?v=25">
     
     <style>
         :root {
@@ -1183,16 +1183,16 @@
             }
         }
     </style>
-</head>
+<style>body { padding-bottom: 95px !important; }</style></head>
 <body>
 
-    
+    <!-- Auras de fondo para un diseño premium -->
     <div class="bg-glow-music bg-glow-1"></div>
     <div class="bg-glow-music bg-glow-2"></div>
 
     <div class="music-container">
         
-        
+        <!-- Tarjeta del Reproductor -->
         <div class="player-card">
             <div class="disc-wrapper">
                 <canvas id="visualizer-canvas" class="visualizer-canvas"></canvas>
@@ -1208,7 +1208,7 @@
                 <div class="track-artist" id="player-artist">La Tarima Mixes</div>
             </div>
 
-            
+            <!-- Barra de Progreso -->
             <div class="progress-area">
                 <div class="slider-container" id="slider-container">
                     <div class="progress-bar-fill" id="progress-bar-fill"></div>
@@ -1219,9 +1219,9 @@
                 </div>
             </div>
 
-            
+            <!-- Controles -->
             <div class="controls">
-                
+                <!-- Botón de Ecualizador (a la izquierda de aleatorio) -->
                 <button class="btn-control" id="btn-eq-trigger" title="Consola de Sonido">
                     <span class="material-symbols-outlined">tune</span>
                 </button>
@@ -1240,7 +1240,7 @@
                 <button class="btn-control" id="btn-repeat" title="Repetir">
                     <span class="material-symbols-outlined">repeat</span>
                 </button>
-                
+                <!-- Control de Volumen (a la derecha de repetir) -->
                 <div class="volume-container">
                     <span class="material-symbols-outlined" id="volume-icon">volume_up</span>
                     <input type="range" min="0" max="100" value="80" class="volume-slider" id="volume-slider">
@@ -1248,9 +1248,9 @@
             </div>
         </div>
 
-        
+        <!-- Wrapper Derecho (Tabs + Playlist) -->
         <div class="playlist-wrapper">
-            
+            <!-- Selector de Categorías -->
             <div class="tabs-bar">
                 <button class="tab-btn active" id="tab-terminados">
                     <span class="material-symbols-outlined">album</span>
@@ -1266,7 +1266,7 @@
                 </button>
             </div>
 
-            
+            <!-- Listado de Canciones -->
             <div class="playlist-card">
                 <div class="playlist-header">
                     <span id="playlist-category-title">Listado de Temas</span>
@@ -1274,10 +1274,10 @@
                 </div>
                 
                 <div class="playlist-items" id="playlist-items">
-                    
+                    <!-- Se inyecta por JS -->
                 </div>
 
-                
+                <!-- Estado Vacío -->
                 <div class="playlist-empty" id="playlist-empty" style="display: none;">
                     <span class="material-symbols-outlined">music_off</span>
                     <h4>Sin enganchados en esta lista</h4>
@@ -1288,10 +1288,10 @@
 
     </div>
 
-    
+    <!-- Elemento de Audio Oculto -->
     <audio id="audio-element"></audio>
 
-    
+    <!-- Input oculto para seleccionar archivos de música local -->
     <input type="file" id="local-folder-input" multiple style="display: none;" accept="audio/*">
 
     <script>
@@ -2620,7 +2620,7 @@
         fetchTrackList();
     </script>
 
-    
+    <!-- Panel Flotante del Ecualizador (Slide-in de la izquierda) -->
     <div class="eq-panel" id="eq-panel">
         <div class="eq-panel-header">
             <h3>🎛️ Consola de Sonido</h3>
@@ -2630,29 +2630,29 @@
         </div>
         
         <div class="eq-panel-content">
-            
+            <!-- Selector de Presets -->
             <div class="eq-section">
                 <label for="eq-presets-select">Presets de Ecualización</label>
                 <div class="select-wrapper">
                     <select id="eq-presets-select" class="eq-select">
-                        
+                        <!-- Se inyecta por JS -->
                     </select>
                 </div>
             </div>
             
-            
+            <!-- Controles de Bandas (10 Sliders verticales) -->
             <div class="eq-section">
                 <label>Ecualizador Gráfico (10 Bandas)</label>
                 <div class="eq-sliders-container" id="eq-sliders-container">
-                    
+                    <!-- Se inyecta por JS -->
                 </div>
             </div>
             
-            
+            <!-- Efectos de Sonido -->
             <div class="eq-section">
                 <label>Efectos y Espacio</label>
                 
-                
+                <!-- 1. Sonido Espacial (Haas) -->
                 <div class="effect-slider-group">
                     <div class="effect-label-row">
                         <span>🌐 Sonido Espacial (Haas)</span>
@@ -2661,7 +2661,7 @@
                     <input type="range" min="0" max="100" value="0" class="effect-slider" id="slider-spatial">
                 </div>
 
-                
+                <!-- 2. Eco Ping-Pong (Stereo Delay) -->
                 <div class="effect-slider-group">
                     <div class="effect-label-row">
                         <span>🏓 Eco Ping-Pong</span>
@@ -2670,7 +2670,7 @@
                     <input type="range" min="0" max="100" value="0" class="effect-slider" id="slider-pingpong">
                 </div>
 
-                
+                <!-- 3. Triturador de Bits (Bitcrusher) -->
                 <div class="effect-slider-group">
                     <div class="effect-label-row">
                         <span>👾 Triturador de Bits (Bitcrusher)</span>
@@ -2679,7 +2679,7 @@
                     <input type="range" min="0" max="100" value="0" class="effect-slider" id="slider-bitcrusher">
                 </div>
 
-                
+                <!-- 4. Efecto Jet (Flanger) -->
                 <div class="effect-slider-group">
                     <div class="effect-label-row">
                         <span>🛸 Efecto Jet (Flanger)</span>
@@ -2688,7 +2688,7 @@
                     <input type="range" min="0" max="100" value="0" class="effect-slider" id="slider-flanger">
                 </div>
 
-                
+                <!-- 5. Filtro de Barrido (Phaser) -->
                 <div class="effect-slider-group">
                     <div class="effect-label-row">
                         <span>🌀 Filtro de Barrido (Phaser)</span>
@@ -2697,7 +2697,7 @@
                     <input type="range" min="0" max="100" value="0" class="effect-slider" id="slider-phaser">
                 </div>
 
-                
+                <!-- 6. Radio Lo-Fi Retro -->
                 <div class="effect-slider-group">
                     <div class="effect-label-row">
                         <span>📻 Radio Lo-Fi Retro</span>
@@ -2706,7 +2706,7 @@
                     <input type="range" min="0" max="100" value="0" class="effect-slider" id="slider-radio">
                 </div>
 
-                
+                <!-- 7. Compresor de Impacto (Punch) -->
                 <div class="effect-slider-group">
                     <div class="effect-label-row">
                         <span>🎛️ Compresor de Impacto (Punch)</span>
@@ -2715,7 +2715,7 @@
                     <input type="range" min="0" max="100" value="0" class="effect-slider" id="slider-punch">
                 </div>
 
-                
+                <!-- 8. Giro Estéreo 3D (Auto-Pan) -->
                 <div class="effect-slider-group">
                     <div class="effect-label-row">
                         <span>🌀 Giro Estéreo 3D (Auto-Pan)</span>
@@ -2724,7 +2724,7 @@
                     <input type="range" min="0" max="100" value="0" class="effect-slider" id="slider-autopan">
                 </div>
 
-                
+                <!-- 9. Modulador Metálico (Robot) -->
                 <div class="effect-slider-group">
                     <div class="effect-label-row">
                         <span>🤖 Modulador Metálico (Robot)</span>
@@ -2733,7 +2733,7 @@
                     <input type="range" min="0" max="100" value="0" class="effect-slider" id="slider-ringmod">
                 </div>
 
-                
+                <!-- Booster de Ganancia Principal -->
                 <div class="effect-slider-group">
                     <div class="effect-label-row">
                         <span>🚀 Potenciador de Volumen (Boost)</span>
@@ -2742,7 +2742,7 @@
                     <input type="range" min="100" max="300" value="100" class="effect-slider" id="slider-booster">
                 </div>
                 
-                
+                <!-- Interruptor Mono -->
                 <div class="mono-toggle-row">
                     <span class="material-symbols-outlined">speaker</span>
                     <div class="mono-text">
@@ -2758,7 +2758,7 @@
         </div>
     </div>
     
-    
+    <!-- Backdrop para cerrar al hacer clic fuera -->
     <div class="eq-backdrop" id="eq-backdrop"></div>
 </body>
 </html>

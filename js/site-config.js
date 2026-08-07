@@ -645,11 +645,11 @@ window.siteConfig = {
         }
     ],
     "socialLinks": {
-        "instagram": "",
-        "tiktok": "",
+        "instagram": "https://www.instagram.com/latarimadecoracion/",
+        "whatsapp": "https://wa.me/5491167007723",
         "facebook": "",
         "youtube": "",
-        "whatsapp": "",
+        "tiktok": "",
         "mercadolibre": ""
     },
     "mayoristaConfig": {

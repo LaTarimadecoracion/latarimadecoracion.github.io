@@ -167,7 +167,15 @@
 
 
     window.renderGlobalSocialLinks = function() {
-        const linksMap = window.socialLinks || {};
+        const linksMap = window.socialLinks || (window.siteConfig ? window.siteConfig.socialLinks : {}) || {};
+        const defaultsMap = {
+            instagram: 'https://www.instagram.com/latarimadecoracion/',
+            tiktok: 'https://www.tiktok.com/@latarimadecoracion',
+            facebook: 'https://www.facebook.com/latarimadecoracion',
+            youtube: 'https://www.youtube.com/@latarimadecoracion',
+            whatsapp: 'https://wa.me/5491167007723',
+            mercadolibre: 'https://www.mercadolibre.com.ar'
+        };
         const redes = ['instagram', 'tiktok', 'facebook', 'youtube', 'whatsapp', 'mercadolibre'];
         const template = document.getElementById('social-links-template');
         const containers = document.querySelectorAll('.social-links-container');
@@ -178,8 +186,9 @@
                 redes.forEach(red => {
                     const btn = clone.querySelector(`.social-link-${red}`);
                     if (btn) {
-                        if (linksMap[red]) {
-                            btn.setAttribute('href', linksMap[red]);
+                        const targetUrl = (linksMap[red] && linksMap[red].trim() !== '') ? linksMap[red] : defaultsMap[red];
+                        if (targetUrl) {
+                            btn.setAttribute('href', targetUrl);
                             btn.style.display = 'inline-flex';
                         } else {
                             btn.style.display = 'none';

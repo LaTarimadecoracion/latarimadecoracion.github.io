@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Catálogo Mayorista - LA TARIMA</title>
     
-    
+    <!-- SEO / Indexers -->
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://latarimadecoracion.github.io/mayorista.html">
 
-    
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
-    
-    <link rel="stylesheet" href="css/style.css?v=25">
+    <!-- CSS Core -->
+    <link rel="stylesheet" href="../css/style.css?v=25">
     
     <style>
         /* ============================================================
@@ -706,7 +706,7 @@
             .btn-finalize-order span { display: none; }
         }
     </style>
-</head>
+<style>body { padding-bottom: 95px !important; }</style></head>
 <body>
     <script>
         // Cargar tema activo de localStorage de inmediato antes de renderizar
@@ -728,13 +728,15 @@
         }
     </script>
 
-    
+    <!-- Auras decorativas premium -->
     <div class="bg-glow bg-glow-1"></div>
     <div class="bg-glow bg-glow-2"></div>
 
     <div class="container">
 
-        
+        <!-- ═══════════════════════════════════════════════════
+             HEADER PREMIUM
+        ════════════════════════════════════════════════════ -->
         <header class="header-wrapper">
             <div class="header-brand">
                 <div class="header-brand-top">
@@ -747,7 +749,7 @@
                 <p class="header-tagline">Precios directos de fábrica · Efectivo y transferencia · Mínimos por variante</p>
             </div>
 
-            
+            <!-- Estado del carrito -->
             <div class="header-cart-status" id="header-cart-panel">
                 <span class="header-cart-status-label">Total del pedido</span>
                 <span class="header-cart-status-value" id="header-total-display">$0</span>
@@ -755,12 +757,14 @@
             </div>
         </header>
 
-        
+        <!-- Selector de Rubros -->
         <div class="rubros-tabs-bar" id="rubros-tabs-container" style="margin-top: 0; margin-bottom: 0.65rem;"></div>
 
-        
+        <!-- ═══════════════════════════════════════════════════
+             TABLA / CATÁLOGO
+        ════════════════════════════════════════════════════ -->
         <div class="catalog-table-wrapper">
-            
+            <!-- Encabezados (ocultos en móvil) -->
             <div class="table-header">
                 <div>Producto / Variante</div>
                 <div>Ver</div>
@@ -772,13 +776,15 @@
                 <div style="text-align:right;">Subtotal</div>
             </div>
 
-            
+            <!-- Filas inyectadas por JS -->
             <div id="catalog-rows-container"></div>
         </div>
 
     </div>
 
-    
+    <!-- ═══════════════════════════════════════════════════════
+         BARRA FLOTANTE INFERIOR
+    ══════════════════════════════════════════════════════════ -->
     <div class="floating-footer-bar">
 
         <div class="footer-total-info">
@@ -793,7 +799,7 @@
         </button>
     </div>
 
-    
+    <!-- MODAL 1: Visualizador de Galería de Imágenes -->
     <div id="modal-gallery" class="modal-overlay">
         <div class="modal-card">
             <div class="modal-header">
@@ -804,16 +810,16 @@
             </div>
             <div class="modal-body">
                 <div id="gallery-main-img-wrapper" style="width: 100%; aspect-ratio: 1.33; border-radius: 12px; overflow: hidden; border: 1.5px solid #E2E8F0; margin-bottom: 12px; background: #F8FAFC; display: flex; align-items: center; justify-content: center;">
-                    <img id="gallery-main-img" src="img/logo_provisional.png" style="width: 100%; height: 100%; object-fit: contain;">
+                    <img id="gallery-main-img" src="../img/logo_provisional.png" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
                 <div class="gallery-container" id="gallery-thumbnails">
-                    
+                    <!-- Miniaturas -->
                 </div>
             </div>
         </div>
     </div>
 
-    
+    <!-- MODAL 2: Finalización de Pedido y Términos -->
     <div id="modal-checkout" class="modal-overlay">
         <div class="modal-card" style="max-width: 870px; width: 96%; border-radius: 18px;">
 
@@ -829,54 +835,54 @@
 
             <div class="modal-body" style="display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 1.5rem; background: color-mix(in srgb, var(--text-main) 2%, var(--bg-color, #F8FAFC));">
 
-                
+                <!-- COLUMNA IZQUIERDA -->
                 <div style="flex: 1 1 340px; display: flex; flex-direction: column; gap: 1.25rem;">
 
-                    
+                    <!-- Resumen productos -->
                     <div>
                         <div class="info-title" style="margin-bottom: 0.5rem;">Productos seleccionados</div>
                         <div id="checkout-cart-list" style="max-height: 240px; overflow-y: auto; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
-                            
+                            <!-- Inyectado por JS -->
                         </div>
                     </div>
 
-                    
+                    <!-- Método de pago -->
                     <div>
                         <div class="info-title" style="margin-bottom: 0.5rem;">Método de pago</div>
                         <div id="checkout-payment-methods-container" style="display: flex; flex-direction: column; gap: 0.4rem;">
-                            
+                            <!-- Inyectado por JS -->
                         </div>
                     </div>
 
-                    
+                    <!-- Condiciones comerciales -->
                     <div>
                         <div class="info-title" style="margin-bottom: 0.5rem;">Condiciones comerciales</div>
                         <div id="checkout-terms-text" style="font-size: 0.82rem; line-height: 1.5; color: var(--text-main); white-space: pre-line; background: var(--surface-color); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                            
+                            <!-- Inyectado por JS -->
                         </div>
                     </div>
 
-                    
+                    <!-- Datos bancarios (Transferencia) -->
                     <div id="checkout-bank-block" style="display: none;">
                         <div class="info-title" style="margin-bottom: 0.5rem;">Datos bancarios</div>
                         <div id="checkout-bank-details" style="font-size: 0.85rem; line-height: 1.7; color: var(--text-main); background: var(--surface-color); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                            
+                            <!-- Inyectado por JS -->
                         </div>
                     </div>
 
-                    
+                    <!-- Descuentos -->
                     <div id="checkout-discounts-block" style="display: none;">
                         <div class="info-title" style="margin-bottom: 0.5rem;">Descuentos aplicables</div>
                         <div id="checkout-discounts-text" style="font-size: 0.82rem; line-height: 1.5; color: var(--text-main); white-space: pre-line; background: var(--surface-color); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                            
+                            <!-- Inyectado por JS -->
                         </div>
                     </div>
                 </div>
 
-                
+                <!-- COLUMNA DERECHA -->
                 <div style="flex: 1 1 280px; display: flex; flex-direction: column; justify-content: space-between;">
 
-                    
+                    <!-- Detalle de importes -->
                     <div>
                         <div class="info-title" style="margin-bottom: 0.5rem;">Detalle de importes</div>
                         <div style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
@@ -896,7 +902,7 @@
                         </div>
                     </div>
 
-                    
+                    <!-- Aceptar y enviar -->
                     <div style="margin-top: 1.5rem;">
                         <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; margin-bottom: 1rem;">
                             <input type="checkbox" id="chk-accept-terms" style="margin-top: 2px; accent-color: var(--primary-color); width: 15px; height: 15px; cursor: pointer;">
@@ -904,18 +910,18 @@
                         </label>
 
                         <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.25rem;">
-                            
+                            <!-- WhatsApp -->
                             <button type="button" id="btn-send-whatsapp" disabled style="width: 100%; background: #128C7E; color: white; border: none; padding: 0.85rem; border-radius: 10px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif; box-shadow: 0 4px 12px rgba(18,140,126,0.3); opacity: 0.55;">
                                 <span class="material-symbols-outlined" style="font-size: 1.2rem;">send</span>
                                 Enviar Pedido por WhatsApp
                             </button>
                             <p style="margin: -0.15rem 0 0 0; text-align: center; font-size: 0.68rem; color: var(--text-muted);">*Serás redirigido a WhatsApp para concretar la operación</p>
 
-                            
+                            <!-- Botón de pago dinámico (inyectado por JS) -->
                             <div id="checkout-dynamic-pay-btn-container" style="display: none; margin-top: 0.1rem;"></div>
                         </div>
 
-                        
+                        <!-- Acciones secundarias -->
                         <div style="display: flex; gap: 0.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
                             <button type="button" id="btn-continue-shopping" style="flex: 1; background: transparent; color: var(--text-muted); border: 1.5px solid var(--border-color); padding: 0.6rem; border-radius: 8px; font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; font-family: inherit;">
                                 Seguir comprando
@@ -930,7 +936,7 @@
         </div>
     </div>
 
-    
+    <!-- MODAL 3: Condiciones de Venta -->
     <div id="modal-conditions" class="modal-overlay">
         <div class="modal-card" style="max-width: 500px;">
             <div class="modal-header">
@@ -941,18 +947,18 @@
             </div>
             <div class="modal-body">
                 <div class="info-content" id="conditions-modal-text" style="font-size: 0.92rem; line-height: 1.65; white-space: pre-line; color: var(--text-main);">
-                    
+                    <!-- Inyectado por JS -->
                 </div>
             </div>
         </div>
     </div>
 
-    
-    <script src="js/site-config.js?v=4"></script>
-    <script src="js/products-data.js?v=4"></script>
-    <script src="js/data.js?v=4"></script>
+    <!-- Scripts de Datos -->
+    <script src="../js/site-config.js?v=4"></script>
+    <script src="../js/products-data.js?v=4"></script>
+    <script src="../js/data.js?v=4"></script>
 
-    
+    <!-- Lógica de Negocio Mayorista -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const rowsContainer = document.getElementById('catalog-rows-container');

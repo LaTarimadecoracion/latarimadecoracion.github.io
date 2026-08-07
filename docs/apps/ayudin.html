@@ -12,7 +12,7 @@
             window.location.replace(window.location.origin + basePath + '?view=ayudin');
         }
     </script>
-    
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXNJV3XERK"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -21,7 +21,7 @@
         gtag('config', 'G-JXNJV3XERK');
     </script>
 
-    
+    <!-- SEO / Indexers -->
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://latarimadecoracion.github.io/ayudin.html">
 
@@ -29,31 +29,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ayudin - Herramientas y Guías | LA TARIMA</title>
     
-    
+    <!-- PWA / Meta -->
     <meta name="theme-color" content="#FAF9F6">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="img/icon-180.png">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../img/icon-180.png">
 
-    
+    <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Ayudin - Herramientas y Guías | LA TARIMA">
     <meta property="og:description" content="Encontrá herramientas, calculadoras y guías útiles para carpinteros y emprendedores, organizados por rubros.">
     <meta property="og:image" content="https://latarimadecoracion.github.io/img/logo_provisional.png">
     <meta property="og:url" content="https://latarimadecoracion.github.io/ayudin.html">
 
-    
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
-    
-    <link rel="stylesheet" href="css/style.css?v=25">
-    <link rel="stylesheet" href="css/ayudin.css?v=1">
-</head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css?v=25">
+    <link rel="stylesheet" href="../css/ayudin.css?v=1">
+<style>body { padding-bottom: 95px !important; }</style></head>
 <body>
 
-    
+    <!-- Script Anti-FOUC para Temáticas e Iframe -->
     <script>
         (function() {
             try {
@@ -73,13 +73,13 @@
         })();
     </script>
 
-    
+    <!-- Auras de fondo premium -->
     <div class="bg-glow bg-glow-1"></div>
     <div class="bg-glow bg-glow-2"></div>
 
-    
+    <!-- Cabecera de Marca (Estilo Standalone de La Tarima) -->
     <header class="main-header-bar">
-        <a href="./" class="back-nav-btn" title="Volver al Inicio">
+        <a href="../index.html" class="back-nav-btn" title="Volver al Inicio">
             <span class="material-symbols-outlined">arrow_back</span>
         </a>
         
@@ -91,9 +91,9 @@
 
     <main class="ayudin-container" id="app-container">
         
-        
+        <!-- Pestañas de Rubros (Geometría compacta) -->
         <div id="ayudin-rubros-tabs" class="rubros-tabs-bar" style="margin-top: 15px; margin-bottom: 10px;">
-            
+            <!-- Inyectado dinámicamente por js/ayudin.js -->
         </div>
 
         <h2 class="ayudin-section-title">
@@ -101,12 +101,12 @@
             <span id="section-title-text">Herramientas Útiles</span>
         </h2>
 
-        
+        <!-- Grilla de Aplicaciones / Guías -->
         <div id="ayudin-grid-container" class="ayudin-grid">
-            
+            <!-- Inyectado dinámicamente por js/ayudin.js -->
         </div>
 
-        
+        <!-- Estado Vacío -->
         <div id="ayudin-empty-state" class="catalog-empty-state" style="display: none; padding: 3rem 1rem;">
             <span class="material-symbols-outlined">extension_off</span>
             <h3>No hay herramientas cargadas</h3>
@@ -115,7 +115,7 @@
 
     </main>
 
-    
+    <!-- ── Ventana Modal de Detalles (Frosted Overlay) ── -->
     <div id="ayudin-detail-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content" style="max-height: 85vh; display: flex; flex-direction: column;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 1.25rem; gap: 16px;">
@@ -129,16 +129,16 @@
             </div>
             
             <div id="modal-detail-content" style="overflow-y: auto; flex-grow: 1; padding-right: 4px; box-sizing: border-box;">
-                
+                <!-- HTML dinámico inyectado -->
             </div>
         </div>
     </div>
 
-    
-    <script src="js/site-config.js?v=4"></script>
-    <script src="js/ayudin-data.js?v=1"></script>
-    
-    <script src="js/ayudin.js?v=1"></script>
+    <!-- Scripts de configuración y datos -->
+    <script src="../js/site-config.js?v=4"></script>
+    <script src="../js/ayudin-data.js?v=1"></script>
+    <!-- Script de lógica de visualización -->
+    <script src="../js/ayudin.js?v=1"></script>
 
 </body>
 </html>

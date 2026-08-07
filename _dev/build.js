@@ -23,7 +23,7 @@ async function build() {
     fs.emptyDirSync(distDir);
 
     // 1. Copiar carpetas estáticas que no requieren minificación
-    const foldersToCopy = ['img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'Herramientas', 'pedidos'];
+    const foldersToCopy = ['img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'Herramientas', 'pedidos', 'apps'];
     for (const folder of foldersToCopy) {
         const folderSrc = path.join(srcDir, folder);
         if (fs.existsSync(folderSrc)) {
@@ -49,14 +49,13 @@ async function build() {
         }
     }
 
-    // 3. Minificar HTMLs
-    const htmlFiles = ['index.html', 'catalogo.html', 'calcular.html', 'visualizador.html', 'mayorista.html', 'musica.html', '404.html', 'ayudin.html', 'help.html', 'herramientas.html'];
-    for (const html of htmlFiles) {
+    // 3. Minificar HTMLs raíz (index.html, 404.html)
+    const rootHtmlFiles = ['index.html', '404.html'];
+    for (const html of rootHtmlFiles) {
         const htmlSrc = path.join(srcDir, html);
         if (fs.existsSync(htmlSrc)) {
             console.log(`📄 Copiando y limpiando comentarios en ${html}...`);
             let content = fs.readFileSync(htmlSrc, 'utf8');
-            // Quitar comentarios HTML para aligerar peso
             content = content.replace(/<!--[\s\S]*?-->/g, '');
             fs.writeFileSync(path.join(distDir, html), content);
         }
