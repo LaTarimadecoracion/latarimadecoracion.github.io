@@ -19,5 +19,32 @@ const ordersData = [
         "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
         "startDate": "2026-08-10T13:00:00.000Z",
         "estimatedReadyDate": "2026-08-31T21:00:00.000Z"
+    },
+    {
+        "id": "123431672",
+        "clientName": "asdasd",
+        "productType": "catalog",
+        "productId": "banquito-de-plaza",
+        "productName": "Banquito de Plaza",
+        "selectedFinish": "",
+        "selectedMeasure": "",
+        "description": "asd",
+        "deliveryMethod": "envio",
+        "dispatchInfo": {
+            "courier": "correo_argentino",
+            "courierName": "",
+            "trackingNumber": "00019389763AAL0E0471801",
+            "trackingUrl": ""
+        },
+        "prepDays": 0,
+        "paidStatus": "total",
+        "paidAmount": 10,
+        "totalAmount": 10,
+        "status": "listo",
+        "creationDate": "2026-08-07T14:31:59.205Z",
+        "completedDate": "2026-08-07T14:31:59.205Z",
+        "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+        "startDate": "2026-08-07T14:31:59.205Z",
+        "estimatedReadyDate": "2026-08-14T21:00:00.000Z"
     }
 ];

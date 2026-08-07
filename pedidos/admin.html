@@ -738,6 +738,41 @@
                             <input type="number" id="order-prep-days" class="form-control" value="5" min="1" required>
                         </div>
                     </div>
+
+                    <!-- Datos de Despacho / Tracking (solo si es Envío a Domicilio) -->
+                    <div id="group-dispatch-info" style="display: none; background: rgba(180, 132, 108, 0.06); border: 1px solid rgba(180, 132, 108, 0.2); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
+                        <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary-color); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">local_shipping</span>
+                            Información de Despacho / Tracking
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="order-dispatch-courier">Empresa de Transporte</label>
+                                <select id="order-dispatch-courier" class="form-control">
+                                    <option value="">Seleccionar transporte...</option>
+                                    <option value="correo_argentino">Correo Argentino</option>
+                                    <option value="via_cargo">Vía Cargo</option>
+                                    <option value="andreani">Andreani</option>
+                                    <option value="envio_personal">Envío Personal / Cadetería</option>
+                                    <option value="otros">Otro Transporte</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="group-dispatch-courier-name" style="display: none;">
+                                <label for="order-dispatch-courier-name">Nombre del Transporte</label>
+                                <input type="text" id="order-dispatch-courier-name" class="form-control" placeholder="ej: Expreso Brio">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="order-dispatch-tracking">N° de Guía / Tracking</label>
+                                <input type="text" id="order-dispatch-tracking" class="form-control" placeholder="ej: 123456789AR">
+                            </div>
+                            <div class="form-group">
+                                <label for="order-dispatch-url">Link Directo de Tracking / Ubicación</label>
+                                <input type="url" id="order-dispatch-url" class="form-control" placeholder="https://... (Opcional se autogenera si hay N° guía)">
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="form-row-3">
                         <div class="form-group">
@@ -815,6 +850,8 @@
             document.getElementById('btn-save-order').addEventListener('click', saveOrder);
             
             document.getElementById('order-product-type').addEventListener('change', toggleProductFields);
+            document.getElementById('order-delivery').addEventListener('change', toggleDeliveryFields);
+            document.getElementById('order-dispatch-courier').addEventListener('change', toggleDeliveryFields);
             document.getElementById('order-product-catalog').addEventListener('change', () => {
                 updateFinishesDropdown();
                 handleFinishChange();
@@ -1135,6 +1172,24 @@
             });
         }
         
+        function toggleDeliveryFields() {
+            const delivery = document.getElementById('order-delivery').value;
+            const groupDispatch = document.getElementById('group-dispatch-info');
+            const courier = document.getElementById('order-dispatch-courier').value;
+            const groupCourierName = document.getElementById('group-dispatch-courier-name');
+
+            if (delivery === 'envio') {
+                groupDispatch.style.display = 'block';
+                if (courier === 'otros') {
+                    groupCourierName.style.display = 'block';
+                } else {
+                    groupCourierName.style.display = 'none';
+                }
+            } else {
+                groupDispatch.style.display = 'none';
+            }
+        }
+
         function openModal(order = null) {
             const form = document.getElementById('order-form');
             form.reset();
@@ -1166,6 +1221,12 @@
                 document.getElementById('order-delivery').value = order.deliveryMethod;
                 document.getElementById('order-prep-days').value = order.prepDays;
                 
+                const d = order.dispatchInfo || {};
+                document.getElementById('order-dispatch-courier').value = d.courier || '';
+                document.getElementById('order-dispatch-courier-name').value = d.courierName || '';
+                document.getElementById('order-dispatch-tracking').value = d.trackingNumber || '';
+                document.getElementById('order-dispatch-url').value = d.trackingUrl || '';
+                
                 document.getElementById('order-paid-status').value = order.paidStatus;
                 document.getElementById('order-paid-amount').value = order.paidAmount;
                 document.getElementById('order-total-amount').value = order.totalAmount;
@@ -1178,6 +1239,7 @@
                 }
                 
                 toggleProductFields();
+                toggleDeliveryFields();
             } else {
                 document.getElementById('modal-title').textContent = 'Crear Nuevo Pedido';
                 document.getElementById('order-form-id').value = '';
@@ -1191,7 +1253,13 @@
                 document.getElementById('order-paid-status').value = 'nada';
                 document.getElementById('order-status').value = 'pendiente';
                 
+                document.getElementById('order-dispatch-courier').value = '';
+                document.getElementById('order-dispatch-courier-name').value = '';
+                document.getElementById('order-dispatch-tracking').value = '';
+                document.getElementById('order-dispatch-url').value = '';
+                
                 toggleProductFields();
+                toggleDeliveryFields();
             }
             
             document.getElementById('order-modal').classList.add('show');
@@ -1297,9 +1365,18 @@
                 completedDate = '';
             }
             
-                        const uploadedImg = document.getElementById('order-image-path').value;
+            const uploadedImg = document.getElementById('order-image-path').value;
             const selectedFinish = productType === 'catalog' ? document.getElementById('order-product-finish').value : '';
             const selectedMeasure = productType === 'catalog' ? document.getElementById('order-product-measure').value : '';
+            const deliveryMethod = document.getElementById('order-delivery').value;
+            const dispatchCourier = document.getElementById('order-dispatch-courier').value;
+            
+            const dispatchInfo = (deliveryMethod === 'envio' && dispatchCourier) ? {
+                courier: dispatchCourier,
+                courierName: document.getElementById('order-dispatch-courier-name').value.trim(),
+                trackingNumber: document.getElementById('order-dispatch-tracking').value.trim(),
+                trackingUrl: document.getElementById('order-dispatch-url').value.trim()
+            } : null;
             
             const orderObj = {
                 id,
@@ -1310,7 +1387,8 @@
                 selectedFinish,
                 selectedMeasure,
                 description: document.getElementById('order-desc').value.trim(),
-                deliveryMethod: document.getElementById('order-delivery').value,
+                deliveryMethod,
+                dispatchInfo,
                 prepDays: Number(document.getElementById('order-prep-days').value || 5),
                 paidStatus: document.getElementById('order-paid-status').value,
                 paidAmount: Number(document.getElementById('order-paid-amount').value || 0),

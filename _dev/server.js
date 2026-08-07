@@ -1672,18 +1672,69 @@ function generateClientPage(order) {
                 
                 <div id="timeline-container" class="timeline"></div>
                 
-                <div style="background: rgba(180, 132, 108, 0.05); border: 1px solid rgba(180, 132, 108, 0.15); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.5rem; display: flex; align-items: center; gap: 12px;">
-                    <span class="material-symbols-outlined" style="font-size: 32px; color: var(--primary-color);">
-                        ${order.deliveryMethod === 'envio' ? 'local_shipping' : 'storefront'}
-                    </span>
-                    <div>
-                        <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">
-                            ${order.deliveryMethod === 'envio' ? 'Método de Entrega: Envío a Domicilio' : 'Método de Entrega: Retira por Taller'}
-                        </div>
-                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">
-                            ${order.deliveryMethod === 'envio' ? 'Coordinaremos el envío una vez que el producto esté listo.' : 'Podrás retirar tu pedido por nuestro domicilio.'}
+                <div style="background: rgba(180, 132, 108, 0.05); border: 1px solid rgba(180, 132, 108, 0.15); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.5rem;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="material-symbols-outlined" style="font-size: 32px; color: var(--primary-color);">
+                            ${order.deliveryMethod === 'envio' ? 'local_shipping' : 'storefront'}
+                        </span>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">
+                                ${order.deliveryMethod === 'envio' ? 'Método de Entrega: Envío a Domicilio' : 'Método de Entrega: Retira por Taller'}
+                            </div>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">
+                                ${order.deliveryMethod === 'envio' 
+                                    ? (order.dispatchInfo && order.dispatchInfo.courier ? `Despachado por: <strong>${order.dispatchInfo.courierName || order.dispatchInfo.courier}</strong>` : 'Coordinaremos el envío una vez que el producto esté listo.')
+                                    : 'Podrás retirar tu pedido por nuestro domicilio.'}
+                            </div>
                         </div>
                     </div>
+
+                    ${(function() {
+                        if (order.deliveryMethod !== 'envio' || !order.dispatchInfo || !order.dispatchInfo.courier) return '';
+                        
+                        const d = order.dispatchInfo;
+                        let trackingUrl = '';
+                        let courierLabel = d.courierName || d.courier;
+
+                        if (d.courier === 'correo_argentino') {
+                            trackingUrl = d.trackingUrl || 'https://www.correoargentino.com.ar/formularios/e-commerce';
+                            courierLabel = 'Correo Argentino';
+                        } else if (d.courier === 'via_cargo') {
+                            trackingUrl = d.trackingUrl || (d.trackingNumber ? `https://www.viacargo.com.ar/seguimiento?nroenvio=${encodeURIComponent(d.trackingNumber)}` : '');
+                            courierLabel = 'Vía Cargo';
+                        } else if (d.courier === 'andreani') {
+                            trackingUrl = d.trackingUrl || (d.trackingNumber ? `https://www.andreani.com/#!/informacionEnvio/${encodeURIComponent(d.trackingNumber)}` : '');
+                            courierLabel = 'Andreani';
+                        } else if (d.courier === 'envio_personal') {
+                            trackingUrl = d.trackingUrl || '';
+                            courierLabel = 'Envío Personal / Cadetería';
+                        } else {
+                            trackingUrl = d.trackingUrl || '';
+                            courierLabel = d.courierName || 'Empresa de Transporte';
+                        }
+
+                        if (!trackingUrl && !d.trackingNumber) return '';
+
+                        return `
+                        <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px dashed rgba(180, 132, 108, 0.25); display: flex; flex-direction: column; gap: 8px;">
+                            ${d.trackingNumber ? `
+                            <div style="font-size: 0.88rem; color: var(--text-main); display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                                <strong>N° de Guía / Tracking:</strong>
+                                <span onclick="navigator.clipboard.writeText('${d.trackingNumber}'); const icon = this.querySelector('.material-symbols-outlined'); if(icon){ icon.textContent='check'; setTimeout(()=>icon.textContent='content_copy', 2000); }" title="Haz clic para copiar" style="font-family: monospace; font-weight: 700; background: rgba(0, 0, 0, 0.05); padding: 4px 10px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(0,0,0,0.08); user-select: all;">
+                                    ${d.trackingNumber}
+                                    <span class="material-symbols-outlined" style="font-size: 16px; color: var(--primary-color);">content_copy</span>
+                                </span>
+                            </div>
+                            ` : ''}
+                            ${trackingUrl ? `
+                            <a href="${trackingUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary" onclick="if('${d.trackingNumber}' && navigator.clipboard){ navigator.clipboard.writeText('${d.trackingNumber}'); }" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 0.65rem 1.25rem; font-weight: 700; font-size: 0.9rem; margin-top: 4px; border-radius: var(--radius-sm);">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">open_in_new</span>
+                                Seguir Pedido (${courierLabel})
+                            </a>
+                            ` : ''}
+                        </div>
+                        `;
+                    })()}
                 </div>
                 
             </div>
@@ -1844,22 +1895,23 @@ function generateClientPage(order) {
                 let desc  = '';
                 
                 if (isWeekend) {
-                    title = \`\${capitalizedWeekday} \&bull; \${dateStr}\`;
+                    title = `${capitalizedWeekday} &bull; ${dateStr}`;
                     desc  = 'Fines de semana el taller permanece cerrado 🌲';
                 } else {
                     if (isFirst) {
-                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} — Inicio\`;
-                        desc  = \`Día 1 de fabricación en taller 🛠️\`;
+                        title = `${capitalizedWeekday} &bull; ${dateStr} — Inicio`;
+                        desc  = `Día 1 de fabricación en taller 🛠️`;
                     } else if (isReadyDay) {
-                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} — Fin de Fabricación\`;
+                        title = `${capitalizedWeekday} &bull; ${dateStr} — Fin de Fabricación`;
                         desc  = (orderData.status === 'listo' || orderData.status === 'entregado')
-                            ? \`¡Tu mueble ya está listo! ✅\`
-                            : \`Fecha estimada de finalización (Día \${businessDayCounter})\`;
+                            ? `¡Tu mueble ya está listo! ✅`
+                            : `Fecha estimada de finalización (Día ${businessDayCounter})`;
                     } else if (isLast) {
-                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} — Retiro / Despacho\`;
-                        desc  = orderData.deliveryMethod === 'envio'
-                            ? 'Ya podés coordinar el despacho de tu mueble 🚚'
-                            : 'Ya podés retirar tu pedido por nuestro domicilio 🏁';
+                        const isEnvio = orderData.deliveryMethod === 'envio';
+                        title = `${capitalizedWeekday} &bull; ${dateStr} — ${isEnvio ? 'Despacho de Pedido' : 'Retiro por Taller'}`;
+                        desc  = isEnvio
+                            ? 'Tu pedido se encuentra en proceso de despacho o en camino. Podés seguir su recorrido en el apartado de abajo ⬇️'
+                            : 'Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁';
                     } else {
                         title = \`\${capitalizedWeekday} \&bull; \${dateStr}\`;
                         desc  = \`Día \${businessDayCounter} de elaboración\`;
