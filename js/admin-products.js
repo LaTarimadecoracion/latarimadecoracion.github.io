@@ -598,6 +598,19 @@ window.initProductsAdmin = function() {
         const rawQuery = searchInput ? searchInput.value : '';
         const query = normalizeForSearch(rawQuery).trim();
 
+        // 🔍 Detector Inteligente de Número de Orden / Seguimiento de Pedidos
+        const cleanDigits = rawQuery.replace(/[^0-9]/g, '').trim();
+        if (cleanDigits.length >= 6) {
+            const allOrders = (typeof ordersData !== 'undefined' && Array.isArray(ordersData)) ? ordersData : [];
+            const matchedOrder = allOrders.find(o => String(o.id).trim() === cleanDigits);
+            if (matchedOrder) {
+                if (window.navigateToView) {
+                    window.navigateToView('view-pedidos', { orderId: matchedOrder.id });
+                }
+                return;
+            }
+        }
+
         const activeView = document.querySelector('.view.active');
         if (activeView && activeView.id === 'view-catalogo') {
             const iframe = document.querySelector('#view-catalogo iframe');

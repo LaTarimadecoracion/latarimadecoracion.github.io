@@ -360,18 +360,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 'ayudin': 'view-ayudin',
                 'help': 'view-ayudin',
                 'herramientas': 'view-ayudin',
-                'pedidos': 'view-pedidos'
+                'pedidos': 'view-pedidos',
+                'pedidos-admin': 'view-pedidos-admin',
+                'admin-pedidos': 'view-pedidos-admin'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
+            const orderIdParam = urlParams.get('id') || urlParams.get('order');
+
             setTimeout(() => {
                 if (window.navigateToView) {
                     console.log(`[Router] Navegación solicitada por URL a: ${targetViewId}`);
-                    window.navigateToView(targetViewId);
+                    window.navigateToView(targetViewId, { orderId: orderIdParam });
                 }
             }, 150);
+        } else {
+            const orderIdParam = urlParams.get('id') || urlParams.get('order');
+            if (orderIdParam) {
+                setTimeout(() => {
+                    if (window.navigateToView) {
+                        window.navigateToView('view-pedidos', { orderId: orderIdParam });
+                    }
+                }, 150);
+            }
         }
 
-        // Soporte para rutas limpias SPA: /alquileres, /alquiles, /rentas
+        // Soporte para rutas limpias SPA: /alquileres, /alquiles, /rentas o directas de pedido /500102800
+        const pathSegments = window.location.pathname.split('/').filter(Boolean);
+        if (pathSegments.length > 0) {
+            const lastPathSegment = pathSegments[pathSegments.length - 1].replace('.html', '').trim();
+            const pathDigits = lastPathSegment.replace(/[^0-9]/g, '');
+            if (pathDigits.length >= 6 && /^\d+$/.test(pathDigits)) {
+                setTimeout(() => {
+                    if (window.navigateToView) {
+                        console.log(`[Router] Ruta directa de orden detectada: ${pathDigits}.`);
+                        window.navigateToView('view-pedidos', { orderId: pathDigits });
+                    }
+                }, 150);
+            }
+        }
+
         const cleanPath = window.location.pathname.toLowerCase().replace(/\/$/, '');
         if (cleanPath.endsWith('/edit') || cleanPath.endsWith('/editor') || cleanPath.endsWith('/web/edit') || cleanPath.endsWith('/web/editor')) {
             window.location.replace('Herramientas/editor-fotos.html');

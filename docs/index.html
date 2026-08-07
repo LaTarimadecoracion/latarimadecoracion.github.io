@@ -381,7 +381,14 @@
         
         <section id="view-pedidos" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe src="" style="width: 100%; flex: 1; border: none; display: block;" title="Seguimiento de Pedido"></iframe>
+                <iframe src="pedidos/index.html" style="width: 100%; flex: 1; border: none; display: block;" title="Seguimiento de Pedido"></iframe>
+            </div>
+        </section>
+
+        
+        <section id="view-pedidos-admin" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe src="pedidos/admin.html" style="width: 100%; flex: 1; border: none; display: block;" title="Administración de Pedidos"></iframe>
             </div>
         </section>
 
@@ -2027,8 +2034,28 @@
                 }, 300);
             };
 
+            window.showOrderInIframe = (orderId) => {
+                if (!trackingIframe || !searchView || !container || !errorView || !trackingOverlay) return;
+                trackingIframe.src = `pedidos/index.html?id=${encodeURIComponent(orderId)}`;
+                searchView.style.display = 'none';
+                trackingIframe.style.display = 'block';
+                errorView.style.setProperty('display', 'none', 'important');
+                container.classList.add('has-results');
+                trackingOverlay.classList.add('open');
+            };
+
+            window.showAdminInIframe = () => {
+                if (!trackingIframe || !searchView || !container || !errorView || !trackingOverlay) return;
+                trackingIframe.src = `pedidos/admin.html`;
+                searchView.style.display = 'none';
+                trackingIframe.style.display = 'block';
+                errorView.style.setProperty('display', 'none', 'important');
+                container.classList.add('has-results');
+                trackingOverlay.classList.add('open');
+            };
+
             window.handleNativeTrackingSearch = async (e) => {
-                e.preventDefault();
+                if (e) e.preventDefault();
                 if (!orderInput || !errorBox || !trackingIframe || !searchView || !container || !errorView) return;
                 
                 const orderId = orderInput.value.trim();
@@ -2039,27 +2066,25 @@
                     errorBox.style.display = 'block';
                     return;
                 }
-                
-                try {
-                    const res = await fetch(`pedidos/${orderId}.html`, { method: 'HEAD' });
-                    if (res.ok && res.url.includes('/pedidos/')) {
-                        trackingIframe.src = `pedidos/${orderId}.html`;
-                        searchView.style.display = 'none';
-                        trackingIframe.style.display = 'block';
-                        errorView.style.setProperty('display', 'none', 'important');
-                        container.classList.add('has-results');
-                    } else {
-                        searchView.style.display = 'none';
-                        trackingIframe.style.display = 'none';
-                        errorView.style.setProperty('display', 'flex', 'important');
-                        container.classList.add('has-results');
-                    }
-                } catch (err) {
-                    console.error(err);
-                    trackingIframe.src = `pedidos/${orderId}.html`;
+
+                // Verificar si existe en ordersData o probar cargar
+                const orders = (typeof ordersData !== 'undefined') ? ordersData : [];
+                const found = orders.some(o => String(o.id) === String(orderId));
+
+                if (found) {
+                    window.showOrderInIframe(orderId);
+                } else {
+                    try {
+                        const res = await fetch(`pedidos/${orderId}.html`, { method: 'HEAD' });
+                        if (res.ok) {
+                            window.showOrderInIframe(orderId);
+                            return;
+                        }
+                    } catch(err) {}
+                    
                     searchView.style.display = 'none';
-                    trackingIframe.style.display = 'block';
-                    errorView.style.setProperty('display', 'none', 'important');
+                    trackingIframe.style.display = 'none';
+                    errorView.style.setProperty('display', 'flex', 'important');
                     container.classList.add('has-results');
                 }
             };
@@ -2075,6 +2100,8 @@
     </script>
 
     
+    <script src="js/orders-config.js?v=26" defer></script>
+    <script src="js/orders-data.js?v=26" defer></script>
     <script src="js/confetti-arg.js?v=2" defer></script>
     <script src="js/header-deco-arg.js?v=4" defer></script>
     <script src="js/products-data.js?v=5" defer></script>

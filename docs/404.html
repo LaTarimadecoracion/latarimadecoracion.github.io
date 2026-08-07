@@ -22,10 +22,17 @@
             var basePath = '/';
             var segments = window.location.pathname.split('/').filter(Boolean);
             if (segments.length > 0) {
-                // Si el primer segmento es exactamente el nombre del repositorio
                 if (segments[0].toLowerCase() === 'latarimadecoracion.github.io') {
                     basePath = '/latarimadecoracion.github.io/';
                 }
+            }
+
+            // 🔍 Detectar si el último segmento de la URL es un número de orden (ej: /500102800 o /pedidos/500102800)
+            var lastSegment = segments.length > 0 ? segments[segments.length - 1].replace('.html', '').trim() : '';
+            var cleanDigits = lastSegment.replace(/[^0-9]/g, '');
+            if (cleanDigits.length >= 6 && /^\d+$/.test(cleanDigits)) {
+                window.location.replace(window.location.origin + basePath + '?view=pedidos&id=' + cleanDigits);
+                return;
             }
 
             if (isMayorista) {

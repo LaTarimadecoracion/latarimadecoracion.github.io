@@ -32,6 +32,17 @@
     --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Ocultar barra de desplazamiento manteniendo scroll intuitivo touch y mouse */
+html, body, iframe, .app-container, .view, .view-content {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
 /* ── TEMÁTICAS / SKINS DE LA WEB ── */
 /* Sobrio V1 (Edición de Lujo / Minimalist Luxury) */
 body.theme-sobrio {
@@ -2789,7 +2800,7 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 /* Main container spacing */
 #app-container {
     padding-top: 90px;
-    padding-bottom: 80px;
+    padding-bottom: 0px;
 }
 
 /* Los Más Buscados horizontal carousel */

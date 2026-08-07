@@ -740,8 +740,13 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="order-prep-days">Elaboración (Días Hábiles)</label>
-                            <input type="number" id="order-prep-days" class="form-control" value="5" min="1" required>
+                            <label>Elaboración (Días Hábiles Estimados)</label>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <input type="number" id="order-prep-days-min" class="form-control" value="10" min="1" placeholder="Mín" style="text-align: center; font-weight: 700;">
+                                <span style="font-weight: 700; color: var(--text-muted);">a</span>
+                                <input type="number" id="order-prep-days-max" class="form-control" value="15" min="1" placeholder="Máx" style="text-align: center; font-weight: 700;">
+                                <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted); white-space: nowrap;">días háb.</span>
+                            </div>
                         </div>
                     </div>
 
@@ -1221,10 +1226,21 @@
                 if (order.status === 'listo') statusLabel = 'Listo';
                 if (order.status === 'entregado') statusLabel = 'Entregado';
                 
-                // Enlace de seguimiento
-                const relativeLink = `./${order.id}.html`;
-                const absoluteLink = `${window.location.origin}/pedidos/${order.id}.html`;
+                // Enlace de seguimiento corto ultra limpio para WhatsApp
+                let basePath = '/';
+                if (window.location.pathname.includes('/latarimadecoracion.github.io/')) {
+                    basePath = '/latarimadecoracion.github.io/';
+                }
+                const origin = window.location.origin.replace(/\/$/, '');
+                const trackingPath = `${origin}${basePath}?view=pedidos&id=${order.id}`;
+                const trackingShortUrl = `${origin}${basePath}${order.id}`;
+                const waMsg = `¡Hola ${order.clientName}! 👋 Te compartimos el link para hacer el seguimiento en vivo de tu pedido #${order.id} en La Tarima:\n\n${trackingShortUrl}`;
+                const waUrl = `https://wa.me/?text=${encodeURIComponent(waMsg)}`;
                 
+                const pMin = order.prepDaysMin || order.prepDays || 1;
+                const pMax = order.prepDaysMax || order.prepDays || pMin;
+                const prepDaysText = pMin === pMax ? `${pMax}d háb.` : `${pMin} a ${pMax}d háb.`;
+
                 tr.innerHTML = `
                     <td><span class="order-id-badge">${order.id}</span></td>
                     <td><span class="order-client-name">${order.clientName}</span></td>
@@ -1245,12 +1261,15 @@
                         </span>
                     </td>
                     <td>${paidHTML}</td>
-                    <td style="text-align:center; font-weight:600;">${order.prepDays}d háb.</td>
+                    <td style="text-align:center; font-weight:600; white-space:nowrap;">${prepDaysText}</td>
                     <td style="font-weight:700;">${limitStr}</td>
                     <td><span class="status-badge status-${order.status}">${statusLabel}</span></td>
                     <td>
                         <div class="actions-cell">
-                            <a href="${relativeLink}" target="_blank" class="action-btn link" title="Ver web de seguimiento">
+                            <a href="${waUrl}" target="_blank" class="action-btn link" style="color: #16a34a; background: rgba(22, 163, 74, 0.1);" title="Enviar link por WhatsApp al cliente">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">chat</span>
+                            </a>
+                            <a href="${trackingPath}" target="_blank" class="action-btn link" title="Ver web de seguimiento">
                                 <span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
                             </a>
                             <button type="button" class="action-btn edit" onclick="editOrder('${order.id}')" title="Editar Pedido">
@@ -1313,7 +1332,11 @@
                 
                 document.getElementById('order-desc').value = order.description;
                 document.getElementById('order-delivery').value = order.deliveryMethod;
-                document.getElementById('order-prep-days').value = order.prepDays;
+                
+                const minDays = order.prepDaysMin || order.prepDays || 10;
+                const maxDays = order.prepDaysMax || order.prepDays || minDays;
+                document.getElementById('order-prep-days-min').value = minDays;
+                document.getElementById('order-prep-days-max').value = maxDays;
                 
                 const d = order.dispatchInfo || {};
                 document.getElementById('order-dispatch-courier').value = d.courier || '';
@@ -1341,7 +1364,8 @@
                 document.getElementById('order-form-start').value = '';
                 document.getElementById('order-form-ready').value = '';
                 document.getElementById('order-form-completed').value = '';
-                document.getElementById('order-prep-days').value = 5;
+                document.getElementById('order-prep-days-min').value = 10;
+                document.getElementById('order-prep-days-max').value = 15;
                 document.getElementById('order-paid-amount').value = 0;
                 document.getElementById('order-total-amount').value = 0;
                 document.getElementById('order-paid-status').value = 'nada';
@@ -1472,6 +1496,9 @@
                 trackingUrl: document.getElementById('order-dispatch-url').value.trim()
             } : null;
             
+            const pMinVal = Math.max(1, Number(document.getElementById('order-prep-days-min').value || 10));
+            const pMaxVal = Math.max(pMinVal, Number(document.getElementById('order-prep-days-max').value || pMinVal));
+            
             const orderObj = {
                 id,
                 clientName,
@@ -1483,7 +1510,9 @@
                 description: document.getElementById('order-desc').value.trim(),
                 deliveryMethod,
                 dispatchInfo,
-                prepDays: Number(document.getElementById('order-prep-days').value || 5),
+                prepDaysMin: pMinVal,
+                prepDaysMax: pMaxVal,
+                prepDays: pMaxVal,
                 paidStatus: document.getElementById('order-paid-status').value,
                 paidAmount: Number(document.getElementById('order-paid-amount').value || 0),
                 totalAmount: Number(document.getElementById('order-total-amount').value || 0),

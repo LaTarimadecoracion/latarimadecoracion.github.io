@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Seguimiento de Pedidos | LA TARIMA</title>
+    <title>Seguimiento de Pedido | LA TARIMA</title>
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,21 +12,27 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css?v=25">
+    <link rel="stylesheet" href="../css/style.css?v=26">
     
     <style>
         :root {
-            --primary-hsl: 25, 30%, 45%;
-            --primary-color: hsl(var(--primary-hsl));
+            --primary-color: #c0510a;
             --surface-color: #ffffff;
             --bg-color: #faf9f6;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --shadow-sm: 0 4px 18px rgba(0, 0, 0, 0.015);
-            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --text-main: #2c2520;
+            --text-muted: #8c857b;
+            --border-color: #EAEBE9;
+        }
+
+        /* Ocultar barra de desplazamiento manteniendo scroll intuitivo */
+        html, body, iframe, div, section {
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
+        }
+        ::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
         }
         
         body {
@@ -38,23 +44,46 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            align-items: center;
-            justify-content: center;
+            overflow-y: auto !important;
+        }
+        
+        body.in-iframe {
+            background: transparent !important;
+            background-color: transparent !important;
+            min-height: auto;
+            overflow-y: auto !important;
+            padding: 12px 12px 100px 12px !important;
+            box-sizing: border-box;
+        }
+        
+        body.in-iframe .order-card {
+            box-shadow: none !important;
+            margin-bottom: 1rem !important;
+        }
+
+        body.in-iframe .conditions-card {
+            box-shadow: none !important;
+            margin-bottom: 90px !important;
+        }
+        
+        body.in-iframe .client-header,
+        body.in-iframe .client-footer {
+            display: none !important;
+        }
+        
+        body.in-iframe .main-container {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            max-width: 100% !important;
         }
         
         .client-header {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
             background: var(--surface-color);
-            border-bottom: 1.5px solid var(--border-color);
-            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: var(--shadow-sm);
-            box-sizing: border-box;
         }
         
         .logo-container {
@@ -76,136 +105,345 @@
             letter-spacing: -0.5px;
         }
         
-        .search-card {
-            background: var(--surface-color);
-            border-radius: var(--radius-lg);
-            border: 1.5px solid var(--border-color);
-            box-shadow: var(--shadow-md);
-            max-width: 480px;
-            width: 90%;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            box-sizing: border-box;
-            margin-top: 5rem;
-            margin-bottom: 5rem;
-        }
-        
-        .search-card span.main-icon {
-            font-size: 64px;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .search-card h2 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-        
-        .search-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin: 0 0 2rem 0;
-            line-height: 1.5;
-        }
-        
-        .input-group {
-            position: relative;
-            margin-bottom: 1.25rem;
-        }
-        
-        .input-group span {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-        }
-        
-        .input-control {
+        .main-container {
+            max-width: 750px;
             width: 100%;
+            margin: 1.5rem auto;
+            padding: 0 16px;
             box-sizing: border-box;
-            padding: 0.8rem 1rem 0.8rem 45px !important;
-            border: 1.5px solid var(--border-color);
-            border-radius: 12px;
-            font-size: 1rem;
-            font-family: inherit;
-            background: #f8fafc;
-            transition: all 0.2s;
-            text-align: center;
-            letter-spacing: 1px;
-            font-weight: 600;
+            flex-grow: 1;
         }
         
-        .input-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            background: white;
-            box-shadow: 0 0 0 4px rgba(180, 132, 108, 0.15);
-        }
-        
-        .btn-search {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.85rem 2rem;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
-            width: 100%;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(180, 132, 108, 0.2);
-        }
-        
-        .btn-search:hover {
-            background: hsl(25, 30%, 38%);
-            transform: translateY(-1px);
-        }
-        
-        .error-message {
-            margin-top: 1rem;
-            padding: 0.75rem 1rem;
-            background: #fef2f2;
-            border: 1px solid #fca5a5;
-            color: #b91c1c;
+        /* Estilo Carrito de Compras: Limpio, minimalista, bordes de 8px */
+        .order-card {
+            background: #ffffff;
             border-radius: 8px;
+            border: 1px solid #EAEBE9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+        }
+        
+        .order-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #EAEBE9;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .order-title-block h1 {
+            margin: 0 0 4px 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c2520;
+        }
+        
+        .order-number {
+            color: #8c857b;
             font-size: 0.85rem;
             font-weight: 500;
-            display: none;
-            text-align: left;
+        }
+        
+        .status-badge {
+            padding: 0.4rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .status-pendiente {
+            background: #fef3c7;
+            color: #d97706;
+            border: 1px solid #fde68a;
+        }
+        
+        .status-listo {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .status-entregado {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .order-body {
+            padding: 1.25rem 1.5rem;
+        }
+        
+        .product-section {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: #faf9f6;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #EAEBE9;
+            align-items: center;
+        }
+        
+        .product-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #EAEBE9;
+            background: #ffffff;
+            flex-shrink: 0;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-info h2 {
+            margin: 0 0 6px 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #2c2520;
+        }
+
+        .product-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #ffffff;
+            border: 1px solid #EAEBE9;
+            color: #8c857b;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+        
+        .product-desc {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #8c857b;
+            margin: 4px 0 0 0;
+            white-space: pre-line;
+        }
+        
+        .payment-banner {
+            background: #faf9f6;
+            border: 1px solid #EAEBE9;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+        }
+        
+        .payment-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .payment-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #8c857b;
+            letter-spacing: 0.5px;
+        }
+        
+        .payment-value {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #2c2520;
+        }
+        
+        .payment-value.saldo {
+            color: #dc2626;
+        }
+        
+        .payment-value.pagado {
+            color: #16a34a;
+        }
+        
+        .section-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8c857b;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid #EAEBE9;
+            padding-bottom: 0.5rem;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .timeline-icon-wrapper {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #faf9f6;
+            color: #8c857b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid #EAEBE9;
+            font-size: 18px;
+        }
+        
+        .timeline-item.active .timeline-icon-wrapper {
+            background: var(--primary-color, #c0510a);
+            color: white;
+            border-color: var(--primary-color, #c0510a);
+        }
+        
+        .timeline-item.completed .timeline-icon-wrapper {
+            background: #16a34a;
+            color: white;
+            border-color: #16a34a;
+        }
+        
+        .timeline-item.milestone-ready .timeline-icon-wrapper {
+            background: #d97706;
+            color: white;
+            border-color: #d97706;
+        }
+        
+        .timeline-item.milestone-pickup .timeline-icon-wrapper {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+        
+        .timeline-content {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            flex-grow: 1;
+            border: 1px solid #EAEBE9;
+        }
+        
+        .timeline-item.active .timeline-content {
+            background: #fffafa;
+            border-color: var(--primary-color, #c0510a);
+        }
+        
+        .timeline-title {
+            margin: 0 0 2px 0;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #2c2520;
+        }
+        
+        .timeline-desc {
+            margin: 0;
+            font-size: 0.82rem;
+            color: #8c857b;
             line-height: 1.4;
         }
         
-        .client-footer {
+        .timeline-expand-btn {
+            background: #ffffff;
+            border: 1px solid #EAEBE9;
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
             width: 100%;
-            position: absolute;
-            bottom: 0;
-            left: 0;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: #8c857b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 0.5rem;
+        }
+        
+        .timeline-expand-btn:hover {
+            background: #faf9f6;
+            color: #2c2520;
+        }
+        
+        .conditions-card {
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #EAEBE9;
+            padding: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+        
+        .conditions-card h3 {
+            margin: 0 0 0.85rem 0;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8c857b;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .conditions-card ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: #2c2520;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        
+        .conditions-card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .client-footer {
             background: var(--surface-color);
             border-top: 1.5px solid var(--border-color);
-            padding: 1.5rem 2rem;
+            padding: 2rem 1.5rem;
             text-align: center;
-            box-sizing: border-box;
+            margin-top: auto;
         }
         
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 0.75rem;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
         
         .social-btn {
-            width: 38px;
-            height: 38px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            background: #f1f5f9;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -217,174 +455,526 @@
         .social-btn:hover {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-2px);
+            border-color: var(--primary-color);
         }
         
         .footer-text {
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
         }
-        
-        @media (max-height: 600px) {
-            body {
-                justify-content: flex-start;
-                padding-top: 5.5rem;
-                padding-bottom: 6rem;
-            }
-            .client-header, .client-footer {
-                position: relative;
-            }
-            .search-card {
-                margin: 2rem auto;
-            }
-        }
 
-        /* Iframe Styles Override */
-        body.in-iframe {
-            background: transparent !important;
-            justify-content: flex-start;
-            padding: 0;
-            min-height: auto;
-            overflow: hidden;
-        }
-        body.in-iframe .client-header,
-        body.in-iframe .client-footer {
-            display: none !important;
-        }
-        body.in-iframe .search-card {
-            margin: 0 auto;
-            box-shadow: none;
-            border: none;
-            background: transparent;
-            width: 100%;
-            max-width: 100%;
-            padding: 1.5rem 1rem;
+        .not-found-card {
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            border: 1.5px solid var(--border-color);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            margin: 2rem 0;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header class="client-header">
-        <a href="../" class="logo-container">
-            <img src="../img/logo_provisional.png" alt="La Tarima Logo" class="logo-img">
+        <a href="../index.html" class="logo-container">
+            <img src="../img/logo.webp" alt="LA TARIMA" class="logo-img" onerror="this.src='https://via.placeholder.com/40x40?text=LT'">
             <span class="logo-text">LA TARIMA</span>
         </a>
-        <div style="font-size: 0.88rem; font-weight: 600; color: var(--primary-color);">Seguimiento Online</div>
+        <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">
+            Seguimiento de Pedido
+        </div>
     </header>
 
-    <!-- Tarjeta de Búsqueda -->
-    <div class="search-card">
-        <span class="material-symbols-outlined main-icon">local_shipping</span>
-        <h2>¿Cómo viene tu pedido?</h2>
-        <p>Ingresá el número de Orden que te brindamos al realizar tu compra para conocer el estado de fabricación de tu mueble.</p>
-        
-        <form id="search-form" onsubmit="handleSearch(event)">
-            <div class="input-group">
-                <span class="material-symbols-outlined">tag</span>
-                <input type="text" id="order-id-input" class="input-control" placeholder="Número de Orden" autocomplete="off" required pattern="[0-9]+" title="Solo números de orden válidos">
-            </div>
-            
-            <button type="submit" class="btn-search">
-                <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
-                Buscar Pedido
-            </button>
-            
-            <div id="error-box" class="error-message"></div>
-        </form>
-    </div>
+    <main class="main-container" id="main-content">
+        <!-- Se llena dinámicamente -->
+        <div style="text-align: center; padding: 4rem 1rem;">
+            <span class="material-symbols-outlined" style="font-size: 48px; color: var(--primary-color); animation: spin 1s linear infinite;">progress_activity</span>
+            <p style="margin-top: 1rem; font-weight: 600; color: var(--text-muted);">Cargando seguimiento de tu pedido...</p>
+        </div>
+    </main>
 
-    <!-- Footer -->
     <footer class="client-footer">
         <div class="social-icons" id="social-container">
-            <!-- Se inyectan dinámicamente -->
+            <!-- Se llena dinámicamente con site-config.js -->
         </div>
         <div class="footer-text">
             &copy; 2026 La Tarima. Todos los derechos reservados.
         </div>
     </footer>
 
-    <!-- Importar site-config para enlaces sociales -->
-    <script src="../js/site-config.js?v=5"></script>
-    
+    <!-- Carga de Bases de Datos Centrales -->
+    <script src="../js/orders-data.js?v=26"></script>
+    <script src="../js/orders-config.js?v=26"></script>
+    <script src="../js/site-config.js?v=26"></script>
+
     <script>
-        // Aplicar temática
-        (function() {
-            try {
-                const userSelected = localStorage.getItem('userSelectedTheme');
-                const localTheme = localStorage.getItem('activeTheme');
-                const themeToApply = userSelected || localTheme || 'classic';
-                if (themeToApply && themeToApply !== 'classic') {
-                    document.body.classList.add('theme-' + themeToApply);
-                }
-            } catch(e) {}
-            
-            // Detectar si está en un iframe
-            if (window.self !== window.top) {
-                document.body.classList.add('in-iframe');
-            }
-        })();
+        // Aplicar detección de iFrame para la App PWA
+        if (window.self !== window.top) {
+            document.body.classList.add('in-iframe');
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Renderizar enlaces de redes sociales
-            renderSocialLinks();
+            renderSocialFooter();
+            loadAndRenderOrder();
         });
-        
-        function renderSocialLinks() {
+
+        function renderSocialFooter() {
+            if (typeof siteConfig === 'undefined' || !siteConfig.social) return;
+            const s = siteConfig.social;
             const container = document.getElementById('social-container');
-            container.innerHTML = '';
-            
-            if (typeof siteConfig !== 'undefined' && siteConfig.socialLinks) {
-                const links = siteConfig.socialLinks;
-                
-                if (links.instagram) {
-                    container.innerHTML += `<a href="${links.instagram}" target="_blank" class="social-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>`;
-                }
-                if (links.tiktok) {
-                    container.innerHTML += `<a href="${links.tiktok}" target="_blank" class="social-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg></a>`;
-                }
-                if (links.facebook) {
-                    container.innerHTML += `<a href="${links.facebook}" target="_blank" class="social-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>`;
-                }
-                if (links.whatsapp) {
-                    const waNum = links.whatsapp.replace(/[^0-9]/g, '');
-                    container.innerHTML += `<a href="https://wa.me/${waNum}" target="_blank" class="social-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></a>`;
-                }
-            }
+            container.innerHTML = `
+                ${s.instagram ? `<a href="${s.instagram}" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>` : ''}
+                ${s.tiktok ? `<a href="${s.tiktok}" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg></a>` : ''}
+                ${s.facebook ? `<a href="${s.facebook}" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>` : ''}
+                ${s.whatsapp ? `<a href="https://wa.me/${s.whatsapp.replace(/[^0-9]/g, '')}" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></a>` : ''}
+            `;
         }
-        
-        async function handleSearch(e) {
-            e.preventDefault();
-            const input = document.getElementById('order-id-input');
-            const errorBox = document.getElementById('error-box');
-            const orderId = input.value.trim();
-            
-            errorBox.style.display = 'none';
-            
-            if (!/^[0-9]+$/.test(orderId)) {
-                showError('Ingrese un número de orden válido.');
+
+        function getOrderIdFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('id') && params.get('id').trim() !== '') {
+                return params.get('id').trim();
+            }
+            // Soporte para links directos estilo /pedidos/500102800.html
+            const pathname = window.location.pathname;
+            const filename = pathname.substring(pathname.lastIndexOf('/') + 1);
+            if (filename && filename !== 'index.html' && filename !== '') {
+                return filename.replace('.html', '').trim();
+            }
+            return null;
+        }
+
+        function loadAndRenderOrder() {
+            const orderId = getOrderIdFromUrl();
+            if (!orderId) {
+                // Si entra a web/pedidos sin número de orden, abre el panel de administración
+                window.location.replace('admin.html');
                 return;
             }
             
-            try {
-                // Hacer HEAD request para verificar si el archivo HTML del cliente existe
-                const res = await fetch(`./${orderId}.html`, { method: 'HEAD' });
-                if (res.ok) {
-                    window.location.href = `./${orderId}.html`;
-                } else {
-                    showError('No se encontró el pedido o ya expiró (pasan 30 días hábiles desde que el pedido es finalizado). Por favor, verifica el número e intenta nuevamente o consúltanos por WhatsApp.');
+            const mainContainer = document.getElementById('main-content');
+            
+            const orders = (typeof ordersData !== 'undefined') ? ordersData : [];
+            const order = orders.find(o => String(o.id) === String(orderId));
+
+            if (!order) {
+                renderNotFoundState(mainContainer, orderId);
+                return;
+            }
+
+            // Cambiar título dinámico
+            document.title = `Seguimiento de Pedido #${order.id} | LA TARIMA`;
+
+            const config = (typeof ordersConfig !== 'undefined') ? ordersConfig : {};
+            const milestonesCfg = config.milestones || {};
+            const conditionsList = config.conditions || [];
+
+            // Formatear montos y fechas
+            const createdDate = new Date(order.creationDate);
+            const createdFormatted = createdDate.toLocaleDateString('es-AR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            }) + ' hs';
+
+            const saldo = (order.totalAmount || 0) - (order.paidAmount || 0);
+
+            // Generar Estado Badge
+            let statusText = 'Pendiente de Elaboración';
+            let statusIcon = 'hourglass_empty';
+            if (order.status === 'listo') {
+                statusText = '¡Pedido Listo!';
+                statusIcon = 'verified';
+            } else if (order.status === 'entregado') {
+                statusText = 'Pedido Entregado';
+                statusIcon = 'check_circle';
+            }
+
+            // Información de Despacho / Guía
+            let dispatchHtml = '';
+            if (order.deliveryMethod === 'envio' && order.dispatchInfo) {
+                const info = order.dispatchInfo;
+                const courierNames = {
+                    'correo-argentino': 'Correo Argentino',
+                    'via-cargo': 'Vía Cargo',
+                    'andreani': 'Andreani',
+                    'envio-personal': 'Envío Personal / Cadetería',
+                    'otros': 'Otro Servicio de Transporte'
+                };
+                const courierLabel = courierNames[info.courier] || info.courierName || 'Servicio de Envío';
+                let trackingUrl = info.url || '';
+                
+                if (!trackingUrl && info.trackingNumber) {
+                    const guia = encodeURIComponent(info.trackingNumber.trim());
+                    if (info.courier === 'correo-argentino') {
+                        trackingUrl = 'https://www.correoargentino.com.ar/formularios/e-commerce';
+                    } else if (info.courier === 'via-cargo') {
+                        trackingUrl = `https://www.viacargo.com.ar/seguimiento?nroenvio=${guia}`;
+                    } else if (info.courier === 'andreani') {
+                        trackingUrl = `https://www.andreani.com/#!/informacionEnvio/${guia}`;
+                    }
                 }
-            } catch (err) {
-                console.error(err);
-                // Fallback por si falla HEAD request (por CORS u otras causas)
-                window.location.href = `./${orderId}.html`;
+                
+                dispatchHtml = `
+                    <div style="background: rgba(59, 130, 246, 0.05); border: 1.5px solid rgba(59, 130, 246, 0.2); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 2rem;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #1e40af;">
+                                <span class="material-symbols-outlined" style="font-size: 22px;">local_shipping</span>
+                                Informes de Envío &bull; ${courierLabel}
+                            </div>
+                            ${trackingUrl ? `<a href="${trackingUrl}" target="_blank" style="background: #2563eb; color: white; text-decoration: none; padding: 6px 14px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(37,99,235,0.25);">
+                                Ir a la Web de Seguimiento <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
+                            </a>` : ''}
+                        </div>
+                        ${info.trackingNumber ? `
+                            <div style="font-size: 0.88rem; color: var(--text-main); font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 0.5rem;">
+                                N° de Guía / Código de Seguimiento: 
+                                <span id="btn-copy-tracking" onclick="copyTrackingCode('${info.trackingNumber.trim()}')" style="background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; padding: 4px 10px; border-radius: 8px; font-family: monospace; font-size: 0.95rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; user-select: all; transition: all 0.2s ease;" title="Hacé clic para copiar el código">
+                                    ${info.trackingNumber}
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span>
+                                </span>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+
+            mainContainer.innerHTML = `
+                <div class="order-card">
+                    <div class="order-header">
+                        <div class="order-title-block">
+                            <h1>¡Hola, ${escapeHtml(order.clientName)}! 👋</h1>
+                            <div class="order-number">Orden N° #${order.id} &bull; Tomado el ${createdFormatted}</div>
+                        </div>
+                        <div class="status-badge status-${order.status}">
+                            <span class="material-symbols-outlined">${statusIcon}</span>
+                            ${statusText}
+                        </div>
+                    </div>
+                    
+                    <div class="order-body">
+                        <div class="product-section">
+                            <img src="../${order.image || 'img/logo.webp'}" alt="${escapeHtml(order.productName)}" class="product-image" onerror="this.src='../img/logo.webp'">
+                            <div class="product-info">
+                                <h2>${escapeHtml(order.productName)}</h2>
+                                <div style="margin-bottom: 8px;">
+                                    ${order.selectedFinish ? `<span class="product-badge-pill"><span class="material-symbols-outlined" style="font-size: 16px;">palette</span> ${escapeHtml(order.selectedFinish)}</span>` : ''}
+                                    ${order.selectedMeasure ? `<span class="product-badge-pill"><span class="material-symbols-outlined" style="font-size: 16px;">straighten</span> ${escapeHtml(order.selectedMeasure)}</span>` : ''}
+                                </div>
+                                ${order.description ? `<p class="product-desc">${escapeHtml(order.description)}</p>` : ''}
+                            </div>
+                        </div>
+
+                        ${dispatchHtml}
+                        
+                        <div class="payment-banner">
+                            <div class="payment-item">
+                                <span class="payment-label">Monto Total</span>
+                                <span class="payment-value">$${(order.totalAmount || 0).toLocaleString('es-AR')}</span>
+                            </div>
+                            <div class="payment-item">
+                                <span class="payment-label">Abonado</span>
+                                <span class="payment-value pagado">$${(order.paidAmount || 0).toLocaleString('es-AR')}</span>
+                            </div>
+                            <div class="payment-item">
+                                <span class="payment-label">Saldo Pendiente</span>
+                                <span class="payment-value ${saldo > 0 ? 'saldo' : 'pagado'}">$${saldo.toLocaleString('es-AR')} ${saldo <= 0 ? '✅' : ''}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="section-title">
+                            <span class="material-symbols-outlined" style="color: var(--primary-color);">calendar_today</span>
+                            Cronograma de Fabricación y Entrega
+                        </div>
+                        
+                        <div class="timeline" id="timeline-container">
+                            <!-- Se genera en JS -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conditions-card">
+                    <h3>Condiciones Generales del Pedido</h3>
+                    <ul>
+                        ${conditionsList.map(c => `<li><strong>${escapeHtml(c.title || '')}</strong> ${escapeHtml(c.text || '')}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+
+            renderTimeline(order, milestonesCfg);
+        }
+
+        function renderTimeline(order, milestonesCfg) {
+            const timelineContainer = document.getElementById('timeline-container');
+            if (!timelineContainer) return;
+
+            const start = new Date(order.startDate);
+            const estReady = new Date(order.estimatedReadyDate);
+            const isEnvio = order.deliveryMethod === 'envio';
+            
+            const minDays = Number(order.prepDaysMin || order.prepDays || 10);
+            const maxDays = Number(order.prepDaysMax || order.prepDays || minDays);
+            const rangeText = minDays === maxDays ? `${maxDays} días hábiles` : `${minDays} a ${maxDays} días hábiles`;
+
+            const end = new Date(estReady);
+            end.setDate(end.getDate() + 1);
+
+            const days = [];
+            let curr = new Date(start);
+            while (curr <= end) {
+                days.push(new Date(curr));
+                curr.setDate(curr.getDate() + 1);
+            }
+
+            const today = new Date();
+
+            let businessDayCounter = 0;
+            let minReadyDayIndex = -1;
+            let maxReadyDayIndex = -1;
+
+            for (let i = 0; i < days.length; i++) {
+                const dayOfWeek = days[i].getDay();
+                if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                    businessDayCounter++;
+                    if (businessDayCounter === minDays && minReadyDayIndex === -1) {
+                        minReadyDayIndex = i;
+                    }
+                    if (businessDayCounter === maxDays && maxReadyDayIndex === -1) {
+                        maxReadyDayIndex = i;
+                    }
+                }
+            }
+            if (maxReadyDayIndex === -1) {
+                maxReadyDayIndex = days.length - 2;
+            }
+            if (minReadyDayIndex === -1) {
+                minReadyDayIndex = maxReadyDayIndex;
+            }
+
+            businessDayCounter = 0;
+
+            const processedDays = days.map((d, index) => {
+                const isFirst = index === 0;
+                const isLast = index === days.length - 1;
+                const isMinReady = index === minReadyDayIndex;
+                const isMaxReady = index === maxReadyDayIndex;
+                const isWeekend = d.getDay() === 0 || d.getDay() === 6;
+
+                const isCompleted = d < today && !(d.toDateString() === today.toDateString());
+                const isToday = d.toDateString() === today.toDateString();
+
+                let itemClass = 'timeline-item';
+                let iconText = 'schedule';
+
+                if (isFirst) {
+                    itemClass += ' milestone-start';
+                    if (isCompleted || isToday) { itemClass += ' completed'; }
+                    iconText = 'play_circle';
+                } else if (isLast) {
+                    itemClass += ' milestone-pickup';
+                    if (order.status === 'listo' || order.status === 'entregado') {
+                        itemClass += ' completed-milestone';
+                    }
+                    iconText = isEnvio ? 'local_shipping' : 'storefront';
+                } else if (isMaxReady) {
+                    itemClass += ' milestone-ready';
+                    if (isCompleted || order.status === 'listo' || order.status === 'entregado') { itemClass += ' completed-milestone'; }
+                    iconText = (isCompleted || order.status === 'listo' || order.status === 'entregado') ? 'verified' : 'flag';
+                } else if (isMinReady && minDays !== maxDays) {
+                    itemClass += ' milestone-ready';
+                    if (isCompleted || order.status === 'listo' || order.status === 'entregado') { itemClass += ' completed-milestone'; }
+                    iconText = 'flag';
+                } else {
+                    if (!isWeekend) businessDayCounter++;
+                    if (isCompleted) {
+                        itemClass += ' completed';
+                        iconText = 'check';
+                    } else if (isToday) {
+                        itemClass += ' active';
+                        iconText = 'construction';
+                    } else {
+                        iconText = 'schedule';
+                    }
+                }
+
+                const weekday = d.toLocaleDateString('es-AR', { weekday: 'long' });
+                const capitalizedWeekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
+                const dateStr = d.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit' });
+
+                let title = '';
+                let desc  = '';
+
+                if (isWeekend) {
+                    title = `${capitalizedWeekday} &bull; ${dateStr}`;
+                    desc  = 'Fines de semana el taller permanece cerrado 🌲';
+                } else {
+                    if (isFirst) {
+                        title = `${capitalizedWeekday} &bull; ${dateStr} — Inicio`;
+                        desc  = `Día 1 de fabricación en taller 🛠️`;
+                    } else if (isMaxReady) {
+                        const readyDescCfg = milestonesCfg.readyDesc || '¡Tu mueble ya está listo! ✅';
+                        title = `${capitalizedWeekday} &bull; ${dateStr} — ${minDays !== maxDays ? `Fin Estimado (Día ${maxDays})` : 'Fin de Fabricación'}`;
+                        desc  = (order.status === 'listo' || order.status === 'entregado')
+                            ? readyDescCfg
+                            : `Fecha límite estimada de finalización (Plazo: ${rangeText})`;
+                    } else if (isMinReady && minDays !== maxDays) {
+                        title = `${capitalizedWeekday} &bull; ${dateStr} — Inicio Rango Listo`;
+                        desc  = (order.status === 'listo' || order.status === 'entregado')
+                            ? (milestonesCfg.readyDesc || '¡Tu mueble ya está listo! ✅')
+                            : `Primer día estimado de término (Día ${minDays} de ${maxDays})`;
+                    } else if (isLast) {
+                        const customTitle = isEnvio ? (milestonesCfg.envioTitle || 'Despacho de Pedido') : (milestonesCfg.retiraTitle || 'Retiro por Taller');
+                        const customDesc  = isEnvio
+                            ? (milestonesCfg.envioDesc || 'Tu pedido se encuentra en proceso de despacho o en camino. Podés seguir su recorrido en el apartado de abajo ⬇️')
+                            : (milestonesCfg.retiraDesc || 'Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁');
+                        title = `${capitalizedWeekday} &bull; ${dateStr} — ${customTitle}`;
+                        desc  = customDesc;
+                    } else {
+                        title = `${capitalizedWeekday} &bull; ${dateStr}`;
+                        desc  = `Día ${businessDayCounter} de elaboración (Plazo: ${rangeText})`;
+                    }
+                }
+
+                if (isToday && !isWeekend && order.status === 'pendiente' && !isLast) {
+                    desc += ' (¡Hoy estamos trabajando en tu pedido! 🛠️)';
+                }
+
+                return { d, itemClass, iconText, title, desc, isFirst, isLast, isReadyDay: isMaxReady, isWeekend, isCompleted, isToday };
+            });
+
+            const currentActiveIndex = processedDays.findIndex(day => day.isToday);
+            const pivotIndex = currentActiveIndex !== -1 ? currentActiveIndex : processedDays.findIndex(day => !day.isCompleted);
+            const actualPivot = pivotIndex !== -1 ? pivotIndex : processedDays.length - 1;
+
+            const visibleCount = 5;
+            let startIndex = Math.max(0, actualPivot - 1);
+            let endIndex = startIndex + visibleCount;
+
+            if (endIndex > processedDays.length) {
+                endIndex = processedDays.length;
+                startIndex = Math.max(0, endIndex - visibleCount);
+            }
+
+            const visibleDays = processedDays.slice(startIndex, endIndex);
+
+            function createRow(dayData) {
+                const row = document.createElement('div');
+                row.className = dayData.itemClass;
+                row.innerHTML = `
+                    <div class="timeline-icon-wrapper">
+                        <span class="material-symbols-outlined">${dayData.iconText}</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 class="timeline-title">${dayData.title}</h4>
+                        <p class="timeline-desc">${dayData.desc}</p>
+                    </div>
+                `;
+                return row;
+            }
+
+            visibleDays.forEach(dayData => {
+                timelineContainer.appendChild(createRow(dayData));
+            });
+
+            let expandedPrev = false;
+            let expandedNext = false;
+
+            if (startIndex > 0) {
+                const hiddenPrevDays = processedDays.slice(0, startIndex);
+                const prevWrapper = document.createElement('div');
+                prevWrapper.style.display = 'none';
+                hiddenPrevDays.forEach(dayData => prevWrapper.appendChild(createRow(dayData)));
+                
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'timeline-expand-btn';
+                prevBtn.innerHTML = `<span class="material-symbols-outlined">expand_less</span> Ver días anteriores (${hiddenPrevDays.length})`;
+                prevBtn.onclick = () => {
+                    expandedPrev = !expandedPrev;
+                    prevWrapper.style.display = expandedPrev ? 'block' : 'none';
+                    prevBtn.innerHTML = expandedPrev 
+                        ? `<span class="material-symbols-outlined">expand_more</span> Ocultar días anteriores`
+                        : `<span class="material-symbols-outlined">expand_less</span> Ver días anteriores (${hiddenPrevDays.length})`;
+                };
+
+                timelineContainer.insertBefore(prevBtn, timelineContainer.firstChild);
+                timelineContainer.insertBefore(prevWrapper, timelineContainer.firstChild);
+            }
+
+            if (endIndex < processedDays.length) {
+                const hiddenNextDays = processedDays.slice(endIndex);
+                const nextWrapper = document.createElement('div');
+                nextWrapper.style.display = 'none';
+                hiddenNextDays.forEach(dayData => nextWrapper.appendChild(createRow(dayData)));
+
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'timeline-expand-btn';
+                nextBtn.innerHTML = `<span class="material-symbols-outlined">expand_more</span> Ver días siguientes (${hiddenNextDays.length})`;
+                nextBtn.onclick = () => {
+                    expandedNext = !expandedNext;
+                    nextWrapper.style.display = expandedNext ? 'block' : 'none';
+                    nextBtn.innerHTML = expandedNext 
+                        ? `<span class="material-symbols-outlined">expand_less</span> Ocultar días siguientes`
+                        : `<span class="material-symbols-outlined">expand_more</span> Ver días siguientes (${hiddenNextDays.length})`;
+                };
+
+                timelineContainer.appendChild(nextBtn);
+                timelineContainer.appendChild(nextWrapper);
             }
         }
-        
-        function showError(msg) {
-            const errorBox = document.getElementById('error-box');
-            errorBox.textContent = msg;
-            errorBox.style.display = 'block';
+
+        function renderNotFoundState(container, orderId) {
+            document.title = 'Pedido No Encontrado | LA TARIMA';
+            container.innerHTML = `
+                <div class="not-found-card">
+                    <span class="material-symbols-outlined" style="font-size: 64px; color: var(--primary-color); margin-bottom: 1rem;">search_off</span>
+                    <h2 style="margin: 0 0 0.5rem 0; font-size: 1.35rem; font-weight: 800;">Pedido No Encontrado o Expirado</h2>
+                    <p style="color: var(--text-muted); max-width: 480px; margin: 0 auto 1.5rem auto; font-size: 0.92rem; line-height: 1.5;">
+                        No pudimos encontrar la orden <strong>#${escapeHtml(orderId || 'desconocida')}</strong>. Puede que el número sea incorrecto o que haya superado el tiempo de retención en taller.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                        <a href="../catalogo.html" class="btn-primary" style="text-decoration: none; padding: 0.65rem 1.25rem; border-radius: 50px; font-weight: 700; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">storefront</span> Volver al Catálogo
+                        </a>
+                        <a href="https://wa.me/5491122334455" target="_blank" class="btn-outline" style="text-decoration: none; padding: 0.65rem 1.25rem; border-radius: 50px; font-weight: 700; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">chat</span> Consultar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function copyTrackingCode(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                const el = document.getElementById('btn-copy-tracking');
+                if (el) {
+                    const originalHtml = el.innerHTML;
+                    el.innerHTML = `¡Copiado! <span class="material-symbols-outlined" style="font-size: 16px;">check</span>`;
+                    el.style.background = '#dcfce7';
+                    el.style.color = '#15803d';
+                    el.style.borderColor = '#86efac';
+                    setTimeout(() => {
+                        el.innerHTML = originalHtml;
+                        el.style.background = '#eff6ff';
+                        el.style.color = '#1d4ed8';
+                        el.style.borderColor = '#bfdbfe';
+                    }, 2000);
+                }
+            }).catch(err => {
+                alert('Código de guía: ' + code);
+            });
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
         }
     </script>
 </body>

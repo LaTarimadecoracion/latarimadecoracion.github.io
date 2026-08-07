@@ -191,11 +191,13 @@
             const appContainer = document.getElementById('app-container');
             if (appContainer) {
                 appContainer.scrollTop = 0;
-                // Desactivar scroll del parent si estamos en el iframe
-                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-musica' || viewId === 'view-ayudin' || viewId === 'view-pedidos') {
+                // Desactivar scroll y padding inferior del parent si estamos en el iframe
+                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-musica' || viewId === 'view-ayudin' || viewId === 'view-pedidos' || viewId === 'view-pedidos-admin') {
                     appContainer.style.overflowY = 'hidden';
+                    appContainer.style.paddingBottom = '0px';
                 } else {
                     appContainer.style.overflowY = 'auto';
+                    appContainer.style.paddingBottom = '';
                 }
             }
             
@@ -236,10 +238,15 @@
                 }
             } else if (viewId === 'view-pedidos') {
                 const urlParams = new URLSearchParams(window.location.search);
-                const orderId = urlParams.get('id');
+                const orderId = (context && context.orderId) || urlParams.get('id');
                 const iframe = document.querySelector('#view-pedidos iframe');
-                if (iframe && orderId) {
-                    iframe.src = `pedidos/${orderId}.html`;
+                if (iframe) {
+                    iframe.src = orderId ? `pedidos/index.html?id=${encodeURIComponent(orderId)}` : `pedidos/index.html`;
+                }
+            } else if (viewId === 'view-pedidos-admin') {
+                const iframe = document.querySelector('#view-pedidos-admin iframe');
+                if (iframe) {
+                    iframe.src = `pedidos/admin.html`;
                 }
             } else if (viewId === 'view-about') {
                 renderNosotrosBlocksCliente();
@@ -294,7 +301,8 @@
                 'view-mayorista': 'mayorista',
                 'view-musica': 'musica',
                 'view-ayudin': 'ayudin',
-                'view-pedidos': 'pedidos'
+                'view-pedidos': 'pedidos',
+                'view-pedidos-admin': 'pedidos-admin'
             };
             
             let basePath = window.location.pathname.replace(/\/index\.html$/, '/');
@@ -304,6 +312,9 @@
             let query = '';
             if (prettyNames[viewId]) {
                 query = '?view=' + prettyNames[viewId];
+                if (viewId === 'view-pedidos' && context && context.orderId) {
+                    query += '&id=' + encodeURIComponent(context.orderId);
+                }
             }
             
             const cleanUrl = basePath + query;

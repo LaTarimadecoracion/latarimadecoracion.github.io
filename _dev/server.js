@@ -900,7 +900,10 @@ app.post('/api/maintenance/clean-and-convert', async (req, res) => {
 
 // ordersDbPath is already declared at the top of the file
 
-function calculateEstimatedReadyDate(startDateStr, prepDays) {
+function calculateEstimatedReadyDate(startDateStr, prepDaysMin, prepDaysMax) {
+    if (typeof prepDaysMax === 'undefined') {
+        prepDaysMax = prepDaysMin;
+    }
     let date = new Date(startDateStr);
     let day  = date.getDay();
     let hour = date.getHours();
@@ -909,9 +912,7 @@ function calculateEstimatedReadyDate(startDateStr, prepDays) {
     // el pedido empieza a correr el proximo dia habil desde las 00hs.
     // Si se carga entre 00hs y 13:59hs, ese dia ya cuenta completo.
     let startOnNextBusinessDay = false;
-    if (day === 0 || day === 6) {
-        startOnNextBusinessDay = true;
-    } else if (hour >= 14) {
+    if (day === 0 || day === 6 || hour >= 14) {
         startOnNextBusinessDay = true;
     }
     
@@ -927,21 +928,22 @@ function calculateEstimatedReadyDate(startDateStr, prepDays) {
     
     const actualStartDate = new Date(date);
     
-    // Sumar dias de preparacion (solo dias habiles)
-    let daysToAdd = prepDays;
+    // Sumar dias de preparacion maximos (solo dias habiles)
+    let dateMax = new Date(actualStartDate);
+    let daysToAdd = prepDaysMax;
     while (daysToAdd > 0) {
-        date.setDate(date.getDate() + 1);
-        day = date.getDay();
+        dateMax.setDate(dateMax.getDate() + 1);
+        day = dateMax.getDay();
         if (day !== 0 && day !== 6) {
             daysToAdd--;
         }
     }
     
-    date.setHours(23, 59, 0, 0);
+    dateMax.setHours(23, 59, 0, 0);
     
     return {
         startDate: actualStartDate.toISOString(),
-        estimatedReadyDate: date.toISOString()
+        estimatedReadyDate: dateMax.toISOString()
     };
 }
 
@@ -2085,11 +2087,11 @@ app.post('/api/save-orders', (req, res) => {
         if (modifiedOrder) {
             const index = activeOrders.findIndex(o => o.id === modifiedOrder.id);
             if (index !== -1) {
-                if (!modifiedOrder.startDate || !modifiedOrder.estimatedReadyDate) {
-                    const dates = calculateEstimatedReadyDate(modifiedOrder.creationDate || new Date().toISOString(), Number(modifiedOrder.prepDays || 5));
+                    const pMin = Number(modifiedOrder.prepDaysMin || modifiedOrder.prepDays || 10);
+                    const pMax = Number(modifiedOrder.prepDaysMax || modifiedOrder.prepDays || pMin);
+                    const dates = calculateEstimatedReadyDate(modifiedOrder.creationDate || new Date().toISOString(), pMin, pMax);
                     modifiedOrder.startDate = dates.startDate;
                     modifiedOrder.estimatedReadyDate = dates.estimatedReadyDate;
-                }
                 activeOrders[index] = modifiedOrder;
             }
         }
@@ -2167,9 +2169,18 @@ app.post('/api/save-orders-config', (req, res) => {
 });
 
 // Fallback to index.html for SPA routing
-// Catch-all route to handle clean mayorista URLs and redirect unrecognized routes to root
 app.get('*', (req, res) => {
     const cleanUrl = req.path.toLowerCase().replace(/\/$/, '');
+    
+    // 🔍 Detectar solicitudes de orden directa tipo /500102800 o /pedidos/500102800 o /web/500102800
+    const urlSegments = req.path.split('/').filter(Boolean);
+    if (urlSegments.length > 0) {
+        const lastSeg = urlSegments[urlSegments.length - 1].replace('.html', '').trim();
+        const orderDigits = lastSeg.replace(/[^0-9]/g, '');
+        if (orderDigits.length >= 6 && /^\d+$/.test(orderDigits)) {
+            return res.redirect(`/?view=pedidos&id=${orderDigits}`);
+        }
+    }
     
     // Rutas del catálogo mayorista sin .html visible
     if (cleanUrl === '/web/mayorista' || cleanUrl === '/mayorista' || cleanUrl === '/mayoristas') {
@@ -2190,11 +2201,6 @@ app.get('*', (req, res) => {
     // Si contiene parámetros de producto para Open Graph, sirve index con OG
     if (req.query.prod || req.query.product || req.query.p) {
         return serveIndexWithOG(req, res);
-    }
-
-    // Si es una petición a un archivo de pedido que no existe, responde 404 en vez de redirigir
-    if (req.path.startsWith('/pedidos/')) {
-        return res.status(404).send('Pedido no encontrado');
     }
 
     // Cualquier otra ruta no existente, redirige al inicio
