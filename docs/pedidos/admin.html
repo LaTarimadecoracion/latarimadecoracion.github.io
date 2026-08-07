@@ -608,10 +608,16 @@
                     <span class="material-symbols-outlined">receipt_long</span>
                     <h2>Gestión de Pedidos Pendientes</h2>
                 </div>
-                <button type="button" id="btn-new-order" class="btn-primary">
-                    <span class="material-symbols-outlined">add</span>
-                    Nuevo Pedido
-                </button>
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                    <button type="button" id="btn-config-terms" class="btn-outline" style="display: inline-flex; align-items: center; gap: 6px; padding: 0.5rem 0.85rem; font-weight: 600;">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">settings</span>
+                        Configurar Leyendas y Términos
+                    </button>
+                    <button type="button" id="btn-new-order" class="btn-primary">
+                        <span class="material-symbols-outlined">add</span>
+                        Nuevo Pedido
+                    </button>
+                </div>
             </div>
             
             <!-- Filtros y Buscador -->
@@ -810,6 +816,87 @@
         </div>
     </div>
 
+    <!-- Modal Configuración de Leyendas del Calendario y Términos -->
+    <div id="terms-config-modal" class="modal-overlay">
+        <div class="modal-card" style="max-width: 760px; width: 95%;">
+            <div class="modal-header">
+                <h3 style="display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--primary-color);">settings</span>
+                    Configurar Leyendas y Términos
+                </h3>
+                <button type="button" class="modal-close-btn" id="btn-close-terms-modal">&times;</button>
+            </div>
+            <div class="modal-body" style="max-height: 75vh; overflow-y: auto; padding: 1.5rem;">
+                
+                <!-- Sección 1: Tarjetas de Hitos Finales -->
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin: 0 0 1rem 0; color: var(--primary-color); font-size: 1rem; border-bottom: 1.5px solid var(--border-color); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 6px;">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">style</span>
+                        Leyendas de Tarjetas Fines de Fabricación y Retiro/Despacho
+                    </h4>
+
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="cfg-ready-desc" style="font-weight: 700;">Leyenda cuando el producto está Listo (Fin de Fabricación):</label>
+                        <input type="text" id="cfg-ready-desc" class="form-control" placeholder="ej: ¡Tu mueble ya está listo! ✅">
+                    </div>
+
+                    <div style="background: rgba(180, 132, 108, 0.05); padding: 1rem; border-radius: var(--radius-md); border: 1px solid rgba(180, 132, 108, 0.2); margin-bottom: 1rem;">
+                        <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-main); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary-color);">storefront</span>
+                            Tarjeta para "Retiro por Taller"
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0.75rem;">
+                            <label for="cfg-retira-title" style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Título de la tarjeta:</label>
+                            <input type="text" id="cfg-retira-title" class="form-control" placeholder="ej: Retiro por Taller">
+                        </div>
+                        <div class="form-group">
+                            <label for="cfg-retira-desc" style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Descripción / Leyenda de coordinación:</label>
+                            <textarea id="cfg-retira-desc" class="form-control" rows="2" placeholder="ej: Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁"></textarea>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(180, 132, 108, 0.05); padding: 1rem; border-radius: var(--radius-md); border: 1px solid rgba(180, 132, 108, 0.2);">
+                        <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-main); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary-color);">local_shipping</span>
+                            Tarjeta para "Despacho de Pedido"
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0.75rem;">
+                            <label for="cfg-envio-title" style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Título de la tarjeta:</label>
+                            <input type="text" id="cfg-envio-title" class="form-control" placeholder="ej: Despacho de Pedido">
+                        </div>
+                        <div class="form-group">
+                            <label for="cfg-envio-desc" style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Descripción / Leyenda de seguimiento:</label>
+                            <textarea id="cfg-envio-desc" class="form-control" rows="2" placeholder="ej: Tu pedido se encuentra en proceso de despacho o en camino. Podés seguir su recorrido en el apartado de abajo ⬇️"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección 2: Términos y Condiciones Generales -->
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">
+                        <h4 style="margin: 0; color: var(--primary-color); font-size: 1rem; display: flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">gavel</span>
+                            Condiciones Generales del Pedido
+                        </h4>
+                        <button type="button" id="btn-add-condition" class="btn-outline" style="padding: 6px 12px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                            Agregar Condición
+                        </button>
+                    </div>
+
+                    <div id="conditions-list-container" style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Se llena dinámicamente -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-outline" id="btn-cancel-terms-modal">Cancelar</button>
+                <button type="button" class="btn-primary" id="btn-save-terms-config">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast de Notificaciones -->
     <div id="toast" class="toast">
         <span class="material-symbols-outlined">check_circle</span>
@@ -840,10 +927,17 @@
             // Inicializar productos del catálogo en el selector
             loadCatalogDropdown();
             
-            // Cargar pedidos desde la API
+            // Cargar pedidos y configuración desde la API
             loadOrders();
+            loadOrdersConfig();
             
             // Configurar Listeners
+            document.getElementById('btn-config-terms').addEventListener('click', openTermsConfigModal);
+            document.getElementById('btn-close-terms-modal').addEventListener('click', closeTermsConfigModal);
+            document.getElementById('btn-cancel-terms-modal').addEventListener('click', closeTermsConfigModal);
+            document.getElementById('btn-save-terms-config').addEventListener('click', saveTermsConfig);
+            document.getElementById('btn-add-condition').addEventListener('click', addConditionItem);
+
             document.getElementById('btn-new-order').addEventListener('click', () => openModal());
             document.getElementById('btn-close-modal').addEventListener('click', closeModal);
             document.getElementById('btn-cancel-modal').addEventListener('click', closeModal);
@@ -1476,6 +1570,214 @@
             } catch (err) {
                 console.error(err);
                 alert('Error de conexión al intentar publicar.');
+            }
+        }
+
+        // ── Lógica del Modal Configurar Leyendas y Términos ──
+        let currentOrdersConfig = null;
+        let currentConditionsList = [];
+
+        async function loadOrdersConfig() {
+            try {
+                const res = await fetch('/api/orders-config');
+                if (res.ok) {
+                    currentOrdersConfig = await res.json();
+                }
+            } catch(e) {
+                console.error('Error cargando orders-config:', e);
+            }
+            if (!currentOrdersConfig) {
+                currentOrdersConfig = {
+                    milestones: {
+                        readyDesc: '¡Tu mueble ya está listo! ✅',
+                        retiraTitle: 'Retiro por Taller',
+                        retiraDesc: 'Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁',
+                        envioTitle: 'Despacho de Pedido',
+                        envioDesc: 'Tu pedido se encuentra en proceso de despacho o en camino. Podés seguir su recorrido en el apartado de abajo ⬇️'
+                    },
+                    conditions: [
+                        { id: '1', title: 'Retiro/Envío:', text: 'Los plazos son estimados y consideran días hábiles laborables (Lunes a Viernes). No se computan los fines de semana.' },
+                        { id: '2', title: 'Saldos:', text: 'El saldo pendiente se deberá abonar en su totalidad al retirar o previo a despachar el pedido.' },
+                        { id: '3', title: 'Retiro del Pedido:', text: 'Una vez listo su pedido, tiene tiempo de 30 días hábiles para ser retirado, una vez pasado este lapso, su pedido será considerado como abandonado, imposibilitando algún tipo de reembolso.' },
+                        { id: '4', title: 'Cancelaciones:', text: 'Si el pedido es personalizado, tiene unos 48hs para cancelar el pedido y obtener la devolución total del mismo.' },
+                        { id: '5', title: 'Contacto:', text: 'Ante cualquier duda, envianos un WhatsApp al taller mencionando tu número de Orden.' }
+                    ]
+                };
+            }
+            currentConditionsList = JSON.parse(JSON.stringify(currentOrdersConfig.conditions || []));
+        }
+
+        function openTermsConfigModal() {
+            const m = (currentOrdersConfig && currentOrdersConfig.milestones) || {};
+            document.getElementById('cfg-ready-desc').value = m.readyDesc || '';
+            document.getElementById('cfg-retira-title').value = m.retiraTitle || 'Retiro por Taller';
+            document.getElementById('cfg-retira-desc').value = m.retiraDesc || '';
+            document.getElementById('cfg-envio-title').value = m.envioTitle || 'Despacho de Pedido';
+            document.getElementById('cfg-envio-desc').value = m.envioDesc || '';
+            
+            currentConditionsList = JSON.parse(JSON.stringify((currentOrdersConfig && currentOrdersConfig.conditions) || []));
+            renderConditionsList();
+            document.getElementById('terms-config-modal').classList.add('show');
+        }
+
+        function closeTermsConfigModal() {
+            document.getElementById('terms-config-modal').classList.remove('show');
+        }
+
+        let draggedCondIndex = null;
+
+        function renderConditionsList() {
+            const container = document.getElementById('conditions-list-container');
+            container.innerHTML = '';
+            
+            if (currentConditionsList.length === 0) {
+                container.innerHTML = '<div style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; text-align: center; padding: 1rem;">No hay condiciones configuradas. Presioná "Agregar Condición" arriba.</div>';
+                return;
+            }
+            
+            currentConditionsList.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = 'condition-drag-item';
+                row.setAttribute('draggable', 'true');
+                row.setAttribute('data-index', index);
+                row.style.cssText = 'background: var(--surface-color); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.85rem; display: flex; flex-direction: column; gap: 6px; cursor: grab; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.03);';
+                
+                row.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined drag-icon" style="font-size: 20px; color: var(--primary-color); cursor: grab; user-select: none;">drag_indicator</span>
+                            <span style="font-weight: 700; font-size: 0.82rem; color: var(--primary-color);">Condición #${index + 1}</span>
+                            <span style="font-size: 0.75rem; color: var(--text-muted); font-style: italic;">(Mantener presionado para arrastrar)</span>
+                        </div>
+                        <div style="display: flex; gap: 4px; align-items: center;">
+                            <button type="button" onclick="moveConditionItem(${index}, -1)" ${index === 0 ? 'disabled' : ''} style="background: none; border: 1px solid var(--border-color); border-radius: 4px; padding: 2px 6px; cursor: pointer; opacity: ${index === 0 ? '0.3' : '1'};" title="Mover Arriba">
+                                <span class="material-symbols-outlined" style="font-size: 16px;">arrow_upward</span>
+                            </button>
+                            <button type="button" onclick="moveConditionItem(${index}, 1)" ${index === currentConditionsList.length - 1 ? 'disabled' : ''} style="background: none; border: 1px solid var(--border-color); border-radius: 4px; padding: 2px 6px; cursor: pointer; opacity: ${index === currentConditionsList.length - 1 ? '0.3' : '1'};" title="Mover Abajo">
+                                <span class="material-symbols-outlined" style="font-size: 16px;">arrow_downward</span>
+                            </button>
+                            <button type="button" onclick="deleteConditionItem(${index})" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; border-radius: 4px; padding: 2px 6px; cursor: pointer; margin-left: 4px;" title="Eliminar Condición">
+                                <span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom: 0;">
+                        <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                            <input type="text" class="form-control cond-title-input" data-index="${index}" value="${(item.title || '').replace(/"/g, '&quot;')}" placeholder="Título (ej: Cancelaciones:)" style="font-weight: 700;">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <textarea class="form-control cond-text-input" data-index="${index}" rows="2" placeholder="Texto descriptivo de la condición...">${item.text || ''}</textarea>
+                    </div>
+                `;
+
+                // Drag & Drop event listeners
+                row.addEventListener('dragstart', (e) => {
+                    draggedCondIndex = index;
+                    row.style.opacity = '0.4';
+                    row.style.border = '2px dashed var(--primary-color)';
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+
+                row.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    row.style.background = 'rgba(180, 132, 108, 0.08)';
+                });
+
+                row.addEventListener('dragleave', () => {
+                    row.style.background = 'var(--surface-color)';
+                });
+
+                row.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    row.style.background = 'var(--surface-color)';
+                    if (draggedCondIndex !== null && draggedCondIndex !== index) {
+                        const movedItem = currentConditionsList.splice(draggedCondIndex, 1)[0];
+                        currentConditionsList.splice(index, 0, movedItem);
+                        renderConditionsList();
+                    }
+                });
+
+                row.addEventListener('dragend', () => {
+                    row.style.opacity = '1';
+                    row.style.border = '1px solid var(--border-color)';
+                    draggedCondIndex = null;
+                });
+
+                container.appendChild(row);
+            });
+            
+            container.querySelectorAll('.cond-title-input').forEach(input => {
+                input.addEventListener('input', (e) => {
+                    const idx = Number(e.target.getAttribute('data-index'));
+                    currentConditionsList[idx].title = e.target.value;
+                });
+            });
+            
+            container.querySelectorAll('.cond-text-input').forEach(textarea => {
+                textarea.addEventListener('input', (e) => {
+                    const idx = Number(e.target.getAttribute('data-index'));
+                    currentConditionsList[idx].text = e.target.value;
+                });
+            });
+        }
+
+        function addConditionItem() {
+            currentConditionsList.push({
+                id: Date.now().toString(),
+                title: 'Nueva Condición:',
+                text: ''
+            });
+            renderConditionsList();
+        }
+
+        function moveConditionItem(index, direction) {
+            const targetIdx = index + direction;
+            if (targetIdx < 0 || targetIdx >= currentConditionsList.length) return;
+            const temp = currentConditionsList[index];
+            currentConditionsList[index] = currentConditionsList[targetIdx];
+            currentConditionsList[targetIdx] = temp;
+            renderConditionsList();
+        }
+
+        function deleteConditionItem(index) {
+            if (confirm('¿Eliminar esta condición?')) {
+                currentConditionsList.splice(index, 1);
+                renderConditionsList();
+            }
+        }
+
+        async function saveTermsConfig() {
+            const newConfig = {
+                milestones: {
+                    readyDesc: document.getElementById('cfg-ready-desc').value.trim(),
+                    retiraTitle: document.getElementById('cfg-retira-title').value.trim(),
+                    retiraDesc: document.getElementById('cfg-retira-desc').value.trim(),
+                    envioTitle: document.getElementById('cfg-envio-title').value.trim(),
+                    envioDesc: document.getElementById('cfg-envio-desc').value.trim()
+                },
+                conditions: currentConditionsList.filter(c => c.title || c.text)
+            };
+            
+            showToast('Guardando leyendas y términos...');
+            
+            try {
+                const res = await fetch('/api/save-orders-config', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newConfig)
+                });
+                if (res.ok) {
+                    currentOrdersConfig = newConfig;
+                    closeTermsConfigModal();
+                    showToast('Leyendas y Términos actualizados con éxito.');
+                } else {
+                    alert('Error guardando la configuración.');
+                }
+            } catch(e) {
+                console.error(e);
+                alert('No se pudo conectar con el servidor.');
             }
         }
     </script>

@@ -21,30 +21,25 @@ const ordersData = [
         "estimatedReadyDate": "2026-08-31T21:00:00.000Z"
     },
     {
-        "id": "123431672",
-        "clientName": "asdasd",
+        "id": "958545308",
+        "clientName": "Roció Natalia León Sotelo",
         "productType": "catalog",
-        "productId": "banquito-de-plaza",
-        "productName": "Banquito de Plaza",
-        "selectedFinish": "",
-        "selectedMeasure": "",
-        "description": "asd",
-        "deliveryMethod": "envio",
-        "dispatchInfo": {
-            "courier": "correo_argentino",
-            "courierName": "",
-            "trackingNumber": "00019389763AAL0E0471801",
-            "trackingUrl": ""
-        },
-        "prepDays": 0,
+        "productId": "mensulas",
+        "productName": "Ménsulas para estantes",
+        "selectedFinish": "20 x 20 cm",
+        "selectedMeasure": "6 Un.",
+        "description": "",
+        "deliveryMethod": "retira",
+        "dispatchInfo": null,
+        "prepDays": 1,
         "paidStatus": "total",
-        "paidAmount": 10,
-        "totalAmount": 10,
-        "status": "listo",
-        "creationDate": "2026-08-07T14:31:59.205Z",
-        "completedDate": "2026-08-07T14:31:59.205Z",
-        "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
-        "startDate": "2026-08-07T14:31:59.205Z",
-        "estimatedReadyDate": "2026-08-14T21:00:00.000Z"
+        "paidAmount": 14000,
+        "totalAmount": 14000,
+        "status": "pendiente",
+        "creationDate": "2026-08-07T16:54:03.836Z",
+        "completedDate": "",
+        "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+        "startDate": "2026-08-07T03:00:00.000Z",
+        "estimatedReadyDate": "2026-08-11T02:59:00.000Z"
     }
 ];

@@ -22,6 +22,42 @@ if (!fs.existsSync(ordersDbPath)) {
     fs.writeFileSync(ordersDbPath, 'const ordersData = [];\n', 'utf8');
 }
 
+// Ensure orders config file exists
+const ordersConfigDbPath = path.join(ROOT_DIR, 'js', 'orders-config.js');
+const defaultOrdersConfig = {
+    milestones: {
+        readyDesc: '¡Tu mueble ya está listo! ✅',
+        retiraTitle: 'Retiro por Taller',
+        retiraDesc: 'Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁',
+        envioTitle: 'Despacho de Pedido',
+        envioDesc: 'Tu pedido se encuentra en proceso de despacho o en camino. Podés seguir su recorrido en el apartado de abajo ⬇️'
+    },
+    conditions: [
+        { id: '1', title: 'Retiro por Taller:', text: 'Una vez finalizado su pedido, coordinaremos previamente el día y horario para que pueda retirarlo por nuestro taller. Las visitas se realizan únicamente con coordinación previa para asegurar nuestra disponibilidad al recibirlo.' },
+        { id: '2', title: 'Envíos a Domicilio:', text: 'Trabajamos con Correo Argentino, Vía Cargo y Cadetería/Envíos Particulares. Si requiere un transporte en especial, puede coordinarlo con nosotros. La información y número de seguimiento aparecerán automáticamente en esta página una vez despachado.' },
+        { id: '3', title: 'Pago de Saldos:', text: 'El saldo pendiente deberá abonarse en su totalidad al momento de retirar por el taller o de manera previa al despacho en caso de envío.' },
+        { id: '4', title: 'Plazo para Retirar (Abandono):', text: 'Una vez listo el pedido, se dispone de un plazo máximo de 30 días hábiles para ser retirado. Transcurrido dicho período, el pedido será considerado como abandonado sin posibilidad de reembolso.' },
+        { id: '5', title: 'Cancelaciones:', text: 'En pedidos personalizados, cuenta con un plazo de 48 hs desde la toma de la orden para cancelar la compra y solicitar el reembolso total del importe abonado.' },
+        { id: '6', title: 'Facturación:', text: 'Emitimos factura sobre el valor del producto (no incluye costo de envío). Si requiere Factura A, deberá informarlo previamente para coordinar los datos correspondientes.' },
+        { id: '7', title: 'Contacto y Atención:', text: 'Ante cualquier duda o consulta sobre el estado de su pedido, envianos un mensaje por WhatsApp al taller mencionando tu N° de Orden.' }
+    ]
+};
+
+function getOrdersConfig() {
+    try {
+        if (fs.existsSync(ordersConfigDbPath)) {
+            const content = fs.readFileSync(ordersConfigDbPath, 'utf8');
+            const jsonMatch = content.match(/const\s+ordersConfig\s*=\s*([\s\S]*?);?\s*$/);
+            if (jsonMatch && jsonMatch[1]) {
+                return JSON.parse(jsonMatch[1]);
+            }
+        }
+    } catch (e) {
+        console.error('⚠️ Error leyendo orders-config.js:', e);
+    }
+    return defaultOrdersConfig;
+}
+
 // Escanear carpeta de música en el arranque
 const scanMusica = require('./scan-musica');
 try {
@@ -1015,6 +1051,7 @@ function generateClientPage(order) {
     
     const filePath = path.join(pedidosDir, `${order.id}.html`);
     const socialLinks = getSocialLinks();
+    const ordersConfig = getOrdersConfig();
     
     const htmlContent = `<!DOCTYPE html>
 <html lang="es">
@@ -1743,11 +1780,7 @@ function generateClientPage(order) {
         <div class="conditions-card">
             <h3>Condiciones Generales del Pedido</h3>
             <ul>
-                <li><strong>Retiro/Envío:</strong> Los plazos son estimados y consideran días hábiles laborables (Lunes a Viernes). No se computan los fines de semana.</li>
-                <li><strong>Saldos:</strong> El saldo pendiente se deberá abonar en su totalidad al retirar o previo a despachar el pedido.</li>
-                <li><strong>Retiro del Pedido:</strong> Una vez listo su pedido, tiene tiempo de 30 días hábiles para ser retirado, una vez pasado este lapso, su pedido será considerado como abandonado, imposibilitando algún tipo de reembolso.</li>
-                <li><strong>Cancelaciones:</strong> Si el pedido es personalizado, tiene unos 48hs para cancelar el pedido y obtener la devolución total del mismo.</li>
-                <li><strong>Contacto:</strong> Ante cualquier duda, envianos un WhatsApp al taller mencionando tu número de Orden.</li>
+                ${(ordersConfig.conditions || defaultOrdersConfig.conditions).map(c => `<li><strong>${c.title || ''}</strong> ${c.text || ''}</li>`).join('\n                ')}
             </ul>
         </div>
         
@@ -1767,6 +1800,7 @@ function generateClientPage(order) {
 
     <script>
         const orderData = ${JSON.stringify(order)};
+        const ordersConfigData = ${JSON.stringify(ordersConfig)};
         
         document.addEventListener('DOMContentLoaded', () => {
             const createdDate = new Date(orderData.creationDate);
@@ -1895,23 +1929,27 @@ function generateClientPage(order) {
                 let desc  = '';
                 
                 if (isWeekend) {
-                    title = `${capitalizedWeekday} &bull; ${dateStr}`;
+                    title = \`\${capitalizedWeekday} \&bull; \${dateStr}\`;
                     desc  = 'Fines de semana el taller permanece cerrado 🌲';
                 } else {
                     if (isFirst) {
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — Inicio`;
-                        desc  = `Día 1 de fabricación en taller 🛠️`;
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} — Inicio\`;
+                        desc  = \`Día 1 de fabricación en taller 🛠️\`;
                     } else if (isReadyDay) {
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — Fin de Fabricación`;
+                        const readyDescCfg = (ordersConfigData.milestones && ordersConfigData.milestones.readyDesc) || '¡Tu mueble ya está listo! ✅';
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} — Fin de Fabricación\`;
                         desc  = (orderData.status === 'listo' || orderData.status === 'entregado')
-                            ? `¡Tu mueble ya está listo! ✅`
-                            : `Fecha estimada de finalización (Día ${businessDayCounter})`;
+                            ? readyDescCfg
+                            : \`Fecha estimada de finalización (Día \${businessDayCounter})\`;
                     } else if (isLast) {
+                        const mCfg = ordersConfigData.milestones || {};
                         const isEnvio = orderData.deliveryMethod === 'envio';
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — ${isEnvio ? 'Despacho de Pedido' : 'Retiro por Taller'}`;
-                        desc  = isEnvio
-                            ? 'Tu pedido se encuentra en proceso de despacho o en camino. Podés seguir su recorrido en el apartado de abajo ⬇️'
-                            : 'Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁';
+                        const customTitle = isEnvio ? (mCfg.envioTitle || 'Despacho de Pedido') : (mCfg.retiraTitle || 'Retiro por Taller');
+                        const customDesc  = isEnvio
+                            ? (mCfg.envioDesc || 'Tu pedido se encuentra en proceso de despacho o en camino. Podés seguir su recorrido en el apartado de abajo ⬇️')
+                            : (mCfg.retiraDesc || 'Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁');
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} — \${customTitle}\`;
+                        desc  = customDesc;
                     } else {
                         title = \`\${capitalizedWeekday} \&bull; \${dateStr}\`;
                         desc  = \`Día \${businessDayCounter} de elaboración\`;
@@ -2086,6 +2124,45 @@ app.post('/api/save-orders', (req, res) => {
     } catch (error) {
         console.error('❌ Error guardando pedidos:', error);
         res.status(500).json({ success: false, message: 'Error interno al guardar pedidos.' });
+    }
+});
+
+app.get('/api/orders-config', (req, res) => {
+    try {
+        const config = getOrdersConfig();
+        res.json(config);
+    } catch (e) {
+        console.error('❌ Error obteniendo orders-config:', e);
+        res.status(500).json({ success: false, message: 'Error al obtener la configuración de pedidos.' });
+    }
+});
+
+app.post('/api/save-orders-config', (req, res) => {
+    try {
+        const config = req.body;
+        if (!config || typeof config !== 'object') {
+            return res.status(400).json({ success: false, message: 'Payload de configuración inválido.' });
+        }
+        
+        const fileContent = 'const ordersConfig = ' + JSON.stringify(config, null, 4) + ';\n';
+        fs.writeFileSync(ordersConfigDbPath, fileContent, 'utf8');
+        console.log('✅ js/orders-config.js actualizado correctamente.');
+        
+        // Regenerar todas las páginas de pedidos para aplicar las nuevas leyendas y términos
+        if (fs.existsSync(ordersDbPath)) {
+            const content = fs.readFileSync(ordersDbPath, 'utf8');
+            const jsonStr = content.replace(/^\s*const\s+ordersData\s*=\s*/, '').replace(/;\s*$/, '').trim();
+            try {
+                const orders = JSON.parse(jsonStr);
+                const { activeOrders } = cleanExpiredOrders(orders);
+                activeOrders.forEach(order => generateClientPage(order));
+            } catch(e) {}
+        }
+        
+        res.json({ success: true, message: 'Configuración de leyendas y términos guardada con éxito.', config });
+    } catch (e) {
+        console.error('❌ Error guardando orders-config:', e);
+        res.status(500).json({ success: false, message: 'Error al guardar la configuración.' });
     }
 });
 
