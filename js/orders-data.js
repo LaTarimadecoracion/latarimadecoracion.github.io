@@ -1,26 +1,5 @@
 const ordersData = [
     {
-        "id": "943804487",
-        "clientName": "asdasd",
-        "productType": "catalog",
-        "productId": "baranda-desmontable-clasica",
-        "productName": "Baranda: Desmontable Clásica",
-        "selectedFinish": "Blanca",
-        "selectedMeasure": "",
-        "description": "",
-        "deliveryMethod": "retira",
-        "prepDays": 5,
-        "paidStatus": "total",
-        "paidAmount": 100000,
-        "totalAmount": 0,
-        "status": "pendiente",
-        "creationDate": "2026-08-07T01:46:30.944Z",
-        "completedDate": "",
-        "image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
-        "startDate": "2026-08-07T13:00:00.000Z",
-        "estimatedReadyDate": "2026-08-13T21:00:00.000Z"
-    },
-    {
         "id": "500102800",
         "clientName": "Julieta Miranda",
         "productType": "catalog",

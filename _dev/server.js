@@ -1314,6 +1314,7 @@ function generateClientPage(order) {
             display: flex;
             gap: 1rem;
             position: relative;
+            transition: all 0.25s ease;
         }
         
         .timeline-item::after {
@@ -1329,6 +1330,29 @@ function generateClientPage(order) {
         
         .timeline-item:last-child::after {
             display: none;
+        }
+        
+        /* Dias ya pasados: compactos y tenues */
+        .timeline-item.completed {
+            opacity: 0.55;
+        }
+        .timeline-item.completed .timeline-icon-wrapper {
+            width: 30px;
+            height: 30px;
+            font-size: 14px;
+        }
+        .timeline-item.completed .timeline-icon-wrapper .material-symbols-outlined {
+            font-size: 15px;
+        }
+        .timeline-item.completed .timeline-title {
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+        .timeline-item.completed .timeline-desc {
+            font-size: 0.73rem;
+        }
+        .timeline-item.completed::after {
+            left: 14px;
         }
         
         .timeline-icon-wrapper {
@@ -1371,6 +1395,88 @@ function generateClientPage(order) {
             border-color: #cbd5e1;
             color: #94a3b8;
             border-style: dashed;
+        }
+        
+        /* Hito: Fin de Fabricación */
+        .timeline-item.milestone-ready .timeline-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-color: #f59e0b;
+            border-width: 2.5px;
+            color: #92400e;
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+        }
+        .timeline-item.milestone-ready .timeline-icon-wrapper .material-symbols-outlined {
+            font-size: 22px;
+        }
+        .timeline-item.milestone-ready .timeline-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #92400e;
+        }
+        .timeline-item.milestone-ready .timeline-desc {
+            color: #b45309;
+            font-weight: 500;
+        }
+        .timeline-item.milestone-ready::after {
+            background: linear-gradient(to bottom, #f59e0b, var(--border-color));
+        }
+        
+        /* Hito: Retiro / Despacho */
+        .timeline-item.milestone-pickup .timeline-icon-wrapper {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, rgba(180,132,108,0.15), rgba(180,132,108,0.3));
+            border-color: var(--primary-color);
+            border-width: 2.5px;
+            color: var(--primary-color);
+            box-shadow: 0 0 0 5px rgba(180, 132, 108, 0.15);
+        }
+        .timeline-item.milestone-pickup .timeline-icon-wrapper .material-symbols-outlined {
+            font-size: 24px;
+        }
+        .timeline-item.milestone-pickup .timeline-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+        .timeline-item.milestone-pickup .timeline-desc {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+        .timeline-item.milestone-pickup::after {
+            display: none;
+        }
+
+        /* Boton para expandir la lista de dias */
+        .timeline-expand-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: 1.5px dashed var(--border-color);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            margin: 0 0 0 56px;
+            transition: all 0.2s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+        .timeline-expand-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: rgba(180, 132, 108, 0.05);
+        }
+        .timeline-expand-btn .material-symbols-outlined {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        .timeline-expand-btn.expanded .material-symbols-outlined {
+            transform: rotate(180deg);
         }
         
         .timeline-content {
@@ -1666,7 +1772,7 @@ function generateClientPage(order) {
                 temp.setDate(temp.getDate() + 1);
             }
             
-            // Obtener el día hábil siguiente a la fecha estimada de finalización
+            // Dia habil siguiente (retiro/despacho)
             let nextDay = new Date(endZero);
             nextDay.setDate(nextDay.getDate() + 1);
             while (nextDay.getDay() === 0 || nextDay.getDay() === 6) {
@@ -1678,35 +1784,40 @@ function generateClientPage(order) {
             
             let businessDayCounter = 0;
             
-            days.forEach((d, idx) => {
+            // Construir datos de cada dia
+            const builtDays = days.map((d, idx) => {
                 const isWeekend = d.getDay() === 0 || d.getDay() === 6;
-                const isToday = d.getTime() === todayZero.getTime();
-                const isLast = idx === days.length - 1; // Retiro/Despacho (Día hábil siguiente)
-                const isReadyDay = idx === days.length - 2; // Fin de Fabricación
-                const isFirst = idx === 0;
+                const isToday   = d.getTime() === todayZero.getTime();
+                const isLast    = idx === days.length - 1;
+                const isReadyDay = idx === days.length - 2;
+                const isFirst   = idx === 0;
                 
                 let isCompleted = false;
                 if (orderData.status === 'listo' || orderData.status === 'entregado') {
-                    isCompleted = true;
+                    isCompleted = !isLast;
                 } else {
                     isCompleted = d < todayZero;
                 }
                 
                 let itemClass = 'timeline-item';
-                let iconText = 'pending';
+                let iconText  = 'pending';
                 
                 if (isWeekend) {
                     itemClass += ' weekend';
                     iconText = 'hotel';
                 } else {
                     if (isLast) {
-                        // El día final de Retiro/Despacho
+                        itemClass += ' milestone-pickup';
                         if (orderData.status === 'listo' || orderData.status === 'entregado') {
-                            itemClass += ' completed';
+                            itemClass += ' completed-milestone';
                             iconText = orderData.deliveryMethod === 'envio' ? 'local_shipping' : 'storefront';
                         } else {
-                            iconText = 'schedule';
+                            iconText = orderData.deliveryMethod === 'envio' ? 'local_shipping' : 'storefront';
                         }
+                    } else if (isReadyDay) {
+                        itemClass += ' milestone-ready';
+                        if (isCompleted) { itemClass += ' completed-milestone'; }
+                        iconText = isCompleted ? 'verified' : 'flag';
                     } else {
                         businessDayCounter++;
                         if (isCompleted) {
@@ -1721,33 +1832,33 @@ function generateClientPage(order) {
                     }
                 }
                 
-                let title = '';
-                let desc = '';
-                
                 const weekday = d.toLocaleDateString('es-AR', { weekday: 'long' });
                 const capitalizedWeekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
                 const dateStr = d.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit' });
                 
+                let title = '';
+                let desc  = '';
+                
                 if (isWeekend) {
                     title = \`\${capitalizedWeekday} \&bull; \${dateStr}\`;
-                    desc = 'Fines de semana el taller permanece cerrado 🌲';
+                    desc  = 'Fines de semana el taller permanece cerrado 🌲';
                 } else {
                     if (isFirst) {
-                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} - Inicio\`;
-                        desc = \`Día 1 de fabricación en taller 🛠️\`;
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} — Inicio\`;
+                        desc  = \`Día 1 de fabricación en taller 🛠️\`;
                     } else if (isReadyDay) {
-                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} - Fin de Fabricación\`;
-                        desc = orderData.status === 'listo' || orderData.status === 'entregado'
-                            ? \`¡Tu mueble ya está listo! (Fabricación finalizada en taller)\`
-                            : \`Fecha límite prometida de fabricación (Día \${businessDayCounter})\`;
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} — Fin de Fabricación\`;
+                        desc  = (orderData.status === 'listo' || orderData.status === 'entregado')
+                            ? \`¡Tu mueble ya está listo! ✅\`
+                            : \`Fecha estimada de finalización (Día \${businessDayCounter})\`;
                     } else if (isLast) {
-                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} - Retiro / Despacho\`;
-                        desc = orderData.deliveryMethod === 'envio'
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} — Retiro / Despacho\`;
+                        desc  = orderData.deliveryMethod === 'envio'
                             ? 'Ya podés coordinar el despacho de tu mueble 🚚'
                             : 'Ya podés retirar tu pedido por nuestro domicilio 🏁';
                     } else {
                         title = \`\${capitalizedWeekday} \&bull; \${dateStr}\`;
-                        desc = \`Día \${businessDayCounter} de elaboración\`;
+                        desc  = \`Día \${businessDayCounter} de elaboración\`;
                     }
                 }
                 
@@ -1755,19 +1866,84 @@ function generateClientPage(order) {
                     desc += ' (¡Hoy estamos trabajando en tu pedido! 🛠️)';
                 }
                 
+                return { d, itemClass, iconText, title, desc, isFirst, isLast, isReadyDay, isWeekend };
+            });
+            
+
+            function createRow(dayData) {
                 const row = document.createElement('div');
-                row.className = itemClass;
+                row.className = dayData.itemClass;
                 row.innerHTML = \`
                     <div class="timeline-icon-wrapper">
-                        <span class="material-symbols-outlined" style="font-size: 20px;">\${iconText}</span>
+                        <span class="material-symbols-outlined">\${dayData.iconText}</span>
                     </div>
                     <div class="timeline-content">
-                        <h4 class="timeline-title">\${title}</h4>
-                        <p class="timeline-desc">\${desc}</p>
+                        <h4 class="timeline-title">\${dayData.title}</h4>
+                        <p class="timeline-desc">\${dayData.desc}</p>
                     </div>
                 \`;
-                container.appendChild(row);
-            });
+                return row;
+            }
+
+            function makeExpandBtn(wrapperId, labelShow, labelHide) {
+                const btn = document.createElement('button');
+                btn.className = 'timeline-expand-btn';
+                btn.innerHTML = \`<span class="material-symbols-outlined">expand_more</span> \${labelShow}\`;
+                btn.addEventListener('click', function() {
+                    const w = document.getElementById(wrapperId);
+                    const isOpen = w.style.display !== 'none';
+                    w.style.display = isOpen ? 'none' : 'block';
+                    this.classList.toggle('expanded', !isOpen);
+                    this.innerHTML = isOpen
+                        ? \`<span class="material-symbols-outlined">expand_more</span> \${labelShow}\`
+                        : \`<span class="material-symbols-outlined">expand_less</span> \${labelHide}\`;
+                });
+                return btn;
+            }
+
+            // Indices de referencia
+            const milestoneReadyIdx  = builtDays.length - 2;
+            const milestonePickupIdx = builtDays.length - 1;
+            const todayIdx = builtDays.findIndex(bd => bd.d.getTime() === todayZero.getTime());
+
+            // Si hoy esta fuera del rango, usar indice 0 como "hoy"
+            const anchorToday    = todayIdx !== -1 ? todayIdx    : 0;
+            const anchorTomorrow = todayIdx !== -1 ? todayIdx + 1 : 1;
+
+            // Grupo 1: dias pasados (antes de hoy)
+            const pastIndices   = builtDays.map((_,i) => i).filter(i => i < anchorToday && i !== milestoneReadyIdx && i !== milestonePickupIdx);
+            // Grupo 2: dias del medio (despues de manana y antes de milestones)
+            const middleIndices = builtDays.map((_,i) => i).filter(i => i > anchorTomorrow && i !== milestoneReadyIdx && i !== milestonePickupIdx);
+
+            // ── Bloque de dias pasados ──
+            if (pastIndices.length > 0) {
+                const pastWrapper = document.createElement('div');
+                pastWrapper.id = 'timeline-past';
+                pastWrapper.style.display = 'none';
+                pastIndices.forEach(i => pastWrapper.appendChild(createRow(builtDays[i])));
+                container.appendChild(pastWrapper);
+                container.appendChild(makeExpandBtn('timeline-past', 'Ver días anteriores', 'Ocultar días anteriores'));
+            }
+
+            // ── Hoy y mañana siempre visibles ──
+            container.appendChild(createRow(builtDays[anchorToday]));
+            if (anchorTomorrow < milestoneReadyIdx) {
+                container.appendChild(createRow(builtDays[anchorTomorrow]));
+            }
+
+            // ── Dias del medio ──
+            if (middleIndices.length > 0) {
+                const middleWrapper = document.createElement('div');
+                middleWrapper.id = 'timeline-middle';
+                middleWrapper.style.display = 'none';
+                middleIndices.forEach(i => middleWrapper.appendChild(createRow(builtDays[i])));
+                container.appendChild(makeExpandBtn('timeline-middle', 'Ver detalle completo', 'Ocultar detalle'));
+                container.appendChild(middleWrapper);
+            }
+
+            // ── Milestones siempre visibles ──
+            container.appendChild(createRow(builtDays[milestoneReadyIdx]));
+            container.appendChild(createRow(builtDays[milestonePickupIdx]));
         }
     </script>
 </body>

@@ -5355,15 +5355,15 @@ body.theme-final-mundial .block-image-wrapper::after {
 /* ── Floating Tracking FAB & Bottom Sheet ── */
 .tracking-fab {
     position: fixed;
-    bottom: 24px;
-    right: 96px;
+    bottom: 96px;
+    right: 20px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     background-color: var(--primary-color, #A0715B);
     color: white;
     border: none;
-    cursor: pointer;
+    cursor: grab;
     box-shadow: 0 6px 20px rgba(160, 113, 91, 0.3);
     display: flex;
     align-items: center;
@@ -5371,6 +5371,9 @@ body.theme-final-mundial .block-image-wrapper::after {
     z-index: 9999;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s, box-shadow 0.2s;
     padding: 0;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .tracking-fab:hover {
@@ -5379,7 +5382,14 @@ body.theme-final-mundial .block-image-wrapper::after {
     box-shadow: 0 8px 24px rgba(160, 113, 91, 0.4);
 }
 
-.tracking-fab:active {
+.tracking-fab.dragging {
+    cursor: grabbing;
+    transform: scale(1.08);
+    box-shadow: 0 12px 32px rgba(160, 113, 91, 0.5);
+    transition: box-shadow 0.2s, transform 0.1s;
+}
+
+.tracking-fab:active:not(.dragging) {
     transform: scale(0.95);
 }
 
@@ -5527,8 +5537,8 @@ body.theme-final-mundial .block-image-wrapper::after {
 /* Responsividad Móvil */
 @media (max-width: 768px) {
     .tracking-fab {
-        bottom: 86px;
-        right: 84px;
+        bottom: 96px;
+        right: 20px;
         width: 56px;
         height: 56px;
     }
