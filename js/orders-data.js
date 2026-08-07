@@ -5,8 +5,8 @@ const ordersData = [
         "productType": "catalog",
         "productId": "baranda-desmontable-clasica",
         "productName": "Baranda: Desmontable Clásica",
-        "selectedFinish": "Blanca",
-        "selectedMeasure": "80 x 45 cm",
+        "selectedFinish": "",
+        "selectedMeasure": "",
         "description": "Espesor tirante: 2.5 cm\nAlto tirante: 11cm\nTirante + Colchón: 23cm aprox",
         "deliveryMethod": "retira",
         "prepDays": 15,
@@ -16,7 +16,7 @@ const ordersData = [
         "status": "pendiente",
         "creationDate": "2026-08-07T03:32:26.284Z",
         "completedDate": "",
-        "image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
+        "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
         "startDate": "2026-08-10T13:00:00.000Z",
         "estimatedReadyDate": "2026-08-31T21:00:00.000Z"
     }

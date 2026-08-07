@@ -866,29 +866,33 @@ app.post('/api/maintenance/clean-and-convert', async (req, res) => {
 
 function calculateEstimatedReadyDate(startDateStr, prepDays) {
     let date = new Date(startDateStr);
-    let day = date.getDay(); // 0 = Sunday, 6 = Saturday
+    let day  = date.getDay();
     let hour = date.getHours();
     
+    // Regla de corte: si se carga a partir de las 14hs o es fin de semana,
+    // el pedido empieza a correr el proximo dia habil desde las 00hs.
+    // Si se carga entre 00hs y 13:59hs, ese dia ya cuenta completo.
     let startOnNextBusinessDay = false;
     if (day === 0 || day === 6) {
         startOnNextBusinessDay = true;
-    } else if (hour >= 18 || hour < 10) {
+    } else if (hour >= 14) {
         startOnNextBusinessDay = true;
     }
     
     if (startOnNextBusinessDay) {
+        // Avanzar al proximo dia habil
         do {
             date.setDate(date.getDate() + 1);
             day = date.getDay();
         } while (day === 0 || day === 6);
-        date.setHours(10, 0, 0, 0);
     }
+    // El dia siempre empieza desde las 00hs (dia completo)
+    date.setHours(0, 0, 0, 0);
     
     const actualStartDate = new Date(date);
     
-    // Add preparation days
+    // Sumar dias de preparacion (solo dias habiles)
     let daysToAdd = prepDays;
-    
     while (daysToAdd > 0) {
         date.setDate(date.getDate() + 1);
         day = date.getDay();
@@ -897,7 +901,7 @@ function calculateEstimatedReadyDate(startDateStr, prepDays) {
         }
     }
     
-    date.setHours(18, 0, 0, 0);
+    date.setHours(23, 59, 0, 0);
     
     return {
         startDate: actualStartDate.toISOString(),
