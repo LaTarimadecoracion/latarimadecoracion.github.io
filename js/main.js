@@ -359,7 +359,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'musica': 'view-musica',
                 'ayudin': 'view-ayudin',
                 'help': 'view-ayudin',
-                'herramientas': 'view-ayudin'
+                'herramientas': 'view-ayudin',
+                'pedidos': 'view-pedidos'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             setTimeout(() => {
@@ -452,7 +453,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'videos': 'view-videos',
                 'carrito': 'view-cart',
                 'mayorista': 'view-mayorista',
-                'musica': 'view-musica'
+                'musica': 'view-musica',
+                'pedidos': 'view-pedidos'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             if (window.navigateToView) {

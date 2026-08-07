@@ -16,6 +16,12 @@ if (!fs.existsSync(rentalsDbPath)) {
     fs.writeFileSync(rentalsDbPath, 'const rentalsData = [];\n', 'utf8');
 }
 
+// Ensure orders database file exists
+const ordersDbPath = path.join(ROOT_DIR, 'js', 'orders-data.js');
+if (!fs.existsSync(ordersDbPath)) {
+    fs.writeFileSync(ordersDbPath, 'const ordersData = [];\n', 'utf8');
+}
+
 // Escanear carpeta de música en el arranque
 const scanMusica = require('./scan-musica');
 try {
@@ -854,6 +860,1003 @@ app.post('/api/maintenance/clean-and-convert', async (req, res) => {
     }
 });
 
+// --- ENDPOINTS PARA PEDIDOS AUTÓNOMOS ---
+
+// ordersDbPath is already declared at the top of the file
+
+function calculateEstimatedReadyDate(startDateStr, prepDays) {
+    let date = new Date(startDateStr);
+    let day = date.getDay(); // 0 = Sunday, 6 = Saturday
+    let hour = date.getHours();
+    
+    let startOnNextBusinessDay = false;
+    if (day === 0 || day === 6) {
+        startOnNextBusinessDay = true;
+    } else if (hour >= 18 || hour < 10) {
+        startOnNextBusinessDay = true;
+    }
+    
+    if (startOnNextBusinessDay) {
+        do {
+            date.setDate(date.getDate() + 1);
+            day = date.getDay();
+        } while (day === 0 || day === 6);
+        date.setHours(10, 0, 0, 0);
+    }
+    
+    const actualStartDate = new Date(date);
+    
+    // Add preparation days
+    let daysToAdd = prepDays;
+    
+    while (daysToAdd > 0) {
+        date.setDate(date.getDate() + 1);
+        day = date.getDay();
+        if (day !== 0 && day !== 6) {
+            daysToAdd--;
+        }
+    }
+    
+    date.setHours(18, 0, 0, 0);
+    
+    return {
+        startDate: actualStartDate.toISOString(),
+        estimatedReadyDate: date.toISOString()
+    };
+}
+
+function countBusinessDays(startDate, endDate) {
+    let start = new Date(startDate);
+    let end = new Date(endDate);
+    if (start > end) return 0;
+    
+    let count = 0;
+    let temp = new Date(start);
+    while (temp <= end) {
+        let day = temp.getDay();
+        if (day !== 0 && day !== 6) {
+            count++;
+        }
+        temp.setDate(temp.getDate() + 1);
+    }
+    return count;
+}
+
+function cleanExpiredOrders(orders) {
+    const today = new Date();
+    const activeOrders = [];
+    const expiredIds = [];
+    
+    orders.forEach(order => {
+        let isExpired = false;
+        
+        // Regla 1: 60 días de corrido desde que fue tomado (creationDate)
+        if (order.creationDate) {
+            const created = new Date(order.creationDate);
+            const diffTime = today.getTime() - created.getTime();
+            const diffDays = diffTime / (1000 * 60 * 60 * 24);
+            if (diffDays > 60) {
+                isExpired = true;
+            }
+        }
+        
+        // Regla 2: 30 días hábiles posteriores a su finalización (listo/entregado)
+        if (!isExpired && (order.status === 'listo' || order.status === 'entregado') && order.completedDate) {
+            const completed = new Date(order.completedDate);
+            const businessDaysSinceCompletion = countBusinessDays(completed, today) - 1;
+            if (businessDaysSinceCompletion > 30) {
+                isExpired = true;
+            }
+        }
+        
+        if (isExpired) {
+            expiredIds.push(order.id);
+            // Delete client HTML page
+            const clientPagePath = path.join(ROOT_DIR, 'pedidos', `${order.id}.html`);
+            if (fs.existsSync(clientPagePath)) {
+                try {
+                    fs.unlinkSync(clientPagePath);
+                    console.log(`🧹 Borrado archivo de pedido expirado: pedidos/${order.id}.html`);
+                } catch (err) {
+                    console.error(`❌ Error borrando archivo de pedido expirado ${order.id}:`, err);
+                }
+            }
+            
+            // Delete image folder if exists
+            const imageFolder = path.join(ROOT_DIR, 'img', 'pedidos', order.id);
+            if (fs.existsSync(imageFolder)) {
+                try {
+                    fse.removeSync(imageFolder);
+                    console.log(`🧹 Borrada carpeta de imágenes del pedido expirado: img/pedidos/${order.id}`);
+                } catch (err) {
+                    console.error(`❌ Error borrando carpeta de imágenes ${order.id}:`, err);
+                }
+            }
+        } else {
+            activeOrders.push(order);
+        }
+    });
+    
+    return { activeOrders, expiredIds };
+}
+
+function getSocialLinks() {
+    try {
+        const configPath = path.join(ROOT_DIR, 'js', 'site-config.js');
+        if (fs.existsSync(configPath)) {
+            const rawFile = fs.readFileSync(configPath, 'utf8');
+            const getLink = (name) => {
+                const regex = new RegExp(`['"]?${name}['"]?\\s*:\\s*['"]([^'"]+)['"]`);
+                const match = rawFile.match(regex);
+                return match ? match[1] : '';
+            };
+            return {
+                instagram: getLink('instagram'),
+                tiktok: getLink('tiktok'),
+                facebook: getLink('facebook'),
+                whatsapp: getLink('whatsapp')
+            };
+        }
+    } catch (e) {
+        console.error('⚠️ Error parsing site-config.js for socialLinks:', e);
+    }
+    return { instagram: '', tiktok: '', facebook: '', whatsapp: '' };
+}
+
+function generateClientPage(order) {
+    const pedidosDir = path.join(ROOT_DIR, 'pedidos');
+    if (!fs.existsSync(pedidosDir)) {
+        fs.mkdirSync(pedidosDir, { recursive: true });
+    }
+    
+    const filePath = path.join(pedidosDir, `${order.id}.html`);
+    const socialLinks = getSocialLinks();
+    
+    const htmlContent = `<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Seguimiento de Pedido #${order.id} | LA TARIMA</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css?v=25">
+    
+    <style>
+        :root {
+            --primary-hsl: 25, 30%, 45%;
+            --primary-color: hsl(var(--primary-hsl));
+            --surface-color: #ffffff;
+            --bg-color: #faf9f6;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow-sm: 0 4px 18px rgba(0, 0, 0, 0.015);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: auto !important;
+            height: auto !important;
+        }
+        
+        body.in-iframe {
+            background: transparent !important;
+            min-height: auto;
+            overflow-y: auto !important;
+            height: auto !important;
+            padding: 55px 16px 40px 16px !important;
+            box-sizing: border-box;
+        }
+        
+        body.in-iframe .client-header,
+        body.in-iframe .client-footer {
+            display: none !important;
+        }
+        
+        body.in-iframe .main-container {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            max-width: 100% !important;
+        }
+        
+        body.in-iframe .order-card {
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        body.in-iframe .order-header {
+            padding: 0.75rem 0 !important;
+            background: transparent !important;
+            border-bottom: 1px dashed var(--border-color) !important;
+        }
+        
+        body.in-iframe .order-body {
+            padding: 1.25rem 0 !important;
+        }
+        
+        body.in-iframe .conditions-card {
+            border: 1px solid var(--border-color) !important;
+            box-shadow: none !important;
+            background: rgba(0, 0, 0, 0.02) !important;
+            padding: 1.25rem !important;
+        }
+        
+        .client-header {
+            background: var(--surface-color);
+            border-bottom: 1.5px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+        
+        .logo-img {
+            height: 38px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .main-container {
+            max-width: 750px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 16px;
+            box-sizing: border-box;
+            flex-grow: 1;
+        }
+        
+        body.in-iframe .main-container {
+            margin: 0 auto;
+            padding: 10px 0;
+        }
+        
+        .order-card {
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        
+        .order-header {
+            padding: 1.75rem;
+            border-bottom: 1.5px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(180, 132, 108, 0.05) 0%, rgba(180, 132, 108, 0.01) 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .order-title-block h1 {
+            margin: 0 0 0.25rem 0;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        
+        .order-number {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+        
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .status-pendiente {
+            background: #fef3c7;
+            color: #d97706;
+            border: 1px solid #fde68a;
+        }
+        
+        .status-listo {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+            animation: pulse-green 2s infinite;
+        }
+        
+        .status-entregado {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+        
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(21, 128, 61, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0); }
+        }
+        
+        .order-body {
+            padding: 1.75rem;
+        }
+        
+        .product-section {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .product-image {
+            width: 150px;
+            height: 150px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            border: 1.5px solid var(--border-color);
+            background: #f5f2ee;
+            flex-shrink: 0;
+        }
+        
+        .product-info {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .product-info h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .product-desc {
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            margin: 0;
+            white-space: pre-line;
+        }
+        
+        .payment-banner {
+            background: #f8fafc;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+        
+        .payment-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .payment-label {
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        
+        .payment-value {
+            font-size: 1.15rem;
+            font-weight: 800;
+        }
+        
+        .payment-value.saldo {
+            color: #e11d48;
+        }
+        
+        .payment-value.pagado {
+            color: #16a34a;
+        }
+        
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            position: relative;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 40px;
+            bottom: -20px;
+            width: 2px;
+            background: var(--border-color);
+            z-index: 1;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .timeline-icon-wrapper {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            flex-shrink: 0;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item.completed .timeline-icon-wrapper {
+            background: #dcfce7;
+            border-color: #22c55e;
+            color: #15803d;
+        }
+        
+        .timeline-item.active .timeline-icon-wrapper {
+            background: rgba(180, 132, 108, 0.15);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(180, 132, 108, 0.2);
+            animation: pulse-active 1.5s infinite;
+        }
+        
+        @keyframes pulse-active {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .timeline-item.weekend .timeline-icon-wrapper {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            color: #94a3b8;
+            border-style: dashed;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-top: 8px;
+        }
+        
+        .timeline-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin: 0 0 2px 0;
+        }
+        
+        .timeline-item.weekend .timeline-title {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        .timeline-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+        
+        .conditions-card {
+            background: #fafafa;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            font-size: 0.86rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        .conditions-card h3 {
+            margin: 0 0 0.75rem 0;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        
+        .conditions-card ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+        
+        .conditions-card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .client-footer {
+            background: var(--surface-color);
+            border-top: 1.5px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .social-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .footer-text {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        
+        @media (max-width: 500px) {
+            .product-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .product-image {
+                width: 100%;
+                max-width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        (function () {
+            if (window.self === window.top) {
+                var q = window.location.search;
+                var orderId = "${order.id}";
+                var p = window.location.origin + window.location.pathname.replace(/\\/pedidos\\/[^\\/]+$/, "/?view=pedidos&id=" + orderId);
+                window.location.replace(q ? p + "&" + q.substring(1) : p);
+                return;
+            }
+            document.body.classList.add('in-iframe');
+            
+            if (window.parent && window.parent.document.body) {
+                document.body.className = window.parent.document.body.className + ' in-iframe';
+            }
+        })();
+    </script>
+
+    <header class="client-header">
+        <a href="../" class="logo-container">
+            <img src="../img/logo_provisional.png" alt="La Tarima Logo" class="logo-img">
+            <span class="logo-text">LA TARIMA</span>
+        </a>
+        <div style="font-size: 0.88rem; font-weight: 600; color: var(--primary-color);">Seguimiento de Pedido</div>
+    </header>
+
+    <main class="main-container">
+        
+        <div class="order-card">
+            <div class="order-header" style="flex-direction: column; align-items: stretch; gap: 0.25rem; padding: 1.5rem 1.5rem 1.25rem 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; width: 100%;">
+                    <h1 style="margin: 0; font-size: 1.4rem; font-weight: 800; color: var(--text-main);">${order.clientName}</h1>
+                    <div id="order-status-badge" class="status-badge"></div>
+                </div>
+                <div style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600; margin-top: 0.25rem;">
+                    Orden #${order.id}
+                </div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.1rem;">
+                    Fecha: <span id="created-date-formatted"></span>
+                </div>
+            </div>
+            
+            <div class="order-body" style="padding: 1.5rem;">
+                <h2 style="font-size: 1.3rem; font-weight: 800; margin: 0 0 1rem 0; color: var(--text-main);">${order.productName}</h2>
+                
+                <div style="margin-bottom: 1.25rem; display: flex; justify-content: center;">
+                    <img src="../${order.image || 'img/logo_provisional.png'}" alt="Foto del Producto" style="width: 100%; max-width: 320px; height: auto; border-radius: var(--radius-md); border: 1.5px solid var(--border-color); object-fit: cover;" onerror="this.src='../img/logo_provisional.png'">
+                </div>
+
+                ${order.selectedFinish ? `
+                <div style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 0.5rem; display: block;">
+                    <strong>Terminación:</strong> ${order.selectedFinish}
+                </div>
+                ` : ''}
+
+                ${order.selectedMeasure ? `
+                <div style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 0.5rem; display: block;">
+                    <strong>Medida:</strong> ${order.selectedMeasure}
+                </div>
+                ` : ''}
+
+                <div style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 1.75rem; line-height: 1.5; display: block;">
+                    <strong>Descripción:</strong> <span style="color: var(--text-muted); font-style: italic;">${order.description || 'Sin descripción adicional.'}</span>
+                </div>
+                
+                <div class="payment-banner">
+                    <div class="payment-item">
+                        <span class="payment-label">Total Pedido</span>
+                        <span class="payment-value">$${Number(order.totalAmount || 0).toLocaleString('es-AR')}</span>
+                    </div>
+                    <div class="payment-item">
+                        <span class="payment-label">Abonado</span>
+                        <span class="payment-value pagado">$${Number(order.paidAmount || 0).toLocaleString('es-AR')}</span>
+                    </div>
+                    <div class="payment-item">
+                        <span class="payment-label">Saldo Restante</span>
+                        <span id="payment-saldo" class="payment-value"></span>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">calendar_month</span>
+                    Calendario de Fabricación
+                </div>
+                
+                <div id="timeline-container" class="timeline"></div>
+                
+                <div style="background: rgba(180, 132, 108, 0.05); border: 1px solid rgba(180, 132, 108, 0.15); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.5rem; display: flex; align-items: center; gap: 12px;">
+                    <span class="material-symbols-outlined" style="font-size: 32px; color: var(--primary-color);">
+                        ${order.deliveryMethod === 'envio' ? 'local_shipping' : 'storefront'}
+                    </span>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">
+                            ${order.deliveryMethod === 'envio' ? 'Método de Entrega: Envío a Domicilio' : 'Método de Entrega: Retira por Taller'}
+                        </div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">
+                            ${order.deliveryMethod === 'envio' ? 'Coordinaremos el envío una vez que el producto esté listo.' : 'Podrás retirar tu pedido por nuestro domicilio.'}
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="conditions-card">
+            <h3>Condiciones Generales del Pedido</h3>
+            <ul>
+                <li><strong>Retiro/Envío:</strong> Los plazos son estimados y consideran días hábiles laborables (Lunes a Viernes). No se computan los fines de semana.</li>
+                <li><strong>Saldos:</strong> El saldo pendiente se deberá abonar en su totalidad al retirar o previo a despachar el pedido.</li>
+                <li><strong>Retiro del Pedido:</strong> Una vez listo su pedido, tiene tiempo de 30 días hábiles para ser retirado, una vez pasado este lapso, su pedido será considerado como abandonado, imposibilitando algún tipo de reembolso.</li>
+                <li><strong>Cancelaciones:</strong> Si el pedido es personalizado, tiene unos 48hs para cancelar el pedido y obtener la devolución total del mismo.</li>
+                <li><strong>Contacto:</strong> Ante cualquier duda, envianos un WhatsApp al taller mencionando tu número de Orden.</li>
+            </ul>
+        </div>
+        
+    </main>
+
+    <footer class="client-footer">
+        <div class="social-icons">
+            ${socialLinks.instagram ? '<a href="' + socialLinks.instagram + '" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>' : ''}
+            ${socialLinks.tiktok ? '<a href="' + socialLinks.tiktok + '" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg></a>' : ''}
+            ${socialLinks.facebook ? '<a href="' + socialLinks.facebook + '" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>' : ''}
+            ${socialLinks.whatsapp ? '<a href="https://wa.me/' + socialLinks.whatsapp.replace(/[^0-9]/g, '') + '" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></a>' : ''}
+        </div>
+        <div class="footer-text">
+            &copy; 2026 La Tarima. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+        const orderData = ${JSON.stringify(order)};
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const createdDate = new Date(orderData.creationDate);
+            document.getElementById('created-date-formatted').textContent = createdDate.toLocaleDateString('es-AR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            }) + ' hs';
+            
+            const badgeEl = document.getElementById('order-status-badge');
+            badgeEl.className = 'status-badge status-' + orderData.status;
+            
+            let statusText = 'Pendiente de Elaboración';
+            let statusIcon = 'hourglass_empty';
+            if (orderData.status === 'listo') {
+                statusText = 'Listo para retirar / Enviar';
+                statusIcon = 'check_circle';
+            } else if (orderData.status === 'entregado') {
+                statusText = 'Entregado';
+                statusIcon = 'task_alt';
+            }
+            badgeEl.innerHTML = \`<span class="material-symbols-outlined" style="font-size: 16px;">\${statusIcon}</span> \${statusText}\`;
+            
+            const total = Number(orderData.totalAmount || 0);
+            const paid = Number(orderData.paidAmount || 0);
+            const saldo = total - paid;
+            const saldoEl = document.getElementById('payment-saldo');
+            saldoEl.textContent = '$' + saldo.toLocaleString('es-AR');
+            if (saldo > 0) {
+                saldoEl.className = 'payment-value saldo';
+            } else {
+                saldoEl.className = 'payment-value pagado';
+            }
+            
+            renderTimeline();
+        });
+        
+        function renderTimeline() {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = '';
+            
+            const start = new Date(orderData.startDate);
+            const end = new Date(orderData.estimatedReadyDate);
+            const today = new Date();
+            
+            const startZero = new Date(start); startZero.setHours(0,0,0,0);
+            const endZero = new Date(end); endZero.setHours(0,0,0,0);
+            const todayZero = new Date(today); todayZero.setHours(0,0,0,0);
+            
+            let days = [];
+            let temp = new Date(startZero);
+            let safety = 0;
+            while (temp <= endZero && safety < 100) {
+                safety++;
+                days.push(new Date(temp));
+                temp.setDate(temp.getDate() + 1);
+            }
+            
+            // Obtener el día hábil siguiente a la fecha estimada de finalización
+            let nextDay = new Date(endZero);
+            nextDay.setDate(nextDay.getDate() + 1);
+            while (nextDay.getDay() === 0 || nextDay.getDay() === 6) {
+                nextDay.setDate(nextDay.getDate() + 1);
+            }
+            const nextDayZero = new Date(nextDay);
+            nextDayZero.setHours(0,0,0,0);
+            days.push(nextDayZero);
+            
+            let businessDayCounter = 0;
+            
+            days.forEach((d, idx) => {
+                const isWeekend = d.getDay() === 0 || d.getDay() === 6;
+                const isToday = d.getTime() === todayZero.getTime();
+                const isLast = idx === days.length - 1; // Retiro/Despacho (Día hábil siguiente)
+                const isReadyDay = idx === days.length - 2; // Fin de Fabricación
+                const isFirst = idx === 0;
+                
+                let isCompleted = false;
+                if (orderData.status === 'listo' || orderData.status === 'entregado') {
+                    isCompleted = true;
+                } else {
+                    isCompleted = d < todayZero;
+                }
+                
+                let itemClass = 'timeline-item';
+                let iconText = 'pending';
+                
+                if (isWeekend) {
+                    itemClass += ' weekend';
+                    iconText = 'hotel';
+                } else {
+                    if (isLast) {
+                        // El día final de Retiro/Despacho
+                        if (orderData.status === 'listo' || orderData.status === 'entregado') {
+                            itemClass += ' completed';
+                            iconText = orderData.deliveryMethod === 'envio' ? 'local_shipping' : 'storefront';
+                        } else {
+                            iconText = 'schedule';
+                        }
+                    } else {
+                        businessDayCounter++;
+                        if (isCompleted) {
+                            itemClass += ' completed';
+                            iconText = 'check';
+                        } else if (isToday) {
+                            itemClass += ' active';
+                            iconText = 'construction';
+                        } else {
+                            iconText = 'schedule';
+                        }
+                    }
+                }
+                
+                let title = '';
+                let desc = '';
+                
+                const weekday = d.toLocaleDateString('es-AR', { weekday: 'long' });
+                const capitalizedWeekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
+                const dateStr = d.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit' });
+                
+                if (isWeekend) {
+                    title = \`\${capitalizedWeekday} \&bull; \${dateStr}\`;
+                    desc = 'Fines de semana el taller permanece cerrado 🌲';
+                } else {
+                    if (isFirst) {
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} - Inicio\`;
+                        desc = \`Día 1 de fabricación en taller 🛠️\`;
+                    } else if (isReadyDay) {
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} - Fin de Fabricación\`;
+                        desc = orderData.status === 'listo' || orderData.status === 'entregado'
+                            ? \`¡Tu mueble ya está listo! (Fabricación finalizada en taller)\`
+                            : \`Fecha límite prometida de fabricación (Día \${businessDayCounter})\`;
+                    } else if (isLast) {
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} - Retiro / Despacho\`;
+                        desc = orderData.deliveryMethod === 'envio'
+                            ? 'Ya podés coordinar el despacho de tu mueble 🚚'
+                            : 'Ya podés retirar tu pedido por nuestro domicilio 🏁';
+                    } else {
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr}\`;
+                        desc = \`Día \${businessDayCounter} de elaboración\`;
+                    }
+                }
+                
+                if (isToday && !isWeekend && orderData.status === 'pendiente' && !isLast) {
+                    desc += ' (¡Hoy estamos trabajando en tu pedido! 🛠️)';
+                }
+                
+                const row = document.createElement('div');
+                row.className = itemClass;
+                row.innerHTML = \`
+                    <div class="timeline-icon-wrapper">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">\${iconText}</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h4 class="timeline-title">\${title}</h4>
+                        <p class="timeline-desc">\${desc}</p>
+                    </div>
+                \`;
+                container.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>`;
+
+    fs.writeFileSync(filePath, htmlContent, 'utf8');
+    console.log(`✅ Página de seguimiento del cliente creada/actualizada: pedidos/\${order.id}.html`);
+}
+
+app.get('/api/orders', (req, res) => {
+    try {
+        if (!fs.existsSync(ordersDbPath)) {
+            return res.json([]);
+        }
+        const fileContent = fs.readFileSync(ordersDbPath, 'utf8');
+        const jsonStr = fileContent
+            .replace(/^\s*const\s+ordersData\s*=\s*/, '')
+            .replace(/;\s*$/, '')
+            .trim();
+        const orders = JSON.parse(jsonStr);
+        
+        const { activeOrders, expiredIds } = cleanExpiredOrders(orders);
+        if (expiredIds.length > 0) {
+            const updatedContent = 'const ordersData = ' + JSON.stringify(activeOrders, null, 4) + ';\n';
+            fs.writeFileSync(ordersDbPath, updatedContent, 'utf8');
+            console.log(`🧹 Base de datos de pedidos limpia: se eliminaron \${expiredIds.length} pedidos expirados.`);
+        }
+        
+        res.json(activeOrders);
+    } catch (error) {
+        console.error('❌ Error leyendo pedidos:', error);
+        res.status(500).json({ success: false, message: 'Error al obtener pedidos.' });
+    }
+});
+
+app.post('/api/save-orders', (req, res) => {
+    try {
+        const { orders, modifiedOrder } = req.body;
+        if (!Array.isArray(orders)) {
+            return res.status(400).json({ success: false, message: 'El payload debe contener un array "orders".' });
+        }
+        
+        const { activeOrders, expiredIds } = cleanExpiredOrders(orders);
+        
+        if (modifiedOrder) {
+            const index = activeOrders.findIndex(o => o.id === modifiedOrder.id);
+            if (index !== -1) {
+                if (!modifiedOrder.startDate || !modifiedOrder.estimatedReadyDate) {
+                    const dates = calculateEstimatedReadyDate(modifiedOrder.creationDate || new Date().toISOString(), Number(modifiedOrder.prepDays || 5));
+                    modifiedOrder.startDate = dates.startDate;
+                    modifiedOrder.estimatedReadyDate = dates.estimatedReadyDate;
+                }
+                activeOrders[index] = modifiedOrder;
+            }
+        }
+        
+        const fileContent = 'const ordersData = ' + JSON.stringify(activeOrders, null, 4) + ';\n';
+        fs.writeFileSync(ordersDbPath, fileContent, 'utf8');
+        console.log('✅ js/orders-data.js actualizado correctamente.');
+        
+        activeOrders.forEach(order => {
+            generateClientPage(order);
+        });
+        
+        const activeIds = activeOrders.map(o => o.id);
+        const pedidosDir = path.join(ROOT_DIR, 'pedidos');
+        if (fs.existsSync(pedidosDir)) {
+            const files = fs.readdirSync(pedidosDir).filter(f => f.endsWith('.html') && f !== 'index.html' && f !== 'admin.html');
+            files.forEach(file => {
+                const id = file.replace('.html', '');
+                if (!activeIds.includes(id)) {
+                    const filePathToDelete = path.join(pedidosDir, file);
+                    try {
+                        fs.unlinkSync(filePathToDelete);
+                        console.log(`🧹 Eliminado archivo huérfano: pedidos/\${file}`);
+                    } catch (e) {
+                        console.error(`Error eliminando archivo huérfano \${file}:`, e);
+                    }
+                }
+            });
+        }
+        
+        res.json({ success: true, message: 'Pedidos y páginas de seguimiento sincronizados con éxito.', orders: activeOrders });
+    } catch (error) {
+        console.error('❌ Error guardando pedidos:', error);
+        res.status(500).json({ success: false, message: 'Error interno al guardar pedidos.' });
+    }
+});
+
 // Fallback to index.html for SPA routing
 // Catch-all route to handle clean mayorista URLs and redirect unrecognized routes to root
 app.get('*', (req, res) => {
@@ -880,6 +1883,11 @@ app.get('*', (req, res) => {
         return serveIndexWithOG(req, res);
     }
 
+    // Si es una petición a un archivo de pedido que no existe, responde 404 en vez de redirigir
+    if (req.path.startsWith('/pedidos/')) {
+        return res.status(404).send('Pedido no encontrado');
+    }
+
     // Cualquier otra ruta no existente, redirige al inicio
     res.redirect('/');
 });
@@ -901,7 +1909,28 @@ function getLocalIPs() {
     return addresses;
 }
 
+function regenerateAllClientPages() {
+    try {
+        if (fs.existsSync(ordersDbPath)) {
+            const fileContent = fs.readFileSync(ordersDbPath, 'utf8');
+            const jsonStr = fileContent
+                .replace(/^\s*const\s+ordersData\s*=\s*/, '')
+                .replace(/;\s*$/, '')
+                .trim();
+            const orders = JSON.parse(jsonStr);
+            const { activeOrders } = cleanExpiredOrders(orders);
+            activeOrders.forEach(order => {
+                generateClientPage(order);
+            });
+            console.log(`✅ Regeneradas ${activeOrders.length} páginas de seguimiento de clientes.`);
+        }
+    } catch (e) {
+        console.error('❌ Error regenerando páginas de seguimiento al arrancar:', e);
+    }
+}
+
 app.listen(PORT, '0.0.0.0', () => {
+    regenerateAllClientPages();
     const ips = getLocalIPs();
     console.log(`
 =============================================

@@ -192,7 +192,7 @@
             if (appContainer) {
                 appContainer.scrollTop = 0;
                 // Desactivar scroll del parent si estamos en el iframe
-                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-musica' || viewId === 'view-ayudin') {
+                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-musica' || viewId === 'view-ayudin' || viewId === 'view-pedidos') {
                     appContainer.style.overflowY = 'hidden';
                 } else {
                     appContainer.style.overflowY = 'auto';
@@ -233,6 +233,13 @@
                 const iframe = document.querySelector('#view-ayudin iframe');
                 if (iframe && iframe.contentWindow) {
                     iframe.contentWindow.location.reload();
+                }
+            } else if (viewId === 'view-pedidos') {
+                const urlParams = new URLSearchParams(window.location.search);
+                const orderId = urlParams.get('id');
+                const iframe = document.querySelector('#view-pedidos iframe');
+                if (iframe && orderId) {
+                    iframe.src = `pedidos/${orderId}.html`;
                 }
             } else if (viewId === 'view-about') {
                 renderNosotrosBlocksCliente();
@@ -286,7 +293,8 @@
                 'view-calculator': 'calcular',
                 'view-mayorista': 'mayorista',
                 'view-musica': 'musica',
-                'view-ayudin': 'ayudin'
+                'view-ayudin': 'ayudin',
+                'view-pedidos': 'pedidos'
             };
             
             let basePath = window.location.pathname.replace(/\/index\.html$/, '/');

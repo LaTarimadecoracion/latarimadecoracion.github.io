@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Administración de Pedidos | LA TARIMA</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css?v=25">
+    
+    <style>
+        :root {
+            --primary-hsl: 25, 30%, 45%;
+            --primary-color: hsl(var(--primary-hsl));
+            --surface-color: #ffffff;
+            --bg-color: #faf9f6;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow-sm: 0 4px 18px rgba(0, 0, 0, 0.015);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .admin-header {
+            background: var(--surface-color);
+            border-bottom: 1.5px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+        
+        .logo-img {
+            height: 42px;
+            width: auto;
+        }
+        
+        .logo-title h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-title span {
+            font-size: 0.72rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-top: -2px;
+        }
+        
+        .admin-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            box-sizing: border-box;
+        }
+        
+        .panel-card {
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            border: 1.5px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .panel-title h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        
+        .panel-title span {
+            color: var(--primary-color);
+            font-size: 32px;
+        }
+        
+        .filters-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .search-wrapper {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+        
+        .search-wrapper span {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+        
+        .search-input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.65rem 1rem 0.65rem 40px !important;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: white;
+        }
+        
+        .select-filter {
+            padding: 0.65rem 1rem;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: #f8fafc;
+            min-width: 160px;
+            cursor: pointer;
+        }
+        
+        .select-filter:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            border: 1.5px solid var(--border-color);
+        }
+        
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        
+        .orders-table th {
+            background: #f8fafc;
+            padding: 1rem;
+            font-weight: 700;
+            color: #475569;
+            border-bottom: 1.5px solid var(--border-color);
+        }
+        
+        .orders-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+        
+        .orders-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .orders-table tr:hover td {
+            background: #fcfbfa;
+        }
+        
+        .order-id-badge {
+            font-family: monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+        }
+        
+        .order-client-name {
+            font-weight: 700;
+        }
+        
+        .order-product {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .order-delivery {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #475569;
+        }
+        
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .status-pendiente {
+            background: #fef3c7;
+            color: #d97706;
+            border: 1px solid #fde68a;
+        }
+        
+        .status-listo {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .status-entregado {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .actions-cell {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+        
+        .action-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #475569;
+        }
+        
+        .action-btn:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            color: var(--text-main);
+        }
+        
+        .action-btn.edit:hover {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            color: #1d4ed8;
+        }
+        
+        .action-btn.delete:hover {
+            background: #fef2f2;
+            border-color: #fca5a5;
+            color: #b91c1c;
+        }
+        
+        .action-btn.link:hover {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+            color: #15803d;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.65rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary:hover {
+            background: hsl(25, 30%, 38%);
+            transform: translateY(-1px);
+        }
+        
+        .btn-outline {
+            background: white;
+            color: #475569;
+            border: 1.5px solid var(--border-color);
+            padding: 0.65rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-outline:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            color: var(--text-main);
+        }
+        
+        /* Modal Overlay & Card */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .modal-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 1.5px solid var(--border-color);
+            transform: scale(0.95);
+            transition: transform 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modal-overlay.show .modal-card {
+            transform: scale(1);
+        }
+        
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1.5px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+        
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+        
+        .modal-close-btn:hover {
+            background: #e2e8f0;
+            color: var(--text-main);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #475569;
+        }
+        
+        .form-control {
+            padding: 0.65rem 0.85rem;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            width: 100%;
+            transition: all 0.2s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(180, 132, 108, 0.15);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.75rem;
+        }
+        
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1.5px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            background: #f8fafc;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+        
+        .empty-state span {
+            font-size: 64px;
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .empty-state p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #0f172a;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 2000;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .toast span {
+            color: #22c55e;
+        }
+        
+        .image-upload-area {
+            border: 2px dashed var(--border-color);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #f8fafc;
+        }
+        
+        .image-upload-area:hover {
+            border-color: var(--primary-color);
+            background: rgba(180, 132, 108, 0.02);
+        }
+        
+        .preview-img-container {
+            margin-top: 0.75rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .preview-img {
+            max-height: 120px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .remove-img-btn {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .remove-img-btn span {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="admin-header">
+        <a href="../" class="logo-block">
+            <img src="../img/logo_provisional.png" alt="La Tarima Logo" class="logo-img">
+            <div class="logo-title">
+                <h1>LA TARIMA</h1>
+                <span>Administración</span>
+            </div>
+        </a>
+        <div style="display: flex; gap: 10px;">
+            <a href="../#view-admin" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Volver a la Web
+            </a>
+            <button type="button" id="btn-publish-github" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; background: #0f172a;">
+                <span class="material-symbols-outlined" style="font-size: 18px;">cloud_upload</span>
+                Subir a GitHub Pages
+            </button>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        
+        <div class="panel-card">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <h2>Gestión de Pedidos Pendientes</h2>
+                </div>
+                <button type="button" id="btn-new-order" class="btn-primary">
+                    <span class="material-symbols-outlined">add</span>
+                    Nuevo Pedido
+                </button>
+            </div>
+            
+            <!-- Filtros y Buscador -->
+            <div class="filters-bar">
+                <div class="search-wrapper">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" id="input-search" class="search-input" placeholder="Buscar por cliente, número de orden o producto...">
+                </div>
+                <select id="filter-status" class="select-filter">
+                    <option value="all">Todos los estados</option>
+                    <option value="pendiente">Pendientes</option>
+                    <option value="listo">Listos para Retirar</option>
+                    <option value="entregado">Entregados</option>
+                </select>
+            </div>
+            
+            <!-- Tabla de Datos -->
+            <div class="table-responsive">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Nro. Orden</th>
+                            <th>Cliente</th>
+                            <th>Producto</th>
+                            <th>Entrega</th>
+                            <th>Abonado</th>
+                            <th>Elaboración</th>
+                            <th>Fecha Límite</th>
+                            <th>Estado</th>
+                            <th style="text-align: right; padding-right: 1.5rem;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Carga dinámica -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Vacío -->
+            <div id="table-empty-state" class="empty-state" style="display: none;">
+                <span class="material-symbols-outlined">inventory_2</span>
+                <p>No se encontraron pedidos.</p>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- Modal Formulario -->
+    <div id="order-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modal-title">Crear Nuevo Pedido</h3>
+                <button type="button" class="modal-close-btn" id="btn-close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="order-form">
+                    <input type="hidden" id="order-form-id">
+                    <input type="hidden" id="order-form-creation">
+                    <input type="hidden" id="order-form-start">
+                    <input type="hidden" id="order-form-ready">
+                    <input type="hidden" id="order-form-completed">
+                    
+                    <div class="form-group">
+                        <label for="order-client">Nombre del Cliente</label>
+                        <input type="text" id="order-client" class="form-control" placeholder="ej: Carlos Giménez" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="order-product-type">Producto</label>
+                        <select id="order-product-type" class="form-control" style="margin-bottom: 8px;">
+                            <option value="catalog">Elegir del Catálogo</option>
+                            <option value="custom">Personalizado (A Medida)</option>
+                        </select>
+                        <select id="order-product-catalog" class="form-control">
+                            <!-- Se llena dinámicamente -->
+                        </select>
+                        <div id="group-product-finish" style="display: none; margin-top: 8px; margin-bottom: 8px;">
+                            <label for="order-product-finish" style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; display: block;">Terminación / Acabado</label>
+                            <select id="order-product-finish" class="form-control">
+                                <!-- Se llena dinámicamente -->
+                            </select>
+                        </div>
+                        <div id="group-product-measure" style="display: none; margin-top: 8px; margin-bottom: 8px;">
+                            <label for="order-product-measure" style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; display: block;">Medida / Dimensión</label>
+                            <select id="order-product-measure" class="form-control">
+                                <!-- Se llena dinámicamente -->
+                            </select>
+                        </div>
+                        <input type="text" id="order-product-custom" class="form-control" placeholder="Describa el producto a medida..." style="display: none;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="order-desc">Detalle del Pedido / Descripción</label>
+                        <textarea id="order-desc" class="form-control" rows="3" placeholder="ej: Color roble oscuro, madera pino eliottis, baranda reforzada, altura 65cm."></textarea>
+                    </div>
+                    
+                    <!-- Subida de Imagen -->
+                    <div class="form-group">
+                        <label>Foto de Referencia / Boceto</label>
+                        <div class="image-upload-area" id="image-upload-trigger">
+                            <span class="material-symbols-outlined" style="font-size: 32px; color: var(--text-muted);">add_a_photo</span>
+                            <div style="font-size: 0.82rem; margin-top: 4px; font-weight: 500;">Haz clic para subir una foto</div>
+                            <input type="file" id="order-image-file" accept="image/*" style="display: none;">
+                        </div>
+                        <input type="hidden" id="order-image-path">
+                        <div id="image-preview-container" class="preview-img-container" style="display: none;">
+                            <img id="image-preview" src="" class="preview-img">
+                            <button type="button" id="btn-remove-image" class="remove-img-btn" title="Quitar imagen">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="order-delivery">Tipo de Entrega</label>
+                            <select id="order-delivery" class="form-control">
+                                <option value="retira">Retira por Taller</option>
+                                <option value="envio">Envío a Domicilio</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-prep-days">Elaboración (Días Hábiles)</label>
+                            <input type="number" id="order-prep-days" class="form-control" value="5" min="1" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label for="order-paid-status">Estado Pago</label>
+                            <select id="order-paid-status" class="form-control">
+                                <option value="nada">Sin Abonar</option>
+                                <option value="parcial">Abonado Parcial</option>
+                                <option value="total">Abonado Total</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-paid-amount">Abonado ($)</label>
+                            <input type="number" id="order-paid-amount" class="form-control" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="order-total-amount">Monto Total ($)</label>
+                            <input type="number" id="order-total-amount" class="form-control" value="0" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="order-status">Estado del Pedido</label>
+                        <select id="order-status" class="form-control">
+                            <option value="pendiente">Pendiente</option>
+                            <option value="listo">Listo (Para retirar/enviar)</option>
+                            <option value="entregado">Entregado</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-outline" id="btn-cancel-modal">Cancelar</button>
+                <button type="button" class="btn-primary" id="btn-save-order">Guardar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast de Notificaciones -->
+    <div id="toast" class="toast">
+        <span class="material-symbols-outlined">check_circle</span>
+        <div id="toast-text">Cambios guardados con éxito.</div>
+    </div>
+
+    <!-- Importar Base de Datos del Catálogo -->
+    <script src="../js/products-data.js?v=5"></script>
+    
+    <!-- Lógica de Negocio del Panel de Pedidos -->
+    <script>
+        let allOrders = [];
+        let catalogProducts = [];
+        
+        // Carga de Temática
+        (function() {
+            try {
+                const userSelected = localStorage.getItem('userSelectedTheme');
+                const localTheme = localStorage.getItem('activeTheme');
+                const themeToApply = userSelected || localTheme || 'classic';
+                if (themeToApply && themeToApply !== 'classic') {
+                    document.body.classList.add('theme-' + themeToApply);
+                }
+            } catch(e) {}
+        })();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar productos del catálogo en el selector
+            loadCatalogDropdown();
+            
+            // Cargar pedidos desde la API
+            loadOrders();
+            
+            // Configurar Listeners
+            document.getElementById('btn-new-order').addEventListener('click', () => openModal());
+            document.getElementById('btn-close-modal').addEventListener('click', closeModal);
+            document.getElementById('btn-cancel-modal').addEventListener('click', closeModal);
+            document.getElementById('btn-save-order').addEventListener('click', saveOrder);
+            
+            document.getElementById('order-product-type').addEventListener('change', toggleProductFields);
+            document.getElementById('order-product-catalog').addEventListener('change', () => {
+                updateFinishesDropdown();
+                handleFinishChange();
+            });
+            document.getElementById('order-product-finish').addEventListener('change', handleFinishChange);
+            
+            document.getElementById('filter-status').addEventListener('change', filterAndRenderTable);
+            document.getElementById('input-search').addEventListener('input', filterAndRenderTable);
+            
+            // Subida de imagen
+            const fileInput = document.getElementById('order-image-file');
+            document.getElementById('image-upload-trigger').addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleImageUpload);
+            document.getElementById('btn-remove-image').addEventListener('click', removeImage);
+            
+            // Publicar en GitHub
+            document.getElementById('btn-publish-github').addEventListener('click', publishToGitHub);
+        });
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+        
+        function loadCatalogDropdown() {
+            const selectCatalog = document.getElementById('order-product-catalog');
+            selectCatalog.innerHTML = '';
+            
+            catalogProducts = [];
+            let flatProducts = [];
+            if (typeof productsData !== 'undefined' && Array.isArray(productsData)) {
+                productsData.forEach(cat => {
+                    if (cat.products && Array.isArray(cat.products)) {
+                        cat.products.forEach(p => {
+                            flatProducts.push({
+                                id: p.id,
+                                title: p.title,
+                                acabados_groups: p.acabados_groups || [],
+                                image: Array.isArray(p.image) ? p.image[0] : (p.image || '')
+                            });
+                        });
+                    }
+                });
+            }
+            
+            // Sort A-Z by title
+            flatProducts.sort((a, b) => a.title.localeCompare(b.title, 'es', { sensitivity: 'base' }));
+            
+            // Populate select
+            flatProducts.forEach(p => {
+                catalogProducts.push(p);
+                const opt = document.createElement('option');
+                opt.value = p.id;
+                opt.textContent = p.title;
+                selectCatalog.appendChild(opt);
+            });
+        }
+        
+        function toggleProductFields() {
+            const type = document.getElementById('order-product-type').value;
+            const dropdown = document.getElementById('order-product-catalog');
+            const custom = document.getElementById('order-product-custom');
+            const groupFinish = document.getElementById('group-product-finish');
+            const groupMeasure = document.getElementById('group-product-measure');
+            
+            if (type === 'catalog') {
+                dropdown.style.display = 'block';
+                custom.style.display = 'none';
+                updateFinishesDropdown();
+            } else {
+                dropdown.style.display = 'none';
+                custom.style.display = 'block';
+                groupFinish.style.display = 'none';
+                groupMeasure.style.display = 'none';
+            }
+        }
+        
+        function updateFinishesDropdown(preselectedFinish = null, preselectedMeasure = null) {
+            const type = document.getElementById('order-product-type').value;
+            const selectFinish = document.getElementById('order-product-finish');
+            const groupFinish = document.getElementById('group-product-finish');
+            
+            selectFinish.innerHTML = '';
+            
+            if (type !== 'catalog') {
+                groupFinish.style.display = 'none';
+                document.getElementById('group-product-measure').style.display = 'none';
+                return;
+            }
+            
+            const productId = document.getElementById('order-product-catalog').value;
+            const prodObj = catalogProducts.find(p => p.id === productId);
+            
+            if (prodObj && Array.isArray(prodObj.acabados_groups) && prodObj.acabados_groups.length > 0) {
+                // Show finish dropdown
+                groupFinish.style.display = 'block';
+                
+                // Add default option
+                const optNone = document.createElement('option');
+                optNone.value = '';
+                optNone.textContent = 'Sin especificar / Estándar';
+                selectFinish.appendChild(optNone);
+                
+                prodObj.acabados_groups.forEach(ac => {
+                    if (ac.acabado_name) {
+                        const opt = document.createElement('option');
+                        opt.value = ac.acabado_name;
+                        opt.textContent = ac.acabado_name;
+                        selectFinish.appendChild(opt);
+                    }
+                });
+                
+                if (preselectedFinish) {
+                    selectFinish.value = preselectedFinish;
+                }
+            } else {
+                groupFinish.style.display = 'none';
+            }
+            
+            // Trigger size loading
+            handleFinishChange(preselectedMeasure);
+        }
+        
+        function handleFinishChange(preselectedMeasure = null) {
+            const selectFinish = document.getElementById('order-product-finish');
+            const selectedVal = selectFinish.value;
+            const selectMeasure = document.getElementById('order-product-measure');
+            const groupMeasure = document.getElementById('group-product-measure');
+            
+            selectMeasure.innerHTML = '';
+            
+            const productId = document.getElementById('order-product-catalog').value;
+            const prodObj = catalogProducts.find(p => p.id === productId);
+            
+            if (prodObj) {
+                // Update preview image if not custom upload
+                const uploadedImg = document.getElementById('order-image-path').value;
+                const isCustomUpload = uploadedImg && uploadedImg.startsWith('img/pedidos/');
+                
+                if (!isCustomUpload) {
+                    let targetImg = '';
+                    if (selectedVal && Array.isArray(prodObj.acabados_groups)) {
+                        const acObj = prodObj.acabados_groups.find(ac => ac.acabado_name === selectedVal);
+                        if (acObj) {
+                            targetImg = acObj.cover_image || (acObj.images_list && acObj.images_list[0]) || '';
+                        }
+                    }
+                    
+                    if (!targetImg) {
+                        targetImg = prodObj.image;
+                    }
+                    
+                    if (targetImg) {
+                        document.getElementById('order-image-path').value = targetImg;
+                        document.getElementById('image-preview').src = '../' + targetImg;
+                        document.getElementById('image-preview-container').style.display = 'inline-block';
+                    } else {
+                        document.getElementById('order-image-path').value = '';
+                        document.getElementById('image-preview').src = '';
+                        document.getElementById('image-preview-container').style.display = 'none';
+                    }
+                }
+                
+                // Populate measures/sizes select based on active finish
+                let activeAcabado = null;
+                if (selectedVal && Array.isArray(prodObj.acabados_groups)) {
+                    activeAcabado = prodObj.acabados_groups.find(ac => ac.acabado_name === selectedVal);
+                } else if (Array.isArray(prodObj.acabados_groups) && prodObj.acabados_groups.length > 0) {
+                    activeAcabado = prodObj.acabados_groups[0]; // fallback
+                }
+                
+                if (activeAcabado && Array.isArray(activeAcabado.medidas_variants) && activeAcabado.medidas_variants.length > 0) {
+                    groupMeasure.style.display = 'block';
+                    
+                    const optNone = document.createElement('option');
+                    optNone.value = '';
+                    optNone.textContent = 'Sin especificar / Estándar';
+                    selectMeasure.appendChild(optNone);
+                    
+                    activeAcabado.medidas_variants.forEach(mv => {
+                        if (mv.medida) {
+                            const opt = document.createElement('option');
+                            opt.value = mv.medida;
+                            opt.textContent = mv.medida;
+                            selectMeasure.appendChild(opt);
+                        }
+                    });
+                    
+                    if (preselectedMeasure) {
+                        selectMeasure.value = preselectedMeasure;
+                    }
+                } else {
+                    groupMeasure.style.display = 'none';
+                }
+            } else {
+                groupMeasure.style.display = 'none';
+            }
+        }
+        
+        async function loadOrders() {
+            try {
+                const res = await fetch('/api/orders');
+                if (res.ok) {
+                    allOrders = await res.json();
+                    filterAndRenderTable();
+                } else {
+                    console.error('Error cargando pedidos desde la API.');
+                }
+            } catch (e) {
+                console.error('API no disponible. Corriendo en modo offline (solo lectura).', e);
+            }
+        }
+        
+        function filterAndRenderTable() {
+            const searchQuery = document.getElementById('input-search').value.toLowerCase().trim();
+            const statusFilter = document.getElementById('filter-status').value;
+            const tbody = document.getElementById('table-body');
+            const emptyState = document.getElementById('table-empty-state');
+            
+            tbody.innerHTML = '';
+            
+            const filtered = allOrders.filter(order => {
+                const matchesSearch = 
+                    order.id.toLowerCase().includes(searchQuery) ||
+                    order.clientName.toLowerCase().includes(searchQuery) ||
+                    order.productName.toLowerCase().includes(searchQuery);
+                
+                const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
+                
+                return matchesSearch && matchesStatus;
+            });
+            
+            if (filtered.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            }
+            emptyState.style.display = 'none';
+            
+            filtered.forEach(order => {
+                const tr = document.createElement('tr');
+                
+                // Formatear precio
+                const total = Number(order.totalAmount || 0);
+                const paid = Number(order.paidAmount || 0);
+                const saldo = total - paid;
+                
+                let paidHTML = '';
+                if (order.paidStatus === 'total') {
+                    paidHTML = `<span style="color:#16a34a; font-weight:700;">Total $${total.toLocaleString('es-AR')}</span>`;
+                } else if (order.paidStatus === 'parcial') {
+                    paidHTML = `
+                        <div style="font-size:0.82rem;">
+                            <span style="color:#16a34a; font-weight:600;">Abonado: $${paid.toLocaleString('es-AR')}</span><br>
+                            <span style="color:#e11d48; font-weight:600;">Saldo: $${saldo.toLocaleString('es-AR')}</span>
+                        </div>
+                    `;
+                } else {
+                    paidHTML = `<span style="color:#cbd5e1; font-weight:600;">Sin Abonar ($${total.toLocaleString('es-AR')})</span>`;
+                }
+                
+                // Formatear entrega
+                const deliveryIcon = order.deliveryMethod === 'envio' ? 'local_shipping' : 'storefront';
+                const deliveryText = order.deliveryMethod === 'envio' ? 'Envío' : 'Retira';
+                
+                // Fechas
+                const limitDate = new Date(order.estimatedReadyDate);
+                const limitStr = limitDate.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: '2-digit' });
+                
+                // Status badge
+                let statusLabel = 'Pendiente';
+                if (order.status === 'listo') statusLabel = 'Listo';
+                if (order.status === 'entregado') statusLabel = 'Entregado';
+                
+                // Enlace de seguimiento
+                const relativeLink = `./${order.id}.html`;
+                const absoluteLink = `${window.location.origin}/pedidos/${order.id}.html`;
+                
+                tr.innerHTML = `
+                    <td><span class="order-id-badge">${order.id}</span></td>
+                    <td><span class="order-client-name">${order.clientName}</span></td>
+                    <td>
+                        <span class="order-product">${order.productName}</span>
+                        ${order.selectedFinish || order.selectedMeasure ? `
+                            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-top: 2px;">
+                                ${order.selectedFinish ? `Acabado: ${order.selectedFinish}` : ''}
+                                ${order.selectedFinish && order.selectedMeasure ? ' | ' : ''}
+                                ${order.selectedMeasure ? `Medida: ${order.selectedMeasure}` : ''}
+                            </div>
+                        ` : ''}
+                    </td>
+                    <td>
+                        <span class="order-delivery">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">${deliveryIcon}</span>
+                            ${deliveryText}
+                        </span>
+                    </td>
+                    <td>${paidHTML}</td>
+                    <td style="text-align:center; font-weight:600;">${order.prepDays}d háb.</td>
+                    <td style="font-weight:700;">${limitStr}</td>
+                    <td><span class="status-badge status-${order.status}">${statusLabel}</span></td>
+                    <td>
+                        <div class="actions-cell">
+                            <a href="${relativeLink}" target="_blank" class="action-btn link" title="Ver web de seguimiento">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
+                            </a>
+                            <button type="button" class="action-btn edit" onclick="editOrder('${order.id}')" title="Editar Pedido">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
+                            </button>
+                            <button type="button" class="action-btn delete" onclick="deleteOrder('${order.id}')" title="Eliminar Pedido">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        
+        function openModal(order = null) {
+            const form = document.getElementById('order-form');
+            form.reset();
+            
+            document.getElementById('image-preview-container').style.display = 'none';
+            document.getElementById('order-image-path').value = '';
+            
+            if (order) {
+                document.getElementById('modal-title').textContent = 'Editar Pedido #' + order.id;
+                document.getElementById('order-form-id').value = order.id;
+                document.getElementById('order-form-creation').value = order.creationDate;
+                document.getElementById('order-form-start').value = order.startDate || '';
+                document.getElementById('order-form-ready').value = order.estimatedReadyDate || '';
+                document.getElementById('order-form-completed').value = order.completedDate || '';
+                
+                document.getElementById('order-client').value = order.clientName;
+                document.getElementById('order-product-type').value = order.productType;
+                
+                if (order.productType === 'catalog') {
+                    document.getElementById('order-product-catalog').value = order.productId;
+                    updateFinishesDropdown(order.selectedFinish || '', order.selectedMeasure || '');
+                } else {
+                    document.getElementById('order-product-custom').value = order.productName;
+                    document.getElementById('group-product-finish').style.display = 'none';
+                    document.getElementById('group-product-measure').style.display = 'none';
+                }
+                
+                document.getElementById('order-desc').value = order.description;
+                document.getElementById('order-delivery').value = order.deliveryMethod;
+                document.getElementById('order-prep-days').value = order.prepDays;
+                
+                document.getElementById('order-paid-status').value = order.paidStatus;
+                document.getElementById('order-paid-amount').value = order.paidAmount;
+                document.getElementById('order-total-amount').value = order.totalAmount;
+                document.getElementById('order-status').value = order.status;
+                
+                if (order.image) {
+                    document.getElementById('order-image-path').value = order.image;
+                    document.getElementById('image-preview').src = '../' + order.image;
+                    document.getElementById('image-preview-container').style.display = 'inline-block';
+                }
+                
+                toggleProductFields();
+            } else {
+                document.getElementById('modal-title').textContent = 'Crear Nuevo Pedido';
+                document.getElementById('order-form-id').value = '';
+                document.getElementById('order-form-creation').value = '';
+                document.getElementById('order-form-start').value = '';
+                document.getElementById('order-form-ready').value = '';
+                document.getElementById('order-form-completed').value = '';
+                document.getElementById('order-prep-days').value = 5;
+                document.getElementById('order-paid-amount').value = 0;
+                document.getElementById('order-total-amount').value = 0;
+                document.getElementById('order-paid-status').value = 'nada';
+                document.getElementById('order-status').value = 'pendiente';
+                
+                toggleProductFields();
+            }
+            
+            document.getElementById('order-modal').classList.add('show');
+        }
+        
+        function closeModal() {
+            document.getElementById('order-modal').classList.remove('show');
+        }
+        
+        function editOrder(id) {
+            const order = allOrders.find(o => o.id === id);
+            if (order) openModal(order);
+        }
+        
+        async function handleImageUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            let tempOrderId = document.getElementById('order-form-id').value;
+            if (!tempOrderId) {
+                // Generar ID temporal si es nuevo
+                tempOrderId = Math.floor(100000000 + Math.random() * 900000000).toString();
+                document.getElementById('order-form-id').value = tempOrderId;
+            }
+            
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('category', 'pedidos');
+            formData.append('title', tempOrderId);
+            
+            showToast('Subiendo e integrando imagen...');
+            
+            try {
+                const res = await fetch('/api/upload-image', {
+                    method: 'POST',
+                    body: formData
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    document.getElementById('order-image-path').value = data.imagePath;
+                    document.getElementById('image-preview').src = '../' + data.imagePath;
+                    document.getElementById('image-preview-container').style.display = 'inline-block';
+                    showToast('Imagen subida correctamente.');
+                } else {
+                    alert('Error subiendo la imagen.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('No se pudo subir la imagen.');
+            }
+        }
+        
+        function removeImage() {
+            document.getElementById('order-image-path').value = '';
+            document.getElementById('image-preview').src = '';
+            document.getElementById('image-preview-container').style.display = 'none';
+            document.getElementById('order-image-file').value = '';
+        }
+        
+        async function saveOrder() {
+            const clientName = document.getElementById('order-client').value.trim();
+            const productType = document.getElementById('order-product-type').value;
+            
+            if (!clientName) {
+                alert('Ingrese el nombre del cliente.');
+                return;
+            }
+            
+            let productId = '';
+            let productName = '';
+            let defaultImage = '';
+            
+            if (productType === 'catalog') {
+                productId = document.getElementById('order-product-catalog').value;
+                const prodObj = catalogProducts.find(p => p.id === productId);
+                if (prodObj) {
+                    productName = prodObj.title;
+                    defaultImage = Array.isArray(prodObj.image) ? prodObj.image[0] : (prodObj.image || '');
+                }
+            } else {
+                productName = document.getElementById('order-product-custom').value.trim();
+                if (!productName) {
+                    alert('Ingrese el nombre del producto personalizado.');
+                    return;
+                }
+            }
+            
+            let id = document.getElementById('order-form-id').value;
+            let isNew = false;
+            if (!id) {
+                id = Math.floor(100000000 + Math.random() * 900000000).toString();
+                isNew = true;
+            }
+            
+            const status = document.getElementById('order-status').value;
+            let creationDate = document.getElementById('order-form-creation').value || new Date().toISOString();
+            let completedDate = document.getElementById('order-form-completed').value;
+            
+            // Si el estado pasa a ser terminado/entregado hoy
+            if ((status === 'listo' || status === 'entregado') && !completedDate) {
+                completedDate = new Date().toISOString();
+            } else if (status === 'pendiente') {
+                completedDate = '';
+            }
+            
+                        const uploadedImg = document.getElementById('order-image-path').value;
+            const selectedFinish = productType === 'catalog' ? document.getElementById('order-product-finish').value : '';
+            const selectedMeasure = productType === 'catalog' ? document.getElementById('order-product-measure').value : '';
+            
+            const orderObj = {
+                id,
+                clientName,
+                productType,
+                productId,
+                productName,
+                selectedFinish,
+                selectedMeasure,
+                description: document.getElementById('order-desc').value.trim(),
+                deliveryMethod: document.getElementById('order-delivery').value,
+                prepDays: Number(document.getElementById('order-prep-days').value || 5),
+                paidStatus: document.getElementById('order-paid-status').value,
+                paidAmount: Number(document.getElementById('order-paid-amount').value || 0),
+                totalAmount: Number(document.getElementById('order-total-amount').value || 0),
+                status,
+                creationDate,
+                completedDate,
+                image: uploadedImg || defaultImage,
+                startDate: document.getElementById('order-form-start').value || null,
+                estimatedReadyDate: document.getElementById('order-form-ready').value || null
+            };
+            
+            let updatedOrders = [...allOrders];
+            if (isNew) {
+                updatedOrders.push(orderObj);
+            } else {
+                const idx = updatedOrders.findIndex(o => o.id === id);
+                if (idx !== -1) updatedOrders[idx] = orderObj;
+            }
+            
+            try {
+                const res = await fetch('/api/save-orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orders: updatedOrders, modifiedOrder: orderObj })
+                });
+                
+                if (res.ok) {
+                    const data = await res.json();
+                    allOrders = data.orders;
+                    filterAndRenderTable();
+                    closeModal();
+                    showToast(isNew ? 'Pedido creado con éxito.' : 'Pedido actualizado con éxito.');
+                } else {
+                    alert('Error guardando el pedido en el servidor.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error de conexión con la API.');
+            }
+        }
+        
+        async function deleteOrder(id) {
+            if (!confirm(`¿Está seguro de eliminar el pedido #${id} de manera permanente? Se eliminará su página de seguimiento.`)) {
+                return;
+            }
+            
+            const updatedOrders = allOrders.filter(o => o.id !== id);
+            
+            try {
+                const res = await fetch('/api/save-orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orders: updatedOrders })
+                });
+                
+                if (res.ok) {
+                    const data = await res.json();
+                    allOrders = data.orders;
+                    filterAndRenderTable();
+                    showToast('Pedido eliminado correctamente.');
+                } else {
+                    alert('Error eliminando el pedido.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error de conexión.');
+            }
+        }
+        
+        async function publishToGitHub() {
+            showToast('Compilando y subiendo cambios a GitHub...');
+            try {
+                const res = await fetch('/api/publish-github', {
+                    method: 'POST'
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    showToast('¡Web actualizada con éxito en GitHub Pages!');
+                    alert(data.message);
+                } else {
+                    const data = await res.json();
+                    alert('Error al publicar: ' + (data.message || 'Desconocido'));
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error de conexión al intentar publicar.');
+            }
+        }
+    </script>
+</body>
+</html>

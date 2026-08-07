@@ -94,7 +94,8 @@ function initAdminUX20() {
             mundial: "⚽ Mes Mundialista",
             navidad: "🎅 Navidad",
             halloween: "🎃 Halloween",
-            valentin: "💖 San Valentín"
+            valentin: "💖 San Valentín",
+            imperial: "✨ Elegancia Imperial"
         };
         const themeLabel = themeLabels[activeThemeName] || activeThemeName;
 

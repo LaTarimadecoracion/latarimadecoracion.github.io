@@ -378,6 +378,13 @@
             </div>
         </section>
 
+        <!-- View 11: Pedidos Seguimiento Iframe -->
+        <section id="view-pedidos" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe src="" style="width: 100%; flex: 1; border: none; display: block;" title="Seguimiento de Pedido"></iframe>
+            </div>
+        </section>
+
         <!-- TikTok Style Fullscreen Modal -->
         <div id="tiktok-video-modal" class="tiktok-modal" style="display: none;">
             <!-- Botón de cerrar superior -->
@@ -640,6 +647,7 @@
                                                 <option value="navidad">🎅 Navidad (Rojo y Verde)</option>
                                                 <option value="halloween">🎃 Halloween (Naranja y Violeta)</option>
                                                 <option value="valentin">💖 San Valentín (Rosa y Corazones)</option>
+                                                <option value="imperial">✨ Elegancia Imperial (Premium Gold & Obsidian)</option>
                                             </select>
                                         </div>
                                         <button type="button" id="admin-theme-save-btn" class="btn-primary" style="margin-top: 1rem; width: 100%; max-width: none;">
@@ -1914,6 +1922,157 @@
             </form>
         </div>
     </div>
+
+    <!-- Floating Order Tracking Button (FAB) & Bottom Sheet -->
+    <button type="button" id="btn-tracking-fab" class="tracking-fab" title="Seguimiento de Pedido" onclick="if (window.openTrackingSheet) window.openTrackingSheet();">
+        <span class="material-symbols-outlined">local_shipping</span>
+    </button>
+
+    <div id="tracking-modal-overlay" class="tracking-modal-overlay">
+        <div class="tracking-bottom-sheet" id="tracking-sheet-container">
+            <div class="sheet-handle"></div>
+            <!-- Header flotante absoluto -->
+            <div class="sheet-header" style="position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: flex-end; padding: 12px 16px; box-sizing: border-box; z-index: 10; border: none; background: transparent; pointer-events: none;">
+                <button type="button" class="sheet-close-btn" id="btn-close-tracking-sheet" onclick="if (window.closeTrackingSheet) window.closeTrackingSheet();" style="pointer-events: auto; background: none; border: none; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 1.75rem; font-weight: 300; cursor: pointer; transition: color 0.2s; outline: none;" title="Cerrar modal">&times;</button>
+            </div>
+            <div class="sheet-body">
+                <!-- Vista 1: Formulario de búsqueda nativo -->
+                <div class="tracking-search-view" id="tracking-search-view" style="padding: 2.5rem 1.5rem; text-align: center;">
+                    <span class="material-symbols-outlined" style="font-size: 64px; color: var(--primary-color, #A0715B); margin-bottom: 1rem; display: block;">local_shipping</span>
+                    <h2 style="margin: 0 0 0.5rem 0; font-size: 1.4rem; font-weight: 800; color: #0f172a;">¿Cómo viene tu pedido?</h2>
+                    <p style="font-size: 0.9rem; color: #64748b; margin: 0 0 2rem 0; line-height: 1.5;">Ingresá el número de Orden que te brindamos al realizar tu compra para conocer el estado de fabricación de tu mueble.</p>
+                    
+                    <form onsubmit="if (window.handleNativeTrackingSearch) window.handleNativeTrackingSearch(event)" style="display: flex; flex-direction: column; gap: 1rem; max-width: 360px; margin: 0 auto;">
+                        <div style="position: relative;">
+                            <span class="material-symbols-outlined" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #64748b;">tag</span>
+                            <input type="text" id="native-order-id-input" placeholder="Número de Orden" autocomplete="off" required pattern="[0-9]+" title="Solo números de orden válidos" style="width: 100%; box-sizing: border-box; padding: 0.8rem 1rem 0.8rem 45px; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 1rem; text-align: center; letter-spacing: 1px; font-weight: 600; background: #f8fafc; transition: all 0.2s;">
+                        </div>
+                        
+                        <button type="submit" class="btn-primary" style="width: auto; min-width: 180px; max-width: 220px; margin: 0.25rem auto 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 50px; background: var(--primary-color, #A0715B); color: white; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(160, 113, 91, 0.2);">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+                            Buscar Pedido
+                        </button>
+                        
+                        <div id="native-tracking-error" style="margin-top: 0.5rem; padding: 0.75rem 1rem; background: #fef2f2; border: 1px solid #fca5a5; color: #b91c1c; border-radius: 8px; font-size: 0.85rem; font-weight: 500; display: none; text-align: left; line-height: 1.4;"></div>
+                    </form>
+                </div>
+
+                <!-- Vista 2: Iframe con el resultado (oculto por defecto) -->
+                <iframe src="about:blank" id="tracking-sheet-iframe" class="sheet-iframe" title="Seguimiento de Compra" style="display: none; width: 100%; height: 100%; border: none;"></iframe>
+
+                <!-- Vista 3: Pantalla de error (oculta por defecto) -->
+                <div class="tracking-error-view" id="tracking-error-view" style="display: none; padding: 2.5rem 1.5rem; text-align: center; height: 100%; box-sizing: border-box; flex-direction: column; justify-content: center; align-items: center; background: #faf9f6;">
+                    <span class="material-symbols-outlined" style="font-size: 64px; color: #dc2626; margin-bottom: 1rem; display: block;">error</span>
+                    <h2 style="margin: 0 0 0.75rem 0; font-size: 1.3rem; font-weight: 800; color: #0f172a; line-height: 1.4;">Pedido no encontrado</h2>
+                    <p style="font-size: 0.92rem; color: #64748b; margin: 0 0 2rem 0; line-height: 1.6; max-width: 320px;">Tu pedido aún no se encuentra cargado, si crees que es un error, no dudes en enviarnos un WhatsApp.</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 240px; margin: 0 auto;">
+                        <a href="https://wa.me/5491167007723?text=Hola!%20No%20logro%20encontrar%20el%20seguimiento%20de%20mi%20pedido.%20¿Me%20podrían%20ayudar?" target="_blank" class="btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 50px; background: #25d366; color: white; border: none; cursor: pointer; text-decoration: none; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 2px;">
+                              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.907h.004c4.368 0 7.926-3.559 7.93-7.93a7.9 7.9 0 0 0-2.327-5.618ZM7.994 14.52a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.69-4.98c-.202-.1-.1.195-.312.029-.24-.12-1.41-.696-1.628-.774-.217-.078-.376-.118-.534.12-.158.238-.613.774-.75 0.93-.138.156-.277.175-.48.077-.203-.1-.857-.315-1.634-1.01-.604-.539-1.013-1.207-1.13-1.408-.118-.2-.013-.309.088-.408.09-.09.202-.237.302-.355.1-.117.133-.198.2-.33.065-.133.032-.25-.016-.35-.049-.1-.44-1.054-.603-1.448-.158-.387-.313-.335-.43-.341-.11-.006-.237-.008-.363-.008a.72.72 0 0 0-.523.243c-.183.2-.697.68-6.97 1.658 0 .98.418 1.921.478 2.001.06.08 1.348 2.057 3.266 2.887.457.198.813.316 1.092.404.46.146.879.125 1.21.076.37-.056 1.144-.467 1.306-.918.162-.45.162-.837.114-.918-.049-.082-.18-.13-.376-.23"/>
+                            </svg>
+                            WhatsApp
+                        </a>
+                        <button type="button" onclick="if (window.resetTrackingSearch) window.resetTrackingSearch();" style="background: none; border: none; font-size: 0.88rem; font-weight: 700; color: #64748b; cursor: pointer; text-decoration: underline; padding: 8px;">
+                            Volver a intentar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de control del Bottom Sheet de seguimiento -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const trackingOverlay = document.getElementById('tracking-modal-overlay');
+            const trackingIframe = document.getElementById('tracking-sheet-iframe');
+            const searchView = document.getElementById('tracking-search-view');
+            const container = document.getElementById('tracking-sheet-container');
+            const errorBox = document.getElementById('native-tracking-error');
+            const orderInput = document.getElementById('native-order-id-input');
+            const errorView = document.getElementById('tracking-error-view');
+
+            window.resetTrackingSearch = () => {
+                if (trackingIframe) trackingIframe.src = 'about:blank';
+                if (searchView) searchView.style.display = 'block';
+                if (trackingIframe) trackingIframe.style.display = 'none';
+                if (errorView) errorView.style.setProperty('display', 'none', 'important');
+                if (container) container.classList.remove('has-results');
+                if (errorBox) {
+                    errorBox.style.display = 'none';
+                    errorBox.textContent = '';
+                }
+                if (orderInput) orderInput.value = '';
+            };
+
+            window.openTrackingSheet = () => {
+                window.resetTrackingSearch();
+                if (trackingOverlay) {
+                    trackingOverlay.classList.add('open');
+                }
+                if (orderInput) {
+                    setTimeout(() => orderInput.focus(), 250);
+                }
+            };
+
+            window.closeTrackingSheet = () => {
+                if (trackingOverlay) {
+                    trackingOverlay.classList.remove('open');
+                }
+                setTimeout(() => {
+                    if (trackingOverlay && !trackingOverlay.classList.contains('open')) {
+                        window.resetTrackingSearch();
+                    }
+                }, 300);
+            };
+
+            window.handleNativeTrackingSearch = async (e) => {
+                e.preventDefault();
+                if (!orderInput || !errorBox || !trackingIframe || !searchView || !container || !errorView) return;
+                
+                const orderId = orderInput.value.trim();
+                errorBox.style.display = 'none';
+                
+                if (!/^[0-9]+$/.test(orderId)) {
+                    errorBox.textContent = 'Ingrese un número de orden válido.';
+                    errorBox.style.display = 'block';
+                    return;
+                }
+                
+                try {
+                    const res = await fetch(`pedidos/${orderId}.html`, { method: 'HEAD' });
+                    if (res.ok && res.url.includes('/pedidos/')) {
+                        trackingIframe.src = `pedidos/${orderId}.html`;
+                        searchView.style.display = 'none';
+                        trackingIframe.style.display = 'block';
+                        errorView.style.setProperty('display', 'none', 'important');
+                        container.classList.add('has-results');
+                    } else {
+                        searchView.style.display = 'none';
+                        trackingIframe.style.display = 'none';
+                        errorView.style.setProperty('display', 'flex', 'important');
+                        container.classList.add('has-results');
+                    }
+                } catch (err) {
+                    console.error(err);
+                    trackingIframe.src = `pedidos/${orderId}.html`;
+                    searchView.style.display = 'none';
+                    trackingIframe.style.display = 'block';
+                    errorView.style.setProperty('display', 'none', 'important');
+                    container.classList.add('has-results');
+                }
+            };
+
+            if (trackingOverlay) {
+                trackingOverlay.addEventListener('click', (e) => {
+                    if (e.target === trackingOverlay) {
+                        window.closeTrackingSheet();
+                    }
+                });
+            }
+        });
+    </script>
 
     <!-- Scripts -->
     <script src="js/confetti-arg.js?v=2" defer></script>
