@@ -412,6 +412,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 150);
         }
+        if (cleanPath.endsWith('/calcular') || cleanPath.endsWith('/calculador') || cleanPath.endsWith('/web/calcular')) {
+            setTimeout(() => {
+                if (window.navigateToView) {
+                    console.log(`[Router] Ruta limpia detectada: ${cleanPath}. Redirigiendo a Calculador.`);
+                    window.navigateToView('view-calculator');
+                }
+            }, 150);
+        }
 
         const catId = urlParams.get('cat') || urlParams.get('category');
         if (catId) {

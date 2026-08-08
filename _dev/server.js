@@ -2215,6 +2215,16 @@ app.get('*', (req, res) => {
         }
     }
 
+    // Rutas del calculador de medidas sin .html visible
+    if (cleanUrl === '/web/calcular' || cleanUrl === '/calcular' || cleanUrl === '/calculador') {
+        const calcularPath = fs.existsSync(path.join(ROOT_DIR, 'apps', 'calcular.html'))
+            ? path.join(ROOT_DIR, 'apps', 'calcular.html')
+            : path.join(ROOT_DIR, 'calcular.html');
+        if (fs.existsSync(calcularPath)) {
+            return res.sendFile(calcularPath);
+        }
+    }
+
     // Mapeo automático de archivos HTML redirigidos a la carpeta apps/
     const appNameMap = {
         '/catalogo.html': 'catalogo.html',

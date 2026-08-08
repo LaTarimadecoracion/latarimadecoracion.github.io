@@ -46,29 +46,5 @@ const ordersData = [
         "image": "img/migrados/decoracion/mensulas/mensulas.webp",
         "startDate": "2026-08-07T03:00:00.000Z",
         "estimatedReadyDate": "2026-08-11T02:59:00.000Z"
-    },
-    {
-        "id": "617939551",
-        "clientName": "Yo",
-        "productType": "catalog",
-        "productId": "banquito-de-plaza",
-        "productName": "Banquito de Plaza",
-        "selectedFinish": "",
-        "selectedMeasure": "",
-        "description": "",
-        "deliveryMethod": "retira",
-        "dispatchInfo": null,
-        "prepDaysMin": 1,
-        "prepDaysMax": 10,
-        "prepDays": 10,
-        "paidStatus": "total",
-        "paidAmount": 10,
-        "totalAmount": 10,
-        "status": "listo",
-        "creationDate": "2026-08-07T19:14:32.860Z",
-        "completedDate": "2026-08-08T18:26:57.596Z",
-        "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
-        "startDate": "2026-08-10T03:00:00.000Z",
-        "estimatedReadyDate": "2026-08-25T02:59:00.000Z"
     }
 ];

@@ -229,7 +229,7 @@
             // Si no está dentro de un iframe (carga directa), redirigir a la SPA con ?view=calcular
             if (window.self === window.top) {
                 const query = window.location.search;
-                const path = window.location.pathname.replace(/calcular\.html$/, '');
+                const path = window.location.pathname.replace(/(apps\/)?calcular(\.html)?$/, '');
                 const targetUrl = window.location.origin + path + '?view=calcular' + (query ? '&' + query.substring(1) : '');
                 window.location.replace(targetUrl);
                 return;
