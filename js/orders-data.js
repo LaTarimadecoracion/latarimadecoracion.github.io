@@ -71,5 +71,30 @@ const ordersData = [
         "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
         "startDate": "2026-08-10T03:00:00.000Z",
         "estimatedReadyDate": "2026-08-12T02:59:00.000Z"
+    },
+    {
+        "id": "756188198",
+        "clientName": "Alejandra Vecina",
+        "productType": "catalog",
+        "productId": "Estantes-Cortes-Madera",
+        "productName": "Cortes de madera",
+        "selectedFinish": "Natural",
+        "selectedMeasure": "Otras medidas",
+        "description": "Alto: 165 cm\nAncho: 85 cm\nProfundidad: 30 cm",
+        "deliveryMethod": "retira",
+        "dispatchInfo": null,
+        "prepDaysMin": 3,
+        "prepDaysMax": 5,
+        "prepDays": 5,
+        "extraDays": 0,
+        "paidStatus": "nada",
+        "paidAmount": 0,
+        "totalAmount": 96000,
+        "status": "pendiente",
+        "creationDate": "2026-08-08T22:24:57.167Z",
+        "completedDate": "",
+        "image": "img/migrados/decoracion/estantes/estantes.webp",
+        "startDate": "2026-08-10T03:00:00.000Z",
+        "estimatedReadyDate": "2026-08-18T02:59:00.000Z"
     }
 ];
