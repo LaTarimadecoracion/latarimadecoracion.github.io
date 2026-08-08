@@ -42,8 +42,13 @@
         .bg-glow {
             display: none !important;
         }
+        #app-container {
+            padding-bottom: 0 !important;
+            min-height: auto !important;
+            height: auto !important;
+        }
     </style>
-<style>body { padding-bottom: 95px !important; }</style></head>
+</head>
 
 <body>
     <!-- Script Anti-FOUC para Temáticas -->
@@ -179,7 +184,7 @@
                     </div>
                     
                     <!-- Social Links Container -->
-                    <div class="social-links mt-2" style="margin-top: 3rem; text-align: center; padding-bottom: 2rem;">
+                    <div class="social-links mt-2" style="margin-top: 1.5rem; text-align: center; padding-bottom: 1rem;">
                         <p class="text-muted" style="margin-bottom: 1rem; font-weight: 500; font-size: 0.95rem;">Seguinos en redes:</p>
                         <div class="social-icons-row" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
                             <!-- Instagram -->
@@ -243,13 +248,18 @@
                 const header = document.querySelector('.main-header-bar');
                 if (header) header.style.display = 'none';
                 
-                document.body.style.paddingTop = '0';
-                document.body.style.marginTop = '0';
+                document.body.style.setProperty('padding-top', '0px', 'important');
+                document.body.style.setProperty('margin-top', '0px', 'important');
+                document.body.style.setProperty('padding-bottom', '0px', 'important');
+                document.body.style.setProperty('margin-bottom', '0px', 'important');
                 const appContainer = document.getElementById('app-container');
                 if (appContainer) {
-                    appContainer.style.paddingTop = '0';
-                    appContainer.style.marginTop = '0';
-                    appContainer.style.height = '100vh';
+                    appContainer.style.setProperty('padding-top', '0px', 'important');
+                    appContainer.style.setProperty('margin-top', '0px', 'important');
+                    appContainer.style.setProperty('padding-bottom', '0px', 'important');
+                    appContainer.style.setProperty('margin-bottom', '0px', 'important');
+                    appContainer.style.height = 'auto';
+                    appContainer.style.minHeight = 'auto';
                 }
             }
 

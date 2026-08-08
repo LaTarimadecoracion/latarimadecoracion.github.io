@@ -46,5 +46,30 @@ const ordersData = [
         "image": "img/migrados/decoracion/mensulas/mensulas.webp",
         "startDate": "2026-08-07T03:00:00.000Z",
         "estimatedReadyDate": "2026-08-11T02:59:00.000Z"
+    },
+    {
+        "id": "884179251",
+        "clientName": "Patricia Andrea Tijera",
+        "productType": "catalog",
+        "productId": "baranda-desmontable-clasica",
+        "productName": "Baranda: Desmontable Clásica",
+        "selectedFinish": "",
+        "selectedMeasure": "",
+        "description": "Ajuste de Baranda: 90 x 50 cm\nA 4\nB 11\nC  35",
+        "deliveryMethod": "retira",
+        "dispatchInfo": null,
+        "prepDaysMin": 1,
+        "prepDaysMax": 1,
+        "prepDays": 1,
+        "extraDays": 0,
+        "paidStatus": "total",
+        "paidAmount": 26000,
+        "totalAmount": 26000,
+        "status": "pendiente",
+        "creationDate": "2026-08-08T22:11:22.381Z",
+        "completedDate": "",
+        "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
+        "startDate": "2026-08-10T03:00:00.000Z",
+        "estimatedReadyDate": "2026-08-12T02:59:00.000Z"
     }
 ];
