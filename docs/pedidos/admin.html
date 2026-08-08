@@ -14,23 +14,26 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css?v=25">
     
+    <script>
+        (function() {
+            try {
+                var userSelected = localStorage.getItem('userSelectedTheme');
+                var localTheme = localStorage.getItem('activeTheme');
+                var themeToApply = userSelected || localTheme || 'classic';
+                if (themeToApply && themeToApply !== 'classic') {
+                    document.body.classList.add('theme-' + themeToApply);
+                }
+            } catch(e) {}
+        })();
+    </script>
+    
     <style>
         :root {
-            --primary-hsl: 25, 30%, 45%;
-            --primary-color: hsl(var(--primary-hsl));
-            --surface-color: #ffffff;
-            --bg-color: #faf9f6;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --shadow-sm: 0 4px 18px rgba(0, 0, 0, 0.015);
-            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --border-color: var(--secondary-color, #e2e8f0);
         }
         
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: var(--font-main, 'Outfit', sans-serif);
             background: var(--bg-color);
             color: var(--text-main);
             margin: 0;
@@ -38,13 +41,18 @@
         }
         
         .admin-header {
-            background: var(--surface-color);
-            border-bottom: 1.5px solid var(--border-color);
-            padding: 1rem 2rem;
+            background: var(--header-bg, rgba(253, 252, 249, 0.90));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1.5px solid var(--secondary-color, #e2e8f0);
+            padding: 0.85rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .logo-block {
@@ -326,7 +334,7 @@
         }
         
         .btn-primary:hover {
-            background: hsl(25, 30%, 38%);
+            background: var(--primary-hover);
             transform: translateY(-1px);
         }
         

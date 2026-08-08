@@ -14,14 +14,22 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css?v=26">
     
+    <script>
+        (function() {
+            try {
+                var userSelected = localStorage.getItem('userSelectedTheme');
+                var localTheme = localStorage.getItem('activeTheme');
+                var themeToApply = userSelected || localTheme || 'classic';
+                if (themeToApply && themeToApply !== 'classic') {
+                    document.body.classList.add('theme-' + themeToApply);
+                }
+            } catch(e) {}
+        })();
+    </script>
+
     <style>
         :root {
-            --primary-color: #c0510a;
-            --surface-color: #ffffff;
-            --bg-color: #faf9f6;
-            --text-main: #2c2520;
-            --text-muted: #8c857b;
-            --border-color: #EAEBE9;
+            --border-color: var(--secondary-color, #EAEBE9);
         }
 
         /* Ocultar barra de desplazamiento manteniendo scroll intuitivo */
@@ -36,7 +44,7 @@
         }
         
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: var(--font-main, 'Outfit', sans-serif);
             background: var(--bg-color);
             color: var(--text-main);
             margin: 0;

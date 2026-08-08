@@ -1,15 +1,11 @@
-const CACHE_NAME = 'tarima-cache-v34';
+const CACHE_NAME = 'tarima-cache-v35';
 const STATIC_ASSETS = [
     './',
     './index.html',
-    './catalogo.html',
-    './calcular.html',
-    './visualizador.html',
-    './mayorista.html',
-    './musica.html',
     './css/style.css',
     './css/catalogo.css',
     './css/calcular.css',
+    './js/site-config.js',
     './js/confetti-arg.js',
     './js/header-deco-arg.js',
     './js/products-data.js',
@@ -23,12 +19,23 @@ const STATIC_ASSETS = [
     './js/ui-catalog.js',
     './js/ui-rentals.js',
     './js/ui-blocks.js',
-    './js/admin.js',
+    './js/admin-utils.js',
+    './js/admin-core.js',
+    './js/admin-categories.js',
+    './js/admin-categories-form.js',
+    './js/admin-products.js',
+    './js/admin-products-form.js',
+    './js/admin-rentals.js',
+    './js/admin-pages.js',
     './js/carrito.js',
     './js/main.js',
     './js/categorias.js',
     './js/videos.js',
     './js/pwa-banner.js',
+    './js/assistant.js',
+    './js/ayudin-data.js',
+    './js/ayudin.js',
+    './js/catalogo.js',
     './manifest.json',
     './favicon.ico',
     './img/logo_provisional.png'
@@ -36,9 +43,15 @@ const STATIC_ASSETS = [
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
+        caches.open(CACHE_NAME).then(async (cache) => {
             console.log('[SW] Pre-caching offline skeleton');
-            return cache.addAll(STATIC_ASSETS);
+            for (const asset of STATIC_ASSETS) {
+                try {
+                    await cache.add(asset);
+                } catch (err) {
+                    console.warn('[SW] No se pudo precachear:', asset, err);
+                }
+            }
         })
     );
     self.skipWaiting();
@@ -66,8 +79,12 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // Bypass Service Worker caching for site-config.js to ensure dynamic configs load fresh on localhost
+    // Bypass Service Worker caching for site-config.js to ensure dynamic configs load fresh on localhost when online
+    // (If offline, catch block will still attempt to fetch from cache)
     if (url.pathname.endsWith('/js/site-config.js') || url.pathname.endsWith('/site-config.js')) {
+        event.respondWith(
+            fetch(event.request).catch(() => caches.match(event.request))
+        );
         return;
     }
 
@@ -97,7 +114,7 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // 2. HTML, CSS, JS y JSON (Network First)
+    // 2. HTML, CSS, JS y JSON (Network First con fallback offline)
     event.respondWith(
         fetch(event.request).then((networkResponse) => {
             if (networkResponse && networkResponse.status === 200) {
@@ -107,9 +124,16 @@ self.addEventListener('fetch', (event) => {
                 });
             }
             return networkResponse;
-        }).catch(() => {
-            // No internet connection, return from cache
-            return caches.match(event.request);
+        }).catch(async () => {
+            // Sin conexión a internet, intentar obtener del caché la URL exacta
+            const cachedResponse = await caches.match(event.request);
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+            // Si es una navegación HTML y falló la red, servir el index.html cacheado
+            if (event.request.mode === 'navigate' || (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'))) {
+                return (await caches.match('./index.html')) || (await caches.match('./'));
+            }
         })
     );
 });

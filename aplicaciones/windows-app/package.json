@@ -1,0 +1,22 @@
+{
+  "name": "la-tarima-app",
+  "version": "1.0.0",
+  "description": "Aplicación de Escritorio Híbrida para La Tarima Decoración (Windows 10/11)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "npx electron-packager . \"La Tarima Decoracion\" --platform=win32 --arch=x64 --out=dist --overwrite"
+  },
+  "keywords": [
+    "electron",
+    "windows",
+    "app",
+    "la-tarima"
+  ],
+  "author": "La Tarima Decoración",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "electron-packager": "^17.1.2"
+  }
+}
