@@ -55,7 +55,7 @@ const ordersData = [
         "productName": "Baranda: Desmontable Clásica",
         "selectedFinish": "",
         "selectedMeasure": "",
-        "description": "Ajuste de Baranda: 90 x 50 cm\nA 4\nB 11\nC  35",
+        "description": "Ajuste de Baranda: 100 x 50 cm\nA 4\nB 11\nC  35",
         "deliveryMethod": "retira",
         "dispatchInfo": null,
         "prepDaysMin": 1,
