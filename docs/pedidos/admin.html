@@ -739,7 +739,7 @@
                         </div>
                     </div>
                     
-                    <div class="form-row">
+                    <div class="form-row-3">
                         <div class="form-group">
                             <label for="order-delivery">Tipo de Entrega</label>
                             <select id="order-delivery" class="form-control">
@@ -748,12 +748,23 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Elaboración (Días Hábiles Estimados)</label>
+                            <label>Elaboración (Días Hábiles Iniciales)</label>
                             <div style="display: flex; align-items: center; gap: 6px;">
                                 <input type="number" id="order-prep-days-min" class="form-control" value="10" min="1" placeholder="Mín" style="text-align: center; font-weight: 700;">
                                 <span style="font-weight: 700; color: var(--text-muted);">a</span>
                                 <input type="number" id="order-prep-days-max" class="form-control" value="15" min="1" placeholder="Máx" style="text-align: center; font-weight: 700;">
-                                <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted); white-space: nowrap;">días háb.</span>
+                                <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted); white-space: nowrap;">días</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-extra-days" style="color: #d97706; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                                <span class="material-symbols-outlined" style="font-size: 16px; color: #d97706;">schedule</span>
+                                Extensión / Demora
+                            </label>
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <span style="font-weight: 800; color: #d97706; font-size: 1.1rem;">+</span>
+                                <input type="number" id="order-extra-days" class="form-control" value="0" min="0" placeholder="0" style="text-align: center; font-weight: 800; color: #b45309; background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.3);">
+                                <span style="font-size: 0.82rem; font-weight: 700; color: #b45309; white-space: nowrap;">días háb.</span>
                             </div>
                         </div>
                     </div>
@@ -1225,8 +1236,10 @@
                 const deliveryIcon = order.deliveryMethod === 'envio' ? 'local_shipping' : 'storefront';
                 const deliveryText = order.deliveryMethod === 'envio' ? 'Envío' : 'Retira';
                 
-                // Fechas
-                const limitDate = new Date(order.estimatedReadyDate);
+                // Fechas (Muestra la fecha real de finalización si ya está Listo/Entregado, o la estimación límite)
+                const limitDate = (order.status === 'listo' || order.status === 'entregado') && order.completedDate
+                    ? new Date(order.completedDate)
+                    : new Date(order.estimatedReadyDate);
                 const limitStr = limitDate.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: '2-digit' });
                 
                 // Status badge
@@ -1247,7 +1260,9 @@
                 
                 const pMin = order.prepDaysMin || order.prepDays || 1;
                 const pMax = order.prepDaysMax || order.prepDays || pMin;
+                const extraDays = Number(order.extraDays || 0);
                 const prepDaysText = pMin === pMax ? `${pMax}d háb.` : `${pMin} a ${pMax}d háb.`;
+                const extraDaysBadge = extraDays > 0 ? `<div style="font-size: 0.72rem; color: #b45309; font-weight: 700; background: #fef3c7; border: 1px solid #fde68a; border-radius: 4px; padding: 1px 5px; display: inline-block; margin-top: 2px;">+${extraDays}d extensión</div>` : '';
 
                 tr.innerHTML = `
                     <td><span class="order-id-badge">${order.id}</span></td>
@@ -1269,7 +1284,7 @@
                         </span>
                     </td>
                     <td>${paidHTML}</td>
-                    <td style="text-align:center; font-weight:600; white-space:nowrap;">${prepDaysText}</td>
+                    <td style="text-align:center; font-weight:600; white-space:nowrap;">${prepDaysText}${extraDaysBadge}</td>
                     <td style="font-weight:700;">${limitStr}</td>
                     <td><span class="status-badge status-${order.status}">${statusLabel}</span></td>
                     <td>
@@ -1345,6 +1360,7 @@
                 const maxDays = order.prepDaysMax || order.prepDays || minDays;
                 document.getElementById('order-prep-days-min').value = minDays;
                 document.getElementById('order-prep-days-max').value = maxDays;
+                document.getElementById('order-extra-days').value = order.extraDays || 0;
                 
                 const d = order.dispatchInfo || {};
                 document.getElementById('order-dispatch-courier').value = d.courier || '';
@@ -1374,6 +1390,7 @@
                 document.getElementById('order-form-completed').value = '';
                 document.getElementById('order-prep-days-min').value = 10;
                 document.getElementById('order-prep-days-max').value = 15;
+                document.getElementById('order-extra-days').value = 0;
                 document.getElementById('order-paid-amount').value = 0;
                 document.getElementById('order-total-amount').value = 0;
                 document.getElementById('order-paid-status').value = 'nada';
@@ -1506,6 +1523,7 @@
             
             const pMinVal = Math.max(1, Number(document.getElementById('order-prep-days-min').value || 10));
             const pMaxVal = Math.max(pMinVal, Number(document.getElementById('order-prep-days-max').value || pMinVal));
+            const extraDaysVal = Math.max(0, Number(document.getElementById('order-extra-days').value || 0));
             
             const orderObj = {
                 id,
@@ -1521,6 +1539,7 @@
                 prepDaysMin: pMinVal,
                 prepDaysMax: pMaxVal,
                 prepDays: pMaxVal,
+                extraDays: extraDaysVal,
                 paidStatus: document.getElementById('order-paid-status').value,
                 paidAmount: Number(document.getElementById('order-paid-amount').value || 0),
                 totalAmount: Number(document.getElementById('order-total-amount').value || 0),

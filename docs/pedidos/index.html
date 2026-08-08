@@ -634,25 +634,50 @@
                 statusIcon = 'check_circle';
             }
 
-            // Información de Despacho / Guía
+            // Información de Despacho / Guía / Retiro por Taller
             let dispatchHtml = '';
-            if (order.deliveryMethod === 'envio' && order.dispatchInfo) {
+            if (order.deliveryMethod === 'retira') {
+                if (order.status === 'listo' || order.status === 'entregado') {
+                    dispatchHtml = `
+                        <div style="background: rgba(16, 185, 129, 0.08); border: 1.5px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 2rem;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 12px;">
+                                <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; color: #065f46; font-size: 1.02rem;">
+                                    <span class="material-symbols-outlined" style="font-size: 26px; color: #10b981;">storefront</span>
+                                    ${order.status === 'entregado' ? '¡Pedido Entregado en Taller! 🏁' : '¡Tu pedido ya está listo para retirar en el taller! 🏁'}
+                                </div>
+                                ${order.status === 'listo' ? `
+                                <a href="https://wa.me/5491167007723?text=${encodeURIComponent('¡Hola! Mi pedido #' + order.id + ' figura listo. Quisiera coordinar día y horario para retirarlo por el taller. 😊')}" target="_blank" style="background: #10b981; color: white; text-decoration: none; padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 3px 10px rgba(16,185,129,0.3);">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">chat</span> Coordinar Retiro por WhatsApp
+                                </a>` : ''}
+                            </div>
+                            <div style="font-size: 0.88rem; color: #047857; line-height: 1.5; margin-top: 0.4rem;">
+                                ${order.status === 'entregado' 
+                                    ? 'Este pedido ya fue retirado por el taller. ¡Muchas gracias por tu compra en La Tarima!' 
+                                    : 'Podés pasar a retirarlo coordinando previamente con nosotros por WhatsApp para asegurar nuestra presencia en el taller al momento de recibirte. ¡Te esperamos! 🌲'}
+                            </div>
+                        </div>
+                    `;
+                }
+            } else if (order.deliveryMethod === 'envio' && order.dispatchInfo) {
                 const info = order.dispatchInfo;
                 const courierNames = {
                     'correo-argentino': 'Correo Argentino',
+                    'correo_argentino': 'Correo Argentino',
                     'via-cargo': 'Vía Cargo',
+                    'via_cargo': 'Vía Cargo',
                     'andreani': 'Andreani',
                     'envio-personal': 'Envío Personal / Cadetería',
+                    'envio_personal': 'Envío Personal / Cadetería',
                     'otros': 'Otro Servicio de Transporte'
                 };
                 const courierLabel = courierNames[info.courier] || info.courierName || 'Servicio de Envío';
-                let trackingUrl = info.url || '';
+                let trackingUrl = info.trackingUrl || info.url || '';
                 
                 if (!trackingUrl && info.trackingNumber) {
                     const guia = encodeURIComponent(info.trackingNumber.trim());
-                    if (info.courier === 'correo-argentino') {
+                    if (info.courier === 'correo-argentino' || info.courier === 'correo_argentino') {
                         trackingUrl = 'https://www.correoargentino.com.ar/formularios/e-commerce';
-                    } else if (info.courier === 'via-cargo') {
+                    } else if (info.courier === 'via-cargo' || info.courier === 'via_cargo') {
                         trackingUrl = `https://www.viacargo.com.ar/seguimiento?nroenvio=${guia}`;
                     } else if (info.courier === 'andreani') {
                         trackingUrl = `https://www.andreani.com/#!/informacionEnvio/${guia}`;
@@ -683,6 +708,22 @@
                 `;
             }
 
+            const extraDays = Number(order.extraDays || 0);
+            let extraDaysNoticeHtml = '';
+            if (extraDays > 0 && order.status === 'pendiente') {
+                extraDaysNoticeHtml = `
+                    <div style="background: rgba(245, 158, 11, 0.08); border: 1.5px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.25rem; margin-bottom: 0.5rem;">
+                        <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; color: #b45309; font-size: 1rem; margin-bottom: 0.35rem;">
+                            <span class="material-symbols-outlined" style="font-size: 24px; color: #f59e0b;">update</span>
+                            Aviso de Ajuste en Cronograma (+${extraDays} ${extraDays === 1 ? 'día hábil' : 'días hábiles'}) 🛠️
+                        </div>
+                        <div style="font-size: 0.88rem; color: #92400e; line-height: 1.5;">
+                            Extendimos el plazo estimado de elaboración en <strong>+${extraDays} ${extraDays === 1 ? 'día hábil' : 'días hábiles'}</strong> para cuidar al máximo el secado, los detalles y la calidad de terminación de tu pedido. ¡Muchas gracias por tu paciencia!
+                        </div>
+                    </div>
+                `;
+            }
+
             mainContainer.innerHTML = `
                 <div class="order-card">
                     <div class="order-header">
@@ -709,8 +750,6 @@
                             </div>
                         </div>
 
-                        ${dispatchHtml}
-                        
                         <div class="payment-banner">
                             <div class="payment-item">
                                 <span class="payment-label">Monto Total</span>
@@ -726,6 +765,8 @@
                             </div>
                         </div>
                         
+                        ${extraDaysNoticeHtml}
+
                         <div class="section-title">
                             <span class="material-symbols-outlined" style="color: var(--primary-color);">calendar_today</span>
                             Cronograma de Fabricación y Entrega
@@ -734,6 +775,8 @@
                         <div class="timeline" id="timeline-container">
                             <!-- Se genera en JS -->
                         </div>
+
+                        ${dispatchHtml}
                     </div>
                 </div>
                 
@@ -752,81 +795,114 @@
             const timelineContainer = document.getElementById('timeline-container');
             if (!timelineContainer) return;
 
-            const start = new Date(order.startDate);
-            const estReady = new Date(order.estimatedReadyDate);
+            const start = new Date(order.startDate || order.creationDate);
             const isEnvio = order.deliveryMethod === 'envio';
+            const isFinished = (order.status === 'listo' || order.status === 'entregado');
             
             const minDays = Number(order.prepDaysMin || order.prepDays || 10);
             const maxDays = Number(order.prepDaysMax || order.prepDays || minDays);
-            const rangeText = minDays === maxDays ? `${maxDays} días hábiles` : `${minDays} a ${maxDays} días hábiles`;
+            const extraDays = Number(order.extraDays || 0);
+            const effectiveMaxDays = maxDays + extraDays;
 
-            const end = new Date(estReady);
-            end.setDate(end.getDate() + 1);
+            const rangeText = extraDays > 0 
+                ? `${minDays} a ${effectiveMaxDays} días hábiles (+${extraDays}d de extensión)` 
+                : (minDays === maxDays ? `${maxDays} días hábiles` : `${minDays} a ${maxDays} días hábiles`);
 
+            // Determinar la fecha límite de fabricación
+            let readyDate = new Date(order.estimatedReadyDate);
+            if (isFinished) {
+                readyDate = order.completedDate ? new Date(order.completedDate) : new Date();
+            }
+
+            // Construir los días de fabricación desde inicio hasta la fecha en que quedó listo/estimado
             const days = [];
             let curr = new Date(start);
-            while (curr <= end) {
-                days.push(new Date(curr));
-                curr.setDate(curr.getDate() + 1);
+            if (isFinished) {
+                while (curr <= readyDate) {
+                    days.push(new Date(curr));
+                    curr.setDate(curr.getDate() + 1);
+                }
+            } else {
+                let bDays = 0;
+                while (bDays < effectiveMaxDays) {
+                    days.push(new Date(curr));
+                    if (curr.getDay() !== 0 && curr.getDay() !== 6) {
+                        bDays++;
+                    }
+                    curr.setDate(curr.getDate() + 1);
+                }
             }
+
+            if (days.length === 0) {
+                days.push(new Date(start));
+            }
+
+            // Agregar el hito final de Retiro/Despacho (atendiendo fines de semana)
+            let pickupDate = new Date(days[days.length - 1]);
+            pickupDate.setDate(pickupDate.getDate() + 1);
+            
+            // Si el día siguiente al listo cae en fin de semana, agregar sábado/domingo y luego el lunes como día de retiro
+            while (pickupDate.getDay() === 0 || pickupDate.getDay() === 6) {
+                days.push(new Date(pickupDate));
+                pickupDate.setDate(pickupDate.getDate() + 1);
+            }
+            days.push(new Date(pickupDate)); // Día hábil de Retiro / Despacho
 
             const today = new Date();
 
             let businessDayCounter = 0;
             let minReadyDayIndex = -1;
-            let maxReadyDayIndex = -1;
 
-            for (let i = 0; i < days.length; i++) {
+            for (let i = 0; i < days.length - 1; i++) {
                 const dayOfWeek = days[i].getDay();
                 if (dayOfWeek !== 0 && dayOfWeek !== 6) {
                     businessDayCounter++;
-                    if (businessDayCounter === minDays && minReadyDayIndex === -1) {
-                        minReadyDayIndex = i;
-                    }
-                    if (businessDayCounter === maxDays && maxReadyDayIndex === -1) {
-                        maxReadyDayIndex = i;
+                    if (!isFinished) {
+                        if (businessDayCounter === minDays && minReadyDayIndex === -1) {
+                            minReadyDayIndex = i;
+                        }
                     }
                 }
             }
-            if (maxReadyDayIndex === -1) {
-                maxReadyDayIndex = days.length - 2;
-            }
-            if (minReadyDayIndex === -1) {
-                minReadyDayIndex = maxReadyDayIndex;
-            }
 
+            const actualBusinessDaysUsed = businessDayCounter;
             businessDayCounter = 0;
 
             const processedDays = days.map((d, index) => {
                 const isFirst = index === 0;
                 const isLast = index === days.length - 1;
+                
+                // El día en que queda listo es el último de la etapa de elaboración (justo antes de los fines de semana/retiro)
+                let readyDayIdx = days.length - 2;
+                while (readyDayIdx > 0 && (days[readyDayIdx].getDay() === 0 || days[readyDayIdx].getDay() === 6)) {
+                    readyDayIdx--;
+                }
+                const isActualReadyDay = (index === readyDayIdx);
+
                 const isMinReady = index === minReadyDayIndex;
-                const isMaxReady = index === maxReadyDayIndex;
                 const isWeekend = d.getDay() === 0 || d.getDay() === 6;
 
-                const isCompleted = d < today && !(d.toDateString() === today.toDateString());
-                const isToday = d.toDateString() === today.toDateString();
+                const isCompleted = isFinished || (d < today && !(d.toDateString() === today.toDateString()));
+                const isToday = !isFinished && (d.toDateString() === today.toDateString());
 
                 let itemClass = 'timeline-item';
                 let iconText = 'schedule';
 
                 if (isFirst) {
-                    itemClass += ' milestone-start';
-                    if (isCompleted || isToday) { itemClass += ' completed'; }
+                    itemClass += ' milestone-start completed';
                     iconText = 'play_circle';
                 } else if (isLast) {
                     itemClass += ' milestone-pickup';
-                    if (order.status === 'listo' || order.status === 'entregado') {
+                    if (isFinished) {
                         itemClass += ' completed-milestone';
                     }
                     iconText = isEnvio ? 'local_shipping' : 'storefront';
-                } else if (isMaxReady) {
+                } else if (isActualReadyDay && isFinished) {
+                    itemClass += ' milestone-ready completed-milestone';
+                    iconText = 'verified';
+                } else if (isMinReady && minDays !== maxDays && !isFinished) {
                     itemClass += ' milestone-ready';
-                    if (isCompleted || order.status === 'listo' || order.status === 'entregado') { itemClass += ' completed-milestone'; }
-                    iconText = (isCompleted || order.status === 'listo' || order.status === 'entregado') ? 'verified' : 'flag';
-                } else if (isMinReady && minDays !== maxDays) {
-                    itemClass += ' milestone-ready';
-                    if (isCompleted || order.status === 'listo' || order.status === 'entregado') { itemClass += ' completed-milestone'; }
+                    if (isCompleted) { itemClass += ' completed-milestone'; }
                     iconText = 'flag';
                 } else {
                     if (!isWeekend) businessDayCounter++;
@@ -855,17 +931,22 @@
                     if (isFirst) {
                         title = `${capitalizedWeekday} &bull; ${dateStr} — Inicio`;
                         desc  = `Día 1 de fabricación en taller 🛠️`;
-                    } else if (isMaxReady) {
-                        const readyDescCfg = milestonesCfg.readyDesc || '¡Tu mueble ya está listo! ✅';
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — ${minDays !== maxDays ? `Fin Estimado (Día ${maxDays})` : 'Fin de Fabricación'}`;
-                        desc  = (order.status === 'listo' || order.status === 'entregado')
-                            ? readyDescCfg
-                            : `Fecha límite estimada de finalización (Plazo: ${rangeText})`;
-                    } else if (isMinReady && minDays !== maxDays) {
+                    } else if (isActualReadyDay && isFinished) {
+                        const readyDescCfg = milestonesCfg.readyDesc || '¡Tu pedido ya está listo! ✅';
+                        const isEarly = actualBusinessDaysUsed < maxDays;
+                        const earlyBadgeText = isEarly 
+                            ? ` ⚡ ¡Finalizado con anticipación en solo ${actualBusinessDaysUsed} días hábiles! (Plazo previsto: ${rangeText}) 🎉` 
+                            : ` (Finalizado en ${actualBusinessDaysUsed} días hábiles)`;
+                        title = `${capitalizedWeekday} &bull; ${dateStr} — ${isEarly ? '¡Pedido Listo con Anticipación! ⚡' : '¡Pedido Finalizado!'}`;
+                        desc  = `${readyDescCfg}${earlyBadgeText}`;
+                    } else if (isActualReadyDay && !isFinished) {
+                        title = `${capitalizedWeekday} &bull; ${dateStr} — Fin Estimado`;
+                        desc  = extraDays > 0
+                            ? `Fecha límite de elaboración estimada (Día ${businessDayCounter} de ${effectiveMaxDays} hábiles — incluye +${extraDays}d de ajuste)`
+                            : `Fecha límite de elaboración estimada (Día ${businessDayCounter} de ${maxDays})`;
+                    } else if (isMinReady && minDays !== maxDays && !isFinished) {
                         title = `${capitalizedWeekday} &bull; ${dateStr} — Inicio Rango Listo`;
-                        desc  = (order.status === 'listo' || order.status === 'entregado')
-                            ? (milestonesCfg.readyDesc || '¡Tu mueble ya está listo! ✅')
-                            : `Primer día estimado de término (Día ${minDays} de ${maxDays})`;
+                        desc  = `Primer día estimado de término (Día ${minDays} de ${effectiveMaxDays})`;
                     } else if (isLast) {
                         const customTitle = isEnvio ? (milestonesCfg.envioTitle || 'Despacho de Pedido') : (milestonesCfg.retiraTitle || 'Retiro por Taller');
                         const customDesc  = isEnvio
@@ -875,31 +956,18 @@
                         desc  = customDesc;
                     } else {
                         title = `${capitalizedWeekday} &bull; ${dateStr}`;
-                        desc  = `Día ${businessDayCounter} de elaboración (Plazo: ${rangeText})`;
+                        desc  = businessDayCounter > maxDays && extraDays > 0
+                            ? `Día ${businessDayCounter} de elaboración (+${extraDays}d de extensión en taller) 🛠️`
+                            : `Día ${businessDayCounter} de elaboración`;
                     }
                 }
 
-                if (isToday && !isWeekend && order.status === 'pendiente' && !isLast) {
+                if (isToday && !isWeekend && !isFinished && !isLast) {
                     desc += ' (¡Hoy estamos trabajando en tu pedido! 🛠️)';
                 }
 
-                return { d, itemClass, iconText, title, desc, isFirst, isLast, isReadyDay: isMaxReady, isWeekend, isCompleted, isToday };
+                return { d, itemClass, iconText, title, desc, isFirst, isLast, isWeekend, isCompleted, isToday };
             });
-
-            const currentActiveIndex = processedDays.findIndex(day => day.isToday);
-            const pivotIndex = currentActiveIndex !== -1 ? currentActiveIndex : processedDays.findIndex(day => !day.isCompleted);
-            const actualPivot = pivotIndex !== -1 ? pivotIndex : processedDays.length - 1;
-
-            const visibleCount = 5;
-            let startIndex = Math.max(0, actualPivot - 1);
-            let endIndex = startIndex + visibleCount;
-
-            if (endIndex > processedDays.length) {
-                endIndex = processedDays.length;
-                startIndex = Math.max(0, endIndex - visibleCount);
-            }
-
-            const visibleDays = processedDays.slice(startIndex, endIndex);
 
             function createRow(dayData) {
                 const row = document.createElement('div');
@@ -915,6 +983,29 @@
                 `;
                 return row;
             }
+
+            // Si el pedido ya está listo/entregado, mostramos TODOS los días transcurridos hasta el retiro sin colapsar nada
+            if (isFinished) {
+                processedDays.forEach(dayData => {
+                    timelineContainer.appendChild(createRow(dayData));
+                });
+                return;
+            }
+
+            const currentActiveIndex = processedDays.findIndex(day => day.isToday);
+            const pivotIndex = currentActiveIndex !== -1 ? currentActiveIndex : processedDays.findIndex(day => !day.isCompleted);
+            const actualPivot = pivotIndex !== -1 ? pivotIndex : processedDays.length - 1;
+
+            const visibleCount = 5;
+            let startIndex = Math.max(0, actualPivot - 1);
+            let endIndex = startIndex + visibleCount;
+
+            if (endIndex > processedDays.length) {
+                endIndex = processedDays.length;
+                startIndex = Math.max(0, endIndex - visibleCount);
+            }
+
+            const visibleDays = processedDays.slice(startIndex, endIndex);
 
             visibleDays.forEach(dayData => {
                 timelineContainer.appendChild(createRow(dayData));
@@ -936,12 +1027,12 @@
                     expandedPrev = !expandedPrev;
                     prevWrapper.style.display = expandedPrev ? 'block' : 'none';
                     prevBtn.innerHTML = expandedPrev 
-                        ? `<span class="material-symbols-outlined">expand_more</span> Ocultar días anteriores`
+                        ? `<span class="material-symbols-outlined">expand_more</span> Ocultar días anteriores` 
                         : `<span class="material-symbols-outlined">expand_less</span> Ver días anteriores (${hiddenPrevDays.length})`;
                 };
-
+                
                 timelineContainer.insertBefore(prevBtn, timelineContainer.firstChild);
-                timelineContainer.insertBefore(prevWrapper, timelineContainer.firstChild);
+                timelineContainer.insertBefore(prevWrapper, prevBtn.nextSibling);
             }
 
             if (endIndex < processedDays.length) {
@@ -949,7 +1040,7 @@
                 const nextWrapper = document.createElement('div');
                 nextWrapper.style.display = 'none';
                 hiddenNextDays.forEach(dayData => nextWrapper.appendChild(createRow(dayData)));
-
+                
                 const nextBtn = document.createElement('button');
                 nextBtn.className = 'timeline-expand-btn';
                 nextBtn.innerHTML = `<span class="material-symbols-outlined">expand_more</span> Ver días siguientes (${hiddenNextDays.length})`;
@@ -957,10 +1048,10 @@
                     expandedNext = !expandedNext;
                     nextWrapper.style.display = expandedNext ? 'block' : 'none';
                     nextBtn.innerHTML = expandedNext 
-                        ? `<span class="material-symbols-outlined">expand_less</span> Ocultar días siguientes`
+                        ? `<span class="material-symbols-outlined">expand_less</span> Ocultar días siguientes` 
                         : `<span class="material-symbols-outlined">expand_more</span> Ver días siguientes (${hiddenNextDays.length})`;
                 };
-
+                
                 timelineContainer.appendChild(nextBtn);
                 timelineContainer.appendChild(nextWrapper);
             }

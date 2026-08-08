@@ -1,6 +1,6 @@
 const ordersConfig = {
     "milestones": {
-        "readyDesc": "¡Tu mueble ya está listo! ✅",
+        "readyDesc": "¡Tu pedido ya está listo! ✅",
         "retiraTitle": "Retiro por Taller",
         "retiraDesc": "Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁",
         "envioTitle": "Despacho de Pedido",

@@ -1025,7 +1025,7 @@ const productsData = [
                 ],
                 "last_modified": 1783803117073,
                 "primaryCatId": "Percheros",
-                "views": 8
+                "views": 9
             },
             {
                 "id": "banquito-de-plaza",
@@ -3518,7 +3518,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1786057097023,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 3
             },
             {
                 "id": "baranda-fija-clasica",
@@ -5451,7 +5452,7 @@ const productsData = [
                 "last_modified": 1784773922188,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0
+                "views": 1
             },
             {
                 "id": "perchero-madera-tuvitos",
@@ -5543,7 +5544,7 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0
+                "views": 1
             },
             {
                 "id": "perchero-madera-tuvitos5",
@@ -5809,7 +5810,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 1
+                "views": 2
             },
             {
                 "id": "hexagonales",
@@ -6966,7 +6967,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786058695633,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 22
             },
             {
                 "id": "mensulas",
@@ -7120,7 +7122,44 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786058228736,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 6
+            },
+            {
+                "id": "Banco Escalera De Pino 3 Escalones",
+                "title": "Banco Escalera De Pino 3 Escalones",
+                "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
+                "image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                        "images_list": [
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275705-imagen.webp",
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275851-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 40 x 35 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786226275987,
+                "primaryCatId": "muebles"
             }
         ]
     },
@@ -7757,7 +7796,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 1
+                "views": 2
             }
         ],
         "rubro": "carpinteria"
@@ -7842,7 +7881,7 @@ const productsData = [
                 ],
                 "last_modified": 1783803117073,
                 "primaryCatId": "Percheros",
-                "views": 8
+                "views": 9
             },
             {
                 "id": "perchero-pared-doblegancho",
@@ -8324,7 +8363,7 @@ const productsData = [
                 "last_modified": 1784773922188,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0
+                "views": 1
             },
             {
                 "id": "Perchero 3 - Rustico",
@@ -8599,7 +8638,7 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0
+                "views": 1
             }
         ]
     },
@@ -9719,7 +9758,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786058695633,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 22
             },
             {
                 "id": "mensulas",
@@ -9873,7 +9913,44 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786058228736,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 6
+            },
+            {
+                "id": "Banco Escalera De Pino 3 Escalones",
+                "title": "Banco Escalera De Pino 3 Escalones",
+                "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
+                "image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                        "images_list": [
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275705-imagen.webp",
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275851-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 40 x 35 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786226275987,
+                "primaryCatId": "muebles"
             }
         ]
     },
@@ -10967,7 +11044,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 24
+                "views": 25
             },
             {
                 "id": "baranda-sommier-clasica",
@@ -11452,7 +11529,8 @@ const productsData = [
                     "barandas de pino"
                 ],
                 "last_modified": 1786057097023,
-                "primaryCatId": "Barandas"
+                "primaryCatId": "Barandas",
+                "views": 3
             },
             {
                 "id": "baranda-reforzada-geriatricos",
@@ -12576,6 +12654,42 @@ const productsData = [
                     "escalera fija",
                     "cajonera profesional"
                 ]
+            },
+            {
+                "id": "Banco Escalera De Pino 3 Escalones",
+                "title": "Banco Escalera De Pino 3 Escalones",
+                "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
+                "image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                        "images_list": [
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275705-imagen.webp",
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275851-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 40 x 35 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786226275987,
+                "primaryCatId": "muebles"
             }
         ],
         "rubro": "carpinteria"
@@ -13448,7 +13562,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786058228736,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 6
             },
             {
                 "id": "estantes",
@@ -14024,7 +14139,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786058695633,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 22
             }
         ]
     },
@@ -15076,7 +15192,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786058695633,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 22
             }
         ]
     },

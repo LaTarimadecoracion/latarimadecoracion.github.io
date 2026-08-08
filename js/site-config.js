@@ -150,6 +150,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Banco Escalera De Pino 3 Escalones!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Banco Escalera De Pino 3 Escalones!",
+            "mediaType": "image",
+            "image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Banco Escalera De Pino 3 Escalones",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Banco Escalera De Pino 3 Escalones",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786226275987
+        },
+        {
             "title": "¡Nuevo Ingreso: Ménsulas para escritorios!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Ménsulas para escritorios!",
             "mediaType": "image",

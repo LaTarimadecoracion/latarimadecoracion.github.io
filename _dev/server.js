@@ -26,7 +26,7 @@ if (!fs.existsSync(ordersDbPath)) {
 const ordersConfigDbPath = path.join(ROOT_DIR, 'js', 'orders-config.js');
 const defaultOrdersConfig = {
     milestones: {
-        readyDesc: '¡Tu mueble ya está listo! ✅',
+        readyDesc: '¡Tu pedido ya está listo! ✅',
         retiraTitle: 'Retiro por Taller',
         retiraDesc: 'Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁',
         envioTitle: 'Despacho de Pedido',
@@ -1729,26 +1729,49 @@ function generateClientPage(order) {
                     </div>
 
                     ${(function() {
+                        if (order.deliveryMethod === 'retira') {
+                            if (order.status !== 'listo' && order.status !== 'entregado') return '';
+                            return `
+                            <div style="margin-top: 1rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.08); border: 1.5px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md);">
+                                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                                    <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; color: #065f46; font-size: 1rem;">
+                                        <span class="material-symbols-outlined" style="font-size: 26px; color: #10b981;">storefront</span>
+                                        ${order.status === 'entregado' ? '¡Pedido Entregado en Taller! 🏁' : '¡Tu pedido ya está listo para retirar en el taller! 🏁'}
+                                    </div>
+                                    ${order.status === 'listo' ? `
+                                    <a href="https://wa.me/5491167007723?text=${encodeURIComponent('¡Hola! Mi pedido #' + order.id + ' figura listo. Quisiera coordinar día y horario para retirarlo por el taller. 😊')}" target="_blank" rel="noopener noreferrer" style="background: #10b981; color: white; text-decoration: none; padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 3px 10px rgba(16,185,129,0.3);">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">chat</span> Coordinar Retiro por WhatsApp
+                                    </a>` : ''}
+                                </div>
+                                <div style="font-size: 0.88rem; color: #047857; line-height: 1.5; margin-top: 0.5rem;">
+                                    ${order.status === 'entregado' 
+                                        ? 'Este pedido ya fue retirado por el taller. ¡Muchas gracias por tu compra en La Tarima!' 
+                                        : 'Podés pasar a retirarlo coordinando previamente con nosotros por WhatsApp para asegurar nuestra presencia en el taller al momento de recibirte. ¡Te esperamos! 🌲'}
+                                </div>
+                            </div>
+                            `;
+                        }
+
                         if (order.deliveryMethod !== 'envio' || !order.dispatchInfo || !order.dispatchInfo.courier) return '';
                         
                         const d = order.dispatchInfo;
-                        let trackingUrl = '';
+                        let trackingUrl = d.trackingUrl || d.url || '';
                         let courierLabel = d.courierName || d.courier;
 
-                        if (d.courier === 'correo_argentino') {
-                            trackingUrl = d.trackingUrl || 'https://www.correoargentino.com.ar/formularios/e-commerce';
+                        if (d.courier === 'correo_argentino' || d.courier === 'correo-argentino') {
+                            trackingUrl = trackingUrl || 'https://www.correoargentino.com.ar/formularios/e-commerce';
                             courierLabel = 'Correo Argentino';
-                        } else if (d.courier === 'via_cargo') {
-                            trackingUrl = d.trackingUrl || (d.trackingNumber ? `https://www.viacargo.com.ar/seguimiento?nroenvio=${encodeURIComponent(d.trackingNumber)}` : '');
+                        } else if (d.courier === 'via_cargo' || d.courier === 'via_cargo') {
+                            trackingUrl = trackingUrl || (d.trackingNumber ? `https://www.viacargo.com.ar/seguimiento?nroenvio=${encodeURIComponent(d.trackingNumber)}` : 'https://www.viacargo.com.ar/seguimiento');
                             courierLabel = 'Vía Cargo';
                         } else if (d.courier === 'andreani') {
-                            trackingUrl = d.trackingUrl || (d.trackingNumber ? `https://www.andreani.com/#!/informacionEnvio/${encodeURIComponent(d.trackingNumber)}` : '');
+                            trackingUrl = trackingUrl || (d.trackingNumber ? `https://www.andreani.com/#!/informacionEnvio/${encodeURIComponent(d.trackingNumber)}` : 'https://www.andreani.com');
                             courierLabel = 'Andreani';
-                        } else if (d.courier === 'envio_personal') {
-                            trackingUrl = d.trackingUrl || '';
+                        } else if (d.courier === 'envio_personal' || d.courier === 'envio-personal') {
+                            trackingUrl = trackingUrl || '';
                             courierLabel = 'Envío Personal / Cadetería';
                         } else {
-                            trackingUrl = d.trackingUrl || '';
+                            trackingUrl = trackingUrl || '';
                             courierLabel = d.courierName || 'Empresa de Transporte';
                         }
 
