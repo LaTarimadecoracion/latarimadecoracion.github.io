@@ -19,6 +19,14 @@ async function build() {
         console.error('❌ Error escaneando música:', err);
     }
 
+    // Generar archivo meta-catalog.csv actualizado para Facebook
+    try {
+        console.log('📊 Generando catálogo actualizado para Meta/Facebook (meta-catalog.csv)...');
+        require('./generate-meta-catalog');
+    } catch (err) {
+        console.error('❌ Error generando meta-catalog.csv:', err);
+    }
+
     console.log('🧹 Limpiando carpeta docs...');
     fs.emptyDirSync(distDir);
 
