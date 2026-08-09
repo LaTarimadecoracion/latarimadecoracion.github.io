@@ -17,9 +17,11 @@
             var isMayorista = cleanPath.endsWith('/web/mayorista') || cleanPath.endsWith('/mayorista') || cleanPath.endsWith('/mayoristas');
             var isCalcular = cleanPath.endsWith('/web/calcular') || cleanPath.endsWith('/calcular') || cleanPath.endsWith('/calculador');
             var isMusica = cleanPath.endsWith('/musica') || cleanPath.endsWith('/music') || cleanPath.endsWith('/enganchados') || cleanPath.endsWith('/musicas');
-            var isAyudin = cleanPath.endsWith('/ayudin') || cleanPath.endsWith('/help') || cleanPath.endsWith('/herramientas');
+            var isAyudin = cleanPath.endsWith('/web/ayudin') || cleanPath.endsWith('/ayudin') || cleanPath.endsWith('/help') || cleanPath.endsWith('/herramientas');
             var isEdit = cleanPath.endsWith('/web/edit') || cleanPath.endsWith('/edit') || cleanPath.endsWith('/editor') || cleanPath.endsWith('/web/editor');
-            
+            var isPedidosAdmin = cleanPath.endsWith('/web/pedidos-admin') || cleanPath.endsWith('/pedidos-admin') || cleanPath.endsWith('/admin-pedidos');
+            var isPedidos = cleanPath.endsWith('/web/pedidos') || cleanPath.endsWith('/pedidos');
+
             var basePath = '/';
             var segments = window.location.pathname.split('/').filter(Boolean);
             if (segments.length > 0) {
@@ -46,6 +48,10 @@
                 window.location.replace(window.location.origin + basePath + '?view=ayudin');
             } else if (isMusica) {
                 window.location.replace(window.location.origin + basePath + '?view=musica');
+            } else if (isPedidosAdmin) {
+                window.location.replace(window.location.origin + basePath + '?view=pedidos-admin');
+            } else if (isPedidos) {
+                window.location.replace(window.location.origin + basePath + '?view=pedidos');
             } else {
                 window.location.replace(window.location.origin + basePath);
             }

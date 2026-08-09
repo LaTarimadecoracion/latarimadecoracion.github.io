@@ -2231,8 +2231,7 @@ app.get('*', (req, res) => {
         '/mayorista.html': 'mayorista.html',
         '/calcular.html': 'calcular.html',
         '/musica.html': 'musica.html',
-        '/ayudin.html': 'ayudin.html',
-        '/visualizador.html': 'visualizador.html'
+        '/ayudin.html': 'ayudin.html'
     };
     if (appNameMap[cleanUrl]) {
         const appPath = path.join(ROOT_DIR, 'apps', appNameMap[cleanUrl]);
@@ -2241,6 +2240,24 @@ app.get('*', (req, res) => {
         }
     }
     
+    // Ruta de Ayudín / Guías
+    if (cleanUrl === '/web/ayudin' || cleanUrl === '/ayudin' || cleanUrl === '/help' || cleanUrl === '/herramientas') {
+        const ayudinPath = path.join(ROOT_DIR, 'apps', 'ayudin.html');
+        if (fs.existsSync(ayudinPath)) {
+            return res.sendFile(ayudinPath);
+        }
+    }
+
+    // Rutas de Pedidos y Admin de Pedidos
+    if (cleanUrl === '/web/pedidos-admin' || cleanUrl === '/pedidos-admin') {
+        const adminPedidosPath = path.join(ROOT_DIR, 'pedidos', 'admin.html');
+        if (fs.existsSync(adminPedidosPath)) return res.sendFile(adminPedidosPath);
+    }
+    if (cleanUrl === '/web/pedidos' || cleanUrl === '/pedidos') {
+        const indexPedidosPath = path.join(ROOT_DIR, 'pedidos', 'index.html');
+        if (fs.existsSync(indexPedidosPath)) return res.sendFile(indexPedidosPath);
+    }
+
     // Ruta del Editor de Fotos Masivo sin .html visible
     if (cleanUrl === '/web/edit' || cleanUrl === '/edit' || cleanUrl === '/editor' || cleanUrl === '/web/editor') {
         const editorPath = path.join(ROOT_DIR, 'Herramientas', 'editor-fotos.html');

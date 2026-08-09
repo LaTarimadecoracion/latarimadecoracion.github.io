@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>
+        // Redirigir a la SPA principal si se abre directamente fuera de un iframe
+        if (window.self === window.top) {
+            var basePath = '/';
+            var segments = window.location.pathname.split('/').filter(Boolean);
+            if (segments.length > 0 && segments[0].toLowerCase() === 'latarimadecoracion.github.io') {
+                basePath = '/latarimadecoracion.github.io/';
+            }
+            var searchParams = window.location.search;
+            window.location.replace(window.location.origin + basePath + '?view=pedidos' + (searchParams ? '&' + searchParams.substring(1) : ''));
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Seguimiento de Pedido | LA TARIMA</title>
@@ -60,29 +72,39 @@
             background-color: transparent !important;
             min-height: auto;
             overflow-y: auto !important;
-            padding: 12px 12px 100px 12px !important;
+            padding: 0.5rem 1rem 0px 1rem !important;
             box-sizing: border-box;
         }
         
         body.in-iframe .order-card {
-            box-shadow: none !important;
-            margin-bottom: 1rem !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+            border-radius: var(--radius-lg, 16px) !important;
+            margin-bottom: 1.25rem !important;
         }
 
         body.in-iframe .conditions-card {
-            box-shadow: none !important;
-            margin-bottom: 90px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+            border-radius: var(--radius-lg, 16px) !important;
+            margin-bottom: 1.25rem !important;
         }
         
-        body.in-iframe .client-header,
-        body.in-iframe .client-footer {
+        body.in-iframe .client-header {
             display: none !important;
+        }
+
+        body.in-iframe .client-footer {
+            display: block !important;
+            background: transparent !important;
+            border-top: none !important;
+            padding-bottom: 90px !important;
+            margin-bottom: 0 !important;
         }
         
         body.in-iframe .main-container {
             margin: 0 auto !important;
-            padding: 0 !important;
-            max-width: 100% !important;
+            padding: 0.5rem 0 !important;
+            max-width: 760px !important;
+            width: 100% !important;
         }
         
         .client-header {
@@ -586,15 +608,50 @@
             return null;
         }
 
+        function renderSearchOrderState(container) {
+            if (!container) return;
+            container.innerHTML = `
+                <div class="order-card" style="text-align: center; padding: 2.5rem 1.5rem; margin: 1rem auto; max-width: 600px;">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--secondary-color, #FAF3E0); color: var(--primary-color, #A0715B); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
+                        <span class="material-symbols-outlined" style="font-size: 32px;">local_shipping</span>
+                    </div>
+                    <h2 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-main);">Seguimiento de Pedido</h2>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Ingresá el número de orden que te enviamos por WhatsApp para consultar el estado en tiempo real.</p>
+                    <form id="order-search-form" style="display: flex; gap: 8px; justify-content: center; max-width: 420px; margin: 0 auto; flex-wrap: wrap;">
+                        <input type="text" id="order-search-input" placeholder="Ej: 500102800" style="flex: 1; min-width: 180px; padding: 0.75rem 1rem; border-radius: 12px; border: 1.5px solid var(--border-color, #E2E8F0); font-size: 1rem; outline: none;" required>
+                        <button type="submit" style="padding: 0.75rem 1.25rem; border-radius: 12px; border: none; background: var(--primary-color, #A0715B); color: white; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+                            Buscar
+                        </button>
+                    </form>
+                </div>
+            `;
+            const form = document.getElementById('order-search-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const input = document.getElementById('order-search-input');
+                    if (input && input.value.trim()) {
+                        const cleanVal = input.value.trim().replace(/[^0-9]/g, '');
+                        if (cleanVal) {
+                            if (window.parent && typeof window.parent.navigateToView === 'function') {
+                                window.parent.navigateToView('view-pedidos', { orderId: cleanVal });
+                            } else {
+                                window.location.search = '?id=' + cleanVal;
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
         function loadAndRenderOrder() {
+            const mainContainer = document.getElementById('main-content');
             const orderId = getOrderIdFromUrl();
             if (!orderId) {
-                // Si entra a web/pedidos sin número de orden, abre el panel de administración
-                window.location.replace('admin.html');
+                renderSearchOrderState(mainContainer);
                 return;
             }
-            
-            const mainContainer = document.getElementById('main-content');
             
             const orders = (typeof ordersData !== 'undefined') ? ordersData : [];
             const order = orders.find(o => String(o.id) === String(orderId));

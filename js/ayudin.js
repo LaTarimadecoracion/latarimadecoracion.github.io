@@ -100,10 +100,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.addEventListener('click', () => {
                 if (item.actionUrl) {
-                    // Si tiene enlace, redirigir
-                    window.location.href = item.actionUrl;
+                    const url = item.actionUrl;
+                    
+                    // 1. Calculadora de Altura Ideal
+                    if (url.includes('calcular')) {
+                        try {
+                            if (window.parent && typeof window.parent.navigateToView === 'function') {
+                                window.parent.navigateToView('view-calculator');
+                                return;
+                            }
+                        } catch(e) {}
+                        window.top.location.href = '../?view=calcular';
+                        return;
+                    }
+
+                    // 2. Optimizador de corte
+                    if (url.includes('corte')) {
+                        try {
+                            window.top.location.href = '../Herramientas/corte.html';
+                            return;
+                        } catch(e) {}
+                        window.location.href = '../Herramientas/corte.html';
+                        return;
+                    }
+
+                    // 3. Editor de fotos masivo
+                    if (url.includes('editor')) {
+                        try {
+                            window.top.location.href = '../Herramientas/editor-fotos.html';
+                            return;
+                        } catch(e) {}
+                        window.location.href = '../Herramientas/editor-fotos.html';
+                        return;
+                    }
+
+                    // 4. Visualizador de barandas 3D
+                    if (url.includes('visualizador')) {
+                        try {
+                            window.top.location.href = '../apps/visualizador.html';
+                            return;
+                        } catch(e) {}
+                        window.location.href = 'visualizador.html';
+                        return;
+                    }
+
+                    // Cualquier otra URL
+                    try {
+                        window.top.location.href = url.startsWith('../') ? url : '../' + url;
+                    } catch(e) {
+                        window.location.href = url;
+                    }
                 } else {
-                    // Si no, abrir modal de detalles
                     openDetailModal(item);
                 }
             });

@@ -2800,12 +2800,12 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 /* Main container spacing */
 #app-container {
     padding-top: 90px;
-    padding-bottom: 95px !important;
+    padding-bottom: 95px;
 }
 
 body.in-iframe,
 .in-iframe {
-    padding-bottom: 95px !important;
+    padding-bottom: 0px !important;
 }
 
 /* Los Más Buscados horizontal carousel */

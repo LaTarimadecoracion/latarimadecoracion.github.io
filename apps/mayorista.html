@@ -405,6 +405,16 @@
             gap: 1rem;
         }
 
+        body.in-iframe .floating-footer-bar,
+        .in-iframe .floating-footer-bar {
+            bottom: calc(var(--nav-height, 65px) + var(--safe-area-bottom, 0px)) !important;
+        }
+
+        body.in-iframe .catalog-container,
+        .in-iframe .catalog-container {
+            padding-bottom: 160px !important;
+        }
+
         .footer-left {
             display: flex;
             align-items: center;
@@ -706,7 +716,7 @@
             .btn-finalize-order span { display: none; }
         }
     </style>
-<style>body { padding-bottom: 95px !important; }</style></head>
+</head>
 <body>
     <script>
         // Cargar tema activo de localStorage de inmediato antes de renderizar

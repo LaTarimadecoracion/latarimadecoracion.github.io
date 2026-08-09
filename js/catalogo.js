@@ -118,15 +118,34 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {}
 
         allProducts = [];
+        const visibleRubros = rubrosList.filter(r => r.visible !== false);
+        const visibleRubroIds = new Set(visibleRubros.map(r => r.id));
+
+        if (visibleRubros.length > 0 && !visibleRubroIds.has(activeCatalogRubro)) {
+            activeCatalogRubro = visibleRubros[0].id;
+        }
+
+        const seenKeys = new Set();
 
         sourceProducts.forEach(catObj => {
-            // Filtrar por rubro activo
             const catRubro = catObj.rubro || 'carpinteria';
-            const isRubroMatch = (rubrosList.length <= 1) || (catRubro === activeCatalogRubro);
 
-            if (catObj.products && (catObj.visible !== false || catObj.id.endsWith('-todos')) && isRubroMatch) {
+            // Descartar si el rubro no está visible en el sitio
+            if (visibleRubros.length > 0 && !visibleRubroIds.has(catRubro)) {
+                return;
+            }
+
+            // Si hay pestañas de rubros visibles, mostrar sólo el seleccionado
+            if (visibleRubros.length > 1 && catRubro !== activeCatalogRubro) {
+                return;
+            }
+
+            if (catObj.products && (catObj.visible !== false || catObj.id.endsWith('-todos'))) {
                 catObj.products.forEach(product => {
-                    if (product.visible !== false) {
+                    const uniqueKey = product.id ? product.id : (product.title || '').trim().toLowerCase();
+
+                    if (product.visible !== false && !seenKeys.has(uniqueKey)) {
+                        seenKeys.add(uniqueKey);
                         const rawImg = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
                         allProducts.push({
                             id: product.id,

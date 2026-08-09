@@ -28,16 +28,6 @@ window.ayudinData = [
         content: ""
     },
     {
-        id: "visualizador-barandas",
-        title: "Visualizador de Barandas",
-        description: "Simulá barandas desmontables, rebatibles y fijas interactuando con colores y medidas.",
-        image: "img/logo_provisional.png",
-        rubro: "carpinteria",
-        actionUrl: "visualizador.html",
-        icon: "view_in_ar",
-        content: ""
-    },
-    {
         id: "formula-espaciado",
         title: "Fórmula de Espaciado Uniforme",
         description: "Cómo calcular la distancia exacta entre listones, barrotes o cajones sin fallar.",

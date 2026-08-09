@@ -340,10 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const viewParam = urlParams.get('view') || urlParams.get('sec');
         if (viewParam) {
-            if (viewParam === 'edit' || viewParam === 'editor') {
-                window.location.replace('Herramientas/editor-fotos.html');
-                return;
-            }
             const viewIdMap = {
                 'nosotros': 'view-about',
                 'buscar': 'view-search',
@@ -362,7 +358,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 'herramientas': 'view-ayudin',
                 'pedidos': 'view-pedidos',
                 'pedidos-admin': 'view-pedidos-admin',
-                'admin-pedidos': 'view-pedidos-admin'
+                'admin-pedidos': 'view-pedidos-admin',
+                'editor': 'view-editor',
+                'edit': 'view-editor'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             const orderIdParam = urlParams.get('id') || urlParams.get('order');
@@ -489,7 +487,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 'carrito': 'view-cart',
                 'mayorista': 'view-mayorista',
                 'musica': 'view-musica',
-                'pedidos': 'view-pedidos'
+                'ayudin': 'view-ayudin',
+                'help': 'view-ayudin',
+                'herramientas': 'view-ayudin',
+                'pedidos': 'view-pedidos',
+                'pedidos-admin': 'view-pedidos-admin',
+                'editor': 'view-editor',
+                'edit': 'view-editor'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             if (window.navigateToView) {

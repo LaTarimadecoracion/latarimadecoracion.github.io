@@ -9,7 +9,7 @@
             if (segments.length > 0 && segments[0].toLowerCase() === 'latarimadecoracion.github.io') {
                 basePath = '/latarimadecoracion.github.io/';
             }
-            window.location.replace(window.location.origin + basePath + '?sec=musica');
+            window.location.replace(window.location.origin + basePath + '?view=musica');
         }
     </script>
     <meta charset="UTF-8">
@@ -1183,8 +1183,24 @@
             }
         }
     </style>
-<style>body { padding-bottom: 95px !important; }</style></head>
+</head>
 <body>
+    <!-- Script Anti-FOUC para Temáticas e Iframe -->
+    <script>
+        (function() {
+            try {
+                if (window.parent && window.parent.document && window.parent.document.body) {
+                    document.body.className = window.parent.document.body.className;
+                } else {
+                    const activeTheme = localStorage.getItem('userSelectedTheme') || localStorage.getItem('selectedTheme') || 'classic';
+                    document.body.className = 'theme-' + activeTheme;
+                }
+            } catch(e) {
+                const activeTheme = localStorage.getItem('userSelectedTheme') || localStorage.getItem('selectedTheme') || 'classic';
+                document.body.className = 'theme-' + activeTheme;
+            }
+        })();
+    </script>
 
     <!-- Auras de fondo para un diseño premium -->
     <div class="bg-glow-music bg-glow-1"></div>

@@ -414,7 +414,6 @@ function renderNode(rule) {
                         <option value="calcular">📐 Calculador de Ménsulas</option>
                         <option value="mayorista">💼 Portal Mayorista</option>
                         <option value="musica">🎵 Reproductor de Música</option>
-                        <option value="visualizador">👁️ Visualizador 3D</option>
                         <option value="alquileres">🎪 Alquiler de Muebles</option>
                         <option value="nosotros">ℹ️ Nosotros</option>
                         <option value="perfil">🛒 Carrito / Mi Pedido</option>
@@ -2383,7 +2382,6 @@ function addChatMessage(sender, text, rule = null) {
                         calcular: { title: "Calculador de Ménsulas", url: "calcular.html", icon: "📐", view: "view-calculator" },
                         mayorista: { title: "Portal Mayorista", url: "mayorista.html", icon: "💼", view: "view-mayorista" },
                         musica: { title: "Reproductor de Música", url: "musica.html", icon: "🎵", view: "view-musica" },
-                        visualizador: { title: "Visualizador 3D", url: "visualizador.html", icon: "👁️", view: "view-visualizador" },
                         alquileres: { title: "Alquiler de Muebles", url: "index.html?view=alquileres", icon: "🎪", view: "view-rentals" },
                         nosotros: { title: "Nosotros", url: "index.html?view=nosotros", icon: "ℹ️", view: "view-about" },
                         perfil: { title: "Carrito / Mi Pedido", url: "index.html?view=perfil", icon: "🛒", view: "view-profile" },

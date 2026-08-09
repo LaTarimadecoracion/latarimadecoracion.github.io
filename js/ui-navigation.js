@@ -192,12 +192,12 @@
             if (appContainer) {
                 appContainer.scrollTop = 0;
                 // Desactivar scroll y padding inferior del parent si estamos en el iframe
-                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-musica' || viewId === 'view-ayudin' || viewId === 'view-pedidos' || viewId === 'view-pedidos-admin') {
-                    appContainer.style.overflowY = 'hidden';
-                    appContainer.style.paddingBottom = '0px';
+                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-musica' || viewId === 'view-ayudin' || viewId === 'view-pedidos' || viewId === 'view-pedidos-admin' || viewId === 'view-editor') {
+                    appContainer.style.setProperty('overflow-y', 'hidden', 'important');
+                    appContainer.style.setProperty('padding-bottom', '0px', 'important');
                 } else {
-                    appContainer.style.overflowY = 'auto';
-                    appContainer.style.paddingBottom = '95px';
+                    appContainer.style.setProperty('overflow-y', 'auto', 'important');
+                    appContainer.style.setProperty('padding-bottom', '95px', 'important');
                 }
             }
             
@@ -253,6 +253,11 @@
                 if (iframe) {
                     iframe.src = `pedidos/admin.html`;
                 }
+            } else if (viewId === 'view-editor') {
+                const iframe = document.querySelector('#view-editor iframe');
+                if (iframe && iframe.contentWindow) {
+                    iframe.contentWindow.location.reload();
+                }
             } else if (viewId === 'view-about') {
                 renderNosotrosBlocksCliente();
             } else if (viewId === 'view-notifications') {
@@ -307,7 +312,8 @@
                 'view-musica': 'musica',
                 'view-ayudin': 'ayudin',
                 'view-pedidos': 'pedidos',
-                'view-pedidos-admin': 'pedidos-admin'
+                'view-pedidos-admin': 'pedidos-admin',
+                'view-editor': 'editor'
             };
             
             let basePath = window.location.pathname.replace(/\/index\.html$/, '/');
@@ -374,4 +380,48 @@ document.addEventListener('DOMContentLoaded', () => {
             if(window.renderHome) window.renderHome();
         });
     }
+
+    // Reenvío de gestos de scroll/touch al iframe activo cuando se arrastra por fuera
+    let lastTouchY = 0;
+    window.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 0) {
+            lastTouchY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+
+    const forwardScrollToIframe = (deltaY) => {
+        const activeView = document.querySelector('.view.active');
+        if (!activeView) return;
+        const iframe = activeView.querySelector('iframe');
+        if (!iframe || !iframe.contentWindow) return;
+        try {
+            iframe.contentWindow.scrollBy({ top: deltaY, behavior: 'auto' });
+            const doc = iframe.contentDocument;
+            if (doc) {
+                const innerApp = doc.getElementById('app-container');
+                if (innerApp) innerApp.scrollTop += deltaY;
+                if (doc.documentElement) doc.documentElement.scrollTop += deltaY;
+                if (doc.body) doc.body.scrollTop += deltaY;
+            }
+        } catch (err) {}
+    };
+
+    window.addEventListener('wheel', (e) => {
+        const activeView = document.querySelector('.view.active');
+        if (activeView && activeView.querySelector('iframe')) {
+            forwardScrollToIframe(e.deltaY);
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+        const activeView = document.querySelector('.view.active');
+        if (activeView && activeView.querySelector('iframe') && e.touches && e.touches.length > 0) {
+            const currentY = e.touches[0].clientY;
+            const deltaY = lastTouchY - currentY;
+            lastTouchY = currentY;
+            if (Math.abs(deltaY) > 0) {
+                forwardScrollToIframe(deltaY);
+            }
+        }
+    }, { passive: true });
 });
