@@ -3036,7 +3036,7 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 10
+                "views": 11
             },
             {
                 "id": "mesa-plegabe",
@@ -3592,7 +3592,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 4
+                "views": 5
             },
             {
                 "id": "baranda-montessori",
@@ -4446,7 +4446,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 7
+                "views": 11
             },
             {
                 "id": "17-vinos",
@@ -7142,14 +7142,14 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "60 x 40 x 35 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/banco-escalera-de-pino-3-escalones/up/MLAU3289044905",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -7158,7 +7158,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786226275987,
+                "last_modified": 1786236494751,
                 "primaryCatId": "muebles"
             }
         ]
@@ -7527,7 +7527,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 7
+                "views": 11
             },
             {
                 "id": "13-vinos",
@@ -9933,14 +9933,14 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "60 x 40 x 35 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/banco-escalera-de-pino-3-escalones/up/MLAU3289044905",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -9949,7 +9949,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786226275987,
+                "last_modified": 1786236494751,
                 "primaryCatId": "muebles"
             }
         ]
@@ -11670,7 +11670,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 4
+                "views": 5
             },
             {
                 "id": "baranda-montessori",
@@ -12672,14 +12672,14 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "60 x 40 x 35 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/banco-escalera-de-pino-3-escalones/up/MLAU3289044905",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -12688,7 +12688,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786226275987,
+                "last_modified": 1786236494751,
                 "primaryCatId": "muebles"
             }
         ],
@@ -15799,7 +15799,7 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 10
+                "views": 11
             }
         ]
     },
