@@ -150,23 +150,23 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
-            "title": "¡Nuevo Ingreso: Banco Escalera De Pino 3 Escalones!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Banco Escalera De Pino 3 Escalones!",
+            "title": "¡Nuevo Ingreso: Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones!",
             "mediaType": "image",
-            "image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+            "image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305091751-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
                 {
                     "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Banco Escalera De Pino 3 Escalones",
+                    "url": "?view=view-product-detail&prod=Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
                     "newTab": false
                 }
             ],
-            "linkUrl": "?view=view-product-detail&prod=Banco Escalera De Pino 3 Escalones",
+            "linkUrl": "?view=view-product-detail&prod=Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
             "linkText": "Ver Producto",
             "linkNewTab": false,
-            "timestamp": 1786226275987
+            "timestamp": 1786305092218
         },
         {
             "title": "¡Nuevo Ingreso: Ménsulas para escritorios!",

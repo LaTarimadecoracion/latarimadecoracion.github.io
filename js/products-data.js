@@ -6149,7 +6149,8 @@ const productsData = [
                 ],
                 "last_modified": 1786245813329,
                 "primaryCatId": "Mesas-madera",
-                "visible": true
+                "visible": true,
+                "views": 7
             },
             {
                 "id": "pie-cama-romano",
@@ -7160,6 +7161,28 @@ const productsData = [
                 "last_modified": 1786236494751,
                 "primaryCatId": "muebles",
                 "views": 6
+            },
+            {
+                "id": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+                "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+                "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
+                "image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                        "images_list": [
+                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161963-imagen.webp",
+                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305162112-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786305162256,
+                "primaryCatId": "camas-madera-pino"
             }
         ]
     },
@@ -12473,10 +12496,41 @@ const productsData = [
         "visible": true
     },
     {
+        "id": "camas-madera-pino",
+        "name": "Camas para niños",
+        "image": "img/camas-para-ninos/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 7,
+        "products": [
+            {
+                "id": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+                "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+                "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
+                "image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                        "images_list": [
+                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161963-imagen.webp",
+                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305162112-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786305162256,
+                "primaryCatId": "camas-madera-pino"
+            }
+        ]
+    },
+    {
         "id": "muebles",
         "name": "Escaleras",
         "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 7,
+        "order": 8,
         "products": [
             {
                 "id": "escaleras",
@@ -12700,7 +12754,7 @@ const productsData = [
         "id": "Steps",
         "name": "Steps / Cajones",
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 8,
+        "order": 9,
         "products": [
             {
                 "id": "steps---cajones",
@@ -12933,7 +12987,7 @@ const productsData = [
         "id": "Estantes",
         "name": "Estantes",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 9,
+        "order": 10,
         "products": [
             {
                 "id": "estantes-montessori",
@@ -14150,7 +14204,7 @@ const productsData = [
         "id": "Juguetes",
         "name": "Juguetes",
         "image": "img/juguetes/portada-1783038439545-imagen.webp",
-        "order": 10,
+        "order": 11,
         "products": [
             {
                 "id": "jenga",
@@ -14350,7 +14404,7 @@ const productsData = [
         "name": "Sillas y sillones",
         "image": "img/sillas-y-sillones/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 11,
+        "order": 12,
         "products": [
             {
                 "id": "banquito-de-plaza",
@@ -14581,7 +14635,7 @@ const productsData = [
         "name": "Mesas de madera",
         "image": "img/mesas-de-madera/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 12,
+        "order": 13,
         "products": [
             {
                 "id": "Mueble-Multifunción",
@@ -14977,7 +15031,8 @@ const productsData = [
                 ],
                 "last_modified": 1786245813329,
                 "primaryCatId": "Mesas-madera",
-                "visible": true
+                "visible": true,
+                "views": 7
             },
             {
                 "id": "mensulas-escritorio",
@@ -15203,7 +15258,7 @@ const productsData = [
         "name": "Jardín",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 13,
+        "order": 14,
         "products": [
             {
                 "id": "deck-rectangular",
@@ -15809,7 +15864,7 @@ const productsData = [
         "name": "Todo Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 14,
+        "order": 15,
         "products": [
             {
                 "id": "Platos-madera",
@@ -16067,7 +16122,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 15,
+        "order": 16,
         "products": [
             {
                 "id": "podio-profesional",
@@ -16318,353 +16373,5 @@ const productsData = [
             }
         ],
         "rubro": "carpinteria"
-    },
-    {
-        "id": "papelera-cotillon-todos",
-        "name": "Todos los productos",
-        "rubro": "papelera-cotillon",
-        "image": "img/logo_provisional.png",
-        "visible": false,
-        "order": 16,
-        "products": [
-            {
-                "id": "Films-negro",
-                "title": "Film Strech Negro",
-                "description": "",
-                "image": "img/embalaje/film-strech-negro/1783039460338-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Negro",
-                        "cover_image": "img/embalaje/film-strech-negro/1783039460338-imagen.webp",
-                        "images_list": [
-                            "img/embalaje/film-strech-negro/1783039460338-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "price": 1000,
-                                "cost_price": 1000,
-                                "volumeDiscounts": [],
-                                "default": true,
-                                "hidden": false,
-                                "link": ""
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "film",
-                    "films",
-                    "stretch",
-                    "embalaje",
-                    "embalajes",
-                    "embalar",
-                    "cajas",
-                    "mudanza",
-                    "proteccion",
-                    "rollo",
-                    "rollos",
-                    "negro",
-                    "transparente",
-                    "plastico",
-                    "envolver",
-                    "envios",
-                    "envio",
-                    "correo",
-                    "seguro",
-                    "empaque",
-                    "empaques",
-                    "pack",
-                    "industrial",
-                    "comercial",
-                    "comercio",
-                    "film stretch",
-                    "film stretch negro",
-                    "film de embalaje",
-                    "film para embalar",
-                    "rollo de film stretch",
-                    "rollo de film negro",
-                    "embalaje de envios",
-                    "proteccion de envios",
-                    "plastico film stretch",
-                    "film stretch industrial",
-                    "rollo film embalaje",
-                    "film stretch transparente",
-                    "material de embalaje",
-                    "suministros de embalaje",
-                    "pelicula estirable",
-                    "film estirable negro",
-                    "film estirable embalaje",
-                    "film para mudanza",
-                    "envolver cajas",
-                    "envolver palets",
-                    "film stretch mudanza",
-                    "rollo stretch negro",
-                    "film protector negro",
-                    "film protector embalaje",
-                    "embalar cajas"
-                ],
-                "last_modified": 1783039460509,
-                "primaryCatId": "Papelera-Cotillon",
-                "views": 3
-            }
-        ]
-    },
-    {
-        "id": "Papelera-Cotillon",
-        "name": "Embalaje",
-        "image": "img/papelera-cotillon/embalaje/portada-imagen.webp",
-        "rubro": "papelera-cotillon",
-        "order": 17,
-        "products": [
-            {
-                "id": "Films-negro",
-                "title": "Film Strech Negro",
-                "description": "",
-                "image": "img/embalaje/film-strech-negro/1783039460338-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Negro",
-                        "cover_image": "img/embalaje/film-strech-negro/1783039460338-imagen.webp",
-                        "images_list": [
-                            "img/embalaje/film-strech-negro/1783039460338-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "price": 1000,
-                                "cost_price": 1000,
-                                "volumeDiscounts": [],
-                                "default": true,
-                                "hidden": false,
-                                "link": ""
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "film",
-                    "films",
-                    "stretch",
-                    "embalaje",
-                    "embalajes",
-                    "embalar",
-                    "cajas",
-                    "mudanza",
-                    "proteccion",
-                    "rollo",
-                    "rollos",
-                    "negro",
-                    "transparente",
-                    "plastico",
-                    "envolver",
-                    "envios",
-                    "envio",
-                    "correo",
-                    "seguro",
-                    "empaque",
-                    "empaques",
-                    "pack",
-                    "industrial",
-                    "comercial",
-                    "comercio",
-                    "film stretch",
-                    "film stretch negro",
-                    "film de embalaje",
-                    "film para embalar",
-                    "rollo de film stretch",
-                    "rollo de film negro",
-                    "embalaje de envios",
-                    "proteccion de envios",
-                    "plastico film stretch",
-                    "film stretch industrial",
-                    "rollo film embalaje",
-                    "film stretch transparente",
-                    "material de embalaje",
-                    "suministros de embalaje",
-                    "pelicula estirable",
-                    "film estirable negro",
-                    "film estirable embalaje",
-                    "film para mudanza",
-                    "envolver cajas",
-                    "envolver palets",
-                    "film stretch mudanza",
-                    "rollo stretch negro",
-                    "film protector negro",
-                    "film protector embalaje",
-                    "embalar cajas"
-                ],
-                "last_modified": 1783039460509,
-                "primaryCatId": "Papelera-Cotillon",
-                "views": 3
-            }
-        ],
-        "visible": false
-    },
-    {
-        "id": "jabon-todos",
-        "name": "Todos los productos",
-        "rubro": "jabon",
-        "image": "img/logo_provisional.png",
-        "visible": false,
-        "order": 18,
-        "products": [
-            {
-                "id": "Jabon",
-                "title": "Jabon",
-                "description": "",
-                "image": "img/jabon/jabon/1783112841873-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/jabon/jabon/1783112841873-imagen.webp",
-                        "images_list": [
-                            "img/jabon/jabon/1783112841873-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "jabon",
-                    "jabones",
-                    "tocador",
-                    "baño",
-                    "limpieza",
-                    "higiene",
-                    "aromatico",
-                    "fragancia",
-                    "olor",
-                    "perfume",
-                    "suave",
-                    "espuma",
-                    "pastilla",
-                    "barra",
-                    "natural",
-                    "coco",
-                    "glicerina",
-                    "antibacterial",
-                    "corporal",
-                    "manos",
-                    "ducha",
-                    "aseo",
-                    "cuidado",
-                    "piel",
-                    "hidratante",
-                    "jabon de tocador",
-                    "jabon para baño",
-                    "jabon de coco",
-                    "jabon de glicerina",
-                    "jabon neutro",
-                    "jabon aromatico",
-                    "jabones aromaticos",
-                    "higiene de manos",
-                    "cuidado de la piel",
-                    "jabon natural",
-                    "jabon corporal",
-                    "jabon de tocador suave",
-                    "fragancia para baño",
-                    "pastilla de jabon",
-                    "barra de jabon",
-                    "jabon hidratante",
-                    "jabon de manos",
-                    "jabon de ducha",
-                    "limpieza corporal",
-                    "aseo personal",
-                    "jabon antibacterial",
-                    "jabon perfumado",
-                    "jabon tocador barra",
-                    "jabones de tocador",
-                    "cuidado personal"
-                ],
-                "last_modified": 1783112841985,
-                "primaryCatId": "Jabon",
-                "views": 1
-            }
-        ]
-    },
-    {
-        "id": "Jabon",
-        "name": "Jabon",
-        "image": "img/jabon/jabon/portada-imagen.webp",
-        "rubro": "jabon",
-        "order": 19,
-        "products": [
-            {
-                "id": "Jabon",
-                "title": "Jabon",
-                "description": "",
-                "image": "img/jabon/jabon/1783112841873-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/jabon/jabon/1783112841873-imagen.webp",
-                        "images_list": [
-                            "img/jabon/jabon/1783112841873-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "jabon",
-                    "jabones",
-                    "tocador",
-                    "baño",
-                    "limpieza",
-                    "higiene",
-                    "aromatico",
-                    "fragancia",
-                    "olor",
-                    "perfume",
-                    "suave",
-                    "espuma",
-                    "pastilla",
-                    "barra",
-                    "natural",
-                    "coco",
-                    "glicerina",
-                    "antibacterial",
-                    "corporal",
-                    "manos",
-                    "ducha",
-                    "aseo",
-                    "cuidado",
-                    "piel",
-                    "hidratante",
-                    "jabon de tocador",
-                    "jabon para baño",
-                    "jabon de coco",
-                    "jabon de glicerina",
-                    "jabon neutro",
-                    "jabon aromatico",
-                    "jabones aromaticos",
-                    "higiene de manos",
-                    "cuidado de la piel",
-                    "jabon natural",
-                    "jabon corporal",
-                    "jabon de tocador suave",
-                    "fragancia para baño",
-                    "pastilla de jabon",
-                    "barra de jabon",
-                    "jabon hidratante",
-                    "jabon de manos",
-                    "jabon de ducha",
-                    "limpieza corporal",
-                    "aseo personal",
-                    "jabon antibacterial",
-                    "jabon perfumado",
-                    "jabon tocador barra",
-                    "jabones de tocador",
-                    "cuidado personal"
-                ],
-                "last_modified": 1783112841985,
-                "primaryCatId": "Jabon",
-                "views": 1
-            }
-        ],
-        "visible": false
     }
 ];
