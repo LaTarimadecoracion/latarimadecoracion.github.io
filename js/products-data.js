@@ -7160,7 +7160,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 13000,
-                                "cost_price": "",
+                                "cost_price": 13000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7173,7 +7173,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 25000,
-                                "cost_price": "",
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7185,8 +7185,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7199,7 +7199,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -7224,7 +7224,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 14000,
-                                "cost_price": "",
+                                "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7236,8 +7236,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 26000,
+                                "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7249,8 +7249,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 35998,
+                                "cost_price": 35998,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7263,7 +7263,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -7288,7 +7288,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 15000,
-                                "cost_price": "",
+                                "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7301,7 +7301,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 28000,
-                                "cost_price": "",
+                                "cost_price": 28000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7314,7 +7314,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 40000,
-                                "cost_price": "",
+                                "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7326,7 +7326,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 33000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -7369,194 +7369,7 @@ const productsData = [
                     "estanteria madera",
                     "organizador pared"
                 ],
-                "last_modified": 1786317206043,
-                "primaryCatId": "Estantes"
-            },
-            {
-                "id": "estantes-montessori-60",
-                "title": "Estantes Montessori (60 cm)",
-                "description": "Organización creativa y estilo para tus paredes.",
-                "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
-                "image": "img/migrados/decoracion/estantes-montessori/1.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "10 x 10 x 60 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 80 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 100 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 60 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 80 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 100 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 60 (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 80 (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 100 (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "Combo x3 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "estante",
-                    "estantes",
-                    "estantes montessori",
-                    "estante niños",
-                    "repisa",
-                    "repisas",
-                    "librero",
-                    "estanteria",
-                    "libros",
-                    "infantil",
-                    "colgar",
-                    "madera",
-                    "pino",
-                    "organizador infantil",
-                    "pared",
-                    "estilo montessori",
-                    "repisa de madera",
-                    "repisa de pino",
-                    "estante de madera",
-                    "estante de pino",
-                    "repisa flotante",
-                    "estante flotante",
-                    "organizador de libros",
-                    "biblioteca infantil",
-                    "librero infantil",
-                    "estante montessori",
-                    "repisa de pared pino",
-                    "repisas flotantes",
-                    "estantes flotantes",
-                    "decoracion pared",
-                    "estanteria madera",
-                    "organizador pared"
-                ],
-                "last_modified": 1786316541546,
+                "last_modified": 1786317536131,
                 "primaryCatId": "Estantes"
             }
         ]
@@ -10363,7 +10176,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 13000,
-                                "cost_price": "",
+                                "cost_price": 13000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10376,7 +10189,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 25000,
-                                "cost_price": "",
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10388,8 +10201,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10402,7 +10215,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -10427,7 +10240,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 14000,
-                                "cost_price": "",
+                                "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10439,8 +10252,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 26000,
+                                "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10452,8 +10265,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 35998,
+                                "cost_price": 35998,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10466,7 +10279,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -10491,7 +10304,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 15000,
-                                "cost_price": "",
+                                "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10504,7 +10317,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 28000,
-                                "cost_price": "",
+                                "cost_price": 28000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10517,7 +10330,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 40000,
-                                "cost_price": "",
+                                "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10529,7 +10342,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 33000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -10572,194 +10385,7 @@ const productsData = [
                     "estanteria madera",
                     "organizador pared"
                 ],
-                "last_modified": 1786317206043,
-                "primaryCatId": "Estantes"
-            },
-            {
-                "id": "estantes-montessori-60",
-                "title": "Estantes Montessori (60 cm)",
-                "description": "Organización creativa y estilo para tus paredes.",
-                "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
-                "image": "img/migrados/decoracion/estantes-montessori/1.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "10 x 10 x 60 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 80 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 100 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 60 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 80 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 100 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 60 (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 80 (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "10 x 10 x 100 (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "Combo x3 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "estante",
-                    "estantes",
-                    "estantes montessori",
-                    "estante niños",
-                    "repisa",
-                    "repisas",
-                    "librero",
-                    "estanteria",
-                    "libros",
-                    "infantil",
-                    "colgar",
-                    "madera",
-                    "pino",
-                    "organizador infantil",
-                    "pared",
-                    "estilo montessori",
-                    "repisa de madera",
-                    "repisa de pino",
-                    "estante de madera",
-                    "estante de pino",
-                    "repisa flotante",
-                    "estante flotante",
-                    "organizador de libros",
-                    "biblioteca infantil",
-                    "librero infantil",
-                    "estante montessori",
-                    "repisa de pared pino",
-                    "repisas flotantes",
-                    "estantes flotantes",
-                    "decoracion pared",
-                    "estanteria madera",
-                    "organizador pared"
-                ],
-                "last_modified": 1786316541546,
+                "last_modified": 1786317536131,
                 "primaryCatId": "Estantes"
             }
         ]
@@ -12652,7 +12278,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 13000,
-                                "cost_price": "",
+                                "cost_price": 13000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -12665,7 +12291,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 25000,
-                                "cost_price": "",
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -12677,8 +12303,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -12691,7 +12317,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -12716,7 +12342,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 14000,
-                                "cost_price": "",
+                                "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -12728,8 +12354,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 26000,
+                                "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -12741,8 +12367,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 35998,
+                                "cost_price": 35998,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -12755,7 +12381,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -12780,7 +12406,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 15000,
-                                "cost_price": "",
+                                "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -12793,7 +12419,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 28000,
-                                "cost_price": "",
+                                "cost_price": 28000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -12806,7 +12432,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 40000,
-                                "cost_price": "",
+                                "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -12818,7 +12444,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 33000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -12861,7 +12487,7 @@ const productsData = [
                     "estanteria madera",
                     "organizador pared"
                 ],
-                "last_modified": 1786317206043,
+                "last_modified": 1786317536131,
                 "primaryCatId": "Estantes"
             },
             {
