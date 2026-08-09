@@ -1071,7 +1071,7 @@ const productsData = [
                 ],
                 "last_modified": 1783635754620,
                 "primaryCatId": "sillas-sillones",
-                "views": 15
+                "views": 16
             },
             {
                 "id": "baranda-sommier-clasica",
@@ -1496,7 +1496,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 28
+                "views": 29
             },
             {
                 "id": "silla-infantil",
@@ -3483,7 +3483,7 @@ const productsData = [
                 ],
                 "last_modified": 1786057097023,
                 "primaryCatId": "Barandas",
-                "views": 3
+                "views": 4
             },
             {
                 "id": "baranda-fija-clasica",
@@ -6918,7 +6918,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786315987713,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 24
             },
             {
                 "id": "mensulas",
@@ -7100,16 +7101,16 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786236494751,
+                "last_modified": 1786316089369,
                 "primaryCatId": "muebles",
-                "views": 6
+                "views": 7
             },
             {
                 "id": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
@@ -7133,6 +7134,430 @@ const productsData = [
                 "last_modified": 1786305162256,
                 "primaryCatId": "camas-madera-pino",
                 "views": 2
+            },
+            {
+                "id": "estantes-montessori",
+                "title": "Estantes Montessori",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
+                "image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "60 CM",
+                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes-montessori/1.webp",
+                            "img/migrados/decoracion/estantes-montessori/2.webp",
+                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 60 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 13000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 60 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 60 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "80 CM",
+                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes-montessori/1.webp",
+                            "img/migrados/decoracion/estantes-montessori/2.webp",
+                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 80 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 14000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "100 cm",
+                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes-montessori/1.webp",
+                            "img/migrados/decoracion/estantes-montessori/2.webp",
+                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 100 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 15000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 28000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "estantes montessori",
+                    "estante niños",
+                    "repisa",
+                    "repisas",
+                    "librero",
+                    "estanteria",
+                    "libros",
+                    "infantil",
+                    "colgar",
+                    "madera",
+                    "pino",
+                    "organizador infantil",
+                    "pared",
+                    "estilo montessori",
+                    "repisa de madera",
+                    "repisa de pino",
+                    "estante de madera",
+                    "estante de pino",
+                    "repisa flotante",
+                    "estante flotante",
+                    "organizador de libros",
+                    "biblioteca infantil",
+                    "librero infantil",
+                    "estante montessori",
+                    "repisa de pared pino",
+                    "repisas flotantes",
+                    "estantes flotantes",
+                    "decoracion pared",
+                    "estanteria madera",
+                    "organizador pared"
+                ],
+                "last_modified": 1786317206043,
+                "primaryCatId": "Estantes"
+            },
+            {
+                "id": "estantes-montessori-60",
+                "title": "Estantes Montessori (60 cm)",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
+                "image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes-montessori/1.webp",
+                            "img/migrados/decoracion/estantes-montessori/2.webp",
+                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 60 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 60 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 60 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Combo x3 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "estantes montessori",
+                    "estante niños",
+                    "repisa",
+                    "repisas",
+                    "librero",
+                    "estanteria",
+                    "libros",
+                    "infantil",
+                    "colgar",
+                    "madera",
+                    "pino",
+                    "organizador infantil",
+                    "pared",
+                    "estilo montessori",
+                    "repisa de madera",
+                    "repisa de pino",
+                    "estante de madera",
+                    "estante de pino",
+                    "repisa flotante",
+                    "estante flotante",
+                    "organizador de libros",
+                    "biblioteca infantil",
+                    "librero infantil",
+                    "estante montessori",
+                    "repisa de pared pino",
+                    "repisas flotantes",
+                    "estantes flotantes",
+                    "decoracion pared",
+                    "estanteria madera",
+                    "organizador pared"
+                ],
+                "last_modified": 1786316541546,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -8744,7 +9169,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 28
+                "views": 29
             },
             {
                 "id": "especiero",
@@ -9719,7 +10144,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786315987713,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 24
             },
             {
                 "id": "mensulas",
@@ -9901,16 +10327,440 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786236494751,
+                "last_modified": 1786316089369,
                 "primaryCatId": "muebles",
-                "views": 6
+                "views": 7
+            },
+            {
+                "id": "estantes-montessori",
+                "title": "Estantes Montessori",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
+                "image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "60 CM",
+                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes-montessori/1.webp",
+                            "img/migrados/decoracion/estantes-montessori/2.webp",
+                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 60 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 13000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 60 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 60 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "80 CM",
+                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes-montessori/1.webp",
+                            "img/migrados/decoracion/estantes-montessori/2.webp",
+                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 80 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 14000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "100 cm",
+                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes-montessori/1.webp",
+                            "img/migrados/decoracion/estantes-montessori/2.webp",
+                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 100 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 15000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 28000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "estantes montessori",
+                    "estante niños",
+                    "repisa",
+                    "repisas",
+                    "librero",
+                    "estanteria",
+                    "libros",
+                    "infantil",
+                    "colgar",
+                    "madera",
+                    "pino",
+                    "organizador infantil",
+                    "pared",
+                    "estilo montessori",
+                    "repisa de madera",
+                    "repisa de pino",
+                    "estante de madera",
+                    "estante de pino",
+                    "repisa flotante",
+                    "estante flotante",
+                    "organizador de libros",
+                    "biblioteca infantil",
+                    "librero infantil",
+                    "estante montessori",
+                    "repisa de pared pino",
+                    "repisas flotantes",
+                    "estantes flotantes",
+                    "decoracion pared",
+                    "estanteria madera",
+                    "organizador pared"
+                ],
+                "last_modified": 1786317206043,
+                "primaryCatId": "Estantes"
+            },
+            {
+                "id": "estantes-montessori-60",
+                "title": "Estantes Montessori (60 cm)",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
+                "image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes-montessori/1.webp",
+                            "img/migrados/decoracion/estantes-montessori/2.webp",
+                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 60 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 60 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 60 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "Combo x3 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "estantes montessori",
+                    "estante niños",
+                    "repisa",
+                    "repisas",
+                    "librero",
+                    "estanteria",
+                    "libros",
+                    "infantil",
+                    "colgar",
+                    "madera",
+                    "pino",
+                    "organizador infantil",
+                    "pared",
+                    "estilo montessori",
+                    "repisa de madera",
+                    "repisa de pino",
+                    "estante de madera",
+                    "estante de pino",
+                    "repisa flotante",
+                    "estante flotante",
+                    "organizador de libros",
+                    "biblioteca infantil",
+                    "librero infantil",
+                    "estante montessori",
+                    "repisa de pared pino",
+                    "repisas flotantes",
+                    "estantes flotantes",
+                    "decoracion pared",
+                    "estanteria madera",
+                    "organizador pared"
+                ],
+                "last_modified": 1786316541546,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -11484,7 +12334,7 @@ const productsData = [
                 ],
                 "last_modified": 1786057097023,
                 "primaryCatId": "Barandas",
-                "views": 3
+                "views": 4
             },
             {
                 "id": "baranda-reforzada-geriatricos",
@@ -11772,1135 +12622,10 @@ const productsData = [
         "rubro": "carpinteria"
     },
     {
-        "id": "cunas-madera-pino",
-        "name": "Cunas",
-        "image": "img/cunas/portada-imagen.webp",
-        "rubro": "carpinteria",
-        "order": 6,
-        "products": [
-            {
-                "id": "Colecho_retro_madera",
-                "title": "Cuna: Colecho Retro",
-                "description": "",
-                "image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
-                        "images_list": [
-                            "img/cunas/colecho-retro/1783750658828-imagen.webp",
-                            "img/cunas/colecho-retro/1783750658998-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cuna",
-                    "cunas",
-                    "cunita",
-                    "cunitas",
-                    "kuna",
-                    "kunas",
-                    "bebe",
-                    "bebes",
-                    "infantil",
-                    "niño",
-                    "niños",
-                    "madera",
-                    "pino",
-                    "madera maciza",
-                    "mueble infantil",
-                    "colecho",
-                    "colecho retro",
-                    "colecho vintage",
-                    "colecho madera",
-                    "colecho pino",
-                    "cuna colecho",
-                    "mini cuna",
-                    "moises",
-                    "moises colecho",
-                    "colecho seguro",
-                    "colecho apego",
-                    "apego seguro",
-                    "colecho pegado a la cama",
-                    "colecho sommier",
-                    "colecho regulable",
-                    "retro",
-                    "vintage",
-                    "estilo retro",
-                    "estilo vintage",
-                    "nordico",
-                    "diseño retro",
-                    "cuna retro",
-                    "cuna vintage",
-                    "cuna nordica",
-                    "decoracion bebe",
-                    "nene",
-                    "nena",
-                    "recien nacido",
-                    "cuna de apego",
-                    "moises de pino",
-                    "moises madera",
-                    "colecho baranda",
-                    "cuna baranda",
-                    "dormitorio bebe",
-                    "habitacion bebe",
-                    "cuna natural",
-                    "cuna rustica",
-                    "cuna de madera",
-                    "cuna de pino",
-                    "cunas de madera",
-                    "cunas de pino"
-                ],
-                "last_modified": 1784411533338,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 1
-            },
-            {
-                "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
-                "title": "Cuna: Corral - Colecho con doble",
-                "description": "Corral - Colecho con doble posición de parrilla",
-                "image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
-                        "images_list": [
-                            "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
-                            "img/cunas/corral---colecho-con-doble/1783750731679-imagen.webp",
-                            "img/cunas/corral---colecho-con-doble/1783750731827-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cuna",
-                    "cunas",
-                    "cunita",
-                    "cunitas",
-                    "kuna",
-                    "kunas",
-                    "bebe",
-                    "bebes",
-                    "infantil",
-                    "niño",
-                    "niños",
-                    "madera",
-                    "pino",
-                    "madera maciza",
-                    "mueble infantil",
-                    "corral",
-                    "corralito",
-                    "corral bebe",
-                    "corralito bebe",
-                    "corral madera",
-                    "corral pino",
-                    "cuna corral",
-                    "corral colecho",
-                    "corral ajustable",
-                    "parque de juegos",
-                    "corral seguro",
-                    "corral niños",
-                    "corral grande",
-                    "corral funcional",
-                    "parrilla regulable",
-                    "colecho",
-                    "cuna colecho",
-                    "colecho madera",
-                    "colecho pino",
-                    "colecho regulable",
-                    "colecho ajustable",
-                    "doble posicion",
-                    "cuna funcional",
-                    "parrilla doble",
-                    "altura regulable",
-                    "nene",
-                    "nena",
-                    "recien nacido",
-                    "cuna de apego",
-                    "moises de pino",
-                    "moises madera",
-                    "colecho baranda",
-                    "cuna baranda",
-                    "dormitorio bebe",
-                    "habitacion bebe",
-                    "cuna natural",
-                    "cuna rustica",
-                    "cuna de madera",
-                    "cuna de pino",
-                    "cunas de madera",
-                    "cunas de pino"
-                ],
-                "last_modified": 1784411542681,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 0
-            },
-            {
-                "id": "Eco-fija-100x50cm-Modelo-unico",
-                "title": "Cuna: Eco fija - Modelo único",
-                "description": "Eco fija - 100 x 50 cm - Modelo único",
-                "image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
-                        "images_list": [
-                            "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cuna",
-                    "cunas",
-                    "cunita",
-                    "cunitas",
-                    "kuna",
-                    "kunas",
-                    "bebe",
-                    "bebes",
-                    "infantil",
-                    "niño",
-                    "niños",
-                    "madera",
-                    "pino",
-                    "madera maciza",
-                    "mueble infantil",
-                    "cuna eco",
-                    "cuna economica",
-                    "cuna barata",
-                    "cuna fija",
-                    "cuna simple",
-                    "cuna clasica",
-                    "cuna standard",
-                    "cuna pino economica",
-                    "cuna segura",
-                    "cuna pequeña",
-                    "cuna funcional",
-                    "cuna portatil",
-                    "cuna liviana",
-                    "cuna fija pino",
-                    "cuna eco fija",
-                    "100x50",
-                    "100x50cm",
-                    "modelo unico",
-                    "cuna chiquita",
-                    "cuna mediana",
-                    "cuna barata madera",
-                    "cuna barata pino",
-                    "moises grande",
-                    "cuna de pino barata",
-                    "cuna economica madera",
-                    "nene",
-                    "nena",
-                    "recien nacido",
-                    "cuna de apego",
-                    "moises de pino",
-                    "moises madera",
-                    "colecho baranda",
-                    "cuna baranda",
-                    "dormitorio bebe",
-                    "habitacion bebe",
-                    "cuna natural",
-                    "cuna rustica",
-                    "cuna de madera",
-                    "cuna de pino",
-                    "cunas de madera",
-                    "cunas de pino"
-                ],
-                "last_modified": 1784411547881,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 1
-            },
-            {
-                "id": "Eco-rebatible",
-                "title": "Cuna: Eco rebatible",
-                "description": "",
-                "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
-                        "images_list": [
-                            "img/cunas/eco-rebatible/1783750834642-imagen.webp",
-                            "img/cunas/eco-rebatible/1783750834793-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Eco Revatible",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 117300,
-                                "cost_price": 69000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cuna",
-                    "cunas",
-                    "cunita",
-                    "cunitas",
-                    "kuna",
-                    "kunas",
-                    "bebe",
-                    "bebes",
-                    "infantil",
-                    "niño",
-                    "niños",
-                    "madera",
-                    "pino",
-                    "maciza",
-                    "mueble",
-                    "moises",
-                    "colecho",
-                    "retro",
-                    "corral",
-                    "corralito",
-                    "rebatible",
-                    "baranda",
-                    "cajones",
-                    "cajonera",
-                    "romano",
-                    "cuna de pino",
-                    "cuna de madera",
-                    "cuna para bebe",
-                    "cunas de madera",
-                    "cunas de pino",
-                    "colecho retro",
-                    "colecho vintage",
-                    "corralito de madera",
-                    "cuna con cajones",
-                    "cuna funcional",
-                    "cuna de apego",
-                    "apego seguro",
-                    "habitacion de bebe",
-                    "dormitorio infantil",
-                    "cuna romana",
-                    "cuna sol",
-                    "cuna rebatible",
-                    "baranda rebatible",
-                    "cuna funcional cajones",
-                    "cuna de madera maciza",
-                    "cunas funcionales",
-                    "mini cuna",
-                    "moises de pino",
-                    "corral de madera",
-                    "corral funcional"
-                ],
-                "last_modified": 1784430151878,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 9
-            },
-            {
-                "id": "cuna-Rebatible-cajones",
-                "title": "Cuna: rebatible con cajones",
-                "description": "",
-                "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
-                        "images_list": [
-                            "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
-                            "img/cunas/cuna-rebatible-con-cajones/1783750894277-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cuna",
-                    "cunas",
-                    "cunita",
-                    "cunitas",
-                    "kuna",
-                    "kunas",
-                    "bebe",
-                    "bebes",
-                    "infantil",
-                    "niño",
-                    "niños",
-                    "madera",
-                    "pino",
-                    "madera maciza",
-                    "mueble infantil",
-                    "cuna cajones",
-                    "cuna con cajonera",
-                    "cuna organizadora",
-                    "cuna guardado",
-                    "cuna rebatible",
-                    "baranda rebatible",
-                    "cuna baranda rebatible",
-                    "cuna cajones pino",
-                    "cuna cajones madera",
-                    "cuna funcional",
-                    "cuna funcional cajones",
-                    "cuna funcional pino",
-                    "cuna multifuncional",
-                    "cuna cajonera",
-                    "cuna guardado abajo",
-                    "cajones integrados",
-                    "cajonera de pino",
-                    "cajonera de madera",
-                    "cuna baranda movil",
-                    "cuna baranda volcable",
-                    "cuna fuerte",
-                    "cuna resistente",
-                    "mueble cuna cajones",
-                    "guardado de ropa bebe",
-                    "organizador cuna",
-                    "nene",
-                    "nena",
-                    "recien nacido",
-                    "cuna de apego",
-                    "moises de pino",
-                    "moises madera",
-                    "colecho baranda",
-                    "cuna baranda",
-                    "dormitorio bebe",
-                    "habitacion bebe",
-                    "cuna natural",
-                    "cuna rustica",
-                    "cuna de madera",
-                    "cuna de pino",
-                    "cunas de madera",
-                    "cunas de pino"
-                ],
-                "last_modified": 1784411560841,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 0
-            },
-            {
-                "id": "Romana-Rebatible-Cajones",
-                "title": "Cuna: Romana - Rebatible - Cajones",
-                "description": "",
-                "image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
-                        "images_list": [
-                            "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
-                            "img/cunas/romana---rebatible---cajones/1783750938079-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cuna",
-                    "cunas",
-                    "cunita",
-                    "cunitas",
-                    "kuna",
-                    "kunas",
-                    "bebe",
-                    "bebes",
-                    "infantil",
-                    "niño",
-                    "niños",
-                    "madera",
-                    "pino",
-                    "madera maciza",
-                    "mueble infantil",
-                    "cuna romana",
-                    "cuna cajones",
-                    "cuna con cajonera",
-                    "cuna romana rebatible",
-                    "cuna rebatible",
-                    "baranda rebatible",
-                    "cuna baranda rebatible",
-                    "cuna cajones pino",
-                    "cuna cajones madera",
-                    "cuna funcional",
-                    "cuna funcional cajones",
-                    "cuna funcional pino",
-                    "cuna romana cajonera",
-                    "cuna guardado abajo",
-                    "estilo romano",
-                    "cuna romana madera",
-                    "cuna romana pino",
-                    "cajonera romana",
-                    "cuna baranda movil",
-                    "cuna baranda volcable",
-                    "cuna fuerte",
-                    "cuna resistente",
-                    "mueble cuna romana",
-                    "cuna decorativa",
-                    "cuna diseño clasico",
-                    "nene",
-                    "nena",
-                    "recien nacido",
-                    "cuna de apego",
-                    "moises de pino",
-                    "moises madera",
-                    "colecho baranda",
-                    "cuna baranda",
-                    "dormitorio bebe",
-                    "habitacion bebe",
-                    "cuna natural",
-                    "cuna rustica",
-                    "cuna de madera",
-                    "cuna de pino",
-                    "cunas de madera",
-                    "cunas de pino"
-                ],
-                "last_modified": 1784411566442,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 1
-            },
-            {
-                "id": "Romana - Rebatible - Cajones - en XX",
-                "title": "Cuna: Romana - Rebatible - Cajones - en XX",
-                "description": "",
-                "image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
-                        "images_list": [
-                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
-                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962973-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cuna",
-                    "cunas",
-                    "cunita",
-                    "cunitas",
-                    "kuna",
-                    "kunas",
-                    "bebe",
-                    "bebes",
-                    "infantil",
-                    "niño",
-                    "niños",
-                    "madera",
-                    "pino",
-                    "madera maciza",
-                    "mueble infantil",
-                    "cuna romana",
-                    "cuna romana en xx",
-                    "cuna cajones",
-                    "cuna con cajonera",
-                    "cuna rebatible",
-                    "baranda rebatible",
-                    "cuna baranda rebatible",
-                    "cuna cajones pino",
-                    "cuna cajones madera",
-                    "cuna funcional",
-                    "cuna funcional cajones",
-                    "cuna funcional pino",
-                    "cuna romana cajonera",
-                    "cuna guardado abajo",
-                    "diseño en xx",
-                    "detalles en xx",
-                    "cuna romana xx",
-                    "cajonera romana xx",
-                    "cuna baranda movil",
-                    "cuna baranda volcable",
-                    "cuna fuerte",
-                    "cuna resistente",
-                    "mueble cuna romana xx",
-                    "cuna diseño en cruz",
-                    "cuna moderna",
-                    "nene",
-                    "nena",
-                    "recien nacido",
-                    "cuna de apego",
-                    "moises de pino",
-                    "moises madera",
-                    "colecho baranda",
-                    "cuna baranda",
-                    "dormitorio bebe",
-                    "habitacion bebe",
-                    "cuna natural",
-                    "cuna rustica",
-                    "cuna de madera",
-                    "cuna de pino",
-                    "cunas de madera",
-                    "cunas de pino"
-                ],
-                "last_modified": 1784411576658,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 0
-            },
-            {
-                "id": "Sol - Rebatible - Cajones",
-                "title": "Cuna: Sol - Rebatible - Cajones",
-                "description": "",
-                "image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
-                        "images_list": [
-                            "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
-                            "img/cunas/sol---rebatible---cajones/1783750987098-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cuna",
-                    "cunas",
-                    "cunita",
-                    "cunitas",
-                    "kuna",
-                    "kunas",
-                    "bebe",
-                    "bebes",
-                    "infantil",
-                    "niño",
-                    "niños",
-                    "madera",
-                    "pino",
-                    "madera maciza",
-                    "mueble infantil",
-                    "cuna sol",
-                    "cuna cajones",
-                    "cuna con cajonera",
-                    "cuna sol rebatible",
-                    "cuna rebatible",
-                    "baranda rebatible",
-                    "cuna baranda rebatible",
-                    "cuna cajones pino",
-                    "cuna cajones madera",
-                    "cuna funcional",
-                    "cuna funcional cajones",
-                    "cuna funcional pino",
-                    "cuna sol cajonera",
-                    "cuna guardado abajo",
-                    "estilo sol",
-                    "cuna sol madera",
-                    "cuna sol pino",
-                    "cajonera sol",
-                    "cuna baranda movil",
-                    "cuna baranda volcable",
-                    "cuna fuerte",
-                    "cuna resistente",
-                    "mueble cuna sol",
-                    "cuna decorativa",
-                    "cuna diseño sol",
-                    "nene",
-                    "nena",
-                    "recien nacido",
-                    "cuna de apego",
-                    "moises de pino",
-                    "moises madera",
-                    "colecho baranda",
-                    "cuna baranda",
-                    "dormitorio bebe",
-                    "habitacion bebe",
-                    "cuna natural",
-                    "cuna rustica",
-                    "cuna de madera",
-                    "cuna de pino",
-                    "cunas de madera",
-                    "cunas de pino"
-                ],
-                "last_modified": 1784411571657,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 2
-            }
-        ],
-        "visible": true
-    },
-    {
-        "id": "camas-madera-pino",
-        "name": "Camas para niños",
-        "image": "img/camas-para-ninos/portada-imagen.webp",
-        "rubro": "carpinteria",
-        "order": 7,
-        "products": [
-            {
-                "id": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
-                "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
-                "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
-                "image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
-                        "images_list": [
-                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
-                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161963-imagen.webp",
-                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305162112-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786305162256,
-                "primaryCatId": "camas-madera-pino",
-                "views": 2
-            }
-        ]
-    },
-    {
-        "id": "muebles",
-        "name": "Escaleras",
-        "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 8,
-        "products": [
-            {
-                "id": "escaleras",
-                "title": "Escaleras para cama",
-                "description": "Seguridad y firmeza absoluta para alcanzar cada nivel.",
-                "image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
-                        "images_list": [
-                            "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
-                            "img/escaleras/escaleras-para-cama/1780288089987-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Inclinada 150 a 200 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 55000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "Vertical 150 a 200 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 50000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "Inclinada 100 a 150 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "Vertical 100 a 150 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "Inclinada 0 a 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "Vertical 0 a 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 30000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "escalera",
-                    "escaleras",
-                    "escaleras pintor",
-                    "escalera madera",
-                    "escalera pino",
-                    "subir",
-                    "alcanzar",
-                    "plegable",
-                    "tijera",
-                    "pintor",
-                    "decorativa",
-                    "biblioteca",
-                    "escalones",
-                    "escalon",
-                    "peldaños",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "last_modified": 1783477948902,
-                "primaryCatId": "muebles",
-                "views": 10
-            },
-            {
-                "id": "escalera-altillo",
-                "title": "Escaleras para altillos",
-                "description": "",
-                "image": "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
-                        "images_list": [
-                            "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
-                            "img/escaleras/escaleras-para-altillos/1780287625629-imagen.webp"
-                        ],
-                        "medidas_variants": []
-                    }
-                ],
-                "views": 2,
-                "tags": [
-                    "escalera",
-                    "escaleras",
-                    "escalera altillo",
-                    "escalera techo",
-                    "escalera madera",
-                    "escalera pino",
-                    "subir",
-                    "alcanzar",
-                    "altillo",
-                    "techo",
-                    "fija",
-                    "escalones",
-                    "peldaños",
-                    "acceso altillo",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ]
-            },
-            {
-                "id": "Banco Escalera De Pino 3 Escalones",
-                "title": "Banco Escalera De Pino 3 Escalones",
-                "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
-                "image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
-                        "images_list": [
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275705-imagen.webp",
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275851-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "60 x 40 x 35 cm",
-                                "link": "https://www.mercadolibre.com.ar/banco-escalera-de-pino-3-escalones/up/MLAU3289044905",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786236494751,
-                "primaryCatId": "muebles",
-                "views": 6
-            }
-        ],
-        "rubro": "carpinteria"
-    },
-    {
-        "id": "Steps",
-        "name": "Steps / Cajones",
-        "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 9,
-        "products": [
-            {
-                "id": "steps---cajones",
-                "title": "Steps / Cajones",
-                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
-                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/migrados/otros/steps---cajones/stepscajones.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
-                        "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50x28x9",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002287-step-funcional-plataforma-fitness-cajon-50x28x9-cm-_JM",
-                                "default": true,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "50x28x16",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2072143834-step-funcional-plataforma-fitness-cajon-50x28x16-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "50x28x23",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1372002007-step-plataforma-fitness-50x28x23-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "50x50x9",
-                                "link": "https://www.mercadolibre.com.ar/step-madera-la-tarima-50x50-cm-plataforma-fitness/up/MLAU256659868",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40x28x9",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40x28x16",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40x28x23",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40x28x30",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30x28x9",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30x28x16",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30x28x23",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "steps",
-                    "cajones",
-                    "mil usos",
-                    "madera",
-                    "cajon resistente",
-                    "cajon para gimnasia",
-                    "gym",
-                    "resistente",
-                    "escalera",
-                    "escaleras",
-                    "escaloncitos",
-                    "escalon",
-                    "escalones",
-                    "cajon",
-                    "pino",
-                    "subir",
-                    "alcanzar",
-                    "banquito",
-                    "taburete",
-                    "banqueta",
-                    "cajonera steps",
-                    "organizador",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "last_modified": 1782086406799,
-                "primaryCatId": "Steps",
-                "views": 1
-            },
-            {
-                "id": "cajones-profesional",
-                "title": "Steps / Cajones / Profesionales",
-                "description": "Escalón de madera multiusos para ejercicios y más",
-                "image": "img/steps---cajones/steps---cajones---profesionales/1780590450688-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/steps---cajones/steps---cajones---profesionales/1780590450688-imagen.webp",
-                        "images_list": [
-                            "img/steps---cajones/steps---cajones---profesionales/1780590450688-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1780589892571-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1780589892697-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1780589892809-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1782417150808-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1782417150969-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "120 x 60 x 20 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "70 x 28 x 12 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
-                                "default": true,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "60 x 28 x 9",
-                                "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "cajon",
-                    "cajones",
-                    "cajon profesional",
-                    "cajon madera",
-                    "cajon pino",
-                    "organizador",
-                    "guardado",
-                    "almacenamiento",
-                    "caja madera",
-                    "caja pino",
-                    "cajonera",
-                    "cajonera profesional",
-                    "cajon de pino",
-                    "cajon de madera",
-                    "organizador profesional",
-                    "cajonera de madera",
-                    "cajonera de pino",
-                    "caja de pino profesional",
-                    "caja de madera profesional",
-                    "caja de almacenamiento"
-                ],
-                "last_modified": 1782417151111,
-                "primaryCatId": "Steps",
-                "views": 1
-            }
-        ]
-    },
-    {
         "id": "Estantes",
         "name": "Estantes",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 10,
+        "order": 6,
         "products": [
             {
                 "id": "estantes-montessori",
@@ -12910,7 +12635,7 @@ const productsData = [
                 "image": "img/migrados/decoracion/estantes-montessori/1.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Natural",
+                        "acabado_name": "60 CM",
                         "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
                         "images_list": [
                             "img/migrados/decoracion/estantes-montessori/1.webp",
@@ -12922,73 +12647,184 @@ const productsData = [
                                 "medida": "10 x 10 x 60 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
                                 "default": true,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "10 x 10 x 80 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "10 x 10 x 100 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 13000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
                                 "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "10 x 10 x 80 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "10 x 10 x 100 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
                                 "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "80 CM",
+                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes-montessori/1.webp",
+                            "img/migrados/decoracion/estantes-montessori/2.webp",
+                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 80 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 14000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
                                 "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "100 cm",
+                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/migrados/decoracion/estantes-montessori/1.webp",
+                            "img/migrados/decoracion/estantes-montessori/2.webp",
+                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 100 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 15000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 28000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
                                 "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             },
                             {
-                                "medida": "Combo x3 (1 Unidad)",
+                                "medida": "Combo x3 (60, 80, 100cm)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
                                 "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -13025,9 +12861,8 @@ const productsData = [
                     "estanteria madera",
                     "organizador pared"
                 ],
-                "last_modified": 1782087372455,
-                "primaryCatId": "Estantes",
-                "views": 8
+                "last_modified": 1786317206043,
+                "primaryCatId": "Estantes"
             },
             {
                 "id": "hexagonales",
@@ -14065,7 +13900,1134 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786315987713,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 24
+            }
+        ],
+        "rubro": "carpinteria"
+    },
+    {
+        "id": "cunas-madera-pino",
+        "name": "Cunas",
+        "image": "img/cunas/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 7,
+        "products": [
+            {
+                "id": "Colecho_retro_madera",
+                "title": "Cuna: Colecho Retro",
+                "description": "",
+                "image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                        "images_list": [
+                            "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                            "img/cunas/colecho-retro/1783750658998-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "colecho",
+                    "colecho retro",
+                    "colecho vintage",
+                    "colecho madera",
+                    "colecho pino",
+                    "cuna colecho",
+                    "mini cuna",
+                    "moises",
+                    "moises colecho",
+                    "colecho seguro",
+                    "colecho apego",
+                    "apego seguro",
+                    "colecho pegado a la cama",
+                    "colecho sommier",
+                    "colecho regulable",
+                    "retro",
+                    "vintage",
+                    "estilo retro",
+                    "estilo vintage",
+                    "nordico",
+                    "diseño retro",
+                    "cuna retro",
+                    "cuna vintage",
+                    "cuna nordica",
+                    "decoracion bebe",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1784411533338,
+                "primaryCatId": "cunas-madera-pino",
+                "views": 1
+            },
+            {
+                "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
+                "title": "Cuna: Corral - Colecho con doble",
+                "description": "Corral - Colecho con doble posición de parrilla",
+                "image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                        "images_list": [
+                            "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                            "img/cunas/corral---colecho-con-doble/1783750731679-imagen.webp",
+                            "img/cunas/corral---colecho-con-doble/1783750731827-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "corral",
+                    "corralito",
+                    "corral bebe",
+                    "corralito bebe",
+                    "corral madera",
+                    "corral pino",
+                    "cuna corral",
+                    "corral colecho",
+                    "corral ajustable",
+                    "parque de juegos",
+                    "corral seguro",
+                    "corral niños",
+                    "corral grande",
+                    "corral funcional",
+                    "parrilla regulable",
+                    "colecho",
+                    "cuna colecho",
+                    "colecho madera",
+                    "colecho pino",
+                    "colecho regulable",
+                    "colecho ajustable",
+                    "doble posicion",
+                    "cuna funcional",
+                    "parrilla doble",
+                    "altura regulable",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1784411542681,
+                "primaryCatId": "cunas-madera-pino",
+                "views": 0
+            },
+            {
+                "id": "Eco-fija-100x50cm-Modelo-unico",
+                "title": "Cuna: Eco fija - Modelo único",
+                "description": "Eco fija - 100 x 50 cm - Modelo único",
+                "image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+                        "images_list": [
+                            "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna eco",
+                    "cuna economica",
+                    "cuna barata",
+                    "cuna fija",
+                    "cuna simple",
+                    "cuna clasica",
+                    "cuna standard",
+                    "cuna pino economica",
+                    "cuna segura",
+                    "cuna pequeña",
+                    "cuna funcional",
+                    "cuna portatil",
+                    "cuna liviana",
+                    "cuna fija pino",
+                    "cuna eco fija",
+                    "100x50",
+                    "100x50cm",
+                    "modelo unico",
+                    "cuna chiquita",
+                    "cuna mediana",
+                    "cuna barata madera",
+                    "cuna barata pino",
+                    "moises grande",
+                    "cuna de pino barata",
+                    "cuna economica madera",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1784411547881,
+                "primaryCatId": "cunas-madera-pino",
+                "views": 1
+            },
+            {
+                "id": "Eco-rebatible",
+                "title": "Cuna: Eco rebatible",
+                "description": "",
+                "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+                        "images_list": [
+                            "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+                            "img/cunas/eco-rebatible/1783750834793-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Eco Revatible",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 117300,
+                                "cost_price": 69000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "maciza",
+                    "mueble",
+                    "moises",
+                    "colecho",
+                    "retro",
+                    "corral",
+                    "corralito",
+                    "rebatible",
+                    "baranda",
+                    "cajones",
+                    "cajonera",
+                    "romano",
+                    "cuna de pino",
+                    "cuna de madera",
+                    "cuna para bebe",
+                    "cunas de madera",
+                    "cunas de pino",
+                    "colecho retro",
+                    "colecho vintage",
+                    "corralito de madera",
+                    "cuna con cajones",
+                    "cuna funcional",
+                    "cuna de apego",
+                    "apego seguro",
+                    "habitacion de bebe",
+                    "dormitorio infantil",
+                    "cuna romana",
+                    "cuna sol",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna funcional cajones",
+                    "cuna de madera maciza",
+                    "cunas funcionales",
+                    "mini cuna",
+                    "moises de pino",
+                    "corral de madera",
+                    "corral funcional"
+                ],
+                "last_modified": 1784430151878,
+                "primaryCatId": "cunas-madera-pino",
+                "views": 9
+            },
+            {
+                "id": "cuna-Rebatible-cajones",
+                "title": "Cuna: rebatible con cajones",
+                "description": "",
+                "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                        "images_list": [
+                            "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                            "img/cunas/cuna-rebatible-con-cajones/1783750894277-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna organizadora",
+                    "cuna guardado",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna multifuncional",
+                    "cuna cajonera",
+                    "cuna guardado abajo",
+                    "cajones integrados",
+                    "cajonera de pino",
+                    "cajonera de madera",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna cajones",
+                    "guardado de ropa bebe",
+                    "organizador cuna",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1784411560841,
+                "primaryCatId": "cunas-madera-pino",
+                "views": 0
+            },
+            {
+                "id": "Romana-Rebatible-Cajones",
+                "title": "Cuna: Romana - Rebatible - Cajones",
+                "description": "",
+                "image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                        "images_list": [
+                            "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                            "img/cunas/romana---rebatible---cajones/1783750938079-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna romana",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna romana rebatible",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna romana cajonera",
+                    "cuna guardado abajo",
+                    "estilo romano",
+                    "cuna romana madera",
+                    "cuna romana pino",
+                    "cajonera romana",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna romana",
+                    "cuna decorativa",
+                    "cuna diseño clasico",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1784411566442,
+                "primaryCatId": "cunas-madera-pino",
+                "views": 1
+            },
+            {
+                "id": "Romana - Rebatible - Cajones - en XX",
+                "title": "Cuna: Romana - Rebatible - Cajones - en XX",
+                "description": "",
+                "image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                        "images_list": [
+                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962973-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna romana",
+                    "cuna romana en xx",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna romana cajonera",
+                    "cuna guardado abajo",
+                    "diseño en xx",
+                    "detalles en xx",
+                    "cuna romana xx",
+                    "cajonera romana xx",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna romana xx",
+                    "cuna diseño en cruz",
+                    "cuna moderna",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1784411576658,
+                "primaryCatId": "cunas-madera-pino",
+                "views": 0
+            },
+            {
+                "id": "Sol - Rebatible - Cajones",
+                "title": "Cuna: Sol - Rebatible - Cajones",
+                "description": "",
+                "image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                        "images_list": [
+                            "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                            "img/cunas/sol---rebatible---cajones/1783750987098-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cuna",
+                    "cunas",
+                    "cunita",
+                    "cunitas",
+                    "kuna",
+                    "kunas",
+                    "bebe",
+                    "bebes",
+                    "infantil",
+                    "niño",
+                    "niños",
+                    "madera",
+                    "pino",
+                    "madera maciza",
+                    "mueble infantil",
+                    "cuna sol",
+                    "cuna cajones",
+                    "cuna con cajonera",
+                    "cuna sol rebatible",
+                    "cuna rebatible",
+                    "baranda rebatible",
+                    "cuna baranda rebatible",
+                    "cuna cajones pino",
+                    "cuna cajones madera",
+                    "cuna funcional",
+                    "cuna funcional cajones",
+                    "cuna funcional pino",
+                    "cuna sol cajonera",
+                    "cuna guardado abajo",
+                    "estilo sol",
+                    "cuna sol madera",
+                    "cuna sol pino",
+                    "cajonera sol",
+                    "cuna baranda movil",
+                    "cuna baranda volcable",
+                    "cuna fuerte",
+                    "cuna resistente",
+                    "mueble cuna sol",
+                    "cuna decorativa",
+                    "cuna diseño sol",
+                    "nene",
+                    "nena",
+                    "recien nacido",
+                    "cuna de apego",
+                    "moises de pino",
+                    "moises madera",
+                    "colecho baranda",
+                    "cuna baranda",
+                    "dormitorio bebe",
+                    "habitacion bebe",
+                    "cuna natural",
+                    "cuna rustica",
+                    "cuna de madera",
+                    "cuna de pino",
+                    "cunas de madera",
+                    "cunas de pino"
+                ],
+                "last_modified": 1784411571657,
+                "primaryCatId": "cunas-madera-pino",
+                "views": 2
+            }
+        ],
+        "visible": true
+    },
+    {
+        "id": "camas-madera-pino",
+        "name": "Camas para niños",
+        "image": "img/camas-para-ninos/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 8,
+        "products": [
+            {
+                "id": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+                "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+                "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
+                "image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                        "images_list": [
+                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161963-imagen.webp",
+                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305162112-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786305162256,
+                "primaryCatId": "camas-madera-pino",
+                "views": 2
+            }
+        ]
+    },
+    {
+        "id": "muebles",
+        "name": "Escaleras",
+        "image": "img/escaleras/portada-1780288150186-imagen.webp",
+        "order": 9,
+        "products": [
+            {
+                "id": "escaleras",
+                "title": "Escaleras para cama",
+                "description": "Seguridad y firmeza absoluta para alcanzar cada nivel.",
+                "image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                        "images_list": [
+                            "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                            "img/escaleras/escaleras-para-cama/1780288089987-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Inclinada 150 a 200 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Vertical 150 a 200 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Inclinada 100 a 150 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Vertical 100 a 150 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Inclinada 0 a 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "Vertical 0 a 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "escalera",
+                    "escaleras",
+                    "escaleras pintor",
+                    "escalera madera",
+                    "escalera pino",
+                    "subir",
+                    "alcanzar",
+                    "plegable",
+                    "tijera",
+                    "pintor",
+                    "decorativa",
+                    "biblioteca",
+                    "escalones",
+                    "escalon",
+                    "peldaños",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "last_modified": 1783477948902,
+                "primaryCatId": "muebles",
+                "views": 10
+            },
+            {
+                "id": "escalera-altillo",
+                "title": "Escaleras para altillos",
+                "description": "",
+                "image": "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
+                        "images_list": [
+                            "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
+                            "img/escaleras/escaleras-para-altillos/1780287625629-imagen.webp"
+                        ],
+                        "medidas_variants": []
+                    }
+                ],
+                "views": 2,
+                "tags": [
+                    "escalera",
+                    "escaleras",
+                    "escalera altillo",
+                    "escalera techo",
+                    "escalera madera",
+                    "escalera pino",
+                    "subir",
+                    "alcanzar",
+                    "altillo",
+                    "techo",
+                    "fija",
+                    "escalones",
+                    "peldaños",
+                    "acceso altillo",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ]
+            },
+            {
+                "id": "Banco Escalera De Pino 3 Escalones",
+                "title": "Banco Escalera De Pino 3 Escalones",
+                "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
+                "image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                        "images_list": [
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275705-imagen.webp",
+                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275851-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 40 x 35 cm",
+                                "link": "https://www.mercadolibre.com.ar/banco-escalera-de-pino-3-escalones/up/MLAU3289044905",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786316089369,
+                "primaryCatId": "muebles",
+                "views": 7
+            }
+        ],
+        "rubro": "carpinteria"
+    },
+    {
+        "id": "Steps",
+        "name": "Steps / Cajones",
+        "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
+        "order": 10,
+        "products": [
+            {
+                "id": "steps---cajones",
+                "title": "Steps / Cajones",
+                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
+                "image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x28x9",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002287-step-funcional-plataforma-fitness-cajon-50x28x9-cm-_JM",
+                                "default": true,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "50x28x16",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2072143834-step-funcional-plataforma-fitness-cajon-50x28x16-cm-_JM",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "50x28x23",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1372002007-step-plataforma-fitness-50x28x23-cm-_JM",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "50x50x9",
+                                "link": "https://www.mercadolibre.com.ar/step-madera-la-tarima-50x50-cm-plataforma-fitness/up/MLAU256659868",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "40x28x9",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "40x28x16",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "40x28x23",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "40x28x30",
+                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "30x28x9",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "30x28x16",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "30x28x23",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "last_modified": 1782086406799,
+                "primaryCatId": "Steps",
+                "views": 1
+            },
+            {
+                "id": "cajones-profesional",
+                "title": "Steps / Cajones / Profesionales",
+                "description": "Escalón de madera multiusos para ejercicios y más",
+                "image": "img/steps---cajones/steps---cajones---profesionales/1780590450688-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/steps---cajones/steps---cajones---profesionales/1780590450688-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones---profesionales/1780590450688-imagen.webp",
+                            "img/steps---cajones/steps---cajones---profesionales/1780589892571-imagen.webp",
+                            "img/steps---cajones/steps---cajones---profesionales/1780589892697-imagen.webp",
+                            "img/steps---cajones/steps---cajones---profesionales/1780589892809-imagen.webp",
+                            "img/steps---cajones/steps---cajones---profesionales/1782417150808-imagen.webp",
+                            "img/steps---cajones/steps---cajones---profesionales/1782417150969-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "120 x 60 x 20 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "70 x 28 x 12 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
+                                "default": true,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            },
+                            {
+                                "medida": "60 x 28 x 9",
+                                "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
+                                "default": false,
+                                "volumeDiscounts": [],
+                                "cost_price": ""
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "cajon",
+                    "cajones",
+                    "cajon profesional",
+                    "cajon madera",
+                    "cajon pino",
+                    "organizador",
+                    "guardado",
+                    "almacenamiento",
+                    "caja madera",
+                    "caja pino",
+                    "cajonera",
+                    "cajonera profesional",
+                    "cajon de pino",
+                    "cajon de madera",
+                    "organizador profesional",
+                    "cajonera de madera",
+                    "cajonera de pino",
+                    "caja de pino profesional",
+                    "caja de madera profesional",
+                    "caja de almacenamiento"
+                ],
+                "last_modified": 1782417151111,
+                "primaryCatId": "Steps",
+                "views": 1
             }
         ]
     },
@@ -14262,7 +15224,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 28
+                "views": 29
             }
         ],
         "rubro": "carpinteria"
@@ -14318,7 +15280,7 @@ const productsData = [
                 ],
                 "last_modified": 1783635754620,
                 "primaryCatId": "sillas-sillones",
-                "views": 15
+                "views": 16
             },
             {
                 "id": "silla-infantil",
@@ -15115,7 +16077,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786315987713,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 24
             }
         ]
     },

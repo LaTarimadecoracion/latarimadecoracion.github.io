@@ -394,8 +394,9 @@ window.initProductsAdmin = function() {
         const cloned = JSON.parse(JSON.stringify(original));
 
         // Modificar datos clave para evitar colisiones de IDs
-        cloned.id    = `${cloned.id}-copia`;
-        cloned.title = `${cloned.title} (Copia)`;
+        cloned.id      = `${cloned.id}-copia`;
+        cloned.title   = `${cloned.title} (Copia)`;
+        cloned.isClone = true; // Marcar para que openProductForm sepa que es un clon
 
         // Abrir el formulario con los datos clonados pre-cargados
         openProductForm(cIdx, cloned);

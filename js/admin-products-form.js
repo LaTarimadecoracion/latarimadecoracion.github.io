@@ -738,7 +738,8 @@
 
         targetCategoryIdForProduct = cIdx;
         sourceCategoryIdx = cIdx;                          // guardar categoría de origen
-        editingProductId  = existingProd ? existingProd.id : null;
+        const isCloning = existingProd && (existingProd.isClone || existingProd.id?.endsWith('-copia'));
+        editingProductId  = (existingProd && !isCloning) ? existingProd.id : null;
 
         // Mostrar u ocultar checkbox de publicación automática en Novedades/Avisos
         const autoAvisoContainer = document.getElementById('admin-product-auto-aviso-container');
@@ -777,8 +778,9 @@
 
         if (!window.isRentalMode) {
             if (existingProd) {
+                const searchId = isCloning && existingProd.id ? existingProd.id.replace(/-copia$/, '') : existingProd.id;
                 sessionProducts.forEach(cat => {
-                    if (cat.products && cat.products.some(p => p.id === existingProd.id)) {
+                    if (cat.products && cat.products.some(p => p.id === searchId || p.id === existingProd.id)) {
                         assignedCategoryIds.push(cat.id);
                     }
                 });
