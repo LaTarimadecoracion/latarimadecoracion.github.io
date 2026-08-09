@@ -1521,7 +1521,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -1608,7 +1607,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1620,7 +1618,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1632,7 +1629,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1644,7 +1640,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -1711,7 +1706,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1723,7 +1717,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1735,7 +1728,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1747,7 +1739,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1759,7 +1750,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1771,7 +1761,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1783,7 +1772,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1795,7 +1783,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1807,7 +1794,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -1902,7 +1888,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1914,7 +1899,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1926,7 +1910,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1938,7 +1921,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1950,7 +1932,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -2474,7 +2455,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -2543,7 +2523,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -2613,7 +2592,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -2684,7 +2662,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -2754,7 +2731,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -2839,7 +2815,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -2861,7 +2836,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -2883,7 +2857,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -3127,7 +3100,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -3139,7 +3111,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -3151,7 +3122,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -3163,7 +3133,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -3210,7 +3179,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -3411,7 +3379,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -3424,7 +3391,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -3450,7 +3416,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -3463,7 +3428,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -3543,7 +3507,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -3616,7 +3579,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -3689,7 +3651,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -3913,7 +3874,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -3926,7 +3886,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -4134,7 +4093,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -4146,7 +4104,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -4158,7 +4115,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -4170,7 +4126,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -4182,7 +4137,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -4194,7 +4148,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -4206,7 +4159,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -6634,7 +6586,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -6775,7 +6726,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 9000,
-                                "cost_price": "",
+                                "cost_price": 9000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -6788,7 +6739,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 17000,
-                                "cost_price": "",
+                                "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -6801,7 +6752,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -6814,7 +6765,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 47998,
-                                "cost_price": "",
+                                "cost_price": 47998,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -6836,7 +6787,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
+                                "price": 10000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -6850,7 +6801,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 18000,
-                                "cost_price": "",
+                                "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -6863,7 +6814,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
-                                "cost_price": "",
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -6876,7 +6827,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
-                                "cost_price": "",
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -6899,7 +6850,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 11500,
-                                "cost_price": "",
+                                "cost_price": 11500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -6912,7 +6863,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 22000,
-                                "cost_price": "",
+                                "cost_price": 22000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -6925,7 +6876,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 43000,
-                                "cost_price": "",
+                                "cost_price": 43000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -6938,7 +6889,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 62999,
-                                "cost_price": "",
+                                "cost_price": 62999,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -6966,9 +6917,8 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1786058695633,
-                "primaryCatId": "Estantes",
-                "views": 22
+                "last_modified": 1786315987713,
+                "primaryCatId": "Estantes"
             },
             {
                 "id": "mensulas",
@@ -7017,7 +6967,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -7182,7 +7131,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786305162256,
-                "primaryCatId": "camas-madera-pino"
+                "primaryCatId": "camas-madera-pino",
+                "views": 2
             }
         ]
     },
@@ -8819,7 +8769,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -8831,7 +8780,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -8843,7 +8791,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -8855,7 +8802,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -8925,7 +8871,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -8995,7 +8940,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -9066,7 +9010,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -9226,7 +9169,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -9311,7 +9253,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -9333,7 +9274,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -9355,7 +9295,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -9441,7 +9380,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -9589,7 +9527,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 9000,
-                                "cost_price": "",
+                                "cost_price": 9000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9602,7 +9540,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 17000,
-                                "cost_price": "",
+                                "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9615,7 +9553,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9628,7 +9566,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 47998,
-                                "cost_price": "",
+                                "cost_price": 47998,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9650,7 +9588,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
+                                "price": 10000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -9664,7 +9602,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 18000,
-                                "cost_price": "",
+                                "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9677,7 +9615,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
-                                "cost_price": "",
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9690,7 +9628,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
-                                "cost_price": "",
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9713,7 +9651,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 11500,
-                                "cost_price": "",
+                                "cost_price": 11500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9726,7 +9664,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 22000,
-                                "cost_price": "",
+                                "cost_price": 22000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9739,7 +9677,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 43000,
-                                "cost_price": "",
+                                "cost_price": 43000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9752,7 +9690,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 62999,
-                                "cost_price": "",
+                                "cost_price": 62999,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9780,9 +9718,8 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1786058695633,
-                "primaryCatId": "Estantes",
-                "views": 22
+                "last_modified": 1786315987713,
+                "primaryCatId": "Estantes"
             },
             {
                 "id": "mensulas",
@@ -9831,7 +9768,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -10975,7 +10911,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -10988,7 +10923,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -11446,7 +11380,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -11459,7 +11392,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -11485,7 +11417,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -11498,7 +11429,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -11580,7 +11510,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -11645,7 +11574,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -11718,7 +11646,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -11791,7 +11718,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -12522,7 +12448,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786305162256,
-                "primaryCatId": "camas-madera-pino"
+                "primaryCatId": "camas-madera-pino",
+                "views": 2
             }
         ]
     },
@@ -12778,7 +12705,6 @@ const productsData = [
                                 "medida": "50x28x9",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1513002287-step-funcional-plataforma-fitness-cajon-50x28x9-cm-_JM",
                                 "default": true,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12786,7 +12712,6 @@ const productsData = [
                                 "medida": "50x28x16",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2072143834-step-funcional-plataforma-fitness-cajon-50x28x16-cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12794,7 +12719,6 @@ const productsData = [
                                 "medida": "50x28x23",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1372002007-step-plataforma-fitness-50x28x23-cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12802,7 +12726,6 @@ const productsData = [
                                 "medida": "50x50x9",
                                 "link": "https://www.mercadolibre.com.ar/step-madera-la-tarima-50x50-cm-plataforma-fitness/up/MLAU256659868",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12810,7 +12733,6 @@ const productsData = [
                                 "medida": "40x28x9",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12818,7 +12740,6 @@ const productsData = [
                                 "medida": "40x28x16",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12826,7 +12747,6 @@ const productsData = [
                                 "medida": "40x28x23",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12834,7 +12754,6 @@ const productsData = [
                                 "medida": "40x28x30",
                                 "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12842,7 +12761,6 @@ const productsData = [
                                 "medida": "30x28x9",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12850,7 +12768,6 @@ const productsData = [
                                 "medida": "30x28x16",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12858,7 +12775,6 @@ const productsData = [
                                 "medida": "30x28x23",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             }
@@ -12932,7 +12848,6 @@ const productsData = [
                                 "medida": "120 x 60 x 20 cm",
                                 "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12940,7 +12855,6 @@ const productsData = [
                                 "medida": "70 x 28 x 12 cm",
                                 "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
                                 "default": true,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -12948,7 +12862,6 @@ const productsData = [
                                 "medida": "60 x 28 x 9",
                                 "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             }
@@ -13009,7 +12922,6 @@ const productsData = [
                                 "medida": "10 x 10 x 60 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
                                 "default": true,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13017,7 +12929,6 @@ const productsData = [
                                 "medida": "10 x 10 x 80 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13025,7 +12936,6 @@ const productsData = [
                                 "medida": "10 x 10 x 100 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13033,7 +12943,6 @@ const productsData = [
                                 "medida": "10 x 10 x 60 (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13041,7 +12950,6 @@ const productsData = [
                                 "medida": "10 x 10 x 80 (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13049,7 +12957,6 @@ const productsData = [
                                 "medida": "10 x 10 x 100 (Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13057,7 +12964,6 @@ const productsData = [
                                 "medida": "10 x 10 x 60 (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13065,7 +12971,6 @@ const productsData = [
                                 "medida": "10 x 10 x 80 (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13073,7 +12978,6 @@ const productsData = [
                                 "medida": "10 x 10 x 100 (Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13081,7 +12985,6 @@ const productsData = [
                                 "medida": "Combo x3 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             }
@@ -13243,7 +13146,6 @@ const productsData = [
                                 "medida": "100 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1546524765-estante-flotante-nordico-madera-100x10cm-la-tarima-_JM",
                                 "default": true,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13251,7 +13153,6 @@ const productsData = [
                                 "medida": "100 (Combo x2)",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13259,7 +13160,6 @@ const productsData = [
                                 "medida": "100 (Combo x3)",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13267,7 +13167,6 @@ const productsData = [
                                 "medida": "80 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1546434559-estante-flotante-nordico-madera-80x10cm-la-tarima-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13275,7 +13174,6 @@ const productsData = [
                                 "medida": "80 (Combo x2)",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13283,7 +13181,6 @@ const productsData = [
                                 "medida": "80 (Combo x3)",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13291,7 +13188,6 @@ const productsData = [
                                 "medida": "60 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2066246148-estante-flotante-nordico-madera-60x10cm-la-tarima-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13299,7 +13195,6 @@ const productsData = [
                                 "medida": "60 (Combo x2)",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13307,7 +13202,6 @@ const productsData = [
                                 "medida": "60 (Combo x3)",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             }
@@ -13359,7 +13253,6 @@ const productsData = [
                                 "medida": "Combo x3",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2278025688-estante-triangulo-x-3-unidades-_JM",
                                 "default": true,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             }
@@ -13409,7 +13302,6 @@ const productsData = [
                                 "medida": "Combo x3",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508934203-estante-cuadrado-combo-x3un-_JM",
                                 "default": true,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13417,7 +13309,6 @@ const productsData = [
                                 "medida": "Grande",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13425,7 +13316,6 @@ const productsData = [
                                 "medida": "Mediano",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13433,7 +13323,6 @@ const productsData = [
                                 "medida": "Chico",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             }
@@ -13513,7 +13402,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -13638,7 +13526,6 @@ const productsData = [
                                 "medida": "20 x 60 cm",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13646,7 +13533,6 @@ const productsData = [
                                 "medida": "20 x 80 cm",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13654,7 +13540,6 @@ const productsData = [
                                 "medida": "20 x 100 cm",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13662,7 +13547,6 @@ const productsData = [
                                 "medida": "30 x 60 cm",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13670,7 +13554,6 @@ const productsData = [
                                 "medida": "30 x 80 cm",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13678,7 +13561,6 @@ const productsData = [
                                 "medida": "30 x 100 cm",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -13686,7 +13568,6 @@ const productsData = [
                                 "medida": "Otras medidas",
                                 "link": "",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             }
@@ -13742,7 +13623,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -13754,7 +13634,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -13766,7 +13645,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -13778,7 +13656,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -13845,7 +13722,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -13857,7 +13733,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -13869,7 +13744,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -13881,7 +13755,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -13893,7 +13766,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -13905,7 +13777,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -13917,7 +13788,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -14003,7 +13873,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 9000,
-                                "cost_price": "",
+                                "cost_price": 9000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14016,7 +13886,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 17000,
-                                "cost_price": "",
+                                "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14029,7 +13899,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14042,7 +13912,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 47998,
-                                "cost_price": "",
+                                "cost_price": 47998,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -14064,7 +13934,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
+                                "price": 10000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -14078,7 +13948,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 18000,
-                                "cost_price": "",
+                                "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14091,7 +13961,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
-                                "cost_price": "",
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14104,7 +13974,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
-                                "cost_price": "",
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -14127,7 +13997,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 11500,
-                                "cost_price": "",
+                                "cost_price": 11500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14140,7 +14010,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 22000,
-                                "cost_price": "",
+                                "cost_price": 22000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14153,7 +14023,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 43000,
-                                "cost_price": "",
+                                "cost_price": 43000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14166,7 +14036,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 62999,
-                                "cost_price": "",
+                                "cost_price": 62999,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -14194,9 +14064,8 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1786058695633,
-                "primaryCatId": "Estantes",
-                "views": 22
+                "last_modified": 1786315987713,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -14227,7 +14096,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -14475,7 +14343,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -15056,7 +14923,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 9000,
-                                "cost_price": "",
+                                "cost_price": 9000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -15069,7 +14936,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 17000,
-                                "cost_price": "",
+                                "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -15082,7 +14949,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -15095,7 +14962,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 47998,
-                                "cost_price": "",
+                                "cost_price": 47998,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -15117,7 +14984,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
+                                "price": 10000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -15131,7 +14998,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 18000,
-                                "cost_price": "",
+                                "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -15144,7 +15011,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
-                                "cost_price": "",
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -15157,7 +15024,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
-                                "cost_price": "",
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -15180,7 +15047,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 11500,
-                                "cost_price": "",
+                                "cost_price": 11500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -15193,7 +15060,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 22000,
-                                "cost_price": "",
+                                "cost_price": 22000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -15206,7 +15073,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 43000,
-                                "cost_price": "",
+                                "cost_price": 43000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -15219,7 +15086,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 62999,
-                                "cost_price": "",
+                                "cost_price": 62999,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -15247,9 +15114,8 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1786058695633,
-                "primaryCatId": "Estantes",
-                "views": 22
+                "last_modified": 1786315987713,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -15282,7 +15148,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15294,7 +15159,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15306,7 +15170,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15318,7 +15181,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15330,7 +15192,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -15424,7 +15285,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15436,7 +15296,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15448,7 +15307,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15460,7 +15318,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15472,7 +15329,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15484,7 +15340,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15496,7 +15351,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15508,7 +15362,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15520,7 +15373,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -15705,7 +15557,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15717,7 +15568,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15729,7 +15579,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -15741,7 +15590,6 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 0,
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -16145,7 +15993,6 @@ const productsData = [
                                 "medida": "Grande",
                                 "link": "https://www.mercadolibre.com.ar/podio-de-premiacion-profesional--3-niveles/up/MLAU3923567631",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             }
@@ -16310,7 +16157,6 @@ const productsData = [
                                 "medida": "60 x 40 x 40",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2351358716-podio-de-premiacion-profesional-60-x-40-x-40-cm-n-1-_JM?has_official_store=false&highlight=false&searchVariation=190710551513&headerTopBrand=false#polycard_client=search-nordic&searchVariation=190710551513&search_layout=grid&position=2&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec",
                                 "default": true,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -16318,7 +16164,6 @@ const productsData = [
                                 "medida": "60 x 40 x 30",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2242326346-podio-de-premiacion-profesional-60-x-40-x-30-cm-n-2-_JM?has_official_store=false&highlight=false&searchVariation=184697351002&headerTopBrand=false#polycard_client=search-nordic&searchVariation=184697351002&search_layout=grid&position=3&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             },
@@ -16326,7 +16171,6 @@ const productsData = [
                                 "medida": "60 x 40 x 20",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2351255318-podio-de-premiacion-profesional-60-x-40-x-20-cm-n-3-_JM",
                                 "default": false,
-                                "price": 0,
                                 "volumeDiscounts": [],
                                 "cost_price": ""
                             }

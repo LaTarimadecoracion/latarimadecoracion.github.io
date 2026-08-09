@@ -66,7 +66,7 @@ categories.forEach(cat => {
             }
         }
         
-        const priceFormatted = `${priceNum} ARS`;
+        const priceFormatted = priceNum > 0 ? `${priceNum} ARS` : "";
         
         // Imagen
         let imgUrl = prod.image || 'img/logo_provisional.png';
