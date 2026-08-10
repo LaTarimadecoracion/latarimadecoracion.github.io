@@ -2008,16 +2008,16 @@ const productsData = [
                 "id": "macetas-colgante-eucalipto",
                 "title": "Macetas colgante de eucalipto",
                 "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
-                "image": "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
+                "image": "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
+                        "cover_image": "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
                         "images_list": [
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708812159-imagen.webp",
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708812280-imagen.webp",
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708812400-imagen.webp"
+                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
+                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564675-imagen.webp",
+                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564815-imagen.webp",
+                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564942-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2090,9 +2090,8 @@ const productsData = [
                     "macetero de exterior",
                     "colgante eucalipto"
                 ],
-                "last_modified": 1783907432697,
-                "primaryCatId": "jardin-patio",
-                "views": 3
+                "last_modified": 1786334565073,
+                "primaryCatId": "jardin-patio"
             },
             {
                 "id": "Platos-madera",
@@ -7370,7 +7369,605 @@ const productsData = [
                     "organizador pared"
                 ],
                 "last_modified": 1786317536131,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 14
+            },
+            {
+                "id": "cajones-50cm",
+                "title": "Steps / Cajones (50cm)",
+                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
+                "image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "50x28x9 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x28x9 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002287-step-funcional-plataforma-fitness-cajon-50x28x9-cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50x28x16 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x28x16 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2072143834-step-funcional-plataforma-fitness-cajon-50x28x16-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50x28x23 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x28x23 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1372002007-step-plataforma-fitness-50x28x23-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50x50x9 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x50x9 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-madera-la-tarima-50x50-cm-plataforma-fitness/up/MLAU256659868",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "last_modified": 1786330064427,
+                "primaryCatId": "Steps"
+            },
+            {
+                "id": "steps---cajones-40",
+                "title": "Steps / Cajones (40 cm)",
+                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
+                "image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "40x28x9 cm",
+                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x9 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40x28x16 cm",
+                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x16 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40x28x23 cm",
+                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x23 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40x28x30 cm",
+                        "cover_image": "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x30 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "last_modified": 1786332262471,
+                "primaryCatId": "Steps"
+            },
+            {
+                "id": "steps---cajones-30",
+                "title": "Steps / Cajones (30 cm)",
+                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
+                "image": "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "30x28x9 cm",
+                        "cover_image": "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x28x9 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30x28x16 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x28x16 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30x28x23 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x28x23 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "last_modified": 1786332353302,
+                "primaryCatId": "Steps"
+            },
+            {
+                "id": "caballetes-madera-pino",
+                "title": "Caballetes de madera",
+                "description": "",
+                "image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Steve",
+                        "cover_image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786332743079,
+                "primaryCatId": "jardin-patio"
+            },
+            {
+                "id": "Banco Banquito Escalera Niños Infantil",
+                "title": "Banco Banquito Escalera Niños Infantil",
+                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
+                "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408872-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409011-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409155-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x23x20",
+                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786333409298,
+                "primaryCatId": "muebles"
+            },
+            {
+                "id": "Escritorio-PC-PRO",
+                "title": "Escritorio para PC - Soporte Gabinete",
+                "description": "",
+                "image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                        "images_list": [
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334410946-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411078-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411190-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411310-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334411421,
+                "primaryCatId": "Hogar"
+            },
+            {
+                "id": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                "title": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                "description": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                "image": "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+                        "images_list": [
+                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774793-imagen.webp",
+                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774926-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334775059,
+                "primaryCatId": "Hogar"
+            },
+            {
+                "id": "mesita-luz-angosta",
+                "title": "Mesita de luz - Angosta",
+                "description": "Mesita de luz - Angosta",
+                "image": "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp",
+                        "images_list": [
+                            "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334817654,
+                "primaryCatId": "Hogar"
+            },
+            {
+                "id": "tendre-ropa-madera",
+                "title": "Tender",
+                "description": "",
+                "image": "img/hogar/tender/1786334917868-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Único",
+                        "cover_image": "img/hogar/tender/1786334917868-imagen.webp",
+                        "images_list": [
+                            "img/hogar/tender/1786334917868-imagen.webp",
+                            "img/hogar/tender/1786334918048-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334918176,
+                "primaryCatId": "Hogar"
             }
         ]
     },
@@ -10386,7 +10983,65 @@ const productsData = [
                     "organizador pared"
                 ],
                 "last_modified": 1786317536131,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 14
+            },
+            {
+                "id": "caballetes-madera-pino",
+                "title": "Caballetes de madera",
+                "description": "",
+                "image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Steve",
+                        "cover_image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786332743079,
+                "primaryCatId": "jardin-patio"
+            },
+            {
+                "id": "Banco Banquito Escalera Niños Infantil",
+                "title": "Banco Banquito Escalera Niños Infantil",
+                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
+                "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408872-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409011-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409155-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x23x20",
+                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786333409298,
+                "primaryCatId": "muebles"
             }
         ]
     },
@@ -12488,7 +13143,8 @@ const productsData = [
                     "organizador pared"
                 ],
                 "last_modified": 1786317536131,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 14
             },
             {
                 "id": "hexagonales",
@@ -14434,6 +15090,43 @@ const productsData = [
                 "last_modified": 1786316089369,
                 "primaryCatId": "muebles",
                 "views": 7
+            },
+            {
+                "id": "Banco Banquito Escalera Niños Infantil",
+                "title": "Banco Banquito Escalera Niños Infantil",
+                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
+                "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408872-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409011-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409155-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x23x20",
+                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786333409298,
+                "primaryCatId": "muebles"
             }
         ],
         "rubro": "carpinteria"
@@ -14444,149 +15137,6 @@ const productsData = [
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
         "order": 10,
         "products": [
-            {
-                "id": "steps---cajones",
-                "title": "Steps / Cajones",
-                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
-                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/migrados/otros/steps---cajones/stepscajones.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
-                        "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50x28x9",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002287-step-funcional-plataforma-fitness-cajon-50x28x9-cm-_JM",
-                                "default": true,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "50x28x16",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2072143834-step-funcional-plataforma-fitness-cajon-50x28x16-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "50x28x23",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1372002007-step-plataforma-fitness-50x28x23-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "50x50x9",
-                                "link": "https://www.mercadolibre.com.ar/step-madera-la-tarima-50x50-cm-plataforma-fitness/up/MLAU256659868",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40x28x9",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40x28x16",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40x28x23",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "40x28x30",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30x28x9",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30x28x16",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            },
-                            {
-                                "medida": "30x28x23",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": ""
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "steps",
-                    "cajones",
-                    "mil usos",
-                    "madera",
-                    "cajon resistente",
-                    "cajon para gimnasia",
-                    "gym",
-                    "resistente",
-                    "escalera",
-                    "escaleras",
-                    "escaloncitos",
-                    "escalon",
-                    "escalones",
-                    "cajon",
-                    "pino",
-                    "subir",
-                    "alcanzar",
-                    "banquito",
-                    "taburete",
-                    "banqueta",
-                    "cajonera steps",
-                    "organizador",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "last_modified": 1782086406799,
-                "primaryCatId": "Steps",
-                "views": 1
-            },
             {
                 "id": "cajones-profesional",
                 "title": "Steps / Cajones / Profesionales",
@@ -14654,6 +15204,459 @@ const productsData = [
                 "last_modified": 1782417151111,
                 "primaryCatId": "Steps",
                 "views": 1
+            },
+            {
+                "id": "steps---cajones-30",
+                "title": "Steps / Cajones (30 cm)",
+                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
+                "image": "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "30x28x9 cm",
+                        "cover_image": "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x28x9 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30x28x16 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x28x16 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30x28x23 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x28x23 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "last_modified": 1786332353302,
+                "primaryCatId": "Steps"
+            },
+            {
+                "id": "steps---cajones-40",
+                "title": "Steps / Cajones (40 cm)",
+                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
+                "image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "40x28x9 cm",
+                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x9 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40x28x16 cm",
+                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x16 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40x28x23 cm",
+                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x23 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40x28x30 cm",
+                        "cover_image": "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                        "images_list": [
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x30 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "last_modified": 1786332262471,
+                "primaryCatId": "Steps"
+            },
+            {
+                "id": "cajones-50cm",
+                "title": "Steps / Cajones (50cm)",
+                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
+                "image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "50x28x9 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x28x9 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002287-step-funcional-plataforma-fitness-cajon-50x28x9-cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50x28x16 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x28x16 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2072143834-step-funcional-plataforma-fitness-cajon-50x28x16-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50x28x23 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x28x23 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1372002007-step-plataforma-fitness-50x28x23-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50x50x9 cm",
+                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "images_list": [
+                            "img/migrados/otros/steps---cajones/stepscajones.webp",
+                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x50x9 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-madera-la-tarima-50x50-cm-plataforma-fitness/up/MLAU256659868",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "last_modified": 1786330064427,
+                "primaryCatId": "Steps"
             }
         ]
     },
@@ -14851,6 +15854,43 @@ const productsData = [
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
                 "views": 29
+            },
+            {
+                "id": "Banco Banquito Escalera Niños Infantil",
+                "title": "Banco Banquito Escalera Niños Infantil",
+                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
+                "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408872-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409011-imagen.webp",
+                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409155-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x23x20",
+                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786333409298,
+                "primaryCatId": "muebles"
             }
         ],
         "rubro": "carpinteria"
@@ -15705,6 +16745,30 @@ const productsData = [
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
                 "views": 24
+            },
+            {
+                "id": "Escritorio-PC-PRO",
+                "title": "Escritorio para PC - Soporte Gabinete",
+                "description": "",
+                "image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                        "images_list": [
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334410946-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411078-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411190-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411310-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334411421,
+                "primaryCatId": "Hogar"
             }
         ]
     },
@@ -16038,16 +17102,16 @@ const productsData = [
                 "id": "macetas-colgante-eucalipto",
                 "title": "Macetas colgante de eucalipto",
                 "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
-                "image": "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
+                "image": "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
+                        "cover_image": "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
                         "images_list": [
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708811999-imagen.webp",
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708812159-imagen.webp",
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708812280-imagen.webp",
-                            "img/jardin/macetas-colgante-de-eucalipto/1780708812400-imagen.webp"
+                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
+                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564675-imagen.webp",
+                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564815-imagen.webp",
+                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564942-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16120,9 +17184,8 @@ const productsData = [
                     "macetero de exterior",
                     "colgante eucalipto"
                 ],
-                "last_modified": 1783907432697,
-                "primaryCatId": "jardin-patio",
-                "views": 3
+                "last_modified": 1786334565073,
+                "primaryCatId": "jardin-patio"
             },
             {
                 "id": "fanal",
@@ -16293,6 +17356,122 @@ const productsData = [
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
                 "views": 11
+            },
+            {
+                "id": "caballetes-madera-pino",
+                "title": "Caballetes de madera",
+                "description": "",
+                "image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Steve",
+                        "cover_image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786332743079,
+                "primaryCatId": "jardin-patio"
+            }
+        ]
+    },
+    {
+        "id": "Hogar",
+        "name": "Hogar",
+        "image": "img/hogar/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 15,
+        "products": [
+            {
+                "id": "Escritorio-PC-PRO",
+                "title": "Escritorio para PC - Soporte Gabinete",
+                "description": "",
+                "image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                        "images_list": [
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334410946-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411078-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411190-imagen.webp",
+                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411310-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334411421,
+                "primaryCatId": "Hogar"
+            },
+            {
+                "id": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                "title": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                "description": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                "image": "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+                        "images_list": [
+                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774793-imagen.webp",
+                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774926-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334775059,
+                "primaryCatId": "Hogar"
+            },
+            {
+                "id": "mesita-luz-angosta",
+                "title": "Mesita de luz - Angosta",
+                "description": "Mesita de luz - Angosta",
+                "image": "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp",
+                        "images_list": [
+                            "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334817654,
+                "primaryCatId": "Hogar"
+            },
+            {
+                "id": "tendre-ropa-madera",
+                "title": "Tender",
+                "description": "",
+                "image": "img/hogar/tender/1786334917868-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Único",
+                        "cover_image": "img/hogar/tender/1786334917868-imagen.webp",
+                        "images_list": [
+                            "img/hogar/tender/1786334917868-imagen.webp",
+                            "img/hogar/tender/1786334918048-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334918176,
+                "primaryCatId": "Hogar"
             }
         ]
     },
@@ -16301,7 +17480,7 @@ const productsData = [
         "name": "Todo Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 15,
+        "order": 16,
         "products": [
             {
                 "id": "Platos-madera",
@@ -16559,7 +17738,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 16,
+        "order": 17,
         "products": [
             {
                 "id": "podio-profesional",

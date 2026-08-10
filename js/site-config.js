@@ -150,6 +150,158 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Tender!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Tender!",
+            "mediaType": "image",
+            "image": "img/hogar/tender/1786334917868-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=tendre-ropa-madera",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=tendre-ropa-madera",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786334918176
+        },
+        {
+            "title": "¡Nuevo Ingreso: Mesita de luz - Angosta!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesita de luz - Angosta!",
+            "mediaType": "image",
+            "image": "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=mesita-luz-angosta",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=mesita-luz-angosta",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786334817654
+        },
+        {
+            "title": "¡Nuevo Ingreso: Mesa De Luz De Pino Con Cajón Y Puerta Nórdica!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesa De Luz De Pino Con Cajón Y Puerta Nórdica!",
+            "mediaType": "image",
+            "image": "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786334775059
+        },
+        {
+            "title": "¡Nuevo Ingreso: Escritorio para PC - Soporte Gabinete!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Escritorio para PC - Soporte Gabinete!",
+            "mediaType": "image",
+            "image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Escritorio-PC-PRO",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Escritorio-PC-PRO",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786334303347
+        },
+        {
+            "title": "¡Nuevo Ingreso: Banco Banquito Escalera Niños Infantil!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Banco Banquito Escalera Niños Infantil!",
+            "mediaType": "image",
+            "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Banco Banquito Escalera Niños Infantil",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Banco Banquito Escalera Niños Infantil",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786333123000
+        },
+        {
+            "title": "¡Nuevo Ingreso: Caballetes de madera!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Caballetes de madera!",
+            "mediaType": "image",
+            "image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=caballetes-madera-pino",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=caballetes-madera-pino",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786332672526
+        },
+        {
+            "title": "¡Nuevo Ingreso: Steps / Cajones (40 cm)!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Steps / Cajones (40 cm)!",
+            "mediaType": "image",
+            "image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=steps---cajones-40",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=steps---cajones-40",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786332262471
+        },
+        {
+            "title": "¡Nuevo Ingreso: Steps / Cajones (50cm)!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Steps / Cajones (50cm)!",
+            "mediaType": "image",
+            "image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=cajones-50cm",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=cajones-50cm",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786330064427
+        },
+        {
             "title": "¡Nuevo Ingreso: Estantes Montessori (60 cm)!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Estantes Montessori (60 cm)!",
             "mediaType": "image",
