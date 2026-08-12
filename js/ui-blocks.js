@@ -51,6 +51,80 @@
             return;
         }
 
+        // Renderizado Minimalista Exclusivo para la sección de Avisos
+        if (target === 'avisos') {
+            sessionArr.forEach((block) => {
+                const card = document.createElement('article');
+                card.className = 'aviso-card-minimal';
+                
+                // Limpiar título eliminando prefijos repetitivos
+                let cleanTitle = (block.title || '').replace(/^¡?Nuevo Ingreso:\s*/i, '').trim();
+                if (!cleanTitle) cleanTitle = block.title || 'Aviso';
+
+                // URL destino del enlace
+                let targetUrl = block.linkUrl || (block.links && block.links[0] ? block.links[0].url : '');
+                
+                let mediaHtml = '';
+                const mType = block.mediaType || (block.image ? 'image' : 'none');
+
+                if (mType === 'image' && block.image) {
+                    mediaHtml = `
+                    <div class="aviso-card-img-wrapper">
+                        <span class="aviso-badge-nuevo">NUEVO INGRESO</span>
+                        <img src="${block.image}" alt="${cleanTitle}" class="aviso-card-img lazy-img" loading="lazy" onload="this.classList.add('loaded')">
+                    </div>`;
+                } else if (mType === 'video' && block.videoUrl) {
+                    const ytId = extractYouTubeId(block.videoUrl);
+                    if (ytId) {
+                        mediaHtml = `
+                        <div class="aviso-card-img-wrapper">
+                            <iframe src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=0&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen loading="lazy" style="width:100%; height:100%; border:none;"></iframe>
+                        </div>`;
+                    }
+                }
+
+                card.innerHTML = `
+                    ${mediaHtml}
+                    <div class="aviso-card-content">
+                        <h3 class="aviso-card-title">${cleanTitle}</h3>
+                    </div>
+                `;
+
+                // Toda la tarjeta es interactiva
+                if (targetUrl) {
+                    card.style.cursor = 'pointer';
+                    card.addEventListener('click', () => {
+                        try {
+                            const parsedUrl = new URL(targetUrl, window.location.href);
+                            if (parsedUrl.host === window.location.host) {
+                                const params = parsedUrl.searchParams;
+                                const targetProd = params.get('prod') || params.get('product') || params.get('p');
+                                const targetCat = params.get('cat') || params.get('category');
+                                const targetView = params.get('view');
+                                if (targetProd && window.findProductById && window.showProductDetail) {
+                                    const found = window.findProductById(targetProd);
+                                    if (found) return window.showProductDetail(found.product, found.catName);
+                                }
+                                if (targetCat && window.navigateToCategoryFeed) {
+                                    return window.navigateToCategoryFeed(targetCat);
+                                }
+                                if (targetView && window.navigateToView) {
+                                    const viewIdMap = { 'nosotros': 'view-about', 'buscar': 'view-search', 'avisos': 'view-notifications', 'perfil': 'view-profile', 'alquileres': 'view-rentals', 'admin': 'view-admin', 'catalogo': 'view-catalogo', 'calcular': 'view-calculator', 'home': 'view-home', 'categorias': 'view-categories', 'carrito': 'view-cart', 'videos': 'view-videos' };
+                                    return window.navigateToView(viewIdMap[targetView] || targetView);
+                                }
+                            }
+                            window.open(targetUrl, '_blank');
+                        } catch (err) {
+                            window.location.href = targetUrl;
+                        }
+                    });
+                }
+
+                container.appendChild(card);
+            });
+            return;
+        }
+
         sessionArr.forEach((block, idx) => {
             const blockSection = document.createElement('section');
             blockSection.className = 'nosotros-block'; // Reusamos CSS
@@ -156,7 +230,7 @@
             });
 
             container.appendChild(blockSection);
-            if (idx < sessionArr.length - 1) {
+            if (target !== 'avisos' && idx < sessionArr.length - 1) {
                 const hr = document.createElement('hr');
                 hr.className = 'block-divider';
                 container.appendChild(hr);
