@@ -1050,6 +1050,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -1069,9 +1070,8 @@ const productsData = [
                     "chicos",
                     "decoracion"
                 ],
-                "last_modified": 1783635754620,
-                "primaryCatId": "sillas-sillones",
-                "views": 16
+                "last_modified": 1786564211621,
+                "primaryCatId": "sillas-sillones"
             },
             {
                 "id": "baranda-sommier-clasica",
@@ -2091,7 +2091,8 @@ const productsData = [
                     "colgante eucalipto"
                 ],
                 "last_modified": 1786334565073,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 4
             },
             {
                 "id": "Platos-madera",
@@ -4069,7 +4070,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 1
+                "views": 2
             },
             {
                 "id": "Estantes-Cortes-Madera",
@@ -4307,7 +4308,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 21
+                "views": 23
             },
             {
                 "id": "9-vinos",
@@ -4397,7 +4398,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 11
+                "views": 12
             },
             {
                 "id": "17-vinos",
@@ -4576,7 +4577,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 5
+                "views": 6
             },
             {
                 "id": "Colecho_retro_madera",
@@ -5761,7 +5762,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "hexagonales",
@@ -5879,7 +5880,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Combo x 3",
-                                "link": "https://www.mercadolibre.com.ar/mesas-para-candy-bar-x3/up/MLAU4305282752",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3596310578-mesas-para-candy-bar-x3-natural-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -6098,10 +6099,9 @@ const productsData = [
                     "banquetes",
                     "atriles"
                 ],
-                "last_modified": 1786245813329,
+                "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
-                "visible": true,
-                "views": 7
+                "visible": true
             },
             {
                 "id": "pie-cama-romano",
@@ -7370,7 +7370,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 14
+                "views": 15
             },
             {
                 "id": "cajones-50cm",
@@ -7530,7 +7530,8 @@ const productsData = [
                     "cajonera profesional"
                 ],
                 "last_modified": 1786330064427,
-                "primaryCatId": "Steps"
+                "primaryCatId": "Steps",
+                "views": 1
             },
             {
                 "id": "steps---cajones-40",
@@ -7690,7 +7691,8 @@ const productsData = [
                     "cajonera profesional"
                 ],
                 "last_modified": 1786332262471,
-                "primaryCatId": "Steps"
+                "primaryCatId": "Steps",
+                "views": 0
             },
             {
                 "id": "steps---cajones-30",
@@ -7823,7 +7825,8 @@ const productsData = [
                     "cajonera profesional"
                 ],
                 "last_modified": 1786332353302,
-                "primaryCatId": "Steps"
+                "primaryCatId": "Steps",
+                "views": 0
             },
             {
                 "id": "caballetes-madera-pino",
@@ -7843,7 +7846,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786332743079,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 0
             },
             {
                 "id": "Banco Banquito Escalera Niños Infantil",
@@ -7880,7 +7884,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786333409298,
-                "primaryCatId": "muebles"
+                "primaryCatId": "muebles",
+                "views": 0
             },
             {
                 "id": "Escritorio-PC-PRO",
@@ -7904,7 +7909,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786334411421,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 1
             },
             {
                 "id": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
@@ -7926,7 +7932,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786334775059,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 0
             },
             {
                 "id": "mesita-luz-angosta",
@@ -7946,7 +7953,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786334817654,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 1
             },
             {
                 "id": "tendre-ropa-madera",
@@ -7967,7 +7975,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786334918176,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 0
             }
         ]
     },
@@ -8245,7 +8254,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 21
+                "views": 23
             },
             {
                 "id": "9-vinos",
@@ -8335,7 +8344,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 11
+                "views": 12
             },
             {
                 "id": "13-vinos",
@@ -8425,7 +8434,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 5
+                "views": 6
             },
             {
                 "id": "17-vinos",
@@ -8604,7 +8613,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 2
+                "views": 3
             }
         ],
         "rubro": "carpinteria"
@@ -8794,7 +8803,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 1
+                "views": 2
             },
             {
                 "id": "perchero-nordico-pared-x3",
@@ -10984,7 +10993,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 14
+                "views": 15
             },
             {
                 "id": "caballetes-madera-pino",
@@ -11004,7 +11013,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786332743079,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 0
             },
             {
                 "id": "Banco Banquito Escalera Niños Infantil",
@@ -11041,7 +11051,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786333409298,
-                "primaryCatId": "muebles"
+                "primaryCatId": "muebles",
+                "views": 0
             }
         ]
     },
@@ -13144,7 +13155,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 14
+                "views": 15
             },
             {
                 "id": "hexagonales",
@@ -15126,7 +15137,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786333409298,
-                "primaryCatId": "muebles"
+                "primaryCatId": "muebles",
+                "views": 0
             }
         ],
         "rubro": "carpinteria"
@@ -15336,7 +15348,8 @@ const productsData = [
                     "cajonera profesional"
                 ],
                 "last_modified": 1786332353302,
-                "primaryCatId": "Steps"
+                "primaryCatId": "Steps",
+                "views": 0
             },
             {
                 "id": "steps---cajones-40",
@@ -15496,7 +15509,8 @@ const productsData = [
                     "cajonera profesional"
                 ],
                 "last_modified": 1786332262471,
-                "primaryCatId": "Steps"
+                "primaryCatId": "Steps",
+                "views": 0
             },
             {
                 "id": "cajones-50cm",
@@ -15656,7 +15670,8 @@ const productsData = [
                     "cajonera profesional"
                 ],
                 "last_modified": 1786330064427,
-                "primaryCatId": "Steps"
+                "primaryCatId": "Steps",
+                "views": 1
             }
         ]
     },
@@ -15890,7 +15905,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786333409298,
-                "primaryCatId": "muebles"
+                "primaryCatId": "muebles",
+                "views": 0
             }
         ],
         "rubro": "carpinteria"
@@ -15925,6 +15941,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
+                                "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -15944,9 +15961,8 @@ const productsData = [
                     "chicos",
                     "decoracion"
                 ],
-                "last_modified": 1783635754620,
-                "primaryCatId": "sillas-sillones",
-                "views": 16
+                "last_modified": 1786564211621,
+                "primaryCatId": "sillas-sillones"
             },
             {
                 "id": "silla-infantil",
@@ -16305,7 +16321,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Combo x 3",
-                                "link": "https://www.mercadolibre.com.ar/mesas-para-candy-bar-x3/up/MLAU4305282752",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3596310578-mesas-para-candy-bar-x3-natural-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -16524,10 +16540,9 @@ const productsData = [
                     "banquetes",
                     "atriles"
                 ],
-                "last_modified": 1786245813329,
+                "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
-                "visible": true,
-                "views": 7
+                "visible": true
             },
             {
                 "id": "mensulas-escritorio",
@@ -16768,7 +16783,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786334411421,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 1
             }
         ]
     },
@@ -17185,7 +17201,8 @@ const productsData = [
                     "colgante eucalipto"
                 ],
                 "last_modified": 1786334565073,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 4
             },
             {
                 "id": "fanal",
@@ -17375,7 +17392,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786332743079,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 0
             }
         ]
     },
@@ -17408,7 +17426,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786334411421,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 1
             },
             {
                 "id": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
@@ -17430,7 +17449,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786334775059,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 0
             },
             {
                 "id": "mesita-luz-angosta",
@@ -17450,7 +17470,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786334817654,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 1
             },
             {
                 "id": "tendre-ropa-madera",
@@ -17471,7 +17492,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786334918176,
-                "primaryCatId": "Hogar"
+                "primaryCatId": "Hogar",
+                "views": 0
             }
         ]
     },
