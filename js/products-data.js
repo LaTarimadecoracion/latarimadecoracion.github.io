@@ -1071,7 +1071,8 @@ const productsData = [
                     "decoracion"
                 ],
                 "last_modified": 1786564211621,
-                "primaryCatId": "sillas-sillones"
+                "primaryCatId": "sillas-sillones",
+                "views": 16
             },
             {
                 "id": "baranda-sommier-clasica",
@@ -1692,7 +1693,105 @@ const productsData = [
                 "image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Natural",
+                        "acabado_name": "25 x 25 cm",
+                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "images_list": [
+                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Unidad",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-25-x-25-cm/up/MLAU3454515164?pdp_filters=item_id:MLA2399572790",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "2 Unidades",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-25-x-25-cm-x2-un/up/MLAU3466094368?pdp_filters=item_id:MLA2416155670",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "3 Unidades",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-25-x-25-cm-x-3-un/up/MLAU3459333947?pdp_filters=item_id:MLA2415986866",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 30 cm",
+                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "images_list": [
+                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30 x 30 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 30 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 30 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40 x 40 cm",
                         "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
                             "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
@@ -1706,6 +1805,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1717,6 +1818,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1728,72 +1831,57 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
-                            },
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50 x 50 cm",
+                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "images_list": [
+                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                        ],
+                        "medidas_variants": [
                             {
-                                "medida": "30 x 30 cm (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
+                                "medida": "1 Unidad",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
                             {
-                                "medida": "30 x 30 cm (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
+                                "medida": "2 Unidades",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
                             {
-                                "medida": "30 x 30 cm (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
+                                "medida": "3 Unidades",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "25 x 25 cm (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2399572790-deck-base-macetas-madera-25-x-25-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "25 x 25 cm (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416155670-deck-base-macetas-madera-25-x-25-cm-x2-un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "25 x 25 cm (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415986866-deck-base-macetas-madera-25-x-25-cm-x-3-un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -1862,9 +1950,9 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1783618243134,
+                "last_modified": 1786654343139,
                 "primaryCatId": "jardin-patio",
-                "views": 3
+                "views": 9
             },
             {
                 "id": "deck-rectangular",
@@ -4070,7 +4158,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 2
+                "views": 3
             },
             {
                 "id": "Estantes-Cortes-Madera",
@@ -5496,7 +5584,7 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 1
+                "views": 2
             },
             {
                 "id": "perchero-madera-tuvitos5",
@@ -5587,7 +5675,7 @@ const productsData = [
                 "last_modified": 1784773242756,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0
+                "views": 2
             },
             {
                 "id": "estante-hexagonal-x3",
@@ -6101,7 +6189,8 @@ const productsData = [
                 ],
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
-                "visible": true
+                "visible": true,
+                "views": 7
             },
             {
                 "id": "pie-cama-romano",
@@ -7132,7 +7221,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786305162256,
                 "primaryCatId": "camas-madera-pino",
-                "views": 2
+                "views": 3
             },
             {
                 "id": "estantes-montessori",
@@ -7977,6 +8066,42 @@ const productsData = [
                 "last_modified": 1786334918176,
                 "primaryCatId": "Hogar",
                 "views": 0
+            },
+            {
+                "id": "mesita-matera",
+                "title": "Mesita Matera",
+                "description": "",
+                "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
+                        "images_list": [
+                            "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
+                            "img/mesas-de-madera/mesita-matera/1786665063420-imagen.webp",
+                            "img/mesas-de-madera/mesita-matera/1786665063603-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Mesita",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 16997,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786665082292,
+                "primaryCatId": "Mesas-madera"
             }
         ]
     },
@@ -8803,7 +8928,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 2
+                "views": 3
             },
             {
                 "id": "perchero-nordico-pared-x3",
@@ -9363,7 +9488,7 @@ const productsData = [
                 "last_modified": 1784773242756,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0
+                "views": 2
             },
             {
                 "id": "perchero-madera-tuvitos",
@@ -9455,7 +9580,7 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 1
+                "views": 2
             }
         ]
     },
@@ -14877,7 +15002,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786305162256,
                 "primaryCatId": "camas-madera-pino",
-                "views": 2
+                "views": 3
             }
         ]
     },
@@ -15962,7 +16087,8 @@ const productsData = [
                     "decoracion"
                 ],
                 "last_modified": 1786564211621,
-                "primaryCatId": "sillas-sillones"
+                "primaryCatId": "sillas-sillones",
+                "views": 16
             },
             {
                 "id": "silla-infantil",
@@ -16542,7 +16668,8 @@ const productsData = [
                 ],
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
-                "visible": true
+                "visible": true,
+                "views": 7
             },
             {
                 "id": "mensulas-escritorio",
@@ -16785,6 +16912,42 @@ const productsData = [
                 "last_modified": 1786334411421,
                 "primaryCatId": "Hogar",
                 "views": 1
+            },
+            {
+                "id": "mesita-matera",
+                "title": "Mesita Matera",
+                "description": "",
+                "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
+                        "images_list": [
+                            "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
+                            "img/mesas-de-madera/mesita-matera/1786665063420-imagen.webp",
+                            "img/mesas-de-madera/mesita-matera/1786665063603-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Mesita",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 16997,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786665082292,
+                "primaryCatId": "Mesas-madera"
             }
         ]
     },
@@ -16940,7 +17103,105 @@ const productsData = [
                 "image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Natural",
+                        "acabado_name": "25 x 25 cm",
+                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "images_list": [
+                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Unidad",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-25-x-25-cm/up/MLAU3454515164?pdp_filters=item_id:MLA2399572790",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "2 Unidades",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-25-x-25-cm-x2-un/up/MLAU3466094368?pdp_filters=item_id:MLA2416155670",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "3 Unidades",
+                                "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-25-x-25-cm-x-3-un/up/MLAU3459333947?pdp_filters=item_id:MLA2415986866",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 30 cm",
+                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "images_list": [
+                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30 x 30 cm (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 30 cm (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "30 x 30 cm (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40 x 40 cm",
                         "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
                             "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
@@ -16954,6 +17215,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -16965,6 +17228,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -16976,72 +17241,57 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
-                            },
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50 x 50 cm",
+                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "images_list": [
+                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                        ],
+                        "medidas_variants": [
                             {
-                                "medida": "30 x 30 cm (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
+                                "medida": "1 Unidad",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
                             {
-                                "medida": "30 x 30 cm (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
+                                "medida": "2 Unidades",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
                             {
-                                "medida": "30 x 30 cm (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
+                                "medida": "3 Unidades",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "25 x 25 cm (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2399572790-deck-base-macetas-madera-25-x-25-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "25 x 25 cm (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2416155670-deck-base-macetas-madera-25-x-25-cm-x2-un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "25 x 25 cm (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2415986866-deck-base-macetas-madera-25-x-25-cm-x-3-un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             }
@@ -17110,9 +17360,9 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1783618243134,
+                "last_modified": 1786654343139,
                 "primaryCatId": "jardin-patio",
-                "views": 3
+                "views": 9
             },
             {
                 "id": "macetas-colgante-eucalipto",
