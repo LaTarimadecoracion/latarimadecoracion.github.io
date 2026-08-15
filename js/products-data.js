@@ -980,6 +980,19 @@ const productsData = [
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
+                            },
+                            {
+                                "medida": "2 Unidad",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 65000,
+                                "cost_price": 17000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -1023,9 +1036,8 @@ const productsData = [
                     "percheros rusticos",
                     "percheros de pino"
                 ],
-                "last_modified": 1783803117073,
-                "primaryCatId": "Percheros",
-                "views": 9
+                "last_modified": 1786826453117,
+                "primaryCatId": "Percheros"
             },
             {
                 "id": "banquito-de-plaza",
@@ -1951,7 +1963,8 @@ const productsData = [
                     "deck jardin"
                 ],
                 "last_modified": 1786812326311,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 10
             },
             {
                 "id": "deck-rectangular",
@@ -2172,7 +2185,8 @@ const productsData = [
                     "deck jardin"
                 ],
                 "last_modified": 1786812318991,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 14
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -2512,7 +2526,7 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 17
+                "views": 19
             },
             {
                 "id": "Mueble-Multifunción",
@@ -4240,7 +4254,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 3
+                "views": 4
             },
             {
                 "id": "Estantes-Cortes-Madera",
@@ -4826,7 +4840,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411533338,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 1
+                "views": 2
             },
             {
                 "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
@@ -4905,7 +4919,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1786811672934,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 4
             },
             {
                 "id": "Eco-fija-100x50cm-Modelo-unico",
@@ -4996,7 +5011,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1786811859567,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 3
             },
             {
                 "id": "Eco-rebatible",
@@ -5082,7 +5098,8 @@ const productsData = [
                     "corral funcional"
                 ],
                 "last_modified": 1786811707863,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 9
             },
             {
                 "id": "cuna-Rebatible-cajones",
@@ -8194,7 +8211,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786811404439,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 2
             }
         ]
     },
@@ -8871,6 +8889,19 @@ const productsData = [
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
+                            },
+                            {
+                                "medida": "2 Unidad",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 65000,
+                                "cost_price": 17000,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -8914,9 +8945,8 @@ const productsData = [
                     "percheros rusticos",
                     "percheros de pino"
                 ],
-                "last_modified": 1783803117073,
-                "primaryCatId": "Percheros",
-                "views": 9
+                "last_modified": 1786826453117,
+                "primaryCatId": "Percheros"
             },
             {
                 "id": "perchero-pared-doblegancho",
@@ -9021,7 +9051,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 3
+                "views": 4
             },
             {
                 "id": "perchero-nordico-pared-x3",
@@ -14501,7 +14531,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411533338,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 1
+                "views": 2
             },
             {
                 "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
@@ -14580,7 +14610,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1786811672934,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 4
             },
             {
                 "id": "Eco-fija-100x50cm-Modelo-unico",
@@ -14671,7 +14702,8 @@ const productsData = [
                     "cunas de pino"
                 ],
                 "last_modified": 1786811859567,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 3
             },
             {
                 "id": "Eco-rebatible",
@@ -14757,7 +14789,8 @@ const productsData = [
                     "corral funcional"
                 ],
                 "last_modified": 1786811707863,
-                "primaryCatId": "cunas-madera-pino"
+                "primaryCatId": "cunas-madera-pino",
+                "views": 9
             },
             {
                 "id": "cuna-Rebatible-cajones",
@@ -17051,7 +17084,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786811404439,
-                "primaryCatId": "Mesas-madera"
+                "primaryCatId": "Mesas-madera",
+                "views": 2
             }
         ]
     },
@@ -17281,7 +17315,8 @@ const productsData = [
                     "deck jardin"
                 ],
                 "last_modified": 1786812318991,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 14
             },
             {
                 "id": "deck-cuadrado",
@@ -17548,7 +17583,8 @@ const productsData = [
                     "deck jardin"
                 ],
                 "last_modified": 1786812326311,
-                "primaryCatId": "jardin-patio"
+                "primaryCatId": "jardin-patio",
+                "views": 10
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -18099,7 +18135,7 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 17
+                "views": 19
             },
             {
                 "id": "Mate",
