@@ -44,9 +44,9 @@ const ordersData = [
         "paidStatus": "total",
         "paidAmount": 14000,
         "totalAmount": 14000,
-        "status": "pendiente",
+        "status": "entregado",
         "creationDate": "2026-08-07T16:54:03.836Z",
-        "completedDate": "",
+        "completedDate": "2026-08-15T16:51:28.510Z",
         "image": "img/migrados/decoracion/mensulas/mensulas.webp",
         "startDate": "2026-08-07T03:00:00.000Z",
         "estimatedReadyDate": "2026-08-11T02:59:00.000Z"
