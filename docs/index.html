@@ -129,6 +129,12 @@
     </script>
 
     
+    <div id="vacation-top-banner" class="vacation-top-banner" style="display: none;">
+        <span class="material-symbols-outlined vacation-icon">info</span>
+        <span id="vacation-banner-text">Estamos de vacaciones, pero seguimos tomando pedidos.</span>
+    </div>
+
+    
     <header class="main-header-bar" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; gap: 8px; background: var(--bg-color); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); width: 100%; box-sizing: border-box;">
         
         
@@ -668,6 +674,39 @@
                                         <button type="button" id="admin-theme-save-btn" class="btn-primary" style="margin-top: 1rem; width: 100%; max-width: none;">
                                             <span class="material-symbols-outlined">save</span>
                                             <span>Guardar Temática</span>
+                                        </button>
+                                    </div>
+
+                                    
+                                    <div class="admin-card vacation-selector-panel" style="border: 1.5px solid #E2E8F0; background: #FFFFFF; border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.5rem;">
+                                        <header class="admin-page-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0;">
+                                            <h3 class="admin-header-title" style="color: #1E293B; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0;">
+                                                <span class="material-symbols-outlined" style="color: #F76707;">hotel</span>
+                                                Modo Vacaciones
+                                            </h3>
+                                        </header>
+                                        <p class="section-desc" style="font-size: 0.8rem; color: #64748B; margin-bottom: 1rem; line-height: 1.4;">
+                                            Activá el cartel de aviso de vacaciones. Las publicaciones y el carrito seguirán activos con los precios congelados.
+                                        </p>
+                                        <div class="form-group" style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 8px;">
+                                            <input type="checkbox" id="admin-vacation-active" style="width: 18px; height: 18px; cursor: pointer;">
+                                            <label for="admin-vacation-active" style="font-size: 0.85rem; font-weight: 600; cursor: pointer; margin: 0;">Activar Modo Vacaciones</label>
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 0.8rem;">
+                                            <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Período de Vacaciones (ej: del 1 al 5):</label>
+                                            <input type="text" id="admin-vacation-start-end" class="premium-input" placeholder="ej: del 1 al 5 de Septiembre" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1.5px solid #CBD5E1; box-sizing: border-box;">
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 0.8rem;">
+                                            <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Fecha de Entregas (ej: del 7 al 10):</label>
+                                            <input type="text" id="admin-vacation-deliveries" class="premium-input" placeholder="ej: a partir del 7 al 10 de Septiembre" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1.5px solid #CBD5E1; box-sizing: border-box;">
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 1rem;">
+                                            <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Mensaje Leyenda Adicional:</label>
+                                            <textarea id="admin-vacation-message" class="premium-input" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1.5px solid #CBD5E1; box-sizing: border-box; min-height: 60px; font-family: inherit; font-size: 0.85rem; resize: vertical;" placeholder="ej: Estamos de vacaciones, pero seguimos tomando pedidos con precios congelados."></textarea>
+                                        </div>
+                                        <button type="button" id="admin-vacation-save-btn" class="btn-primary" style="width: 100%; max-width: none; background: #F76707; border-color: #F76707; color: white;">
+                                            <span class="material-symbols-outlined">save</span>
+                                            <span>Guardar Modo Vacaciones</span>
                                         </button>
                                     </div>
                                 </div>

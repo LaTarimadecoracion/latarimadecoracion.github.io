@@ -1095,9 +1095,64 @@ window.initPagesAdmin = function() {
         });
     }
 
+    function populateAdminVacation() {
+        const config = window.vacationConfig || {};
+        const activeCheck = document.getElementById('admin-vacation-active');
+        const startEndInput = document.getElementById('admin-vacation-start-end');
+        const deliveriesInput = document.getElementById('admin-vacation-deliveries');
+        const messageInput = document.getElementById('admin-vacation-message');
+
+        if (activeCheck) activeCheck.checked = !!config.active;
+        if (startEndInput) startEndInput.value = config.startDate || '';
+        if (deliveriesInput) deliveriesInput.value = config.deliveriesDate || '';
+        if (messageInput) messageInput.value = config.message || '';
+    }
+
+    function initVacationAdmin() {
+        const activeCheck = document.getElementById('admin-vacation-active');
+        const startEndInput = document.getElementById('admin-vacation-start-end');
+        const deliveriesInput = document.getElementById('admin-vacation-deliveries');
+        const messageInput = document.getElementById('admin-vacation-message');
+        const saveBtn = document.getElementById('admin-vacation-save-btn');
+
+        if (!saveBtn) return;
+
+        saveBtn.addEventListener('click', async function() {
+            window.vacationConfig = {
+                active: !!activeCheck?.checked,
+                startDate: startEndInput?.value?.trim() || '',
+                endDate: '',
+                deliveriesDate: deliveriesInput?.value?.trim() || '',
+                message: messageInput?.value?.trim() || 'Estamos de vacaciones, pero seguimos tomando pedidos.'
+            };
+
+            saveBtn.disabled = true;
+            const originalText = saveBtn.querySelector('span:not(.material-symbols-outlined)').innerText;
+            saveBtn.querySelector('span:not(.material-symbols-outlined)').innerText = 'Guardando...';
+
+            try {
+                if (window.syncSiteConfigWithServer) {
+                    await window.syncSiteConfigWithServer();
+                }
+                showAdminToast(`💾 Modo vacaciones actualizado`);
+                if (window.initClientVacationMode) {
+                    window.initClientVacationMode();
+                }
+            } catch (err) {
+                console.error('Error guardando modo vacaciones:', err);
+                showAdminToast('❌ Error al sincronizar con el servidor');
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.querySelector('span:not(.material-symbols-outlined)').innerText = originalText;
+            }
+        });
+    }
+
     window.initSocialLinksAdmin = initSocialLinksAdmin;
     window.initThemeAdmin = initThemeAdmin;
     window.initGithubPublishAdmin = initGithubPublishAdmin;
+    window.initVacationAdmin = initVacationAdmin;
+    window.populateAdminVacation = populateAdminVacation;
 
 
 function applyAdminPanelWidth(width) {

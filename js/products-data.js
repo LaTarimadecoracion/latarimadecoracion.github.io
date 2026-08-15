@@ -1689,7 +1689,7 @@ const productsData = [
             {
                 "id": "deck-cuadrado",
                 "title": "Deck cuadrado",
-                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
+                "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
                 "image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
                 "acabados_groups": [
                     {
@@ -1854,10 +1854,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 20000,
+                                "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "2 Unidades",
@@ -1867,10 +1867,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 38000,
+                                "cost_price": 38000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "3 Unidades",
@@ -1880,10 +1880,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -1950,18 +1950,17 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1786654343139,
-                "primaryCatId": "jardin-patio",
-                "views": 9
+                "last_modified": 1786812326311,
+                "primaryCatId": "jardin-patio"
             },
             {
                 "id": "deck-rectangular",
                 "title": "Deck rectangular",
-                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
+                "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
                 "image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Natural",
+                        "acabado_name": "25 x 50 cm",
                         "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
                         "images_list": [
                             "img/exterior/deck-rectangular/1780707680810-imagen.webp",
@@ -1969,59 +1968,143 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "25 x 50 cm (1 Unidad)",
+                                "medida": "(1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
-                                "medida": "25 x 50 cm (Combo x2)",
+                                "medida": "(Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
-                                "medida": "25 x 50 cm (Combo x3)",
+                                "medida": "(Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
-                            },
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 40 cm",
+                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "images_list": [
+                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                        ],
+                        "medidas_variants": [
                             {
-                                "medida": "30 x 40 cm (1 Unidad)",
+                                "medida": "(1 Unidad)",
                                 "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-30-x-40-cm/up/MLAU3974458202?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=8&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
-                                "medida": "30 x 80 cm (1 Unidad)",
+                                "medida": "(2 Unidad)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "(3 Unidad)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 80 cm",
+                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "images_list": [
+                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Unidad)",
                                 "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-80-x-30-cm/up/MLAU3755092617?pdp_filters=seller_id%3A618512819#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=fallback_same-seller&reco_client=vip-seller_items-above&reco_item_pos=0&reco_backend_type=low_level&reco_id=1226f72d-4e83-430a-bc23-cab333cafa92&wid=MLA2813675242&sid=recos",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "(Combo x2)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "(Combo x3)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -2088,9 +2171,8 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1783618237200,
-                "primaryCatId": "jardin-patio",
-                "views": 11
+                "last_modified": 1786812318991,
+                "primaryCatId": "jardin-patio"
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -4396,7 +4478,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 23
+                "views": 24
             },
             {
                 "id": "9-vinos",
@@ -4822,9 +4904,8 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411542681,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "last_modified": 1786811672934,
+                "primaryCatId": "cunas-madera-pino"
             },
             {
                 "id": "Eco-fija-100x50cm-Modelo-unico",
@@ -4838,7 +4919,21 @@ const productsData = [
                         "images_list": [
                             "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp"
                         ],
-                        "medidas_variants": [],
+                        "medidas_variants": [
+                            {
+                                "medida": "Unida medida",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 75000,
+                                "cost_price": 50000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
                         "hidden": false
                     }
                 ],
@@ -4900,9 +4995,8 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411547881,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 1
+                "last_modified": 1786811859567,
+                "primaryCatId": "cunas-madera-pino"
             },
             {
                 "id": "Eco-rebatible",
@@ -4926,7 +5020,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 117300,
+                                "price": 103500,
                                 "cost_price": 69000,
                                 "legend": "",
                                 "showPrice": true
@@ -4987,9 +5081,8 @@ const productsData = [
                     "corral de madera",
                     "corral funcional"
                 ],
-                "last_modified": 1784430151878,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 9
+                "last_modified": 1786811707863,
+                "primaryCatId": "cunas-madera-pino"
             },
             {
                 "id": "cuna-Rebatible-cajones",
@@ -8084,14 +8177,14 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Mesita",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/mesita-matera-plegable/up/MLAU4758741308?pdp_filters=item_id:MLA1995151329",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 16997,
-                                "cost_price": "",
+                                "price": 17000,
+                                "cost_price": 16997,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -8100,7 +8193,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786665082292,
+                "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera"
             }
         ]
@@ -8379,7 +8472,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 23
+                "views": 24
             },
             {
                 "id": "9-vinos",
@@ -14486,9 +14579,8 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411542681,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "last_modified": 1786811672934,
+                "primaryCatId": "cunas-madera-pino"
             },
             {
                 "id": "Eco-fija-100x50cm-Modelo-unico",
@@ -14502,7 +14594,21 @@ const productsData = [
                         "images_list": [
                             "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp"
                         ],
-                        "medidas_variants": [],
+                        "medidas_variants": [
+                            {
+                                "medida": "Unida medida",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 75000,
+                                "cost_price": 50000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
                         "hidden": false
                     }
                 ],
@@ -14564,9 +14670,8 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411547881,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 1
+                "last_modified": 1786811859567,
+                "primaryCatId": "cunas-madera-pino"
             },
             {
                 "id": "Eco-rebatible",
@@ -14590,7 +14695,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 117300,
+                                "price": 103500,
                                 "cost_price": 69000,
                                 "legend": "",
                                 "showPrice": true
@@ -14651,9 +14756,8 @@ const productsData = [
                     "corral de madera",
                     "corral funcional"
                 ],
-                "last_modified": 1784430151878,
-                "primaryCatId": "cunas-madera-pino",
-                "views": 9
+                "last_modified": 1786811707863,
+                "primaryCatId": "cunas-madera-pino"
             },
             {
                 "id": "cuna-Rebatible-cajones",
@@ -16930,14 +17034,14 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Mesita",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/mesita-matera-plegable/up/MLAU4758741308?pdp_filters=item_id:MLA1995151329",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 16997,
-                                "cost_price": "",
+                                "price": 17000,
+                                "cost_price": 16997,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -16946,7 +17050,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786665082292,
+                "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera"
             }
         ]
@@ -16961,11 +17065,11 @@ const productsData = [
             {
                 "id": "deck-rectangular",
                 "title": "Deck rectangular",
-                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
+                "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
                 "image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Natural",
+                        "acabado_name": "25 x 50 cm",
                         "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
                         "images_list": [
                             "img/exterior/deck-rectangular/1780707680810-imagen.webp",
@@ -16973,59 +17077,143 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "25 x 50 cm (1 Unidad)",
+                                "medida": "(1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2413115814-deck-base-macetas-madera-25-x-50-cm-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
-                                "medida": "25 x 50 cm (Combo x2)",
+                                "medida": "(Combo x2)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416052694-deck-base-macetas-madera-25-x-50-cm-x2-un-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
-                                "medida": "25 x 50 cm (Combo x3)",
+                                "medida": "(Combo x3)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2416026574-deck-base-macetas-madera-25-x-50-cm-x3-un-_JM",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
-                            },
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 40 cm",
+                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "images_list": [
+                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                        ],
+                        "medidas_variants": [
                             {
-                                "medida": "30 x 40 cm (1 Unidad)",
+                                "medida": "(1 Unidad)",
                                 "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-30-x-40-cm/up/MLAU3974458202?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=8&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
-                                "medida": "30 x 80 cm (1 Unidad)",
+                                "medida": "(2 Unidad)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "(3 Unidad)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 80 cm",
+                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "images_list": [
+                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Unidad)",
                                 "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-80-x-30-cm/up/MLAU3755092617?pdp_filters=seller_id%3A618512819#polycard_client=recommendations_vip-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=fallback_same-seller&reco_client=vip-seller_items-above&reco_item_pos=0&reco_backend_type=low_level&reco_id=1226f72d-4e83-430a-bc23-cab333cafa92&wid=MLA2813675242&sid=recos",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "(Combo x2)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "(Combo x3)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -17092,14 +17280,13 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1783618237200,
-                "primaryCatId": "jardin-patio",
-                "views": 11
+                "last_modified": 1786812318991,
+                "primaryCatId": "jardin-patio"
             },
             {
                 "id": "deck-cuadrado",
                 "title": "Deck cuadrado",
-                "description": "Embellece tus espacios exteriores con madera de primera calidad.",
+                "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
                 "image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
                 "acabados_groups": [
                     {
@@ -17264,10 +17451,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 20000,
+                                "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "2 Unidades",
@@ -17277,10 +17464,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 38000,
+                                "cost_price": 38000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "3 Unidades",
@@ -17290,10 +17477,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -17360,9 +17547,8 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1786654343139,
-                "primaryCatId": "jardin-patio",
-                "views": 9
+                "last_modified": 1786812326311,
+                "primaryCatId": "jardin-patio"
             },
             {
                 "id": "macetas-colgante-eucalipto",

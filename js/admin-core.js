@@ -77,6 +77,7 @@ function initAdminUX20() {
     if (typeof window.initGithubPublishAdmin === 'function') window.initGithubPublishAdmin();
     if (typeof window.initRentalsAdmin === 'function') window.initRentalsAdmin();
     if (typeof window.initMayoristaAdmin === 'function') window.initMayoristaAdmin();
+    if (typeof window.initVacationAdmin === 'function') window.initVacationAdmin();
 }
 
     async function renderAdminDashboard() {
@@ -314,6 +315,7 @@ function renderAdminUX() {
         if (currentAdminTab === 'dashboard') {
             renderAdminDashboard();
             populateAdminTheme();
+            if (typeof window.populateAdminVacation === 'function') window.populateAdminVacation();
         } else if (currentAdminTab === 'catalog') {
             const categoriesView = document.getElementById('admin-categories-view');
             const productsView = document.getElementById('admin-products-view');

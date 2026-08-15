@@ -565,4 +565,34 @@ document.addEventListener('pointerdown', (e) => {
             }
         }
     }, { passive: true });
+
+    // --- Lógica del Modo Vacaciones en el Cliente ---
+    window.initClientVacationMode = function() {
+        const config = window.vacationConfig || {};
+        const banner = document.getElementById('vacation-top-banner');
+        const textSpan = document.getElementById('vacation-banner-text');
+
+        if (banner) {
+            if (config.active) {
+                let msg = config.message || 'Estamos de vacaciones, pero seguimos tomando pedidos con precios congelados.';
+                
+                if (config.startDate || config.deliveriesDate) {
+                    const startText = config.startDate ? ` del ${config.startDate}` : '';
+                    const deliveryText = config.deliveriesDate ? ` a partir del ${config.deliveriesDate}` : ' al regreso';
+                    msg = `🌴 Estamos de vacaciones${startText}. Seguimos tomando pedidos con entregas${deliveryText}. ¡Precios congelados! 📌`;
+                }
+                
+                if (textSpan) textSpan.textContent = msg;
+                banner.style.display = 'flex';
+            } else {
+                banner.style.display = 'none';
+            }
+        }
+    };
+
+    try {
+        window.initClientVacationMode();
+    } catch (e) {
+        console.error("Error al iniciar Modo Vacaciones en el cliente:", e);
+    }
 });

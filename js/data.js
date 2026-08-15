@@ -338,6 +338,15 @@ window.rubros = window.siteConfig.rubros || [
     { id: "carpinteria", name: "Carpintería" }
 ];
 
+// 4d. Configuración del Modo Vacaciones
+window.vacationConfig = window.siteConfig.vacationConfig || {
+    active: false,
+    startDate: "",
+    endDate: "",
+    deliveriesDate: "",
+    message: "Estamos de vacaciones, pero seguimos tomando pedidos."
+};
+
 // 5. Motor de Sincronización en Red con Servidor Local (Físico en Disco)
 window.syncSiteConfigWithServer = async function() {
     try {
@@ -350,6 +359,7 @@ window.syncSiteConfigWithServer = async function() {
             sessionAvisos: window.sessionAvisos,
             socialLinks: window.socialLinks,
             mayoristaConfig: window.mayoristaConfig,
+            vacationConfig: window.vacationConfig,
             rubros: window.rubros
         };
 

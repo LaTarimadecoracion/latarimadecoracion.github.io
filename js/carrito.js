@@ -1,4 +1,4 @@
-﻿// js/carrito.js
+// js/carrito.js
 // --- DECOUPLED INTEGRATED PERFIL-CARRITO MODULE ---
 // Built in absolute isolation, respecting the user's workspace constraints.
 
@@ -635,8 +635,18 @@
                                         : `<span class="cart-item-no-price">${item.qty || 1} ${(item.qty || 1) === 1 ? 'unidad' : 'unidades'}</span>`
                                     }
                                 </div>
-                            </div>`;
                         }).join('')}
+
+                        ${window.vacationConfig && window.vacationConfig.active ? `
+                            <div class="vacation-cart-warning">
+                                <span class="material-symbols-outlined vacation-icon">info</span>
+                                <div>
+                                    <strong>¡Taller de vacaciones!</strong><br>
+                                    Nuestras vacaciones son del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Retomamos las entregas/retiros a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>.<br>
+                                    <span style="color:#097969; font-weight:700;">✨ ¡Tu precio queda congelado!</span> Reservando hoy, te garantizamos el precio de lista actual sin aumentos futuros a nuestro regreso.
+                                </div>
+                            </div>
+                        ` : ''}
 
                         <!-- Panel Total -->
                         <div class="cart-total-panel">
@@ -1132,9 +1142,14 @@
                             const dir = shippingData.direccion || userData.address || '';
                             if (loc) parts.push(`• Destino/CP: ${loc}`);
                             if (dir) parts.push(`• Dirección: ${dir}`);
+                        let vacationNote = "";
+                        if (window.vacationConfig && window.vacationConfig.active) {
+                            const start = window.vacationConfig.startDate || "receso";
+                            const deliv = window.vacationConfig.deliveriesDate || "el regreso";
+                            vacationNote = `\n\n(Nota: Sé que están de vacaciones del ${start} y las entregas se retoman a partir del ${deliv}. El precio actual pactado queda congelado y mantenido).`;
                         }
 
-                        return `¡Hola La Tarima! Quiero consultar por los siguientes productos de mi carrito:\n\n${parts.join('\n')}\n\n¿Me podés confirmar disponibilidad?`;
+                        return `¡Hola La Tarima! Quiero consultar por los siguientes productos de mi carrito:\n\n${parts.join('\n')}\n\n¿Me podés confirmar disponibilidad?${vacationNote}`;
                     }
 
                     // Crear overlay del modal
@@ -1172,6 +1187,11 @@
 
                         <!-- Formulario desplegable opcional para datos de envío -->
                         <div id="delivery-shipping-form" style="display:none; width:100%; flex-direction:column; gap:10px; margin-top:12px; text-align:left;">
+                            ${window.vacationConfig && window.vacationConfig.active ? `
+                                <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px; border-radius:8px; margin-bottom:4px; color:#E67700; font-size:0.8rem; line-height:1.4;">
+                                    <strong>⚠️ Envíos reprogramados:</strong> Estamos de vacaciones del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Los envíos se cotizarán y realizarán a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. ¡Mantenemos tu precio actual congelado!
+                                </div>
+                            ` : ''}
                             <p style="font-size:0.82rem; color:#64748B; margin:0 0 2px 0;">📍 Datos para cotizar el envío <span style="color:#94A3B8;">(opcionales)</span>:</p>
                             <input type="text" id="ship-loc" placeholder="Localidad o Código Postal (ej: Ramos Mejía / 1704)" value="${userData.locality || userData.zipCode || ''}" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
                             <input type="text" id="ship-dir" placeholder="Dirección de entrega (ej: Av. de Mayo 123)" value="${userData.address || ''}" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
@@ -1183,6 +1203,11 @@
                         <!-- Panel desplegable con información de Retiro por Taller -->
                         <div id="delivery-pickup-info" style="display:none; width:100%; flex-direction:column; gap:12px; margin-top:10px; text-align:left;">
                             <div style="background:#FFF8F5; border:1.5px solid rgba(160,113,91,0.25); padding:14px; border-radius:14px; font-size:0.85rem; color:#2D3748; line-height:1.5;">
+                                ${window.vacationConfig && window.vacationConfig.active ? `
+                                    <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px; border-radius:8px; margin-bottom:12px; color:#E67700; font-size:0.8rem; line-height:1.4;">
+                                        <strong>⚠️ Aviso de vacaciones:</strong> Taller cerrado del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Los retiros se coordinan a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. ¡Tu precio queda congelado sin aumentos!
+                                    </div>
+                                ` : ''}
                                 <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
                                     <span>💡 Aclaraciones sobre el precio:</span>
                                 </p>

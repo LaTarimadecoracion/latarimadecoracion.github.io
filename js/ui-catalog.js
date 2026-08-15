@@ -495,7 +495,14 @@
                 }
             }
 
-            return `¡Hola La Tarima! Quiero consultar por el siguiente producto:\n\n${parts.join('\n')}\n\n¿Me podés pasar más info y disponibilidad?`;
+            let vacationNote = "";
+            if (window.vacationConfig && window.vacationConfig.active) {
+                const start = window.vacationConfig.startDate || "receso";
+                const deliv = window.vacationConfig.deliveriesDate || "el regreso";
+                vacationNote = `\n\n(Nota: Sé que están de vacaciones del ${start} y las entregas se retoman a partir del ${deliv}. El precio actual pactado queda congelado y mantenido).`;
+            }
+
+            return `¡Hola La Tarima! Quiero consultar por el siguiente producto:\n\n${parts.join('\n')}\n\n¿Me podés pasar más info y disponibilidad?${vacationNote}`;
         }
 
         // ── Modal de pre-calificación de entrega ──────────────────────────────
@@ -533,6 +540,11 @@
                 <p class="delivery-modal-eyebrow">Antes de continuar</p>
                 <h3 class="delivery-modal-title">¿Necesitás envío?</h3>
                 <p class="delivery-modal-subtitle">Elegí una de las opciones para poder continuar</p>
+                ${window.vacationConfig && window.vacationConfig.active ? `
+                    <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px 12px; border-radius:10px; margin-bottom:12px; color:#E67700; font-size:0.8rem; line-height:1.4; text-align:left;">
+                        <strong>🌴 ¡Taller de vacaciones!</strong> Retomamos las entregas a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. Reservando hoy por WhatsApp te garantizamos el **precio congelado** sin aumentos.
+                    </div>
+                ` : ''}
                 <div class="delivery-modal-options">
                     <button class="delivery-opt-btn delivery-opt-pickup" id="dopt-pickup">
                         <span class="delivery-opt-icon">🏪</span>
@@ -542,12 +554,17 @@
                     <button class="delivery-opt-btn delivery-opt-shipping" id="dopt-shipping">
                         <span class="delivery-opt-icon">🚚</span>
                         <span class="delivery-opt-label">Necesito envío</span>
-                        <span class="delivery-opt-desc">${mlLink ? 'Comprar en Mercado Libre (aplica costos de plataforma y envío)' : 'Te cotizamos el envío por WhatsApp'}</span>
+                        <span class="delivery-opt-desc">${mlLink ? (window.vacationConfig && window.vacationConfig.active ? '⚠️ Envío externo (publicación ML podría estar pausada). Guardar en Favoritos o consultanos por WhatsApp.' : 'Comprar en Mercado Libre (aplica costos de plataforma y envío)') : 'Te cotizamos el envío por WhatsApp'}</span>
                     </button>
                 </div>
 
                 <!-- Formulario desplegable opcional para datos de envío -->
                 <div id="delivery-shipping-form" style="display:none; width:100%; flex-direction:column; gap:10px; margin-top:12px; text-align:left;">
+                    ${window.vacationConfig && window.vacationConfig.active ? `
+                        <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px; border-radius:8px; margin-bottom:4px; color:#E67700; font-size:0.8rem; line-height:1.4;">
+                            <strong>⚠️ Envíos reprogramados:</strong> Estamos de vacaciones del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Los envíos se cotizarán y realizarán a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. ¡Tu precio queda congelado sin aumentos!
+                        </div>
+                    ` : ''}
                     <p style="font-size:0.82rem; color:#64748B; margin:0 0 2px 0;">📍 Datos para cotizar el envío <span style="color:#94A3B8;">(opcionales)</span>:</p>
                     <input type="text" id="ship-loc" placeholder="Localidad o Código Postal (ej: Ramos Mejía / 1704)" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
                     <input type="text" id="ship-dir" placeholder="Dirección de entrega (ej: Av. de Mayo 123)" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
@@ -559,6 +576,11 @@
                 <!-- Panel desplegable con información de Retiro por Taller -->
                 <div id="delivery-pickup-info" style="display:none; width:100%; flex-direction:column; gap:12px; margin-top:10px; text-align:left;">
                     <div style="background:#FFF8F5; border:1.5px solid rgba(160,113,91,0.25); padding:14px; border-radius:14px; font-size:0.85rem; color:#2D3748; line-height:1.5;">
+                        ${window.vacationConfig && window.vacationConfig.active ? `
+                            <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px; border-radius:8px; margin-bottom:12px; color:#E67700; font-size:0.8rem; line-height:1.4;">
+                                <strong>⚠️ Aviso de vacaciones:</strong> Taller cerrado del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Los retiros se coordinan a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. ¡Tu precio queda congelado sin aumentos!
+                            </div>
+                        ` : ''}
                         <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
                             <span>💡 Aclaraciones sobre el precio:</span>
                         </p>

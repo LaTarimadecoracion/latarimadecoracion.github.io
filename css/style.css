@@ -5731,3 +5731,63 @@ a .material-symbols-outlined {
     border-color: var(--primary-color);
 }
 
+/* --- ESTILOS MODO VACACIONES --- */
+.vacation-top-banner {
+    background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 100%);
+    border-bottom: 1.5px solid #FFD8A8;
+    color: #D9480F;
+    padding: 0.65rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    z-index: 1001;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(217, 72, 15, 0.08);
+}
+.vacation-top-banner .vacation-icon {
+    font-size: 1.1rem;
+    color: #F76707;
+    animation: pulse-vacation 2s infinite;
+}
+@keyframes pulse-vacation {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.vacation-cart-warning {
+    background: #FFF9DB;
+    border: 1.5px dashed #FCC419;
+    border-radius: 12px;
+    padding: 0.95rem;
+    margin: 1rem 0;
+    color: #E67700;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    font-weight: 500;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.vacation-cart-warning .vacation-icon {
+    font-size: 1.3rem;
+    color: #F59F00;
+    flex-shrink: 0;
+}
+.vacation-form-card {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+}
+.vacation-form-card label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--text-main);
+}
+
