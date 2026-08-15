@@ -2,7 +2,7 @@ const ordersData = [
     {
         "id": "500102800",
         "clientName": "Julieta Miranda",
-        "clientPhone": "",
+        "clientPhone": "ENC_MTIwMTQ0NjUxMTk0NQ==",
         "productType": "catalog",
         "productId": "baranda-desmontable-clasica",
         "productName": "Baranda: Desmontable Clásica",
