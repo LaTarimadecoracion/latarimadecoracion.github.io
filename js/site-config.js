@@ -152,6 +152,120 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Perchero De Pie Torneado Reforzado 8 Ganchos (2)!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero De Pie Torneado Reforzado 8 Ganchos (2)!",
+            "mediaType": "image",
+            "image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=perchero-1-2",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=perchero-1-2",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786839928368
+        },
+        {
+            "title": "¡Nuevo Ingreso: Juego de Mesa y Sillas Infantiles (Colonial)!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Juego de Mesa y Sillas Infantiles (Colonial)!",
+            "mediaType": "image",
+            "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Juego de Mesa y Sillas colonial",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Juego de Mesa y Sillas colonial",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786839008032
+        },
+        {
+            "title": "¡Nuevo Ingreso: Juego de Mesa y Sillas Infantiles (Redondos)!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Juego de Mesa y Sillas Infantiles (Redondos)!",
+            "mediaType": "image",
+            "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Juego de Mesa y Sillas redondos",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Juego de Mesa y Sillas redondos",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786838965570
+        },
+        {
+            "title": "¡Nuevo Ingreso: Juego de Mesa y Sillas Infantiles!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Juego de Mesa y Sillas Infantiles!",
+            "mediaType": "image",
+            "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Juego de Mesa y Sillas Infantiles",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Juego de Mesa y Sillas Infantiles",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786838792471
+        },
+        {
+            "title": "¡Nuevo Ingreso: Soporte Para 12 Vinos Bodega Vinoteca!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Soporte Para 12 Vinos Bodega Vinoteca!",
+            "mediaType": "image",
+            "image": "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Soporte Para 12 Vinos Bodega Vinoteca",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Soporte Para 12 Vinos Bodega Vinoteca",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786828216883
+        },
+        {
+            "title": "¡Nuevo Ingreso: Soporte Para 6 Vinos Bodega Vinoteca!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Soporte Para 6 Vinos Bodega Vinoteca!",
+            "mediaType": "image",
+            "image": "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=soporte-vinos-vinoteca-6",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=soporte-vinos-vinoteca-6",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1786828039219
+        },
+        {
             "title": "¡Nuevo Ingreso: Mesita Matera!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesita Matera!",
             "mediaType": "image",
@@ -250,7 +364,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Pie de cama romano!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Pie de cama romano!",
             "mediaType": "image",
-            "image": "img/logo_provisional.png",
+            "image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -304,25 +418,6 @@ window.siteConfig = {
             "timestamp": 1783811892712
         },
         {
-            "title": "¡Nuevo Ingreso: Estante Hexagonal x3!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Estante Hexagonal x3!",
-            "mediaType": "image",
-            "image": "img/logo_provisional.png",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=estante-hexagonal-x3",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=estante-hexagonal-x3",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783811849072
-        },
-        {
             "title": "¡Nuevo Ingreso: Perchero 5 - Minimalista!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 5 - Minimalista!",
             "mediaType": "image",
@@ -361,25 +456,6 @@ window.siteConfig = {
             "timestamp": 1783811686087
         },
         {
-            "title": "¡Nuevo Ingreso: Perchero 5 - Rustico!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 5 - Rustico!",
-            "mediaType": "image",
-            "image": "img/logo_provisional.png",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Perchero 3 - Rustico-copia",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=Perchero 3 - Rustico-copia",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783811464488
-        },
-        {
             "title": "¡Nuevo Ingreso: Perchero 3 - Rustico!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 3 - Rustico!",
             "mediaType": "image",
@@ -397,177 +473,6 @@ window.siteConfig = {
             "linkText": "Ver Producto",
             "linkNewTab": false,
             "timestamp": 1783803917673
-        },
-        {
-            "title": "¡Nuevo Ingreso: Sol - Rebatible - Cajones!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Sol - Rebatible - Cajones!",
-            "mediaType": "image",
-            "image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Sol - Rebatible - Cajones",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=Sol - Rebatible - Cajones",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783750987240
-        },
-        {
-            "title": "¡Nuevo Ingreso: Romana - Rebatible - Cajones - en XX!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Romana - Rebatible - Cajones - en XX!",
-            "mediaType": "image",
-            "image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Romana - Rebatible - Cajones - en XX",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=Romana - Rebatible - Cajones - en XX",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783750963120
-        },
-        {
-            "title": "¡Nuevo Ingreso: Romana - Rebatible - Cajones!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Romana - Rebatible - Cajones!",
-            "mediaType": "image",
-            "image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Romana-Rebatible-Cajones",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=Romana-Rebatible-Cajones",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783750938226
-        },
-        {
-            "title": "¡Nuevo Ingreso: Cuna rebatible con cajones!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Cuna rebatible con cajones!",
-            "mediaType": "image",
-            "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=cuna-Rebatible-cajones",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=cuna-Rebatible-cajones",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783750894431
-        },
-        {
-            "title": "¡Nuevo Ingreso: Eco rebatible!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Eco rebatible!",
-            "mediaType": "image",
-            "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Eco-rebatible",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=Eco-rebatible",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783750834936
-        },
-        {
-            "title": "¡Nuevo Ingreso: Eco fija - Modelo único!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Eco fija - Modelo único!",
-            "mediaType": "image",
-            "image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Eco-fija-100x50cm-Modelo-unico",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=Eco-fija-100x50cm-Modelo-unico",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783750807815
-        },
-        {
-            "title": "¡Nuevo Ingreso: Corral - Colecho con doble!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Corral - Colecho con doble!",
-            "mediaType": "image",
-            "image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Corral-Colecho-con-doble-posicion-de-parrilla",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=Corral-Colecho-con-doble-posicion-de-parrilla",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783750731964
-        },
-        {
-            "title": "¡Nuevo Ingreso: Colecho Retro!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Colecho Retro!",
-            "mediaType": "image",
-            "image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Colecho_retro_madera",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=Colecho_retro_madera",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783750659139
-        },
-        {
-            "title": "¡Nuevo Ingreso: Cortes de madera!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Cortes de madera!",
-            "mediaType": "image",
-            "image": "img/migrados/decoracion/estantes/estantes.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Estantes-Cortes-Madera",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=Estantes-Cortes-Madera",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783635269181
         },
         {
             "title": "¡Nuevo Ingreso: Perchero de pared!",
@@ -625,44 +530,6 @@ window.siteConfig = {
             "linkText": "Ver Producto",
             "linkNewTab": false,
             "timestamp": 1782607703040
-        },
-        {
-            "title": "¡Nuevo Ingreso: Mesa Plegable - Redonda!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesa Plegable - Redonda!",
-            "mediaType": "image",
-            "image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=mesa-plegable-redonda-chica",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=mesa-plegable-redonda-chica",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1782606636520
-        },
-        {
-            "title": "¡Nuevo Ingreso: Mesa Plegabe!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesa Plegabe!",
-            "mediaType": "image",
-            "image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=mesa-plegabe",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=mesa-plegabe",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1782601059276
         }
     ],
     "socialLinks": {

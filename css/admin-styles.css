@@ -1,0 +1,305 @@
+/* css/admin-styles.css */
+/* --- NEW PREMIUM ADMIN PANEL STYLING (TWO-ROW TOP NAVBAR) --- */
+
+:root {
+    --admin-bg-header: #0f172a;
+    --admin-bg-content: #f8fafc;
+    --admin-border-color: #e2e8f0;
+    --admin-accent-color: #3b82f6;
+    --admin-accent-hover: #2563eb;
+    --admin-success-color: #10b981;
+    --admin-warning-color: #f59e0b;
+    --admin-danger-color: #ef4444;
+}
+
+/* Rediseño del Layout del Administrador a Formato Horizontal */
+.admin-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 85vh;
+    background: var(--admin-bg-content);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin: 1.5rem auto;
+    border: 1px solid var(--admin-border-color);
+    max-width: 1400px;
+    width: 95%;
+    transition: max-width 0.3s ease;
+}
+
+.admin-layout.width-full {
+    max-width: 100% !important;
+    width: 98% !important;
+}
+
+/* Cabecera de Dos Filas */
+.admin-top-navbar {
+    background: var(--admin-bg-header);
+    color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 0.75rem;
+}
+
+/* Fila Superior (Brand, GitHub, Actions) */
+.admin-navbar-row-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-brand span.logo-icon {
+    font-size: 24px;
+    color: var(--admin-accent-color);
+}
+
+.admin-brand h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: white;
+}
+
+.admin-brand p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* GitHub Publish centralizado */
+.admin-global-publish {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-global-publish {
+    background: var(--admin-accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+}
+
+.btn-global-publish:hover {
+    background: var(--admin-accent-hover);
+    box-shadow: 0 4px 12px -1px rgba(59, 130, 246, 0.3);
+}
+
+.btn-global-publish:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.global-publish-msg {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+/* Controles Derecha (Ancho y Salir) */
+.admin-navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Selector de Ancho */
+.admin-width-selector {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.admin-width-tab {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 500;
+    color: #94a3b8;
+    transition: all 0.15s ease;
+}
+
+.admin-width-tab.active {
+    background: white;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.btn-navbar-close {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.45rem 0.85rem;
+    border-radius: 6px;
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-navbar-close:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* Fila Inferior (Navegación de Secciones) */
+.admin-navbar-row-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 0.5rem;
+}
+
+.admin-nav-tabs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.45rem 0.85rem;
+    color: #94a3b8;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+
+.admin-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #f8fafc;
+}
+
+.admin-nav-btn.active {
+    background: var(--admin-accent-color);
+    color: white;
+}
+
+.admin-nav-btn span.material-symbols-outlined {
+    font-size: 18px;
+}
+
+/* Área de Contenido Principal */
+.admin-main {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.admin-content-area {
+    padding: 2rem;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+/* Tarjetas y Contenedores */
+.admin-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--admin-border-color);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.admin-header-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-header-desc {
+    color: #64748b;
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Inputs y Selects */
+.premium-input, .premium-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--admin-border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.premium-input:focus, .premium-select:focus {
+    border-color: var(--admin-accent-color);
+    background: white;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Ajustes Responsive */
+@media (max-width: 1024px) {
+    .admin-navbar-row-top {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+    .admin-global-publish {
+        justify-content: center;
+    }
+    .admin-navbar-actions {
+        justify-content: space-between;
+    }
+    .admin-nav-tabs {
+        overflow-x: auto;
+        padding-bottom: 4px;
+        width: 100%;
+    }
+    .admin-nav-btn {
+        white-space: nowrap;
+    }
+    .admin-content-area {
+        padding: 1rem;
+    }
+}

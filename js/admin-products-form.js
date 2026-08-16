@@ -100,6 +100,7 @@
                     <input type="number" class="medida-costo" placeholder="Costo ($)" value="${costPriceVal}" style="flex: 20 !important; min-width: 0 !important;" min="0">
                     <input type="number" class="medida-multiplicador" placeholder="Multipl. (x)" value="${multValue}" style="flex: 20 !important; min-width: 0 !important;" min="0" step="any">
                 </div>
+                <div class="medida-margin-badge-container" style="font-size: 0.72rem; display: flex; gap: 8px; font-weight: 600; margin-top: 2px;"></div>
             </div>
             <div class="medida-actions" style="display: flex; gap: 0.25rem; align-items: center; flex-shrink: 0;">
                 <button type="button" class="btn-toggle-medida-visibility"
@@ -214,6 +215,25 @@
         const costInp = row.querySelector('.medida-costo');
         const multInp = row.querySelector('.medida-multiplicador');
 
+        const updateMarginBadge = () => {
+            const price = parseFloat(priceInp.value);
+            const cost = parseFloat(costInp.value);
+            const badgeContainer = row.querySelector('.medida-margin-badge-container');
+            if (!badgeContainer) return;
+            if (!isNaN(price) && !isNaN(cost) && cost > 0) {
+                const profit = price - cost;
+                const marginPercent = Math.round((profit / price) * 100);
+                const isProfit = profit >= 0;
+                badgeContainer.innerHTML = `
+                    <span class="margin-calculator-badge ${isProfit ? 'profit' : 'loss'}" style="display: inline-flex; align-items: center; gap: 4px; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-top: 4px; ${isProfit ? 'background: rgba(16, 185, 129, 0.1); color: #10b981;' : 'background: rgba(239, 68, 68, 0.1); color: #ef4444;'}">
+                        Ganancia: $${profit.toLocaleString()} (${marginPercent}%)
+                    </span>
+                `;
+            } else {
+                badgeContainer.innerHTML = '';
+            }
+        };
+
         const calculateFromPrice = () => {
             const price = priceInp.valueAsNumber;
             const cost = costInp.valueAsNumber;
@@ -223,6 +243,7 @@
             } else {
                 multInp.value = '';
             }
+            updateMarginBadge();
         };
 
         const calculateFromMultiplier = () => {
@@ -232,11 +253,13 @@
                 const price = cost * mult;
                 priceInp.value = Math.round(price);
             }
+            updateMarginBadge();
         };
 
         const calculateFromCost = () => {
             const cost = costInp.valueAsNumber;
             if (isNaN(cost) || cost <= 0) {
+                updateMarginBadge();
                 return;
             }
             const mult = multInp.valueAsNumber;
@@ -247,11 +270,14 @@
             } else if (!isNaN(price)) {
                 multInp.value = parseFloat((price / cost).toFixed(2));
             }
+            updateMarginBadge();
         };
 
         priceInp.addEventListener('input', calculateFromPrice);
         multInp.addEventListener('input', calculateFromMultiplier);
         costInp.addEventListener('input', calculateFromCost);
+        
+        setTimeout(updateMarginBadge, 50);
         
         // Habilitar arrastre solo al sostener el handle (mantiene campos de texto editables)
         const dragHandle = row.querySelector('.medida-drag-handle');

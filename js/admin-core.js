@@ -36,7 +36,7 @@ function initAdminUX20() {
 
     // --- LISTENERS DE CORE / NAVEGACIÓN ---
         // --- LISTENERS DE PESTAÑAS (TABS) DEL DASHBOARD (V2) ---
-        const tabs = ['dashboard', 'catalog', 'pages', 'maintenance'];
+        const tabs = ['dashboard', 'settings', 'catalog', 'pages', 'orders', 'maintenance'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -69,6 +69,8 @@ function initAdminUX20() {
         }
 
     // Inicializar sub-módulos
+    if (typeof window.initSettingsAdmin === 'function') window.initSettingsAdmin();
+    if (typeof window.initMaintenanceAdmin === 'function') window.initMaintenanceAdmin();
     if (typeof window.initCategoriesFormAdmin === 'function') window.initCategoriesFormAdmin();
     if (typeof window.initProductsAdmin === 'function') window.initProductsAdmin();
     if (typeof window.initPagesAdmin === 'function') window.initPagesAdmin();
@@ -284,7 +286,7 @@ function initAdminUX20() {
 function renderAdminUX() {
     initAdminUX20();
         // Control visual de la barra de navegación del panel (V2)
-        const tabs = ['dashboard', 'catalog', 'pages', 'maintenance'];
+        const tabs = ['dashboard', 'settings', 'catalog', 'pages', 'orders', 'maintenance'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -299,8 +301,10 @@ function renderAdminUX() {
         // Ocultar todas las secciones principales
         const viewIds = {
             dashboard: 'admin-dashboard-view',
+            settings: 'admin-settings-view',
             catalog: 'admin-catalog-view',
             pages: 'admin-pages-view',
+            orders: 'admin-orders-view',
             maintenance: 'admin-maintenance-view'
         };
 

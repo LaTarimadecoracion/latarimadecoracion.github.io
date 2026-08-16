@@ -1047,51 +1047,55 @@ window.initPagesAdmin = function() {
     }
 
     function initGithubPublishAdmin() {
-        const publishBtn = document.getElementById('admin-github-publish-btn');
-        const statusMsg = document.getElementById('publish-status-msg');
-        
-        if (!publishBtn) return;
-        
-        publishBtn.addEventListener('click', async () => {
-            publishBtn.disabled = true;
-            const originalBtnHtml = publishBtn.innerHTML;
-            publishBtn.innerHTML = `<span class="material-symbols-outlined" style="animation: spin-saw 1.5s linear infinite;">sync</span> <span>Subiendo cambios...</span>`;
-            
-            if (statusMsg) {
-                statusMsg.style.display = 'block';
-                statusMsg.style.background = '#EFF6FF';
-                statusMsg.style.color = '#1E40AF';
-                statusMsg.textContent = '⏳ Compilando archivos locales y subiendo a GitHub...';
-            }
-            
-            try {
-                const res = await fetch('/api/publish-github', {
-                    method: 'POST'
-                });
-                const data = await res.json();
+        const btnIds = ['admin-github-publish-btn', 'maintenance-publish-btn'];
+        const statusMsgIds = ['publish-status-msg', 'maintenance-publish-status'];
+
+        btnIds.forEach((btnId, idx) => {
+            const publishBtn = document.getElementById(btnId);
+            const statusMsg = document.getElementById(statusMsgIds[idx]);
+            if (!publishBtn) return;
+
+            publishBtn.addEventListener('click', async () => {
+                publishBtn.disabled = true;
+                const originalBtnHtml = publishBtn.innerHTML;
+                publishBtn.innerHTML = `<span class="material-symbols-outlined" style="animation: spin-saw 1.5s linear infinite;">sync</span> <span>Subiendo cambios...</span>`;
                 
-                if (data.success) {
-                    if (statusMsg) {
-                        statusMsg.style.background = '#DCFCE7';
-                        statusMsg.style.color = '#15803D';
-                        statusMsg.textContent = '✅ ¡Web publicada con éxito! En unos minutos los cambios estarán en línea.';
-                    }
-                    showAdminToast('✅ Publicado exitosamente');
-                } else {
-                    throw new Error(data.message || 'Error en la subida');
-                }
-            } catch (err) {
-                console.error('Error publicando a GitHub:', err);
                 if (statusMsg) {
-                    statusMsg.style.background = '#FEE2E2';
-                    statusMsg.style.color = '#B91C1C';
-                    statusMsg.textContent = '⚠️ Error al subir cambios. Asegúrate de estar conectado a Internet.';
+                    statusMsg.style.display = 'block';
+                    statusMsg.style.background = '#EFF6FF';
+                    statusMsg.style.color = '#1E40AF';
+                    statusMsg.textContent = '⏳ Compilando archivos locales y subiendo a GitHub...';
                 }
-                showAdminToast('❌ Error al publicar cambios');
-            } finally {
-                publishBtn.disabled = false;
-                publishBtn.innerHTML = originalBtnHtml;
-            }
+                
+                try {
+                    const res = await fetch('/api/publish-github', {
+                        method: 'POST'
+                    });
+                    const data = await res.json();
+                    
+                    if (data.success) {
+                        if (statusMsg) {
+                            statusMsg.style.background = '#DCFCE7';
+                            statusMsg.style.color = '#15803D';
+                            statusMsg.textContent = '✅ ¡Web publicada con éxito! En unos minutos los cambios estarán en línea.';
+                        }
+                        showAdminToast('✅ Publicado exitosamente');
+                    } else {
+                        throw new Error(data.message || 'Error en la subida');
+                    }
+                } catch (err) {
+                    console.error('Error publicando a GitHub:', err);
+                    if (statusMsg) {
+                        statusMsg.style.background = '#FEE2E2';
+                        statusMsg.style.color = '#B91C1C';
+                        statusMsg.textContent = '⚠️ Error al subir cambios. Asegúrate de estar conectado a Internet.';
+                    }
+                    showAdminToast('❌ Error al publicar cambios');
+                } finally {
+                    publishBtn.disabled = false;
+                    publishBtn.innerHTML = originalBtnHtml;
+                }
+            });
         });
     }
 

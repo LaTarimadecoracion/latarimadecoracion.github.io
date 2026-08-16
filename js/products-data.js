@@ -1037,7 +1037,8 @@ const productsData = [
                     "percheros de pino"
                 ],
                 "last_modified": 1786826453117,
-                "primaryCatId": "Percheros"
+                "primaryCatId": "Percheros",
+                "views": 12
             },
             {
                 "id": "banquito-de-plaza",
@@ -3102,7 +3103,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637176778,
                 "primaryCatId": "Organizadores",
-                "views": 3
+                "views": 5
             },
             {
                 "id": "cesto-de-basura",
@@ -3667,7 +3668,7 @@ const productsData = [
                 ],
                 "last_modified": 1786057097023,
                 "primaryCatId": "Barandas",
-                "views": 4
+                "views": 5
             },
             {
                 "id": "baranda-fija-clasica",
@@ -4492,7 +4493,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 24
+                "views": 26
             },
             {
                 "id": "9-vinos",
@@ -5178,7 +5179,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411560841,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 2
             },
             {
                 "id": "Romana-Rebatible-Cajones",
@@ -5507,7 +5508,7 @@ const productsData = [
                 "last_modified": 1784773568612,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "Perchero 5 - Rusctio - campo decorado",
@@ -5795,7 +5796,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
+                        "cover_image": "img/logo_provisional.webp",
                         "images_list": [],
                         "medidas_variants": [
                             {
@@ -6306,13 +6307,13 @@ const productsData = [
                 "id": "pie-cama-romano",
                 "title": "Pie de cama romano",
                 "description": "",
-                "image": "img/logo_provisional.png",
+                "image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/logo_provisional.png",
+                        "cover_image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
                         "images_list": [
-                            "img/logo_provisional.png"
+                            "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6323,10 +6324,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": 39999,
+                                "price": 60000,
+                                "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -6336,7 +6337,7 @@ const productsData = [
                     "pie",
                     "cama",
                     "romano",
-                    "carpintería",
+                    "borrador",
                     "madera",
                     "pino",
                     "carpinteria",
@@ -6361,19 +6362,19 @@ const productsData = [
                     "pie de madera",
                     "pie de pino",
                     "mueble pie",
-                    "carpintería  pie",
+                    "borrador pie",
                     "cama de madera",
                     "cama de pino",
                     "mueble cama",
-                    "carpintería  cama",
+                    "borrador cama",
                     "romano de madera",
                     "romano de pino",
                     "mueble romano",
-                    "carpintería  romano",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
+                    "borrador romano",
+                    "borrador de madera",
+                    "borrador de pino",
+                    "mueble borrador",
+                    "borrador borrador",
                     "mueble de madera",
                     "mueble de pino",
                     "carpinteria artesanal",
@@ -6384,10 +6385,9 @@ const productsData = [
                     "muebles de calidad",
                     "diseño artesanal"
                 ],
-                "last_modified": 1783814333600,
-                "primaryCatId": "Borrador",
-                "visible": false,
-                "views": 0
+                "last_modified": 1786839526853,
+                "primaryCatId": "Hogar",
+                "visible": true
             },
             {
                 "id": "sillon-gervasoni-simple-chico",
@@ -8046,7 +8046,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "Banco Banquito Escalera Niños Infantil",
@@ -8213,6 +8213,265 @@ const productsData = [
                 "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera",
                 "views": 2
+            },
+            {
+                "id": "soporte-vinos-vinoteca-6",
+                "title": "Soporte Para 6 Vinos Bodega Vinoteca",
+                "description": "56,5 cm. de alto\n12 cm. de ancho\n29,5 cm. de profundidad",
+                "image": "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+                        "images_list": [
+                            "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+                            "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828055071-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "6 Vinos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786828055190,
+                "primaryCatId": "Vinotecas",
+                "visible": true,
+                "views": 3
+            },
+            {
+                "id": "Soporte Para 12 Vinos Bodega Vinoteca",
+                "title": "Soporte Para 12 Vinos Bodega Vinoteca",
+                "description": "» MEDIDAS\n56,5 cm. de alto\n22,5 cm. de ancho\n29,5 cm. de profundidad",
+                "image": "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp",
+                        "images_list": [
+                            "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "12 Vinos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 29000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786828216883,
+                "primaryCatId": "Vinotecas",
+                "views": 1
+            },
+            {
+                "id": "Juego de Mesa y Sillas Infantiles",
+                "title": "Juego de Mesa y Sillas Infantiles",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786839120869,
+                "primaryCatId": "Juguetes"
+            },
+            {
+                "id": "Juego de Mesa y Sillas redondos",
+                "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786839116557,
+                "primaryCatId": "Juguetes"
+            },
+            {
+                "id": "Juego de Mesa y Sillas colonial",
+                "title": "Juego de Mesa y Sillas Infantiles (Colonial)",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786839110101,
+                "primaryCatId": "Juguetes"
+            },
+            {
+                "id": "perchero-1-2",
+                "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
+                "description": "Funcionalidad y elegancia para organizar tu entrada.",
+                "image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839928203-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Unidad",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2015388606-perchero-de-pie-torneado-reforzado-8-ganchos-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 39000,
+                                "cost_price": 26000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Unidad",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 78000,
+                                "cost_price": 52000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "perchero",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "abrigo",
+                    "camperas",
+                    "entrada",
+                    "recibidor",
+                    "pared",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion",
+                    "perchero de pared",
+                    "perchero de madera",
+                    "perchero de pino",
+                    "colgador",
+                    "colgador de ropa",
+                    "ganchos para colgar",
+                    "organizador entrada",
+                    "recibidor de madera",
+                    "mueble recibidor",
+                    "perchero rustico",
+                    "colgar camperas",
+                    "colgar abrigos",
+                    "colgar bolsos",
+                    "perchero infantil",
+                    "perchero clasico",
+                    "perchero doble",
+                    "porta abrigos",
+                    "colgador pared",
+                    "percheros rusticos",
+                    "percheros de pino"
+                ],
+                "last_modified": 1786842743422,
+                "primaryCatId": "Percheros"
             }
         ]
     },
@@ -8231,7 +8490,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
+                        "cover_image": "img/logo_provisional.webp",
                         "images_list": [],
                         "medidas_variants": [
                             {
@@ -8304,93 +8563,6 @@ const productsData = [
                     "estante de cuarto"
                 ],
                 "last_modified": 1783811849072,
-                "primaryCatId": "Borrador",
-                "visible": false,
-                "views": 0
-            },
-            {
-                "id": "pie-cama-romano",
-                "title": "Pie de cama romano",
-                "description": "",
-                "image": "img/logo_provisional.png",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/logo_provisional.png",
-                        "images_list": [
-                            "img/logo_provisional.png"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "80 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": 39999,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "pie",
-                    "cama",
-                    "romano",
-                    "borrador",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "pie de madera",
-                    "pie de pino",
-                    "mueble pie",
-                    "borrador pie",
-                    "cama de madera",
-                    "cama de pino",
-                    "mueble cama",
-                    "borrador cama",
-                    "romano de madera",
-                    "romano de pino",
-                    "mueble romano",
-                    "borrador romano",
-                    "borrador de madera",
-                    "borrador de pino",
-                    "mueble borrador",
-                    "borrador borrador",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal"
-                ],
-                "last_modified": 1783814333600,
                 "primaryCatId": "Borrador",
                 "visible": false,
                 "views": 0
@@ -8490,7 +8662,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 24
+                "views": 26
             },
             {
                 "id": "9-vinos",
@@ -8850,6 +9022,78 @@ const productsData = [
                 "primaryCatId": "Vinotecas",
                 "visible": true,
                 "views": 3
+            },
+            {
+                "id": "soporte-vinos-vinoteca-6",
+                "title": "Soporte Para 6 Vinos Bodega Vinoteca",
+                "description": "56,5 cm. de alto\n12 cm. de ancho\n29,5 cm. de profundidad",
+                "image": "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+                        "images_list": [
+                            "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+                            "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828055071-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "6 Vinos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786828055190,
+                "primaryCatId": "Vinotecas",
+                "visible": true,
+                "views": 3
+            },
+            {
+                "id": "Soporte Para 12 Vinos Bodega Vinoteca",
+                "title": "Soporte Para 12 Vinos Bodega Vinoteca",
+                "description": "» MEDIDAS\n56,5 cm. de alto\n22,5 cm. de ancho\n29,5 cm. de profundidad",
+                "image": "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp",
+                        "images_list": [
+                            "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "12 Vinos",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 29000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786828216883,
+                "primaryCatId": "Vinotecas",
+                "views": 0
             }
         ],
         "rubro": "carpinteria"
@@ -8946,7 +9190,8 @@ const productsData = [
                     "percheros de pino"
                 ],
                 "last_modified": 1786826453117,
-                "primaryCatId": "Percheros"
+                "primaryCatId": "Percheros",
+                "views": 12
             },
             {
                 "id": "perchero-pared-doblegancho",
@@ -9520,7 +9765,7 @@ const productsData = [
                 "last_modified": 1784773568612,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "perchero-madera-tuvitos5",
@@ -9704,6 +9949,91 @@ const productsData = [
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 2
+            },
+            {
+                "id": "perchero-1-2",
+                "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
+                "description": "Funcionalidad y elegancia para organizar tu entrada.",
+                "image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839928203-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Unidad",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2015388606-perchero-de-pie-torneado-reforzado-8-ganchos-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 39000,
+                                "cost_price": 26000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Unidad",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 78000,
+                                "cost_price": 52000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "perchero",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "abrigo",
+                    "camperas",
+                    "entrada",
+                    "recibidor",
+                    "pared",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion",
+                    "perchero de pared",
+                    "perchero de madera",
+                    "perchero de pino",
+                    "colgador",
+                    "colgador de ropa",
+                    "ganchos para colgar",
+                    "organizador entrada",
+                    "recibidor de madera",
+                    "mueble recibidor",
+                    "perchero rustico",
+                    "colgar camperas",
+                    "colgar abrigos",
+                    "colgar bolsos",
+                    "perchero infantil",
+                    "perchero clasico",
+                    "perchero doble",
+                    "porta abrigos",
+                    "colgador pared",
+                    "percheros rusticos",
+                    "percheros de pino"
+                ],
+                "last_modified": 1786842743422,
+                "primaryCatId": "Percheros"
             }
         ]
     },
@@ -10448,7 +10778,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637176778,
                 "primaryCatId": "Organizadores",
-                "views": 3
+                "views": 5
             },
             {
                 "id": "organizador-tribuna-x3",
@@ -11262,7 +11592,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "Banco Banquito Escalera Niños Infantil",
@@ -12874,7 +13204,7 @@ const productsData = [
                 ],
                 "last_modified": 1786057097023,
                 "primaryCatId": "Barandas",
-                "views": 4
+                "views": 5
             },
             {
                 "id": "baranda-reforzada-geriatricos",
@@ -14869,7 +15199,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411560841,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 2
             },
             {
                 "id": "Romana-Rebatible-Cajones",
@@ -15107,6 +15437,92 @@ const productsData = [
                 "last_modified": 1784411571657,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 2
+            },
+            {
+                "id": "pie-cama-romano",
+                "title": "Pie de cama romano",
+                "description": "",
+                "image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                        "images_list": [
+                            "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "pie",
+                    "cama",
+                    "romano",
+                    "borrador",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "pie de madera",
+                    "pie de pino",
+                    "mueble pie",
+                    "borrador pie",
+                    "cama de madera",
+                    "cama de pino",
+                    "mueble cama",
+                    "borrador cama",
+                    "romano de madera",
+                    "romano de pino",
+                    "mueble romano",
+                    "borrador romano",
+                    "borrador de madera",
+                    "borrador de pino",
+                    "mueble borrador",
+                    "borrador borrador",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal"
+                ],
+                "last_modified": 1786839526853,
+                "primaryCatId": "Hogar",
+                "visible": true
             }
         ],
         "visible": true
@@ -15140,6 +15556,92 @@ const productsData = [
                 "last_modified": 1786305162256,
                 "primaryCatId": "camas-madera-pino",
                 "views": 3
+            },
+            {
+                "id": "pie-cama-romano",
+                "title": "Pie de cama romano",
+                "description": "",
+                "image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                        "images_list": [
+                            "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "pie",
+                    "cama",
+                    "romano",
+                    "borrador",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "pie de madera",
+                    "pie de pino",
+                    "mueble pie",
+                    "borrador pie",
+                    "cama de madera",
+                    "cama de pino",
+                    "mueble cama",
+                    "borrador cama",
+                    "romano de madera",
+                    "romano de pino",
+                    "mueble romano",
+                    "borrador romano",
+                    "borrador de madera",
+                    "borrador de pino",
+                    "mueble borrador",
+                    "borrador borrador",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal"
+                ],
+                "last_modified": 1786839526853,
+                "primaryCatId": "Hogar",
+                "visible": true
             }
         ]
     },
@@ -16169,6 +16671,108 @@ const productsData = [
                 "last_modified": 1786333409298,
                 "primaryCatId": "muebles",
                 "views": 0
+            },
+            {
+                "id": "Juego de Mesa y Sillas Infantiles",
+                "title": "Juego de Mesa y Sillas Infantiles",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786839120869,
+                "primaryCatId": "Juguetes"
+            },
+            {
+                "id": "Juego de Mesa y Sillas redondos",
+                "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786839116557,
+                "primaryCatId": "Juguetes"
+            },
+            {
+                "id": "Juego de Mesa y Sillas colonial",
+                "title": "Juego de Mesa y Sillas Infantiles (Colonial)",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786839110101,
+                "primaryCatId": "Juguetes"
             }
         ],
         "rubro": "carpinteria"
@@ -16401,6 +17005,108 @@ const productsData = [
                 "primaryCatId": "sillas-sillones",
                 "visible": true,
                 "views": 1
+            },
+            {
+                "id": "Juego de Mesa y Sillas colonial",
+                "title": "Juego de Mesa y Sillas Infantiles (Colonial)",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786839110101,
+                "primaryCatId": "Juguetes"
+            },
+            {
+                "id": "Juego de Mesa y Sillas redondos",
+                "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786839116557,
+                "primaryCatId": "Juguetes"
+            },
+            {
+                "id": "Juego de Mesa y Sillas Infantiles",
+                "title": "Juego de Mesa y Sillas Infantiles",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786839120869,
+                "primaryCatId": "Juguetes"
             }
         ]
     },
@@ -17865,7 +18571,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 1
             }
         ]
     },
@@ -17966,6 +18672,92 @@ const productsData = [
                 "last_modified": 1786334918176,
                 "primaryCatId": "Hogar",
                 "views": 0
+            },
+            {
+                "id": "pie-cama-romano",
+                "title": "Pie de cama romano",
+                "description": "",
+                "image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                        "images_list": [
+                            "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "pie",
+                    "cama",
+                    "romano",
+                    "borrador",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "pie de madera",
+                    "pie de pino",
+                    "mueble pie",
+                    "borrador pie",
+                    "cama de madera",
+                    "cama de pino",
+                    "mueble cama",
+                    "borrador cama",
+                    "romano de madera",
+                    "romano de pino",
+                    "mueble romano",
+                    "borrador romano",
+                    "borrador de madera",
+                    "borrador de pino",
+                    "mueble borrador",
+                    "borrador borrador",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal"
+                ],
+                "last_modified": 1786839526853,
+                "primaryCatId": "Hogar",
+                "visible": true
             }
         ]
     },
