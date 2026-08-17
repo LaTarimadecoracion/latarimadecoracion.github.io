@@ -344,6 +344,16 @@
             align-items: center;
         }
 
+        .timeline-item.timeline-holiday {
+            border-color: #fde68a !important;
+            background: #fffbeb !important;
+        }
+
+        .timeline-item.timeline-holiday .timeline-icon-wrapper {
+            background: #fef3c7 !important;
+            color: #d97706 !important;
+        }
+
         .timeline-item.active {
             border-color: #3b82f6;
             background: #eff6ff;
@@ -475,6 +485,129 @@
             box-shadow: var(--shadow-md);
             margin: 2rem 0;
         }
+    
+        /* --- ESTILOS MODERNOS DE DETALLE DE PRODUCTO Y PAGO --- */
+        .order-body {
+            padding: 1.5rem 1.75rem;
+        }
+
+        .product-section {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+            background: #ffffff;
+            padding: 1.25rem;
+            border-radius: 14px;
+            border: 1.5px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            flex-wrap: wrap;
+        }
+
+        .product-image {
+            width: 140px !important;
+            height: 140px !important;
+            min-width: 140px !important;
+            max-width: 140px !important;
+            max-height: 140px !important;
+            object-fit: contain !important;
+            background: #f8fafc !important;
+            border-radius: 12px !important;
+            border: 1.5px solid #e2e8f0 !important;
+            padding: 6px !important;
+            box-sizing: border-box !important;
+            flex-shrink: 0 !important;
+        }
+
+        .product-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .product-info h2 {
+            margin: 0 0 0.5rem 0 !important;
+            font-size: 1.35rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            letter-spacing: -0.3px !important;
+        }
+
+        .product-badge-pill {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            padding: 0.35rem 0.75rem !important;
+            background: #f1f5f9 !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 20px !important;
+            font-size: 0.82rem !important;
+            font-weight: 700 !important;
+            color: #334155 !important;
+            margin-right: 6px !important;
+            margin-bottom: 6px !important;
+            font-family: inherit !important;
+        }
+
+        .product-desc {
+            font-size: 0.9rem !important;
+            color: #475569 !important;
+            margin: 8px 0 0 0 !important;
+            line-height: 1.5 !important;
+            font-weight: 500 !important;
+            white-space: pre-line !important;
+        }
+
+        .payment-banner {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+            border: 1.5px solid #e2e8f0 !important;
+            border-radius: 14px !important;
+            padding: 1.25rem 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+            gap: 1.25rem !important;
+        }
+
+        .payment-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .payment-label {
+            font-size: 0.75rem !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            color: #64748b !important;
+            letter-spacing: 0.5px !important;
+            margin-bottom: 4px !important;
+        }
+
+        .payment-value {
+            font-size: 1.25rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+        }
+
+        .payment-value.pagado {
+            color: #16a34a !important;
+        }
+
+        .payment-value.saldo {
+            color: #dc2626 !important;
+        }
+
+        .section-title {
+            font-size: 1.05rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            margin-top: 1.5rem !important;
+            margin-bottom: 1rem !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            letter-spacing: -0.2px !important;
+        }
+
     </style>
 </head>
 <body>
@@ -864,6 +997,41 @@
                 readyDate = order.completedDate ? new Date(order.completedDate) : new Date();
             }
 
+            // Función de detección de días no hábiles (fines de semana + feriados nacionales de Argentina)
+            function getNonWorkingInfo(d) {
+                if (d.getDay() === 0 || d.getDay() === 6) {
+                    return { isNonWorking: true, isHoliday: false, reason: 'Fines de semana el taller permanece cerrado 🌲' };
+                }
+                const m = d.getMonth() + 1;
+                const day = d.getDate();
+                const fixedHolidays = {
+                    '1-1':   'Año Nuevo 🎆',
+                    '2-16':  'Carnaval (Lunes) 🎭',
+                    '2-17':  'Carnaval (Martes) 🎭',
+                    '3-23':  'Feriado Turístico (Puente) 🌴',
+                    '3-24':  'Día de la Memoria 🇦🇷',
+                    '4-2':   'Día del Veterano y Caídos en Malvinas 🇦🇷',
+                    '4-3':   'Viernes Santo ⛪',
+                    '5-1':   'Día del Trabajador 🛠️',
+                    '5-25':  'Día de la Revolución de Mayo 🇦🇷',
+                    '6-17':  'Gral. Martín Miguel de Güemes 🇦🇷',
+                    '6-20':  'Día de la Bandera 🇦🇷',
+                    '7-9':   'Día de la Independencia 🇦🇷',
+                    '7-10':  'Feriado Turístico (Puente) 🌴',
+                    '8-17':  'Paso a la Inmortalidad del Gral. San Martín 🇦🇷',
+                    '10-12': 'Día del Respeto a la Diversidad Cultural 🇦🇷',
+                    '11-20': 'Día de la Soberanía Nacional 🇦🇷',
+                    '12-7':  'Feriado Turístico (Puente) 🌴',
+                    '12-8':  'Día de la Inmaculada Concepción 🇦🇷',
+                    '12-25': 'Navidad 🎅'
+                };
+                const key = `${m}-${day}`;
+                if (fixedHolidays[key]) {
+                    return { isNonWorking: true, isHoliday: true, name: fixedHolidays[key], reason: `Feriado Nacional (${fixedHolidays[key]}) — Taller cerrado 🇦🇷` };
+                }
+                return { isNonWorking: false, isHoliday: false, reason: '' };
+            }
+
             // Construir los días de fabricación desde inicio hasta la fecha en que quedó listo/estimado
             const days = [];
             let curr = new Date(start);
@@ -876,7 +1044,7 @@
                 let bDays = 0;
                 while (bDays < effectiveMaxDays) {
                     days.push(new Date(curr));
-                    if (curr.getDay() !== 0 && curr.getDay() !== 6) {
+                    if (!getNonWorkingInfo(curr).isNonWorking) {
                         bDays++;
                     }
                     curr.setDate(curr.getDate() + 1);
@@ -887,12 +1055,11 @@
                 days.push(new Date(start));
             }
 
-            // Agregar el hito final de Retiro/Despacho (atendiendo fines de semana)
+            // Agregar el hito final de Retiro/Despacho (atendiendo fines de semana y feriados)
             let pickupDate = new Date(days[days.length - 1]);
             pickupDate.setDate(pickupDate.getDate() + 1);
             
-            // Si el día siguiente al listo cae en fin de semana, agregar sábado/domingo y luego el lunes como día de retiro
-            while (pickupDate.getDay() === 0 || pickupDate.getDay() === 6) {
+            while (getNonWorkingInfo(pickupDate).isNonWorking) {
                 days.push(new Date(pickupDate));
                 pickupDate.setDate(pickupDate.getDate() + 1);
             }
@@ -904,8 +1071,7 @@
             let minReadyDayIndex = -1;
 
             for (let i = 0; i < days.length - 1; i++) {
-                const dayOfWeek = days[i].getDay();
-                if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                if (!getNonWorkingInfo(days[i]).isNonWorking) {
                     businessDayCounter++;
                     if (!isFinished) {
                         if (businessDayCounter === minDays && minReadyDayIndex === -1) {
@@ -918,27 +1084,35 @@
             const actualBusinessDaysUsed = businessDayCounter;
             businessDayCounter = 0;
 
+            let manufacturingDayCount = 0;
             const processedDays = days.map((d, index) => {
                 const isFirst = index === 0;
                 const isLast = index === days.length - 1;
                 
-                // El día en que queda listo es el último de la etapa de elaboración (justo antes de los fines de semana/retiro)
                 let readyDayIdx = days.length - 2;
-                while (readyDayIdx > 0 && (days[readyDayIdx].getDay() === 0 || days[readyDayIdx].getDay() === 6)) {
+                while (readyDayIdx > 0 && getNonWorkingInfo(days[readyDayIdx]).isNonWorking) {
                     readyDayIdx--;
                 }
                 const isActualReadyDay = (index === readyDayIdx);
 
                 const isMinReady = index === minReadyDayIndex;
-                const isWeekend = d.getDay() === 0 || d.getDay() === 6;
+                const nonWorkingInfo = getNonWorkingInfo(d);
+                const isWeekend = nonWorkingInfo.isNonWorking;
 
                 const isCompleted = isFinished || (d < today && !(d.toDateString() === today.toDateString()));
                 const isToday = !isFinished && (d.toDateString() === today.toDateString());
 
+                if (!isWeekend && !isLast) {
+                    businessDayCounter++;
+                }
+
                 let itemClass = 'timeline-item';
                 let iconText = 'schedule';
 
-                if (isFirst) {
+                if (nonWorkingInfo.isHoliday) {
+                    itemClass += ' timeline-holiday';
+                    iconText = 'event_busy';
+                } else if (isFirst) {
                     itemClass += ' milestone-start completed';
                     iconText = 'play_circle';
                 } else if (isLast) {
@@ -955,7 +1129,6 @@
                     if (isCompleted) { itemClass += ' completed-milestone'; }
                     iconText = 'flag';
                 } else {
-                    if (!isWeekend) businessDayCounter++;
                     if (isCompleted) {
                         itemClass += ' completed';
                         iconText = 'check';
@@ -974,42 +1147,50 @@
                 let title = '';
                 let desc  = '';
 
-                if (isWeekend) {
+                const prepOffset = maxDays > 2 ? 2 : 0;
+
+                if (nonWorkingInfo.isHoliday) {
+                    title = `${capitalizedWeekday} &bull; ${dateStr} — Feriado Nacional`;
+                    desc  = `Feriado: ${nonWorkingInfo.name} (El taller permanece cerrado 🇦🇷)`;
+                } else if (isWeekend) {
                     title = `${capitalizedWeekday} &bull; ${dateStr}`;
-                    desc  = 'Fines de semana el taller permanece cerrado 🌲';
+                    desc  = nonWorkingInfo.reason || 'Día no hábil — El taller permanece cerrado 🌲';
+                } else if (isFirst && prepOffset > 0) {
+                    title = `${capitalizedWeekday} &bull; ${dateStr} — Recepción`;
+                    desc  = 'Recepción y asignación de ficha técnica en taller 📋';
+                } else if (businessDayCounter === 2 && prepOffset > 0 && !isFinished && !isLast) {
+                    title = `${capitalizedWeekday} &bull; ${dateStr} — Preparación`;
+                    desc  = 'Verificación de orden y acopio de maderas en taller 🌲';
+                } else if (isActualReadyDay && isFinished) {
+                    const readyDescCfg = milestonesCfg.readyDesc || '¡Tu pedido ya está listo! ✅';
+                    const isEarly = actualBusinessDaysUsed < maxDays;
+                    const earlyBadgeText = isEarly 
+                        ? ` ⚡ ¡Finalizado con anticipación en solo ${actualBusinessDaysUsed} días hábiles! (Plazo previsto: ${rangeText}) 🎉` 
+                        : ` (Finalizado en ${actualBusinessDaysUsed} días hábiles)`;
+                    title = `${capitalizedWeekday} &bull; ${dateStr} — ${isEarly ? '¡Pedido Listo con Anticipación! ⚡' : '¡Pedido Finalizado!'}`;
+                    desc  = `${readyDescCfg}${earlyBadgeText}`;
+                } else if (isActualReadyDay && !isFinished) {
+                    const currentMDay = Math.max(1, businessDayCounter - prepOffset);
+                    title = `${capitalizedWeekday} &bull; ${dateStr} — Fin Estimado`;
+                    desc  = extraDays > 0
+                        ? `Fecha límite de elaboración estimada (Día ${currentMDay} de ${effectiveMaxDays} hábiles — incluye +${extraDays}d de ajuste)`
+                        : `Fecha límite de elaboración estimada (Día ${currentMDay} de ${maxDays})`;
+                } else if (isMinReady && minDays !== maxDays && !isFinished) {
+                    title = `${capitalizedWeekday} &bull; ${dateStr} — Inicio Rango Listo`;
+                    desc  = `Primer día estimado de término (Día ${minDays} de ${effectiveMaxDays})`;
+                } else if (isLast) {
+                    const customTitle = isEnvio ? (milestonesCfg.envioTitle || 'Despacho de Pedido') : (milestonesCfg.retiraTitle || 'Retiro por Taller');
+                    const customDesc  = isEnvio
+                        ? (milestonesCfg.envioDesc || 'Tu pedido se encuentra en proceso de despacho o en camino. Podés seguir su recorrido en el apartado de abajo ⬇️')
+                        : (milestonesCfg.retiraDesc || 'Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁');
+                    title = `${capitalizedWeekday} &bull; ${dateStr} — ${customTitle}`;
+                    desc  = customDesc;
                 } else {
-                    if (isFirst) {
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — Inicio`;
-                        desc  = `Día 1 de fabricación en taller 🛠️`;
-                    } else if (isActualReadyDay && isFinished) {
-                        const readyDescCfg = milestonesCfg.readyDesc || '¡Tu pedido ya está listo! ✅';
-                        const isEarly = actualBusinessDaysUsed < maxDays;
-                        const earlyBadgeText = isEarly 
-                            ? ` ⚡ ¡Finalizado con anticipación en solo ${actualBusinessDaysUsed} días hábiles! (Plazo previsto: ${rangeText}) 🎉` 
-                            : ` (Finalizado en ${actualBusinessDaysUsed} días hábiles)`;
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — ${isEarly ? '¡Pedido Listo con Anticipación! ⚡' : '¡Pedido Finalizado!'}`;
-                        desc  = `${readyDescCfg}${earlyBadgeText}`;
-                    } else if (isActualReadyDay && !isFinished) {
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — Fin Estimado`;
-                        desc  = extraDays > 0
-                            ? `Fecha límite de elaboración estimada (Día ${businessDayCounter} de ${effectiveMaxDays} hábiles — incluye +${extraDays}d de ajuste)`
-                            : `Fecha límite de elaboración estimada (Día ${businessDayCounter} de ${maxDays})`;
-                    } else if (isMinReady && minDays !== maxDays && !isFinished) {
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — Inicio Rango Listo`;
-                        desc  = `Primer día estimado de término (Día ${minDays} de ${effectiveMaxDays})`;
-                    } else if (isLast) {
-                        const customTitle = isEnvio ? (milestonesCfg.envioTitle || 'Despacho de Pedido') : (milestonesCfg.retiraTitle || 'Retiro por Taller');
-                        const customDesc  = isEnvio
-                            ? (milestonesCfg.envioDesc || 'Tu pedido se encuentra en proceso de despacho o en camino. Podés seguir su recorrido en el apartado de abajo ⬇️')
-                            : (milestonesCfg.retiraDesc || 'Ya podés retirar tu pedido por nuestro domicilio. Coordinaremos el día y horario con vos 🏁');
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — ${customTitle}`;
-                        desc  = customDesc;
-                    } else {
-                        title = `${capitalizedWeekday} &bull; ${dateStr}`;
-                        desc  = businessDayCounter > maxDays && extraDays > 0
-                            ? `Día ${businessDayCounter} de elaboración (+${extraDays}d de extensión en taller) 🛠️`
-                            : `Día ${businessDayCounter} de elaboración`;
-                    }
+                    const mDay = Math.max(1, businessDayCounter - prepOffset);
+                    title = `${capitalizedWeekday} &bull; ${dateStr}`;
+                    desc  = mDay > maxDays && extraDays > 0
+                        ? `Día ${mDay} de elaboración (+${extraDays}d de extensión en taller) 🛠️`
+                        : `Día ${mDay} de elaboración en taller 🛠️`;
                 }
 
                 if (isToday && !isWeekend && !isFinished && !isLast) {
@@ -1047,12 +1228,24 @@
             const deliveryIconName = isEnvio ? 'local_shipping' : 'storefront';
 
             // Determinar estados de los pasos
-            const step1Class = 'step-item step-completed';
+            let step1Class = 'step-item step-completed';
             let step2Class = 'step-item';
             let step3Class = 'step-item';
             let step4Class = 'step-item';
 
-            let progressWidth = '25%';
+            // Calcular días hábiles transcurridos desde el inicio
+            let elapsedBDays = 0;
+            const startDt = new Date(order.startDate || order.creationDate);
+            const todayDt = new Date();
+            let cDate = new Date(startDt);
+            while (cDate <= todayDt && cDate <= readyDateObj) {
+                if (cDate.getDay() !== 0 && cDate.getDay() !== 6) {
+                    elapsedBDays++;
+                }
+                cDate.setDate(cDate.getDate() + 1);
+            }
+
+            let progressWidth = '15%';
             if (order.status === 'entregado') {
                 step2Class = 'step-item step-completed';
                 step3Class = 'step-item step-completed';
@@ -1063,9 +1256,16 @@
                 step3Class = 'step-item step-completed step-active';
                 progressWidth = '66%';
             } else {
-                // En proceso de fabricación
-                step2Class = 'step-item step-active';
-                progressWidth = '33%';
+                // En curso: si pasaron <= 2 días hábiles, estamos en la etapa inicial de Recepción / Preparación
+                if (elapsedBDays <= 2) {
+                    step1Class = 'step-item step-completed step-active';
+                    step2Class = 'step-item';
+                    progressWidth = '15%';
+                } else {
+                    step1Class = 'step-item step-completed';
+                    step2Class = 'step-item step-active';
+                    progressWidth = '42%';
+                }
             }
 
             const stepperHtml = `
