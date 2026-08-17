@@ -144,19 +144,41 @@
             flex-grow: 1;
         }
         
-        /* Estilo Carrito de Compras: Limpio, minimalista, bordes de 8px */
+        /* Estilo Carrito de Compras: Limpio, minimalista y fluido */
+        .main-container {
+            max-width: 1050px;
+            width: 100%;
+            margin: 0.5rem auto;
+            padding: 0 1rem;
+            box-sizing: border-box;
+            flex-grow: 1;
+        }
+
+        body.in-iframe {
+            background: transparent !important;
+            padding: 0.5rem 1rem !important;
+            box-sizing: border-box;
+        }
+
+        body.in-iframe .main-container {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            max-width: 1050px !important;
+            width: 100% !important;
+        }
+
         .order-card {
             background: #ffffff;
-            border-radius: 8px;
-            border: 1px solid #EAEBE9;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
             margin-bottom: 1.25rem;
             overflow: hidden;
         }
-        
+
         .order-header {
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid #EAEBE9;
+            padding: 1.25rem 1.75rem;
+            border-bottom: 1px solid #e2e8f0;
             background: #ffffff;
             display: flex;
             justify-content: space-between;
@@ -164,256 +186,207 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        
-        .order-title-block h1 {
-            margin: 0 0 4px 0;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #2c2520;
-        }
-        
-        .order-number {
-            color: #8c857b;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .status-badge {
-            padding: 0.4rem 0.85rem;
-            border-radius: 6px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .status-pendiente {
-            background: #fef3c7;
-            color: #d97706;
-            border: 1px solid #fde68a;
-        }
-        
-        .status-listo {
-            background: #dcfce7;
-            color: #15803d;
-            border: 1px solid #bbf7d0;
-        }
-        
-        .status-entregado {
-            background: #f1f5f9;
-            color: #475569;
+
+        /* --- STEPPER MINIMALISTA DE 4 HITOS --- */
+        .stepper-summary-card {
+            background: #f8fafc;
             border: 1px solid #e2e8f0;
-        }
-        
-        .order-body {
-            padding: 1.25rem 1.5rem;
-        }
-        
-        .product-section {
-            display: flex;
-            gap: 1.25rem;
-            margin-bottom: 1.5rem;
-            background: #faf9f6;
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid #EAEBE9;
-            align-items: center;
-        }
-        
-        .product-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            object-fit: cover;
-            border: 1px solid #EAEBE9;
-            background: #ffffff;
-            flex-shrink: 0;
-        }
-        
-        .product-info {
-            flex: 1;
-        }
-        
-        .product-info h2 {
-            margin: 0 0 6px 0;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #2c2520;
+            border-radius: 14px;
+            padding: 1.5rem 1.25rem;
+            margin: 1.25rem 0;
         }
 
-        .product-badge-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: #ffffff;
-            border: 1px solid #EAEBE9;
-            color: #8c857b;
-            padding: 3px 10px;
-            border-radius: 4px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            margin-right: 6px;
-            margin-bottom: 4px;
-        }
-        
-        .product-desc {
-            font-size: 0.85rem;
-            line-height: 1.4;
-            color: #8c857b;
-            margin: 4px 0 0 0;
-            white-space: pre-line;
-        }
-        
-        .payment-banner {
-            background: #faf9f6;
-            border: 1px solid #EAEBE9;
-            border-radius: 8px;
-            padding: 1rem 1.25rem;
-            margin-bottom: 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 1rem;
-        }
-        
-        .payment-item {
+        .stepper-track {
             display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        
-        .payment-label {
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #8c857b;
-            letter-spacing: 0.5px;
-        }
-        
-        .payment-value {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #2c2520;
-        }
-        
-        .payment-value.saldo {
-            color: #dc2626;
-        }
-        
-        .payment-value.pagado {
-            color: #16a34a;
-        }
-        
-        .section-title {
-            font-size: 0.8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8c857b;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border-bottom: 1px solid #EAEBE9;
-            padding-bottom: 0.5rem;
-        }
-        
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .timeline-item {
-            display: flex;
-            gap: 1rem;
             align-items: flex-start;
+            justify-content: space-between;
+            position: relative;
+            padding: 0 10px;
         }
-        
-        .timeline-icon-wrapper {
-            width: 34px;
-            height: 34px;
+
+        /* Línea gris de fondo */
+        .stepper-track::before {
+            content: '';
+            position: absolute;
+            top: 19px;
+            left: 12%;
+            right: 12%;
+            height: 3px;
+            background: #e2e8f0;
+            z-index: 1;
+        }
+
+        /* Línea de progreso verde animada */
+        .stepper-track-progress {
+            position: absolute;
+            top: 19px;
+            left: 12%;
+            height: 3px;
+            background: #16a34a;
+            z-index: 1;
+            transition: width 0.4s ease;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            z-index: 2;
+            position: relative;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: #faf9f6;
-            color: #8c857b;
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            color: #94a3b8;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            border: 1px solid #EAEBE9;
-            font-size: 18px;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        
-        .timeline-item.active .timeline-icon-wrapper {
-            background: var(--primary-color, #c0510a);
-            color: white;
-            border-color: var(--primary-color, #c0510a);
+
+        .step-icon .material-symbols-outlined {
+            font-size: 20px;
         }
-        
-        .timeline-item.completed .timeline-icon-wrapper {
+
+        .step-item.step-completed .step-icon {
             background: #16a34a;
-            color: white;
             border-color: #16a34a;
+            color: #ffffff;
         }
-        
-        .timeline-item.milestone-ready .timeline-icon-wrapper {
-            background: #d97706;
-            color: white;
-            border-color: #d97706;
-        }
-        
-        .timeline-item.milestone-pickup .timeline-icon-wrapper {
-            background: #2563eb;
-            color: white;
+
+        .step-item.step-active .step-icon {
+            background: #3b82f6;
             border-color: #2563eb;
+            color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            animation: pulse-step 2s infinite;
         }
-        
-        .timeline-content {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 0.85rem 1rem;
-            flex-grow: 1;
-            border: 1px solid #EAEBE9;
+
+        @keyframes pulse-step {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
         }
-        
-        .timeline-item.active .timeline-content {
-            background: #fffafa;
-            border-color: var(--primary-color, #c0510a);
+            70% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
         }
-        
-        .timeline-title {
-            margin: 0 0 2px 0;
-            font-size: 0.92rem;
-            font-weight: 700;
-            color: #2c2520;
+
+        .step-info {
+            margin-top: 8px;
         }
-        
-        .timeline-desc {
-            margin: 0;
+
+        .step-title {
             font-size: 0.82rem;
-            color: #8c857b;
-            line-height: 1.4;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.2;
         }
-        
-        .timeline-expand-btn {
-            background: #ffffff;
-            border: 1px solid #EAEBE9;
-            border-radius: 8px;
-            padding: 0.6rem 1rem;
+
+        .step-date {
+            font-size: 0.73rem;
+            font-weight: 500;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .step-line {
+            position: absolute;
+            top: 19px;
+            height: 3px;
+            background: #e2e8f0;
+            z-index: 1;
+        }
+
+        .step-line.active {
+            background: #16a34a;
+        }
+
+        /* Botón Desglose Día por Día */
+        .btn-toggle-breakdown {
             width: 100%;
-            font-family: inherit;
-            font-weight: 700;
-            font-size: 0.82rem;
-            color: #8c857b;
+            background: white;
+            border: 1.5px solid #e2e8f0;
+            color: #475569;
+            padding: 0.65rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            margin-top: 0.5rem;
+            gap: 8px;
+            transition: all 0.2s ease;
+            margin-top: 0.75rem;
+        }
+
+        .btn-toggle-breakdown:hover {
+            border-color: #3b82f6;
+            color: #2563eb;
+            background: #f8fafc;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            margin-bottom: 8px;
+            align-items: center;
+        }
+
+        .timeline-item.active {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .timeline-item.completed {
+            border-color: #d1fae5;
+            background: #f0fdf4;
+        }
+
+        .timeline-icon-wrapper {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            color: #64748b;
+            flex-shrink: 0;
+        }
+
+        .timeline-item.completed .timeline-icon-wrapper {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .timeline-item.active .timeline-icon-wrapper {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .timeline-title {
+            margin: 0;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .timeline-desc {
+            margin: 2px 0 0 0;
+            font-size: 0.78rem;
+            color: #64748b;
         }
         
         .timeline-expand-btn:hover {
@@ -502,6 +475,129 @@
             box-shadow: var(--shadow-md);
             margin: 2rem 0;
         }
+    
+        /* --- ESTILOS MODERNOS DE DETALLE DE PRODUCTO Y PAGO --- */
+        .order-body {
+            padding: 1.5rem 1.75rem;
+        }
+
+        .product-section {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+            background: #ffffff;
+            padding: 1.25rem;
+            border-radius: 14px;
+            border: 1.5px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            flex-wrap: wrap;
+        }
+
+        .product-image {
+            width: 140px !important;
+            height: 140px !important;
+            min-width: 140px !important;
+            max-width: 140px !important;
+            max-height: 140px !important;
+            object-fit: contain !important;
+            background: #f8fafc !important;
+            border-radius: 12px !important;
+            border: 1.5px solid #e2e8f0 !important;
+            padding: 6px !important;
+            box-sizing: border-box !important;
+            flex-shrink: 0 !important;
+        }
+
+        .product-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .product-info h2 {
+            margin: 0 0 0.5rem 0 !important;
+            font-size: 1.35rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            letter-spacing: -0.3px !important;
+        }
+
+        .product-badge-pill {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            padding: 0.35rem 0.75rem !important;
+            background: #f1f5f9 !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 20px !important;
+            font-size: 0.82rem !important;
+            font-weight: 700 !important;
+            color: #334155 !important;
+            margin-right: 6px !important;
+            margin-bottom: 6px !important;
+            font-family: inherit !important;
+        }
+
+        .product-desc {
+            font-size: 0.9rem !important;
+            color: #475569 !important;
+            margin: 8px 0 0 0 !important;
+            line-height: 1.5 !important;
+            font-weight: 500 !important;
+            white-space: pre-line !important;
+        }
+
+        .payment-banner {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+            border: 1.5px solid #e2e8f0 !important;
+            border-radius: 14px !important;
+            padding: 1.25rem 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+            gap: 1.25rem !important;
+        }
+
+        .payment-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .payment-label {
+            font-size: 0.75rem !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            color: #64748b !important;
+            letter-spacing: 0.5px !important;
+            margin-bottom: 4px !important;
+        }
+
+        .payment-value {
+            font-size: 1.25rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+        }
+
+        .payment-value.pagado {
+            color: #16a34a !important;
+        }
+
+        .payment-value.saldo {
+            color: #dc2626 !important;
+        }
+
+        .section-title {
+            font-size: 1.05rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            margin-top: 1.5rem !important;
+            margin-bottom: 1rem !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            letter-spacing: -0.2px !important;
+        }
+
     </style>
 </head>
 <body>
@@ -788,9 +884,29 @@
                             <h1>¡Hola, ${escapeHtml(order.clientName)}! 👋</h1>
                             <div class="order-number">Orden N° #${order.id} &bull; Tomado el ${createdFormatted}</div>
                         </div>
-                        <div class="status-badge status-${order.status}">
-                            <span class="material-symbols-outlined">${statusIcon}</span>
-                            ${statusText}
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="status-badge status-${order.status}">
+                                <span class="material-symbols-outlined">${statusIcon}</span>
+                                ${statusText}
+                            </div>
+                            <button
+                                type="button"
+                                id="btn-share-order"
+                                onclick="shareOrder('${order.id}', '${escapeHtml(order.clientName).replace(/'/g, "\\'")}', '${escapeHtml(order.productName).replace(/'/g, "\\'")}')"
+                                title="Compartir seguimiento"
+                                style="
+                                    display: flex; align-items: center; justify-content: center;
+                                    width: 42px; height: 42px; border-radius: 50%;
+                                    background: rgba(var(--primary-rgb, 142,100,73), 0.08);
+                                    border: 1.5px solid rgba(var(--primary-rgb, 142,100,73), 0.18);
+                                    color: var(--primary-color); cursor: pointer;
+                                    transition: all 0.2s ease; flex-shrink: 0;
+                                "
+                                onmouseover="this.style.background='var(--primary-color)'; this.style.color='#fff';"
+                                onmouseout="this.style.background='rgba(142,100,73,0.08)'; this.style.color='var(--primary-color)';"
+                            >
+                                <span class="material-symbols-outlined" style="font-size: 20px;">share</span>
+                            </button>
                         </div>
                     </div>
                     
@@ -1041,76 +1157,112 @@
                 return row;
             }
 
-            // Si el pedido ya está listo/entregado, mostramos TODOS los días transcurridos hasta el retiro sin colapsar nada
-            if (isFinished) {
+            // --- 1. RENDERIZAR STEPPER MINIMALISTA DE 4 PASOS ---
+            const startDateStr = new Date(order.startDate || order.creationDate).toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit' });
+            
+            let readyDateObj = new Date(order.estimatedReadyDate);
+            if (isFinished && order.completedDate) {
+                readyDateObj = new Date(order.completedDate);
+            }
+            const readyDateStr = readyDateObj.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit' });
+
+            const deliveryLabel = isEnvio ? 'Envío' : 'Retiro';
+            const deliveryIconName = isEnvio ? 'local_shipping' : 'storefront';
+
+            // Determinar estados de los pasos
+            const step1Class = 'step-item step-completed';
+            let step2Class = 'step-item';
+            let step3Class = 'step-item';
+            let step4Class = 'step-item';
+
+            let progressWidth = '25%';
+            if (order.status === 'entregado') {
+                step2Class = 'step-item step-completed';
+                step3Class = 'step-item step-completed';
+                step4Class = 'step-item step-completed';
+                progressWidth = '100%';
+            } else if (order.status === 'listo') {
+                step2Class = 'step-item step-completed';
+                step3Class = 'step-item step-completed step-active';
+                progressWidth = '66%';
+            } else {
+                // En proceso de fabricación
+                step2Class = 'step-item step-active';
+                progressWidth = '33%';
+            }
+
+            const stepperHtml = `
+                <div class="stepper-summary-card">
+                    <div class="stepper-track">
+                        <div class="stepper-track-progress" style="width: ${progressWidth};"></div>
+                        <!-- Paso 1 -->
+                        <div class="${step1Class}">
+                            <div class="step-icon"><span class="material-symbols-outlined">play_circle</span></div>
+                            <div class="step-info">
+                                <div class="step-title">Inicio</div>
+                                <div class="step-date">${startDateStr}</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Paso 2 -->
+                        <div class="${step2Class}">
+                            <div class="step-icon"><span class="material-symbols-outlined">construction</span></div>
+                            <div class="step-info">
+                                <div class="step-title">Fabricación</div>
+                                <div class="step-date">${rangeText}</div>
+                            </div>
+                        </div>
+
+                        <!-- Paso 3 -->
+                        <div class="${step3Class}">
+                            <div class="step-icon"><span class="material-symbols-outlined">verified</span></div>
+                            <div class="step-info">
+                                <div class="step-title">${isFinished ? '¡Listo!' : 'Estimado'}</div>
+                                <div class="step-date">${readyDateStr}</div>
+                            </div>
+                        </div>
+
+                        <!-- Paso 4 -->
+                        <div class="${step4Class}">
+                            <div class="step-icon"><span class="material-symbols-outlined">${deliveryIconName}</span></div>
+                            <div class="step-info">
+                                <div class="step-title">${deliveryLabel}</div>
+                                <div class="step-date">${isFinished ? (order.status === 'entregado' ? 'Completado' : 'Pendiente') : 'Final'}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón para expandir desglose día por día -->
+                    <button type="button" id="btn-toggle-daily-breakdown" class="btn-toggle-breakdown">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                        <span>Ver desglose día por día (${processedDays.length} días)</span>
+                        <span class="material-symbols-outlined" id="breakdown-arrow-icon">expand_more</span>
+                    </button>
+                    
+                    <div id="daily-breakdown-container" style="display: none; margin-top: 1rem;"></div>
+                </div>
+            `;
+
+            timelineContainer.innerHTML = stepperHtml;
+
+            // Llenar el contenedor del desglose diario
+            const breakdownContainer = document.getElementById('daily-breakdown-container');
+            const toggleBtn = document.getElementById('btn-toggle-daily-breakdown');
+            const arrowIcon = document.getElementById('breakdown-arrow-icon');
+
+            if (breakdownContainer) {
                 processedDays.forEach(dayData => {
-                    timelineContainer.appendChild(createRow(dayData));
+                    breakdownContainer.appendChild(createRow(dayData));
                 });
-                return;
             }
 
-            const currentActiveIndex = processedDays.findIndex(day => day.isToday);
-            const pivotIndex = currentActiveIndex !== -1 ? currentActiveIndex : processedDays.findIndex(day => !day.isCompleted);
-            const actualPivot = pivotIndex !== -1 ? pivotIndex : processedDays.length - 1;
-
-            const visibleCount = 5;
-            let startIndex = Math.max(0, actualPivot - 1);
-            let endIndex = startIndex + visibleCount;
-
-            if (endIndex > processedDays.length) {
-                endIndex = processedDays.length;
-                startIndex = Math.max(0, endIndex - visibleCount);
-            }
-
-            const visibleDays = processedDays.slice(startIndex, endIndex);
-
-            visibleDays.forEach(dayData => {
-                timelineContainer.appendChild(createRow(dayData));
-            });
-
-            let expandedPrev = false;
-            let expandedNext = false;
-
-            if (startIndex > 0) {
-                const hiddenPrevDays = processedDays.slice(0, startIndex);
-                const prevWrapper = document.createElement('div');
-                prevWrapper.style.display = 'none';
-                hiddenPrevDays.forEach(dayData => prevWrapper.appendChild(createRow(dayData)));
-                
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'timeline-expand-btn';
-                prevBtn.innerHTML = `<span class="material-symbols-outlined">expand_less</span> Ver días anteriores (${hiddenPrevDays.length})`;
-                prevBtn.onclick = () => {
-                    expandedPrev = !expandedPrev;
-                    prevWrapper.style.display = expandedPrev ? 'block' : 'none';
-                    prevBtn.innerHTML = expandedPrev 
-                        ? `<span class="material-symbols-outlined">expand_more</span> Ocultar días anteriores` 
-                        : `<span class="material-symbols-outlined">expand_less</span> Ver días anteriores (${hiddenPrevDays.length})`;
-                };
-                
-                timelineContainer.insertBefore(prevBtn, timelineContainer.firstChild);
-                timelineContainer.insertBefore(prevWrapper, prevBtn.nextSibling);
-            }
-
-            if (endIndex < processedDays.length) {
-                const hiddenNextDays = processedDays.slice(endIndex);
-                const nextWrapper = document.createElement('div');
-                nextWrapper.style.display = 'none';
-                hiddenNextDays.forEach(dayData => nextWrapper.appendChild(createRow(dayData)));
-                
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'timeline-expand-btn';
-                nextBtn.innerHTML = `<span class="material-symbols-outlined">expand_more</span> Ver días siguientes (${hiddenNextDays.length})`;
-                nextBtn.onclick = () => {
-                    expandedNext = !expandedNext;
-                    nextWrapper.style.display = expandedNext ? 'block' : 'none';
-                    nextBtn.innerHTML = expandedNext 
-                        ? `<span class="material-symbols-outlined">expand_less</span> Ocultar días siguientes` 
-                        : `<span class="material-symbols-outlined">expand_more</span> Ver días siguientes (${hiddenNextDays.length})`;
-                };
-                
-                timelineContainer.appendChild(nextBtn);
-                timelineContainer.appendChild(nextWrapper);
+            if (toggleBtn && breakdownContainer) {
+                let isOpen = false;
+                toggleBtn.addEventListener('click', () => {
+                    isOpen = !isOpen;
+                    breakdownContainer.style.display = isOpen ? 'block' : 'none';
+                    arrowIcon.textContent = isOpen ? 'expand_less' : 'expand_more';
+                });
             }
         }
 
@@ -1164,6 +1316,48 @@
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
+        }
+
+        function shareOrder(orderId, clientName, productName) {
+            // Construir la URL de seguimiento
+            const basePath = window.location.pathname.split('/').filter(Boolean)[0]?.toLowerCase() === 'latarimadecoracion.github.io'
+                ? '/latarimadecoracion.github.io/'
+                : '/';
+            const origin = window.location.origin.replace(/\/$/, '');
+            const shareUrl = `${origin}${basePath}${orderId}`;
+
+            const message = `¡Hola ${clientName}! 👋\n\n¡Puedes seguir tu pedido! ✅ #${orderId}\n\n${productName}\n\nPodés ver el detalle en: ${shareUrl}`;
+
+            // Web Share API (funciona en móviles y navegadores modernos)
+            if (navigator.share) {
+                navigator.share({
+                    title: `Seguimiento de pedido #${orderId} — La Tarima`,
+                    text: message,
+                    url: shareUrl
+                }).catch(() => {}); // silenciar cancelación del usuario
+            } else {
+                // Fallback: copiar al portapapeles
+                navigator.clipboard.writeText(message).then(() => {
+                    const btn = document.getElementById('btn-share-order');
+                    if (btn) {
+                        const icon = btn.querySelector('.material-symbols-outlined');
+                        const originalIcon = icon.textContent;
+                        icon.textContent = 'check';
+                        btn.style.background = '#16a34a';
+                        btn.style.color = '#fff';
+                        btn.style.borderColor = '#16a34a';
+                        setTimeout(() => {
+                            icon.textContent = originalIcon;
+                            btn.style.background = '';
+                            btn.style.color = '';
+                            btn.style.borderColor = '';
+                        }, 2000);
+                    }
+                }).catch(() => {
+                    // Fallback final: prompt con el mensaje
+                    prompt('Copiá este mensaje para compartir:', message);
+                });
+            }
         }
     </script>
 </body>

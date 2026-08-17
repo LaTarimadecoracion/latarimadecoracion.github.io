@@ -38,6 +38,11 @@
             color: var(--text-main);
             margin: 0;
             padding: 0;
+            /* Restaurar scroll — el style.css global tiene overflow:hidden para la SPA */
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            height: auto !important;
+            min-height: 100vh;
         }
         
         .admin-header {
@@ -190,6 +195,90 @@
             display: block;
         }
         
+        /* ── Secciones de Pedidos ── */
+        .orders-section {
+            margin-bottom: 2rem;
+        }
+
+        .orders-section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.75rem 1.25rem;
+            background: #f8fafc;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px 10px 0 0;
+            border-bottom: none;
+        }
+
+        .orders-section-header h3 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .orders-section-header .material-symbols-outlined:first-child {
+            color: #3b82f6;
+            font-size: 22px;
+        }
+
+        .orders-section-header--ready {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .orders-section-header--ready .material-symbols-outlined:first-child {
+            color: #16a34a;
+        }
+
+        .orders-section-header--delivered {
+            background: #f8fafc;
+            border-color: var(--border-color);
+            border-radius: 10px;
+        }
+
+        .orders-section--delivered .table-responsive,
+        .orders-section--delivered .orders-table {
+            border-radius: 0 0 10px 10px;
+        }
+
+        .orders-count-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 7px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .orders-count-badge--ready {
+            background: #16a34a;
+        }
+
+        .orders-count-badge--delivered {
+            background: #64748b;
+        }
+
+        .orders-section .table-responsive {
+            border-radius: 0 0 10px 10px;
+            border: 1.5px solid var(--border-color);
+            border-top: none;
+        }
+
+        .orders-section .orders-table th {
+            background: #f8fafc;
+        }
+
+        .orders-section--delivered .table-responsive {
+            border-top: 1.5px solid var(--border-color);
+        }
+
         .orders-table {
             width: 100%;
             min-width: 960px;
@@ -620,6 +709,129 @@
             box-sizing: border-box;
             overflow-x: auto !important;
         }
+    
+        /* --- ESTILOS MODERNOS DE DETALLE DE PRODUCTO Y PAGO --- */
+        .order-body {
+            padding: 1.5rem 1.75rem;
+        }
+
+        .product-section {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+            background: #ffffff;
+            padding: 1.25rem;
+            border-radius: 14px;
+            border: 1.5px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            flex-wrap: wrap;
+        }
+
+        .product-image {
+            width: 140px !important;
+            height: 140px !important;
+            min-width: 140px !important;
+            max-width: 140px !important;
+            max-height: 140px !important;
+            object-fit: contain !important;
+            background: #f8fafc !important;
+            border-radius: 12px !important;
+            border: 1.5px solid #e2e8f0 !important;
+            padding: 6px !important;
+            box-sizing: border-box !important;
+            flex-shrink: 0 !important;
+        }
+
+        .product-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .product-info h2 {
+            margin: 0 0 0.5rem 0 !important;
+            font-size: 1.35rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            letter-spacing: -0.3px !important;
+        }
+
+        .product-badge-pill {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+            padding: 0.35rem 0.75rem !important;
+            background: #f1f5f9 !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 20px !important;
+            font-size: 0.82rem !important;
+            font-weight: 700 !important;
+            color: #334155 !important;
+            margin-right: 6px !important;
+            margin-bottom: 6px !important;
+            font-family: inherit !important;
+        }
+
+        .product-desc {
+            font-size: 0.9rem !important;
+            color: #475569 !important;
+            margin: 8px 0 0 0 !important;
+            line-height: 1.5 !important;
+            font-weight: 500 !important;
+            white-space: pre-line !important;
+        }
+
+        .payment-banner {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+            border: 1.5px solid #e2e8f0 !important;
+            border-radius: 14px !important;
+            padding: 1.25rem 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+            gap: 1.25rem !important;
+        }
+
+        .payment-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .payment-label {
+            font-size: 0.75rem !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            color: #64748b !important;
+            letter-spacing: 0.5px !important;
+            margin-bottom: 4px !important;
+        }
+
+        .payment-value {
+            font-size: 1.25rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+        }
+
+        .payment-value.pagado {
+            color: #16a34a !important;
+        }
+
+        .payment-value.saldo {
+            color: #dc2626 !important;
+        }
+
+        .section-title {
+            font-size: 1.05rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            margin-top: 1.5rem !important;
+            margin-bottom: 1rem !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            letter-spacing: -0.2px !important;
+        }
+
     </style>
 </head>
 <body>
@@ -698,29 +910,109 @@
                 </select>
             </div>
             
-            <!-- Tabla de Datos -->
-            <div class="table-responsive">
-                <table class="orders-table">
-                    <thead>
-                        <tr>
-                            <th>Nro. Orden</th>
-                            <th>Cliente</th>
-                            <th>Producto</th>
-                            <th>Entrega</th>
-                            <th>Abonado</th>
-                            <th>Elaboración</th>
-                            <th>Fecha Límite</th>
-                            <th>Estado</th>
-                            <th style="text-align: right; padding-right: 1.5rem;">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body">
-                        <!-- Carga dinámica -->
-                    </tbody>
-                </table>
+            <!-- ── SECCIÓN 1: PEDIDOS ACTIVOS ── -->
+            <div class="orders-section">
+                <div class="orders-section-header">
+                    <span class="material-symbols-outlined">pending_actions</span>
+                    <h3>Pedidos Activos</h3>
+                    <span id="count-active" class="orders-count-badge"></span>
+                </div>
+                <div class="table-responsive">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Nro. Orden</th>
+                                <th>Cliente</th>
+                                <th>Producto</th>
+                                <th>Entrega</th>
+                                <th>Abonado</th>
+                                <th>Elaboración</th>
+                                <th>Fecha Límite</th>
+                                <th>Estado</th>
+                                <th style="text-align: right; padding-right: 1.5rem;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body-active">
+                            <!-- Carga dinámica -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="empty-state-active" class="empty-state" style="display: none;">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <p>No hay pedidos activos.</p>
+                </div>
             </div>
-            
-            <!-- Vacío -->
+
+            <!-- ── SECCIÓN 2: TERMINADOS / LISTOS ── -->
+            <div class="orders-section">
+                <div class="orders-section-header orders-section-header--ready">
+                    <span class="material-symbols-outlined">inventory</span>
+                    <h3>Terminados — Listos para Retirar / Enviar</h3>
+                    <span id="count-listo" class="orders-count-badge orders-count-badge--ready"></span>
+                </div>
+                <div class="table-responsive">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Nro. Orden</th>
+                                <th>Cliente</th>
+                                <th>Producto</th>
+                                <th>Entrega</th>
+                                <th>Abonado</th>
+                                <th>Elaboración</th>
+                                <th>Fecha Límite</th>
+                                <th>Estado</th>
+                                <th style="text-align: right; padding-right: 1.5rem;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body-listo">
+                            <!-- Carga dinámica -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="empty-state-listo" class="empty-state" style="display: none;">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <p>No hay pedidos terminados aún.</p>
+                </div>
+            </div>
+
+            <!-- ── SECCIÓN 3: ENTREGADOS ── -->
+            <div class="orders-section orders-section--delivered">
+                <div class="orders-section-header orders-section-header--delivered" onclick="toggleDeliveredSection()" style="cursor: pointer; user-select: none;">
+                    <span class="material-symbols-outlined">task_alt</span>
+                    <h3>Entregados</h3>
+                    <span id="count-entregado" class="orders-count-badge orders-count-badge--delivered"></span>
+                    <span id="delivered-toggle-icon" class="material-symbols-outlined" style="margin-left: auto; color: #94a3b8; font-size: 20px;">expand_more</span>
+                </div>
+                <div id="delivered-section-body" style="display: none;">
+                    <div class="table-responsive">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Nro. Orden</th>
+                                    <th>Cliente</th>
+                                    <th>Producto</th>
+                                    <th>Entrega</th>
+                                    <th>Abonado</th>
+                                    <th>Elaboración</th>
+                                    <th>Fecha Límite</th>
+                                    <th>Estado</th>
+                                    <th style="text-align: right; padding-right: 1.5rem;">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body-entregado">
+                                <!-- Carga dinámica -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="empty-state-entregado" class="empty-state" style="display: none;">
+                        <span class="material-symbols-outlined">inbox</span>
+                        <p>No hay pedidos entregados aún.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estado vacío global (cuando no hay ningún pedido) -->
             <div id="table-empty-state" class="empty-state" style="display: none;">
                 <span class="material-symbols-outlined">inventory_2</span>
                 <p>No se encontraron pedidos.</p>
@@ -1310,30 +1602,60 @@
         function filterAndRenderTable() {
             const searchQuery = document.getElementById('input-search').value.toLowerCase().trim();
             const statusFilter = document.getElementById('filter-status').value;
-            const tbody = document.getElementById('table-body');
-            const emptyState = document.getElementById('table-empty-state');
-            
-            tbody.innerHTML = '';
-            
+            const globalEmpty  = document.getElementById('table-empty-state');
+
+            // IDs de las tres secciones
+            const tbodyActive    = document.getElementById('table-body-active');
+            const tbodyListo     = document.getElementById('table-body-listo');
+            const tbodyEntregado = document.getElementById('table-body-entregado');
+            const emptyActive    = document.getElementById('empty-state-active');
+            const emptyListo     = document.getElementById('empty-state-listo');
+            const emptyEntregado = document.getElementById('empty-state-entregado');
+            const countActive    = document.getElementById('count-active');
+            const countListo     = document.getElementById('count-listo');
+            const countEntregado = document.getElementById('count-entregado');
+
+            tbodyActive.innerHTML = '';
+            tbodyListo.innerHTML  = '';
+            tbodyEntregado.innerHTML = '';
+
+            // Filtrar por búsqueda y por filtro de estado del selector
             const filtered = allOrders.filter(order => {
-                const matchesSearch = 
+                const matchesSearch =
                     order.id.toLowerCase().includes(searchQuery) ||
                     order.clientName.toLowerCase().includes(searchQuery) ||
                     order.productName.toLowerCase().includes(searchQuery);
-                
                 const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
-                
                 return matchesSearch && matchesStatus;
             });
-            
-            if (filtered.length === 0) {
-                emptyState.style.display = 'block';
-                return;
-            }
-            emptyState.style.display = 'none';
-            
-            filtered.forEach(order => {
-                const tr = document.createElement('tr');
+
+            // Separar en tres grupos
+            // "Activos" = todo lo que NO sea listo ni entregado (pendiente, en fabricación, etc.)
+            const activeOrders    = filtered.filter(o => o.status !== 'listo' && o.status !== 'entregado');
+            const listoOrders     = filtered.filter(o => o.status === 'listo');
+            const entregadoOrders = filtered.filter(o => o.status === 'entregado');
+
+            // Ordenar: los más recientes primero (usando el ID numérico como timestamp, mayor = más nuevo)
+            const sortNewestFirst = (a, b) => Number(b.id) - Number(a.id);
+            activeOrders.sort(sortNewestFirst);
+            listoOrders.sort(sortNewestFirst);
+            entregadoOrders.sort(sortNewestFirst);
+
+            // Actualizar contadores
+            countActive.textContent    = activeOrders.length    > 0 ? activeOrders.length    : '';
+            countListo.textContent     = listoOrders.length     > 0 ? listoOrders.length     : '';
+            countEntregado.textContent = entregadoOrders.length > 0 ? entregadoOrders.length : '';
+
+            // Renderizar cada grupo
+            const buildRows = (orders, tbody, emptyEl) => {
+                if (orders.length === 0) {
+                    emptyEl.style.display = 'block';
+                    return;
+                }
+                emptyEl.style.display = 'none';
+                orders.forEach(order => {
+                    const tr = document.createElement('tr');
+                    // ── construir fila (misma lógica de antes) ──
                 
                 // Formatear precio
                 const total = Number(order.totalAmount || 0);
@@ -1415,7 +1737,16 @@
                     <td><span class="status-badge status-${order.status}">${statusLabel}</span></td>
                     <td>
                         <div class="actions-cell">
-                            <a href="${waUrl}" target="_blank" class="action-btn link" style="color: #16a34a; background: rgba(22, 163, 74, 0.1);" title="Enviar link por WhatsApp al cliente">
+                            ${order.status === 'listo' ? (() => {
+                                const cfg = JSON.parse(localStorage.getItem('pedidosAdminConfig') || '{}');
+                                const readyMsg = cfg.readyDesc || '¡Tu pedido ya está listo! ✅';
+                                const notifyMsg = `¡Hola ${order.clientName}! 👋\n\n${readyMsg} #${order.id}\n\n${order.productName}\n\nPodés ver el detalle en: ${trackingShortUrl}`;
+                                const notifyUrl = formatWhatsAppDirectUrl(order.clientPhone, notifyMsg);
+                                return `<a href="${notifyUrl}" target="_blank" class="action-btn" style="color: #7c3aed; background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.2);" title="✅ Notificar al cliente que su pedido está listo">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">notifications_active</span>
+                                </a>`;
+                            })() : ''}
+                            <a href="${waUrl}" target="_blank" class="action-btn link" style="color: #16a34a; background: rgba(22, 163, 74, 0.1);" title="Enviar link de seguimiento por WhatsApp">
                                 <span class="material-symbols-outlined" style="font-size: 18px;">chat</span>
                             </a>
                             <a href="${trackingPath}" target="_blank" class="action-btn link" title="Ver web de seguimiento">
@@ -1430,8 +1761,25 @@
                         </div>
                     </td>
                 `;
-                tbody.appendChild(tr);
-            });
+                    tr.innerHTML = tr.innerHTML; // flush
+                    tbody.appendChild(tr);
+                });
+            };
+
+            buildRows(activeOrders,    tbodyActive,    emptyActive);
+            buildRows(listoOrders,     tbodyListo,     emptyListo);
+            buildRows(entregadoOrders, tbodyEntregado, emptyEntregado);
+
+            // Vacío global solo si no hay absolutamente ningún pedido
+            globalEmpty.style.display = filtered.length === 0 ? 'block' : 'none';
+        }
+
+        function toggleDeliveredSection() {
+            const body = document.getElementById('delivered-section-body');
+            const icon = document.getElementById('delivered-toggle-icon');
+            const isOpen = body.style.display !== 'none';
+            body.style.display = isOpen ? 'none' : 'block';
+            icon.textContent = isOpen ? 'expand_more' : 'expand_less';
         }
         
         function toggleDeliveryFields() {

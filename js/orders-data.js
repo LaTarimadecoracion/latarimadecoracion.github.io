@@ -100,5 +100,36 @@ const ordersData = [
         "image": "img/migrados/decoracion/estantes/estantes.webp",
         "startDate": "2026-08-10T03:00:00.000Z",
         "estimatedReadyDate": "2026-08-18T02:59:00.000Z"
+    },
+    {
+        "id": "226232043",
+        "clientName": "Gisela Paula Magri",
+        "clientPhone": "ENC_NzExNjQwODUxMTk0NQ==",
+        "productType": "catalog",
+        "productId": "baranda-desmontable-clasica",
+        "productName": "Baranda: Desmontable Clásica",
+        "selectedFinish": "Blanca",
+        "selectedMeasure": "110 x 45 cm",
+        "description": "2 Unidades\nCon rebaje aclarado pro WPP",
+        "deliveryMethod": "envio",
+        "dispatchInfo": {
+            "courier": "otros",
+            "courierName": "A confirmar",
+            "trackingNumber": "",
+            "trackingUrl": ""
+        },
+        "prepDaysMin": 10,
+        "prepDaysMax": 15,
+        "prepDays": 15,
+        "extraDays": 0,
+        "paidStatus": "parcial",
+        "paidAmount": 90000,
+        "totalAmount": 110000,
+        "status": "pendiente",
+        "creationDate": "2026-08-17T02:39:49.515Z",
+        "completedDate": "",
+        "image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
+        "startDate": "2026-08-17T03:00:00.000Z",
+        "estimatedReadyDate": "2026-09-08T02:59:00.000Z"
     }
 ];

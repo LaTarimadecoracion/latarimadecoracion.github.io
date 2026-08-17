@@ -41,6 +41,11 @@ const ordersConfig = {
             "id": "7",
             "title": "Contacto y Atención:",
             "text": "Ante cualquier duda o consulta sobre el estado de su pedido, envianos un mensaje por WhatsApp al taller mencionando tu N° de Orden."
+        },
+        {
+            "id": "1786935228019",
+            "title": "Tiempo de Elaboración ",
+            "text": "Los tiempos de entrega se coordinan previamente mediante un rango estimado de fechas (ej. 5 a 10 días). Hacemos todo lo posible por adelantar las entregas, aunque en casos de fuerza mayor o imprevistos el plazo podría extenderse."
         }
     ]
 };
