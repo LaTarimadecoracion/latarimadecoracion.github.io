@@ -108,12 +108,20 @@ window.siteConfig = {
         {
             "title": "Pasión por la madera",
             "description": "Somos una carpintería especializada en crear productos únicos, seguros y con diseño para tu hogar. Ubicados en Hurlingham, Buenos Aires.",
+            "mediaType": "image",
+            "image": "img/nosotros/bloque/1786923282848-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Contactarnos por WhatsApp",
+                    "url": "https://wa.me/5491167007723",
+                    "newTab": true
+                }
+            ],
             "linkUrl": "https://wa.me/5491167007723",
             "linkText": "Contactarnos por WhatsApp",
-            "mediaType": "image",
-            "image": "img/nosotros/bloque/1780267473632-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": ""
+            "linkNewTab": true
         },
         {
             "title": "Ubicación en Hurlingham",

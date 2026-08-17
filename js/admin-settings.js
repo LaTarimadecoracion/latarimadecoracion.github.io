@@ -205,4 +205,53 @@
             }
         });
     };
+
+    window.initPagesGroupingAdmin = function() {
+        // Nombres legibles para el encabezado del panel editor
+        const PAGE_NAMES = {
+            home:       'Inicio',
+            categories: 'Categorías (Explorar)',
+            catalogo:   'Catálogo Completo',
+            videos:     'Videos',
+            nosotros:   'Nosotros',
+            avisos:     'Avisos',
+            search:     'Buscador',
+            cart:       'Carrito de Compras',
+            mayorista:  'Canal Mayorista'
+        };
+
+        const cards = document.querySelectorAll('.page-card');
+        const editorLabel = document.getElementById('page-editor-label');
+        const allSubviews = document.querySelectorAll('#page-editor-content .admin-subview');
+
+        function selectPage(pageKey) {
+            // Marcar tarjeta activa
+            cards.forEach(c => c.classList.toggle('active', c.getAttribute('data-page') === pageKey));
+
+            // Actualizar etiqueta del panel
+            if (editorLabel) editorLabel.textContent = PAGE_NAMES[pageKey] || pageKey;
+
+            // Mostrar subvista correcta
+            allSubviews.forEach(sv => {
+                sv.style.display = sv.id === `subview-page-${pageKey}` ? 'block' : 'none';
+            });
+
+            // Scroll suave al panel editor
+            const panel = document.querySelector('.page-editor-panel');
+            if (panel) {
+                setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+            }
+        }
+
+        // Asignar listeners a las tarjetas
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                selectPage(card.getAttribute('data-page'));
+            });
+        });
+
+        // Inicializar mostrando "Inicio"
+        selectPage('home');
+    };
 })();
+

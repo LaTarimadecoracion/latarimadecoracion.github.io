@@ -822,7 +822,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 113
+                "views": 94
             },
             {
                 "id": "escaleras",
@@ -2187,7 +2187,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812318991,
                 "primaryCatId": "jardin-patio",
-                "views": 14
+                "views": 11
             },
             {
                 "id": "macetas-colgante-eucalipto",
@@ -2277,7 +2277,7 @@ const productsData = [
                 ],
                 "last_modified": 1786334565073,
                 "primaryCatId": "jardin-patio",
-                "views": 4
+                "views": 5
             },
             {
                 "id": "Platos-madera",
@@ -2365,7 +2365,7 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 4
+                "views": 3
             },
             {
                 "id": "Mate",
@@ -2454,7 +2454,7 @@ const productsData = [
                 ],
                 "last_modified": 1783907387290,
                 "primaryCatId": "productos-algarrobo",
-                "views": 5
+                "views": 4
             },
             {
                 "id": "Platos - Cuencos",
@@ -2527,7 +2527,7 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 19
+                "views": 18
             },
             {
                 "id": "Mueble-Multifunción",
@@ -2617,7 +2617,7 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 11
+                "views": 5
             },
             {
                 "id": "jenga",
@@ -2824,7 +2824,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores",
-                "views": 7
+                "views": 5
             },
             {
                 "id": "verdulero-mediano",
@@ -3103,7 +3103,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637176778,
                 "primaryCatId": "Organizadores",
-                "views": 5
+                "views": 4
             },
             {
                 "id": "cesto-de-basura",
@@ -3340,7 +3340,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637265113,
                 "primaryCatId": "jardin-patio",
-                "views": 13
+                "views": 7
             },
             {
                 "id": "organizador-tribuna-x3",
@@ -3740,7 +3740,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 5
+                "views": 3
             },
             {
                 "id": "baranda-montessori",
@@ -4150,7 +4150,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 25
+                "views": 24
             },
             {
                 "id": "perchero-pared-doblegancho",
@@ -4583,7 +4583,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 12
+                "views": 11
             },
             {
                 "id": "17-vinos",
@@ -4672,7 +4672,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
-                "views": 7
+                "views": 4
             },
             {
                 "id": "13-vinos",
@@ -6061,7 +6061,7 @@ const productsData = [
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
                 "visible": true,
-                "views": 3
+                "views": 2
             },
             {
                 "id": "Mesas para Candy Bar",
@@ -6318,7 +6318,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "80 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/banco-romano--pie-de-cama--80-cm-de-ancho/up/MLAU4772479312",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -6385,9 +6385,10 @@ const productsData = [
                     "muebles de calidad",
                     "diseño artesanal"
                 ],
-                "last_modified": 1786839526853,
+                "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "sillon-gervasoni-simple-chico",
@@ -6616,7 +6617,7 @@ const productsData = [
                 ],
                 "last_modified": 1784162786027,
                 "primaryCatId": "Percheros",
-                "views": 7
+                "views": 8
             },
             {
                 "id": "perchero-nordico-pared-x5",
@@ -6900,7 +6901,7 @@ const productsData = [
                 ],
                 "last_modified": 1784645695698,
                 "primaryCatId": "Podios",
-                "views": 5
+                "views": 1
             },
             {
                 "id": "mensulas-escritorio",
@@ -7117,7 +7118,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 24
+                "views": 23
             },
             {
                 "id": "mensulas",
@@ -7271,7 +7272,7 @@ const productsData = [
                 ],
                 "last_modified": 1786058228736,
                 "primaryCatId": "Estantes",
-                "views": 6
+                "views": 5
             },
             {
                 "id": "Banco Escalera De Pino 3 Escalones",
@@ -8301,7 +8302,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "(Combo 1)",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/mesa-y-2-sillas-infantil-excelente-calidad/up/MLAU4772559126",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -8317,7 +8318,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786839120869,
+                "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes"
             },
             {
@@ -8352,7 +8353,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786839116557,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 0
             },
             {
                 "id": "Juego de Mesa y Sillas colonial",
@@ -8386,7 +8388,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786839110101,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 0
             },
             {
                 "id": "perchero-1-2",
@@ -8404,7 +8407,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "1 Unidad",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2015388606-perchero-de-pie-torneado-reforzado-8-ganchos-_JM",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-reforzado-8-ganchos/up/MLAU4772440234",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -8470,8 +8473,9 @@ const productsData = [
                     "percheros rusticos",
                     "percheros de pino"
                 ],
-                "last_modified": 1786842743422,
-                "primaryCatId": "Percheros"
+                "last_modified": 1786923534481,
+                "primaryCatId": "Percheros",
+                "views": 0
             }
         ]
     },
@@ -8752,7 +8756,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 12
+                "views": 11
             },
             {
                 "id": "13-vinos",
@@ -8931,7 +8935,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
-                "views": 7
+                "views": 4
             },
             {
                 "id": "bodega-madera-6-rectangular",
@@ -9093,7 +9097,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 0
+                "views": 1
             }
         ],
         "rubro": "carpinteria"
@@ -9194,54 +9198,44 @@ const productsData = [
                 "views": 12
             },
             {
-                "id": "perchero-pared-doblegancho",
-                "title": "Perchero de pared",
-                "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
-                "image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                "id": "perchero-1-2",
+                "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
+                "description": "Funcionalidad y elegancia para organizar tu entrada.",
+                "image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                        "cover_image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
                         "images_list": [
-                            "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
-                            "img/percheros/perchero-de-pared/1783617272637-imagen.webp"
+                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839928203-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "3 Ganchos",
-                                "link": "https://www.mercadolibre.com.ar/perchero-pared-por-3-gancho-doble-en-pino/up/MLAU3276272833?pdp_filters=item_id:MLA1508779537",
+                                "medida": "1 Unidad",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-reforzado-8-ganchos/up/MLAU4772440234",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 39000,
+                                "cost_price": 26000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
-                                "medida": "5 Ganchos",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508082125-perchero-de-pared-5-ganchos-dobles-natural-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "7 Ganchos",
+                                "medida": "2 Unidad",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 78000,
+                                "cost_price": 52000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -9249,26 +9243,17 @@ const productsData = [
                 ],
                 "tags": [
                     "perchero",
-                    "pared",
-                    "grande",
-                    "lindo",
-                    "madera",
-                    "decoracion",
-                    "ordenar",
-                    "ropa",
-                    "entrada",
-                    "casa",
-                    "hogar",
                     "percheros",
                     "perchero pared",
                     "perchero madera",
                     "perchero pino",
                     "colgar",
                     "perchas",
-                    "doble gancho",
                     "abrigo",
                     "camperas",
+                    "entrada",
                     "recibidor",
+                    "pared",
                     "colgar ropa",
                     "gancho",
                     "ganchos",
@@ -9294,291 +9279,9 @@ const productsData = [
                     "percheros rusticos",
                     "percheros de pino"
                 ],
-                "last_modified": 1783617272723,
+                "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 4
-            },
-            {
-                "id": "perchero-nordico-pared-x3",
-                "title": "Perchero nórdico de pared x3",
-                "description": "",
-                "image": "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
-                        "images_list": [
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163402-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163552-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163843-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162219206-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "x 3",
-                                "link": "https://www.mercadolibre.com.ar/perchero-nordico-repisa-pared-x3-ganchos/up/MLAU4337170294?pdp_filters=item_id:MLA3613103496",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": 7500,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "percheros de pared nórdicos",
-                    "dale onda a tu recibidor",
-                    "deco nórdica para tu casa",
-                    "colgá con onda",
-                    "madera natural en tu pared",
-                    "percheros minimalistas funcionales",
-                    "transformá tu entrada",
-                    "diseño nórdico escandinavo",
-                    "orden y estilo en tu hogar",
-                    "perchero x3 pino natural",
-                    "percheros artesanales de madera",
-                    "calidez nórdica para ambientes",
-                    "el toque de madera que falta",
-                    "colgadores modernos de pared",
-                    "deco funcional y estética",
-                    "optimizá tu espacio con estilo",
-                    "ideales para abrigos y carteras",
-                    "percheros resistentes de diseño",
-                    "hechos a mano con amor",
-                    "estilo escandinavo para el hogar",
-                    "dale vida a tus paredes",
-                    "orden moderno para tu entrada",
-                    "percheros triples de madera",
-                    "un toque rústico y moderno",
-                    "diseño simple que enamora",
-                    "deco hogar tendencia nórdica",
-                    "percheros súper fáciles de instalar",
-                    "guardado inteligente y estético",
-                    "organizadores de pared de pino",
-                    "percheros premium para recibidor",
-                    "renová tu casa hoy",
-                    "colgadores dobles y triples de madera",
-                    "madera seleccionada de primera",
-                    "diseño limpio y minimalista",
-                    "perchero individual x3 combinable",
-                    "percheros escandinavos de pared",
-                    "detalles en madera que suman",
-                    "organización con calidez de hogar",
-                    "el perchero ideal para tu pieza",
-                    "fabricado por manos artesanas",
-                    "simpleza y funcionalidad nórdica",
-                    "percheros decorativos para colgar",
-                    "percheros para living y dormitorio",
-                    "dale un aire fresco a tu casa",
-                    "percheros resistentes de pino",
-                    "deco nórdica directo de taller",
-                    "la combinación perfecta de orden",
-                    "estilo minimalista en madera natural",
-                    "colgador triple súper práctico",
-                    "percheros listos para instalar",
-                    "perchero nordico",
-                    "perchero de pared",
-                    "perchero individual x3",
-                    "perchero madera pino",
-                    "perchero escandinavo",
-                    "colgador de pared",
-                    "perchero recibidor",
-                    "perchero minimalista",
-                    "percheros artesanales",
-                    "deco nordica",
-                    "organizador de pared",
-                    "colgadores madera",
-                    "perchero x3",
-                    "percheros buenos aires",
-                    "carpinteria de diseño",
-                    "perchero para ropa",
-                    "colgador carteras",
-                    "perchero entrada casa",
-                    "percheros modernos",
-                    "madera natural",
-                    "perchero pino",
-                    "accesorios de pared",
-                    "deco hogar",
-                    "organizacion hogar",
-                    "perchero triple",
-                    "percheros rusticos",
-                    "colgador sacos",
-                    "perchero living",
-                    "perchero dormitorio",
-                    "estetica escandinava",
-                    "herrajes madera",
-                    "perchero facil instalacion",
-                    "percheros resistentes",
-                    "pino seleccionado",
-                    "percheros argentina",
-                    "colgador llaves",
-                    "organizador recibidor",
-                    "perchero nordico infantil",
-                    "perchero baño",
-                    "perchero pasillo",
-                    "perchero para colgar",
-                    "perchero decorativo",
-                    "soporte pared madera",
-                    "perchero economico madera",
-                    "perchero pino natural",
-                    "percheros modernos de pared",
-                    "percheros de madera argentina",
-                    "kit de percheros x3",
-                    "colgador abrigo pared",
-                    "perchero minimalista madera"
-                ],
-                "last_modified": 1784162786027,
-                "primaryCatId": "Percheros",
-                "views": 7
-            },
-            {
-                "id": "perchero-nordico-pared-x5",
-                "title": "Perchero nórdico de pared x5",
-                "description": "",
-                "image": "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
-                        "images_list": [
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561762-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561907-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562052-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562207-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562362-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562519-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "x 5",
-                                "link": "https://www.mercadolibre.com.ar/perchero-nordico-repisa-pared-x5-ganchos/up/MLAU4315193911?pdp_filters=item_id:MLA3613104286",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 19000,
-                                "cost_price": 9500,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "percheros de pared nórdicos",
-                    "dale onda a tu recibidor",
-                    "deco nórdica para tu casa",
-                    "colgá con onda",
-                    "madera natural en tu pared",
-                    "percheros minimalistas funcionales",
-                    "transformá tu entrada",
-                    "diseño nórdico escandinavo",
-                    "orden y estilo en tu hogar",
-                    "perchero x3 pino natural",
-                    "percheros artesanales de madera",
-                    "calidez nórdica para ambientes",
-                    "el toque de madera que falta",
-                    "colgadores modernos de pared",
-                    "deco funcional y estética",
-                    "optimizá tu espacio con estilo",
-                    "ideales para abrigos y carteras",
-                    "percheros resistentes de diseño",
-                    "hechos a mano con amor",
-                    "estilo escandinavo para el hogar",
-                    "dale vida a tus paredes",
-                    "orden moderno para tu entrada",
-                    "percheros triples de madera",
-                    "un toque rústico y moderno",
-                    "diseño simple que enamora",
-                    "deco hogar tendencia nórdica",
-                    "percheros súper fáciles de instalar",
-                    "guardado inteligente y estético",
-                    "organizadores de pared de pino",
-                    "percheros premium para recibidor",
-                    "renová tu casa hoy",
-                    "colgadores dobles y triples de madera",
-                    "madera seleccionada de primera",
-                    "diseño limpio y minimalista",
-                    "perchero individual x3 combinable",
-                    "percheros escandinavos de pared",
-                    "detalles en madera que suman",
-                    "organización con calidez de hogar",
-                    "el perchero ideal para tu pieza",
-                    "fabricado por manos artesanas",
-                    "simpleza y funcionalidad nórdica",
-                    "percheros decorativos para colgar",
-                    "percheros para living y dormitorio",
-                    "dale un aire fresco a tu casa",
-                    "percheros resistentes de pino",
-                    "deco nórdica directo de taller",
-                    "la combinación perfecta de orden",
-                    "estilo minimalista en madera natural",
-                    "colgador triple súper práctico",
-                    "percheros listos para instalar",
-                    "perchero nordico",
-                    "perchero de pared",
-                    "perchero individual x3",
-                    "perchero madera pino",
-                    "perchero escandinavo",
-                    "colgador de pared",
-                    "perchero recibidor",
-                    "perchero minimalista",
-                    "percheros artesanales",
-                    "deco nordica",
-                    "organizador de pared",
-                    "colgadores madera",
-                    "perchero x3",
-                    "percheros buenos aires",
-                    "carpinteria de diseño",
-                    "perchero para ropa",
-                    "colgador carteras",
-                    "perchero entrada casa",
-                    "percheros modernos",
-                    "madera natural",
-                    "perchero pino",
-                    "accesorios de pared",
-                    "deco hogar",
-                    "organizacion hogar",
-                    "perchero triple",
-                    "percheros rusticos",
-                    "colgador sacos",
-                    "perchero living",
-                    "perchero dormitorio",
-                    "estetica escandinava",
-                    "herrajes madera",
-                    "perchero facil instalacion",
-                    "percheros resistentes",
-                    "pino seleccionado",
-                    "percheros argentina",
-                    "colgador llaves",
-                    "organizador recibidor",
-                    "perchero nordico infantil",
-                    "perchero baño",
-                    "perchero pasillo",
-                    "perchero para colgar",
-                    "perchero decorativo",
-                    "soporte pared madera",
-                    "perchero economico madera",
-                    "perchero pino natural",
-                    "percheros modernos de pared",
-                    "percheros de madera argentina",
-                    "kit de percheros x3",
-                    "colgador abrigo pared",
-                    "perchero minimalista madera"
-                ],
-                "last_modified": 1784163988629,
-                "primaryCatId": "Percheros",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "Perchero 5 - Rusctio - campo decorado",
@@ -9768,6 +9471,288 @@ const productsData = [
                 "views": 3
             },
             {
+                "id": "perchero-nordico-pared-x5",
+                "title": "Perchero nórdico de pared x5",
+                "description": "",
+                "image": "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
+                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561762-imagen.webp",
+                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561907-imagen.webp",
+                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562052-imagen.webp",
+                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562207-imagen.webp",
+                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562362-imagen.webp",
+                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562519-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "x 5",
+                                "link": "https://www.mercadolibre.com.ar/perchero-nordico-repisa-pared-x5-ganchos/up/MLAU4315193911?pdp_filters=item_id:MLA3613104286",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 19000,
+                                "cost_price": 9500,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "percheros de pared nórdicos",
+                    "dale onda a tu recibidor",
+                    "deco nórdica para tu casa",
+                    "colgá con onda",
+                    "madera natural en tu pared",
+                    "percheros minimalistas funcionales",
+                    "transformá tu entrada",
+                    "diseño nórdico escandinavo",
+                    "orden y estilo en tu hogar",
+                    "perchero x3 pino natural",
+                    "percheros artesanales de madera",
+                    "calidez nórdica para ambientes",
+                    "el toque de madera que falta",
+                    "colgadores modernos de pared",
+                    "deco funcional y estética",
+                    "optimizá tu espacio con estilo",
+                    "ideales para abrigos y carteras",
+                    "percheros resistentes de diseño",
+                    "hechos a mano con amor",
+                    "estilo escandinavo para el hogar",
+                    "dale vida a tus paredes",
+                    "orden moderno para tu entrada",
+                    "percheros triples de madera",
+                    "un toque rústico y moderno",
+                    "diseño simple que enamora",
+                    "deco hogar tendencia nórdica",
+                    "percheros súper fáciles de instalar",
+                    "guardado inteligente y estético",
+                    "organizadores de pared de pino",
+                    "percheros premium para recibidor",
+                    "renová tu casa hoy",
+                    "colgadores dobles y triples de madera",
+                    "madera seleccionada de primera",
+                    "diseño limpio y minimalista",
+                    "perchero individual x3 combinable",
+                    "percheros escandinavos de pared",
+                    "detalles en madera que suman",
+                    "organización con calidez de hogar",
+                    "el perchero ideal para tu pieza",
+                    "fabricado por manos artesanas",
+                    "simpleza y funcionalidad nórdica",
+                    "percheros decorativos para colgar",
+                    "percheros para living y dormitorio",
+                    "dale un aire fresco a tu casa",
+                    "percheros resistentes de pino",
+                    "deco nórdica directo de taller",
+                    "la combinación perfecta de orden",
+                    "estilo minimalista en madera natural",
+                    "colgador triple súper práctico",
+                    "percheros listos para instalar",
+                    "perchero nordico",
+                    "perchero de pared",
+                    "perchero individual x3",
+                    "perchero madera pino",
+                    "perchero escandinavo",
+                    "colgador de pared",
+                    "perchero recibidor",
+                    "perchero minimalista",
+                    "percheros artesanales",
+                    "deco nordica",
+                    "organizador de pared",
+                    "colgadores madera",
+                    "perchero x3",
+                    "percheros buenos aires",
+                    "carpinteria de diseño",
+                    "perchero para ropa",
+                    "colgador carteras",
+                    "perchero entrada casa",
+                    "percheros modernos",
+                    "madera natural",
+                    "perchero pino",
+                    "accesorios de pared",
+                    "deco hogar",
+                    "organizacion hogar",
+                    "perchero triple",
+                    "percheros rusticos",
+                    "colgador sacos",
+                    "perchero living",
+                    "perchero dormitorio",
+                    "estetica escandinava",
+                    "herrajes madera",
+                    "perchero facil instalacion",
+                    "percheros resistentes",
+                    "pino seleccionado",
+                    "percheros argentina",
+                    "colgador llaves",
+                    "organizador recibidor",
+                    "perchero nordico infantil",
+                    "perchero baño",
+                    "perchero pasillo",
+                    "perchero para colgar",
+                    "perchero decorativo",
+                    "soporte pared madera",
+                    "perchero economico madera",
+                    "perchero pino natural",
+                    "percheros modernos de pared",
+                    "percheros de madera argentina",
+                    "kit de percheros x3",
+                    "colgador abrigo pared",
+                    "perchero minimalista madera"
+                ],
+                "last_modified": 1784163988629,
+                "primaryCatId": "Percheros",
+                "views": 2
+            },
+            {
+                "id": "perchero-nordico-pared-x3",
+                "title": "Perchero nórdico de pared x3",
+                "description": "",
+                "image": "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
+                        "images_list": [
+                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
+                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163402-imagen.webp",
+                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163552-imagen.webp",
+                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163843-imagen.webp",
+                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162219206-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "x 3",
+                                "link": "https://www.mercadolibre.com.ar/perchero-nordico-repisa-pared-x3-ganchos/up/MLAU4337170294?pdp_filters=item_id:MLA3613103496",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 15000,
+                                "cost_price": 7500,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "percheros de pared nórdicos",
+                    "dale onda a tu recibidor",
+                    "deco nórdica para tu casa",
+                    "colgá con onda",
+                    "madera natural en tu pared",
+                    "percheros minimalistas funcionales",
+                    "transformá tu entrada",
+                    "diseño nórdico escandinavo",
+                    "orden y estilo en tu hogar",
+                    "perchero x3 pino natural",
+                    "percheros artesanales de madera",
+                    "calidez nórdica para ambientes",
+                    "el toque de madera que falta",
+                    "colgadores modernos de pared",
+                    "deco funcional y estética",
+                    "optimizá tu espacio con estilo",
+                    "ideales para abrigos y carteras",
+                    "percheros resistentes de diseño",
+                    "hechos a mano con amor",
+                    "estilo escandinavo para el hogar",
+                    "dale vida a tus paredes",
+                    "orden moderno para tu entrada",
+                    "percheros triples de madera",
+                    "un toque rústico y moderno",
+                    "diseño simple que enamora",
+                    "deco hogar tendencia nórdica",
+                    "percheros súper fáciles de instalar",
+                    "guardado inteligente y estético",
+                    "organizadores de pared de pino",
+                    "percheros premium para recibidor",
+                    "renová tu casa hoy",
+                    "colgadores dobles y triples de madera",
+                    "madera seleccionada de primera",
+                    "diseño limpio y minimalista",
+                    "perchero individual x3 combinable",
+                    "percheros escandinavos de pared",
+                    "detalles en madera que suman",
+                    "organización con calidez de hogar",
+                    "el perchero ideal para tu pieza",
+                    "fabricado por manos artesanas",
+                    "simpleza y funcionalidad nórdica",
+                    "percheros decorativos para colgar",
+                    "percheros para living y dormitorio",
+                    "dale un aire fresco a tu casa",
+                    "percheros resistentes de pino",
+                    "deco nórdica directo de taller",
+                    "la combinación perfecta de orden",
+                    "estilo minimalista en madera natural",
+                    "colgador triple súper práctico",
+                    "percheros listos para instalar",
+                    "perchero nordico",
+                    "perchero de pared",
+                    "perchero individual x3",
+                    "perchero madera pino",
+                    "perchero escandinavo",
+                    "colgador de pared",
+                    "perchero recibidor",
+                    "perchero minimalista",
+                    "percheros artesanales",
+                    "deco nordica",
+                    "organizador de pared",
+                    "colgadores madera",
+                    "perchero x3",
+                    "percheros buenos aires",
+                    "carpinteria de diseño",
+                    "perchero para ropa",
+                    "colgador carteras",
+                    "perchero entrada casa",
+                    "percheros modernos",
+                    "madera natural",
+                    "perchero pino",
+                    "accesorios de pared",
+                    "deco hogar",
+                    "organizacion hogar",
+                    "perchero triple",
+                    "percheros rusticos",
+                    "colgador sacos",
+                    "perchero living",
+                    "perchero dormitorio",
+                    "estetica escandinava",
+                    "herrajes madera",
+                    "perchero facil instalacion",
+                    "percheros resistentes",
+                    "pino seleccionado",
+                    "percheros argentina",
+                    "colgador llaves",
+                    "organizador recibidor",
+                    "perchero nordico infantil",
+                    "perchero baño",
+                    "perchero pasillo",
+                    "perchero para colgar",
+                    "perchero decorativo",
+                    "soporte pared madera",
+                    "perchero economico madera",
+                    "perchero pino natural",
+                    "percheros modernos de pared",
+                    "percheros de madera argentina",
+                    "kit de percheros x3",
+                    "colgador abrigo pared",
+                    "perchero minimalista madera"
+                ],
+                "last_modified": 1784162786027,
+                "primaryCatId": "Percheros",
+                "views": 8
+            },
+            {
                 "id": "perchero-madera-tuvitos5",
                 "title": "Perchero 5 - Minimalista",
                 "description": "Medidas:\n50 x 13 cm",
@@ -9951,44 +9936,54 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "perchero-1-2",
-                "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
-                "description": "Funcionalidad y elegancia para organizar tu entrada.",
-                "image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                "id": "perchero-pared-doblegancho",
+                "title": "Perchero de pared",
+                "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
+                "image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                        "cover_image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
-                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839928203-imagen.webp"
+                            "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                            "img/percheros/perchero-de-pared/1783617272637-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "1 Unidad",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2015388606-perchero-de-pie-torneado-reforzado-8-ganchos-_JM",
+                                "medida": "3 Ganchos",
+                                "link": "https://www.mercadolibre.com.ar/perchero-pared-por-3-gancho-doble-en-pino/up/MLAU3276272833?pdp_filters=item_id:MLA1508779537",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 39000,
-                                "cost_price": 26000,
+                                "price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": false
                             },
                             {
-                                "medida": "2 Unidad",
+                                "medida": "5 Ganchos",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508082125-perchero-de-pared-5-ganchos-dobles-natural-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "legend": "",
+                                "showPrice": false
+                            },
+                            {
+                                "medida": "7 Ganchos",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 78000,
-                                "cost_price": 52000,
+                                "price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": false
                             }
                         ],
                         "hidden": false
@@ -9996,17 +9991,26 @@ const productsData = [
                 ],
                 "tags": [
                     "perchero",
+                    "pared",
+                    "grande",
+                    "lindo",
+                    "madera",
+                    "decoracion",
+                    "ordenar",
+                    "ropa",
+                    "entrada",
+                    "casa",
+                    "hogar",
                     "percheros",
                     "perchero pared",
                     "perchero madera",
                     "perchero pino",
                     "colgar",
                     "perchas",
+                    "doble gancho",
                     "abrigo",
                     "camperas",
-                    "entrada",
                     "recibidor",
-                    "pared",
                     "colgar ropa",
                     "gancho",
                     "ganchos",
@@ -10032,8 +10036,9 @@ const productsData = [
                     "percheros rusticos",
                     "percheros de pino"
                 ],
-                "last_modified": 1786842743422,
-                "primaryCatId": "Percheros"
+                "last_modified": 1783617272723,
+                "primaryCatId": "Percheros",
+                "views": 4
             }
         ]
     },
@@ -10409,7 +10414,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores",
-                "views": 7
+                "views": 5
             },
             {
                 "id": "verdulero-mediano",
@@ -10568,7 +10573,7 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 11
+                "views": 5
             },
             {
                 "id": "verdulero-x3",
@@ -10778,7 +10783,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637176778,
                 "primaryCatId": "Organizadores",
-                "views": 5
+                "views": 4
             },
             {
                 "id": "organizador-tribuna-x3",
@@ -11142,7 +11147,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 24
+                "views": 23
             },
             {
                 "id": "mensulas",
@@ -11296,7 +11301,7 @@ const productsData = [
                 ],
                 "last_modified": 1786058228736,
                 "primaryCatId": "Estantes",
-                "views": 6
+                "views": 5
             },
             {
                 "id": "Banco Escalera De Pino 3 Escalones",
@@ -12049,7 +12054,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 113
+                "views": 94
             },
             {
                 "id": "baranda-desmontable-montessori",
@@ -12722,7 +12727,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 25
+                "views": 24
             },
             {
                 "id": "baranda-sommier-clasica",
@@ -13342,7 +13347,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 5
+                "views": 3
             },
             {
                 "id": "baranda-montessori",
@@ -13833,7 +13838,7 @@ const productsData = [
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
                 "visible": true,
-                "views": 3
+                "views": 2
             },
             {
                 "id": "librero",
@@ -14035,7 +14040,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 3,
+                "views": 2,
                 "tags": [
                     "estante",
                     "estantes",
@@ -14213,7 +14218,7 @@ const productsData = [
                 ],
                 "last_modified": 1786058228736,
                 "primaryCatId": "Estantes",
-                "views": 6
+                "views": 5
             },
             {
                 "id": "estantes",
@@ -14772,7 +14777,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 24
+                "views": 23
             }
         ],
         "rubro": "carpinteria"
@@ -15453,7 +15458,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "80 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/banco-romano--pie-de-cama--80-cm-de-ancho/up/MLAU4772479312",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -15520,9 +15525,10 @@ const productsData = [
                     "muebles de calidad",
                     "diseño artesanal"
                 ],
-                "last_modified": 1786839526853,
+                "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
-                "visible": true
+                "visible": true,
+                "views": 1
             }
         ],
         "visible": true
@@ -15572,7 +15578,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "80 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/banco-romano--pie-de-cama--80-cm-de-ancho/up/MLAU4772479312",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -15639,9 +15645,10 @@ const productsData = [
                     "muebles de calidad",
                     "diseño artesanal"
                 ],
-                "last_modified": 1786839526853,
+                "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
-                "visible": true
+                "visible": true,
+                "views": 1
             }
         ]
     },
@@ -15795,7 +15802,7 @@ const productsData = [
                         "medidas_variants": []
                     }
                 ],
-                "views": 2,
+                "views": 1,
                 "tags": [
                     "escalera",
                     "escaleras",
@@ -16687,7 +16694,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "(Combo 1)",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/mesa-y-2-sillas-infantil-excelente-calidad/up/MLAU4772559126",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -16703,7 +16710,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786839120869,
+                "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes"
             },
             {
@@ -16738,7 +16745,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786839116557,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 0
             },
             {
                 "id": "Juego de Mesa y Sillas colonial",
@@ -16772,7 +16780,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786839110101,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 0
             }
         ],
         "rubro": "carpinteria"
@@ -17038,7 +17047,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786839110101,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 0
             },
             {
                 "id": "Juego de Mesa y Sillas redondos",
@@ -17072,7 +17082,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786839116557,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 0
             },
             {
                 "id": "Juego de Mesa y Sillas Infantiles",
@@ -17089,7 +17100,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "(Combo 1)",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/mesa-y-2-sillas-infantil-excelente-calidad/up/MLAU4772559126",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -17105,7 +17116,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786839120869,
+                "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes"
             }
         ]
@@ -17205,7 +17216,7 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 11
+                "views": 5
             },
             {
                 "id": "mesa-plegabe",
@@ -17729,7 +17740,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 24
+                "views": 23
             },
             {
                 "id": "Escritorio-PC-PRO",
@@ -18022,7 +18033,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812318991,
                 "primaryCatId": "jardin-patio",
-                "views": 14
+                "views": 11
             },
             {
                 "id": "deck-cuadrado",
@@ -18380,7 +18391,7 @@ const productsData = [
                 ],
                 "last_modified": 1786334565073,
                 "primaryCatId": "jardin-patio",
-                "views": 4
+                "views": 5
             },
             {
                 "id": "fanal",
@@ -18459,7 +18470,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637265113,
                 "primaryCatId": "jardin-patio",
-                "views": 13
+                "views": 7
             },
             {
                 "id": "cesto-de-basura",
@@ -18688,7 +18699,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "80 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/banco-romano--pie-de-cama--80-cm-de-ancho/up/MLAU4772479312",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -18755,9 +18766,10 @@ const productsData = [
                     "muebles de calidad",
                     "diseño artesanal"
                 ],
-                "last_modified": 1786839526853,
+                "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
-                "visible": true
+                "visible": true,
+                "views": 1
             }
         ]
     },
@@ -18854,7 +18866,7 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 4
+                "views": 3
             },
             {
                 "id": "Platos - Cuencos",
@@ -18927,7 +18939,7 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 19
+                "views": 18
             },
             {
                 "id": "Mate",
@@ -19016,7 +19028,7 @@ const productsData = [
                 ],
                 "last_modified": 1783907387290,
                 "primaryCatId": "productos-algarrobo",
-                "views": 5
+                "views": 4
             }
         ]
     },
@@ -19192,7 +19204,7 @@ const productsData = [
                 ],
                 "last_modified": 1784645695698,
                 "primaryCatId": "Podios",
-                "views": 5
+                "views": 1
             },
             {
                 "id": "podios-individuales",

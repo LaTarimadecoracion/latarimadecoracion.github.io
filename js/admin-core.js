@@ -70,6 +70,7 @@ function initAdminUX20() {
 
     // Inicializar sub-módulos
     if (typeof window.initSettingsAdmin === 'function') window.initSettingsAdmin();
+    if (typeof window.initPagesGroupingAdmin === 'function') window.initPagesGroupingAdmin();
     if (typeof window.initMaintenanceAdmin === 'function') window.initMaintenanceAdmin();
     if (typeof window.initCategoriesFormAdmin === 'function') window.initCategoriesFormAdmin();
     if (typeof window.initProductsAdmin === 'function') window.initProductsAdmin();

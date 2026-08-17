@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -890,411 +890,472 @@
 
                         <!-- 3. CONFIGURACIÓN DE PÁGINAS (Enfoque por Página) -->
                         <div id="admin-pages-view" class="admin-section-view" style="display: none;">
-                            <!-- Barra de sub-pestañas de Páginas -->
-                            <div class="admin-pill-tabs">
-                                <button type="button" class="admin-pill-tab active" data-subtab="page-home">
-                                    <span class="material-symbols-outlined">home</span>
-                                    <span>Inicio</span>
-                                </button>
-                                <button type="button" class="admin-pill-tab" data-subtab="page-categories">
-                                    <span class="material-symbols-outlined">category</span>
-                                    <span>Categorías</span>
-                                </button>
-                                <button type="button" class="admin-pill-tab" data-subtab="page-avisos">
-                                    <span class="material-symbols-outlined">campaign</span>
-                                    <span>Avisos</span>
-                                </button>
-                                <button type="button" class="admin-pill-tab" data-subtab="page-nosotros">
-                                    <span class="material-symbols-outlined">info</span>
-                                    <span>Nosotros</span>
-                                </button>
-                                <button type="button" class="admin-pill-tab" data-subtab="page-cart">
-                                    <span class="material-symbols-outlined">shopping_cart</span>
-                                    <span>Carrito</span>
-                                </button>
-                                <button type="button" class="admin-pill-tab" data-subtab="page-videos">
-                                    <span class="material-symbols-outlined">smart_display</span>
-                                    <span>Videos</span>
-                                </button>
-                                <button type="button" class="admin-pill-tab" data-subtab="page-catalogo">
-                                    <span class="material-symbols-outlined">menu_book</span>
-                                    <span>Catálogo</span>
-                                </button>
-                                <button type="button" class="admin-pill-tab" data-subtab="page-search">
-                                    <span class="material-symbols-outlined">search</span>
-                                    <span>Buscar</span>
-                                </button>
-                                <button type="button" class="admin-pill-tab" data-subtab="page-mayorista">
-                                    <span class="material-symbols-outlined">store</span>
-                                    <span>Mayorista</span>
-                                </button>
-                            </div>
 
-                            <!-- PÁGINA: INICIO (HOME) -->
-                            <div id="subview-page-home" class="admin-subview" style="display: block;">
-                                <!-- 1. Configuración de Menú -->
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">settings</span>
-                                            Configuración en Menú
-                                        </h3>
-                                    </header>
-                                    <div id="admin-config-menu-home" class="sections-list-stack"></div>
-                                </div>
-                                
-                                <!-- 2. Orden de Secciones -->
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">format_list_numbered</span>
-                                            Orden de Secciones y Banners (Inicio)
-                                        </h3>
-                                        <div class="admin-header-actions">
-                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="home">➕ Agregar Banner/Componente</button>
-                                        </div>
-                                    </header>
-                                    <p class="section-desc">Ordená y renombra las secciones principales, y agregá banners o videos dinámicos donde prefieras.</p>
-                                    <div id="admin-home-sections-list" class="sections-list-stack"></div>
+                            <!-- Cabecera de Sección -->
+                            <div class="pages-section-header">
+                                <div>
+                                    <h2 class="admin-header-title"><span class="material-symbols-outlined">view_quilt</span> Páginas & Banners</h2>
+                                    <p class="admin-header-desc">Seleccioná una página de tu sitio para editar su contenido, banners y configuración.</p>
                                 </div>
                             </div>
 
-                            <!-- PÁGINA: CATEGORÍAS (EXPLORAR) -->
-                            <div id="subview-page-categories" class="admin-subview" style="display: none;">
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">settings</span>
-                                            Configuración en Menú
-                                        </h3>
-                                    </header>
-                                    <div id="admin-config-menu-categories" class="sections-list-stack"></div>
-                                </div>
+                            <!-- MAPA DEL SITIO: Grid de Tarjetas de Página (siempre visible) -->
+                            <div class="pages-map-grid">
 
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">view_carousel</span>
-                                            Banners Superiores (Categorías)
-                                        </h3>
-                                        <div class="admin-header-actions">
-                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="categories">➕ Agregar Componente</button>
-                                        </div>
-                                    </header>
-                                    <div id="admin-components-categories" class="sections-list-stack"></div>
-                                </div>
-                            </div>
-
-                            <!-- PÁGINA: AVISOS -->
-                            <div id="subview-page-avisos" class="admin-subview" style="display: none;">
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">settings</span>
-                                            Configuración en Menú
-                                        </h3>
-                                    </header>
-                                    <div id="admin-config-menu-avisos" class="sections-list-stack"></div>
-                                </div>
-
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">notifications_active</span>
-                                            Bloques de Avisos
-                                        </h3>
-                                        <div class="admin-header-actions">
-                                            <button type="button" id="btn-add-avisos-block" class="btn-primary" data-target="avisos">➕ Agregar Aviso</button>
-                                        </div>
-                                    </header>
-                                    <div id="admin-avisos-list" class="sections-list-stack"></div>
-                                </div>
-                            </div>
-
-                            <!-- PÁGINA: NOSOTROS -->
-                            <div id="subview-page-nosotros" class="admin-subview" style="display: none;">
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">settings</span>
-                                            Configuración en Menú
-                                        </h3>
-                                    </header>
-                                    <div id="admin-config-menu-nosotros" class="sections-list-stack"></div>
-                                </div>
-
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">history_edu</span>
-                                            Bloques de Historia
-                                        </h3>
-                                        <div class="admin-header-actions">
-                                            <button type="button" id="btn-add-nosotros-block" class="btn-primary">➕ Agregar Bloque</button>
-                                        </div>
-                                    </header>
-                                    <div id="admin-nosotros-list" class="sections-list-stack"></div>
-                                </div>
-
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">share</span>
-                                            Redes Sociales & Contacto
-                                        </h3>
-                                    </header>
-                                    <form id="admin-social-form" class="admin-form">
-                                        <div class="admin-grid-form">
-                                            <div class="form-group">
-                                                <label>Instagram</label>
-                                                <input type="text" id="admin-social-instagram" placeholder="https://instagram.com/tu_cuenta">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>TikTok</label>
-                                                <input type="text" id="admin-social-tiktok" placeholder="https://tiktok.com/@tu_cuenta">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Facebook</label>
-                                                <input type="text" id="admin-social-facebook" placeholder="https://facebook.com/tu_pagina">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>YouTube</label>
-                                                <input type="text" id="admin-social-youtube" placeholder="https://youtube.com/@tu_canal">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>WhatsApp</label>
-                                                <input type="text" id="admin-social-whatsapp" placeholder="https://wa.me/549...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Mercado Libre</label>
-                                                <input type="text" id="admin-social-mercadolibre" placeholder="https://listado.mercadolibre.com.ar/...">
-                                            </div>
-                                        </div>
-                                        <div style="text-align: right; margin-top: 1rem;">
-                                            <button type="submit" id="btn-save-social" class="btn-primary">💾 Guardar Redes Sociales</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <!-- PÁGINA: CARRITO -->
-                            <div id="subview-page-cart" class="admin-subview" style="display: none;">
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">settings</span>
-                                            Configuración en Menú
-                                        </h3>
-                                    </header>
-                                    <div id="admin-config-menu-cart" class="sections-list-stack"></div>
-                                </div>
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">view_carousel</span>
-                                            Banners y Componentes (Carrito)
-                                        </h3>
-                                        <div class="admin-header-actions">
-                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="cart">➕ Agregar Componente</button>
-                                        </div>
-                                    </header>
-                                    <div id="admin-components-cart" class="sections-list-stack"></div>
-                                </div>
-                            </div>
-
-                            <!-- PÁGINA: VIDEOS -->
-                            <div id="subview-page-videos" class="admin-subview" style="display: none;">
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">settings</span>
-                                            Configuración en Menú
-                                        </h3>
-                                    </header>
-                                    <div id="admin-config-menu-videos" class="sections-list-stack"></div>
-                                </div>
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">view_carousel</span>
-                                            Banners y Componentes (Videos)
-                                        </h3>
-                                        <div class="admin-header-actions">
-                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="videos">➕ Agregar Componente</button>
-                                        </div>
-                                    </header>
-                                    <div id="admin-components-videos" class="sections-list-stack"></div>
-                                </div>
-                            </div>
-
-                            <!-- PÁGINA: CATÁLOGO -->
-                            <div id="subview-page-catalogo" class="admin-subview" style="display: none;">
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">settings</span>
-                                            Configuración en Menú
-                                        </h3>
-                                    </header>
-                                    <div id="admin-config-menu-catalog" class="sections-list-stack"></div>
-                                </div>
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">view_carousel</span>
-                                            Banners y Componentes (Catálogo)
-                                        </h3>
-                                        <div class="admin-header-actions">
-                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="catalogo">➕ Agregar Componente</button>
-                                        </div>
-                                    </header>
-                                    <div id="admin-components-catalogo" class="sections-list-stack"></div>
-                                </div>
-                            </div>
-
-                            <!-- PÁGINA: BUSCAR -->
-                            <div id="subview-page-search" class="admin-subview" style="display: none;">
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">settings</span>
-                                            Configuración en Menú
-                                        </h3>
-                                    </header>
-                                    <div id="admin-config-menu-search" class="sections-list-stack"></div>
-                                </div>
-                                <div class="admin-card">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">view_carousel</span>
-                                            Banners y Componentes (Buscar)
-                                        </h3>
-                                        <div class="admin-header-actions">
-                                            <button type="button" class="btn-primary btn-add-view-component" data-target-page="search">➕ Agregar Componente</button>
-                                        </div>
-                                    </header>
-                                    <div id="admin-components-search" class="sections-list-stack"></div>
-                                </div>
-                            </div>
-
-                            <!-- PÁGINA: MAYORISTA -->
-                            <div id="subview-page-mayorista" class="admin-subview" style="display: none;">
-                                <!-- Barra de sub-pestañas interna -->
-                                <div class="admin-sub-tabs-bar" style="display: flex; gap: 8px; margin-bottom: 1.25rem; border-bottom: 1.5px solid #E2E8F0; padding-bottom: 0.5rem;">
-                                    <button type="button" class="admin-sub-tab active" data-subtab-target="admin-may-prices-subtab" style="padding: 0.6rem 1.25rem; border: none; background: transparent; font-size: 0.9rem; font-weight: 600; color: #64748B; cursor: pointer; display: flex; align-items: center; gap: 6px; border-radius: 6px; transition: all 0.2s;">
-                                        <span class="material-symbols-outlined" style="font-size: 18px;">payments</span>
-                                        Precios de Productos
-                                    </button>
-                                    <button type="button" class="admin-sub-tab" data-subtab-target="admin-may-config-subtab" style="padding: 0.6rem 1.25rem; border: none; background: transparent; font-size: 0.9rem; font-weight: 600; color: #64748B; cursor: pointer; display: flex; align-items: center; gap: 6px; border-radius: 6px; transition: all 0.2s;">
-                                        <span class="material-symbols-outlined" style="font-size: 18px;">settings</span>
-                                        Métodos de Pago y Datos
-                                    </button>
-                                </div>
-
-                                <!-- PESTAÑA 1: TABLA DE PRECIOS MASIVOS -->
-                                <div id="admin-may-prices-subtab" class="admin-subtab-content">
-                                    <div class="admin-card">
-                                        <header class="admin-page-header">
-                                            <h3 class="admin-header-title">
-                                                <span class="material-symbols-outlined">payments</span>
-                                                Precios de Productos (Edición Masiva)
-                                            </h3>
-                                            <div class="admin-header-actions" style="display: flex; gap: 8px;">
-                                                <button type="button" id="btn-bulk-price-modifier" style="padding: 0.5rem 1rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
-                                                    <span class="material-symbols-outlined" style="font-size: 18px;">trending_up</span>
-                                                    Modificar Precios
-                                                </button>
-                                                <button type="button" id="btn-bulk-discount-selected" style="padding: 0.5rem 1rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
-                                                    <span class="material-symbols-outlined" style="font-size: 18px;">settings</span>
-                                                    Descuentos a Seleccionados
-                                                </button>
-                                                <button type="button" id="btn-save-bulk-prices" class="btn-primary" style="padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
-                                                    <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
-                                                    Guardar Cambios de Precios
-                                                </button>
-                                            </div>
-                                        </header>
-                                        <div id="admin-may-rubros-container" class="rubros-tabs-bar" style="margin-top: 0.5rem; margin-bottom: 0.65rem;"></div>
-                                        <div style="margin: 1rem 0; position: relative;">
-                                            <span class="material-symbols-outlined" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 20px;">search</span>
-                                            <input type="text" id="admin-may-search" placeholder="Filtrar productos..." style="width: 100%; padding: 0.5rem 0.5rem 0.5rem 2.2rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.88rem; box-sizing: border-box;">
-                                        </div>
-                                        <div style="max-height: 500px; overflow-y: auto; overflow-x: auto; border: 1.5px solid #E8ECF0; border-radius: 12px;">
-                                            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; min-width: 600px;">
-                                                <thead>
-                                                    <tr style="background: #F8FAFC; border-bottom: 1.5px solid #E2E8F0; font-weight: 600; color: #475569;">
-                                                        <th style="padding: 10px 14px; width: 40px; text-align: center;">
-                                                            <input type="checkbox" id="chk-select-all-bulk" style="cursor: pointer; width: 16px; height: 16px;">
-                                                        </th>
-                                                        <th style="padding: 10px 14px;">Producto (Variante / Medida)</th>
-                                                        <th style="padding: 10px 14px; width: 120px;">Costo ($)</th>
-                                                        <th style="padding: 10px 14px; width: 150px;">Precio Mayorista ($)</th>
-                                                        <th style="padding: 10px 14px; width: 150px;">Descuentos</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="admin-may-prices-tbody">
-                                                    <!-- Cargado dinámicamente -->
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                <!-- Grupo: Principales -->
+                                <div class="pages-map-group">
+                                    <span class="pages-map-group-label">Principales</span>
+                                    <div class="pages-map-row">
+                                        <button type="button" class="page-card active" data-page="home">
+                                            <span class="page-card-icon material-symbols-outlined">home</span>
+                                            <span class="page-card-name">Inicio</span>
+                                            <span class="page-card-desc">Orden de secciones y banners</span>
+                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
+                                        </button>
+                                        <button type="button" class="page-card" data-page="categories">
+                                            <span class="page-card-icon material-symbols-outlined">category</span>
+                                            <span class="page-card-name">Categorías</span>
+                                            <span class="page-card-desc">Banners de la vista de Categorías</span>
+                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
+                                        </button>
+                                        <button type="button" class="page-card" data-page="catalogo">
+                                            <span class="page-card-icon material-symbols-outlined">menu_book</span>
+                                            <span class="page-card-name">Catálogo</span>
+                                            <span class="page-card-desc">Banners del catálogo completo</span>
+                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
+                                        </button>
+                                        <button type="button" class="page-card" data-page="videos">
+                                            <span class="page-card-icon material-symbols-outlined">smart_display</span>
+                                            <span class="page-card-name">Videos</span>
+                                            <span class="page-card-desc">Banners de la sección de videos</span>
+                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
+                                        </button>
                                     </div>
                                 </div>
 
-                                <!-- PESTAÑA 2: CONFIGURACIÓN GENERAL Y CUENTAS -->
-                                <div id="admin-may-config-subtab" class="admin-subtab-content" style="display: none;">
-                                    <div class="admin-card">
-                                        <header class="admin-page-header">
-                                            <h3 class="admin-header-title">
-                                                <span class="material-symbols-outlined">store</span>
-                                                Configuración Catálogo Mayorista
-                                            </h3>
-                                        </header>
-                                        <form id="admin-mayorista-form" style="display: flex; flex-direction: column; gap: 1.25rem; padding: 0.5rem 0;">
-                                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-                                                <div class="form-group">
-                                                    <label for="admin-may-alias" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Alias de Transferencia</label>
-                                                    <input type="text" id="admin-may-alias" placeholder="ej: la.tarima.deco" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="admin-may-cbu" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">CBU/CVU de Transferencia</label>
-                                                    <input type="text" id="admin-may-cbu" placeholder="22 dígitos" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="admin-may-titular" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Titular de la Cuenta</label>
-                                                    <input type="text" id="admin-may-titular" placeholder="Nombre completo" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="admin-may-bank" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Banco / Plataforma</label>
-                                                    <input type="text" id="admin-may-bank" placeholder="ej: Banco Galicia, Mercado Pago" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- Métodos de Pago Dinámicos -->
-                                            <div style="border-top: 1.5px solid #E2E8F0; margin-top: 1rem; padding-top: 1.5rem;">
-                                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                                                    <h4 style="margin: 0; font-size: 0.95rem; font-weight: 600; color: #1E293B;">Métodos de Pago y Condiciones</h4>
-                                                    <button type="button" id="btn-add-payment-method" style="padding: 0.4rem 0.8rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 0.85rem; font-weight: 500;">
-                                                        <span class="material-symbols-outlined" style="font-size: 16px;">add</span> Agregar Método
-                                                    </button>
-                                                </div>
-                                                <div id="admin-payment-methods-list" style="display: flex; flex-direction: column; gap: 1rem;">
-                                                    <!-- Los métodos de pago se inyectarán aquí vía JS -->
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="admin-may-discounts" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Aclaración de Descuentos (Checkout)</label>
-                                                <textarea id="admin-may-discounts" placeholder="Escribe aquí la aclaración de descuentos..." rows="3" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
-                                            </div>
-                                            <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
-                                                <button type="button" id="btn-save-mayorista-config" class="btn-primary" style="padding: 0.6rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 8px; cursor: pointer; border: none; font-weight: 600;">
-                                                    <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
-                                                    Guardar Configuración
-                                                </button>
-                                            </div>
-                                        </form>
+                                <!-- Grupo: Información -->
+                                <div class="pages-map-group">
+                                    <span class="pages-map-group-label">Información</span>
+                                    <div class="pages-map-row">
+                                        <button type="button" class="page-card" data-page="nosotros">
+                                            <span class="page-card-icon material-symbols-outlined">groups</span>
+                                            <span class="page-card-name">Nosotros</span>
+                                            <span class="page-card-desc">Historia, valores y redes sociales</span>
+                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
+                                        </button>
+                                        <button type="button" class="page-card" data-page="avisos">
+                                            <span class="page-card-icon material-symbols-outlined">campaign</span>
+                                            <span class="page-card-name">Avisos</span>
+                                            <span class="page-card-desc">Mensajes y anuncios especiales</span>
+                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
+                                        </button>
+                                        <button type="button" class="page-card" data-page="search">
+                                            <span class="page-card-icon material-symbols-outlined">search</span>
+                                            <span class="page-card-name">Buscador</span>
+                                            <span class="page-card-desc">Banners y componentes del buscador</span>
+                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
+
+                                <!-- Grupo: Comercial -->
+                                <div class="pages-map-group">
+                                    <span class="pages-map-group-label">Comercial</span>
+                                    <div class="pages-map-row">
+                                        <button type="button" class="page-card" data-page="cart">
+                                            <span class="page-card-icon material-symbols-outlined">shopping_cart</span>
+                                            <span class="page-card-name">Carrito</span>
+                                            <span class="page-card-desc">Banners en el checkout</span>
+                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
+                                        </button>
+                                        <button type="button" class="page-card" data-page="mayorista">
+                                            <span class="page-card-icon material-symbols-outlined">store</span>
+                                            <span class="page-card-name">Mayorista</span>
+                                            <span class="page-card-desc">Precios, métodos de pago y datos</span>
+                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div><!-- /pages-map-grid -->
+
+                            <!-- PANEL EDITOR: aparece debajo del mapa, muestra la página seleccionada -->
+                            <div class="page-editor-panel">
+                                <div class="page-editor-panel-header">
+                                    <span id="page-editor-back-icon" class="material-symbols-outlined page-editor-back">arrow_back</span>
+                                    <span id="page-editor-label" class="page-editor-title">Inicio</span>
+                                </div>
+                                <div id="page-editor-content">
+
+                                    <!-- PÁGINA: INICIO (HOME) -->
+                                    <div id="subview-page-home" class="admin-subview" style="display: block;">
+                                        <!-- 1. Configuración de Menú -->
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">settings</span>
+                                                    Configuración en Menú
+                                                </h3>
+                                            </header>
+                                            <div id="admin-config-menu-home" class="sections-list-stack"></div>
+                                        </div>
+                                        
+                                        <!-- 2. Orden de Secciones -->
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">format_list_numbered</span>
+                                                    Orden de Secciones y Banners (Inicio)
+                                                </h3>
+                                                <div class="admin-header-actions">
+                                                    <button type="button" class="btn-primary btn-add-view-component" data-target-page="home">➕ Agregar Banner/Componente</button>
+                                                </div>
+                                            </header>
+                                            <p class="section-desc">Ordená y renombra las secciones principales, y agregá banners o videos dinámicos donde prefieras.</p>
+                                            <div id="admin-home-sections-list" class="sections-list-stack"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PÁGINA: CATEGORÍAS (EXPLORAR) -->
+                                    <div id="subview-page-categories" class="admin-subview" style="display: none;">
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">settings</span>
+                                                    Configuración en Menú
+                                                </h3>
+                                            </header>
+                                            <div id="admin-config-menu-categories" class="sections-list-stack"></div>
+                                        </div>
+
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">view_carousel</span>
+                                                    Banners Superiores (Categorías)
+                                                </h3>
+                                                <div class="admin-header-actions">
+                                                    <button type="button" class="btn-primary btn-add-view-component" data-target-page="categories">➕ Agregar Componente</button>
+                                                </div>
+                                            </header>
+                                            <div id="admin-components-categories" class="sections-list-stack"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PÁGINA: AVISOS -->
+                                    <div id="subview-page-avisos" class="admin-subview" style="display: none;">
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">settings</span>
+                                                    Configuración en Menú
+                                                </h3>
+                                            </header>
+                                            <div id="admin-config-menu-avisos" class="sections-list-stack"></div>
+                                        </div>
+
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">notifications_active</span>
+                                                    Bloques de Avisos
+                                                </h3>
+                                                <div class="admin-header-actions">
+                                                    <button type="button" id="btn-add-avisos-block" class="btn-primary" data-target="avisos">➕ Agregar Aviso</button>
+                                                </div>
+                                            </header>
+                                            <div id="admin-avisos-list" class="sections-list-stack"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PÁGINA: NOSOTROS -->
+                                    <div id="subview-page-nosotros" class="admin-subview" style="display: none;">
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">settings</span>
+                                                    Configuración en Menú
+                                                </h3>
+                                            </header>
+                                            <div id="admin-config-menu-nosotros" class="sections-list-stack"></div>
+                                        </div>
+
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">history_edu</span>
+                                                    Bloques de Historia
+                                                </h3>
+                                                <div class="admin-header-actions">
+                                                    <button type="button" id="btn-add-nosotros-block" class="btn-primary">➕ Agregar Bloque</button>
+                                                </div>
+                                            </header>
+                                            <div id="admin-nosotros-list" class="sections-list-stack"></div>
+                                        </div>
+
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">share</span>
+                                                    Redes Sociales & Contacto
+                                                </h3>
+                                            </header>
+                                            <form id="admin-social-form" class="admin-form">
+                                                <div class="admin-grid-form">
+                                                    <div class="form-group">
+                                                        <label>Instagram</label>
+                                                        <input type="text" id="admin-social-instagram" placeholder="https://instagram.com/tu_cuenta">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>TikTok</label>
+                                                        <input type="text" id="admin-social-tiktok" placeholder="https://tiktok.com/@tu_cuenta">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Facebook</label>
+                                                        <input type="text" id="admin-social-facebook" placeholder="https://facebook.com/tu_pagina">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>YouTube</label>
+                                                        <input type="text" id="admin-social-youtube" placeholder="https://youtube.com/@tu_canal">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>WhatsApp</label>
+                                                        <input type="text" id="admin-social-whatsapp" placeholder="https://wa.me/549...">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Mercado Libre</label>
+                                                        <input type="text" id="admin-social-mercadolibre" placeholder="https://listado.mercadolibre.com.ar/...">
+                                                    </div>
+                                                </div>
+                                                <div style="text-align: right; margin-top: 1rem;">
+                                                    <button type="submit" id="btn-save-social" class="btn-primary">💾 Guardar Redes Sociales</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <!-- PÁGINA: CARRITO -->
+                                    <div id="subview-page-cart" class="admin-subview" style="display: none;">
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">settings</span>
+                                                    Configuración en Menú
+                                                </h3>
+                                            </header>
+                                            <div id="admin-config-menu-cart" class="sections-list-stack"></div>
+                                        </div>
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">view_carousel</span>
+                                                    Banners y Componentes (Carrito)
+                                                </h3>
+                                                <div class="admin-header-actions">
+                                                    <button type="button" class="btn-primary btn-add-view-component" data-target-page="cart">➕ Agregar Componente</button>
+                                                </div>
+                                            </header>
+                                            <div id="admin-components-cart" class="sections-list-stack"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PÁGINA: VIDEOS -->
+                                    <div id="subview-page-videos" class="admin-subview" style="display: none;">
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">settings</span>
+                                                    Configuración en Menú
+                                                </h3>
+                                            </header>
+                                            <div id="admin-config-menu-videos" class="sections-list-stack"></div>
+                                        </div>
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">view_carousel</span>
+                                                    Banners y Componentes (Videos)
+                                                </h3>
+                                                <div class="admin-header-actions">
+                                                    <button type="button" class="btn-primary btn-add-view-component" data-target-page="videos">➕ Agregar Componente</button>
+                                                </div>
+                                            </header>
+                                            <div id="admin-components-videos" class="sections-list-stack"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PÁGINA: CATÁLOGO -->
+                                    <div id="subview-page-catalogo" class="admin-subview" style="display: none;">
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">settings</span>
+                                                    Configuración en Menú
+                                                </h3>
+                                            </header>
+                                            <div id="admin-config-menu-catalog" class="sections-list-stack"></div>
+                                        </div>
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">view_carousel</span>
+                                                    Banners y Componentes (Catálogo)
+                                                </h3>
+                                                <div class="admin-header-actions">
+                                                    <button type="button" class="btn-primary btn-add-view-component" data-target-page="catalogo">➕ Agregar Componente</button>
+                                                </div>
+                                            </header>
+                                            <div id="admin-components-catalogo" class="sections-list-stack"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PÁGINA: BUSCAR -->
+                                    <div id="subview-page-search" class="admin-subview" style="display: none;">
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">settings</span>
+                                                    Configuración en Menú
+                                                </h3>
+                                            </header>
+                                            <div id="admin-config-menu-search" class="sections-list-stack"></div>
+                                        </div>
+                                        <div class="admin-card">
+                                            <header class="admin-page-header">
+                                                <h3 class="admin-header-title">
+                                                    <span class="material-symbols-outlined">view_carousel</span>
+                                                    Banners y Componentes (Buscar)
+                                                </h3>
+                                                <div class="admin-header-actions">
+                                                    <button type="button" class="btn-primary btn-add-view-component" data-target-page="search">➕ Agregar Componente</button>
+                                                </div>
+                                            </header>
+                                            <div id="admin-components-search" class="sections-list-stack"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PÁGINA: MAYORISTA -->
+                                    <div id="subview-page-mayorista" class="admin-subview" style="display: none;">
+                                        <!-- Barra de sub-pestañas interna -->
+                                        <div class="admin-sub-tabs-bar" style="display: flex; gap: 8px; margin-bottom: 1.25rem; border-bottom: 1.5px solid #E2E8F0; padding-bottom: 0.5rem;">
+                                            <button type="button" class="admin-sub-tab active" data-subtab-target="admin-may-prices-subtab" style="padding: 0.6rem 1.25rem; border: none; background: transparent; font-size: 0.9rem; font-weight: 600; color: #64748B; cursor: pointer; display: flex; align-items: center; gap: 6px; border-radius: 6px; transition: all 0.2s;">
+                                                <span class="material-symbols-outlined" style="font-size: 18px;">payments</span>
+                                                Precios de Productos
+                                            </button>
+                                            <button type="button" class="admin-sub-tab" data-subtab-target="admin-may-config-subtab" style="padding: 0.6rem 1.25rem; border: none; background: transparent; font-size: 0.9rem; font-weight: 600; color: #64748B; cursor: pointer; display: flex; align-items: center; gap: 6px; border-radius: 6px; transition: all 0.2s;">
+                                                <span class="material-symbols-outlined" style="font-size: 18px;">settings</span>
+                                                Métodos de Pago y Datos
+                                            </button>
+                                        </div>
+
+                                        <!-- PESTAÑA 1: TABLA DE PRECIOS MASIVOS -->
+                                        <div id="admin-may-prices-subtab" class="admin-subtab-content">
+                                            <div class="admin-card">
+                                                <header class="admin-page-header">
+                                                    <h3 class="admin-header-title">
+                                                        <span class="material-symbols-outlined">payments</span>
+                                                        Precios de Productos (Edición Masiva)
+                                                    </h3>
+                                                    <div class="admin-header-actions" style="display: flex; gap: 8px;">
+                                                        <button type="button" id="btn-bulk-price-modifier" style="padding: 0.5rem 1rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                                                            <span class="material-symbols-outlined" style="font-size: 18px;">trending_up</span>
+                                                            Modificar Precios
+                                                        </button>
+                                                        <button type="button" id="btn-bulk-discount-selected" style="padding: 0.5rem 1rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                                                            <span class="material-symbols-outlined" style="font-size: 18px;">settings</span>
+                                                            Descuentos a Seleccionados
+                                                        </button>
+                                                        <button type="button" id="btn-save-bulk-prices" class="btn-primary" style="padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                                                            <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
+                                                            Guardar Cambios de Precios
+                                                        </button>
+                                                    </div>
+                                                </header>
+                                                <div id="admin-may-rubros-container" class="rubros-tabs-bar" style="margin-top: 0.5rem; margin-bottom: 0.65rem;"></div>
+                                                <div style="margin: 1rem 0; position: relative;">
+                                                    <span class="material-symbols-outlined" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 20px;">search</span>
+                                                    <input type="text" id="admin-may-search" placeholder="Filtrar productos..." style="width: 100%; padding: 0.5rem 0.5rem 0.5rem 2.2rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.88rem; box-sizing: border-box;">
+                                                </div>
+                                                <div style="max-height: 500px; overflow-y: auto; overflow-x: auto; border: 1.5px solid #E8ECF0; border-radius: 12px;">
+                                                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; min-width: 600px;">
+                                                        <thead>
+                                                            <tr style="background: #F8FAFC; border-bottom: 1.5px solid #E2E8F0; font-weight: 600; color: #475569;">
+                                                                <th style="padding: 10px 14px; width: 40px; text-align: center;">
+                                                                    <input type="checkbox" id="chk-select-all-bulk" style="cursor: pointer; width: 16px; height: 16px;">
+                                                                </th>
+                                                                <th style="padding: 10px 14px;">Producto (Variante / Medida)</th>
+                                                                <th style="padding: 10px 14px; width: 120px;">Costo ($)</th>
+                                                                <th style="padding: 10px 14px; width: 150px;">Precio Mayorista ($)</th>
+                                                                <th style="padding: 10px 14px; width: 150px;">Descuentos</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="admin-may-prices-tbody">
+                                                            <!-- Cargado dinámicamente -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- PESTAÑA 2: CONFIGURACIÓN GENERAL Y CUENTAS -->
+                                        <div id="admin-may-config-subtab" class="admin-subtab-content" style="display: none;">
+                                            <div class="admin-card">
+                                                <header class="admin-page-header">
+                                                    <h3 class="admin-header-title">
+                                                        <span class="material-symbols-outlined">store</span>
+                                                        Configuración Catálogo Mayorista
+                                                    </h3>
+                                                </header>
+                                                <form id="admin-mayorista-form" style="display: flex; flex-direction: column; gap: 1.25rem; padding: 0.5rem 0;">
+                                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                                                        <div class="form-group">
+                                                            <label for="admin-may-alias" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Alias de Transferencia</label>
+                                                            <input type="text" id="admin-may-alias" placeholder="ej: la.tarima.deco" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="admin-may-cbu" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">CBU/CVU de Transferencia</label>
+                                                            <input type="text" id="admin-may-cbu" placeholder="22 dígitos" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="admin-may-titular" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Titular de la Cuenta</label>
+                                                            <input type="text" id="admin-may-titular" placeholder="Nombre completo" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="admin-may-bank" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Banco / Plataforma</label>
+                                                            <input type="text" id="admin-may-bank" placeholder="ej: Banco Galicia, Mercado Pago" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem;">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Métodos de Pago Dinámicos -->
+                                                    <div style="border-top: 1.5px solid #E2E8F0; margin-top: 1rem; padding-top: 1.5rem;">
+                                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                                            <h4 style="margin: 0; font-size: 0.95rem; font-weight: 600; color: #1E293B;">Métodos de Pago y Condiciones</h4>
+                                                            <button type="button" id="btn-add-payment-method" style="padding: 0.4rem 0.8rem; border: 1px solid #CBD5E1; background: white; color: #334155; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 0.85rem; font-weight: 500;">
+                                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span> Agregar Método
+                                                            </button>
+                                                        </div>
+                                                        <div id="admin-payment-methods-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                                                            <!-- Los métodos de pago se inyectarán aquí vía JS -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="admin-may-discounts" style="display: block; font-weight: 500; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--text-main);">Aclaración de Descuentos (Checkout)</label>
+                                                        <textarea id="admin-may-discounts" placeholder="Escribe aquí la aclaración de descuentos..." rows="3" style="width: 100%; padding: 0.6rem; border: 1.5px solid #E2E8F0; border-radius: 8px; font-size: 0.9rem; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
+                                                    </div>
+                                                    <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
+                                                        <button type="button" id="btn-save-mayorista-config" class="btn-primary" style="padding: 0.6rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 8px; cursor: pointer; border: none; font-weight: 600;">
+                                                            <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
+                                                            Guardar Configuración
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!-- /page-editor-content -->
+                            </div><!-- /page-editor-panel -->
+
                         </div>
 
                         <!-- 4. AJUSTES DEL NEGOCIO (SETTINGS) -->
