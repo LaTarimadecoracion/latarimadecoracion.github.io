@@ -283,10 +283,9 @@
         const btnPickup = document.getElementById('btn-buy-pickup');
         const phone = '5491167007723';
 
-        // Vincular botón "Comprar con envío" para desplegar el modal con Mensajería Propia y links externos
+        // Vincular eventos de conversión de Google Analytics
         if (btnShipping) {
-            btnShipping.onclick = (e) => {
-                if (e) e.preventDefault();
+            btnShipping.onclick = () => {
                 try {
                     if (typeof gtag === 'function') {
                         gtag('event', 'begin_checkout', {
@@ -298,15 +297,7 @@
                             }]
                         });
                     }
-                } catch (e) { /* Ignore */ }
-
-                const grupo = grupos[currentGroupIndex] || grupos[0];
-                const selMedida = divMedida ? divMedida.querySelector('select') : null;
-                const mName = selMedida ? selMedida.value : '';
-                const activeMlVariant = (grupo && grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === mName);
-                const currentMlLink = (activeMlVariant && activeMlVariant.link) ? activeMlVariant.link.trim() : '';
-
-                showDeliveryModal(grupo, mName, currentMlLink);
+                } catch (e) { /* Ignore adblocker errors */ }
             };
         }
 
@@ -532,12 +523,6 @@
                 return;
             }
 
-            // Obtener variante activa y precio
-            const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
-            const qtyValEl = document.getElementById('qty-value');
-            const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
-            const productPrice = (activeVariant && activeVariant.price) ? (activeVariant.price * qtyVal) : 0;
-
             // Crear overlay
             const overlay = document.createElement('div');
             overlay.id = 'delivery-modal-overlay';
@@ -546,49 +531,71 @@
             const sheet = document.createElement('div');
             sheet.className = 'delivery-modal-sheet';
             sheet.style.position = 'relative';
-            sheet.style.maxWidth = '550px';
-            sheet.style.width = '100%';
-
             sheet.innerHTML = `
+                <button class="delivery-modal-back-arrow" id="dopt-back-arrow" title="Volver" style="display:none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
                 <button class="delivery-modal-close-x" id="dopt-close-x" title="Cerrar">&times;</button>
                 <div class="delivery-modal-handle"></div>
-                <p class="delivery-modal-eyebrow">Opciones de Envío</p>
-                <h3 class="delivery-modal-title">¿Cómo querés recibir tu producto?</h3>
-                <p class="delivery-modal-subtitle">Elegí la opción de envío que más te convenga</p>
-
-                <!-- Opción Destacada: Mensajería Propia -->
-                <div style="background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); border: 2px solid #22C55E; border-radius: 16px; padding: 16px; margin-bottom: 16px; text-align: left; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                        <span style="background: #15803D; color: white; font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">
-                            🚀 Recomendado (Entrega Rápida 24hs)
-                        </span>
-                        <span style="font-size: 0.85rem; font-weight: 700; color: #166534;">Mensajería Propia</span>
+                <p class="delivery-modal-eyebrow">Antes de continuar</p>
+                <h3 class="delivery-modal-title">¿Necesitás envío?</h3>
+                <p class="delivery-modal-subtitle">Elegí una de las opciones para poder continuar</p>
+                ${window.vacationConfig && window.vacationConfig.active ? `
+                    <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px 12px; border-radius:10px; margin-bottom:12px; color:#E67700; font-size:0.8rem; line-height:1.4; text-align:left;">
+                        <strong>🌴 ¡Taller de vacaciones!</strong> Retomamos las entregas a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. Reservando hoy por WhatsApp te garantizamos el **precio congelado** sin aumentos.
                     </div>
-
-                    <!-- Contenedor donde se renderiza el calculador -->
-                    <div id="modal-shipping-widget-container"></div>
-
-                    <button type="button" id="btn-modal-submit-own-shipping" class="btn-primary giant-btn" style="width: 100%; justify-content: center; background: #16A34A; color: white; margin-top: 10px; font-weight: 800; font-size: 1rem; border: none; box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3);">
-                        <span>Comprar por WhatsApp con Envío Particular 💬</span>
+                ` : ''}
+                <div class="delivery-modal-options">
+                    <button class="delivery-opt-btn delivery-opt-pickup" id="dopt-pickup">
+                        <span class="delivery-opt-icon">🏪</span>
+                        <span class="delivery-opt-label">Retirar por el taller</span>
+                        <span class="delivery-opt-desc">Mismo precio publicado en la web (Efectivo / Transferencia)</span>
+                    </button>
+                    <button class="delivery-opt-btn delivery-opt-shipping" id="dopt-shipping">
+                        <span class="delivery-opt-icon">🚚</span>
+                        <span class="delivery-opt-label">Necesito envío</span>
+                        <span class="delivery-opt-desc">${mlLink ? (window.vacationConfig && window.vacationConfig.active ? '⚠️ Envío externo (publicación ML podría estar pausada). Guardar en Favoritos o consultanos por WhatsApp.' : 'Comprar en Mercado Libre (aplica costos de plataforma y envío)') : 'Te cotizamos el envío por WhatsApp'}</span>
                     </button>
                 </div>
 
-                <!-- Otras plataformas externas (Mercado Libre / Tiendas futuras) -->
-                ${mlLink || (activeVariant && activeVariant.link) ? `
-                    <div style="border-top: 1px dashed #CBD5E1; padding-top: 12px; margin-top: 12px; text-align: left;">
-                        <p style="font-size: 0.82rem; font-weight: 700; color: #64748B; margin: 0 0 8px 0;">Otras plataformas de envío externas:</p>
-                        <a href="${mlLink || activeVariant.link}" target="_blank" class="delivery-opt-btn" style="border: 1.5px solid #CBD5E1; text-decoration: none; display: flex; align-items: center; justify-content: space-between; background: #FFFFFF;">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span style="font-size: 1.4rem;">🛍️</span>
-                                <div style="display: flex; flex-direction: column;">
-                                    <span style="font-weight: 700; font-size: 0.9rem; color: #1E293B;">Comprar en Mercado Libre</span>
-                                    <span style="font-size: 0.78rem; color: #64748B;">Aplica comisiones de plataforma y cuotas</span>
-                                </div>
+                <!-- Formulario desplegable opcional para datos de envío -->
+                <div id="delivery-shipping-form" style="display:none; width:100%; flex-direction:column; gap:10px; margin-top:12px; text-align:left;">
+                    ${window.vacationConfig && window.vacationConfig.active ? `
+                        <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px; border-radius:8px; margin-bottom:4px; color:#E67700; font-size:0.8rem; line-height:1.4;">
+                            <strong>⚠️ Envíos reprogramados:</strong> Estamos de vacaciones del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Los envíos se cotizarán y realizarán a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. ¡Tu precio queda congelado sin aumentos!
+                        </div>
+                    ` : ''}
+                    <p style="font-size:0.82rem; color:#64748B; margin:0 0 2px 0;">📍 Datos para cotizar el envío <span style="color:#94A3B8;">(opcionales)</span>:</p>
+                    <input type="text" id="ship-loc" placeholder="Localidad o Código Postal (ej: Ramos Mejía / 1704)" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
+                    <input type="text" id="ship-dir" placeholder="Dirección de entrega (ej: Av. de Mayo 123)" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
+                    <button id="btn-submit-shipping-wa" class="btn-primary giant-btn" style="width:100%; justify-content:center; margin-top:4px; font-size:0.92rem;">
+                        <span>Enviar consulta por WhatsApp</span>
+                    </button>
+                </div>
+
+                <!-- Panel desplegable con información de Retiro por Taller -->
+                <div id="delivery-pickup-info" style="display:none; width:100%; flex-direction:column; gap:12px; margin-top:10px; text-align:left;">
+                    <div style="background:#FFF8F5; border:1.5px solid rgba(160,113,91,0.25); padding:14px; border-radius:14px; font-size:0.85rem; color:#2D3748; line-height:1.5;">
+                        ${window.vacationConfig && window.vacationConfig.active ? `
+                            <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px; border-radius:8px; margin-bottom:12px; color:#E67700; font-size:0.8rem; line-height:1.4;">
+                                <strong>⚠️ Aviso de vacaciones:</strong> Taller cerrado del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Los retiros se coordinan a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. ¡Tu precio queda congelado sin aumentos!
                             </div>
-                            <span class="material-symbols-outlined" style="color: #64748B;">open_in_new</span>
-                        </a>
+                        ` : ''}
+                        <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
+                            <span>💡 Aclaraciones sobre el precio:</span>
+                        </p>
+                        <p style="margin:0 0 12px 0;">El precio publicado en la web se mantiene pagando en <strong>efectivo o transferencia</strong> <em>(no incluye impuestos ni costo de envío)</em>.</p>
+                        
+                        <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
+                            <span>📍 Ubicación del taller:</span>
+                        </p>
+                        <p style="margin:0;">Hurlingham, Buenos Aires, Argentina<br><span style="color:#718096; font-size:0.8rem;">(Zona céntrica: cerca de Av. Vergara y Av. Jauretche)</span></p>
                     </div>
-                ` : ''}
+
+                    <button id="btn-submit-pickup-wa" class="btn-primary giant-btn" style="width:100%; justify-content:center; font-size:0.92rem;">
+                        <span>Continuar a WhatsApp 💬</span>
+                    </button>
+                </div>
             `;
 
             overlay.appendChild(sheet);
@@ -602,38 +609,99 @@
                 setTimeout(() => overlay.remove(), 300);
             };
 
+            const resetToInitialView = () => {
+                const pickupInfo = document.getElementById('delivery-pickup-info');
+                const shippingForm = document.getElementById('delivery-shipping-form');
+                const optionsContainer = sheet.querySelector('.delivery-modal-options');
+                const titleEl = sheet.querySelector('.delivery-modal-title');
+                const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
+                const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
+                const backArrow = document.getElementById('dopt-back-arrow');
+
+                if (pickupInfo) pickupInfo.style.display = 'none';
+                if (shippingForm) shippingForm.style.display = 'none';
+                if (optionsContainer) optionsContainer.style.display = 'flex';
+                if (backArrow) backArrow.style.display = 'none';
+
+                if (eyebrowEl) eyebrowEl.textContent = 'Antes de continuar';
+                if (titleEl) titleEl.textContent = '¿Necesitás envío?';
+                if (subtitleEl) subtitleEl.textContent = 'Elegí una de las opciones para poder continuar';
+            };
+
             overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
             document.getElementById('dopt-close-x')?.addEventListener('click', closeModal);
+            document.getElementById('dopt-back-arrow')?.addEventListener('click', resetToInitialView);
 
-            // Renderizar el widget dentro del modal
-            const widgetContainer = document.getElementById('modal-shipping-widget-container');
-            let modalWidgetRef = null;
-            if (widgetContainer && typeof window.renderShippingWidget === 'function') {
-                modalWidgetRef = window.renderShippingWidget(widgetContainer, productPrice);
-            }
+            // Opción: Retirar por taller → desplegar panel de información de retiro
+            document.getElementById('dopt-pickup').addEventListener('click', () => {
+                const pickupInfo = document.getElementById('delivery-pickup-info');
+                const optionsContainer = sheet.querySelector('.delivery-modal-options');
+                const titleEl = sheet.querySelector('.delivery-modal-title');
+                const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
+                const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
+                const backArrow = document.getElementById('dopt-back-arrow');
 
-            // Manejar click del botón WhatsApp con envío particular
-            const btnSubmitOwnShipping = document.getElementById('btn-modal-submit-own-shipping');
-            if (btnSubmitOwnShipping) {
-                btnSubmitOwnShipping.onclick = () => {
-                    const selectionData = modalWidgetRef ? modalWidgetRef.getSelection() : null;
+                if (pickupInfo && optionsContainer) {
+                    if (eyebrowEl) eyebrowEl.textContent = 'Retiro por taller';
+                    if (titleEl) titleEl.textContent = 'Retiro en Hurlingham';
+                    if (subtitleEl) subtitleEl.textContent = 'Ubicación y modalidad de entrega en el taller:';
+                    if (backArrow) backArrow.style.display = 'flex';
+
+                    optionsContainer.style.display = 'none';
+                    pickupInfo.style.display = 'flex';
+
+                    document.getElementById('btn-submit-pickup-wa')?.addEventListener('click', () => {
+                        closeModal();
+                        const waMsg = buildWA(grupo, medidaName, 'pickup');
+                        try {
+                            if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA - Retiro Taller' });
+                        } catch(e) {}
+                        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                    });
+                }
+            });
+
+            // Opción: Necesito envío
+            document.getElementById('dopt-shipping').addEventListener('click', () => {
+                if (mlLink) {
                     closeModal();
-
-                    let shippingInfo = {};
-                    if (selectionData) {
-                        shippingInfo = {
-                            localidad: `${selectionData.city || 'AMBA'} (${selectionData.zoneName})`,
-                            direccion: `Costo envío: $${selectionData.cost} | TOTAL CON ENVÍO: $${selectionData.total} [${selectionData.promise.text}]`
-                        };
-                    }
-
-                    const waMsg = buildWA(grupo, medidaName, 'shipping', shippingInfo);
+                    // Producto con link ML → ir directo, sin pasar por WA
                     try {
-                        if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Comprar WA - Mensajeria Propia' });
+                        if (typeof gtag === 'function') gtag('event', 'begin_checkout', { currency: 'ARS', items: [{ item_id: product.id, item_name: product.title, item_category: categoryName }] });
                     } catch(e) {}
-                    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
-                };
-            }
+                    window.open(mlLink, '_blank');
+                } else {
+                    // Sin link ML → mostrar inputs opcionales de envío dentro del modal
+                    const formContainer = document.getElementById('delivery-shipping-form');
+                    const optionsContainer = sheet.querySelector('.delivery-modal-options');
+                    const titleEl = sheet.querySelector('.delivery-modal-title');
+                    const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
+                    const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
+                    const backArrow = document.getElementById('dopt-back-arrow');
+
+                    if (formContainer) {
+                        if (eyebrowEl) eyebrowEl.textContent = 'Cotizá tu envío';
+                        if (titleEl) titleEl.textContent = 'Datos para el envío';
+                        if (subtitleEl) subtitleEl.textContent = 'Completá estos datos básicos (opcionales) para cotizar el costo de envío. Te lo recomendamos para agilizar tu compra 👌';
+                        if (backArrow) backArrow.style.display = 'flex';
+
+                        optionsContainer.style.display = 'none';
+                        formContainer.style.display = 'flex';
+                        document.getElementById('ship-loc')?.focus();
+
+                        document.getElementById('btn-submit-shipping-wa').addEventListener('click', () => {
+                            const localidad = document.getElementById('ship-loc')?.value.trim() || '';
+                            const direccion = document.getElementById('ship-dir')?.value.trim() || '';
+                            closeModal();
+                            const waMsg = buildWA(grupo, medidaName, 'shipping', { localidad, direccion });
+                            try {
+                                if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA - Necesita Envio' });
+                            } catch(e) {}
+                            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                        });
+                    }
+                }
+            });
         }
 
         function updateBuyButton(grupo, medidaName) {
@@ -641,51 +709,80 @@
             if (container) {
                 container.innerHTML = '';
                 
-                const wrapper = document.createElement('div');
-                wrapper.style.display = "flex";
-                wrapper.style.flexDirection = "column";
-                wrapper.style.gap = "4px";
-                wrapper.style.width = "100%";
-
-                const btn = document.createElement('a');
-                btn.href = "#";
-                btn.className = "btn-primary giant-btn";
-                btn.style.display = "flex";
-                btn.innerHTML = `<span class="material-symbols-outlined">local_shipping</span><span>Comprar con envío</span>`;
+                let linksToRender = [];
+                if (grupo.medidas_variants && grupo.medidas_variants.length > 0) {
+                    linksToRender = grupo.medidas_variants.filter(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
+                }
                 
-                btn.onclick = (e) => {
-                    if (e) e.preventDefault();
-                    try {
-                        if (typeof gtag === 'function') {
-                            gtag('event', 'begin_checkout', {
-                                currency: 'ARS',
-                                items: [{
-                                    item_id: product.id,
-                                    item_name: product.title,
-                                    item_category: categoryName
-                                }]
-                            });
+                if (linksToRender.length > 0) {
+                    linksToRender.forEach(variant => {
+                        const link = (variant.link || '').trim();
+                        if (link) {
+                            let linkLabel = variant.linkLabel || "Comprar con envío";
+                            let iconType = variant.iconType || "local_shipping";
+
+                            const wrapper = document.createElement('div');
+                            wrapper.style.display = "flex";
+                            wrapper.style.flexDirection = "column";
+                            wrapper.style.gap = "4px";
+                            wrapper.style.width = "100%";
+
+                            const btn = document.createElement('a');
+                            btn.href = link;
+                            btn.target = "_blank";
+                            btn.className = "btn-primary giant-btn" + (variant.highlight ? " btn-highlight-pulse" : "");
+                            btn.style.display = "flex";
+                            btn.innerHTML = `<span class="material-symbols-outlined">${iconType}</span><span>${linkLabel}</span>`;
+                            
+                            // Re-bind Google Analytics event
+                            btn.onclick = () => {
+                                try {
+                                    if (typeof gtag === 'function') {
+                                        gtag('event', 'begin_checkout', {
+                                            currency: 'ARS',
+                                            items: [{
+                                                item_id: product.id,
+                                                item_name: product.title,
+                                                item_category: categoryName
+                                            }]
+                                        });
+                                    }
+                                } catch (e) { /* Ignore */ }
+                            };
+                            
+                            // Leyenda por defecto según URL
+                            let legendText = (variant.legend || '').trim();
+                            if (!legendText) {
+                                const lLower = link.toLowerCase();
+                                if (lLower.includes('mercadolibre.com') || lLower.includes('ml.com') || lLower.includes('mpago.')) {
+                                    legendText = "Redirige a Mercado Libre (tarjeta, cuotas y envíos a todo el país)";
+                                } else if (lLower.includes('wa.me') || lLower.includes('whatsapp.com')) {
+                                    legendText = "Chateá con nosotros directamente por WhatsApp";
+                                } else {
+                                    legendText = "Redirige a plataforma de pago externa segura";
+                                }
+                            }
+
+                            const legendEl = document.createElement('span');
+                            legendEl.style.fontSize = "0.75rem";
+                            legendEl.style.color = "#64748B";
+                            legendEl.style.textAlign = "center";
+                            legendEl.style.marginTop = "2px";
+                            legendEl.style.fontStyle = "italic";
+                            legendEl.innerText = legendText;
+
+                            wrapper.appendChild(btn);
+                            wrapper.appendChild(legendEl);
+                            container.appendChild(wrapper);
                         }
-                    } catch (err) { /* Ignore */ }
-
-                    const activeMlVariant = (grupo && grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
-                    const currentMlLink = (activeMlVariant && activeMlVariant.link) ? activeMlVariant.link.trim() : '';
-
-                    showDeliveryModal(grupo, medidaName, currentMlLink);
-                };
-
-                const legendEl = document.createElement('span');
-                legendEl.style.fontSize = "0.75rem";
-                legendEl.style.color = "#64748B";
-                legendEl.style.textAlign = "center";
-                legendEl.style.marginTop = "2px";
-                legendEl.style.fontStyle = "italic";
-                legendEl.innerText = "Mensajería propia en 24h o plataformas externas";
-
-                wrapper.appendChild(btn);
-                wrapper.appendChild(legendEl);
-                container.appendChild(wrapper);
-                container.style.display = 'flex';
+                    });
+                }
+                
+                if (container.children.length === 0) {
+                    container.style.display = 'none';
+                } else {
+                    container.style.display = 'flex';
+                }
             }
 
             // Actualizar visualización de precio
@@ -834,31 +931,6 @@
 
             if (btnPickup) {
                 btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildWA(grupo, medidaName, 'pickup'))}`;
-            }
-
-            // Actualizar Widget Calculador de Envíos
-            const activeVariantForWidget = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
-            if (activeVariantForWidget && activeVariantForWidget.price !== undefined) {
-                const qtyValEl = document.getElementById('qty-value');
-                const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
-                const activePrice = activeVariantForWidget.price * qtyVal;
-                
-                const widgetContainer = document.getElementById('product-shipping-calculator-widget');
-                if (widgetContainer && typeof window.renderShippingWidget === 'function') {
-                    if (!window.activeShippingWidgetRef) {
-                        window.activeShippingWidgetRef = window.renderShippingWidget(widgetContainer, activePrice, function(selectionData) {
-                            if (btnPickup) {
-                                const waMsg = buildWA(grupo, medidaName, 'shipping', {
-                                    localidad: `${selectionData.cityName} (${selectionData.zoneName})`,
-                                    direccion: `Total con envío: $${selectionData.totalWithShipping}`
-                                });
-                                btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`;
-                            }
-                        });
-                    } else {
-                        window.activeShippingWidgetRef.updateProductPrice(activePrice);
-                    }
-                }
             }
         }
 
