@@ -18,7 +18,7 @@ const ordersData = [
         "paidStatus": "total",
         "paidAmount": 45000,
         "totalAmount": 45000,
-        "status": "listo",
+        "status": "entregado",
         "creationDate": "2026-08-07T03:32:26.284Z",
         "completedDate": "2026-08-15T16:50:29.343Z",
         "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
@@ -131,5 +131,36 @@ const ordersData = [
         "image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
         "startDate": "2026-08-17T03:00:00.000Z",
         "estimatedReadyDate": "2026-09-08T02:59:00.000Z"
+    },
+    {
+        "id": "427861843",
+        "clientName": "Pamela Marietan",
+        "clientPhone": "ENC_MDE4NDI1OTMxMTk0NQ==",
+        "productType": "custom",
+        "productId": "",
+        "productName": "Baranda a pedido - Blanca",
+        "selectedFinish": "",
+        "selectedMeasure": "",
+        "description": "Blanca - Montessori: 67x18 cm - Fija",
+        "deliveryMethod": "envio",
+        "dispatchInfo": {
+            "courier": "correo_argentino",
+            "courierName": "",
+            "trackingNumber": "",
+            "trackingUrl": ""
+        },
+        "prepDaysMin": 10,
+        "prepDaysMax": 15,
+        "prepDays": 15,
+        "extraDays": 0,
+        "paidStatus": "total",
+        "paidAmount": 49000,
+        "totalAmount": 49000,
+        "status": "pendiente",
+        "creationDate": "2026-08-20T22:48:42.589Z",
+        "completedDate": "",
+        "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+        "startDate": "2026-08-21T03:00:00.000Z",
+        "estimatedReadyDate": "2026-09-12T02:59:00.000Z"
     }
 ];

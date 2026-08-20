@@ -36,7 +36,7 @@ function initAdminUX20() {
 
     // --- LISTENERS DE CORE / NAVEGACIÓN ---
         // --- LISTENERS DE PESTAÑAS (TABS) DEL DASHBOARD (V2) ---
-        const tabs = ['dashboard', 'settings', 'catalog', 'pages', 'orders', 'maintenance'];
+        const tabs = ['dashboard', 'settings', 'catalog', 'pages', 'orders', 'shipping', 'maintenance'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -81,6 +81,7 @@ function initAdminUX20() {
     if (typeof window.initRentalsAdmin === 'function') window.initRentalsAdmin();
     if (typeof window.initMayoristaAdmin === 'function') window.initMayoristaAdmin();
     if (typeof window.initVacationAdmin === 'function') window.initVacationAdmin();
+    if (typeof window.initShippingAdmin === 'function') window.initShippingAdmin();
 }
 
     async function renderAdminDashboard() {
@@ -306,6 +307,7 @@ function renderAdminUX() {
             catalog: 'admin-catalog-view',
             pages: 'admin-pages-view',
             orders: 'admin-orders-view',
+            shipping: 'admin-shipping-view',
             maintenance: 'admin-maintenance-view'
         };
 
