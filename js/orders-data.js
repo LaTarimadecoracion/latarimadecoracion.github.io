@@ -162,5 +162,31 @@ const ordersData = [
         "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
         "startDate": "2026-08-21T03:00:00.000Z",
         "estimatedReadyDate": "2026-09-12T02:59:00.000Z"
+    },
+    {
+        "id": "408914101",
+        "clientName": "ROSARIO SOL BERMEJO",
+        "clientPhone": "ENC_NTExOTgxNDQxMTk0NQ==",
+        "productType": "catalog",
+        "productId": "baranda-desmontable-clasica",
+        "productName": "Baranda: Desmontable Clásica",
+        "selectedFinish": "Blanca",
+        "selectedMeasure": "90 x 45 cm",
+        "description": "A: 4cm \nB: 10cm\nC: 26cm",
+        "deliveryMethod": "retira",
+        "dispatchInfo": null,
+        "prepDaysMin": 10,
+        "prepDaysMax": 15,
+        "prepDays": 15,
+        "extraDays": 0,
+        "paidStatus": "total",
+        "paidAmount": 45000,
+        "totalAmount": 45000,
+        "status": "pendiente",
+        "creationDate": "2026-08-21T19:34:55.462Z",
+        "completedDate": "",
+        "image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
+        "startDate": "2026-08-24T03:00:00.000Z",
+        "estimatedReadyDate": "2026-09-15T02:59:00.000Z"
     }
 ];
