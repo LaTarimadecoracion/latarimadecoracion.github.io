@@ -7,8 +7,8 @@
         // En lugar de triplicar y forzar saltos (lo cual causa flickering grave en celulares
         // por conflicto con el momentum scrolling nativo), usamos una lista nativa simple.
         const fragment = document.createDocumentFragment();
-        itemsArray.forEach(item => {
-            fragment.appendChild(renderItemFunc(item));
+        itemsArray.forEach((item, index) => {
+            fragment.appendChild(renderItemFunc(item, index));
         });
         containerEl.appendChild(fragment);
 
@@ -133,14 +133,17 @@
     window.loadProductViews = async function() {
         let globalViews = {};
         
-        // 1. Intentar cargar del servidor
+        // 1. Intentar cargar del servidor con timeout ultrarrápido para no congelar la app
         try {
-            const res = await fetch('/api/views');
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 200);
+            const res = await fetch('/api/views', { signal: controller.signal });
+            clearTimeout(timeoutId);
             if (res.ok) {
                 globalViews = await res.json();
             }
         } catch (e) {
-            console.warn('[Tracking] No se pudieron cargar las vistas globales del servidor:', e);
+            // Silenciar errores de timeout o hosting estático
         }
         
         // 2. Intentar cargar de LocalStorage como respaldo
@@ -328,13 +331,14 @@
 
                             return true;
                         });
-                        setupInfiniteCarousel(containerEl, visibleCategories, (cat) => {
+                        setupInfiniteCarousel(containerEl, visibleCategories, (cat, idx) => {
                             const catCard = document.createElement('div');
                             catCard.className = 'category-card';
                             const catCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
+                            const isEager = idx < 3;
                             catCard.innerHTML = `
                                 <div class="category-card-img-wrapper" style="position:relative;">
-                                    <img src="${catCover}" class="category-card-img lazy-img" alt="${cat.name}" loading="lazy" onload="this.classList.add('loaded')">
+                                    <img src="${catCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${cat.name}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
                                 </div>
                                 <div class="category-overlay">
                                     <span>${cat.name}</span>
@@ -386,13 +390,14 @@
                         const latestProducts = [...allProducts]
                             .sort((a, b) => getProductTimestamp(b.product) - getProductTimestamp(a.product))
                             .slice(0, limit);
-                        setupInfiniteCarousel(containerEl, latestProducts, ({ product, catName }) => {
+                        setupInfiniteCarousel(containerEl, latestProducts, ({ product, catName }, idx) => {
                             const card = document.createElement('div');
                             card.className = 'category-card';
                             const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                            const isEager = idx < 3;
                             card.innerHTML = `
                                 <div class="category-card-img-wrapper" style="position:relative;">
-                                    <img src="${productCover}" class="category-card-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
+                                    <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${product.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
                                 </div>
                                 <div class="category-overlay">
                                     <span>${product.title}</span>
@@ -445,13 +450,14 @@
                         const randomSelections = [...allProducts]
                             .sort(() => 0.5 - Math.random())
                             .slice(0, limit);
-                        setupInfiniteCarousel(containerEl, randomSelections, ({ product, catName }) => {
+                        setupInfiniteCarousel(containerEl, randomSelections, ({ product, catName }, idx) => {
                             const pCard = document.createElement('div');
                             pCard.className = 'category-card';
                             const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                            const isEager = idx < 3;
                             pCard.innerHTML = `
                                 <div class="category-card-img-wrapper" style="position:relative;">
-                                    <img src="${productCover}" class="category-card-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
+                                    <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${product.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
                                 </div>
                                 <div class="category-overlay">
                                     <span>${product.title}</span>

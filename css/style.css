@@ -918,12 +918,21 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     max-height: unset !important;
 }
 
-/* Imagen de la tarjeta del carrusel - Auto-adaptable y fluida */
+/* Imagen de la tarjeta del carrusel - Relación de aspecto 3:2 fluida */
+.category-card-img-wrapper {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    position: relative;
+}
+
 .category-card-img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
+    transform: scale(1.03);
+    transform-origin: center;
     image-rendering: -webkit-optimize-contrast;
 }
 
@@ -1284,10 +1293,11 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-/* ── Foto del producto — Auto-adaptable y fluida ── */
+/* ── Foto del producto — Relación de aspecto 3:2 fluida ── */
 .feed-card-photo,
 .feed-card-photo-container {
     width: 100%;
+    aspect-ratio: 3 / 2;
     position: relative;
     display: block;
     overflow: hidden;
@@ -1297,9 +1307,11 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 
 .feed-card-img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
+    transform: scale(1.03);
+    transform-origin: center;
 }
 
 /* ── Degradado negro — solo en el tercio inferior, sin tapar el producto ── */

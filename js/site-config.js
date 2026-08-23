@@ -100,7 +100,7 @@ window.siteConfig = {
                 "title": "Los más buscados",
                 "subtitle": "Los preferidos de nuestros clientes",
                 "icon": "favorite",
-                "limit": 10
+                "limit": 5
             }
         }
     },

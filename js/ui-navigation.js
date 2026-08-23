@@ -177,7 +177,30 @@
                 targetView.dataset.categoryId = context.categoryId;
             }
             
-            // Ocultar cabecera y barra de navegación inferior si entramos al panel de administración
+            // Actualizar título de la pestaña del navegador (document.title)
+        const viewTitles = {
+            'view-home': 'LA TARIMA - Decoración',
+            'view-categories': 'Categorías | LA TARIMA - Decoración',
+            'view-category-feed': (context && context.name) ? `${context.name} | LA TARIMA - Decoración` : 'Categorías | LA TARIMA - Decoración',
+            'view-profile': 'Tu Carrito | LA TARIMA - Decoración',
+            'view-about': 'Sobre Nosotros | LA TARIMA - Decoración',
+            'view-search': 'Buscar Productos | LA TARIMA - Decoración',
+            'view-videos': 'Videos | LA TARIMA - Decoración',
+            'view-notifications': 'Avisos | LA TARIMA - Decoración',
+            'view-rentals': 'Alquileres | LA TARIMA - Decoración',
+            'view-catalogo': 'Catálogo | LA TARIMA - Decoración',
+            'view-calculator': 'Calculadora | LA TARIMA - Decoración',
+            'view-mayorista': 'Mayorista | LA TARIMA - Decoración',
+            'view-musica': 'Música | LA TARIMA - Decoración',
+            'view-pedidos': 'Pedidos | LA TARIMA - Decoración',
+            'view-admin': 'Panel de Administración | LA TARIMA - Decoración',
+            'view-product-detail': (context && context.title) ? `${context.title} | LA TARIMA - Decoración` : 'LA TARIMA - Decoración'
+        };
+        if (viewTitles[viewId]) {
+            document.title = viewTitles[viewId];
+        }
+
+        // Ocultar cabecera y barra de navegación inferior si entramos al panel de administración
             const headerBar = document.querySelector('.main-header-bar');
             const bottomNav = document.querySelector('.bottom-nav');
             if (viewId === 'view-admin') {
@@ -277,6 +300,12 @@
                 if (window.runSearch) window.runSearch();
             } else if (viewId === 'view-rentals') {
                 renderRentals();
+            } else if (viewId === 'view-profile') {
+                if (window.CarritoModule && window.CarritoModule.render) {
+                    window.CarritoModule.render();
+                } else if (typeof window.renderPerfilCarritoView === 'function') {
+                    window.renderPerfilCarritoView();
+                }
             } else if (viewId === 'view-admin') {
                 window.currentAdminTab = 'catalog';
                 window.currentAdminPhase = 'categories';

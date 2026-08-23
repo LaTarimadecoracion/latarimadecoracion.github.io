@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dynamicSubtitle = document.getElementById('dynamic-subtitle');
     window.btnShareHeader = document.getElementById('btn-share-header');
 
-    // Inicializar renders
+    // Inicializar renders únicamente de la vista de Inicio para carga ultrarrápida
     if (window.renderBottomNav) window.renderBottomNav();
     
     const initAllDragToScroll = () => {
@@ -36,23 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Cargar estadísticas de vistas antes de pintar el home para que el ordenamiento sea real y transparente
+    // Renderizado inmediato de la Home e inicio instantáneo
+    if (window.renderHome) window.renderHome();
+    initAllDragToScroll();
+    hideSplashScreen();
+
+    // Cargar estadísticas de vistas y sincronizaciones secundarias en segundo plano (sin bloquear)
     if (window.loadProductViews) {
-        window.loadProductViews().finally(() => {
-            if (window.renderHome) window.renderHome();
-            if (window.renderCategoriesMenu) window.renderCategoriesMenu();
-            if (window.renderVideosView) window.renderVideosView();
-            if (window.renderNosotrosBlocksCliente) window.renderNosotrosBlocksCliente();
-            initAllDragToScroll();
-            hideSplashScreen();
-        });
-    } else {
-        if (window.renderHome) window.renderHome();
-        if (window.renderCategoriesMenu) window.renderCategoriesMenu();
-        if (window.renderVideosView) window.renderVideosView();
-        if (window.renderNosotrosBlocksCliente) window.renderNosotrosBlocksCliente();
-        initAllDragToScroll();
-        hideSplashScreen();
+        window.loadProductViews().catch(() => {});
     }
 
     // Módulo Avisos Autónomo

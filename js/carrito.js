@@ -635,6 +635,8 @@
                                         : `<span class="cart-item-no-price">${item.qty || 1} ${(item.qty || 1) === 1 ? 'unidad' : 'unidades'}</span>`
                                     }
                                 </div>
+                            </div>
+                            `;
                         }).join('')}
 
                         ${window.vacationConfig && window.vacationConfig.active ? `
@@ -1142,6 +1144,8 @@
                             const dir = shippingData.direccion || userData.address || '';
                             if (loc) parts.push(`• Destino/CP: ${loc}`);
                             if (dir) parts.push(`• Dirección: ${dir}`);
+                        }
+
                         let vacationNote = "";
                         if (window.vacationConfig && window.vacationConfig.active) {
                             const start = window.vacationConfig.startDate || "receso";
@@ -1494,6 +1498,7 @@
         }
     }
     window.importCartFromString = importCartFromString;
+    window.renderPerfilCarritoView = renderPerfilCarritoView;
 
     // 7. Mapeado de Inicialización y Namespace Global
     window.CarritoModule = {

@@ -99,7 +99,7 @@
 
 
     function updateMetaTags(title, desc, imageUrl) {
-        document.title = title ? `${title} | LA TARIMA` : 'LA TARIMA - Decoración';
+        document.title = title ? `${title} | LA TARIMA - Decoración` : 'LA TARIMA - Decoración';
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDesc = document.querySelector('meta[property="og:description"]');
         const ogImage = document.querySelector('meta[property="og:image"]');
@@ -945,6 +945,8 @@
             btnFav.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (window.CarritoModule && window.CarritoModule.toggle) {
+                    const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
+                    const acabadoName = grupo.acabado_name || acabado || 'Único';
                     const selMedida = divMedida.querySelector('select');
                     const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
 
@@ -953,12 +955,12 @@
                     const optLabel = product.optional_variant?.label || '';
 
                     // Capturar precio numérico de la variante activa para guardarlo en el carrito
-                    const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
+                    const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
                     const itemPrice = (activeVariant && activeVariant.showPrice === true && activeVariant.price) ? activeVariant.price : null;
 
-                    window.CarritoModule.toggle(product, acabado, categoryName, medidaText, optText, optLabel, itemPrice);
+                    window.CarritoModule.toggle(product, acabadoName, categoryName, medidaText, optText, optLabel, itemPrice);
                     
-                    const inFav = isProductInFavorites(product.id, acabado, medidaText, optText);
+                    const inFav = isProductInFavorites(product.id, acabadoName, medidaText, optText);
                     if (inFav) {
                         btnFav.classList.add('pulse-heart');
                         setTimeout(() => btnFav.classList.remove('pulse-heart'), 500);
