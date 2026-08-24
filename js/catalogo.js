@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         allProducts.sort((a, b) => a.title.localeCompare(b.title, 'es', { sensitivity: 'base' }));
     }
 
-    // 2. Extraer variantes de envío disponibles
+    // 2. Extraer variantes de envío y precios disponibles
     function getShippingVariants(product) {
         const variants = [];
         
@@ -176,13 +176,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const acabadoName = group.acabado_name || '';
                 if (group.medidas_variants) {
                     group.medidas_variants.forEach(v => {
-                        if (v.link && v.link.trim() !== '') {
+                        if (!v.hidden) {
                             const label = acabadoName && acabadoName.toLowerCase() !== 'único'
                                 ? `${acabadoName} - ${v.medida}`
                                 : v.medida;
                             variants.push({
                                 label: label,
-                                link: v.link.trim(),
+                                link: (v.link || '').trim(),
+                                price: (v.showPrice && v.price) ? v.price : null,
+                                acabado: acabadoName || 'Único',
+                                medida: v.medida,
                                 isDefault: v.default === true
                             });
                         }
@@ -190,12 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         } else if (product.medidas_variants) {
-            // Compatibilidad legacy
             product.medidas_variants.forEach(v => {
-                if (v.link && v.link.trim() !== '') {
+                if (!v.hidden) {
                     variants.push({
                         label: v.medida,
-                        link: v.link.trim(),
+                        link: (v.link || '').trim(),
+                        price: (v.showPrice && v.price) ? v.price : null,
+                        acabado: 'Único',
+                        medida: v.medida,
                         isDefault: v.default === true
                     });
                 }
@@ -243,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!append) {
             catalogListContainer.innerHTML = '';
-            itemsToShow = 8;
+            itemsToShow = 30;
             currentFilteredProducts = productsToRender;
         }
 
@@ -265,14 +270,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Retardo de animación en cascada para carga premium (basado en índice absoluto)
             row.style.animationDelay = `${((startIdx + idx) % 15) * 0.05}s`;
 
-            // Obtener variantes de envío
+            // Obtener variantes de envío y precios
             const shippingVariants = getShippingVariants(product);
-            const hasShipping = shippingVariants.length > 0;
 
-            // Crear columnas
-            // Columna 1: Info Producto (Miniatura, Título, Categoría)
-            // ====== NUEVO LAYOUT LISTA COMPACTA ======
-            // 1. Imagen (Thumbnail)
             const detailUrl = `./?prod=${product.id}`;
 
             const handleProductClick = (e) => {
@@ -291,6 +291,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.parent.location.href = detailUrl;
             };
 
+            // 1. Imagen (Thumbnail) con Badge de Carrito en la Esquina
+            const checkInCart = () => {
+                try {
+                    const data = localStorage.getItem('cartItems');
+                    if (data) {
+                        const items = JSON.parse(data);
+                        return items.some(i => i.id === product.id);
+                    }
+                } catch(e) {}
+                return false;
+            };
+
+            const thumbContainer = document.createElement('div');
+            thumbContainer.className = 'catalog-thumb-container';
+
             const thumbLink = document.createElement('a');
             thumbLink.href = detailUrl;
             thumbLink.className = 'catalog-thumb-link';
@@ -298,9 +313,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const fallbackImg = fixImagePath('img/logo_provisional.png');
             thumbLink.innerHTML = `<img src="${product.image}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackImg}';">`;
             thumbLink.addEventListener('click', handleProductClick);
-            row.appendChild(thumbLink);
+            thumbContainer.appendChild(thumbLink);
 
-            // 2. Textos (Titulo + Opciones) -> flex: 1
+            // Botón Icono Flotante en la Esquina del Thumbnail
+            const btnCartBadge = document.createElement('button');
+            btnCartBadge.type = 'button';
+            btnCartBadge.className = `catalog-thumb-cart-btn ${checkInCart() ? 'in-cart' : ''}`;
+            btnCartBadge.title = checkInCart() ? 'En Carrito (Clic para quitar)' : 'Agregar al Carrito';
+            btnCartBadge.innerHTML = `<span class="material-symbols-outlined">${checkInCart() ? 'check_circle' : 'add_shopping_cart'}</span>`;
+
+            thumbContainer.appendChild(btnCartBadge);
+            row.appendChild(thumbContainer);
+
+            // 2. Columna de Textos (Título, Precio + Icono Info, Selector de Variante)
             const textCol = document.createElement('div');
             textCol.style.display = 'flex';
             textCol.style.flexDirection = 'column';
@@ -315,67 +340,143 @@ document.addEventListener('DOMContentLoaded', () => {
             titleLink.className = 'catalog-title-link';
             titleLink.target = '_parent';
             titleLink.style.whiteSpace = 'normal';
-            titleLink.innerHTML = `<h3 class="catalog-title" style="white-space: normal; overflow: visible; font-size: 1.05rem; margin-bottom: 2px;">${product.title}</h3>`;
+            titleLink.innerHTML = `<h3 class="catalog-title" style="white-space: normal; overflow: visible; font-size: 1rem; margin-bottom: 2px;">${product.title}</h3>`;
             titleLink.addEventListener('click', handleProductClick);
             titleRow.appendChild(titleLink);
             textCol.appendChild(titleRow);
 
-            // Variables de enlaces
-            let currentShippingLink = '';
-            let currentWhatsAppLink = getWhatsAppUrl(product.title);
+            // 2.2 Fila de Precio + Icono Informativo (Tooltip)
+            const priceRow = document.createElement('div');
+            priceRow.style.display = 'flex';
+            priceRow.style.alignItems = 'center';
+            priceRow.style.gap = '6px';
+            priceRow.style.margin = '1px 0 3px 0';
 
-            // 2.2 Variante
+            const priceTag = document.createElement('span');
+            priceTag.className = 'catalog-price-tag';
+
+            const getFormattedPriceText = (v) => {
+                if (v && v.price) {
+                    return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(v.price);
+                }
+                const validPrices = shippingVariants.filter(sv => sv.price).map(sv => sv.price);
+                if (validPrices.length > 0) {
+                    const minP = Math.min(...validPrices);
+                    const maxP = Math.max(...validPrices);
+                    const fmt = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 });
+                    return minP === maxP ? fmt.format(minP) : `Desde ${fmt.format(minP)}`;
+                }
+                return '';
+            };
+
+            let defaultIdx = shippingVariants.findIndex(v => v.isDefault);
+            if (defaultIdx === -1) defaultIdx = 0;
+
+            const initialPriceText = getFormattedPriceText(shippingVariants[defaultIdx]);
+            priceTag.textContent = initialPriceText;
+            if (!initialPriceText) priceTag.style.display = 'none';
+
+            priceRow.appendChild(priceTag);
+
+            // Icono informativo con tooltip
+            const tooltipWrapper = document.createElement('div');
+            tooltipWrapper.className = 'catalog-info-tooltip-wrapper';
+            tooltipWrapper.innerHTML = `
+                <span class="material-symbols-outlined catalog-info-icon">help_outline</span>
+                <div class="catalog-tooltip-box">
+                    <div style="font-weight:700; margin-bottom:4px; color:#F59E0B;">💡 Guía de Compra y Envíos</div>
+                    <div style="margin-bottom:3px;">💵 <b>Precio publicado:</b> Venta directa en efectivo / transferencia al retirar.</div>
+                    <div style="margin-bottom:3px;">🚚 <b>Botón Envío:</b> Mercado Libre (cuotas, tarjetas y envío directo).</div>
+                    <div>💬 <b>Botón Consultar:</b> Atención o dudas vía WhatsApp.</div>
+                </div>
+            `;
+            tooltipWrapper.addEventListener('click', (e) => {
+                e.stopPropagation();
+                tooltipWrapper.classList.toggle('active');
+            });
+            priceRow.appendChild(tooltipWrapper);
+            textCol.appendChild(priceRow);
+
+            // Variables de enlaces
+            let currentShippingLink = shippingVariants[defaultIdx] ? shippingVariants[defaultIdx].link : '';
+            let currentWhatsAppLink = getWhatsAppUrl(product.title, shippingVariants[defaultIdx] ? shippingVariants[defaultIdx].label : '');
+
+            // 2.3 Selector de Variantes
             const variantCol = document.createElement('div');
             variantCol.className = 'catalog-variant-col';
 
-            if (hasShipping) {
-                if (shippingVariants.length > 1) {
-                    const selectWrapper = document.createElement('div');
-                    selectWrapper.className = 'catalog-select-wrapper';
-                    selectWrapper.style.marginTop = '0.1rem';
-                    selectWrapper.style.maxWidth = '200px';
+            if (shippingVariants.length > 1) {
+                const selectWrapper = document.createElement('div');
+                selectWrapper.className = 'catalog-select-wrapper';
+                selectWrapper.style.marginTop = '0.1rem';
+                selectWrapper.style.maxWidth = '200px';
 
-                    const select = document.createElement('select');
-                    select.className = 'catalog-select';
-                    select.style.padding = '0.2rem 1.2rem 0.2rem 0.5rem';
-                    
-                    let defaultIdx = shippingVariants.findIndex(v => v.isDefault);
-                    if (defaultIdx === -1) defaultIdx = 0;
+                const select = document.createElement('select');
+                select.className = 'catalog-select';
+                select.style.padding = '0.2rem 1.2rem 0.2rem 0.5rem';
 
-                    shippingVariants.forEach((v, idx) => {
-                        const opt = document.createElement('option');
-                        opt.value = idx;
-                        opt.textContent = v.label;
-                        if (idx === defaultIdx) opt.selected = true;
-                        select.appendChild(opt);
-                    });
+                shippingVariants.forEach((v, idx) => {
+                    const opt = document.createElement('option');
+                    opt.value = idx;
+                    opt.textContent = v.label;
+                    if (idx === defaultIdx) opt.selected = true;
+                    select.appendChild(opt);
+                });
 
-                    currentShippingLink = shippingVariants[defaultIdx].link;
-                    currentWhatsAppLink = getWhatsAppUrl(product.title, shippingVariants[defaultIdx].label);
-
-                    selectWrapper.appendChild(select);
-                    variantCol.appendChild(selectWrapper);
-                } else {
-                    currentShippingLink = shippingVariants[0].link;
-                    currentWhatsAppLink = getWhatsAppUrl(product.title, shippingVariants[0].label);
-                    variantCol.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted); font-weight:500;">${shippingVariants[0].label}</span>`;
-                }
+                selectWrapper.appendChild(select);
+                variantCol.appendChild(selectWrapper);
+            } else if (shippingVariants.length === 1) {
+                variantCol.innerHTML = `<span style="font-size:0.78rem; color:var(--text-muted); font-weight:500;">${shippingVariants[0].label}</span>`;
             } else {
-                variantCol.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted); font-style:italic;">Consultar envío</span>`;
+                variantCol.innerHTML = `<span style="font-size:0.78rem; color:var(--text-muted); font-style:italic;">Consultar disponibilidad</span>`;
             }
             textCol.appendChild(variantCol);
             row.appendChild(textCol);
 
-            // 3. Columna de Botones de Acción (Stackeados en PC)
+            // Listener de click en el botón flotante del Carrito
+            btnCartBadge.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                try {
+                    const selectEl = variantCol.querySelector('select');
+                    const currentIdx = selectEl ? parseInt(selectEl.value) : defaultIdx;
+                    const selectedVar = shippingVariants[currentIdx] || shippingVariants[0] || {};
+
+                    const acabado = selectedVar.acabado || 'Único';
+                    const medida = selectedVar.medida || '';
+                    const price = selectedVar.price || null;
+
+                    const carritoModule = (window.parent && window.parent.CarritoModule) || window.CarritoModule;
+                    if (carritoModule && typeof carritoModule.toggle === 'function') {
+                        carritoModule.toggle(product, acabado, product.categoryName || 'Catálogo', medida, '', '', price);
+                    }
+
+                    if (checkInCart()) {
+                        btnCartBadge.classList.add('in-cart');
+                        btnCartBadge.title = 'En Carrito (Clic para quitar)';
+                        btnCartBadge.innerHTML = `<span class="material-symbols-outlined">check_circle</span>`;
+                    } else {
+                        btnCartBadge.classList.remove('in-cart');
+                        btnCartBadge.title = 'Agregar al Carrito';
+                        btnCartBadge.innerHTML = `<span class="material-symbols-outlined">add_shopping_cart</span>`;
+                    }
+                } catch(err) {
+                    console.error('Error toggling cart:', err);
+                }
+            });
+
+            // 3. Columna de Botones de Acción (Solo Envío y Consultar)
             const actionsCol = document.createElement('div');
             actionsCol.className = 'catalog-actions-col';
 
+            // 3.1 Botón Envío (Mercado Libre)
             const btnShipping = document.createElement('a');
             btnShipping.className = 'catalog-btn catalog-btn-shipping';
             btnShipping.target = '_blank';
             btnShipping.innerHTML = `<span class="material-symbols-outlined" style="font-size:1.1rem;">local_shipping</span> Envío`;
-            if (hasShipping) {
+            if (currentShippingLink) {
                 btnShipping.href = currentShippingLink;
+                btnShipping.style.display = 'inline-flex';
             } else {
                 btnShipping.style.display = 'none';
             }
@@ -395,6 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             actionsCol.appendChild(btnShipping);
 
+            // 3.2 Botón Consultar (WhatsApp)
             const btnWpp = document.createElement('a');
             btnWpp.className = 'catalog-btn catalog-btn-wpp';
             btnWpp.href = currentWhatsAppLink;
@@ -402,33 +504,47 @@ document.addEventListener('DOMContentLoaded', () => {
             btnWpp.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" style="width: 14px; height: 14px; object-fit: cover; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"> Consultar`;
             actionsCol.appendChild(btnWpp);
 
-            // Manejo de eventos del selector
-            if (variantCol.querySelector('select')) {
-                variantCol.querySelector('select').addEventListener('change', (e) => {
-                    const selIdx = e.target.value;
-                    const selectedVar = shippingVariants[selIdx];
-                    btnShipping.href = selectedVar.link;
-                    btnWpp.href = getWhatsAppUrl(product.title, selectedVar.label);
-                });
-            }
-
-            row.appendChild(actionsCol);
-
-            // Vincular listener de cambio al select si existe para actualizar links en caliente
-            const selectEl = variantCol.querySelector('.catalog-select');
+            // Event Listener de Cambio de Variante
+            const selectEl = variantCol.querySelector('select');
             if (selectEl) {
                 selectEl.addEventListener('change', (e) => {
-                    const selectedIdx = parseInt(e.target.value);
-                    const selectedVariant = shippingVariants[selectedIdx];
-                    if (selectedVariant) {
-                        btnShipping.href = selectedVariant.link;
-                        btnWpp.href = getWhatsAppUrl(product.title, selectedVariant.label);
+                    const selIdx = parseInt(e.target.value);
+                    const selectedVar = shippingVariants[selIdx];
+                    if (selectedVar) {
+                        if (selectedVar.link) {
+                            btnShipping.href = selectedVar.link;
+                            btnShipping.style.display = 'inline-flex';
+                        } else {
+                            btnShipping.style.display = 'none';
+                        }
+                        btnWpp.href = getWhatsAppUrl(product.title, selectedVar.label);
+                        const newPriceText = getFormattedPriceText(selectedVar);
+                        if (newPriceText) {
+                            priceTag.textContent = newPriceText;
+                            priceTag.style.display = 'inline-flex';
+                        } else {
+                            priceTag.style.display = 'none';
+                        }
                     }
                 });
             }
 
+            row.appendChild(actionsCol);
             catalogListContainer.appendChild(row);
         });
+
+        // Indicador de fin de catálogo cuando se cargan todos los productos
+        const oldIndicator = catalogListContainer.querySelector('.catalog-end-indicator');
+        if (oldIndicator) oldIndicator.remove();
+
+        const currentCount = catalogListContainer.querySelectorAll('.catalog-row').length;
+        if (currentCount >= currentFilteredProducts.length && currentFilteredProducts.length > 0) {
+            const endIndicator = document.createElement('div');
+            endIndicator.className = 'catalog-end-indicator';
+            endIndicator.style.cssText = 'text-align: center; padding: 1.5rem 0 3rem 0; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; width: 100%; grid-column: 1 / -1;';
+            endIndicator.innerHTML = `✨ Llegaste al final del catálogo (${currentFilteredProducts.length} productos)`;
+            catalogListContainer.appendChild(endIndicator);
+        }
     }
 
     // Función para refrescar el catálogo con la data actualizada
@@ -458,20 +574,22 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // 6. Configurar Scroll Infinito sobre el scroll de la propia ventana del iframe
-    window.addEventListener('scroll', () => {
-        const threshold = 400; // Pixeles antes de llegar al final para gatillar
-        const scrollHeight = document.documentElement.scrollHeight;
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const clientHeight = window.innerHeight;
+    const checkInfiniteScroll = () => {
+        const threshold = 800;
+        const scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+        const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const clientHeight = window.innerHeight || document.documentElement.clientHeight;
 
-        const position = scrollHeight - scrollTop - clientHeight;
-        if (position < threshold) {
+        if (scrollHeight - scrollTop - clientHeight < threshold) {
             if (itemsToShow < currentFilteredProducts.length) {
                 itemsToShow += 30;
                 renderCatalogList(currentFilteredProducts, true);
             }
         }
-    });
+    };
+
+    window.addEventListener('scroll', checkInfiniteScroll, { passive: true });
+    document.addEventListener('scroll', checkInfiniteScroll, { passive: true });
 
     // Exponer función de refresco para el parent
     window.refreshCatalog = function() {
