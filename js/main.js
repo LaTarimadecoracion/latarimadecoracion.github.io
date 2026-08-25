@@ -243,8 +243,16 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         const urlParams = new URLSearchParams(window.location.search);
         
-        // 1. Detectar parámetro de URL ultra corta (?s=CODE)
-        const shortCode = urlParams.get('s');
+        // 1. Detectar parámetro de URL ultra corta (?s=CODE o ruta directa /1.A)
+        let shortCode = urlParams.get('s');
+        if (!shortCode) {
+            const segments = window.location.pathname.split('/').filter(Boolean);
+            const lastSegment = segments.length > 0 ? segments[segments.length - 1].replace('.html', '').trim() : '';
+            if (/^[0-9a-z]{1,4}(\.[0-9a-z]{1,4})+$/i.test(lastSegment)) {
+                shortCode = lastSegment;
+            }
+        }
+
         if (shortCode && window.TarimaShortener && window.TarimaShortener.decodeShortCode) {
             const decoded = window.TarimaShortener.decodeShortCode(shortCode);
             if (decoded && decoded.productId) {

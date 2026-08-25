@@ -38,6 +38,13 @@
                 return;
             }
 
+            // 🔗 Detectar si el último segmento de la URL es un código corto Base36 (ej: /1.A, /1.A.2)
+            var shortCodeRegex = /^[0-9a-z]{1,4}(\.[0-9a-z]{1,4})+$/i;
+            if (shortCodeRegex.test(lastSegment)) {
+                window.location.replace(window.location.origin + basePath + '?s=' + lastSegment);
+                return;
+            }
+
             if (isMayorista) {
                 window.location.replace(window.location.origin + basePath + 'mayorista.html');
             } else if (isCalcular) {

@@ -2203,6 +2203,12 @@ app.get('*', (req, res) => {
         if (orderDigits.length >= 6 && /^\d+$/.test(orderDigits)) {
             return res.redirect(`/?view=pedidos&id=${orderDigits}`);
         }
+
+        // 🔗 Detectar si el último segmento de la URL es un código corto Base36 (ej: /1.1D.0.1 o /1.A)
+        const shortCodeRegex = /^[0-9a-z]{1,4}(\.[0-9a-z]{1,4})+$/i;
+        if (shortCodeRegex.test(lastSeg)) {
+            return res.redirect(`/?s=${lastSeg}`);
+        }
     }
     
     // Rutas del catálogo mayorista sin .html visible
