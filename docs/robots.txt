@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /GASTOS/
+Disallow: /node_modules/
+Disallow: *.backup
+
+Sitemap: https://latarimadecoracion.github.io/sitemap.xml

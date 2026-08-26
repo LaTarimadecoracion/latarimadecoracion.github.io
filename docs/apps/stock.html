@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Control de Stock Personal - LA TARIMA</title>
+    
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="../css/style.css?v=25">
+
+    <!-- Store Data Core for Auto-syncing Products -->
+    <script src="../js/products-data.js"></script>
+
+    <style>
+        html, body {
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            height: auto !important;
+            scrollbar-width: thin;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color, #F8FAFC);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: var(--text-main, #0F172A);
+            padding-bottom: 80px;
+        }
+        body.in-iframe {
+            background: transparent !important;
+            padding-bottom: 20px !important;
+        }
+        body.in-iframe .header-wrapper {
+            display: none !important;
+        }
+
+        .stock-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.5rem 12px;
+            box-sizing: border-box;
+        }
+
+        /* Header */
+        .header-wrapper {
+            margin-bottom: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .header-title h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -0.03em;
+        }
+        .badge-stock {
+            background: #0284C7;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        /* Resumen Top Metricas */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.85rem;
+            margin-bottom: 1.25rem;
+        }
+        .metric-card {
+            background: var(--surface-color, #FFFFFF);
+            border: 1px solid var(--border-color, #E2E8F0);
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .metric-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(2, 132, 199, 0.1);
+            color: #0284C7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+        }
+        .metric-info label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted, #64748B);
+            letter-spacing: 0.05em;
+        }
+        .metric-info span {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-main, #0F172A);
+        }
+
+        /* Controls & Action Bar */
+        .controls-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-box {
+            flex: 1;
+            min-width: 240px;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 0.65rem 0.8rem 0.65rem 2.4rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color, #CBD5E1);
+            background: var(--surface-color, #FFFFFF);
+            font-size: 0.9rem;
+            outline: none;
+            box-sizing: border-box;
+        }
+        .search-box span {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94A3B8;
+            font-size: 1.2rem;
+        }
+
+        .btn-add-main {
+            background: #0284C7;
+            color: white;
+            border: none;
+            padding: 0.65rem 1.25rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+            transition: all 0.2s;
+        }
+        .btn-add-main:hover {
+            background: #0369A1;
+            transform: translateY(-1px);
+        }
+
+        /* Excel-Style Table Layout */
+        .excel-table-container {
+            background: var(--surface-color, #FFFFFF);
+            border: 1px solid var(--border-color, #CBD5E1);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+        .excel-table-wrapper {
+            overflow-x: auto;
+        }
+        .excel-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+        .excel-table th {
+            background: #F1F5F9;
+            color: #334155;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            padding: 0.75rem 0.85rem;
+            border-bottom: 2px solid #CBD5E1;
+            border-right: 1px solid #E2E8F0;
+            white-space: nowrap;
+            user-select: none;
+        }
+        .excel-table th:last-child {
+            border-right: none;
+        }
+        .excel-table td {
+            padding: 0.65rem 0.85rem;
+            border-bottom: 1px solid #E2E8F0;
+            border-right: 1px solid #F1F5F9;
+            vertical-align: middle;
+        }
+        .excel-table td:last-child {
+            border-right: none;
+        }
+        .excel-table tr:hover {
+            background-color: #F8FAFC;
+        }
+        .excel-table tr.draft-row {
+            background-color: #FFFBEB;
+        }
+        .excel-table tr.draft-row:hover {
+            background-color: #FEF3C7;
+        }
+
+        /* Elements inside cells */
+        .prod-thumb-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .prod-thumb {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            object-fit: cover;
+            background: #E2E8F0;
+            border: 1px solid #CBD5E1;
+            flex-shrink: 0;
+        }
+        .prod-title {
+            font-weight: 700;
+            color: var(--text-main, #0F172A);
+            font-size: 0.88rem;
+            line-height: 1.25;
+        }
+        .prod-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted, #64748B);
+            margin-top: 2px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .category-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0.25rem 0.55rem;
+            border-radius: 6px;
+            font-size: 0.73rem;
+            font-weight: 700;
+            background: #F1F5F9;
+            color: #475569;
+            white-space: nowrap;
+        }
+        .category-tag.draft {
+            background: #FEF3C7;
+            color: #D97706;
+            border: 1px solid #FCD34D;
+        }
+
+        /* Stock Direct Input Box */
+        .stock-qty-input {
+            width: 60px;
+            padding: 0.35rem 0.4rem;
+            border: 1.5px solid #CBD5E1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: center;
+            background: #F8FAFC;
+            color: #0F172A;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .stock-qty-input:focus {
+            border-color: #0284C7;
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+
+        /* Link Modal Icon Button (Clean icon without container box) */
+        .link-modal-btn {
+            background: transparent;
+            color: #0284C7;
+            border: none;
+            padding: 0.35rem;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+        }
+        .link-modal-btn:hover {
+            background: #E0F2FE;
+            color: #0369A1;
+            transform: scale(1.1);
+        }
+        .link-modal-btn.disabled {
+            color: #CBD5E1;
+            cursor: not-allowed;
+            background: transparent;
+            transform: none;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            color: #64748B;
+            cursor: pointer;
+            padding: 0.35rem;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon-btn:hover { background: #E2E8F0; color: #0F172A; }
+        .icon-btn.delete:hover { background: #FEE2E2; color: #EF4444; }
+
+        .mobile-text { display: none !important; }
+        .desktop-text { display: inline !important; }
+
+        /* Media Query: Versión Súper Simplificada para Celulares */
+        @media (max-width: 640px) {
+            .mobile-text { display: inline !important; }
+            .desktop-text { display: none !important; }
+            .stock-container {
+                padding: 0.75rem 8px;
+            }
+            .header-wrapper {
+                margin-bottom: 0.75rem;
+            }
+            .header-title h1 {
+                font-size: 1.3rem;
+            }
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+                margin-bottom: 0.75rem;
+            }
+            .metric-card {
+                padding: 0.6rem 0.75rem;
+                gap: 0.5rem;
+            }
+            .metric-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1.1rem;
+            }
+            .controls-bar {
+                margin-bottom: 0.75rem;
+            }
+            
+            /* Ocultar columnas secundarias en pantalla chica para super simplificar */
+            .col-hide-mobile {
+                display: none !important;
+            }
+
+            .excel-table th, .excel-table td {
+                padding: 0.5rem 0.4rem;
+            }
+            .excel-table th {
+                font-size: 0.68rem;
+            }
+            .prod-thumb {
+                width: 34px;
+                height: 34px;
+            }
+            .prod-title {
+                font-size: 0.8rem;
+            }
+            .prod-desc {
+                display: none !important;
+            }
+            .stock-qty-input {
+                width: 46px;
+                padding: 0.25rem 0.2rem;
+                font-size: 0.82rem;
+            }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 580px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            transform: translateY(15px);
+            transition: transform 0.2s ease;
+        }
+        .modal-overlay.active .modal-card {
+            transform: translateY(0);
+        }
+        .modal-header {
+            padding: 1rem 1.25rem;
+            background: #F8FAFC;
+            border-bottom: 1px solid #E2E8F0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0F172A;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .modal-body {
+            padding: 1.25rem;
+            max-height: 75vh;
+            overflow-y: auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.85rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .form-group.full-width { grid-column: 1 / -1; }
+        .form-group label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #475569;
+        }
+        .form-group label .required { color: #EF4444; }
+        .form-input {
+            padding: 0.55rem 0.75rem;
+            border: 1.5px solid #CBD5E1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.88rem;
+            background: #F8FAFC;
+            color: #0F172A;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: #0284C7;
+            background: #FFFFFF;
+        }
+        .modal-footer {
+            padding: 0.85rem 1.25rem;
+            background: #F8FAFC;
+            border-top: 1px solid #E2E8F0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #64748B;
+        }
+        .empty-state span {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: #CBD5E1;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        if (window.self !== window.top) {
+            document.body.classList.add('in-iframe');
+        }
+    </script>
+
+    <div class="stock-container">
+        
+        <!-- Header -->
+        <header class="header-wrapper">
+            <div class="header-title">
+                <h1>Control de Stock Personal</h1>
+                <span class="badge-stock">Uso Interno</span>
+            </div>
+            <button class="btn-add-main" onclick="openAddModal()">
+                <span class="material-symbols-outlined">add</span>
+                <span>Agregar Nuevo Producto</span>
+            </button>
+        </header>
+
+        <!-- Top Metrics & Quick Actions -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                </div>
+                <div class="metric-info">
+                    <label>Total Ítems</label>
+                    <span id="metric-total-items">0</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon" style="background: rgba(245, 158, 11, 0.1); color: #D97706;">
+                    <span class="material-symbols-outlined">edit_note</span>
+                </div>
+                <div class="metric-info">
+                    <label>Borradores</label>
+                    <span id="metric-draft-items">0</span>
+                </div>
+            </div>
+            <div class="metric-card action-card" onclick="openAddModal()" style="cursor: pointer; background: #0284C7; border-color: #0284C7; color: white; transition: all 0.2s;">
+                <div class="metric-icon" style="background: rgba(255, 255, 255, 0.2); color: white;">
+                    <span class="material-symbols-outlined">add_circle</span>
+                </div>
+                <div class="metric-info">
+                    <label style="color: rgba(255, 255, 255, 0.85);">Alta Rápida</label>
+                    <span style="font-size: 0.95rem; color: white; font-weight: 700;">
+                        <span class="desktop-text">+ Nuevo</span>
+                        <span class="mobile-text">+New</span>
+                    </span>
+                </div>
+            </div>
+            <div class="metric-card action-card" onclick="syncGithubServer()" style="cursor: pointer; background: #10B981; border-color: #10B981; color: white; transition: all 0.2s;">
+                <div class="metric-icon" style="background: rgba(255, 255, 255, 0.2); color: white;">
+                    <span class="material-symbols-outlined">cloud_upload</span>
+                </div>
+                <div class="metric-info">
+                    <label style="color: rgba(255, 255, 255, 0.85);">Servidor</label>
+                    <span style="font-size: 0.95rem; color: white; font-weight: 700;">
+                        <span class="desktop-text">Subir a GitHub</span>
+                        <span class="mobile-text">Guardar GH</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls Bar -->
+        <div class="controls-bar">
+            <div class="search-box">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" id="stock-search" placeholder="Filtrar por título, categoría o descripción (ej: Borradores)..." oninput="renderStockTable()">
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+                <button class="icon-btn" title="Exportar Backup JSON" onclick="exportData()">
+                    <span class="material-symbols-outlined">download</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Excel-Style Table View -->
+        <div class="excel-table-container">
+            <div class="excel-table-wrapper">
+                <table class="excel-table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th style="text-align: center;">Stock</th>
+                            <th>Costo U.</th>
+                            <th class="col-hide-mobile" style="width: 50px; text-align: center;" title="Enlaces del Sitio"><span class="material-symbols-outlined" style="font-size:18px; vertical-align:middle;">link</span></th>
+                            <th class="col-hide-mobile" style="width: 90px; text-align: center;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stock-table-body">
+                        <!-- Rows injected dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal Form (Popup) -->
+    <div id="modal-product" class="modal-overlay" onclick="handleModalOverlayClick(event)">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modal-title-text">
+                    <span class="material-symbols-outlined" style="color: #0284C7;">add_circle</span>
+                    <span>Agregar Producto al Stock</span>
+                </h3>
+                <button class="icon-btn" onclick="closeModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <form id="stock-form" onsubmit="handleSaveProduct(event)">
+                <div class="modal-body">
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="p-title">Título del Producto <span class="required">*</span></label>
+                            <input type="text" id="p-title" class="form-input" placeholder="Ej: Ménsula Invisible 20cm" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="p-category">Categoría (Por defecto: Borradores)</label>
+                            <input type="text" id="p-category" class="form-input" placeholder="Borradores" list="category-suggestions">
+                            <datalist id="category-suggestions"></datalist>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="p-qty">Cantidad de Stock</label>
+                            <input type="number" id="p-qty" class="form-input" min="0" value="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="p-cost">Costo del Producto ($)</label>
+                            <input type="number" id="p-cost" class="form-input" min="0" step="0.01" placeholder="0.00">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="p-img">URL de Foto / Imagen</label>
+                            <input type="url" id="p-img" class="form-input" placeholder="https://ejemplo.com/foto.jpg">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="p-link-web">Enlace Web Interno</label>
+                            <input type="url" id="p-link-web" class="form-input" placeholder="https://latarima.com/producto/123">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="p-link-online">Enlace Publicación Online (MercadoLibre, Instagram, etc.)</label>
+                            <input type="url" id="p-link-online" class="form-input" placeholder="https://articulo.mercadolibre.com.ar/...">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="p-desc">Descripción / Notas adicionales</label>
+                            <input type="text" id="p-desc" class="form-input" placeholder="Observaciones de inventario o falta de optimización...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="qty-btn" style="padding: 0.55rem 1rem;" onclick="closeModal()">Cancelar</button>
+                    <button type="submit" class="btn-add-main" style="box-shadow: none;">
+                        <span class="material-symbols-outlined">save</span>
+                        <span id="btn-submit-text">Guardar en Stock</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Enlaces Disponibles -->
+    <div id="modal-links" class="modal-overlay" onclick="handleLinksModalOverlayClick(event)">
+        <div class="modal-card" style="max-width: 440px;">
+            <div class="modal-header">
+                <h3>
+                    <span class="material-symbols-outlined" style="color: #0284C7;">link</span>
+                    <span>Enlaces del Producto</span>
+                </h3>
+                <button class="icon-btn" onclick="closeLinksModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding: 1.25rem;">
+                <p id="modal-links-prod-title" style="font-weight: 700; margin: 0 0 1rem 0; color: #0F172A; font-size: 0.95rem;"></p>
+                <div id="modal-links-list" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="qty-btn" style="padding: 0.55rem 1.25rem;" onclick="closeLinksModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const defaultStock = [
+            {
+                id: "stk-1",
+                title: "Ménsula Invisible de Hierro 20cm",
+                category: "Herrajes y Ménsulas",
+                qty: 15,
+                cost: 2500,
+                img: "../img/hero-1.webp",
+                desc: "Soporte reforzado en planchuela de 3/16",
+                linkWeb: "./?view=catalogo",
+                linkOnline: "https://mercadolibre.com.ar",
+                created: Date.now()
+            },
+            {
+                id: "stk-2",
+                title: "Nuevo Estante Flotante Rústico (Sin Optimizar)",
+                category: "Borradores",
+                qty: 1,
+                cost: 4500,
+                img: "",
+                desc: "Pendiente tomar fotos finales y medir bien espesores",
+                linkWeb: "",
+                linkOnline: "",
+                created: Date.now() - 10000
+            }
+        ];
+
+        let stockItems = [];
+        let editingItemId = null;
+
+        // Extraer y sincronizar automáticamente productos del catálogo principal de la web
+        function getCatalogProducts() {
+            let catalogSource = [];
+            try {
+                if (window.parent && window.parent.sessionProducts && window.parent.sessionProducts.length > 0) {
+                    catalogSource = window.parent.sessionProducts;
+                } else if (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) {
+                    catalogSource = window.sessionProducts;
+                } else if (typeof productsData !== 'undefined') {
+                    catalogSource = productsData;
+                }
+            } catch(e) {
+                catalogSource = (typeof productsData !== 'undefined' ? productsData : []);
+            }
+            
+            const extracted = [];
+            catalogSource.forEach(cat => {
+                if (cat.products && Array.isArray(cat.products)) {
+                    cat.products.forEach(p => {
+                        let mainCost = 0;
+                        let firstLink = "";
+                        
+                        // Buscar costo o precio en acabados / medidas
+                        if (p.acabados_groups && Array.isArray(p.acabados_groups)) {
+                            for (const g of p.acabados_groups) {
+                                if (g.medidas_variants && Array.isArray(g.medidas_variants)) {
+                                    for (const m of g.medidas_variants) {
+                                        if (m.cost_price || m.price) {
+                                            mainCost = m.cost_price || m.price || 0;
+                                        }
+                                        if (m.link && !firstLink) {
+                                            firstLink = m.link;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // Formatear ruta de imagen relativa si existe
+                        let imgUrl = p.image || "";
+                        if (imgUrl && !imgUrl.startsWith("http") && !imgUrl.startsWith("../")) {
+                            imgUrl = "../" + imgUrl;
+                        }
+
+                        extracted.push({
+                            id: p.id || ('cat-prod-' + Math.random().toString(36).substr(2, 9)),
+                            title: p.title || p.name || 'Sin título',
+                            category: cat.name ? cat.name.trim() : (p.category || 'Borradores'),
+                            qty: p.stock !== undefined ? p.stock : 1,
+                            cost: mainCost,
+                            img: imgUrl,
+                            desc: p.description || '',
+                            linkWeb: `./?view=catalogo`,
+                            linkOnline: firstLink || (p.linkOnline || ''),
+                            isAuto: true
+                        });
+                    });
+                }
+            });
+            return extracted;
+        }
+
+        function loadStockData() {
+            try {
+                // 1. Cargar productos del catálogo de la web automáticamente
+                const autoProducts = getCatalogProducts();
+
+                // 2. Cargar items de stock personalizados / edits guardados localmente
+                const storedStr = localStorage.getItem('personalStockItems');
+                let localItems = storedStr ? JSON.parse(storedStr) : [];
+
+                // Mapa de items locales para preservar ediciones de stock, costo, etc.
+                const localMap = new Map();
+                localItems.forEach(item => {
+                    if (item.id) localMap.set(item.id, item);
+                });
+
+                // 3. Fusionar: conservar datos del catálogo y preservar los ajustes de stock/ediciones locales
+                const merged = [];
+                const processedIds = new Set();
+
+                // Primero los cargados manualmente o borradores nuevos
+                localItems.filter(i => !i.isAuto).forEach(item => {
+                    merged.push(item);
+                    if (item.id) processedIds.add(item.id);
+                });
+
+                // Luego los de la web (sincronizados automáticamente)
+                autoProducts.forEach(autoItem => {
+                    if (localMap.has(autoItem.id)) {
+                        // Preservar valores editados manualmente (stock, costo, desc)
+                        const local = localMap.get(autoItem.id);
+                        merged.push({
+                            ...autoItem,
+                            qty: local.qty !== undefined ? local.qty : autoItem.qty,
+                            cost: local.cost !== undefined ? local.cost : autoItem.cost,
+                            linkOnline: local.linkOnline || autoItem.linkOnline,
+                            desc: local.desc || autoItem.desc
+                        });
+                    } else {
+                        merged.push(autoItem);
+                    }
+                    processedIds.add(autoItem.id);
+                });
+
+                stockItems = merged;
+                saveStockData();
+
+            } catch (e) {
+                console.error("Error al sincronizar stock automático:", e);
+                stockItems = getCatalogProducts();
+            }
+
+            updateMetrics();
+            updateCategoryDatalist();
+            renderStockTable();
+        }
+
+        function saveStockData() {
+            try {
+                localStorage.setItem('personalStockItems', JSON.stringify(stockItems));
+            } catch (e) {
+                console.error("Error al guardar stock:", e);
+            }
+            updateMetrics();
+            updateCategoryDatalist();
+        }
+
+        function updateCategoryDatalist() {
+            const categories = [...new Set(stockItems.map(i => i.category).filter(Boolean))];
+            const datalist = document.getElementById('category-suggestions');
+            datalist.innerHTML = categories.map(c => `<option value="${escapeHtml(c)}">`).join('');
+        }
+
+        function updateMetrics() {
+            const totalItems = stockItems.length;
+            const draftItems = stockItems.filter(i => (i.category || '').toLowerCase() === 'borradores').length;
+
+            document.getElementById('metric-total-items').textContent = totalItems;
+            document.getElementById('metric-draft-items').textContent = draftItems;
+        }
+
+        function renderStockTable() {
+            const query = (document.getElementById('stock-search').value || '').toLowerCase().trim();
+            const tbody = document.getElementById('stock-table-body');
+            tbody.innerHTML = '';
+
+            const filtered = stockItems.filter(item => {
+                return (item.title || '').toLowerCase().includes(query) ||
+                       (item.category || '').toLowerCase().includes(query) ||
+                       (item.desc || '').toLowerCase().includes(query);
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5">
+                            <div class="empty-state">
+                                <span class="material-symbols-outlined">inventory</span>
+                                <p>No se encontraron productos en el stock.</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            filtered.forEach((item, idx) => {
+                const tr = document.createElement('tr');
+                const isDraft = (item.category || '').toLowerCase() === 'borradores';
+                if (isDraft) tr.className = 'draft-row';
+
+                const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z'/%3E%3C/svg%3E";
+                const imgSrc = item.img && item.img.trim() !== '' ? item.img : fallbackImg;
+                const formattedCost = item.cost ? '$' + Number(item.cost).toLocaleString('es-AR') : '-';
+
+                const hasLinks = item.linkWeb || item.linkOnline;
+                let linksBtnHtml = '';
+                if (hasLinks) {
+                    linksBtnHtml = `<button class="link-modal-btn" onclick="openLinksModal('${item.id}')" title="Ver enlaces del producto">
+                        <span class="material-symbols-outlined" style="font-size:20px;">link</span>
+                    </button>`;
+                } else {
+                    linksBtnHtml = `<button class="link-modal-btn disabled" disabled title="Sin enlaces configurados">
+                        <span class="material-symbols-outlined" style="font-size:20px;">link_off</span>
+                    </button>`;
+                }
+
+                tr.innerHTML = `
+                    <td>
+                        <div class="prod-thumb-cell">
+                            <img src="${escapeHtml(imgSrc)}" class="prod-thumb" alt="Foto" onerror="this.src='${fallbackImg}'">
+                            <div class="prod-name-box">
+                                <span class="prod-title">${escapeHtml(item.title)}</span>
+                                ${item.desc ? `<span class="prod-desc">${escapeHtml(item.desc)}</span>` : ''}
+                            </div>
+                        </div>
+                    </td>
+                    <td style="text-align:center;">
+                        <input type="number" class="stock-qty-input" min="0" value="${item.qty || 0}" onchange="updateItemQtyDirectly('${item.id}', this.value)">
+                    </td>
+                    <td style="font-weight:700;">${formattedCost}</td>
+                    <td class="col-hide-mobile" style="text-align:center;">
+                        ${linksBtnHtml}
+                    </td>
+                    <td class="col-hide-mobile" style="text-align:center;">
+                        <div style="display:inline-flex; gap:2px;">
+                            <button class="icon-btn" onclick="editProduct('${item.id}')" title="Editar">
+                                <span class="material-symbols-outlined" style="font-size:18px;">edit</span>
+                            </button>
+                            <button class="icon-btn delete" onclick="deleteProduct('${item.id}')" title="Eliminar">
+                                <span class="material-symbols-outlined" style="font-size:18px;">delete</span>
+                            </button>
+                        </div>
+                    </td>
+                `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Sincronización real con el servidor local y publicación en GitHub
+        async function syncGithubServer() {
+            saveStockData();
+
+            try {
+                // 1. Guardar productos y stock en la base de datos del servidor local (/api/save-products)
+                if (window.parent && window.parent.sessionProducts) {
+                    await fetch('/api/save-products', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(window.parent.sessionProducts)
+                    });
+                }
+
+                // 2. Ejecutar la publicación automática a GitHub (/api/publish-github)
+                const res = await fetch('/api/publish-github', { method: 'POST' });
+                const data = await res.json();
+
+                if (data.success) {
+                    alert("🚀 ¡Publicado a GitHub con éxito! En unos instantes la web se actualizará.");
+                } else {
+                    alert("✅ Stock guardado en el servidor. (Nota: " + (data.message || 'Servidor en modo local') + ")");
+                }
+            } catch(e) {
+                console.log("Modo autónomo o sin backend servidor activo:", e);
+                alert("✅ ¡Stock guardado localmente en tu dispositivo!");
+            }
+        }
+
+        // Actualización directa de cantidad desde la casilla input
+        function updateItemQtyDirectly(id, newVal) {
+            const item = stockItems.find(i => i.id === id);
+            if (item) {
+                item.qty = Math.max(0, parseInt(newVal) || 0);
+                saveStockData();
+            }
+        }
+
+        // Modal para visualizar sitios y enlaces disponibles
+        function openLinksModal(id) {
+            const item = stockItems.find(i => i.id === id);
+            if (!item) return;
+
+            document.getElementById('modal-links-prod-title').textContent = item.title;
+            const container = document.getElementById('modal-links-list');
+            container.innerHTML = '';
+
+            let hasAny = false;
+            if (item.linkWeb) {
+                hasAny = true;
+                container.innerHTML += `
+                    <a href="${escapeHtml(item.linkWeb)}" target="_blank" class="btn-add-main" style="text-decoration:none; justify-content:flex-start; background:#0284C7;">
+                        <span class="material-symbols-outlined">language</span>
+                        <span>Ver en Nuestra Web / Catálogo</span>
+                    </a>
+                `;
+            }
+            if (item.linkOnline) {
+                hasAny = true;
+                container.innerHTML += `
+                    <a href="${escapeHtml(item.linkOnline)}" target="_blank" class="btn-add-main" style="text-decoration:none; justify-content:flex-start; background:#10B981;">
+                        <span class="material-symbols-outlined">open_in_new</span>
+                        <span>Ver Publicación Online Externa</span>
+                    </a>
+                `;
+            }
+
+            if (!hasAny) {
+                container.innerHTML = `<p style="color:#64748B; font-size:0.85rem; margin:0;">Este producto no posee enlaces configurados actualmente.</p>`;
+            }
+
+            document.getElementById('modal-links').classList.add('active');
+        }
+
+        function closeLinksModal() {
+            document.getElementById('modal-links').classList.remove('active');
+        }
+
+        function handleLinksModalOverlayClick(e) {
+            if (e.target.id === 'modal-links') {
+                closeLinksModal();
+            }
+        }
+
+        function handleSaveProduct(e) {
+            e.preventDefault();
+            const title = document.getElementById('p-title').value.trim();
+            if (!title) return;
+
+            let category = document.getElementById('p-category').value.trim();
+            // Asignar automáticamente a la categoría "Borradores" si no se especifica
+            if (!category) {
+                category = "Borradores";
+            }
+
+            const qty = parseInt(document.getElementById('p-qty').value) || 0;
+            const cost = parseFloat(document.getElementById('p-cost').value) || 0;
+            const img = document.getElementById('p-img').value.trim();
+            const linkWeb = document.getElementById('p-link-web').value.trim();
+            const linkOnline = document.getElementById('p-link-online').value.trim();
+            const desc = document.getElementById('p-desc').value.trim();
+
+            if (editingItemId) {
+                const index = stockItems.findIndex(i => i.id === editingItemId);
+                if (index !== -1) {
+                    stockItems[index] = {
+                        ...stockItems[index],
+                        title, category, qty, cost, img, linkWeb, linkOnline, desc
+                    };
+                }
+            } else {
+                const newItem = {
+                    id: 'stk-' + Date.now(),
+                    title, category, qty, cost, img, linkWeb, linkOnline, desc,
+                    created: Date.now()
+                };
+                stockItems.unshift(newItem);
+            }
+
+            saveStockData();
+            closeModal();
+            renderStockTable();
+        }
+
+        function openAddModal() {
+            editingItemId = null;
+            document.getElementById('stock-form').reset();
+            document.getElementById('modal-title-text').innerHTML = `
+                <span class="material-symbols-outlined" style="color: #0284C7;">add_circle</span>
+                <span>Agregar Producto al Stock</span>
+            `;
+            document.getElementById('btn-submit-text').textContent = 'Guardar en Stock';
+            document.getElementById('modal-product').classList.add('active');
+        }
+
+        function editProduct(id) {
+            const item = stockItems.find(i => i.id === id);
+            if (!item) return;
+
+            editingItemId = id;
+            document.getElementById('p-title').value = item.title || '';
+            document.getElementById('p-category').value = item.category || 'Borradores';
+            document.getElementById('p-qty').value = item.qty || 0;
+            document.getElementById('p-cost').value = item.cost || '';
+            document.getElementById('p-img').value = item.img || '';
+            document.getElementById('p-link-web').value = item.linkWeb || '';
+            document.getElementById('p-link-online').value = item.linkOnline || '';
+            document.getElementById('p-desc').value = item.desc || '';
+
+            document.getElementById('modal-title-text').innerHTML = `
+                <span class="material-symbols-outlined" style="color: #0284C7;">edit</span>
+                <span>Editar Producto</span>
+            `;
+            document.getElementById('btn-submit-text').textContent = 'Actualizar Producto';
+            document.getElementById('modal-product').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-product').classList.remove('active');
+            editingItemId = null;
+        }
+
+        function handleModalOverlayClick(e) {
+            if (e.target.id === 'modal-product') {
+                closeModal();
+            }
+        }
+
+        function deleteProduct(id) {
+            if (confirm("¿Estás seguro de eliminar este producto del stock?")) {
+                stockItems = stockItems.filter(i => i.id !== id);
+                saveStockData();
+                renderStockTable();
+            }
+        }
+
+        function exportData() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(stockItems, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `stock_personal_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        document.addEventListener('DOMContentLoaded', loadStockData);
+    </script>
+</body>
+</html>
