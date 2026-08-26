@@ -11,16 +11,16 @@ const productsData = [
                 "id": "baranda-desmontable-montessori",
                 "title": "Baranda: Desmontable - Estilo Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
-                "image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687226-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687407-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687542-imagen.webp"
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687226-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687407-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687542-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -145,15 +145,15 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541858852-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859223-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859334-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859445-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289633113-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438785271-imagen.webp"
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541858852-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859223-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859334-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859445-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780289633113-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438785271-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -239,12 +239,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763850-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438764011-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438764144-imagen.webp"
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438763850-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438764011-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438764144-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -828,14 +828,14 @@ const productsData = [
                 "id": "escaleras",
                 "title": "Escaleras para cama",
                 "description": "Seguridad y firmeza absoluta para alcanzar cada nivel.",
-                "image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                "image": "img/escaleras/escaleras/1780288089831-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                        "cover_image": "img/escaleras/escaleras/1780288089831-imagen.webp",
                         "images_list": [
-                            "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
-                            "img/escaleras/escaleras-para-cama/1780288089987-imagen.webp"
+                            "img/escaleras/escaleras/1780288089831-imagen.webp",
+                            "img/escaleras/escaleras/1780288089987-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -956,16 +956,16 @@ const productsData = [
                 "id": "perchero-1",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
-                "image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
+                "image": "img/percheros/perchero-1/1782624223963-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
+                        "cover_image": "img/percheros/perchero-1/1782624223963-imagen.webp",
                         "images_list": [
-                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
-                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224140-imagen.webp",
-                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224273-imagen.webp",
-                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224400-imagen.webp"
+                            "img/percheros/perchero-1/1782624223963-imagen.webp",
+                            "img/percheros/perchero-1/1782624224140-imagen.webp",
+                            "img/percheros/perchero-1/1782624224273-imagen.webp",
+                            "img/percheros/perchero-1/1782624224400-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1044,14 +1044,14 @@ const productsData = [
                 "id": "banquito-de-plaza",
                 "title": "Banquito de Plaza",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                "image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                        "cover_image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
                         "images_list": [
-                            "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
-                            "img/infantil/banquito-de-plaza/1782606557223-imagen.webp"
+                            "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/sillas-y-sillones/banquito-de-plaza/1782606557223-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1091,15 +1091,15 @@ const productsData = [
                 "id": "baranda-sommier-clasica",
                 "title": "Baranda: Para camas Sommier",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
-                "image": "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-clasica/1780602269617-imagen.webp",
-                            "img/migrados/barandas/baranda-sommier-clasica/02.webp"
+                            "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/1780602269617-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1211,12 +1211,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/migrados/barandas/baranda-sommier-clasica/01.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-sommier-clasica/01.webp",
-                            "img/migrados/barandas/baranda-sommier-clasica/02.webp",
-                            "img/migrados/barandas/baranda-sommier-clasica/03.webp",
-                            "img/migrados/barandas/baranda-sommier-clasica/04.webp"
+                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/03.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/04.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1276,11 +1276,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-sommier/baranda-sommier-clasica/1780589141478-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/1780589141478-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-sommier/baranda-sommier-clasica/1780589141478-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-clasica/1780589141607-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-clasica/1780589141755-imagen.webp"
+                            "img/barandas-para-cama/baranda-sommier-clasica/1780589141478-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/1780589141607-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/1780589141755-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1392,15 +1392,15 @@ const productsData = [
                 "id": "baul-madera-mediano",
                 "title": "Baúl de madera de pino",
                 "description": "",
-                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "80 x 40 x 40 cm",
-                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
                         "images_list": [
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                            "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1782607702751-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1782607702897-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1421,10 +1421,10 @@ const productsData = [
                     },
                     {
                         "acabado_name": "100 x 40 x 40 cm",
-                        "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
                         "images_list": [
-                            "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
-                            "img/organizadores/baul-de-madera-de-pino/1783801106027-imagen.webp"
+                            "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801106027-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1445,11 +1445,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "60 x 40 x 40 cm",
-                        "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
                         "images_list": [
-                            "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
-                            "img/organizadores/baul-de-madera-de-pino/1783801038614-imagen.webp",
-                            "img/organizadores/baul-de-madera-de-pino/1783801038778-imagen.webp"
+                            "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801038614-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801038778-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1516,15 +1516,15 @@ const productsData = [
                 "id": "silla-infantil",
                 "title": "Silla infantil",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/infantil/silla-infantil/1780323571344-imagen.webp",
+                "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/infantil/silla-infantil/1780323571344-imagen.webp",
+                        "cover_image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
                         "images_list": [
-                            "img/infantil/silla-infantil/1780323571344-imagen.webp",
-                            "img/migrados/infantil/silla-infantil/Silla infantil.webp",
-                            "img/infantil/silla-infantil/1780323571488-imagen.webp"
+                            "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
+                            "img/sillas-y-sillones/silla-infantil/Silla infantil.webp",
+                            "img/sillas-y-sillones/silla-infantil/1780323571488-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1602,15 +1602,15 @@ const productsData = [
                 "id": "especiero",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-                "image": "img/interiores/especiero/1782487819564-imagen.webp",
+                "image": "img/organizadores/especiero/1782487819564-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
+                        "cover_image": "img/organizadores/especiero/1782487819564-imagen.webp",
                         "images_list": [
-                            "img/interiores/especiero/1782487819564-imagen.webp",
-                            "img/interiores/especiero/1782487819702-imagen.webp",
-                            "img/interiores/especiero/1782487819842-imagen.webp"
+                            "img/organizadores/especiero/1782487819564-imagen.webp",
+                            "img/organizadores/especiero/1782487819702-imagen.webp",
+                            "img/organizadores/especiero/1782487819842-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1711,13 +1711,13 @@ const productsData = [
                 "id": "deck-cuadrado",
                 "title": "Deck cuadrado",
                 "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
-                "image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                "image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "25 x 25 cm",
-                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
-                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                            "img/jardin/deck-cuadrado/deckcuadrado.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1764,9 +1764,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30 x 30 cm",
-                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
-                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                            "img/jardin/deck-cuadrado/deckcuadrado.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1813,9 +1813,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "40 x 40 cm",
-                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
-                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                            "img/jardin/deck-cuadrado/deckcuadrado.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1862,9 +1862,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50 x 50 cm",
-                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
-                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                            "img/jardin/deck-cuadrado/deckcuadrado.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -1979,14 +1979,14 @@ const productsData = [
                 "id": "deck-rectangular",
                 "title": "Deck rectangular",
                 "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
-                "image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                "image": "img/jardin/deck-rectangular/1780707680810-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "25 x 50 cm",
-                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "cover_image": "img/jardin/deck-rectangular/1780707680810-imagen.webp",
                         "images_list": [
-                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                            "img/jardin/deck-rectangular/1780707680810-imagen.webp",
+                            "img/jardin/deck-rectangular/1780707680977-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2033,10 +2033,10 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30 x 40 cm",
-                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "cover_image": "img/jardin/deck-rectangular/1780707680810-imagen.webp",
                         "images_list": [
-                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                            "img/jardin/deck-rectangular/1780707680810-imagen.webp",
+                            "img/jardin/deck-rectangular/1780707680977-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2083,10 +2083,10 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30 x 80 cm",
-                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "cover_image": "img/jardin/deck-rectangular/1780707680810-imagen.webp",
                         "images_list": [
-                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                            "img/jardin/deck-rectangular/1780707680810-imagen.webp",
+                            "img/jardin/deck-rectangular/1780707680977-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2201,16 +2201,16 @@ const productsData = [
                 "id": "macetas-colgante-eucalipto",
                 "title": "Macetas colgante de eucalipto",
                 "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
-                "image": "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
+                "image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
+                        "cover_image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
-                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564675-imagen.webp",
-                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564815-imagen.webp",
-                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564942-imagen.webp"
+                            "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
+                            "img/jardin/macetas-colgante-eucalipto/1786334564675-imagen.webp",
+                            "img/jardin/macetas-colgante-eucalipto/1786334564815-imagen.webp",
+                            "img/jardin/macetas-colgante-eucalipto/1786334564942-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2291,15 +2291,15 @@ const productsData = [
                 "id": "Platos-madera",
                 "title": "Platons de Madera - Asado",
                 "description": "",
-                "image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                "image": "img/todo-algarrobo/Platos-madera/1782611849956-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/Platos-madera/1782611849956-imagen.webp",
                         "images_list": [
-                            "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
+                            "img/todo-algarrobo/Platos-madera/1782611849956-imagen.webp",
+                            "img/todo-algarrobo/Platos-madera/1782611850147-imagen.webp",
+                            "img/todo-algarrobo/Platos-madera/1782611850318-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2379,16 +2379,16 @@ const productsData = [
                 "id": "Mate",
                 "title": "Mate",
                 "description": "",
-                "image": "img/hogar/mate/1780708903622-imagen.webp",
+                "image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
-                        "cover_image": "img/hogar/mate/1780708903622-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                         "images_list": [
-                            "img/hogar/mate/1780708903622-imagen.webp",
-                            "img/hogar/mate/1780708903756-imagen.webp",
-                            "img/hogar/mate/1780708903884-imagen.webp",
-                            "img/hogar/mate/1780708904016-imagen.webp"
+                            "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
+                            "img/todo-algarrobo/Mate/1780708903756-imagen.webp",
+                            "img/todo-algarrobo/Mate/1780708903884-imagen.webp",
+                            "img/todo-algarrobo/Mate/1780708904016-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2468,14 +2468,14 @@ const productsData = [
                 "id": "Platos - Cuencos",
                 "title": "Cuencos",
                 "description": "",
-                "image": "img/hogar/cuencos/1782610904255-imagen.webp",
+                "image": "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/cuencos/1782610904255-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
                         "images_list": [
-                            "img/hogar/cuencos/1782610904255-imagen.webp",
-                            "img/hogar/cuencos/1782610904423-imagen.webp"
+                            "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
+                            "img/todo-algarrobo/Platos - Cuencos/1782610904423-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -2542,16 +2542,16 @@ const productsData = [
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
                 "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
-                "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                "image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                        "cover_image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
                         "images_list": [
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094497-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094652-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094874-imagen.webp"
+                            "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094497-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094652-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094874-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2631,13 +2631,13 @@ const productsData = [
                 "id": "jenga",
                 "title": "Jenga",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/migrados/infantil/jenga/jenga.webp",
+                "image": "img/juguetes/jenga/jenga.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/infantil/jenga/jenga.webp",
+                        "cover_image": "img/juguetes/jenga/jenga.webp",
                         "images_list": [
-                            "img/migrados/infantil/jenga/jenga.webp"
+                            "img/juguetes/jenga/jenga.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2696,16 +2696,16 @@ const productsData = [
                 "id": "verdulero-clasico",
                 "title": "Verdulero Clasico",
                 "description": "Verdulero con estante superior",
-                "image": "img/migrados/organizacion/verdulero-clasico/1.webp",
+                "image": "img/organizadores/estantes-montessori/1.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/organizacion/verdulero-clasico/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/organizacion/verdulero-clasico/1.webp",
-                            "img/migrados/organizacion/verdulero-clasico/2.webp",
-                            "img/migrados/organizacion/verdulero-clasico/3.webp",
-                            "img/migrados/organizacion/verdulero-clasico/4.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/verdulero-clasico/3.webp",
+                            "img/organizadores/verdulero-clasico/4.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2991,13 +2991,13 @@ const productsData = [
                 "id": "esquinero-x3",
                 "title": "Esquinero x3",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                         "images_list": [
-                            "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp"
+                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3016,9 +3016,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                         "images_list": [
-                            "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp"
+                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3037,9 +3037,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                         "images_list": [
-                            "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp"
+                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3117,15 +3117,15 @@ const productsData = [
                 "id": "cesto-de-basura",
                 "title": "Cesto de Basura",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                "image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                        "cover_image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
-                            "img/carpinteria/cesto-de-basura/1783742426925-imagen.webp",
-                            "img/carpinteria/cesto-de-basura/1783742427140-imagen.webp"
+                            "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742426925-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742427140-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3145,11 +3145,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barniz + Brea",
-                        "cover_image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                        "cover_image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
-                            "img/carpinteria/cesto-de-basura/1783742426925-imagen.webp",
-                            "img/carpinteria/cesto-de-basura/1783742427140-imagen.webp"
+                            "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742426925-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742427140-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3208,15 +3208,15 @@ const productsData = [
                 "id": "mesa-plegabe",
                 "title": "Mesa Plegabe",
                 "description": "",
-                "image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                "image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
                         "images_list": [
-                            "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
-                            "img/exterior/mesa-plegabe/1782601058954-imagen.webp",
-                            "img/exterior/mesa-plegabe/1782601059141-imagen.webp"
+                            "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
+                            "img/mesas-de-madera/mesa-plegabe/1782601058954-imagen.webp",
+                            "img/mesas-de-madera/mesa-plegabe/1782601059141-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -3242,14 +3242,14 @@ const productsData = [
                 "id": "mesa-plegable-redonda-chica",
                 "title": "Mesa Plegable - Redonda",
                 "description": "",
-                "image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                "image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
                         "images_list": [
-                            "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
-                            "img/exterior/mesa-plegable---redonda/1782606636382-imagen.webp"
+                            "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
+                            "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636382-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -3276,13 +3276,13 @@ const productsData = [
                 "title": "Fanal",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
                 "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
-                "image": "img/migrados/otros/fanal/Fanal.webp",
+                "image": "img/jardin/fanal/Fanal.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/otros/fanal/Fanal.webp",
+                        "cover_image": "img/jardin/fanal/Fanal.webp",
                         "images_list": [
-                            "img/migrados/otros/fanal/Fanal.webp"
+                            "img/jardin/fanal/Fanal.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3354,14 +3354,14 @@ const productsData = [
                 "id": "organizador-tribuna-x3",
                 "title": "Organizador Tribuna X3",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/decoracion/organizador-tribuna-x3/1780323408539-imagen.webp",
+                "image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/organizador-tribuna-x3/1780323408539-imagen.webp",
+                        "cover_image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
                         "images_list": [
-                            "img/decoracion/organizador-tribuna-x3/1780323408539-imagen.webp",
-                            "img/decoracion/organizador-tribuna-x3/1780323408690-imagen.webp"
+                            "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+                            "img/organizadores/organizador-tribuna-x3/1780323408690-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3439,14 +3439,14 @@ const productsData = [
                 "id": "Posa-Tortas",
                 "title": "Posa Torta De Madera Torneado Candy Bar",
                 "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
-                "image": "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                "image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                        "cover_image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
-                            "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590872-imagen.webp"
+                            "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
+                            "img/organizadores/Posa-Tortas/1782622590872-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3501,15 +3501,15 @@ const productsData = [
                 "id": "baranda-sommier-triple",
                 "title": "Baranda: Para camas Sommier - Triple",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
-                "image": "img/migrados/barandas/baranda-sommier-triple/01.webp",
+                "image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/barandas/baranda-sommier-triple/01.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-sommier-triple/01.webp",
-                            "img/barandas-para-sommier/baranda-sommier-triple/1780602364557-imagen.webp",
-                            "img/migrados/barandas/baranda-sommier-triple/02.webp"
+                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3556,12 +3556,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/migrados/barandas/baranda-sommier-triple/01.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-sommier-triple/01.webp",
-                            "img/migrados/barandas/baranda-sommier-triple/02.webp",
-                            "img/migrados/barandas/baranda-sommier-triple/03.webp",
-                            "img/migrados/barandas/baranda-sommier-triple/04.webp"
+                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/03.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/04.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3593,12 +3593,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanco",
-                        "cover_image": "img/barandas-para-sommier/baranda-sommier-triple/1780589029876-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-sommier/baranda-sommier-triple/1780589029876-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-triple/1780589030031-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-triple/1780589030175-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-triple/1780589030314-imagen.webp"
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030031-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030175-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030314-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3682,14 +3682,14 @@ const productsData = [
                 "id": "baranda-fija-clasica",
                 "title": "Baranda Fija: Clásica",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
-                "image": "img/barandas-fijas/baranda-fija-clasica/1780542411484-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-fija-clasica/1780542411484-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-fijas/baranda-fija-clasica/1780542411484-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-fija-clasica/1780542411484-imagen.webp",
                         "images_list": [
-                            "img/barandas-fijas/baranda-fija-clasica/1780542411484-imagen.webp",
-                            "img/barandas-fijas/baranda-fija-clasica/1780542656050-imagen.webp"
+                            "img/barandas-para-cama/baranda-fija-clasica/1780542411484-imagen.webp",
+                            "img/barandas-para-cama/baranda-fija-clasica/1780542656050-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3754,14 +3754,14 @@ const productsData = [
                 "id": "baranda-montessori",
                 "title": "Baranda Fija: Montessori",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
-                "image": "img/barandas-fijas/baranda-montessori/1780542646419-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-fijas/baranda-montessori/1780542646419-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
                         "images_list": [
-                            "img/barandas-fijas/baranda-montessori/1780542646419-imagen.webp",
-                            "img/barandas-fijas/baranda-montessori/1780542646603-imagen.webp"
+                            "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
+                            "img/barandas-para-cama/baranda-montessori/1780542646603-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3826,14 +3826,14 @@ const productsData = [
                 "id": "baranda-simple",
                 "title": "Baranda Fija: Simple",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
-                "image": "img/barandas-fijas/baranda-simple/1780542765336-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-fijas/baranda-simple/1780542765336-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
                         "images_list": [
-                            "img/barandas-fijas/baranda-simple/1780542765336-imagen.webp",
-                            "img/barandas-fijas/baranda-simple/1780542765537-imagen.webp"
+                            "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
+                            "img/barandas-para-cama/baranda-simple/1780542765537-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3897,13 +3897,13 @@ const productsData = [
                 "id": "baranda-desmontable-triple",
                 "title": "Baranda: Desmontable Clásica - Triple",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
-                "image": "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp",
+                "image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp"
+                            "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3976,9 +3976,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp"
+                            "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4164,14 +4164,14 @@ const productsData = [
                 "id": "perchero-pared-doblegancho",
                 "title": "Perchero de pared",
                 "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
-                "image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                "image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                        "cover_image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
                         "images_list": [
-                            "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
-                            "img/percheros/perchero-de-pared/1783617272637-imagen.webp"
+                            "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
+                            "img/percheros/perchero-pared-doblegancho/1783617272637-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4269,13 +4269,13 @@ const productsData = [
                 "id": "Estantes-Cortes-Madera",
                 "title": "Cortes de madera",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/estantes/estantes.webp",
+                "image": "img/estantes/estantes/estantes.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/decoracion/estantes/estantes.webp",
+                        "cover_image": "img/estantes/estantes/estantes.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes/estantes.webp"
+                            "img/estantes/estantes/estantes.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4419,14 +4419,14 @@ const productsData = [
                 "id": "chico",
                 "title": "Vinoteca - 5 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
+                "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139706-imagen.webp"
+                            "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
+                            "img/vinotecas-bodegas/chico/1783741139706-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4507,15 +4507,15 @@ const productsData = [
                 "id": "9-vinos",
                 "title": "Vinoteca - 9 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
+                "image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401450-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401599-imagen.webp"
+                            "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
+                            "img/vinotecas-bodegas/9-vinos/1783741401450-imagen.webp",
+                            "img/vinotecas-bodegas/9-vinos/1783741401599-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4597,14 +4597,14 @@ const productsData = [
                 "id": "17-vinos",
                 "title": "Vinoteca - 17 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
+                "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tinte",
-                        "cover_image": "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---17-vinos/1783741907006-imagen.webp"
+                            "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
+                            "img/vinotecas-bodegas/17-vinos/1783741907006-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4686,15 +4686,15 @@ const productsData = [
                 "id": "13-vinos",
                 "title": "Vinoteca - 13 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
+                "image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654615-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654752-imagen.webp"
+                            "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
+                            "img/vinotecas-bodegas/13-vinos/1783741654615-imagen.webp",
+                            "img/vinotecas-bodegas/13-vinos/1783741654752-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -4776,14 +4776,14 @@ const productsData = [
                 "id": "Colecho_retro_madera",
                 "title": "Cuna: Colecho Retro",
                 "description": "",
-                "image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                "image": "img/cunas/Colecho_retro_madera/1783750658828-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                        "cover_image": "img/cunas/Colecho_retro_madera/1783750658828-imagen.webp",
                         "images_list": [
-                            "img/cunas/colecho-retro/1783750658828-imagen.webp",
-                            "img/cunas/colecho-retro/1783750658998-imagen.webp"
+                            "img/cunas/Colecho_retro_madera/1783750658828-imagen.webp",
+                            "img/cunas/Colecho_retro_madera/1783750658998-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -4855,15 +4855,15 @@ const productsData = [
                 "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
                 "title": "Cuna: Corral - Colecho con doble",
                 "description": "Corral - Colecho con doble posición de parrilla",
-                "image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                "image": "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731525-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                        "cover_image": "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731525-imagen.webp",
                         "images_list": [
-                            "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
-                            "img/cunas/corral---colecho-con-doble/1783750731679-imagen.webp",
-                            "img/cunas/corral---colecho-con-doble/1783750731827-imagen.webp"
+                            "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731525-imagen.webp",
+                            "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731679-imagen.webp",
+                            "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731827-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -4935,13 +4935,13 @@ const productsData = [
                 "id": "Eco-fija-100x50cm-Modelo-unico",
                 "title": "Cuna: Eco fija - Modelo único",
                 "description": "Eco fija - 100 x 50 cm - Modelo único",
-                "image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+                "image": "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+                        "cover_image": "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp",
                         "images_list": [
-                            "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp"
+                            "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -5114,14 +5114,14 @@ const productsData = [
                 "id": "cuna-Rebatible-cajones",
                 "title": "Cuna: rebatible con cajones",
                 "description": "",
-                "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                "image": "img/cunas/cuna-Rebatible-cajones/1783750894115-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                        "cover_image": "img/cunas/cuna-Rebatible-cajones/1783750894115-imagen.webp",
                         "images_list": [
-                            "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
-                            "img/cunas/cuna-rebatible-con-cajones/1783750894277-imagen.webp"
+                            "img/cunas/cuna-Rebatible-cajones/1783750894115-imagen.webp",
+                            "img/cunas/cuna-Rebatible-cajones/1783750894277-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -5193,14 +5193,14 @@ const productsData = [
                 "id": "Romana-Rebatible-Cajones",
                 "title": "Cuna: Romana - Rebatible - Cajones",
                 "description": "",
-                "image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                "image": "img/cunas/Romana-Rebatible-Cajones/1783750937925-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                        "cover_image": "img/cunas/Romana-Rebatible-Cajones/1783750937925-imagen.webp",
                         "images_list": [
-                            "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
-                            "img/cunas/romana---rebatible---cajones/1783750938079-imagen.webp"
+                            "img/cunas/Romana-Rebatible-Cajones/1783750937925-imagen.webp",
+                            "img/cunas/Romana-Rebatible-Cajones/1783750938079-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -5272,14 +5272,14 @@ const productsData = [
                 "id": "Romana - Rebatible - Cajones - en XX",
                 "title": "Cuna: Romana - Rebatible - Cajones - en XX",
                 "description": "",
-                "image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                "image": "img/cunas/Romana - Rebatible - Cajones - en XX/1783750962820-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                        "cover_image": "img/cunas/Romana - Rebatible - Cajones - en XX/1783750962820-imagen.webp",
                         "images_list": [
-                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
-                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962973-imagen.webp"
+                            "img/cunas/Romana - Rebatible - Cajones - en XX/1783750962820-imagen.webp",
+                            "img/cunas/Romana - Rebatible - Cajones - en XX/1783750962973-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -5351,14 +5351,14 @@ const productsData = [
                 "id": "Sol - Rebatible - Cajones",
                 "title": "Cuna: Sol - Rebatible - Cajones",
                 "description": "",
-                "image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                "image": "img/cunas/Sol - Rebatible - Cajones/1783750986939-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                        "cover_image": "img/cunas/Sol - Rebatible - Cajones/1783750986939-imagen.webp",
                         "images_list": [
-                            "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
-                            "img/cunas/sol---rebatible---cajones/1783750987098-imagen.webp"
+                            "img/cunas/Sol - Rebatible - Cajones/1783750986939-imagen.webp",
+                            "img/cunas/Sol - Rebatible - Cajones/1783750987098-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -5430,18 +5430,18 @@ const productsData = [
                 "id": "Perchero 3 - Rustico",
                 "title": "Perchero 3 - Rustico",
                 "description": "Medidas:\n50 x 13 cm",
-                "image": "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
+                "image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
+                        "cover_image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
                         "images_list": [
-                            "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
-                            "img/borrador/perchero-3---rustico/1784347711455-imagen.webp",
-                            "img/borrador/perchero-3---rustico/1784347711581-imagen.webp",
-                            "img/borrador/perchero-3---rustico/1784347711706-imagen.webp",
-                            "img/borrador/perchero-3---rustico/1784347711837-imagen.webp",
-                            "img/borrador/perchero-3---rustico/1784347711968-imagen.webp"
+                            "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
+                            "img/percheros/Perchero 3 - Rustico/1784347711455-imagen.webp",
+                            "img/percheros/Perchero 3 - Rustico/1784347711581-imagen.webp",
+                            "img/percheros/Perchero 3 - Rustico/1784347711706-imagen.webp",
+                            "img/percheros/Perchero 3 - Rustico/1784347711837-imagen.webp",
+                            "img/percheros/Perchero 3 - Rustico/1784347711968-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -5522,21 +5522,21 @@ const productsData = [
                 "id": "Perchero 5 - Rusctio - campo decorado",
                 "title": "Perchero 5 - Rustico",
                 "description": "Medidas:\n63 x 13 cm",
-                "image": "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
+                "image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
+                        "cover_image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
                         "images_list": [
-                            "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347037492-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347037651-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347037806-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347037966-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347038106-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347038278-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347038433-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347038614-imagen.webp"
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037492-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037651-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037806-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037966-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038106-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038278-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038433-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038614-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -5617,18 +5617,18 @@ const productsData = [
                 "id": "perchero-madera-tuvitos",
                 "title": "Perchero 6 - Minimalista",
                 "description": "Medidas:\n60 x 13 cm",
-                "image": "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
+                "image": "img/percheros/perchero-madera-tuvitos/1784390037823-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
+                        "cover_image": "img/percheros/perchero-madera-tuvitos/1784390037823-imagen.webp",
                         "images_list": [
-                            "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
-                            "img/borrador/perchero-6---minimalista/1784390037952-imagen.webp",
-                            "img/borrador/perchero-6---minimalista/1784390038064-imagen.webp",
-                            "img/borrador/perchero-6---minimalista/1784390038179-imagen.webp",
-                            "img/borrador/perchero-6---minimalista/1784390038295-imagen.webp",
-                            "img/borrador/perchero-6---minimalista/1784390038432-imagen.webp"
+                            "img/percheros/perchero-madera-tuvitos/1784390037823-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos/1784390037952-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos/1784390038064-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos/1784390038179-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos/1784390038295-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos/1784390038432-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -5709,17 +5709,17 @@ const productsData = [
                 "id": "perchero-madera-tuvitos5",
                 "title": "Perchero 5 - Minimalista",
                 "description": "Medidas:\n50 x 13 cm",
-                "image": "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
+                "image": "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
+                        "cover_image": "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
                         "images_list": [
-                            "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
-                            "img/borrador/perchero-5---minimalista/1784389644962-imagen.webp",
-                            "img/borrador/perchero-5---minimalista/1784389645099-imagen.webp",
-                            "img/borrador/perchero-5---minimalista/1784389645246-imagen.webp",
-                            "img/borrador/perchero-5---minimalista/1784389645362-imagen.webp"
+                            "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos5/1784389644962-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos5/1784389645099-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos5/1784389645246-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos5/1784389645362-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -5804,7 +5804,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/logo_provisional.webp",
+                        "cover_image": "img/logo_provisional.png",
                         "images_list": [],
                         "medidas_variants": [
                             {
@@ -5885,16 +5885,16 @@ const productsData = [
                 "id": "bodega-madera-6-rectangular",
                 "title": "Bodega 6 Vinos",
                 "description": "Medidas\nAlto: 40 cm\nAncho: 30 cm\nProfundidad: 23 cm",
-                "image": "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
+                "image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
                         "images_list": [
-                            "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
-                            "img/borrador/bodega-6-vinos/1784391190322-imagen.webp",
-                            "img/borrador/bodega-6-vinos/1784391190438-imagen.webp",
-                            "img/borrador/bodega-6-vinos/1784391190550-imagen.webp"
+                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
+                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190322-imagen.webp",
+                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190438-imagen.webp",
+                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190550-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -5975,13 +5975,13 @@ const productsData = [
                 "id": "hexagonales",
                 "title": "Hexagonales",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/hexagonales/hexagonales.webp",
+                "image": "img/estantes/hexagonales/hexagonales.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/decoracion/hexagonales/hexagonales.webp",
+                        "cover_image": "img/estantes/hexagonales/hexagonales.webp",
                         "images_list": [
-                            "img/migrados/decoracion/hexagonales/hexagonales.webp"
+                            "img/estantes/hexagonales/hexagonales.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6075,14 +6075,14 @@ const productsData = [
                 "id": "Mesas para Candy Bar",
                 "title": "Mesas para Candy Bar / Mesa nido",
                 "description": "",
-                "image": "img/mesas-de-madera/mesas-para-candy-bar---mesa-nido/1783813269259-imagen.webp",
+                "image": "img/mesas-de-madera/Mesas para Candy Bar/1783813269259-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/mesas-para-candy-bar---mesa-nido/1783813269259-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/Mesas para Candy Bar/1783813269259-imagen.webp",
                         "images_list": [
-                            "img/mesas-de-madera/mesas-para-candy-bar---mesa-nido/1783813269259-imagen.webp",
-                            "img/mesas-de-madera/mesas-para-candy-bar---mesa-nido/1783813269412-imagen.webp"
+                            "img/mesas-de-madera/Mesas para Candy Bar/1783813269259-imagen.webp",
+                            "img/mesas-de-madera/Mesas para Candy Bar/1783813269412-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6142,10 +6142,10 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanca",
-                        "cover_image": "img/borrador/mesas-para-candy-bar---mesa-nido/1783813178095-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/Mesas para Candy Bar/1783813178095-imagen.webp",
                         "images_list": [
-                            "img/borrador/mesas-para-candy-bar---mesa-nido/1783813178095-imagen.webp",
-                            "img/borrador/mesas-para-candy-bar---mesa-nido/1783813178232-imagen.webp"
+                            "img/mesas-de-madera/Mesas para Candy Bar/1783813178095-imagen.webp",
+                            "img/mesas-de-madera/Mesas para Candy Bar/1783813178232-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6315,13 +6315,13 @@ const productsData = [
                 "id": "pie-cama-romano",
                 "title": "Pie de cama romano",
                 "description": "",
-                "image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                        "cover_image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
                         "images_list": [
-                            "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp"
+                            "img/cunas/pie-cama-romano/1786839481815-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6402,15 +6402,15 @@ const productsData = [
                 "id": "sillon-gervasoni-simple-chico",
                 "title": "Sillon Gervasoni - Chicos",
                 "description": "",
-                "image": "img/borrador/sillon-gervasoni---chicos/1783814275891-imagen.webp",
+                "image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/borrador/sillon-gervasoni---chicos/1783814275891-imagen.webp",
+                        "cover_image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
                         "images_list": [
-                            "img/borrador/sillon-gervasoni---chicos/1783814275891-imagen.webp",
-                            "img/borrador/sillon-gervasoni---chicos/1783814276080-imagen.webp",
-                            "img/borrador/sillon-gervasoni---chicos/1783814276253-imagen.webp"
+                            "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
+                            "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814276080-imagen.webp",
+                            "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814276253-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6491,17 +6491,17 @@ const productsData = [
                 "id": "perchero-nordico-pared-x3",
                 "title": "Perchero nórdico de pared x3",
                 "description": "",
-                "image": "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
+                "image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
+                        "cover_image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163402-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163552-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163843-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162219206-imagen.webp"
+                            "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x3/1784162163402-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x3/1784162163552-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x3/1784162163843-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x3/1784162219206-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6631,19 +6631,19 @@ const productsData = [
                 "id": "perchero-nordico-pared-x5",
                 "title": "Perchero nórdico de pared x5",
                 "description": "",
-                "image": "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
+                "image": "img/percheros/perchero-nordico-pared-x5/1784163561616-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
+                        "cover_image": "img/percheros/perchero-nordico-pared-x5/1784163561616-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561762-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561907-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562052-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562207-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562362-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562519-imagen.webp"
+                            "img/percheros/perchero-nordico-pared-x5/1784163561616-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163561762-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163561907-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163562052-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163562207-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163562362-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163562519-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6773,16 +6773,16 @@ const productsData = [
                 "id": "baranda-reforzada-geriatricos",
                 "title": "Baranda: Desmontable con bulones - Especial",
                 "description": "",
-                "image": "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630822-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630951-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399631066-imagen.webp"
+                            "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
+                            "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630822-imagen.webp",
+                            "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630951-imagen.webp",
+                            "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399631066-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6839,18 +6839,18 @@ const productsData = [
                 "id": "podio-premiacion--3-modulos-",
                 "title": "Podio premiación Profesional",
                 "description": "Podios modulares resistentes para eventos y premiaciones.\n\nMódulo 1: 80 x 40 x 50 cm\nMódulo 2: 80 x 40 x 35 cm\nMódulo 3: 80 x 40 x 20 cm\n\nEnvió gratis a las zonas 1 2 y 3, se puede ver en la ultima foto de la publicación.",
-                "image": "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
+                "image": "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
+                        "cover_image": "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
                         "images_list": [
-                            "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1780774911040-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1780774911168-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1780774911301-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1780774911452-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1784645593411-imagen.webp"
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911040-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911168-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911301-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911452-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1784645593411-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6915,13 +6915,13 @@ const productsData = [
                 "id": "mensulas-escritorio",
                 "title": "Ménsulas para escritorios",
                 "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
-                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "image": "img/organizadores/mensulas/mensulas.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "40 x 40 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -6981,9 +6981,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "45 x 45 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7043,9 +7043,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50 x 50 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7132,13 +7132,13 @@ const productsData = [
                 "id": "mensulas",
                 "title": "Ménsulas para estantes",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "image": "img/organizadores/mensulas/mensulas.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "20 x 20 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7197,9 +7197,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30 x 30 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7286,15 +7286,15 @@ const productsData = [
                 "id": "Banco Escalera De Pino 3 Escalones",
                 "title": "Banco Escalera De Pino 3 Escalones",
                 "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
-                "image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                        "cover_image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
                         "images_list": [
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275705-imagen.webp",
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275851-imagen.webp"
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275705-imagen.webp",
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275851-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7323,15 +7323,15 @@ const productsData = [
                 "id": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
                 "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
                 "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
-                "image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                "image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                        "cover_image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
                         "images_list": [
-                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
-                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161963-imagen.webp",
-                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305162112-imagen.webp"
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161963-imagen.webp",
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305162112-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -7347,15 +7347,15 @@ const productsData = [
                 "title": "Estantes Montessori",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
-                "image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                "image": "img/organizadores/estantes-montessori/1.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "60 CM",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7415,11 +7415,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "80 CM",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7479,11 +7479,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "100 cm",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7585,17 +7585,17 @@ const productsData = [
                 "title": "Steps / Cajones (50cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                "image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "50x28x9 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7616,13 +7616,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50x28x16 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7643,13 +7643,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50x28x23 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7670,13 +7670,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50x50x9 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7746,17 +7746,17 @@ const productsData = [
                 "title": "Steps / Cajones (40 cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                "image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "40x28x9 cm",
-                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7777,13 +7777,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "40x28x16 cm",
-                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7804,13 +7804,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "40x28x23 cm",
-                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7831,13 +7831,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "40x28x30 cm",
-                        "cover_image": "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7907,17 +7907,17 @@ const productsData = [
                 "title": "Steps / Cajones (30 cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                "image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "30x28x9 cm",
-                        "cover_image": "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7938,13 +7938,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30x28x16 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -7965,13 +7965,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30x28x23 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8040,13 +8040,13 @@ const productsData = [
                 "id": "caballetes-madera-pino",
                 "title": "Caballetes de madera",
                 "description": "",
-                "image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Steve",
-                        "cover_image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                        "cover_image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp"
+                            "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -8061,16 +8061,16 @@ const productsData = [
                 "id": "Banco Banquito Escalera Niños Infantil",
                 "title": "Banco Banquito Escalera Niños Infantil",
                 "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
-                "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408872-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409011-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409155-imagen.webp"
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8099,17 +8099,17 @@ const productsData = [
                 "id": "Escritorio-PC-PRO",
                 "title": "Escritorio para PC - Soporte Gabinete",
                 "description": "",
-                "image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                "image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
                         "images_list": [
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334410946-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411078-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411190-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411310-imagen.webp"
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334410946-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411078-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411190-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411310-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -8124,15 +8124,15 @@ const productsData = [
                 "id": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
                 "title": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
                 "description": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
-                "image": "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+                "image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+                        "cover_image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
                         "images_list": [
-                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
-                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774793-imagen.webp",
-                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774926-imagen.webp"
+                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
+                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774793-imagen.webp",
+                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774926-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -8147,13 +8147,13 @@ const productsData = [
                 "id": "mesita-luz-angosta",
                 "title": "Mesita de luz - Angosta",
                 "description": "Mesita de luz - Angosta",
-                "image": "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp",
+                "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp",
+                        "cover_image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
                         "images_list": [
-                            "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp"
+                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -8168,14 +8168,14 @@ const productsData = [
                 "id": "tendre-ropa-madera",
                 "title": "Tender",
                 "description": "",
-                "image": "img/hogar/tender/1786334917868-imagen.webp",
+                "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Único",
-                        "cover_image": "img/hogar/tender/1786334917868-imagen.webp",
+                        "cover_image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
                         "images_list": [
-                            "img/hogar/tender/1786334917868-imagen.webp",
-                            "img/hogar/tender/1786334918048-imagen.webp"
+                            "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
+                            "img/hogar/tendre-ropa-madera/1786334918048-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -8227,14 +8227,14 @@ const productsData = [
                 "id": "soporte-vinos-vinoteca-6",
                 "title": "Soporte Para 6 Vinos Bodega Vinoteca",
                 "description": "56,5 cm. de alto\n12 cm. de ancho\n29,5 cm. de profundidad",
-                "image": "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+                "image": "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
-                            "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828055071-imagen.webp"
+                            "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
+                            "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828055071-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8264,13 +8264,13 @@ const productsData = [
                 "id": "Soporte Para 12 Vinos Bodega Vinoteca",
                 "title": "Soporte Para 12 Vinos Bodega Vinoteca",
                 "description": "» MEDIDAS\n56,5 cm. de alto\n22,5 cm. de ancho\n29,5 cm. de profundidad",
-                "image": "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp",
+                "image": "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp"
+                            "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8299,13 +8299,13 @@ const productsData = [
                 "id": "Juego de Mesa y Sillas Infantiles",
                 "title": "Juego de Mesa y Sillas Infantiles",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
                         "images_list": [
-                            "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp"
+                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8334,13 +8334,13 @@ const productsData = [
                 "id": "Juego de Mesa y Sillas redondos",
                 "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
                         "images_list": [
-                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp"
+                            "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8369,13 +8369,13 @@ const productsData = [
                 "id": "Juego de Mesa y Sillas colonial",
                 "title": "Juego de Mesa y Sillas Infantiles (Colonial)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                "image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
                         "images_list": [
-                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp"
+                            "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8404,14 +8404,14 @@ const productsData = [
                 "id": "perchero-1-2",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
-                "image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                "image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                        "cover_image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
-                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839928203-imagen.webp"
+                            "img/percheros/perchero-1-2/1786839959391-imagen.webp",
+                            "img/percheros/perchero-1-2/1786839928203-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8490,16 +8490,16 @@ const productsData = [
                 "id": "Repisa Biblioteca Estantes Montessori",
                 "title": "Repisa Biblioteca Estantes Montessori",
                 "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
-                "image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                        "cover_image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
                         "images_list": [
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158882-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159002-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159125-imagen.webp"
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158882-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159002-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159125-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8540,7 +8540,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/logo_provisional.webp",
+                        "cover_image": "img/logo_provisional.png",
                         "images_list": [],
                         "medidas_variants": [
                             {
@@ -8630,14 +8630,14 @@ const productsData = [
                 "id": "chico",
                 "title": "Vinoteca - 5 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
+                "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139430-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---5-vinos/1783741139706-imagen.webp"
+                            "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
+                            "img/vinotecas-bodegas/chico/1783741139706-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8718,15 +8718,15 @@ const productsData = [
                 "id": "9-vinos",
                 "title": "Vinoteca - 9 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
+                "image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401314-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401450-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---9-vinos/1783741401599-imagen.webp"
+                            "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
+                            "img/vinotecas-bodegas/9-vinos/1783741401450-imagen.webp",
+                            "img/vinotecas-bodegas/9-vinos/1783741401599-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8808,15 +8808,15 @@ const productsData = [
                 "id": "13-vinos",
                 "title": "Vinoteca - 13 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
+                "image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654477-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654615-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---13-vinos/1783741654752-imagen.webp"
+                            "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
+                            "img/vinotecas-bodegas/13-vinos/1783741654615-imagen.webp",
+                            "img/vinotecas-bodegas/13-vinos/1783741654752-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8898,14 +8898,14 @@ const productsData = [
                 "id": "17-vinos",
                 "title": "Vinoteca - 17 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
+                "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tinte",
-                        "cover_image": "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/vinoteca---17-vinos/1783741906853-imagen.webp",
-                            "img/vinotecas---bodegas/vinoteca---17-vinos/1783741907006-imagen.webp"
+                            "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
+                            "img/vinotecas-bodegas/17-vinos/1783741907006-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -8987,16 +8987,16 @@ const productsData = [
                 "id": "bodega-madera-6-rectangular",
                 "title": "Bodega 6 Vinos",
                 "description": "Medidas\nAlto: 40 cm\nAncho: 30 cm\nProfundidad: 23 cm",
-                "image": "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
+                "image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
                         "images_list": [
-                            "img/borrador/bodega-6-vinos/1784391190209-imagen.webp",
-                            "img/borrador/bodega-6-vinos/1784391190322-imagen.webp",
-                            "img/borrador/bodega-6-vinos/1784391190438-imagen.webp",
-                            "img/borrador/bodega-6-vinos/1784391190550-imagen.webp"
+                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
+                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190322-imagen.webp",
+                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190438-imagen.webp",
+                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190550-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9077,14 +9077,14 @@ const productsData = [
                 "id": "soporte-vinos-vinoteca-6",
                 "title": "Soporte Para 6 Vinos Bodega Vinoteca",
                 "description": "56,5 cm. de alto\n12 cm. de ancho\n29,5 cm. de profundidad",
-                "image": "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+                "image": "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828054739-imagen.webp",
-                            "img/vinotecas---bodegas/soporte-para-6-vinos-bodega-vinoteca/1786828055071-imagen.webp"
+                            "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
+                            "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828055071-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9114,13 +9114,13 @@ const productsData = [
                 "id": "Soporte Para 12 Vinos Bodega Vinoteca",
                 "title": "Soporte Para 12 Vinos Bodega Vinoteca",
                 "description": "» MEDIDAS\n56,5 cm. de alto\n22,5 cm. de ancho\n29,5 cm. de profundidad",
-                "image": "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp",
+                "image": "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp",
+                        "cover_image": "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp",
                         "images_list": [
-                            "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp"
+                            "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9159,16 +9159,16 @@ const productsData = [
                 "id": "perchero-1",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
-                "image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
+                "image": "img/percheros/perchero-1/1782624223963-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
+                        "cover_image": "img/percheros/perchero-1/1782624223963-imagen.webp",
                         "images_list": [
-                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624223963-imagen.webp",
-                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224140-imagen.webp",
-                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224273-imagen.webp",
-                            "img/decoracion/perchero-de-pie-torneado-reforzado-8-ganchos/1782624224400-imagen.webp"
+                            "img/percheros/perchero-1/1782624223963-imagen.webp",
+                            "img/percheros/perchero-1/1782624224140-imagen.webp",
+                            "img/percheros/perchero-1/1782624224273-imagen.webp",
+                            "img/percheros/perchero-1/1782624224400-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9247,14 +9247,14 @@ const productsData = [
                 "id": "perchero-1-2",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
-                "image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                "image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
+                        "cover_image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839959391-imagen.webp",
-                            "img/carpinteria/perchero-de-pie-torneado-reforzado-8-ganchos--2-/1786839928203-imagen.webp"
+                            "img/percheros/perchero-1-2/1786839959391-imagen.webp",
+                            "img/percheros/perchero-1-2/1786839928203-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9333,21 +9333,21 @@ const productsData = [
                 "id": "Perchero 5 - Rusctio - campo decorado",
                 "title": "Perchero 5 - Rustico",
                 "description": "Medidas:\n63 x 13 cm",
-                "image": "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
+                "image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
+                        "cover_image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
                         "images_list": [
-                            "img/borrador/perchero-5---rustico/1784346979215-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347037492-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347037651-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347037806-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347037966-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347038106-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347038278-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347038433-imagen.webp",
-                            "img/percheros/perchero-5---rustico/1784347038614-imagen.webp"
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037492-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037651-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037806-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037966-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038106-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038278-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038433-imagen.webp",
+                            "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038614-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9428,18 +9428,18 @@ const productsData = [
                 "id": "Perchero 3 - Rustico",
                 "title": "Perchero 3 - Rustico",
                 "description": "Medidas:\n50 x 13 cm",
-                "image": "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
+                "image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
+                        "cover_image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
                         "images_list": [
-                            "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
-                            "img/borrador/perchero-3---rustico/1784347711455-imagen.webp",
-                            "img/borrador/perchero-3---rustico/1784347711581-imagen.webp",
-                            "img/borrador/perchero-3---rustico/1784347711706-imagen.webp",
-                            "img/borrador/perchero-3---rustico/1784347711837-imagen.webp",
-                            "img/borrador/perchero-3---rustico/1784347711968-imagen.webp"
+                            "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
+                            "img/percheros/Perchero 3 - Rustico/1784347711455-imagen.webp",
+                            "img/percheros/Perchero 3 - Rustico/1784347711581-imagen.webp",
+                            "img/percheros/Perchero 3 - Rustico/1784347711706-imagen.webp",
+                            "img/percheros/Perchero 3 - Rustico/1784347711837-imagen.webp",
+                            "img/percheros/Perchero 3 - Rustico/1784347711968-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9520,19 +9520,19 @@ const productsData = [
                 "id": "perchero-nordico-pared-x5",
                 "title": "Perchero nórdico de pared x5",
                 "description": "",
-                "image": "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
+                "image": "img/percheros/perchero-nordico-pared-x5/1784163561616-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
+                        "cover_image": "img/percheros/perchero-nordico-pared-x5/1784163561616-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561616-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561762-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163561907-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562052-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562207-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562362-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x5/1784163562519-imagen.webp"
+                            "img/percheros/perchero-nordico-pared-x5/1784163561616-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163561762-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163561907-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163562052-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163562207-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163562362-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x5/1784163562519-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9662,17 +9662,17 @@ const productsData = [
                 "id": "perchero-nordico-pared-x3",
                 "title": "Perchero nórdico de pared x3",
                 "description": "",
-                "image": "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
+                "image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
+                        "cover_image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163699-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163402-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163552-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162163843-imagen.webp",
-                            "img/carpinteria/perchero-nordico-de-pared-x3/1784162219206-imagen.webp"
+                            "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x3/1784162163402-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x3/1784162163552-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x3/1784162163843-imagen.webp",
+                            "img/percheros/perchero-nordico-pared-x3/1784162219206-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9802,17 +9802,17 @@ const productsData = [
                 "id": "perchero-madera-tuvitos5",
                 "title": "Perchero 5 - Minimalista",
                 "description": "Medidas:\n50 x 13 cm",
-                "image": "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
+                "image": "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
+                        "cover_image": "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
                         "images_list": [
-                            "img/borrador/perchero-5---minimalista/1784389644815-imagen.webp",
-                            "img/borrador/perchero-5---minimalista/1784389644962-imagen.webp",
-                            "img/borrador/perchero-5---minimalista/1784389645099-imagen.webp",
-                            "img/borrador/perchero-5---minimalista/1784389645246-imagen.webp",
-                            "img/borrador/perchero-5---minimalista/1784389645362-imagen.webp"
+                            "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos5/1784389644962-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos5/1784389645099-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos5/1784389645246-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos5/1784389645362-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9893,18 +9893,18 @@ const productsData = [
                 "id": "perchero-madera-tuvitos",
                 "title": "Perchero 6 - Minimalista",
                 "description": "Medidas:\n60 x 13 cm",
-                "image": "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
+                "image": "img/percheros/perchero-madera-tuvitos/1784390037823-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
+                        "cover_image": "img/percheros/perchero-madera-tuvitos/1784390037823-imagen.webp",
                         "images_list": [
-                            "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
-                            "img/borrador/perchero-6---minimalista/1784390037952-imagen.webp",
-                            "img/borrador/perchero-6---minimalista/1784390038064-imagen.webp",
-                            "img/borrador/perchero-6---minimalista/1784390038179-imagen.webp",
-                            "img/borrador/perchero-6---minimalista/1784390038295-imagen.webp",
-                            "img/borrador/perchero-6---minimalista/1784390038432-imagen.webp"
+                            "img/percheros/perchero-madera-tuvitos/1784390037823-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos/1784390037952-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos/1784390038064-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos/1784390038179-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos/1784390038295-imagen.webp",
+                            "img/percheros/perchero-madera-tuvitos/1784390038432-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9985,14 +9985,14 @@ const productsData = [
                 "id": "perchero-pared-doblegancho",
                 "title": "Perchero de pared",
                 "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
-                "image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                "image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
+                        "cover_image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
                         "images_list": [
-                            "img/percheros/perchero-de-pared/1783617272520-imagen.webp",
-                            "img/percheros/perchero-de-pared/1783617272637-imagen.webp"
+                            "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
+                            "img/percheros/perchero-pared-doblegancho/1783617272637-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10099,15 +10099,15 @@ const productsData = [
                 "id": "baul-madera-mediano",
                 "title": "Baúl de madera de pino",
                 "description": "",
-                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "80 x 40 x 40 cm",
-                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
                         "images_list": [
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                            "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1782607702751-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1782607702897-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10128,10 +10128,10 @@ const productsData = [
                     },
                     {
                         "acabado_name": "100 x 40 x 40 cm",
-                        "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
                         "images_list": [
-                            "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
-                            "img/organizadores/baul-de-madera-de-pino/1783801106027-imagen.webp"
+                            "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801106027-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10152,11 +10152,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "60 x 40 x 40 cm",
-                        "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
                         "images_list": [
-                            "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
-                            "img/organizadores/baul-de-madera-de-pino/1783801038614-imagen.webp",
-                            "img/organizadores/baul-de-madera-de-pino/1783801038778-imagen.webp"
+                            "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801038614-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801038778-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10223,15 +10223,15 @@ const productsData = [
                 "id": "especiero",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-                "image": "img/interiores/especiero/1782487819564-imagen.webp",
+                "image": "img/organizadores/especiero/1782487819564-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
+                        "cover_image": "img/organizadores/especiero/1782487819564-imagen.webp",
                         "images_list": [
-                            "img/interiores/especiero/1782487819564-imagen.webp",
-                            "img/interiores/especiero/1782487819702-imagen.webp",
-                            "img/interiores/especiero/1782487819842-imagen.webp"
+                            "img/organizadores/especiero/1782487819564-imagen.webp",
+                            "img/organizadores/especiero/1782487819702-imagen.webp",
+                            "img/organizadores/especiero/1782487819842-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10332,16 +10332,16 @@ const productsData = [
                 "id": "verdulero-clasico",
                 "title": "Verdulero Clasico",
                 "description": "Verdulero con estante superior",
-                "image": "img/migrados/organizacion/verdulero-clasico/1.webp",
+                "image": "img/organizadores/estantes-montessori/1.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/organizacion/verdulero-clasico/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/organizacion/verdulero-clasico/1.webp",
-                            "img/migrados/organizacion/verdulero-clasico/2.webp",
-                            "img/migrados/organizacion/verdulero-clasico/3.webp",
-                            "img/migrados/organizacion/verdulero-clasico/4.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/verdulero-clasico/3.webp",
+                            "img/organizadores/verdulero-clasico/4.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10544,16 +10544,16 @@ const productsData = [
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
                 "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
-                "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                "image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                        "cover_image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
                         "images_list": [
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094497-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094652-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094874-imagen.webp"
+                            "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094497-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094652-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094874-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10717,13 +10717,13 @@ const productsData = [
                 "id": "esquinero-x3",
                 "title": "Esquinero x3",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                         "images_list": [
-                            "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp"
+                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10742,9 +10742,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                         "images_list": [
-                            "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp"
+                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10763,9 +10763,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Tintado",
-                        "cover_image": "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp",
+                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                         "images_list": [
-                            "img/migrados/organizacion/esquinero-x3/Esquinero x3.webp"
+                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10843,14 +10843,14 @@ const productsData = [
                 "id": "organizador-tribuna-x3",
                 "title": "Organizador Tribuna X3",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/decoracion/organizador-tribuna-x3/1780323408539-imagen.webp",
+                "image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/decoracion/organizador-tribuna-x3/1780323408539-imagen.webp",
+                        "cover_image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
                         "images_list": [
-                            "img/decoracion/organizador-tribuna-x3/1780323408539-imagen.webp",
-                            "img/decoracion/organizador-tribuna-x3/1780323408690-imagen.webp"
+                            "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+                            "img/organizadores/organizador-tribuna-x3/1780323408690-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10928,14 +10928,14 @@ const productsData = [
                 "id": "Posa-Tortas",
                 "title": "Posa Torta De Madera Torneado Candy Bar",
                 "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
-                "image": "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                "image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
+                        "cover_image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590711-imagen.webp",
-                            "img/barandas-para-cama/posa-torta-de-madera-torneado-candy-bar/1782622590872-imagen.webp"
+                            "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
+                            "img/organizadores/Posa-Tortas/1782622590872-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10990,13 +10990,13 @@ const productsData = [
                 "id": "mensulas-escritorio",
                 "title": "Ménsulas para escritorios",
                 "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
-                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "image": "img/organizadores/mensulas/mensulas.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "40 x 40 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11056,9 +11056,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "45 x 45 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11118,9 +11118,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50 x 50 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11207,13 +11207,13 @@ const productsData = [
                 "id": "mensulas",
                 "title": "Ménsulas para estantes",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "image": "img/organizadores/mensulas/mensulas.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "20 x 20 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11272,9 +11272,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30 x 30 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11361,15 +11361,15 @@ const productsData = [
                 "id": "Banco Escalera De Pino 3 Escalones",
                 "title": "Banco Escalera De Pino 3 Escalones",
                 "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
-                "image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                        "cover_image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
                         "images_list": [
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275705-imagen.webp",
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275851-imagen.webp"
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275705-imagen.webp",
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275851-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11399,15 +11399,15 @@ const productsData = [
                 "title": "Estantes Montessori",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
-                "image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                "image": "img/organizadores/estantes-montessori/1.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "60 CM",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11467,11 +11467,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "80 CM",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11531,11 +11531,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "100 cm",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11636,13 +11636,13 @@ const productsData = [
                 "id": "caballetes-madera-pino",
                 "title": "Caballetes de madera",
                 "description": "",
-                "image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Steve",
-                        "cover_image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                        "cover_image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp"
+                            "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -11657,16 +11657,16 @@ const productsData = [
                 "id": "Banco Banquito Escalera Niños Infantil",
                 "title": "Banco Banquito Escalera Niños Infantil",
                 "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
-                "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408872-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409011-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409155-imagen.webp"
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11695,16 +11695,16 @@ const productsData = [
                 "id": "Repisa Biblioteca Estantes Montessori",
                 "title": "Repisa Biblioteca Estantes Montessori",
                 "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
-                "image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                        "cover_image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
                         "images_list": [
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158882-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159002-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159125-imagen.webp"
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158882-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159002-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159125-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -12151,16 +12151,16 @@ const productsData = [
                 "id": "baranda-desmontable-montessori",
                 "title": "Baranda: Desmontable - Estilo Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
-                "image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687066-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687226-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687407-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438687542-imagen.webp"
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687226-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687407-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687542-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -12285,15 +12285,15 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289632908-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541858852-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859223-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859334-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780541859445-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1780289633113-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438785271-imagen.webp"
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541858852-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859223-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859334-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859445-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1780289633113-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438785271-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -12379,12 +12379,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763672-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438763850-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438764011-imagen.webp",
-                            "img/barandas-para-cama/baranda-de-seguridad---montessori/1782438764144-imagen.webp"
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438763850-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438764011-imagen.webp",
+                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438764144-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -12557,13 +12557,13 @@ const productsData = [
                 "id": "baranda-desmontable-triple",
                 "title": "Baranda: Desmontable Clásica - Triple",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
-                "image": "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp",
+                "image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp"
+                            "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -12636,9 +12636,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-desmontable-triple/barandadesmontabletriple.webp"
+                            "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -12824,15 +12824,15 @@ const productsData = [
                 "id": "baranda-sommier-clasica",
                 "title": "Baranda: Para camas Sommier",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
-                "image": "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-sommier/baranda-sommier-clasica/1780602269421-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-clasica/1780602269617-imagen.webp",
-                            "img/migrados/barandas/baranda-sommier-clasica/02.webp"
+                            "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/1780602269617-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -12944,12 +12944,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/migrados/barandas/baranda-sommier-clasica/01.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-sommier-clasica/01.webp",
-                            "img/migrados/barandas/baranda-sommier-clasica/02.webp",
-                            "img/migrados/barandas/baranda-sommier-clasica/03.webp",
-                            "img/migrados/barandas/baranda-sommier-clasica/04.webp"
+                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/03.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/04.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13009,11 +13009,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-sommier/baranda-sommier-clasica/1780589141478-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/1780589141478-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-sommier/baranda-sommier-clasica/1780589141478-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-clasica/1780589141607-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-clasica/1780589141755-imagen.webp"
+                            "img/barandas-para-cama/baranda-sommier-clasica/1780589141478-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/1780589141607-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/1780589141755-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13125,15 +13125,15 @@ const productsData = [
                 "id": "baranda-sommier-triple",
                 "title": "Baranda: Para camas Sommier - Triple",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
-                "image": "img/migrados/barandas/baranda-sommier-triple/01.webp",
+                "image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/barandas/baranda-sommier-triple/01.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-sommier-triple/01.webp",
-                            "img/barandas-para-sommier/baranda-sommier-triple/1780602364557-imagen.webp",
-                            "img/migrados/barandas/baranda-sommier-triple/02.webp"
+                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13180,12 +13180,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/migrados/barandas/baranda-sommier-triple/01.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                         "images_list": [
-                            "img/migrados/barandas/baranda-sommier-triple/01.webp",
-                            "img/migrados/barandas/baranda-sommier-triple/02.webp",
-                            "img/migrados/barandas/baranda-sommier-triple/03.webp",
-                            "img/migrados/barandas/baranda-sommier-triple/04.webp"
+                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/03.webp",
+                            "img/barandas-para-cama/baranda-sommier-clasica/04.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13217,12 +13217,12 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanco",
-                        "cover_image": "img/barandas-para-sommier/baranda-sommier-triple/1780589029876-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-sommier/baranda-sommier-triple/1780589029876-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-triple/1780589030031-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-triple/1780589030175-imagen.webp",
-                            "img/barandas-para-sommier/baranda-sommier-triple/1780589030314-imagen.webp"
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030031-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030175-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030314-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13306,16 +13306,16 @@ const productsData = [
                 "id": "baranda-reforzada-geriatricos",
                 "title": "Baranda: Desmontable con bulones - Especial",
                 "description": "",
-                "image": "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630546-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630822-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399630951-imagen.webp",
-                            "img/barandas-para-cama/barandas-desmontable---refuerzos-con-bulones/1782399631066-imagen.webp"
+                            "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
+                            "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630822-imagen.webp",
+                            "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630951-imagen.webp",
+                            "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399631066-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13372,14 +13372,14 @@ const productsData = [
                 "id": "baranda-fija-clasica",
                 "title": "Baranda Fija: Clásica",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
-                "image": "img/barandas-fijas/baranda-fija-clasica/1780542411484-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-fija-clasica/1780542411484-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-fijas/baranda-fija-clasica/1780542411484-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-fija-clasica/1780542411484-imagen.webp",
                         "images_list": [
-                            "img/barandas-fijas/baranda-fija-clasica/1780542411484-imagen.webp",
-                            "img/barandas-fijas/baranda-fija-clasica/1780542656050-imagen.webp"
+                            "img/barandas-para-cama/baranda-fija-clasica/1780542411484-imagen.webp",
+                            "img/barandas-para-cama/baranda-fija-clasica/1780542656050-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13444,14 +13444,14 @@ const productsData = [
                 "id": "baranda-montessori",
                 "title": "Baranda Fija: Montessori",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
-                "image": "img/barandas-fijas/baranda-montessori/1780542646419-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-fijas/baranda-montessori/1780542646419-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
                         "images_list": [
-                            "img/barandas-fijas/baranda-montessori/1780542646419-imagen.webp",
-                            "img/barandas-fijas/baranda-montessori/1780542646603-imagen.webp"
+                            "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
+                            "img/barandas-para-cama/baranda-montessori/1780542646603-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13516,14 +13516,14 @@ const productsData = [
                 "id": "baranda-simple",
                 "title": "Baranda Fija: Simple",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
-                "image": "img/barandas-fijas/baranda-simple/1780542765336-imagen.webp",
+                "image": "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-fijas/baranda-simple/1780542765336-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
                         "images_list": [
-                            "img/barandas-fijas/baranda-simple/1780542765336-imagen.webp",
-                            "img/barandas-fijas/baranda-simple/1780542765537-imagen.webp"
+                            "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
+                            "img/barandas-para-cama/baranda-simple/1780542765537-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13598,15 +13598,15 @@ const productsData = [
                 "title": "Estantes Montessori",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
-                "image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                "image": "img/organizadores/estantes-montessori/1.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "60 CM",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13666,11 +13666,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "80 CM",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13730,11 +13730,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "100 cm",
-                        "cover_image": "img/migrados/decoracion/estantes-montessori/1.webp",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes-montessori/1.webp",
-                            "img/migrados/decoracion/estantes-montessori/2.webp",
-                            "img/migrados/decoracion/estantes-montessori/Estantes Montessori.webp"
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13835,13 +13835,13 @@ const productsData = [
                 "id": "hexagonales",
                 "title": "Hexagonales",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/hexagonales/hexagonales.webp",
+                "image": "img/estantes/hexagonales/hexagonales.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/decoracion/hexagonales/hexagonales.webp",
+                        "cover_image": "img/estantes/hexagonales/hexagonales.webp",
                         "images_list": [
-                            "img/migrados/decoracion/hexagonales/hexagonales.webp"
+                            "img/estantes/hexagonales/hexagonales.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -13935,13 +13935,13 @@ const productsData = [
                 "id": "librero",
                 "title": "Librero",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/librero/librero.webp",
+                "image": "img/estantes/librero/librero.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/decoracion/librero/librero.webp",
+                        "cover_image": "img/estantes/librero/librero.webp",
                         "images_list": [
-                            "img/migrados/decoracion/librero/librero.webp"
+                            "img/estantes/librero/librero.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14042,13 +14042,13 @@ const productsData = [
                 "id": "triangulos",
                 "title": "Triángulos",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/triangulos/triangulos.webp",
+                "image": "img/estantes/triangulos/triangulos.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/decoracion/triangulos/triangulos.webp",
+                        "cover_image": "img/estantes/triangulos/triangulos.webp",
                         "images_list": [
-                            "img/migrados/decoracion/triangulos/triangulos.webp"
+                            "img/estantes/triangulos/triangulos.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14091,13 +14091,13 @@ const productsData = [
                 "id": "cuadrados",
                 "title": "Cuadrados",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/cuadrados/cuadrados.webp",
+                "image": "img/estantes/cuadrados/cuadrados.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/decoracion/cuadrados/cuadrados.webp",
+                        "cover_image": "img/estantes/cuadrados/cuadrados.webp",
                         "images_list": [
-                            "img/migrados/decoracion/cuadrados/cuadrados.webp"
+                            "img/estantes/cuadrados/cuadrados.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14161,13 +14161,13 @@ const productsData = [
                 "id": "mensulas",
                 "title": "Ménsulas para estantes",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "image": "img/organizadores/mensulas/mensulas.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "20 x 20 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14226,9 +14226,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30 x 30 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14315,13 +14315,13 @@ const productsData = [
                 "id": "estantes",
                 "title": "Estantes - Cortes",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/estantes/estantes.webp",
+                "image": "img/estantes/estantes/estantes.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/decoracion/estantes/estantes.webp",
+                        "cover_image": "img/estantes/estantes/estantes.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes/estantes.webp"
+                            "img/estantes/estantes/estantes.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14406,15 +14406,15 @@ const productsData = [
                 "id": "especiero",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-                "image": "img/interiores/especiero/1782487819564-imagen.webp",
+                "image": "img/organizadores/especiero/1782487819564-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/interiores/especiero/1782487819564-imagen.webp",
+                        "cover_image": "img/organizadores/especiero/1782487819564-imagen.webp",
                         "images_list": [
-                            "img/interiores/especiero/1782487819564-imagen.webp",
-                            "img/interiores/especiero/1782487819702-imagen.webp",
-                            "img/interiores/especiero/1782487819842-imagen.webp"
+                            "img/organizadores/especiero/1782487819564-imagen.webp",
+                            "img/organizadores/especiero/1782487819702-imagen.webp",
+                            "img/organizadores/especiero/1782487819842-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14515,13 +14515,13 @@ const productsData = [
                 "id": "Estantes-Cortes-Madera",
                 "title": "Cortes de madera",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/migrados/decoracion/estantes/estantes.webp",
+                "image": "img/estantes/estantes/estantes.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/decoracion/estantes/estantes.webp",
+                        "cover_image": "img/estantes/estantes/estantes.webp",
                         "images_list": [
-                            "img/migrados/decoracion/estantes/estantes.webp"
+                            "img/estantes/estantes/estantes.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14665,13 +14665,13 @@ const productsData = [
                 "id": "mensulas-escritorio",
                 "title": "Ménsulas para escritorios",
                 "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
-                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "image": "img/organizadores/mensulas/mensulas.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "40 x 40 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14731,9 +14731,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "45 x 45 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14793,9 +14793,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50 x 50 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14882,16 +14882,16 @@ const productsData = [
                 "id": "Repisa Biblioteca Estantes Montessori",
                 "title": "Repisa Biblioteca Estantes Montessori",
                 "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
-                "image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                        "cover_image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
                         "images_list": [
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158882-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159002-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159125-imagen.webp"
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158882-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159002-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159125-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -14929,14 +14929,14 @@ const productsData = [
                 "id": "Colecho_retro_madera",
                 "title": "Cuna: Colecho Retro",
                 "description": "",
-                "image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                "image": "img/cunas/Colecho_retro_madera/1783750658828-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/colecho-retro/1783750658828-imagen.webp",
+                        "cover_image": "img/cunas/Colecho_retro_madera/1783750658828-imagen.webp",
                         "images_list": [
-                            "img/cunas/colecho-retro/1783750658828-imagen.webp",
-                            "img/cunas/colecho-retro/1783750658998-imagen.webp"
+                            "img/cunas/Colecho_retro_madera/1783750658828-imagen.webp",
+                            "img/cunas/Colecho_retro_madera/1783750658998-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -15008,15 +15008,15 @@ const productsData = [
                 "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
                 "title": "Cuna: Corral - Colecho con doble",
                 "description": "Corral - Colecho con doble posición de parrilla",
-                "image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                "image": "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731525-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
+                        "cover_image": "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731525-imagen.webp",
                         "images_list": [
-                            "img/cunas/corral---colecho-con-doble/1783750731525-imagen.webp",
-                            "img/cunas/corral---colecho-con-doble/1783750731679-imagen.webp",
-                            "img/cunas/corral---colecho-con-doble/1783750731827-imagen.webp"
+                            "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731525-imagen.webp",
+                            "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731679-imagen.webp",
+                            "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731827-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -15088,13 +15088,13 @@ const productsData = [
                 "id": "Eco-fija-100x50cm-Modelo-unico",
                 "title": "Cuna: Eco fija - Modelo único",
                 "description": "Eco fija - 100 x 50 cm - Modelo único",
-                "image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+                "image": "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp",
+                        "cover_image": "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp",
                         "images_list": [
-                            "img/cunas/eco-fija---modelo-unico/1783750807676-imagen.webp"
+                            "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -15267,14 +15267,14 @@ const productsData = [
                 "id": "cuna-Rebatible-cajones",
                 "title": "Cuna: rebatible con cajones",
                 "description": "",
-                "image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                "image": "img/cunas/cuna-Rebatible-cajones/1783750894115-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
+                        "cover_image": "img/cunas/cuna-Rebatible-cajones/1783750894115-imagen.webp",
                         "images_list": [
-                            "img/cunas/cuna-rebatible-con-cajones/1783750894115-imagen.webp",
-                            "img/cunas/cuna-rebatible-con-cajones/1783750894277-imagen.webp"
+                            "img/cunas/cuna-Rebatible-cajones/1783750894115-imagen.webp",
+                            "img/cunas/cuna-Rebatible-cajones/1783750894277-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -15346,14 +15346,14 @@ const productsData = [
                 "id": "Romana-Rebatible-Cajones",
                 "title": "Cuna: Romana - Rebatible - Cajones",
                 "description": "",
-                "image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                "image": "img/cunas/Romana-Rebatible-Cajones/1783750937925-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
+                        "cover_image": "img/cunas/Romana-Rebatible-Cajones/1783750937925-imagen.webp",
                         "images_list": [
-                            "img/cunas/romana---rebatible---cajones/1783750937925-imagen.webp",
-                            "img/cunas/romana---rebatible---cajones/1783750938079-imagen.webp"
+                            "img/cunas/Romana-Rebatible-Cajones/1783750937925-imagen.webp",
+                            "img/cunas/Romana-Rebatible-Cajones/1783750938079-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -15425,14 +15425,14 @@ const productsData = [
                 "id": "Romana - Rebatible - Cajones - en XX",
                 "title": "Cuna: Romana - Rebatible - Cajones - en XX",
                 "description": "",
-                "image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                "image": "img/cunas/Romana - Rebatible - Cajones - en XX/1783750962820-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
+                        "cover_image": "img/cunas/Romana - Rebatible - Cajones - en XX/1783750962820-imagen.webp",
                         "images_list": [
-                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962820-imagen.webp",
-                            "img/cunas/romana---rebatible---cajones---en-xx/1783750962973-imagen.webp"
+                            "img/cunas/Romana - Rebatible - Cajones - en XX/1783750962820-imagen.webp",
+                            "img/cunas/Romana - Rebatible - Cajones - en XX/1783750962973-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -15504,14 +15504,14 @@ const productsData = [
                 "id": "Sol - Rebatible - Cajones",
                 "title": "Cuna: Sol - Rebatible - Cajones",
                 "description": "",
-                "image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                "image": "img/cunas/Sol - Rebatible - Cajones/1783750986939-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
+                        "cover_image": "img/cunas/Sol - Rebatible - Cajones/1783750986939-imagen.webp",
                         "images_list": [
-                            "img/cunas/sol---rebatible---cajones/1783750986939-imagen.webp",
-                            "img/cunas/sol---rebatible---cajones/1783750987098-imagen.webp"
+                            "img/cunas/Sol - Rebatible - Cajones/1783750986939-imagen.webp",
+                            "img/cunas/Sol - Rebatible - Cajones/1783750987098-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -15583,13 +15583,13 @@ const productsData = [
                 "id": "pie-cama-romano",
                 "title": "Pie de cama romano",
                 "description": "",
-                "image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                        "cover_image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
                         "images_list": [
-                            "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp"
+                            "img/cunas/pie-cama-romano/1786839481815-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -15680,15 +15680,15 @@ const productsData = [
                 "id": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
                 "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
                 "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
-                "image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                "image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
+                        "cover_image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
                         "images_list": [
-                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161815-imagen.webp",
-                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305161963-imagen.webp",
-                            "img/camas-para-ninos/cama-superpuesta-de-pino-macizo-con-2-barandas-y-cajones/1786305162112-imagen.webp"
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161963-imagen.webp",
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305162112-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -15703,13 +15703,13 @@ const productsData = [
                 "id": "pie-cama-romano",
                 "title": "Pie de cama romano",
                 "description": "",
-                "image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                        "cover_image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
                         "images_list": [
-                            "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp"
+                            "img/cunas/pie-cama-romano/1786839481815-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -15798,14 +15798,14 @@ const productsData = [
                 "id": "escaleras",
                 "title": "Escaleras para cama",
                 "description": "Seguridad y firmeza absoluta para alcanzar cada nivel.",
-                "image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                "image": "img/escaleras/escaleras/1780288089831-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
+                        "cover_image": "img/escaleras/escaleras/1780288089831-imagen.webp",
                         "images_list": [
-                            "img/escaleras/escaleras-para-cama/1780288089831-imagen.webp",
-                            "img/escaleras/escaleras-para-cama/1780288089987-imagen.webp"
+                            "img/escaleras/escaleras/1780288089831-imagen.webp",
+                            "img/escaleras/escaleras/1780288089987-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -15926,14 +15926,14 @@ const productsData = [
                 "id": "escalera-altillo",
                 "title": "Escaleras para altillos",
                 "description": "",
-                "image": "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
+                "image": "img/escaleras/escalera-altillo/1780287625467-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
+                        "cover_image": "img/escaleras/escalera-altillo/1780287625467-imagen.webp",
                         "images_list": [
-                            "img/escaleras/escaleras-para-altillos/1780287625467-imagen.webp",
-                            "img/escaleras/escaleras-para-altillos/1780287625629-imagen.webp"
+                            "img/escaleras/escalera-altillo/1780287625467-imagen.webp",
+                            "img/escaleras/escalera-altillo/1780287625629-imagen.webp"
                         ],
                         "medidas_variants": []
                     }
@@ -15976,15 +15976,15 @@ const productsData = [
                 "id": "Banco Escalera De Pino 3 Escalones",
                 "title": "Banco Escalera De Pino 3 Escalones",
                 "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
-                "image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
+                        "cover_image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
                         "images_list": [
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275337-imagen.webp",
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275705-imagen.webp",
-                            "img/escaleras/banco-escalera-de-pino-3-escalones/1786226275851-imagen.webp"
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275705-imagen.webp",
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275851-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16013,16 +16013,16 @@ const productsData = [
                 "id": "Banco Banquito Escalera Niños Infantil",
                 "title": "Banco Banquito Escalera Niños Infantil",
                 "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
-                "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408872-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409011-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409155-imagen.webp"
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16060,18 +16060,18 @@ const productsData = [
                 "id": "cajones-profesional",
                 "title": "Steps / Cajones / Profesionales",
                 "description": "Escalón de madera multiusos para ejercicios y más",
-                "image": "img/steps---cajones/steps---cajones---profesionales/1780590450688-imagen.webp",
+                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/steps---cajones/steps---cajones---profesionales/1780590450688-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones---profesionales/1780590450688-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1780589892571-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1780589892697-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1780589892809-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1782417150808-imagen.webp",
-                            "img/steps---cajones/steps---cajones---profesionales/1782417150969-imagen.webp"
+                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892809-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1782417150808-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1782417150969-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16129,17 +16129,17 @@ const productsData = [
                 "title": "Steps / Cajones (30 cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                "image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "30x28x9 cm",
-                        "cover_image": "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16160,13 +16160,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30x28x16 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16187,13 +16187,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30x28x23 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16263,17 +16263,17 @@ const productsData = [
                 "title": "Steps / Cajones (40 cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                "image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "40x28x9 cm",
-                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16294,13 +16294,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "40x28x16 cm",
-                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16321,13 +16321,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "40x28x23 cm",
-                        "cover_image": "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16348,13 +16348,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "40x28x30 cm",
-                        "cover_image": "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
                         "images_list": [
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16424,17 +16424,17 @@ const productsData = [
                 "title": "Steps / Cajones (50cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                "image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "50x28x9 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16455,13 +16455,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50x28x16 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16482,13 +16482,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50x28x23 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16509,13 +16509,13 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50x50x9 cm",
-                        "cover_image": "img/migrados/otros/steps---cajones/stepscajones.webp",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
-                            "img/migrados/otros/steps---cajones/stepscajones.webp",
-                            "img/steps---cajones/steps---cajones/1780589685491-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685655-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685807-imagen.webp",
-                            "img/steps---cajones/steps---cajones/1780589685928-imagen.webp"
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16592,13 +16592,13 @@ const productsData = [
                 "id": "jenga",
                 "title": "Jenga",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/migrados/infantil/jenga/jenga.webp",
+                "image": "img/juguetes/jenga/jenga.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/infantil/jenga/jenga.webp",
+                        "cover_image": "img/juguetes/jenga/jenga.webp",
                         "images_list": [
-                            "img/migrados/infantil/jenga/jenga.webp"
+                            "img/juguetes/jenga/jenga.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16657,15 +16657,15 @@ const productsData = [
                 "id": "baul-madera-mediano",
                 "title": "Baúl de madera de pino",
                 "description": "",
-                "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "80 x 40 x 40 cm",
-                        "cover_image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
                         "images_list": [
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702751-imagen.webp",
-                            "img/infantil/baul-de-madera-de-pino---mediano/1782607702897-imagen.webp"
+                            "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1782607702751-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1782607702897-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16686,10 +16686,10 @@ const productsData = [
                     },
                     {
                         "acabado_name": "100 x 40 x 40 cm",
-                        "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
                         "images_list": [
-                            "img/organizadores/baul-de-madera-de-pino/1783801105880-imagen.webp",
-                            "img/organizadores/baul-de-madera-de-pino/1783801106027-imagen.webp"
+                            "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801106027-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16710,11 +16710,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "60 x 40 x 40 cm",
-                        "cover_image": "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
                         "images_list": [
-                            "img/organizadores/baul-de-madera-de-pino/1783801038221-imagen.webp",
-                            "img/organizadores/baul-de-madera-de-pino/1783801038614-imagen.webp",
-                            "img/organizadores/baul-de-madera-de-pino/1783801038778-imagen.webp"
+                            "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801038614-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801038778-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16781,16 +16781,16 @@ const productsData = [
                 "id": "Banco Banquito Escalera Niños Infantil",
                 "title": "Banco Banquito Escalera Niños Infantil",
                 "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
-                "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
+                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408872-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409011-imagen.webp",
-                            "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333409155-imagen.webp"
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16819,13 +16819,13 @@ const productsData = [
                 "id": "Juego de Mesa y Sillas Infantiles",
                 "title": "Juego de Mesa y Sillas Infantiles",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
                         "images_list": [
-                            "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp"
+                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16854,13 +16854,13 @@ const productsData = [
                 "id": "Juego de Mesa y Sillas redondos",
                 "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
                         "images_list": [
-                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp"
+                            "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16889,13 +16889,13 @@ const productsData = [
                 "id": "Juego de Mesa y Sillas colonial",
                 "title": "Juego de Mesa y Sillas Infantiles (Colonial)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                "image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
                         "images_list": [
-                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp"
+                            "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16934,14 +16934,14 @@ const productsData = [
                 "id": "banquito-de-plaza",
                 "title": "Banquito de Plaza",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                "image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
+                        "cover_image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
                         "images_list": [
-                            "img/infantil/banquito-de-plaza/1782606556989-imagen.webp",
-                            "img/infantil/banquito-de-plaza/1782606557223-imagen.webp"
+                            "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/sillas-y-sillones/banquito-de-plaza/1782606557223-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16981,15 +16981,15 @@ const productsData = [
                 "id": "silla-infantil",
                 "title": "Silla infantil",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/infantil/silla-infantil/1780323571344-imagen.webp",
+                "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/infantil/silla-infantil/1780323571344-imagen.webp",
+                        "cover_image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
                         "images_list": [
-                            "img/infantil/silla-infantil/1780323571344-imagen.webp",
-                            "img/migrados/infantil/silla-infantil/Silla infantil.webp",
-                            "img/infantil/silla-infantil/1780323571488-imagen.webp"
+                            "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
+                            "img/sillas-y-sillones/silla-infantil/Silla infantil.webp",
+                            "img/sillas-y-sillones/silla-infantil/1780323571488-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17067,15 +17067,15 @@ const productsData = [
                 "id": "sillon-gervasoni-simple-chico",
                 "title": "Sillon Gervasoni - Chicos",
                 "description": "",
-                "image": "img/borrador/sillon-gervasoni---chicos/1783814275891-imagen.webp",
+                "image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/borrador/sillon-gervasoni---chicos/1783814275891-imagen.webp",
+                        "cover_image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
                         "images_list": [
-                            "img/borrador/sillon-gervasoni---chicos/1783814275891-imagen.webp",
-                            "img/borrador/sillon-gervasoni---chicos/1783814276080-imagen.webp",
-                            "img/borrador/sillon-gervasoni---chicos/1783814276253-imagen.webp"
+                            "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
+                            "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814276080-imagen.webp",
+                            "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814276253-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17156,13 +17156,13 @@ const productsData = [
                 "id": "Juego de Mesa y Sillas colonial",
                 "title": "Juego de Mesa y Sillas Infantiles (Colonial)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                "image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
                         "images_list": [
-                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--colonial-/1786839007827-imagen.webp"
+                            "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17191,13 +17191,13 @@ const productsData = [
                 "id": "Juego de Mesa y Sillas redondos",
                 "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
                         "images_list": [
-                            "img/juguetes/juego-de-mesa-y-sillas-infantiles--redondos-/1786838965424-imagen.webp"
+                            "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17226,13 +17226,13 @@ const productsData = [
                 "id": "Juego de Mesa y Sillas Infantiles",
                 "title": "Juego de Mesa y Sillas Infantiles",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
                         "images_list": [
-                            "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp"
+                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17271,16 +17271,16 @@ const productsData = [
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
                 "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
-                "image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                "image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
+                        "cover_image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
                         "images_list": [
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094761-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094497-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094652-imagen.webp",
-                            "img/interiores/mueble-multifuncion---estilo-nordico/1780707094874-imagen.webp"
+                            "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094497-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094652-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094874-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17360,15 +17360,15 @@ const productsData = [
                 "id": "mesa-plegabe",
                 "title": "Mesa Plegabe",
                 "description": "",
-                "image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                "image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
                         "images_list": [
-                            "img/exterior/mesa-plegabe/1782601058760-imagen.webp",
-                            "img/exterior/mesa-plegabe/1782601058954-imagen.webp",
-                            "img/exterior/mesa-plegabe/1782601059141-imagen.webp"
+                            "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
+                            "img/mesas-de-madera/mesa-plegabe/1782601058954-imagen.webp",
+                            "img/mesas-de-madera/mesa-plegabe/1782601059141-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -17394,14 +17394,14 @@ const productsData = [
                 "id": "mesa-plegable-redonda-chica",
                 "title": "Mesa Plegable - Redonda",
                 "description": "",
-                "image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                "image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
                         "images_list": [
-                            "img/exterior/mesa-plegable---redonda/1782606636181-imagen.webp",
-                            "img/exterior/mesa-plegable---redonda/1782606636382-imagen.webp"
+                            "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
+                            "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636382-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -17427,14 +17427,14 @@ const productsData = [
                 "id": "Mesas para Candy Bar",
                 "title": "Mesas para Candy Bar / Mesa nido",
                 "description": "",
-                "image": "img/mesas-de-madera/mesas-para-candy-bar---mesa-nido/1783813269259-imagen.webp",
+                "image": "img/mesas-de-madera/Mesas para Candy Bar/1783813269259-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/mesas-para-candy-bar---mesa-nido/1783813269259-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/Mesas para Candy Bar/1783813269259-imagen.webp",
                         "images_list": [
-                            "img/mesas-de-madera/mesas-para-candy-bar---mesa-nido/1783813269259-imagen.webp",
-                            "img/mesas-de-madera/mesas-para-candy-bar---mesa-nido/1783813269412-imagen.webp"
+                            "img/mesas-de-madera/Mesas para Candy Bar/1783813269259-imagen.webp",
+                            "img/mesas-de-madera/Mesas para Candy Bar/1783813269412-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17494,10 +17494,10 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Blanca",
-                        "cover_image": "img/borrador/mesas-para-candy-bar---mesa-nido/1783813178095-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/Mesas para Candy Bar/1783813178095-imagen.webp",
                         "images_list": [
-                            "img/borrador/mesas-para-candy-bar---mesa-nido/1783813178095-imagen.webp",
-                            "img/borrador/mesas-para-candy-bar---mesa-nido/1783813178232-imagen.webp"
+                            "img/mesas-de-madera/Mesas para Candy Bar/1783813178095-imagen.webp",
+                            "img/mesas-de-madera/Mesas para Candy Bar/1783813178232-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17667,13 +17667,13 @@ const productsData = [
                 "id": "mensulas-escritorio",
                 "title": "Ménsulas para escritorios",
                 "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
-                "image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                "image": "img/organizadores/mensulas/mensulas.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "40 x 40 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17733,9 +17733,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "45 x 45 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17795,9 +17795,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50 x 50 cm",
-                        "cover_image": "img/migrados/decoracion/mensulas/mensulas.webp",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/migrados/decoracion/mensulas/mensulas.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17884,17 +17884,17 @@ const productsData = [
                 "id": "Escritorio-PC-PRO",
                 "title": "Escritorio para PC - Soporte Gabinete",
                 "description": "",
-                "image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                "image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
                         "images_list": [
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334410946-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411078-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411190-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411310-imagen.webp"
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334410946-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411078-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411190-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411310-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -17955,14 +17955,14 @@ const productsData = [
                 "id": "deck-rectangular",
                 "title": "Deck rectangular",
                 "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
-                "image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                "image": "img/jardin/deck-rectangular/1780707680810-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "25 x 50 cm",
-                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "cover_image": "img/jardin/deck-rectangular/1780707680810-imagen.webp",
                         "images_list": [
-                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                            "img/jardin/deck-rectangular/1780707680810-imagen.webp",
+                            "img/jardin/deck-rectangular/1780707680977-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18009,10 +18009,10 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30 x 40 cm",
-                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "cover_image": "img/jardin/deck-rectangular/1780707680810-imagen.webp",
                         "images_list": [
-                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                            "img/jardin/deck-rectangular/1780707680810-imagen.webp",
+                            "img/jardin/deck-rectangular/1780707680977-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18059,10 +18059,10 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30 x 80 cm",
-                        "cover_image": "img/exterior/deck-rectangular/1780707680810-imagen.webp",
+                        "cover_image": "img/jardin/deck-rectangular/1780707680810-imagen.webp",
                         "images_list": [
-                            "img/exterior/deck-rectangular/1780707680810-imagen.webp",
-                            "img/exterior/deck-rectangular/1780707680977-imagen.webp"
+                            "img/jardin/deck-rectangular/1780707680810-imagen.webp",
+                            "img/jardin/deck-rectangular/1780707680977-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18177,13 +18177,13 @@ const productsData = [
                 "id": "deck-cuadrado",
                 "title": "Deck cuadrado",
                 "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
-                "image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                "image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "25 x 25 cm",
-                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
-                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                            "img/jardin/deck-cuadrado/deckcuadrado.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18230,9 +18230,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "30 x 30 cm",
-                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
-                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                            "img/jardin/deck-cuadrado/deckcuadrado.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18279,9 +18279,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "40 x 40 cm",
-                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
-                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                            "img/jardin/deck-cuadrado/deckcuadrado.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18328,9 +18328,9 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50 x 50 cm",
-                        "cover_image": "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp",
+                        "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
                         "images_list": [
-                            "img/migrados/exterior/deck-cuadrado/deckcuadrado.webp"
+                            "img/jardin/deck-cuadrado/deckcuadrado.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18445,16 +18445,16 @@ const productsData = [
                 "id": "macetas-colgante-eucalipto",
                 "title": "Macetas colgante de eucalipto",
                 "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
-                "image": "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
+                "image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
+                        "cover_image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564549-imagen.webp",
-                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564675-imagen.webp",
-                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564815-imagen.webp",
-                            "img/carpinteria/macetas-colgante-de-eucalipto/1786334564942-imagen.webp"
+                            "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
+                            "img/jardin/macetas-colgante-eucalipto/1786334564675-imagen.webp",
+                            "img/jardin/macetas-colgante-eucalipto/1786334564815-imagen.webp",
+                            "img/jardin/macetas-colgante-eucalipto/1786334564942-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18536,13 +18536,13 @@ const productsData = [
                 "title": "Fanal",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
                 "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
-                "image": "img/migrados/otros/fanal/Fanal.webp",
+                "image": "img/jardin/fanal/Fanal.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/otros/fanal/Fanal.webp",
+                        "cover_image": "img/jardin/fanal/Fanal.webp",
                         "images_list": [
-                            "img/migrados/otros/fanal/Fanal.webp"
+                            "img/jardin/fanal/Fanal.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18614,15 +18614,15 @@ const productsData = [
                 "id": "cesto-de-basura",
                 "title": "Cesto de Basura",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                "image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                        "cover_image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
-                            "img/carpinteria/cesto-de-basura/1783742426925-imagen.webp",
-                            "img/carpinteria/cesto-de-basura/1783742427140-imagen.webp"
+                            "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742426925-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742427140-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18642,11 +18642,11 @@ const productsData = [
                     },
                     {
                         "acabado_name": "Barniz + Brea",
-                        "cover_image": "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
+                        "cover_image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/cesto-de-basura/1783742426725-imagen.webp",
-                            "img/carpinteria/cesto-de-basura/1783742426925-imagen.webp",
-                            "img/carpinteria/cesto-de-basura/1783742427140-imagen.webp"
+                            "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742426925-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742427140-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18705,13 +18705,13 @@ const productsData = [
                 "id": "caballetes-madera-pino",
                 "title": "Caballetes de madera",
                 "description": "",
-                "image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Steve",
-                        "cover_image": "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp",
+                        "cover_image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
                         "images_list": [
-                            "img/carpinteria/caballetes-de-madera/1786332672126-imagen.webp"
+                            "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -18735,17 +18735,17 @@ const productsData = [
                 "id": "Escritorio-PC-PRO",
                 "title": "Escritorio para PC - Soporte Gabinete",
                 "description": "",
-                "image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                "image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
+                        "cover_image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
                         "images_list": [
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334303185-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334410946-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411078-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411190-imagen.webp",
-                            "img/hogar/escritorio-para-pc---soporte-gabinete/1786334411310-imagen.webp"
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334410946-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411078-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411190-imagen.webp",
+                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411310-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -18760,15 +18760,15 @@ const productsData = [
                 "id": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
                 "title": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
                 "description": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
-                "image": "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+                "image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
+                        "cover_image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
                         "images_list": [
-                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774605-imagen.webp",
-                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774793-imagen.webp",
-                            "img/hogar/mesa-de-luz-de-pino-con-cajon-y-puerta-nordica/1786334774926-imagen.webp"
+                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
+                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774793-imagen.webp",
+                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774926-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -18783,13 +18783,13 @@ const productsData = [
                 "id": "mesita-luz-angosta",
                 "title": "Mesita de luz - Angosta",
                 "description": "Mesita de luz - Angosta",
-                "image": "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp",
+                "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp",
+                        "cover_image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
                         "images_list": [
-                            "img/hogar/mesita-de-luz---angosta/1786334817500-imagen.webp"
+                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -18804,14 +18804,14 @@ const productsData = [
                 "id": "tendre-ropa-madera",
                 "title": "Tender",
                 "description": "",
-                "image": "img/hogar/tender/1786334917868-imagen.webp",
+                "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Único",
-                        "cover_image": "img/hogar/tender/1786334917868-imagen.webp",
+                        "cover_image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
                         "images_list": [
-                            "img/hogar/tender/1786334917868-imagen.webp",
-                            "img/hogar/tender/1786334918048-imagen.webp"
+                            "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
+                            "img/hogar/tendre-ropa-madera/1786334918048-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -18826,13 +18826,13 @@ const productsData = [
                 "id": "pie-cama-romano",
                 "title": "Pie de cama romano",
                 "description": "",
-                "image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp",
+                        "cover_image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
                         "images_list": [
-                            "img/borrador/pie-de-cama-romano/1786839481815-imagen.webp"
+                            "img/cunas/pie-cama-romano/1786839481815-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18913,16 +18913,16 @@ const productsData = [
                 "id": "Repisa Biblioteca Estantes Montessori",
                 "title": "Repisa Biblioteca Estantes Montessori",
                 "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
-                "image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                        "cover_image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
                         "images_list": [
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158882-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159002-imagen.webp",
-                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159125-imagen.webp"
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158882-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159002-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159125-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -18959,15 +18959,15 @@ const productsData = [
                 "id": "Platos-madera",
                 "title": "Platons de Madera - Asado",
                 "description": "",
-                "image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                "image": "img/todo-algarrobo/Platos-madera/1782611849956-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/Platos-madera/1782611849956-imagen.webp",
                         "images_list": [
-                            "img/hogar/platons-de-madera---asado/1782611849956-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1782611850147-imagen.webp",
-                            "img/hogar/platons-de-madera---asado/1782611850318-imagen.webp"
+                            "img/todo-algarrobo/Platos-madera/1782611849956-imagen.webp",
+                            "img/todo-algarrobo/Platos-madera/1782611850147-imagen.webp",
+                            "img/todo-algarrobo/Platos-madera/1782611850318-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -19047,14 +19047,14 @@ const productsData = [
                 "id": "Platos - Cuencos",
                 "title": "Cuencos",
                 "description": "",
-                "image": "img/hogar/cuencos/1782610904255-imagen.webp",
+                "image": "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/cuencos/1782610904255-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
                         "images_list": [
-                            "img/hogar/cuencos/1782610904255-imagen.webp",
-                            "img/hogar/cuencos/1782610904423-imagen.webp"
+                            "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
+                            "img/todo-algarrobo/Platos - Cuencos/1782610904423-imagen.webp"
                         ],
                         "medidas_variants": [],
                         "hidden": false
@@ -19120,16 +19120,16 @@ const productsData = [
                 "id": "Mate",
                 "title": "Mate",
                 "description": "",
-                "image": "img/hogar/mate/1780708903622-imagen.webp",
+                "image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
-                        "cover_image": "img/hogar/mate/1780708903622-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                         "images_list": [
-                            "img/hogar/mate/1780708903622-imagen.webp",
-                            "img/hogar/mate/1780708903756-imagen.webp",
-                            "img/hogar/mate/1780708903884-imagen.webp",
-                            "img/hogar/mate/1780708904016-imagen.webp"
+                            "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
+                            "img/todo-algarrobo/Mate/1780708903756-imagen.webp",
+                            "img/todo-algarrobo/Mate/1780708903884-imagen.webp",
+                            "img/todo-algarrobo/Mate/1780708904016-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -19217,17 +19217,17 @@ const productsData = [
                 "id": "podio-profesional",
                 "title": "Podio profesional | Grande",
                 "description": "",
-                "image": "img/podios-de-premiacion/podio-profesional---grande/1780774147587-imagen.webp",
+                "image": "img/podios-de-premiacion/podio-profesional/1780774147587-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Negro",
-                        "cover_image": "img/podios-de-premiacion/podio-profesional---grande/1780774147587-imagen.webp",
+                        "cover_image": "img/podios-de-premiacion/podio-profesional/1780774147587-imagen.webp",
                         "images_list": [
-                            "img/podios-de-premiacion/podio-profesional---grande/1780774147587-imagen.webp",
-                            "img/podios-de-premiacion/podio-profesional---grande/1780774147784-imagen.webp",
-                            "img/podios-de-premiacion/podio-profesional---grande/1780774147917-imagen.webp",
-                            "img/podios-de-premiacion/podio-profesional---grande/1780774148049-imagen.webp",
-                            "img/podios-de-premiacion/podio-profesional---grande/1780774148175-imagen.webp"
+                            "img/podios-de-premiacion/podio-profesional/1780774147587-imagen.webp",
+                            "img/podios-de-premiacion/podio-profesional/1780774147784-imagen.webp",
+                            "img/podios-de-premiacion/podio-profesional/1780774147917-imagen.webp",
+                            "img/podios-de-premiacion/podio-profesional/1780774148049-imagen.webp",
+                            "img/podios-de-premiacion/podio-profesional/1780774148175-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -19309,18 +19309,18 @@ const productsData = [
                 "id": "podio-premiacion--3-modulos-",
                 "title": "Podio premiación Profesional",
                 "description": "Podios modulares resistentes para eventos y premiaciones.\n\nMódulo 1: 80 x 40 x 50 cm\nMódulo 2: 80 x 40 x 35 cm\nMódulo 3: 80 x 40 x 20 cm\n\nEnvió gratis a las zonas 1 2 y 3, se puede ver en la ultima foto de la publicación.",
-                "image": "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
+                "image": "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
+                        "cover_image": "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
                         "images_list": [
-                            "img/podios-de-premiacion/podio-premiacion/1780774910905-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1780774911040-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1780774911168-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1780774911301-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1780774911452-imagen.webp",
-                            "img/podios-de-premiacion/podio-premiacion/1784645593411-imagen.webp"
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911040-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911168-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911301-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911452-imagen.webp",
+                            "img/podios-de-premiacion/podio-premiacion--3-modulos-/1784645593411-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -19385,13 +19385,13 @@ const productsData = [
                 "id": "podios-individuales",
                 "title": "Podios individuales",
                 "description": "Podios modulares resistentes para eventos y premiaciones.",
-                "image": "img/migrados/otros/podios-individuales/Podio premiacion (3 modulos).webp",
+                "image": "img/podios-de-premiacion/podios-individuales/Podio premiacion (3 modulos).webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/migrados/otros/podios-individuales/Podio premiacion (3 modulos).webp",
+                        "cover_image": "img/podios-de-premiacion/podios-individuales/Podio premiacion (3 modulos).webp",
                         "images_list": [
-                            "img/migrados/otros/podios-individuales/Podio premiacion (3 modulos).webp"
+                            "img/podios-de-premiacion/podios-individuales/Podio premiacion (3 modulos).webp"
                         ],
                         "medidas_variants": [
                             {
