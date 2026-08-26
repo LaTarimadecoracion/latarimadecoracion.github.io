@@ -180,6 +180,11 @@ app.get('/js/site-config.js', (req, res, next) => {
     next();
 });
 
+// Manejo de rutas limpias SPA (/stock, /mayorista, /catalogo, /musica, /alquileres, /admin)
+app.get(['/stock', '/mayorista', '/catalogo', '/musica', '/alquileres', '/admin'], (req, res) => {
+    res.sendFile(path.join(ROOT_DIR, 'index.html'));
+});
+
 // Serve static files from the current directory
 app.use(express.static(ROOT_DIR));
 
@@ -434,8 +439,12 @@ app.post('/api/publish-github', async (req, res) => {
         console.log('1. Compilando la web...');
         await execPromise('node _dev/build.js', { cwd: ROOT_DIR });
 
-        // Paso 2: Staging de archivos
+        // Paso 2: Staging de archivos (limpiando lock file si quedó bloqueado)
         console.log('2. Staging files...');
+        const lockFilePath = path.join(ROOT_DIR, '.git', 'index.lock');
+        if (fs.existsSync(lockFilePath)) {
+            try { fs.unlinkSync(lockFilePath); } catch (e) {}
+        }
         await execPromise('git add .', { cwd: ROOT_DIR });
 
         // Paso 3: Comprobar si hay cambios para hacer commit
@@ -2267,7 +2276,7 @@ app.get('*', (req, res) => {
 
     // Ruta del Editor de Fotos Masivo sin .html visible
     if (cleanUrl === '/web/edit' || cleanUrl === '/edit' || cleanUrl === '/editor' || cleanUrl === '/web/editor') {
-        const editorPath = path.join(ROOT_DIR, 'Herramientas', 'editor-fotos.html');
+        const editorPath = path.join(ROOT_DIR, 'apps', 'editor-fotos.html');
         if (fs.existsSync(editorPath)) {
             return res.sendFile(editorPath);
         }
@@ -2318,6 +2327,11 @@ function regenerateAllClientPages() {
         console.error('❌ Error regenerando páginas de seguimiento al arrancar:', e);
     }
 }
+
+// Manejo de rutas limpias SPA (/stock, /mayorista, /catalogo, /musica, /alquileres, /admin)
+app.get(['/stock', '/mayorista', '/catalogo', '/musica', '/alquileres', '/admin'], (req, res) => {
+    res.sendFile(path.join(ROOT_DIR, 'index.html'));
+});
 
 app.listen(PORT, '0.0.0.0', () => {
     regenerateAllClientPages();

@@ -117,21 +117,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 2. Optimizador de corte
                     if (url.includes('corte')) {
                         try {
-                            window.top.location.href = '../Herramientas/corte.html';
-                            return;
-                        } catch(e) {}
-                        window.location.href = '../Herramientas/corte.html';
-                        return;
+                            return window.top.location.href = '../apps/corte.html';
+                        } catch (e) {
+                            return window.location.href = '../apps/corte.html';
+                        }
                     }
 
                     // 3. Editor de fotos masivo
                     if (url.includes('editor')) {
                         try {
-                            window.top.location.href = '../Herramientas/editor-fotos.html';
-                            return;
-                        } catch(e) {}
-                        window.location.href = '../Herramientas/editor-fotos.html';
-                        return;
+                            return window.top.location.href = '../apps/editor-fotos.html';
+                        } catch (e) {
+                            return window.location.href = '../apps/editor-fotos.html';
+                        }
                     }
 
                     // 4. Visualizador de barandas 3D

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 function scanMusica(rootDir) {
-    const musicaDir = path.join(rootDir, 'Musica');
+    const musicaDir = path.join(rootDir, 'audio', 'Musica');
     const terminadosDir = path.join(musicaDir, 'Terminados');
     const demosDir = path.join(musicaDir, 'Demos');
 
@@ -39,8 +39,8 @@ function scanMusica(rootDir) {
             });
     };
 
-    const terminados = scanDir(terminadosDir, 'Musica/Terminados');
-    const demos = scanDir(demosDir, 'Musica/Demos');
+    const terminados = scanDir(terminadosDir, 'audio/Musica/Terminados');
+    const demos = scanDir(demosDir, 'audio/Musica/Demos');
 
     let list = { terminados, demos };
 

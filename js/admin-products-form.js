@@ -792,8 +792,15 @@
             document.getElementById('admin-product-rental-price').value = existingProd?.price || '';
         }
 
-        // Campos globales
-        document.getElementById('admin-id').value          = existingProd?.id          || '';
+        // Campos globales (Auto-generar ID Base36 sin puntos si es un producto nuevo)
+        let autoId = existingProd?.id || '';
+        if (!autoId && cIdx !== null && sessionProducts[cIdx]) {
+            const catNum = (cIdx + 1).toString(36).toUpperCase();
+            const prodCount = (sessionProducts[cIdx].products || []).length + 1;
+            const prodNum = prodCount.toString(36).toUpperCase();
+            autoId = `${catNum}${prodNum}`;
+        }
+        document.getElementById('admin-id').value          = autoId;
         document.getElementById('admin-title').value       = existingProd?.title       || '';
         document.getElementById('admin-description').value = existingProd?.description || '';
         document.getElementById('admin-video').value       = existingProd?.video       || '';

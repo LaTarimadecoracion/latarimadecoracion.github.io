@@ -2250,7 +2250,7 @@
         // --- Carga de Lista de Temas ---
         async function fetchTrackList() {
             try {
-                const response = await fetch('Musica/list.json?t=' + Date.now());
+                const response = await fetch('../audio/Musica/list.json?t=' + Date.now());
                 if (!response.ok) throw new Error('No se pudo leer list.json');
                 dataMusic = await response.json();
             } catch (err) {

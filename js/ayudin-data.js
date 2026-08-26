@@ -13,7 +13,7 @@ window.ayudinData = [
         description: "Optimizá el corte de tus listones y tableros comerciales para ahorrar madera y dinero.",
         image: "img/logo_provisional.png",
         rubro: "carpinteria",
-        actionUrl: "Herramientas/corte.html",
+        actionUrl: "apps/corte.html",
         icon: "grid_on",
         content: ""
     },
@@ -129,7 +129,7 @@ window.ayudinData = [
         description: "Cargá, recortá y reencuadrá múltiples fotos a la vez en formato 3:2 u otros antes de publicarlas.",
         image: "img/logo_provisional.png",
         rubro: "emprendedores",
-        actionUrl: "Herramientas/editor-fotos.html",
+        actionUrl: "apps/editor-fotos.html",
         icon: "crop",
         content: ""
     }

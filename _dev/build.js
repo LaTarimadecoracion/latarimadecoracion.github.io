@@ -19,6 +19,14 @@ async function build() {
         console.error('❌ Error escaneando música:', err);
     }
 
+    // Generar archivos SEO y URLs cortas en /p
+    try {
+        console.log('🔍 Generando archivos de previsualización SEO y URLs cortas en /p...');
+        require('./update_seo');
+    } catch (err) {
+        console.error('❌ Error generando archivos SEO:', err);
+    }
+
     // Generar archivo meta-catalog.csv actualizado para Facebook
     try {
         console.log('📊 Generando catálogo actualizado para Meta/Facebook (meta-catalog.csv)...');
@@ -31,7 +39,7 @@ async function build() {
     fs.emptyDirSync(distDir);
 
     // 1. Copiar carpetas estáticas que no requieren minificación
-    const foldersToCopy = ['img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'Herramientas', 'pedidos', 'apps'];
+    const foldersToCopy = ['img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'pedidos', 'apps'];
     for (const folder of foldersToCopy) {
         const folderSrc = path.join(srcDir, folder);
         if (fs.existsSync(folderSrc)) {

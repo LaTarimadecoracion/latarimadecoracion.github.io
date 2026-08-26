@@ -292,7 +292,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        const viewParam = urlParams.get('view') || urlParams.get('sec');
+        let viewParam = urlParams.get('view') || urlParams.get('sec');
+        if (!viewParam) {
+            const cleanPath = window.location.pathname.toLowerCase().replace(/\/index\.html$/, '').split('/').filter(Boolean).pop();
+            if (cleanPath && ['stock', 'mayorista', 'catalogo', 'musica', 'alquileres', 'admin'].includes(cleanPath)) {
+                viewParam = cleanPath;
+            }
+        }
         if (viewParam) {
             const viewIdMap = {
                 'nosotros': 'view-about',
@@ -354,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const cleanPath = window.location.pathname.toLowerCase().replace(/\/$/, '');
         if (cleanPath.endsWith('/edit') || cleanPath.endsWith('/editor') || cleanPath.endsWith('/web/edit') || cleanPath.endsWith('/web/editor')) {
-            window.location.replace('Herramientas/editor-fotos.html');
+            window.location.replace('apps/editor-fotos.html');
             return;
         }
         if (cleanPath.endsWith('/alquiles') || cleanPath.endsWith('/alquileres') || cleanPath.endsWith('/rentas')) {

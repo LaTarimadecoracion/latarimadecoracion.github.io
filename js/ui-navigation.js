@@ -339,6 +339,7 @@
                 'view-cart': 'carrito',
                 'view-calculator': 'calcular',
                 'view-mayorista': 'mayorista',
+                'view-stock': 'stock',
                 'view-musica': 'musica',
                 'view-ayudin': 'ayudin',
                 'view-pedidos': 'pedidos',
@@ -347,8 +348,7 @@
             };
             
             let basePath = window.location.pathname.replace(/\/index\.html$/, '/');
-            // Limpiar sufijos de rutas limpias SPA si existen
-            basePath = basePath.replace(/\/(alquiles|alquileres|rentas|rentales)\/?$/, '/');
+            basePath = basePath.replace(/\/(alquiles|alquileres|rentas|rentales|stock|mayorista|catalogo|musica|admin)\/?$/, '/');
             
             let query = '';
             if (prettyNames[viewId]) {

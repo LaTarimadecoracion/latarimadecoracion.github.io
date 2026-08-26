@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>
+        // Redirigir a la SPA principal si se abre directamente fuera de un iframe
+        if (window.self === window.top) {
+            var basePath = '/';
+            var segments = window.location.pathname.split('/').filter(Boolean);
+            if (segments.length > 0 && segments[0].toLowerCase() === 'latarimadecoracion.github.io') {
+                basePath = '/latarimadecoracion.github.io/';
+            }
+            window.location.replace(window.location.origin + basePath + '?view=editor');
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Editor de Fotos Masivo | LA TARIMA</title>
@@ -26,8 +37,8 @@
         body {
             background-color: transparent !important;
             padding: 16px;
-            font-family: 'Outfit', sans-serif;
-            color: #1E293B;
+            font-family: var(--font-main, 'Outfit', sans-serif);
+            color: var(--text-main, #1E293B);
             margin: 0;
             box-sizing: border-box;
         }
@@ -38,12 +49,10 @@
         }
 
         .tool-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 24px;
-            border: 1.5px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 8px 32px rgba(160, 113, 91, 0.05);
+            background: var(--surface-color, #ffffff);
+            border-radius: var(--radius-lg, 24px);
+            border: 1.5px solid var(--border-color, #e2e8f0);
+            box-shadow: var(--shadow-md, 0 8px 32px rgba(0, 0, 0, 0.05));
             padding: 1.5rem;
             margin-bottom: 2rem;
             box-sizing: border-box;
@@ -52,7 +61,7 @@
         .tool-title {
             font-size: 1.4rem;
             font-weight: 800;
-            color: #0F172A;
+            color: var(--text-main, #0F172A);
             margin: 0 0 0.5rem 0;
             display: flex;
             align-items: center;
@@ -61,18 +70,18 @@
 
         .tool-subtitle {
             font-size: 0.88rem;
-            color: #64748B;
+            color: var(--text-muted, #64748B);
             margin: 0 0 1.5rem 0;
             line-height: 1.4;
         }
 
         /* Drop Zone */
         .upload-zone {
-            border: 2.5px dashed #CBD5E1;
+            border: 2.5px dashed var(--border-color, #CBD5E1);
             border-radius: 20px;
             padding: 2.5rem 1.5rem;
             text-align: center;
-            background: #FAF9F6;
+            background: var(--bg-color, #FAF9F6);
             cursor: pointer;
             transition: all 0.25s ease;
             display: flex;
@@ -84,7 +93,7 @@
 
         .upload-zone:hover, .upload-zone.dragover {
             border-color: var(--primary-color);
-            background: #FFFBF7;
+            background: var(--secondary-color, #FFFBF7);
         }
 
         .upload-zone .upload-icon {
@@ -97,12 +106,12 @@
             font-size: 1.05rem;
             font-weight: 700;
             margin: 0;
-            color: #1E293B;
+            color: var(--text-main, #1E293B);
         }
 
         .upload-zone p {
             font-size: 0.8rem;
-            color: #64748B;
+            color: var(--text-muted, #64748B);
             margin: 0;
         }
 
@@ -115,14 +124,129 @@
 
         /* Main Workspace Splitting */
         .workspace-main {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            width: 100%;
         }
 
-        @media (min-width: 768px) {
-            .workspace-main {
-                grid-template-columns: 1.4fr 1fr;
+        /* Contenedor fila que agrupa imagen y menú lateral */
+        .editor-row {
+            display: flex;
+            gap: 12px;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .editor-row .cropper-container {
+            flex: 1;
+            margin-bottom: 0;
+            aspect-ratio: 4 / 3;
+            min-height: 280px;
+        }
+
+        /* Barra de Herramientas de Iconos (Vertical a la derecha) */
+        .tool-menu-bar {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background: var(--bg-color, #F8FAFC);
+            border: 1.5px solid var(--border-color, #E2E8F0);
+            border-radius: 18px;
+            padding: 6px;
+            gap: 6px;
+            width: 84px;
+            min-width: 84px;
+            overflow-y: auto;
+            align-self: stretch;
+            box-sizing: border-box;
+            scrollbar-width: none; /* Ocultar scrollbar */
+        }
+        
+        .tool-menu-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tool-menu-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            background: transparent;
+            border: 1.5px solid transparent;
+            cursor: pointer;
+            padding: 10px 4px;
+            border-radius: 14px;
+            color: var(--text-muted, #64748B);
+            transition: all 0.2s ease;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .tool-menu-btn .material-symbols-outlined {
+            font-size: 22px;
+        }
+
+        .tool-menu-btn:hover {
+            background: rgba(0,0,0,0.02);
+            color: var(--text-main, #0F172A);
+        }
+
+        .tool-menu-btn.active {
+            background: var(--surface-color, #ffffff);
+            color: var(--primary-color);
+            box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.04));
+            border-color: var(--border-color, #E2E8F0);
+        }
+
+        @media (max-width: 600px) {
+            .editor-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .tool-menu-bar {
+                flex-direction: row;
+                width: 100%;
+                min-width: unset;
+                height: auto;
+                justify-content: space-around;
+            }
+            .tool-menu-btn {
+                padding: 8px 6px;
+                font-size: 0.72rem;
+            }
+        }
+
+        /* Sub-paneles */
+        .sub-panel-content {
+            display: none;
+            flex-direction: column;
+            gap: 1.25rem;
+            background: var(--surface-color, #ffffff);
+            border: 1.5px solid var(--border-color, #E2E8F0);
+            border-radius: 20px;
+            padding: 1.25rem;
+            box-sizing: border-box;
+            animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sub-panel-content.active {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
@@ -186,6 +310,7 @@
             z-index: 5;
             user-select: none;
             -webkit-user-drag: none;
+            image-rendering: pixelated;
         }
 
         /* Controls Panel */
@@ -204,7 +329,7 @@
         .control-label {
             font-size: 0.82rem;
             font-weight: 700;
-            color: #475569;
+            color: var(--text-muted, #475569);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: flex;
@@ -213,8 +338,9 @@
         }
 
         .control-label span.value-badge {
-            background: #E2E8F0;
-            color: #475569;
+            background: var(--bg-color, #E2E8F0);
+            color: var(--text-main, #475569);
+            border: 1px solid var(--border-color, #E2E8F0);
             padding: 2px 6px;
             border-radius: 6px;
             font-size: 0.75rem;
@@ -229,13 +355,13 @@
         }
 
         .ratio-btn {
-            background: #F1F5F9;
-            border: 1.5px solid #E2E8F0;
+            background: var(--surface-color, #F1F5F9);
+            border: 1.5px solid var(--border-color, #E2E8F0);
             border-radius: 10px;
             padding: 8px;
             font-size: 0.8rem;
             font-weight: 600;
-            color: #475569;
+            color: var(--text-main, #475569);
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: center;
@@ -259,7 +385,7 @@
             height: 6px;
             border-radius: 3px;
             outline: none;
-            background: #E2E8F0;
+            background: var(--border-color, #E2E8F0);
             -webkit-appearance: none;
             cursor: pointer;
         }
@@ -277,8 +403,8 @@
 
         /* Miniatures Carousel */
         .carousel-panel {
-            background: #F8FAFC;
-            border: 1px solid #E2E8F0;
+            background: var(--bg-color, #F8FAFC);
+            border: 1px solid var(--border-color, #E2E8F0);
             border-radius: 20px;
             padding: 0.75rem;
         }
@@ -295,13 +421,14 @@
             margin: 0;
             font-size: 0.88rem;
             font-weight: 700;
-            color: #475569;
+            color: var(--text-main, #475569);
         }
 
         .carousel-title-row .count-badge {
             font-size: 0.75rem;
-            background: #E2E8F0;
-            color: #475569;
+            background: var(--surface-color, #E2E8F0);
+            color: var(--text-main, #475569);
+            border: 1px solid var(--border-color, #CBD5E1);
             padding: 2px 8px;
             border-radius: 12px;
             font-weight: 700;
@@ -442,13 +569,57 @@
             font-weight: 700;
         }
         
-        .progress-subtext {
-            font-size: 0.88rem;
-            opacity: 0.8;
+        /* ── MODO IFRAME (SPA Integrada) ── */
+        body.in-iframe {
+            background: transparent !important;
+            background-color: transparent !important;
+            min-height: auto;
+            overflow-y: auto !important;
+            padding: 0.5rem 0.75rem 90px 0.75rem !important;
+            box-sizing: border-box;
+        }
+
+        body.in-iframe .back-nav-btn {
+            display: none !important;
+        }
+
+        body.in-iframe .tool-container {
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+        }
+
+        body.in-iframe .tool-card {
+            background: var(--surface-color, #ffffff) !important;
+            border: 1.5px solid var(--border-color, #e2e8f0) !important;
+            box-shadow: var(--shadow-sm, 0 2px 10px rgba(0, 0, 0, 0.03)) !important;
+            padding: 1.25rem 1rem !important;
+            margin: 0 0 1rem 0 !important;
+            border-radius: var(--radius-lg, 16px) !important;
+            box-sizing: border-box !important;
         }
     </style>
 </head>
 <body>
+    <!-- Script Anti-FOUC para Temáticas e Iframe -->
+    <script>
+        (function() {
+            try {
+                if (window.parent && window.parent.document && window.parent.document.body) {
+                    document.body.className = window.parent.document.body.className;
+                } else {
+                    const activeTheme = localStorage.getItem('userSelectedTheme') || localStorage.getItem('selectedTheme') || 'classic';
+                    document.body.className = 'theme-' + activeTheme;
+                }
+            } catch(e) {
+                const activeTheme = localStorage.getItem('userSelectedTheme') || localStorage.getItem('selectedTheme') || 'classic';
+                document.body.className = 'theme-' + activeTheme;
+            }
+            if (window.self !== window.top) {
+                document.body.classList.add('in-iframe');
+            }
+        })();
+    </script>
 
     <div class="tool-container">
         
@@ -482,71 +653,280 @@
                 
                 <div class="workspace-main">
                     
-                    <!-- Lado Izquierdo: Visor de Recorte Interactivo -->
-                    <div class="cropper-container" id="cropper-container">
-                        <!-- El Viewport se dimensiona dinámicamente según aspect ratio -->
-                        <div class="crop-viewport" id="crop-viewport"></div>
-                        <!-- Imagen que se moverá -->
-                        <img id="cropper-image" class="cropper-image" src="" alt="Editor de Fotos" draggable="false">
-                    </div>
-
-                    <!-- Lado Derecho: Controles -->
-                    <div class="controls-panel">
+                    <!-- Fila Editora: Imagen a la izquierda, Iconos a la derecha -->
+                    <div class="editor-row">
+                        <!-- Lado Izquierdo: Visor de Recorte Interactivo -->
+                        <div class="cropper-container" id="cropper-container">
+                            <!-- El Viewport se dimensiona dinámicamente según aspect ratio -->
+                            <div class="crop-viewport" id="crop-viewport">
+                                <!-- El elemento watermark superpuesto -->
+                                <div id="watermark-overlay" style="display: none; position: absolute; left: 75%; top: 75%; width: 20%; cursor: move; pointer-events: auto; z-index: 20; transform-origin: center center; user-select: none;">
+                                    <img id="watermark-img" src="../img/LOGO.png" style="width: 100%; height: auto; object-fit: contain; pointer-events: none; display: block;" alt="Watermark">
+                                    <span id="watermark-text" style="display: none; white-space: nowrap; font-family: 'Outfit', sans-serif; font-weight: 700; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); pointer-events: none;">La Tarima</span>
+                                </div>
+                                <!-- Canvas de vista previa para efectos de píxeles (Panorámica Circular) -->
+                                <canvas id="effects-preview-canvas" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 15; pointer-events: none;"></canvas>
+                            </div>
+                            <!-- Imagen que se moverá -->
+                            <img id="cropper-image" class="cropper-image" src="" alt="Editor de Fotos" draggable="false">
+                        </div>
                         
-                        <!-- Selector de Aspect Ratio -->
-                        <div class="control-group">
-                            <label class="control-label">Proporción de Recorte</label>
-                            <div class="ratio-grid">
-                                <button type="button" class="ratio-btn active" data-ratio="3/2">3:2 (Tarima)</button>
-                                <button type="button" class="ratio-btn" data-ratio="2/3">2:3 (Vertical)</button>
-                                <button type="button" class="ratio-btn" data-ratio="1/1">1:1 (Cuadrado)</button>
-                                <button type="button" class="ratio-btn" data-ratio="4/5">4:5 (Instagram)</button>
-                                <button type="button" class="ratio-btn" data-ratio="16/9">16:9 (Wide)</button>
-                                <button type="button" class="ratio-btn" data-ratio="free">Libre</button>
-                            </div>
+                        <!-- Barra de Menú de Iconos Lateral -->
+                        <div class="tool-menu-bar">
+                            <button type="button" class="tool-menu-btn active" data-target="panel-crop">
+                                <span class="material-symbols-outlined">crop</span>
+                                <span>Recorte</span>
+                            </button>
+                            <button type="button" class="tool-menu-btn" data-target="panel-filters">
+                                <span class="material-symbols-outlined">tune</span>
+                                <span>Filtros</span>
+                            </button>
+                            <button type="button" class="tool-menu-btn" data-target="panel-watermark">
+                                <span class="material-symbols-outlined">branding_watermark</span>
+                                <span>Logo</span>
+                            </button>
+                            <button type="button" class="tool-menu-btn" data-target="panel-effects">
+                                <span class="material-symbols-outlined">magic_button</span>
+                                <span>Efectos</span>
+                            </button>
+                            <button type="button" class="tool-menu-btn" data-target="panel-export">
+                                <span class="material-symbols-outlined">download</span>
+                                <span>Exportar</span>
+                            </button>
                         </div>
-
-                        <!-- Zoom Slider -->
-                        <div class="control-group" style="margin-top: 4px;">
-                            <label class="control-label">
-                                <span>Zoom</span>
-                                <span class="value-badge" id="zoom-val">100%</span>
-                            </label>
-                            <div class="zoom-slider-container">
-                                <span class="material-symbols-outlined" style="font-size: 18px; color: #64748B;">zoom_out</span>
-                                <input type="range" id="zoom-slider" class="zoom-slider" min="1" max="4" step="0.01" value="1">
-                                <span class="material-symbols-outlined" style="font-size: 18px; color: #64748B;">zoom_in</span>
-                            </div>
-                        </div>
-
-                        <!-- Rotación y Ajustes -->
-                        <div class="control-group">
-                            <label class="control-label">Ajustes Rápidos</label>
-                            <div style="display: flex; gap: 8px;">
-                                <button type="button" id="btn-rotate" class="btn-outline btn-icon" style="flex: 1; padding: 10px; font-size: 0.85rem; border-radius: 12px; min-height: unset; cursor: pointer;">
-                                    <span class="material-symbols-outlined" style="font-size: 18px;">rotate_right</span>
-                                    <span>Rotar 90°</span>
-                                </button>
-                                <button type="button" id="btn-reset" class="btn-outline btn-icon" style="flex: 1; padding: 10px; font-size: 0.85rem; border-radius: 12px; min-height: unset; cursor: pointer;">
-                                    <span class="material-symbols-outlined" style="font-size: 18px;">restart_alt</span>
-                                    <span>Reajustar</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Calidad de Exportación -->
-                        <div class="control-group">
-                            <label class="control-label">Resolución de Exportación</label>
-                            <select id="export-quality" class="btn-outline" style="width: 100%; border-radius: 12px; padding: 8px 12px; font-weight: 500; font-family: inherit; font-size: 0.88rem; cursor: pointer;">
-                                <option value="web" selected>Web Optimizado (1200x800 px) - Recomendado</option>
-                                <option value="hd">Alta Definición (1800x1200 px)</option>
-                                <option value="max">Resolución Máxima Original</option>
-                            </select>
-                        </div>
-
                     </div>
 
-                </div>
+                    <!-- Los sub-paneles se abren debajo de la fila editora -->
+                    <!-- Panel 1: Recorte y Zoom -->
+                    <div id="panel-crop" class="sub-panel-content active">
+                            <!-- Selector de Aspect Ratio -->
+                            <div class="control-group">
+                                <label class="control-label">Proporción de Recorte</label>
+                                
+                                <!-- Sub-pestañas: Digital vs Fotografía -->
+                                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                                    <button type="button" id="btn-ratio-cat-digital" class="ratio-btn active" style="flex: 1; padding: 6px; font-size: 0.72rem;">Digital / Redes</button>
+                                    <button type="button" id="btn-ratio-cat-print" class="ratio-btn" style="flex: 1; padding: 6px; font-size: 0.72rem;">Fotografía (Impresión)</button>
+                                </div>
+
+                                <!-- Grid Digital -->
+                                <div id="ratio-grid-digital" class="ratio-grid">
+                                    <button type="button" class="ratio-btn active" data-ratio="3/2">3:2 (Tarima)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="2/3">2:3 (Vertical)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="1/1">1:1 (Cuadrado)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="4/5">4:5 (Instagram)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="16/9">16:9 (Wide)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="free">Libre</button>
+                                </div>
+
+                                <!-- Grid Impresión (Oculto por defecto) -->
+                                <div id="ratio-grid-print" class="ratio-grid" style="display: none; grid-template-columns: repeat(3, 1fr); gap: 6px;">
+                                    <button type="button" class="ratio-btn" data-ratio="3/2">10x15 cm (3:2)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="7/5">13x18 cm (7:5)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="7/5">15x21 cm (7:5)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="5/4">20x25 cm (5:4)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="3/2">20x30 cm (3:2)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="4/3">30x40 cm (4:3)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="3/2">30x45 cm (3:2)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="5/4">40x50 cm (5:4)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="7/5">50x70 cm (7:5)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="1.414">A4 (21x29.7)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="1.294">Carta (8.5x11)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="1.444">9x13 cm (13:9)</button>
+                                    <button type="button" class="ratio-btn" data-ratio="1/1">Polaroid (1:1)</button>
+                                </div>
+
+                                <!-- Orientación rápida -->
+                                <button type="button" id="btn-toggle-orientation" class="btn-outline btn-icon" style="padding: 8px 10px; font-size: 0.78rem; border-radius: 12px; margin-top: 8px; cursor: pointer; width: 100%; border: 1.5px solid var(--border-color, #E2E8F0); background: var(--surface-color, #ffffff); color: var(--text-main); font-weight: 600;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px; vertical-align: middle;">crop_rotate</span>
+                                    <span id="orientation-label">Orientación: Horizontal (Apaisado)</span>
+                                </button>
+                            </div>
+
+                            <!-- Zoom Slider -->
+                            <div class="control-group">
+                                <label class="control-label">
+                                    <span>Zoom</span>
+                                    <span class="value-badge" id="zoom-val">100%</span>
+                                </label>
+                                <div class="zoom-slider-container">
+                                    <span class="material-symbols-outlined" style="font-size: 18px; color: #64748B;">zoom_out</span>
+                                    <input type="range" id="zoom-slider" class="zoom-slider" min="1" max="100" step="0.01" value="1">
+                                    <span class="material-symbols-outlined" style="font-size: 18px; color: #64748B;">zoom_in</span>
+                                </div>
+                            </div>
+
+                            <!-- Rotación y Ajustes -->
+                            <div class="control-group">
+                                <label class="control-label">Ajustes Rápidos</label>
+                                <div style="display: flex; gap: 8px;">
+                                    <button type="button" id="btn-rotate" class="btn-outline btn-icon" style="flex: 1; padding: 10px; font-size: 0.85rem; border-radius: 12px; min-height: unset; cursor: pointer;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">rotate_right</span>
+                                        <span>Rotar 90°</span>
+                                    </button>
+                                    <button type="button" id="btn-reset" class="btn-outline btn-icon" style="flex: 1; padding: 10px; font-size: 0.85rem; border-radius: 12px; min-height: unset; cursor: pointer;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">restart_alt</span>
+                                        <span>Reajustar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: Filtros de Imagen -->
+                        <div id="panel-filters" class="sub-panel-content">
+                            <div class="control-group">
+                                <label class="control-label">Ajustes de Color</label>
+                                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 4px;">
+                                    <div>
+                                        <label class="control-label" style="font-size: 0.78rem; text-transform: none;">
+                                            <span>Brillo</span>
+                                            <span class="value-badge" id="brightness-val">100%</span>
+                                        </label>
+                                        <div class="zoom-slider-container">
+                                            <input type="range" id="brightness-slider" class="zoom-slider" min="50" max="150" value="100">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="control-label" style="font-size: 0.78rem; text-transform: none;">
+                                            <span>Contraste</span>
+                                            <span class="value-badge" id="contrast-val">100%</span>
+                                        </label>
+                                        <div class="zoom-slider-container">
+                                            <input type="range" id="contrast-slider" class="zoom-slider" min="50" max="150" value="100">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="control-label" style="font-size: 0.78rem; text-transform: none;">
+                                            <span>Saturación</span>
+                                            <span class="value-badge" id="saturation-val">100%</span>
+                                        </label>
+                                        <div class="zoom-slider-container">
+                                            <input type="range" id="saturation-slider" class="zoom-slider" min="0" max="200" value="100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 3: Marca de Agua -->
+                        <div id="panel-watermark" class="sub-panel-content">
+                            <div class="control-group">
+                                <label class="control-label" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; margin-bottom: 8px;">
+                                    <span>Habilitar Marca de Agua</span>
+                                    <input type="checkbox" id="watermark-toggle" style="width: 18px; height: 18px; cursor: pointer;">
+                                </label>
+                                
+                                <div id="watermark-options" style="display: none; flex-direction: column; gap: 10px; padding: 10px; background: var(--bg-color, #FAF9F6); border-radius: 12px; border: 1px solid var(--border-color, #E2E8F0);">
+                                    <div style="display: flex; gap: 6px;">
+                                        <button type="button" id="btn-wm-type-image" class="ratio-btn active" style="flex: 1; padding: 6px; font-size: 0.75rem;">Imagen</button>
+                                        <button type="button" id="btn-wm-type-text" class="ratio-btn" style="flex: 1; padding: 6px; font-size: 0.75rem;">Texto</button>
+                                    </div>
+                                    
+                                    <div id="wm-image-group" style="display: flex; flex-direction: column; gap: 6px;">
+                                        <div style="display: flex; gap: 6px;">
+                                            <button type="button" id="btn-wm-src-default" class="ratio-btn active" style="flex: 1; padding: 6px; font-size: 0.72rem;">Logo Tarima</button>
+                                            <button type="button" id="btn-wm-src-custom" class="ratio-btn" style="flex: 1; padding: 6px; font-size: 0.72rem;">Subir Logo</button>
+                                        </div>
+                                        <input type="file" id="wm-file-input" accept="image/*" style="display: none;">
+                                    </div>
+                                    
+                                    <div id="wm-text-group" style="display: none; flex-direction: column; gap: 6px;">
+                                        <input type="text" id="wm-text-input" class="btn-outline" style="width: 100%; border-radius: 8px; padding: 6px 10px; font-size: 0.8rem; box-sizing: border-box;" value="La Tarima">
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <span style="font-size: 0.75rem; color: var(--text-muted);">Color:</span>
+                                            <input type="color" id="wm-text-color" style="border: none; padding: 0; width: 30px; height: 24px; cursor: pointer; background: transparent;" value="#ffffff">
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="control-label" style="font-size: 0.75rem; text-transform: none;">
+                                            <span>Tamaño</span>
+                                            <span class="value-badge" id="wm-scale-val">20%</span>
+                                        </label>
+                                        <input type="range" id="wm-scale-slider" class="zoom-slider" min="5" max="50" value="20">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="control-label" style="font-size: 0.75rem; text-transform: none;">
+                                            <span>Opacidad</span>
+                                            <span class="value-badge" id="wm-opacity-val">50%</span>
+                                        </label>
+                                        <input type="range" id="wm-opacity-slider" class="zoom-slider" min="10" max="100" value="50">
+                                    </div>
+ 
+                                    <div>
+                                        <label class="control-label" style="font-size: 0.75rem; text-transform: none;">Alineación Rápida</label>
+                                        <select id="wm-position-preset" class="btn-outline" style="width: 100%; border-radius: 8px; padding: 5px; font-size: 0.8rem; cursor: pointer; margin-top: 4px;">
+                                            <option value="bottom-right" selected>Inferior Derecha</option>
+                                            <option value="bottom-left">Inferior Izquierda</option>
+                                            <option value="top-right">Superior Derecha</option>
+                                            <option value="top-left">Superior Izquierda</option>
+                                            <option value="center">Centro</option>
+                                            <option value="custom">Personalizado (Arrastrar)</option>
+                                        </select>
+                                    </div>
+                                    <span style="font-size: 0.7rem; color: var(--text-muted); opacity: 0.8; text-align: center; display: block; margin-top: 4px;">💡 Arrastrá la marca de agua dentro de la foto para acomodarla libremente.</span>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Panel: Efectos Especiales -->
+                        <div id="panel-effects" class="sub-panel-content">
+                            <div class="control-group">
+                                <label class="control-label" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; margin-bottom: 8px;">
+                                    <span>Panorámica Circular (Tiny Planet)</span>
+                                    <input type="checkbox" id="circular-toggle" style="width: 18px; height: 18px; cursor: pointer;">
+                                </label>
+                                
+                                <div id="circular-options" style="display: none; flex-direction: column; gap: 10px; padding: 10px; background: var(--bg-color, #FAF9F6); border-radius: 12px; border: 1px solid var(--border-color, #E2E8F0);">
+                                    <div>
+                                        <label class="control-label" style="font-size: 0.75rem; text-transform: none;">
+                                            <span>Rotación del Planeta</span>
+                                            <span class="value-badge" id="circular-rotation-val">0°</span>
+                                        </label>
+                                        <input type="range" id="circular-rotation-slider" class="zoom-slider" min="0" max="360" value="0">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="control-label" style="font-size: 0.75rem; text-transform: none;">
+                                            <span>Zoom del Efecto</span>
+                                            <span class="value-badge" id="circular-zoom-val">1.0x</span>
+                                        </label>
+                                        <input type="range" id="circular-zoom-slider" class="zoom-slider" min="0.5" max="3.0" step="0.05" value="1.0">
+                                    </div>
+                                    
+                                    <div style="margin-top: 4px;">
+                                        <label class="control-label" style="font-size: 0.75rem; text-transform: none; margin-bottom: 4px;">Modo de Proyección</label>
+                                        <div style="display: flex; gap: 6px;">
+                                            <button type="button" id="btn-circular-mode-planet" class="ratio-btn active" style="flex: 1; padding: 6px; font-size: 0.75rem;">Mini Planeta</button>
+                                            <button type="button" id="btn-circular-mode-tunnel" class="ratio-btn" style="flex: 1; padding: 6px; font-size: 0.75rem;">Túnel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Panel 4: Exportación -->
+                        <div id="panel-export" class="sub-panel-content">
+                            <div class="control-group">
+                                <label class="control-label">Ajustes del Archivo</label>
+                                
+                                <div style="margin-bottom: 8px;">
+                                    <label class="control-label" style="font-size: 0.75rem; text-transform: none; margin-bottom: 4px;">Nombre Base del Lote</label>
+                                    <input type="text" id="batch-name-input" class="btn-outline" style="width: 100%; border-radius: 10px; padding: 8px 12px; font-size: 0.85rem; box-sizing: border-box;" placeholder="Ej: mesa-ratona (vacío = original)">
+                                </div>
+                                
+                                <div>
+                                    <label class="control-label" style="font-size: 0.75rem; text-transform: none; margin-bottom: 4px;">Resolución de Exportación</label>
+                                    <select id="export-quality" class="btn-outline" style="width: 100%; border-radius: 12px; padding: 8px 12px; font-weight: 500; font-family: inherit; font-size: 0.88rem; cursor: pointer;">
+                                        <option value="web" selected>Web Optimizado (1200x800 px) - Recomendado</option>
+                                        <option value="hd">Alta Definición (1800x1200 px)</option>
+                                        <option value="max">Resolución Máxima Original</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 <!-- Carrusel de Miniaturas -->
                 <div class="carousel-panel">
@@ -560,16 +940,16 @@
                 </div>
 
                 <!-- Botones de Acción de Descarga -->
-                <div class="action-row">
-                    <button type="button" id="btn-add-more" class="btn-outline btn-icon" style="padding: 12px; border-radius: 14px; cursor: pointer;">
+                <div class="action-row" style="display: flex; gap: 10px; margin-top: 1.25rem; flex-wrap: wrap;">
+                    <button type="button" id="btn-add-more" class="btn-outline btn-icon" style="flex: 1; min-width: 160px; padding: 12px; border-radius: 14px; cursor: pointer; font-weight: 700; background: var(--surface-color); border: 1.5px solid var(--border-color); color: var(--text-main);">
                         <span class="material-symbols-outlined">add_photo_alternate</span>
                         <span>Cargar más fotos</span>
                     </button>
-                    <button type="button" id="btn-download-current" class="btn-outline btn-icon" style="padding: 12px; border-radius: 14px; cursor: pointer;">
+                    <button type="button" id="btn-download-current" class="btn-outline btn-icon" style="flex: 1; min-width: 160px; padding: 12px; border-radius: 14px; cursor: pointer; font-weight: 700; background: var(--surface-color); border: 1.5px solid var(--border-color); color: var(--text-main);">
                         <span class="material-symbols-outlined">download</span>
                         <span>Descargar Actual</span>
                     </button>
-                    <button type="button" id="btn-download-all" class="btn-primary btn-icon btn-flex" style="padding: 12px; border-radius: 14px; cursor: pointer; font-weight: 700; background: var(--primary-color); border: none; color: white;">
+                    <button type="button" id="btn-download-all" class="btn-primary btn-icon" style="flex: 1.2; min-width: 200px; padding: 12px; border-radius: 14px; cursor: pointer; font-weight: 700; background: var(--primary-color); border: none; color: white;">
                         <span class="material-symbols-outlined">download_for_offline</span>
                         <span>Exportar y Descargar Todo</span>
                     </button>
@@ -614,24 +994,108 @@
             const progressText = document.getElementById('progress-text');
             const progressSubtext = document.getElementById('progress-subtext');
 
-            // Aspect ratio buttons
-            const ratioButtons = document.querySelectorAll('.ratio-btn');
+            const ratioButtons = document.querySelectorAll('.ratio-grid .ratio-btn');
 
-            let images = []; // Array of { id, name, file, src, zoom, panX, panY, rotation, aspect, cropped }
+            const brightnessSlider = document.getElementById('brightness-slider');
+            const brightnessVal = document.getElementById('brightness-val');
+            const contrastSlider = document.getElementById('contrast-slider');
+            const contrastVal = document.getElementById('contrast-val');
+            const saturationSlider = document.getElementById('saturation-slider');
+            const saturationVal = document.getElementById('saturation-val');
+
+            const watermarkToggle = document.getElementById('watermark-toggle');
+            const watermarkOptions = document.getElementById('watermark-options');
+            const btnWmTypeImage = document.getElementById('btn-wm-type-image');
+            const btnWmTypeText = document.getElementById('btn-wm-type-text');
+            const wmImageGroup = document.getElementById('wm-image-group');
+            const wmTextGroup = document.getElementById('wm-text-group');
+            const btnWmSrcDefault = document.getElementById('btn-wm-src-default');
+            const btnWmSrcCustom = document.getElementById('btn-wm-src-custom');
+            const wmFileInput = document.getElementById('wm-file-input');
+            const wmTextInput = document.getElementById('wm-text-input');
+            const wmTextColor = document.getElementById('wm-text-color');
+            const wmScaleSlider = document.getElementById('wm-scale-slider');
+            const wmScaleVal = document.getElementById('wm-scale-val');
+            const wmOpacitySlider = document.getElementById('wm-opacity-slider');
+            const wmOpacityVal = document.getElementById('wm-opacity-val');
+            const wmPositionPreset = document.getElementById('wm-position-preset');
+            const watermarkOverlay = document.getElementById('watermark-overlay');
+            const watermarkImg = document.getElementById('watermark-img');
+            const watermarkText = document.getElementById('watermark-text');
+
+            // Selectores DOM de Efectos
+            const circularToggle = document.getElementById('circular-toggle');
+            const circularOptions = document.getElementById('circular-options');
+            const circularRotationSlider = document.getElementById('circular-rotation-slider');
+            const circularRotationVal = document.getElementById('circular-rotation-val');
+            const circularZoomSlider = document.getElementById('circular-zoom-slider');
+            const circularZoomVal = document.getElementById('circular-zoom-val');
+            const btnCircularModePlanet = document.getElementById('btn-circular-mode-planet');
+            const btnCircularModeTunnel = document.getElementById('btn-circular-mode-tunnel');
+            const effectsPreviewCanvas = document.getElementById('effects-preview-canvas');
+
+            // Variables de Estado de Efectos
+            let circularEnabled = false;
+            let circularRotation = 0;
+            let circularZoom = 1.0;
+            let circularMode = 'planet'; // 'planet' o 'tunnel'
+
+            // Navegación de pestañas/menú de herramientas
+            const menuButtons = document.querySelectorAll('.tool-menu-btn');
+            const subPanels = document.querySelectorAll('.sub-panel-content');
+
+            menuButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    menuButtons.forEach(b => b.classList.remove('active'));
+                    subPanels.forEach(p => p.classList.remove('active'));
+
+                    btn.classList.add('active');
+                    const targetId = btn.getAttribute('data-target');
+                    const targetPanel = document.getElementById(targetId);
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
+                    }
+                });
+            });
+
+            let images = [];
             let activeIndex = -1;
             
-            // Layout Viewport metrics
             let viewportWidth = 450;
             let viewportHeight = 300;
-            let currentRatioValue = 3/2; // default
+            let currentRatioValue = 3/2;
             let isFreeRatio = false;
 
-            // Paneo/Arrastre variables
+            let globalBrightness = 100;
+            let globalContrast = 100;
+            let globalSaturation = 100;
+
+            let watermarkEnabled = false;
+            let watermarkType = 'image';
+            let watermarkSource = 'default';
+            let watermarkScale = 20;
+            let watermarkOpacity = 50;
+            let watermarkPercentX = 75;
+            let watermarkPercentY = 75;
+            let watermarkTextVal = 'La Tarima';
+            let watermarkTextColor = '#ffffff';
+
+            const watermarkImgElement = new Image();
+            watermarkImgElement.src = '../img/LOGO.png';
+            let watermarkImgAspectRatio = 1.0;
+            watermarkImgElement.onload = () => {
+                watermarkImgAspectRatio = watermarkImgElement.naturalWidth / watermarkImgElement.naturalHeight;
+                updateWatermarkDOM();
+            };
+
             let isDragging = false;
             let startX = 0;
             let startY = 0;
 
-            // 1. Eventos de carga de archivos
+            let isDraggingWatermark = false;
+            let watermarkDragOffsetX = 0;
+            let watermarkDragOffsetY = 0;
+
             dropZone.addEventListener('click', () => fileInput.click());
             dropZone.addEventListener('dragover', (e) => {
                 e.preventDefault();
@@ -708,7 +1172,6 @@
                 }
             }
 
-            // 2. Renderizar carrusel
             function updateCarousel() {
                 carouselThumbs.innerHTML = '';
                 images.forEach((img, idx) => {
@@ -726,7 +1189,6 @@
                         loadActiveImage();
                     });
 
-                    // Botón quitar
                     const removeBtn = document.createElement('button');
                     removeBtn.type = 'button';
                     removeBtn.className = 'thumb-remove-btn';
@@ -759,28 +1221,27 @@
                 }
             }
 
-            // 3. Cargar imagen en visor
             function loadActiveImage() {
                 if (activeIndex === -1 || images.length === 0) return;
                 const img = images[activeIndex];
                 cropperImage.src = img.src;
                 
-                // Cargar valores guardados o por defecto
                 zoomSlider.value = img.zoom;
                 zoomVal.textContent = Math.round(img.zoom * 100) + '%';
                 
-                // Ajustar visor
                 adjustViewportSize();
+                applyFiltersToPreview();
+                updateWatermarkDOM();
+                renderEffectsPreview();
             }
 
             function saveCurrentTransformState() {
                 if (activeIndex === -1 || images.length === 0) return;
                 const img = images[activeIndex];
                 img.zoom = parseFloat(zoomSlider.value);
-                img.cropped = true; // Si pasa por el visor, se asume encuadrada
+                img.cropped = true;
             }
 
-            // Ajustar el Viewport según el aspect ratio activo
             function adjustViewportSize() {
                 if (activeIndex === -1 || images.length === 0) return;
                 const img = images[activeIndex];
@@ -789,11 +1250,9 @@
                 const containerH = cropperContainer.clientHeight - 32;
 
                 if (isFreeRatio) {
-                    // Libre toma la proporción original de la imagen
                     currentRatioValue = img.width / img.height;
                 }
 
-                // Ajustar viewport al contenedor manteniendo la proporción
                 if (currentRatioValue > containerW / containerH) {
                     viewportWidth = containerW;
                     viewportHeight = containerW / currentRatioValue;
@@ -805,22 +1264,20 @@
                 cropViewport.style.width = viewportWidth + 'px';
                 cropViewport.style.height = viewportHeight + 'px';
 
-                // Una vez ajustado el viewport, reposicionamos la imagen
                 resetImageTransform();
+                updateWatermarkDOM();
             }
 
             function resetImageTransform() {
                 if (activeIndex === -1 || images.length === 0) return;
                 const img = images[activeIndex];
                 
-                // Valores de rotación y zoom iniciales
                 const rotation = img.rotation;
                 const isRotated = (rotation % 180 !== 0);
                 
                 const imageAspect = img.width / img.height;
                 const activeAspect = isRotated ? (1 / imageAspect) : imageAspect;
 
-                // Calcular tamaño de visualización
                 let displayWidth, displayHeight;
                 if (activeAspect > viewportWidth / viewportHeight) {
                     displayHeight = viewportHeight;
@@ -833,7 +1290,6 @@
                 img.displayWidth = displayWidth;
                 img.displayHeight = displayHeight;
 
-                // Si son nuevos o reseteados, los ponemos en 0
                 img.panX = img.panX || 0;
                 img.panY = img.panY || 0;
 
@@ -846,7 +1302,6 @@
                 const zoom = parseFloat(zoomSlider.value);
                 const rotation = img.rotation;
                 
-                // Clampear paneo para que no queden bordes negros
                 const isRotated = (rotation % 180 !== 0);
                 const w = isRotated ? img.displayHeight : img.displayWidth;
                 const h = isRotated ? img.displayWidth : img.displayHeight;
@@ -860,7 +1315,6 @@
                 img.panX = Math.min(maxX, Math.max(-maxX, img.panX));
                 img.panY = Math.min(maxY, Math.max(-maxY, img.panY));
 
-                // Si está rotado, la renderización requiere cambiar las dimensiones de renderizado del elemento img
                 const renderW = isRotated ? img.displayHeight : img.displayWidth;
                 const renderH = isRotated ? img.displayWidth : img.displayHeight;
                 
@@ -868,9 +1322,10 @@
                 cropperImage.style.height = renderH + 'px';
 
                 cropperImage.style.transform = `translate(-50%, -50%) translate(${img.panX}px, ${img.panY}px) scale(${zoom}) rotate(${rotation}deg)`;
+                
+                renderEffectsPreview();
             }
 
-            // 4. Slider de Zoom
             zoomSlider.addEventListener('input', () => {
                 const val = parseFloat(zoomSlider.value);
                 zoomVal.textContent = Math.round(val * 100) + '%';
@@ -880,7 +1335,31 @@
                 }
             });
 
-            // 5. Botones de rotación y reset
+            // Zoom con la rueda del scroll (scroll wheel)
+            function handleScrollZoom(e) {
+                e.preventDefault();
+                const currentVal = parseFloat(zoomSlider.value);
+                // Paso de zoom proporcional para suavidad a altos niveles
+                const zoomStep = 0.08 * currentVal; 
+                let newVal = currentVal + (e.deltaY < 0 ? zoomStep : -zoomStep);
+                
+                newVal = Math.max(1, Math.min(100, newVal));
+                
+                zoomSlider.value = newVal;
+                zoomVal.textContent = Math.round(newVal * 100) + '%';
+                
+                if (activeIndex !== -1) {
+                    images[activeIndex].zoom = newVal;
+                    applyTransform();
+                }
+            }
+
+            // Scroll zoom en la barrita slider
+            zoomSlider.addEventListener('wheel', handleScrollZoom, { passive: false });
+
+            // Scroll zoom directamente sobre la foto/visor
+            cropperContainer.addEventListener('wheel', handleScrollZoom, { passive: false });
+
             btnRotate.addEventListener('click', () => {
                 if (activeIndex === -1) return;
                 const img = images[activeIndex];
@@ -897,10 +1376,58 @@
                 img.rotation = 0;
                 zoomSlider.value = 1.0;
                 zoomVal.textContent = '100%';
+                
+                globalBrightness = 100;
+                globalContrast = 100;
+                globalSaturation = 100;
+                brightnessSlider.value = 100;
+                brightnessVal.textContent = '100%';
+                contrastSlider.value = 100;
+                contrastVal.textContent = '100%';
+                saturationSlider.value = 100;
+                saturationVal.textContent = '100%';
+
                 resetImageTransform();
+                applyFiltersToPreview();
             });
 
-            // 6. Cambiar Aspect Ratio
+            // Sub-pestañas de proporciones (Digital vs Impresión)
+            const btnRatioCatDigital = document.getElementById('btn-ratio-cat-digital');
+            const btnRatioCatPrint = document.getElementById('btn-ratio-cat-print');
+            const ratioGridDigital = document.getElementById('ratio-grid-digital');
+            const ratioGridPrint = document.getElementById('ratio-grid-print');
+            const btnToggleOrientation = document.getElementById('btn-toggle-orientation');
+            const orientationLabel = document.getElementById('orientation-label');
+            let isLandscape = true;
+
+            btnRatioCatDigital.addEventListener('click', () => {
+                btnRatioCatDigital.classList.add('active');
+                btnRatioCatPrint.classList.remove('active');
+                ratioGridDigital.style.display = 'grid';
+                ratioGridPrint.style.display = 'none';
+            });
+
+            btnRatioCatPrint.addEventListener('click', () => {
+                btnRatioCatPrint.classList.add('active');
+                btnRatioCatDigital.classList.remove('active');
+                ratioGridPrint.style.display = 'grid';
+                ratioGridDigital.style.display = 'none';
+            });
+
+            btnToggleOrientation.addEventListener('click', () => {
+                isLandscape = !isLandscape;
+                orientationLabel.textContent = isLandscape ? 'Orientación: Horizontal (Apaisado)' : 'Orientación: Vertical (Retrato)';
+                
+                if (currentRatioValue !== 1) {
+                    currentRatioValue = 1 / currentRatioValue;
+                }
+                
+                images.forEach(img => {
+                    img.aspect = currentRatioValue;
+                });
+                adjustViewportSize();
+            });
+
             ratioButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     ratioButtons.forEach(b => b.classList.remove('active'));
@@ -911,11 +1438,24 @@
                         isFreeRatio = true;
                     } else {
                         isFreeRatio = false;
-                        const parts = ratioStr.split('/');
-                        currentRatioValue = parseFloat(parts[0]) / parseFloat(parts[1]);
+                        let parsedVal;
+                        if (ratioStr.includes('/')) {
+                            const parts = ratioStr.split('/');
+                            parsedVal = parseFloat(parts[0]) / parseFloat(parts[1]);
+                        } else {
+                            parsedVal = parseFloat(ratioStr);
+                        }
+
+                        // Aplicar orientación actual del interruptor
+                        if (!isLandscape && parsedVal > 1) {
+                            currentRatioValue = 1 / parsedVal;
+                        } else if (isLandscape && parsedVal < 1) {
+                            currentRatioValue = 1 / parsedVal;
+                        } else {
+                            currentRatioValue = parsedVal;
+                        }
                     }
 
-                    // Actualizar el aspect ratio guardado para cada imagen
                     images.forEach(img => {
                         img.aspect = currentRatioValue;
                     });
@@ -924,7 +1464,333 @@
                 });
             });
 
-            // 7. Eventos de arrastre en el visor
+            // --- CONTROL DE EFECTOS ---
+            circularToggle.addEventListener('change', () => {
+                circularEnabled = circularToggle.checked;
+                circularOptions.style.display = circularEnabled ? 'flex' : 'none';
+                renderEffectsPreview();
+            });
+
+            circularRotationSlider.addEventListener('input', () => {
+                circularRotation = parseInt(circularRotationSlider.value);
+                circularRotationVal.textContent = circularRotation + '°';
+                renderEffectsPreview();
+            });
+
+            circularZoomSlider.addEventListener('input', () => {
+                circularZoom = parseFloat(circularZoomSlider.value);
+                circularZoomVal.textContent = circularZoom.toFixed(1) + 'x';
+                renderEffectsPreview();
+            });
+
+            btnCircularModePlanet.addEventListener('click', () => {
+                circularMode = 'planet';
+                btnCircularModePlanet.classList.add('active');
+                btnCircularModeTunnel.classList.remove('active');
+                renderEffectsPreview();
+            });
+
+            btnCircularModeTunnel.addEventListener('click', () => {
+                circularMode = 'tunnel';
+                btnCircularModeTunnel.classList.add('active');
+                btnCircularModePlanet.classList.remove('active');
+                renderEffectsPreview();
+            });
+
+            // Función para renderizar el Canvas del efecto en vivo en el visor
+            function renderEffectsPreview() {
+                if (activeIndex === -1 || images.length === 0) return;
+                
+                if (circularEnabled) {
+                    effectsPreviewCanvas.style.display = 'block';
+                    cropperImage.style.display = 'none';
+                    
+                    const rect = cropViewport.getBoundingClientRect();
+                    effectsPreviewCanvas.width = Math.round(rect.width) || 400;
+                    effectsPreviewCanvas.height = Math.round(rect.height) || 400;
+                    
+                    const imgObj = images[activeIndex];
+                    const sourceImg = new Image();
+                    sourceImg.src = imgObj.src;
+                    sourceImg.onload = () => {
+                        // Crear un canvas temporal para aplicar rotación, pan, zoom y filtros del usuario antes de la distorsión polar
+                        const tempCanvas = document.createElement('canvas');
+                        tempCanvas.width = sourceImg.naturalWidth;
+                        tempCanvas.height = sourceImg.naturalHeight;
+                        const tempCtx = tempCanvas.getContext('2d');
+                        
+                        // Aplicar filtros
+                        tempCtx.filter = `brightness(${globalBrightness}%) contrast(${globalContrast}%) saturate(${globalSaturation}%)`;
+                        
+                        // Aplicar rotación y dibujo
+                        tempCtx.translate(tempCanvas.width / 2, tempCanvas.height / 2);
+                        tempCtx.rotate((imgObj.rotation || 0) * Math.PI / 180);
+                        
+                        const isRotated = ((imgObj.rotation || 0) % 180 !== 0);
+                        const drawW = isRotated ? tempCanvas.height : tempCanvas.width;
+                        const drawH = isRotated ? tempCanvas.width : tempCanvas.height;
+                        
+                        tempCtx.drawImage(sourceImg, -drawW / 2, -drawH / 2, drawW, drawH);
+                        
+                        // Generar la distorsión polar circular
+                        applyCircularPanorama(
+                            tempCanvas, 
+                            effectsPreviewCanvas, 
+                            circularRotation, 
+                            circularZoom, 
+                            circularMode
+                        );
+                    };
+                } else {
+                    effectsPreviewCanvas.style.display = 'none';
+                    cropperImage.style.display = 'block';
+                }
+            }
+
+            // Algoritmo de transformación de coordenadas Polares a Cartesianas (Tiny Planet)
+            function applyCircularPanorama(sourceImg, destCanvas, rotationDegrees, zoomFactor, mode) {
+                const dw = destCanvas.width;
+                const dh = destCanvas.height;
+                const ctx = destCanvas.getContext('2d');
+                
+                const sw = sourceImg.naturalWidth || sourceImg.width;
+                const sh = sourceImg.naturalHeight || sourceImg.height;
+                if (!sw || !sh) return;
+                
+                // Extraer píxeles de origen
+                let srcPixels;
+                if (sourceImg instanceof HTMLCanvasElement) {
+                    const tempCtx = sourceImg.getContext('2d');
+                    const srcData = tempCtx.getImageData(0, 0, sw, sh);
+                    srcPixels = new Uint32Array(srcData.data.buffer);
+                } else {
+                    const tempCanvas = document.createElement('canvas');
+                    tempCanvas.width = sw;
+                    tempCanvas.height = sh;
+                    const tempCtx = tempCanvas.getContext('2d');
+                    tempCtx.drawImage(sourceImg, 0, 0);
+                    const srcData = tempCtx.getImageData(0, 0, sw, sh);
+                    srcPixels = new Uint32Array(srcData.data.buffer);
+                }
+                
+                // Preparar datos de destino
+                const destData = ctx.createImageData(dw, dh);
+                const destPixels = new Uint32Array(destData.data.buffer);
+                
+                const centerX = dw / 2;
+                const centerY = dh / 2;
+                const maxRadius = Math.min(centerX, centerY);
+                const rotationRad = (rotationDegrees * Math.PI) / 180;
+                
+                for (let y = 0; y < dh; y++) {
+                    const dy = y - centerY;
+                    const dySq = dy * dy;
+                    for (let x = 0; x < dw; x++) {
+                        const dx = x - centerX;
+                        const r = Math.sqrt(dx * dx + dySq);
+                        
+                        if (r > maxRadius) continue; // fuera del círculo
+                        
+                        let rNorm = r / maxRadius;
+                        
+                        if (mode === 'planet') {
+                            rNorm = 1 - rNorm;
+                        }
+                        
+                        rNorm = rNorm / zoomFactor;
+                        
+                        if (rNorm < 0 || rNorm > 1) continue;
+                        
+                        let theta = Math.atan2(dy, dx) + rotationRad;
+                        
+                        if (theta < 0) theta += 2 * Math.PI;
+                        else if (theta > 2 * Math.PI) theta -= 2 * Math.PI;
+                        
+                        const srcX = Math.floor((theta / (2 * Math.PI)) * sw) % sw;
+                        const srcY = Math.min(sh - 1, Math.max(0, Math.floor(rNorm * sh)));
+                        
+                        const srcIdx = srcY * sw + srcX;
+                        const destIdx = y * dw + x;
+                        destPixels[destIdx] = srcPixels[srcIdx];
+                    }
+                }
+                
+                ctx.putImageData(destData, 0, 0);
+            }
+
+            function applyFiltersToPreview() {
+                cropperImage.style.filter = `brightness(${globalBrightness}%) contrast(${globalContrast}%) saturate(${globalSaturation}%)`;
+                renderEffectsPreview();
+            }
+
+            brightnessSlider.addEventListener('input', () => {
+                globalBrightness = brightnessSlider.value;
+                brightnessVal.textContent = globalBrightness + '%';
+                applyFiltersToPreview();
+            });
+
+            contrastSlider.addEventListener('input', () => {
+                globalContrast = contrastSlider.value;
+                contrastVal.textContent = globalContrast + '%';
+                applyFiltersToPreview();
+            });
+
+            saturationSlider.addEventListener('input', () => {
+                globalSaturation = saturationSlider.value;
+                saturationVal.textContent = globalSaturation + '%';
+                applyFiltersToPreview();
+            });
+
+            watermarkToggle.addEventListener('change', () => {
+                watermarkEnabled = watermarkToggle.checked;
+                watermarkOptions.style.display = watermarkEnabled ? 'flex' : 'none';
+                updateWatermarkDOM();
+            });
+
+            btnWmTypeImage.addEventListener('click', () => {
+                btnWmTypeImage.classList.add('active');
+                btnWmTypeText.classList.remove('active');
+                wmImageGroup.style.display = 'flex';
+                wmTextGroup.style.display = 'none';
+                watermarkType = 'image';
+                updateWatermarkDOM();
+                applyWatermarkPreset();
+            });
+
+            btnWmTypeText.addEventListener('click', () => {
+                btnWmTypeText.classList.add('active');
+                btnWmTypeImage.classList.remove('active');
+                wmTextGroup.style.display = 'flex';
+                wmImageGroup.style.display = 'none';
+                watermarkType = 'text';
+                updateWatermarkDOM();
+                applyWatermarkPreset();
+            });
+
+            btnWmSrcDefault.addEventListener('click', () => {
+                btnWmSrcDefault.classList.add('active');
+                btnWmSrcCustom.classList.remove('active');
+                watermarkSource = 'default';
+                watermarkImgElement.src = '../img/LOGO.png';
+                watermarkImg.src = '../img/LOGO.png';
+            });
+
+            btnWmSrcCustom.addEventListener('click', () => {
+                wmFileInput.click();
+            });
+
+            wmFileInput.addEventListener('change', () => {
+                if (wmFileInput.files && wmFileInput.files[0]) {
+                    const file = wmFileInput.files[0];
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        btnWmSrcCustom.classList.add('active');
+                        btnWmSrcDefault.classList.remove('active');
+                        watermarkSource = 'custom';
+                        watermarkImgElement.src = e.target.result;
+                        watermarkImg.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            wmTextInput.addEventListener('input', () => {
+                watermarkTextVal = wmTextInput.value;
+                updateWatermarkDOM();
+                applyWatermarkPreset();
+            });
+
+            wmTextColor.addEventListener('input', () => {
+                watermarkTextColor = wmTextColor.value;
+                updateWatermarkDOM();
+            });
+
+            wmScaleSlider.addEventListener('input', () => {
+                watermarkScale = parseInt(wmScaleSlider.value);
+                wmScaleVal.textContent = watermarkScale + '%';
+                updateWatermarkDOM();
+                applyWatermarkPreset();
+            });
+
+            wmOpacitySlider.addEventListener('input', () => {
+                watermarkOpacity = parseInt(wmOpacitySlider.value);
+                wmOpacityVal.textContent = watermarkOpacity + '%';
+                updateWatermarkDOM();
+            });
+
+            wmPositionPreset.addEventListener('change', () => {
+                applyWatermarkPreset();
+            });
+
+            function updateWatermarkDOM() {
+                if (!watermarkEnabled) {
+                    watermarkOverlay.style.display = 'none';
+                    return;
+                }
+                watermarkOverlay.style.display = 'block';
+
+                if (watermarkType === 'image') {
+                    watermarkImg.style.display = 'block';
+                    watermarkText.style.display = 'none';
+
+                    const wmWidth = viewportWidth * (watermarkScale / 100);
+                    watermarkOverlay.style.width = wmWidth + 'px';
+                    watermarkOverlay.style.height = (wmWidth / watermarkImgAspectRatio) + 'px';
+                } else {
+                    watermarkImg.style.display = 'none';
+                    watermarkText.style.display = 'block';
+                    watermarkText.textContent = watermarkTextVal;
+                    watermarkText.style.color = watermarkTextColor;
+
+                    const fontSize = Math.round(viewportWidth * (watermarkScale / 100) * 0.25);
+                    watermarkText.style.fontSize = fontSize + 'px';
+                    watermarkOverlay.style.width = 'auto';
+                    watermarkOverlay.style.height = 'auto';
+                }
+
+                watermarkOverlay.style.opacity = watermarkOpacity / 100;
+                
+                const topPx = (watermarkPercentY / 100) * viewportHeight;
+                const leftPx = (watermarkPercentX / 100) * viewportWidth;
+                watermarkOverlay.style.top = topPx + 'px';
+                watermarkOverlay.style.left = leftPx + 'px';
+            }
+
+            function applyWatermarkPreset() {
+                const preset = wmPositionPreset.value;
+                if (preset === 'custom') return;
+
+                const wmWidthPct = watermarkScale;
+                let wmHeightPct = watermarkScale;
+                if (watermarkType === 'image') {
+                    wmHeightPct = (viewportWidth * (watermarkScale / 100) / watermarkImgAspectRatio) / viewportHeight * 100;
+                } else {
+                    wmHeightPct = 8;
+                }
+
+                if (preset === 'top-left') {
+                    watermarkPercentX = 5;
+                    watermarkPercentY = 5;
+                } else if (preset === 'top-right') {
+                    watermarkPercentX = 95 - wmWidthPct;
+                    watermarkPercentY = 5;
+                } else if (preset === 'bottom-left') {
+                    watermarkPercentX = 5;
+                    watermarkPercentY = 95 - wmHeightPct;
+                } else if (preset === 'bottom-right') {
+                    watermarkPercentX = 95 - wmWidthPct;
+                    watermarkPercentY = 95 - wmHeightPct;
+                } else if (preset === 'center') {
+                    watermarkPercentX = 50 - (wmWidthPct / 2);
+                    watermarkPercentY = 50 - (wmHeightPct / 2);
+                }
+
+                updateWatermarkDOM();
+            }
+
+            watermarkOverlay.addEventListener('mousedown', startDragWatermark);
+            watermarkOverlay.addEventListener('touchstart', startDragWatermark, { passive: true });
+
             cropperContainer.addEventListener('mousedown', startDrag);
             cropperContainer.addEventListener('touchstart', startDrag, { passive: true });
 
@@ -933,6 +1799,18 @@
 
             window.addEventListener('mouseup', endDrag);
             window.addEventListener('touchend', endDrag);
+
+            function startDragWatermark(e) {
+                e.stopPropagation();
+                isDraggingWatermark = true;
+                
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                
+                const wmRect = watermarkOverlay.getBoundingClientRect();
+                watermarkDragOffsetX = clientX - wmRect.left;
+                watermarkDragOffsetY = clientY - wmRect.top;
+            }
 
             function startDrag(e) {
                 if (activeIndex === -1 || images.length === 0) return;
@@ -946,9 +1824,35 @@
             }
 
             function drag(e) {
+                if (isDraggingWatermark) {
+                    if (e.cancelable) e.preventDefault();
+                    
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                    
+                    const rect = cropViewport.getBoundingClientRect();
+                    const targetX = clientX - rect.left - watermarkDragOffsetX;
+                    const targetY = clientY - rect.top - watermarkDragOffsetY;
+                    
+                    watermarkPercentX = (targetX / viewportWidth) * 100;
+                    watermarkPercentY = (targetY / viewportHeight) * 100;
+                    
+                    watermarkPercentX = Math.max(0, Math.min(100 - watermarkScale, watermarkPercentX));
+                    
+                    let wmHeightPct = watermarkScale;
+                    if (watermarkType === 'image') {
+                        wmHeightPct = (viewportWidth * (watermarkScale / 100) / watermarkImgAspectRatio) / viewportHeight * 100;
+                    } else {
+                        wmHeightPct = 8;
+                    }
+                    watermarkPercentY = Math.max(0, Math.min(100 - wmHeightPct, watermarkPercentY));
+                    
+                    wmPositionPreset.value = 'custom';
+                    updateWatermarkDOM();
+                    return;
+                }
+
                 if (!isDragging) return;
-                
-                // Prevenir scroll en móviles al arrastrar
                 if (e.cancelable) e.preventDefault();
 
                 const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -963,9 +1867,9 @@
 
             function endDrag() {
                 isDragging = false;
+                isDraggingWatermark = false;
             }
 
-            // Redimensión de la ventana
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
@@ -974,7 +1878,6 @@
                 }, 100);
             });
 
-            // 8. Procesamiento y Exportación
             btnDownloadCurrent.addEventListener('click', async () => {
                 if (activeIndex === -1) return;
                 saveCurrentTransformState();
@@ -982,7 +1885,7 @@
                 showOverlay('Procesando foto actual...', 'Generando WebP de alta calidad');
                 try {
                     const blob = await cropImageToBlob(images[activeIndex]);
-                    downloadBlob(blob, renameFileExtension(images[activeIndex].name));
+                    downloadBlob(blob, renameFileExtension(images[activeIndex].name, activeIndex));
                 } catch (e) {
                     console.error(e);
                     alert('Hubo un error al recortar la imagen.');
@@ -1004,9 +1907,8 @@
                     
                     try {
                         const blob = await cropImageToBlob(img);
-                        // Trigger download sequentially with small delay to avoid browser blocking multiple downloads
                         await new Promise((r) => setTimeout(r, 250));
-                        downloadBlob(blob, renameFileExtension(img.name));
+                        downloadBlob(blob, renameFileExtension(img.name, i));
                         successCount++;
                     } catch (e) {
                         console.error('Error al exportar ' + img.name, e);
@@ -1023,7 +1925,6 @@
                 return new Promise((resolve, reject) => {
                     const img = new Image();
                     img.onload = () => {
-                        // Dimensiones de exportación según calidad seleccionada
                         const qualityMode = exportQualitySelect.value;
                         let exportW = 1200;
                         let exportH = 800;
@@ -1032,53 +1933,101 @@
                             exportW = 1800;
                             exportH = 1200;
                         } else if (qualityMode === 'max') {
-                            // Resolución máxima posible basada en la imagen original
                             const isRotated = (imgObj.rotation % 180 !== 0);
                             const origW = isRotated ? imgObj.height : imgObj.width;
                             exportW = origW;
                             exportH = origW / currentRatioValue;
                         } else {
-                            // Por defecto 'web' 3:2, si es otro ratio se acomoda la altura
                             exportW = 1200;
                             exportH = 1200 / currentRatioValue;
                         }
 
                         const canvas = document.createElement('canvas');
-                        canvas.width = exportW;
-                        canvas.height = exportH;
+                        
+                        if (circularEnabled) {
+                            const size = Math.min(exportW, exportH);
+                            canvas.width = size;
+                            canvas.height = size;
+                        } else {
+                            canvas.width = exportW;
+                            canvas.height = exportH;
+                        }
+                        
                         const ctx = canvas.getContext('2d');
 
-                        // Fondo blanco
                         ctx.fillStyle = '#ffffff';
                         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                        // Mapeo de escala del viewport al canvas
-                        const scaleFactor = exportW / viewportWidth;
+                        if (circularEnabled) {
+                            const tempCanvas = document.createElement('canvas');
+                            tempCanvas.width = img.naturalWidth;
+                            tempCanvas.height = img.naturalHeight;
+                            const tempCtx = tempCanvas.getContext('2d');
+                            
+                            tempCtx.filter = `brightness(${globalBrightness}%) contrast(${globalContrast}%) saturate(${globalSaturation}%)`;
+                            
+                            tempCtx.translate(tempCanvas.width / 2, tempCanvas.height / 2);
+                            tempCtx.rotate(imgObj.rotation * Math.PI / 180);
+                            
+                            const isRotated = (imgObj.rotation % 180 !== 0);
+                            const drawW = isRotated ? tempCanvas.height : tempCanvas.width;
+                            const drawH = isRotated ? tempCanvas.width : tempCanvas.height;
+                            tempCtx.drawImage(img, -drawW / 2, -drawH / 2, drawW, drawH);
+                            
+                            applyCircularPanorama(
+                                tempCanvas,
+                                canvas,
+                                circularRotation,
+                                circularZoom,
+                                circularMode
+                            );
+                        } else {
+                            ctx.filter = `brightness(${globalBrightness}%) contrast(${globalContrast}%) saturate(${globalSaturation}%)`;
 
-                        // Mover al centro
-                        ctx.translate(canvas.width / 2, canvas.height / 2);
-                        
-                        // Aplicar paneo
-                        ctx.translate(imgObj.panX * scaleFactor, imgObj.panY * scaleFactor);
-                        
-                        // Rotar
-                        ctx.rotate(imgObj.rotation * Math.PI / 180);
-                        
-                        // Escalar por zoom
-                        ctx.scale(imgObj.zoom, imgObj.zoom);
+                            const scaleFactor = exportW / viewportWidth;
 
-                        // Dibujar imagen centrada usando el display size mapeado
-                        const drawW = imgObj.displayWidth * scaleFactor;
-                        const drawH = imgObj.displayHeight * scaleFactor;
-                        
-                        // Si está rotado 90/270, las dimensiones de dibujo originales deben invertirse para rellenar
-                        const isRotated = (imgObj.rotation % 180 !== 0);
-                        const drawOriginalW = isRotated ? drawH : drawW;
-                        const drawOriginalH = isRotated ? drawW : drawH;
+                            ctx.translate(canvas.width / 2, canvas.height / 2);
+                            ctx.translate(imgObj.panX * scaleFactor, imgObj.panY * scaleFactor);
+                            ctx.rotate(imgObj.rotation * Math.PI / 180);
+                            ctx.scale(imgObj.zoom, imgObj.zoom);
 
-                        ctx.drawImage(img, -drawOriginalW / 2, -drawOriginalH / 2, drawOriginalW, drawOriginalH);
+                            const drawW = imgObj.displayWidth * scaleFactor;
+                            const drawH = imgObj.displayHeight * scaleFactor;
+                            
+                            const isRotated = (imgObj.rotation % 180 !== 0);
+                            const drawOriginalW = isRotated ? drawH : drawW;
+                            const drawOriginalH = isRotated ? drawW : drawH;
 
-                        // Convertir a WebP
+                            ctx.drawImage(img, -drawOriginalW / 2, -drawOriginalH / 2, drawOriginalW, drawOriginalH);
+
+                            ctx.filter = 'none';
+                        }
+
+                        if (watermarkEnabled) {
+                            ctx.save();
+                            ctx.globalAlpha = watermarkOpacity / 100;
+
+                            const wmX = (watermarkPercentX / 100) * exportW;
+                            const wmY = (watermarkPercentY / 100) * exportH;
+                            const wmW = (watermarkScale / 100) * exportW;
+
+                            if (watermarkType === 'image') {
+                                const wmH = wmW / watermarkImgAspectRatio;
+                                ctx.drawImage(watermarkImgElement, wmX, wmY, wmW, wmH);
+                            } else {
+                                const fontSize = Math.round(wmW * 0.25);
+                                ctx.font = `bold ${fontSize}px 'Outfit', sans-serif`;
+                                ctx.fillStyle = watermarkTextColor;
+                                ctx.textBaseline = 'top';
+                                ctx.shadowColor = 'rgba(0,0,0,0.6)';
+                                ctx.shadowBlur = 4;
+                                ctx.shadowOffsetX = 2;
+                                ctx.shadowOffsetY = 2;
+                                ctx.fillText(watermarkTextVal, wmX, wmY);
+                            }
+                            ctx.restore();
+                        }
+
                         canvas.toBlob((blob) => {
                             if (blob) resolve(blob);
                             else reject(new Error('Canvas blob is null'));
@@ -1089,7 +2038,12 @@
                 });
             }
 
-            function renameFileExtension(originalName) {
+            function renameFileExtension(originalName, index = -1) {
+                const batchName = document.getElementById('batch-name-input').value.trim();
+                if (batchName !== '') {
+                    const suffix = (index !== -1 && images.length > 1) ? `-${index + 1}` : '';
+                    return batchName + suffix + '.webp';
+                }
                 const baseName = originalName.substring(0, originalName.lastIndexOf('.')) || originalName;
                 return baseName + '_recortado.webp';
             }
@@ -1105,7 +2059,6 @@
                 URL.revokeObjectURL(url);
             }
 
-            // Overlay Helpers
             function showOverlay(title, subtitle) {
                 progressText.textContent = title;
                 progressSubtext.textContent = subtitle;

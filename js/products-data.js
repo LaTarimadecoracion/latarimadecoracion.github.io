@@ -8,7 +8,7 @@ const productsData = [
         "order": 0,
         "products": [
             {
-                "id": "baranda-desmontable-montessori",
+                "id": "52",
                 "title": "Baranda: Desmontable - Estilo Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
                 "image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
@@ -414,7 +414,7 @@ const productsData = [
                 "views": 29
             },
             {
-                "id": "baranda-desmontable-clasica",
+                "id": "51",
                 "title": "Baranda: Desmontable Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
@@ -825,7 +825,7 @@ const productsData = [
                 "views": 94
             },
             {
-                "id": "escaleras",
+                "id": "91",
                 "title": "Escaleras para cama",
                 "description": "Seguridad y firmeza absoluta para alcanzar cada nivel.",
                 "image": "img/escaleras/escaleras/1780288089831-imagen.webp",
@@ -953,7 +953,7 @@ const productsData = [
                 "views": 11
             },
             {
-                "id": "perchero-1",
+                "id": "31",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
                 "image": "img/percheros/perchero-1/1782624223963-imagen.webp",
@@ -1041,7 +1041,7 @@ const productsData = [
                 "views": 14
             },
             {
-                "id": "banquito-de-plaza",
+                "id": "C1",
                 "title": "Banquito de Plaza",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
                 "image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
@@ -1088,7 +1088,7 @@ const productsData = [
                 "views": 16
             },
             {
-                "id": "baranda-sommier-clasica",
+                "id": "54",
                 "title": "Baranda: Para camas Sommier",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
                 "image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
@@ -1389,7 +1389,7 @@ const productsData = [
                 "views": 11
             },
             {
-                "id": "baul-madera-mediano",
+                "id": "41",
                 "title": "Baúl de madera de pino",
                 "description": "",
                 "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
@@ -1513,7 +1513,7 @@ const productsData = [
                 "views": 30
             },
             {
-                "id": "silla-infantil",
+                "id": "C2",
                 "title": "Silla infantil",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
                 "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
@@ -1599,7 +1599,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "especiero",
+                "id": "42",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
                 "image": "img/organizadores/especiero/1782487819564-imagen.webp",
@@ -1708,7 +1708,7 @@ const productsData = [
                 "views": 22
             },
             {
-                "id": "deck-cuadrado",
+                "id": "E2",
                 "title": "Deck cuadrado",
                 "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
                 "image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
@@ -1976,7 +1976,7 @@ const productsData = [
                 "views": 10
             },
             {
-                "id": "deck-rectangular",
+                "id": "E1",
                 "title": "Deck rectangular",
                 "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
                 "image": "img/jardin/deck-rectangular/1780707680810-imagen.webp",
@@ -2198,7 +2198,7 @@ const productsData = [
                 "views": 11
             },
             {
-                "id": "macetas-colgante-eucalipto",
+                "id": "E3",
                 "title": "Macetas colgante de eucalipto",
                 "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
                 "image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
@@ -2288,7 +2288,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "Platos-madera",
+                "id": "G1",
                 "title": "Platons de Madera - Asado",
                 "description": "",
                 "image": "img/todo-algarrobo/Platos-madera/1782611849956-imagen.webp",
@@ -2376,7 +2376,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "Mate",
+                "id": "G3",
                 "title": "Mate",
                 "description": "",
                 "image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
@@ -2465,7 +2465,7 @@ const productsData = [
                 "views": 4
             },
             {
-                "id": "Platos - Cuencos",
+                "id": "G2",
                 "title": "Cuencos",
                 "description": "",
                 "image": "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
@@ -2538,7 +2538,7 @@ const productsData = [
                 "views": 18
             },
             {
-                "id": "Mueble-Multifunción",
+                "id": "46",
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
                 "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
@@ -2628,7 +2628,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "jenga",
+                "id": "B1",
                 "title": "Jenga",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
                 "image": "img/juguetes/jenga/jenga.webp",
@@ -2693,7 +2693,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "verdulero-clasico",
+                "id": "43",
                 "title": "Verdulero Clasico",
                 "description": "Verdulero con estante superior",
                 "image": "img/organizadores/estantes-montessori/1.webp",
@@ -2763,7 +2763,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "verdule-para-mesada",
+                "id": "44",
                 "title": "Verdule para Mesada",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
@@ -2835,7 +2835,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "verdulero-mediano",
+                "id": "45",
                 "title": "Verdulero Mediano",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
@@ -2904,7 +2904,7 @@ const productsData = [
                 "views": 8
             },
             {
-                "id": "verdulero-x3",
+                "id": "47",
                 "title": "Verdulero x3",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
@@ -2988,7 +2988,7 @@ const productsData = [
                 "views": 831
             },
             {
-                "id": "esquinero-x3",
+                "id": "48",
                 "title": "Esquinero x3",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
@@ -3114,7 +3114,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "cesto-de-basura",
+                "id": "E5",
                 "title": "Cesto de Basura",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
                 "image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
@@ -3205,7 +3205,7 @@ const productsData = [
                 "views": 11
             },
             {
-                "id": "mesa-plegabe",
+                "id": "D2",
                 "title": "Mesa Plegabe",
                 "description": "",
                 "image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
@@ -3239,7 +3239,7 @@ const productsData = [
                 "views": 2353
             },
             {
-                "id": "mesa-plegable-redonda-chica",
+                "id": "D3",
                 "title": "Mesa Plegable - Redonda",
                 "description": "",
                 "image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
@@ -3272,7 +3272,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "fanal",
+                "id": "E4",
                 "title": "Fanal",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
                 "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
@@ -3351,7 +3351,7 @@ const productsData = [
                 "views": 7
             },
             {
-                "id": "organizador-tribuna-x3",
+                "id": "49",
                 "title": "Organizador Tribuna X3",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
                 "image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
@@ -3436,7 +3436,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Posa-Tortas",
+                "id": "4A",
                 "title": "Posa Torta De Madera Torneado Candy Bar",
                 "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
                 "image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
@@ -3498,7 +3498,7 @@ const productsData = [
                 "views": 12
             },
             {
-                "id": "baranda-sommier-triple",
+                "id": "55",
                 "title": "Baranda: Para camas Sommier - Triple",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
                 "image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
@@ -3679,7 +3679,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "baranda-fija-clasica",
+                "id": "57",
                 "title": "Baranda Fija: Clásica",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
                 "image": "img/barandas-para-cama/baranda-fija-clasica/1780542411484-imagen.webp",
@@ -3751,7 +3751,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "baranda-montessori",
+                "id": "58",
                 "title": "Baranda Fija: Montessori",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
                 "image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
@@ -3823,7 +3823,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "baranda-simple",
+                "id": "59",
                 "title": "Baranda Fija: Simple",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
                 "image": "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
@@ -3894,7 +3894,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "baranda-desmontable-triple",
+                "id": "53",
                 "title": "Baranda: Desmontable Clásica - Triple",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
@@ -4161,7 +4161,7 @@ const productsData = [
                 "views": 24
             },
             {
-                "id": "perchero-pared-doblegancho",
+                "id": "39",
                 "title": "Perchero de pared",
                 "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
                 "image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
@@ -4266,7 +4266,7 @@ const productsData = [
                 "views": 4
             },
             {
-                "id": "Estantes-Cortes-Madera",
+                "id": "69",
                 "title": "Cortes de madera",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/estantes/estantes.webp",
@@ -4416,7 +4416,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "chico",
+                "id": "21",
                 "title": "Vinoteca - 5 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
@@ -4504,7 +4504,7 @@ const productsData = [
                 "views": 49
             },
             {
-                "id": "9-vinos",
+                "id": "22",
                 "title": "Vinoteca - 9 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
@@ -4594,7 +4594,7 @@ const productsData = [
                 "views": 14
             },
             {
-                "id": "17-vinos",
+                "id": "24",
                 "title": "Vinoteca - 17 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
@@ -4683,7 +4683,7 @@ const productsData = [
                 "views": 4
             },
             {
-                "id": "13-vinos",
+                "id": "23",
                 "title": "Vinoteca - 13 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
@@ -4773,7 +4773,7 @@ const productsData = [
                 "views": 6
             },
             {
-                "id": "Colecho_retro_madera",
+                "id": "71",
                 "title": "Cuna: Colecho Retro",
                 "description": "",
                 "image": "img/cunas/Colecho_retro_madera/1783750658828-imagen.webp",
@@ -4852,7 +4852,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
+                "id": "72",
                 "title": "Cuna: Corral - Colecho con doble",
                 "description": "Corral - Colecho con doble posición de parrilla",
                 "image": "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731525-imagen.webp",
@@ -4932,7 +4932,7 @@ const productsData = [
                 "views": 4
             },
             {
-                "id": "Eco-fija-100x50cm-Modelo-unico",
+                "id": "73",
                 "title": "Cuna: Eco fija - Modelo único",
                 "description": "Eco fija - 100 x 50 cm - Modelo único",
                 "image": "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp",
@@ -5024,7 +5024,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "Eco-rebatible",
+                "id": "74",
                 "title": "Cuna: Eco rebatible",
                 "description": "",
                 "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
@@ -5111,7 +5111,7 @@ const productsData = [
                 "views": 9
             },
             {
-                "id": "cuna-Rebatible-cajones",
+                "id": "75",
                 "title": "Cuna: rebatible con cajones",
                 "description": "",
                 "image": "img/cunas/cuna-Rebatible-cajones/1783750894115-imagen.webp",
@@ -5190,7 +5190,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "Romana-Rebatible-Cajones",
+                "id": "76",
                 "title": "Cuna: Romana - Rebatible - Cajones",
                 "description": "",
                 "image": "img/cunas/Romana-Rebatible-Cajones/1783750937925-imagen.webp",
@@ -5269,7 +5269,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Romana - Rebatible - Cajones - en XX",
+                "id": "77",
                 "title": "Cuna: Romana - Rebatible - Cajones - en XX",
                 "description": "",
                 "image": "img/cunas/Romana - Rebatible - Cajones - en XX/1783750962820-imagen.webp",
@@ -5348,7 +5348,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "Sol - Rebatible - Cajones",
+                "id": "78",
                 "title": "Cuna: Sol - Rebatible - Cajones",
                 "description": "",
                 "image": "img/cunas/Sol - Rebatible - Cajones/1783750986939-imagen.webp",
@@ -5427,7 +5427,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "Perchero 3 - Rustico",
+                "id": "34",
                 "title": "Perchero 3 - Rustico",
                 "description": "Medidas:\n50 x 13 cm",
                 "image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
@@ -5519,7 +5519,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "Perchero 5 - Rusctio - campo decorado",
+                "id": "33",
                 "title": "Perchero 5 - Rustico",
                 "description": "Medidas:\n63 x 13 cm",
                 "image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
@@ -5614,7 +5614,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "perchero-madera-tuvitos",
+                "id": "38",
                 "title": "Perchero 6 - Minimalista",
                 "description": "Medidas:\n60 x 13 cm",
                 "image": "img/percheros/perchero-madera-tuvitos/1784390037823-imagen.webp",
@@ -5706,7 +5706,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "perchero-madera-tuvitos5",
+                "id": "37",
                 "title": "Perchero 5 - Minimalista",
                 "description": "Medidas:\n50 x 13 cm",
                 "image": "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
@@ -5797,7 +5797,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "estante-hexagonal-x3",
+                "id": "11",
                 "title": "Estante Hexagonal x3",
                 "description": "",
                 "image": "img/logo_provisional.png",
@@ -5882,7 +5882,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "bodega-madera-6-rectangular",
+                "id": "25",
                 "title": "Bodega 6 Vinos",
                 "description": "Medidas\nAlto: 40 cm\nAncho: 30 cm\nProfundidad: 23 cm",
                 "image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
@@ -5972,7 +5972,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "hexagonales",
+                "id": "62",
                 "title": "Hexagonales",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/hexagonales/hexagonales.webp",
@@ -6072,7 +6072,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "Mesas para Candy Bar",
+                "id": "D4",
                 "title": "Mesas para Candy Bar / Mesa nido",
                 "description": "",
                 "image": "img/mesas-de-madera/Mesas para Candy Bar/1783813269259-imagen.webp",
@@ -6312,7 +6312,7 @@ const productsData = [
                 "views": 7
             },
             {
-                "id": "pie-cama-romano",
+                "id": "79",
                 "title": "Pie de cama romano",
                 "description": "",
                 "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
@@ -6399,7 +6399,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "sillon-gervasoni-simple-chico",
+                "id": "C3",
                 "title": "Sillon Gervasoni - Chicos",
                 "description": "",
                 "image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
@@ -6488,7 +6488,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "perchero-nordico-pared-x3",
+                "id": "36",
                 "title": "Perchero nórdico de pared x3",
                 "description": "",
                 "image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
@@ -6628,7 +6628,7 @@ const productsData = [
                 "views": 8
             },
             {
-                "id": "perchero-nordico-pared-x5",
+                "id": "35",
                 "title": "Perchero nórdico de pared x5",
                 "description": "",
                 "image": "img/percheros/perchero-nordico-pared-x5/1784163561616-imagen.webp",
@@ -6770,7 +6770,7 @@ const productsData = [
                 "views": 6
             },
             {
-                "id": "baranda-reforzada-geriatricos",
+                "id": "56",
                 "title": "Baranda: Desmontable con bulones - Especial",
                 "description": "",
                 "image": "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
@@ -6836,7 +6836,7 @@ const productsData = [
                 "views": 10
             },
             {
-                "id": "podio-premiacion--3-modulos-",
+                "id": "H2",
                 "title": "Podio premiación Profesional",
                 "description": "Podios modulares resistentes para eventos y premiaciones.\n\nMódulo 1: 80 x 40 x 50 cm\nMódulo 2: 80 x 40 x 35 cm\nMódulo 3: 80 x 40 x 20 cm\n\nEnvió gratis a las zonas 1 2 y 3, se puede ver en la ultima foto de la publicación.",
                 "image": "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
@@ -6912,7 +6912,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "mensulas-escritorio",
+                "id": "4B",
                 "title": "Ménsulas para escritorios",
                 "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
                 "image": "img/organizadores/mensulas/mensulas.webp",
@@ -7129,7 +7129,7 @@ const productsData = [
                 "views": 24
             },
             {
-                "id": "mensulas",
+                "id": "4C",
                 "title": "Ménsulas para estantes",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/organizadores/mensulas/mensulas.webp",
@@ -7258,7 +7258,7 @@ const productsData = [
                 "views": 9
             },
             {
-                "id": "Banco Escalera De Pino 3 Escalones",
+                "id": "4D",
                 "title": "Banco Escalera De Pino 3 Escalones",
                 "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
                 "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
@@ -7295,7 +7295,7 @@ const productsData = [
                 "views": 7
             },
             {
-                "id": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+                "id": "81",
                 "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
                 "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
                 "image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
@@ -7318,7 +7318,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "estantes-montessori",
+                "id": "4E",
                 "title": "Estantes Montessori",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
@@ -7556,7 +7556,7 @@ const productsData = [
                 "views": 15
             },
             {
-                "id": "cajones-50cm",
+                "id": "A4",
                 "title": "Steps / Cajones (50cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
@@ -7717,7 +7717,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "steps---cajones-40",
+                "id": "A3",
                 "title": "Steps / Cajones (40 cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
@@ -7878,7 +7878,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "steps---cajones-30",
+                "id": "A2",
                 "title": "Steps / Cajones (30 cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
@@ -8012,7 +8012,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "caballetes-madera-pino",
+                "id": "4F",
                 "title": "Caballetes de madera",
                 "description": "",
                 "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
@@ -8033,7 +8033,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Banco Banquito Escalera Niños Infantil",
+                "id": "4G",
                 "title": "Banco Banquito Escalera Niños Infantil",
                 "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
                 "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
@@ -8071,7 +8071,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "Escritorio-PC-PRO",
+                "id": "D6",
                 "title": "Escritorio para PC - Soporte Gabinete",
                 "description": "",
                 "image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
@@ -8096,7 +8096,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                "id": "F2",
                 "title": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
                 "description": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
                 "image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
@@ -8119,7 +8119,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "mesita-luz-angosta",
+                "id": "F3",
                 "title": "Mesita de luz - Angosta",
                 "description": "Mesita de luz - Angosta",
                 "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
@@ -8140,7 +8140,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "tendre-ropa-madera",
+                "id": "F4",
                 "title": "Tender",
                 "description": "",
                 "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
@@ -8162,7 +8162,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "mesita-matera",
+                "id": "D7",
                 "title": "Mesita Matera",
                 "description": "",
                 "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
@@ -8199,7 +8199,7 @@ const productsData = [
                 "views": 4
             },
             {
-                "id": "soporte-vinos-vinoteca-6",
+                "id": "26",
                 "title": "Soporte Para 6 Vinos Bodega Vinoteca",
                 "description": "56,5 cm. de alto\n12 cm. de ancho\n29,5 cm. de profundidad",
                 "image": "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
@@ -8236,7 +8236,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "Soporte Para 12 Vinos Bodega Vinoteca",
+                "id": "27",
                 "title": "Soporte Para 12 Vinos Bodega Vinoteca",
                 "description": "» MEDIDAS\n56,5 cm. de alto\n22,5 cm. de ancho\n29,5 cm. de profundidad",
                 "image": "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp",
@@ -8271,7 +8271,7 @@ const productsData = [
                 "views": 4
             },
             {
-                "id": "Juego de Mesa y Sillas Infantiles",
+                "id": "B4",
                 "title": "Juego de Mesa y Sillas Infantiles",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
                 "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
@@ -8306,7 +8306,7 @@ const productsData = [
                 "views": 7
             },
             {
-                "id": "Juego de Mesa y Sillas redondos",
+                "id": "B5",
                 "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
                 "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
@@ -8341,7 +8341,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "Juego de Mesa y Sillas colonial",
+                "id": "B6",
                 "title": "Juego de Mesa y Sillas Infantiles (Colonial)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
                 "image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
@@ -8376,7 +8376,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "perchero-1-2",
+                "id": "32",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
                 "image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
@@ -8462,7 +8462,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Repisa Biblioteca Estantes Montessori",
+                "id": "4H",
                 "title": "Repisa Biblioteca Estantes Montessori",
                 "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
                 "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
@@ -8509,7 +8509,7 @@ const productsData = [
         "order": 1,
         "products": [
             {
-                "id": "estante-hexagonal-x3",
+                "id": "11",
                 "title": "Estante Hexagonal x3",
                 "description": "",
                 "image": "img/logo_provisional.png",
@@ -8603,7 +8603,7 @@ const productsData = [
         "order": 2,
         "products": [
             {
-                "id": "chico",
+                "id": "21",
                 "title": "Vinoteca - 5 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
@@ -8691,7 +8691,7 @@ const productsData = [
                 "views": 49
             },
             {
-                "id": "9-vinos",
+                "id": "22",
                 "title": "Vinoteca - 9 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
@@ -8781,7 +8781,7 @@ const productsData = [
                 "views": 14
             },
             {
-                "id": "13-vinos",
+                "id": "23",
                 "title": "Vinoteca - 13 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
@@ -8871,7 +8871,7 @@ const productsData = [
                 "views": 6
             },
             {
-                "id": "17-vinos",
+                "id": "24",
                 "title": "Vinoteca - 17 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
@@ -8960,7 +8960,7 @@ const productsData = [
                 "views": 4
             },
             {
-                "id": "bodega-madera-6-rectangular",
+                "id": "25",
                 "title": "Bodega 6 Vinos",
                 "description": "Medidas\nAlto: 40 cm\nAncho: 30 cm\nProfundidad: 23 cm",
                 "image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
@@ -9050,7 +9050,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "soporte-vinos-vinoteca-6",
+                "id": "26",
                 "title": "Soporte Para 6 Vinos Bodega Vinoteca",
                 "description": "56,5 cm. de alto\n12 cm. de ancho\n29,5 cm. de profundidad",
                 "image": "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
@@ -9087,7 +9087,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "Soporte Para 12 Vinos Bodega Vinoteca",
+                "id": "27",
                 "title": "Soporte Para 12 Vinos Bodega Vinoteca",
                 "description": "» MEDIDAS\n56,5 cm. de alto\n22,5 cm. de ancho\n29,5 cm. de profundidad",
                 "image": "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp",
@@ -9132,7 +9132,7 @@ const productsData = [
         "order": 3,
         "products": [
             {
-                "id": "perchero-1",
+                "id": "31",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
                 "image": "img/percheros/perchero-1/1782624223963-imagen.webp",
@@ -9220,7 +9220,7 @@ const productsData = [
                 "views": 14
             },
             {
-                "id": "perchero-1-2",
+                "id": "32",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
                 "image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
@@ -9306,7 +9306,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Perchero 5 - Rusctio - campo decorado",
+                "id": "33",
                 "title": "Perchero 5 - Rustico",
                 "description": "Medidas:\n63 x 13 cm",
                 "image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
@@ -9401,7 +9401,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "Perchero 3 - Rustico",
+                "id": "34",
                 "title": "Perchero 3 - Rustico",
                 "description": "Medidas:\n50 x 13 cm",
                 "image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
@@ -9493,7 +9493,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "perchero-nordico-pared-x5",
+                "id": "35",
                 "title": "Perchero nórdico de pared x5",
                 "description": "",
                 "image": "img/percheros/perchero-nordico-pared-x5/1784163561616-imagen.webp",
@@ -9635,7 +9635,7 @@ const productsData = [
                 "views": 6
             },
             {
-                "id": "perchero-nordico-pared-x3",
+                "id": "36",
                 "title": "Perchero nórdico de pared x3",
                 "description": "",
                 "image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
@@ -9775,7 +9775,7 @@ const productsData = [
                 "views": 8
             },
             {
-                "id": "perchero-madera-tuvitos5",
+                "id": "37",
                 "title": "Perchero 5 - Minimalista",
                 "description": "Medidas:\n50 x 13 cm",
                 "image": "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
@@ -9866,7 +9866,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "perchero-madera-tuvitos",
+                "id": "38",
                 "title": "Perchero 6 - Minimalista",
                 "description": "Medidas:\n60 x 13 cm",
                 "image": "img/percheros/perchero-madera-tuvitos/1784390037823-imagen.webp",
@@ -9958,7 +9958,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "perchero-pared-doblegancho",
+                "id": "39",
                 "title": "Perchero de pared",
                 "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
                 "image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
@@ -10072,7 +10072,7 @@ const productsData = [
         "order": 4,
         "products": [
             {
-                "id": "baul-madera-mediano",
+                "id": "41",
                 "title": "Baúl de madera de pino",
                 "description": "",
                 "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
@@ -10196,7 +10196,7 @@ const productsData = [
                 "views": 30
             },
             {
-                "id": "especiero",
+                "id": "42",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
                 "image": "img/organizadores/especiero/1782487819564-imagen.webp",
@@ -10305,7 +10305,7 @@ const productsData = [
                 "views": 22
             },
             {
-                "id": "verdulero-clasico",
+                "id": "43",
                 "title": "Verdulero Clasico",
                 "description": "Verdulero con estante superior",
                 "image": "img/organizadores/estantes-montessori/1.webp",
@@ -10375,7 +10375,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "verdule-para-mesada",
+                "id": "44",
                 "title": "Verdule para Mesada",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
@@ -10447,7 +10447,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "verdulero-mediano",
+                "id": "45",
                 "title": "Verdulero Mediano",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
@@ -10516,7 +10516,7 @@ const productsData = [
                 "views": 8
             },
             {
-                "id": "Mueble-Multifunción",
+                "id": "46",
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
                 "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
@@ -10606,7 +10606,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "verdulero-x3",
+                "id": "47",
                 "title": "Verdulero x3",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
@@ -10690,7 +10690,7 @@ const productsData = [
                 "views": 831
             },
             {
-                "id": "esquinero-x3",
+                "id": "48",
                 "title": "Esquinero x3",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
@@ -10816,7 +10816,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "organizador-tribuna-x3",
+                "id": "49",
                 "title": "Organizador Tribuna X3",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
                 "image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
@@ -10901,7 +10901,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Posa-Tortas",
+                "id": "4A",
                 "title": "Posa Torta De Madera Torneado Candy Bar",
                 "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
                 "image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
@@ -10963,7 +10963,7 @@ const productsData = [
                 "views": 12
             },
             {
-                "id": "mensulas-escritorio",
+                "id": "4B",
                 "title": "Ménsulas para escritorios",
                 "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
                 "image": "img/organizadores/mensulas/mensulas.webp",
@@ -11180,7 +11180,7 @@ const productsData = [
                 "views": 24
             },
             {
-                "id": "mensulas",
+                "id": "4C",
                 "title": "Ménsulas para estantes",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/organizadores/mensulas/mensulas.webp",
@@ -11309,7 +11309,7 @@ const productsData = [
                 "views": 9
             },
             {
-                "id": "Banco Escalera De Pino 3 Escalones",
+                "id": "4D",
                 "title": "Banco Escalera De Pino 3 Escalones",
                 "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
                 "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
@@ -11346,7 +11346,7 @@ const productsData = [
                 "views": 7
             },
             {
-                "id": "estantes-montessori",
+                "id": "4E",
                 "title": "Estantes Montessori",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
@@ -11584,7 +11584,7 @@ const productsData = [
                 "views": 15
             },
             {
-                "id": "caballetes-madera-pino",
+                "id": "4F",
                 "title": "Caballetes de madera",
                 "description": "",
                 "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
@@ -11605,7 +11605,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Banco Banquito Escalera Niños Infantil",
+                "id": "4G",
                 "title": "Banco Banquito Escalera Niños Infantil",
                 "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
                 "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
@@ -11643,7 +11643,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "Repisa Biblioteca Estantes Montessori",
+                "id": "4H",
                 "title": "Repisa Biblioteca Estantes Montessori",
                 "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
                 "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
@@ -11689,7 +11689,7 @@ const productsData = [
         "order": 5,
         "products": [
             {
-                "id": "baranda-desmontable-clasica",
+                "id": "51",
                 "title": "Baranda: Desmontable Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
@@ -12100,7 +12100,7 @@ const productsData = [
                 "views": 94
             },
             {
-                "id": "baranda-desmontable-montessori",
+                "id": "52",
                 "title": "Baranda: Desmontable - Estilo Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
                 "image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
@@ -12506,7 +12506,7 @@ const productsData = [
                 "views": 29
             },
             {
-                "id": "baranda-desmontable-triple",
+                "id": "53",
                 "title": "Baranda: Desmontable Clásica - Triple",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
                 "image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
@@ -12773,7 +12773,7 @@ const productsData = [
                 "views": 24
             },
             {
-                "id": "baranda-sommier-clasica",
+                "id": "54",
                 "title": "Baranda: Para camas Sommier",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
                 "image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
@@ -13074,7 +13074,7 @@ const productsData = [
                 "views": 11
             },
             {
-                "id": "baranda-sommier-triple",
+                "id": "55",
                 "title": "Baranda: Para camas Sommier - Triple",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
                 "image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
@@ -13255,7 +13255,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "baranda-reforzada-geriatricos",
+                "id": "56",
                 "title": "Baranda: Desmontable con bulones - Especial",
                 "description": "",
                 "image": "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
@@ -13321,7 +13321,7 @@ const productsData = [
                 "views": 10
             },
             {
-                "id": "baranda-fija-clasica",
+                "id": "57",
                 "title": "Baranda Fija: Clásica",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
                 "image": "img/barandas-para-cama/baranda-fija-clasica/1780542411484-imagen.webp",
@@ -13393,7 +13393,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "baranda-montessori",
+                "id": "58",
                 "title": "Baranda Fija: Montessori",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
                 "image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
@@ -13465,7 +13465,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "baranda-simple",
+                "id": "59",
                 "title": "Baranda Fija: Simple",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
                 "image": "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
@@ -13546,7 +13546,7 @@ const productsData = [
         "order": 6,
         "products": [
             {
-                "id": "estantes-montessori",
+                "id": "61",
                 "title": "Estantes Montessori",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
@@ -13784,7 +13784,7 @@ const productsData = [
                 "views": 15
             },
             {
-                "id": "hexagonales",
+                "id": "62",
                 "title": "Hexagonales",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/hexagonales/hexagonales.webp",
@@ -13884,7 +13884,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "librero",
+                "id": "63",
                 "title": "Librero",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/librero/librero.webp",
@@ -13991,7 +13991,7 @@ const productsData = [
                 ]
             },
             {
-                "id": "triangulos",
+                "id": "64",
                 "title": "Triángulos",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/triangulos/triangulos.webp",
@@ -14040,7 +14040,7 @@ const productsData = [
                 ]
             },
             {
-                "id": "cuadrados",
+                "id": "65",
                 "title": "Cuadrados",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/cuadrados/cuadrados.webp",
@@ -14110,7 +14110,7 @@ const productsData = [
                 ]
             },
             {
-                "id": "mensulas",
+                "id": "66",
                 "title": "Ménsulas para estantes",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/organizadores/mensulas/mensulas.webp",
@@ -14239,7 +14239,7 @@ const productsData = [
                 "views": 9
             },
             {
-                "id": "estantes",
+                "id": "67",
                 "title": "Estantes - Cortes",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/estantes/estantes.webp",
@@ -14330,7 +14330,7 @@ const productsData = [
                 ]
             },
             {
-                "id": "especiero",
+                "id": "68",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
                 "image": "img/organizadores/especiero/1782487819564-imagen.webp",
@@ -14439,7 +14439,7 @@ const productsData = [
                 "views": 22
             },
             {
-                "id": "Estantes-Cortes-Madera",
+                "id": "69",
                 "title": "Cortes de madera",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/estantes/estantes.webp",
@@ -14589,7 +14589,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "mensulas-escritorio",
+                "id": "6A",
                 "title": "Ménsulas para escritorios",
                 "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
                 "image": "img/organizadores/mensulas/mensulas.webp",
@@ -14806,7 +14806,7 @@ const productsData = [
                 "views": 24
             },
             {
-                "id": "Repisa Biblioteca Estantes Montessori",
+                "id": "6B",
                 "title": "Repisa Biblioteca Estantes Montessori",
                 "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
                 "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
@@ -14854,7 +14854,7 @@ const productsData = [
         "order": 7,
         "products": [
             {
-                "id": "Colecho_retro_madera",
+                "id": "71",
                 "title": "Cuna: Colecho Retro",
                 "description": "",
                 "image": "img/cunas/Colecho_retro_madera/1783750658828-imagen.webp",
@@ -14933,7 +14933,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "Corral-Colecho-con-doble-posicion-de-parrilla",
+                "id": "72",
                 "title": "Cuna: Corral - Colecho con doble",
                 "description": "Corral - Colecho con doble posición de parrilla",
                 "image": "img/cunas/Corral-Colecho-con-doble-posicion-de-parrilla/1783750731525-imagen.webp",
@@ -15013,7 +15013,7 @@ const productsData = [
                 "views": 4
             },
             {
-                "id": "Eco-fija-100x50cm-Modelo-unico",
+                "id": "73",
                 "title": "Cuna: Eco fija - Modelo único",
                 "description": "Eco fija - 100 x 50 cm - Modelo único",
                 "image": "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp",
@@ -15105,7 +15105,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "Eco-rebatible",
+                "id": "74",
                 "title": "Cuna: Eco rebatible",
                 "description": "",
                 "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
@@ -15192,7 +15192,7 @@ const productsData = [
                 "views": 9
             },
             {
-                "id": "cuna-Rebatible-cajones",
+                "id": "75",
                 "title": "Cuna: rebatible con cajones",
                 "description": "",
                 "image": "img/cunas/cuna-Rebatible-cajones/1783750894115-imagen.webp",
@@ -15271,7 +15271,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "Romana-Rebatible-Cajones",
+                "id": "76",
                 "title": "Cuna: Romana - Rebatible - Cajones",
                 "description": "",
                 "image": "img/cunas/Romana-Rebatible-Cajones/1783750937925-imagen.webp",
@@ -15350,7 +15350,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Romana - Rebatible - Cajones - en XX",
+                "id": "77",
                 "title": "Cuna: Romana - Rebatible - Cajones - en XX",
                 "description": "",
                 "image": "img/cunas/Romana - Rebatible - Cajones - en XX/1783750962820-imagen.webp",
@@ -15429,7 +15429,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "Sol - Rebatible - Cajones",
+                "id": "78",
                 "title": "Cuna: Sol - Rebatible - Cajones",
                 "description": "",
                 "image": "img/cunas/Sol - Rebatible - Cajones/1783750986939-imagen.webp",
@@ -15508,7 +15508,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "pie-cama-romano",
+                "id": "79",
                 "title": "Pie de cama romano",
                 "description": "",
                 "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
@@ -15605,7 +15605,7 @@ const productsData = [
         "order": 8,
         "products": [
             {
-                "id": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+                "id": "81",
                 "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
                 "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
                 "image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
@@ -15628,7 +15628,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "pie-cama-romano",
+                "id": "82",
                 "title": "Pie de cama romano",
                 "description": "",
                 "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
@@ -15723,7 +15723,7 @@ const productsData = [
         "order": 9,
         "products": [
             {
-                "id": "escaleras",
+                "id": "91",
                 "title": "Escaleras para cama",
                 "description": "Seguridad y firmeza absoluta para alcanzar cada nivel.",
                 "image": "img/escaleras/escaleras/1780288089831-imagen.webp",
@@ -15851,7 +15851,7 @@ const productsData = [
                 "views": 11
             },
             {
-                "id": "escalera-altillo",
+                "id": "92",
                 "title": "Escaleras para altillos",
                 "description": "",
                 "image": "img/escaleras/escalera-altillo/1780287625467-imagen.webp",
@@ -15901,7 +15901,7 @@ const productsData = [
                 ]
             },
             {
-                "id": "Banco Escalera De Pino 3 Escalones",
+                "id": "93",
                 "title": "Banco Escalera De Pino 3 Escalones",
                 "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
                 "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
@@ -15938,7 +15938,7 @@ const productsData = [
                 "views": 7
             },
             {
-                "id": "Banco Banquito Escalera Niños Infantil",
+                "id": "94",
                 "title": "Banco Banquito Escalera Niños Infantil",
                 "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
                 "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
@@ -15985,7 +15985,7 @@ const productsData = [
         "order": 10,
         "products": [
             {
-                "id": "cajones-profesional",
+                "id": "A1",
                 "title": "Steps / Cajones / Profesionales",
                 "description": "Escalón de madera multiusos para ejercicios y más",
                 "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
@@ -16053,7 +16053,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "steps---cajones-30",
+                "id": "A2",
                 "title": "Steps / Cajones (30 cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
@@ -16187,7 +16187,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "steps---cajones-40",
+                "id": "A3",
                 "title": "Steps / Cajones (40 cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
@@ -16348,7 +16348,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "cajones-50cm",
+                "id": "A4",
                 "title": "Steps / Cajones (50cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
@@ -16517,7 +16517,7 @@ const productsData = [
         "order": 11,
         "products": [
             {
-                "id": "jenga",
+                "id": "B1",
                 "title": "Jenga",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
                 "image": "img/juguetes/jenga/jenga.webp",
@@ -16582,7 +16582,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "baul-madera-mediano",
+                "id": "B2",
                 "title": "Baúl de madera de pino",
                 "description": "",
                 "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
@@ -16706,7 +16706,7 @@ const productsData = [
                 "views": 30
             },
             {
-                "id": "Banco Banquito Escalera Niños Infantil",
+                "id": "B3",
                 "title": "Banco Banquito Escalera Niños Infantil",
                 "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
                 "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
@@ -16744,7 +16744,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "Juego de Mesa y Sillas Infantiles",
+                "id": "B4",
                 "title": "Juego de Mesa y Sillas Infantiles",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
                 "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
@@ -16779,7 +16779,7 @@ const productsData = [
                 "views": 7
             },
             {
-                "id": "Juego de Mesa y Sillas redondos",
+                "id": "B5",
                 "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
                 "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
@@ -16814,7 +16814,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "Juego de Mesa y Sillas colonial",
+                "id": "B6",
                 "title": "Juego de Mesa y Sillas Infantiles (Colonial)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
                 "image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
@@ -16859,7 +16859,7 @@ const productsData = [
         "order": 12,
         "products": [
             {
-                "id": "banquito-de-plaza",
+                "id": "C1",
                 "title": "Banquito de Plaza",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
                 "image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
@@ -16906,7 +16906,7 @@ const productsData = [
                 "views": 16
             },
             {
-                "id": "silla-infantil",
+                "id": "C2",
                 "title": "Silla infantil",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
                 "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
@@ -16992,7 +16992,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "sillon-gervasoni-simple-chico",
+                "id": "C3",
                 "title": "Sillon Gervasoni - Chicos",
                 "description": "",
                 "image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
@@ -17081,7 +17081,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Juego de Mesa y Sillas colonial",
+                "id": "C4",
                 "title": "Juego de Mesa y Sillas Infantiles (Colonial)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
                 "image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
@@ -17116,7 +17116,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "Juego de Mesa y Sillas redondos",
+                "id": "C5",
                 "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
                 "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
@@ -17151,7 +17151,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "Juego de Mesa y Sillas Infantiles",
+                "id": "C6",
                 "title": "Juego de Mesa y Sillas Infantiles",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
                 "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
@@ -17195,7 +17195,7 @@ const productsData = [
         "order": 13,
         "products": [
             {
-                "id": "Mueble-Multifunción",
+                "id": "D1",
                 "title": "Mueble Multifunción - Estilo Nórdico",
                 "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
                 "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
@@ -17285,7 +17285,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "mesa-plegabe",
+                "id": "D2",
                 "title": "Mesa Plegabe",
                 "description": "",
                 "image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
@@ -17319,7 +17319,7 @@ const productsData = [
                 "views": 2353
             },
             {
-                "id": "mesa-plegable-redonda-chica",
+                "id": "D3",
                 "title": "Mesa Plegable - Redonda",
                 "description": "",
                 "image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
@@ -17352,7 +17352,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "Mesas para Candy Bar",
+                "id": "D4",
                 "title": "Mesas para Candy Bar / Mesa nido",
                 "description": "",
                 "image": "img/mesas-de-madera/Mesas para Candy Bar/1783813269259-imagen.webp",
@@ -17592,7 +17592,7 @@ const productsData = [
                 "views": 7
             },
             {
-                "id": "mensulas-escritorio",
+                "id": "D5",
                 "title": "Ménsulas para escritorios",
                 "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
                 "image": "img/organizadores/mensulas/mensulas.webp",
@@ -17809,7 +17809,7 @@ const productsData = [
                 "views": 24
             },
             {
-                "id": "Escritorio-PC-PRO",
+                "id": "D6",
                 "title": "Escritorio para PC - Soporte Gabinete",
                 "description": "",
                 "image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
@@ -17834,7 +17834,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "mesita-matera",
+                "id": "D7",
                 "title": "Mesita Matera",
                 "description": "",
                 "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
@@ -17880,7 +17880,7 @@ const productsData = [
         "order": 14,
         "products": [
             {
-                "id": "deck-rectangular",
+                "id": "E1",
                 "title": "Deck rectangular",
                 "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
                 "image": "img/jardin/deck-rectangular/1780707680810-imagen.webp",
@@ -18102,7 +18102,7 @@ const productsData = [
                 "views": 11
             },
             {
-                "id": "deck-cuadrado",
+                "id": "E2",
                 "title": "Deck cuadrado",
                 "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
                 "image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
@@ -18370,7 +18370,7 @@ const productsData = [
                 "views": 10
             },
             {
-                "id": "macetas-colgante-eucalipto",
+                "id": "E3",
                 "title": "Macetas colgante de eucalipto",
                 "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
                 "image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
@@ -18460,7 +18460,7 @@ const productsData = [
                 "views": 5
             },
             {
-                "id": "fanal",
+                "id": "E4",
                 "title": "Fanal",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
                 "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
@@ -18539,7 +18539,7 @@ const productsData = [
                 "views": 7
             },
             {
-                "id": "cesto-de-basura",
+                "id": "E5",
                 "title": "Cesto de Basura",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
                 "image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
@@ -18630,7 +18630,7 @@ const productsData = [
                 "views": 11
             },
             {
-                "id": "caballetes-madera-pino",
+                "id": "E6",
                 "title": "Caballetes de madera",
                 "description": "",
                 "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
@@ -18660,7 +18660,7 @@ const productsData = [
         "order": 15,
         "products": [
             {
-                "id": "Escritorio-PC-PRO",
+                "id": "F1",
                 "title": "Escritorio para PC - Soporte Gabinete",
                 "description": "",
                 "image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
@@ -18685,7 +18685,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                "id": "F2",
                 "title": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
                 "description": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
                 "image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
@@ -18708,7 +18708,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "mesita-luz-angosta",
+                "id": "F3",
                 "title": "Mesita de luz - Angosta",
                 "description": "Mesita de luz - Angosta",
                 "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
@@ -18729,7 +18729,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "tendre-ropa-madera",
+                "id": "F4",
                 "title": "Tender",
                 "description": "",
                 "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
@@ -18751,7 +18751,7 @@ const productsData = [
                 "views": 0
             },
             {
-                "id": "pie-cama-romano",
+                "id": "F5",
                 "title": "Pie de cama romano",
                 "description": "",
                 "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
@@ -18838,7 +18838,7 @@ const productsData = [
                 "views": 2
             },
             {
-                "id": "Repisa Biblioteca Estantes Montessori",
+                "id": "F6",
                 "title": "Repisa Biblioteca Estantes Montessori",
                 "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
                 "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
@@ -18885,7 +18885,7 @@ const productsData = [
         "order": 16,
         "products": [
             {
-                "id": "Platos-madera",
+                "id": "G1",
                 "title": "Platons de Madera - Asado",
                 "description": "",
                 "image": "img/todo-algarrobo/Platos-madera/1782611849956-imagen.webp",
@@ -18973,7 +18973,7 @@ const productsData = [
                 "views": 3
             },
             {
-                "id": "Platos - Cuencos",
+                "id": "G2",
                 "title": "Cuencos",
                 "description": "",
                 "image": "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
@@ -19046,7 +19046,7 @@ const productsData = [
                 "views": 18
             },
             {
-                "id": "Mate",
+                "id": "G3",
                 "title": "Mate",
                 "description": "",
                 "image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
@@ -19143,7 +19143,7 @@ const productsData = [
         "order": 17,
         "products": [
             {
-                "id": "podio-profesional",
+                "id": "H1",
                 "title": "Podio profesional | Grande",
                 "description": "",
                 "image": "img/podios-de-premiacion/podio-profesional/1780774147587-imagen.webp",
@@ -19235,7 +19235,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "podio-premiacion--3-modulos-",
+                "id": "H2",
                 "title": "Podio premiación Profesional",
                 "description": "Podios modulares resistentes para eventos y premiaciones.\n\nMódulo 1: 80 x 40 x 50 cm\nMódulo 2: 80 x 40 x 35 cm\nMódulo 3: 80 x 40 x 20 cm\n\nEnvió gratis a las zonas 1 2 y 3, se puede ver en la ultima foto de la publicación.",
                 "image": "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
@@ -19311,7 +19311,7 @@ const productsData = [
                 "views": 1
             },
             {
-                "id": "podios-individuales",
+                "id": "H3",
                 "title": "Podios individuales",
                 "description": "Podios modulares resistentes para eventos y premiaciones.",
                 "image": "img/podios-de-premiacion/podios-individuales/Podio premiacion (3 modulos).webp",

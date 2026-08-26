@@ -697,6 +697,54 @@
         </div>
     </div>
 
+    <!-- Modal Visor de Foto + Edición Rápida Ultra Minimalista -->
+    <div id="modal-photo-quick" class="modal-overlay" onclick="handlePhotoModalOverlayClick(event)">
+        <div class="modal-card" style="max-width: 420px; padding: 0; overflow: hidden; background: #090D16; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);">
+            
+            <!-- Contenedor de Imagen con Overlay Gradiente -->
+            <div style="position: relative; width: 100%; height: 60vh; max-height: 480px; background: #000000; display: flex; align-items: center; justify-content: center;">
+                <img id="photo-quick-img" src="" style="width: 100%; height: 100%; object-fit: cover;" alt="Foto del Producto">
+                
+                <!-- Degradado inferior de sombra para legibilidad -->
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 75%; background: linear-gradient(to top, rgba(9, 13, 22, 0.95) 0%, rgba(9, 13, 22, 0.6) 40%, transparent 100%); pointer-events: none;"></div>
+
+                <!-- Botón de Cerrar Flotante Minimalista -->
+                <button class="icon-btn" onclick="closePhotoModal()" style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; width: 34px; height: 34px; z-index: 10;">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+                </button>
+
+                <!-- Panel Flotante Inferior de Cristal (Glassmorphism) -->
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem; z-index: 5;">
+                    <h4 id="photo-quick-title" style="margin: 0 0 1rem 0; font-size: 1.05rem; font-weight: 700; color: #FFFFFF; text-shadow: 0 2px 4px rgba(0,0,0,0.5); font-family:'Outfit', sans-serif;"></h4>
+
+                    <!-- Fila de Controles Tipo Chip Minimalista -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        
+                        <!-- Chip de Stock -->
+                        <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 0.6rem 0.85rem; border-radius: 14px; display: flex; flex-direction: column; gap: 2px;">
+                            <span style="font-size: 0.65rem; text-transform: uppercase; font-weight: 700; color: #94A3B8; letter-spacing: 0.05em;">Stock</span>
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <span style="font-size: 0.85rem; color: #38BDF8;">u.</span>
+                                <input type="number" id="photo-quick-qty" style="width: 100%; background: transparent; border: none; color: #FFFFFF; font-weight: 800; font-size: 1.2rem; outline: none; font-family: inherit; padding: 0;" min="0" onchange="savePhotoQuickChanges()">
+                            </div>
+                        </div>
+
+                        <!-- Chip de Costo -->
+                        <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 0.6rem 0.85rem; border-radius: 14px; display: flex; flex-direction: column; gap: 2px;">
+                            <span style="font-size: 0.65rem; text-transform: uppercase; font-weight: 700; color: #94A3B8; letter-spacing: 0.05em;">Costo U.</span>
+                            <div style="display: flex; align-items: center; gap: 2px;">
+                                <span style="font-size: 0.85rem; color: #4ADE80;">$</span>
+                                <input type="number" id="photo-quick-cost" style="width: 100%; background: transparent; border: none; color: #FFFFFF; font-weight: 800; font-size: 1.2rem; outline: none; font-family: inherit; padding: 0;" min="0" step="0.01" onchange="savePhotoQuickChanges()">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <script>
         const defaultStock = [
             {
@@ -919,7 +967,7 @@
                 tr.innerHTML = `
                     <td>
                         <div class="prod-thumb-cell">
-                            <img src="${escapeHtml(imgSrc)}" class="prod-thumb" alt="Foto" onerror="this.src='${fallbackImg}'">
+                            <img src="${escapeHtml(imgSrc)}" class="prod-thumb" alt="Foto" style="cursor: pointer;" onclick="openPhotoModal('${item.id}')" title="Ver foto y editar rápido" onerror="this.src='${fallbackImg}'">
                             <div class="prod-name-box">
                                 <span class="prod-title">${escapeHtml(item.title)}</span>
                                 ${item.desc ? `<span class="prod-desc">${escapeHtml(item.desc)}</span>` : ''}
@@ -1023,6 +1071,48 @@
             document.getElementById('modal-links').classList.add('active');
         }
 
+        let currentPhotoItemId = null;
+
+        // Modal Visor Rápido de Foto + Edición de Stock & Costo
+        function openPhotoModal(id) {
+            const item = stockItems.find(i => i.id === id);
+            if (!item) return;
+
+            currentPhotoItemId = id;
+            const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z'/%3E%3C/svg%3E";
+            
+            document.getElementById('photo-quick-img').src = item.img && item.img.trim() !== '' ? item.img : fallbackImg;
+            document.getElementById('photo-quick-title').textContent = item.title;
+            document.getElementById('photo-quick-qty').value = item.qty || 0;
+            document.getElementById('photo-quick-cost').value = item.cost || '';
+
+            document.getElementById('modal-photo-quick').classList.add('active');
+        }
+
+        function savePhotoQuickChanges() {
+            if (!currentPhotoItemId) return;
+            const item = stockItems.find(i => i.id === currentPhotoItemId);
+            if (item) {
+                const newQty = parseInt(document.getElementById('photo-quick-qty').value) || 0;
+                const newCost = parseFloat(document.getElementById('photo-quick-cost').value) || 0;
+                item.qty = Math.max(0, newQty);
+                item.cost = Math.max(0, newCost);
+                saveStockData();
+                renderStockTable();
+            }
+        }
+
+        function closePhotoModal() {
+            document.getElementById('modal-photo-quick').classList.remove('active');
+            currentPhotoItemId = null;
+        }
+
+        function handlePhotoModalOverlayClick(e) {
+            if (e.target.id === 'modal-photo-quick') {
+                closePhotoModal();
+            }
+        }
+
         function closeLinksModal() {
             document.getElementById('modal-links').classList.remove('active');
         }
@@ -1060,12 +1150,58 @@
                     };
                 }
             } else {
+                const newId = 'prod-draft-' + Date.now();
                 const newItem = {
-                    id: 'stk-' + Date.now(),
+                    id: newId,
                     title, category, qty, cost, img, linkWeb, linkOnline, desc,
                     created: Date.now()
                 };
                 stockItems.unshift(newItem);
+
+                // 🌟 Sincronizar e inyectar automáticamente al catálogo general de la web (sessionProducts) en Borradores
+                try {
+                    const parentWin = (window.parent && window.parent.sessionProducts) ? window.parent : window;
+                    if (parentWin.sessionProducts) {
+                        let draftCat = parentWin.sessionProducts.find(c => c.name && c.name.toLowerCase() === 'borradores');
+                        if (!draftCat) {
+                            draftCat = {
+                                id: 'cat-borradores',
+                                name: 'Borradores',
+                                rubro: 'carpinteria',
+                                image: img || 'img/hero-1.webp',
+                                visible: true,
+                                order: 999,
+                                products: []
+                            };
+                            parentWin.sessionProducts.push(draftCat);
+                        }
+
+                        const storeProduct = {
+                            id: newId,
+                            title: title,
+                            description: desc || 'Producto agregado desde Control de Stock (Pendiente de optimizar)',
+                            image: img || '',
+                            stock: qty,
+                            acabados_groups: [{
+                                acabado_name: "Estándar",
+                                cover_image: img || '',
+                                images_list: img ? [img] : [],
+                                medidas_variants: [{
+                                    medida: "Medida Estándar",
+                                    price: cost || 0,
+                                    cost_price: cost || 0,
+                                    showPrice: true,
+                                    link: linkOnline || ''
+                                }]
+                            }]
+                        };
+
+                        draftCat.products.unshift(storeProduct);
+                        localStorage.setItem('sessionProductsAutonomo', JSON.stringify(parentWin.sessionProducts));
+                    }
+                } catch(err) {
+                    console.log("Sincronización a catálogo de tienda en segundo plano:", err);
+                }
             }
 
             saveStockData();
