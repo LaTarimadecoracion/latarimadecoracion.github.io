@@ -306,6 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'catalogo': 'view-catalogo',
                 'calcular': 'view-calculator',
                 'mayorista': 'view-mayorista',
+                'stock': 'view-stock',
                 'musica': 'view-musica',
                 'ayudin': 'view-ayudin',
                 'help': 'view-ayudin',

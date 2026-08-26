@@ -1009,6 +1009,7 @@
                             catalogo: { title: "Catálogo", url: "catalogo.html", icon: "📖", view: "view-catalogo" },
                             calcular: { title: "Calculador de Ménsulas", url: "calcular.html", icon: "📐", view: "view-calculator" },
                             mayorista: { title: "Portal Mayorista", url: "mayorista.html", icon: "💼", view: "view-mayorista" },
+                            stock: { title: "Control de Stock Personal", url: "apps/stock.html", icon: "📦", view: "view-stock" },
                             musica: { title: "Reproductor de Música", url: "musica.html", icon: "🎵", view: "view-musica" },
                             visualizador: { title: "Visualizador 3D", url: "visualizador.html", icon: "👁️", view: "view-visualizador" },
                             alquileres: { title: "Alquiler de Muebles", url: "index.html?view=alquileres", icon: "🎪", view: "view-rentals" },

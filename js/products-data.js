@@ -3111,7 +3111,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637176778,
                 "primaryCatId": "Organizadores",
-                "views": 4
+                "views": 5
             },
             {
                 "id": "cesto-de-basura",
@@ -7254,7 +7254,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1787716545046,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 9
             },
             {
                 "id": "Banco Escalera De Pino 3 Escalones",
@@ -8496,7 +8497,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 5
+                "views": 6
             }
         ]
     },
@@ -10812,7 +10813,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637176778,
                 "primaryCatId": "Organizadores",
-                "views": 4
+                "views": 5
             },
             {
                 "id": "organizador-tribuna-x3",
@@ -11304,7 +11305,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1787716545046,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 9
             },
             {
                 "id": "Banco Escalera De Pino 3 Escalones",
@@ -11676,7 +11678,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 5
+                "views": 6
             }
         ]
     },
@@ -14233,7 +14235,8 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1787716545046,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 9
             },
             {
                 "id": "estantes",
@@ -14838,7 +14841,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 5
+                "views": 6
             }
         ],
         "rubro": "carpinteria"
@@ -18870,7 +18873,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 5
+                "views": 6
             }
         ]
     },

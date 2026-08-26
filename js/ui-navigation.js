@@ -191,6 +191,7 @@
             'view-catalogo': 'Catálogo | LA TARIMA - Decoración',
             'view-calculator': 'Calculadora | LA TARIMA - Decoración',
             'view-mayorista': 'Mayorista | LA TARIMA - Decoración',
+            'view-stock': 'Control de Stock | LA TARIMA - Decoración',
             'view-musica': 'Música | LA TARIMA - Decoración',
             'view-pedidos': 'Pedidos | LA TARIMA - Decoración',
             'view-admin': 'Panel de Administración | LA TARIMA - Decoración',
@@ -215,7 +216,7 @@
             if (appContainer) {
                 appContainer.scrollTop = 0;
                 // Desactivar scroll y padding inferior del parent si estamos en el iframe
-                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-musica' || viewId === 'view-ayudin' || viewId === 'view-pedidos' || viewId === 'view-pedidos-admin' || viewId === 'view-editor') {
+                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-stock' || viewId === 'view-musica' || viewId === 'view-ayudin' || viewId === 'view-pedidos' || viewId === 'view-pedidos-admin' || viewId === 'view-editor') {
                     appContainer.style.setProperty('overflow-y', 'hidden', 'important');
                     appContainer.style.setProperty('padding-bottom', '0px', 'important');
                 } else {
