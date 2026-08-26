@@ -596,6 +596,97 @@
             color: #dc2626 !important;
         }
 
+        /* Tooltip de IVA / Monto Neto */
+        .tax-info-tooltip-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        .tax-info-icon {
+            font-size: 15px !important;
+            color: #0284c7 !important;
+            background: #e0f2fe;
+            border-radius: 50%;
+            padding: 1px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .tax-info-icon:hover {
+            transform: scale(1.2);
+            background: #bae6fd;
+        }
+
+        .tax-info-tooltip-popover {
+            display: none;
+            position: absolute;
+            bottom: 130%;
+            left: 0;
+            width: 250px;
+            background: #0f172a;
+            color: #f8fafc;
+            font-size: 0.76rem;
+            font-weight: 500;
+            line-height: 1.45;
+            padding: 0.75rem 0.85rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            z-index: 99;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .tax-info-tooltip-wrapper:hover .tax-info-tooltip-popover,
+        .tax-info-tooltip-wrapper.active .tax-info-tooltip-popover {
+            display: block;
+        }
+
+        .tax-info-tooltip-popover::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 14px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: #0f172a transparent transparent transparent;
+        }
+
+        /* Optimización de Márgenes Mínimos en Celulares */
+        @media (max-width: 600px) {
+            body, body.in-iframe {
+                padding: 0.2rem 0.25rem !important;
+            }
+            .main-container, body.in-iframe .main-container {
+                padding: 0 0.15rem !important;
+                margin: 0.2rem auto !important;
+            }
+            .order-card, .conditions-card {
+                border-radius: 12px !important;
+                margin-bottom: 0.75rem !important;
+            }
+            .order-header {
+                padding: 0.85rem 0.75rem !important;
+            }
+            .order-body {
+                padding: 0.85rem 0.75rem !important;
+            }
+            .stepper-summary-card {
+                padding: 0.85rem 0.5rem !important;
+                margin: 0.75rem 0 !important;
+            }
+            .payment-banner {
+                padding: 0.85rem 0.75rem !important;
+                gap: 0.75rem !important;
+            }
+            .tax-info-tooltip-popover {
+                left: -10px;
+                width: 220px;
+            }
+        }
+
         .section-title {
             font-size: 1.05rem !important;
             font-weight: 800 !important;
@@ -935,7 +1026,18 @@
 
                         <div class="payment-banner">
                             <div class="payment-item">
-                                <span class="payment-label">Monto Total</span>
+                                <span class="payment-label" style="display: inline-flex; align-items: center; gap: 4px;">
+                                    Monto Total
+                                    ${order.taxNotice !== false ? `
+                                        <span class="tax-info-tooltip-wrapper" onclick="event.stopPropagation(); this.classList.toggle('active');" title="Información sobre IVA / Impuestos">
+                                            <span class="material-symbols-outlined tax-info-icon">help_outline</span>
+                                            <span class="tax-info-tooltip-popover">
+                                                📌 <strong>Monto Neto:</strong><br>
+                                                El total indicado corresponde a un valor neto (sin impuestos). En caso de requerir <strong>Factura A</strong> o comprobante fiscal formal, se calcularán e incorporarán los impuestos e IVA correspondientes.
+                                            </span>
+                                        </span>
+                                    ` : ''}
+                                </span>
                                 <span class="payment-value">$${(order.totalAmount || 0).toLocaleString('es-AR')}</span>
                             </div>
                             <div class="payment-item">

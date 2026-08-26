@@ -1038,7 +1038,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 12
+                "views": 13
             },
             {
                 "id": "banquito-de-plaza",
@@ -1621,8 +1621,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 11000,
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
@@ -1632,8 +1634,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
@@ -1643,6 +1647,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 11000,
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1654,8 +1660,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -1695,9 +1703,8 @@ const productsData = [
                     "repisa de cocina",
                     "repisa para condimentos"
                 ],
-                "last_modified": 1783617596816,
-                "primaryCatId": "Organizadores",
-                "views": 21
+                "last_modified": 1787707117443,
+                "primaryCatId": "Organizadores"
             },
             {
                 "id": "deck-cuadrado",
@@ -2752,7 +2759,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637106226,
                 "primaryCatId": "Organizadores",
-                "views": 1
+                "views": 2
             },
             {
                 "id": "verdule-para-mesada",
@@ -3487,7 +3494,7 @@ const productsData = [
                 ],
                 "last_modified": 1783908158520,
                 "primaryCatId": "Organizadores",
-                "views": 10
+                "views": 12
             },
             {
                 "id": "baranda-sommier-triple",
@@ -3740,7 +3747,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 3
+                "views": 5
             },
             {
                 "id": "baranda-montessori",
@@ -4493,7 +4500,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 26
+                "views": 49
             },
             {
                 "id": "9-vinos",
@@ -4583,7 +4590,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 11
+                "views": 13
             },
             {
                 "id": "17-vinos",
@@ -5603,7 +5610,7 @@ const productsData = [
                 "last_modified": 1784773922188,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 1
+                "views": 2
             },
             {
                 "id": "perchero-madera-tuvitos",
@@ -5786,7 +5793,7 @@ const productsData = [
                 "last_modified": 1784773242756,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "estante-hexagonal-x3",
@@ -5961,7 +5968,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 3
+                "views": 4
             },
             {
                 "id": "hexagonales",
@@ -6061,7 +6068,7 @@ const productsData = [
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "Mesas para Candy Bar",
@@ -6388,7 +6395,7 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 1
+                "views": 2
             },
             {
                 "id": "sillon-gervasoni-simple-chico",
@@ -6759,7 +6766,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 2
+                "views": 3
             },
             {
                 "id": "baranda-reforzada-geriatricos",
@@ -8213,7 +8220,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera",
-                "views": 2
+                "views": 4
             },
             {
                 "id": "soporte-vinos-vinoteca-6",
@@ -8285,7 +8292,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 1
+                "views": 2
             },
             {
                 "id": "Juego de Mesa y Sillas Infantiles",
@@ -8319,7 +8326,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786925906282,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 7
             },
             {
                 "id": "Juego de Mesa y Sillas redondos",
@@ -8475,7 +8483,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 0
+                "views": 1
             }
         ]
     },
@@ -8666,7 +8674,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 26
+                "views": 49
             },
             {
                 "id": "9-vinos",
@@ -8756,7 +8764,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 11
+                "views": 13
             },
             {
                 "id": "13-vinos",
@@ -9025,7 +9033,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 3
+                "views": 4
             },
             {
                 "id": "soporte-vinos-vinoteca-6",
@@ -9097,7 +9105,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 1
+                "views": 2
             }
         ],
         "rubro": "carpinteria"
@@ -9195,7 +9203,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 12
+                "views": 13
             },
             {
                 "id": "perchero-1-2",
@@ -9281,7 +9289,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "Perchero 5 - Rusctio - campo decorado",
@@ -9376,7 +9384,7 @@ const productsData = [
                 "last_modified": 1784773922188,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 1
+                "views": 2
             },
             {
                 "id": "Perchero 3 - Rustico",
@@ -9610,7 +9618,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 2
+                "views": 3
             },
             {
                 "id": "perchero-nordico-pared-x3",
@@ -9841,7 +9849,7 @@ const productsData = [
                 "last_modified": 1784773242756,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "perchero-madera-tuvitos",
@@ -10196,8 +10204,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 11000,
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
@@ -10207,8 +10217,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
@@ -10218,6 +10230,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 11000,
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -10229,8 +10243,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -10270,9 +10286,8 @@ const productsData = [
                     "repisa de cocina",
                     "repisa para condimentos"
                 ],
-                "last_modified": 1783617596816,
-                "primaryCatId": "Organizadores",
-                "views": 21
+                "last_modified": 1787707117443,
+                "primaryCatId": "Organizadores"
             },
             {
                 "id": "verdulero-clasico",
@@ -10342,7 +10357,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637106226,
                 "primaryCatId": "Organizadores",
-                "views": 1
+                "views": 2
             },
             {
                 "id": "verdule-para-mesada",
@@ -10930,7 +10945,7 @@ const productsData = [
                 ],
                 "last_modified": 1783908158520,
                 "primaryCatId": "Organizadores",
-                "views": 10
+                "views": 12
             },
             {
                 "id": "mensulas-escritorio",
@@ -13347,7 +13362,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 3
+                "views": 5
             },
             {
                 "id": "baranda-montessori",
@@ -13838,7 +13853,7 @@ const productsData = [
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "librero",
@@ -14285,7 +14300,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 2,
+                "views": 3,
                 "tags": [
                     "estante",
                     "estantes",
@@ -14334,8 +14349,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 11000,
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
@@ -14345,8 +14362,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
@@ -14356,6 +14375,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 11000,
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -14367,8 +14388,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -14408,9 +14431,8 @@ const productsData = [
                     "repisa de cocina",
                     "repisa para condimentos"
                 ],
-                "last_modified": 1783617596816,
-                "primaryCatId": "Organizadores",
-                "views": 21
+                "last_modified": 1787707117443,
+                "primaryCatId": "Organizadores"
             },
             {
                 "id": "Estantes-Cortes-Madera",
@@ -15528,7 +15550,7 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 1
+                "views": 2
             }
         ],
         "visible": true
@@ -15648,7 +15670,7 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 1
+                "views": 2
             }
         ]
     },
@@ -16711,7 +16733,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786925906282,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 7
             },
             {
                 "id": "Juego de Mesa y Sillas redondos",
@@ -17117,7 +17140,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786925906282,
-                "primaryCatId": "Juguetes"
+                "primaryCatId": "Juguetes",
+                "views": 7
             }
         ]
     },
@@ -17802,7 +17826,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera",
-                "views": 2
+                "views": 4
             }
         ]
     },
@@ -18769,7 +18793,7 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 1
+                "views": 2
             }
         ]
     },

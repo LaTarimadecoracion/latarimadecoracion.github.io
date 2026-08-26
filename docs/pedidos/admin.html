@@ -91,9 +91,10 @@
         }
         
         .admin-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+            max-width: 1440px;
+            width: 98%;
+            margin: 1.25rem auto;
+            padding: 0 0.5rem;
             box-sizing: border-box;
         }
         
@@ -102,8 +103,8 @@
             border-radius: var(--radius-lg);
             border: 1.5px solid var(--border-color);
             box-shadow: var(--shadow-md);
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
         }
         
         .panel-header {
@@ -375,24 +376,35 @@
         
         .actions-cell {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             justify-content: flex-end;
-            min-width: 155px;
+            align-items: center;
+            flex-wrap: wrap;
             white-space: nowrap;
         }
         
         .action-btn {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            width: 32px;
-            height: 32px;
-            display: flex;
+            background: #f8fafc;
+            border: 1.5px solid var(--border-color, #e2e8f0);
+            border-radius: 8px;
+            min-height: 34px;
+            padding: 0.4rem 0.75rem;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 6px;
             cursor: pointer;
             transition: all 0.2s;
             color: #475569;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .action-btn span.material-symbols-outlined {
+            font-size: 18px !important;
         }
         
         .action-btn:hover {
@@ -494,6 +506,64 @@
             display: flex;
             flex-direction: column;
         }
+
+        .modal-card.order-modal-wide {
+            max-width: 820px !important;
+            width: 92vw !important;
+            max-height: 90vh !important;
+        }
+
+        .modal-grid-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .catalog-search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1.5px solid var(--primary-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            max-height: 230px;
+            overflow-y: auto;
+            z-index: 1050;
+            display: none;
+            margin-top: 4px;
+        }
+
+        .catalog-search-item {
+            padding: 0.65rem 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.15s ease;
+            font-size: 0.88rem;
+            color: #334155;
+        }
+
+        .catalog-search-item:last-child {
+            border-bottom: none;
+        }
+
+        .catalog-search-item:hover, .catalog-search-item.selected {
+            background: rgba(160, 113, 91, 0.08);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .catalog-search-item img {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            object-fit: cover;
+            border: 1px solid #e2e8f0;
+        }
         
         .modal-overlay.show .modal-card {
             transform: scale(1);
@@ -579,6 +649,144 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 0.75rem;
+        }
+        
+        .modal-section-card {
+            background: #f8fafc;
+            border: 1.5px solid var(--border-color, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+        
+        .modal-section-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-color, #A0715B);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1.5px solid var(--border-color, #e2e8f0);
+            padding-bottom: 0.5rem;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kpi-card {
+            background: var(--surface-color, #ffffff);
+            border: 1.5px solid var(--border-color, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .kpi-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .kpi-icon span {
+            font-size: 26px;
+        }
+
+        .kpi-icon--active {
+            background: #fff7ed;
+            color: #ea580c;
+        }
+
+        .kpi-icon--ready {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .kpi-icon--saldo {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .kpi-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .kpi-label {
+            font-size: 0.78rem;
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        /* Estilos para Tarjetas de Pedidos en lugar de tablas apretadas */
+        .orders-cards-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        .order-admin-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .order-admin-card:hover {
+            border-color: var(--primary-color, #A0715B);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .order-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid #f1f5f9;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .order-card-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .order-card-footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+            padding-top: 0.75rem;
+            border-top: 1px solid #f1f5f9;
+            flex-wrap: wrap;
         }
         
         .modal-footer {
@@ -878,6 +1086,37 @@
 
     <main class="admin-container">
         
+        <!-- ── TARJETAS KPI DE RESUMEN RÁPIDO ── -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon--active">
+                    <span class="material-symbols-outlined">hourglass_top</span>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Pedidos Pendientes</span>
+                    <strong id="kpi-count-pending" class="kpi-value">0</strong>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon--ready">
+                    <span class="material-symbols-outlined">check_circle</span>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Listos para Retirar</span>
+                    <strong id="kpi-count-ready" class="kpi-value">0</strong>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon--saldo">
+                    <span class="material-symbols-outlined">account_balance_wallet</span>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Saldo por Cobrar</span>
+                    <strong id="kpi-total-saldo" class="kpi-value">$0</strong>
+                </div>
+            </div>
+        </div>
+
         <div class="panel-card">
             <div class="panel-header">
                 <div class="panel-title">
@@ -917,25 +1156,8 @@
                     <h3>Pedidos Activos</h3>
                     <span id="count-active" class="orders-count-badge"></span>
                 </div>
-                <div class="table-responsive">
-                    <table class="orders-table">
-                        <thead>
-                            <tr>
-                                <th>Nro. Orden</th>
-                                <th>Cliente</th>
-                                <th>Producto</th>
-                                <th>Entrega</th>
-                                <th>Abonado</th>
-                                <th>Elaboración</th>
-                                <th>Fecha Límite</th>
-                                <th>Estado</th>
-                                <th style="text-align: right; padding-right: 1.5rem;">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-body-active">
-                            <!-- Carga dinámica -->
-                        </tbody>
-                    </table>
+                <div id="table-body-active" class="orders-cards-list">
+                    <!-- Carga dinámica -->
                 </div>
                 <div id="empty-state-active" class="empty-state" style="display: none;">
                     <span class="material-symbols-outlined">check_circle</span>
@@ -950,25 +1172,8 @@
                     <h3>Terminados — Listos para Retirar / Enviar</h3>
                     <span id="count-listo" class="orders-count-badge orders-count-badge--ready"></span>
                 </div>
-                <div class="table-responsive">
-                    <table class="orders-table">
-                        <thead>
-                            <tr>
-                                <th>Nro. Orden</th>
-                                <th>Cliente</th>
-                                <th>Producto</th>
-                                <th>Entrega</th>
-                                <th>Abonado</th>
-                                <th>Elaboración</th>
-                                <th>Fecha Límite</th>
-                                <th>Estado</th>
-                                <th style="text-align: right; padding-right: 1.5rem;">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-body-listo">
-                            <!-- Carga dinámica -->
-                        </tbody>
-                    </table>
+                <div id="table-body-listo" class="orders-cards-list">
+                    <!-- Carga dinámica -->
                 </div>
                 <div id="empty-state-listo" class="empty-state" style="display: none;">
                     <span class="material-symbols-outlined">check_circle</span>
@@ -985,25 +1190,8 @@
                     <span id="delivered-toggle-icon" class="material-symbols-outlined" style="margin-left: auto; color: #94a3b8; font-size: 20px;">expand_more</span>
                 </div>
                 <div id="delivered-section-body" style="display: none;">
-                    <div class="table-responsive">
-                        <table class="orders-table">
-                            <thead>
-                                <tr>
-                                    <th>Nro. Orden</th>
-                                    <th>Cliente</th>
-                                    <th>Producto</th>
-                                    <th>Entrega</th>
-                                    <th>Abonado</th>
-                                    <th>Elaboración</th>
-                                    <th>Fecha Límite</th>
-                                    <th>Estado</th>
-                                    <th style="text-align: right; padding-right: 1.5rem;">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="table-body-entregado">
-                                <!-- Carga dinámica -->
-                            </tbody>
-                        </table>
+                    <div id="table-body-entregado" class="orders-cards-list">
+                        <!-- Carga dinámica -->
                     </div>
                     <div id="empty-state-entregado" class="empty-state" style="display: none;">
                         <span class="material-symbols-outlined">inbox</span>
@@ -1021,14 +1209,23 @@
         
     </main>
 
-    <!-- Modal Formulario -->
+    <!-- Modal Formulario Cargar/Editar Pedido -->
     <div id="order-modal" class="modal-overlay">
-        <div class="modal-card">
+        <div class="modal-card order-modal-wide">
             <div class="modal-header">
-                <h3 id="modal-title">Crear Nuevo Pedido</h3>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(160, 113, 91, 0.12); color: var(--primary-color); display: flex; align-items: center; justify-content: center;">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">edit_note</span>
+                    </div>
+                    <div>
+                        <h3 id="modal-title" style="margin: 0; font-size: 1.2rem; font-weight: 800; color: #0f172a;">Crear Nuevo Pedido</h3>
+                        <span style="font-size: 0.78rem; color: #64748b; font-weight: 500;">Completa los datos del cliente, producto, plazos y pago</span>
+                    </div>
+                </div>
                 <button type="button" class="modal-close-btn" id="btn-close-modal">&times;</button>
             </div>
-            <div class="modal-body">
+            
+            <div class="modal-body" style="padding: 1.25rem 1.5rem;">
                 <form id="order-form">
                     <input type="hidden" id="order-form-id">
                     <input type="hidden" id="order-form-creation">
@@ -1036,165 +1233,233 @@
                     <input type="hidden" id="order-form-ready">
                     <input type="hidden" id="order-form-completed">
                     
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="order-client">Nombre del Cliente</label>
-                            <input type="text" id="order-client" class="form-control" placeholder="ej: Carlos Giménez" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="order-client-phone" style="display: flex; align-items: center; justify-content: space-between;">
-                                <span>Celular / WhatsApp del Cliente</span>
-                                <span style="font-size: 0.75rem; color: #16a34a; font-weight: 700; display: inline-flex; align-items: center; gap: 2px;">
-                                    <span class="material-symbols-outlined" style="font-size: 14px;">lock</span> Encriptado 🔒
-                                </span>
-                            </label>
-                            <input type="tel" id="order-client-phone" class="form-control" placeholder="ej: 1167007723 o 11 2345-6789">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="order-product-type">Producto</label>
-                        <select id="order-product-type" class="form-control" style="margin-bottom: 8px;">
-                            <option value="catalog">Elegir del Catálogo</option>
-                            <option value="custom">Personalizado (A Medida)</option>
-                        </select>
-                        <select id="order-product-catalog" class="form-control">
-                            <!-- Se llena dinámicamente -->
-                        </select>
-                        <div id="group-product-finish" style="display: none; margin-top: 8px; margin-bottom: 8px;">
-                            <label for="order-product-finish" style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; display: block;">Terminación / Acabado</label>
-                            <select id="order-product-finish" class="form-control">
-                                <!-- Se llena dinámicamente -->
-                            </select>
-                        </div>
-                        <div id="group-product-measure" style="display: none; margin-top: 8px; margin-bottom: 8px;">
-                            <label for="order-product-measure" style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; display: block;">Medida / Dimensión</label>
-                            <select id="order-product-measure" class="form-control">
-                                <!-- Se llena dinámicamente -->
-                            </select>
-                        </div>
-                        <input type="text" id="order-product-custom" class="form-control" placeholder="Describa el producto a medida..." style="display: none;">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="order-desc">Detalle del Pedido / Descripción</label>
-                        <textarea id="order-desc" class="form-control" rows="3" placeholder="ej: Color roble oscuro, madera pino eliottis, baranda reforzada, altura 65cm."></textarea>
-                    </div>
-                    
-                    <!-- Subida de Imagen -->
-                    <div class="form-group">
-                        <label>Foto de Referencia / Boceto</label>
-                        <div class="image-upload-area" id="image-upload-trigger">
-                            <span class="material-symbols-outlined" style="font-size: 32px; color: var(--text-muted);">add_a_photo</span>
-                            <div style="font-size: 0.82rem; margin-top: 4px; font-weight: 500;">Haz clic para subir una foto</div>
-                            <input type="file" id="order-image-file" accept="image/*" style="display: none;">
-                        </div>
-                        <input type="hidden" id="order-image-path">
-                        <div id="image-preview-container" class="preview-img-container" style="display: none;">
-                            <img id="image-preview" src="" class="preview-img">
-                            <button type="button" id="btn-remove-image" class="remove-img-btn" title="Quitar imagen">
-                                <span class="material-symbols-outlined">close</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row-3">
-                        <div class="form-group">
-                            <label for="order-delivery">Tipo de Entrega</label>
-                            <select id="order-delivery" class="form-control">
-                                <option value="retira">Retira por Taller</option>
-                                <option value="envio">Envío a Domicilio</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Elaboración (Días Hábiles Iniciales)</label>
-                            <div style="display: flex; align-items: center; gap: 6px;">
-                                <input type="number" id="order-prep-days-min" class="form-control" value="10" min="1" placeholder="Mín" style="text-align: center; font-weight: 700;">
-                                <span style="font-weight: 700; color: var(--text-muted);">a</span>
-                                <input type="number" id="order-prep-days-max" class="form-control" value="15" min="1" placeholder="Máx" style="text-align: center; font-weight: 700;">
-                                <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted); white-space: nowrap;">días</span>
+                    <div class="modal-grid-layout">
+                        <!-- TARJETA 1: DATOS DEL CLIENTE -->
+                        <div class="modal-section-card">
+                            <div class="modal-section-title">
+                                <span class="material-symbols-outlined">person</span>
+                                1. Datos del Cliente
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="order-client">Nombre del Cliente *</label>
+                                    <input type="text" id="order-client" class="form-control" placeholder="ej: Carlos Giménez" required>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="order-client-phone" style="display: flex; align-items: center; justify-content: space-between;">
+                                        <span>WhatsApp del Cliente</span>
+                                        <span style="font-size: 0.72rem; color: #16a34a; font-weight: 700; display: inline-flex; align-items: center; gap: 2px;">
+                                            <span class="material-symbols-outlined" style="font-size: 13px;">lock</span> Encriptado
+                                        </span>
+                                    </label>
+                                    <input type="tel" id="order-client-phone" class="form-control" placeholder="ej: 1167007723">
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="order-extra-days" style="color: #d97706; font-weight: 700; display: flex; align-items: center; gap: 4px;">
-                                <span class="material-symbols-outlined" style="font-size: 16px; color: #d97706;">schedule</span>
-                                Extensión / Demora
-                            </label>
-                            <div style="display: flex; align-items: center; gap: 4px;">
-                                <span style="font-weight: 800; color: #d97706; font-size: 1.1rem;">+</span>
-                                <input type="number" id="order-extra-days" class="form-control" value="0" min="0" placeholder="0" style="text-align: center; font-weight: 800; color: #b45309; background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.3);">
-                                <span style="font-size: 0.82rem; font-weight: 700; color: #b45309; white-space: nowrap;">días háb.</span>
+                        
+                        <!-- TARJETA 2: PRODUCTO Y ESPECIFICACIONES -->
+                        <div class="modal-section-card">
+                            <div class="modal-section-title">
+                                <span class="material-symbols-outlined">inventory_2</span>
+                                2. Producto y Especificaciones
                             </div>
-                        </div>
-                    </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="order-product-type">Origen del Producto</label>
+                                    <select id="order-product-type" class="form-control">
+                                        <option value="catalog">Elegir del Catálogo</option>
+                                        <option value="custom">Personalizado (A Medida)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="group-product-catalog-wrap" style="position: relative;">
+                                    <label for="order-product-search">Buscar / Seleccionar Producto del Catálogo *</label>
+                                    <div style="position: relative;">
+                                        <input type="text" id="order-product-search" class="form-control" placeholder="🔍 Escribe para buscar en el catálogo..." autocomplete="off">
+                                        <span class="material-symbols-outlined" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; pointer-events: none; font-size: 20px;">search</span>
+                                    </div>
+                                    <input type="hidden" id="order-product-catalog">
+                                    <div id="catalog-search-results" class="catalog-search-results"></div>
+                                </div>
+                                <div class="form-group" id="group-product-custom-wrap" style="display: none;">
+                                    <label for="order-product-custom">Título / Nombre del Producto a Medida *</label>
+                                    <input type="text" id="order-product-custom" class="form-control" placeholder="ej: Biblioteca Casita con estantes especiales...">
+                                </div>
+                            </div>
 
-                    <!-- Datos de Despacho / Tracking (solo si es Envío a Domicilio) -->
-                    <div id="group-dispatch-info" style="display: none; background: rgba(180, 132, 108, 0.06); border: 1px solid rgba(180, 132, 108, 0.2); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
-                        <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary-color); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px;">
-                            <span class="material-symbols-outlined" style="font-size: 18px;">local_shipping</span>
-                            Información de Despacho / Tracking
-                        </div>
-                        <div class="form-row">
+                            <div class="form-row">
+                                <div class="form-group" id="group-product-finish" style="display: none;">
+                                    <label for="order-product-finish">Terminación / Acabado</label>
+                                    <select id="order-product-finish" class="form-control">
+                                        <!-- Se llena dinámicamente -->
+                                    </select>
+                                </div>
+                                <div class="form-group" id="group-product-measure" style="display: none;">
+                                    <label for="order-product-measure">Medida / Dimensión</label>
+                                    <select id="order-product-measure" class="form-control">
+                                        <!-- Se llena dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
-                                <label for="order-dispatch-courier">Empresa de Transporte</label>
-                                <select id="order-dispatch-courier" class="form-control">
-                                    <option value="">Seleccionar transporte...</option>
-                                    <option value="correo_argentino">Correo Argentino</option>
-                                    <option value="via_cargo">Vía Cargo</option>
-                                    <option value="andreani">Andreani</option>
-                                    <option value="envio_personal">Envío Personal / Cadetería</option>
-                                    <option value="otros">Otro Transporte</option>
+                                <label for="order-desc">Detalle del Pedido / Especificaciones</label>
+                                <textarea id="order-desc" class="form-control" rows="3" placeholder="ej: Color roble oscuro, madera pino eliottis, baranda reforzada, altura 65cm."></textarea>
+                            </div>
+                            
+                            <!-- Subida de Imagen -->
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label>Foto de Referencia / Boceto</label>
+                                <div class="image-upload-area" id="image-upload-trigger">
+                                    <span class="material-symbols-outlined" style="font-size: 28px; color: var(--primary-color);">add_a_photo</span>
+                                    <div style="font-size: 0.82rem; margin-top: 2px; font-weight: 600; color: #475569;">Subir foto o esquema de referencia</div>
+                                </div>
+                                <input type="file" id="order-image-file" accept="image/*" style="display: none;">
+                                <input type="hidden" id="order-image-path">
+                                <div id="image-preview-container" class="preview-img-container" style="display: none;">
+                                    <img id="image-preview" src="" class="preview-img">
+                                    <button type="button" id="btn-remove-image" class="remove-img-btn" title="Quitar imagen">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TARJETA 3: LOGÍSTICA Y DESPACHO -->
+                        <div class="modal-section-card">
+                            <div class="modal-section-title">
+                                <span class="material-symbols-outlined">local_shipping</span>
+                                3. Modalidad de Entrega y Despacho
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="order-delivery">Tipo de Entrega</label>
+                                <select id="order-delivery" class="form-control">
+                                    <option value="retira">Retira por Taller</option>
+                                    <option value="envio">Envío a Domicilio</option>
                                 </select>
                             </div>
-                            <div class="form-group" id="group-dispatch-courier-name" style="display: none;">
-                                <label for="order-dispatch-courier-name">Nombre del Transporte</label>
-                                <input type="text" id="order-dispatch-courier-name" class="form-control" placeholder="ej: Expreso Brio">
+
+                            <!-- Información de Despacho (si es Envío) -->
+                            <div id="group-dispatch-info" style="display: none; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 10px; padding: 1rem; margin-top: 0.75rem;">
+                                <div style="font-weight: 700; font-size: 0.88rem; color: #0369a1; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">local_shipping</span>
+                                    Datos del Despacho / Empresa de Transporte
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="order-dispatch-courier">Empresa de Transporte</label>
+                                        <select id="order-dispatch-courier" class="form-control">
+                                            <option value="">Seleccionar transporte...</option>
+                                            <option value="correo_argentino">Correo Argentino</option>
+                                            <option value="via_cargo">Vía Cargo</option>
+                                            <option value="andreani">Andreani</option>
+                                            <option value="envio_personal">Envío Personal / Cadetería</option>
+                                            <option value="otros">Otro Transporte</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" id="group-dispatch-courier-name" style="display: none;">
+                                        <label for="order-dispatch-courier-name">Nombre del Transporte</label>
+                                        <input type="text" id="order-dispatch-courier-name" class="form-control" placeholder="ej: Expreso Brio">
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-bottom: 0;">
+                                    <div class="form-group" style="margin-bottom: 0;">
+                                        <label for="order-dispatch-tracking">N° de Guía / Tracking</label>
+                                        <input type="text" id="order-dispatch-tracking" class="form-control" placeholder="ej: 123456789AR">
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 0;">
+                                        <label for="order-dispatch-url">Link Directo de Tracking</label>
+                                        <input type="url" id="order-dispatch-url" class="form-control" placeholder="https://...">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="order-dispatch-tracking">N° de Guía / Tracking</label>
-                                <input type="text" id="order-dispatch-tracking" class="form-control" placeholder="ej: 123456789AR">
+
+                        <!-- TARJETA 4: PLAZOS DE FABRICACIÓN -->
+                        <div class="modal-section-card">
+                            <div class="modal-section-title">
+                                <span class="material-symbols-outlined">schedule</span>
+                                4. Plazos y Tiempos de Fabricación
                             </div>
-                            <div class="form-group">
-                                <label for="order-dispatch-url">Link Directo de Tracking / Ubicación</label>
-                                <input type="url" id="order-dispatch-url" class="form-control" placeholder="https://... (Opcional se autogenera si hay N° guía)">
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Elaboración (Días Hábiles)</label>
+                                    <div style="display: flex; align-items: center; gap: 6px;">
+                                        <input type="number" id="order-prep-days-min" class="form-control" value="10" min="1" placeholder="Mín" style="text-align: center; font-weight: 700;">
+                                        <span style="font-weight: 700; color: var(--text-muted);">a</span>
+                                        <input type="number" id="order-prep-days-max" class="form-control" value="15" min="1" placeholder="Máx" style="text-align: center; font-weight: 700;">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="order-extra-days" style="color: #d97706; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                                        <span class="material-symbols-outlined" style="font-size: 16px; color: #d97706;">add_alarm</span>
+                                        Extensión / Demora Adicional
+                                    </label>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="font-weight: 800; color: #d97706; font-size: 1.1rem;">+</span>
+                                        <input type="number" id="order-extra-days" class="form-control" value="0" min="0" placeholder="0" style="text-align: center; font-weight: 800; color: #b45309; background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.3); max-width: 100px;">
+                                        <span style="font-size: 0.82rem; font-weight: 700; color: #b45309;">días hábiles de prórroga</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="form-row-3">
-                        <div class="form-group">
-                            <label for="order-paid-status">Estado Pago</label>
-                            <select id="order-paid-status" class="form-control">
-                                <option value="nada">Sin Abonar</option>
-                                <option value="parcial">Abonado Parcial</option>
-                                <option value="total">Abonado Total</option>
-                            </select>
+
+                        <!-- TARJETA 5: ESTADO FINANCIERO Y PAGO -->
+                        <div class="modal-section-card" style="margin-bottom: 0;">
+                            <div class="modal-section-title">
+                                <span class="material-symbols-outlined">payments</span>
+                                5. Estado Financiero y del Pedido
+                            </div>
+
+                            <div class="form-row-3">
+                                <div class="form-group">
+                                    <label for="order-paid-status">Estado Pago</label>
+                                    <select id="order-paid-status" class="form-control">
+                                        <option value="nada">Sin Abonar</option>
+                                        <option value="parcial">Abonado Parcial</option>
+                                        <option value="total">Abonado Total</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="order-paid-amount">Abonado ($)</label>
+                                    <input type="number" id="order-paid-amount" class="form-control" value="0" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="order-total-amount">Monto Total ($)</label>
+                                    <input type="number" id="order-total-amount" class="form-control" value="0" min="0">
+                                </div>
+                            </div>
+
+                            <!-- Cálculo Automático de Saldo -->
+                            <div id="modal-live-saldo" style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 1rem; margin-top: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.85rem; font-weight: 700; color: #64748b;">Saldo Pendiente por Cobrar:</span>
+                                <strong id="modal-saldo-val" style="font-size: 1.15rem; font-weight: 800; color: #dc2626;">$0</strong>
+                            </div>
+                            
+                            <div class="form-group" style="margin-top: 0.85rem; margin-bottom: 0.85rem;">
+                                <label style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; font-size: 0.84rem; color: #334155;">
+                                    <input type="checkbox" id="order-tax-notice" checked style="width: 16px; height: 16px; accent-color: var(--primary-color);">
+                                    <span>Aclaración de Monto Neto / Factura A (ícono ❓ al lado del Total)</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="order-status" style="font-weight: 700; color: #0f172a;">Estado General del Pedido</label>
+                                <select id="order-status" class="form-control" style="font-weight: 700;">
+                                    <option value="pendiente">⏳ Pendiente (En Fabricación)</option>
+                                    <option value="listo">📦 Listo (Para retirar/enviar)</option>
+                                    <option value="entregado">🏁 Entregado (Finalizado)</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="order-paid-amount">Abonado ($)</label>
-                            <input type="number" id="order-paid-amount" class="form-control" value="0" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="order-total-amount">Monto Total ($)</label>
-                            <input type="number" id="order-total-amount" class="form-control" value="0" min="0">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="order-status">Estado del Pedido</label>
-                        <select id="order-status" class="form-control">
-                            <option value="pendiente">Pendiente</option>
-                            <option value="listo">Listo (Para retirar/enviar)</option>
-                            <option value="entregado">Entregado</option>
-                        </select>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-outline" id="btn-cancel-modal">Cancelar</button>
-                <button type="button" class="btn-primary" id="btn-save-order">Guardar Pedido</button>
+            <div class="modal-footer" style="padding: 1rem 1.5rem;">
+                <button type="button" class="btn-outline" id="btn-cancel-modal" style="padding: 0.6rem 1.25rem;">Cancelar</button>
+                <button type="button" class="btn-primary" id="btn-save-order" style="padding: 0.6rem 1.5rem; font-weight: 700;">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">save</span> Guardar Pedido
+                </button>
             </div>
         </div>
     </div>
@@ -1381,11 +1646,27 @@
             document.getElementById('order-product-type').addEventListener('change', toggleProductFields);
             document.getElementById('order-delivery').addEventListener('change', toggleDeliveryFields);
             document.getElementById('order-dispatch-courier').addEventListener('change', toggleDeliveryFields);
-            document.getElementById('order-product-catalog').addEventListener('change', () => {
-                updateFinishesDropdown();
-                handleFinishChange();
+            
+            const searchInput = document.getElementById('order-product-search');
+            if (searchInput) {
+                searchInput.addEventListener('focus', () => renderCatalogSearchResults(searchInput.value));
+                searchInput.addEventListener('input', () => {
+                    document.getElementById('order-product-catalog').value = '';
+                    renderCatalogSearchResults(searchInput.value);
+                });
+            }
+            document.addEventListener('click', (e) => {
+                const wrap = document.getElementById('group-product-catalog-wrap');
+                const results = document.getElementById('catalog-search-results');
+                if (wrap && results && !wrap.contains(e.target)) {
+                    results.style.display = 'none';
+                }
             });
+            
             document.getElementById('order-product-finish').addEventListener('change', handleFinishChange);
+            
+            document.getElementById('order-total-amount').addEventListener('input', updateModalLiveSaldo);
+            document.getElementById('order-paid-amount').addEventListener('input', updateModalLiveSaldo);
             
             document.getElementById('filter-status').addEventListener('change', filterAndRenderTable);
             document.getElementById('input-search').addEventListener('input', filterAndRenderTable);
@@ -1407,22 +1688,62 @@
             setTimeout(() => toast.classList.remove('show'), 3000);
         }
         
+        function renderCatalogSearchResults(query = '') {
+            const resultsContainer = document.getElementById('catalog-search-results');
+            if (!resultsContainer) return;
+            resultsContainer.innerHTML = '';
+
+            const q = query.trim().toLowerCase();
+            const filtered = catalogProducts.filter(p => p.title.toLowerCase().includes(q));
+
+            if (filtered.length === 0) {
+                resultsContainer.innerHTML = '<div class="catalog-search-item" style="color: #94a3b8; cursor: default;">No se encontraron productos</div>';
+                resultsContainer.style.display = 'block';
+                return;
+            }
+
+            filtered.forEach(p => {
+                const item = document.createElement('div');
+                item.className = 'catalog-search-item';
+                
+                const imgPath = p.image ? (p.image.startsWith('http') || p.image.startsWith('../') ? p.image : '../' + p.image) : '';
+                const imgHtml = imgPath ? `<img src="${imgPath}" alt="${p.title}">` : `<div style="width:32px;height:32px;border-radius:6px;background:#e2e8f0;display:flex;align-items:center;justify-content:center;"><span class="material-symbols-outlined" style="font-size:16px;color:#64748b;">inventory_2</span></div>`;
+                
+                item.innerHTML = `${imgHtml}<span>${p.title}</span>`;
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    selectCatalogProduct(p.id, p.title);
+                });
+                resultsContainer.appendChild(item);
+            });
+
+            resultsContainer.style.display = 'block';
+        }
+
+        function selectCatalogProduct(id, title) {
+            document.getElementById('order-product-catalog').value = id;
+            document.getElementById('order-product-search').value = title;
+            document.getElementById('catalog-search-results').style.display = 'none';
+            updateFinishesDropdown();
+        }
+
         function loadCatalogDropdown() {
-            const selectCatalog = document.getElementById('order-product-catalog');
-            selectCatalog.innerHTML = '';
-            
             catalogProducts = [];
             let flatProducts = [];
+            const seenIds = new Set();
             if (typeof productsData !== 'undefined' && Array.isArray(productsData)) {
                 productsData.forEach(cat => {
-                    if (cat.products && Array.isArray(cat.products)) {
+                    if (cat.visible !== false && !cat.id.endsWith('-todos') && cat.products && Array.isArray(cat.products)) {
                         cat.products.forEach(p => {
-                            flatProducts.push({
-                                id: p.id,
-                                title: p.title,
-                                acabados_groups: p.acabados_groups || [],
-                                image: Array.isArray(p.image) ? p.image[0] : (p.image || '')
-                            });
+                            if (p.visible !== false && !seenIds.has(p.id)) {
+                                seenIds.add(p.id);
+                                flatProducts.push({
+                                    id: p.id,
+                                    title: p.title,
+                                    acabados_groups: p.acabados_groups || [],
+                                    image: Array.isArray(p.image) ? p.image[0] : (p.image || '')
+                                });
+                            }
                         });
                     }
                 });
@@ -1430,33 +1751,28 @@
             
             // Sort A-Z by title
             flatProducts.sort((a, b) => a.title.localeCompare(b.title, 'es', { sensitivity: 'base' }));
-            
-            // Populate select
-            flatProducts.forEach(p => {
-                catalogProducts.push(p);
-                const opt = document.createElement('option');
-                opt.value = p.id;
-                opt.textContent = p.title;
-                selectCatalog.appendChild(opt);
-            });
+            catalogProducts = flatProducts;
         }
         
         function toggleProductFields() {
             const type = document.getElementById('order-product-type').value;
-            const dropdown = document.getElementById('order-product-catalog');
-            const custom = document.getElementById('order-product-custom');
+            const searchWrap = document.getElementById('group-product-catalog-wrap');
+            const customWrap = document.getElementById('group-product-custom-wrap');
+            const customInput = document.getElementById('order-product-custom');
             const groupFinish = document.getElementById('group-product-finish');
             const groupMeasure = document.getElementById('group-product-measure');
             
             if (type === 'catalog') {
-                dropdown.style.display = 'block';
-                custom.style.display = 'none';
+                if (searchWrap) searchWrap.style.display = 'block';
+                if (customWrap) customWrap.style.display = 'none';
+                if (customInput) customInput.style.display = 'none';
                 updateFinishesDropdown();
             } else {
-                dropdown.style.display = 'none';
-                custom.style.display = 'block';
-                groupFinish.style.display = 'none';
-                groupMeasure.style.display = 'none';
+                if (searchWrap) searchWrap.style.display = 'none';
+                if (customWrap) customWrap.style.display = 'block';
+                if (customInput) customInput.style.display = 'block';
+                if (groupFinish) groupFinish.style.display = 'none';
+                if (groupMeasure) groupMeasure.style.display = 'none';
             }
         }
         
@@ -1646,123 +1962,163 @@
             countListo.textContent     = listoOrders.length     > 0 ? listoOrders.length     : '';
             countEntregado.textContent = entregadoOrders.length > 0 ? entregadoOrders.length : '';
 
-            // Renderizar cada grupo
-            const buildRows = (orders, tbody, emptyEl) => {
+            // Actualizar tarjetas KPI de resumen
+            const kpiPending = document.getElementById('kpi-count-pending');
+            const kpiReady = document.getElementById('kpi-count-ready');
+            const kpiSaldo = document.getElementById('kpi-total-saldo');
+
+            if (kpiPending) kpiPending.textContent = activeOrders.length;
+            if (kpiReady) kpiReady.textContent = listoOrders.length;
+            if (kpiSaldo) {
+                const totalSaldoActivos = activeOrders.reduce((sum, o) => {
+                    const tot = Number(o.totalAmount || 0);
+                    const pd = Number(o.paidAmount || 0);
+                    return sum + Math.max(0, tot - pd);
+                }, 0);
+                kpiSaldo.textContent = '$' + totalSaldoActivos.toLocaleString('es-AR');
+            }
+
+            // Renderizar cada grupo en tarjetas estructuradas
+            const buildRows = (orders, container, emptyEl) => {
                 if (orders.length === 0) {
                     emptyEl.style.display = 'block';
                     return;
                 }
                 emptyEl.style.display = 'none';
                 orders.forEach(order => {
-                    const tr = document.createElement('tr');
-                    // ── construir fila (misma lógica de antes) ──
+                    const card = document.createElement('div');
+                    card.className = 'order-admin-card';
                 
-                // Formatear precio
-                const total = Number(order.totalAmount || 0);
-                const paid = Number(order.paidAmount || 0);
-                const saldo = total - paid;
-                
-                let paidHTML = '';
-                if (order.paidStatus === 'total') {
-                    paidHTML = `<span style="color:#16a34a; font-weight:700;">Total $${total.toLocaleString('es-AR')}</span>`;
-                } else if (order.paidStatus === 'parcial') {
-                    paidHTML = `
-                        <div style="font-size:0.82rem;">
-                            <span style="color:#16a34a; font-weight:600;">Abonado: $${paid.toLocaleString('es-AR')}</span><br>
-                            <span style="color:#e11d48; font-weight:600;">Saldo: $${saldo.toLocaleString('es-AR')}</span>
+                    // Formatear precio
+                    const total = Number(order.totalAmount || 0);
+                    const paid = Number(order.paidAmount || 0);
+                    const saldo = total - paid;
+                    
+                    let paidHTML = '';
+                    if (order.paidStatus === 'total') {
+                        paidHTML = `<span style="color:#16a34a; font-weight:700;">Total $${total.toLocaleString('es-AR')}</span>`;
+                    } else if (order.paidStatus === 'parcial') {
+                        paidHTML = `
+                            <div style="font-size:0.82rem;">
+                                <span style="color:#16a34a; font-weight:600;">Abonado: $${paid.toLocaleString('es-AR')}</span><br>
+                                <span style="color:#e11d48; font-weight:600;">Saldo: $${saldo.toLocaleString('es-AR')}</span>
+                            </div>
+                        `;
+                    } else {
+                        paidHTML = `<span style="color:#94a3b8; font-weight:600;">Sin Abonar ($${total.toLocaleString('es-AR')})</span>`;
+                    }
+                    
+                    // Formatear entrega
+                    const deliveryIcon = order.deliveryMethod === 'envio' ? 'local_shipping' : 'storefront';
+                    const deliveryText = order.deliveryMethod === 'envio' ? 'Envío a Domicilio' : 'Retira por Taller';
+                    
+                    // Fechas
+                    const limitDate = (order.status === 'listo' || order.status === 'entregado') && order.completedDate
+                        ? new Date(order.completedDate)
+                        : new Date(order.estimatedReadyDate);
+                    const limitStr = limitDate.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: '2-digit' });
+                    
+                    // Status badge
+                    let statusLabel = 'Pendiente';
+                    if (order.status === 'listo') statusLabel = 'Listo';
+                    if (order.status === 'entregado') statusLabel = 'Entregado';
+                    
+                    // Imagen del producto
+                    const imgSrc = order.image ? (order.image.startsWith('data:') ? order.image : '../' + order.image) : '../img/logo_provisional.png';
+
+                    let basePath = '/';
+                    if (window.location.pathname.includes('/latarimadecoracion.github.io/')) {
+                        basePath = '/latarimadecoracion.github.io/';
+                    }
+                    const origin = window.location.origin.replace(/\/$/, '');
+                    const trackingPath = `${origin}${basePath}?view=pedidos&id=${order.id}`;
+                    const trackingShortUrl = `${origin}${basePath}${order.id}`;
+                    const waMsg = `¡Hola ${order.clientName}! 👋 Te compartimos el link para hacer el seguimiento en vivo de tu pedido #${order.id} en La Tarima:\n\n${trackingShortUrl}`;
+                    const waUrl = formatWhatsAppDirectUrl(order.clientPhone, waMsg);
+                    const rawPhone = decodeClientPhone(order.clientPhone);
+                    
+                    const pMin = order.prepDaysMin || order.prepDays || 1;
+                    const pMax = order.prepDaysMax || order.prepDays || pMin;
+                    const extraDays = Number(order.extraDays || 0);
+                    const prepDaysText = pMin === pMax ? `${pMax}d háb.` : `${pMin} a ${pMax}d háb.`;
+                    const extraDaysBadge = extraDays > 0 ? `<div style="font-size: 0.72rem; color: #b45309; font-weight: 700; background: #fef3c7; border: 1px solid #fde68a; border-radius: 4px; padding: 1px 5px; display: inline-block; margin-top: 2px;">+${extraDays}d extensión</div>` : '';
+
+                    card.innerHTML = `
+                        <!-- Fila 1: Encabezado con Orden #, Cliente y Estado -->
+                        <div class="order-card-header">
+                            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                <span class="order-id-badge">#${order.id}</span>
+                                <strong style="font-size: 1.05rem; color: #0f172a;">${escapeHtml(order.clientName)}</strong>
+                                ${rawPhone ? `<span style="font-size: 0.75rem; color: #16a34a; font-weight: 700; background: #dcfce7; border: 1px solid #86efac; padding: 2px 8px; border-radius: 50px; display: inline-flex; align-items: center; gap: 3px;" title="Celular encriptado 🔒"><span class="material-symbols-outlined" style="font-size: 13px;">lock</span> ${rawPhone}</span>` : ''}
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span class="status-badge status-${order.status}">${statusLabel}</span>
+                            </div>
+                        </div>
+
+                        <!-- Fila 2: Producto, Detalles de Entrega y Pago -->
+                        <div class="order-card-body">
+                            <div style="display: flex; align-items: center; gap: 12px; flex: 2; min-width: 250px;">
+                                <div style="width: 52px; height: 52px; border-radius: 10px; background-image: url('${imgSrc}'); background-size: cover; background-position: center; border: 1px solid #e2e8f0; flex-shrink: 0;"></div>
+                                <div>
+                                    <strong style="font-size: 0.98rem; color: #1e293b; display: block;">${order.productName}</strong>
+                                    ${order.selectedFinish || order.selectedMeasure ? `
+                                        <div style="font-size: 0.8rem; color: #64748b; font-weight: 500; margin-top: 2px;">
+                                            ${order.selectedFinish ? `Acabado: <strong>${order.selectedFinish}</strong>` : ''}
+                                            ${order.selectedFinish && order.selectedMeasure ? ' &bull; ' : ''}
+                                            ${order.selectedMeasure ? `Medida: <strong>${order.selectedMeasure}</strong>` : ''}
+                                        </div>
+                                    ` : ''}
+                                    ${order.description ? `<div style="font-size: 0.78rem; color: #64748b; font-style: italic; margin-top: 2px;">"${escapeHtml(order.description)}"</div>` : ''}
+                                </div>
+                            </div>
+                            
+                            <div style="flex: 1; min-width: 170px; font-size: 0.85rem;">
+                                <div style="display: flex; align-items: center; gap: 6px; color: #475569; font-weight: 700; margin-bottom: 4px;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary-color);">${deliveryIcon}</span>
+                                    ${deliveryText}
+                                </div>
+                                <div style="color: #64748b;">Elaboración: <strong>${prepDaysText}</strong> ${extraDaysBadge}</div>
+                                <div style="color: #64748b; margin-top: 2px;">Fecha Límite: <strong style="color: #0f172a;">${limitStr}</strong></div>
+                            </div>
+
+                            <div style="text-align: right; flex: 1; min-width: 140px;">
+                                <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 2px;">Estado Pago</div>
+                                ${paidHTML}
+                            </div>
+                        </div>
+
+                        <!-- Fila 3: Botones de Acción Rápida -->
+                        <div class="order-card-footer">
+                            <div class="actions-cell">
+                                ${order.status === 'listo' ? (() => {
+                                    const cfg = JSON.parse(localStorage.getItem('pedidosAdminConfig') || '{}');
+                                    const readyMsg = cfg.readyDesc || '¡Tu pedido ya está listo! ✅';
+                                    const notifyMsg = `¡Hola ${order.clientName}! 👋\n\n${readyMsg} #${order.id}\n\n${order.productName}\n\nPodés ver el detalle en: ${trackingShortUrl}`;
+                                    const notifyUrl = formatWhatsAppDirectUrl(order.clientPhone, notifyMsg);
+                                    return `<a href="${notifyUrl}" target="_blank" class="action-btn" style="color: #7c3aed; background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.2);" title="✅ Notificar al cliente que su pedido está listo">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">notifications_active</span> Notificar Listo
+                                    </a>`;
+                                })() : ''}
+                                <a href="${waUrl}" target="_blank" class="action-btn link" style="color: #16a34a; background: rgba(22, 163, 74, 0.1);" title="Enviar link de seguimiento por WhatsApp">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">chat</span> WhatsApp
+                                </a>
+                                <button type="button" class="action-btn link" onclick="copyTrackingLink('${order.id}', '${escapeHtml(order.clientName)}')" title="Copiar enlace de seguimiento">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span> Link
+                                </button>
+                                <a href="${trackingPath}" target="_blank" class="action-btn link" title="Ver web de seguimiento">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">visibility</span> Ver
+                                </a>
+                                <button type="button" class="action-btn edit" onclick="editOrder('${order.id}')" title="Editar Pedido">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">edit</span> Editar
+                                </button>
+                                <button type="button" class="action-btn delete" onclick="deleteOrder('${order.id}')" title="Eliminar Pedido">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+                                </button>
+                            </div>
                         </div>
                     `;
-                } else {
-                    paidHTML = `<span style="color:#cbd5e1; font-weight:600;">Sin Abonar ($${total.toLocaleString('es-AR')})</span>`;
-                }
-                
-                // Formatear entrega
-                const deliveryIcon = order.deliveryMethod === 'envio' ? 'local_shipping' : 'storefront';
-                const deliveryText = order.deliveryMethod === 'envio' ? 'Envío' : 'Retira';
-                
-                // Fechas (Muestra la fecha real de finalización si ya está Listo/Entregado, o la estimación límite)
-                const limitDate = (order.status === 'listo' || order.status === 'entregado') && order.completedDate
-                    ? new Date(order.completedDate)
-                    : new Date(order.estimatedReadyDate);
-                const limitStr = limitDate.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: '2-digit' });
-                
-                // Status badge
-                let statusLabel = 'Pendiente';
-                if (order.status === 'listo') statusLabel = 'Listo';
-                if (order.status === 'entregado') statusLabel = 'Entregado';
-                
-                // Enlace de seguimiento corto ultra limpio para WhatsApp
-                let basePath = '/';
-                if (window.location.pathname.includes('/latarimadecoracion.github.io/')) {
-                    basePath = '/latarimadecoracion.github.io/';
-                }
-                const origin = window.location.origin.replace(/\/$/, '');
-                const trackingPath = `${origin}${basePath}?view=pedidos&id=${order.id}`;
-                const trackingShortUrl = `${origin}${basePath}${order.id}`;
-                const waMsg = `¡Hola ${order.clientName}! 👋 Te compartimos el link para hacer el seguimiento en vivo de tu pedido #${order.id} en La Tarima:\n\n${trackingShortUrl}`;
-                const waUrl = formatWhatsAppDirectUrl(order.clientPhone, waMsg);
-                const rawPhone = decodeClientPhone(order.clientPhone);
-                
-                const pMin = order.prepDaysMin || order.prepDays || 1;
-                const pMax = order.prepDaysMax || order.prepDays || pMin;
-                const extraDays = Number(order.extraDays || 0);
-                const prepDaysText = pMin === pMax ? `${pMax}d háb.` : `${pMin} a ${pMax}d háb.`;
-                const extraDaysBadge = extraDays > 0 ? `<div style="font-size: 0.72rem; color: #b45309; font-weight: 700; background: #fef3c7; border: 1px solid #fde68a; border-radius: 4px; padding: 1px 5px; display: inline-block; margin-top: 2px;">+${extraDays}d extensión</div>` : '';
-
-                tr.innerHTML = `
-                    <td><span class="order-id-badge">${order.id}</span></td>
-                    <td>
-                        <span class="order-client-name">${escapeHtml(order.clientName)}</span>
-                        ${rawPhone ? `<div style="font-size: 0.73rem; color: #16a34a; font-weight: 600; display: inline-flex; align-items: center; gap: 3px; margin-top: 2px;" title="Celular privado configurado 🔒 (se enviará mensaje directo)"><span class="material-symbols-outlined" style="font-size: 13px;">lock</span> WPP Directo</div>` : ''}
-                    </td>
-                    <td>
-                        <span class="order-product">${order.productName}</span>
-                        ${order.selectedFinish || order.selectedMeasure ? `
-                            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-top: 2px;">
-                                ${order.selectedFinish ? `Acabado: ${order.selectedFinish}` : ''}
-                                ${order.selectedFinish && order.selectedMeasure ? ' | ' : ''}
-                                ${order.selectedMeasure ? `Medida: ${order.selectedMeasure}` : ''}
-                            </div>
-                        ` : ''}
-                    </td>
-                    <td>
-                        <span class="order-delivery">
-                            <span class="material-symbols-outlined" style="font-size: 16px;">${deliveryIcon}</span>
-                            ${deliveryText}
-                        </span>
-                    </td>
-                    <td>${paidHTML}</td>
-                    <td style="text-align:center; font-weight:600; white-space:nowrap;">${prepDaysText}${extraDaysBadge}</td>
-                    <td style="font-weight:700;">${limitStr}</td>
-                    <td><span class="status-badge status-${order.status}">${statusLabel}</span></td>
-                    <td>
-                        <div class="actions-cell">
-                            ${order.status === 'listo' ? (() => {
-                                const cfg = JSON.parse(localStorage.getItem('pedidosAdminConfig') || '{}');
-                                const readyMsg = cfg.readyDesc || '¡Tu pedido ya está listo! ✅';
-                                const notifyMsg = `¡Hola ${order.clientName}! 👋\n\n${readyMsg} #${order.id}\n\n${order.productName}\n\nPodés ver el detalle en: ${trackingShortUrl}`;
-                                const notifyUrl = formatWhatsAppDirectUrl(order.clientPhone, notifyMsg);
-                                return `<a href="${notifyUrl}" target="_blank" class="action-btn" style="color: #7c3aed; background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.2);" title="✅ Notificar al cliente que su pedido está listo">
-                                    <span class="material-symbols-outlined" style="font-size: 18px;">notifications_active</span>
-                                </a>`;
-                            })() : ''}
-                            <a href="${waUrl}" target="_blank" class="action-btn link" style="color: #16a34a; background: rgba(22, 163, 74, 0.1);" title="Enviar link de seguimiento por WhatsApp">
-                                <span class="material-symbols-outlined" style="font-size: 18px;">chat</span>
-                            </a>
-                            <a href="${trackingPath}" target="_blank" class="action-btn link" title="Ver web de seguimiento">
-                                <span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
-                            </a>
-                            <button type="button" class="action-btn edit" onclick="editOrder('${order.id}')" title="Editar Pedido">
-                                <span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
-                            </button>
-                            <button type="button" class="action-btn delete" onclick="deleteOrder('${order.id}')" title="Eliminar Pedido">
-                                <span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
-                            </button>
-                        </div>
-                    </td>
-                `;
-                    tr.innerHTML = tr.innerHTML; // flush
-                    tbody.appendChild(tr);
+                    container.appendChild(card);
                 });
             };
 
@@ -1800,6 +2156,17 @@
             }
         }
 
+        function updateModalLiveSaldo() {
+            const total = Number(document.getElementById('order-total-amount').value || 0);
+            const paid = Number(document.getElementById('order-paid-amount').value || 0);
+            const saldo = Math.max(0, total - paid);
+            const saldoValEl = document.getElementById('modal-saldo-val');
+            if (saldoValEl) {
+                saldoValEl.textContent = '$' + saldo.toLocaleString('es-AR');
+                saldoValEl.style.color = saldo > 0 ? '#dc2626' : '#16a34a';
+            }
+        }
+
         function openModal(order = null) {
             const form = document.getElementById('order-form');
             form.reset();
@@ -1820,10 +2187,14 @@
                 document.getElementById('order-product-type').value = order.productType;
                 
                 if (order.productType === 'catalog') {
-                    document.getElementById('order-product-catalog').value = order.productId;
+                    document.getElementById('order-product-catalog').value = order.productId || '';
+                    const prodObj = catalogProducts.find(p => p.id === order.productId);
+                    document.getElementById('order-product-search').value = prodObj ? prodObj.title : (order.productName || '');
                     updateFinishesDropdown(order.selectedFinish || '', order.selectedMeasure || '');
                 } else {
                     document.getElementById('order-product-custom').value = order.productName;
+                    document.getElementById('order-product-catalog').value = '';
+                    document.getElementById('order-product-search').value = '';
                     document.getElementById('group-product-finish').style.display = 'none';
                     document.getElementById('group-product-measure').style.display = 'none';
                 }
@@ -1846,11 +2217,13 @@
                 document.getElementById('order-paid-status').value = order.paidStatus;
                 document.getElementById('order-paid-amount').value = order.paidAmount;
                 document.getElementById('order-total-amount').value = order.totalAmount;
+                document.getElementById('order-tax-notice').checked = order.taxNotice !== false;
                 document.getElementById('order-status').value = order.status;
                 
                 if (order.image) {
                     document.getElementById('order-image-path').value = order.image;
-                    document.getElementById('image-preview').src = '../' + order.image;
+                    const previewSrc = (order.image.startsWith('data:') || order.image.startsWith('http')) ? order.image : (order.image.startsWith('../') ? order.image : '../' + order.image);
+                    document.getElementById('image-preview').src = previewSrc;
                     document.getElementById('image-preview-container').style.display = 'inline-block';
                 }
                 
@@ -1860,6 +2233,8 @@
                 document.getElementById('modal-title').textContent = 'Crear Nuevo Pedido';
                 document.getElementById('order-form-id').value = '';
                 document.getElementById('order-client-phone').value = '';
+                document.getElementById('order-product-catalog').value = '';
+                document.getElementById('order-product-search').value = '';
                 document.getElementById('order-form-creation').value = '';
                 document.getElementById('order-form-start').value = '';
                 document.getElementById('order-form-ready').value = '';
@@ -1869,6 +2244,7 @@
                 document.getElementById('order-extra-days').value = 0;
                 document.getElementById('order-paid-amount').value = 0;
                 document.getElementById('order-total-amount').value = 0;
+                document.getElementById('order-tax-notice').checked = true;
                 document.getElementById('order-paid-status').value = 'nada';
                 document.getElementById('order-status').value = 'pendiente';
                 
@@ -1881,6 +2257,7 @@
                 toggleDeliveryFields();
             }
             
+            updateModalLiveSaldo();
             document.getElementById('order-modal').classList.add('show');
         }
         
@@ -1903,11 +2280,22 @@
                 tempOrderId = Math.floor(100000000 + Math.random() * 900000000).toString();
                 document.getElementById('order-form-id').value = tempOrderId;
             }
-            
+
+            // Vista previa y fallback en base64 para entornos estáticos (GitHub Pages)
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const base64Data = event.target.result;
+                document.getElementById('order-image-path').value = base64Data;
+                document.getElementById('image-preview').src = base64Data;
+                document.getElementById('image-preview-container').style.display = 'inline-block';
+            };
+            reader.readAsDataURL(file);
+
+            // Intentar subir al servidor si la API está disponible
             const formData = new FormData();
-            formData.append('image', file);
             formData.append('category', 'pedidos');
             formData.append('title', tempOrderId);
+            formData.append('image', file);
             
             showToast('Subiendo e integrando imagen...');
             
@@ -1918,16 +2306,18 @@
                 });
                 if (res.ok) {
                     const data = await res.json();
-                    document.getElementById('order-image-path').value = data.imagePath;
-                    document.getElementById('image-preview').src = '../' + data.imagePath;
-                    document.getElementById('image-preview-container').style.display = 'inline-block';
-                    showToast('Imagen subida correctamente.');
+                    if (data && data.imagePath) {
+                        document.getElementById('order-image-path').value = data.imagePath;
+                        const pathSrc = (data.imagePath.startsWith('http') || data.imagePath.startsWith('../')) ? data.imagePath : '../' + data.imagePath;
+                        document.getElementById('image-preview').src = pathSrc;
+                        showToast('Imagen subida correctamente.');
+                    }
                 } else {
-                    alert('Error subiendo la imagen.');
+                    showToast('Imagen cargada localmente.');
                 }
             } catch (err) {
-                console.error(err);
-                alert('No se pudo subir la imagen.');
+                console.log('API de servidor no disponible, usando carga local (Base64).');
+                showToast('Imagen cargada localmente.');
             }
         }
         
@@ -1953,10 +2343,20 @@
             
             if (productType === 'catalog') {
                 productId = document.getElementById('order-product-catalog').value;
-                const prodObj = catalogProducts.find(p => p.id === productId);
+                const searchTxt = document.getElementById('order-product-search').value.trim();
+                let prodObj = catalogProducts.find(p => p.id === productId);
+                if (!prodObj && searchTxt) {
+                    prodObj = catalogProducts.find(p => p.title.toLowerCase() === searchTxt.toLowerCase());
+                    if (prodObj) productId = prodObj.id;
+                }
                 if (prodObj) {
                     productName = prodObj.title;
                     defaultImage = Array.isArray(prodObj.image) ? prodObj.image[0] : (prodObj.image || '');
+                } else if (searchTxt) {
+                    productName = searchTxt;
+                } else {
+                    alert('Seleccione un producto del catálogo.');
+                    return;
                 }
             } else {
                 productName = document.getElementById('order-product-custom').value.trim();
@@ -1967,11 +2367,11 @@
             }
             
             let id = document.getElementById('order-form-id').value;
-            let isNew = false;
             if (!id) {
                 id = Math.floor(100000000 + Math.random() * 900000000).toString();
-                isNew = true;
             }
+            const existingIdx = allOrders.findIndex(o => o.id === id);
+            const isNew = existingIdx === -1;
             
             const status = document.getElementById('order-status').value;
             let creationDate = document.getElementById('order-form-creation').value || new Date().toISOString();
@@ -2023,6 +2423,7 @@
                 paidStatus: document.getElementById('order-paid-status').value,
                 paidAmount: Number(document.getElementById('order-paid-amount').value || 0),
                 totalAmount: Number(document.getElementById('order-total-amount').value || 0),
+                taxNotice: document.getElementById('order-tax-notice').checked,
                 status,
                 creationDate,
                 completedDate,
@@ -2035,8 +2436,7 @@
             if (isNew) {
                 updatedOrders.push(orderObj);
             } else {
-                const idx = updatedOrders.findIndex(o => o.id === id);
-                if (idx !== -1) updatedOrders[idx] = orderObj;
+                updatedOrders[existingIdx] = orderObj;
             }
             
             try {
