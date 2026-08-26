@@ -1038,7 +1038,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 13
+                "views": 14
             },
             {
                 "id": "banquito-de-plaza",
@@ -1510,7 +1510,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 29
+                "views": 30
             },
             {
                 "id": "silla-infantil",
@@ -2901,7 +2901,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores",
-                "views": 7
+                "views": 8
             },
             {
                 "id": "verdulero-x3",
@@ -4591,7 +4591,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 13
+                "views": 14
             },
             {
                 "id": "17-vinos",
@@ -5969,7 +5969,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 4
+                "views": 5
             },
             {
                 "id": "hexagonales",
@@ -7126,7 +7126,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 23
+                "views": 24
             },
             {
                 "id": "mensulas",
@@ -7143,52 +7143,27 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "1 Un.",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/mensula-soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960167374",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 3000,
-                                "cost_price": "",
+                                "price": 4500,
+                                "cost_price": 500,
                                 "legend": "",
                                 "showPrice": true
                             },
                             {
                                 "medida": "2 Un.",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/2-mensulas--soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960301854",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 5500,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 13999,
-                                "cost_price": "",
+                                "price": 8000,
+                                "cost_price": 5500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -7211,7 +7186,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 4500,
-                                "cost_price": "",
+                                "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7224,7 +7199,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 8500,
-                                "cost_price": "",
+                                "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7237,7 +7212,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 17000,
-                                "cost_price": "",
+                                "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -7278,9 +7253,8 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1786058228736,
-                "primaryCatId": "Estantes",
-                "views": 5
+                "last_modified": 1787716545046,
+                "primaryCatId": "Estantes"
             },
             {
                 "id": "Banco Escalera De Pino 3 Escalones",
@@ -8293,7 +8267,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 2
+                "views": 4
             },
             {
                 "id": "Juego de Mesa y Sillas Infantiles",
@@ -8521,7 +8495,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1787715147118,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 5
             }
         ]
     },
@@ -8802,7 +8777,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 13
+                "views": 14
             },
             {
                 "id": "13-vinos",
@@ -9071,7 +9046,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 4
+                "views": 5
             },
             {
                 "id": "soporte-vinos-vinoteca-6",
@@ -9143,7 +9118,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 2
+                "views": 4
             }
         ],
         "rubro": "carpinteria"
@@ -9241,7 +9216,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 13
+                "views": 14
             },
             {
                 "id": "perchero-1-2",
@@ -10217,7 +10192,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 29
+                "views": 30
             },
             {
                 "id": "especiero",
@@ -10537,7 +10512,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores",
-                "views": 7
+                "views": 8
             },
             {
                 "id": "Mueble-Multifunción",
@@ -11201,7 +11176,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 23
+                "views": 24
             },
             {
                 "id": "mensulas",
@@ -11218,52 +11193,27 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "1 Un.",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/mensula-soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960167374",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 3000,
-                                "cost_price": "",
+                                "price": 4500,
+                                "cost_price": 500,
                                 "legend": "",
                                 "showPrice": true
                             },
                             {
                                 "medida": "2 Un.",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/2-mensulas--soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960301854",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 5500,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 13999,
-                                "cost_price": "",
+                                "price": 8000,
+                                "cost_price": 5500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -11286,7 +11236,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 4500,
-                                "cost_price": "",
+                                "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -11299,7 +11249,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 8500,
-                                "cost_price": "",
+                                "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -11312,7 +11262,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 17000,
-                                "cost_price": "",
+                                "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -11353,9 +11303,8 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1786058228736,
-                "primaryCatId": "Estantes",
-                "views": 5
+                "last_modified": 1787716545046,
+                "primaryCatId": "Estantes"
             },
             {
                 "id": "Banco Escalera De Pino 3 Escalones",
@@ -11726,7 +11675,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1787715147118,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 5
             }
         ]
     },
@@ -14172,52 +14122,27 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "1 Un.",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/mensula-soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960167374",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 3000,
-                                "cost_price": "",
+                                "price": 4500,
+                                "cost_price": 500,
                                 "legend": "",
                                 "showPrice": true
                             },
                             {
                                 "medida": "2 Un.",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/2-mensulas--soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960301854",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 5500,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 13999,
-                                "cost_price": "",
+                                "price": 8000,
+                                "cost_price": 5500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -14240,7 +14165,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 4500,
-                                "cost_price": "",
+                                "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14253,7 +14178,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 8500,
-                                "cost_price": "",
+                                "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14266,7 +14191,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 17000,
-                                "cost_price": "",
+                                "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -14307,9 +14232,8 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1786058228736,
-                "primaryCatId": "Estantes",
-                "views": 5
+                "last_modified": 1787716545046,
+                "primaryCatId": "Estantes"
             },
             {
                 "id": "estantes",
@@ -14876,7 +14800,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 23
+                "views": 24
             },
             {
                 "id": "Repisa Biblioteca Estantes Montessori",
@@ -14913,7 +14837,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1787715147118,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 5
             }
         ],
         "rubro": "carpinteria"
@@ -16775,7 +16700,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 29
+                "views": 30
             },
             {
                 "id": "Banco Banquito Escalera Niños Infantil",
@@ -17878,7 +17803,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 23
+                "views": 24
             },
             {
                 "id": "Escritorio-PC-PRO",
@@ -18944,7 +18869,8 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1787715147118,
-                "primaryCatId": "Estantes"
+                "primaryCatId": "Estantes",
+                "views": 5
             }
         ]
     },
