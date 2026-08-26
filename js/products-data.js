@@ -950,7 +950,7 @@ const productsData = [
                 ],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles",
-                "views": 10
+                "views": 11
             },
             {
                 "id": "perchero-1",
@@ -1704,7 +1704,8 @@ const productsData = [
                     "repisa para condimentos"
                 ],
                 "last_modified": 1787707117443,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 22
             },
             {
                 "id": "deck-cuadrado",
@@ -5515,7 +5516,7 @@ const productsData = [
                 "last_modified": 1784773568612,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 3
+                "views": 5
             },
             {
                 "id": "Perchero 5 - Rusctio - campo decorado",
@@ -6766,7 +6767,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 3
+                "views": 6
             },
             {
                 "id": "baranda-reforzada-geriatricos",
@@ -8484,6 +8485,43 @@ const productsData = [
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
                 "views": 1
+            },
+            {
+                "id": "Repisa Biblioteca Estantes Montessori",
+                "title": "Repisa Biblioteca Estantes Montessori",
+                "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
+                "image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158882-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159002-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159125-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "75 x 60 x 15 cm",
+                                "link": "https://www.mercadolibre.com.ar/repisa-biblioteca-estantes-montessori/up/MLAU4928059473",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 37000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1787715147118,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -9476,7 +9514,7 @@ const productsData = [
                 "last_modified": 1784773568612,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 3
+                "views": 5
             },
             {
                 "id": "perchero-nordico-pared-x5",
@@ -9618,7 +9656,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 3
+                "views": 6
             },
             {
                 "id": "perchero-nordico-pared-x3",
@@ -10287,7 +10325,8 @@ const productsData = [
                     "repisa para condimentos"
                 ],
                 "last_modified": 1787707117443,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 22
             },
             {
                 "id": "verdulero-clasico",
@@ -11651,6 +11690,43 @@ const productsData = [
                 "last_modified": 1786333409298,
                 "primaryCatId": "muebles",
                 "views": 0
+            },
+            {
+                "id": "Repisa Biblioteca Estantes Montessori",
+                "title": "Repisa Biblioteca Estantes Montessori",
+                "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
+                "image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158882-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159002-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159125-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "75 x 60 x 15 cm",
+                                "link": "https://www.mercadolibre.com.ar/repisa-biblioteca-estantes-montessori/up/MLAU4928059473",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 37000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1787715147118,
+                "primaryCatId": "Estantes"
             }
         ]
     },
@@ -14432,7 +14508,8 @@ const productsData = [
                     "repisa para condimentos"
                 ],
                 "last_modified": 1787707117443,
-                "primaryCatId": "Organizadores"
+                "primaryCatId": "Organizadores",
+                "views": 22
             },
             {
                 "id": "Estantes-Cortes-Madera",
@@ -14800,6 +14877,43 @@ const productsData = [
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
                 "views": 23
+            },
+            {
+                "id": "Repisa Biblioteca Estantes Montessori",
+                "title": "Repisa Biblioteca Estantes Montessori",
+                "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
+                "image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158882-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159002-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159125-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "75 x 60 x 15 cm",
+                                "link": "https://www.mercadolibre.com.ar/repisa-biblioteca-estantes-montessori/up/MLAU4928059473",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 37000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1787715147118,
+                "primaryCatId": "Estantes"
             }
         ],
         "rubro": "carpinteria"
@@ -15806,7 +15920,7 @@ const productsData = [
                 ],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles",
-                "views": 10
+                "views": 11
             },
             {
                 "id": "escalera-altillo",
@@ -18794,6 +18908,43 @@ const productsData = [
                 "primaryCatId": "Hogar",
                 "visible": true,
                 "views": 2
+            },
+            {
+                "id": "Repisa Biblioteca Estantes Montessori",
+                "title": "Repisa Biblioteca Estantes Montessori",
+                "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
+                "image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158882-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159002-imagen.webp",
+                            "img/organizadores/repisa-biblioteca-estantes-montessori/1787709159125-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "75 x 60 x 15 cm",
+                                "link": "https://www.mercadolibre.com.ar/repisa-biblioteca-estantes-montessori/up/MLAU4928059473",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 37000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1787715147118,
+                "primaryCatId": "Estantes"
             }
         ]
     },

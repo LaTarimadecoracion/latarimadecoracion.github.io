@@ -160,6 +160,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Repisa Biblioteca Estantes Montessori!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Repisa Biblioteca Estantes Montessori!",
+            "mediaType": "image",
+            "image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=Repisa Biblioteca Estantes Montessori",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=Repisa Biblioteca Estantes Montessori",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1787709159242
+        },
+        {
             "title": "¡Nuevo Ingreso: Perchero De Pie Torneado Reforzado 8 Ganchos (2)!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero De Pie Torneado Reforzado 8 Ganchos (2)!",
             "mediaType": "image",

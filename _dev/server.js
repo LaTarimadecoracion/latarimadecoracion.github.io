@@ -188,7 +188,8 @@ const sanitizeFolderName = (name) => {
     return name.toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "") // Saca acentos
-        .replace(/[^a-z0-9]/g, '-');     // Reemplaza espacios y raros por guiones
+        .replace(/[^a-z0-9]+/g, '-')     // Reemplaza espacios y raros por guión único
+        .replace(/^-+|-+$/g, '');
 };
 
 // Multer storage configuration for image uploads
