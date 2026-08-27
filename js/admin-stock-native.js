@@ -176,17 +176,17 @@
 
                     const isVisible = item.visible !== false;
                     const statusBadge = isVisible 
-                        ? `<span style="color: #10B981; font-weight: 700; font-size: 0.75rem; background: #DCFCE7; padding: 3px 8px; border-radius: 12px;">Sincronizado</span>`
-                        : `<span style="color: #D97706; font-weight: 700; font-size: 0.75rem; background: #FEF3C7; border: 1px solid #FCD34D; padding: 3px 8px; border-radius: 12px; display: inline-flex; align-items: center; gap: 3px;">🔒 Borrador</span>`;
+                        ? `<span onclick="window.openAdminStockLinksModal('${item.id}')" title="Ver producto en la web y enlaces disponibles" style="color: #10B981; font-weight: 700; font-size: 0.75rem; background: #DCFCE7; padding: 4px 10px; border-radius: 12px; cursor: pointer; user-select: none; display: inline-flex; align-items: center; gap: 4px; transition: transform 0.15s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Sincronizado <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`
+                        : `<span onclick="window.openAdminStockLinksModal('${item.id}')" title="Ver previsualización y enlaces del producto" style="color: #D97706; font-weight: 700; font-size: 0.75rem; background: #FEF3C7; border: 1px solid #FCD34D; padding: 4px 10px; border-radius: 12px; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; user-select: none; transition: transform 0.15s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">🔒 Borrador <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`;
 
                     tr.innerHTML = `
                         <td style="padding: 0.65rem 0.85rem;">
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <img src="${item.img}" alt="Foto" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 1px solid #E2E8F0; cursor: pointer; flex-shrink: 0;" onclick="window.openAdminStockPhotoModal('${item.id}')" title="Toca para ver foto y editar stock/costo" onerror="this.src='${fallbackImg}'">
                                 <div style="display: flex; flex-direction: column;">
-                                    <div style="display: flex; align-items: center; gap: 6px;">
+                                    <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                                         <span style="font-weight: 700; color: #0F172A; font-size: 0.88rem;">${item.title}</span>
-                                        ${!isVisible ? `<span style="font-size: 0.68rem; background: #FEF3C7; color: #D97706; border: 1px solid #FCD34D; padding: 1px 5px; border-radius: 4px; font-weight: 700;">Privado</span>` : ''}
+                                        <span class="col-status-mobile" style="display: none;">${statusBadge}</span>
                                     </div>
                                     <span style="font-family: monospace; font-weight: 700; color: #c0510a; background: rgba(192, 81, 10, 0.08); padding: 2px 6px; border-radius: 4px; display: inline-block; width: fit-content; margin-top: 2px; font-size: 0.75rem;">Código: ${item.id}</span>
                                 </div>
@@ -716,6 +716,83 @@
         window.closeAdminStockCreateModal();
         window.renderAdminStockModule();
         if (typeof window.renderAdminProducts === 'function') window.renderAdminProducts();
+    };
+
+    window.closeAdminStockLinksModal = function() {
+        const modal = document.getElementById('admin-stock-links-modal');
+        if (modal) modal.style.display = 'none';
+    };
+
+    window.openAdminStockLinksModal = function(prodId) {
+        let targetProd = null;
+        let catName = '';
+
+        if (Array.isArray(window.sessionProducts)) {
+            for (const cat of window.sessionProducts) {
+                if (cat.products && Array.isArray(cat.products)) {
+                    const found = cat.products.find(p => p.id === prodId);
+                    if (found) {
+                        targetProd = found;
+                        catName = cat.name;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!targetProd) return;
+
+        const modal = document.getElementById('admin-stock-links-modal');
+        const modalTitle = document.getElementById('admin-stock-links-modal-title');
+        const linksList = document.getElementById('admin-stock-links-list');
+
+        if (modalTitle) modalTitle.textContent = `${targetProd.title} (Cod: ${targetProd.id})`;
+
+        // Construir URLs de acceso directo
+        const directPublicUrl = `apps/catalogo.html?id=${targetProd.id}`;
+        const seoShortUrl = `p/${targetProd.id}.html`;
+
+        if (linksList) {
+            linksList.innerHTML = `
+                <!-- 1. Enlace a Catálogo Público -->
+                <a href="${directPublicUrl}" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; color: white; text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(56, 189, 248, 0.16)'" onmouseout="this.style.background='rgba(56, 189, 248, 0.08)'">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="material-symbols-outlined" style="color: #38BDF8; font-size: 22px;">storefront</span>
+                        <div>
+                            <div style="color: #FFFFFF; font-weight: 800;">Ver en Catálogo Público</div>
+                            <div style="font-size: 0.72rem; color: #94A3B8; font-weight: 600;">Abre la vista completa en apps/catalogo.html</div>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined" style="color: #38BDF8; font-size: 20px;">open_in_new</span>
+                </a>
+
+                <!-- 2. Enlace Corto SEO / WhatsApp -->
+                <a href="${seoShortUrl}" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; color: white; text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(16, 185, 129, 0.16)'" onmouseout="this.style.background='rgba(16, 185, 129, 0.08)'">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="material-symbols-outlined" style="color: #10B981; font-size: 22px;">share</span>
+                        <div>
+                            <div style="color: #FFFFFF; font-weight: 800;">Link Corto SEO / Redes</div>
+                            <div style="font-size: 0.72rem; color: #94A3B8; font-weight: 600;">Tarjeta para WhatsApp / Meta (p/${targetProd.id}.html)</div>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined" style="color: #10B981; font-size: 20px;">open_in_new</span>
+                </a>
+
+                <!-- 3. Previsualización Directa de Foto -->
+                <a href="${targetProd.image || 'img/logo_provisional.png'}" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; background: rgba(249, 115, 22, 0.08); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 12px; color: white; text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(249, 115, 22, 0.16)'" onmouseout="this.style.background='rgba(249, 115, 22, 0.08)'">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="material-symbols-outlined" style="color: #F97316; font-size: 22px;">image</span>
+                        <div>
+                            <div style="color: #FFFFFF; font-weight: 800;">Ver Imagen HD en Tamaño Real</div>
+                            <div style="font-size: 0.72rem; color: #94A3B8; font-weight: 600;">Abre el archivo original cargado</div>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined" style="color: #F97316; font-size: 20px;">open_in_new</span>
+                </a>
+            `;
+        }
+
+        if (modal) modal.style.display = 'flex';
     };
 
     window.initAdminStockNative = function() {

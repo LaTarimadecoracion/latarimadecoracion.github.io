@@ -476,24 +476,77 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-    justify-content: space-between;
+    width: 100%;
+}
+
+.admin-stock-search-bar-row .search-wrapper {
+    flex: 0 0 75%;
+    max-width: 75%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.admin-stock-search-bar-row .search-wrapper .material-symbols-outlined {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748B;
+    font-size: 22px;
+    pointer-events: none;
+    transition: color 0.2s ease;
+}
+
+.admin-stock-search-bar-row .search-wrapper input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.85rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #0F172A;
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 12px;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+}
+
+.admin-stock-search-bar-row .search-wrapper input:focus {
+    border-color: var(--primary-color, #c0510a);
+    box-shadow: 0 0 0 4px rgba(192, 81, 10, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.admin-stock-search-bar-row .search-wrapper input:focus + .material-symbols-outlined,
+.admin-stock-search-bar-row .search-wrapper input:focus ~ .material-symbols-outlined {
+    color: var(--primary-color, #c0510a);
 }
 
 .admin-stock-btn-quick-add {
+    flex: 0 0 25%;
+    max-width: 25%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 0.65rem 1.25rem;
+    padding: 0.75rem 1rem;
     font-size: 0.88rem;
     font-weight: 800;
-    border-radius: 10px;
+    border-radius: 12px;
     background: linear-gradient(135deg, #10B981 0%, #059669 100%);
     color: white;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
     white-space: nowrap;
+    transition: all 0.2s ease;
+    height: 46px;
+}
+
+.admin-stock-btn-quick-add:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
 }
 
 @media (max-width: 768px) {
@@ -507,15 +560,21 @@
     .col-status-desktop {
         display: none !important;
     }
+    .col-status-mobile {
+        display: inline-block !important;
+    }
     .admin-stock-search-bar-row {
         flex-direction: column;
         align-items: stretch;
         gap: 0.75rem;
     }
     .admin-stock-search-bar-row .search-wrapper {
+        flex: 1 1 100% !important;
         max-width: 100% !important;
     }
     .admin-stock-btn-quick-add {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
         width: 100%;
     }
 }

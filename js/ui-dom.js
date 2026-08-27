@@ -220,7 +220,6 @@
 
     const btnCloseAdminHeader = document.getElementById('btn-close-admin-header');
 
-
     if (btnCloseAdminHeader) {
         btnCloseAdminHeader.addEventListener('click', (e) => {
             e.preventDefault();
@@ -228,50 +227,4 @@
             navigateToView('view-home');
             renderHome();
         });
-    }
-
-
-
-
-
-    const mediaTypeSelector = document.getElementById('admin-media-type-selector') || document.querySelector('.media-type-selector');
-    if (mediaTypeSelector) {
-        mediaTypeSelector.addEventListener('click', (e) => {
-            const btn = e.target.closest('.media-type-btn');
-            if (!btn) return;
-            if (typeof switchMediaPanel === 'function') switchMediaPanel(btn.dataset.type);
-        });
-    }
-
-
-    if (videoUrlInput) {
-        videoUrlInput.addEventListener('blur', () => {
-            const ytId = extractYouTubeId(videoUrlInput.value.trim());
-            const preview = document.getElementById('nosotros-video-preview');
-            if (!preview) return;
-            if (ytId) {
-                preview.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=0&mute=1&modestbranding=1&rel=0" allowfullscreen style="width:100%; height:160px; border:none; border-radius:8px;"></iframe>`;
-                preview.style.display = 'block';
-            } else {
-                preview.innerHTML = '<small style="color:red;">⚠️ URL de YouTube no válida.</small>';
-                preview.style.display = 'block';
-            }
-        });
-    }
-
-
-    if (btnPreviewMap) {
-        btnPreviewMap.addEventListener('click', () => {
-            const query = document.getElementById('admin-nosotros-map-query')?.value.trim();
-            const preview = document.getElementById('nosotros-map-preview');
-            if (!preview || !query) return;
-            const enc = encodeURIComponent(query);
-            preview.innerHTML = `<iframe src="https://maps.google.com/maps?q=${enc}&output=embed&z=15" style="width:100%; height:220px; border:none; border-radius:8px;"></iframe>`;
-            preview.style.display = 'block';
-        });
-    }
-
-
-    if (btnAddNosotrosLink) {
-        btnAddNosotrosLink.addEventListener('click', () => addNosotrosLinkRow());
-    }
+    }

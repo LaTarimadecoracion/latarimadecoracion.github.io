@@ -967,12 +967,30 @@
                                     <button type="submit" style="width: 100%; padding: 0.85rem; font-size: 0.95rem; font-weight: 800; border-radius: 12px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; border: none; cursor: pointer; margin-top: 0.5rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);">
                                         ✨ Guardar Borrador Privado
                                     </button>
-                                </form>
-                            </div>
-                        </div>
+                        <!-- Modal de Enlaces / Vista Web del Producto -->
+                        <div id="admin-stock-links-modal" class="modal-overlay" style="display: none; z-index: 9999; backdrop-filter: blur(8px); background: rgba(15, 23, 42, 0.75);" onclick="if(event.target.id==='admin-stock-links-modal') window.closeAdminStockLinksModal()">
+                            <div class="modal-content" style="max-width: 420px; width: 90%; padding: 1.5rem; border-radius: 20px; background: #0F172A; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; text-align: left;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                                    <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #38BDF8; display: flex; align-items: center; gap: 8px;">
+                                        <span class="material-symbols-outlined">open_in_new</span>
+                                        <span id="admin-stock-links-modal-title">Enlaces del Producto</span>
+                                    </h4>
+                                    <button onclick="window.closeAdminStockLinksModal()" style="border: none; background: rgba(255,255,255,0.1); color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+                                    </button>
+                                </div>
 
+                                <p style="font-size: 0.8rem; color: #94A3B8; margin-top: 0; margin-bottom: 1rem; font-weight: 600;">
+                                    Seleccioná una opción para abrir la vista pública del producto en una nueva pestaña:
+                                </p>
+
+                                <div id="admin-stock-links-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                    <!-- Inyectado dinámicamente -->
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
                         <!-- 2. CATALOG MODULE -->
                         <div id="admin-catalog-view" class="admin-section-view" style="display: none;">

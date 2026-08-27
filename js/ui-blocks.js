@@ -31,7 +31,7 @@
         if(currentInfoTarget === 'avisos') {
             localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
         } else {
-            localStorage.setItem('window.sessionNosotros', JSON.stringify(window.sessionNosotros));
+            localStorage.setItem('sessionNosotros', JSON.stringify(window.sessionNosotros));
         }
         if (window.syncSiteConfigWithServer) {
             window.syncSiteConfigWithServer();
