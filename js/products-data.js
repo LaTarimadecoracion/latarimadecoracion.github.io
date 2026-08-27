@@ -411,7 +411,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 29
+                "views": 0
             },
             {
                 "id": "51",
@@ -822,7 +822,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 94
+                "views": 0
             },
             {
                 "id": "91",
@@ -950,7 +950,7 @@ const productsData = [
                 ],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles",
-                "views": 11
+                "views": 0
             },
             {
                 "id": "31",
@@ -976,8 +976,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 34000,
-                                "cost_price": 17000,
+                                "price": 35000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -989,8 +989,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 65000,
-                                "cost_price": 17000,
+                                "price": 35000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -1038,7 +1038,20 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 14
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $34.000 ➔ $35.000"
+                    },
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $17.000 ➔ $20.000"
+                    }
+                ]
             },
             {
                 "id": "C1",
@@ -1085,7 +1098,7 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 16
+                "views": 0
             },
             {
                 "id": "54",
@@ -1386,7 +1399,7 @@ const productsData = [
                 ],
                 "last_modified": 1784430041975,
                 "primaryCatId": "Barandas",
-                "views": 11
+                "views": 0
             },
             {
                 "id": "41",
@@ -1510,7 +1523,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 30
+                "views": 1
             },
             {
                 "id": "C2",
@@ -1596,7 +1609,7 @@ const productsData = [
                 ],
                 "last_modified": 1783635806092,
                 "primaryCatId": "sillas-sillones",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "42",
@@ -1622,7 +1635,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 11000,
-                                "cost_price": "",
+                                "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1634,8 +1647,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 18000,
-                                "cost_price": "",
+                                "price": 11000,
+                                "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -1648,7 +1661,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 11000,
-                                "cost_price": "",
+                                "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -1660,8 +1673,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 18000,
-                                "cost_price": "",
+                                "price": 11000,
+                                "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -1705,7 +1718,20 @@ const productsData = [
                 ],
                 "last_modified": 1787707117443,
                 "primaryCatId": "Organizadores",
-                "views": 22
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Precio Venta Bajó",
+                        "detail": "Venta: $18.000 ➔ $11.000"
+                    },
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $2500"
+                    }
+                ]
             },
             {
                 "id": "E2",
@@ -1973,7 +1999,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 10
+                "views": 0
             },
             {
                 "id": "E1",
@@ -2195,7 +2221,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812318991,
                 "primaryCatId": "jardin-patio",
-                "views": 11
+                "views": 0
             },
             {
                 "id": "E3",
@@ -2285,7 +2311,7 @@ const productsData = [
                 ],
                 "last_modified": 1786334565073,
                 "primaryCatId": "jardin-patio",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "G1",
@@ -2373,7 +2399,7 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 3
+                "views": 0
             },
             {
                 "id": "G3",
@@ -2462,7 +2488,7 @@ const productsData = [
                 ],
                 "last_modified": 1783907387290,
                 "primaryCatId": "productos-algarrobo",
-                "views": 4
+                "views": 0
             },
             {
                 "id": "G2",
@@ -2535,7 +2561,9 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 18
+                "views": 0,
+                "stock": 1,
+                "history": []
             },
             {
                 "id": "46",
@@ -2625,7 +2653,7 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "B1",
@@ -2690,7 +2718,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "43",
@@ -2717,7 +2745,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "cost_price": 2500,
+                                "price": 15000
                             }
                         ],
                         "hidden": false
@@ -2760,7 +2790,20 @@ const productsData = [
                 ],
                 "last_modified": 1783637106226,
                 "primaryCatId": "Organizadores",
-                "views": 2
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $0 ➔ $15.000"
+                    },
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $2500"
+                    }
+                ]
             },
             {
                 "id": "44",
@@ -2832,7 +2875,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "45",
@@ -2901,7 +2944,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores",
-                "views": 8
+                "views": 0
             },
             {
                 "id": "47",
@@ -2985,7 +3028,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637154745,
                 "primaryCatId": "Organizadores",
-                "views": 831
+                "views": 0
             },
             {
                 "id": "48",
@@ -3111,7 +3154,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637176778,
                 "primaryCatId": "Organizadores",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "E5",
@@ -3202,7 +3245,7 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 11
+                "views": 0
             },
             {
                 "id": "D2",
@@ -3236,7 +3279,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 2353
+                "views": 0
             },
             {
                 "id": "D3",
@@ -3269,7 +3312,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637228097,
                 "primaryCatId": "Mesas-madera",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "E4",
@@ -3348,7 +3391,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637265113,
                 "primaryCatId": "jardin-patio",
-                "views": 7
+                "views": 0
             },
             {
                 "id": "49",
@@ -3433,7 +3476,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637306441,
                 "primaryCatId": "Organizadores",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "4A",
@@ -3495,7 +3538,7 @@ const productsData = [
                 ],
                 "last_modified": 1783908158520,
                 "primaryCatId": "Organizadores",
-                "views": 12
+                "views": 0
             },
             {
                 "id": "55",
@@ -3676,7 +3719,7 @@ const productsData = [
                 ],
                 "last_modified": 1786057097023,
                 "primaryCatId": "Barandas",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "57",
@@ -3748,7 +3791,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "58",
@@ -3820,7 +3863,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616746091,
                 "primaryCatId": "Barandas",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "59",
@@ -3891,7 +3934,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "53",
@@ -4158,7 +4201,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 24
+                "views": 0
             },
             {
                 "id": "39",
@@ -4182,9 +4225,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 15000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "cost_price": 7500
                             },
                             {
                                 "medida": "5 Ganchos",
@@ -4194,9 +4238,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 15000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "cost_price": 7500
                             },
                             {
                                 "medida": "7 Ganchos",
@@ -4206,9 +4251,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 15000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "cost_price": 7500
                             }
                         ],
                         "hidden": false
@@ -4263,7 +4309,20 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 4
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:09 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $0 ➔ $15.000"
+                    },
+                    {
+                        "date": "27/8, 12:09 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $7.500"
+                    }
+                ]
             },
             {
                 "id": "69",
@@ -4438,7 +4497,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 60000,
-                                "cost_price": 30000,
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -4501,7 +4560,30 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 49
+                "views": 0,
+                "stock": 0,
+                "history": [
+                    {
+                        "date": "26/8, 11:54 p. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $20.000 ➔ $25.000"
+                    },
+                    {
+                        "date": "26/8, 11:52 p. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $25.000 ➔ $20.000"
+                    },
+                    {
+                        "date": "26/8, 11:51 p. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $30.000 ➔ $25.000"
+                    },
+                    {
+                        "date": "26/8, 11:47 p. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $25.000 ➔ $30.000"
+                    }
+                ]
             },
             {
                 "id": "22",
@@ -4527,7 +4609,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 70000,
-                                "cost_price": 35000,
+                                "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -4591,7 +4673,15 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 14
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "26/8, 11:55 p. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $35.000 ➔ $27.000"
+                    }
+                ]
             },
             {
                 "id": "24",
@@ -4616,7 +4706,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 90000,
-                                "cost_price": 45000,
+                                "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -4680,7 +4770,15 @@ const productsData = [
                 ],
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
-                "views": 4
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "26/8, 11:55 p. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $45.000 ➔ $36.000"
+                    }
+                ]
             },
             {
                 "id": "23",
@@ -4706,7 +4804,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 80000,
-                                "cost_price": 40000,
+                                "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -4770,7 +4868,15 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 6
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "26/8, 11:55 p. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $40.000 ➔ $31.000"
+                    }
+                ]
             },
             {
                 "id": "71",
@@ -4849,7 +4955,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411533338,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "72",
@@ -4929,7 +5035,7 @@ const productsData = [
                 ],
                 "last_modified": 1786811672934,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 4
+                "views": 0
             },
             {
                 "id": "73",
@@ -5021,7 +5127,7 @@ const productsData = [
                 ],
                 "last_modified": 1786811859567,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 3
+                "views": 0
             },
             {
                 "id": "74",
@@ -5108,7 +5214,7 @@ const productsData = [
                 ],
                 "last_modified": 1786811707863,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 9
+                "views": 0
             },
             {
                 "id": "75",
@@ -5187,7 +5293,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411560841,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "76",
@@ -5266,7 +5372,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411566442,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "77",
@@ -5424,7 +5530,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411571657,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "34",
@@ -5452,8 +5558,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 16000,
-                                "cost_price": 8000,
+                                "price": 21000,
+                                "cost_price": 10500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -5516,7 +5622,20 @@ const productsData = [
                 "last_modified": 1784773568612,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 5
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:05 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $16.000 ➔ $21.000"
+                    },
+                    {
+                        "date": "27/8, 12:05 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $8.000 ➔ $10.500"
+                    }
+                ]
             },
             {
                 "id": "33",
@@ -5547,8 +5666,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
-                                "cost_price": 10000,
+                                "price": 25000,
+                                "cost_price": 12500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -5611,7 +5730,20 @@ const productsData = [
                 "last_modified": 1784773922188,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 2
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:05 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $20.000 ➔ $25.000"
+                    },
+                    {
+                        "date": "27/8, 12:05 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $10.000 ➔ $12.500"
+                    }
+                ]
             },
             {
                 "id": "38",
@@ -5639,8 +5771,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13000,
-                                "cost_price": 6500,
+                                "price": 17000,
+                                "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -5703,7 +5835,20 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 2
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:10 a. m.",
+                        "type": "Protección: Precio Ajustado",
+                        "detail": "Venta: $13.000 ➔ $17.000"
+                    },
+                    {
+                        "date": "27/8, 12:10 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $6.500 ➔ $8.500"
+                    }
+                ]
             },
             {
                 "id": "37",
@@ -5731,7 +5876,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 12000,
-                                "cost_price": 6000,
+                                "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -5794,7 +5939,15 @@ const productsData = [
                 "last_modified": 1784773242756,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 3
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:10 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $6.000 ➔ $7.500"
+                    }
+                ]
             },
             {
                 "id": "11",
@@ -5969,7 +6122,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 5
+                "views": 0
             },
             {
                 "id": "62",
@@ -6069,7 +6222,7 @@ const productsData = [
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
                 "visible": true,
-                "views": 3
+                "views": 0
             },
             {
                 "id": "D4",
@@ -6309,7 +6462,7 @@ const productsData = [
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 7
+                "views": 0
             },
             {
                 "id": "79",
@@ -6396,7 +6549,7 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 2
+                "views": 0
             },
             {
                 "id": "C3",
@@ -6485,7 +6638,7 @@ const productsData = [
                 "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
                 "visible": true,
-                "views": 1
+                "views": 0
             },
             {
                 "id": "36",
@@ -6625,7 +6778,7 @@ const productsData = [
                 ],
                 "last_modified": 1784162786027,
                 "primaryCatId": "Percheros",
-                "views": 8
+                "views": 0
             },
             {
                 "id": "35",
@@ -6767,7 +6920,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 6
+                "views": 0
             },
             {
                 "id": "56",
@@ -6833,7 +6986,7 @@ const productsData = [
                 "last_modified": 1784430109462,
                 "primaryCatId": "Barandas",
                 "visible": true,
-                "views": 10
+                "views": 0
             },
             {
                 "id": "H2",
@@ -6861,8 +7014,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 275000,
-                                "cost_price": 10000,
+                                "price": 250000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -6909,7 +7062,20 @@ const productsData = [
                 ],
                 "last_modified": 1784645695698,
                 "primaryCatId": "Podios",
-                "views": 1
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:38 a. m.",
+                        "type": "Precio Venta Bajó",
+                        "detail": "Venta: $275.000 ➔ $140.000"
+                    },
+                    {
+                        "date": "27/8, 12:30 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $10.000 ➔ $35.000"
+                    }
+                ]
             },
             {
                 "id": "4B",
@@ -7126,7 +7292,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 24
+                "views": 0
             },
             {
                 "id": "4C",
@@ -7255,7 +7421,7 @@ const productsData = [
                 ],
                 "last_modified": 1787716545046,
                 "primaryCatId": "Estantes",
-                "views": 9
+                "views": 0
             },
             {
                 "id": "4D",
@@ -7292,7 +7458,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786316089369,
                 "primaryCatId": "muebles",
-                "views": 7
+                "views": 0
             },
             {
                 "id": "81",
@@ -7315,7 +7481,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786305162256,
                 "primaryCatId": "camas-madera-pino",
-                "views": 3
+                "views": 0
             },
             {
                 "id": "4E",
@@ -7553,7 +7719,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 15
+                "views": 0
             },
             {
                 "id": "A4",
@@ -7714,7 +7880,7 @@ const productsData = [
                 ],
                 "last_modified": 1786330064427,
                 "primaryCatId": "Steps",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "A3",
@@ -8030,7 +8196,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "jardin-patio",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "4G",
@@ -8093,7 +8259,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334411421,
                 "primaryCatId": "Hogar",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "F2",
@@ -8137,7 +8303,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334817654,
                 "primaryCatId": "Hogar",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "F4",
@@ -8196,7 +8362,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera",
-                "views": 4
+                "views": 0
             },
             {
                 "id": "26",
@@ -8221,7 +8387,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 25000,
-                                "cost_price": 25000,
+                                "cost_price": 5000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -8233,7 +8399,15 @@ const productsData = [
                 "last_modified": 1786828055190,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 3
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:03 a. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $25.000 ➔ $5.000"
+                    }
+                ]
             },
             {
                 "id": "27",
@@ -8256,8 +8430,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 29000,
-                                "cost_price": "",
+                                "price": 45000,
+                                "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -8268,7 +8442,20 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 4
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:03 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $29.000 ➔ $45.000"
+                    },
+                    {
+                        "date": "27/8, 12:03 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $7.000"
+                    }
+                ]
             },
             {
                 "id": "B4",
@@ -8303,7 +8490,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes",
-                "views": 7
+                "views": 0
             },
             {
                 "id": "B5",
@@ -8398,7 +8585,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 39000,
-                                "cost_price": 26000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -8410,8 +8597,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 78000,
-                                "cost_price": 52000,
+                                "price": 39000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -8459,7 +8646,20 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 1
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Precio Venta Bajó",
+                        "detail": "Venta: $78.000 ➔ $39.000"
+                    },
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $26.000 ➔ $20.000"
+                    }
+                ]
             },
             {
                 "id": "4H",
@@ -8497,7 +8697,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 6
+                "views": 0
             }
         ]
     },
@@ -8625,7 +8825,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 60000,
-                                "cost_price": 30000,
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -8688,7 +8888,15 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 49
+                "views": 0,
+                "stock": 0,
+                "history": [
+                    {
+                        "date": "27/8, 12:03 a. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $30.000 ➔ $25.000"
+                    }
+                ]
             },
             {
                 "id": "22",
@@ -8714,7 +8922,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 70000,
-                                "cost_price": 35000,
+                                "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -8778,7 +8986,15 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 14
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:03 a. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $35.000 ➔ $27.000"
+                    }
+                ]
             },
             {
                 "id": "23",
@@ -8804,7 +9020,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 80000,
-                                "cost_price": 40000,
+                                "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -8868,7 +9084,15 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 6
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:03 a. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $40.000 ➔ $31.000"
+                    }
+                ]
             },
             {
                 "id": "24",
@@ -8893,7 +9117,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 90000,
-                                "cost_price": 45000,
+                                "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -8957,7 +9181,15 @@ const productsData = [
                 ],
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
-                "views": 4
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:03 a. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $45.000 ➔ $36.000"
+                    }
+                ]
             },
             {
                 "id": "25",
@@ -9047,7 +9279,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 5
+                "views": 0
             },
             {
                 "id": "26",
@@ -9072,7 +9304,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 25000,
-                                "cost_price": 25000,
+                                "cost_price": 5000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9084,7 +9316,15 @@ const productsData = [
                 "last_modified": 1786828055190,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 3
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:03 a. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $25.000 ➔ $5.000"
+                    }
+                ]
             },
             {
                 "id": "27",
@@ -9107,8 +9347,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 29000,
-                                "cost_price": "",
+                                "price": 45000,
+                                "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9119,7 +9359,20 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 4
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:03 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $29.000 ➔ $45.000"
+                    },
+                    {
+                        "date": "27/8, 12:03 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $7.000"
+                    }
+                ]
             }
         ],
         "rubro": "carpinteria"
@@ -9155,8 +9408,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 34000,
-                                "cost_price": 17000,
+                                "price": 35000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9168,8 +9421,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 65000,
-                                "cost_price": 17000,
+                                "price": 35000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9217,7 +9470,20 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 14
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $34.000 ➔ $35.000"
+                    },
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $17.000 ➔ $20.000"
+                    }
+                ]
             },
             {
                 "id": "32",
@@ -9242,7 +9508,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 39000,
-                                "cost_price": 26000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -9254,8 +9520,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 78000,
-                                "cost_price": 52000,
+                                "price": 39000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9303,7 +9569,20 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 1
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Precio Venta Bajó",
+                        "detail": "Venta: $78.000 ➔ $39.000"
+                    },
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $26.000 ➔ $20.000"
+                    }
+                ]
             },
             {
                 "id": "33",
@@ -9334,8 +9613,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
-                                "cost_price": 10000,
+                                "price": 25000,
+                                "cost_price": 12500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9398,7 +9677,20 @@ const productsData = [
                 "last_modified": 1784773922188,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 2
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:05 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $20.000 ➔ $25.000"
+                    },
+                    {
+                        "date": "27/8, 12:05 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $10.000 ➔ $12.500"
+                    }
+                ]
             },
             {
                 "id": "34",
@@ -9426,8 +9718,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 16000,
-                                "cost_price": 8000,
+                                "price": 21000,
+                                "cost_price": 10500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9490,7 +9782,20 @@ const productsData = [
                 "last_modified": 1784773568612,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 5
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:05 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $16.000 ➔ $21.000"
+                    },
+                    {
+                        "date": "27/8, 12:05 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $8.000 ➔ $10.500"
+                    }
+                ]
             },
             {
                 "id": "35",
@@ -9632,7 +9937,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 6
+                "views": 0
             },
             {
                 "id": "36",
@@ -9772,7 +10077,7 @@ const productsData = [
                 ],
                 "last_modified": 1784162786027,
                 "primaryCatId": "Percheros",
-                "views": 8
+                "views": 0
             },
             {
                 "id": "37",
@@ -9800,7 +10105,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 12000,
-                                "cost_price": 6000,
+                                "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9863,7 +10168,15 @@ const productsData = [
                 "last_modified": 1784773242756,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 3
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:10 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $6.000 ➔ $7.500"
+                    }
+                ]
             },
             {
                 "id": "38",
@@ -9891,8 +10204,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13000,
-                                "cost_price": 6500,
+                                "price": 17000,
+                                "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -9955,7 +10268,20 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 2
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:10 a. m.",
+                        "type": "Protección: Precio Ajustado",
+                        "detail": "Venta: $13.000 ➔ $17.000"
+                    },
+                    {
+                        "date": "27/8, 12:10 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $6.500 ➔ $8.500"
+                    }
+                ]
             },
             {
                 "id": "39",
@@ -9979,9 +10305,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 15000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "cost_price": 7500
                             },
                             {
                                 "medida": "5 Ganchos",
@@ -9991,9 +10318,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 15000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "cost_price": 7500
                             },
                             {
                                 "medida": "7 Ganchos",
@@ -10003,9 +10331,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 15000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "cost_price": 7500
                             }
                         ],
                         "hidden": false
@@ -10060,7 +10389,20 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 4
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:09 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $0 ➔ $15.000"
+                    },
+                    {
+                        "date": "27/8, 12:09 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $7.500"
+                    }
+                ]
             }
         ]
     },
@@ -10193,7 +10535,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 30
+                "views": 1
             },
             {
                 "id": "42",
@@ -10219,7 +10561,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 11000,
-                                "cost_price": "",
+                                "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10231,8 +10573,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 18000,
-                                "cost_price": "",
+                                "price": 11000,
+                                "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true
                             },
@@ -10245,7 +10587,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 11000,
-                                "cost_price": "",
+                                "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": false
                             },
@@ -10257,8 +10599,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 18000,
-                                "cost_price": "",
+                                "price": 11000,
+                                "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -10302,7 +10644,20 @@ const productsData = [
                 ],
                 "last_modified": 1787707117443,
                 "primaryCatId": "Organizadores",
-                "views": 22
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Precio Venta Bajó",
+                        "detail": "Venta: $18.000 ➔ $11.000"
+                    },
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $2500"
+                    }
+                ]
             },
             {
                 "id": "43",
@@ -10329,7 +10684,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "cost_price": 2500,
+                                "price": 15000
                             }
                         ],
                         "hidden": false
@@ -10372,7 +10729,20 @@ const productsData = [
                 ],
                 "last_modified": 1783637106226,
                 "primaryCatId": "Organizadores",
-                "views": 2
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $0 ➔ $15.000"
+                    },
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $2500"
+                    }
+                ]
             },
             {
                 "id": "44",
@@ -10444,7 +10814,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "45",
@@ -10513,7 +10883,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores",
-                "views": 8
+                "views": 0
             },
             {
                 "id": "46",
@@ -10603,7 +10973,7 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "47",
@@ -10687,7 +11057,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637154745,
                 "primaryCatId": "Organizadores",
-                "views": 831
+                "views": 0
             },
             {
                 "id": "48",
@@ -10813,7 +11183,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637176778,
                 "primaryCatId": "Organizadores",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "49",
@@ -10898,7 +11268,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637306441,
                 "primaryCatId": "Organizadores",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "4A",
@@ -10960,7 +11330,7 @@ const productsData = [
                 ],
                 "last_modified": 1783908158520,
                 "primaryCatId": "Organizadores",
-                "views": 12
+                "views": 0
             },
             {
                 "id": "4B",
@@ -11177,7 +11547,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 24
+                "views": 0
             },
             {
                 "id": "4C",
@@ -11306,7 +11676,7 @@ const productsData = [
                 ],
                 "last_modified": 1787716545046,
                 "primaryCatId": "Estantes",
-                "views": 9
+                "views": 0
             },
             {
                 "id": "4D",
@@ -11343,7 +11713,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786316089369,
                 "primaryCatId": "muebles",
-                "views": 7
+                "views": 0
             },
             {
                 "id": "4E",
@@ -11581,7 +11951,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 15
+                "views": 0
             },
             {
                 "id": "4F",
@@ -11602,7 +11972,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "jardin-patio",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "4G",
@@ -11678,7 +12048,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 6
+                "views": 0
             }
         ]
     },
@@ -12097,7 +12467,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 94
+                "views": 0
             },
             {
                 "id": "52",
@@ -12503,7 +12873,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 29
+                "views": 0
             },
             {
                 "id": "53",
@@ -12770,7 +13140,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 24
+                "views": 0
             },
             {
                 "id": "54",
@@ -13071,7 +13441,7 @@ const productsData = [
                 ],
                 "last_modified": 1784430041975,
                 "primaryCatId": "Barandas",
-                "views": 11
+                "views": 0
             },
             {
                 "id": "55",
@@ -13252,7 +13622,7 @@ const productsData = [
                 ],
                 "last_modified": 1786057097023,
                 "primaryCatId": "Barandas",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "56",
@@ -13318,7 +13688,7 @@ const productsData = [
                 "last_modified": 1784430109462,
                 "primaryCatId": "Barandas",
                 "visible": true,
-                "views": 10
+                "views": 0
             },
             {
                 "id": "57",
@@ -13390,7 +13760,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "58",
@@ -13462,7 +13832,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616746091,
                 "primaryCatId": "Barandas",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "59",
@@ -13533,7 +13903,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas",
-                "views": 1
+                "views": 0
             }
         ],
         "visible": true,
@@ -13781,7 +14151,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 15
+                "views": 0
             },
             {
                 "id": "62",
@@ -13881,7 +14251,7 @@ const productsData = [
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
                 "visible": true,
-                "views": 3
+                "views": 0
             },
             {
                 "id": "63",
@@ -13962,7 +14332,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 2,
+                "views": 0,
                 "tags": [
                     "estante",
                     "estantes",
@@ -14013,7 +14383,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 2,
+                "views": 0,
                 "tags": [
                     "estante",
                     "estantes",
@@ -14083,7 +14453,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 2,
+                "views": 0,
                 "tags": [
                     "estante",
                     "estantes",
@@ -14236,7 +14606,7 @@ const productsData = [
                 ],
                 "last_modified": 1787716545046,
                 "primaryCatId": "Estantes",
-                "views": 9
+                "views": 0
             },
             {
                 "id": "67",
@@ -14303,7 +14673,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 3,
+                "views": 0,
                 "tags": [
                     "estante",
                     "estantes",
@@ -14436,7 +14806,7 @@ const productsData = [
                 ],
                 "last_modified": 1787707117443,
                 "primaryCatId": "Organizadores",
-                "views": 22
+                "views": 0
             },
             {
                 "id": "69",
@@ -14803,7 +15173,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 24
+                "views": 0
             },
             {
                 "id": "6B",
@@ -14841,7 +15211,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 6
+                "views": 0
             }
         ],
         "rubro": "carpinteria"
@@ -14930,7 +15300,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411533338,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "72",
@@ -15010,7 +15380,7 @@ const productsData = [
                 ],
                 "last_modified": 1786811672934,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 4
+                "views": 0
             },
             {
                 "id": "73",
@@ -15102,7 +15472,7 @@ const productsData = [
                 ],
                 "last_modified": 1786811859567,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 3
+                "views": 0
             },
             {
                 "id": "74",
@@ -15189,7 +15559,7 @@ const productsData = [
                 ],
                 "last_modified": 1786811707863,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 9
+                "views": 0
             },
             {
                 "id": "75",
@@ -15268,7 +15638,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411560841,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "76",
@@ -15347,7 +15717,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411566442,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "77",
@@ -15505,7 +15875,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411571657,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "79",
@@ -15592,7 +15962,7 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 2
+                "views": 0
             }
         ],
         "visible": true
@@ -15625,7 +15995,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786305162256,
                 "primaryCatId": "camas-madera-pino",
-                "views": 3
+                "views": 0
             },
             {
                 "id": "82",
@@ -15712,7 +16082,7 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 2
+                "views": 0
             }
         ]
     },
@@ -15848,7 +16218,7 @@ const productsData = [
                 ],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles",
-                "views": 11
+                "views": 0
             },
             {
                 "id": "92",
@@ -15866,7 +16236,7 @@ const productsData = [
                         "medidas_variants": []
                     }
                 ],
-                "views": 1,
+                "views": 0,
                 "tags": [
                     "escalera",
                     "escaleras",
@@ -15935,7 +16305,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786316089369,
                 "primaryCatId": "muebles",
-                "views": 7
+                "views": 0
             },
             {
                 "id": "94",
@@ -16050,7 +16420,7 @@ const productsData = [
                 ],
                 "last_modified": 1782417151111,
                 "primaryCatId": "Steps",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "A2",
@@ -16506,7 +16876,7 @@ const productsData = [
                 ],
                 "last_modified": 1786330064427,
                 "primaryCatId": "Steps",
-                "views": 1
+                "views": 0
             }
         ]
     },
@@ -16579,7 +16949,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "B2",
@@ -16703,7 +17073,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 30
+                "views": 0
             },
             {
                 "id": "B3",
@@ -16776,7 +17146,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes",
-                "views": 7
+                "views": 0
             },
             {
                 "id": "B5",
@@ -16903,7 +17273,7 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 16
+                "views": 0
             },
             {
                 "id": "C2",
@@ -16989,7 +17359,7 @@ const productsData = [
                 ],
                 "last_modified": 1783635806092,
                 "primaryCatId": "sillas-sillones",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "C3",
@@ -17078,7 +17448,7 @@ const productsData = [
                 "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
                 "visible": true,
-                "views": 1
+                "views": 0
             },
             {
                 "id": "C4",
@@ -17183,7 +17553,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes",
-                "views": 7
+                "views": 0
             }
         ]
     },
@@ -17282,7 +17652,7 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "D2",
@@ -17316,7 +17686,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 2353
+                "views": 0
             },
             {
                 "id": "D3",
@@ -17349,7 +17719,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637228097,
                 "primaryCatId": "Mesas-madera",
-                "views": 2
+                "views": 0
             },
             {
                 "id": "D4",
@@ -17589,7 +17959,7 @@ const productsData = [
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 7
+                "views": 0
             },
             {
                 "id": "D5",
@@ -17806,7 +18176,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 24
+                "views": 0
             },
             {
                 "id": "D6",
@@ -17831,7 +18201,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334411421,
                 "primaryCatId": "Hogar",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "D7",
@@ -17868,7 +18238,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera",
-                "views": 4
+                "views": 0
             }
         ]
     },
@@ -18099,7 +18469,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812318991,
                 "primaryCatId": "jardin-patio",
-                "views": 11
+                "views": 0
             },
             {
                 "id": "E2",
@@ -18367,7 +18737,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 10
+                "views": 0
             },
             {
                 "id": "E3",
@@ -18457,7 +18827,7 @@ const productsData = [
                 ],
                 "last_modified": 1786334565073,
                 "primaryCatId": "jardin-patio",
-                "views": 5
+                "views": 0
             },
             {
                 "id": "E4",
@@ -18536,7 +18906,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637265113,
                 "primaryCatId": "jardin-patio",
-                "views": 7
+                "views": 0
             },
             {
                 "id": "E5",
@@ -18627,7 +18997,7 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 11
+                "views": 0
             },
             {
                 "id": "E6",
@@ -18648,7 +19018,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "jardin-patio",
-                "views": 1
+                "views": 0
             }
         ]
     },
@@ -18682,7 +19052,9 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334411421,
                 "primaryCatId": "Hogar",
-                "views": 1
+                "views": 0,
+                "stock": 1,
+                "history": []
             },
             {
                 "id": "F2",
@@ -18726,7 +19098,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334817654,
                 "primaryCatId": "Hogar",
-                "views": 1
+                "views": 0
             },
             {
                 "id": "F4",
@@ -18835,7 +19207,7 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 2
+                "views": 0
             },
             {
                 "id": "F6",
@@ -18873,7 +19245,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 6
+                "views": 0
             }
         ]
     },
@@ -18970,7 +19342,7 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 3
+                "views": 0
             },
             {
                 "id": "G2",
@@ -19043,7 +19415,9 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 18
+                "views": 0,
+                "stock": 1,
+                "history": []
             },
             {
                 "id": "G3",
@@ -19132,7 +19506,7 @@ const productsData = [
                 ],
                 "last_modified": 1783907387290,
                 "primaryCatId": "productos-algarrobo",
-                "views": 4
+                "views": 0
             }
         ]
     },
@@ -19164,7 +19538,8 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/podio-de-premiacion-profesional--3-niveles/up/MLAU3923567631",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": 35000,
+                                "price": 375000
                             }
                         ]
                     }
@@ -19232,7 +19607,25 @@ const productsData = [
                 ],
                 "last_modified": 1780774148299,
                 "primaryCatId": "Podios",
-                "views": 1
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:38 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $70.000 ➔ $375.000"
+                    },
+                    {
+                        "date": "27/8, 12:37 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $0 ➔ $70.000"
+                    },
+                    {
+                        "date": "27/8, 12:37 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $35.000"
+                    }
+                ]
             },
             {
                 "id": "H2",
@@ -19260,8 +19653,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 275000,
-                                "cost_price": 10000,
+                                "price": 250000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -19308,7 +19701,20 @@ const productsData = [
                 ],
                 "last_modified": 1784645695698,
                 "primaryCatId": "Podios",
-                "views": 1
+                "views": 0,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:38 a. m.",
+                        "type": "Precio Venta Bajó",
+                        "detail": "Venta: $275.000 ➔ $140.000"
+                    },
+                    {
+                        "date": "27/8, 12:30 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $10.000 ➔ $35.000"
+                    }
+                ]
             },
             {
                 "id": "H3",
@@ -19328,26 +19734,29 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2351358716-podio-de-premiacion-profesional-60-x-40-x-40-cm-n-1-_JM?has_official_store=false&highlight=false&searchVariation=190710551513&headerTopBrand=false#polycard_client=search-nordic&searchVariation=190710551513&search_layout=grid&position=2&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec",
                                 "default": true,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": 25000,
+                                "price": 145000
                             },
                             {
                                 "medida": "60 x 40 x 30",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2242326346-podio-de-premiacion-profesional-60-x-40-x-30-cm-n-2-_JM?has_official_store=false&highlight=false&searchVariation=184697351002&headerTopBrand=false#polycard_client=search-nordic&searchVariation=184697351002&search_layout=grid&position=3&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": 25000,
+                                "price": 135000
                             },
                             {
                                 "medida": "60 x 40 x 20",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2351255318-podio-de-premiacion-profesional-60-x-40-x-20-cm-n-3-_JM",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": 25000,
+                                "price": 125000
                             }
                         ]
                     }
                 ],
-                "views": 5,
+                "views": 0,
                 "tags": [
                     "podio",
                     "podios",
@@ -19383,6 +19792,29 @@ const productsData = [
                     "box jump",
                     "cajon jump",
                     "podios de madera"
+                ],
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:57 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "[Natural - 60 x 40 x 40] Venta: $0 ➔ $145.000"
+                    },
+                    {
+                        "date": "27/8, 12:57 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "[Natural - 60 x 40 x 40] Costo: $0 ➔ $25.000"
+                    },
+                    {
+                        "date": "27/8, 12:56 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "[Natural - 60 x 40 x 20] Venta: $0 ➔ $125.000"
+                    },
+                    {
+                        "date": "27/8, 12:56 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "[Natural - 60 x 40 x 20] Costo: $0 ➔ $25.000"
+                    }
                 ]
             }
         ],

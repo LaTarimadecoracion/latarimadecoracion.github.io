@@ -350,8 +350,8 @@
     }
 
 
-window.renderAdminUX = safeAdminRun(renderAdminUX);
-window.renderAdminViewBuilderList = safeAdminRun(renderAdminViewBuilderList);
-window.renderAdminHomeSectionsList = safeAdminRun(renderAdminHomeSectionsList);
-window.renderAdminRentals = safeAdminRun(renderAdminRentals);
+if (typeof renderAdminUX !== 'undefined') window.renderAdminUX = safeAdminRun(renderAdminUX);
+if (typeof renderAdminViewBuilderList !== 'undefined') window.renderAdminViewBuilderList = safeAdminRun(renderAdminViewBuilderList);
+if (typeof renderAdminHomeSectionsList !== 'undefined') window.renderAdminHomeSectionsList = safeAdminRun(renderAdminHomeSectionsList);
+if (typeof renderAdminRentals !== 'undefined') window.renderAdminRentals = safeAdminRun(renderAdminRentals);
 

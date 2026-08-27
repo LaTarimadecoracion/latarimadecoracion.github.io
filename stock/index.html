@@ -5,7 +5,10 @@
     <meta http-equiv="refresh" content="0; url=../?view=stock">
     <title>Redirigiendo a Control de Stock...</title>
     <script>
-        window.location.replace('../?view=stock');
+        (function() {
+            var basePath = window.location.pathname.replace(/\/stock\/?$/i, '/');
+            window.location.replace(window.location.origin + basePath + '?view=stock');
+        })();
     </script>
 </head>
 <body>

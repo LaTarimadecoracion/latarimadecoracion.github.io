@@ -36,7 +36,7 @@ function initAdminUX20() {
 
     // --- LISTENERS DE CORE / NAVEGACIÓN ---
         // --- LISTENERS DE PESTAÑAS (TABS) DEL DASHBOARD (V2) ---
-        const tabs = ['dashboard', 'settings', 'catalog', 'pages', 'orders', 'maintenance'];
+        const tabs = ['dashboard', 'settings', 'catalog', 'stock', 'pages', 'orders', 'maintenance'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -304,6 +304,7 @@ function renderAdminUX() {
             dashboard: 'admin-dashboard-view',
             settings: 'admin-settings-view',
             catalog: 'admin-catalog-view',
+            stock: 'admin-stock-view',
             pages: 'admin-pages-view',
             orders: 'admin-orders-view',
             maintenance: 'admin-maintenance-view'
@@ -321,6 +322,10 @@ function renderAdminUX() {
             renderAdminDashboard();
             populateAdminTheme();
             if (typeof window.populateAdminVacation === 'function') window.populateAdminVacation();
+        } else if (currentAdminTab === 'stock') {
+            if (typeof window.initAdminStockNative === 'function') {
+                window.initAdminStockNative();
+            }
         } else if (currentAdminTab === 'catalog') {
             const categoriesView = document.getElementById('admin-categories-view');
             const productsView = document.getElementById('admin-products-view');
@@ -328,15 +333,15 @@ function renderAdminUX() {
             if (currentAdminPhase === 'categories') {
                 if (categoriesView) categoriesView.style.display = 'block';
                 if (productsView) productsView.style.display = 'none';
-                renderAdminTree();
-                renderAdminRentals();
+                if (typeof renderAdminTree === 'function') renderAdminTree();
+                if (typeof renderAdminRentals === 'function') renderAdminRentals();
             } else if (currentAdminPhase === 'products') {
                 if (categoriesView) categoriesView.style.display = 'none';
                 if (productsView) productsView.style.display = 'block';
 
                 // Sincronizar selector de categorías
                 const filterSelect = document.getElementById('admin-category-filter');
-                if (filterSelect) {
+                if (filterSelect && Array.isArray(sessionProducts)) {
                     filterSelect.innerHTML = '<option value="all">Todas las categorías</option>';
                     sessionProducts.forEach(cat => {
                         const opt = document.createElement('option');
@@ -347,7 +352,7 @@ function renderAdminUX() {
                     });
                 }
 
-                renderAdminProducts();
+                if (typeof renderAdminProducts === 'function') renderAdminProducts();
             }
         } else if (currentAdminTab === 'pages') {
             renderAdminConfig();

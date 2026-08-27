@@ -19,6 +19,7 @@
             var isMusica = cleanPath.endsWith('/musica') || cleanPath.endsWith('/music') || cleanPath.endsWith('/enganchados') || cleanPath.endsWith('/musicas');
             var isAyudin = cleanPath.endsWith('/web/ayudin') || cleanPath.endsWith('/ayudin') || cleanPath.endsWith('/help') || cleanPath.endsWith('/herramientas');
             var isEdit = cleanPath.endsWith('/web/edit') || cleanPath.endsWith('/edit') || cleanPath.endsWith('/editor') || cleanPath.endsWith('/web/editor');
+            var isStock = cleanPath.endsWith('/web/stock') || cleanPath.endsWith('/stock') || cleanPath.endsWith('/inventario');
             var isPedidosAdmin = cleanPath.endsWith('/web/pedidos-admin') || cleanPath.endsWith('/pedidos-admin') || cleanPath.endsWith('/admin-pedidos');
             var isPedidos = cleanPath.endsWith('/web/pedidos') || cleanPath.endsWith('/pedidos');
 
@@ -51,6 +52,8 @@
                 window.location.replace(window.location.origin + basePath + '?view=calcular');
             } else if (isEdit) {
                 window.location.replace(window.location.origin + basePath + 'apps/editor-fotos.html');
+            } else if (isStock) {
+                window.location.replace(window.location.origin + basePath + '?view=stock');
             } else if (isAyudin) {
                 window.location.replace(window.location.origin + basePath + '?view=ayudin');
             } else if (isMusica) {

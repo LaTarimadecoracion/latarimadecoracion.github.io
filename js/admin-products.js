@@ -299,7 +299,23 @@ window.initProductsAdmin = function() {
             row.querySelector('.btn-edit-prod-new').addEventListener('click', (e) => {
                 const cIdx = parseInt(e.currentTarget.getAttribute('data-cat'));
                 const pIdx = parseInt(e.currentTarget.getAttribute('data-prod'));
-                openProductForm(cIdx, sessionProducts[cIdx].products[pIdx]);
+                const targetId = p.id;
+                
+                // Buscar el objeto vivo actualizado en sessionProducts por ID
+                let updatedProd = null;
+                if (Array.isArray(sessionProducts)) {
+                    for (const cat of sessionProducts) {
+                        if (cat.products) {
+                            const found = cat.products.find(item => item.id === targetId);
+                            if (found) {
+                                updatedProd = found;
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                openProductForm(cIdx, updatedProd || sessionProducts[cIdx].products[pIdx]);
             });
 
             row.querySelector('.btn-clone-prod-new').addEventListener('click', (e) => {

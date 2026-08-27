@@ -234,11 +234,12 @@
 
 
 
+    const mediaTypeSelector = document.getElementById('admin-media-type-selector') || document.querySelector('.media-type-selector');
     if (mediaTypeSelector) {
         mediaTypeSelector.addEventListener('click', (e) => {
             const btn = e.target.closest('.media-type-btn');
             if (!btn) return;
-            switchMediaPanel(btn.dataset.type);
+            if (typeof switchMediaPanel === 'function') switchMediaPanel(btn.dataset.type);
         });
     }
 

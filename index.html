@@ -557,6 +557,10 @@
                                 <span class="material-symbols-outlined">inventory_2</span>
                                 <span>Catálogo</span>
                             </button>
+                            <button type="button" id="tab-btn-stock" class="admin-nav-btn">
+                                <span class="material-symbols-outlined">inventory</span>
+                                <span>Control de Stock</span>
+                            </button>
                             <button type="button" id="tab-btn-pages" class="admin-nav-btn">
                                 <span class="material-symbols-outlined">view_quilt</span>
                                 <span>Páginas & Banners</span>
@@ -761,6 +765,212 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. STOCK MODULE (NATIVO INTEGRADO) -->
+                        <div id="admin-stock-view" class="admin-section-view" style="display: none;">
+                            <header class="admin-page-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+                                <div>
+                                    <h3 class="admin-header-title" style="display: flex; align-items: center; gap: 8px; margin: 0;">
+                                        <span class="material-symbols-outlined" style="color: var(--primary-color);">inventory</span>
+                                        Control de Stock & Inventario
+                                    </h3>
+                                    <p style="font-size: 0.8rem; color: #64748B; margin: 4px 0 0 0;">
+                                        Gestioná las cantidades disponibles por categoría y mantené actualizado tu taller en tiempo real.
+                                    </p>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 12px; background: #E2E8F0; padding: 0.4rem 0.85rem; border-radius: 8px;">
+                                    <span style="font-size: 0.82rem; font-weight: 700; color: #475569;">Total Ítems:</span>
+                                    <span id="admin-stock-total-items" style="font-size: 1.1rem; font-weight: 900; color: #0F172A;">0</span>
+                                </div>
+                            </header>
+
+                            <!-- Buscador e Ingesta Rápida Integrados -->
+                            <div class="admin-stock-search-bar-row" style="margin-bottom: 1.25rem;">
+                                <div class="search-wrapper" style="flex: 1; max-width: 450px; width: 100%;">
+                                    <span class="material-symbols-outlined">search</span>
+                                    <input type="text" id="admin-stock-search-input" placeholder="Buscar por producto, categoría o código (ej: 52)...">
+                                </div>
+                                <button type="button" onclick="window.openAdminStockCreateModal()" class="admin-stock-btn-quick-add btn-primary">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">add_circle</span>
+                                    <span>+ Cargar Producto Rápido</span>
+                                </button>
+                            </div>
+
+                            <!-- Tabla Nativa de Stock -->
+                            <div class="admin-table-wrapper" style="overflow-x: auto; border: 1px solid var(--admin-border-color); border-radius: 12px; background: white; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);">
+                                <table class="admin-table" style="width: 100%; border-collapse: collapse;">
+                                    <thead>
+                                        <tr style="background: #F8FAFC; text-align: left; font-size: 0.78rem; text-transform: uppercase; color: #475569; border-bottom: 1px solid var(--admin-border-color);">
+                                            <th style="padding: 0.75rem 1rem;">Producto / Código</th>
+                                            <th class="col-stock-desktop" style="padding: 0.75rem 1rem; width: 100px; text-align: center;">Stock</th>
+                                            <th style="padding: 0.75rem 1rem; width: 110px;">Costo U.</th>
+                                            <th class="col-status-desktop" style="padding: 0.75rem 1rem; width: 120px; text-align: center;">Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-stock-table-body">
+                                        <!-- Inyectado nativamente por js/admin-stock-native.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Modal Minimalista Elegante de Edición Rápida de Stock y Foto en Móvil -->
+                        <div id="admin-stock-photo-modal" class="modal-overlay" style="display: none; z-index: 9999; backdrop-filter: blur(8px); background: rgba(15, 23, 42, 0.75);" onclick="if(event.target.id==='admin-stock-photo-modal') window.closeAdminStockPhotoModal()">
+                            <div class="modal-content" style="max-width: 400px; width: 90%; padding: 0; overflow: hidden; border-radius: 20px; background: #0F172A; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); position: relative;">
+                                
+                                <!-- Botón de cierre elegante -->
+                                <button onclick="window.closeAdminStockPhotoModal()" style="position: absolute; top: 12px; right: 12px; border: none; background: rgba(0,0,0,0.5); color: white; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; backdrop-filter: blur(4px);">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">close</span>
+                                </button>
+
+                                <!-- Imagen principal con degradado inferior -->
+                                <div style="position: relative; width: 100%; height: 320px; background: #020617; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                    <img id="admin-stock-modal-img" src="" alt="Foto" style="width: 100%; height: 100%; object-fit: cover;">
+                                    
+                                    <!-- Overlay de Degradado para texto -->
+                                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.6) 45%, transparent 100%); pointer-events: none;"></div>
+
+                                    <!-- Datos sobre el margen inferior de la imagen -->
+                                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem; z-index: 5; text-align: left;">
+                                        <span id="admin-stock-modal-code" style="font-family: monospace; font-weight: 800; color: #F97316; background: rgba(249, 115, 22, 0.15); border: 1px solid rgba(249, 115, 22, 0.3); padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; display: inline-block; margin-bottom: 6px;"></span>
+                                        <h4 id="admin-stock-modal-title" style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #FFFFFF; line-height: 1.25; text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></h4>
+                                    </div>
+                                </div>
+
+                                <!-- Panel de Edición Inferior Completo -->
+                                <div style="padding: 1.25rem; background: #0F172A;">
+                                    <!-- Selector / Lista de Variantes y Acabados -->
+                                    <div id="admin-stock-modal-variants-container" style="margin-bottom: 0.85rem;">
+                                        <!-- Inyectado dinámicamente si el producto posee variaciones -->
+                                    </div>
+
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+                                        <!-- Stock -->
+                                        <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                            <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Stock (u)</label>
+                                            <input type="number" id="admin-stock-modal-qty" min="0" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #FFFFFF; text-align: center; outline: none;">
+                                        </div>
+                                        <!-- Costo -->
+                                        <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                            <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Costo U. ($)</label>
+                                            <input type="number" id="admin-stock-modal-cost" min="0" step="100" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #38BDF8; text-align: center; outline: none;">
+                                        </div>
+                                        <!-- Venta -->
+                                        <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                            <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Venta Públ ($)</label>
+                                            <input type="number" id="admin-stock-modal-price" min="0" step="100" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #4ADE80; text-align: center; outline: none;">
+                                        </div>
+                                        <!-- Porcentaje de Ganancia -->
+                                        <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                            <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Ganancia (%)</label>
+                                            <input type="number" id="admin-stock-modal-margin" min="0" step="1" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #FACC15; text-align: center; outline: none;">
+                                        </div>
+                                    </div>
+
+                                    <!-- Botones de Acción -->
+                                    <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.85rem;">
+                                        <button onclick="window.saveAdminStockModalEdit()" style="width: 100%; padding: 0.8rem; font-size: 0.92rem; font-weight: 800; border-radius: 12px; background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); color: white; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);">
+                                            💾 Guardar Cambios
+                                        </button>
+                                        
+                                        <button onclick="window.toggleAdminStockHistoryView()" style="width: 100%; padding: 0.65rem; font-size: 0.8rem; font-weight: 700; border-radius: 10px; background: rgba(255,255,255,0.06); color: #94A3B8; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                            <span class="material-symbols-outlined" style="font-size: 16px;">history</span>
+                                            <span id="admin-stock-history-toggle-btn-text">Ver Historial Completo</span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Historial Desplegable Extendido -->
+                                    <div id="admin-stock-modal-history-section" style="display: none; margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem;">
+                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                                            <span style="font-size: 0.75rem; font-weight: 800; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em;">📜 Historial Extendido</span>
+                                            <span style="font-size: 0.7rem; color: #64748B; font-weight: 700;">Últimos 20 eventos</span>
+                                        </div>
+                                        <div id="admin-stock-modal-history-list" style="max-height: 180px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; padding-right: 4px;">
+                                            <!-- Inyectado dinámicamente -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Modal de Carga Rápida de Nuevo Producto (Borrador No Visible) -->
+                        <div id="admin-stock-create-modal" class="modal-overlay" style="display: none; z-index: 9999; backdrop-filter: blur(8px); background: rgba(15, 23, 42, 0.75);" onclick="if(event.target.id==='admin-stock-create-modal') window.closeAdminStockCreateModal()">
+                            <div class="modal-content" style="max-width: 420px; width: 90%; padding: 1.5rem; overflow: hidden; border-radius: 20px; background: #0F172A; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); position: relative; color: white;">
+                                
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                    <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #10B981; display: flex; align-items: center; gap: 6px;">
+                                        <span class="material-symbols-outlined">add_box</span>
+                                        Cargar Producto Rápido
+                                    </h4>
+                                    <button onclick="window.closeAdminStockCreateModal()" style="border: none; background: rgba(255,255,255,0.1); color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+                                    </button>
+                                </div>
+
+                                <div style="font-size: 0.75rem; color: #94A3B8; margin-bottom: 1.25rem; background: rgba(255,255,255,0.04); padding: 8px 12px; border-radius: 8px; border: 1px dashed rgba(255,255,255,0.1);">
+                                    🔒 <strong>Modo Borrador Privado</strong>: El producto se guardará como <em>no visible al público</em> para que lo edites tranquilamente.
+                                </div>
+
+                                <form id="admin-stock-create-form" onsubmit="window.saveAdminStockCreateProduct(event)" style="display: flex; flex-direction: column; gap: 0.85rem;">
+                                    <!-- Categoría -->
+                                    <div>
+                                        <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Categoría:</label>
+                                        <select id="admin-stock-new-cat" onchange="window.updateAdminStockNewProdAutoId()" style="width: 100%; padding: 0.65rem; background: #1E293B; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; color: white; font-weight: 700; outline: none; font-size: 0.88rem;">
+                                            <!-- Inyectado dinámicamente -->
+                                        </select>
+                                    </div>
+
+                                    <!-- ID Asignado Automáticamente (Base36) -->
+                                    <div>
+                                        <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Código de Producto (DNI Auto-Asignado):</label>
+                                        <input type="text" id="admin-stock-new-id" readonly style="width: 100%; padding: 0.6rem; background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 8px; font-family: monospace; font-size: 1rem; font-weight: 800; color: #F97316; text-align: center;">
+                                    </div>
+
+                                    <!-- Nombre -->
+                                    <div>
+                                        <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Nombre del Producto:</label>
+                                        <input type="text" id="admin-stock-new-title" required placeholder="Ej: Mesa Matera Rústica" style="width: 100%; padding: 0.65rem; background: #1E293B; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; color: white; font-weight: 700; outline: none; font-size: 0.9rem;">
+                                    </div>
+
+                                    <!-- Grilla de Costo y Stock Inicial -->
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                        <div>
+                                            <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Costo U. ($):</label>
+                                            <input type="number" id="admin-stock-new-cost" min="0" step="100" placeholder="0" style="width: 100%; padding: 0.6rem; background: #1E293B; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: #38BDF8; font-weight: 800; font-size: 1rem; text-align: center; outline: none;">
+                                        </div>
+                                        <div>
+                                            <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Stock Inicial:</label>
+                                            <input type="number" id="admin-stock-new-qty" min="0" value="1" style="width: 100%; padding: 0.6rem; background: #1E293B; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: white; font-weight: 800; font-size: 1rem; text-align: center; outline: none;">
+                                        </div>
+                                    </div>
+
+                                    <!-- Foto / Cámara Móvil -->
+                                    <div>
+                                        <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Foto de Referencia (Cámara o Archivo):</label>
+                                        <div style="display: flex; gap: 8px; align-items: center;">
+                                            <!-- Input de archivo con capture="environment" para abrir la cámara directa en celulares -->
+                                            <input type="file" id="admin-stock-new-photo-file" accept="image/*" capture="environment" style="display: none;" onchange="window.handleAdminStockCameraPhotoSelect(this)">
+                                            
+                                            <button type="button" onclick="document.getElementById('admin-stock-new-photo-file').click()" style="flex: 1; padding: 0.65rem; border-radius: 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: white; font-size: 0.82rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                                <span class="material-symbols-outlined" style="font-size: 20px; color: #38BDF8;">photo_camera</span>
+                                                <span id="admin-stock-new-photo-btn-text">📷 Tomar Foto / Elegir</span>
+                                            </button>
+
+                                            <!-- Previsualización -->
+                                            <img id="admin-stock-new-photo-preview" src="img/logo_provisional.png" alt="Preview" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2);">
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" style="width: 100%; padding: 0.85rem; font-size: 0.95rem; font-weight: 800; border-radius: 12px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; border: none; cursor: pointer; margin-top: 0.5rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);">
+                                        ✨ Guardar Borrador Privado
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
                             </div>
                         </div>
 
@@ -2426,6 +2636,7 @@
     <script src="js/admin-categories-form.js?v=1" defer></script>
     <script src="js/admin-products.js?v=5" defer></script>
     <script src="js/admin-products-form.js?v=6" defer></script>
+    <script src="js/admin-stock-native.js?v=1" defer></script>
     <script src="js/admin-rentals.js?v=1" defer></script>
     <script src="js/admin-pages.js?v=4" defer></script>
     <!-- Módulo de avisos eliminado, lógica unificada en ui.js -->

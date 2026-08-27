@@ -1193,17 +1193,21 @@
                 }
             }
 
-            // Buscar si ya existe el producto para heredar su estado de visibilidad
+            // Buscar si ya existe el producto para heredar su estado de visibilidad e historial
             let existingVisibleState = undefined;
+            let existingHistory = [];
             for (const cat of sessionProducts) {
                 if (cat.products) {
                     const found = cat.products.find(p => p.id === (editingProductId || product.id));
-                    if (found && found.visible !== undefined) {
-                        existingVisibleState = found.visible;
+                    if (found) {
+                        if (found.visible !== undefined) existingVisibleState = found.visible;
+                        if (Array.isArray(found.history)) existingHistory = found.history;
                         break;
                     }
                 }
             }
+
+            product.history = existingHistory;
 
             const hasNoRealImages = !product.image || product.image === 'img/logo_provisional.png';
             if (hasNoRealImages) {
