@@ -189,6 +189,7 @@
             'view-notifications': 'Avisos | LA TARIMA - Decoración',
             'view-rentals': 'Alquileres | LA TARIMA - Decoración',
             'view-catalogo': 'Catálogo | LA TARIMA - Decoración',
+            'view-offers': 'Ofertas & Combos | LA TARIMA - Decoración',
             'view-calculator': 'Calculadora | LA TARIMA - Decoración',
             'view-mayorista': 'Mayorista | LA TARIMA - Decoración',
             'view-stock': 'Control de Stock | LA TARIMA - Decoración',
@@ -231,7 +232,9 @@
             }
             
             // Renderizado dinámico condicional al navegar
-            if (viewId === 'view-home') {
+            if (viewId === 'view-offers') {
+                if (window.renderOffersFrontend) window.renderOffersFrontend();
+            } else if (viewId === 'view-home') {
                 if (window.renderHome) window.renderHome();
             } else if (viewId === 'view-categories') {
                 if (window.renderCategoriesMenu) window.renderCategoriesMenu();

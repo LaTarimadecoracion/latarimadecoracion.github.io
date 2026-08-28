@@ -5803,3 +5803,102 @@ a .material-symbols-outlined {
     color: var(--text-main);
 }
 
+/* =========================================
+   STAMPS & BADGES ANIMADOS PARA OFERTAS PRO
+   ========================================= */
+.stamp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* 1. ⭐ PRO GOLD - Dorado Metálico con Brillo */
+.stamp-badge.pro-gold {
+    background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7);
+    background-size: 200% 200%;
+    color: #1a1a1a;
+    border: 1px solid #ffe885;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5), inset 0 0 6px rgba(255, 255, 255, 0.8);
+    animation: goldShine 3s infinite linear, pulseStamp 2.5s infinite ease-in-out;
+}
+.stamp-badge.pro-gold::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.7) 50%, transparent 70%);
+    transform: rotate(30deg);
+    animation: sweepLight 3s infinite ease-in-out;
+}
+
+/* 2. 🏆 OPORTUNIDAD ÚNICA */
+.stamp-badge.oportunidad {
+    background: linear-gradient(135deg, #e5a93b, #fff2a1, #c5861b);
+    color: #261600;
+    border: 1.5.px solid #fff5b8;
+    box-shadow: 0 4px 14px rgba(229, 169, 59, 0.5);
+    animation: pulseStamp 2s infinite ease-in-out;
+}
+
+/* 3. ⚡ RELÁMPAGO (Fuego) */
+.stamp-badge.relampago {
+    background: linear-gradient(135deg, #dc2626, #f97316, #ef4444);
+    color: #ffffff;
+    border: 1px solid #fca5a5;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.5);
+    animation: pulseGlow 1.8s infinite ease-in-out;
+}
+
+/* 4. 🎁 COMBO EXCLUSIVO */
+.stamp-badge.combo {
+    background: linear-gradient(135deg, #059669, #34d399, #10b981);
+    color: #ffffff;
+    border: 1px solid #a7f3d0;
+    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4);
+}
+
+/* 5. 🚚 ENVÍO GRATIS */
+.stamp-badge.envio-gratis {
+    background: linear-gradient(135deg, #2563eb, #60a5fa, #3b82f6);
+    color: #ffffff;
+    border: 1px solid #bfdbfe;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+@keyframes goldShine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes sweepLight {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    40% { transform: translateX(100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+}
+
+@keyframes pulseStamp {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 4px rgba(220, 38, 38, 0.4); }
+    50% { box-shadow: 0 0 16px rgba(220, 38, 38, 0.8); }
+    100% { box-shadow: 0 0 4px rgba(220, 38, 38, 0.4); }
+}
+
+

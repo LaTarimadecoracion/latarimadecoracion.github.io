@@ -386,11 +386,88 @@
                             }
                         });
 
-                        const limit = config.limit ? parseInt(config.limit, 10) : 5;
+                        const limit = config.limit ? parseInt(config.limit, 10) : 6;
                         const latestProducts = [...allProducts]
                             .sort((a, b) => getProductTimestamp(b.product) - getProductTimestamp(a.product))
                             .slice(0, limit);
-                        setupInfiniteCarousel(containerEl, latestProducts, ({ product, catName }, idx) => {
+
+                        // Merged items list combining active offers and latest products
+                        let mergedCarouselItems = [];
+
+                        // Add active offers first into the carousel
+                        const offersSource = (window.sessionOffers && window.sessionOffers.length > 0)
+                            ? window.sessionOffers
+                            : (typeof offersData !== 'undefined' ? offersData : []);
+
+                        if (Array.isArray(offersSource) && offersSource.length > 0) {
+                            const activeOffers = offersSource.filter(o => {
+                                if (o.active === false) return false;
+                                if (o.hasTimer && o.expirationDate) {
+                                    const expTime = new Date(o.expirationDate).getTime();
+                                    if (!isNaN(expTime) && expTime <= Date.now()) return false;
+                                }
+                                return true;
+                            });
+
+                            activeOffers.forEach(offer => {
+                                mergedCarouselItems.push({ isOffer: true, offer });
+                            });
+                        }
+
+                        latestProducts.forEach(item => {
+                            mergedCarouselItems.push({ isOffer: false, product: item.product, catName: item.catName });
+                        });
+
+                        setupInfiniteCarousel(containerEl, mergedCarouselItems, (item, idx) => {
+                            if (item && item.isOffer) {
+                                if (typeof window.createOfferCardElement === 'function') {
+                                    const offerEl = window.createOfferCardElement(item.offer, true);
+                                    if (offerEl) return offerEl;
+                                }
+
+                                const offer = item.offer;
+                                const card = document.createElement('div');
+                                card.className = 'category-card offer-carousel-card';
+                                card.style.cssText = 'position: relative; cursor: pointer; border-radius: var(--radius-md); overflow: hidden;';
+
+                                let coverImg = offer.customCoverImage;
+                                if (!coverImg && offer.product_items && offer.product_items[0]) {
+                                    coverImg = offer.product_items[0].image;
+                                }
+                                if (!coverImg) coverImg = 'img/logo_provisional.png';
+
+                                const fmtSub = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(offer.subtotalPrice || 0);
+                                const fmtPrice = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(offer.offerPrice || 0);
+
+                                card.innerHTML = `
+                                    <div class="category-card-img-wrapper" style="position: relative;">
+                                        <img src="${coverImg}" class="category-card-img loaded" alt="${offer.title}" loading="lazy">
+                                    </div>
+                                    <div class="stamp-badge ${offer.stampStyle || 'pro-gold'}" style="position: absolute; top: 8px; left: 8px; z-index: 5; font-size: 0.65rem; padding: 0.2rem 0.5rem;">
+                                        ⭐ PRO GOLD
+                                    </div>
+                                    ${offer.discountPercent ? `<div style="position: absolute; top: 8px; right: 8px; z-index: 5; background: #dc2626; color: white; font-weight: 900; font-size: 0.7rem; padding: 2px 7px; border-radius: 20px;">-${offer.discountPercent}% OFF</div>` : ''}
+                                    <div class="category-overlay" style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; text-align: left; padding: 0.5rem 0.75rem; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
+                                        <div style="font-size: 0.92rem; font-weight: 800; color: #ffffff; width: 100%; line-clamp: 1; -webkit-line-clamp: 1; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">${offer.title}</div>
+                                        <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 2px;">
+                                            <span style="font-size: 0.72rem; text-decoration: line-through; color: rgba(255,255,255,0.75);">${fmtSub}</span>
+                                            <span style="font-size: 1.05rem; font-weight: 900; color: #fef08a;">${fmtPrice}</span>
+                                        </div>
+                                    </div>
+                                `;
+                                card.addEventListener('click', () => {
+                                    if (window.navigateToView) window.navigateToView('view-offers');
+                                });
+                                return card;
+                            }
+
+                            const { product, catName } = item || {};
+                            if (!product) {
+                                const placeholderCard = document.createElement('div');
+                                placeholderCard.style.display = 'none';
+                                return placeholderCard;
+                            }
+
                             const card = document.createElement('div');
                             card.className = 'category-card';
                             const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');

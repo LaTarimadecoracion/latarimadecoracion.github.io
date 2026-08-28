@@ -36,7 +36,7 @@ function initAdminUX20() {
 
     // --- LISTENERS DE CORE / NAVEGACIÓN ---
         // --- LISTENERS DE PESTAÑAS (TABS) DEL DASHBOARD (V2) ---
-        const tabs = ['dashboard', 'settings', 'catalog', 'stock', 'pages', 'orders', 'maintenance'];
+        const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'stock', 'pages', 'orders', 'maintenance'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -74,6 +74,7 @@ function initAdminUX20() {
     if (typeof window.initMaintenanceAdmin === 'function') window.initMaintenanceAdmin();
     if (typeof window.initCategoriesFormAdmin === 'function') window.initCategoriesFormAdmin();
     if (typeof window.initProductsAdmin === 'function') window.initProductsAdmin();
+    if (typeof window.initAdminOffers === 'function') window.initAdminOffers();
     if (typeof window.initPagesAdmin === 'function') window.initPagesAdmin();
     if (typeof window.initSocialLinksAdmin === 'function') window.initSocialLinksAdmin();
     if (typeof window.initThemeAdmin === 'function') window.initThemeAdmin();
@@ -304,6 +305,7 @@ function renderAdminUX() {
             dashboard: 'admin-dashboard-view',
             settings: 'admin-settings-view',
             catalog: 'admin-catalog-view',
+            offers: 'admin-offers-view',
             stock: 'admin-stock-view',
             pages: 'admin-pages-view',
             orders: 'admin-orders-view',
@@ -322,6 +324,10 @@ function renderAdminUX() {
             renderAdminDashboard();
             populateAdminTheme();
             if (typeof window.populateAdminVacation === 'function') window.populateAdminVacation();
+        } else if (currentAdminTab === 'offers') {
+            if (typeof window.renderAdminOffers === 'function') {
+                window.renderAdminOffers();
+            }
         } else if (currentAdminTab === 'stock') {
             if (typeof window.initAdminStockNative === 'function') {
                 window.initAdminStockNative();

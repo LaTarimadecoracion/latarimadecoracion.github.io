@@ -74,6 +74,24 @@ try {
     console.error('Error loading sessionRentals fallback:', e);
 }
 
+// Estado global de Ofertas
+window.sessionOffers = typeof offersData !== 'undefined' ? [...offersData] : [];
+try {
+    const localOffersStr = localStorage.getItem('sessionOffersAutonomo');
+    if (localOffersStr) {
+        const parsedOffers = JSON.parse(localOffersStr);
+        if (Array.isArray(parsedOffers) && parsedOffers.length > 0) {
+            window.sessionOffers = parsedOffers;
+            console.log('[Data fallback] Cargadas ofertas de localStorage.');
+        } else if (typeof offersData !== 'undefined' && offersData.length > 0) {
+            window.sessionOffers = [...offersData];
+            localStorage.removeItem('sessionOffersAutonomo');
+        }
+    }
+} catch (e) {
+    console.error('Error loading sessionOffers fallback:', e);
+}
+
 // Garantizar que existan las estructuras de siteConfig del servidor
 if (!window.siteConfig) {
     window.siteConfig = {

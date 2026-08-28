@@ -16,6 +16,12 @@ if (!fs.existsSync(rentalsDbPath)) {
     fs.writeFileSync(rentalsDbPath, 'const rentalsData = [];\n', 'utf8');
 }
 
+// Ensure offers database file exists
+const offersDbPath = path.join(ROOT_DIR, 'js', 'offers-data.js');
+if (!fs.existsSync(offersDbPath)) {
+    fs.writeFileSync(offersDbPath, 'const offersData = [];\n', 'utf8');
+}
+
 // Ensure orders database file exists
 const ordersDbPath = path.join(ROOT_DIR, 'js', 'orders-data.js');
 if (!fs.existsSync(ordersDbPath)) {
@@ -381,6 +387,27 @@ app.post('/api/save-rentals', (req, res) => {
         res.json({ success: true, message: 'Alquileres guardados exitosamente.' });
     } catch (error) {
         console.error('❌ Error guardando alquileres:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor.' });
+    }
+});
+
+// API Endpoint to save offersData JSON
+app.post('/api/save-offers', (req, res) => {
+    try {
+        const offersArray = req.body;
+        
+        if (!Array.isArray(offersArray)) {
+            return res.status(400).json({ success: false, message: 'El payload debe ser un array.' });
+        }
+
+        const fileContent = 'const offersData = ' + JSON.stringify(offersArray, null, 4) + ';\n';
+        const filePath = path.join(ROOT_DIR, 'js', 'offers-data.js');
+        
+        fs.writeFileSync(filePath, fileContent, 'utf8');
+        console.log('✅ js/offers-data.js actualizado correctamente.');
+        res.json({ success: true, message: 'Ofertas guardadas exitosamente.' });
+    } catch (error) {
+        console.error('❌ Error guardando ofertas:', error);
         res.status(500).json({ success: false, message: 'Error interno del servidor.' });
     }
 });
