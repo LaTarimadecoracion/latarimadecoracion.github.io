@@ -38,4 +38,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadPartial('partials/modal-media-rentals.html', 'body'),
         loadPartial('partials/modal-globals.html', 'body')
     ]);
+
+    if (typeof window.initGithubPublishAdmin === 'function') {
+        window.initGithubPublishAdmin();
+    }
 });

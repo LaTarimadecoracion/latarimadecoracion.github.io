@@ -452,11 +452,7 @@ app.post('/api/publish-github', async (req, res) => {
     const { exec } = require('child_process');
     const execPromise = (cmd, options = {}) => {
         return new Promise((resolve, reject) => {
-            const defaultEnv = Object.assign({}, process.env, {
-                GIT_TERMINAL_PROMPT: '0',
-                GCM_INTERACTIVE: 'never'
-            });
-            const opts = Object.assign({ cwd: ROOT_DIR, timeout: 40000, env: defaultEnv }, options);
+            const opts = Object.assign({ cwd: ROOT_DIR, timeout: 120000, env: process.env }, options);
             exec(cmd, opts, (error, stdout, stderr) => {
                 if (error) {
                     reject({ error, stdout, stderr });
