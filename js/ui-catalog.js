@@ -1,10 +1,16 @@
 
     function findProductById(prodId) {
-        if (!window.sessionProducts) return null;
+        if (!window.sessionProducts || !prodId) return null;
+        const searchClean = decodeURIComponent(prodId).trim().toLowerCase();
         let fallback = null;
         for (const cat of window.sessionProducts) {
             if (cat.products) {
-                const found = cat.products.find(p => p.id === prodId);
+                const found = cat.products.find(p => {
+                    if (!p) return false;
+                    const pId = (p.id || '').trim().toLowerCase();
+                    const pTitle = (p.title || '').trim().toLowerCase();
+                    return pId === searchClean || pTitle === searchClean;
+                });
                 if (found) {
                     if (found.primaryCatId === cat.id) {
                         return { product: found, catName: cat.name };
