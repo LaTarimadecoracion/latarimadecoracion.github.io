@@ -288,7 +288,7 @@ function initAdminUX20() {
 function renderAdminUX() {
     initAdminUX20();
         // Control visual de la barra de navegación del panel (V2)
-        const tabs = ['dashboard', 'settings', 'catalog', 'pages', 'orders', 'maintenance'];
+        const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'stock', 'pages', 'orders'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -308,8 +308,7 @@ function renderAdminUX() {
             offers: 'admin-offers-view',
             stock: 'admin-stock-view',
             pages: 'admin-pages-view',
-            orders: 'admin-orders-view',
-            maintenance: 'admin-maintenance-view'
+            orders: 'admin-orders-view'
         };
 
         Object.entries(viewIds).forEach(([key, id]) => {
@@ -371,8 +370,6 @@ function renderAdminUX() {
             const activeBtn = document.querySelector('.admin-pill-tab.active');
             const activeSubtab = activeBtn ? activeBtn.getAttribute('data-subtab') : 'page-home';
             switchAdminSubtab(activeSubtab);
-        } else if (currentAdminTab === 'maintenance') {
-            // Se mantiene el diseño estático inicial
         }
     }
 

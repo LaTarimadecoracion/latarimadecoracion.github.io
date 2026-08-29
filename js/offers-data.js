@@ -1,65 +1,39 @@
 const offersData = [
     {
-        "id": "offer_1787961014072",
-        "title": "Oferta Especial: Barandas para cama",
-        "description": "¡Llevate este Desmontable Clásica con un descuento promocional exclusivo por tiempo limitado!",
-        "stampStyle": "pro-gold",
+        "id": "offer_1787973760484",
+        "title": "Combo Especial (Pack x2): Desmontable Clásica + Escaleras para cama",
+        "description": "¡Súper combo de 2 unidades de productos con precio bonificado y ahorro directo!",
+        "stampStyle": "combo",
         "stockLimit": null,
         "product_items": [
             {
                 "productId": "51",
                 "title": "Baranda: Desmontable Clásica",
                 "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
-                "acabado": "Blanca",
-                "medida": "200 x 45 cm",
-                "unitPrice": 60000,
-                "quantity": 2
-            }
-        ],
-        "subtotalPrice": 120000,
-        "offerPrice": 108000,
-        "discountPercent": 10,
-        "shippingType": "standard",
-        "shippingCost": 0,
-        "hasTimer": false,
-        "expirationDate": null,
-        "customCoverImage": "",
-        "active": true,
-        "created_at": 1787961014072
-    },
-    {
-        "id": "offer_1787960124963",
-        "title": "Percheros!",
-        "description": "",
-        "stampStyle": "pro-gold",
-        "stockLimit": null,
-        "product_items": [
-            {
-                "productId": "31",
-                "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
-                "image": "img/percheros/perchero-1/1782624223963-imagen.webp",
                 "acabado": "Natural",
-                "medida": "1 Unidad",
-                "unitPrice": 35000
+                "medida": "110 x 45 cm",
+                "unitPrice": 27000,
+                "quantity": 1
             },
             {
-                "productId": "31",
-                "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
-                "image": "img/percheros/perchero-1/1782624223963-imagen.webp",
+                "productId": "91",
+                "title": "Escaleras para cama",
+                "image": "img/escaleras/escaleras/1780288089831-imagen.webp",
                 "acabado": "Natural",
-                "medida": "1 Unidad",
-                "unitPrice": 35000
+                "medida": "Inclinada 100 a 150 cm",
+                "unitPrice": 45000,
+                "quantity": 1
             }
         ],
-        "subtotalPrice": 70000,
-        "offerPrice": 63000,
-        "discountPercent": 10,
+        "subtotalPrice": 72000,
+        "offerPrice": 61200,
+        "discountPercent": 15,
         "shippingType": "standard",
         "shippingCost": 0,
         "hasTimer": false,
         "expirationDate": null,
         "customCoverImage": "",
         "active": true,
-        "created_at": 1787960124963
+        "created_at": 1787973760484
     }
 ];

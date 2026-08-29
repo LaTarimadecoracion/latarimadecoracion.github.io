@@ -197,6 +197,59 @@
         };
     }
 
+    function getOffersData() {
+        return (typeof window.sessionOffers !== 'undefined' && Array.isArray(window.sessionOffers) && window.sessionOffers.length > 0)
+            ? window.sessionOffers
+            : (typeof window.offersData !== 'undefined' ? window.offersData : []);
+    }
+
+    /**
+     * Codifica un ID de oferta a un código Base36 super corto (ej: O.1, O.2, O.A)
+     */
+    function encodeOfferShortCode(offerId) {
+        if (!offerId) return 'O.1';
+        const offers = getOffersData();
+        const idx = offers.findIndex(o => o && o.id === offerId);
+        if (idx !== -1) {
+            return `O.${toBase36(idx + 1)}`;
+        }
+        return `O.${offerId}`;
+    }
+
+    /**
+     * Decodifica un código corto de oferta (ej: O.1 o o.1 o O.A)
+     */
+    function decodeOfferShortCode(shortCode) {
+        if (!shortCode) return null;
+        const clean = String(shortCode).trim().replace(/^\/+|\/+$/g, '');
+        const offers = getOffersData();
+
+        if (/^O\.[0-9A-Z]+$/i.test(clean)) {
+            const raw = clean.substring(2);
+            const num = fromBase36(raw);
+            if (num > 0 && offers[num - 1]) {
+                return offers[num - 1];
+            }
+            // Fallback por ID directo
+            const found = offers.find(o => o.id === raw || o.id === clean);
+            if (found) return found;
+        }
+
+        const foundDirect = offers.find(o => o.id === clean);
+        return foundDirect || null;
+    }
+
+    /**
+     * Genera la URL corta completa para una oferta (ej: https://latarimadecoracion.com/?s=O.1 o /O.1)
+     */
+    function getShortOfferUrl(offerId) {
+        const code = encodeOfferShortCode(offerId);
+        const origin = window.location.origin;
+        const path = window.location.pathname.replace(/\/index\.html$/, '/');
+        const basePath = path.endsWith('/') ? path : path + '/';
+        return `${origin}${basePath}?s=${code}`;
+    }
+
     /**
      * Genera la URL corta completa directa con diagonal (ej: https://latarimadecoracion.com/1.A.2)
      */
@@ -215,9 +268,13 @@
         encodeShortCode,
         decodeShortCode,
         getShortProductUrl,
+        encodeOfferShortCode,
+        decodeOfferShortCode,
+        getShortOfferUrl,
         getAllProductsFlat
     };
 
     window.getShortProductUrl = getShortProductUrl;
+    window.getShortOfferUrl = getShortOfferUrl;
 })();
 

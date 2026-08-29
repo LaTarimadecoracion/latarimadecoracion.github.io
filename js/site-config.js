@@ -568,10 +568,11 @@ window.siteConfig = {
         "mercadolibre": ""
     },
     "mayoristaConfig": {
-        "alias": "la.tarima.deco",
-        "cbu": "1234567890123456789012",
-        "titular": "Juan Pérez",
-        "bank": "Banco Nación",
+        "alias": "VENUS.PULMON.METRO",
+        "cbu": "0720048988000002273736",
+        "titular": "Yonatan Lucas Orellana",
+        "bank": "Banco Santander",
+        "cuit": "20-35281538-2",
         "paymentMethods": [
             {
                 "id": "efectivo",

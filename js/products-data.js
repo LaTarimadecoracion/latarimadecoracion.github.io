@@ -822,7 +822,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 2
             },
             {
                 "id": "91",
@@ -846,9 +846,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 55000,
+                                "price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             },
                             {
                                 "medida": "Vertical 150 a 200 cm",
@@ -858,9 +860,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 50000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             },
                             {
                                 "medida": "Inclinada 100 a 150 cm",
@@ -870,9 +874,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             },
                             {
                                 "medida": "Vertical 100 a 150 cm",
@@ -882,9 +888,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             },
                             {
                                 "medida": "Inclinada 0 a 100 cm",
@@ -894,9 +902,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 30000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             },
                             {
                                 "medida": "Vertical 0 a 100 cm",
@@ -906,9 +916,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30000,
+                                "price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             }
                         ],
                         "hidden": false
@@ -4560,7 +4572,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 0,
+                "views": 1,
                 "stock": 0,
                 "history": [
                     {
@@ -8888,7 +8900,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 0,
+                "views": 1,
                 "stock": 0,
                 "history": [
                     {
@@ -12467,7 +12479,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 2
             },
             {
                 "id": "52",
@@ -16114,9 +16126,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 55000,
+                                "price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             },
                             {
                                 "medida": "Vertical 150 a 200 cm",
@@ -16126,9 +16140,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 50000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             },
                             {
                                 "medida": "Inclinada 100 a 150 cm",
@@ -16138,9 +16154,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             },
                             {
                                 "medida": "Vertical 100 a 150 cm",
@@ -16150,9 +16168,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             },
                             {
                                 "medida": "Inclinada 0 a 100 cm",
@@ -16162,9 +16182,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 30000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             },
                             {
                                 "medida": "Vertical 0 a 100 cm",
@@ -16174,9 +16196,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30000,
+                                "price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "cost_price": "",
+                                "volumeDiscounts": []
                             }
                         ],
                         "hidden": false

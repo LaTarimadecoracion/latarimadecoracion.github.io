@@ -253,24 +253,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (shortCode && window.TarimaShortener && window.TarimaShortener.decodeShortCode) {
-            const decoded = window.TarimaShortener.decodeShortCode(shortCode);
-            if (decoded && decoded.productId) {
+        if (shortCode && window.TarimaShortener) {
+            // A. Verificar si es un código corto de oferta (ej: O.1, O.2, O.A)
+            if (/^O\.[0-9A-Z]+$/i.test(shortCode) && window.TarimaShortener.decodeOfferShortCode) {
                 setTimeout(() => {
-                    if (window.findProductById && window.showProductDetail) {
-                        const foundData = window.findProductById(decoded.productId);
-                        if (foundData && foundData.product.visible !== false) {
-                            console.log(`[Router] Producto corto detectado (code=${shortCode}): ${decoded.productId}`);
-                            window.showProductDetail(
-                                foundData.product,
-                                foundData.catName,
-                                decoded.preselectedAcabado,
-                                decoded.preselectedMedida,
-                                decoded.preselectedOpcion
-                            );
-                        }
+                    const foundOffer = window.TarimaShortener.decodeOfferShortCode(shortCode);
+                    if (foundOffer && window.openOfferDetailView) {
+                        console.log(`[Router] Oferta corta detectada (code=${shortCode}): ${foundOffer.id}`);
+                        window.openOfferDetailView(foundOffer);
                     }
                 }, 150);
+            } else if (window.TarimaShortener.decodeShortCode) {
+                // B. Código corto de producto (ej: 1.A.2)
+                const decoded = window.TarimaShortener.decodeShortCode(shortCode);
+                if (decoded && decoded.productId) {
+                    setTimeout(() => {
+                        if (window.findProductById && window.showProductDetail) {
+                            const foundData = window.findProductById(decoded.productId);
+                            if (foundData && foundData.product.visible !== false) {
+                                console.log(`[Router] Producto corto detectado (code=${shortCode}): ${decoded.productId}`);
+                                window.showProductDetail(
+                                    foundData.product,
+                                    foundData.catName,
+                                    decoded.preselectedAcabado,
+                                    decoded.preselectedMedida,
+                                    decoded.preselectedOpcion
+                                );
+                            }
+                        }
+                    }, 150);
+                }
             }
         } else {
             // 2. Fallback a parámetros estándar (?prod=, ?p=, ?product=)
@@ -290,12 +302,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }, 150);
             }
+            const offerIdParam = urlParams.get('oferta') || urlParams.get('offer') || urlParams.get('combo') || urlParams.get('o');
+            if (offerIdParam) {
+                setTimeout(() => {
+                    let foundOffer = (window.sessionOffers || []).find(o => o.id === offerIdParam);
+                    if (!foundOffer && window.TarimaShortener && window.TarimaShortener.decodeOfferShortCode) {
+                        foundOffer = window.TarimaShortener.decodeOfferShortCode(offerIdParam);
+                    }
+                    if (foundOffer && window.openOfferDetailView) {
+                        console.log(`[Router] Oferta/combo compartido detectado: ${offerIdParam}`);
+                        window.openOfferDetailView(foundOffer);
+                    }
+                }, 200);
+            }
         }
 
         let viewParam = urlParams.get('view') || urlParams.get('sec');
         if (!viewParam) {
             const cleanPath = window.location.pathname.toLowerCase().replace(/\/index\.html$/, '').split('/').filter(Boolean).pop();
-            if (cleanPath && ['stock', 'mayorista', 'catalogo', 'musica', 'alquileres', 'admin'].includes(cleanPath)) {
+            if (cleanPath && ['stock', 'mayorista', 'catalogo', 'musica', 'alquileres', 'admin', 'ofertas', 'oferta'].includes(cleanPath)) {
                 viewParam = cleanPath;
             }
         }
@@ -321,7 +346,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 'pedidos-admin': 'view-pedidos-admin',
                 'admin-pedidos': 'view-pedidos-admin',
                 'editor': 'view-editor',
-                'edit': 'view-editor'
+                'edit': 'view-editor',
+                'ofertas': 'view-offers',
+                'oferta': 'view-offer-detail'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             const orderIdParam = urlParams.get('id') || urlParams.get('order');
@@ -406,10 +433,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Popstate event listener for native back/forward navigation support
     window.addEventListener('popstate', () => {
         const urlParams = new URLSearchParams(window.location.search);
+        
+        let shortCode = urlParams.get('s');
+        if (!shortCode) {
+            const segments = window.location.pathname.split('/').filter(Boolean);
+            const lastSegment = segments.length > 0 ? segments[segments.length - 1].replace('.html', '').trim() : '';
+            if (/^[0-9a-z]{1,4}(\.[0-9a-z]{1,4})+$/i.test(lastSegment) || /^O\.[0-9A-Z]+$/i.test(lastSegment)) {
+                shortCode = lastSegment;
+            }
+        }
+
+        if (shortCode && window.TarimaShortener) {
+            if (/^O\.[0-9A-Z]+$/i.test(shortCode) && window.TarimaShortener.decodeOfferShortCode) {
+                const foundOffer = window.TarimaShortener.decodeOfferShortCode(shortCode);
+                if (foundOffer && window.openOfferDetailView) {
+                    return window.openOfferDetailView(foundOffer);
+                }
+            } else if (window.TarimaShortener.decodeShortCode) {
+                const decoded = window.TarimaShortener.decodeShortCode(shortCode);
+                if (decoded && decoded.productId && window.findProductById && window.showProductDetail) {
+                    const foundData = window.findProductById(decoded.productId);
+                    if (foundData && foundData.product.visible !== false) {
+                        return window.showProductDetail(
+                            foundData.product,
+                            foundData.catName,
+                            decoded.preselectedAcabado,
+                            decoded.preselectedMedida,
+                            decoded.preselectedOpcion
+                        );
+                    }
+                }
+            }
+        }
+
         const prodId = urlParams.get('prod') || urlParams.get('product') || urlParams.get('p');
+        const offerIdParam = urlParams.get('oferta') || urlParams.get('offer') || urlParams.get('combo') || urlParams.get('o');
         const viewParam = urlParams.get('view') || urlParams.get('sec');
         const catId = urlParams.get('cat') || urlParams.get('category');
         const cartParam = urlParams.get('cart');
+
+        if (offerIdParam) {
+            let foundOffer = (window.sessionOffers || []).find(o => o.id === offerIdParam);
+            if (!foundOffer && window.TarimaShortener && window.TarimaShortener.decodeOfferShortCode) {
+                foundOffer = window.TarimaShortener.decodeOfferShortCode(offerIdParam);
+            }
+            if (foundOffer && window.openOfferDetailView) {
+                return window.openOfferDetailView(foundOffer);
+            }
+        }
         
         if (prodId) {
             if (window.findProductById && window.showProductDetail) {
@@ -419,17 +490,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     const isCatVisible = !catObj || catObj.visible !== false;
                     if (foundData.product.visible !== false) {
                         const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
-                        window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
+                        return window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
                     }
                 }
             }
         } else if (catId) {
             if (window.navigateToCategoryFeed) {
-                window.navigateToCategoryFeed(catId);
+                return window.navigateToCategoryFeed(catId);
             }
         } else if (cartParam) {
             if (window.importCartFromString) {
-                window.importCartFromString(cartParam);
+                return window.importCartFromString(cartParam);
             }
         } else if (viewParam) {
             const viewIdMap = {
@@ -454,15 +525,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 'pedidos': 'view-pedidos',
                 'pedidos-admin': 'view-pedidos-admin',
                 'editor': 'view-editor',
-                'edit': 'view-editor'
+                'edit': 'view-editor',
+                'ofertas': 'view-offers',
+                'oferta': 'view-offer-detail'
             };
             const targetViewId = viewIdMap[viewParam] || viewParam;
             if (window.navigateToView) {
-                window.navigateToView(targetViewId, null, true);
+                return window.navigateToView(targetViewId, null, true);
             }
         } else {
             if (window.navigateToView) {
-                window.navigateToView('view-home', null, true);
+                return window.navigateToView('view-home', null, true);
             }
         }
     });

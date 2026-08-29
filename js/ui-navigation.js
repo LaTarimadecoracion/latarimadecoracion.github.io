@@ -326,7 +326,7 @@
         updateHeader(viewId, context);
 
         // Actualizar URL en el historial (si no es navegación hacia atrás o disparada por popstate/detalles/categoría)
-        const isProductOrCategoryView = viewId === 'view-product-detail' || viewId === 'view-category-feed';
+        const isProductOrCategoryView = viewId === 'view-product-detail' || viewId === 'view-category-feed' || viewId === 'view-offer-detail';
         
         if (!isProductOrCategoryView) {
             const prettyNames = {
@@ -347,7 +347,8 @@
                 'view-ayudin': 'ayudin',
                 'view-pedidos': 'pedidos',
                 'view-pedidos-admin': 'pedidos-admin',
-                'view-editor': 'editor'
+                'view-editor': 'editor',
+                'view-offer-detail': 'oferta'
             };
             
             let basePath = window.location.pathname.replace(/\/index\.html$/, '/');

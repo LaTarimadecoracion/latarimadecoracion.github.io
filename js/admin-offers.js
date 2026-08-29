@@ -261,7 +261,7 @@
         });
     };
 
-    function openOfferModal(offerId = null) {
+    window.openOfferModal = function(offerId = null) {
         editingOfferId = offerId;
         const modal = document.getElementById('admin-offer-modal');
         if (!modal) return;
@@ -329,12 +329,13 @@
         renderModalProductSelector('');
 
         modal.style.display = 'flex';
-    }
+    };
+    window.editOffer = window.openOfferModal;
 
-    function closeOfferModal() {
+    window.closeOfferModal = function() {
         const modal = document.getElementById('admin-offer-modal');
         if (modal) modal.style.display = 'none';
-    }
+    };
 
     function renderModalProductSelector(query = '') {
         const container = document.getElementById('offer-available-products-list');
@@ -402,27 +403,75 @@
         });
     }
 
+    function resolveProductPrice(product, acabadoName, medidaName) {
+        if (!product) return 0;
+
+        let foundPrice = 0;
+
+        // 1. Search inside acabados_groups if present
+        if (product.acabados_groups && product.acabados_groups.length > 0) {
+            let group = null;
+            if (acabadoName) {
+                group = product.acabados_groups.find(g => (g.acabado_name || '').trim().toLowerCase() === (acabadoName || '').trim().toLowerCase());
+            }
+            if (!group) group = product.acabados_groups[0];
+
+            if (group && group.medidas_variants && group.medidas_variants.length > 0) {
+                let variant = null;
+                if (medidaName) {
+                    variant = group.medidas_variants.find(m => (m.medida || '').trim().toLowerCase() === (medidaName || '').trim().toLowerCase());
+                }
+                if (!variant) variant = group.medidas_variants[0];
+                if (variant && (variant.price !== undefined && variant.price !== null)) {
+                    foundPrice = parseFloat(variant.price) || 0;
+                }
+            }
+        }
+
+        // 2. Search direct product.medidas_variants if foundPrice is still 0
+        if (foundPrice === 0 && product.medidas_variants && product.medidas_variants.length > 0) {
+            let variant = null;
+            if (medidaName) {
+                variant = product.medidas_variants.find(m => (m.medida || '').trim().toLowerCase() === (medidaName || '').trim().toLowerCase());
+            }
+            if (!variant) variant = product.medidas_variants[0];
+            if (variant && (variant.price !== undefined && variant.price !== null)) {
+                foundPrice = parseFloat(variant.price) || 0;
+            }
+        }
+
+        // 3. Direct product price fallbacks
+        if (foundPrice === 0) {
+            foundPrice = parseFloat(product.price || product.base_price || product.precio || product.price_base) || 0;
+        }
+
+        return foundPrice;
+    }
+
     function addProductToCombo(product) {
-        // Extract default price and variant
+        // Extract default price, variant and image
         let defaultAcabado = 'Natural';
         let defaultMedida = 'Estándar';
-        let defaultPrice = 0;
+        let defaultImage = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
 
         if (product.acabados_groups && product.acabados_groups.length > 0) {
             const firstG = product.acabados_groups[0];
             defaultAcabado = firstG.acabado_name || 'Natural';
+            if (firstG.cover_image) {
+                defaultImage = firstG.cover_image;
+            } else if (firstG.images_list && firstG.images_list.length > 0) {
+                defaultImage = firstG.images_list[0];
+            }
             if (firstG.medidas_variants && firstG.medidas_variants.length > 0) {
                 const firstV = firstG.medidas_variants[0];
                 defaultMedida = firstV.medida || 'Estándar';
-                defaultPrice = firstV.price || 0;
             }
         } else if (product.medidas_variants && product.medidas_variants.length > 0) {
             const firstV = product.medidas_variants[0];
             defaultMedida = firstV.medida || 'Estándar';
-            defaultPrice = firstV.price || 0;
         }
 
-        const imgUrl = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+        const defaultPrice = resolveProductPrice(product, defaultAcabado, defaultMedida);
 
         // Check if item already exists in selectedComboItems
         const existingItem = selectedComboItems.find(item => item.productId === product.id && item.acabado === defaultAcabado && item.medida === defaultMedida);
@@ -432,7 +481,7 @@
             selectedComboItems.push({
                 productId: product.id,
                 title: product.title,
-                image: imgUrl,
+                image: defaultImage,
                 acabado: defaultAcabado,
                 medida: defaultMedida,
                 unitPrice: defaultPrice,
@@ -511,6 +560,60 @@
             const prodRes = findProductByIdInSession(item.productId);
             const product = prodRes ? prodRes.product : null;
 
+            // Build variants & medidas select options and gather photos for selected acabado
+            let acabadosOptionsHTML = '';
+            let medidasOptionsHTML = '';
+            let availableImages = [];
+
+            if (product) {
+                if (product.acabados_groups && product.acabados_groups.length > 0) {
+                    product.acabados_groups.forEach(g => {
+                        const name = g.acabado_name || 'Natural';
+                        acabadosOptionsHTML += `<option value="${name}" ${name === item.acabado ? 'selected' : ''}>${name}</option>`;
+                    });
+
+                    const currentGroup = product.acabados_groups.find(g => (g.acabado_name || '').trim().toLowerCase() === (item.acabado || '').trim().toLowerCase()) || product.acabados_groups[0];
+                    if (currentGroup) {
+                        if (currentGroup.cover_image) availableImages.push(currentGroup.cover_image);
+                        if (currentGroup.images_list && Array.isArray(currentGroup.images_list)) {
+                            currentGroup.images_list.forEach(img => {
+                                if (img && !availableImages.includes(img)) availableImages.push(img);
+                            });
+                        }
+
+                        if (currentGroup.medidas_variants && currentGroup.medidas_variants.length > 0) {
+                            currentGroup.medidas_variants.forEach(m => {
+                                const mName = m.medida || 'Estándar';
+                                medidasOptionsHTML += `<option value="${mName}" ${mName === item.medida ? 'selected' : ''}>${mName}</option>`;
+                            });
+                        }
+                    }
+                } else if (product.medidas_variants && product.medidas_variants.length > 0) {
+                    product.medidas_variants.forEach(m => {
+                        const mName = m.medida || 'Estándar';
+                        medidasOptionsHTML += `<option value="${mName}" ${mName === item.medida ? 'selected' : ''}>${mName}</option>`;
+                    });
+                }
+
+                if (availableImages.length === 0) {
+                    if (Array.isArray(product.image)) {
+                        availableImages = product.image;
+                    } else if (product.image) {
+                        availableImages = [product.image];
+                    }
+                }
+            }
+
+            // Fallback image if item.image is empty or not in availableImages
+            if (!item.image && availableImages.length > 0) {
+                item.image = availableImages[0];
+            }
+
+            // Ensure price is synced if unitPrice was 0
+            if ((!item.unitPrice || item.unitPrice === 0) && product) {
+                item.unitPrice = resolveProductPrice(product, item.acabado, item.medida);
+            }
+
             const card = document.createElement('div');
             card.style.cssText = `
                 background: #ffffff;
@@ -524,23 +627,11 @@
                 gap: 0.6rem;
             `;
 
-            // Build variants select options if available
-            let acabadosOptionsHTML = '';
-
-            if (product) {
-                if (product.acabados_groups && product.acabados_groups.length > 0) {
-                    product.acabados_groups.forEach(g => {
-                        const name = g.acabado_name || 'Natural';
-                        acabadosOptionsHTML += `<option value="${name}" ${name === item.acabado ? 'selected' : ''}>${name}</option>`;
-                    });
-                }
-            }
-
             card.innerHTML = `
                 <!-- Fila Superior: Foto + Título + Botón Eliminar -->
                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
                     <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0;">
-                        <img src="${item.image}" style="width: 44px; height: 44px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0; flex-shrink: 0;">
+                        <img class="combo-item-img" src="${item.image || 'img/logo_provisional.png'}" style="width: 44px; height: 44px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0; flex-shrink: 0; cursor: pointer;" title="Foto actual del producto">
                         <div style="font-weight: 800; font-size: 0.88rem; color: #0f172a; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                             ${item.title}
                         </div>
@@ -550,7 +641,7 @@
                     </button>
                 </div>
 
-                <!-- Fila Inferior: Variantes, Precio y Selector de Cantidades Amplio -->
+                <!-- Fila Inferior: Variantes, Medidas, Fotos, Precio y Cantidad -->
                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: #f8fafc; padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid #f1f5f9;">
                     <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                         ${acabadosOptionsHTML ? `
@@ -558,6 +649,24 @@
                                 <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Acabado:</span>
                                 <select class="combo-acabado-select" style="font-size: 0.78rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1.5px solid #cbd5e1; background: white; color: #334155;">
                                     ${acabadosOptionsHTML}
+                                </select>
+                            </div>
+                        ` : ''}
+
+                        ${medidasOptionsHTML ? `
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Medida:</span>
+                                <select class="combo-medida-select" style="font-size: 0.78rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; border: 1.5px solid #cbd5e1; background: white; color: #334155;">
+                                    ${medidasOptionsHTML}
+                                </select>
+                            </div>
+                        ` : ''}
+
+                        ${availableImages.length > 1 ? `
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Foto:</span>
+                                <select class="combo-image-select" style="font-size: 0.78rem; font-weight: 600; padding: 3px 6px; border-radius: 6px; border: 1.5px solid #cbd5e1; background: white; color: #334155;">
+                                    ${availableImages.map((imgUrl, i) => `<option value="${imgUrl}" ${imgUrl === item.image ? 'selected' : ''}>Foto ${i + 1}</option>`).join('')}
                                 </select>
                             </div>
                         ` : ''}
@@ -588,7 +697,54 @@
             const acabadoSel = card.querySelector('.combo-acabado-select');
             if (acabadoSel) {
                 acabadoSel.addEventListener('change', (e) => {
-                    item.acabado = e.target.value;
+                    const selectedName = e.target.value;
+                    item.acabado = selectedName;
+                    if (product && product.acabados_groups) {
+                        const group = product.acabados_groups.find(g => (g.acabado_name || '').trim().toLowerCase() === selectedName.trim().toLowerCase());
+                        if (group) {
+                            if (group.cover_image) {
+                                item.image = group.cover_image;
+                            } else if (group.images_list && group.images_list.length > 0) {
+                                item.image = group.images_list[0];
+                            }
+                            if (group.medidas_variants && group.medidas_variants.length > 0) {
+                                const hasMed = group.medidas_variants.some(m => m.medida === item.medida);
+                                if (!hasMed) {
+                                    item.medida = group.medidas_variants[0].medida || 'Estándar';
+                                }
+                            }
+                        }
+                    }
+                    const catPrice = resolveProductPrice(product, item.acabado, item.medida);
+                    if (catPrice > 0) {
+                        item.unitPrice = catPrice;
+                    }
+                    renderSelectedComboItems();
+                    recalculateSubtotal();
+                    autoFillOfferInfo(false);
+                });
+            }
+
+            const medidaSel = card.querySelector('.combo-medida-select');
+            if (medidaSel) {
+                medidaSel.addEventListener('change', (e) => {
+                    item.medida = e.target.value;
+                    const catPrice = resolveProductPrice(product, item.acabado, item.medida);
+                    if (catPrice > 0) {
+                        item.unitPrice = catPrice;
+                    }
+                    renderSelectedComboItems();
+                    recalculateSubtotal();
+                    autoFillOfferInfo(false);
+                });
+            }
+
+            const imgSel = card.querySelector('.combo-image-select');
+            if (imgSel) {
+                imgSel.addEventListener('change', (e) => {
+                    item.image = e.target.value;
+                    const imgEl = card.querySelector('.combo-item-img');
+                    if (imgEl) imgEl.src = item.image;
                 });
             }
 

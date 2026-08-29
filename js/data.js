@@ -131,10 +131,11 @@ try {
 
 window.mayoristaConfig = localMayorista || window.siteConfig.mayoristaConfig || {
     markupPercent: 10,
-    cbu: "1234567890123456789012",
-    alias: "la.tarima.deco",
-    bank: "Banco Nación",
-    titular: "Juan Pérez",
+    cbu: "0720048988000002273736",
+    alias: "VENUS.PULMON.METRO",
+    bank: "Banco Santander",
+    titular: "Yonatan Lucas Orellana",
+    cuit: "20-35281538-2",
     terms: "Condiciones de Venta Mayorista:\n1. Compra mínima de $100.000.\n2. Los precios no incluyen IVA.\n3. Retiro por taller o envío a convenir.\n4. Demora estimada de entrega de 15 a 20 días."
 };
 window.siteConfig.mayoristaConfig = window.mayoristaConfig;
