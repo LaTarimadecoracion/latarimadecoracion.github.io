@@ -39,6 +39,86 @@
     }
 
 
+    function normalizeAvisoString(str) {
+        if (!str) return '';
+        return str
+            .toLowerCase()
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .replace(/^¡?nuevo\s+(ingreso|alquiler):\s*/i, "")
+            .replace(/[^a-z0-9]/g, "");
+    }
+
+    function findProductForAviso(block) {
+        if (!block) return null;
+        
+        let prodParam = null;
+        let targetUrl = block.linkUrl || (block.links && block.links[0] ? block.links[0].url : '');
+        if (targetUrl) {
+            const match = targetUrl.match(/(?:prod|product|p|s)=([^&]+)/);
+            if (match) prodParam = decodeURIComponent(match[1]).trim();
+        }
+
+        const normProdParam = normalizeAvisoString(prodParam);
+        const normBlockTitle = normalizeAvisoString(block.title);
+
+        // 1. Buscar en Productos
+        if (window.sessionProducts && Array.isArray(window.sessionProducts)) {
+            for (const cat of window.sessionProducts) {
+                if (cat.products && Array.isArray(cat.products)) {
+                    for (const p of cat.products) {
+                        if (!p) continue;
+                        const normPId = normalizeAvisoString(p.id);
+                        const normPTitle = normalizeAvisoString(p.title);
+                        const normPImg = normalizeAvisoString(p.image);
+
+                        const isIdMatch = prodParam && (p.id === prodParam || normPId === normProdParam);
+                        const isTitleMatch = normBlockTitle && (normPTitle === normBlockTitle || (normPTitle.length > 5 && normBlockTitle.includes(normPTitle)) || (normPTitle.length > 5 && normPTitle.includes(normBlockTitle)));
+                        const isParamTitleMatch = normProdParam && (normPTitle === normProdParam || (normPTitle.length > 5 && normProdParam.includes(normPTitle)) || (normPTitle.length > 5 && normPTitle.includes(normProdParam)));
+                        const isImgPathMatch = normProdParam && normProdParam.length > 4 && normPImg.includes(normProdParam);
+
+                        if (isIdMatch || isTitleMatch || isParamTitleMatch || isImgPathMatch) {
+                            return { type: 'product', product: p, catName: cat.name };
+                        }
+                    }
+                }
+            }
+        }
+
+        // 2. Buscar en Ofertas (Combos)
+        if (window.sessionOffers && Array.isArray(window.sessionOffers)) {
+            for (const o of window.sessionOffers) {
+                if (!o) continue;
+                const normOId = normalizeAvisoString(o.id);
+                const normOTitle = normalizeAvisoString(o.title);
+
+                const isIdMatch = prodParam && (o.id === prodParam || normOId === normProdParam);
+                const isTitleMatch = normBlockTitle && (normOTitle === normBlockTitle || (normOTitle.length > 5 && normBlockTitle.includes(normOTitle)) || (normOTitle.length > 5 && normOTitle.includes(normBlockTitle)));
+
+                if (isIdMatch || isTitleMatch) {
+                    return { type: 'offer', offer: o };
+                }
+            }
+        }
+
+        // 3. Buscar en Alquileres
+        if (window.sessionRentals && Array.isArray(window.sessionRentals)) {
+            for (const r of window.sessionRentals) {
+                if (!r) continue;
+                const normRId = normalizeAvisoString(r.id);
+                const normRTitle = normalizeAvisoString(r.title);
+
+                const isIdMatch = prodParam && (r.id === prodParam || normRId === normProdParam);
+                const isTitleMatch = normBlockTitle && (normRTitle === normBlockTitle || (normRTitle.length > 5 && normBlockTitle.includes(normRTitle)) || (normRTitle.length > 5 && normRTitle.includes(normBlockTitle)));
+
+                if (isIdMatch || isTitleMatch) {
+                    return { type: 'rental', product: r, catName: 'alquileres' };
+                }
+            }
+        }
+
+        return null;
+    }
+
     window.renderInfoBlocksCliente = function(target) {
         const container = document.getElementById(target + '-blocks-container');
         if (!container) return;
@@ -53,103 +133,44 @@
 
         // Renderizado Minimalista Exclusivo para la sección de Avisos
         if (target === 'avisos') {
-            const getAvisoDisplayImage = (block) => {
-                let prodId = null;
-                if (block.linkUrl) {
-                    const match = block.linkUrl.match(/prod=([^&]+)/);
-                    if (match) prodId = match[1];
-                }
-                if (!prodId && block.links && block.links.length > 0) {
-                    block.links.forEach(l => {
-                        if (l.url) {
-                            const match = l.url.match(/prod=([^&]+)/);
-                            if (match) prodId = match[1];
-                        }
-                    });
-                }
-
-                if (prodId) {
-                    const searchClean = decodeURIComponent(prodId).trim().toLowerCase();
-                    
-                    // 1. Buscar en Productos
-                    if (window.sessionProducts && Array.isArray(window.sessionProducts)) {
-                        for (const cat of window.sessionProducts) {
-                            if (cat.products) {
-                                const found = cat.products.find(p => p && ((p.id || '').trim().toLowerCase() === searchClean || (p.title || '').trim().toLowerCase() === searchClean));
-                                if (found) {
-                                    if (found.acabados_groups && found.acabados_groups.length > 0) {
-                                        for (const g of found.acabados_groups) {
-                                            if (g && !g.hidden) {
-                                                const img = g.cover_image || (g.images_list && g.images_list[0]);
-                                                if (img) return img;
-                                            }
-                                        }
-                                        const g0 = found.acabados_groups[0];
-                                        const img = g0.cover_image || (g0.images_list && g0.images_list[0]);
-                                        if (img) return img;
-                                    }
-                                    if (found.image) return Array.isArray(found.image) ? found.image[0] : found.image;
-                                }
-                            }
-                        }
-                    }
-
-                    // 2. Buscar en Ofertas (Combos)
-                    if (window.sessionOffers && Array.isArray(window.sessionOffers)) {
-                        const foundOffer = window.sessionOffers.find(o => o && ((o.id || '').trim().toLowerCase() === searchClean || (o.title || '').trim().toLowerCase() === searchClean));
-                        if (foundOffer) {
-                            if (foundOffer.image) return foundOffer.image;
-                            if (foundOffer.items && foundOffer.items.length > 0) {
-                                const firstProd = foundOffer.items[0];
-                                if (firstProd && window.findProductById) {
-                                    const res = window.findProductById(firstProd.productId);
-                                    if (res && res.product) {
-                                        const p = res.product;
-                                        if (p.acabados_groups && p.acabados_groups.length > 0) {
-                                            const g0 = p.acabados_groups[0];
-                                            const img = g0.cover_image || (g0.images_list && g0.images_list[0]);
-                                            if (img) return img;
-                                        }
-                                        if (p.image) return Array.isArray(p.image) ? p.image[0] : p.image;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    // 3. Buscar en Alquileres
-                    if (window.sessionRentals && Array.isArray(window.sessionRentals)) {
-                        const foundRental = window.sessionRentals.find(r => r && ((r.id || '').trim().toLowerCase() === searchClean || (r.title || '').trim().toLowerCase() === searchClean));
-                        if (foundRental) {
-                            if (foundRental.acabados_groups && foundRental.acabados_groups.length > 0) {
-                                const g0 = foundRental.acabados_groups[0];
-                                const img = g0.cover_image || (g0.images_list && g0.images_list[0]);
-                                if (img) return img;
-                            }
-                            if (foundRental.image) return Array.isArray(foundRental.image) ? foundRental.image[0] : foundRental.image;
-                        }
-                    }
-                }
-
-                return block.image || 'img/logo_provisional.png';
-            };
-
             sessionArr.forEach((block) => {
                 const card = document.createElement('article');
                 card.className = 'aviso-card-minimal';
                 
-                // Limpiar título eliminando prefijos repetitivos
                 let cleanTitle = (block.title || '').replace(/^¡?Nuevo (Ingreso|Alquiler):\s*/i, '').trim();
                 if (!cleanTitle) cleanTitle = block.title || 'Aviso';
 
-                // URL destino del enlace
-                let targetUrl = block.linkUrl || (block.links && block.links[0] ? block.links[0].url : '');
+                // Coordinación exacta con la base de datos de productos
+                const matched = findProductForAviso(block);
                 
+                let displayImg = null;
+                if (matched) {
+                    const item = matched.product || matched.offer;
+                    if (item) {
+                        if (item.acabados_groups && item.acabados_groups.length > 0) {
+                            for (const g of item.acabados_groups) {
+                                if (g && !g.hidden) {
+                                    displayImg = g.cover_image || (g.images_list && g.images_list[0]);
+                                    if (displayImg) break;
+                                }
+                            }
+                            if (!displayImg && item.acabados_groups[0]) {
+                                displayImg = item.acabados_groups[0].cover_image || (item.acabados_groups[0].images_list && item.acabados_groups[0].images_list[0]);
+                            }
+                        }
+                        if (!displayImg && item.image) {
+                            displayImg = Array.isArray(item.image) ? item.image[0] : item.image;
+                        }
+                    }
+                }
+                if (!displayImg) {
+                    displayImg = block.image || 'img/logo_provisional.png';
+                }
+
                 let mediaHtml = '';
                 const mType = block.mediaType || (block.image ? 'image' : 'none');
 
                 if (mType === 'image') {
-                    const displayImg = getAvisoDisplayImage(block);
                     mediaHtml = `
                     <div class="aviso-card-img-wrapper">
                         <span class="aviso-badge-nuevo">NUEVO INGRESO</span>
@@ -172,10 +193,24 @@
                     </div>
                 `;
 
-                // Toda la tarjeta es interactiva
-                if (targetUrl) {
-                    card.style.cursor = 'pointer';
-                    card.addEventListener('click', () => {
+                // Clic en la tarjeta abre la publicación correspondiente inmediatamente
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    if (matched) {
+                        if (matched.type === 'product' && window.showProductDetail) {
+                            return window.showProductDetail(matched.product, matched.catName);
+                        }
+                        if (matched.type === 'offer' && window.showOfferDetail) {
+                            return window.showOfferDetail(matched.offer);
+                        }
+                        if (matched.type === 'rental' && window.showProductDetail) {
+                            return window.showProductDetail(matched.product, 'alquileres');
+                        }
+                    }
+
+                    // Fallback a URL externa si no se encontró en memoria local
+                    let targetUrl = block.linkUrl || (block.links && block.links[0] ? block.links[0].url : '');
+                    if (targetUrl) {
                         try {
                             const parsedUrl = new URL(targetUrl, window.location.href);
                             if (parsedUrl.host === window.location.host) {
@@ -186,42 +221,28 @@
 
                                 if (targetProd) {
                                     const cleanProd = decodeURIComponent(targetProd).trim();
-
-                                    // 1. Buscar en Ofertas (Combos)
                                     if (window.findOfferById && window.showOfferDetail) {
                                         const foundOffer = window.findOfferById(cleanProd);
                                         if (foundOffer) return window.showOfferDetail(foundOffer);
                                     }
-
-                                    // 2. Buscar en Productos
                                     if (window.findProductById && window.showProductDetail) {
                                         const found = window.findProductById(cleanProd);
                                         if (found) return window.showProductDetail(found.product, found.catName);
                                     }
-
-                                    // 3. Buscar en Alquileres
-                                    if (window.sessionRentals && window.showProductDetail) {
-                                        const cleanLower = cleanProd.toLowerCase();
-                                        const foundRental = window.sessionRentals.find(r => r && ((r.id || '').toLowerCase() === cleanLower || (r.title || '').toLowerCase() === cleanLower));
-                                        if (foundRental) return window.showProductDetail(foundRental, 'alquileres');
-                                    }
                                 }
-
                                 if (targetCat && window.navigateToCategoryFeed) {
                                     return window.navigateToCategoryFeed(targetCat);
                                 }
-
                                 if (targetView && window.navigateToView) {
-                                    const viewIdMap = { 'nosotros': 'view-about', 'buscar': 'view-search', 'avisos': 'view-notifications', 'perfil': 'view-profile', 'alquileres': 'view-rentals', 'admin': 'view-admin', 'catalogo': 'view-catalogo', 'calcular': 'view-calculator', 'home': 'view-home', 'categorias': 'view-categories', 'carrito': 'view-cart', 'videos': 'view-videos', 'view-offer-detail': 'view-offer-detail', 'view-product-detail': 'view-product-detail' };
-                                    return window.navigateToView(viewIdMap[targetView] || targetView);
+                                    return window.navigateToView(targetView);
                                 }
                             }
                             window.open(targetUrl, '_blank');
                         } catch (err) {
                             window.location.href = targetUrl;
                         }
-                    });
-                }
+                    }
+                });
 
                 container.appendChild(card);
             });

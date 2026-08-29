@@ -2,6 +2,8 @@
     function findProductById(prodId) {
         if (!window.sessionProducts || !prodId) return null;
         const searchClean = decodeURIComponent(prodId).trim().toLowerCase();
+        const normSearch = searchClean.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+
         let fallback = null;
         for (const cat of window.sessionProducts) {
             if (cat.products) {
@@ -9,7 +11,9 @@
                     if (!p) return false;
                     const pId = (p.id || '').trim().toLowerCase();
                     const pTitle = (p.title || '').trim().toLowerCase();
-                    return pId === searchClean || pTitle === searchClean;
+                    const normTitle = pTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+                    const normId = pId.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+                    return pId === searchClean || pTitle === searchClean || normId === normSearch || normTitle === normSearch || (normSearch.length > 5 && normTitle.includes(normSearch));
                 });
                 if (found) {
                     if (found.primaryCatId === cat.id) {
