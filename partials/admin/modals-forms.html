@@ -1,0 +1,565 @@
+<!-- =============================================================================
+     partials/admin/modals-forms.html
+     Modales de Formulario del Panel Admin (Nosotros, Categoría, Producto, Alquiler, App Config, Componentes, Links)
+     Extraído de index.html — no modificar clases, IDs ni estilos inline
+     ============================================================================= -->
+
+                <!-- ── Formulario Modal de Nosotros (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-nosotros-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-nosotros-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Agregar / Editar Bloque de Nosotros</h3>
+                            <button type="button" id="btn-cancel-nosotros" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-nosotros-form" class="admin-form">
+                            <!-- Título -->
+                            <div class="form-group">
+                                <label>Título del Bloque</label>
+                                <input type="text" id="admin-nosotros-title" placeholder="ej: Presentación" required>
+                            </div>
+                            <!-- Selector de tipo de medio -->
+                            <div class="form-group">
+                                <label>Tipo de Contenido Visual</label>
+                                <div class="media-type-selector" id="nosotros-media-type-selector">
+                                    <button type="button" class="media-type-btn active" data-type="image">
+                                        <span class="material-symbols-outlined">image</span>
+                                        Imagen
+                                    </button>
+                                    <button type="button" class="media-type-btn" data-type="video">
+                                        <span class="material-symbols-outlined">smart_display</span>
+                                        Video
+                                    </button>
+                                    <button type="button" class="media-type-btn" data-type="map">
+                                        <span class="material-symbols-outlined">location_on</span>
+                                        Mapa
+                                    </button>
+                                    <button type="button" class="media-type-btn" data-type="link">
+                                        <span class="material-symbols-outlined">link</span>
+                                        Enlace
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Panel: Imagen -->
+                            <div id="nosotros-panel-image" class="nosotros-media-panel form-group">
+                                <label>Subir Foto</label>
+                                <input type="file" id="admin-nosotros-image" accept="image/*">
+                                <input type="hidden" id="admin-nosotros-image-url">
+                                <div id="nosotros-image-preview" style="margin-top:0.5rem; max-width:100%;"></div>
+                            </div>
+
+                            <!-- Panel: Video de YouTube -->
+                            <div id="nosotros-panel-video" class="nosotros-media-panel form-group" style="display:none;">
+                                <label>URL del Video de YouTube</label>
+                                <input type="text" id="admin-nosotros-video-url" placeholder="ej: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                                <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Se reproducirá automáticamente en silencio y en bucle.</small>
+                                <div id="nosotros-video-preview" style="margin-top:0.75rem; border-radius: 10px; overflow:hidden; display:none;"></div>
+                            </div>
+
+                            <!-- Panel: Mapa de Google Maps -->
+                            <div id="nosotros-panel-map" class="nosotros-media-panel form-group" style="display:none;">
+                                <label>Lugar a mostrar en el mapa</label>
+                                <input type="text" id="admin-nosotros-map-query" placeholder="ej: Hurlingham, Buenos Aires, Argentina">
+                                <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Al hacer clic en el mapa se abrirá Google Maps para navegar hasta allí.</small>
+                                <div id="nosotros-map-preview" style="margin-top:0.75rem; border-radius: 10px; overflow:hidden; display:none;"></div>
+                                <button type="button" id="btn-preview-map" class="btn-outline" style="margin-top:0.5rem; width:auto; padding:0.4rem 1rem; font-size:0.85rem;">🗺️ Vista Previa del Mapa</button>
+                            </div>
+                            <!-- Descripción -->
+                            <div class="form-group">
+                                <label>Descripción del Bloque</label>
+                                <textarea id="admin-nosotros-description" rows="4" placeholder="Escribí el texto aquí..." required></textarea>
+                            </div>
+                            <!-- Lista de Enlaces Dinámicos (Opcional, Múltiples) -->
+                            <div class="form-group" style="background:#f8f9fb; padding:15px; border-radius:10px; border:1px solid #E8ECF0; margin-top:10px;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                                    <h4 style="margin:0; font-size:0.95rem; color:var(--primary-color);">Enlaces (Opcional)</h4>
+                                    <button type="button" id="btn-add-nosotros-link" class="btn-outline" style="padding:0.2rem 0.6rem; font-size:0.8rem; width:auto; display:flex; align-items:center; gap:0.2rem;">
+                                        <span class="material-symbols-outlined" style="font-size:18px;">add</span> Agregar Enlace
+                                    </button>
+                                </div>
+                                <div id="nosotros-links-list" style="display:flex; flex-direction:column; gap:0.5rem;"></div>
+                                <small style="color:var(--text-muted); font-size:0.78rem; margin-top:10px; display:block;">Podés agregar uno o varios botones. Arrastralos desde el ícono izquierdo para cambiar el orden.</small>
+                            </div>
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-nosotros-block" class="btn-primary" style="width: 100%; max-width: none;">Guardar Bloque de Nosotros</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── Formulario Modal de Categoría (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-category-modal" class="modal-overlay" style="display: none; z-index: 1200;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-category-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Crear Nueva Categoría</h3>
+                            <button type="button" id="btn-cancel-category" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-cat-form" class="admin-form">
+                            <div class="form-group">
+                                <label>ID (Slug)</label>
+                                <input type="text" id="admin-cat-id" placeholder="ej: linea-infantil" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre visible</label>
+                                <input type="text" id="admin-cat-name" placeholder="ej: Línea Infantil" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Rubro al que pertenece</label>
+                                <div style="display: flex; gap: 8px; align-items: center;">
+                                    <select id="admin-cat-rubro" style="flex-grow: 1; padding: 0.5rem; border: 1.5px solid var(--border-color, #E2E8F0); border-radius: 8px; font-family: inherit; font-size: 0.9rem;">
+                                        <!-- Cargado dinámicamente -->
+                                    </select>
+                                    <button type="button" id="btn-admin-add-rubro" class="btn-outline" style="width: auto; height: 38px; padding: 0 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: bold; border-radius: 8px;" title="Crear nuevo rubro">+</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Foto de Portada</label>
+                                <input type="file" id="admin-cat-image" accept="image/*">
+                            </div>
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-cat" class="btn-primary" style="width: 100%; max-width: none;">Guardar Categoría</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── Formulario de Producto (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-product-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content size-sm" id="admin-product-modal-content">
+                        <div class="modal-header-row" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem; gap: 1rem; flex-wrap: wrap;">
+                            <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap: wrap;">
+                                <h3 id="admin-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Cargar / Editar Producto</h3>
+                                <div class="modal-size-tabs" style="background:#F1F5F9; padding:2px; border-radius:6px; border:1px solid #E2E8F0; margin-left: 0.5rem;">
+                                    <button type="button" class="modal-size-tab active" data-size="sm" style="font-size:0.75rem; padding:2px 8px; border-radius:4px; border:none; background:#FFF; cursor:pointer; font-weight:600; color:var(--text-main); height: 24px !important; width:auto !important; min-width:0 !important; display:inline-flex !important;">Chico</button>
+                                    <button type="button" class="modal-size-tab" data-size="md" style="font-size:0.75rem; padding:2px 8px; border-radius:4px; border:none; background:transparent; cursor:pointer; font-weight:500; color:#64748B; height: 24px !important; width:auto !important; min-width:0 !important; display:inline-flex !important;">Medio</button>
+                                    <button type="button" class="modal-size-tab" data-size="lg" style="font-size:0.75rem; padding:2px 8px; border-radius:4px; border:none; background:transparent; cursor:pointer; font-weight:500; color:#64748B; height: 24px !important; width:auto !important; min-width:0 !important; display:inline-flex !important;">Completo</button>
+                                </div>
+                            </div>
+                            <button type="button" id="btn-cancel-product" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem; height: 32px !important;">Cancelar</button>
+                        </div>
+
+                        <form id="admin-form" class="admin-form">
+                            <div class="admin-form-columns">
+                                <div class="admin-form-col-left">
+                                    <!-- ID -->
+                                    <div class="form-group">
+                                        <label>ID del Producto (Slug)</label>
+                                        <input type="text" id="admin-id" placeholder="ej: cama-casita-natural" required>
+                                    </div>
+
+                                    <!-- Título -->
+                                    <div class="form-group">
+                                        <label>Título</label>
+                                        <input type="text" id="admin-title" placeholder="ej: Cama Casita" required>
+                                    </div>
+
+                                    <!-- Precio de Alquiler (Solo visible en Modo Alquiler) -->
+                                    <div class="form-group" id="admin-product-rental-price-group" style="display: none;">
+                                        <label>Precio de Alquiler (ej: $15.000 / día)</label>
+                                        <input type="text" id="admin-product-rental-price" placeholder="ej: $12.000 / día o Consultar">
+                                    </div>
+
+                                    <!-- Categoría -->
+                                    <details id="admin-product-categories-details" class="form-group" style="border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.8rem; background: #F8FAFC; margin-bottom: 0.8rem; cursor: pointer; transition: all 0.2s ease;">
+                                        <summary style="display: flex; align-items: center; justify-content: space-between; font-weight: 600; color: var(--text-main); list-style: none; user-select: none; font-size: 0.85rem;">
+                                            <span style="display: flex; align-items: center; gap: 0.4rem;">
+                                                <span class="material-symbols-outlined" style="font-size:18px; color:var(--primary-color);">folder_open</span>
+                                                Categorías Asociadas
+                                            </span>
+                                            <span class="material-symbols-outlined expand-arrow" style="font-size: 18px; transition: transform 0.2s;">expand_more</span>
+                                        </summary>
+                                        <div id="product-categories-checkboxes" style="display:flex; flex-direction:column; gap:0.5rem; padding-top:0.6rem; margin-top:0.6rem; border-top:1px solid #E2E8F0; font-family:var(--font-main); font-size:0.9rem; max-height: 200px; overflow-y: auto; cursor: default;" onclick="event.stopPropagation();">
+                                            <!-- Checkboxes de categorías inyectados dinámicamente -->
+                                        </div>
+                                        <div style="margin-top: 0.5rem; border-top: 1px solid #CBD5E1; padding-top: 0.5rem; cursor: default;" onclick="event.stopPropagation();">
+                                            <button type="button" id="btn-create-cat-inline" class="btn-outline" style="width: 100%; max-width: none; padding: 0.4rem; font-size: 0.75rem; border-style: dashed; border-radius: 6px;">+ Crear Nueva Categoría</button>
+                                        </div>
+                                    </details>
+
+                                    <!-- Descripción -->
+                                    <div class="form-group">
+                                        <label>Descripción</label>
+                                        <textarea id="admin-description" rows="3" required></textarea>
+                                    </div>
+
+                                    <!-- Video -->
+                                    <div class="form-group">
+                                        <label style="display:flex; align-items:center; gap:0.4rem;">
+                                            <span class="material-symbols-outlined" style="font-size:16px; color:var(--primary-color);">smart_display</span>
+                                            URL del Video (Opcional)
+                                        </label>
+                                        <input type="text" id="admin-video" placeholder="ej: img/videos/mi-video.mp4" style="font-family: monospace; font-size: 0.85rem;">
+                                        <small style="color: #64748b; font-size: 0.75rem; display: block; margin-top: 4px;">Pega aquí la ruta del archivo MP4 local para habilitar la vista inmersiva.</small>
+                                    </div>
+
+                                    <!-- Opciones Avanzadas -->
+                                    <details class="form-group" style="border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.8rem; background: #F8FAFC; margin-top: 0.8rem; cursor: pointer; transition: all 0.2s ease;">
+                                        <summary style="display: flex; align-items: center; justify-content: space-between; font-weight: 600; color: var(--text-main); list-style: none; user-select: none; font-size: 0.85rem;">
+                                            <span style="display: flex; align-items: center; gap: 0.4rem;">
+                                                <span class="material-symbols-outlined" style="font-size:18px; color:var(--primary-color);">tune</span>
+                                                Opciones Avanzadas (Variante opcional, etiquetas)
+                                            </span>
+                                            <span class="material-symbols-outlined expand-arrow" style="font-size: 18px; transition: transform 0.2s;">expand_more</span>
+                                        </summary>
+                                        <div style="padding-top:0.6rem; margin-top:0.6rem; border-top:1px solid #CBD5E1; cursor: default;" onclick="event.stopPropagation();">
+                                            <!-- Variante Opcional (Datos Técnicos) -->
+                                            <div class="form-group attr-group" style="background:#f8f9fb;padding:1rem;border-radius:10px;border:1.5px solid #E8ECF0;margin-bottom:1rem;">
+                                                <label style="text-transform:none;letter-spacing:0;font-size:0.9rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
+                                                    <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-color);">settings</span>
+                                                    Variante Opcional (Datos Técnicos)
+                                                </label>
+                                                <div class="form-group" style="margin-bottom:0.5rem;">
+                                                    <label style="font-size:0.82rem;margin-bottom:0.3rem;display:block;">Nombre de la variante</label>
+                                                    <input type="text" id="admin-opt-label" placeholder="ej: Espesor de agarre">
+                                                </div>
+                                                <div class="form-group" style="margin-bottom:0;">
+                                                    <label style="font-size:0.82rem;margin-bottom:0.3rem;display:block;">Opciones (separadas por coma)</label>
+                                                    <input type="text" id="admin-opt-options" placeholder="ej: 20mm, 30mm, 40mm">
+                                                </div>
+                                            </div>
+
+                                            <!-- Etiquetas (Tags) para búsqueda -->
+                                            <div class="form-group attr-group" style="background:#f8f9fb;padding:1rem;border-radius:10px;border:1.5px solid #E8ECF0;margin-bottom:0;">
+                                                <label style="text-transform:none;letter-spacing:0;font-size:0.9rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
+                                                    <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-color);">sell</span>
+                                                    Etiquetas de Búsqueda (Opcional)
+                                                </label>
+                                                <div class="form-group" style="margin-bottom:0;">
+                                                    <label style="font-size:0.82rem;margin-bottom:0.3rem;display:block;">Etiquetas (separadas por coma)</label>
+                                                    <input type="text" id="admin-tags" placeholder="ej: mesa para patio, mesita de madera, exterior">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </details>
+                                </div> <!-- /admin-form-col-left -->
+
+                                <div class="admin-form-col-right">
+                                    <!-- Grupos de Acabados / Colores -->
+                                    <div class="form-group" style="margin-top: 0;">
+                                        <label style="font-size:1.1rem; color:var(--primary-color); display:flex; align-items:center; gap:0.5rem; margin-top:0 !important;">
+                                            <span class="material-symbols-outlined">palette</span>
+                                            Grupos de Acabados / Colores
+                                        </label>
+                                        <div id="admin-acabados-groups" style="display:flex; flex-direction:column; gap:1.5rem; margin-top:1rem;">
+                                            <!-- Los grupos se insertan acá dinámicamente -->
+                                        </div>
+                                        <button type="button" id="btn-add-acabado-group" class="btn-outline mt-2" style="width:100%; max-width:none; padding:0.8rem; border-style:dashed;">+ Agregar Grupo de Acabado / Color</button>
+                                    </div>
+                                </div> <!-- /admin-form-col-right -->
+                            </div> <!-- /admin-form-columns -->
+
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3; display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div id="admin-product-auto-aviso-container" style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" id="admin-product-auto-aviso" checked style="width: 16px; height: 16px; accent-color: var(--primary-color); cursor: pointer;">
+                                    <label for="admin-product-auto-aviso" style="font-weight: 500; font-size: 0.82rem; color: var(--text-main); margin-bottom: 0; cursor: pointer; user-select: none;">Publicar anuncio en Novedades/Avisos</label>
+                                </div>
+                                <button type="button" id="btn-generate-json" class="btn-primary">Guardar Producto en Servidor</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── Formulario de Alquiler (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-rental-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content" style="max-width: 550px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-rental-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Cargar / Editar Alquiler</h3>
+                            <button type="button" id="btn-cancel-rental" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+
+                        <form id="admin-rental-form" class="admin-form">
+                            <!-- ID / Slug -->
+                            <div class="form-group">
+                                <label>ID del Alquiler (Slug único)</label>
+                                <input type="text" id="admin-rental-id" placeholder="ej: podio-reforzado-alquiler" required>
+                            </div>
+
+                            <!-- Título -->
+                            <div class="form-group">
+                                <label>Título del Producto</label>
+                                <input type="text" id="admin-rental-title" placeholder="ej: Podio Reforzado para Eventos" required>
+                            </div>
+
+                            <!-- Descripción -->
+                            <div class="form-group">
+                                <label>Descripción / Detalles</label>
+                                <textarea id="admin-rental-description" rows="3" placeholder="Detalles del alquiler, medidas, etc..." required></textarea>
+                            </div>
+
+                            <!-- Precio -->
+                            <div class="form-group">
+                                <label>Precio de Alquiler (ej: $15.000 / día)</label>
+                                <input type="text" id="admin-rental-price" placeholder="ej: $12.000 / día o Consultar">
+                            </div>
+
+                            <!-- Imagen de Portada -->
+                            <div class="form-group">
+                                <label>Foto del Producto (WebP automático)</label>
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <input type="file" id="admin-rental-image-file" accept="image/*" style="display: none;">
+                                    <button type="button" class="btn-outline" style="width: auto; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 6px;" onclick="document.getElementById('admin-rental-image-file').click();">
+                                        <span class="material-symbols-outlined">upload_file</span> Seleccionar Foto
+                                    </button>
+                                    <span id="admin-rental-image-name" class="text-muted" style="font-size: 0.85rem;">Ninguna foto seleccionada</span>
+                                </div>
+                                <input type="hidden" id="admin-rental-image-url">
+                                <div id="admin-rental-image-preview-container" style="margin-top: 0.75rem; display: none;">
+                                    <img id="admin-rental-image-preview" src="" style="max-height: 120px; border-radius: 8px; border: 1px solid #E2E8F0;" alt="Vista previa">
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
+                                <div id="admin-rental-auto-aviso-container" style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" id="admin-rental-auto-aviso" checked style="width: 16px; height: 16px; accent-color: var(--primary-color); cursor: pointer;">
+                                    <label for="admin-rental-auto-aviso" style="font-weight: 500; font-size: 0.82rem; color: var(--text-main); margin-bottom: 0; cursor: pointer; user-select: none;">Publicar anuncio en Novedades/Avisos</label>
+                                </div>
+                                <button type="submit" id="btn-save-rental-submit" class="btn-primary" style="width: 100%;">Guardar Producto de Alquiler</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── Formulario Modal de Configuración App (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-app-config-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-app-config-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Editar Configuración de Sección</h3>
+                            <button type="button" id="btn-cancel-app-config" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-app-config-form" class="admin-form">
+                            <input type="hidden" id="admin-config-section-key">
+                            <div class="form-group">
+                                <label>Título de la Sección</label>
+                                <input type="text" id="admin-config-title" placeholder="ej: La Tarima" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Subtítulo de la Sección</label>
+                                <input type="text" id="admin-config-subtitle" placeholder="ej: Diseño en madera" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Ícono de la Sección (Material Icon)</label>
+                                <input type="text" id="admin-config-icon" placeholder="ej: home" required>
+                                <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Podés usar nombres de <a href="https://fonts.google.com/icons" target="_blank" style="color:var(--primary-color);">Material Icons</a> como: home, search, person, notifications, info.</small>
+                                <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px; padding: 8px 12px; background: rgba(255, 149, 0, 0.08); border-left: 3px solid #ff9500; border-radius: 6px;">
+                                    <span class="material-symbols-outlined" style="color: #ff9500; font-size: 1.1rem; line-height: 1; font-variation-settings: 'FILL' 1;">warning</span>
+                                    <small style="color: #c07000; font-size: 0.75rem; font-weight: 600; margin: 0; display: block; line-height: 1.3;">
+                                        <strong>Nota de Diseño:</strong> Este ícono será el único elemento visual en la barra de navegación del cliente ("Icon Only"). No se mostrarán etiquetas de texto en el menú.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 1rem;">
+                                <label style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="admin-config-visible" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span>Sección Activa (Visible en menú)</span>
+                                </label>
+                            </div>
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-app-config" class="btn-primary" style="width: 100%; max-width: none;">Guardar Configuración</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── Formulario Modal de Componentes de Vista (Oculto por defecto, con overlay difuminado) ── -->
+                <div id="admin-component-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 id="admin-component-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Agregar / Editar Componente</h3>
+                            <button type="button" id="btn-cancel-section-component" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-component-form" class="admin-form">
+                            <input type="hidden" id="admin-comp-id">
+                            
+                            <!-- Tipo de Componente -->
+                            <div class="form-group">
+                                <label>Tipo de Componente</label>
+                                <select id="admin-comp-type" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; transition:border-color 0.2s ease; appearance:auto; cursor:pointer;">
+                                    <option value="banner">🌅 Banner Promocional</option>
+                                    <option value="product">⭐️ Destacar Producto</option>
+                                    <option value="video">🎥 Video de Promoción</option>
+                                </select>
+                            </div>
+
+                            <!-- Posicionamiento del Componente (Solo para Home) -->
+                            <div class="form-group" id="admin-comp-position-group" style="display: none;">
+                                <label>Posición del Componente</label>
+                                <select id="admin-comp-position" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; transition:border-color 0.2s ease; appearance:auto; cursor:pointer;">
+                                    <option value="bottom">⬇️ Inferior (Después de los carruseles)</option>
+                                    <option value="top">⬆️ Superior (Antes de los carruseles)</option>
+                                </select>
+                            </div>
+
+
+                            <!-- Panel 1: Banner -->
+                            <div id="comp-panel-banner" class="comp-media-panel form-group">
+                                <div class="form-group" style="margin-bottom:1rem;">
+                                    <label>Foto del Banner</label>
+                                    <input type="file" id="admin-comp-banner-image" accept="image/*">
+                                    <input type="hidden" id="admin-comp-banner-image-url">
+                                    <div id="comp-banner-preview" style="margin-top:0.5rem; max-width:100%;"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enlace / Link de Acción (Opcional)</label>
+                                    <input type="text" id="admin-comp-banner-link" placeholder="ej: https://maps.google.com/...">
+                                </div>
+                            </div>
+
+                            <!-- Panel 2: Destacar Producto -->
+                            <div id="comp-panel-product" class="comp-media-panel form-group" style="display:none;">
+                                <div class="form-group" style="margin-bottom:1rem;">
+                                    <label>Seleccionar Producto</label>
+                                    <select id="admin-comp-product-select" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; appearance:auto; cursor:pointer;">
+                                        <!-- Productos cargados dinámicamente -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mensaje de Alerta / Badge (ej: ¡Novedad de la semana!)</label>
+                                    <input type="text" id="admin-comp-product-badge" placeholder="ej: ¡Súper Venta!">
+                                </div>
+                            </div>
+
+                            <!-- Panel 3: Video Promo -->
+                            <div id="comp-panel-video" class="comp-media-panel form-group" style="display:none;">
+                                <div class="form-group">
+                                    <label>URL del Video de YouTube</label>
+                                    <input type="text" id="admin-comp-video-url" placeholder="ej: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                                    <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Se reproducirá automáticamente en silencio y en bucle.</small>
+                                    <div id="comp-video-preview" style="margin-top:0.75rem; border-radius:10px; overflow:hidden; display:none;"></div>
+                                </div>
+                            </div>
+
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-section-component" class="btn-primary" style="width: 100%; max-width: none;">Guardar Componente</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── Formulario Modal de Icono de Enlace (Oculto por defecto) ── -->
+                <div id="admin-link-modal" class="modal-overlay" style="display: none; z-index: 1300;">
+                    <div class="modal-content" style="max-width: 450px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Editar Botón de Pago</h3>
+                            <button type="button" id="btn-cancel-link-modal" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
+                        </div>
+                        <form id="admin-link-form" class="admin-form">
+                            <div class="form-group">
+                                <label>Texto del Botón</label>
+                                <input type="text" id="admin-link-label" placeholder="Ej: Comprar en Tienda Nube" style="width: 100%;">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Ícono de Plataforma</label>
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 0.5rem;" id="admin-link-icon-grid">
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="local_shipping" checked style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">local_shipping</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">Estándar</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="handshake" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">handshake</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">M. Libre</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="cloud" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">cloud</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">T. Nube</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="storefront" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">storefront</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">Tienda</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="local_post_office" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">local_post_office</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">Correo Arg</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="mail" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">mail</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">Andreani / OCA</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="airport_shuttle" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">airport_shuttle</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">Vía Cargo</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="two_wheeler" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">two_wheeler</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">Moto / Cadete</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="directions_bus" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">directions_bus</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">Micro / Bus</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="bolt" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">bolt</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">Envío Express</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="location_on" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">location_on</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">Punto Retiro</span>
+                                        </div>
+                                    </label>
+                                    <label class="icon-radio-card">
+                                        <input type="radio" name="admin_link_icon" value="forum" style="display:none;">
+                                        <div class="icon-card-content" style="display:flex; flex-direction:column; align-items:center; padding:0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;">
+                                            <span class="material-symbols-outlined" style="font-size: 28px; margin-bottom: 4px;">forum</span>
+                                            <span style="font-size: 0.75rem; font-weight: 600;">Acordar</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <style>
+                                .icon-radio-card input:checked + .icon-card-content {
+                                    border-color: var(--primary-color) !important;
+                                    background-color: #FFF7ED;
+                                    color: var(--primary-color);
+                                }
+                                .icon-radio-card:hover .icon-card-content {
+                                    background-color: #F8FAFC;
+                                }
+                            </style>
+
+                            <div class="form-group" style="margin-top: 1.5rem; padding: 1rem; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; margin: 0;">
+                                    <input type="checkbox" id="admin-link-highlight" style="width: 18px; height: 18px; accent-color: var(--primary-color);">
+                                    <span style="font-weight: 600; font-size: 0.9rem;">Destacar botón (Llamado a la acción)</span>
+                                </label>
+                                <small style="color: var(--text-muted); font-size: 0.75rem; display: block; margin-top: 0.25rem; margin-left: 26px;">El botón latirá y tendrá un brillo de color para llamar más la atención.</small>
+                            </div>
+
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3;">
+                                <button type="button" id="btn-save-link-modal" class="btn-primary" style="width: 100%; max-width: none;">Guardar Cambios</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>

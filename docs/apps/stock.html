@@ -1107,18 +1107,17 @@
                 }
 
                 // 2. Si está abierto desde la app/admin, delegar la publicación al botón principal
-                const parentPublishBtn = window.parent ? window.parent.document.getElementById('admin-github-publish-btn') : null;
+                const parentPublishBtn = window.parent ? (window.parent.document.getElementById('admin-github-publish-btn') || window.parent.document.getElementById('dashboard-github-publish-btn')) : null;
                 if (parentPublishBtn) {
                     parentPublishBtn.click();
-                    alert("🚀 ¡Sincronizado! Se inició la carga completa de la web desde el Panel de Administración.");
                 } else {
                     // Publicación directa si se accede independientemente
                     const res = await fetch('/api/publish-github', { method: 'POST' });
-                    const data = await res.json();
-                    if (data.success) {
+                    const data = await res.json().catch(() => ({}));
+                    if (res.ok && data.success) {
                         alert("🚀 ¡Publicado a GitHub con éxito! La web completa se ha actualizado.");
                     } else {
-                        alert("✅ Cambios guardados en el servidor local.");
+                        alert("⚠️ Error al publicar: " + (data.message || data.error || "No se pudo conectar con el servidor local."));
                     }
                 }
             } catch(e) {

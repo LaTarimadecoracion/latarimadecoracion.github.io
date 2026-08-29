@@ -435,15 +435,16 @@ app.post('/api/save-site-config', (req, res) => {
 
 // API Endpoint to build and publish to GitHub Pages
 app.post('/api/publish-github', async (req, res) => {
-    // Verificar que la petición provenga únicamente de la PC local (localhost)
+    // Verificar que la petición provenga de la PC local (localhost) o de la red local (LAN)
     const clientIp = req.ip || req.connection.remoteAddress || '';
-    const isLocalhost = clientIp === '127.0.0.1' || clientIp === '::1' || clientIp === '::ffff:127.0.0.1' || clientIp.endsWith('127.0.0.1');
+    const cleanIp = clientIp.replace(/^.*:/, ''); // Extraer IPv4 de ::ffff:192.168.x.x
+    const isLocalAccess = clientIp === '127.0.0.1' || clientIp === '::1' || clientIp.endsWith('127.0.0.1') || cleanIp === '127.0.0.1' || cleanIp.startsWith('192.168.') || cleanIp.startsWith('10.') || cleanIp.startsWith('172.');
     
-    if (!isLocalhost) {
-        console.warn(`⚠️ Intento de publicación denegado desde IP no local: ${clientIp}`);
+    if (!isLocalAccess) {
+        console.warn(`⚠️ Intento de publicación denegado desde IP externa: ${clientIp}`);
         return res.status(403).json({ 
             success: false, 
-            message: 'Acceso denegado. La publicación a GitHub solo se puede realizar desde la PC local.' 
+            message: 'Acceso denegado. La publicación a GitHub solo se puede realizar desde la PC local o red local.' 
         });
     }
 
@@ -451,7 +452,12 @@ app.post('/api/publish-github', async (req, res) => {
     const { exec } = require('child_process');
     const execPromise = (cmd, options = {}) => {
         return new Promise((resolve, reject) => {
-            exec(cmd, options, (error, stdout, stderr) => {
+            const defaultEnv = Object.assign({}, process.env, {
+                GIT_TERMINAL_PROMPT: '0',
+                GCM_INTERACTIVE: 'never'
+            });
+            const opts = Object.assign({ cwd: ROOT_DIR, timeout: 40000, env: defaultEnv }, options);
+            exec(cmd, opts, (error, stdout, stderr) => {
                 if (error) {
                     reject({ error, stdout, stderr });
                 } else {
@@ -461,32 +467,40 @@ app.post('/api/publish-github', async (req, res) => {
         });
     };
 
-    try {
-        // Paso 1: Compilar
-        console.log('1. Compilando la web...');
-        await execPromise('node _dev/build.js', { cwd: ROOT_DIR });
-
-        // Paso 2: Staging de archivos (limpiando lock file si quedó bloqueado)
-        console.log('2. Staging files...');
+    // Helper para remover el archivo de bloqueo lock de Git si quedó varado
+    const cleanGitLock = () => {
         const lockFilePath = path.join(ROOT_DIR, '.git', 'index.lock');
         if (fs.existsSync(lockFilePath)) {
             try { fs.unlinkSync(lockFilePath); } catch (e) {}
         }
-        await execPromise('git add .', { cwd: ROOT_DIR });
+    };
+
+    try {
+        // Paso 1: Compilar
+        console.log('1. Compilando la web...');
+        await execPromise('node _dev/build.js');
+
+        // Paso 2: Staging de archivos (limpiando lock file si quedó bloqueado)
+        console.log('2. Staging files...');
+        cleanGitLock();
+        await execPromise('git add .');
 
         // Paso 3: Comprobar si hay cambios para hacer commit
-        const { stdout: statusOut } = await execPromise('git status --porcelain', { cwd: ROOT_DIR });
+        cleanGitLock();
+        const { stdout: statusOut } = await execPromise('git status --porcelain');
         
         if (statusOut.trim().length > 0) {
             console.log('3. Guardando cambios (commit)...');
-            await execPromise('git commit -m "Actualización desde Panel de Administración"', { cwd: ROOT_DIR });
+            cleanGitLock();
+            await execPromise('git commit -m "Actualización desde Panel de Administración"');
         } else {
             console.log('3. No hay cambios pendientes para guardar (omitiendo commit).');
         }
 
         // Paso 4: Subir a GitHub
         console.log('4. Subiendo cambios a GitHub (push)...');
-        const { stdout: pushOut } = await execPromise('git push', { cwd: ROOT_DIR });
+        cleanGitLock();
+        const { stdout: pushOut } = await execPromise('git push');
         
         console.log('✅ Publicación a GitHub completada exitosamente.');
         res.json({ 
@@ -497,11 +511,18 @@ app.post('/api/publish-github', async (req, res) => {
 
     } catch (errObj) {
         console.error('❌ Error en la publicación:', errObj);
-        const errMsg = errObj.error ? errObj.error.message : 'Error desconocido';
-        const errDetails = errObj.stderr || errObj.stdout || '';
+        let errMsg = errObj.error ? errObj.error.message : (typeof errObj === 'string' ? errObj : 'Error desconocido');
+        const errDetails = (errObj.stderr || errObj.stdout || '').toString();
+
+        if (errDetails.includes('could not read Username') || errDetails.includes('terminal prompts disabled') || errDetails.includes('Permission denied') || errDetails.includes('Authentication failed')) {
+            errMsg = '🔑 Git requiere autenticación con tu cuenta de GitHub. Abrí una consola/CMD en tu PC y ejecutá "git push" manualmente una vez para iniciar sesión o guardar tus credenciales.';
+        } else if (errObj.error && errObj.error.killed) {
+            errMsg = '⏳ La subida a GitHub excedió el tiempo máximo de espera. Verificá tu conexión a Internet.';
+        }
+
         res.status(500).json({ 
             success: false, 
-            message: 'Error al compilar o subir a GitHub.', 
+            message: errMsg, 
             error: errMsg,
             details: errDetails
         });

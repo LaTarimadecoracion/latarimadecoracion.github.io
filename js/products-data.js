@@ -416,7 +416,7 @@ const productsData = [
             {
                 "id": "51",
                 "title": "Baranda: Desmontable Clásica",
-                "description": "Seguridad y comodidad superior para la cama de los más chicos.",
+                "description": "Seguridad y comodidad superior para la cama de los más chicos.\nNo dudes en hacer todas tus consultas",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
                 "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
                 "acabados_groups": [
@@ -796,7 +796,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1784429974111,
+                "last_modified": 1788028327325,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -822,7 +822,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 2
+                "history": []
             },
             {
                 "id": "91",
@@ -846,11 +846,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 50000,
+                                "price": 55000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 150 a 200 cm",
@@ -860,11 +858,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 50000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             },
                             {
                                 "medida": "Inclinada 100 a 150 cm",
@@ -874,11 +870,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 100 a 150 cm",
@@ -888,11 +882,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             },
                             {
                                 "medida": "Inclinada 0 a 100 cm",
@@ -902,11 +894,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30000,
+                                "price": 35000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 0 a 100 cm",
@@ -916,11 +906,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25000,
+                                "price": 30000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -962,7 +950,7 @@ const productsData = [
                 ],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles",
-                "views": 0
+                "views": 4
             },
             {
                 "id": "31",
@@ -4321,7 +4309,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 0,
+                "views": 1,
                 "stock": 1,
                 "history": [
                     {
@@ -6958,6 +6946,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -6995,10 +6984,10 @@ const productsData = [
                     "baranda reforzada pino",
                     "baranda reforzada madera"
                 ],
-                "last_modified": 1784430109462,
+                "last_modified": 1788028292941,
                 "primaryCatId": "Barandas",
-                "visible": true,
-                "views": 0
+                "history": [],
+                "visible": true
             },
             {
                 "id": "H2",
@@ -7731,7 +7720,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "A4",
@@ -8374,7 +8363,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "26",
@@ -8454,7 +8443,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 0,
+                "views": 1,
                 "stock": 1,
                 "history": [
                     {
@@ -8502,7 +8491,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "B5",
@@ -9371,7 +9360,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 0,
+                "views": 1,
                 "stock": 1,
                 "history": [
                     {
@@ -10401,7 +10390,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 0,
+                "views": 1,
                 "stock": 1,
                 "history": [
                     {
@@ -11963,7 +11952,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "4F",
@@ -12073,7 +12062,7 @@ const productsData = [
             {
                 "id": "51",
                 "title": "Baranda: Desmontable Clásica",
-                "description": "Seguridad y comodidad superior para la cama de los más chicos.",
+                "description": "Seguridad y comodidad superior para la cama de los más chicos.\nNo dudes en hacer todas tus consultas",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
                 "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
                 "acabados_groups": [
@@ -12453,7 +12442,7 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1784429974111,
+                "last_modified": 1788028327325,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -12479,7 +12468,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 2
+                "history": []
             },
             {
                 "id": "52",
@@ -13660,6 +13649,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": "",
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": false
@@ -13697,10 +13687,10 @@ const productsData = [
                     "baranda reforzada pino",
                     "baranda reforzada madera"
                 ],
-                "last_modified": 1784430109462,
+                "last_modified": 1788028292941,
                 "primaryCatId": "Barandas",
-                "visible": true,
-                "views": 0
+                "history": [],
+                "visible": true
             },
             {
                 "id": "57",
@@ -16126,11 +16116,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 50000,
+                                "price": 55000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 150 a 200 cm",
@@ -16140,11 +16128,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 50000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             },
                             {
                                 "medida": "Inclinada 100 a 150 cm",
@@ -16154,11 +16140,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 45000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 100 a 150 cm",
@@ -16168,11 +16152,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 40000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             },
                             {
                                 "medida": "Inclinada 0 a 100 cm",
@@ -16182,11 +16164,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30000,
+                                "price": 35000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             },
                             {
                                 "medida": "Vertical 0 a 100 cm",
@@ -16196,11 +16176,9 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25000,
+                                "price": 30000,
                                 "legend": "",
-                                "showPrice": true,
-                                "cost_price": "",
-                                "volumeDiscounts": []
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -16242,7 +16220,7 @@ const productsData = [
                 ],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles",
-                "views": 0
+                "views": 4
             },
             {
                 "id": "92",
@@ -17170,7 +17148,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "B5",
@@ -18262,7 +18240,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera",
-                "views": 0
+                "views": 1
             }
         ]
     },

@@ -1,0 +1,156 @@
+<!-- =============================================================================
+     partials/view-offer-detail.html
+     Vista Detallada de Oferta / Combo Especial (#view-offer-detail)
+     Extraído de index.html — no modificar clases, IDs ni estilos inline
+     ============================================================================= -->
+            <!-- Header Info (Título y Promesa) -->
+            <div style="padding: 1.25rem 1.25rem 0.75rem; text-align: left;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;">
+                    <span id="offer-detail-category-tag" style="font-size: 0.75rem; font-weight: 800; color: #c0510a; background: #fff7ed; border: 1px solid #ffedd5; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">
+                        🔥 COMBO ESPECIAL
+                    </span>
+                    <span id="offer-detail-stock-tag" style="font-size: 0.75rem; font-weight: 800; color: #dc2626; background: #fef2f2; border: 1px solid #fecaca; padding: 3px 10px; border-radius: 20px; display: none;">
+                        ⚡ Cupo Limitado
+                    </span>
+                </div>
+                <h2 id="offer-detail-page-title" style="margin: 0 0 0.4rem 0; font-size: 1.5rem; font-weight: 900; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
+                <p id="offer-detail-page-desc" style="margin: 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.4;"></p>
+            </div>
+
+            <!-- Cover Image Hero with Stamps and Timer Overlays -->
+            <div style="position: relative; width: 100%; max-height: 380px; height: 60vh; background: #18181b; overflow: hidden; border-radius: 16px; margin-bottom: 1.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.12);" id="offer-detail-cover-container">
+                <!-- Inyectado dinámicamente: Imagen o Mosaico 2x2 -->
+            </div>
+
+            <!-- Detail Content Body (Reordenado según prioridad del usuario) -->
+            <div class="detail-content" style="padding: 0 1.25rem;">
+
+                <!-- 1. Formas de pago - Envíos y retiro - Calidad y garantía -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 1.5rem;">
+                    <button type="button" id="btn-offer-modal-payments" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left;" title="Ver formas de pago">
+                        <span class="material-symbols-outlined" style="color: #16a34a; font-size: 20px;">payments</span>
+                        <div>
+                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a;">Formas de Pago</div>
+                            <div style="font-size: 0.68rem; color: #64748b;">Efectivo / Transferencia</div>
+                        </div>
+                    </button>
+
+                    <button type="button" id="btn-offer-modal-shipping" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left;" title="Ver envíos y retiros">
+                        <span class="material-symbols-outlined" style="color: #2563eb; font-size: 20px;">local_shipping</span>
+                        <div>
+                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a;">Envíos y Retiro</div>
+                            <div style="font-size: 0.68rem; color: #64748b;">Taller Hurlingham / Flete</div>
+                        </div>
+                    </button>
+
+                    <button type="button" id="btn-offer-modal-warranty" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left;" title="Ver tiempos y garantía">
+                        <span class="material-symbols-outlined" style="color: #8b5cf6; font-size: 20px;">verified</span>
+                        <div>
+                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a;">Calidad & Garantía</div>
+                            <div style="font-size: 0.68rem; color: #64748b;">100% Madera Maciza</div>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- 2. Productos Incluidos en el Combo -->
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.85rem 0; display: flex; align-items: center; gap: 8px;">
+                        <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a);">inventory_2</span> Productos Incluidos en el Combo
+                    </h3>
+                    <div id="offer-detail-items-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <!-- Inyectado por JS -->
+                    </div>
+                </div>
+
+                <!-- 3. Ficha Técnica / Resumen Rápido del Combo (Contenido, Disponibilidad, Garantía) -->
+                <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 0.85rem 1rem; margin-bottom: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="material-symbols-outlined" style="color: #0284c7; font-size: 20px;">package_2</span>
+                        <div>
+                            <div style="font-size: 0.68rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Contenido</div>
+                            <div id="offer-detail-spec-count" style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Incluye varios productos</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="material-symbols-outlined" style="color: #16a34a; font-size: 20px;">schedule</span>
+                        <div>
+                            <div style="font-size: 0.68rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Disponibilidad</div>
+                            <div style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Coordinación directa</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="material-symbols-outlined" style="color: #d97706; font-size: 20px;">verified</span>
+                        <div>
+                            <div style="font-size: 0.68rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Garantía</div>
+                            <div style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">LA TARIMA - Decoración</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Precio Total, Selector de Packs y Ahorro (Justo arriba de consultar por WhatsApp) -->
+                <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                        <!-- Selector de Cantidad de Combos -->
+                        <div style="display: flex; align-items: center; gap: 6px; background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px;">
+                            <span style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Packs:</span>
+                            <button type="button" id="btn-offer-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">-</button>
+                            <span id="offer-detail-qty-val" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 28px; text-align: center;">1</span>
+                            <button type="button" id="btn-offer-qty-plus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">+</button>
+                        </div>
+
+                        <div style="text-align: right; position: relative;">
+                            <div style="font-size: 0.8rem; font-weight: 700; color: #166534; margin-bottom: 2px;">Precio Total Combo:</div>
+                            <span id="offer-detail-original-price" style="font-size: 0.95rem; text-decoration: line-through; color: #94a3b8; font-weight: 700; margin-right: 8px;"></span>
+                            <span id="offer-detail-final-price" style="font-size: 1.75rem; font-weight: 900; color: #dc2626;"></span>
+                            
+                            <!-- Icono de interrogación con tooltip de aclaración de precio -->
+                            <span id="offer-price-info-trigger" class="price-info-tooltip-wrapper" style="display: inline-flex; align-items: center; position: relative; margin-left: 6px; vertical-align: middle; cursor: pointer;">
+                                <span class="material-symbols-outlined" style="font-size: 18px; color: #dc2626; background: #fee2e2; border-radius: 50%; padding: 2px; border: 1.5px solid #fca5a5;" title="Ver aclaración sobre el precio">help_outline</span>
+                                <div id="offer-price-info-tooltip" class="price-info-tooltip-box" style="display: none; position: absolute; right: 0; bottom: 125%; width: 230px; background: #0f172a; color: white; padding: 10px 12px; border-radius: 12px; font-size: 0.78rem; line-height: 1.4; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 100; text-align: left; font-weight: 500; border: 1px solid rgba(255,255,255,0.15);">
+                                    <div style="font-weight: 800; color: #fef08a; margin-bottom: 3px; display: flex; align-items: center; gap: 4px;">
+                                        <span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">info</span> Aclaración sobre el precio
+                                    </div>
+                                    Precio en efectivo o transferencia, para retirar por el taller (no incluye impuestos ni IVA).
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div id="offer-detail-savings-banner" style="font-size: 0.92rem; color: #15803d; font-weight: 800; text-align: center; background: #ffffff; padding: 0.65rem; border-radius: 10px; border: 1px solid #86efac; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: none;">
+                        💰 ¡Ahorrás en este combo!
+                    </div>
+                </div>
+
+                <!-- 4. Botón de Consultar dudas por WhatsApp -->
+                <div style="margin-bottom: 0.85rem;">
+                    <button type="button" id="btn-whatsapp-offer" class="btn-primary giant-btn whatsapp-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 1rem; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 800; background: #25d366; border: none; color: white; box-shadow: 0 6px 16px rgba(37,211,102,0.3); cursor: pointer;">
+                        <span class="material-symbols-outlined">chat</span>
+                        <span>Consultar dudas por WhatsApp</span>
+                    </button>
+                </div>
+
+                <!-- 5. Botón de LO QUIERO / COMPRAR YA -->
+                <div style="margin-bottom: 1.25rem;">
+                    <button type="button" id="btn-buy-now-offer" class="btn-outline giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 1rem; width: 100%; border-radius: 14px; font-size: 1.05rem; font-weight: 900; background: linear-gradient(135deg, #dc2626, #ea580c); border: none; color: white; box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35); cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">
+                        <span class="material-symbols-outlined" style="font-size: 22px;">bolt</span>
+                        <span>⚡ LO QUIERO / COMPRAR YA</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- 7. Otros Combos Promocionales -->
+            <div class="detail-related-section" style="border-top: 1px solid rgba(180, 132, 108, 0.1); padding-top: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                <div class="section-header-premium" style="padding: 0 1.5rem 0.4rem; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a); font-size: 1.5rem; vertical-align: middle;">local_offer</span>
+                    <div>
+                        <h2 class="section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; padding:0;">Otros Combos Promocionales</h2>
+                        <p class="section-subtitle" style="font-size: 0.8rem; color: var(--text-muted); margin: 2px 0 0 0; padding:0;">Opciones preferidas de nuestros clientes</p>
+                    </div>
+                </div>
+                <div id="offer-detail-related-list" style="padding: 0 1.25rem 0.5rem; display: flex; gap: 6px; width: 100%; box-sizing: border-box; overflow-x: auto;">
+                    <!-- Se inyecta dinámicamente por JS (3 publicaciones al 33% de ancho) -->
+                </div>
+            </div>
+
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>

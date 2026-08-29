@@ -1047,53 +1047,80 @@ window.initPagesAdmin = function() {
     }
 
     function initGithubPublishAdmin() {
-        const btnIds = ['admin-github-publish-btn', 'maintenance-publish-btn'];
-        const statusMsgIds = ['publish-status-msg', 'maintenance-publish-status'];
+        const publishButtons = document.querySelectorAll('.btn-publish-trigger, #admin-github-publish-btn, #dashboard-github-publish-btn, #maintenance-publish-btn');
+        const statusIndicators = document.querySelectorAll('.publish-status-indicator, #publish-status-msg, #dashboard-publish-status-msg, #maintenance-publish-status');
 
-        btnIds.forEach((btnId, idx) => {
-            const publishBtn = document.getElementById(btnId);
-            const statusMsg = document.getElementById(statusMsgIds[idx]);
-            if (!publishBtn) return;
+        if (!publishButtons.length) return;
 
-            publishBtn.addEventListener('click', async () => {
-                publishBtn.disabled = true;
-                const originalBtnHtml = publishBtn.innerHTML;
-                publishBtn.innerHTML = `<span class="material-symbols-outlined" style="animation: spin-saw 1.5s linear infinite;">sync</span> <span>Subiendo cambios...</span>`;
-                
-                if (statusMsg) {
+        publishButtons.forEach((publishBtn) => {
+            if (publishBtn.dataset.publishBound === "true") return;
+            publishBtn.dataset.publishBound = "true";
+
+            publishBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+
+                const originalHtmls = [];
+                publishButtons.forEach((btn, index) => {
+                    originalHtmls[index] = btn.innerHTML;
+                    btn.disabled = true;
+                    btn.style.pointerEvents = 'none';
+                    btn.innerHTML = `<span class="material-symbols-outlined" style="animation: spin-saw 1.5s linear infinite;">sync</span> <span>Subiendo cambios...</span>`;
+                });
+
+                statusIndicators.forEach((statusMsg) => {
                     statusMsg.style.display = 'block';
                     statusMsg.style.background = '#EFF6FF';
                     statusMsg.style.color = '#1E40AF';
-                    statusMsg.textContent = '⏳ Compilando archivos locales y subiendo a GitHub...';
-                }
-                
+                    statusMsg.textContent = '⏳ Compilando archivos locales y subiendo a GitHub Pages...';
+                });
+
                 try {
                     const res = await fetch('/api/publish-github', {
                         method: 'POST'
                     });
-                    const data = await res.json();
                     
-                    if (data.success) {
-                        if (statusMsg) {
+                    let data = {};
+                    try {
+                        data = await res.json();
+                    } catch (jsonErr) {
+                        data = { success: false, message: `Respuesta del servidor no válida (${res.status})` };
+                    }
+                    
+                    if (res.ok && data.success) {
+                        statusIndicators.forEach((statusMsg) => {
                             statusMsg.style.background = '#DCFCE7';
                             statusMsg.style.color = '#15803D';
-                            statusMsg.textContent = '✅ ¡Web publicada con éxito! En unos minutos los cambios estarán en línea.';
-                        }
-                        showAdminToast('✅ Publicado exitosamente');
+                            statusMsg.textContent = '✅ ¡Web publicada con éxito! En unos minutos estará disponible en línea.';
+                        });
+                        showAdminToast('✅ Publicado exitosamente en GitHub Pages');
+                        alert("🚀 ¡Web actualizada con éxito en GitHub Pages!\n\nLos cambios se han compilado y subido correctamente.");
                     } else {
-                        throw new Error(data.message || 'Error en la subida');
+                        const failReason = data.message || data.error || data.details || 'Error en el servidor al compilar o subir a GitHub.';
+                        throw new Error(failReason);
                     }
                 } catch (err) {
                     console.error('Error publicando a GitHub:', err);
-                    if (statusMsg) {
+                    let errMessage = '⚠️ Error al subir cambios a GitHub.';
+                    if (window.location.hostname.includes('github.io')) {
+                        errMessage = '⚠️ Para subir cambios a Internet, debés abrir el Panel de Administración local desde tu PC ejecutando "iniciar.bat". (Esta web en línea es solo lectura).';
+                    } else if (err.message) {
+                        errMessage = `⚠️ Error al publicar: ${err.message}`;
+                    }
+
+                    statusIndicators.forEach((statusMsg) => {
+                        statusMsg.style.display = 'block';
                         statusMsg.style.background = '#FEE2E2';
                         statusMsg.style.color = '#B91C1C';
-                        statusMsg.textContent = '⚠️ Error al subir cambios. Asegúrate de estar conectado a Internet.';
-                    }
+                        statusMsg.textContent = errMessage;
+                    });
                     showAdminToast('❌ Error al publicar cambios');
+                    alert(errMessage);
                 } finally {
-                    publishBtn.disabled = false;
-                    publishBtn.innerHTML = originalBtnHtml;
+                    publishButtons.forEach((btn, index) => {
+                        btn.disabled = false;
+                        btn.style.pointerEvents = 'auto';
+                        btn.innerHTML = originalHtmls[index] || btn.innerHTML;
+                    });
                 }
             });
         });
