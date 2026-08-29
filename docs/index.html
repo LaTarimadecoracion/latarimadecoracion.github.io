@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google tag (gtag.js) -->
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXNJV3XERK"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -10,10 +10,10 @@
         gtag('config', 'G-JXNJV3XERK');
     </script>
 
-    <!-- Google Site Verification (Search Console) -->
-    <!-- <meta name="google-site-verification" content="COPIA_EL_CODIGO_AQUI" /> -->
+    
+    
 
-    <!-- SEO / Indexers -->
+    
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://latarimadecoracion.github.io/">
 
@@ -21,32 +21,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LA TARIMA - Decoración</title>
     
-    <!-- PWA Meta -->
+    
     <meta name="theme-color" content="#FAF9F6">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/logo_provisional.png">
 
-    <!-- Open Graph / Meta de Redes Sociales (Inyectados dinámicamente en server.js) -->
+    
     <meta property="og:type" content="website">
     <meta property="og:title" id="meta-og-title" content="LA TARIMA - Carpintería Premium">
     <meta property="og:description" id="meta-og-desc" content="Muebles infantiles y de diseño a medida. Diseños escandinavos y premium para el hogar.">
     <meta property="og:image" id="meta-og-image" content="https://latarimadecoracion.github.io/img/logo_provisional.png">
     <meta property="og:url" content="https://latarimadecoracion.github.io/">
 
-    <!-- Twitter Cards -->
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LA TARIMA - Carpintería Premium">
     <meta name="twitter:description" content="Muebles infantiles y de diseño a medida. Diseños escandinavos y premium para el hogar.">
     <meta name="twitter:image" content="https://latarimadecoracion.github.io/img/logo_provisional.png">
     
-    <!-- Fonts & Icons -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
-    <!-- CSS -->
+    
     <link rel="stylesheet" href="css/style.css?v=47">
     <link rel="stylesheet" href="css/assistant.css?v=2">
     <link rel="stylesheet" href="css/admin-styles.css">
@@ -55,7 +55,7 @@
 
 </head>
 <body>
-    <!-- Script Anti-FOUC para Temáticas (Evita flashazo de color por defecto) -->
+    
     <script>
         (function() {
             try {
@@ -71,7 +71,7 @@
             } catch(e) {}
         })();
     </script>
-    <!-- Splash Screen -->
+    
     <div id="splash-screen">
         <div class="splash-content">
             <div class="loader-saw-container">
@@ -129,16 +129,16 @@
         })();
     </script>
 
-    <!-- Banner de Modo Vacaciones -->
+    
     <div id="vacation-top-banner" class="vacation-top-banner" style="display: none;">
         <span class="material-symbols-outlined vacation-icon">info</span>
         <span id="vacation-banner-text">Estamos de vacaciones, pero seguimos tomando pedidos.</span>
     </div>
 
-    <!-- Main App Container (SPA Views) -->
+    
     <header class="main-header-bar" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; gap: 8px; background: var(--bg-color); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); width: 100%; box-sizing: border-box;">
         
-        <!-- Izquierda: Título y/o Botón Atrás -->
+        
         <div style="display: flex; align-items: center; gap: 4px; flex-shrink: 0;">
             <button id="btn-back" class="back-nav-btn" style="display: none; padding: 4px; margin: 0; position: relative; left: auto; top: auto; transform: none;">
                 <span class="material-symbols-outlined">arrow_back</span>
@@ -147,19 +147,19 @@
             <p id="dynamic-subtitle" class="brand-subtitle" style="display: none;">Diseño en madera para tu hogar</p>
         </div>
 
-        <!-- Centro: Buscador -->
+        
         <div class="search-bar-container" style="flex: 1; margin: 0; padding: 0.4rem 0.6rem; min-width: 0;">
             <span class="material-symbols-outlined search-icon" style="font-size: 18px;">search</span>
             <input type="text" id="search-input" placeholder="Buscar..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && activeView.id !== 'view-calculator' && activeView.id !== 'view-mayorista' && window.navigateToView) window.navigateToView('view-search');" style="font-size: 0.9rem; padding: 0;">
         </div>
 
-        <!-- Derecha: Acciones (Catálogo, Notificaciones) -->
+        
         <div class="header-actions" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
-            <!-- Catálogo A-Z -->
+            
             <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-catalogo');" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" title="Catálogo A-Z">
                 <span class="material-symbols-outlined" style="font-size: 18px;">list_alt</span>
             </a>
-            <!-- Notificaciones (Amarilla) -->
+            
             <button id="nav-notif-btn-header" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" onclick="if(window.navigateToView) window.navigateToView('view-notifications');" title="Avisos">
                 <span class="material-symbols-outlined" style="font-size: 18px; color: #FFB300;">notifications</span>
                 <span class="badge" id="header-nav-badge" style="position: absolute; top: -1px; right: -1px; width: 9px; height: 9px; background: #ff3b30; border-radius: 50%; display: none; border: 1.5px solid var(--surface-color); box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></span>
@@ -169,45 +169,45 @@
     </header>
     <main id="app-container">
 
-        <!-- View 1: Home -->
+        
         <section id="view-home" class="view active">
 
 
             <div class="home-content">
-                <!-- Stack Superior del Constructor de Vistas -->
+                
                 <div id="home-top-stack" style="display:none;"></div>
 
-                <!-- Carrusel 1: Categorías -->
+                
                 <section class="home-section full-width">
                     <div id="carousel-categories" class="carousel-categories">
-                        <!-- Categorías dinámicas -->
+                        
                     </div>
                 </section>
 
-                <!-- Carrusel 2: Novedades / Banner Full -->
+                
                 <section class="home-section full-width">
                     <h2 class="section-title" style="padding: 0 1.5rem;">Nuevos Diseños 2026</h2>
                     <div id="home-new-designs-list" class="carousel-categories">
-                        <!-- Nuevos diseños dinámicos -->
+                        
                     </div>
                 </section>
 
-                <!-- Feed: Los Más Buscados -->
+                
                 <section class="home-section full-width">
                     <h2 class="section-title">Los más buscados</h2>
                     <div id="home-product-list" class="carousel-categories">
-                        <!-- Feed inyectado dinámicamente desde js/app.js -->
+                        
                     </div>
                 </section>
 
-                <!-- Stack Inferior del Constructor de Vistas -->
+                
                 <div id="home-bottom-stack" style="display:none;"></div>
             </div>
         </section>
 
-        <!-- View: Product Detail (Hidden by default) -->
+        
         <section id="view-product-detail" class="view detail-view">
-            <!-- Título y Categoría del Producto (Cuerpo de página, no superpuesto) -->
+            
             <div id="detail-header-info" style="padding: 1.25rem 1.5rem 0.5rem; text-align: left;">
                 <h2 id="detail-title" style="margin: 0 0 0.15rem 0; font-size: 1.4rem; font-weight: 800; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
                 <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: var(--primary-color, #c0510a); text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-main);"></span>
@@ -219,7 +219,7 @@
                 <div id="detail-attributes-container"></div>
 
                 <div class="price-quantity-row">
-                    <!-- Cantidad a la izquierda -->
+                    
                     <div class="qty-selector-wrapper">
                         <div class="qty-controls">
                             <button type="button" class="qty-btn" id="btn-qty-minus">−</button>
@@ -227,7 +227,7 @@
                             <button type="button" class="qty-btn" id="btn-qty-plus">+</button>
                         </div>
                     </div>
-                    <!-- Precio a la derecha -->
+                    
                     <div id="detail-price-display" class="detail-price" style="margin: 0; display: none;"></div>
                 </div>
                 
@@ -250,7 +250,7 @@
                 </div>
             </div>
 
-            <!-- Relacionados / Más Buscados en el Detalle -->
+            
             <div class="detail-related-section" style="border-top: 1px solid rgba(180, 132, 108, 0.1); padding-top: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
                 <div class="section-header-premium" style="padding: 0 1.5rem 0.4rem; display: flex; align-items: center; gap: 8px;">
                     <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a); font-size: 1.5rem; vertical-align: middle;">star</span>
@@ -260,16 +260,16 @@
                     </div>
                 </div>
                 <div id="detail-related-product-list" class="carousel-categories" style="padding: 0 1.25rem 0.5rem;">
-                    <!-- Se inyecta dinámicamente -->
+                    
                 </div>
             </div>
             
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- View: Dedicated Offer / Combo Detail Page -->
+        
         <section id="view-offer-detail" class="view detail-view">
-            <!-- Header Info (Título y Promesa) -->
+            
             <div style="padding: 1.25rem 1.25rem 0.75rem; text-align: left;">
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;">
                     <span id="offer-detail-category-tag" style="font-size: 0.75rem; font-weight: 800; color: #c0510a; background: #fff7ed; border: 1px solid #ffedd5; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">
@@ -283,15 +283,15 @@
                 <p id="offer-detail-page-desc" style="margin: 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.4;"></p>
             </div>
 
-            <!-- Cover Image Hero with Stamps and Timer Overlays -->
+            
             <div style="position: relative; width: 100%; max-height: 380px; height: 60vh; background: #18181b; overflow: hidden; border-radius: 16px; margin-bottom: 1.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.12);" id="offer-detail-cover-container">
-                <!-- Inyectado dinámicamente: Imagen o Mosaico 2x2 -->
+                
             </div>
 
-            <!-- Detail Content Body (Reordenado según prioridad del usuario) -->
+            
             <div class="detail-content" style="padding: 0 1.25rem;">
 
-                <!-- 1. Formas de pago - Envíos y retiro - Calidad y garantía -->
+                
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 1.5rem;">
                     <button type="button" id="btn-offer-modal-payments" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left;" title="Ver formas de pago">
                         <span class="material-symbols-outlined" style="color: #16a34a; font-size: 20px;">payments</span>
@@ -318,17 +318,17 @@
                     </button>
                 </div>
 
-                <!-- 2. Productos Incluidos en el Combo -->
+                
                 <div style="margin-bottom: 1.5rem;">
                     <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.85rem 0; display: flex; align-items: center; gap: 8px;">
                         <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a);">inventory_2</span> Productos Incluidos en el Combo
                     </h3>
                     <div id="offer-detail-items-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
-                        <!-- Inyectado por JS -->
+                        
                     </div>
                 </div>
 
-                <!-- 3. Ficha Técnica / Resumen Rápido del Combo (Contenido, Disponibilidad, Garantía) -->
+                
                 <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 0.85rem 1rem; margin-bottom: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span class="material-symbols-outlined" style="color: #0284c7; font-size: 20px;">package_2</span>
@@ -353,10 +353,10 @@
                     </div>
                 </div>
 
-                <!-- 4. Precio Total, Selector de Packs y Ahorro (Justo arriba de consultar por WhatsApp) -->
+                
                 <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
-                        <!-- Selector de Cantidad de Combos -->
+                        
                         <div style="display: flex; align-items: center; gap: 6px; background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px;">
                             <span style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Packs:</span>
                             <button type="button" id="btn-offer-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">-</button>
@@ -369,7 +369,7 @@
                             <span id="offer-detail-original-price" style="font-size: 0.95rem; text-decoration: line-through; color: #94a3b8; font-weight: 700; margin-right: 8px;"></span>
                             <span id="offer-detail-final-price" style="font-size: 1.75rem; font-weight: 900; color: #dc2626;"></span>
                             
-                            <!-- Icono de interrogación con tooltip de aclaración de precio -->
+                            
                             <span id="offer-price-info-trigger" class="price-info-tooltip-wrapper" style="display: inline-flex; align-items: center; position: relative; margin-left: 6px; vertical-align: middle; cursor: pointer;">
                                 <span class="material-symbols-outlined" style="font-size: 18px; color: #dc2626; background: #fee2e2; border-radius: 50%; padding: 2px; border: 1.5px solid #fca5a5;" title="Ver aclaración sobre el precio">help_outline</span>
                                 <div id="offer-price-info-tooltip" class="price-info-tooltip-box" style="display: none; position: absolute; right: 0; bottom: 125%; width: 230px; background: #0f172a; color: white; padding: 10px 12px; border-radius: 12px; font-size: 0.78rem; line-height: 1.4; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 100; text-align: left; font-weight: 500; border: 1px solid rgba(255,255,255,0.15);">
@@ -387,7 +387,7 @@
                     </div>
                 </div>
 
-                <!-- 4. Botón de Consultar dudas por WhatsApp -->
+                
                 <div style="margin-bottom: 0.85rem;">
                     <button type="button" id="btn-whatsapp-offer" class="btn-primary giant-btn whatsapp-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 1rem; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 800; background: #25d366; border: none; color: white; box-shadow: 0 6px 16px rgba(37,211,102,0.3); cursor: pointer;">
                         <span class="material-symbols-outlined">chat</span>
@@ -395,7 +395,7 @@
                     </button>
                 </div>
 
-                <!-- 5. Botón de LO QUIERO / COMPRAR YA -->
+                
                 <div style="margin-bottom: 1.25rem;">
                     <button type="button" id="btn-buy-now-offer" class="btn-outline giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 1rem; width: 100%; border-radius: 14px; font-size: 1.05rem; font-weight: 900; background: linear-gradient(135deg, #dc2626, #ea580c); border: none; color: white; box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35); cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">
                         <span class="material-symbols-outlined" style="font-size: 22px;">bolt</span>
@@ -405,7 +405,7 @@
 
             </div>
 
-            <!-- 7. Otros Combos Promocionales -->
+            
             <div class="detail-related-section" style="border-top: 1px solid rgba(180, 132, 108, 0.1); padding-top: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
                 <div class="section-header-premium" style="padding: 0 1.5rem 0.4rem; display: flex; align-items: center; gap: 8px;">
                     <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a); font-size: 1.5rem; vertical-align: middle;">local_offer</span>
@@ -415,17 +415,17 @@
                     </div>
                 </div>
                 <div id="offer-detail-related-list" style="padding: 0 1.25rem 0.5rem; display: flex; gap: 6px; width: 100%; box-sizing: border-box; overflow-x: auto;">
-                    <!-- Se inyecta dinámicamente por JS (3 publicaciones al 33% de ancho) -->
+                    
                 </div>
             </div>
 
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- View: Category Feed (Acceso exclusivo desde tarjetas de Home) -->
+        
         <section id="view-category-feed" class="view">
             <div id="category-feed-container" class="category-feed-list">
-                <!-- Feed de tarjetas inyectado dinámicamente por JS -->
+                
             </div>
             <div id="category-feed-empty" class="center-content text-muted" style="display:none; padding:3rem 1.5rem;">
                 <span class="material-symbols-outlined large-icon" style="opacity:0.4;">inventory_2</span>
@@ -434,23 +434,23 @@
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- View 2: Perfil -->
+        
         <section id="view-profile" class="view">
             <div class="view-content"></div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- View 3: Buscar -->
+        
         <section id="view-search" class="view">
             <div class="view-content">
-                <!-- Tabs de Rubros para el buscador B2B/B2C -->
+                
                 <div id="search-rubros-tabs-container" class="rubros-tabs-bar"></div>
                 
-                <!-- Resultados de búsqueda (feed inmersivo) -->
+                
                 <div id="search-results-container" class="product-feed">
-                    <!-- Feed inyectado por JS -->
+                    
                 </div>
-                <!-- Estado vacío -->
+                
                 <div id="search-empty-state" class="center-content text-muted" style="display: none; padding: 3rem 1.5rem;">
                     <span class="material-symbols-outlined large-icon" style="opacity: 0.4;">search_off</span>
                     <p>No encontramos productos con esa búsqueda.<br>Intentá con otra palabra clave.</p>
@@ -459,15 +459,15 @@
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- View 3b: Alquileres (Acceso exclusivo por URL) -->
+        
         <section id="view-rentals" class="view">
             <div class="view-content">
 
-                <!-- Resultados de búsqueda (feed inmersivo) -->
+                
                 <div id="rentals-results-container" class="product-feed">
-                    <!-- Tarjetas de alquileres inyectadas por JS -->
+                    
                 </div>
-                <!-- Estado vacío -->
+                
                 <div id="rentals-empty-state" class="center-content text-muted" style="display: none; padding: 3rem 1.5rem;">
                     <span class="material-symbols-outlined large-icon" style="opacity: 0.4;">search_off</span>
                     <p>No encontramos alquileres con esa búsqueda.<br>Intentá con otra palabra clave.</p>
@@ -476,20 +476,20 @@
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- View 4: Categorías -->
+        
         <section id="view-categories" class="view">
             <div class="view-content" style="padding: 0;">
-                <!-- Tabs de Rubros para Categorías -->
+                
                 <div id="categories-rubros-tabs-container" class="rubros-tabs-bar"></div>
                 
                 <div id="categories-menu-container" class="categories-grid-responsive" style="padding: 1rem;">
-                    <!-- Categories injected by categorias.js -->
+                    
                 </div>
             </div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- View: Ofertas y Combos -->
+        
         <section id="view-offers" class="view">
             <div class="view-content" style="padding: 1rem;">
                 <div style="text-align: center; margin-bottom: 1.25rem;">
@@ -500,13 +500,13 @@
                 </div>
 
                 <div id="offers-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
-                    <!-- Inyectado dinámicamente por ui-offers.js -->
+                    
                 </div>
             </div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- Modal Detalle de Combo / Oferta -->
+        
         <div id="offer-detail-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 10000; align-items: center; justify-content: center; padding: 1rem; overflow-y: auto;">
             <div class="modal-card" style="background: var(--bg-card, #ffffff); width: 100%; max-width: 520px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); overflow: hidden; display: flex; flex-direction: column; max-height: 90vh;">
                 <header style="padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color, #e5e7eb); display: flex; justify-content: space-between; align-items: center; background: #fafafa;">
@@ -522,7 +522,7 @@
                     <div>
                         <h4 style="font-size: 0.85rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.5rem 0;">📦 Productos Incluidos en este Combo:</h4>
                         <div id="offer-modal-items-list">
-                            <!-- Items del combo -->
+                            
                         </div>
                     </div>
 
@@ -550,93 +550,93 @@
             </div>
         </div>
 
-        <!-- View 5: Videos -->
+        
         <section id="view-videos" class="view">
             <div class="view-content" style="padding: 1rem;">
                 <div id="videos-grid-container" class="categories-grid-responsive">
-                    <!-- Miniaturas de videos inyectadas por videos.js -->
+                    
                 </div>
             </div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- View 6: Catálogo Iframe -->
+        
         <section id="view-catalogo" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="apps/catalogo.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Catálogo A-Z"></iframe>
             </div>
         </section>
 
-        <!-- View 7: Calculadora Iframe -->
+        
         <section id="view-calculator" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="apps/calcular.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Calcular Altura Ideal"></iframe>
             </div>
         </section>
 
-        <!-- View 8: Mayorista Iframe -->
+        
         <section id="view-mayorista" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="apps/mayorista.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Catálogo Mayorista"></iframe>
             </div>
         </section>
 
-        <!-- View Stock Iframe -->
+        
         <section id="view-stock" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="apps/stock.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Control de Stock Personal"></iframe>
             </div>
         </section>
 
-        <!-- View 9: Música Iframe -->
+        
         <section id="view-musica" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="apps/musica.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Música y Enganchados"></iframe>
             </div>
         </section>
 
-        <!-- View 10: Ayudin Iframe -->
+        
         <section id="view-ayudin" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="apps/ayudin.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Ayudín para Emprendedores"></iframe>
             </div>
         </section>
 
-        <!-- View 11: Pedidos Seguimiento Iframe -->
+        
         <section id="view-pedidos" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="pedidos/index.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Seguimiento de Pedido"></iframe>
             </div>
         </section>
 
-        <!-- View 12: Admin Pedidos Iframe -->
+        
         <section id="view-pedidos-admin" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="pedidos/admin.html" style="width: 100%; flex: 1; border: none; display: block;" title="Administración de Pedidos"></iframe>
             </div>
         </section>
 
-        <!-- View 13: Editor Masivo de Fotos 3:2 Iframe -->
+        
         <section id="view-editor" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
                 <iframe src="apps/editor-fotos.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Editor Masivo de Fotos 3:2"></iframe>
             </div>
         </section>
 
-        <!-- TikTok Style Fullscreen Modal -->
+        
         <div id="tiktok-video-modal" class="tiktok-modal" style="display: none;">
-            <!-- Botón de cerrar superior -->
+            
             <button id="tiktok-close-btn" class="tiktok-close">
                 <span class="material-symbols-outlined">arrow_back</span>
             </button>
             
-            <!-- Contenedor con Scroll Vertical inmersivo -->
+            
             <div id="tiktok-feed-container" class="tiktok-feed-container">
-                <!-- Los videos se inyectarán aquí dinámicamente -->
+                
             </div>
         </div>
 
-        <!-- Modal de Detalle de Alquiler -->
+        
         <div id="rental-detail-modal" class="modal-overlay" style="display: none;">
             <div class="modal-content" style="max-width: 500px; padding: 0; overflow: hidden; display: flex; flex-direction: column;">
                 <div style="position: relative; padding-top: 66%; background: var(--bg-body, #f7f6f3);">
@@ -657,26 +657,26 @@
             </div>
         </div>
 
-        <!-- View 4: Notificaciones / Avisos -->
+        
         <section id="view-notifications" class="view">
             <div class="view-content" style="padding: 1rem;">
                 
-                <!-- Contenedor dinámico de bloques de Avisos -->
+                
                 <div id="avisos-blocks-container">
-                    <!-- Inyectado dinámicamente por JS -->
+                    
                 </div>
 
             </div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- View 5: Nosotros -->
+        
         <section id="view-about" class="view">
             <div class="view-content" style="padding: 1rem;">
                 
-                <!-- Contenedor dinámico de bloques de Nosotros -->
+                
                 <div id="nosotros-blocks-container">
-                    <!-- Inyectado dinámicamente por JS -->
+                    
                 </div>
 
 
@@ -688,27 +688,27 @@
             <div class="social-links mt-2" style="margin-top: 3rem; text-align: center;">
                 <p class="text-muted" style="margin-bottom: 1rem; font-weight: 500; font-size: 0.95rem;">Seguinos en redes:</p>
                 <div class="social-icons-row" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-                    <!-- Instagram -->
+                    
                     <a href="https://instagram.com" target="_blank" class="social-icon-btn social-link-instagram" title="Instagram">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
-                    <!-- TikTok -->
+                    
                     <a href="https://tiktok.com" target="_blank" class="social-icon-btn social-link-tiktok" title="TikTok">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
                     </a>
-                    <!-- Facebook -->
+                    
                     <a href="https://facebook.com" target="_blank" class="social-icon-btn social-link-facebook" title="Facebook">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                     </a>
-                    <!-- YouTube -->
+                    
                     <a href="https://youtube.com" target="_blank" class="social-icon-btn social-link-youtube" title="YouTube">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
                     </a>
-                    <!-- WhatsApp -->
+                    
                     <a href="https://wa.me/5491167007723" target="_blank" class="social-icon-btn social-link-whatsapp" title="WhatsApp">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     </a>
-                    <!-- Mercado Libre -->
+                    
                     <a href="#" target="_blank" class="social-icon-btn social-link-mercadolibre" title="Mercado Libre">
                         <svg width="24" height="24" viewBox="0 0 640 512" fill="currentColor"><path d="M272.2 64.6l-51.1 51.1c-15.3 4.2-29.5 11.9-41.5 22.5L153 161.9C142.8 171 129.5 176 115.8 176L96 176l0 128c20.4 .6 39.8 8.9 54.3 23.4l35.6 35.6 7 7c0 0 0 0 0 0L219.9 397c6.2 6.2 16.4 6.2 22.6 0c1.7-1.7 3-3.7 3.7-5.8c2.8-7.7 9.3-13.5 17.3-15.3s16.4 .6 22.2 6.5L296.5 393c11.6 11.6 30.4 11.6 41.9 0c5.4-5.4 8.3-12.3 8.6-19.4c.4-8.8 5.6-16.6 13.6-20.4s17.3-3 24.4 2.1c9.4 6.7 22.5 5.8 30.9-2.6c9.4-9.4 9.4-24.6 0-33.9L340.1 243l-35.8 33c-27.3 25.2-69.2 25.6-97 .9c-31.7-28.2-32.4-77.4-1.6-106.5l70.1-66.2C303.2 78.4 339.4 64 377.1 64c36.1 0 71 13.3 97.9 37.2L505.1 128l38.9 0 40 0 40 0c8.8 0 16 7.2 16 16l0 208c0 17.7-14.3 32-32 32l-32 0c-11.8 0-22.2-6.4-27.7-16l-84.9 0c-3.4 6.7-7.9 13.1-13.5 18.7c-17.1 17.1-40.8 23.8-63 20.1c-3.6 7.3-8.5 14.1-14.6 20.2c-27.3 27.3-70 30-100.4 8.1c-25.1 20.8-62.5 19.5-86-4.1L159 404l-7-7-35.6-35.6c-5.5-5.5-12.7-8.7-20.4-9.3C96 369.7 81.6 384 64 384l-32 0c-17.7 0-32-14.3-32-32L0 144c0-8.8 7.2-16 16-16l40 0 40 0 19.8 0c2 0 3.9-.7 5.3-2l26.5-23.6C175.5 77.7 211.4 64 248.7 64L259 64c4.4 0 8.9 .2 13.2 .6zM544 320l0-144-48 0c-5.9 0-11.6-2.2-15.9-6.1l-36.9-32.8c-18.2-16.2-41.7-25.1-66.1-25.1c-25.4 0-49.8 9.7-68.3 27.1l-70.1 66.2c-10.3 9.8-10.1 26.3 .5 35.7c9.3 8.3 23.4 8.1 32.5-.3l71.9-66.4c9.7-9 24.9-8.4 33.9 1.4s8.4 24.9-1.4 33.9l-.8 .8 74.4 74.4c10 10 16.5 22.3 19.4 35.1l74.8 0zM64 336a16 16 0 1 0 -32 0 16 16 0 1 0 32 0zm528 16a16 16 0 1 0 0-32 16 16 0 1 0 0 32z"/></svg>
                     </a>
@@ -716,13 +716,13 @@
             </div>
         </template>
 
-        <!-- View 6: Admin Panel (Hidden) -->
+        
         <section id="view-admin" class="view admin-view">
             <div class="admin-layout width-normal" id="admin-layout-container">
-                <!-- Barra lateral de navegación / Cabecera móvil -->
-                <!-- Barra de Navegación Superior -->
+                
+                
                 <header class="admin-top-navbar">
-                    <!-- Fila Superior: Marca, Publicación Central y Ajustes Globales -->
+                    
                     <div class="admin-navbar-row-top">
                         <div class="admin-brand">
                             <span class="material-symbols-outlined logo-icon">shield_person</span>
@@ -732,7 +732,7 @@
                             </div>
                         </div>
 
-                        <!-- Botón Central de Publicar a GitHub -->
+                        
                         <div class="admin-global-publish">
                             <button type="button" id="admin-github-publish-btn" class="btn-global-publish">
                                 <span class="material-symbols-outlined">publish</span>
@@ -742,7 +742,7 @@
                         </div>
 
                         <div class="admin-navbar-actions">
-                            <!-- Selector de Ancho del Panel (Solo visible en PC) -->
+                            
                             <div class="admin-width-selector">
                                 <button type="button" class="admin-width-tab active" data-width="normal">Normal</button>
                                 <button type="button" class="admin-width-tab" data-width="full">Completo</button>
@@ -753,12 +753,12 @@
                                 <span>Salir del Panel</span>
                             </button>
                             
-                            <!-- Botón oculto para compatibilidad con scripts de navegación -->
+                            
                             <button type="button" id="btn-close-admin-header" style="display: none;"></button>
                         </div>
                     </div>
 
-                    <!-- Fila Inferior: Secciones de Navegación del Panel -->
+                    
                     <div class="admin-navbar-row-bottom">
                         <nav class="admin-nav-tabs">
                             <button type="button" id="tab-btn-dashboard" class="admin-nav-btn active">
@@ -793,19 +793,19 @@
                     </div>
                 </header>
 
-                <!-- Área de contenido principal -->
+                
                 <main class="admin-main">
                     <div class="admin-content-area">
 
                     <div class="admin-content-inner">
-                        <!-- 1. DASHBOARD MODULE -->
+                        
                         <div id="admin-dashboard-view" class="admin-section-view">
                             <div class="welcome-header">
                                 <h2>¡Hola, Administrador! 👋</h2>
                                 <p>Gestioná tu catálogo, la composición del Home y la configuración visual del sitio desde un solo lugar.</p>
                             </div>
 
-                            <!-- Panel de métricas -->
+                            
                             <div class="stats-grid">
                                 <div class="stat-card">
                                     <div class="stat-card-icon" style="background: rgba(180, 132, 108, 0.1); color: var(--primary-color);">
@@ -845,10 +845,10 @@
                                 </div>
                             </div>
 
-                            <!-- Dashboard Layout de 2 Columnas -->
+                            
                             <div class="dashboard-columns">
                                 <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                                    <!-- GitHub Publish Card -->
+                                    
                                     <div class="admin-card github-publish-panel" style="border: 1.5px solid #CBD5E1; background: #F8FAFC; border-radius: var(--radius-md); padding: 1.25rem;">
                                         <header class="admin-page-header" style="margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0;">
                                             <h3 class="admin-header-title" style="color: #1E293B; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0;">
@@ -920,7 +920,7 @@
                                         </button>
                                     </div>
 
-                                    <!-- Tarjeta Modo Vacaciones -->
+                                    
                                     <div class="admin-card vacation-selector-panel" style="border: 1.5px solid #E2E8F0; background: #FFFFFF; border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.5rem;">
                                         <header class="admin-page-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0;">
                                             <h3 class="admin-header-title" style="color: #1E293B; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0;">
@@ -984,7 +984,7 @@
                             </div>
                         </div>
 
-                        <!-- 1.5 OFFERS MODULE -->
+                        
                         <div id="admin-offers-view" class="admin-section-view" style="display: none;">
                             <div class="admin-card">
                                 <header class="admin-page-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
@@ -1003,12 +1003,12 @@
                                 </header>
 
                                 <div id="admin-offers-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
-                                    <!-- Inyectado dinámicamente -->
+                                    
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Modal Pro para Crear/Editar Oferta -->
+                        
                         <div id="admin-offer-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); z-index: 10000; align-items: center; justify-content: center; padding: 1rem; overflow-y: auto;">
                             <div class="modal-card" style="background: var(--bg-card, #ffffff); width: 100%; max-width: 860px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); max-height: 92vh; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(255,255,255,0.2);">
                                 <header style="padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border-color, #e5e7eb); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #18181b, #27272a); color: white;">
@@ -1023,10 +1023,10 @@
                                 </header>
 
                                 <form id="admin-offer-form" style="display: flex; flex-direction: column; flex: 1; min-height: 0; overflow: hidden; background: #f8fafc;">
-                                    <!-- Contenedor en 1 Sola Columna Espaciosa y Vertical -->
+                                    
                                     <div style="display: flex; flex-direction: column; gap: 1.25rem; padding: 1.5rem; overflow-y: auto; flex: 1; width: 100%; box-sizing: border-box;" class="offer-modal-grid">
                                         
-                                        <!-- 1. Información General con Auto-relleno Inteligente -->
+                                        
                                         <div style="background: white; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
                                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px;">
                                                 <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
@@ -1050,7 +1050,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- 2. Precios & Descuento Promocional -->
+                                        
                                         <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 1.5px solid #86efac; border-radius: 14px; padding: 1.2rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.06);">
                                             <h4 style="margin: 0 0 0.85rem 0; font-size: 0.95rem; font-weight: 800; color: #166534; display: flex; align-items: center; justify-content: space-between;">
                                                 <span style="display: flex; align-items: center; gap: 8px;">
@@ -1080,7 +1080,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- 3. Armado de Combo (Productos Componentes) -->
+                                        
                                         <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
                                             <h4 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
                                                 <span class="material-symbols-outlined" style="color: var(--primary-color);">add_shopping_cart</span> 3. Productos Componentes del Combo
@@ -1090,7 +1090,7 @@
                                             
                                             <label style="font-size: 0.8rem; font-weight: 700; color: #64748b; margin-bottom: 5px;">Catálogo Disponible para Agregar:</label>
                                             <div id="offer-available-products-list" style="height: 200px; overflow-y: auto; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 6px; margin-bottom: 1.2rem;">
-                                                <!-- Productos disponibles -->
+                                                
                                             </div>
 
                                             <label style="font-size: 0.85rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
@@ -1098,11 +1098,11 @@
                                                 <span id="offer-selected-count-badge" style="background: var(--primary-color, #c0510a); color: white; font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; font-weight: 800;">0 items</span>
                                             </label>
                                             <div id="offer-selected-items-list" style="min-height: 180px; overflow-y: auto; max-height: 420px; background: #fafafa; border: 1.5px dashed #cbd5e1; border-radius: 14px; padding: 0.75rem;">
-                                                <!-- Items seleccionados -->
+                                                
                                             </div>
                                         </div>
 
-                                        <!-- 4. Foto de Portada -->
+                                        
                                         <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
                                             <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
                                                 <span class="material-symbols-outlined" style="color: #8b5cf6;">image</span> 4. Foto de Portada de la Oferta
@@ -1118,7 +1118,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- 5. Sello / Cartel Animado -->
+                                        
                                         <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
                                             <h4 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
                                                 <span class="material-symbols-outlined" style="color: #f59e0b;">workspace_premium</span> 5. Elegí el Sello Animado 🏆
@@ -1150,7 +1150,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- 6. Condiciones & Temporizador -->
+                                        
                                         <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03); display: flex; flex-direction: column; gap: 1rem;">
                                             <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
                                                 <span class="material-symbols-outlined" style="color: #2563eb;">tune</span> 6. Condiciones & Temporizador
@@ -1198,7 +1198,7 @@
                             </div>
                         </div>
 
-                        <!-- 2. STOCK MODULE (NATIVO INTEGRADO) -->
+                        
                         <div id="admin-stock-view" class="admin-section-view" style="display: none;">
                             <header class="admin-page-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
                                 <div>
@@ -1216,7 +1216,7 @@
                                 </div>
                             </header>
 
-                            <!-- Buscador e Ingesta Rápida Integrados -->
+                            
                             <div class="admin-stock-search-bar-row" style="margin-bottom: 1.25rem;">
                                 <div class="search-wrapper" style="flex: 1; max-width: 450px; width: 100%;">
                                     <span class="material-symbols-outlined">search</span>
@@ -1228,7 +1228,7 @@
                                 </button>
                             </div>
 
-                            <!-- Tabla Nativa de Stock -->
+                            
                             <div class="admin-table-wrapper" style="overflow-x: auto; border: 1px solid var(--admin-border-color); border-radius: 12px; background: white; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);">
                                 <table class="admin-table" style="width: 100%; border-collapse: collapse;">
                                     <thead>
@@ -1240,66 +1240,66 @@
                                         </tr>
                                     </thead>
                                     <tbody id="admin-stock-table-body">
-                                        <!-- Inyectado nativamente por js/admin-stock-native.js -->
+                                        
                                     </tbody>
                                 </table>
                             </div>
                         </div>
 
-                        <!-- Modal Minimalista Elegante de Edición Rápida de Stock y Foto en Móvil -->
+                        
                         <div id="admin-stock-photo-modal" class="modal-overlay" style="display: none; z-index: 9999; backdrop-filter: blur(8px); background: rgba(15, 23, 42, 0.75);" onclick="if(event.target.id==='admin-stock-photo-modal') window.closeAdminStockPhotoModal()">
                             <div class="modal-content" style="max-width: 400px; width: 90%; padding: 0; overflow: hidden; border-radius: 20px; background: #0F172A; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); position: relative;">
                                 
-                                <!-- Botón de cierre elegante -->
+                                
                                 <button onclick="window.closeAdminStockPhotoModal()" style="position: absolute; top: 12px; right: 12px; border: none; background: rgba(0,0,0,0.5); color: white; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; backdrop-filter: blur(4px);">
                                     <span class="material-symbols-outlined" style="font-size: 20px;">close</span>
                                 </button>
 
-                                <!-- Imagen principal con degradado inferior -->
+                                
                                 <div style="position: relative; width: 100%; height: 320px; background: #020617; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                                     <img id="admin-stock-modal-img" src="" alt="Foto" style="width: 100%; height: 100%; object-fit: cover;">
                                     
-                                    <!-- Overlay de Degradado para texto -->
+                                    
                                     <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.6) 45%, transparent 100%); pointer-events: none;"></div>
 
-                                    <!-- Datos sobre el margen inferior de la imagen -->
+                                    
                                     <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem; z-index: 5; text-align: left;">
                                         <span id="admin-stock-modal-code" style="font-family: monospace; font-weight: 800; color: #F97316; background: rgba(249, 115, 22, 0.15); border: 1px solid rgba(249, 115, 22, 0.3); padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; display: inline-block; margin-bottom: 6px;"></span>
                                         <h4 id="admin-stock-modal-title" style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #FFFFFF; line-height: 1.25; text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></h4>
                                     </div>
                                 </div>
 
-                                <!-- Panel de Edición Inferior Completo -->
+                                
                                 <div style="padding: 1.25rem; background: #0F172A;">
-                                    <!-- Selector / Lista de Variantes y Acabados -->
+                                    
                                     <div id="admin-stock-modal-variants-container" style="margin-bottom: 0.85rem;">
-                                        <!-- Inyectado dinámicamente si el producto posee variaciones -->
+                                        
                                     </div>
 
                                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
-                                        <!-- Stock -->
+                                        
                                         <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
                                             <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Stock (u)</label>
                                             <input type="number" id="admin-stock-modal-qty" min="0" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #FFFFFF; text-align: center; outline: none;">
                                         </div>
-                                        <!-- Costo -->
+                                        
                                         <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
                                             <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Costo U. ($)</label>
                                             <input type="number" id="admin-stock-modal-cost" min="0" step="100" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #38BDF8; text-align: center; outline: none;">
                                         </div>
-                                        <!-- Venta -->
+                                        
                                         <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
                                             <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Venta Públ ($)</label>
                                             <input type="number" id="admin-stock-modal-price" min="0" step="100" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #4ADE80; text-align: center; outline: none;">
                                         </div>
-                                        <!-- Porcentaje de Ganancia -->
+                                        
                                         <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
                                             <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Ganancia (%)</label>
                                             <input type="number" id="admin-stock-modal-margin" min="0" step="1" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #FACC15; text-align: center; outline: none;">
                                         </div>
                                     </div>
 
-                                    <!-- Botones de Acción -->
+                                    
                                     <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.85rem;">
                                         <button onclick="window.saveAdminStockModalEdit()" style="width: 100%; padding: 0.8rem; font-size: 0.92rem; font-weight: 800; border-radius: 12px; background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); color: white; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);">
                                             💾 Guardar Cambios
@@ -1311,14 +1311,14 @@
                                         </button>
                                     </div>
 
-                                    <!-- Historial Desplegable Extendido -->
+                                    
                                     <div id="admin-stock-modal-history-section" style="display: none; margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem;">
                                         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
                                             <span style="font-size: 0.75rem; font-weight: 800; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em;">📜 Historial Extendido</span>
                                             <span style="font-size: 0.7rem; color: #64748B; font-weight: 700;">Últimos 20 eventos</span>
                                         </div>
                                         <div id="admin-stock-modal-history-list" style="max-height: 180px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; padding-right: 4px;">
-                                            <!-- Inyectado dinámicamente -->
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -1326,7 +1326,7 @@
                             </div>
                         </div>
 
-                        <!-- Modal de Carga Rápida de Nuevo Producto (Borrador No Visible) -->
+                        
                         <div id="admin-stock-create-modal" class="modal-overlay" style="display: none; z-index: 9999; backdrop-filter: blur(8px); background: rgba(15, 23, 42, 0.75);" onclick="if(event.target.id==='admin-stock-create-modal') window.closeAdminStockCreateModal()">
                             <div class="modal-content" style="max-width: 420px; width: 90%; padding: 1.5rem; overflow: hidden; border-radius: 20px; background: #0F172A; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); position: relative; color: white;">
                                 
@@ -1345,27 +1345,27 @@
                                 </div>
 
                                 <form id="admin-stock-create-form" onsubmit="window.saveAdminStockCreateProduct(event)" style="display: flex; flex-direction: column; gap: 0.85rem;">
-                                    <!-- Categoría -->
+                                    
                                     <div>
                                         <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Categoría:</label>
                                         <select id="admin-stock-new-cat" onchange="window.updateAdminStockNewProdAutoId()" style="width: 100%; padding: 0.65rem; background: #1E293B; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; color: white; font-weight: 700; outline: none; font-size: 0.88rem;">
-                                            <!-- Inyectado dinámicamente -->
+                                            
                                         </select>
                                     </div>
 
-                                    <!-- ID Asignado Automáticamente (Base36) -->
+                                    
                                     <div>
                                         <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Código de Producto (DNI Auto-Asignado):</label>
                                         <input type="text" id="admin-stock-new-id" readonly style="width: 100%; padding: 0.6rem; background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 8px; font-family: monospace; font-size: 1rem; font-weight: 800; color: #F97316; text-align: center;">
                                     </div>
 
-                                    <!-- Nombre -->
+                                    
                                     <div>
                                         <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Nombre del Producto:</label>
                                         <input type="text" id="admin-stock-new-title" required placeholder="Ej: Mesa Matera Rústica" style="width: 100%; padding: 0.65rem; background: #1E293B; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; color: white; font-weight: 700; outline: none; font-size: 0.9rem;">
                                     </div>
 
-                                    <!-- Grilla de Costo y Stock Inicial -->
+                                    
                                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
                                         <div>
                                             <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Costo U. ($):</label>
@@ -1377,11 +1377,11 @@
                                         </div>
                                     </div>
 
-                                    <!-- Foto / Cámara Móvil -->
+                                    
                                     <div>
                                         <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 4px;">Foto de Referencia (Cámara o Archivo):</label>
                                         <div style="display: flex; gap: 8px; align-items: center;">
-                                            <!-- Input de archivo con capture="environment" para abrir la cámara directa en celulares -->
+                                            
                                             <input type="file" id="admin-stock-new-photo-file" accept="image/*" capture="environment" style="display: none;" onchange="window.handleAdminStockCameraPhotoSelect(this)">
                                             
                                             <button type="button" onclick="document.getElementById('admin-stock-new-photo-file').click()" style="flex: 1; padding: 0.65rem; border-radius: 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: white; font-size: 0.82rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
@@ -1389,7 +1389,7 @@
                                                 <span id="admin-stock-new-photo-btn-text">📷 Tomar Foto / Elegir</span>
                                             </button>
 
-                                            <!-- Previsualización -->
+                                            
                                             <img id="admin-stock-new-photo-preview" src="img/logo_provisional.png" alt="Preview" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2);">
                                         </div>
                                     </div>
@@ -1397,7 +1397,7 @@
                                     <button type="submit" style="width: 100%; padding: 0.85rem; font-size: 0.95rem; font-weight: 800; border-radius: 12px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; border: none; cursor: pointer; margin-top: 0.5rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);">
                                         ✨ Guardar Borrador Privado
                                     </button>
-                        <!-- Modal de Enlaces / Vista Web del Producto -->
+                        
                         <div id="admin-stock-links-modal" class="modal-overlay" style="display: none; z-index: 9999; backdrop-filter: blur(8px); background: rgba(15, 23, 42, 0.75);" onclick="if(event.target.id==='admin-stock-links-modal') window.closeAdminStockLinksModal()">
                             <div class="modal-content" style="max-width: 420px; width: 90%; padding: 1.5rem; border-radius: 20px; background: #0F172A; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white; text-align: left;">
                                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
@@ -1415,16 +1415,16 @@
                                 </p>
 
                                 <div id="admin-stock-links-list" style="display: flex; flex-direction: column; gap: 0.75rem;">
-                                    <!-- Inyectado dinámicamente -->
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                        <!-- 2. CATALOG MODULE -->
+                        
                         <div id="admin-catalog-view" class="admin-section-view" style="display: none;">
-                            <!-- Fase 1: Árbol de Categorías -->
+                            
                             <div id="admin-categories-view">
                                 <div class="admin-card">
                                     <header class="admin-page-header">
@@ -1446,11 +1446,11 @@
                                         </div>
                                     </div>
                                     <div id="admin-category-tree" class="category-tree-container" style="margin-top: 0.5rem;">
-                                        <!-- Árbol inyectado dinámicamente -->
+                                        
                                     </div>
                                 </div>
 
-                                <!-- Fase 1b: Gestión de Alquileres -->
+                                
                                 <div id="admin-rentals-view" class="admin-card">
                                     <header class="admin-page-header">
                                         <h3 class="admin-header-title">
@@ -1472,14 +1472,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="admin-rentals-table-body">
-                                                <!-- Alquileres inyectados dinámicamente -->
+                                                
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Fase 2: Vista de Productos -->
+                            
                             <div id="admin-products-view" class="admin-card" style="display: none;">
                                 <header class="admin-page-header">
                                     <h3 id="admin-products-title" class="admin-header-title">
@@ -1494,7 +1494,7 @@
                                     </div>
                                 </header>
 
-                                <!-- Barra de búsqueda y filtro -->
+                                
                                 <div class="admin-filters-bar">
                                     <div class="search-wrapper">
                                         <span class="material-symbols-outlined">search</span>
@@ -1502,7 +1502,7 @@
                                     </div>
                                     <div class="filter-wrapper">
                                         <select id="admin-category-filter">
-                                            <!-- Categorías cargadas dinámicamente -->
+                                            
                                         </select>
                                     </div>
                                     <div class="filter-wrapper">
@@ -1515,7 +1515,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Tabla de productos -->
+                                
                                 <div class="admin-table-responsive">
                                     <table class="admin-products-table">
                                         <thead>
@@ -1528,12 +1528,12 @@
                                             </tr>
                                         </thead>
                                         <tbody id="admin-products-table-body">
-                                            <!-- Filas inyectadas por JS -->
+                                            
                                         </tbody>
                                     </table>
                                 </div>
 
-                                <!-- Controles de paginación -->
+                                
                                 <div class="admin-pagination-container">
                                     <button type="button" id="btn-admin-prev" class="btn-outline">
                                         <span class="material-symbols-outlined">chevron_left</span> Anterior
@@ -1546,10 +1546,10 @@
                             </div>
                         </div>
 
-                        <!-- 3. CONFIGURACIÓN DE PÁGINAS (Enfoque por Página) -->
+                        
                         <div id="admin-pages-view" class="admin-section-view" style="display: none;">
 
-                            <!-- Cabecera de Sección -->
+                            
                             <div class="pages-section-header">
                                 <div>
                                     <h2 class="admin-header-title"><span class="material-symbols-outlined">view_quilt</span> Páginas & Banners</h2>
@@ -1557,10 +1557,10 @@
                                 </div>
                             </div>
 
-                            <!-- MAPA DEL SITIO: Grid de Tarjetas de Página (siempre visible) -->
+                            
                             <div class="pages-map-grid">
 
-                                <!-- Grupo: Principales -->
+                                
                                 <div class="pages-map-group">
                                     <span class="pages-map-group-label">Principales</span>
                                     <div class="pages-map-row">
@@ -1591,7 +1591,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Grupo: Información -->
+                                
                                 <div class="pages-map-group">
                                     <span class="pages-map-group-label">Información</span>
                                     <div class="pages-map-row">
@@ -1616,7 +1616,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Grupo: Comercial -->
+                                
                                 <div class="pages-map-group">
                                     <span class="pages-map-group-label">Comercial</span>
                                     <div class="pages-map-row">
@@ -1635,9 +1635,9 @@
                                     </div>
                                 </div>
 
-                            </div><!-- /pages-map-grid -->
+                            </div>
 
-                            <!-- PANEL EDITOR: aparece debajo del mapa, muestra la página seleccionada -->
+                            
                             <div class="page-editor-panel">
                                 <div class="page-editor-panel-header">
                                     <span id="page-editor-back-icon" class="material-symbols-outlined page-editor-back">arrow_back</span>
@@ -1645,9 +1645,9 @@
                                 </div>
                                 <div id="page-editor-content">
 
-                                    <!-- PÁGINA: INICIO (HOME) -->
+                                    
                                     <div id="subview-page-home" class="admin-subview" style="display: block;">
-                                        <!-- 1. Configuración de Menú -->
+                                        
                                         <div class="admin-card">
                                             <header class="admin-page-header">
                                                 <h3 class="admin-header-title">
@@ -1658,7 +1658,7 @@
                                             <div id="admin-config-menu-home" class="sections-list-stack"></div>
                                         </div>
                                         
-                                        <!-- 2. Orden de Secciones -->
+                                        
                                         <div class="admin-card">
                                             <header class="admin-page-header">
                                                 <h3 class="admin-header-title">
@@ -1674,7 +1674,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- PÁGINA: CATEGORÍAS (EXPLORAR) -->
+                                    
                                     <div id="subview-page-categories" class="admin-subview" style="display: none;">
                                         <div class="admin-card">
                                             <header class="admin-page-header">
@@ -1700,7 +1700,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- PÁGINA: AVISOS -->
+                                    
                                     <div id="subview-page-avisos" class="admin-subview" style="display: none;">
                                         <div class="admin-card">
                                             <header class="admin-page-header">
@@ -1726,7 +1726,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- PÁGINA: NOSOTROS -->
+                                    
                                     <div id="subview-page-nosotros" class="admin-subview" style="display: none;">
                                         <div class="admin-card">
                                             <header class="admin-page-header">
@@ -1792,7 +1792,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- PÁGINA: CARRITO -->
+                                    
                                     <div id="subview-page-cart" class="admin-subview" style="display: none;">
                                         <div class="admin-card">
                                             <header class="admin-page-header">
@@ -1817,7 +1817,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- PÁGINA: VIDEOS -->
+                                    
                                     <div id="subview-page-videos" class="admin-subview" style="display: none;">
                                         <div class="admin-card">
                                             <header class="admin-page-header">
@@ -1842,7 +1842,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- PÁGINA: CATÁLOGO -->
+                                    
                                     <div id="subview-page-catalogo" class="admin-subview" style="display: none;">
                                         <div class="admin-card">
                                             <header class="admin-page-header">
@@ -1867,7 +1867,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- PÁGINA: BUSCAR -->
+                                    
                                     <div id="subview-page-search" class="admin-subview" style="display: none;">
                                         <div class="admin-card">
                                             <header class="admin-page-header">
@@ -1892,9 +1892,9 @@
                                         </div>
                                     </div>
 
-                                    <!-- PÁGINA: MAYORISTA -->
+                                    
                                     <div id="subview-page-mayorista" class="admin-subview" style="display: none;">
-                                        <!-- Barra de sub-pestañas interna -->
+                                        
                                         <div class="admin-sub-tabs-bar" style="display: flex; gap: 8px; margin-bottom: 1.25rem; border-bottom: 1.5px solid #E2E8F0; padding-bottom: 0.5rem;">
                                             <button type="button" class="admin-sub-tab active" data-subtab-target="admin-may-prices-subtab" style="padding: 0.6rem 1.25rem; border: none; background: transparent; font-size: 0.9rem; font-weight: 600; color: #64748B; cursor: pointer; display: flex; align-items: center; gap: 6px; border-radius: 6px; transition: all 0.2s;">
                                                 <span class="material-symbols-outlined" style="font-size: 18px;">payments</span>
@@ -1906,7 +1906,7 @@
                                             </button>
                                         </div>
 
-                                        <!-- PESTAÑA 1: TABLA DE PRECIOS MASIVOS -->
+                                        
                                         <div id="admin-may-prices-subtab" class="admin-subtab-content">
                                             <div class="admin-card">
                                                 <header class="admin-page-header">
@@ -1948,14 +1948,14 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody id="admin-may-prices-tbody">
-                                                            <!-- Cargado dinámicamente -->
+                                                            
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- PESTAÑA 2: CONFIGURACIÓN GENERAL Y CUENTAS -->
+                                        
                                         <div id="admin-may-config-subtab" class="admin-subtab-content" style="display: none;">
                                             <div class="admin-card">
                                                 <header class="admin-page-header">
@@ -1984,7 +1984,7 @@
                                                         </div>
                                                     </div>
                                                     
-                                                    <!-- Métodos de Pago Dinámicos -->
+                                                    
                                                     <div style="border-top: 1.5px solid #E2E8F0; margin-top: 1rem; padding-top: 1.5rem;">
                                                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                                                             <h4 style="margin: 0; font-size: 0.95rem; font-weight: 600; color: #1E293B;">Métodos de Pago y Condiciones</h4>
@@ -1993,7 +1993,7 @@
                                                             </button>
                                                         </div>
                                                         <div id="admin-payment-methods-list" style="display: flex; flex-direction: column; gap: 1rem;">
-                                                            <!-- Los métodos de pago se inyectarán aquí vía JS -->
+                                                            
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -2011,12 +2011,12 @@
                                         </div>
                                     </div>
 
-                                </div><!-- /page-editor-content -->
-                            </div><!-- /page-editor-panel -->
+                                </div>
+                            </div>
 
                         </div>
 
-                        <!-- 4. AJUSTES DEL NEGOCIO (SETTINGS) -->
+                        
                         <div id="admin-settings-view" class="admin-section-view" style="display: none;">
                             <div class="welcome-header">
                                 <h2>Ajustes del Negocio ⚙️</h2>
@@ -2140,7 +2140,7 @@
                             </div>
                         </div>
 
-                        <!-- 5. GESTIÓN DE PEDIDOS (ORDERS) -->
+                        
                         <div id="admin-orders-view" class="admin-section-view" style="display: none; height: 80vh;">
                             <iframe src="pedidos/admin.html" style="width: 100%; height: 100%; border: none; border-radius: 12px; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1);"></iframe>
                         </div>
@@ -2152,7 +2152,7 @@
 
     </main>
 
-    <!-- Bottom Navigation Bar -->
+    
     <nav class="bottom-nav">
         <a href="#" class="nav-item active" data-target="view-home">
             <span class="material-symbols-outlined">home</span>
@@ -2177,7 +2177,7 @@
     </nav>
     <div id="admin-toast" class="admin-toast"></div>
 
-                <!-- ── Formulario Modal de Nosotros (Oculto por defecto, con overlay difuminado) ── -->
+                
                 <div id="admin-nosotros-modal" class="modal-overlay" style="display: none;">
                     <div class="modal-content">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
@@ -2185,12 +2185,12 @@
                             <button type="button" id="btn-cancel-nosotros" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cancelar</button>
                         </div>
                         <form id="admin-nosotros-form" class="admin-form">
-                            <!-- Título -->
+                            
                             <div class="form-group">
                                 <label>Título del Bloque</label>
                                 <input type="text" id="admin-nosotros-title" placeholder="ej: Presentación" required>
                             </div>
-                            <!-- Selector de tipo de medio -->
+                            
                             <div class="form-group">
                                 <label>Tipo de Contenido Visual</label>
                                 <div class="media-type-selector" id="nosotros-media-type-selector">
@@ -2213,7 +2213,7 @@
                                 </div>
                             </div>
 
-                            <!-- Panel: Imagen -->
+                            
                             <div id="nosotros-panel-image" class="nosotros-media-panel form-group">
                                 <label>Subir Foto</label>
                                 <input type="file" id="admin-nosotros-image" accept="image/*">
@@ -2221,7 +2221,7 @@
                                 <div id="nosotros-image-preview" style="margin-top:0.5rem; max-width:100%;"></div>
                             </div>
 
-                            <!-- Panel: Video de YouTube -->
+                            
                             <div id="nosotros-panel-video" class="nosotros-media-panel form-group" style="display:none;">
                                 <label>URL del Video de YouTube</label>
                                 <input type="text" id="admin-nosotros-video-url" placeholder="ej: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
@@ -2229,7 +2229,7 @@
                                 <div id="nosotros-video-preview" style="margin-top:0.75rem; border-radius: 10px; overflow:hidden; display:none;"></div>
                             </div>
 
-                            <!-- Panel: Mapa de Google Maps -->
+                            
                             <div id="nosotros-panel-map" class="nosotros-media-panel form-group" style="display:none;">
                                 <label>Lugar a mostrar en el mapa</label>
                                 <input type="text" id="admin-nosotros-map-query" placeholder="ej: Hurlingham, Buenos Aires, Argentina">
@@ -2237,12 +2237,12 @@
                                 <div id="nosotros-map-preview" style="margin-top:0.75rem; border-radius: 10px; overflow:hidden; display:none;"></div>
                                 <button type="button" id="btn-preview-map" class="btn-outline" style="margin-top:0.5rem; width:auto; padding:0.4rem 1rem; font-size:0.85rem;">🗺️ Vista Previa del Mapa</button>
                             </div>
-                            <!-- Descripción -->
+                            
                             <div class="form-group">
                                 <label>Descripción del Bloque</label>
                                 <textarea id="admin-nosotros-description" rows="4" placeholder="Escribí el texto aquí..." required></textarea>
                             </div>
-                            <!-- Lista de Enlaces Dinámicos (Opcional, Múltiples) -->
+                            
                             <div class="form-group" style="background:#f8f9fb; padding:15px; border-radius:10px; border:1px solid #E8ECF0; margin-top:10px;">
                                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                                     <h4 style="margin:0; font-size:0.95rem; color:var(--primary-color);">Enlaces (Opcional)</h4>
@@ -2260,7 +2260,7 @@
                     </div>
                 </div>
 
-                <!-- ── Formulario Modal de Categoría (Oculto por defecto, con overlay difuminado) ── -->
+                
                 <div id="admin-category-modal" class="modal-overlay" style="display: none; z-index: 1200;">
                     <div class="modal-content">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
@@ -2280,7 +2280,7 @@
                                 <label>Rubro al que pertenece</label>
                                 <div style="display: flex; gap: 8px; align-items: center;">
                                     <select id="admin-cat-rubro" style="flex-grow: 1; padding: 0.5rem; border: 1.5px solid var(--border-color, #E2E8F0); border-radius: 8px; font-family: inherit; font-size: 0.9rem;">
-                                        <!-- Cargado dinámicamente -->
+                                        
                                     </select>
                                     <button type="button" id="btn-admin-add-rubro" class="btn-outline" style="width: auto; height: 38px; padding: 0 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: bold; border-radius: 8px;" title="Crear nuevo rubro">+</button>
                                 </div>
@@ -2296,7 +2296,7 @@
                     </div>
                 </div>
 
-                <!-- ── Formulario de Producto (Oculto por defecto, con overlay difuminado) ── -->
+                
                 <div id="admin-product-modal" class="modal-overlay" style="display: none;">
                     <div class="modal-content size-sm" id="admin-product-modal-content">
                         <div class="modal-header-row" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem; gap: 1rem; flex-wrap: wrap;">
@@ -2314,25 +2314,25 @@
                         <form id="admin-form" class="admin-form">
                             <div class="admin-form-columns">
                                 <div class="admin-form-col-left">
-                                    <!-- ID -->
+                                    
                                     <div class="form-group">
                                         <label>ID del Producto (Slug)</label>
                                         <input type="text" id="admin-id" placeholder="ej: cama-casita-natural" required>
                                     </div>
 
-                                    <!-- Título -->
+                                    
                                     <div class="form-group">
                                         <label>Título</label>
                                         <input type="text" id="admin-title" placeholder="ej: Cama Casita" required>
                                     </div>
 
-                                    <!-- Precio de Alquiler (Solo visible en Modo Alquiler) -->
+                                    
                                     <div class="form-group" id="admin-product-rental-price-group" style="display: none;">
                                         <label>Precio de Alquiler (ej: $15.000 / día)</label>
                                         <input type="text" id="admin-product-rental-price" placeholder="ej: $12.000 / día o Consultar">
                                     </div>
 
-                                    <!-- Categoría -->
+                                    
                                     <details id="admin-product-categories-details" class="form-group" style="border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.8rem; background: #F8FAFC; margin-bottom: 0.8rem; cursor: pointer; transition: all 0.2s ease;">
                                         <summary style="display: flex; align-items: center; justify-content: space-between; font-weight: 600; color: var(--text-main); list-style: none; user-select: none; font-size: 0.85rem;">
                                             <span style="display: flex; align-items: center; gap: 0.4rem;">
@@ -2342,20 +2342,20 @@
                                             <span class="material-symbols-outlined expand-arrow" style="font-size: 18px; transition: transform 0.2s;">expand_more</span>
                                         </summary>
                                         <div id="product-categories-checkboxes" style="display:flex; flex-direction:column; gap:0.5rem; padding-top:0.6rem; margin-top:0.6rem; border-top:1px solid #E2E8F0; font-family:var(--font-main); font-size:0.9rem; max-height: 200px; overflow-y: auto; cursor: default;" onclick="event.stopPropagation();">
-                                            <!-- Checkboxes de categorías inyectados dinámicamente -->
+                                            
                                         </div>
                                         <div style="margin-top: 0.5rem; border-top: 1px solid #CBD5E1; padding-top: 0.5rem; cursor: default;" onclick="event.stopPropagation();">
                                             <button type="button" id="btn-create-cat-inline" class="btn-outline" style="width: 100%; max-width: none; padding: 0.4rem; font-size: 0.75rem; border-style: dashed; border-radius: 6px;">+ Crear Nueva Categoría</button>
                                         </div>
                                     </details>
 
-                                    <!-- Descripción -->
+                                    
                                     <div class="form-group">
                                         <label>Descripción</label>
                                         <textarea id="admin-description" rows="3" required></textarea>
                                     </div>
 
-                                    <!-- Video -->
+                                    
                                     <div class="form-group">
                                         <label style="display:flex; align-items:center; gap:0.4rem;">
                                             <span class="material-symbols-outlined" style="font-size:16px; color:var(--primary-color);">smart_display</span>
@@ -2365,7 +2365,7 @@
                                         <small style="color: #64748b; font-size: 0.75rem; display: block; margin-top: 4px;">Pega aquí la ruta del archivo MP4 local para habilitar la vista inmersiva.</small>
                                     </div>
 
-                                    <!-- Opciones Avanzadas -->
+                                    
                                     <details class="form-group" style="border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.8rem; background: #F8FAFC; margin-top: 0.8rem; cursor: pointer; transition: all 0.2s ease;">
                                         <summary style="display: flex; align-items: center; justify-content: space-between; font-weight: 600; color: var(--text-main); list-style: none; user-select: none; font-size: 0.85rem;">
                                             <span style="display: flex; align-items: center; gap: 0.4rem;">
@@ -2375,7 +2375,7 @@
                                             <span class="material-symbols-outlined expand-arrow" style="font-size: 18px; transition: transform 0.2s;">expand_more</span>
                                         </summary>
                                         <div style="padding-top:0.6rem; margin-top:0.6rem; border-top:1px solid #CBD5E1; cursor: default;" onclick="event.stopPropagation();">
-                                            <!-- Variante Opcional (Datos Técnicos) -->
+                                            
                                             <div class="form-group attr-group" style="background:#f8f9fb;padding:1rem;border-radius:10px;border:1.5px solid #E8ECF0;margin-bottom:1rem;">
                                                 <label style="text-transform:none;letter-spacing:0;font-size:0.9rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
                                                     <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-color);">settings</span>
@@ -2391,7 +2391,7 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Etiquetas (Tags) para búsqueda -->
+                                            
                                             <div class="form-group attr-group" style="background:#f8f9fb;padding:1rem;border-radius:10px;border:1.5px solid #E8ECF0;margin-bottom:0;">
                                                 <label style="text-transform:none;letter-spacing:0;font-size:0.9rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
                                                     <span class="material-symbols-outlined" style="font-size:18px;color:var(--primary-color);">sell</span>
@@ -2404,22 +2404,22 @@
                                             </div>
                                         </div>
                                     </details>
-                                </div> <!-- /admin-form-col-left -->
+                                </div> 
 
                                 <div class="admin-form-col-right">
-                                    <!-- Grupos de Acabados / Colores -->
+                                    
                                     <div class="form-group" style="margin-top: 0;">
                                         <label style="font-size:1.1rem; color:var(--primary-color); display:flex; align-items:center; gap:0.5rem; margin-top:0 !important;">
                                             <span class="material-symbols-outlined">palette</span>
                                             Grupos de Acabados / Colores
                                         </label>
                                         <div id="admin-acabados-groups" style="display:flex; flex-direction:column; gap:1.5rem; margin-top:1rem;">
-                                            <!-- Los grupos se insertan acá dinámicamente -->
+                                            
                                         </div>
                                         <button type="button" id="btn-add-acabado-group" class="btn-outline mt-2" style="width:100%; max-width:none; padding:0.8rem; border-style:dashed;">+ Agregar Grupo de Acabado / Color</button>
                                     </div>
-                                </div> <!-- /admin-form-col-right -->
-                            </div> <!-- /admin-form-columns -->
+                                </div> 
+                            </div> 
 
                             <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3; display: flex; flex-direction: column; gap: 0.75rem;">
                                 <div id="admin-product-auto-aviso-container" style="display: flex; align-items: center; gap: 0.5rem;">
@@ -2432,7 +2432,7 @@
                     </div>
                 </div>
 
-                <!-- ── Formulario de Alquiler (Oculto por defecto, con overlay difuminado) ── -->
+                
                 <div id="admin-rental-modal" class="modal-overlay" style="display: none;">
                     <div class="modal-content" style="max-width: 550px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
@@ -2441,31 +2441,31 @@
                         </div>
 
                         <form id="admin-rental-form" class="admin-form">
-                            <!-- ID / Slug -->
+                            
                             <div class="form-group">
                                 <label>ID del Alquiler (Slug único)</label>
                                 <input type="text" id="admin-rental-id" placeholder="ej: podio-reforzado-alquiler" required>
                             </div>
 
-                            <!-- Título -->
+                            
                             <div class="form-group">
                                 <label>Título del Producto</label>
                                 <input type="text" id="admin-rental-title" placeholder="ej: Podio Reforzado para Eventos" required>
                             </div>
 
-                            <!-- Descripción -->
+                            
                             <div class="form-group">
                                 <label>Descripción / Detalles</label>
                                 <textarea id="admin-rental-description" rows="3" placeholder="Detalles del alquiler, medidas, etc..." required></textarea>
                             </div>
 
-                            <!-- Precio -->
+                            
                             <div class="form-group">
                                 <label>Precio de Alquiler (ej: $15.000 / día)</label>
                                 <input type="text" id="admin-rental-price" placeholder="ej: $12.000 / día o Consultar">
                             </div>
 
-                            <!-- Imagen de Portada -->
+                            
                             <div class="form-group">
                                 <label>Foto del Producto (WebP automático)</label>
                                 <div style="display: flex; gap: 1rem; align-items: center;">
@@ -2492,7 +2492,7 @@
                     </div>
                 </div>
 
-                <!-- ── Formulario Modal de Configuración App (Oculto por defecto, con overlay difuminado) ── -->
+                
                 <div id="admin-app-config-modal" class="modal-overlay" style="display: none;">
                     <div class="modal-content">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
@@ -2533,7 +2533,7 @@
                     </div>
                 </div>
 
-                <!-- ── Formulario Modal de Componentes de Vista (Oculto por defecto, con overlay difuminado) ── -->
+                
                 <div id="admin-component-modal" class="modal-overlay" style="display: none;">
                     <div class="modal-content">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
@@ -2543,7 +2543,7 @@
                         <form id="admin-component-form" class="admin-form">
                             <input type="hidden" id="admin-comp-id">
                             
-                            <!-- Tipo de Componente -->
+                            
                             <div class="form-group">
                                 <label>Tipo de Componente</label>
                                 <select id="admin-comp-type" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; transition:border-color 0.2s ease; appearance:auto; cursor:pointer;">
@@ -2553,7 +2553,7 @@
                                 </select>
                             </div>
 
-                            <!-- Posicionamiento del Componente (Solo para Home) -->
+                            
                             <div class="form-group" id="admin-comp-position-group" style="display: none;">
                                 <label>Posición del Componente</label>
                                 <select id="admin-comp-position" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; transition:border-color 0.2s ease; appearance:auto; cursor:pointer;">
@@ -2563,7 +2563,7 @@
                             </div>
 
 
-                            <!-- Panel 1: Banner -->
+                            
                             <div id="comp-panel-banner" class="comp-media-panel form-group">
                                 <div class="form-group" style="margin-bottom:1rem;">
                                     <label>Foto del Banner</label>
@@ -2577,12 +2577,12 @@
                                 </div>
                             </div>
 
-                            <!-- Panel 2: Destacar Producto -->
+                            
                             <div id="comp-panel-product" class="comp-media-panel form-group" style="display:none;">
                                 <div class="form-group" style="margin-bottom:1rem;">
                                     <label>Seleccionar Producto</label>
                                     <select id="admin-comp-product-select" style="width:100%; padding:0.8rem 1rem; border:1.5px solid #E2E8F0; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:white; appearance:auto; cursor:pointer;">
-                                        <!-- Productos cargados dinámicamente -->
+                                        
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -2591,7 +2591,7 @@
                                 </div>
                             </div>
 
-                            <!-- Panel 3: Video Promo -->
+                            
                             <div id="comp-panel-video" class="comp-media-panel form-group" style="display:none;">
                                 <div class="form-group">
                                     <label>URL del Video de YouTube</label>
@@ -2608,7 +2608,7 @@
                     </div>
                 </div>
 
-                <!-- ── Formulario Modal de Icono de Enlace (Oculto por defecto) ── -->
+                
                 <div id="admin-link-modal" class="modal-overlay" style="display: none; z-index: 1300;">
                     <div class="modal-content" style="max-width: 450px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
@@ -2738,7 +2738,7 @@
                 </div>
 
 
-    <!-- Modal Descuentos por Cantidad -->
+    
     <div id="modal-volume-discounts" class="modal-overlay" style="display: none; align-items: center; justify-content: center; z-index: 9999;">
         <div class="modal-card" style="max-width: 500px; width: 90%; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
             <div class="modal-header" style="padding: 1rem 1.5rem; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center;">
@@ -2774,7 +2774,7 @@
                         </tr>
                     </thead>
                     <tbody id="vol-rules-tbody">
-                        <!-- Reglas dinámicas -->
+                        
                     </tbody>
                 </table>
                 <p id="vol-rules-empty" style="text-align: center; color: #94A3B8; font-size: 0.85rem; margin-top: 1rem;">No hay descuentos configurados.</p>
@@ -2785,7 +2785,7 @@
         </div>
     </div>
 
-    <!-- Modal Modificador de Precios Masivos -->
+    
     <div id="modal-bulk-price-modifier" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.4); z-index: 100000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
         <div style="background: white; border-radius: 12px; width: 90%; max-width: 400px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); overflow: hidden;">
             <div class="modal-header" style="padding: 16px 20px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; align-items: center; background: #F8FAFC;">
@@ -2824,7 +2824,7 @@
         </div>
     </div>
 
-    <!-- Modal Crear Nuevo Rubro -->
+    
     <div id="admin-rubro-modal" class="modal-overlay" style="display: none; z-index: 100001; align-items: center; justify-content: center; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(2px);">
         <div class="modal-content" style="max-width: 400px; width: 90%;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
@@ -2847,7 +2847,7 @@
         </div>
     </div>
 
-    <!-- Floating Order Tracking Button (FAB) & Bottom Sheet -->
+    
     <button type="button" id="btn-tracking-fab" class="tracking-fab" title="Seguimiento de Pedido">
         <span class="material-symbols-outlined">local_shipping</span>
     </button>
@@ -2855,12 +2855,12 @@
     <div id="tracking-modal-overlay" class="tracking-modal-overlay">
         <div class="tracking-bottom-sheet" id="tracking-sheet-container">
             <div class="sheet-handle"></div>
-            <!-- Header flotante absoluto -->
+            
             <div class="sheet-header" style="position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: flex-end; padding: 12px 16px; box-sizing: border-box; z-index: 10; border: none; background: transparent; pointer-events: none;">
                 <button type="button" class="sheet-close-btn" id="btn-close-tracking-sheet" onclick="if (window.closeTrackingSheet) window.closeTrackingSheet();" style="pointer-events: auto; background: none; border: none; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 1.75rem; font-weight: 300; cursor: pointer; transition: color 0.2s; outline: none;" title="Cerrar modal">&times;</button>
             </div>
             <div class="sheet-body">
-                <!-- Vista 1: Formulario de búsqueda nativo -->
+                
                 <div class="tracking-search-view" id="tracking-search-view" style="padding: 2.5rem 1.5rem; text-align: center;">
                     <span class="material-symbols-outlined" style="font-size: 64px; color: var(--primary-color, #A0715B); margin-bottom: 1rem; display: block;">local_shipping</span>
                     <h2 style="margin: 0 0 0.5rem 0; font-size: 1.4rem; font-weight: 800; color: #0f172a;">¿Cómo viene tu pedido?</h2>
@@ -2881,10 +2881,10 @@
                     </form>
                 </div>
 
-                <!-- Vista 2: Iframe con el resultado (oculto por defecto) -->
+                
                 <iframe src="about:blank" id="tracking-sheet-iframe" class="sheet-iframe" title="Seguimiento de Compra" style="display: none; width: 100%; height: 100%; border: none;"></iframe>
 
-                <!-- Vista 3: Pantalla de error (oculta por defecto) -->
+                
                 <div class="tracking-error-view" id="tracking-error-view" style="display: none; padding: 2.5rem 1.5rem; text-align: center; height: 100%; box-sizing: border-box; flex-direction: column; justify-content: center; align-items: center; background: #faf9f6;">
                     <span class="material-symbols-outlined" style="font-size: 64px; color: #dc2626; margin-bottom: 1rem; display: block;">error</span>
                     <h2 style="margin: 0 0 0.75rem 0; font-size: 1.3rem; font-weight: 800; color: #0f172a; line-height: 1.4;">Pedido no encontrado</h2>
@@ -2906,7 +2906,7 @@
         </div>
     </div>
 
-    <!-- Script de control del Bottom Sheet de seguimiento -->
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const trackingOverlay = document.getElementById('tracking-modal-overlay');
@@ -3016,7 +3016,7 @@
         });
     </script>
 
-    <!-- Scripts -->
+    
     <script src="js/orders-config.js?v=26" defer></script>
     <script src="js/orders-data.js?v=26" defer></script>
     <script src="js/confetti-arg.js?v=2" defer></script>
@@ -3046,7 +3046,7 @@
     <script src="js/admin-rentals.js?v=1" defer></script>
     <script src="js/admin-offers.js?v=1" defer></script>
     <script src="js/admin-pages.js?v=4" defer></script>
-    <!-- Módulo de avisos eliminado, lógica unificada en ui.js -->
+    
     <script src="js/carrito.js?v=8" defer></script>
     <script src="js/main.js?v=5" defer></script>
     <script src="js/categorias.js?v=1" defer></script>
