@@ -35,16 +35,34 @@ async function build() {
         console.error('❌ Error generando meta-catalog.csv:', err);
     }
 
-    console.log('🧹 Limpiando carpeta docs...');
-    fs.emptyDirSync(distDir);
+    console.log('📂 Sincronizando carpeta docs...');
+    fs.ensureDirSync(distDir);
+
+    const smartCopySync = (src, dest) => {
+        fs.copySync(src, dest, {
+            overwrite: true,
+            errorOnExist: false,
+            filter: (srcPath, destPath) => {
+                try {
+                    const srcStat = fs.statSync(srcPath);
+                    if (srcStat.isDirectory()) return true;
+                    if (!fs.existsSync(destPath)) return true;
+                    const destStat = fs.statSync(destPath);
+                    return srcStat.mtimeMs > destStat.mtimeMs || srcStat.size !== destStat.size;
+                } catch (e) {
+                    return true;
+                }
+            }
+        });
+    };
 
     // 1. Copiar carpetas estáticas que no requieren minificación
     const foldersToCopy = ['img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'pedidos', 'apps'];
     for (const folder of foldersToCopy) {
         const folderSrc = path.join(srcDir, folder);
         if (fs.existsSync(folderSrc)) {
-            console.log(`📂 Copiando carpeta ${folder}...`);
-            fs.copySync(folderSrc, path.join(distDir, folder));
+            console.log(`📂 Sincronizando carpeta ${folder}...`);
+            smartCopySync(folderSrc, path.join(distDir, folder));
         }
     }
 
