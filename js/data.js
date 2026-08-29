@@ -283,22 +283,54 @@ if (Array.isArray(window.sessionAvisos)) {
         }
 
         if (prodId) {
+            const decodedProdId = decodeURIComponent(prodId).trim().toLowerCase();
             let targetCover = null;
+
             if (window.sessionProducts && Array.isArray(window.sessionProducts)) {
                 for (const cat of window.sessionProducts) {
                     if (cat.products) {
-                        const found = cat.products.find(p => p.id === prodId);
-                        if (found && found.image) {
-                            targetCover = found.image;
-                            break;
+                        const found = cat.products.find(p => {
+                            if (!p) return false;
+                            const pId = (p.id || '').trim().toLowerCase();
+                            const pTitle = (p.title || '').trim().toLowerCase();
+                            return pId === decodedProdId || pTitle === decodedProdId;
+                        });
+
+                        if (found) {
+                            if (found.acabados_groups && found.acabados_groups.length > 0) {
+                                for (const g of found.acabados_groups) {
+                                    if (g && !g.hidden) {
+                                        targetCover = g.cover_image || (g.images_list && g.images_list[0]);
+                                        if (targetCover) break;
+                                    }
+                                }
+                                if (!targetCover && found.acabados_groups[0]) {
+                                    targetCover = found.acabados_groups[0].cover_image || (found.acabados_groups[0].images_list && found.acabados_groups[0].images_list[0]);
+                                }
+                            }
+                            if (!targetCover && found.image) {
+                                targetCover = Array.isArray(found.image) ? found.image[0] : found.image;
+                            }
+                            if (targetCover) break;
                         }
                     }
                 }
             }
+
             if (!targetCover && window.sessionRentals && Array.isArray(window.sessionRentals)) {
-                const found = window.sessionRentals.find(r => r.id === prodId);
-                if (found && found.image) {
-                    targetCover = found.image;
+                const found = window.sessionRentals.find(r => {
+                    if (!r) return false;
+                    const rId = (r.id || '').trim().toLowerCase();
+                    const rTitle = (r.title || '').trim().toLowerCase();
+                    return rId === decodedProdId || rTitle === decodedProdId;
+                });
+                if (found) {
+                    if (found.acabados_groups && found.acabados_groups.length > 0) {
+                        targetCover = found.acabados_groups[0].cover_image || (found.acabados_groups[0].images_list && found.acabados_groups[0].images_list[0]);
+                    }
+                    if (!targetCover && found.image) {
+                        targetCover = Array.isArray(found.image) ? found.image[0] : found.image;
+                    }
                 }
             }
 

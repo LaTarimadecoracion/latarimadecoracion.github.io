@@ -71,7 +71,7 @@
                     mediaHtml = `
                     <div class="aviso-card-img-wrapper">
                         <span class="aviso-badge-nuevo">NUEVO INGRESO</span>
-                        <img src="${block.image}" alt="${cleanTitle}" class="aviso-card-img lazy-img" loading="lazy" onload="this.classList.add('loaded')">
+                        <img src="${block.image}" alt="${cleanTitle}" class="aviso-card-img lazy-img loaded" style="opacity: 1;" loading="lazy" onload="this.classList.add('loaded')" onerror="this.src='img/logo_provisional.png'; this.classList.add('loaded');">
                     </div>`;
                 } else if (mType === 'video' && block.videoUrl) {
                     const ytId = extractYouTubeId(block.videoUrl);
