@@ -31,42 +31,73 @@
     let adminUX20Initialized = false;
 
 function initAdminUX20() {
+    const mainTabBtn = document.getElementById('tab-btn-dashboard');
+    if (!mainTabBtn) {
+        adminUX20Initialized = false;
+        return;
+    }
     if (adminUX20Initialized) return;
     adminUX20Initialized = true;
 
-    // --- LISTENERS DE CORE / NAVEGACIÓN ---
-        // --- LISTENERS DE PESTAÑAS (TABS) DEL DASHBOARD (V2) ---
-        const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'stock', 'pages', 'orders', 'maintenance'];
-        tabs.forEach(tab => {
-            const btn = document.getElementById(`tab-btn-${tab}`);
-            if (btn) {
-                btn.addEventListener('click', () => {
-                    currentAdminTab = tab;
-                    if (tab === 'pages') {
-                        switchAdminSubtab('page-home');
-                    }
-                    renderAdminUX();
-                });
-            }
-        });
-
-        // --- LISTENERS DE SUB-PESTAÑAS DE PÁGINAS ---
-        const subtabBtns = document.querySelectorAll('.admin-pill-tab');
-        subtabBtns.forEach(btn => {
+    // --- LISTENERS DE CORE / NAVEGACIÓN (V2) ---
+    const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'stock', 'pages', 'orders', 'maintenance'];
+    tabs.forEach(tab => {
+        const btn = document.getElementById(`tab-btn-${tab}`);
+        if (btn) {
             btn.addEventListener('click', () => {
-                const targetSubtab = btn.getAttribute('data-subtab');
-                switchAdminSubtab(targetSubtab);
-            });
-        });
-
-        // Botón de retroceso de productos a categorías
-        const btnBackToCategories = document.getElementById('btn-back-to-categories');
-        if (btnBackToCategories) {
-            btnBackToCategories.addEventListener('click', () => {
-                currentAdminPhase = 'categories';
+                currentAdminTab = tab;
+                if (tab === 'pages') {
+                    switchAdminSubtab('page-home');
+                }
                 renderAdminUX();
             });
         }
+    });
+
+    // Delegación global de clics para pestañas, subpestañas y ancho del panel
+    if (!window._adminNavigationDelegated) {
+        window._adminNavigationDelegated = true;
+        document.addEventListener('click', (e) => {
+            const navBtn = e.target.closest('.admin-nav-btn');
+            if (navBtn && navBtn.id && navBtn.id.startsWith('tab-btn-')) {
+                const tabKey = navBtn.id.replace('tab-btn-', '');
+                currentAdminTab = tabKey;
+                if (tabKey === 'pages') switchAdminSubtab('page-home');
+                renderAdminUX();
+                return;
+            }
+
+            const subtabBtn = e.target.closest('.admin-pill-tab');
+            if (subtabBtn) {
+                const targetSubtab = subtabBtn.getAttribute('data-subtab');
+                if (targetSubtab) switchAdminSubtab(targetSubtab);
+                return;
+            }
+
+            const widthTab = e.target.closest('.admin-width-tab');
+            if (widthTab) {
+                const widthMode = widthTab.getAttribute('data-width') || 'normal';
+                const container = document.getElementById('admin-layout-container');
+                if (container) {
+                    container.className = `admin-layout width-${widthMode}`;
+                }
+                document.querySelectorAll('.admin-width-tab').forEach(b => {
+                    if (b === widthTab) b.classList.add('active');
+                    else b.classList.remove('active');
+                });
+                return;
+            }
+        });
+    }
+
+    // Botón de retroceso de productos a categorías
+    const btnBackToCategories = document.getElementById('btn-back-to-categories');
+    if (btnBackToCategories) {
+        btnBackToCategories.addEventListener('click', () => {
+            currentAdminPhase = 'categories';
+            renderAdminUX();
+        });
+    }
 
     // Inicializar sub-módulos
     if (typeof window.initSettingsAdmin === 'function') window.initSettingsAdmin();

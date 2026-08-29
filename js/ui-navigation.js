@@ -394,26 +394,15 @@ window.navigateToView = safeRender(navigateToView, 'navigateToView');
 
 window.hideAllViews = hideAllViews;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const btnCloseAdmin = document.getElementById('btn-close-admin');
-    if (btnCloseAdmin) {
-        btnCloseAdmin.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.navigationHistory = [];
-            if(window.navigateToView) window.navigateToView('view-home');
-            if(window.renderHome) window.renderHome();
-        });
+document.addEventListener('click', (e) => {
+    const btnClose = e.target.closest('#btn-close-admin, #btn-close-admin-header');
+    if (btnClose) {
+        e.preventDefault();
+        window.navigationHistory = [];
+        if (window.navigateToView) window.navigateToView('view-home');
+        if (window.renderHome) window.renderHome();
     }
-
-    const btnCloseAdminHeader = document.getElementById('btn-close-admin-header');
-    if (btnCloseAdminHeader) {
-        btnCloseAdminHeader.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.navigationHistory = [];
-            if(window.navigateToView) window.navigateToView('view-home');
-            if(window.renderHome) window.renderHome();
-        });
-    }
+});
 
     // Reenvío de gestos de scroll/touch al iframe activo cuando se arrastra por fuera
     let lastTouchY = 0;
@@ -458,4 +447,3 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }, { passive: true });
-});

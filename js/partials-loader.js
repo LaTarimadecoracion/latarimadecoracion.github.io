@@ -39,6 +39,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadPartial('partials/modal-globals.html', 'body')
     ]);
 
+    if (typeof window.initAdminUX20 === 'function') {
+        window.adminUX20Initialized = false;
+        window.initAdminUX20();
+    }
+    if (typeof window.renderAdminUX === 'function') {
+        window.renderAdminUX();
+    }
     if (typeof window.initGithubPublishAdmin === 'function') {
         window.initGithubPublishAdmin();
     }
