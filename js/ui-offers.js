@@ -852,7 +852,7 @@
         overlay.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; transition: opacity 0.25s ease-out; box-sizing: border-box;';
 
         const card = document.createElement('div');
-        card.style.cssText = 'position: relative; max-width: 460px; width: 100%; border-radius: 24px; padding: 1.5rem; background: #ffffff; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35); border: 1px solid #cbd5e1; font-family: var(--font-main); box-sizing: border-box; display: flex; flex-direction: column; align-items: stretch; gap: 0; transform: scale(0.92); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); margin: auto; max-height: 90vh; overflow-y: auto;';
+        card.style.cssText = 'position: relative; max-width: 620px; width: 100%; border-radius: 24px; padding: 1.75rem; background: #ffffff; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35); border: 1px solid #cbd5e1; font-family: var(--font-main); box-sizing: border-box; display: flex; flex-direction: column; align-items: stretch; gap: 0; transform: scale(0.92); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); margin: auto; max-height: 90vh; overflow-y: auto;';
         
         card.innerHTML = `
             <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.85rem; margin-bottom: 1.25rem; box-sizing: border-box;">
@@ -870,11 +870,11 @@
             <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 0.85rem 1.1rem; margin-bottom: 1rem; width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 12px; position: relative;">
                 <div style="min-width: 0; flex: 1;">
                     <div style="font-size: 0.68rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Monto Total a Abonar</div>
-                    <div style="font-size: 0.85rem; font-weight: 800; color: #0f172a; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${offer.title} ${packQty > 1 ? `(x${packQty})` : ''}</div>
+                    <div style="font-size: 0.88rem; font-weight: 800; color: #0f172a; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${offer.title} ${packQty > 1 ? `(x${packQty})` : ''}</div>
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0; position: relative;">
                     <div style="display: flex; align-items: center; gap: 4px;">
-                        <div id="pay-modal-display-price" style="font-size: 1.5rem; font-weight: 900; color: #059669; font-family: var(--font-main); letter-spacing: -0.5px;">
+                        <div id="pay-modal-display-price" style="font-size: 1.55rem; font-weight: 900; color: #059669; font-family: var(--font-main); letter-spacing: -0.5px;">
                             ${formattedOfferPrice}
                         </div>
                         <button type="button" id="btn-pay-info-tooltip" title="Información sobre el precio" style="background: none; border: none; padding: 2px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #0284c7; border-radius: 50%;">
@@ -916,7 +916,7 @@
                     </div>
 
                     <!-- Campos de Datos Fiscales -->
-                    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 4px;">
                         <div>
                             <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
                                 Razón Social / Empresa:
@@ -934,35 +934,37 @@
                 </div>
             </div>
 
-            <!-- Datos de CBU y Alias Lineales Centrados -->
+            <!-- Datos de CBU y Alias Reorganizados en Grid para Desktop PC -->
             <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 1.25rem; width: 100%; box-sizing: border-box;">
                 
-                <!-- Alias Block Lineal Centrado -->
-                <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center;">
-                    <div style="width: 100%;">
-                        <div style="font-size: 0.65rem; color: #64748b; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">ALIAS (SANTANDER / MP)</div>
-                        <div style="font-size: 1.15rem; font-weight: 900; color: #0f172a; font-family: monospace; margin-top: 2px; letter-spacing: 0.5px; word-break: break-all;">${alias}</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; width: 100%; box-sizing: border-box;">
+                    <!-- Alias Block Lineal Centrado -->
+                    <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center; justify-content: space-between;">
+                        <div style="width: 100%;">
+                            <div style="font-size: 0.65rem; color: #64748b; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">ALIAS (SANTANDER / MP)</div>
+                            <div style="font-size: 1.1rem; font-weight: 900; color: #0f172a; font-family: monospace; margin-top: 2px; letter-spacing: 0.5px; word-break: break-all;">${alias}</div>
+                        </div>
+                        <button type="button" id="btn-copy-alias" style="background: #0f172a; color: #ffffff; border: none; border-radius: 8px; padding: 7px 14px; font-weight: 700; font-size: 0.78rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; max-width: 150px; box-sizing: border-box; box-shadow: 0 2px 6px rgba(15,23,42,0.12); margin: 0 auto; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
+                            <span class="material-symbols-outlined" id="copy-alias-icon" style="font-size: 15px;">content_copy</span>
+                            <span id="copy-alias-lbl">Copiar</span>
+                        </button>
                     </div>
-                    <button type="button" id="btn-copy-alias" style="background: #0f172a; color: #ffffff; border: none; border-radius: 8px; padding: 7px 12px; font-weight: 700; font-size: 0.78rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; width: 30%; min-width: 120px; box-sizing: border-box; box-shadow: 0 2px 6px rgba(15,23,42,0.12); margin: 0 auto; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
-                        <span class="material-symbols-outlined" id="copy-alias-icon" style="font-size: 15px;">content_copy</span>
-                        <span id="copy-alias-lbl">Copiar</span>
-                    </button>
-                </div>
 
-                <!-- CBU Block Lineal Centrado -->
-                <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center;">
-                    <div style="width: 100%;">
-                        <div style="font-size: 0.65rem; color: #64748b; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">CBU / CVU</div>
-                        <div style="font-size: 0.92rem; font-weight: 800; color: #0f172a; font-family: monospace; margin-top: 2px; word-break: break-all; letter-spacing: 0.5px;">${cbu}</div>
+                    <!-- CBU Block Lineal Centrado -->
+                    <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center; justify-content: space-between;">
+                        <div style="width: 100%;">
+                            <div style="font-size: 0.65rem; color: #64748b; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">CBU / CVU</div>
+                            <div style="font-size: 0.9rem; font-weight: 800; color: #0f172a; font-family: monospace; margin-top: 2px; word-break: break-all; letter-spacing: 0.5px;">${cbu}</div>
+                        </div>
+                        <button type="button" id="btn-copy-cbu" style="background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; border-radius: 8px; padding: 7px 14px; font-weight: 700; font-size: 0.78rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; max-width: 150px; box-sizing: border-box; margin: 0 auto; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
+                            <span class="material-symbols-outlined" id="copy-cbu-icon" style="font-size: 15px;">content_copy</span>
+                            <span id="copy-cbu-lbl">Copiar</span>
+                        </button>
                     </div>
-                    <button type="button" id="btn-copy-cbu" style="background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; border-radius: 8px; padding: 7px 12px; font-weight: 700; font-size: 0.78rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; width: 30%; min-width: 120px; box-sizing: border-box; margin: 0 auto; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
-                        <span class="material-symbols-outlined" id="copy-cbu-icon" style="font-size: 15px;">content_copy</span>
-                        <span id="copy-cbu-lbl">Copiar</span>
-                    </button>
                 </div>
 
                 <!-- Ficha Oficial del Titular -->
-                <div style="background: #fafafa; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box; font-size: 0.8rem; color: #334155; display: flex; flex-direction: column; gap: 4px; text-align: center;">
+                <div style="background: #fafafa; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box; font-size: 0.8rem; color: #334155; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 8px; text-align: center;">
                     <div>Titular: <strong style="color: #0f172a;">${titular}</strong></div>
                     <div>CUIT/CUIL: <strong style="color: #0f172a;">${cuit}</strong></div>
                     <div>Banco: <strong style="color: #0f172a;">${bank}</strong></div>
@@ -975,15 +977,15 @@
                     🚚 Forma de Entrega Preferida:
                 </div>
                 
-                <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
                     <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: #0f172a; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 10px;">
                         <input type="radio" name="pay-delivery-mode" id="pay-mode-pickup" value="pickup" checked style="accent-color: #0f172a; cursor: pointer;">
-                        <span>🏬 Retiro por Taller / Local (Sin costo)</span>
+                        <span>🏬 Retiro por Taller / Local</span>
                     </label>
 
                     <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: #0f172a; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 10px;">
                         <input type="radio" name="pay-delivery-mode" id="pay-mode-shipping" value="shipping" style="accent-color: #0f172a; cursor: pointer;">
-                        <span>🚚 Necesito Envío a Domicilio / Expreso</span>
+                        <span>🚚 Envío a Domicilio / Expreso</span>
                     </label>
                 </div>
 
@@ -1000,10 +1002,10 @@
                         <input type="text" id="pay-ship-dir" placeholder="Ej: Av. Corrientes 1234, 4to B" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
                         <div>
                             <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                Código Postal (C.P.):
+                                Código Postal:
                             </label>
                             <input type="text" id="pay-ship-cp" placeholder="Ej: 1414" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
                         </div>
@@ -1013,13 +1015,12 @@
                             </label>
                             <input type="text" id="pay-ship-ciudad" placeholder="Ej: Morón / CABA" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
                         </div>
-                    </div>
-
-                    <div>
-                        <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                            Provincia:
-                        </label>
-                        <input type="text" id="pay-ship-provincia" placeholder="Ej: Buenos Aires / Córdoba / Santa Fe" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                        <div>
+                            <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
+                                Provincia:
+                            </label>
+                            <input type="text" id="pay-ship-provincia" placeholder="Ej: Buenos Aires" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1040,7 +1041,7 @@
 
             <!-- Botón Centrado Horizontalmente Minimalista -->
             <div style="display: flex; justify-content: center; width: 100%; box-sizing: border-box; margin-top: 0.25rem;">
-                <button type="button" id="btn-submit-receipt-wa" style="width: 100%; max-width: 380px; justify-content: center; font-size: 0.88rem; font-weight: 800; background: #0f172a; border: 1px solid #0f172a; color: #ffffff; padding: 0.85rem 1.25rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(15,23,42,0.15); cursor: pointer; display: flex; align-items: center; gap: 8px; box-sizing: border-box; letter-spacing: 0.4px; transition: all 0.2s ease-in-out;">
+                <button type="button" id="btn-submit-receipt-wa" style="width: 100%; max-width: 420px; justify-content: center; font-size: 0.9rem; font-weight: 800; background: #0f172a; border: 1px solid #0f172a; color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(15,23,42,0.15); cursor: pointer; display: flex; align-items: center; gap: 8px; box-sizing: border-box; letter-spacing: 0.4px; transition: all 0.2s ease-in-out;">
                     <span class="material-symbols-outlined" style="font-size: 19px; color: #25d366;">chat</span>
                     <span>Enviar Comprobante por WhatsApp</span>
                 </button>
