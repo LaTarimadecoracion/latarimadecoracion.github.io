@@ -93,7 +93,7 @@
                             <!-- Panel de métricas -->
                             <div class="stats-grid">
                                 <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: rgba(180, 132, 108, 0.1); color: var(--primary-color);">
+                                    <div class="stat-card-icon" style="background: var(--admin-accent-light); color: var(--admin-accent);">
                                         <span class="material-symbols-outlined">folder</span>
                                     </div>
                                     <div class="stat-card-info">
@@ -102,7 +102,7 @@
                                     </div>
                                 </div>
                                 <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: rgba(49, 130, 206, 0.1); color: #3182CE;">
+                                    <div class="stat-card-icon" style="background: rgba(37,99,235,0.07); color: #2563EB;">
                                         <span class="material-symbols-outlined">inventory_2</span>
                                     </div>
                                     <div class="stat-card-info">
@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                                 <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
+                                    <div class="stat-card-icon" style="background: rgba(124,58,237,0.07); color: #7C3AED;">
                                         <span class="material-symbols-outlined">palette</span>
                                     </div>
                                     <div class="stat-card-info">
@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
                                 <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: rgba(234, 179, 8, 0.1); color: #eab308;">
+                                    <div class="stat-card-icon" style="background: rgba(217,119,6,0.07); color: var(--admin-warning);">
                                         <span class="material-symbols-outlined">trending_up</span>
                                     </div>
                                     <div class="stat-card-info">
@@ -132,27 +132,26 @@
 
                             <!-- Dashboard Layout de 2 Columnas -->
                             <div class="dashboard-columns">
-                                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                                     <!-- GitHub Publish Card -->
-                                    <div class="admin-card github-publish-panel" style="border: 1.5px solid #CBD5E1; background: #F8FAFC; border-radius: var(--radius-md); padding: 1.25rem;">
-                                        <header class="admin-page-header" style="margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0;">
-                                            <h3 class="admin-header-title" style="color: #1E293B; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0;">
-                                                <span class="material-symbols-outlined" style="color: #0F172A; font-size: 1.4rem;">cloud_upload</span>
-                                                Publicar Cambios a Internet
+                                    <div class="admin-card github-publish-panel">
+                                        <header class="admin-page-header">
+                                            <h3 class="admin-header-title">
+                                                <span class="material-symbols-outlined">cloud_upload</span>
+                                                Publicar a Internet
                                             </h3>
                                         </header>
-                                        <p style="font-size: 0.8rem; color: #64748B; margin-bottom: 1rem; line-height: 1.4;">
-                                            Hace una copia minificada de tu web y la sube automáticamente a GitHub Pages para que todo el mundo vea las actualizaciones en línea.
-                                        </p>
-                                        <button type="button" id="dashboard-github-publish-btn" class="btn-primary btn-publish-trigger" style="background: #0F172A; border: none; color: white; width: 100%; max-width: none; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.75rem; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+                                        <p class="admin-header-desc">Sube una copia minificada de tu web a GitHub Pages para que todos vean las actualizaciones en línea.</p>
+                                        <button type="button" id="dashboard-github-publish-btn" class="btn-publish-dashboard btn-publish-trigger">
                                             <span class="material-symbols-outlined">publish</span>
-                                            <span>Subir Cambios a Internet (GitHub)</span>
+                                            <span>Subir Cambios a Internet</span>
                                         </button>
-                                        <div id="dashboard-publish-status-msg" class="publish-status-indicator" style="margin-top: 0.75rem; font-size: 0.82rem; font-weight: 600; padding: 0.5rem 0.75rem; border-radius: 6px; display: none; line-height: 1.4;"></div>
+                                        <div id="dashboard-publish-status-msg" class="publish-status-indicator" style="display: none;"></div>
                                     </div>
 
+                                    <!-- Acceso Rápido -->
                                     <div class="admin-card action-panel">
-                                        <header class="admin-page-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem;">
+                                        <header class="admin-page-header">
                                             <h3 class="admin-header-title">
                                                 <span class="material-symbols-outlined">bolt</span>
                                                 Acceso Rápido
@@ -182,61 +181,32 @@
                                         </div>
                                     </div>
 
-                                    <div class="admin-card theme-selector-panel">
-                                        <header class="admin-page-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem;">
-                                            <h3 class="admin-header-title">
-                                                <span class="material-symbols-outlined">palette</span>
-                                                Temática de la Web
-                                            </h3>
-                                        </header>
-                                        <p class="section-desc" style="margin-bottom: 0.8rem;">Elegí una skin temática para decorar tu tienda instantáneamente.</p>
-                                        <div class="form-group" style="margin-bottom: 0;">
-                                            <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Skin / Tema Activo:</label>
-                                            <select id="admin-theme-select" class="premium-select">
-                                                <option value="classic">🌲 Madera Clásica (Default)</option>
-                                                <option value="sobrio">⚫ Sobrio V1 (Negro, Blanco y Gris)</option>
-                                                <option value="mundial">⚽ Mes Mundialista (Celeste y Blanco)</option>
-                                                <option value="final-mundial">🏆 ¡Final del Mundial! (Celeste y Oro Premium)</option>
-                                                <option value="navidad">🎅 Navidad (Rojo y Verde)</option>
-                                                <option value="halloween">🎃 Halloween (Naranja y Violeta)</option>
-                                                <option value="valentin">💖 San Valentín (Rosa y Corazones)</option>
-                                                <option value="imperial">✨ Elegancia Imperial (Premium Gold & Obsidian)</option>
-                                            </select>
-                                        </div>
-                                        <button type="button" id="admin-theme-save-btn" class="btn-primary" style="margin-top: 1rem; width: 100%; max-width: none;">
-                                            <span class="material-symbols-outlined">save</span>
-                                            <span>Guardar Temática</span>
-                                        </button>
-                                    </div>
-
                                     <!-- Tarjeta Modo Vacaciones -->
-                                    <div class="admin-card vacation-selector-panel" style="border: 1.5px solid #E2E8F0; background: #FFFFFF; border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.5rem;">
-                                        <header class="admin-page-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #E2E8F0;">
-                                            <h3 class="admin-header-title" style="color: #1E293B; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0;">
-                                                <span class="material-symbols-outlined" style="color: #F76707;">hotel</span>
+                                    <div class="admin-card vacation-selector-panel">
+                                        <header class="admin-page-header">
+                                            <h3 class="admin-header-title">
+                                                <span class="material-symbols-outlined" style="color: var(--admin-warning);">flight_takeoff</span>
                                                 Modo Vacaciones
                                             </h3>
                                         </header>
-                                        <p class="section-desc" style="font-size: 0.8rem; color: #64748B; margin-bottom: 1rem; line-height: 1.4;">
-                                            Activá el cartel de aviso de vacaciones. Las publicaciones y el carrito seguirán activos con los precios congelados.
-                                        </p>
-                                        <div class="form-group" style="margin-bottom: 0.8rem; display: flex; align-items: center; gap: 8px;">
-                                            <input type="checkbox" id="admin-vacation-active" style="width: 18px; height: 18px; cursor: pointer;">
-                                            <label for="admin-vacation-active" style="font-size: 0.85rem; font-weight: 600; cursor: pointer; margin: 0;">Activar Modo Vacaciones</label>
+                                        <p class="admin-header-desc">Activá el cartel de aviso. Las publicaciones y el carrito seguirán activos con los precios congelados.</p>
+                                        <div class="form-group" style="flex-direction: row; align-items: center; gap: 8px;">
+                                            <input type="checkbox" id="admin-vacation-active" style="width: 17px; height: 17px; cursor: pointer; accent-color: var(--admin-accent);">
+                                            <label for="admin-vacation-active" style="cursor: pointer; margin: 0; font-size: 0.86rem;">Activar Modo Vacaciones</label>
                                         </div>
-                                        <div class="form-group" style="margin-bottom: 0.8rem;">
-                                            <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Período de Vacaciones (ej: del 1 al 5):</label>
-                                            <input type="text" id="admin-vacation-start-end" class="premium-input" placeholder="ej: del 1 al 5 de Septiembre" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1.5px solid #CBD5E1; box-sizing: border-box;">
+                                        <div class="form-group">
+                                            <label for="admin-vacation-start-end">Período de Vacaciones:</label>
+                                            <input type="text" id="admin-vacation-start-end" class="premium-input" placeholder="ej: del 1 al 5 de Septiembre">
                                         </div>
-                                        <div class="form-group" style="margin-bottom: 0.8rem;">
-                                            <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Fecha de Entregas (ej: del 7 al 10):</label>
-                                            <input type="text" id="admin-vacation-deliveries" class="premium-input" placeholder="ej: a partir del 7 al 10 de Septiembre" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1.5px solid #CBD5E1; box-sizing: border-box;">
+                                        <div class="form-group">
+                                            <label for="admin-vacation-deliveries">Fecha de Entregas:</label>
+                                            <input type="text" id="admin-vacation-deliveries" class="premium-input" placeholder="ej: a partir del 7 al 10 de Septiembre">
                                         </div>
-                                        <div class="form-group" style="margin-bottom: 1rem;">
-                                            <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">Mensaje Leyenda Adicional:</label>
-                                            <textarea id="admin-vacation-message" class="premium-input" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1.5px solid #CBD5E1; box-sizing: border-box; min-height: 60px; font-family: inherit; font-size: 0.85rem; resize: vertical;" placeholder="ej: Estamos de vacaciones, pero seguimos tomando pedidos con precios congelados."></textarea>
+                                        <div class="form-group">
+                                            <label for="admin-vacation-message">Mensaje adicional:</label>
+                                            <textarea id="admin-vacation-message" class="premium-input" style="min-height: 60px; resize: vertical;" placeholder="ej: Estamos de vacaciones, pero seguimos tomando pedidos con precios congelados."></textarea>
                                         </div>
-                                        <button type="button" id="admin-vacation-save-btn" class="btn-primary" style="width: 100%; max-width: none; background: #F76707; border-color: #F76707; color: white;">
+                                        <button type="button" id="admin-vacation-save-btn" class="btn-primary" style="width: 100%;">
                                             <span class="material-symbols-outlined">save</span>
                                             <span>Guardar Modo Vacaciones</span>
                                         </button>
@@ -244,7 +214,7 @@
                                 </div>
 
                                 <div class="admin-card popular-panel">
-                                    <header class="admin-page-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem;">
+                                    <header class="admin-page-header">
                                         <h3 class="admin-header-title">
                                             <span class="material-symbols-outlined">trending_up</span>
                                             Productos Más Visitados
@@ -257,7 +227,7 @@
                                         </div>
                                     </div>
 
-                                    <header class="admin-page-header" style="margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.5rem;">
+                                    <header class="admin-page-header" style="margin-top: 1.75rem;">
                                         <h3 class="admin-header-title">
                                             <span class="material-symbols-outlined">pie_chart</span>
                                             Visitas por Categoría
@@ -948,7 +918,7 @@
                         <!-- 4. AJUSTES DEL NEGOCIO (SETTINGS) -->
                         <div id="admin-settings-view" class="admin-section-view" style="display: none;">
                             <div class="welcome-header">
-                                <h2>Ajustes del Negocio ⚙️</h2>
+                                <h2>Ajustes del Negocio</h2>
                                 <p>Configurá la identidad de tu negocio, las formas de contacto y el estado de vacaciones en un solo lugar.</p>
                             </div>
 
@@ -959,32 +929,32 @@
                                         Identidad & Aspecto
                                     </h3>
                                 </header>
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem;">
                                     <div class="form-group">
-                                        <label for="admin-settings-title" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">Título de la Tienda</label>
+                                        <label for="admin-settings-title">Título de la Tienda</label>
                                         <input type="text" id="admin-settings-title" class="premium-input" placeholder="Ej: La Tarima">
                                     </div>
                                     <div class="form-group">
-                                        <label for="admin-settings-subtitle" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">Subtítulo o Eslogan</label>
+                                        <label for="admin-settings-subtitle">Subtítulo o Eslogan</label>
                                         <input type="text" id="admin-settings-subtitle" class="premium-input" placeholder="Ej: Diseño en madera">
                                     </div>
                                 </div>
 
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: center;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; align-items: center;">
                                     <div class="form-group">
-                                        <label style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">Logotipo de la Tienda</label>
+                                        <label>Logotipo de la Tienda</label>
                                         <div style="display: flex; align-items: center; gap: 1rem;">
-                                            <img id="admin-settings-logo-preview" src="img/logo_provisional.png" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--admin-border-color);" onerror="this.src='img/logo_provisional.png';">
+                                            <img id="admin-settings-logo-preview" src="img/logo_provisional.png" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--admin-border-color);" onerror="this.src='img/logo_provisional.png';">
                                             <div>
                                                 <input type="file" id="admin-settings-logo-input" accept="image/*" style="display: none;">
-                                                <button type="button" class="btn-primary" onclick="document.getElementById('admin-settings-logo-input').click();" style="font-size:0.8rem; padding: 0.5rem 1rem; width: auto; max-width: none;">Subir nuevo logo</button>
-                                                <p id="admin-settings-logo-status" style="font-size: 0.72rem; color: #64748b; margin: 4px 0 0 0;"></p>
+                                                <button type="button" class="btn-outline" onclick="document.getElementById('admin-settings-logo-input').click();" style="font-size:0.82rem;">Subir nuevo logo</button>
+                                                <p id="admin-settings-logo-status" style="font-size: 0.72rem; color: var(--admin-text-muted); margin: 4px 0 0 0;"></p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="admin-settings-theme-select" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">Skin / Tema Activo</label>
+                                        <label for="admin-settings-theme-select">Skin / Tema Activo</label>
                                         <select id="admin-settings-theme-select" class="premium-select">
                                             <option value="classic">🌲 Madera Clásica (Default)</option>
                                             <option value="sobrio">⚫ Sobrio V1 (Negro, Blanco y Gris)</option>
@@ -1008,27 +978,27 @@
                                 </header>
                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
                                     <div class="form-group">
-                                        <label for="admin-settings-whatsapp" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">Enlace de WhatsApp</label>
+                                        <label for="admin-settings-whatsapp">Enlace de WhatsApp</label>
                                         <input type="text" id="admin-settings-whatsapp" class="premium-input" placeholder="https://wa.me/5491167007723">
                                     </div>
                                     <div class="form-group">
-                                        <label for="admin-settings-instagram" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">Instagram URL</label>
+                                        <label for="admin-settings-instagram">Instagram URL</label>
                                         <input type="text" id="admin-settings-instagram" class="premium-input" placeholder="https://instagram.com/nombre_cuenta">
                                     </div>
                                     <div class="form-group">
-                                        <label for="admin-settings-tiktok" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">TikTok URL</label>
+                                        <label for="admin-settings-tiktok">TikTok URL</label>
                                         <input type="text" id="admin-settings-tiktok" class="premium-input" placeholder="https://tiktok.com/@nombre_cuenta">
                                     </div>
                                     <div class="form-group">
-                                        <label for="admin-settings-facebook" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">Facebook URL</label>
+                                        <label for="admin-settings-facebook">Facebook URL</label>
                                         <input type="text" id="admin-settings-facebook" class="premium-input" placeholder="https://facebook.com/pagina_cuenta">
                                     </div>
                                     <div class="form-group">
-                                        <label for="admin-settings-youtube" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">YouTube Channel URL</label>
+                                        <label for="admin-settings-youtube">YouTube Channel URL</label>
                                         <input type="text" id="admin-settings-youtube" class="premium-input" placeholder="https://youtube.com/@canal_cuenta">
                                     </div>
                                     <div class="form-group">
-                                        <label for="admin-settings-mercadolibre" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">MercadoLibre Shop URL</label>
+                                        <label for="admin-settings-mercadolibre">MercadoLibre Shop URL</label>
                                         <input type="text" id="admin-settings-mercadolibre" class="premium-input" placeholder="https://eshops.mercadolibre.com.ar/...">
                                     </div>
                                 </div>
@@ -1036,33 +1006,33 @@
 
                             <div class="admin-card">
                                 <header class="admin-page-header">
-                                    <h3 class="admin-header-title" style="color: #F76707;">
-                                        <span class="material-symbols-outlined">flight_takeoff</span>
+                                    <h3 class="admin-header-title">
+                                        <span class="material-symbols-outlined" style="color: var(--admin-warning);">flight_takeoff</span>
                                         Configuración de Vacaciones
                                     </h3>
                                 </header>
-                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; background: rgba(247, 103, 7, 0.05); padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(247, 103, 7, 0.2);">
-                                    <input type="checkbox" id="admin-settings-vacation-active" style="width: 20px; height: 20px; cursor: pointer; accent-color: #F76707;">
-                                    <label for="admin-settings-vacation-active" style="font-weight: 700; color: #F76707; font-size: 0.9rem; cursor: pointer; user-select: none;">Activar el Modo Vacaciones (Bloquea compras y muestra cartel de aviso)</label>
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; background: rgba(217,119,6,0.06); padding: 0.75rem; border-radius: var(--admin-radius-sm); border: 1px solid rgba(217,119,6,0.18);">
+                                    <input type="checkbox" id="admin-settings-vacation-active" style="width: 17px; height: 17px; cursor: pointer; accent-color: var(--admin-accent);">
+                                    <label for="admin-settings-vacation-active" style="font-weight: 700; color: var(--admin-warning); font-size: 0.88rem; cursor: pointer; user-select: none;">Activar el Modo Vacaciones (bloquea compras y muestra cartel de aviso)</label>
                                 </div>
                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
                                     <div class="form-group">
-                                        <label for="admin-settings-vacation-start-end" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">Duración de Vacaciones</label>
+                                        <label for="admin-settings-vacation-start-end">Duración de Vacaciones</label>
                                         <input type="text" id="admin-settings-vacation-start-end" class="premium-input" placeholder="ej: del 1 al 15 de Septiembre">
                                     </div>
                                     <div class="form-group">
-                                        <label for="admin-settings-vacation-deliveries" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">Retorno de Entregas</label>
+                                        <label for="admin-settings-vacation-deliveries">Retorno de Entregas</label>
                                         <input type="text" id="admin-settings-vacation-deliveries" class="premium-input" placeholder="ej: a partir del 20 de Septiembre">
                                     </div>
                                 </div>
-                                <div class="form-group" style="margin-top: 1.25rem;">
-                                    <label for="admin-settings-vacation-message" style="display:block; font-weight:600; margin-bottom:0.4rem; font-size:0.88rem; color:#1e293b;">Mensaje para los clientes</label>
+                                <div class="form-group" style="margin-top: 1rem;">
+                                    <label for="admin-settings-vacation-message">Mensaje para los clientes</label>
                                     <textarea id="admin-settings-vacation-message" class="premium-input" rows="3" placeholder="Ej: Estamos de vacaciones de invierno, pero seguimos tomando pedidos con precios congelados."></textarea>
                                 </div>
                             </div>
 
                             <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
-                                <button type="button" id="admin-settings-save-btn" class="btn-primary" style="padding: 0.8rem 2.5rem; font-weight: 700; font-size: 1rem; border-radius: 8px; cursor: pointer; border: none; display: flex; align-items: center; gap: 8px;">
+                                <button type="button" id="admin-settings-save-btn" class="btn-primary" style="padding: 0.75rem 2.5rem; font-size: 0.95rem;">
                                     <span class="material-symbols-outlined">save</span>
                                     <span>Guardar Ajustes</span>
                                 </button>
