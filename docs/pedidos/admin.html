@@ -20,8 +20,11 @@
                 var userSelected = localStorage.getItem('userSelectedTheme');
                 var localTheme = localStorage.getItem('activeTheme');
                 var themeToApply = userSelected || localTheme || 'classic';
-                if (themeToApply && themeToApply !== 'classic') {
-                    document.body.classList.add('theme-' + themeToApply);
+                if (window.self !== window.top) {
+                    document.documentElement.classList.add('in-iframe');
+                    document.addEventListener('DOMContentLoaded', function() {
+                        document.body.classList.add('in-iframe');
+                    });
                 }
             } catch(e) {}
         })();
@@ -38,11 +41,39 @@
             color: var(--text-main);
             margin: 0;
             padding: 0;
-            /* Restaurar scroll — el style.css global tiene overflow:hidden para la SPA */
             overflow-y: auto !important;
             overflow-x: hidden !important;
             height: auto !important;
             min-height: 100vh;
+        }
+
+        /* ── MODO INTEGRADO EN PANEL ADMIN 2.0 (INTEGRACIÓN NATIVA SIN SUB-CONTENEDORES) ── */
+        html.in-iframe, body.in-iframe {
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            min-height: auto !important;
+            overflow: visible !important;
+        }
+        
+        body.in-iframe .admin-header {
+            display: none !important;
+        }
+
+        body.in-iframe .admin-container {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        body.in-iframe .panel-card {
+            border: none !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
         
         .admin-header {

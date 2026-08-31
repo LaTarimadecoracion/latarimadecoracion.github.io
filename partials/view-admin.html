@@ -159,6 +159,10 @@
                                             </h3>
                                         </header>
                                         <div class="quick-shortcuts">
+                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-orders').click();">
+                                                <span class="material-symbols-outlined">description</span>
+                                                <span>Gestionar Pedidos</span>
+                                            </button>
                                             <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-catalog').click(); setTimeout(() => { const btn = document.getElementById('btn-open-add-category'); if (btn) btn.click(); }, 100);">
                                                 <span class="material-symbols-outlined">create_new_folder</span>
                                                 <span>Nueva Categoría</span>
@@ -1066,8 +1070,8 @@
                         </div>
 
                         <!-- 5. GESTIÓN DE PEDIDOS (ORDERS) -->
-                        <div id="admin-orders-view" class="admin-section-view" style="display: none; height: 80vh;">
-                            <iframe src="pedidos/admin.html" style="width: 100%; height: 100%; border: none; border-radius: 12px; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1);"></iframe>
+                        <div id="admin-orders-view" class="admin-section-view" style="display: none; width: 100%;">
+                            <iframe id="admin-orders-iframe" src="pedidos/admin.html" style="width: 100%; min-height: 85vh; border: none; background: transparent; overflow: hidden;" scrolling="no" onload="if(window.initOrdersIframeAutoHeight) window.initOrdersIframeAutoHeight();"></iframe>
                         </div>
 
                     </div>

@@ -412,10 +412,24 @@ document.addEventListener('click', (e) => {
         }
     }, { passive: true });
 
-    const forwardScrollToIframe = (deltaY) => {
+    const getTargetVisibleIframe = (e) => {
         const activeView = document.querySelector('.view.active');
-        if (!activeView) return;
-        const iframe = activeView.querySelector('iframe');
+        if (!activeView) return null;
+
+        const iframe = e.target.closest('iframe') || (e.target.closest('.app-iframe-container')?.querySelector('iframe'));
+        if (!iframe || !iframe.contentWindow) return null;
+
+        if (iframe.offsetWidth === 0 || iframe.offsetHeight === 0) return null;
+        const style = window.getComputedStyle(iframe);
+        if (style.display === 'none' || style.visibility === 'hidden') return null;
+
+        const parentSection = iframe.closest('.admin-section-view');
+        if (parentSection && window.getComputedStyle(parentSection).display === 'none') return null;
+
+        return iframe;
+    };
+
+    const forwardScrollToIframe = (deltaY, iframe) => {
         if (!iframe || !iframe.contentWindow) return;
         try {
             iframe.contentWindow.scrollBy({ top: deltaY, behavior: 'auto' });
@@ -430,20 +444,20 @@ document.addEventListener('click', (e) => {
     };
 
     window.addEventListener('wheel', (e) => {
-        const activeView = document.querySelector('.view.active');
-        if (activeView && activeView.querySelector('iframe')) {
-            forwardScrollToIframe(e.deltaY);
+        const iframe = getTargetVisibleIframe(e);
+        if (iframe) {
+            forwardScrollToIframe(e.deltaY, iframe);
         }
     }, { passive: true });
 
     window.addEventListener('touchmove', (e) => {
-        const activeView = document.querySelector('.view.active');
-        if (activeView && activeView.querySelector('iframe') && e.touches && e.touches.length > 0) {
+        const iframe = getTargetVisibleIframe(e);
+        if (iframe && e.touches && e.touches.length > 0) {
             const currentY = e.touches[0].clientY;
             const deltaY = lastTouchY - currentY;
             lastTouchY = currentY;
             if (Math.abs(deltaY) > 0) {
-                forwardScrollToIframe(deltaY);
+                forwardScrollToIframe(deltaY, iframe);
             }
         }
     }, { passive: true });

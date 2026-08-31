@@ -358,6 +358,11 @@ function renderAdminUX() {
             if (typeof window.renderAdminOffers === 'function') {
                 window.renderAdminOffers();
             }
+        } else if (currentAdminTab === 'orders') {
+            if (typeof window.initOrdersIframeAutoHeight === 'function') {
+                setTimeout(window.initOrdersIframeAutoHeight, 100);
+                setTimeout(window.initOrdersIframeAutoHeight, 500);
+            }
         } else if (currentAdminTab === 'stock') {
             if (typeof window.initAdminStockNative === 'function') {
                 window.initAdminStockNative();
@@ -403,4 +408,18 @@ function renderAdminUX() {
             switchAdminSubtab(activeSubtab);
         }
     }
+
+    window.initOrdersIframeAutoHeight = function() {
+        const iframe = document.getElementById('admin-orders-iframe');
+        if (!iframe) return;
+        try {
+            if (iframe.contentWindow && iframe.contentWindow.document && iframe.contentWindow.document.body) {
+                const doc = iframe.contentWindow.document;
+                const h = Math.max(doc.body.scrollHeight, doc.body.offsetHeight, doc.documentElement.scrollHeight);
+                if (h > 200) {
+                    iframe.style.height = (h + 40) + 'px';
+                }
+            }
+        } catch(e) {}
+    };
 
