@@ -2088,6 +2088,22 @@
                     const extraDays = Number(order.extraDays || 0);
                     const prepDaysText = pMin === pMax ? `${pMax}d háb.` : `${pMin} a ${pMax}d háb.`;
                     const extraDaysBadge = extraDays > 0 ? `<div style="font-size: 0.72rem; color: #b45309; font-weight: 700; background: #fef3c7; border: 1px solid #fde68a; border-radius: 4px; padding: 1px 5px; display: inline-block; margin-top: 2px;">+${extraDays}d extensión</div>` : '';
+                    
+                    let earlyBadge = '';
+                    if ((order.status === 'listo' || order.status === 'entregado') && order.completedDate) {
+                        const startDt = new Date(order.startDate || order.creationDate);
+                        const compDt = new Date(order.completedDate);
+                        let bDaysUsed = 0;
+                        let curr = new Date(startDt);
+                        while (curr <= compDt) {
+                            if (curr.getDay() !== 0 && curr.getDay() !== 6) bDaysUsed++;
+                            curr.setDate(curr.getDate() + 1);
+                        }
+                        const daysSaved = pMax - bDaysUsed;
+                        if (daysSaved > 0) {
+                            earlyBadge = `<div style="font-size: 0.72rem; color: #047857; font-weight: 700; background: #dcfce7; border: 1px solid #86efac; border-radius: 4px; padding: 1px 5px; display: inline-block; margin-top: 2px;" title="Finalizado en solo ${bDaysUsed} días hábiles (plazo: ${pMax}d háb.)">⚡ -${daysSaved}d háb. antes</div>`;
+                        }
+                    }
 
                     card.innerHTML = `
                         <!-- Fila 1: Encabezado con Orden #, Cliente y Estado -->
@@ -2124,7 +2140,7 @@
                                     <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary-color);">${deliveryIcon}</span>
                                     ${deliveryText}
                                 </div>
-                                <div style="color: #64748b;">Elaboración: <strong>${prepDaysText}</strong> ${extraDaysBadge}</div>
+                                <div style="color: #64748b;">Elaboración: <strong>${prepDaysText}</strong> ${extraDaysBadge} ${earlyBadge}</div>
                                 <div style="color: #64748b; margin-top: 2px;">Fecha Límite: <strong style="color: #0f172a;">${limitStr}</strong></div>
                             </div>
 

@@ -62,6 +62,10 @@
                                 <span class="material-symbols-outlined">local_offer</span>
                                 <span>Ofertas & Combos</span>
                             </button>
+                            <button type="button" id="tab-btn-shipping" class="admin-nav-btn">
+                                <span class="material-symbols-outlined">local_shipping</span>
+                                <span>Envíos & Zonas</span>
+                            </button>
                             <button type="button" id="tab-btn-stock" class="admin-nav-btn">
                                 <span class="material-symbols-outlined">inventory</span>
                                 <span>Control de Stock</span>
@@ -263,6 +267,43 @@
 
                                 <div id="admin-offers-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
                                     <!-- Inyectado dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 1.6 SHIPPING & ZONES MODULE -->
+                        <div id="admin-shipping-view" class="admin-section-view" style="display: none;">
+                            <div class="admin-card">
+                                <header class="admin-page-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+                                    <div>
+                                        <h3 class="admin-header-title" style="display: flex; align-items: center; gap: 8px; margin: 0;">
+                                            <span class="material-symbols-outlined" style="color: #0284c7;">local_shipping</span>
+                                            Configuración de Envíos por Modalidad & Mapeo de C.P.
+                                        </h3>
+                                        <p style="font-size: 0.82rem; color: #64748B; margin: 4px 0 0 0;">
+                                            Configurá independientemente las tarifas y zonas cubiertas por <b>Logística</b>, <b>Flete Particular</b> y <b>Otro/Expreso</b> utilizando el mapeo de Códigos Postales y localidades de Argentina.
+                                        </p>
+                                    </div>
+                                    <button type="button" id="btn-save-shipping-rates" class="admin-btn primary" style="display: flex; align-items: center; gap: 6px; background: #0284c7; border: none; padding: 0.65rem 1.3rem; font-weight: 800; border-radius: 10px;">
+                                        <span class="material-symbols-outlined">save</span> Guardar Tarifas de Envíos
+                                    </button>
+                                </header>
+
+                                <!-- Sub-pestañas de Navegación por Modalidad de Envío -->
+                                <div id="admin-shipping-subtabs" style="display: flex; gap: 8px; margin-bottom: 1.25rem; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 0.75rem; flex-wrap: wrap;">
+                                    <button type="button" class="admin-shipping-subtab-btn active" data-ship-mode="logistica" style="padding: 0.55rem 1.1rem; border-radius: 20px; border: 1.5px solid #0284c7; background: #e0f2fe; color: #0284c7; font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">package_2</span> 📦 Panel Logística (Courier)
+                                    </button>
+                                    <button type="button" class="admin-shipping-subtab-btn" data-ship-mode="flete" style="padding: 0.55rem 1.1rem; border-radius: 20px; border: 1.5px solid #cbd5e1; background: #f8fafc; color: #475569; font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">local_shipping</span> 🚛 Panel Flete Particular
+                                    </button>
+                                    <button type="button" class="admin-shipping-subtab-btn" data-ship-mode="otro" style="padding: 0.55rem 1.1rem; border-radius: 20px; border: 1.5px solid #cbd5e1; background: #f8fafc; color: #475569; font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">local_post_office</span> 🚚 Panel Otro / Expreso
+                                    </button>
+                                </div>
+
+                                <div id="admin-shipping-zones-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <!-- Contenido inyectado dinámicamente desde js/admin-shipping.js -->
                                 </div>
                             </div>
                         </div>

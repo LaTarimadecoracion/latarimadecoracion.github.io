@@ -40,7 +40,7 @@ function initAdminUX20() {
     adminUX20Initialized = true;
 
     // --- LISTENERS DE CORE / NAVEGACIÓN (V2) ---
-    const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'stock', 'pages', 'orders', 'maintenance'];
+    const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'stock', 'pages', 'orders', 'maintenance'];
     tabs.forEach(tab => {
         const btn = document.getElementById(`tab-btn-${tab}`);
         if (btn) {
@@ -319,7 +319,7 @@ function initAdminUX20() {
 function renderAdminUX() {
     initAdminUX20();
         // Control visual de la barra de navegación del panel (V2)
-        const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'stock', 'pages', 'orders'];
+        const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'stock', 'pages', 'orders'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -337,6 +337,7 @@ function renderAdminUX() {
             settings: 'admin-settings-view',
             catalog: 'admin-catalog-view',
             offers: 'admin-offers-view',
+            shipping: 'admin-shipping-view',
             stock: 'admin-stock-view',
             pages: 'admin-pages-view',
             orders: 'admin-orders-view'
@@ -357,6 +358,10 @@ function renderAdminUX() {
         } else if (currentAdminTab === 'offers') {
             if (typeof window.renderAdminOffers === 'function') {
                 window.renderAdminOffers();
+            }
+        } else if (currentAdminTab === 'shipping') {
+            if (typeof window.renderAdminShipping === 'function') {
+                window.renderAdminShipping();
             }
         } else if (currentAdminTab === 'orders') {
             if (typeof window.initOrdersIframeAutoHeight === 'function') {

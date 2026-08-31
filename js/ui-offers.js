@@ -907,12 +907,24 @@
                         ⚠️ Adiciona <strong>+21% de IVA</strong> + <strong>3.5% de Ingresos Brutos PBA</strong>.
                     </div>
 
-                    <!-- Desglose Impositivo -->
-                    <div id="factura-a-breakdown" style="font-size: 0.76rem; color: #334155; font-family: monospace; display: flex; flex-direction: column; gap: 2px;">
-                        <div>Base Oferta: <span id="factura-base-val"></span></div>
-                        <div>IVA (21%): <span id="factura-iva-val"></span></div>
-                        <div>IIBB PBA (3.5%): <span id="factura-iibb-val"></span></div>
-                        <div style="font-weight: 900; color: #059669; font-size: 0.82rem; margin-top: 2px; font-family: inherit;">Total Facturado: <span id="factura-total-val"></span></div>
+                    <!-- Desglose Impositivo Estilo Presupuesto (Columna de Precios Alineada a la Derecha) -->
+                    <div id="factura-a-breakdown" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 6px; font-size: 0.78rem; color: #334155;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #64748b; font-weight: 600;">Base Oferta:</span>
+                            <span id="factura-base-val" style="font-weight: 700; color: #0f172a; font-family: monospace;"></span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #64748b; font-weight: 600;">IVA (21%):</span>
+                            <span id="factura-iva-val" style="font-weight: 700; color: #0f172a; font-family: monospace;"></span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #64748b; font-weight: 600;">IIBB PBA (3.5%):</span>
+                            <span id="factura-iibb-val" style="font-weight: 700; color: #0f172a; font-family: monospace;"></span>
+                        </div>
+                        <div style="border-top: 1px dashed #cbd5e1; padding-top: 6px; margin-top: 2px; display: flex; justify-content: space-between; align-items: center; font-weight: 800;">
+                            <span style="color: #0f172a; font-size: 0.82rem;">Total Facturado:</span>
+                            <span id="factura-total-val" style="color: #059669; font-size: 0.9rem; font-weight: 900; font-family: var(--font-main);"></span>
+                        </div>
                     </div>
 
                     <!-- Campos de Datos Fiscales -->
@@ -921,14 +933,21 @@
                             <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
                                 Razón Social / Empresa:
                             </label>
-                            <input type="text" id="factura-razon-social" placeholder="Ej: La Tarima SRL o Juan Pérez" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                            <input type="text" id="factura-razon-social" placeholder="Ej: La Tarima SRL" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
                         </div>
 
                         <div>
                             <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
-                                CUIT de la Empresa:
+                                CUIT:
                             </label>
                             <input type="text" id="factura-cuit" placeholder="Ej: 30-12345678-9" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                        </div>
+
+                        <div style="grid-column: 1 / -1; width: 100%;">
+                            <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
+                                Dirección Fiscal:
+                            </label>
+                            <input type="text" id="factura-direccion-fiscal" placeholder="Av. Rivadavia 1234, Ciudad/localidad, Provincia" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
                         </div>
                     </div>
                 </div>
@@ -1184,11 +1203,13 @@
             if (isFacturaA) {
                 const razon = document.getElementById('factura-razon-social')?.value.trim() || 'No especificada';
                 const cuitEmp = document.getElementById('factura-cuit')?.value.trim() || 'No especificado';
+                const dirFiscal = document.getElementById('factura-direccion-fiscal')?.value.trim() || 'No especificada';
                 
                 msgLines.push("");
                 msgLines.push("Datos de facturacion:");
                 msgLines.push(`- Razon Social: ${razon}`);
                 msgLines.push(`- CUIT: ${cuitEmp}`);
+                msgLines.push(`- Direccion Fiscal: ${dirFiscal}`);
             }
 
             msgLines.push("");

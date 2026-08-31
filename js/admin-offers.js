@@ -62,6 +62,25 @@
             });
         }
 
+        // Event Listeners para Tildes de Envíos en Oferta (Logística, Flete, Otro)
+        const logisticaCheck = document.getElementById('offer-ship-logistica-enabled');
+        const logisticaGroup = document.getElementById('offer-ship-logistica-group');
+        logisticaCheck?.addEventListener('change', () => {
+            if (logisticaGroup) logisticaGroup.style.display = logisticaCheck.checked ? 'block' : 'none';
+        });
+
+        const fleteCheck = document.getElementById('offer-ship-flete-enabled');
+        const fleteGroup = document.getElementById('offer-ship-flete-group');
+        fleteCheck?.addEventListener('change', () => {
+            if (fleteGroup) fleteGroup.style.display = fleteCheck.checked ? 'block' : 'none';
+        });
+
+        const otroCheck = document.getElementById('offer-ship-otro-enabled');
+        const otroGroup = document.getElementById('offer-ship-otro-group');
+        otroCheck?.addEventListener('change', () => {
+            if (otroGroup) otroGroup.style.display = otroCheck.checked ? 'grid' : 'none';
+        });
+
         // Product search filter inside modal
         const productSearchInput = document.getElementById('offer-product-search');
         if (productSearchInput) {
@@ -240,7 +259,12 @@
                     <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px; margin-bottom: 0.75rem;">
                         <div>📦 <b>Productos en el combo:</b> ${offer.product_items ? offer.product_items.length : 0} items</div>
                         ${offer.stockLimit ? `<div>🔥 <b>Cupo limitado:</b> ${offer.stockLimit} unidades disponibles</div>` : ''}
-                        ${offer.shippingType === 'free' ? `<div style="color: #2563eb; font-weight: 700;">🚚 Envío GRATIS incluido</div>` : ''}
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+                            ${offer.shippingConfig?.isFreeShipping || offer.shippingType === 'free' ? '<span style="background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 6px;">✨ ENVÍO GRATIS</span>' : ''}
+                            ${offer.shippingConfig?.logisticaEnabled ? `<span style="background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 6px;">📦 Logística (${offer.shippingConfig.logisticaCost ? '$' + offer.shippingConfig.logisticaCost : 'Gratis'})</span>` : ''}
+                            ${offer.shippingConfig?.fleteEnabled ? `<span style="background: #d1fae5; color: #047857; border: 1px solid #a7f3d0; font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 6px;">🚛 Flete (${offer.shippingConfig.fleteCost ? '$' + offer.shippingConfig.fleteCost : 'Gratis'})</span>` : ''}
+                            ${offer.shippingConfig?.otroEnabled ? `<span style="background: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 6px;">🚚 ${offer.shippingConfig.otroLabel || 'Otro'}</span>` : ''}
+                        </div>
                     </div>
                 </div>
 
@@ -297,6 +321,35 @@
                 document.getElementById('offer-shipping-type').value = offer.shippingType || 'standard';
                 document.getElementById('offer-shipping-cost').value = offer.shippingCost || '';
                 
+                // Populación de opciones de envío (Logística, Flete, Otro, Gratis)
+                const shipConf = offer.shippingConfig || {};
+
+                const logCheck = document.getElementById('offer-ship-logistica-enabled');
+                const logCost = document.getElementById('offer-ship-logistica-cost');
+                const logGrp = document.getElementById('offer-ship-logistica-group');
+                if (logCheck) logCheck.checked = !!shipConf.logisticaEnabled;
+                if (logCost) logCost.value = shipConf.logisticaCost !== undefined && shipConf.logisticaCost !== null ? shipConf.logisticaCost : '';
+                if (logGrp) logGrp.style.display = shipConf.logisticaEnabled ? 'block' : 'none';
+
+                const fltCheck = document.getElementById('offer-ship-flete-enabled');
+                const fltCost = document.getElementById('offer-ship-flete-cost');
+                const fltGrp = document.getElementById('offer-ship-flete-group');
+                if (fltCheck) fltCheck.checked = !!shipConf.fleteEnabled;
+                if (fltCost) fltCost.value = shipConf.fleteCost !== undefined && shipConf.fleteCost !== null ? shipConf.fleteCost : '';
+                if (fltGrp) fltGrp.style.display = shipConf.fleteEnabled ? 'block' : 'none';
+
+                const otrCheck = document.getElementById('offer-ship-otro-enabled');
+                const otrLbl = document.getElementById('offer-ship-otro-label');
+                const otrCost = document.getElementById('offer-ship-otro-cost');
+                const otrGrp = document.getElementById('offer-ship-otro-group');
+                if (otrCheck) otrCheck.checked = !!shipConf.otroEnabled;
+                if (otrLbl) otrLbl.value = shipConf.otroLabel || '';
+                if (otrCost) otrCost.value = shipConf.otroCost !== undefined && shipConf.otroCost !== null ? shipConf.otroCost : '';
+                if (otrGrp) otrGrp.style.display = shipConf.otroEnabled ? 'grid' : 'none';
+
+                const freeCheck = document.getElementById('offer-ship-is-free');
+                if (freeCheck) freeCheck.checked = !!(shipConf.isFreeShipping || offer.shippingType === 'free');
+
                 const hasTimer = !!offer.hasTimer;
                 document.getElementById('offer-has-timer').checked = hasTimer;
                 document.getElementById('offer-timer-group').style.display = hasTimer ? 'block' : 'none';
@@ -323,6 +376,19 @@
             document.getElementById('offer-cover-preview-wrapper').style.display = 'none';
             document.getElementById('offer-timer-group').style.display = 'none';
             document.getElementById('offer-shipping-cost-group').style.display = 'none';
+
+            ['offer-ship-logistica-enabled', 'offer-ship-flete-enabled', 'offer-ship-otro-enabled', 'offer-ship-is-free'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.checked = false;
+            });
+            ['offer-ship-logistica-cost', 'offer-ship-flete-cost', 'offer-ship-otro-cost', 'offer-ship-otro-label'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+            ['offer-ship-logistica-group', 'offer-ship-flete-group', 'offer-ship-otro-group'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+            });
         }
 
         renderSelectedComboItems();
@@ -864,6 +930,19 @@
         const stockLimit = stockLimitVal ? parseInt(stockLimitVal) : null;
         const shippingType = document.getElementById('offer-shipping-type').value || 'standard';
         const shippingCost = parseFloat(document.getElementById('offer-shipping-cost').value) || 0;
+
+        // Configuración estructurada de envíos para la oferta (Logística, Flete, Otro, Gratis)
+        const shippingConfig = {
+            logisticaEnabled: document.getElementById('offer-ship-logistica-enabled')?.checked || false,
+            logisticaCost: parseFloat(document.getElementById('offer-ship-logistica-cost')?.value) || 0,
+            fleteEnabled: document.getElementById('offer-ship-flete-enabled')?.checked || false,
+            fleteCost: parseFloat(document.getElementById('offer-ship-flete-cost')?.value) || 0,
+            otroEnabled: document.getElementById('offer-ship-otro-enabled')?.checked || false,
+            otroLabel: document.getElementById('offer-ship-otro-label')?.value.trim() || 'A convenir',
+            otroCost: parseFloat(document.getElementById('offer-ship-otro-cost')?.value) || 0,
+            isFreeShipping: document.getElementById('offer-ship-is-free')?.checked || false
+        };
+
         const hasTimer = document.getElementById('offer-has-timer').checked;
         const expirationDate = hasTimer ? document.getElementById('offer-expiration-date').value : null;
         const customCoverImage = document.getElementById('offer-custom-cover-url').value || '';
@@ -881,8 +960,9 @@
             subtotalPrice: subtotal,
             offerPrice,
             discountPercent,
-            shippingType,
+            shippingType: shippingConfig.isFreeShipping ? 'free' : shippingType,
             shippingCost,
+            shippingConfig,
             hasTimer,
             expirationDate,
             customCoverImage,

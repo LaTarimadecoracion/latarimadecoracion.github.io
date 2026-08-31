@@ -1266,10 +1266,11 @@
                 } else if (isActualReadyDay && isFinished) {
                     const readyDescCfg = milestonesCfg.readyDesc || '¡Tu pedido ya está listo! ✅';
                     const isEarly = actualBusinessDaysUsed < maxDays;
-                    const earlyBadgeText = isEarly 
-                        ? ` ⚡ ¡Finalizado con anticipación en solo ${actualBusinessDaysUsed} días hábiles! (Plazo previsto: ${rangeText}) 🎉` 
+                    const daysSaved = maxDays - actualBusinessDaysUsed;
+                    const earlyBadgeText = (isEarly && daysSaved > 0)
+                        ? ` ⚡ ¡Finalizado con anticipación en solo ${actualBusinessDaysUsed} días hábiles! (${daysSaved} ${daysSaved === 1 ? 'día hábil' : 'días hábiles'} antes de lo pactado: ${rangeText}) 🎉` 
                         : ` (Finalizado en ${actualBusinessDaysUsed} días hábiles)`;
-                    title = `${capitalizedWeekday} &bull; ${dateStr} — ${isEarly ? '¡Pedido Listo con Anticipación! ⚡' : '¡Pedido Finalizado!'}`;
+                    title = `${capitalizedWeekday} &bull; ${dateStr} — ${(isEarly && daysSaved > 0) ? '¡Pedido Listo con Anticipación! ⚡' : '¡Pedido Finalizado!'}`;
                     desc  = `${readyDescCfg}${earlyBadgeText}`;
                 } else if (isActualReadyDay && !isFinished) {
                     const currentMDay = Math.max(1, businessDayCounter - prepOffset);
@@ -1422,7 +1423,25 @@
                 </div>
             `;
 
-            timelineContainer.innerHTML = stepperHtml;
+            const isEarlyFinished = isFinished && actualBusinessDaysUsed < maxDays && (maxDays - actualBusinessDaysUsed) > 0;
+            const daysSaved = isEarlyFinished ? (maxDays - actualBusinessDaysUsed) : 0;
+            
+            let earlyNoticeBannerHtml = '';
+            if (isEarlyFinished) {
+                earlyNoticeBannerHtml = `
+                    <div style="background: rgba(16, 185, 129, 0.08); border: 1.5px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 1.15rem 1.25rem; margin-bottom: 1.25rem;">
+                        <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; color: #047857; font-size: 1rem; margin-bottom: 0.35rem;">
+                            <span class="material-symbols-outlined" style="font-size: 24px; color: #10b981;">bolt</span>
+                            ¡Pedido Finalizado con Anticipación! ⚡ 🎉
+                        </div>
+                        <div style="font-size: 0.88rem; color: #065f46; line-height: 1.5;">
+                            ¡Buenas noticias! Cumplimos con la elaboración de tu mueble en solo <strong>${actualBusinessDaysUsed} ${actualBusinessDaysUsed === 1 ? 'día hábil' : 'días hábiles'}</strong>, finalizándolo <strong>${daysSaved} ${daysSaved === 1 ? 'día hábil' : 'días hábiles'} antes del plazo pactado</strong> (${rangeText}). ¡Ya está listo para ${isEnvio ? 'despacho / envío' : 'retirar por el taller'}!
+                        </div>
+                    </div>
+                `;
+            }
+
+            timelineContainer.innerHTML = earlyNoticeBannerHtml + stepperHtml;
 
             // Llenar el contenedor del desglose diario
             const breakdownContainer = document.getElementById('daily-breakdown-container');
