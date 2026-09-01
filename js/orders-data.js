@@ -245,5 +245,33 @@ const ordersData = [
         "image": "img/carpinteria/banco-banquito-escalera-ninos-infantil/1786333408729-imagen.webp",
         "startDate": "2026-08-26T03:00:00.000Z",
         "estimatedReadyDate": "2026-09-17T02:59:00.000Z"
+    },
+    {
+        "id": "461397829",
+        "clientName": "Maria Celeste Blanco",
+        "clientPhone": "ENC_NzI3NzgwNDMxMTk0NQ==",
+        "zipCode": "",
+        "productType": "catalog",
+        "productId": "91",
+        "productName": "Escaleras para cama",
+        "selectedFinish": "Natural",
+        "selectedMeasure": "Inclinada 100 a 150 cm",
+        "description": "Escalera para cubrir una altura de \n132 cm\nAgarre para un tirante de 3 cm",
+        "deliveryMethod": "retira",
+        "dispatchInfo": null,
+        "prepDaysMin": 5,
+        "prepDaysMax": 7,
+        "prepDays": 7,
+        "extraDays": 0,
+        "paidStatus": "nada",
+        "paidAmount": 45000,
+        "totalAmount": 45000,
+        "taxNotice": true,
+        "status": "pendiente",
+        "creationDate": "2026-09-01T14:57:28.485Z",
+        "completedDate": "",
+        "image": "img/escaleras/escaleras/1780288089831-imagen.webp",
+        "startDate": "2026-09-01T03:00:00.000Z",
+        "estimatedReadyDate": "2026-09-11T02:59:00.000Z"
     }
 ];

@@ -178,6 +178,10 @@
                                                 <span class="material-symbols-outlined">sort</span>
                                                 <span>Ordenar Home</span>
                                             </button>
+                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-shipping').click(); setTimeout(() => { const el = document.getElementById('admin-postal-search-input'); if (el) el.focus(); }, 150);">
+                                                <span class="material-symbols-outlined">pin_drop</span>
+                                                <span>Consultar C.P. &amp; Zonas</span>
+                                            </button>
                                             <button type="button" class="btn-shortcut" onclick="window.open('https://analytics.google.com/analytics/web/', '_blank');">
                                                 <span class="material-symbols-outlined">analytics</span>
                                                 <span>Ver Estadísticas (GA)</span>
@@ -274,20 +278,23 @@
                         <!-- 1.6 SHIPPING & ZONES MODULE -->
                         <div id="admin-shipping-view" class="admin-section-view" style="display: none;">
                             <div class="admin-card">
-                                <header class="admin-page-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
-                                    <div>
-                                        <h3 class="admin-header-title" style="display: flex; align-items: center; gap: 8px; margin: 0;">
-                                            <span class="material-symbols-outlined" style="color: #0284c7;">local_shipping</span>
-                                            Configuración de Envíos por Modalidad & Mapeo de C.P.
-                                        </h3>
-                                        <p style="font-size: 0.82rem; color: #64748B; margin: 4px 0 0 0;">
-                                            Configurá independientemente las tarifas y zonas cubiertas por <b>Logística</b>, <b>Flete Particular</b> y <b>Otro/Expreso</b> utilizando el mapeo de Códigos Postales y localidades de Argentina.
-                                        </p>
+
+                                <!-- 🔍 BUSCADOR DE CÓDIGO POSTAL -->
+                                <div style="background: var(--admin-bg-content); border: 1.5px solid var(--admin-border-color); border-radius: var(--admin-radius-lg); padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-xs);">
+                                    <h3 style="margin: 0 0 0.85rem 0; font-size: 1.05rem; font-weight: 800; color: var(--admin-text-main); display: flex; align-items: center; gap: 8px;">
+                                        <span class="material-symbols-outlined" style="color: var(--admin-accent);">pin_drop</span>
+                                        Consulta Rápida de Código Postal, Zonas y Precios
+                                    </h3>
+
+                                    <!-- Barra de buscador -->
+                                    <div class="search-wrapper" style="width: 100%;">
+                                        <span class="material-symbols-outlined">search</span>
+                                        <input type="text" id="admin-postal-search-input" placeholder="Escribí el Código Postal (ej: 4400, 1704, 1686)..." autocomplete="off" style="width: 100%;" oninput="window.renderAdminPostalResult(this.value)" onkeydown="if(event.key==='Enter'||event.keyCode===13){ event.preventDefault(); window.renderAdminPostalResult(this.value); }">
                                     </div>
-                                    <button type="button" id="btn-save-shipping-rates" class="admin-btn primary" style="display: flex; align-items: center; gap: 6px; background: #0284c7; border: none; padding: 0.65rem 1.3rem; font-weight: 800; border-radius: 10px;">
-                                        <span class="material-symbols-outlined">save</span> Guardar Tarifas de Envíos
-                                    </button>
-                                </header>
+
+                                    <!-- Panel que se despliega hacia abajo al escribir -->
+                                    <div id="admin-postal-result-card" style="display: none; margin-top: 1rem;"></div>
+                                </div>
 
                                 <!-- Sub-pestañas de Navegación por Modalidad de Envío -->
                                 <div id="admin-shipping-subtabs" style="display: flex; gap: 8px; margin-bottom: 1.25rem; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 0.75rem; flex-wrap: wrap;">
