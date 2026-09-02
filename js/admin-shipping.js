@@ -162,17 +162,20 @@
 
         let html = `
             <!-- Fila Única de Cabecera -->
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.85rem 1.2rem; margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <div class="admin-page-header">
                 <div>
-                    <h3 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #0f172a;">${currentMeta.title}</h3>
-                    <p style="margin: 2px 0 0 0; font-size: 0.78rem; color: #64748b;">${currentMeta.subtitle}</p>
+                    <h3 class="admin-header-title">
+                        <span class="material-symbols-outlined">local_shipping</span>
+                        ${currentMeta.title}
+                    </h3>
+                    <p class="admin-header-desc">${currentMeta.subtitle}</p>
                 </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <button type="button" onclick="window.addNewShippingZone('${currentShipMode}')" style="background: #f8fafc; color: #0f172a; border: 1.5px solid #cbd5e1; padding: 0.4rem 0.8rem; border-radius: 8px; font-weight: 800; font-size: 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 4px;">
-                        <span class="material-symbols-outlined" style="font-size: 16px;">add</span> Crear Zona
+                <div class="admin-header-actions">
+                    <button type="button" onclick="window.addNewShippingZone('${currentShipMode}')" class="btn-outline">
+                        <span class="material-symbols-outlined">add</span> Crear Zona
                     </button>
                     ${currentShipMode === 'logistica' ? `
-                        <button type="button" onclick="window.applyFluxDefaults()" style="background: #0284c7; color: white; border: none; padding: 0.4rem 0.8rem; border-radius: 8px; font-weight: 800; font-size: 0.75rem; cursor: pointer;">
+                        <button type="button" onclick="window.applyFluxDefaults()" class="btn-primary">
                             ⚡ Precios Flux
                         </button>
                     ` : ''}
@@ -186,20 +189,20 @@
 
             html += `
                 <!-- Ficha Desplegable de 3 Líneas por Zona -->
-                <div class="shipping-zone-card-block" data-zone-key="${zoneKey}" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; margin-bottom: 0.75rem; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+                <div class="shipping-zone-card-block admin-card" data-zone-key="${zoneKey}">
                     
                     <!-- LÍNEA 1 (SIEMPRE VISIBLE): Título Desplegable + Habilitado + Costo ($) -->
-                    <div style="padding: 0.85rem 1.1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; background: #ffffff;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
                         
                         <!-- Título de la Zona que despliega la Cascada al tocarlo -->
                         <div onclick="window.toggleZoneCascade('${zoneKey}')" style="cursor: pointer; display: flex; align-items: center; gap: 8px; flex: 1; min-width: 220px;" title="Tocar para desplegar localidades">
-                            <span class="material-symbols-outlined" id="zone-icon-${zoneKey}" style="font-size: 20px; color: #0284c7; transition: transform 0.2s;">expand_more</span>
+                            <span class="material-symbols-outlined" id="zone-icon-${zoneKey}" style="font-size: 20px; color: var(--admin-accent); transition: transform 0.2s;">expand_more</span>
                             <div>
-                                <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px;">
+                                <h4 style="margin: 0; font-size: 0.95rem; font-weight: 700; color: var(--admin-text-main); display: flex; align-items: center; gap: 6px;">
                                     ${zMeta.title}
-                                    <span style="font-size: 0.72rem; font-weight: 700; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 12px;">${zMeta.cities.length} loc.</span>
+                                    <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-text-muted); background: var(--admin-surface-hover); padding: 2px 8px; border-radius: var(--admin-radius-sm);">${zMeta.cities.length} loc.</span>
                                 </h4>
-                                <div style="font-size: 0.73rem; color: #64748b; margin-top: 1px;">
+                                <div style="font-size: 0.73rem; color: var(--admin-text-muted); margin-top: 1px;">
                                     ${zMeta.cpRange || 'C.P.'}
                                 </div>
                             </div>
@@ -207,49 +210,51 @@
 
                         <!-- Controles de Habilitado y Costo en Línea 1 -->
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: #334155; cursor: pointer;">
-                                <input type="checkbox" class="ship-zone-active-chk" data-mode="${currentShipMode}" data-zone="${zoneKey}" ${zVal.active !== false ? 'checked' : ''} style="width: 17px; height: 17px; accent-color: #0f172a; cursor: pointer;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; color: var(--admin-text-secondary); cursor: pointer;">
+                                <input type="checkbox" class="ship-zone-active-chk" data-mode="${currentShipMode}" data-zone="${zoneKey}" ${zVal.active !== false ? 'checked' : ''} style="width: 17px; height: 17px; accent-color: var(--admin-accent); cursor: pointer;">
                                 <span>Habilitado</span>
                             </label>
 
-                            <div style="display: flex; align-items: center; gap: 4px; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.25rem 0.6rem;">
-                                <span style="font-size: 0.78rem; font-weight: 800; color: #64748b;">$</span>
-                                <input type="number" class="ship-zone-cost-in" data-mode="${currentShipMode}" data-zone="${zoneKey}" value="${zVal.baseCost !== undefined ? zVal.baseCost : 0}" placeholder="0" style="width: 90px; border: none; background: transparent; font-size: 0.9rem; font-weight: 800; color: #0f172a; outline: none;">
+                            <div style="display: flex; align-items: center; gap: 4px; background: var(--admin-surface-hover); border: 1.5px solid var(--admin-border-color); border-radius: var(--admin-radius-sm); padding: 0.25rem 0.6rem;">
+                                <span style="font-size: 0.78rem; font-weight: 800; color: var(--admin-text-muted);">$</span>
+                                <input type="number" class="ship-zone-cost-in" data-mode="${currentShipMode}" data-zone="${zoneKey}" value="${zVal.baseCost !== undefined ? zVal.baseCost : 0}" placeholder="0" style="width: 90px; border: none; background: transparent; font-size: 0.9rem; font-weight: 700; color: var(--admin-text-main); outline: none;">
                             </div>
                         </div>
 
                     </div>
 
                     <!-- CONTENIDO EN CASCADA (DESPLEGABLE AL TOCAR EL TÍTULO) -->
-                    <div id="zone-cascade-${zoneKey}" style="display: none; padding: 0.85rem 1.1rem; border-top: 1px solid #f1f5f9; background: #fafafa;">
+                    <div id="zone-cascade-${zoneKey}" style="display: none; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid var(--admin-border-color);">
                         
                         <!-- LÍNEA 2: Filtro / Buscador + Añadir Nueva Localidad -->
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.75rem; flex-wrap: wrap;">
-                            <input type="text" id="add-city-name-${zoneKey}" placeholder="Localidad o Ciudad (Ej: Morón)" style="flex: 2; min-width: 140px; padding: 0.45rem 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 0.8rem; outline: none; background: white;">
-                            <input type="text" id="add-city-cp-${zoneKey}" placeholder="C.P. (Ej: 1708)" style="flex: 1; min-width: 80px; padding: 0.45rem 0.75rem; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 0.8rem; outline: none; background: white;">
-                            <button type="button" onclick="window.addCityToZone('${currentShipMode}', '${zoneKey}')" style="background: #0f172a; color: white; border: none; padding: 0.45rem 0.9rem; border-radius: 8px; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap;">
-                                <span class="material-symbols-outlined" style="font-size: 15px;">add</span> Añadir
+                            <input type="text" id="add-city-name-${zoneKey}" class="premium-input" placeholder="Localidad o Ciudad (Ej: Morón)" style="flex: 2; min-width: 140px;">
+                            <input type="text" id="add-city-cp-${zoneKey}" class="premium-input" placeholder="C.P. (Ej: 1708)" style="flex: 1; min-width: 80px;">
+                            <button type="button" onclick="window.addCityToZone('${currentShipMode}', '${zoneKey}')" class="btn-primary" style="padding: 0.55rem 0.9rem; font-size: 0.8rem;">
+                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span> Añadir
                             </button>
                         </div>
 
                         <!-- LÍNEA 3: Lista en Cascada Vertical con Ícono de Lápiz (✏️) para Editar -->
                         <div style="display: flex; flex-direction: column; gap: 4px; max-height: 220px; overflow-y: auto; padding-right: 4px;">
                             ${zMeta.cities.map((city, idx) => `
-                                <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; font-weight: 700; color: #1e293b;">
+                                <div style="background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-sm); padding: 6px 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; font-weight: 600; color: var(--admin-text-main);">
                                     <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${city}</span>
                                     
                                     <div style="display: flex; align-items: center; gap: 8px;">
                                         <!-- Ícono de Lápiz para Editar Localidad / C.P. -->
-                                        <button type="button" onclick="window.editCityInZone('${currentShipMode}', '${zoneKey}', ${idx})" style="background: none; border: none; color: #0284c7; cursor: pointer; padding: 0; display: flex; align-items: center;" title="Editar localidad / C.P.">
+                                        <button type="button" onclick="window.editCityInZone('${currentShipMode}', '${zoneKey}', ${idx})" class="admin-action-btn edit" title="Editar localidad / C.P.">
                                             <span class="material-symbols-outlined" style="font-size: 16px;">edit</span>
                                         </button>
                                         <!-- Ícono de Basura para Eliminar -->
-                                        <button type="button" onclick="window.removeCityFromZone('${currentShipMode}', '${zoneKey}', ${idx})" style="background: none; border: none; color: #ef4444; cursor: pointer; padding: 0; display: flex; align-items: center;" title="Eliminar localidad">
+                                        <button type="button" onclick="window.removeCityFromZone('${currentShipMode}', '${zoneKey}', ${idx})" class="admin-action-btn delete" title="Eliminar localidad">
                                             <span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
                                         </button>
                                     </div>
                                 </div>
                             `).join('')}
+                        </div>
+
                         </div>
 
                     </div>
@@ -420,6 +425,219 @@
             // Guardado en memoria local completado
         }
     };
+
+    // 🗺️ BUSCADOR Y MAPA INTERACTIVO DE CÓDIGO POSTAL CON LEAFLET
+    window.renderAdminPostalResult = function(query) {
+        const cardContainer = document.getElementById('admin-postal-result-card');
+        if (!cardContainer) return;
+
+        if (!query || !query.trim()) {
+            cardContainer.style.display = 'none';
+            cardContainer.innerHTML = '';
+            return;
+        }
+
+        const res = window.lookupPostalCode ? window.lookupPostalCode(query) : null;
+        cardContainer.style.display = 'block';
+
+        if (!res) {
+            cardContainer.innerHTML = `
+                <div style="background: #FFFBEB; border: 1.5px solid #FCD34D; border-radius: 12px; padding: 1rem; color: #92400E; display: flex; align-items: flex-start; gap: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+                    <span class="material-symbols-outlined" style="color: #D97706; font-size: 24px; margin-top: 2px;">warning</span>
+                    <div>
+                        <strong style="font-size: 0.92rem; display: block; margin-bottom: 2px;">Código Postal no encontrado</strong>
+                        <span style="font-size: 0.82rem; line-height: 1.4; color: #B45309;">El número o localidad de "<strong>${query}</strong>" no se encuentra registrado en el padrón oficial de Argentina. Por favor verificá el número e intentá nuevamente.</span>
+                    </div>
+                </div>
+            `;
+            return;
+        }
+
+        const mapId = 'admin-postal-result-map';
+
+        cardContainer.innerHTML = `
+            <div style="background: #FAF9F6; border: 1.5px solid var(--admin-accent); border-radius: 14px; padding: 1.15rem; box-shadow: 0 4px 14px rgba(160, 113, 91, 0.08); position: relative;">
+                
+                <!-- 1. PROVINCIA (Header Prominente) -->
+                <div style="background: #1C1917; color: #FAF9F6; border-radius: 10px; padding: 0.65rem 1rem; margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="material-symbols-outlined" style="color: #A0715B; font-size: 22px;">map</span>
+                        <div>
+                            <div style="font-size: 0.65rem; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; color: #A0715B;">PROVINCIA PRIMORDIAL</div>
+                            <div style="font-size: 1.05rem; font-weight: 900; letter-spacing: 0.5px;">${res.provincia}</div>
+                        </div>
+                    </div>
+                    <span style="background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; color: #FAF9F6;">CP ${res.cp}</span>
+                </div>
+
+                <!-- 2. UBICACIÓN (Jerarquía Descente) -->
+                <div style="background: white; border: 1px solid #E7E5E4; border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 0.85rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+                    <div>
+                        <div style="font-size: 0.68rem; font-weight: 800; color: #78716C; text-transform: uppercase;">2. LOCALIDAD / PARTIDO</div>
+                        <div style="font-size: 0.95rem; font-weight: 800; color: #1C1917;">${res.localidad}</div>
+                        <div style="font-size: 0.78rem; color: #78716C; font-weight: 600;">(${res.partido})</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.68rem; font-weight: 800; color: #78716C; text-transform: uppercase;">3. BARRIO / ZONA</div>
+                        <div style="font-size: 0.95rem; font-weight: 800; color: #1C1917;">${res.barrio}</div>
+                    </div>
+                </div>
+
+                <!-- 🗺️ MINIMAPA INTERACTIVO DE UBICACIÓN Y DISTANCIA -->
+                <div style="background: white; border: 1.5px solid #E7E5E4; border-radius: 12px; overflow: hidden; margin-bottom: 0.85rem; position: relative;">
+                    <div style="padding: 0.5rem 0.85rem; background: #FAF9F6; border-bottom: 1px solid #E7E5E4; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--admin-accent); display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 5px;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">explore</span>
+                            Mapa Interactivo de Ubicación &amp; Recorrido
+                        </span>
+                        <span style="font-size: 0.7rem; color: #78716C; font-weight: 600;">
+                            📍 Hurlingham ➔ 📌 ${res.localidad} (${res.provincia})
+                        </span>
+                    </div>
+                    <div id="${mapId}" style="height: 220px; width: 100%; background: #F5F5F4; z-index: 1;"></div>
+                </div>
+
+                <!-- 3. COINCIDENCIA / GRUPOS DE ENVÍO -->
+                <div style="margin-bottom: 0.85rem;">
+                    <div style="font-size: 0.72rem; font-weight: 800; color: #78716C; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+                        <span class="material-symbols-outlined" style="font-size: 14px;">groups</span>
+                        Coincidencia con Grupos de Envío Cargados
+                    </div>
+
+                    ${res.hasLocalMatch ? `
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                            <!-- Tarjeta Logística -->
+                            <div style="background: white; border: 1.5px solid ${res.logistica.active ? '#0284c7' : '#e2e8f0'}; border-radius: 10px; padding: 0.75rem 0.9rem;">
+                                <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase;">📦 Logística (Courier)</div>
+                                <div style="font-size: 0.88rem; font-weight: 800; color: #0f172a; margin-top: 2px;">${res.logistica.zoneName}</div>
+                                <div style="font-size: 1.1rem; font-weight: 900; color: ${res.logistica.cost > 0 ? '#0284c7' : '#64748b'}; margin-top: 4px;">${res.logistica.costFormatted}</div>
+                            </div>
+                            <!-- Tarjeta Flete -->
+                            <div style="background: white; border: 1.5px solid ${res.flete.active ? '#059669' : '#e2e8f0'}; border-radius: 10px; padding: 0.75rem 0.9rem;">
+                                <div style="font-size: 0.72rem; font-weight: 800; color: #059669; text-transform: uppercase;">🚛 Flete Particular</div>
+                                <div style="font-size: 0.88rem; font-weight: 800; color: #0f172a; margin-top: 2px;">${res.flete.zoneName}</div>
+                                <div style="font-size: 1.1rem; font-weight: 900; color: ${res.flete.cost > 0 ? '#059669' : '#64748b'}; margin-top: 4px;">${res.flete.costFormatted}</div>
+                            </div>
+                        </div>
+                    ` : `
+                        <div style="background: #FEF2F2; border: 1.5px solid #FCA5A5; border-radius: 10px; padding: 0.85rem 1rem; color: #991B1B;">
+                            <div style="font-size: 0.88rem; font-weight: 800; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                                <span class="material-symbols-outlined" style="font-size: 18px; color: #DC2626;">cancel</span>
+                                Sin coincidencia con grupos de envío propio / flete local
+                            </div>
+                            <div style="font-size: 0.8rem; line-height: 1.4; color: #7F1D1D; margin-bottom: 0.75rem;">
+                                ${res.recommendationText}
+                            </div>
+                            <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: #991B1B; margin-bottom: 6px;">
+                                Cotizar directamente en webs de Expreso:
+                            </div>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                ${res.logisticsLinks.map(l => `
+                                    <a href="${l.url}" target="_blank" rel="noopener noreferrer" style="background: ${l.color}; color: white; border-radius: 6px; padding: 0.4rem 0.75rem; font-size: 0.78rem; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                        ${l.name} ↗
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `}
+                </div>
+
+            </div>
+        `;
+
+        // Render Leaflet Map
+        initPostalResultMap(res, mapId);
+    };
+
+    function initPostalResultMap(res, containerId) {
+        setTimeout(() => {
+            const el = document.getElementById(containerId);
+            if (!el) return;
+
+            loadLeafletIfNeeded(function() {
+                if (!window.L) return;
+
+                if (!window.activeAdminPostalMaps) window.activeAdminPostalMaps = {};
+                if (window.activeAdminPostalMaps[containerId]) {
+                    try { window.activeAdminPostalMaps[containerId].remove(); } catch(e){}
+                }
+
+                const origin = res.originCoords || [-34.5898, -58.6384]; // Hurlingham
+                const dest = res.coords || [-34.5898, -58.6384];
+
+                const map = L.map(containerId, {
+                    zoomControl: true,
+                    attributionControl: false
+                }).setView(dest, 11);
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                    maxZoom: 19,
+                    subdomains: 'abcd'
+                }).addTo(map);
+
+                const originIcon = L.divIcon({
+                    className: 'custom-map-pin origin-pin',
+                    html: `<div style="background: #1C1917; color: #FAF9F6; border: 2px solid #A0715B; padding: 4px 9px; border-radius: 20px; font-size: 11px; font-weight: 800; white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,0.25); display: flex; align-items: center; gap: 4px;">
+                              <span>🌲 Taller Hurlingham</span>
+                           </div>`,
+                    iconSize: [120, 30],
+                    iconAnchor: [60, 15]
+                });
+
+                const destIcon = L.divIcon({
+                    className: 'custom-map-pin dest-pin',
+                    html: `<div style="background: #A0715B; color: white; border: 2px solid white; padding: 4px 9px; border-radius: 20px; font-size: 11px; font-weight: 800; white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,0.25); display: flex; align-items: center; gap: 4px;">
+                              <span>📍 ${res.localidad}</span>
+                           </div>`,
+                    iconSize: [130, 30],
+                    iconAnchor: [65, 15]
+                });
+
+                L.marker(origin, { icon: originIcon }).addTo(map).bindPopup('<b>Taller La Tarima</b><br>Hurlingham (CP 1686)');
+                L.marker(dest, { icon: destIcon }).addTo(map).bindPopup(`<b>${res.localidad}</b><br>${res.provincia} (CP ${res.cp})`);
+
+                if (Math.abs(origin[0] - dest[0]) > 0.001 || Math.abs(origin[1] - dest[1]) > 0.001) {
+                    L.polyline([origin, dest], {
+                        color: '#A0715B',
+                        weight: 3,
+                        opacity: 0.75,
+                        dashArray: '6, 8'
+                    }).addTo(map);
+
+                    const bounds = L.latLngBounds([origin, dest]);
+                    map.fitBounds(bounds, { padding: [35, 35] });
+                } else {
+                    map.setView(origin, 13);
+                }
+
+                window.activeAdminPostalMaps[containerId] = map;
+                setTimeout(() => map.invalidateSize(), 200);
+            });
+        }, 100);
+    }
+
+    function loadLeafletIfNeeded(callback) {
+        if (window.L) return callback();
+
+        if (!document.getElementById('leaflet-css')) {
+            const css = document.createElement('link');
+            css.id = 'leaflet-css';
+            css.rel = 'stylesheet';
+            css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+            document.head.appendChild(css);
+        }
+
+        if (document.getElementById('leaflet-js')) {
+            const js = document.getElementById('leaflet-js');
+            js.addEventListener('load', callback);
+        } else {
+            const js = document.createElement('script');
+            js.id = 'leaflet-js';
+            js.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+            js.onload = callback;
+            document.head.appendChild(js);
+        }
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
         // Inicialización automática

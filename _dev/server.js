@@ -2019,12 +2019,12 @@ function generateClientPage(order) {
                         const isFinished = (orderData.status === 'listo' || orderData.status === 'entregado');
                         const isEarly = isFinished && businessDayCounter < maxDays;
                         const daysSaved = maxDays - businessDayCounter;
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — ${(isEarly && daysSaved > 0) ? '¡Pedido Listo con Anticipación! ⚡' : 'Fin de Fabricación'}`;
+                        title = \`\${capitalizedWeekday} \&bull; \${dateStr} — \${(isEarly && daysSaved > 0) ? '¡Pedido Listo con Anticipación! ⚡' : 'Fin de Fabricación'}\`;
                         desc  = isFinished
                             ? ((isEarly && daysSaved > 0)
-                                ? `${readyDescCfg} ⚡ ¡Finalizado con anticipación en solo ${businessDayCounter} días hábiles! (${daysSaved} ${daysSaved === 1 ? 'día hábil' : 'días hábiles'} antes de lo pactado) 🎉`
-                                : `${readyDescCfg} (Finalizado en ${businessDayCounter} días hábiles)`)
-                            : `Fecha estimada de finalización (Día ${businessDayCounter})`;
+                                ? \`\${readyDescCfg} ⚡ ¡Finalizado con anticipación en solo \${businessDayCounter} días hábiles! (\${daysSaved} \${daysSaved === 1 ? 'día hábil' : 'días hábiles'} antes de lo pactado) 🎉\`
+                                : \`\${readyDescCfg} (Finalizado en \${businessDayCounter} días hábiles)\`)
+                            : \`Fecha estimada de finalización (Día \${businessDayCounter})\`;
                     } else if (isLast) {
                         const mCfg = ordersConfigData.milestones || {};
                         const isEnvio = orderData.deliveryMethod === 'envio';

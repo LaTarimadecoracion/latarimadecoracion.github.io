@@ -30,6 +30,15 @@
 
     let adminUX20Initialized = false;
 
+function updateAdminUrlTab(tabKey) {
+    if (!tabKey) return;
+    try {
+        const url = new URL(window.location.href);
+        url.searchParams.set('tab', tabKey);
+        window.history.replaceState({ tab: tabKey }, '', url.toString());
+    } catch(e) {}
+}
+
 function initAdminUX20() {
     const mainTabBtn = document.getElementById('tab-btn-dashboard');
     if (!mainTabBtn) {
@@ -39,13 +48,35 @@ function initAdminUX20() {
     if (adminUX20Initialized) return;
     adminUX20Initialized = true;
 
+    // Listener del botón para desplegar/contraer el sidebar lateral (estilo Mercado Libre)
+    const btnToggleSidebar = document.getElementById('btn-toggle-sidebar');
+    const adminSidebar = document.getElementById('admin-sidebar');
+    if (btnToggleSidebar && adminSidebar) {
+        btnToggleSidebar.addEventListener('click', () => {
+            adminSidebar.classList.toggle('expanded');
+            const isExpanded = adminSidebar.classList.contains('expanded');
+            localStorage.setItem('adminSidebarExpanded', isExpanded ? 'true' : 'false');
+        });
+        if (localStorage.getItem('adminSidebarExpanded') === 'true') {
+            adminSidebar.classList.add('expanded');
+        }
+    }
+
+    // Leer la pestaña activa inicial desde la URL (?tab=...) o HASH (#tab)
+    const urlParams = new URLSearchParams(window.location.search);
+    const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
+    const validTabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'stock', 'pages', 'orders', 'maintenance'];
+    if (tabFromUrl && validTabs.includes(tabFromUrl)) {
+        currentAdminTab = tabFromUrl;
+    }
+
     // --- LISTENERS DE CORE / NAVEGACIÓN (V2) ---
-    const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'stock', 'pages', 'orders', 'maintenance'];
-    tabs.forEach(tab => {
+    validTabs.forEach(tab => {
         const btn = document.getElementById(`tab-btn-${tab}`);
         if (btn) {
             btn.addEventListener('click', () => {
                 currentAdminTab = tab;
+                updateAdminUrlTab(tab);
                 if (tab === 'pages') {
                     switchAdminSubtab('page-home');
                 }
@@ -62,6 +93,7 @@ function initAdminUX20() {
             if (navBtn && navBtn.id && navBtn.id.startsWith('tab-btn-')) {
                 const tabKey = navBtn.id.replace('tab-btn-', '');
                 currentAdminTab = tabKey;
+                updateAdminUrlTab(tabKey);
                 if (tabKey === 'pages') switchAdminSubtab('page-home');
                 renderAdminUX();
                 return;

@@ -325,13 +325,77 @@
         return defaultData;
     }
 
-    /**
-     * Reemplazo total por consumo de dataset estático 1 a 1.
-     * Cero algoritmos de deducción, cero condicionales ni plantillas string formatting.
-     * dataset[cp] ? dataset[cp] : null (no encontrado)
-     * @param {string|number} query 
-     * @returns {Object|null}
-     */
+    const PROVINCE_COORDS = {
+        'CABA (Capital Federal)': [-34.6037, -58.3816],
+        'BUENOS AIRES': [-34.6037, -58.5500],
+        'SANTA FE': [-31.6333, -60.7000],
+        'CÓRDOBA': [-31.4201, -64.1888],
+        'MENDOZA': [-32.8895, -68.8458],
+        'SALTA': [-24.7859, -65.4117],
+        'SAN JUAN': [-31.5375, -68.5364],
+        'TUCUMÁN': [-26.8241, -65.2226],
+        'JUJUY': [-24.1858, -65.2995],
+        'LA RIOJA': [-29.4131, -66.8558],
+        'CATAMARCA': [-28.4696, -65.7852],
+        'SANTIAGO DEL ESTERO': [-27.7834, -64.2642],
+        'CHACO': [-27.4514, -58.9866],
+        'CORRIENTES': [-27.4692, -58.8306],
+        'MISIONES': [-27.3671, -55.8961],
+        'FORMOSA': [-26.1849, -58.1731],
+        'ENTRE RÍOS': [-31.7333, -60.5333],
+        'LA PAMPA': [-36.6167, -64.2833],
+        'SAN LUIS': [-33.3017, -66.3378],
+        'NEUQUÉN': [-38.9516, -68.0591],
+        'RÍO NEGRO': [-40.8135, -62.9967],
+        'CHUBUT': [-43.3002, -65.1023],
+        'SANTA CRUZ': [-51.6226, -69.2181],
+        'TIERRA DEL FUEGO': [-54.8019, -68.3030]
+    };
+
+    const CITY_COORDS = {
+        '1686': [-34.5898, -58.6384], // Hurlingham (Taller La Tarima)
+        '1688': [-34.6062, -58.6341], // Villa Tesei
+        '1689': [-34.5761, -58.6492], // William C. Morris
+        '1704': [-34.6403, -58.5639], // Ramos Mejía
+        '1706': [-34.6468, -58.5959], // Haedo
+        '1708': [-34.6514, -58.6186], // Morón
+        '1712': [-34.6596, -58.6438], // Castelar
+        '1714': [-34.6577, -58.6708], // Ituzaingó
+        '1718': [-34.6789, -58.5631], // San Justo
+        '1778': [-34.6653, -58.7276], // Merlo
+        '1744': [-34.6503, -58.7889], // Moreno
+        '1650': [-34.5772, -58.5375], // San Martín
+        '1642': [-34.4722, -58.5264], // San Isidro
+        '1638': [-34.5268, -58.4776], // Vicente López
+        '1648': [-34.4260, -58.5796], // Tigre
+        '1425': [-34.5802, -58.4172], // Palermo
+        '1426': [-34.5627, -58.4564], // Belgrano
+        '1000': [-34.5916, -58.3752], // Retiro
+        '2000': [-32.9468, -60.6393], // Rosario
+        '3000': [-31.6333, -60.7000], // Santa Fe
+        '5000': [-31.4201, -64.1888], // Córdoba
+        '5500': [-32.8895, -68.8458], // Mendoza
+        '4400': [-24.7859, -65.4117], // Salta
+        '5400': [-31.5375, -68.5364], // San Juan
+        '5435': [-31.6508, -69.4667], // Barreal
+        '5360': [-29.1627, -67.4981], // Chilecito
+        '5300': [-29.4131, -66.8558], // La Rioja
+        '4000': [-26.8241, -65.2226], // Tucumán
+        '4600': [-24.1858, -65.2995], // Jujuy
+        '4641': [-22.7917, -65.2167], // Iruya
+        '9311': [-47.4411, -70.9231], // Bajo Caracoles
+        '9031': [-45.5262, -71.5365], // Aldea Beleiro
+        '4197': [-26.7900, -65.5900], // Anfama
+        '5461': [-30.1500, -68.7300], // Huaco
+        '8400': [-41.1335, -71.3103], // Bariloche
+        '8300': [-38.9516, -68.0591], // Neuquén
+        '8500': [-40.8135, -62.9967], // Viedma
+        '9000': [-45.8641, -67.4966], // Comodoro Rivadavia
+        '9400': [-51.6226, -69.2181], // Río Gallegos
+        '9405': [-50.3379, -72.2648], // El Calafate
+        '9410': [-54.8019, -68.3030]  // Ushuaia
+    };
+
     function lookupPostalCode(query) {
         if (!query) return null;
 
@@ -393,12 +457,16 @@
             ];
         }
 
+        const destCoords = CITY_COORDS[match.cp] || PROVINCE_COORDS[match.provincia] || [-34.6037, -58.3816];
+
         return {
             cp: match.cp || strQuery,
             provincia: match.provincia,
             localidad: match.localidad,
             partido: match.departamento || match.partido,
             barrio: match.barrio || `${match.localidad} Centro`,
+            coords: destCoords,
+            originCoords: [-34.5898, -58.6384], // Taller Hurlingham
             note: match.note || '',
             hasLocalMatch,
             recommendationText,

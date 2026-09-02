@@ -175,16 +175,11 @@
         container.innerHTML = '';
         offers.forEach(offer => {
             const card = document.createElement('div');
-            card.className = 'admin-offer-card';
+            card.className = 'admin-offer-card admin-card';
             card.style.cssText = `
-                background: var(--bg-card, #ffffff);
-                border: 1px solid var(--border-color, #e5e7eb);
-                border-radius: 12px;
-                padding: 1.25rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.04);
                 position: relative;
                 overflow: hidden;
             `;
@@ -217,7 +212,7 @@
 
             card.innerHTML = `
                 <div>
-                    <div style="position: relative; height: 160px; border-radius: 8px; overflow: hidden; margin-bottom: 0.75rem; background: #f3f4f6;">
+                    <div style="position: relative; height: 160px; border-radius: var(--admin-radius-sm); overflow: hidden; margin-bottom: 0.75rem; background: var(--admin-surface-hover);">
                         <img src="${coverImg}" style="width: 100%; height: 100%; object-fit: cover;" alt="${offer.title}">
                         
                         <div class="stamp-badge ${offer.stampStyle || 'pro-gold'}" style="position: absolute; top: 8px; left: 8px;">
@@ -225,57 +220,55 @@
                         </div>
 
                         ${offer.discountPercent ? `
-                            <span style="position: absolute; top: 8px; right: 8px; background: #dc2626; color: white; font-weight: 800; font-size: 0.75rem; padding: 2px 8px; border-radius: 20px;">
+                            <span style="position: absolute; top: 8px; right: 8px; background: var(--admin-danger); color: white; font-weight: 800; font-size: 0.75rem; padding: 2px 8px; border-radius: 20px;">
                                 -${offer.discountPercent}% OFF
                             </span>
                         ` : ''}
 
-                        <span class="offer-status-pill ${isActive ? 'active' : (isExpired ? 'expired' : 'paused')}" style="position: absolute; bottom: 8px; left: 8px; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; color: white; background: ${isActive ? '#16a34a' : (isExpired ? '#dc2626' : '#6b7280')};">
+                        <span class="offer-status-pill ${isActive ? 'active' : (isExpired ? 'expired' : 'paused')}" style="position: absolute; bottom: 8px; left: 8px; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; color: white; background: ${isActive ? 'var(--admin-success)' : (isExpired ? 'var(--admin-danger)' : 'var(--admin-text-muted)')};">
                             ${isActive ? '🟢 Activa' : (isExpired ? '⏳ Expirada' : '⏸️ Pausada')}
                         </span>
                     </div>
 
-                    <h3 style="margin: 0 0 0.25rem 0; font-size: 1.05rem; font-weight: 700; color: var(--text-main);">${offer.title}</h3>
-                    <p style="margin: 0 0 0.5rem 0; font-size: 0.8rem; color: var(--text-muted); line-clamp: 2; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
+                    <h3 style="margin: 0 0 0.25rem 0; font-size: 1rem; font-weight: 700; color: var(--admin-text-main);">${offer.title}</h3>
+                    <p style="margin: 0 0 0.5rem 0; font-size: 0.8rem; color: var(--admin-text-muted); line-clamp: 2; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
                         ${offer.description || 'Sin descripción'}
                     </p>
 
-                    <div style="background: rgba(0,0,0,0.02); border-radius: 6px; padding: 0.5rem 0.75rem; margin-bottom: 0.75rem; font-size: 0.85rem;">
+                    <div style="background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-sm); padding: 0.5rem 0.75rem; margin-bottom: 0.75rem; font-size: 0.85rem;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
-                            <span style="color: var(--text-muted);">Precio de lista:</span>
-                            <span style="text-decoration: line-through; color: #9ca3af;">${formattedSubtotal}</span>
+                            <span style="color: var(--admin-text-muted);">Precio de lista:</span>
+                            <span style="text-decoration: line-through; color: var(--admin-text-subtle);">${formattedSubtotal}</span>
                         </div>
-                        <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1rem; color: #dc2626;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1rem; color: var(--admin-accent);">
                             <span>Precio Oferta:</span>
                             <span>${formattedOfferPrice}</span>
                         </div>
                         ${savings > 0 ? `
-                            <div style="text-align: right; font-size: 0.75rem; color: #16a34a; font-weight: 700;">
+                            <div style="text-align: right; font-size: 0.75rem; color: var(--admin-success); font-weight: 700;">
                                 💰 Ahorro: ${formattedSavings}
                             </div>
                         ` : ''}
                     </div>
 
-                    <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px; margin-bottom: 0.75rem;">
+                    <div style="font-size: 0.78rem; color: var(--admin-text-muted); display: flex; flex-direction: column; gap: 4px; margin-bottom: 0.75rem;">
                         <div>📦 <b>Productos en el combo:</b> ${offer.product_items ? offer.product_items.length : 0} items</div>
                         ${offer.stockLimit ? `<div>🔥 <b>Cupo limitado:</b> ${offer.stockLimit} unidades disponibles</div>` : ''}
                         <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
-                            ${offer.shippingConfig?.isFreeShipping || offer.shippingType === 'free' ? '<span style="background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 6px;">✨ ENVÍO GRATIS</span>' : ''}
-                            ${offer.shippingConfig?.logisticaEnabled ? `<span style="background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 6px;">📦 Logística (${offer.shippingConfig.logisticaCost ? '$' + offer.shippingConfig.logisticaCost : 'Gratis'})</span>` : ''}
-                            ${offer.shippingConfig?.fleteEnabled ? `<span style="background: #d1fae5; color: #047857; border: 1px solid #a7f3d0; font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 6px;">🚛 Flete (${offer.shippingConfig.fleteCost ? '$' + offer.shippingConfig.fleteCost : 'Gratis'})</span>` : ''}
-                            ${offer.shippingConfig?.otroEnabled ? `<span style="background: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 6px;">🚚 ${offer.shippingConfig.otroLabel || 'Otro'}</span>` : ''}
+                            ${offer.shippingConfig?.isFreeShipping || offer.shippingType === 'free' ? '<span style="background: var(--admin-success-light); color: var(--admin-success); border: 1px solid var(--admin-success); font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 6px;">✨ ENVÍO GRATIS</span>' : ''}
+                            ${offer.shippingConfig?.logisticaEnabled ? `<span style="background: var(--admin-accent-light); color: var(--admin-accent); border: 1px solid var(--admin-border-color); font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 6px;">📦 Logística (${offer.shippingConfig.logisticaCost ? '$' + offer.shippingConfig.logisticaCost : 'Gratis'})</span>` : ''}
                         </div>
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 6px; border-top: 1px solid var(--border-color, #e5e7eb); padding-top: 0.75rem;">
-                    <button type="button" class="admin-btn secondary" style="flex: 1; padding: 0.4rem; font-size: 0.8rem;" onclick="openOfferModal('${offer.id}')">
+                <div style="display: flex; gap: 6px; border-top: 1px solid var(--admin-border-color); padding-top: 0.75rem;">
+                    <button type="button" class="btn-outline" style="flex: 1; padding: 0.4rem; font-size: 0.8rem;" onclick="openOfferModal('${offer.id}')">
                         <span class="material-symbols-outlined" style="font-size: 16px;">edit</span> Editar
                     </button>
-                    <button type="button" class="admin-btn secondary" style="padding: 0.4rem;" title="${offer.active !== false ? 'Pausar' : 'Activar'}" onclick="toggleOfferActive('${offer.id}')">
+                    <button type="button" class="btn-outline" style="padding: 0.4rem;" title="${offer.active !== false ? 'Pausar' : 'Activar'}" onclick="toggleOfferActive('${offer.id}')">
                         <span class="material-symbols-outlined" style="font-size: 16px;">${offer.active !== false ? 'pause' : 'play_arrow'}</span>
                     </button>
-                    <button type="button" class="admin-btn danger" style="padding: 0.4rem;" title="Eliminar" onclick="deleteOffer('${offer.id}')">
+                    <button type="button" class="btn-outline" style="padding: 0.4rem; color: var(--admin-danger);" title="Eliminar" onclick="deleteOffer('${offer.id}')">
                         <span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
                     </button>
                 </div>

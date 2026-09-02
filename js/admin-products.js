@@ -210,7 +210,7 @@ window.initProductsAdmin = function() {
 
         paginated.forEach(p => {
             const row = document.createElement('tr');
-            row.style.borderBottom = '1px solid #EEF0F3';
+            row.style.borderBottom = '1px solid var(--admin-border-color)';
             
             const isGhost = isGhostProduct(p);
 
@@ -218,34 +218,34 @@ window.initProductsAdmin = function() {
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
                     <div style="display: flex; align-items: center; gap: 0.6rem;">
                         ${dragHandleHtml}
-                        <div style="width: 44px; height: 44px; border-radius: 8px; background-image: url('${p.image}'); background-size: cover; background-position: center; border: 1px solid #E2E8F0; flex-shrink: 0;"></div>
+                        <div style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); background-image: url('${p.image}'); background-size: cover; background-position: center; border: 1px solid var(--admin-border-color); flex-shrink: 0;"></div>
                     </div>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
-                    <strong style="color: var(--text-main); font-size: 0.9rem; display: block;">${p.title}</strong>
+                    <strong style="color: var(--admin-text-main); font-size: 0.9rem; display: block;">${p.title}</strong>
                     <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px; flex-wrap: wrap;">
-                        <small style="color: var(--text-muted); font-size: 0.75rem; font-family: monospace;">SKU: ${p.id}</small>
-                        ${isGhost ? `<span class="ghost-badge" style="background: #FEF3C7; color: #D97706; border: 1px solid #FCD34D; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; line-height: 1;"><span class="material-symbols-outlined" style="font-size: 13px;">hide_image</span> Borrador (Sin fotos)</span>` : ''}
+                        <small style="color: var(--admin-text-muted); font-size: 0.75rem; font-family: monospace;">SKU: ${p.id}</small>
+                        ${isGhost ? `<span class="ghost-badge" style="background: var(--admin-warning-light); color: var(--admin-warning); border: 1px solid var(--admin-warning); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; line-height: 1;"><span class="material-symbols-outlined" style="font-size: 13px;">hide_image</span> Borrador (Sin fotos)</span>` : ''}
                     </div>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
-                    <span style="background: #edf2f7; color: #4a5568; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.78rem; font-weight: 500;">
+                    <span style="background: var(--admin-surface-hover); color: var(--admin-text-secondary); padding: 0.25rem 0.6rem; border-radius: var(--admin-radius-sm); font-size: 0.78rem; font-weight: 600;">
                         ${p.categoryName}
                     </span>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle; text-align: center;">
-                    <span style="font-weight: 600; color: var(--primary-color); font-size: 0.88rem;">
+                    <span style="font-weight: 700; color: var(--admin-accent); font-size: 0.88rem;">
                         ${p.acabados_groups ? p.acabados_groups.length : 1}
                     </span>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle; text-align: center;">
                     <div style="display: flex; gap: 0.4rem; justify-content: center; align-items: center;">
-                        <button class="action-btn view btn-toggle-prod-visibility ${p.visible !== false ? '' : 'hidden-mode'}" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="${p.visible !== false ? 'Ocultar producto' : 'Mostrar producto'}" style="padding: 0.35rem; font-size: 0.85rem;">
+                        <button class="admin-action-btn view btn-toggle-prod-visibility ${p.visible !== false ? '' : 'hidden-mode'}" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="${p.visible !== false ? 'Ocultar producto' : 'Mostrar producto'}" style="padding: 0.35rem; font-size: 0.85rem;">
                             <span class="material-symbols-outlined" style="font-size: 16px;">${p.visible !== false ? 'visibility' : 'visibility_off'}</span>
                         </button>
-                        <button class="action-btn edit btn-edit-prod-new" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="Editar" style="padding: 0.35rem; font-size: 0.85rem;"><span class="material-symbols-outlined" style="font-size: 16px;">edit</span></button>
-                        <button class="action-btn clone btn-clone-prod-new" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="Clonar" style="padding: 0.35rem; font-size: 0.85rem;"><span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span></button>
-                        <button class="action-btn del btn-del-prod-new" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="Eliminar" style="padding: 0.35rem; font-size: 0.85rem;"><span class="material-symbols-outlined" style="font-size: 16px;">delete</span></button>
+                        <button class="admin-action-btn edit btn-edit-prod-new" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="Editar" style="padding: 0.35rem; font-size: 0.85rem;"><span class="material-symbols-outlined" style="font-size: 16px;">edit</span></button>
+                        <button class="admin-action-btn edit btn-clone-prod-new" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="Clonar" style="padding: 0.35rem; font-size: 0.85rem;"><span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span></button>
+                        <button class="admin-action-btn delete btn-del-prod-new" data-cat="${p.catIndex}" data-prod="${p.prodIndex}" title="Eliminar" style="padding: 0.35rem; font-size: 0.85rem;"><span class="material-symbols-outlined" style="font-size: 16px;">delete</span></button>
                     </div>
                 </td>
             `;

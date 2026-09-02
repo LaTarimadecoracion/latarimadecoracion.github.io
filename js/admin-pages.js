@@ -1,5 +1,14 @@
-// js/admin-pages.js
-// --- ADMIN PAGES MODULE ---
+window.selectAdminPageByDropdown = function(pageKey) {
+    if (!pageKey) return;
+    const subviews = document.querySelectorAll('#admin-pages-view .admin-subview');
+    subviews.forEach(sub => {
+        if (sub.id === `subview-page-${pageKey}`) {
+            sub.style.display = 'block';
+        } else {
+            sub.style.display = 'none';
+        }
+    });
+};
 
 window.initPagesAdmin = function() {
     // --- LISTENERS DEL MODAL DE CONFIGURACIÓN ---

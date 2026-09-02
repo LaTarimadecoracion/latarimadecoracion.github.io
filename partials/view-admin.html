@@ -3,96 +3,96 @@
      Estructura Principal del Panel Admin (#view-admin)
      Extraído de index.html — no modificar clases, IDs ni estilos inline
      ============================================================================= -->
-            <div class="admin-layout width-normal" id="admin-layout-container">
-                <!-- Barra lateral de navegación / Cabecera móvil -->
-                <!-- Barra de Navegación Superior -->
+                <!-- 1. BARRA SUPERIOR HEADER ESTILO MERCADO LIBRE -->
                 <header class="admin-top-navbar">
-                    <!-- Fila Superior: Marca, Publicación Central y Ajustes Globales -->
-                    <div class="admin-navbar-row-top">
-                        <div class="admin-brand">
-                            <span class="material-symbols-outlined logo-icon">shield_person</span>
-                            <div>
-                                <h3>Admin Local</h3>
-                                <p>La Tarima 2.0</p>
-                            </div>
-                        </div>
-
-                        <!-- Botón Central de Publicar a GitHub -->
-                        <div class="admin-global-publish">
-                            <button type="button" id="admin-github-publish-btn" class="btn-global-publish btn-publish-trigger">
-                                <span class="material-symbols-outlined">publish</span>
-                                <span>Subir Cambios a Internet</span>
-                            </button>
-                            <span id="publish-status-msg" class="global-publish-msg publish-status-indicator" style="display: none; margin-left: 8px;"></span>
-                        </div>
-
-                        <div class="admin-navbar-actions">
-                            <!-- Selector de Ancho del Panel (Solo visible en PC) -->
-                            <div class="admin-width-selector">
-                                <button type="button" class="admin-width-tab active" data-width="normal">Normal</button>
-                                <button type="button" class="admin-width-tab" data-width="full">Completo</button>
-                            </div>
-
-                            <button type="button" id="btn-close-admin" class="btn-navbar-close">
-                                <span class="material-symbols-outlined">logout</span>
-                                <span>Salir del Panel</span>
-                            </button>
-                            
-                            <!-- Botón oculto para compatibilidad con scripts de navegación -->
-                            <button type="button" id="btn-close-admin-header" style="display: none;"></button>
+                    <div class="admin-brand">
+                        <span class="material-symbols-outlined logo-icon">shield_person</span>
+                        <div class="brand-text">
+                            <h3 class="brand-title">Panel de Control</h3>
+                            <p class="brand-sub">La Tarima 2.0</p>
                         </div>
                     </div>
 
-                    <!-- Fila Inferior: Secciones de Navegación del Panel -->
-                    <div class="admin-navbar-row-bottom">
-                        <nav class="admin-nav-tabs">
-                            <button type="button" id="tab-btn-dashboard" class="admin-nav-btn active">
-                                <span class="material-symbols-outlined">dashboard</span>
-                                <span>Dashboard</span>
-                            </button>
-                            <button type="button" id="tab-btn-settings" class="admin-nav-btn">
-                                <span class="material-symbols-outlined">settings</span>
-                                <span>Ajustes del Negocio</span>
-                            </button>
-                            <button type="button" id="tab-btn-catalog" class="admin-nav-btn">
-                                <span class="material-symbols-outlined">inventory_2</span>
-                                <span>Catálogo</span>
-                            </button>
-                            <button type="button" id="tab-btn-offers" class="admin-nav-btn">
-                                <span class="material-symbols-outlined">local_offer</span>
-                                <span>Ofertas & Combos</span>
-                            </button>
-                            <button type="button" id="tab-btn-shipping" class="admin-nav-btn">
-                                <span class="material-symbols-outlined">local_shipping</span>
-                                <span>Envíos & Zonas</span>
-                            </button>
-                            <button type="button" id="tab-btn-stock" class="admin-nav-btn">
-                                <span class="material-symbols-outlined">inventory</span>
-                                <span>Control de Stock</span>
-                            </button>
-                            <button type="button" id="tab-btn-pages" class="admin-nav-btn">
-                                <span class="material-symbols-outlined">view_quilt</span>
-                                <span>Páginas & Banners</span>
-                            </button>
-                            <button type="button" id="tab-btn-orders" class="admin-nav-btn">
-                                <span class="material-symbols-outlined">description</span>
-                                <span>Pedidos</span>
-                            </button>
-                        </nav>
+                    <!-- Acciones del Header Superior: Publicar, Tamaño y Salir -->
+                    <div class="admin-navbar-actions">
+                        <button type="button" id="admin-github-publish-btn" class="btn-global-publish btn-publish-trigger" title="Subir Cambios a Internet">
+                            <span class="material-symbols-outlined">publish</span>
+                            <span>Publicar Web</span>
+                        </button>
+                        <span id="publish-status-msg" class="global-publish-msg publish-status-indicator" style="display: none; margin-left: 8px;"></span>
+
+                        <div class="admin-width-selector">
+                            <button type="button" class="admin-width-tab active" data-width="normal">Normal</button>
+                            <button type="button" class="admin-width-tab" data-width="full">Completo</button>
+                        </div>
+
+                        <button type="button" id="btn-close-admin" class="btn-navbar-close" title="Salir del Panel Admin">
+                            <span class="material-symbols-outlined">logout</span>
+                            <span>Salir</span>
+                        </button>
+                        <button type="button" id="btn-close-admin-header" style="display: none;"></button>
                     </div>
                 </header>
 
-                <!-- Área de contenido principal -->
-                <main class="admin-main">
+                <!-- 2. BODY LAYOUT: SIDEBAR ICONOS + MAIN CONTENT -->
+                <div class="admin-body-wrapper">
+                    <!-- Sidebar Ultra Delgado con Botón Flecha Flotante Adosado -->
+                    <aside class="admin-sidebar-ml" id="admin-sidebar">
+                        <button type="button" id="btn-toggle-sidebar" class="btn-sidebar-edge-toggle" title="Desplegar / Contraer menú">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                        <nav class="admin-sidebar-nav">
+                            <button type="button" id="tab-btn-dashboard" class="admin-sidebar-btn active" data-tooltip="Dashboard">
+                                <span class="material-symbols-outlined">dashboard</span>
+                                <span class="nav-label">Dashboard</span>
+                            </button>
+                            <button type="button" id="tab-btn-settings" class="admin-sidebar-btn" data-tooltip="Ajustes del Negocio">
+                                <span class="material-symbols-outlined">settings</span>
+                                <span class="nav-label">Ajustes del Negocio</span>
+                            </button>
+                            <button type="button" id="tab-btn-catalog" class="admin-sidebar-btn" data-tooltip="Catálogo">
+                                <span class="material-symbols-outlined">inventory_2</span>
+                                <span class="nav-label">Catálogo</span>
+                            </button>
+                            <button type="button" id="tab-btn-offers" class="admin-sidebar-btn" data-tooltip="Ofertas & Combos">
+                                <span class="material-symbols-outlined">local_offer</span>
+                                <span class="nav-label">Ofertas &amp; Combos</span>
+                            </button>
+                            <button type="button" id="tab-btn-shipping" class="admin-sidebar-btn" data-tooltip="Envíos & Zonas">
+                                <span class="material-symbols-outlined">local_shipping</span>
+                                <span class="nav-label">Envíos &amp; Zonas</span>
+                            </button>
+                            <button type="button" id="tab-btn-stock" class="admin-sidebar-btn" data-tooltip="Control de Stock">
+                                <span class="material-symbols-outlined">inventory</span>
+                                <span class="nav-label">Control de Stock</span>
+                            </button>
+                            <button type="button" id="tab-btn-pages" class="admin-sidebar-btn" data-tooltip="Páginas & Banners">
+                                <span class="material-symbols-outlined">view_quilt</span>
+                                <span class="nav-label">Páginas &amp; Banners</span>
+                            </button>
+                            <button type="button" id="tab-btn-orders" class="admin-sidebar-btn" data-tooltip="Pedidos">
+                                <span class="material-symbols-outlined">description</span>
+                                <span class="nav-label">Pedidos</span>
+                            </button>
+                        </nav>
+                    </aside>
+
+                    <!-- Área de contenido principal -->
+                    <main class="admin-main">
                     <div class="admin-content-area">
 
                     <div class="admin-content-inner">
                         <!-- 1. DASHBOARD MODULE -->
                         <div id="admin-dashboard-view" class="admin-section-view">
-                            <div class="welcome-header">
-                                <h2>¡Hola, Administrador! 👋</h2>
-                                <p>Gestioná tu catálogo, la composición del Home y la configuración visual del sitio desde un solo lugar.</p>
-                            </div>
+                            <header class="admin-page-header">
+                                <div>
+                                    <h3 class="admin-header-title">
+                                        <span class="material-symbols-outlined">dashboard</span>
+                                        Panel de Control General
+                                    </h3>
+                                    <p class="admin-header-desc">Gestioná tu catálogo, la composición del Home y la configuración visual del sitio desde un solo lugar.</p>
+                                </div>
+                            </header>
 
                             <!-- Panel de métricas -->
                             <div class="stats-grid">
@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: rgba(37,99,235,0.07); color: #2563EB;">
+                                    <div class="stat-card-icon" style="background: var(--admin-accent-light); color: var(--admin-accent);">
                                         <span class="material-symbols-outlined">inventory_2</span>
                                     </div>
                                     <div class="stat-card-info">
@@ -115,7 +115,7 @@
                                     </div>
                                 </div>
                                 <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: rgba(124,58,237,0.07); color: #7C3AED;">
+                                    <div class="stat-card-icon" style="background: var(--admin-accent-light); color: var(--admin-accent);">
                                         <span class="material-symbols-outlined">palette</span>
                                     </div>
                                     <div class="stat-card-info">
@@ -124,7 +124,7 @@
                                     </div>
                                 </div>
                                 <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: rgba(217,119,6,0.07); color: var(--admin-warning);">
+                                    <div class="stat-card-icon" style="background: var(--admin-accent-light); color: var(--admin-accent);">
                                         <span class="material-symbols-outlined">trending_up</span>
                                     </div>
                                     <div class="stat-card-info">
@@ -146,7 +146,7 @@
                                             </h3>
                                         </header>
                                         <p class="admin-header-desc">Sube una copia minificada de tu web a GitHub Pages para que todos vean las actualizaciones en línea.</p>
-                                        <button type="button" id="dashboard-github-publish-btn" class="btn-publish-dashboard btn-publish-trigger">
+                                        <button type="button" id="dashboard-github-publish-btn" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 0.75rem;">
                                             <span class="material-symbols-outlined">publish</span>
                                             <span>Subir Cambios a Internet</span>
                                         </button>
@@ -253,109 +253,116 @@
 
                         <!-- 1.5 OFFERS MODULE -->
                         <div id="admin-offers-view" class="admin-section-view" style="display: none;">
-                            <div class="admin-card">
-                                <header class="admin-page-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
-                                    <div>
-                                        <h3 class="admin-header-title" style="display: flex; align-items: center; gap: 8px; margin: 0;">
-                                            <span class="material-symbols-outlined" style="color: var(--primary-color);">local_offer</span>
-                                            Gestión de Ofertas & Combos
-                                        </h3>
-                                        <p style="font-size: 0.8rem; color: #64748B; margin: 4px 0 0 0;">
-                                            Creá promociones especiales, combos de productos y ofertas por tiempo limitado con contadores en vivo.
-                                        </p>
-                                    </div>
-                                    <button type="button" id="btn-add-offer-main" class="admin-btn primary" style="display: flex; align-items: center; gap: 6px;">
+                            <header class="admin-page-header">
+                                <div>
+                                    <h3 class="admin-header-title">
+                                        <span class="material-symbols-outlined">local_offer</span>
+                                        Gestión de Ofertas &amp; Combos
+                                    </h3>
+                                    <p class="admin-header-desc">
+                                        Creá promociones especiales, combos de productos y ofertas por tiempo limitado con contadores en vivo.
+                                    </p>
+                                </div>
+                                <div class="admin-header-actions">
+                                    <button type="button" id="btn-add-offer-main" class="btn-primary">
                                         <span class="material-symbols-outlined">add</span> Crear Nueva Oferta
                                     </button>
-                                </header>
-
-                                <div id="admin-offers-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
-                                    <!-- Inyectado dinámicamente -->
                                 </div>
+                            </header>
+
+                            <div id="admin-offers-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
+                                <!-- Inyectado dinámicamente -->
                             </div>
                         </div>
 
                         <!-- 1.6 SHIPPING & ZONES MODULE -->
                         <div id="admin-shipping-view" class="admin-section-view" style="display: none;">
-                            <div class="admin-card">
+                            <header class="admin-page-header">
+                                <div>
+                                    <h3 class="admin-header-title">
+                                        <span class="material-symbols-outlined">local_shipping</span>
+                                        Envíos &amp; Zonas Tarifarias
+                                    </h3>
+                                    <p class="admin-header-desc">Configurá las áreas de cobertura, precios por zona y modalidades de envío (Courier, Flete, Expresos).</p>
+                                </div>
+                            </header>
 
-                                <!-- 🔍 BUSCADOR DE CÓDIGO POSTAL -->
-                                <div style="background: var(--admin-bg-content); border: 1.5px solid var(--admin-border-color); border-radius: var(--admin-radius-lg); padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-xs);">
-                                    <h3 style="margin: 0 0 0.85rem 0; font-size: 1.05rem; font-weight: 800; color: var(--admin-text-main); display: flex; align-items: center; gap: 8px;">
-                                        <span class="material-symbols-outlined" style="color: var(--admin-accent);">pin_drop</span>
+                            <!-- 🔍 BUSCADOR DE CÓDIGO POSTAL -->
+                            <div class="admin-card">
+                                <header class="admin-page-header">
+                                    <h3 class="admin-header-title">
+                                        <span class="material-symbols-outlined">pin_drop</span>
                                         Consulta Rápida de Código Postal, Zonas y Precios
                                     </h3>
+                                </header>
 
-                                    <!-- Barra de buscador -->
-                                    <div class="search-wrapper" style="width: 100%;">
-                                        <span class="material-symbols-outlined">search</span>
-                                        <input type="text" id="admin-postal-search-input" placeholder="Escribí el Código Postal (ej: 4400, 1704, 1686)..." autocomplete="off" style="width: 100%;" oninput="window.renderAdminPostalResult(this.value)" onkeydown="if(event.key==='Enter'||event.keyCode===13){ event.preventDefault(); window.renderAdminPostalResult(this.value); }">
-                                    </div>
-
-                                    <!-- Panel que se despliega hacia abajo al escribir -->
-                                    <div id="admin-postal-result-card" style="display: none; margin-top: 1rem;"></div>
+                                <!-- Barra de buscador -->
+                                <div class="search-wrapper" style="width: 100%;">
+                                    <span class="material-symbols-outlined">search</span>
+                                    <input type="text" id="admin-postal-search-input" placeholder="Escribí el Código Postal (ej: 4400, 1704, 1686)..." autocomplete="off" style="width: 100%;" oninput="window.renderAdminPostalResult(this.value)" onkeydown="if(event.key==='Enter'||event.keyCode===13){ event.preventDefault(); window.renderAdminPostalResult(this.value); }">
                                 </div>
 
-                                <!-- Sub-pestañas de Navegación por Modalidad de Envío -->
-                                <div id="admin-shipping-subtabs" style="display: flex; gap: 8px; margin-bottom: 1.25rem; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 0.75rem; flex-wrap: wrap;">
-                                    <button type="button" class="admin-shipping-subtab-btn active" data-ship-mode="logistica" style="padding: 0.55rem 1.1rem; border-radius: 20px; border: 1.5px solid #0284c7; background: #e0f2fe; color: #0284c7; font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
-                                        <span class="material-symbols-outlined" style="font-size: 18px;">package_2</span> 📦 Panel Logística (Courier)
-                                    </button>
-                                    <button type="button" class="admin-shipping-subtab-btn" data-ship-mode="flete" style="padding: 0.55rem 1.1rem; border-radius: 20px; border: 1.5px solid #cbd5e1; background: #f8fafc; color: #475569; font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
-                                        <span class="material-symbols-outlined" style="font-size: 18px;">local_shipping</span> 🚛 Panel Flete Particular
-                                    </button>
-                                    <button type="button" class="admin-shipping-subtab-btn" data-ship-mode="otro" style="padding: 0.55rem 1.1rem; border-radius: 20px; border: 1.5px solid #cbd5e1; background: #f8fafc; color: #475569; font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
-                                        <span class="material-symbols-outlined" style="font-size: 18px;">local_post_office</span> 🚚 Panel Otro / Expreso
-                                    </button>
-                                </div>
+                                <!-- Panel que se despliega hacia abajo al escribir -->
+                                <div id="admin-postal-result-card" style="display: none; margin-top: 1rem;"></div>
+                            </div>
 
-                                <div id="admin-shipping-zones-container" style="display: flex; flex-direction: column; gap: 1rem;">
-                                    <!-- Contenido inyectado dinámicamente desde js/admin-shipping.js -->
-                                </div>
+                            <!-- Sub-pestañas de Navegación por Modalidad de Envío -->
+                            <div id="admin-shipping-subtabs" class="admin-sub-tabs-bar">
+                                <button type="button" class="admin-shipping-subtab-btn active" data-ship-mode="logistica">
+                                    <span class="material-symbols-outlined">package_2</span> 📦 Panel Logística (Courier)
+                                </button>
+                                <button type="button" class="admin-shipping-subtab-btn" data-ship-mode="flete">
+                                    <span class="material-symbols-outlined">local_shipping</span> 🚛 Panel Flete Particular
+                                </button>
+                                <button type="button" class="admin-shipping-subtab-btn" data-ship-mode="otro">
+                                    <span class="material-symbols-outlined">local_post_office</span> 🚚 Panel Otro / Expreso
+                                </button>
+                            </div>
+
+                            <div id="admin-shipping-zones-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                                <!-- Contenido inyectado dinámicamente desde js/admin-shipping.js -->
                             </div>
                         </div>
 
-                        <!-- [PARTIAL] Modal Pro para Crear/Editar Oferta (Cargado dinámicamente desde partials/admin/modal-offer.html) -->
-
                         <!-- 2. STOCK MODULE (NATIVO INTEGRADO) -->
                         <div id="admin-stock-view" class="admin-section-view" style="display: none;">
-                            <header class="admin-page-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+                            <header class="admin-page-header">
                                 <div>
-                                    <h3 class="admin-header-title" style="display: flex; align-items: center; gap: 8px; margin: 0;">
-                                        <span class="material-symbols-outlined" style="color: var(--primary-color);">inventory</span>
-                                        Control de Stock & Inventario
+                                    <h3 class="admin-header-title">
+                                        <span class="material-symbols-outlined">inventory</span>
+                                        Control de Stock &amp; Inventario
                                     </h3>
-                                    <p style="font-size: 0.8rem; color: #64748B; margin: 4px 0 0 0;">
+                                    <p class="admin-header-desc">
                                         Gestioná las cantidades disponibles por categoría y mantené actualizado tu taller en tiempo real.
                                     </p>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 12px; background: #E2E8F0; padding: 0.4rem 0.85rem; border-radius: 8px;">
-                                    <span style="font-size: 0.82rem; font-weight: 700; color: #475569;">Total Ítems:</span>
-                                    <span id="admin-stock-total-items" style="font-size: 1.1rem; font-weight: 900; color: #0F172A;">0</span>
+                                <div class="admin-count-badge">
+                                    <span>Total Ítems:</span>
+                                    <strong id="admin-stock-total-items">0</strong>
                                 </div>
                             </header>
 
                             <!-- Buscador e Ingesta Rápida Integrados -->
-                            <div class="admin-stock-search-bar-row" style="margin-bottom: 1.25rem;">
-                                <div class="search-wrapper" style="flex: 1; max-width: 450px; width: 100%;">
+                            <div class="admin-card" style="display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                                <div class="search-wrapper" style="flex: 1; min-width: 250px;">
                                     <span class="material-symbols-outlined">search</span>
                                     <input type="text" id="admin-stock-search-input" placeholder="Buscar por producto, categoría o código (ej: 52)...">
                                 </div>
-                                <button type="button" onclick="window.openAdminStockCreateModal()" class="admin-stock-btn-quick-add btn-primary">
-                                    <span class="material-symbols-outlined" style="font-size: 20px;">add_circle</span>
+                                <button type="button" onclick="window.openAdminStockCreateModal()" class="btn-primary">
+                                    <span class="material-symbols-outlined">add_circle</span>
                                     <span>+ Cargar Producto Rápido</span>
                                 </button>
                             </div>
 
                             <!-- Tabla Nativa de Stock -->
-                            <div class="admin-table-wrapper" style="overflow-x: auto; border: 1px solid var(--admin-border-color); border-radius: 12px; background: white; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);">
-                                <table class="admin-table" style="width: 100%; border-collapse: collapse;">
+                            <div class="admin-table-wrapper">
+                                <table class="admin-table">
                                     <thead>
-                                        <tr style="background: #F8FAFC; text-align: left; font-size: 0.78rem; text-transform: uppercase; color: #475569; border-bottom: 1px solid var(--admin-border-color);">
-                                            <th style="padding: 0.75rem 1rem;">Producto / Código</th>
-                                            <th class="col-stock-desktop" style="padding: 0.75rem 1rem; width: 100px; text-align: center;">Stock</th>
-                                            <th style="padding: 0.75rem 1rem; width: 110px;">Costo U.</th>
-                                            <th class="col-status-desktop" style="padding: 0.75rem 1rem; width: 120px; text-align: center;">Estado</th>
+                                        <tr>
+                                            <th>Producto / Código</th>
+                                            <th class="col-stock-desktop" style="width: 100px; text-align: center;">Stock</th>
+                                            <th style="width: 110px;">Costo U.</th>
+                                            <th class="col-status-desktop" style="width: 120px; text-align: center;">Estado</th>
                                         </tr>
                                     </thead>
                                     <tbody id="admin-stock-table-body">
@@ -365,15 +372,12 @@
                             </div>
                         </div>
 
-                        <!-- [PARTIAL] Modales de Stock (Cargados desde partials/admin/modal-stock-edit.html y modal-stock-draft.html) -->
-                    </div>
-                </div>
 
                         <!-- 2. CATALOG MODULE -->
                         <div id="admin-catalog-view" class="admin-section-view" style="display: none;">
                             <!-- Fase 1: Árbol de Categorías -->
                             <div id="admin-categories-view">
-                                <div class="admin-card">
+                                <div class="admin-section-block">
                                     <header class="admin-page-header">
                                         <h3 class="admin-header-title">
                                             <span class="material-symbols-outlined">inventory_2</span>
@@ -384,7 +388,7 @@
                                             <button type="button" id="btn-open-add-category" class="btn-primary">➕ Nueva Categoría</button>
                                         </div>
                                     </header>
-                                    <div style="padding: 1rem 1.25rem 0.5rem 1.25rem;">
+                                    <div style="padding: 0.5rem 0;">
                                         <div class="admin-filters-bar" style="padding: 0; background: transparent; border: none; box-shadow: none; margin-bottom: 0;">
                                             <div class="search-wrapper" style="flex: 1; max-width: none;">
                                                 <span class="material-symbols-outlined">search</span>
@@ -398,7 +402,7 @@
                                 </div>
 
                                 <!-- Fase 1b: Gestión de Alquileres -->
-                                <div id="admin-rentals-view" class="admin-card">
+                                <div id="admin-rentals-view" class="admin-section-block">
                                     <header class="admin-page-header">
                                         <h3 class="admin-header-title">
                                             <span class="material-symbols-outlined">key</span>
@@ -427,7 +431,7 @@
                             </div>
 
                             <!-- Fase 2: Vista de Productos -->
-                            <div id="admin-products-view" class="admin-card" style="display: none;">
+                            <div id="admin-products-view" class="admin-section-block" style="display: none;">
                                 <header class="admin-page-header">
                                     <h3 id="admin-products-title" class="admin-header-title">
                                         <span class="material-symbols-outlined">inventory_2</span>
@@ -504,89 +508,36 @@
                                 </div>
                             </div>
 
-                            <!-- MAPA DEL SITIO: Grid de Tarjetas de Página (siempre visible) -->
-                            <div class="pages-map-grid">
-
-                                <!-- Grupo: Principales -->
-                                <div class="pages-map-group">
-                                    <span class="pages-map-group-label">Principales</span>
-                                    <div class="pages-map-row">
-                                        <button type="button" class="page-card active" data-page="home">
-                                            <span class="page-card-icon material-symbols-outlined">home</span>
-                                            <span class="page-card-name">Inicio</span>
-                                            <span class="page-card-desc">Orden de secciones y banners</span>
-                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
-                                        </button>
-                                        <button type="button" class="page-card" data-page="categories">
-                                            <span class="page-card-icon material-symbols-outlined">category</span>
-                                            <span class="page-card-name">Categorías</span>
-                                            <span class="page-card-desc">Banners de la vista de Categorías</span>
-                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
-                                        </button>
-                                        <button type="button" class="page-card" data-page="catalogo">
-                                            <span class="page-card-icon material-symbols-outlined">menu_book</span>
-                                            <span class="page-card-name">Catálogo</span>
-                                            <span class="page-card-desc">Banners del catálogo completo</span>
-                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
-                                        </button>
-                                        <button type="button" class="page-card" data-page="videos">
-                                            <span class="page-card-icon material-symbols-outlined">smart_display</span>
-                                            <span class="page-card-name">Videos</span>
-                                            <span class="page-card-desc">Banners de la sección de videos</span>
-                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
-                                        </button>
-                                    </div>
+                            <!-- SELECTOR DE PÁGINAS A EDITAR -->
+                            <div class="admin-card" style="margin-bottom: 1.25rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                                    <label for="admin-pages-selector" style="font-weight: 700; color: var(--admin-text-main); font-size: 0.9rem; margin: 0; display: flex; align-items: center; gap: 6px;">
+                                        <span class="material-symbols-outlined" style="color: var(--admin-accent);">find_in_page</span>
+                                        Seleccionar Página:
+                                    </label>
+                                    <select id="admin-pages-selector" class="premium-select" style="flex: 1; max-width: 400px; font-weight: 600; font-size: 0.9rem; padding: 0.5rem 0.85rem;" onchange="window.selectAdminPageByDropdown(this.value)">
+                                        <optgroup label="Principales">
+                                            <option value="home" selected>🏠 Página de Inicio</option>
+                                            <option value="categories">📁 Vista de Categorías</option>
+                                            <option value="catalogo">📖 Catálogo Completo</option>
+                                            <option value="videos">🎬 Sección de Videos</option>
+                                        </optgroup>
+                                        <optgroup label="Información">
+                                            <option value="nosotros">👥 Sobre Nosotros</option>
+                                            <option value="avisos">📢 Avisos y Anuncios</option>
+                                            <option value="search">🔍 Buscador</option>
+                                        </optgroup>
+                                        <optgroup label="Comercial">
+                                            <option value="cart">🛒 Carrito de Compras</option>
+                                            <option value="mayorista">🏪 Sección Mayorista</option>
+                                        </optgroup>
+                                    </select>
                                 </div>
+                            </div>
 
-                                <!-- Grupo: Información -->
-                                <div class="pages-map-group">
-                                    <span class="pages-map-group-label">Información</span>
-                                    <div class="pages-map-row">
-                                        <button type="button" class="page-card" data-page="nosotros">
-                                            <span class="page-card-icon material-symbols-outlined">groups</span>
-                                            <span class="page-card-name">Nosotros</span>
-                                            <span class="page-card-desc">Historia, valores y redes sociales</span>
-                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
-                                        </button>
-                                        <button type="button" class="page-card" data-page="avisos">
-                                            <span class="page-card-icon material-symbols-outlined">campaign</span>
-                                            <span class="page-card-name">Avisos</span>
-                                            <span class="page-card-desc">Mensajes y anuncios especiales</span>
-                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
-                                        </button>
-                                        <button type="button" class="page-card" data-page="search">
-                                            <span class="page-card-icon material-symbols-outlined">search</span>
-                                            <span class="page-card-name">Buscador</span>
-                                            <span class="page-card-desc">Banners y componentes del buscador</span>
-                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Grupo: Comercial -->
-                                <div class="pages-map-group">
-                                    <span class="pages-map-group-label">Comercial</span>
-                                    <div class="pages-map-row">
-                                        <button type="button" class="page-card" data-page="cart">
-                                            <span class="page-card-icon material-symbols-outlined">shopping_cart</span>
-                                            <span class="page-card-name">Carrito</span>
-                                            <span class="page-card-desc">Banners en el checkout</span>
-                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
-                                        </button>
-                                        <button type="button" class="page-card" data-page="mayorista">
-                                            <span class="page-card-icon material-symbols-outlined">store</span>
-                                            <span class="page-card-name">Mayorista</span>
-                                            <span class="page-card-desc">Precios, métodos de pago y datos</span>
-                                            <span class="page-card-arrow material-symbols-outlined">chevron_right</span>
-                                        </button>
-                                    </div>
-                                </div>
-
-                            </div><!-- /pages-map-grid -->
-
-                            <!-- PANEL EDITOR: aparece debajo del mapa, muestra la página seleccionada -->
-                            <div class="page-editor-panel">
-                                <div class="page-editor-panel-header">
+                            <!-- PANEL EDITOR: se despliega abajo automáticamente -->
+                            <div class="page-editor-panel" style="margin-top: 0;">
+                                <div class="page-editor-panel-header" style="display: none;">
                                     <span id="page-editor-back-icon" class="material-symbols-outlined page-editor-back">arrow_back</span>
                                     <span id="page-editor-label" class="page-editor-title">Inicio</span>
                                 </div>
@@ -1088,10 +1039,11 @@
                         </div>
 
                         <!-- 5. GESTIÓN DE PEDIDOS (ORDERS) -->
-                        <div id="admin-orders-view" class="admin-section-view" style="display: none; width: 100%;">
-                            <iframe id="admin-orders-iframe" src="pedidos/admin.html" style="width: 100%; min-height: 85vh; border: none; background: transparent; overflow: hidden;" scrolling="no" onload="if(window.initOrdersIframeAutoHeight) window.initOrdersIframeAutoHeight();"></iframe>
+                        <div id="admin-orders-view" class="admin-section-view" style="display: none; width: 100%; margin: 0; padding: 0;">
+                            <iframe id="admin-orders-iframe" src="pedidos/admin.html" style="width: 100%; min-height: 85vh; border: none; background: transparent; overflow: hidden; display: block; margin: 0; padding: 0;" scrolling="no" onload="if(window.initOrdersIframeAutoHeight) window.initOrdersIframeAutoHeight();"></iframe>
                         </div>
 
                     </div>
                 </main>
             </div>
+        </div>

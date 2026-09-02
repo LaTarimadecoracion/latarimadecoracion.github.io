@@ -852,9 +852,14 @@ C: 26cm</span>
                         desc  = `Día 1 de fabricación en taller 🛠️`;
                     } else if (isReadyDay) {
                         const readyDescCfg = (ordersConfigData.milestones && ordersConfigData.milestones.readyDesc) || '¡Tu mueble ya está listo! ✅';
-                        title = `${capitalizedWeekday} &bull; ${dateStr} — Fin de Fabricación`;
-                        desc  = (orderData.status === 'listo' || orderData.status === 'entregado')
-                            ? readyDescCfg
+                        const isFinished = (orderData.status === 'listo' || orderData.status === 'entregado');
+                        const isEarly = isFinished && businessDayCounter < maxDays;
+                        const daysSaved = maxDays - businessDayCounter;
+                        title = `${capitalizedWeekday} &bull; ${dateStr} — ${(isEarly && daysSaved > 0) ? '¡Pedido Listo con Anticipación! ⚡' : 'Fin de Fabricación'}`;
+                        desc  = isFinished
+                            ? ((isEarly && daysSaved > 0)
+                                ? `${readyDescCfg} ⚡ ¡Finalizado con anticipación en solo ${businessDayCounter} días hábiles! (${daysSaved} ${daysSaved === 1 ? 'día hábil' : 'días hábiles'} antes de lo pactado) 🎉`
+                                : `${readyDescCfg} (Finalizado en ${businessDayCounter} días hábiles)`)
                             : `Fecha estimada de finalización (Día ${businessDayCounter})`;
                     } else if (isLast) {
                         const mCfg = ordersConfigData.milestones || {};

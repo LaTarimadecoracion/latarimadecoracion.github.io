@@ -33,7 +33,7 @@ const offersData = [
         "hasTimer": false,
         "expirationDate": null,
         "customCoverImage": "",
-        "active": true,
+        "active": false,
         "created_at": 1787973760484
     }
 ];

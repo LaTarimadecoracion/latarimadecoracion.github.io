@@ -136,7 +136,7 @@
             // Fila de Encabezado de Categoría
             const headerTr = document.createElement('tr');
             headerTr.className = `admin-stock-cat-header ${isCollapsed ? 'collapsed' : ''}`;
-            headerTr.style.background = '#F8FAFC';
+            headerTr.style.background = 'var(--admin-surface-hover)';
             headerTr.style.cursor = 'pointer';
             headerTr.style.userSelect = 'none';
 
@@ -149,17 +149,17 @@
             headerTr.innerHTML = `
                 <td colspan="4" style="padding: 0.65rem 1rem; border-top: 1px solid var(--admin-border-color); border-bottom: 2px solid var(--admin-border-color);">
                     <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                        <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 0.92rem; color: #0F172A;">
-                            <span class="material-symbols-outlined" style="transition: transform 0.2s ease; color: var(--primary-color, #c0510a); ${isCollapsed ? 'transform: rotate(-90deg);' : ''}">expand_more</span>
+                        <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.92rem; color: var(--admin-text-main);">
+                            <span class="material-symbols-outlined" style="transition: transform 0.2s ease; color: var(--admin-accent); ${isCollapsed ? 'transform: rotate(-90deg);' : ''}">expand_more</span>
                             <span>${catName}</span>
-                            <span class="col-status-desktop" style="padding: 0.2rem 0.55rem; border-radius: 6px; font-size: 0.73rem; font-weight: 700; background: #E2E8F0; color: #475569;">${items.length} ${items.length === 1 ? 'producto' : 'productos'}</span>
+                            <span class="col-status-desktop admin-count-badge" style="padding: 2px 8px; font-size: 0.73rem;">${items.length} ${items.length === 1 ? 'producto' : 'productos'}</span>
                         </div>
 
                         <!-- Botón + Verde Integrado en la Franja de Categoría -->
-                        <span class="material-symbols-outlined" onclick="event.stopPropagation(); window.openAdminStockCreateModalForCategory('${catName}')" title="Agregar producto en ${catName}" style="color: #10B981; font-weight: 900; font-size: 24px; cursor: pointer; user-select: none; transition: transform 0.15s ease;" onmouseover="this.style.transform='scale(1.25)'" onmouseout="this.style.transform='scale(1)'">add</span>
+                        <span class="material-symbols-outlined" onclick="event.stopPropagation(); window.openAdminStockCreateModalForCategory('${catName}')" title="Agregar producto en ${catName}" style="color: var(--admin-success); font-weight: 800; font-size: 22px; cursor: pointer; user-select: none; transition: transform 0.15s ease;" onmouseover="this.style.transform='scale(1.25)'" onmouseout="this.style.transform='scale(1)'">add</span>
 
-                        <div class="col-status-desktop" style="font-size: 0.8rem; font-weight: 700; color: #64748B;">
-                            Total Unidades: <span style="color: #0F172A; font-weight: 800; background: #E2E8F0; padding: 2px 8px; border-radius: 12px;">${catTotalStock}</span>
+                        <div class="col-status-desktop" style="font-size: 0.8rem; font-weight: 600; color: var(--admin-text-muted);">
+                            Total Unidades: <span class="admin-count-badge" style="padding: 2px 8px;">${catTotalStock}</span>
                         </div>
                     </div>
                 </td>
@@ -170,32 +170,32 @@
             if (!isCollapsed) {
                 items.forEach(item => {
                     const tr = document.createElement('tr');
-                    tr.style.borderBottom = '1px solid #F1F5F9';
+                    tr.style.borderBottom = '1px solid var(--admin-border-color)';
 
                     const formattedCost = item.cost ? '$' + Number(item.cost).toLocaleString('es-AR') : '-';
 
                     const isVisible = item.visible !== false;
                     const statusBadge = isVisible 
-                        ? `<span onclick="window.openAdminStockLinksModal('${item.id}')" title="Ver producto en la web y enlaces disponibles" style="color: #10B981; font-weight: 700; font-size: 0.75rem; background: #DCFCE7; padding: 4px 10px; border-radius: 12px; cursor: pointer; user-select: none; display: inline-flex; align-items: center; gap: 4px; transition: transform 0.15s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Sincronizado <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`
-                        : `<span onclick="window.openAdminStockLinksModal('${item.id}')" title="Ver previsualización y enlaces del producto" style="color: #D97706; font-weight: 700; font-size: 0.75rem; background: #FEF3C7; border: 1px solid #FCD34D; padding: 4px 10px; border-radius: 12px; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; user-select: none; transition: transform 0.15s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">🔒 Borrador <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`;
+                        ? `<span onclick="window.openAdminStockLinksModal('${item.id}')" title="Ver producto en la web y enlaces disponibles" style="color: var(--admin-success); font-weight: 700; font-size: 0.75rem; background: var(--admin-success-light); border: 1px solid var(--admin-success); padding: 4px 10px; border-radius: var(--admin-radius-sm); cursor: pointer; user-select: none; display: inline-flex; align-items: center; gap: 4px;">Sincronizado <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`
+                        : `<span onclick="window.openAdminStockLinksModal('${item.id}')" title="Ver previsualización y enlaces del producto" style="color: var(--admin-warning); font-weight: 700; font-size: 0.75rem; background: var(--admin-warning-light); border: 1px solid var(--admin-warning); padding: 4px 10px; border-radius: var(--admin-radius-sm); display: inline-flex; align-items: center; gap: 4px; cursor: pointer; user-select: none;">🔒 Borrador <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`;
 
                     tr.innerHTML = `
                         <td style="padding: 0.65rem 0.85rem;">
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                <img src="${item.img}" alt="Foto" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 1px solid #E2E8F0; cursor: pointer; flex-shrink: 0;" onclick="window.openAdminStockPhotoModal('${item.id}')" title="Toca para ver foto y editar stock/costo" onerror="this.src='${fallbackImg}'">
+                                <img src="${item.img}" alt="Foto" style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); object-fit: cover; border: 1px solid var(--admin-border-color); cursor: pointer; flex-shrink: 0;" onclick="window.openAdminStockPhotoModal('${item.id}')" title="Toca para ver foto y editar stock/costo" onerror="this.src='${fallbackImg}'">
                                 <div style="display: flex; flex-direction: column;">
                                     <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                                        <span style="font-weight: 700; color: #0F172A; font-size: 0.88rem;">${item.title}</span>
+                                        <span style="font-weight: 700; color: var(--admin-text-main); font-size: 0.88rem;">${item.title}</span>
                                         <span class="col-status-mobile" style="display: none;">${statusBadge}</span>
                                     </div>
-                                    <span style="font-family: monospace; font-weight: 700; color: #c0510a; background: rgba(192, 81, 10, 0.08); padding: 2px 6px; border-radius: 4px; display: inline-block; width: fit-content; margin-top: 2px; font-size: 0.75rem;">Código: ${item.id}</span>
+                                    <span style="font-family: monospace; font-weight: 700; color: var(--admin-accent); background: var(--admin-accent-light); padding: 2px 6px; border-radius: 4px; display: inline-block; width: fit-content; margin-top: 2px; font-size: 0.75rem;">Código: ${item.id}</span>
                                 </div>
                             </div>
                         </td>
                         <td class="col-stock-desktop" style="text-align: center; padding: 0.65rem;">
-                            <input type="number" min="0" value="${item.qty || 0}" onchange="window.updateAdminStockQty('${item.id}', this.value)" style="width: 70px; padding: 0.3rem 0.5rem; text-align: center; border: 1px solid #CBD5E1; border-radius: 6px; font-weight: 700; font-size: 0.9rem;">
+                            <input type="number" min="0" value="${item.qty || 0}" onchange="window.updateAdminStockQty('${item.id}', this.value)" class="premium-input" style="width: 70px; padding: 0.3rem 0.5rem; text-align: center; font-weight: 700;">
                         </td>
-                        <td style="font-weight: 700; color: #0F172A; padding: 0.65rem; cursor: pointer;" onclick="window.openAdminStockPhotoModal('${item.id}')" title="Toca para editar stock y costo">${formattedCost}</td>
+                        <td style="font-weight: 700; color: var(--admin-text-main); padding: 0.65rem; cursor: pointer;" onclick="window.openAdminStockPhotoModal('${item.id}')" title="Toca para editar stock y costo">${formattedCost}</td>
                         <td class="col-status-desktop" style="text-align: center; padding: 0.65rem;">
                             ${statusBadge}
                         </td>
