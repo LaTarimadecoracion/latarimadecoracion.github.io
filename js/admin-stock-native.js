@@ -4,6 +4,616 @@
 (function() {
     window.adminStockExpandedCategories = new Set();
     window.adminStockSearchQuery = '';
+    window.adminStockAllHidden = true;
+
+    // Inicialización del Carrito de Faltantes / Compras desde localStorage
+    // --- SISTEMA UNIFICADO DE COMPRAS Y PENDIENTES EN CADENA (NIVELES CONTINUOS) ---
+    // window.adminStockLists: Array de objetos. El índice 0 siempre es la lista visible al frente.
+    try {
+        window.adminStockLists = JSON.parse(localStorage.getItem('adminStockListsState') || '[]');
+        if (!Array.isArray(window.adminStockLists)) window.adminStockLists = [];
+    } catch(e) {
+        window.adminStockLists = [];
+    }
+
+    // Retrocompatibilidad con window.adminStockCart histórico
+    if (window.adminStockLists.length === 0) {
+        let legacyCart = {};
+        try { legacyCart = JSON.parse(localStorage.getItem('adminStockCartState') || '{}'); } catch(e) {}
+        if (Object.keys(legacyCart).length > 0) {
+            window.adminStockLists.push(legacyCart);
+        }
+    }
+
+    // Guardar estado unificado
+    window.saveAdminStockListsState = function() {
+        try {
+            // Máximo 5 listas en cadena. Si hay más, las sobrantes más antiguas pasan al historial
+            while (window.adminStockLists.length > 5) {
+                const overflow = window.adminStockLists.pop();
+                window.recordPurchasesToHistory(overflow, 'Lista Archivado Cadena');
+            }
+            localStorage.setItem('adminStockListsState', JSON.stringify(window.adminStockLists));
+            // Sincronizar referencia clásica adminStockCart a la lista que está actualmente al frente (Lista 1)
+            window.adminStockCart = window.adminStockLists[0] || {};
+            localStorage.setItem('adminStockCartState', JSON.stringify(window.adminStockCart));
+        } catch(e) {}
+        window.renderAdminStockCart();
+    };
+
+    // Operaciones sobre la lista activa que está al frente (adminStockLists[0])
+    window.addToAdminStockCart = function(id, title, img, cost) {
+        if (window.adminStockLists.length === 0) {
+            window.adminStockLists.push({});
+        }
+        const currentList = window.adminStockLists[0];
+        if (!currentList[id]) {
+            currentList[id] = {
+                id: id,
+                title: title,
+                img: img || 'img/logo_provisional.png',
+                cost: parseFloat(cost) || 0,
+                qtyNeeded: 1,
+                qtyAcquired: 0,
+                checked: false
+            };
+            if (typeof window.showAdminToast === 'function') {
+                window.showAdminToast(`🛒 Se agregó "${title}" a la lista`);
+            }
+        } else {
+            currentList[id].qtyNeeded += 1;
+            if (typeof window.showAdminToast === 'function') {
+                window.showAdminToast(`🛒 Cantidad aumentada para "${title}"`);
+            }
+        }
+        window.saveAdminStockListsState();
+        window.renderAdminStockModule();
+    };
+
+    window.removeFromAdminStockCart = function(id) {
+        if (window.adminStockLists.length > 0 && window.adminStockLists[0][id]) {
+            delete window.adminStockLists[0][id];
+            window.saveAdminStockListsState();
+            window.renderAdminStockModule();
+        }
+    };
+
+    window.updateAdminStockCartItemQty = function(id, newQty) {
+        const qty = Math.max(1, parseInt(newQty) || 1);
+        if (window.adminStockLists[0] && window.adminStockLists[0][id]) {
+            window.adminStockLists[0][id].qtyNeeded = qty;
+            window.saveAdminStockListsState();
+        }
+    };
+
+    window.updateAdminStockCartItemAcquired = function(id, newAcquired) {
+        const acquired = Math.max(0, parseInt(newAcquired) || 0);
+        if (window.adminStockLists[0] && window.adminStockLists[0][id]) {
+            window.adminStockLists[0][id].qtyAcquired = acquired;
+            window.saveAdminStockListsState();
+        }
+    };
+
+    window.toggleAdminStockCartItemCheck = function(id) {
+        if (window.adminStockLists[0] && window.adminStockLists[0][id]) {
+            const item = window.adminStockLists[0][id];
+            item.checked = !item.checked;
+            window.saveAdminStockListsState();
+        }
+    };
+
+    // Eliminar la lista actual de la cadena (Pasa la siguiente lista al frente)
+    window.clearAdminStockCart = function() {
+        if (window.adminStockLists.length === 0) return;
+        if (confirm('¿Eliminar la lista actual? La siguiente lista de la cadena tomará su lugar.')) {
+            const removed = window.adminStockLists.shift();
+            window.recordPurchasesToHistory(removed, 'Lista Eliminada');
+            window.saveAdminStockListsState();
+            window.renderAdminStockModule();
+            if (typeof window.showAdminToast === 'function') {
+                if (window.adminStockLists.length > 0) {
+                    window.showAdminToast('🗑 Lista eliminada. La siguiente lista de la cadena tomó su lugar.');
+                } else {
+                    window.showAdminToast('🗑 Lista de compras eliminada por completo.');
+                }
+            }
+        }
+    };
+
+    window.clearAdminStockPendingList = function() {
+        window.clearAdminStockCart();
+    };
+
+    // --- ESTADO DEL HISTORIAL DE COMPRAS ---
+    try {
+        window.adminStockPurchasesHistory = JSON.parse(localStorage.getItem('adminStockPurchasesHistoryState') || '[]');
+    } catch(e) {
+        window.adminStockPurchasesHistory = [];
+    }
+
+    window.saveAdminStockPurchasesHistoryState = function() {
+        try {
+            localStorage.setItem('adminStockPurchasesHistoryState', JSON.stringify(window.adminStockPurchasesHistory));
+        } catch(e) {}
+        window.renderAdminStockPurchasesHistory();
+    };
+
+    window.recordPurchasesToHistory = function(sourceListObj, sourceLabel) {
+        if (!sourceListObj) return;
+        const keys = Object.keys(sourceListObj);
+        const acquiredItems = [];
+        let totalSpent = 0;
+
+        keys.forEach(id => {
+            const item = sourceListObj[id];
+            const acquired = parseInt(item.qtyAcquired) || 0;
+            if (acquired > 0) {
+                const costSpent = acquired * (parseFloat(item.cost) || 0);
+                totalSpent += costSpent;
+                acquiredItems.push({
+                    title: item.title,
+                    img: item.img,
+                    qtyAcquired: acquired,
+                    costUnit: item.cost || 0,
+                    costSpent: costSpent
+                });
+            }
+        });
+
+        if (acquiredItems.length > 0) {
+            const newRecord = {
+                id: 'buy-' + Date.now(),
+                date: new Date().toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' }),
+                source: sourceLabel || 'Compras',
+                totalSpent: totalSpent,
+                items: acquiredItems
+            };
+
+            window.adminStockPurchasesHistory.unshift(newRecord);
+            window.saveAdminStockPurchasesHistoryState();
+        }
+    };
+
+    // --- BOTÓN PRINCIPAL: GENERAR LISTA DE PENDIENTES (CADENA CONTINUA) ---
+    window.generateAdminStockPendingList = function() {
+        if (window.adminStockLists.length === 0) {
+            if (typeof window.showAdminToast === 'function') {
+                window.showAdminToast('⚠️ La lista está vacía.');
+            }
+            return;
+        }
+
+        const currentList = window.adminStockLists[0];
+        const keys = Object.keys(currentList);
+        if (keys.length === 0) {
+            if (typeof window.showAdminToast === 'function') {
+                window.showAdminToast('⚠️ La lista está vacía.');
+            }
+            return;
+        }
+
+        // 1. Registrar las compras efectivamente realizadas en el historial
+        window.recordPurchasesToHistory(currentList, 'Comprar/reponer');
+
+        // 2. Extraer ítems que NO se consiguieron (o incompletos) para formar la nueva lista
+        const nextPendingObj = {};
+        let countNewItems = 0;
+
+        keys.forEach(id => {
+            const item = currentList[id];
+            const needed = parseInt(item.qtyNeeded) || 1;
+            const acquired = parseInt(item.qtyAcquired) || 0;
+            const isChecked = Boolean(item.checked);
+
+            if (!isChecked && acquired < needed) {
+                const remaining = needed - acquired;
+                nextPendingObj[id] = {
+                    id: id,
+                    title: item.title,
+                    img: item.img,
+                    cost: item.cost,
+                    qtyNeeded: remaining,
+                    qtyAcquired: 0,
+                    checked: false
+                };
+                countNewItems++;
+            }
+        });
+
+        // 3. Quitar la lista actual procesada del frente
+        window.adminStockLists.shift();
+
+        // 4. Si quedaron faltantes, colocarlos como la NUEVA lista al frente
+        if (countNewItems > 0) {
+            window.adminStockLists.unshift(nextPendingObj);
+        }
+
+        // 5. Guardar estado y actualizar pantalla al instante
+        window.saveAdminStockListsState();
+        window.renderAdminStockModule();
+
+        // Asegurar que la tarjeta principal permanezca desplegada
+        const cartWrapper = document.getElementById('admin-stock-cart-content-wrapper');
+        const cartIcon = document.getElementById('admin-stock-cart-collapse-icon');
+        if (cartWrapper) cartWrapper.style.display = 'block';
+        if (cartIcon) cartIcon.style.transform = 'rotate(0deg)';
+
+        if (typeof window.showAdminToast === 'function') {
+            if (countNewItems > 0) {
+                window.showAdminToast(`📋 Se generó la Nueva Lista de Pendientes con ${countNewItems} ítems.`);
+            } else {
+                window.showAdminToast('🎉 ¡Felicidades! Conseguiste el 100% de los productos de la lista.');
+            }
+        }
+    };
+
+    window.generateAdminStockSubPendingList = function() {
+        window.generateAdminStockPendingList();
+    };
+
+    window.toggleAdminStockPendingListCollapse = function() {
+        const wrapper = document.getElementById('admin-stock-pending-content-wrapper');
+        const icon = document.getElementById('admin-stock-pending-collapse-icon');
+        if (!wrapper) return;
+        const isHidden = wrapper.style.display === 'none';
+        wrapper.style.display = isHidden ? 'block' : 'none';
+        if (icon) icon.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(-90deg)';
+        if (isHidden) window.renderAdminStockPendingList();
+    };
+
+    window.renderAdminStockCart = function() {
+        const container = document.getElementById('admin-stock-cart-items-container');
+        const badge = document.getElementById('admin-stock-cart-badge');
+        const totalQtyEl = document.getElementById('admin-stock-cart-total-qty');
+        const totalCostEl = document.getElementById('admin-stock-cart-total-cost');
+        if (!container) return;
+
+        const cartObj = (window.adminStockLists && window.adminStockLists.length > 0) ? window.adminStockLists[0] : (window.adminStockCart || {});
+        const keys = Object.keys(cartObj);
+
+        if (badge) {
+            badge.textContent = `${keys.length} ${keys.length === 1 ? 'ítem' : 'ítems'}`;
+        }
+
+        if (keys.length === 0) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 2rem 1rem; color: var(--admin-text-muted);">
+                    <span class="material-symbols-outlined" style="font-size: 2.2rem; color: var(--admin-border-color);">shopping_cart</span>
+                    <p style="margin: 0.4rem 0 0 0; font-size: 0.88rem; font-weight: 600;">La lista de compras está vacía.</p>
+                    <p style="margin: 2px 0 0 0; font-size: 0.78rem;">Toca el icono de carrito 🛒 en los productos del stock para agregarlos aquí.</p>
+                </div>
+            `;
+            if (totalQtyEl) totalQtyEl.textContent = '0';
+            if (totalCostEl) totalCostEl.textContent = '$0';
+            return;
+        }
+
+        let totalQty = 0;
+        let totalCostSpent = 0;
+        let totalCostNeeded = 0;
+        let html = '';
+
+        keys.forEach(id => {
+            const item = cartObj[id];
+            const needed = parseInt(item.qtyNeeded) || 1;
+            const acquired = parseInt(item.qtyAcquired) || 0;
+            const isChecked = Boolean(item.checked);
+            const isFullyDone = isChecked || (acquired >= needed && needed > 0);
+
+            const unitCost = item.cost || 0;
+            const itemSpentCost = unitCost * acquired;
+            const itemFullCost = unitCost * needed;
+
+            totalQty += needed;
+            totalCostSpent += itemSpentCost;
+            totalCostNeeded += itemFullCost;
+
+            html += `
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.65rem 0.75rem; background: ${isChecked ? 'var(--admin-success-light)' : (acquired > 0 ? '#FEF3C7' : 'var(--admin-surface-hover)')}; border: 1px solid ${isChecked ? 'var(--admin-success)' : (acquired > 0 ? '#D97706' : 'var(--admin-border-color)')}; border-radius: var(--admin-radius-sm); opacity: ${isChecked ? '0.75' : '1'}; transition: all 0.2s ease; flex-wrap: wrap;">
+                    
+                    <div style="display: flex; align-items: center; gap: 0.6rem; flex: 1; min-width: 180px;">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="window.toggleAdminStockCartItemCheck('${item.id}')" title="Marcar ítem" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--admin-success); flex-shrink: 0;">
+                        <img src="${item.img}" alt="Foto" style="width: 36px; height: 36px; border-radius: 4px; object-fit: cover; border: 1px solid var(--admin-border-color); flex-shrink: 0;">
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="font-weight: 700; font-size: 0.85rem; color: var(--admin-text-main); ${isFullyDone ? 'text-decoration: line-through;' : ''}">${item.title}</span>
+                            <div style="display: flex; align-items: center; gap: 6px; margin-top: 2px;">
+                                <span style="font-size: 0.73rem; color: var(--admin-text-muted);">Costo: $${Number(unitCost).toLocaleString('es-AR')}</span>
+                                ${acquired > 0 && !isFullyDone ? `<span style="font-size: 0.71rem; font-weight: 700; color: #D97706; background: #FEF3C7; padding: 1px 5px; border-radius: 4px;">Parcial (${acquired}/${needed})</span>` : ''}
+                                ${isFullyDone ? `<span style="font-size: 0.71rem; font-weight: 700; color: var(--admin-success); background: var(--admin-success-light); padding: 1px 5px; border-radius: 4px;">Listo</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 0.6rem; margin-left: auto; flex-shrink: 0;">
+                        <div style="display: flex; align-items: center; gap: 3px;" title="Total de unidades necesarias a comprar">
+                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-text-muted);">Busco:</span>
+                            <input type="number" min="1" value="${needed}" onchange="window.updateAdminStockCartItemQty('${item.id}', this.value)" class="premium-input" style="width: 44px; padding: 0.2rem; text-align: center; font-weight: 700; font-size: 0.82rem;">
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 3px;" title="Unidades ya compradas o conseguidas">
+                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-success);">Conseguí:</span>
+                            <input type="number" min="0" max="${needed}" value="${acquired}" onchange="window.updateAdminStockCartItemAcquired('${item.id}', this.value)" class="premium-input" style="width: 44px; padding: 0.2rem; text-align: center; font-weight: 700; font-size: 0.82rem; border-color: var(--admin-success);">
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; text-align: right; min-width: 65px;">
+                            <span style="font-weight: 800; font-size: 0.85rem; color: var(--admin-success);">$${Number(itemSpentCost).toLocaleString('es-AR')}</span>
+                            ${acquired < needed ? `<span style="font-size: 0.68rem; color: var(--admin-text-muted);" title="Costo total si se comprara el 100%">de $${Number(itemFullCost).toLocaleString('es-AR')}</span>` : ''}
+                        </div>
+
+                        <span class="material-symbols-outlined" onclick="window.removeFromAdminStockCart('${item.id}')" title="Quitar de la lista" style="font-size: 20px; color: #DC2626; cursor: pointer; user-select: none; flex-shrink: 0;">delete</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+        if (totalQtyEl) totalQtyEl.textContent = totalQty;
+        if (totalCostEl) totalCostEl.innerHTML = `$${Number(totalCostSpent).toLocaleString('es-AR')} <span style="font-size: 0.75rem; color: var(--admin-text-muted); font-weight: 500;">(de $${Number(totalCostNeeded).toLocaleString('es-AR')})</span>`;
+    };
+
+    window.renderAdminStockPendingList = function() {
+        const container = document.getElementById('admin-stock-pending-items-container');
+        const badge = document.getElementById('admin-stock-pending-badge');
+        const totalQtyEl = document.getElementById('admin-stock-pending-total-qty');
+        const totalCostEl = document.getElementById('admin-stock-pending-total-cost');
+        if (!container) return;
+
+        const pendingObj = window.adminStockPendingList || {};
+        const keys = Object.keys(pendingObj);
+
+        if (badge) {
+            badge.textContent = `${keys.length} ${keys.length === 1 ? 'pendiente' : 'pendientes'}`;
+        }
+
+        if (keys.length === 0) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 2rem 1rem; color: var(--admin-text-muted);">
+                    <span class="material-symbols-outlined" style="font-size: 2.2rem; color: var(--admin-border-color);">task_alt</span>
+                    <p style="margin: 0.4rem 0 0 0; font-size: 0.88rem; font-weight: 600;">No hay lista de pendientes activa.</p>
+                    <p style="margin: 2px 0 0 0; font-size: 0.78rem;">Al presionar "Generar Lista de Pendientes" en la tarjeta Comprar/reponer, los saldos faltantes se cargarán automáticamente aquí.</p>
+                </div>
+            `;
+            if (totalQtyEl) totalQtyEl.textContent = '0';
+            if (totalCostEl) totalCostEl.textContent = '$0';
+            return;
+        }
+
+        let totalQty = 0;
+        let totalCostSpent = 0;
+        let totalCostNeeded = 0;
+        let html = '';
+
+        keys.forEach(id => {
+            const item = pendingObj[id];
+            const needed = parseInt(item.qtyNeeded) || 1;
+            const acquired = parseInt(item.qtyAcquired) || 0;
+            const isChecked = Boolean(item.checked);
+            const isFullyDone = isChecked || (acquired >= needed && needed > 0);
+
+            const unitCost = item.cost || 0;
+            const itemSpentCost = unitCost * acquired;
+            const itemFullCost = unitCost * needed;
+
+            totalQty += needed;
+            totalCostSpent += itemSpentCost;
+            totalCostNeeded += itemFullCost;
+
+            html += `
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.65rem 0.75rem; background: ${isChecked ? 'var(--admin-success-light)' : (acquired > 0 ? '#FEF3C7' : 'var(--admin-surface-hover)')}; border: 1px solid ${isChecked ? 'var(--admin-success)' : (acquired > 0 ? '#D97706' : 'var(--admin-border-color)')}; border-radius: var(--admin-radius-sm); opacity: ${isChecked ? '0.75' : '1'}; transition: all 0.2s ease; flex-wrap: wrap;">
+                    
+                    <div style="display: flex; align-items: center; gap: 0.6rem; flex: 1; min-width: 180px;">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="window.toggleAdminStockPendingItemCheck('${item.id}')" title="Marcar ítem" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--admin-success); flex-shrink: 0;">
+                        <img src="${item.img}" alt="Foto" style="width: 36px; height: 36px; border-radius: 4px; object-fit: cover; border: 1px solid var(--admin-border-color); flex-shrink: 0;">
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="font-weight: 700; font-size: 0.85rem; color: var(--admin-text-main); ${isFullyDone ? 'text-decoration: line-through;' : ''}">${item.title}</span>
+                            <div style="display: flex; align-items: center; gap: 6px; margin-top: 2px;">
+                                <span style="font-size: 0.73rem; color: var(--admin-text-muted);">Costo: $${Number(unitCost).toLocaleString('es-AR')}</span>
+                                ${acquired > 0 && !isFullyDone ? `<span style="font-size: 0.71rem; font-weight: 700; color: #D97706; background: #FEF3C7; padding: 1px 5px; border-radius: 4px;">Parcial (${acquired}/${needed})</span>` : ''}
+                                ${isFullyDone ? `<span style="font-size: 0.71rem; font-weight: 700; color: var(--admin-success); background: var(--admin-success-light); padding: 1px 5px; border-radius: 4px;">Listo</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 0.6rem; margin-left: auto; flex-shrink: 0;">
+                        <div style="display: flex; align-items: center; gap: 3px;" title="Total de unidades necesarias a comprar">
+                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-text-muted);">Busco:</span>
+                            <input type="number" min="1" value="${needed}" onchange="window.updateAdminStockPendingItemQty('${item.id}', this.value)" class="premium-input" style="width: 44px; padding: 0.2rem; text-align: center; font-weight: 700; font-size: 0.82rem;">
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 3px;" title="Unidades ya compradas o conseguidas">
+                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-success);">Conseguí:</span>
+                            <input type="number" min="0" max="${needed}" value="${acquired}" onchange="window.updateAdminStockPendingItemAcquired('${item.id}', this.value)" class="premium-input" style="width: 44px; padding: 0.2rem; text-align: center; font-weight: 700; font-size: 0.82rem; border-color: var(--admin-success);">
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; text-align: right; min-width: 65px;">
+                            <span style="font-weight: 800; font-size: 0.85rem; color: var(--admin-success);">$${Number(itemSpentCost).toLocaleString('es-AR')}</span>
+                            ${acquired < needed ? `<span style="font-size: 0.68rem; color: var(--admin-text-muted);" title="Costo total si se comprara el 100%">de $${Number(itemFullCost).toLocaleString('es-AR')}</span>` : ''}
+                        </div>
+
+                        <span class="material-symbols-outlined" onclick="window.removeFromAdminStockPendingList('${item.id}')" title="Quitar de la lista de pendientes" style="font-size: 20px; color: #DC2626; cursor: pointer; user-select: none; flex-shrink: 0;">delete</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+        if (totalQtyEl) totalQtyEl.textContent = totalQty;
+        if (totalCostEl) totalCostEl.innerHTML = `$${Number(totalCostSpent).toLocaleString('es-AR')} <span style="font-size: 0.75rem; color: var(--admin-text-muted); font-weight: 500;">(de $${Number(totalCostNeeded).toLocaleString('es-AR')})</span>`;
+    };
+
+    window.toggleAdminStockPurchasesHistoryCollapse = function() {
+        const wrapper = document.getElementById('admin-stock-purchases-history-content-wrapper');
+        const icon = document.getElementById('admin-stock-purchases-history-collapse-icon');
+        if (!wrapper) return;
+        const isHidden = wrapper.style.display === 'none';
+        wrapper.style.display = isHidden ? 'block' : 'none';
+        if (icon) icon.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(-90deg)';
+        if (isHidden) window.renderAdminStockPurchasesHistory();
+    };
+
+    window.renderAdminStockPurchasesHistory = function() {
+        const container = document.getElementById('admin-stock-purchases-history-container');
+        const badge = document.getElementById('admin-stock-purchases-history-badge');
+        if (!container) return;
+
+        const history = window.adminStockPurchasesHistory || [];
+        if (badge) {
+            badge.textContent = `${history.length} ${history.length === 1 ? 'compra' : 'compras'}`;
+        }
+
+        if (history.length === 0) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 2rem 1rem; color: var(--admin-text-muted);">
+                    <span class="material-symbols-outlined" style="font-size: 2.2rem; color: var(--admin-border-color);">receipt</span>
+                    <p style="margin: 0.4rem 0 0 0; font-size: 0.88rem; font-weight: 600;">Historial de compras vacío.</p>
+                    <p style="margin: 2px 0 0 0; font-size: 0.78rem;">Cada vez que consigas ítems y generes una lista de pendientes, las compras realizadas quedarán asentadas aquí automáticamente.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let html = '';
+        history.forEach((rec, idx) => {
+            let itemsHtml = '';
+            rec.items.forEach(it => {
+                itemsHtml += `
+                    <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; padding: 4px 0; border-bottom: 1px dashed var(--admin-border-color);">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <img src="${it.img}" alt="Foto" style="width: 24px; height: 24px; border-radius: 4px; object-fit: cover;">
+                            <span style="font-weight: 600; color: var(--admin-text-main);">${it.title}</span>
+                            <span style="font-size: 0.73rem; color: var(--admin-text-muted);">x${it.qtyAcquired} u.</span>
+                        </div>
+                        <span style="font-weight: 700; color: var(--admin-success);">$${Number(it.costSpent).toLocaleString('es-AR')}</span>
+                    </div>
+                `;
+            });
+
+            html += `
+                <div style="background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-sm); padding: 0.85rem 1rem;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; border-bottom: 1px solid var(--admin-border-color); padding-bottom: 0.4rem;">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 16px; color: var(--admin-success);">event_available</span>
+                            <span style="font-weight: 800; font-size: 0.83rem; color: var(--admin-text-main);">${rec.date}</span>
+                            <span style="font-size: 0.72rem; color: var(--admin-text-muted); background: white; border: 1px solid var(--admin-border-color); padding: 1px 6px; border-radius: 4px;">Origen: ${rec.source}</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-weight: 800; font-size: 0.9rem; color: var(--admin-success);">Total: $${Number(rec.totalSpent).toLocaleString('es-AR')}</span>
+                            <span class="material-symbols-outlined" onclick="window.adminStockPurchasesHistory.splice(${idx}, 1); window.saveAdminStockPurchasesHistoryState();" title="Borrar registro del historial" style="font-size: 16px; color: #DC2626; cursor: pointer; user-select: none;">delete</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        ${itemsHtml}
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+    };
+
+    window.toggleAdminStockBuyCartCollapse = function() {
+        const wrapper = document.getElementById('admin-stock-cart-content-wrapper');
+        const icon = document.getElementById('admin-stock-cart-collapse-icon');
+        if (!wrapper) return;
+        const isHidden = wrapper.style.display === 'none';
+        wrapper.style.display = isHidden ? 'block' : 'none';
+        if (icon) icon.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(-90deg)';
+        if (isHidden) window.renderAdminStockCart();
+    };
+
+    window.renderAdminStockCart = function() {
+        const container = document.getElementById('admin-stock-cart-items-container');
+        const badge = document.getElementById('admin-stock-cart-badge');
+        const totalQtyEl = document.getElementById('admin-stock-cart-total-qty');
+        const totalCostEl = document.getElementById('admin-stock-cart-total-cost');
+        if (!container) return;
+
+        const cartKeys = Object.keys(window.adminStockCart);
+        if (badge) {
+            badge.textContent = `${cartKeys.length} ${cartKeys.length === 1 ? 'ítem' : 'ítems'}`;
+        }
+
+        if (cartKeys.length === 0) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 2rem 1rem; color: var(--admin-text-muted);">
+                    <span class="material-symbols-outlined" style="font-size: 2.2rem; color: var(--admin-border-color);">remove_shopping_cart</span>
+                    <p style="margin: 0.4rem 0 0 0; font-size: 0.88rem; font-weight: 600;">El carrito de compras está vacío.</p>
+                    <p style="margin: 2px 0 0 0; font-size: 0.78rem;">Tocá el icono de carrito <span class="material-symbols-outlined" style="font-size: 14px; vertical-align: middle;">add_shopping_cart</span> en cualquier producto del stock para agregarlo a la lista de compras.</p>
+                </div>
+            `;
+            if (totalQtyEl) totalQtyEl.textContent = '0';
+            if (totalCostEl) totalCostEl.textContent = '$0';
+            return;
+        }
+
+        let totalQty = 0;
+        let totalCostSpent = 0;
+        let totalCostNeeded = 0;
+        let html = '';
+
+        cartKeys.forEach(id => {
+            const item = window.adminStockCart[id];
+            const needed = item.qtyNeeded || 1;
+            const acquired = item.qtyAcquired || 0;
+            const isChecked = Boolean(item.checked);
+            const isFullyDone = isChecked || (acquired >= needed && needed > 0);
+
+            const unitCost = item.cost || 0;
+            const itemSpentCost = unitCost * acquired; // Lo gastado en lo que ya se consiguió
+            const itemFullCost = unitCost * needed;   // Lo proyectado total
+
+            totalQty += needed;
+            totalCostSpent += itemSpentCost;
+            totalCostNeeded += itemFullCost;
+
+            html += `
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.65rem 0.75rem; background: ${isChecked ? 'var(--admin-success-light)' : (acquired > 0 ? 'var(--admin-warning-light)' : 'var(--admin-surface-hover)')}; border: 1px solid ${isChecked ? 'var(--admin-success)' : (acquired > 0 ? 'var(--admin-warning)' : 'var(--admin-border-color)')}; border-radius: var(--admin-radius-sm); opacity: ${isChecked ? '0.75' : '1'}; transition: all 0.2s ease; flex-wrap: wrap;">
+                    
+                    <!-- LADO IZQUIERDO: Checkbox, Foto, Titulo e Información -->
+                    <div style="display: flex; align-items: center; gap: 0.6rem; flex: 1; min-width: 180px;">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="window.toggleAdminStockCartItemCheck('${item.id}')" title="Marcar ítem" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--admin-success); flex-shrink: 0;">
+                        <img src="${item.img}" alt="Foto" style="width: 36px; height: 36px; border-radius: 4px; object-fit: cover; border: 1px solid var(--admin-border-color); flex-shrink: 0;">
+                        <div style="display: flex; flex-direction: column;">
+                            <span style="font-weight: 700; font-size: 0.85rem; color: var(--admin-text-main); ${isFullyDone ? 'text-decoration: line-through;' : ''}">${item.title}</span>
+                            <div style="display: flex; align-items: center; gap: 6px; margin-top: 2px;">
+                                <span style="font-size: 0.73rem; color: var(--admin-text-muted);">Costo: $${Number(unitCost).toLocaleString('es-AR')}</span>
+                                ${acquired > 0 && !isFullyDone ? `<span style="font-size: 0.71rem; font-weight: 700; color: #D97706; background: #FEF3C7; padding: 1px 5px; border-radius: 4px;">Parcial (${acquired}/${needed})</span>` : ''}
+                                ${isFullyDone ? `<span style="font-size: 0.71rem; font-weight: 700; color: var(--admin-success); background: var(--admin-success-light); padding: 1px 5px; border-radius: 4px;">Listo</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LADO DERECHO: Busco, Conseguí, Subtotal de Costo y Tacho de basura siempre visible -->
+                    <div style="display: flex; align-items: center; gap: 0.6rem; margin-left: auto; flex-shrink: 0;">
+                        <!-- Necesitados -->
+                        <div style="display: flex; align-items: center; gap: 3px;" title="Total de unidades necesarias a comprar">
+                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-text-muted);">Busco:</span>
+                            <input type="number" min="1" value="${needed}" onchange="window.updateAdminStockCartItemQty('${item.id}', this.value)" class="premium-input" style="width: 44px; padding: 0.2rem; text-align: center; font-weight: 700; font-size: 0.82rem;">
+                        </div>
+
+                        <!-- Conseguidos -->
+                        <div style="display: flex; align-items: center; gap: 3px;" title="Unidades ya compradas o conseguidas">
+                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-success);">Conseguí:</span>
+                            <input type="number" min="0" max="${needed}" value="${acquired}" onchange="window.updateAdminStockCartItemAcquired('${item.id}', this.value)" class="premium-input" style="width: 44px; padding: 0.2rem; text-align: center; font-weight: 700; font-size: 0.82rem; border-color: var(--admin-success);">
+                        </div>
+
+                        <!-- Costo real según lo conseguido -->
+                        <div style="display: flex; flex-direction: column; text-align: right; min-width: 65px;">
+                            <span style="font-weight: 800; font-size: 0.85rem; color: var(--admin-success);">$${Number(itemSpentCost).toLocaleString('es-AR')}</span>
+                            ${acquired < needed ? `<span style="font-size: 0.68rem; color: var(--admin-text-muted);" title="Costo total si se comprara el 100%">de $${Number(itemFullCost).toLocaleString('es-AR')}</span>` : ''}
+                        </div>
+
+                        <!-- Icono Tacho de Basura Rojo Solo (Sin Contenedor) -->
+                        <span class="material-symbols-outlined" onclick="window.removeFromAdminStockCart('${item.id}')" title="Quitar de la lista" style="font-size: 20px; color: #DC2626; cursor: pointer; user-select: none; flex-shrink: 0;">delete</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+        if (totalQtyEl) totalQtyEl.textContent = totalQty;
+        if (totalCostEl) totalCostEl.innerHTML = `$${Number(totalCostSpent).toLocaleString('es-AR')} <span style="font-size: 0.75rem; color: var(--admin-text-muted); font-weight: 500;">(de $${Number(totalCostNeeded).toLocaleString('es-AR')})</span>`;
+    };
 
     window.toggleAdminCategoryCollapse = function(catSlug) {
         if (window.adminStockExpandedCategories.has(catSlug)) {
@@ -11,6 +621,13 @@
         } else {
             window.adminStockExpandedCategories.add(catSlug);
         }
+        window.renderAdminStockModule();
+    };
+
+    window.toggleAllAdminStockCategoriesCollapse = function() {
+        window.adminStockAllHidden = !window.adminStockAllHidden;
+        // Al mostrar las categorías, las mantenemos contraídas/plegadas para elegir con cuál trabajar
+        window.adminStockExpandedCategories.clear();
         window.renderAdminStockModule();
     };
 
@@ -107,9 +724,15 @@
             });
         });
 
-        // Actualizar métricas nativas del admin
+        // Actualizar métricas nativas del admin y estado del icono global
         const totalItemsEl = document.getElementById('admin-stock-total-items');
         if (totalItemsEl) totalItemsEl.textContent = totalItemsCount;
+
+        const globalIconEl = document.getElementById('admin-stock-global-collapse-icon');
+        if (globalIconEl) {
+            const isVisible = !window.adminStockAllHidden || Boolean(query);
+            globalIconEl.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(-90deg)';
+        }
 
         if (Object.keys(grouped).length === 0) {
             container.innerHTML = `
@@ -122,6 +745,11 @@
                     </td>
                 </tr>
             `;
+            return;
+        }
+
+        // Si está contraído globalmente y no hay búsqueda escrita, dejar el tbody completamente vacío
+        if (window.adminStockAllHidden && !query) {
             return;
         }
 
@@ -141,8 +769,6 @@
             headerTr.style.userSelect = 'none';
 
             headerTr.onclick = (e) => {
-                // Si el clic fue en el botón +, no colapsar la categoría
-                if (e.target.closest('[title*="Agregar producto"]')) return;
                 window.toggleAdminCategoryCollapse(catSlug);
             };
 
@@ -154,9 +780,6 @@
                             <span>${catName}</span>
                             <span class="col-status-desktop admin-count-badge" style="padding: 2px 8px; font-size: 0.73rem;">${items.length} ${items.length === 1 ? 'producto' : 'productos'}</span>
                         </div>
-
-                        <!-- Botón + Verde Integrado en la Franja de Categoría -->
-                        <span class="material-symbols-outlined" onclick="event.stopPropagation(); window.openAdminStockCreateModalForCategory('${catName}')" title="Agregar producto en ${catName}" style="color: var(--admin-success); font-weight: 800; font-size: 22px; cursor: pointer; user-select: none; transition: transform 0.15s ease;" onmouseover="this.style.transform='scale(1.25)'" onmouseout="this.style.transform='scale(1)'">add</span>
 
                         <div class="col-status-desktop" style="font-size: 0.8rem; font-weight: 600; color: var(--admin-text-muted);">
                             Total Unidades: <span class="admin-count-badge" style="padding: 2px 8px;">${catTotalStock}</span>
@@ -179,17 +802,22 @@
                         ? `<span onclick="window.openAdminStockLinksModal('${item.id}')" title="Ver producto en la web y enlaces disponibles" style="color: var(--admin-success); font-weight: 700; font-size: 0.75rem; background: var(--admin-success-light); border: 1px solid var(--admin-success); padding: 4px 10px; border-radius: var(--admin-radius-sm); cursor: pointer; user-select: none; display: inline-flex; align-items: center; gap: 4px;">Sincronizado <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`
                         : `<span onclick="window.openAdminStockLinksModal('${item.id}')" title="Ver previsualización y enlaces del producto" style="color: var(--admin-warning); font-weight: 700; font-size: 0.75rem; background: var(--admin-warning-light); border: 1px solid var(--admin-warning); padding: 4px 10px; border-radius: var(--admin-radius-sm); display: inline-flex; align-items: center; gap: 4px; cursor: pointer; user-select: none;">🔒 Borrador <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`;
 
+                    const isInCart = Boolean(window.adminStockCart[item.id]);
+
                     tr.innerHTML = `
                         <td style="padding: 0.65rem 0.85rem;">
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
                                 <img src="${item.img}" alt="Foto" style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); object-fit: cover; border: 1px solid var(--admin-border-color); cursor: pointer; flex-shrink: 0;" onclick="window.openAdminStockPhotoModal('${item.id}')" title="Toca para ver foto y editar stock/costo" onerror="this.src='${fallbackImg}'">
-                                <div style="display: flex; flex-direction: column;">
+                                <div style="display: flex; flex-direction: column; flex: 1;">
                                     <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                                         <span style="font-weight: 700; color: var(--admin-text-main); font-size: 0.88rem;">${item.title}</span>
                                         <span class="col-status-mobile" style="display: none;">${statusBadge}</span>
                                     </div>
                                     <span style="font-family: monospace; font-weight: 700; color: var(--admin-accent); background: var(--admin-accent-light); padding: 2px 6px; border-radius: 4px; display: inline-block; width: fit-content; margin-top: 2px; font-size: 0.75rem;">Código: ${item.id}</span>
                                 </div>
+                                <button type="button" onclick="window.addToAdminStockCart('${item.id}', '${item.title.replace(/'/g, "\\'")}', '${item.img}', ${item.cost || 0})" title="Agregar al Carrito de Faltantes / Compras" style="border: 1px solid ${isInCart ? 'var(--admin-accent)' : 'var(--admin-border-color)'}; background: ${isInCart ? 'var(--admin-accent-light)' : 'transparent'}; color: ${isInCart ? 'var(--admin-accent)' : 'var(--admin-text-muted)'}; width: 32px; height: 32px; border-radius: var(--admin-radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease; flex-shrink: 0;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">add_shopping_cart</span>
+                                </button>
                             </div>
                         </td>
                         <td class="col-stock-desktop" style="text-align: center; padding: 0.65rem;">

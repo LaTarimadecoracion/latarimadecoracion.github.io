@@ -6,9 +6,9 @@
                 <!-- 1. BARRA SUPERIOR HEADER ESTILO MERCADO LIBRE -->
                 <header class="admin-top-navbar">
                     <div class="admin-brand">
-                        <span class="material-symbols-outlined logo-icon">shield_person</span>
+                        <span id="admin-topbar-icon" class="material-symbols-outlined logo-icon">shield_person</span>
                         <div class="brand-text">
-                            <h3 class="brand-title">Panel de Control</h3>
+                            <h3 id="admin-topbar-title" class="brand-title">Panel de Control</h3>
                             <p class="brand-sub">La Tarima 2.0</p>
                         </div>
                     </div>
@@ -79,21 +79,8 @@
 
                     <!-- Área de contenido principal -->
                     <main class="admin-main">
-                    <div class="admin-content-area">
-
-                    <div class="admin-content-inner">
                         <!-- 1. DASHBOARD MODULE -->
                         <div id="admin-dashboard-view" class="admin-section-view">
-                            <header class="admin-page-header">
-                                <div>
-                                    <h3 class="admin-header-title">
-                                        <span class="material-symbols-outlined">dashboard</span>
-                                        Panel de Control General
-                                    </h3>
-                                    <p class="admin-header-desc">Gestioná tu catálogo, la composición del Home y la configuración visual del sitio desde un solo lugar.</p>
-                                </div>
-                            </header>
-
                             <!-- Panel de métricas -->
                             <div class="stats-grid">
                                 <div class="stat-card">
@@ -253,22 +240,11 @@
 
                         <!-- 1.5 OFFERS MODULE -->
                         <div id="admin-offers-view" class="admin-section-view" style="display: none;">
-                            <header class="admin-page-header">
-                                <div>
-                                    <h3 class="admin-header-title">
-                                        <span class="material-symbols-outlined">local_offer</span>
-                                        Gestión de Ofertas &amp; Combos
-                                    </h3>
-                                    <p class="admin-header-desc">
-                                        Creá promociones especiales, combos de productos y ofertas por tiempo limitado con contadores en vivo.
-                                    </p>
-                                </div>
-                                <div class="admin-header-actions">
-                                    <button type="button" id="btn-add-offer-main" class="btn-primary">
-                                        <span class="material-symbols-outlined">add</span> Crear Nueva Oferta
-                                    </button>
-                                </div>
-                            </header>
+                            <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+                                <button type="button" id="btn-add-offer-main" class="btn-primary">
+                                    <span class="material-symbols-outlined">add</span> Crear Nueva Oferta
+                                </button>
+                            </div>
 
                             <div id="admin-offers-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
                                 <!-- Inyectado dinámicamente -->
@@ -277,16 +253,6 @@
 
                         <!-- 1.6 SHIPPING & ZONES MODULE -->
                         <div id="admin-shipping-view" class="admin-section-view" style="display: none;">
-                            <header class="admin-page-header">
-                                <div>
-                                    <h3 class="admin-header-title">
-                                        <span class="material-symbols-outlined">local_shipping</span>
-                                        Envíos &amp; Zonas Tarifarias
-                                    </h3>
-                                    <p class="admin-header-desc">Configurá las áreas de cobertura, precios por zona y modalidades de envío (Courier, Flete, Expresos).</p>
-                                </div>
-                            </header>
-
                             <!-- 🔍 BUSCADOR DE CÓDIGO POSTAL -->
                             <div class="admin-card">
                                 <header class="admin-page-header">
@@ -326,40 +292,28 @@
 
                         <!-- 2. STOCK MODULE (NATIVO INTEGRADO) -->
                         <div id="admin-stock-view" class="admin-section-view" style="display: none;">
-                            <header class="admin-page-header">
-                                <div>
-                                    <h3 class="admin-header-title">
-                                        <span class="material-symbols-outlined">inventory</span>
-                                        Control de Stock &amp; Inventario
-                                    </h3>
-                                    <p class="admin-header-desc">
-                                        Gestioná las cantidades disponibles por categoría y mantené actualizado tu taller en tiempo real.
-                                    </p>
-                                </div>
-                                <div class="admin-count-badge">
-                                    <span>Total Ítems:</span>
-                                    <strong id="admin-stock-total-items">0</strong>
-                                </div>
-                            </header>
-
-                            <!-- Buscador e Ingesta Rápida Integrados -->
-                            <div class="admin-card" style="display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-                                <div class="search-wrapper" style="flex: 1; min-width: 250px;">
+                            <!-- Buscador e Ingesta Rápida -->
+                            <div class="admin-card" style="display: flex; gap: 0.5rem; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+                                <div class="search-wrapper" style="flex: 1;">
                                     <span class="material-symbols-outlined">search</span>
                                     <input type="text" id="admin-stock-search-input" placeholder="Buscar por producto, categoría o código (ej: 52)...">
                                 </div>
-                                <button type="button" onclick="window.openAdminStockCreateModal()" class="btn-primary">
-                                    <span class="material-symbols-outlined">add_circle</span>
-                                    <span>+ Cargar Producto Rápido</span>
+                                <button type="button" onclick="window.openAdminStockCreateModal()" class="btn-primary" title="Cargar Producto Rápido" style="width: 42px; height: 42px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: var(--admin-radius-sm); flex-shrink: 0;">
+                                    <span class="material-symbols-outlined" style="font-size: 24px; margin: 0;">add</span>
                                 </button>
                             </div>
 
-                            <!-- Tabla Nativa de Stock -->
-                            <div class="admin-table-wrapper">
+                            <!-- 1. Tabla Nativa de Productos (Arriba) -->
+                            <div class="admin-table-wrapper" style="margin-bottom: 2rem;">
                                 <table class="admin-table">
-                                    <thead>
+                                    <thead id="admin-stock-table-head" onclick="window.toggleAllAdminStockCategoriesCollapse()" title="Haz clic para contraer/desplegar todas las categorías" style="cursor: pointer; user-select: none;">
                                         <tr>
-                                            <th>Producto / Código</th>
+                                            <th>
+                                                <div style="display: flex; align-items: center; gap: 6px;">
+                                                    <span id="admin-stock-global-collapse-icon" class="material-symbols-outlined" style="font-size: 18px; color: var(--admin-accent); transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
+                                                    <span>Producto / Código</span>
+                                                </div>
+                                            </th>
                                             <th class="col-stock-desktop" style="width: 100px; text-align: center;">Stock</th>
                                             <th style="width: 110px;">Costo U.</th>
                                             <th class="col-status-desktop" style="width: 120px; text-align: center;">Estado</th>
@@ -370,6 +324,92 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            <!-- 2. TARJETA COMPRAR/REPONER (COLAPSABLE) -->
+                            <div id="admin-stock-cart-panel" class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1rem 1.25rem; margin-top: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+                                <div onclick="window.toggleAdminStockBuyCartCollapse()" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span id="admin-stock-cart-collapse-icon" class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 22px; transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
+                                        <span class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 22px;">shopping_cart</span>
+                                        <h3 style="margin: 0; font-size: 1.02rem; font-weight: 700; color: var(--admin-text-main);">Comprar/reponer</h3>
+                                    </div>
+                                    <span id="admin-stock-cart-badge" class="admin-count-badge" style="padding: 2px 8px; font-size: 0.78rem;">0 ítems</span>
+                                </div>
+
+                                <div id="admin-stock-cart-content-wrapper" style="display: none; margin-top: 1rem; border-top: 1px solid var(--admin-border-color); padding-top: 1rem;">
+                                    <div id="admin-stock-cart-items-container" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 380px; overflow-y: auto;">
+                                        <!-- Inyectado dinámicamente -->
+                                    </div>
+
+                                    <div id="admin-stock-cart-summary" style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--admin-border-color); display: flex; align-items: center; justify-content: space-between; font-size: 0.88rem; font-weight: 700; flex-wrap: wrap; gap: 0.75rem;">
+                                        <div style="display: flex; gap: 1rem; align-items: center;">
+                                            <span style="color: var(--admin-text-muted);">Total a Comprar: <span id="admin-stock-cart-total-qty" style="color: var(--admin-accent);">0</span></span>
+                                            <span style="color: var(--admin-text-main);">Invertido: <span id="admin-stock-cart-total-cost" style="color: var(--admin-success); font-size: 0.95rem;">$0</span></span>
+                                        </div>
+                                        <div style="display: flex; gap: 0.5rem; align-items: center; margin-left: auto;">
+                                            <button type="button" onclick="window.generateAdminStockPendingList()" class="btn-primary" style="padding: 0.4rem 0.85rem; font-size: 0.82rem;">
+                                                <span>📋 Generar Lista de Pendientes</span>
+                                            </button>
+                                            <button type="button" onclick="window.clearAdminStockCart()" class="btn-outline" style="padding: 0.4rem 0.75rem; font-size: 0.82rem; color: #DC2626; border-color: rgba(220, 38, 38, 0.3);">
+                                                <span>🗑 Eliminar Lista</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. TARJETA NUEVA LISTA DE PENDIENTES (COLAPSABLE) -->
+                            <div id="admin-stock-pending-panel" class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-warning); border-radius: var(--admin-radius-md); padding: 1rem 1.25rem; margin-top: 1.25rem; box-shadow: var(--admin-shadow-sm);">
+                                <div onclick="window.toggleAdminStockPendingListCollapse()" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span id="admin-stock-pending-collapse-icon" class="material-symbols-outlined" style="color: #D97706; font-size: 22px; transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
+                                        <span class="material-symbols-outlined" style="color: #D97706; font-size: 22px;">assignment_late</span>
+                                        <h3 style="margin: 0; font-size: 1.02rem; font-weight: 700; color: var(--admin-text-main);">Nueva Lista de Pendientes</h3>
+                                    </div>
+                                    <span id="admin-stock-pending-badge" class="admin-count-badge" style="padding: 2px 8px; font-size: 0.78rem; background: #FEF3C7; color: #D97706; border-color: rgba(217, 119, 6, 0.3);">0 pendientes</span>
+                                </div>
+
+                                <div id="admin-stock-pending-content-wrapper" style="display: none; margin-top: 1rem; border-top: 1px solid var(--admin-border-color); padding-top: 1rem;">
+                                    <div id="admin-stock-pending-items-container" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 380px; overflow-y: auto;">
+                                        <!-- Inyectado dinámicamente -->
+                                    </div>
+
+                                    <div id="admin-stock-pending-summary" style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--admin-border-color); display: flex; align-items: center; justify-content: space-between; font-size: 0.88rem; font-weight: 700; flex-wrap: wrap; gap: 0.75rem;">
+                                        <div style="display: flex; gap: 1rem; align-items: center;">
+                                            <span style="color: var(--admin-text-muted);">Total a Comprar: <span id="admin-stock-pending-total-qty" style="color: #D97706;">0</span></span>
+                                            <span style="color: var(--admin-text-main);">Invertido: <span id="admin-stock-pending-total-cost" style="color: var(--admin-success); font-size: 0.95rem;">$0</span></span>
+                                        </div>
+                                        <div style="display: flex; gap: 0.5rem; align-items: center; margin-left: auto;">
+                                            <button type="button" onclick="window.generateAdminStockSubPendingList()" class="btn-outline" style="padding: 0.4rem 0.85rem; font-size: 0.82rem; border-color: #D97706; color: #B45309; background: #FEF3C7;">
+                                                <span>📋 Generar Lista de Pendientes</span>
+                                            </button>
+                                            <button type="button" onclick="window.clearAdminStockPendingList()" class="btn-outline" style="padding: 0.4rem 0.75rem; font-size: 0.82rem; color: #DC2626; border-color: rgba(220, 38, 38, 0.3);">
+                                                <span>🗑 Eliminar Lista</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. TARJETA HISTORIAL DE COMPRAS (COLAPSABLE) -->
+                            <div id="admin-stock-purchases-history-panel" class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1rem 1.25rem; margin-top: 1.25rem; box-shadow: var(--admin-shadow-sm);">
+                                <div onclick="window.toggleAdminStockPurchasesHistoryCollapse()" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span id="admin-stock-purchases-history-collapse-icon" class="material-symbols-outlined" style="color: var(--admin-success); font-size: 22px; transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
+                                        <span class="material-symbols-outlined" style="color: var(--admin-success); font-size: 22px;">receipt_long</span>
+                                        <h3 style="margin: 0; font-size: 1.02rem; font-weight: 700; color: var(--admin-text-main);">Historial de Compras Realizadas</h3>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span id="admin-stock-purchases-history-badge" class="admin-count-badge" style="padding: 2px 8px; font-size: 0.78rem; background: var(--admin-success-light); color: var(--admin-success); border-color: rgba(34, 197, 94, 0.3);">0 compras</span>
+                                    </div>
+                                </div>
+
+                                <div id="admin-stock-purchases-history-content-wrapper" style="display: none; margin-top: 1rem; border-top: 1px solid var(--admin-border-color); padding-top: 1rem;">
+                                    <div id="admin-stock-purchases-history-container" style="display: flex; flex-direction: column; gap: 0.85rem; max-height: 420px; overflow-y: auto;">
+                                        <!-- Inyectado dinámicamente -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -378,16 +418,10 @@
                             <!-- Fase 1: Árbol de Categorías -->
                             <div id="admin-categories-view">
                                 <div class="admin-section-block">
-                                    <header class="admin-page-header">
-                                        <h3 class="admin-header-title">
-                                            <span class="material-symbols-outlined">inventory_2</span>
-                                            Estanterías por Categoría
-                                        </h3>
-                                        <div class="admin-header-actions" style="gap: 8px;">
-                                            <button type="button" id="btn-admin-show-all-products" class="btn-outline" style="padding: 0.4rem 1rem; width: auto; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;">🔍 Ver Todos los Productos</button>
-                                            <button type="button" id="btn-open-add-category" class="btn-primary">➕ Nueva Categoría</button>
-                                        </div>
-                                    </header>
+                                    <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 0.75rem;">
+                                        <button type="button" id="btn-admin-show-all-products" class="btn-outline" style="padding: 0.4rem 1rem; width: auto; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;">🔍 Ver Todos los Productos</button>
+                                        <button type="button" id="btn-open-add-category" class="btn-primary">➕ Nueva Categoría</button>
+                                    </div>
                                     <div style="padding: 0.5rem 0;">
                                         <div class="admin-filters-bar" style="padding: 0; background: transparent; border: none; box-shadow: none; margin-bottom: 0;">
                                             <div class="search-wrapper" style="flex: 1; max-width: none;">
@@ -432,18 +466,12 @@
 
                             <!-- Fase 2: Vista de Productos -->
                             <div id="admin-products-view" class="admin-section-block" style="display: none;">
-                                <header class="admin-page-header">
-                                    <h3 id="admin-products-title" class="admin-header-title">
-                                        <span class="material-symbols-outlined">inventory_2</span>
-                                        Productos
-                                    </h3>
-                                    <div class="admin-header-actions">
-                                        <button type="button" id="btn-back-to-categories" class="btn-outline" style="padding: 0.4rem 1rem; width: auto; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;">
-                                            <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span> Volver
-                                        </button>
-                                        <button type="button" id="btn-add-product-main" class="btn-primary">➕ Nuevo Producto</button>
-                                    </div>
-                                </header>
+                                <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 0.75rem;">
+                                    <button type="button" id="btn-back-to-categories" class="btn-outline" style="padding: 0.4rem 1rem; width: auto; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span> Volver
+                                    </button>
+                                    <button type="button" id="btn-add-product-main" class="btn-primary">➕ Nuevo Producto</button>
+                                </div>
 
                                 <!-- Barra de búsqueda y filtro -->
                                 <div class="admin-filters-bar">
@@ -499,14 +527,6 @@
 
                         <!-- 3. CONFIGURACIÓN DE PÁGINAS (Enfoque por Página) -->
                         <div id="admin-pages-view" class="admin-section-view" style="display: none;">
-
-                            <!-- Cabecera de Sección -->
-                            <div class="pages-section-header">
-                                <div>
-                                    <h2 class="admin-header-title"><span class="material-symbols-outlined">view_quilt</span> Páginas & Banners</h2>
-                                    <p class="admin-header-desc">Seleccioná una página de tu sitio para editar su contenido, banners y configuración.</p>
-                                </div>
-                            </div>
 
                             <!-- SELECTOR DE PÁGINAS A EDITAR -->
                             <div class="admin-card" style="margin-bottom: 1.25rem;">
@@ -916,10 +936,6 @@
 
                         <!-- 4. AJUSTES DEL NEGOCIO (SETTINGS) -->
                         <div id="admin-settings-view" class="admin-section-view" style="display: none;">
-                            <div class="welcome-header">
-                                <h2>Ajustes del Negocio</h2>
-                                <p>Configurá la identidad de tu negocio, las formas de contacto y el estado de vacaciones en un solo lugar.</p>
-                            </div>
 
                             <div class="admin-card">
                                 <header class="admin-page-header">
@@ -1042,8 +1058,6 @@
                         <div id="admin-orders-view" class="admin-section-view" style="display: none; width: 100%; margin: 0; padding: 0;">
                             <iframe id="admin-orders-iframe" src="pedidos/admin.html" style="width: 100%; min-height: 85vh; border: none; background: transparent; overflow: hidden; display: block; margin: 0; padding: 0;" scrolling="no" onload="if(window.initOrdersIframeAutoHeight) window.initOrdersIframeAutoHeight();"></iframe>
                         </div>
-
-                    </div>
-                </main>
+                    </main>
+                </div>
             </div>
-        </div>

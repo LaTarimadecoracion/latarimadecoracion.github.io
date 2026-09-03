@@ -209,9 +209,33 @@
     width: 100%;
     flex-grow: 1;
     min-height: calc(100vh - 60px);
+    position: relative;
 }
 
+/* El área principal no depende del sidebar, su padding-left constante evita cualquier redimensión */
+.admin-main {
+    flex-grow: 1;
+    width: 100%;
+    padding-left: 58px;
+    box-sizing: border-box;
+}
+
+/* Espaciado de aire limpio interno para todas las vistas nativas del panel */
+.admin-section-view {
+    padding: 1.5rem 2rem;
+    box-sizing: border-box;
+}
+
+/* La vista de Pedidos (Iframe) mantiene 0 padding para verse edge-to-edge a 100% */
+#admin-orders-view.admin-section-view {
+    padding: 0 !important;
+}
+
+/* Sidebar 100% Independiente y Flotante (Overlay) */
 .admin-sidebar-ml {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 58px;
     background: #FFFFFF;
     border-right: 1px solid var(--admin-border-color);
@@ -219,14 +243,18 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0.75rem 0.4rem;
-    flex-shrink: 0;
-    position: relative;
-    top: 0;
-    height: calc(100vh - 60px);
+    height: 100%;
+    min-height: calc(100vh - 60px);
     box-sizing: border-box;
-    z-index: 100;
-    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 500;
+    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
     overflow: visible !important;
+}
+
+/* Estado Expandido: Despliega por encima manteniendo el área principal 100% estática */
+.admin-sidebar-ml.expanded {
+    width: 250px;
+    box-shadow: 6px 0 20px rgba(0, 0, 0, 0.14);
 }
 
 /* Solapa sutil adosada al borde lateral */

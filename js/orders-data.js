@@ -273,5 +273,33 @@ const ordersData = [
         "image": "img/escaleras/escaleras/1780288089831-imagen.webp",
         "startDate": "2026-09-01T03:00:00.000Z",
         "estimatedReadyDate": "2026-09-11T02:59:00.000Z"
+    },
+    {
+        "id": "192943021",
+        "clientName": "Cecilia Ines Gorzio",
+        "clientPhone": "ENC_NzE2NzA0NjUxMTk0NQ==",
+        "zipCode": "",
+        "productType": "custom",
+        "productId": "",
+        "productName": "Barandas Personalizadas - Sommier Montessori",
+        "selectedFinish": "",
+        "selectedMeasure": "",
+        "description": "140*60 $90.000\n100*60 $75.000\n\nPintadas de blanco.",
+        "deliveryMethod": "retira",
+        "dispatchInfo": null,
+        "prepDaysMin": 10,
+        "prepDaysMax": 15,
+        "prepDays": 15,
+        "extraDays": 0,
+        "paidStatus": "nada",
+        "paidAmount": 165000,
+        "totalAmount": 165000,
+        "taxNotice": true,
+        "status": "pendiente",
+        "creationDate": "2026-09-03T00:10:15.779Z",
+        "completedDate": "",
+        "image": "img/pedidos/192943021/1788394156304-+54_9_11_5640-7617.jpeg",
+        "startDate": "2026-09-03T03:00:00.000Z",
+        "estimatedReadyDate": "2026-09-25T02:59:00.000Z"
     }
 ];

@@ -822,7 +822,8 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "history": []
+                "history": [],
+                "views": 6
             },
             {
                 "id": "91",
@@ -1038,7 +1039,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 0,
+                "views": 3,
                 "stock": 1,
                 "history": [
                     {
@@ -2944,7 +2945,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "47",
@@ -3312,7 +3313,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637228097,
                 "primaryCatId": "Mesas-madera",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "E4",
@@ -4309,7 +4310,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 1,
+                "views": 2,
                 "stock": 1,
                 "history": [
                     {
@@ -4560,7 +4561,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 1,
+                "views": 10,
                 "stock": 0,
                 "history": [
                     {
@@ -4674,7 +4675,7 @@ const productsData = [
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "26/8, 11:55 p. m.",
@@ -4771,7 +4772,7 @@ const productsData = [
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "26/8, 11:55 p. m.",
@@ -4869,7 +4870,7 @@ const productsData = [
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "26/8, 11:55 p. m.",
@@ -5372,7 +5373,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411566442,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "77",
@@ -6122,7 +6123,8 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 0
+                "views": 3,
+                "stock": 0
             },
             {
                 "id": "62",
@@ -6987,7 +6989,8 @@ const productsData = [
                 "last_modified": 1788028292941,
                 "primaryCatId": "Barandas",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "H2",
@@ -8401,7 +8404,7 @@ const productsData = [
                 "primaryCatId": "Vinotecas",
                 "visible": true,
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:03 a. m.",
@@ -8444,7 +8447,7 @@ const productsData = [
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
                 "views": 1,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:03 a. m.",
@@ -8889,7 +8892,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 1,
+                "views": 10,
                 "stock": 0,
                 "history": [
                     {
@@ -8988,7 +8991,7 @@ const productsData = [
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:03 a. m.",
@@ -9086,7 +9089,7 @@ const productsData = [
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:03 a. m.",
@@ -9183,7 +9186,7 @@ const productsData = [
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:03 a. m.",
@@ -9280,7 +9283,8 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 0
+                "views": 3,
+                "stock": 0
             },
             {
                 "id": "26",
@@ -9318,7 +9322,7 @@ const productsData = [
                 "primaryCatId": "Vinotecas",
                 "visible": true,
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:03 a. m.",
@@ -9361,7 +9365,7 @@ const productsData = [
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
                 "views": 1,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:03 a. m.",
@@ -9471,7 +9475,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 0,
+                "views": 3,
                 "stock": 1,
                 "history": [
                     {
@@ -10390,7 +10394,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 1,
+                "views": 2,
                 "stock": 1,
                 "history": [
                     {
@@ -10884,7 +10888,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "46",
@@ -12468,7 +12472,8 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "history": []
+                "history": [],
+                "views": 6
             },
             {
                 "id": "52",
@@ -13690,7 +13695,8 @@ const productsData = [
                 "last_modified": 1788028292941,
                 "primaryCatId": "Barandas",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "57",
@@ -15719,7 +15725,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411566442,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "77",
@@ -17721,7 +17727,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637228097,
                 "primaryCatId": "Mesas-madera",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "D4",
@@ -18178,7 +18184,7 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "D6",

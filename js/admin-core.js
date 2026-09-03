@@ -363,7 +363,24 @@ function renderAdminUX() {
             }
         });
 
-        // Ocultar todas las secciones principales
+        // Ocultar todas las secciones principales y actualizar el título dinámico del Header
+        const tabNames = {
+            dashboard: { title: 'Panel de Control', icon: 'dashboard' },
+            settings: { title: 'Ajustes del Negocio', icon: 'settings' },
+            catalog: { title: 'Catálogo de Productos', icon: 'inventory_2' },
+            offers: { title: 'Ofertas & Combos', icon: 'local_offer' },
+            shipping: { title: 'Envíos & Zonas Tarifarias', icon: 'local_shipping' },
+            stock: { title: 'Control de Stock & Inventario', icon: 'inventory' },
+            pages: { title: 'Páginas & Banners', icon: 'view_quilt' },
+            orders: { title: 'Gestión de Pedidos', icon: 'description' }
+        };
+
+        const currentTabInfo = tabNames[currentAdminTab] || { title: 'Panel de Control', icon: 'shield_person' };
+        const topbarTitleEl = document.getElementById('admin-topbar-title');
+        const topbarIconEl = document.getElementById('admin-topbar-icon');
+        if (topbarTitleEl) topbarTitleEl.textContent = currentTabInfo.title;
+        if (topbarIconEl) topbarIconEl.textContent = currentTabInfo.icon;
+
         const viewIds = {
             dashboard: 'admin-dashboard-view',
             settings: 'admin-settings-view',
