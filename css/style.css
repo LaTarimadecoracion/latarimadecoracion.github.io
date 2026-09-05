@@ -882,6 +882,13 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 }
 .carousel-categories::-webkit-scrollbar { display: none; }
 
+/* Base obligatoria para cualquier tarjeta de categoría/producto */
+.category-card {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: var(--radius-md);
+}
+
 /* Regla única y obligatoria para TODAS las tarjetas de carrusel en la Home */
 .carousel-categories .category-card {
     /* Ancho idéntico de 2 portadas completas y 1/8 de la tercera foto en pantalla móvil */
@@ -913,6 +920,16 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     max-width: calc(800px - 40px) !important;
     
     /* Alto auto-adaptativo basado en la proporción exacta de su imagen */
+    height: auto !important;
+    min-height: unset !important;
+    max-height: unset !important;
+}
+
+/* Excepción: Carrusel "Los Más Buscados" en detalle de producto muestra 3 tarjetas a la vez */
+#detail-related-product-list .category-card {
+    width: calc((100vw - 65px) / 3.15) !important;
+    min-width: calc((100vw - 65px) / 3.15) !important;
+    max-width: calc((800px - 65px) / 3.15) !important;
     height: auto !important;
     min-height: unset !important;
     max-height: unset !important;

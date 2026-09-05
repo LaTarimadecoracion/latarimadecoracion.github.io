@@ -13,6 +13,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css?v=25">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="../js/postal-lookup.js?v=1"></script>
     
     <script>
@@ -521,14 +522,21 @@
         
         /* Modal Overlay & Card */
         .modal-overlay {
-            position: fixed;
-            inset: 0;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
             background: rgba(15, 23, 42, 0.4);
             backdrop-filter: blur(4px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            z-index: 99999 !important;
+            display: flex !important;
+            align-items: flex-start !important;
+            justify-content: center !important;
+            padding-top: 2rem !important;
+            box-sizing: border-box !important;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.25s ease;
@@ -544,20 +552,24 @@
             border-radius: var(--radius-lg);
             width: 90%;
             max-width: 600px;
-            max-height: 90vh;
+            max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             border: 1.5px solid var(--border-color);
-            transform: scale(0.95);
-            transition: transform 0.25s ease;
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            margin: 0 auto !important;
             display: flex;
             flex-direction: column;
+            z-index: 100000 !important;
         }
 
         .modal-card.order-modal-wide {
-            max-width: 820px !important;
+            max-width: 860px !important;
             width: 92vw !important;
-            max-height: 90vh !important;
+            max-height: 85vh !important;
         }
 
         .modal-grid-layout {
@@ -815,6 +827,34 @@
             border-bottom: 1px solid #f1f5f9;
             flex-wrap: wrap;
             gap: 0.75rem;
+        }
+
+        .order-expand-icon {
+            display: inline-block;
+            transform: rotate(-90deg);
+        }
+
+        .order-admin-card.order-card-expanded .order-expand-icon {
+            transform: rotate(0deg);
+        }
+
+        @media (max-width: 768px) {
+            .order-card-collapsible-wrapper {
+                display: none;
+            }
+
+            .order-admin-card.order-card-expanded .order-card-collapsible-wrapper {
+                display: block;
+            }
+
+            .order-admin-card.order-card-expanded .order-card-header {
+                padding-bottom: 0.85rem;
+            }
+
+            .order-admin-card:not(.order-card-expanded) .order-card-header {
+                padding-bottom: 0;
+                border-bottom: none;
+            }
         }
 
         .order-card-body {
@@ -1165,19 +1205,19 @@
         </div>
 
         <div class="panel-card">
-            <div class="panel-header">
-                <div class="panel-title">
-                    <span class="material-symbols-outlined">receipt_long</span>
-                    <h2>Gestión de Pedidos Pendientes</h2>
-                </div>
-                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                    <button type="button" id="btn-config-terms" class="btn-outline" style="display: inline-flex; align-items: center; gap: 6px; padding: 0.5rem 0.85rem; font-weight: 600;">
+            <div class="panel-header" style="margin-bottom: 1.25rem;">
+                <div class="orders-top-actions" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%;">
+                    <button type="button" id="btn-config-terms" class="btn-outline" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.65rem 0.5rem; font-weight: 700; width: 100%; box-sizing: border-box; text-align: center;">
                         <span class="material-symbols-outlined" style="font-size: 20px;">settings</span>
-                        Configurar Leyendas y Términos
+                        <span>Configuración</span>
                     </button>
-                    <button type="button" id="btn-new-order" class="btn-primary">
-                        <span class="material-symbols-outlined">add</span>
-                        Nuevo Pedido
+                    <button type="button" id="btn-labels-flux" class="btn-outline" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.65rem 0.5rem; font-weight: 700; width: 100%; box-sizing: border-box; text-align: center; color: var(--primary-color); border-color: var(--primary-color);">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">label</span>
+                        <span>Etiquetas</span>
+                    </button>
+                    <button type="button" id="btn-new-order" class="btn-primary" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.65rem 0.5rem; font-weight: 700; width: 100%; box-sizing: border-box; text-align: center;">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+                        <span>Nuevo</span>
                     </button>
                 </div>
             </div>
@@ -1302,13 +1342,38 @@
                                     <input type="tel" id="order-client-phone" class="form-control" placeholder="ej: 1167007723">
                                 </div>
                             </div>
+                            <div class="form-row" style="margin-top: 0.85rem;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="order-client-address">Dirección (Calle, Altura, Piso, Dpto)</label>
+                                    <input type="text" id="order-client-address" class="form-control" placeholder="ej: Av. Rivadavia 12345, 4° B">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="order-client-locality">Localidad</label>
+                                    <input type="text" id="order-client-locality" class="form-control" placeholder="ej: Ramos Mejía">
+                                </div>
+                            </div>
+
+                            <div class="form-row" style="margin-top: 0.85rem;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="order-client-zip" style="display: flex; align-items: center; justify-content: space-between;">
+                                        <span>Código Postal</span>
+                                        <span style="font-size: 0.72rem; color: var(--orders-accent); font-weight: 700;">ej: 1704</span>
+                                    </label>
+                                    <input type="text" id="order-client-zip" class="form-control" placeholder="ej: 1704">
+                                    <div id="modal-zip-lookup-box" style="display: none; margin-top: 6px;"></div>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="order-estimated-weight">Peso Declarado / Estimado (kg)</label>
+                                    <input type="number" id="order-estimated-weight" class="form-control" placeholder="1" value="1" min="0.1" step="0.1" style="font-weight: 700;">
+                                </div>
+                            </div>
+
                             <div class="form-group" style="margin-top: 0.85rem; margin-bottom: 0;">
-                                <label for="order-client-zip" style="display: flex; align-items: center; justify-content: space-between;">
-                                    <span>Código Postal / Localidad del Envío</span>
-                                    <span style="font-size: 0.72rem; color: var(--orders-accent); font-weight: 700;">ej: 1704 (Ramos Mejía)</span>
+                                <label for="order-observations" style="font-weight: 700; color: #334155; display: flex; align-items: center; gap: 6px;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary-color);">note</span>
+                                    Observaciones de Logística / Envío (para etiqueta FLUX)
                                 </label>
-                                <input type="text" id="order-client-zip" class="form-control" placeholder="ej: 1704 (Ramos Mejía) o 1686 (Hurlingham)">
-                                <div id="modal-zip-lookup-box" style="display: none; margin-top: 6px;"></div>
+                                <textarea id="order-observations" class="form-control" rows="2" placeholder="ej: Timbre 4B. Entregar en horario comercial de 9 a 18hs. Frágil."></textarea>
                             </div>
                         </div>
                         
@@ -1510,11 +1575,51 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer" style="padding: 1rem 1.5rem;">
-                <button type="button" class="btn-outline" id="btn-cancel-modal" style="padding: 0.6rem 1.25rem;">Cancelar</button>
-                <button type="button" class="btn-primary" id="btn-save-order" style="padding: 0.6rem 1.5rem; font-weight: 700;">
-                    <span class="material-symbols-outlined" style="font-size: 20px;">save</span> Guardar Pedido
-                </button>
+            <div class="modal-footer" style="padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: 0.85rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 1rem;">
+                    <button type="button" class="btn-outline" id="btn-modal-single-flux" style="padding: 0.6rem 1.25rem; font-weight: 700; border-color: #16a34a; color: #16a34a; display: inline-flex; align-items: center; gap: 6px;">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">label</span> Etiqueta
+                    </button>
+                    <button type="button" class="btn-primary" id="btn-save-order" style="padding: 0.6rem 1.75rem; font-weight: 700;">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">save</span> Guardar Pedido
+                    </button>
+                </div>
+
+                <!-- Contenedor del visualizador colapsable directamente debajo de los botones -->
+                <div id="single-flux-preview-container" style="display: none; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.85rem; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05); box-sizing: border-box;">
+                    <div style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                        <span style="display: flex; align-items: center; gap: 4px;">
+                            <span class="material-symbols-outlined" style="font-size: 16px; color: #0284c7;">info</span>
+                            Confirmación de datos a exportar para FLUX:
+                        </span>
+                        <span style="font-size: 0.72rem; color: #16a34a; font-weight: 800;">Hoja: Simple</span>
+                    </div>
+                    <div style="overflow-x: auto; max-height: 140px; margin-bottom: 0.85rem; border: 1px solid #e2e8f0; border-radius: 6px;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.74rem; text-align: left;">
+                            <thead style="background: #f1f5f9; border-bottom: 1.5px solid #cbd5e1; position: sticky; top: 0;">
+                                <tr>
+                                    <th style="padding: 5px 8px;">Tracking</th>
+                                    <th style="padding: 5px 8px;">Fecha</th>
+                                    <th style="padding: 5px 8px;">Valor Decl.</th>
+                                    <th style="padding: 5px 8px;">Peso</th>
+                                    <th style="padding: 5px 8px;">Destinatario</th>
+                                    <th style="padding: 5px 8px;">Teléfono</th>
+                                    <th style="padding: 5px 8px;">Dirección</th>
+                                    <th style="padding: 5px 8px;">Localidad</th>
+                                    <th style="padding: 5px 8px;">CP</th>
+                                    <th style="padding: 5px 8px;">Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="single-flux-preview-tbody">
+                                <!-- Se llena dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" id="btn-single-flux-download" class="btn-primary" style="width: 100%; background: #16a34a; border-color: #16a34a; justify-content: center; padding: 0.55rem; font-size: 0.85rem; font-weight: 700;">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+                        Descargar Planilla FLUX (.xls)
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -1596,6 +1701,78 @@
             <div class="modal-footer">
                 <button type="button" class="btn-outline" id="btn-cancel-terms-modal">Cancelar</button>
                 <button type="button" class="btn-primary" id="btn-save-terms-config">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Generador de Etiquetas / Excel FLUX -->
+    <div id="flux-modal" class="modal-overlay">
+        <div class="modal-card order-modal-wide" style="max-width: 960px;">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(160, 113, 91, 0.12); color: var(--primary-color); display: flex; align-items: center; justify-content: center;">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">label</span>
+                    </div>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.2rem; font-weight: 800; color: #0f172a;">Etiquetas / Planilla de Envíos FLUX</h3>
+                        <span style="font-size: 0.78rem; color: #64748b; font-weight: 500;">Seleccioná los pedidos terminados y generá la planilla de importación para la logística</span>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btn-close-flux-modal">&times;</button>
+            </div>
+            
+            <div class="modal-body" style="padding: 1.25rem 1.5rem;">
+                <div style="margin-bottom: 1rem; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 10px; padding: 0.85rem 1rem; color: #0369a1; font-size: 0.84rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                    <span>Marcar los pedidos a incluir en la exportación de FLUX:</span>
+                    <button type="button" id="btn-flux-select-all" class="btn-outline" style="padding: 4px 10px; font-size: 0.78rem; border-color: #0284c7; color: #0284c7;">
+                        Tildar Todos los Listos
+                    </button>
+                </div>
+
+                <div id="flux-orders-selection-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto; padding-right: 4px; margin-bottom: 1.25rem;">
+                    <!-- Se inyectan dinámicamente los pedidos -->
+                </div>
+
+                <!-- Previsualización Provisoria -->
+                <div style="border-top: 1.5px solid var(--border-color); padding-top: 1rem;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                        <h4 style="margin: 0; font-size: 0.95rem; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary-color);">table_view</span>
+                            Previsualización Provisoria de Planilla FLUX (<span id="flux-selected-count">0</span> seleccionados)
+                        </h4>
+                    </div>
+                    
+                    <div style="overflow-x: auto; max-height: 220px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.76rem; text-align: left;">
+                            <thead style="background: #f8fafc; sticky: top; border-bottom: 1.5px solid #cbd5e1;">
+                                <tr>
+                                    <th style="padding: 6px 10px;">Tracking</th>
+                                    <th style="padding: 6px 10px;">Fecha Venta</th>
+                                    <th style="padding: 6px 10px;">Valor Decl.</th>
+                                    <th style="padding: 6px 10px;">Peso</th>
+                                    <th style="padding: 6px 10px;">Destinatario</th>
+                                    <th style="padding: 6px 10px;">Teléfono</th>
+                                    <th style="padding: 6px 10px;">Dirección / Obs.</th>
+                                    <th style="padding: 6px 10px;">Localidad</th>
+                                    <th style="padding: 6px 10px;">C.P.</th>
+                                </tr>
+                            </thead>
+                            <tbody id="flux-table-preview-body">
+                                <tr>
+                                    <td colspan="9" style="text-align: center; padding: 1.5rem; color: #94a3b8;">Ningún pedido seleccionado aún.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-outline" id="btn-cancel-flux-modal">Cerrar</button>
+                <button type="button" class="btn-primary" id="btn-download-flux-excel" style="background: #16a34a; border-color: #16a34a;" disabled>
+                    <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+                    Descargar Planilla FLUX (.xls)
+                </button>
             </div>
         </div>
     </div>
@@ -1693,10 +1870,14 @@
             document.getElementById('btn-save-terms-config').addEventListener('click', saveTermsConfig);
             document.getElementById('btn-add-condition').addEventListener('click', addConditionItem);
 
-            document.getElementById('btn-new-order').addEventListener('click', () => openModal());
-            document.getElementById('btn-close-modal').addEventListener('click', closeModal);
-            document.getElementById('btn-cancel-modal').addEventListener('click', closeModal);
-            document.getElementById('btn-save-order').addEventListener('click', saveOrder);
+            const btnNewOrder = document.getElementById('btn-new-order');
+            if (btnNewOrder) btnNewOrder.addEventListener('click', () => openModal());
+            const btnCloseModal = document.getElementById('btn-close-modal');
+            if (btnCloseModal) btnCloseModal.addEventListener('click', closeModal);
+            const btnCancelModal = document.getElementById('btn-cancel-modal');
+            if (btnCancelModal) btnCancelModal.addEventListener('click', closeModal);
+            const btnSaveOrder = document.getElementById('btn-save-order');
+            if (btnSaveOrder) btnSaveOrder.addEventListener('click', saveOrder);
             
             document.getElementById('order-product-type').addEventListener('change', toggleProductFields);
             document.getElementById('order-delivery').addEventListener('change', toggleDeliveryFields);
@@ -2046,15 +2227,16 @@
                     const card = document.createElement('div');
                     card.className = 'order-admin-card';
                 
-                    // Formatear precio
+                    // Formatear precio de manera inteligente
                     const total = Number(order.totalAmount || 0);
                     const paid = Number(order.paidAmount || 0);
-                    const saldo = total - paid;
-                    
+                    const saldo = Math.max(0, total - paid);
+                    const effectivePaidStatus = order.paidStatus || (total > 0 && paid >= total ? 'total' : (paid > 0 ? 'parcial' : 'nada'));
+
                     let paidHTML = '';
-                    if (order.paidStatus === 'total') {
+                    if (effectivePaidStatus === 'total' || (total > 0 && paid >= total)) {
                         paidHTML = `<span style="color:#16a34a; font-weight:700;">Total $${total.toLocaleString('es-AR')}</span>`;
-                    } else if (order.paidStatus === 'parcial') {
+                    } else if (effectivePaidStatus === 'parcial' || paid > 0) {
                         paidHTML = `
                             <div style="font-size:0.82rem;">
                                 <span style="color:#16a34a; font-weight:600;">Abonado: $${paid.toLocaleString('es-AR')}</span><br>
@@ -2137,8 +2319,8 @@
                     }
 
                     card.innerHTML = `
-                        <!-- Fila 1: Encabezado con Orden #, Cliente y Estado -->
-                        <div class="order-card-header">
+                        <!-- Fila 1: Encabezado con Orden #, Cliente, Estado y Botón Expandir -->
+                        <div class="order-card-header" onclick="this.parentElement.classList.toggle('order-card-expanded')" style="cursor: pointer; user-select: none;">
                             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                                 <span class="order-id-badge">#${order.id}</span>
                                 <strong style="font-size: 1.05rem; color: #0f172a;">${escapeHtml(order.clientName)}</strong>
@@ -2146,10 +2328,11 @@
                             </div>
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <span class="status-badge status-${order.status}">${statusLabel}</span>
+                                <span class="order-expand-icon material-symbols-outlined" style="color: #64748b; font-size: 22px; transition: transform 0.2s ease;">expand_more</span>
                             </div>
                         </div>
 
-                        <!-- Fila 2: Producto, Detalles de Entrega y Pago -->
+                        <div class="order-card-collapsible-wrapper">
                         <div class="order-card-body">
                             <div style="display: flex; align-items: center; gap: 12px; flex: 2; min-width: 250px;">
                                 <div style="width: 52px; height: 52px; border-radius: 10px; background-image: url('${imgSrc}'); background-size: cover; background-position: center; border: 1px solid #e2e8f0; flex-shrink: 0;"></div>
@@ -2211,6 +2394,7 @@
                                 </button>
                             </div>
                         </div>
+                    </div>
                     `;
                     container.appendChild(card);
                 });
@@ -2301,12 +2485,22 @@
             `;
         }
 
+        let isOrderFormDirty = false;
+
+        function markOrderFormDirty() {
+            isOrderFormDirty = true;
+        }
+
         function openModal(order = null) {
             const form = document.getElementById('order-form');
             form.reset();
+            isOrderFormDirty = false;
             
             document.getElementById('image-preview-container').style.display = 'none';
             document.getElementById('order-image-path').value = '';
+            
+            const singleFluxContainer = document.getElementById('single-flux-preview-container');
+            if (singleFluxContainer) singleFluxContainer.style.display = 'none';
             
             if (order) {
                 document.getElementById('modal-title').textContent = 'Editar Pedido #' + order.id;
@@ -2318,7 +2512,10 @@
                 
                 document.getElementById('order-client').value = order.clientName;
                 document.getElementById('order-client-phone').value = order.clientPhone ? decodeClientPhone(order.clientPhone) : '';
-                document.getElementById('order-client-zip').value = order.zipCode || order.locality || '';
+                document.getElementById('order-client-address').value = order.address || '';
+                document.getElementById('order-client-locality').value = order.locality || '';
+                document.getElementById('order-client-zip').value = order.zipCode || '';
+                document.getElementById('order-estimated-weight').value = order.estimatedWeight || 1;
                 document.getElementById('order-product-type').value = order.productType;
                 
                 if (order.productType === 'catalog') {
@@ -2334,7 +2531,8 @@
                     document.getElementById('group-product-measure').style.display = 'none';
                 }
                 
-                document.getElementById('order-desc').value = order.description;
+                document.getElementById('order-desc').value = order.description || '';
+                document.getElementById('order-observations').value = order.observations || '';
                 document.getElementById('order-delivery').value = order.deliveryMethod;
                 
                 const minDays = order.prepDaysMin || order.prepDays || 10;
@@ -2349,9 +2547,13 @@
                 document.getElementById('order-dispatch-tracking').value = d.trackingNumber || '';
                 document.getElementById('order-dispatch-url').value = d.trackingUrl || '';
                 
-                document.getElementById('order-paid-status').value = order.paidStatus;
-                document.getElementById('order-paid-amount').value = order.paidAmount;
-                document.getElementById('order-total-amount').value = order.totalAmount;
+                const pTot = Number(order.totalAmount || 0);
+                const pPaid = Number(order.paidAmount || 0);
+                const calcPaidStatus = order.paidStatus || (pTot > 0 && pPaid >= pTot ? 'total' : (pPaid > 0 ? 'parcial' : 'nada'));
+
+                document.getElementById('order-paid-status').value = calcPaidStatus;
+                document.getElementById('order-paid-amount').value = pPaid;
+                document.getElementById('order-total-amount').value = pTot;
                 document.getElementById('order-tax-notice').checked = order.taxNotice !== false;
                 document.getElementById('order-status').value = order.status;
                 
@@ -2368,7 +2570,11 @@
                 document.getElementById('modal-title').textContent = 'Crear Nuevo Pedido';
                 document.getElementById('order-form-id').value = '';
                 document.getElementById('order-client-phone').value = '';
+                document.getElementById('order-client-address').value = '';
+                document.getElementById('order-client-locality').value = '';
                 document.getElementById('order-client-zip').value = '';
+                document.getElementById('order-estimated-weight').value = 1;
+                document.getElementById('order-observations').value = '';
                 document.getElementById('order-product-catalog').value = '';
                 document.getElementById('order-product-search').value = '';
                 document.getElementById('order-form-creation').value = '';
@@ -2396,10 +2602,22 @@
             updateModalZipLookup();
             updateModalLiveSaldo();
             document.getElementById('order-modal').classList.add('show');
+
+            // Resetear estado sucio luego de la inicialización de valores
+            setTimeout(() => { isOrderFormDirty = false; }, 50);
         }
         
-        function closeModal() {
-            document.getElementById('order-modal').classList.remove('show');
+        function closeModal(force = false) {
+            const modal = document.getElementById('order-modal');
+            if (!modal || !modal.classList.contains('show')) return;
+
+            if (!force && isOrderFormDirty) {
+                const choice = confirm('Tenés cambios sin guardar en este pedido.\n\n¿Querés salir sin guardar los cambios?\n- Aceptar: Descartar cambios y cerrar.\n- Cancelar: Volver al pedido para guardar.');
+                if (!choice) return;
+            }
+
+            modal.classList.remove('show');
+            isOrderFormDirty = false;
         }
         
         function editOrder(id) {
@@ -2545,13 +2763,17 @@
                 id,
                 clientName,
                 clientPhone: encodedPhone,
+                address: document.getElementById('order-client-address').value.trim(),
+                locality: document.getElementById('order-client-locality').value.trim(),
                 zipCode: document.getElementById('order-client-zip').value.trim(),
+                estimatedWeight: Number(document.getElementById('order-estimated-weight').value || 1),
                 productType,
                 productId,
                 productName,
                 selectedFinish,
                 selectedMeasure,
                 description: document.getElementById('order-desc').value.trim(),
+                observations: document.getElementById('order-observations').value.trim(),
                 deliveryMethod,
                 dispatchInfo,
                 prepDaysMin: pMinVal,
@@ -2588,7 +2810,7 @@
                     const data = await res.json();
                     allOrders = data.orders;
                     filterAndRenderTable();
-                    closeModal();
+                    closeModal(true);
                     showToast(isNew ? 'Pedido creado con éxito.' : 'Pedido actualizado con éxito.');
                 } else {
                     alert('Error guardando el pedido en el servidor.');
@@ -2854,6 +3076,408 @@
                 alert('No se pudo conectar con el servidor.');
             }
         }
+
+        // ── LÓGICA DEL MÓDULO ETIQUETAS / EXPORTADOR FLUX ──
+        let selectedFluxOrderIds = new Set();
+
+        function openFluxModal() {
+            selectedFluxOrderIds.clear();
+            const modal = document.getElementById('flux-modal');
+            renderFluxOrdersSelectionList();
+            renderFluxPreviewTable();
+            if (modal) {
+                modal.classList.add('show');
+                // Si está en iFrame, desplazar vista suavemente a los controles
+                try {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    if (window.parent && window.parent !== window) {
+                        window.parent.postMessage({ action: 'scrollOrdersToTop' }, '*');
+                    }
+                } catch(e) {}
+            }
+        }
+
+        function closeFluxModal() {
+            const modal = document.getElementById('flux-modal');
+            if (modal) modal.classList.remove('show');
+        }
+
+        function renderFluxOrdersSelectionList() {
+            const container = document.getElementById('flux-orders-selection-list');
+            if (!container) return;
+            container.innerHTML = '';
+
+            // Filtrar pedidos listos o activos que tengan envío o datos para despacho
+            const readyOrActive = allOrders.filter(o => o.status === 'listo' || o.status === 'pendiente');
+
+            if (readyOrActive.length === 0) {
+                container.innerHTML = `<div style="font-size:0.85rem; color:#64748b; text-align:center; padding:1rem;">No hay pedidos pendientes o listos para generar etiquetas.</div>`;
+                return;
+            }
+
+            readyOrActive.forEach(order => {
+                const isChecked = selectedFluxOrderIds.has(order.id);
+                const item = document.createElement('div');
+                item.style.cssText = `display:flex; align-items:center; justify-content:space-between; padding:0.65rem 0.85rem; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; gap:10px; cursor:pointer; user-select:none; transition:background 0.15s;`;
+                if (isChecked) item.style.background = '#f0f9ff';
+
+                const rawPhone = decodeClientPhone(order.clientPhone);
+                const deliveryText = order.deliveryMethod === 'envio' ? '🚛 Envío' : '🏪 Retira';
+
+                item.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <input type="checkbox" class="flux-order-checkbox" data-id="${order.id}" ${isChecked ? 'checked' : ''} style="width:18px; height:18px; cursor:pointer;">
+                        <div>
+                            <strong style="font-size:0.88rem; color:#0f172a;">#${order.id} — ${escapeHtml(order.clientName)}</strong>
+                            <div style="font-size:0.76rem; color:#64748b;">${escapeHtml(order.productName)} &bull; ${deliveryText} ${rawPhone ? '&bull; 📞 ' + rawPhone : ''}</div>
+                        </div>
+                    </div>
+                    <span class="status-badge status-${order.status}">${order.status}</span>
+                `;
+
+                item.addEventListener('click', (e) => {
+                    if (e.target.tagName !== 'INPUT') {
+                        const cb = item.querySelector('.flux-order-checkbox');
+                        cb.checked = !cb.checked;
+                    }
+                    const cb = item.querySelector('.flux-order-checkbox');
+                    if (cb.checked) {
+                        selectedFluxOrderIds.add(order.id);
+                        item.style.background = '#f0f9ff';
+                    } else {
+                        selectedFluxOrderIds.delete(order.id);
+                        item.style.background = '#ffffff';
+                    }
+                    renderFluxPreviewTable();
+                });
+
+                container.appendChild(item);
+            });
+        }
+
+        function toggleSelectAllFluxListos() {
+            const listos = allOrders.filter(o => o.status === 'listo');
+            const allSelected = listos.every(o => selectedFluxOrderIds.has(o.id));
+
+            if (allSelected) {
+                listos.forEach(o => selectedFluxOrderIds.delete(o.id));
+            } else {
+                listos.forEach(o => selectedFluxOrderIds.add(o.id));
+            }
+            renderFluxOrdersSelectionList();
+            renderFluxPreviewTable();
+        }
+
+        function renderFluxPreviewTable() {
+            const tbody = document.getElementById('flux-table-preview-body');
+            const countEl = document.getElementById('flux-selected-count');
+            const downloadBtn = document.getElementById('btn-download-flux-excel');
+            if (!tbody) return;
+
+            const selectedOrders = allOrders.filter(o => selectedFluxOrderIds.has(o.id));
+            if (countEl) countEl.textContent = selectedOrders.length;
+            if (downloadBtn) downloadBtn.disabled = selectedOrders.length === 0;
+
+            if (selectedOrders.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 1.5rem; color: #94a3b8;">Ningún pedido seleccionado aún.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = '';
+            selectedOrders.forEach(order => {
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid #f1f5f9';
+
+                const trackingNum = order.id || '';
+                const dateStr = order.creationDate ? new Date(order.creationDate).toLocaleDateString('es-AR') : new Date().toLocaleDateString('es-AR');
+                const declaredVal = Number(order.totalAmount || 0);
+                const weightVal = order.estimatedWeight || 1;
+                const destName = order.clientName || '';
+                const phone = decodeClientPhone(order.clientPhone) || '';
+                const addressObs = order.address || order.description || order.productName || '';
+                const locality = order.locality || '';
+                const zipCode = order.zipCode || '';
+
+                tr.innerHTML = `
+                    <td style="padding: 6px 10px; font-weight:700;">#${escapeHtml(trackingNum)}</td>
+                    <td style="padding: 6px 10px;">${escapeHtml(dateStr)}</td>
+                    <td style="padding: 6px 10px; color:#16a34a; font-weight:700;">$${declaredVal.toLocaleString('es-AR')}</td>
+                    <td style="padding: 6px 10px;">${weightVal} kg</td>
+                    <td style="padding: 6px 10px; font-weight:600;">${escapeHtml(destName)}</td>
+                    <td style="padding: 6px 10px;">${escapeHtml(phone)}</td>
+                    <td style="padding: 6px 10px; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escapeHtml(addressObs)}">${escapeHtml(addressObs)}</td>
+                    <td style="padding: 6px 10px;">${escapeHtml(locality)}</td>
+                    <td style="padding: 6px 10px; font-weight:700;">${escapeHtml(zipCode)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function downloadFluxExcel() {
+            const selectedOrders = allOrders.filter(o => selectedFluxOrderIds.has(o.id));
+            if (selectedOrders.length === 0) return;
+
+            const headers = [
+                'Numero de tracking',
+                'Fecha de venta',
+                'Valor declarado',
+                'Peso declarado',
+                'Destinatario',
+                'Teléfono de contacto',
+                'Dirección',
+                'Localidad',
+                'Código postal',
+                'Observaciones',
+                '4 campo de cobranzas',
+                '1 Logistica Inversa'
+            ];
+
+            const rows = selectedOrders.map(order => {
+                const trackingNum = order.id || '';
+                const dateStr = order.creationDate ? new Date(order.creationDate).toLocaleDateString('es-AR') : new Date().toLocaleDateString('es-AR');
+                const declaredVal = Number(order.totalAmount || 0);
+                const weightVal = Number(order.estimatedWeight || 1);
+                const destName = order.clientName || '';
+                const phone = decodeClientPhone(order.clientPhone) || '';
+                const address = order.address || order.locality || '';
+                const locality = order.locality || '';
+                const zipCode = order.zipCode || '';
+                const obs = order.observations ? order.observations : (order.productName + (order.description ? ' - ' + order.description : ''));
+
+                return [
+                    trackingNum,
+                    dateStr,
+                    declaredVal,
+                    weightVal,
+                    destName,
+                    phone,
+                    address,
+                    locality,
+                    zipCode,
+                    obs,
+                    '',
+                    ''
+                ];
+            });
+
+            const now = new Date();
+            const timestamp = now.getFullYear() +
+                String(now.getMonth() + 1).padStart(2, '0') +
+                String(now.getDate()).padStart(2, '0') +
+                String(now.getHours()).padStart(2, '0') +
+                String(now.getMinutes()).padStart(2, '0');
+
+            const fileName = `modelo_subida_enviosNoFLex_${timestamp}.xls`;
+
+            if (typeof XLSX !== 'undefined') {
+                const worksheet = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(workbook, worksheet, 'Simple');
+                XLSX.writeFile(workbook, fileName, { bookType: 'biff8' });
+            } else {
+                // Fallback XML HTML si la librería CDN no cargó
+                let excelContent = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body><table><thead><tr>${headers.map(h => `<th>${escapeHtml(h)}</th>`).join('')}</tr></thead><tbody>`;
+                rows.forEach(r => {
+                    excelContent += `<tr>${r.map(c => `<td>${escapeHtml(String(c))}</td>`).join('')}</tr>`;
+                });
+                excelContent += `</tbody></table></body></html>`;
+
+                const blob = new Blob([excelContent], { type: 'application/vnd.ms-excel;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }
+
+            showToast('Planilla de Envíos FLUX descargada con éxito.');
+            closeFluxModal();
+        }
+
+        function toggleSingleFluxPreview() {
+            const container = document.getElementById('single-flux-preview-container');
+            const tbody = document.getElementById('single-flux-preview-tbody');
+            if (!container) return;
+
+            if (container.style.display === 'none' || !container.style.display) {
+                // Rellenar previsualización con los datos actuales del formulario
+                const trackingNum = document.getElementById('order-form-id').value || 'TEMP';
+                const dateVal = document.getElementById('order-form-creation').value;
+                const dateStr = dateVal ? new Date(dateVal).toLocaleDateString('es-AR') : new Date().toLocaleDateString('es-AR');
+                const declaredVal = Number(document.getElementById('order-total-amount').value || 0);
+                const weightVal = Number(document.getElementById('order-estimated-weight').value || 1);
+                const destName = document.getElementById('order-client').value.trim();
+                const phone = document.getElementById('order-client-phone').value.trim();
+                const address = document.getElementById('order-client-address').value.trim();
+                const locality = document.getElementById('order-client-locality').value.trim();
+                const zipCode = document.getElementById('order-client-zip').value.trim();
+                
+                const customProd = document.getElementById('order-product-custom').value.trim();
+                const catalogSearch = document.getElementById('order-product-search').value.trim();
+                const prodName = customProd || catalogSearch || 'Producto';
+                const desc = document.getElementById('order-desc').value.trim();
+                const obsInput = document.getElementById('order-observations').value.trim();
+                const obs = obsInput ? obsInput : (prodName + (desc ? ' - ' + desc : ''));
+
+                tbody.innerHTML = `
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 4px 8px; font-weight:700;">#${escapeHtml(trackingNum)}</td>
+                        <td style="padding: 4px 8px;">${escapeHtml(dateStr)}</td>
+                        <td style="padding: 4px 8px; color:#16a34a; font-weight:700;">$${declaredVal.toLocaleString('es-AR')}</td>
+                        <td style="padding: 4px 8px;">${weightVal} kg</td>
+                        <td style="padding: 4px 8px; font-weight:600;">${escapeHtml(destName)}</td>
+                        <td style="padding: 4px 8px;">${escapeHtml(phone)}</td>
+                        <td style="padding: 4px 8px;">${escapeHtml(address)}</td>
+                        <td style="padding: 4px 8px;">${escapeHtml(locality)}</td>
+                        <td style="padding: 4px 8px; font-weight:700;">${escapeHtml(zipCode)}</td>
+                        <td style="padding: 4px 8px; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(obs)}">${escapeHtml(obs)}</td>
+                    </tr>
+                `;
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        }
+
+        function downloadSingleFluxExcel() {
+            const trackingNum = document.getElementById('order-form-id').value || Math.floor(100000000 + Math.random() * 900000000).toString();
+            const dateVal = document.getElementById('order-form-creation').value;
+            const dateStr = dateVal ? new Date(dateVal).toLocaleDateString('es-AR') : new Date().toLocaleDateString('es-AR');
+            const declaredVal = Number(document.getElementById('order-total-amount').value || 0);
+            const weightVal = Number(document.getElementById('order-estimated-weight').value || 1);
+            const destName = document.getElementById('order-client').value.trim();
+            const phone = document.getElementById('order-client-phone').value.trim();
+            const address = document.getElementById('order-client-address').value.trim();
+            const locality = document.getElementById('order-client-locality').value.trim();
+            const zipCode = document.getElementById('order-client-zip').value.trim();
+            
+            const customProd = document.getElementById('order-product-custom').value.trim();
+            const catalogSearch = document.getElementById('order-product-search').value.trim();
+            const prodName = customProd || catalogSearch || 'Producto';
+            const desc = document.getElementById('order-desc').value.trim();
+            const obsInput = document.getElementById('order-observations').value.trim();
+            const obs = obsInput ? obsInput : (prodName + (desc ? ' - ' + desc : ''));
+
+            const headers = [
+                'Numero de tracking',
+                'Fecha de venta',
+                'Valor declarado',
+                'Peso declarado',
+                'Destinatario',
+                'Teléfono de contacto',
+                'Dirección',
+                'Localidad',
+                'Código postal',
+                'Observaciones',
+                '4 campo de cobranzas',
+                '1 Logistica Inversa'
+            ];
+
+            const row = [
+                trackingNum,
+                dateStr,
+                declaredVal,
+                weightVal,
+                destName,
+                phone,
+                address,
+                locality,
+                zipCode,
+                obs,
+                '',
+                ''
+            ];
+
+            const now = new Date();
+            const timestamp = now.getFullYear() +
+                String(now.getMonth() + 1).padStart(2, '0') +
+                String(now.getDate()).padStart(2, '0') +
+                String(now.getHours()).padStart(2, '0') +
+                String(now.getMinutes()).padStart(2, '0');
+
+            const fileName = `modelo_subida_enviosNoFLex_${trackingNum}_${timestamp}.xls`;
+
+            if (typeof XLSX !== 'undefined') {
+                const worksheet = XLSX.utils.aoa_to_sheet([headers, row]);
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(workbook, worksheet, 'Simple');
+                XLSX.writeFile(workbook, fileName, { bookType: 'biff8' });
+            } else {
+                let excelContent = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body><table><thead><tr>${headers.map(h => `<th>${escapeHtml(h)}</th>`).join('')}</tr></thead><tbody>
+<tr>${row.map(c => `<td>${escapeHtml(String(c))}</td>`).join('')}</tr>
+</tbody></table></body></html>`;
+
+                const blob = new Blob([excelContent], { type: 'application/vnd.ms-excel;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }
+
+            showToast(`Planilla FLUX del pedido #${trackingNum} descargada.`);
+        }
+
+        // Agregar listeners para el modal de Etiquetas FLUX y accesibilidad / atajos
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnLabels = document.getElementById('btn-labels-flux');
+            if (btnLabels) btnLabels.addEventListener('click', openFluxModal);
+            
+            const btnCloseFlux = document.getElementById('btn-close-flux-modal');
+            if (btnCloseFlux) btnCloseFlux.addEventListener('click', closeFluxModal);
+
+            const btnCancelFlux = document.getElementById('btn-cancel-flux-modal');
+            if (btnCancelFlux) btnCancelFlux.addEventListener('click', closeFluxModal);
+
+            const btnSelectAllFlux = document.getElementById('btn-flux-select-all');
+            if (btnSelectAllFlux) btnSelectAllFlux.addEventListener('click', toggleSelectAllFluxListos);
+
+            const btnDownloadFlux = document.getElementById('btn-download-flux-excel');
+            if (btnDownloadFlux) btnDownloadFlux.addEventListener('click', downloadFluxExcel);
+
+            const btnSingleFluxToggle = document.getElementById('btn-single-flux-toggle');
+            if (btnSingleFluxToggle) btnSingleFluxToggle.addEventListener('click', toggleSingleFluxPreview);
+
+            const btnSingleFluxDownload = document.getElementById('btn-single-flux-download');
+            if (btnSingleFluxDownload) btnSingleFluxDownload.addEventListener('click', downloadSingleFluxExcel);
+
+            const btnModalSingleFlux = document.getElementById('btn-modal-single-flux');
+            if (btnModalSingleFlux) btnModalSingleFlux.addEventListener('click', toggleSingleFluxPreview);
+
+            // Eventos para detectar modificaciones en el formulario del pedido
+            const orderForm = document.getElementById('order-form');
+            if (orderForm) {
+                orderForm.addEventListener('input', markOrderFormDirty);
+                orderForm.addEventListener('change', markOrderFormDirty);
+            }
+
+            // Atajo de Tecla Escape (ESC) para cerrar modales
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const termsModal = document.getElementById('terms-config-modal');
+                    const fluxModal = document.getElementById('flux-modal');
+                    const orderModal = document.getElementById('order-modal');
+
+                    if (termsModal && termsModal.classList.contains('show')) {
+                        closeTermsModal();
+                    } else if (fluxModal && fluxModal.classList.contains('show')) {
+                        closeFluxModal();
+                    } else if (orderModal && orderModal.classList.contains('show')) {
+                        closeModal();
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>

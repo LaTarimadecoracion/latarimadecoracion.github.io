@@ -227,9 +227,10 @@
 
         const updateFavState = () => {
             const btnFav = document.getElementById('btn-gallery-fav-dynamic');
-            if (!btnFav) return;
+            const btnAddCart = document.getElementById('btn-add-cart-product');
+            const btnCartText = document.getElementById('btn-add-cart-text');
 
-            const grupo = grupos[currentGroupIndex];
+            const grupo = grupos[currentGroupIndex] || {};
             const acabado = grupo.acabado_name || 'Único';
             
             const selMedida = divMedida.querySelector('select');
@@ -239,12 +240,29 @@
             const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
 
             const inFav = isProductInFavorites(product.id, acabado, medidaText, optText);
-            if (inFav) {
-                btnFav.classList.add('is-fav');
-                btnFav.innerHTML = `<span class="material-symbols-outlined">favorite</span>`;
-            } else {
-                btnFav.classList.remove('is-fav');
-                btnFav.innerHTML = `<span class="material-symbols-outlined">favorite_border</span>`;
+
+            if (btnFav) {
+                if (inFav) {
+                    btnFav.classList.add('is-fav');
+                    btnFav.innerHTML = `<span class="material-symbols-outlined">favorite</span>`;
+                } else {
+                    btnFav.classList.remove('is-fav');
+                    btnFav.innerHTML = `<span class="material-symbols-outlined">favorite_border</span>`;
+                }
+            }
+
+            if (btnAddCart && btnCartText) {
+                if (inFav) {
+                    btnAddCart.style.background = '#e2e8f0';
+                    btnAddCart.style.borderColor = '#cbd5e1';
+                    btnAddCart.style.color = '#334155';
+                    btnCartText.textContent = 'En tu carrito ✓';
+                } else {
+                    btnAddCart.style.background = '#f0fdf4';
+                    btnAddCart.style.borderColor = '#86efac';
+                    btnAddCart.style.color = '#166534';
+                    btnCartText.textContent = 'Agregar al Carrito';
+                }
             }
         };
 
@@ -867,7 +885,7 @@
                                         <span style="background-color: #10B981; color: white; font-size: 0.72rem; font-weight: 700; padding: 2px 6px; border-radius: 12px; font-family: var(--font-main);">${badgeText}</span>
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 4px;">
-                                        <span style="font-size:1.6rem; font-weight:800; color:#10B981; line-height: 1.2;">${formattedTotalPrice}</span>
+                                        <span style="font-size:1.65rem; font-weight:900; color:#c0510a; line-height: 1.2;">${formattedTotalPrice}</span>
                                         <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
                                             <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 4px;">help_outline</span>
                                             <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 250px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
@@ -883,7 +901,7 @@
                             const formattedPrice = formatter.format(totalPrice);
                             
                             priceDisplay.innerHTML = `
-                                <span style="font-size:1.6rem; font-weight:800; color:var(--primary-color); line-height: 1.2;">${formattedPrice}</span>
+                                <span style="font-size:1.65rem; font-weight:900; color:#c0510a; line-height: 1.2;">${formattedPrice}</span>
                                 <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
                                     <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 4px;">help_outline</span>
                                     <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 250px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
@@ -1230,7 +1248,7 @@
         }
 
         // --- Render Selectors ---
-        // Acabado Selector (Horizontal Buttons)
+        // Acabado Selector (Horizontal Buttons sin label)
         if (grupos.length > 1 || (grupos.length === 1 && grupos[0].acabado_name !== 'Único')) {
             divAcabado.className = 'variant-selector-wrapper';
             
@@ -1238,7 +1256,6 @@
             const btnWidth = grupos.length === 2 ? 'calc(50% - 4px)' : 'calc(33.333% - 6px)';
             
             divAcabado.innerHTML = `
-                <label class="variant-label">🎨 Color / Acabado</label>
                 <div class="variant-buttons-container" id="acabado-buttons-container" style="display: flex; flex-wrap: wrap; gap: 8px; overflow-x: visible;">
                     ${grupos.map((g, i) => {
                         const imgUrl = g.cover_image || (g.images_list && g.images_list.length > 0 ? g.images_list[0] : null);
@@ -1303,6 +1320,78 @@
         preselectedMedida = '';
         preselectedOpcion = '';
 
+        // Conectar botón COMPRAR YA al Wizard de Pago / Checkout
+        const btnBuyNow = document.getElementById('btn-buy-now-product');
+        if (btnBuyNow) {
+            btnBuyNow.onclick = (e) => {
+                e.preventDefault();
+                const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
+                const selMedida = divMedida.querySelector('select');
+                const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
+                
+                const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
+                const variantPrice = (activeVariant && activeVariant.price !== undefined && activeVariant.price !== '') ? activeVariant.price : (parseFloat(product.price) || 0);
+                
+                const qtyValEl = document.getElementById('qty-value');
+                const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
+
+                if (window.showProductPaymentModal) {
+                    window.showProductPaymentModal(product, grupo, medidaText, variantPrice, qtyVal);
+                } else if (window.showOfferPaymentModal) {
+                    window.showOfferPaymentModal(product, qtyVal, { grupo, medida: medidaText, price: variantPrice });
+                }
+            };
+        }
+
+        // Conectar botón AGREGAR AL CARRITO (mismo comportamiento que el corazón)
+        const btnAddCart = document.getElementById('btn-add-cart-product');
+        if (btnAddCart) {
+            btnAddCart.onclick = (e) => {
+                e.preventDefault();
+                if (window.CarritoModule && window.CarritoModule.toggle) {
+                    const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
+                    const acabadoName = grupo.acabado_name || 'Único';
+                    const selMedida = divMedida.querySelector('select');
+                    const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
+
+                    const selOpt = divOpt.querySelector('select');
+                    const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
+                    const optLabel = product.optional_variant?.label || '';
+
+                    const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
+                    const itemPrice = (activeVariant && activeVariant.showPrice === true && activeVariant.price) ? activeVariant.price : null;
+
+                    window.CarritoModule.toggle(product, acabadoName, categoryName, medidaText, optText, optLabel, itemPrice);
+                    updateFavState();
+                }
+            };
+        }
+
+        // Conectar botones informativos (Formas de Pago, Envíos y Calidad)
+        const btnModalPay = document.getElementById('btn-product-modal-payments');
+        if (btnModalPay) {
+            btnModalPay.onclick = (e) => {
+                e.preventDefault();
+                if (window.showItemInfoModal) window.showItemInfoModal('payments', product);
+            };
+        }
+
+        const btnModalShip = document.getElementById('btn-product-modal-shipping');
+        if (btnModalShip) {
+            btnModalShip.onclick = (e) => {
+                e.preventDefault();
+                if (window.showItemInfoModal) window.showItemInfoModal('shipping', product);
+            };
+        }
+
+        const btnModalWar = document.getElementById('btn-product-modal-warranty');
+        if (btnModalWar) {
+            btnModalWar.onclick = (e) => {
+                e.preventDefault();
+                if (window.showItemInfoModal) window.showItemInfoModal('warranty', product);
+            };
+        }
+
         // Registrar visita
         if (window.trackProductView) {
             window.trackProductView(product.id);
@@ -1311,6 +1400,7 @@
         // Rellenar carrusel de recomendados ("Los más buscados")
         const relatedList = document.getElementById('detail-related-product-list');
         if (relatedList) {
+            relatedList.className = 'carousel-categories';
             relatedList.innerHTML = '';
             
             const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
@@ -1336,16 +1426,20 @@
                     .sort(() => 0.5 - Math.random())
                     .slice(0, 8);
 
-                randomSelections.forEach(({ product: p, catName }) => {
+                randomSelections.forEach(({ product: p, catName }, idx) => {
                     const pCard = document.createElement('div');
                     pCard.className = 'category-card';
+                    pCard.style.position = 'relative';
+                    pCard.style.overflow = 'hidden';
+                    pCard.style.borderRadius = '12px';
                     const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                    const isEager = idx < 3;
                     pCard.innerHTML = `
-                        <div class="category-card-img-wrapper" style="position:relative;">
-                            <img src="${productCover}" class="category-card-img lazy-img" alt="${p.title}" loading="lazy" onload="this.classList.add('loaded')">
-                        </div>
-                        <div class="category-overlay">
-                            <span>${p.title}</span>
+                        <div class="category-card-img-wrapper" style="position:relative; overflow:hidden; border-radius:12px;">
+                            <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${p.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                            <div class="category-overlay">
+                                <span>${p.title}</span>
+                            </div>
                         </div>
                     `;
                     pCard.addEventListener('click', () => {
@@ -1359,6 +1453,10 @@
                     });
                     relatedList.appendChild(pCard);
                 });
+
+                if (typeof window.enableDragToScroll === 'function') {
+                    window.enableDragToScroll(relatedList);
+                }
             } else {
                 relatedList.innerHTML = '<p class="text-muted">No hay productos recomendados disponibles.</p>';
             }

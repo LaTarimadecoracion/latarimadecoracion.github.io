@@ -43,10 +43,9 @@
 
     /**
      * Convierte un ID de producto y sus variantes a un código Base36 corto.
-     * Estructura del código corto: [CategoríaBase36].[ProductoEnCatBase36].[AcabadoBase36].[MedidaBase36].[OpciónBase36]
-     * Ejemplo: "1.1" (Cat 1, Prod 1) o "1.A.2" (Cat 1, Prod 10, Acabado 2)
+     * Soporta formato limpio sin puntos (ej: "121", "2521") o con puntos (ej: "1.2.1", "2.5.2.1").
      */
-    function encodeShortCode(productId, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '') {
+    function encodeShortCode(productId, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '', useDots = false) {
         const categories = getCategoriesData();
         let catIndex = -1;
         let prodIndex = -1;
@@ -98,14 +97,16 @@
             if (foundOptIdx !== -1) opcionIdx = foundOptIdx + 1;
         }
 
-        // Construir código compacto Base36
-        let code = `${catCode}.${prodCode}`;
+        const sep = useDots ? '.' : '';
+
+        // Construir código compacto Base36 limpio o con puntos
+        let code = `${catCode}${sep}${prodCode}`;
         if (acabadoIdx > 0 || medidaIdx > 0 || opcionIdx > 0) {
-            code += `.${toBase36(acabadoIdx)}`;
+            code += `${sep}${toBase36(acabadoIdx)}`;
             if (medidaIdx > 0 || opcionIdx > 0) {
-                code += `.${toBase36(medidaIdx)}`;
+                code += `${sep}${toBase36(medidaIdx)}`;
                 if (opcionIdx > 0) {
-                    code += `.${toBase36(opcionIdx)}`;
+                    code += `${sep}${toBase36(opcionIdx)}`;
                 }
             }
         }
@@ -114,13 +115,22 @@
     }
 
     /**
-     * Decodifica un código corto Base36 (ej: 1.A.2) y devuelve el producto y variantes.
+     * Decodifica un código corto Base36 (ej: 1.2.1 o 121 o 2521) y devuelve el producto y variantes.
      */
     function decodeShortCode(shortCode) {
         if (!shortCode) return null;
 
         const cleanCode = String(shortCode).trim().replace(/^\/+|\/+$/g, '');
-        const parts = cleanCode.split('.');
+        let parts = [];
+
+        if (cleanCode.includes('.')) {
+            parts = cleanCode.split('.');
+        } else if (/^[0-9A-Z]{2,5}$/i.test(cleanCode)) {
+            // Código limpio sin puntos (ej: "121", "252", "2521")
+            parts = cleanCode.split('');
+        } else {
+            parts = [cleanCode];
+        }
 
         const categories = getCategoriesData();
         let product = null;

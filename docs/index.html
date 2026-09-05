@@ -51,9 +51,15 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="css/style.css?v=47">
     <link rel="stylesheet" href="css/assistant.css?v=2">
-    <link rel="stylesheet" href="css/admin-styles.css">
+    <link rel="stylesheet" href="css/admin-styles.css?v=4">
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 
     <script src="js/site-config.js"></script>
+    <script src="js/payment-config.js?v=1"></script>
 
 </head>
 <body>
@@ -167,63 +173,129 @@
         
         <section id="view-product-detail" class="view detail-view">
             
-            <div id="detail-header-info" style="padding: 1.25rem 1.5rem 0.5rem; text-align: left;">
-                <h2 id="detail-title" style="margin: 0 0 0.15rem 0; font-size: 1.4rem; font-weight: 800; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
-                <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: var(--primary-color, #c0510a); text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-main);"></span>
+            <div id="detail-header-info" style="padding: 1.25rem 1.25rem 0.5rem; text-align: left;">
+                <h2 id="detail-title" style="margin: 0 0 0.25rem 0; font-size: 1.45rem; font-weight: 900; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
+                <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;"></span>
             </div>
-            <div class="detail-img-container"></div>
-            <div class="detail-content">
-                <p id="detail-description" class="detail-description product-description-text"></p>
-                
-                <div id="detail-attributes-container"></div>
 
-                <div class="price-quantity-row">
+            
+            <div class="detail-img-container" style="margin-bottom: 1.25rem;"></div>
+
+            
+            <div class="detail-content" style="padding: 0 1.25rem;">
+
+                
+                <div id="detail-attributes-container" style="margin-bottom: 1.25rem;"></div>
+
+                
+                <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        
+                        <div class="qty-selector-wrapper" style="margin: 0;">
+                            <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px;">
+                                <span style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Unidades:</span>
+                                <button type="button" class="qty-btn" id="btn-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">−</button>
+                                <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 28px; text-align: center;">1</span>
+                                <button type="button" class="qty-btn" id="btn-qty-plus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">+</button>
+                            </div>
+                        </div>
+
+                        
+                        <div id="detail-price-display" class="detail-price" style="margin: 0; display: none; text-align: right;"></div>
+                    </div>
+                </div>
+
+                
+                <div class="detail-actions" id="detail-actions-container" style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem;">
                     
-                    <div class="qty-selector-wrapper">
-                        <div class="qty-controls">
-                            <button type="button" class="qty-btn" id="btn-qty-minus">−</button>
-                            <span class="qty-value" id="qty-value">1</span>
-                            <button type="button" class="qty-btn" id="btn-qty-plus">+</button>
+                    <button type="button" id="btn-buy-now-product" class="btn-primary giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.95rem; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 900; background: linear-gradient(135deg, #059669, #10b981); border: none; color: white; box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35); cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">bolt</span>
+                        <span>COMPRAR YA</span>
+                    </button>
+
+                    
+                    <button type="button" id="btn-add-cart-product" class="btn-outline giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #f0fdf4; border: 1.5px solid #86efac; color: #166534; text-decoration: none; cursor: pointer; transition: all 0.2s ease;">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">shopping_cart</span>
+                        <span id="btn-add-cart-text">Agregar al Carrito</span>
+                    </button>
+                </div>
+
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 1.5rem;">
+                    <button type="button" id="btn-product-modal-payments" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left;" title="Ver formas de pago">
+                        <span class="material-symbols-outlined" style="color: #16a34a; font-size: 20px;">payments</span>
+                        <div>
+                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a;">Formas de Pago</div>
+                            <div style="font-size: 0.68rem; color: #64748b;">Transferencia / Link</div>
+                        </div>
+                    </button>
+
+                    <button type="button" id="btn-product-modal-shipping" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left;" title="Ver envíos y retiros">
+                        <span class="material-symbols-outlined" style="color: #2563eb; font-size: 20px;">local_shipping</span>
+                        <div>
+                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a;">Envíos y Retiro</div>
+                            <div style="font-size: 0.68rem; color: #64748b;">Taller Hurlingham / CP</div>
+                        </div>
+                    </button>
+
+                    <button type="button" id="btn-product-modal-warranty" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left;" title="Ver calidad y garantía">
+                        <span class="material-symbols-outlined" style="color: #8b5cf6; font-size: 20px;">verified</span>
+                        <div>
+                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a;">Calidad & Garantía</div>
+                            <div style="font-size: 0.68rem; color: #64748b;">Madera Maciza 100%</div>
+                        </div>
+                    </button>
+                </div>
+
+                
+                <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.1rem; margin-bottom: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                    <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.6rem 0; display: flex; align-items: center; gap: 8px;">
+                        <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a);">description</span> Descripción del Producto
+                    </h3>
+                    <p id="detail-description" class="detail-description product-description-text" style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0; white-space: pre-line;"></p>
+                </div>
+
+                
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem; margin-bottom: 1.5rem;">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
+                        <div>
+                            <div style="font-size: 1.2rem;">🪵</div>
+                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; margin-top: 2px;">Material</div>
+                            <div style="font-size: 0.7rem; color: #64748b;">100% Madera Maciza</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.2rem;">🔨</div>
+                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; margin-top: 2px;">Fabricación</div>
+                            <div style="font-size: 0.7rem; color: #64748b;">Artesanal Propia</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.2rem;">🛡️</div>
+                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; margin-top: 2px;">Garantía</div>
+                            <div style="font-size: 0.7rem; color: #64748b;">Directa de Taller</div>
                         </div>
                     </div>
-                    
-                    <div id="detail-price-display" class="detail-price" style="margin: 0; display: none;"></div>
                 </div>
-                
-                <div class="detail-actions mt-2" id="detail-actions-container">
-                    <div id="dynamic-shipping-links-container" style="display:flex; flex-direction:column; gap:0.75rem; width:100%; margin-bottom: 0.75rem;">
-                        <a id="btn-buy-shipping" href="#" target="_blank" class="btn-primary giant-btn" style="display:none;">
-                            <span class="material-symbols-outlined">local_shipping</span>
-                            <span>Comprar con Envío</span>
-                        </a>
-                    </div>
-                    <div style="display:flex; flex-direction:column; gap:4px; width:100%;">
-                        <a id="btn-buy-pickup" href="#" target="_blank" class="btn-outline giant-btn whatsapp-btn">
-                            <span class="material-symbols-outlined">chat</span>
-                            Consultar por WhatsApp
-                        </a>
-                        <span style="font-size:0.75rem; color:#64748B; text-align:center; margin-top:2px; font-style:italic;">
-                            Chateá con nosotros para coordinar transferencias, efectivo o retiros por el taller
-                        </span>
-                    </div>
-                </div>
-            </div>
 
-            
-            <div class="detail-related-section" style="border-top: 1px solid rgba(180, 132, 108, 0.1); padding-top: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
-                <div class="section-header-premium" style="padding: 0 1.5rem 0.4rem; display: flex; align-items: center; gap: 8px;">
-                    <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a); font-size: 1.5rem; vertical-align: middle;">star</span>
-                    <div>
-                        <h2 class="section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; padding:0;">Los más buscados</h2>
-                        <p class="section-subtitle" style="font-size: 0.8rem; color: var(--text-muted); margin: 2px 0 0 0; padding:0;">Otros preferidos de nuestros clientes</p>
-                    </div>
+                
+                <div style="display:flex; flex-direction:column; gap:4px; width:100%; margin-bottom: 1.5rem;">
+                    <a id="btn-buy-pickup" href="#" target="_blank" class="btn-outline giant-btn whatsapp-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #fff7ed; border: 1.5px solid #ffedd5; color: #c0510a; box-shadow: 0 2px 8px rgba(192, 81, 10, 0.08); text-decoration: none;">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
+                        <span>Consultar por WhatsApp</span>
+                    </a>
+                    <span style="font-size:0.72rem; color:#64748B; text-align:center; margin-top:2px; font-style:italic;">
+                        Chateá con nosotros para coordinar transferencias, efectivo o retiros por el taller
+                    </span>
                 </div>
-                <div id="detail-related-product-list" class="carousel-categories" style="padding: 0 1.25rem 0.5rem;">
-                    
+
+                
+                <div style="margin-top: 2rem; border-top: 1px solid #e2e8f0; padding-top: 1.5rem;">
+                    <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; text-align: left;">
+                        🔥 Los más buscados
+                    </h3>
+                    <div id="detail-related-product-list" class="carousel-categories" style="padding: 10px 0;"></div>
                 </div>
+
             </div>
-            
-            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
         
@@ -573,10 +645,12 @@
     <script src="js/admin-products.js?v=5" defer></script>
     <script src="js/admin-products-form.js?v=6" defer></script>
     <script src="js/admin-stock-native.js?v=1" defer></script>
+    <script src="js/admin-pc-stock.js?v=1" defer></script>
     <script src="js/admin-rentals.js?v=1" defer></script>
     <script src="js/admin-offers.js?v=1" defer></script>
     <script src="js/postal-lookup.js?v=1" defer></script>
     <script src="js/admin-shipping.js?v=1" defer></script>
+    <script src="js/admin-payments.js?v=1" defer></script>
     <script src="js/admin-pages.js?v=4" defer></script>
     
     <script src="js/carrito.js?v=8" defer></script>

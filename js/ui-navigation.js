@@ -311,9 +311,15 @@
                     window.renderPerfilCarritoView();
                 }
             } else if (viewId === 'view-admin') {
-                window.currentAdminTab = 'catalog';
-                window.currentAdminPhase = 'categories';
-                renderAdminUX();
+                const urlParams = new URLSearchParams(window.location.search);
+                const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
+                const validTabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'stock', 'pages', 'orders', 'maintenance'];
+                if (tabFromUrl && validTabs.includes(tabFromUrl)) {
+                    window.currentAdminTab = tabFromUrl;
+                } else if (!window.currentAdminTab) {
+                    window.currentAdminTab = 'dashboard';
+                }
+                if (window.renderAdminUX) window.renderAdminUX();
             }
         }
 
@@ -359,7 +365,12 @@
                 query = '?view=' + prettyNames[viewId];
                 if (viewId === 'view-pedidos' && context && context.orderId) {
                     query += '&id=' + encodeURIComponent(context.orderId);
+                } else if (viewId === 'view-admin') {
+                    const currentTab = window.currentAdminTab || new URLSearchParams(window.location.search).get('tab') || 'dashboard';
+                    query += '&tab=' + encodeURIComponent(currentTab);
                 }
+            } else if (viewId === 'view-home') {
+                query = '';
             }
             
             const cleanUrl = basePath + query;

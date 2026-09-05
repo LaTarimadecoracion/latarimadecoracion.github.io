@@ -257,50 +257,52 @@
         }
 
         .category-header-row {
-            background: var(--bg-card, #F8FAFC) !important;
+            background: #F8FAFC !important;
             cursor: pointer;
             user-select: none;
-            transition: background 0.15s ease;
+            transition: all 0.2s ease;
         }
         .category-header-row:hover {
             background: #F1F5F9 !important;
         }
         .category-header-row td {
-            padding: 0.65rem 1rem !important;
+            padding: 0.75rem 1rem !important;
             border-bottom: 2px solid var(--border-color, #E2E8F0) !important;
             border-top: 1px solid var(--border-color, #CBD5E1) !important;
         }
         .category-title-box {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-weight: 800;
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: var(--text-main, #0F172A);
         }
         .category-title-box .material-symbols-outlined {
             transition: transform 0.2s ease;
-            color: var(--primary-color, #c0510a);
+            color: #0284C7;
+            font-size: 22px;
         }
-        .category-header-row.collapsed .category-title-box .material-symbols-outlined {
+        .category-header-row.collapsed .expand-arrow {
             transform: rotate(-90deg);
         }
         .category-tag {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            padding: 0.25rem 0.55rem;
-            border-radius: 6px;
-            font-size: 0.73rem;
-            font-weight: 700;
-            background: #F1F5F9;
-            color: #475569;
+            justify-content: center;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 8px;
+            border-radius: 99px;
+            font-size: 0.76rem;
+            font-weight: 800;
+            background: #0284C7;
+            color: white;
             white-space: nowrap;
         }
         .category-tag.draft {
-            background: #FEF3C7;
-            color: #D97706;
-            border: 1px solid #FCD34D;
+            background: #D97706;
+            color: white;
         }
 
         /* Stock Direct Input Box */
@@ -619,7 +621,12 @@
                 <table class="excel-table">
                     <thead>
                         <tr>
-                            <th style="width: auto;">Producto</th>
+                            <th style="width: auto;">
+                                <div style="display: inline-flex; align-items: center; gap: 6px;">
+                                    <span class="material-symbols-outlined" style="font-size: 16px; color: #0284C7;">inventory_2</span>
+                                    <span>PRODUCTO / CÓDIGO</span>
+                                </div>
+                            </th>
                             <th style="width: 100px; text-align: center;">Stock</th>
                             <th style="width: 120px;">Costo U.</th>
                             <th class="col-hide-mobile" style="width: 60px; text-align: center;" title="Enlaces del Sitio"><span class="material-symbols-outlined" style="font-size:18px; vertical-align:middle;">link</span></th>
@@ -1009,20 +1016,29 @@
                 // Calcular total de stock por categoría
                 const catTotalStock = items.reduce((sum, i) => sum + (parseInt(i.qty) || 0), 0);
 
+                // Determinar ícono según la categoría
+                let catIcon = 'inventory_2';
+                if (catName.toLowerCase() === 'borradores') catIcon = 'edit_note';
+                else if (catName.toLowerCase().includes('herrajes')) catIcon = 'hardware';
+                else if (catName.toLowerCase().includes('mueble') || catName.toLowerCase().includes('madera')) catIcon = 'chair';
+
                 // Fila de encabezado de categoría desplegable
                 const headerTr = document.createElement('tr');
                 headerTr.className = `category-header-row ${isCollapsed ? 'collapsed' : ''}`;
                 headerTr.onclick = () => toggleCategoryCollapse(catSlug);
                 headerTr.innerHTML = `
-                    <td colspan="5">
-                        <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
-                            <div class="category-title-box">
-                                <span class="material-symbols-outlined">expand_more</span>
-                                <span>${escapeHtml(catName)}</span>
-                                <span class="category-tag">${items.length} ${items.length === 1 ? 'producto' : 'productos'}</span>
+                    <td colspan="5" style="padding: 0 !important; border: none !important;">
+                        <div class="orders-section-header" style="padding: 0.75rem 1rem; border: 1.5px solid var(--border-color, #E2E8F0); border-radius: 10px; margin-bottom: 2px; background: #F8FAFC; display: flex; align-items: center; justify-content: space-between; width: 100%; box-sizing: border-box; cursor: pointer;">
+                            <div class="category-title-box" style="display: flex; align-items: center; gap: 10px;">
+                                <span class="material-symbols-outlined" style="color: #0284C7; font-size: 22px;">${catIcon}</span>
+                                <h3 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #0F172A;">${escapeHtml(catName)}</h3>
+                                <span class="category-tag ${catName.toLowerCase() === 'borradores' ? 'draft' : ''}">${items.length}</span>
                             </div>
-                            <div style="font-size:0.8rem; font-weight:700; color:var(--text-muted);">
-                                Total Unidades: <span style="color:var(--text-main); font-weight:800; background:#E2E8F0; padding:2px 8px; border-radius:12px;">${catTotalStock}</span>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div style="font-size: 0.78rem; font-weight: 700; color: #64748B;">
+                                    Total Unidades: <span style="color: #0F172A; font-weight: 800; background: #E2E8F0; padding: 2px 8px; border-radius: 12px;">${catTotalStock}</span>
+                                </div>
+                                <span class="material-symbols-outlined expand-arrow" style="color: #64748B; font-size: 20px; transition: transform 0.2s ease;">expand_more</span>
                             </div>
                         </div>
                     </td>

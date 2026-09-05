@@ -34,7 +34,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 3
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -47,7 +48,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -60,7 +62,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -73,7 +76,8 @@ const productsData = [
                                 "price": 27000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -86,7 +90,8 @@ const productsData = [
                                 "price": 27000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -99,7 +104,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -112,7 +118,8 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -125,7 +132,8 @@ const productsData = [
                                 "price": 23999,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -138,10 +146,12 @@ const productsData = [
                                 "price": 23000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 3
                     },
                     {
                         "acabado_name": "Blanca",
@@ -167,7 +177,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -180,7 +191,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -193,7 +205,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -206,7 +219,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -219,7 +233,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -232,10 +247,12 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     },
                     {
                         "acabado_name": "Barnizado",
@@ -326,7 +343,8 @@ const productsData = [
                                 "showPrice": true
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 4
                     }
                 ],
                 "tags": [
@@ -411,7 +429,18 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 8,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 7
             },
             {
                 "id": "51",
@@ -444,7 +473,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 60000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 1
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -457,7 +487,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 60000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -470,7 +501,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -483,7 +515,8 @@ const productsData = [
                                 "price": 27000,
                                 "cost_price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -496,7 +529,8 @@ const productsData = [
                                 "price": 27000,
                                 "cost_price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -509,7 +543,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 26000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -522,7 +557,8 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -535,7 +571,8 @@ const productsData = [
                                 "price": 24000,
                                 "cost_price": 24000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -548,10 +585,12 @@ const productsData = [
                                 "price": 23000,
                                 "cost_price": 23000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 1
                     },
                     {
                         "acabado_name": "Blanca",
@@ -645,7 +684,8 @@ const productsData = [
                                 "showPrice": true
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     },
                     {
                         "acabado_name": "Barnizado",
@@ -739,7 +779,8 @@ const productsData = [
                                 "showPrice": true
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -823,7 +864,18 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 6
+                "views": 44,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 1
             },
             {
                 "id": "91",
@@ -849,7 +901,8 @@ const productsData = [
                                 "highlight": false,
                                 "price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 2
                             },
                             {
                                 "medida": "Vertical 150 a 200 cm",
@@ -861,7 +914,8 @@ const productsData = [
                                 "highlight": false,
                                 "price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "Inclinada 100 a 150 cm",
@@ -873,7 +927,8 @@ const productsData = [
                                 "highlight": false,
                                 "price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "Vertical 100 a 150 cm",
@@ -885,7 +940,8 @@ const productsData = [
                                 "highlight": false,
                                 "price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "Inclinada 0 a 100 cm",
@@ -897,7 +953,8 @@ const productsData = [
                                 "highlight": false,
                                 "price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "Vertical 0 a 100 cm",
@@ -909,10 +966,12 @@ const productsData = [
                                 "highlight": false,
                                 "price": 30000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 2
                     }
                 ],
                 "tags": [
@@ -951,7 +1010,18 @@ const productsData = [
                 ],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles",
-                "views": 4
+                "views": 4,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 2
             },
             {
                 "id": "31",
@@ -980,7 +1050,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "2 Unidad",
@@ -993,10 +1064,12 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -1039,8 +1112,8 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 3,
-                "stock": 1,
+                "views": 5,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:04 a. m.",
@@ -1052,7 +1125,18 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $17.000 ➔ $20.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "visible": true
             },
             {
                 "id": "C1",
@@ -1079,10 +1163,12 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -1099,7 +1185,18 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "54",
@@ -1400,7 +1497,17 @@ const productsData = [
                 ],
                 "last_modified": 1784430041975,
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "41",
@@ -1428,10 +1535,12 @@ const productsData = [
                                 "price": 68000,
                                 "cost_price": 34000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 1
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 1
                     },
                     {
                         "acabado_name": "100 x 40 x 40 cm",
@@ -1455,7 +1564,8 @@ const productsData = [
                                 "showPrice": true
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     },
                     {
                         "acabado_name": "60 x 40 x 40 cm",
@@ -1480,7 +1590,8 @@ const productsData = [
                                 "showPrice": true
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -1524,7 +1635,18 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 1
+                "views": 3,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 1
             },
             {
                 "id": "C2",
@@ -1550,10 +1672,12 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -1610,7 +1734,18 @@ const productsData = [
                 ],
                 "last_modified": 1783635806092,
                 "primaryCatId": "sillas-sillones",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "42",
@@ -1719,7 +1854,7 @@ const productsData = [
                 ],
                 "last_modified": 1787707117443,
                 "primaryCatId": "Organizadores",
-                "views": 0,
+                "views": 1,
                 "stock": 1,
                 "history": [
                     {
@@ -1732,7 +1867,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "E2",
@@ -2000,7 +2145,17 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "E1",
@@ -2222,7 +2377,17 @@ const productsData = [
                 ],
                 "last_modified": 1786812318991,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "E3",
@@ -2312,7 +2477,17 @@ const productsData = [
                 ],
                 "last_modified": 1786334565073,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "G1",
@@ -2340,10 +2515,12 @@ const productsData = [
                                 "price": 9000,
                                 "cost_price": 4500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 2
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 2
                     }
                 ],
                 "tags": [
@@ -2400,7 +2577,18 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 2
             },
             {
                 "id": "G3",
@@ -2429,10 +2617,12 @@ const productsData = [
                                 "price": 9000,
                                 "cost_price": 4500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -2489,7 +2679,18 @@ const productsData = [
                 ],
                 "last_modified": 1783907387290,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "G2",
@@ -2505,7 +2706,8 @@ const productsData = [
                             "img/todo-algarrobo/Platos - Cuencos/1782610904423-imagen.webp"
                         ],
                         "medidas_variants": [],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 2
                     }
                 ],
                 "tags": [
@@ -2563,8 +2765,18 @@ const productsData = [
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
                 "views": 0,
-                "stock": 1,
-                "history": []
+                "stock": 2,
+                "history": [],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "46",
@@ -2654,7 +2866,17 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "B1",
@@ -2678,10 +2900,12 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 2
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 2
                     }
                 ],
                 "tags": [
@@ -2719,7 +2943,18 @@ const productsData = [
                 ],
                 "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 2
             },
             {
                 "id": "43",
@@ -2748,10 +2983,12 @@ const productsData = [
                                 "legend": "",
                                 "showPrice": false,
                                 "cost_price": 2500,
-                                "price": 15000
+                                "price": 15000,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -2791,8 +3028,8 @@ const productsData = [
                 ],
                 "last_modified": 1783637106226,
                 "primaryCatId": "Organizadores",
-                "views": 0,
-                "stock": 1,
+                "views": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:39 a. m.",
@@ -2804,7 +3041,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "44",
@@ -2830,10 +3077,12 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -2876,7 +3125,18 @@ const productsData = [
                 ],
                 "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "45",
@@ -2900,10 +3160,12 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -2945,7 +3207,18 @@ const productsData = [
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores",
-                "views": 1
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "47",
@@ -2969,10 +3242,12 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -3029,7 +3304,18 @@ const productsData = [
                 ],
                 "last_modified": 1783637154745,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "48",
@@ -3155,7 +3441,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637176778,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "E5",
@@ -3246,7 +3542,17 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "D2",
@@ -3280,7 +3586,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "D3",
@@ -3313,7 +3629,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637228097,
                 "primaryCatId": "Mesas-madera",
-                "views": 1
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "E4",
@@ -3392,7 +3718,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637265113,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "49",
@@ -3477,7 +3813,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637306441,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4A",
@@ -3539,7 +3885,17 @@ const productsData = [
                 ],
                 "last_modified": 1783908158520,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "55",
@@ -3567,7 +3923,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 1
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -3580,7 +3937,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -3593,10 +3951,12 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 1
                     },
                     {
                         "acabado_name": "Barnizado",
@@ -3633,7 +3993,8 @@ const productsData = [
                                 "showPrice": false
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     },
                     {
                         "acabado_name": "Blanco",
@@ -3670,7 +4031,8 @@ const productsData = [
                                 "showPrice": false
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -3720,7 +4082,18 @@ const productsData = [
                 ],
                 "last_modified": 1786057097023,
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 1
             },
             {
                 "id": "57",
@@ -3792,7 +4165,17 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "58",
@@ -3864,7 +4247,17 @@ const productsData = [
                 ],
                 "last_modified": 1783616746091,
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "59",
@@ -3935,7 +4328,17 @@ const productsData = [
                 ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "53",
@@ -4202,7 +4605,17 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "39",
@@ -4229,7 +4642,8 @@ const productsData = [
                                 "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
-                                "cost_price": 7500
+                                "cost_price": 7500,
+                                "stock": 0
                             },
                             {
                                 "medida": "5 Ganchos",
@@ -4242,7 +4656,8 @@ const productsData = [
                                 "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
-                                "cost_price": 7500
+                                "cost_price": 7500,
+                                "stock": 0
                             },
                             {
                                 "medida": "7 Ganchos",
@@ -4255,10 +4670,12 @@ const productsData = [
                                 "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
-                                "cost_price": 7500
+                                "cost_price": 7500,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -4311,7 +4728,7 @@ const productsData = [
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
                 "views": 2,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:09 a. m.",
@@ -4323,7 +4740,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $7.500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "69",
@@ -4473,7 +4900,17 @@ const productsData = [
                 ],
                 "last_modified": 1783635269180,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "21",
@@ -4500,10 +4937,12 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 4
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 4
                     }
                 ],
                 "tags": [
@@ -4561,8 +5000,8 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 10,
-                "stock": 0,
+                "views": 25,
+                "stock": 4,
                 "history": [
                     {
                         "date": "26/8, 11:54 p. m.",
@@ -4584,7 +5023,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "22",
@@ -4674,7 +5123,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 0,
+                "views": 2,
                 "stock": 0,
                 "history": [
                     {
@@ -4682,7 +5131,17 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $35.000 ➔ $27.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "24",
@@ -4771,7 +5230,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
-                "views": 0,
+                "views": 1,
                 "stock": 0,
                 "history": [
                     {
@@ -4779,7 +5238,17 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $45.000 ➔ $36.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "23",
@@ -4869,7 +5338,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 0,
+                "views": 2,
                 "stock": 0,
                 "history": [
                     {
@@ -4877,7 +5346,17 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $40.000 ➔ $31.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "71",
@@ -4956,7 +5435,17 @@ const productsData = [
                 ],
                 "last_modified": 1784411533338,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "72",
@@ -5036,7 +5525,17 @@ const productsData = [
                 ],
                 "last_modified": 1786811672934,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "73",
@@ -5128,7 +5627,17 @@ const productsData = [
                 ],
                 "last_modified": 1786811859567,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "74",
@@ -5215,7 +5724,17 @@ const productsData = [
                 ],
                 "last_modified": 1786811707863,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "75",
@@ -5294,7 +5813,17 @@ const productsData = [
                 ],
                 "last_modified": 1784411560841,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "76",
@@ -5373,7 +5902,17 @@ const productsData = [
                 ],
                 "last_modified": 1784411566442,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 1
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "77",
@@ -5452,7 +5991,17 @@ const productsData = [
                 ],
                 "last_modified": 1784411576658,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "78",
@@ -5531,7 +6080,17 @@ const productsData = [
                 ],
                 "last_modified": 1784411571657,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "34",
@@ -5562,10 +6121,12 @@ const productsData = [
                                 "price": 21000,
                                 "cost_price": 10500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -5623,8 +6184,8 @@ const productsData = [
                 "last_modified": 1784773568612,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0,
-                "stock": 1,
+                "views": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:05 a. m.",
@@ -5636,7 +6197,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $8.000 ➔ $10.500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "33",
@@ -5670,10 +6241,12 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 12500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -5732,7 +6305,7 @@ const productsData = [
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:05 a. m.",
@@ -5744,7 +6317,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $10.000 ➔ $12.500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "38",
@@ -5775,10 +6358,12 @@ const productsData = [
                                 "price": 17000,
                                 "cost_price": 8500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -5837,7 +6422,7 @@ const productsData = [
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:10 a. m.",
@@ -5849,7 +6434,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $6.500 ➔ $8.500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "37",
@@ -5879,10 +6474,12 @@ const productsData = [
                                 "price": 12000,
                                 "cost_price": 7500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -5940,15 +6537,25 @@ const productsData = [
                 "last_modified": 1784773242756,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0,
-                "stock": 1,
+                "views": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:10 a. m.",
                         "type": "Costo Aumentó",
                         "detail": "Costo: $6.000 ➔ $7.500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "11",
@@ -5972,10 +6579,12 @@ const productsData = [
                                 "price": "",
                                 "cost_price": 11000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -6033,7 +6642,18 @@ const productsData = [
                 "last_modified": 1783811849072,
                 "primaryCatId": "Borrador",
                 "visible": false,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "25",
@@ -6123,8 +6743,18 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 3,
-                "stock": 0
+                "views": 4,
+                "stock": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "62",
@@ -6150,7 +6780,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 1
                             },
                             {
                                 "medida": "Mediano",
@@ -6163,7 +6794,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             },
                             {
                                 "medida": "Combo",
@@ -6176,7 +6808,8 @@ const productsData = [
                                 "price": 22000,
                                 "cost_price": 11000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 10
                             },
                             {
                                 "medida": "Chico",
@@ -6189,10 +6822,12 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 11
                     }
                 ],
                 "tags": [
@@ -6224,7 +6859,18 @@ const productsData = [
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
                 "visible": true,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 11
             },
             {
                 "id": "D4",
@@ -6464,7 +7110,17 @@ const productsData = [
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "79",
@@ -6490,10 +7146,12 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -6551,7 +7209,18 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "C3",
@@ -6640,7 +7309,17 @@ const productsData = [
                 "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
                 "visible": true,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "36",
@@ -6670,10 +7349,12 @@ const productsData = [
                                 "price": 15000,
                                 "cost_price": 7500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -6780,7 +7461,18 @@ const productsData = [
                 ],
                 "last_modified": 1784162786027,
                 "primaryCatId": "Percheros",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "35",
@@ -6812,10 +7504,12 @@ const productsData = [
                                 "price": 19000,
                                 "cost_price": 9500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -6922,7 +7616,18 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "56",
@@ -6990,7 +7695,17 @@ const productsData = [
                 "primaryCatId": "Barandas",
                 "history": [],
                 "visible": true,
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "H2",
@@ -7021,7 +7736,8 @@ const productsData = [
                                 "price": 250000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
                         "hidden": false
@@ -7067,7 +7783,7 @@ const productsData = [
                 "last_modified": 1784645695698,
                 "primaryCatId": "Podios",
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:38 a. m.",
@@ -7079,7 +7795,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $10.000 ➔ $35.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4B",
@@ -7296,7 +8022,17 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4C",
@@ -7425,7 +8161,17 @@ const productsData = [
                 ],
                 "last_modified": 1787716545046,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4D",
@@ -7462,7 +8208,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786316089369,
                 "primaryCatId": "muebles",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "81",
@@ -7485,7 +8241,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786305162256,
                 "primaryCatId": "camas-madera-pino",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4E",
@@ -7723,7 +8489,17 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 1
+                "views": 3,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "A4",
@@ -7884,7 +8660,17 @@ const productsData = [
                 ],
                 "last_modified": 1786330064427,
                 "primaryCatId": "Steps",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "A3",
@@ -8045,7 +8831,17 @@ const productsData = [
                 ],
                 "last_modified": 1786332262471,
                 "primaryCatId": "Steps",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "A2",
@@ -8179,7 +8975,17 @@ const productsData = [
                 ],
                 "last_modified": 1786332353302,
                 "primaryCatId": "Steps",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4F",
@@ -8200,7 +9006,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4G",
@@ -8238,7 +9054,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786333409298,
                 "primaryCatId": "muebles",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "D6",
@@ -8263,7 +9089,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334411421,
                 "primaryCatId": "Hogar",
-                "views": 0
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "F2",
@@ -8286,7 +9122,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334775059,
                 "primaryCatId": "Hogar",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "F3",
@@ -8307,7 +9153,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334817654,
                 "primaryCatId": "Hogar",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "F4",
@@ -8329,7 +9185,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334918176,
                 "primaryCatId": "Hogar",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "D7",
@@ -8366,7 +9232,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera",
-                "views": 1
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "26",
@@ -8411,7 +9287,17 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $25.000 ➔ $5.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "27",
@@ -8446,7 +9332,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 1,
+                "views": 2,
                 "stock": 0,
                 "history": [
                     {
@@ -8459,7 +9345,18 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $7.000"
                     }
-                ]
+                ],
+                "visible": true,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "B4",
@@ -8494,7 +9391,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes",
-                "views": 1
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "B5",
@@ -8529,7 +9436,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839116557,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "B6",
@@ -8564,7 +9481,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839110101,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "32",
@@ -8591,7 +9518,8 @@ const productsData = [
                                 "price": 39000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "2 Unidad",
@@ -8604,10 +9532,12 @@ const productsData = [
                                 "price": 39000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -8651,7 +9581,7 @@ const productsData = [
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:04 a. m.",
@@ -8663,7 +9593,17 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $26.000 ➔ $20.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4H",
@@ -8701,7 +9641,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ]
     },
@@ -8734,10 +9684,12 @@ const productsData = [
                                 "price": "",
                                 "cost_price": 11000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -8795,7 +9747,18 @@ const productsData = [
                 "last_modified": 1783811849072,
                 "primaryCatId": "Borrador",
                 "visible": false,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             }
         ],
         "visible": false
@@ -8831,10 +9794,12 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 4
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 4
                     }
                 ],
                 "tags": [
@@ -8892,15 +9857,25 @@ const productsData = [
                 ],
                 "last_modified": 1784083100223,
                 "primaryCatId": "Vinotecas",
-                "views": 10,
-                "stock": 0,
+                "views": 25,
+                "stock": 4,
                 "history": [
                     {
                         "date": "27/8, 12:03 a. m.",
                         "type": "Costo Bajó",
                         "detail": "Costo: $30.000 ➔ $25.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "22",
@@ -8990,7 +9965,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 0,
+                "views": 2,
                 "stock": 0,
                 "history": [
                     {
@@ -8998,7 +9973,17 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $35.000 ➔ $27.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "23",
@@ -9088,7 +10073,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 0,
+                "views": 2,
                 "stock": 0,
                 "history": [
                     {
@@ -9096,7 +10081,17 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $40.000 ➔ $31.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "24",
@@ -9185,7 +10180,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
-                "views": 0,
+                "views": 1,
                 "stock": 0,
                 "history": [
                     {
@@ -9193,7 +10188,17 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $45.000 ➔ $36.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "25",
@@ -9283,8 +10288,18 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 3,
-                "stock": 0
+                "views": 4,
+                "stock": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "26",
@@ -9329,7 +10344,17 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $25.000 ➔ $5.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "27",
@@ -9364,7 +10389,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 1,
+                "views": 2,
                 "stock": 0,
                 "history": [
                     {
@@ -9377,7 +10402,18 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $7.000"
                     }
-                ]
+                ],
+                "visible": true,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             }
         ],
         "rubro": "carpinteria"
@@ -9416,7 +10452,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "2 Unidad",
@@ -9429,10 +10466,12 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -9475,8 +10514,8 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 3,
-                "stock": 1,
+                "views": 5,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:04 a. m.",
@@ -9488,7 +10527,18 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $17.000 ➔ $20.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "visible": true
             },
             {
                 "id": "32",
@@ -9515,7 +10565,8 @@ const productsData = [
                                 "price": 39000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "2 Unidad",
@@ -9528,10 +10579,12 @@ const productsData = [
                                 "price": 39000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -9575,7 +10628,7 @@ const productsData = [
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:04 a. m.",
@@ -9587,7 +10640,17 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $26.000 ➔ $20.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "33",
@@ -9621,10 +10684,12 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 12500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -9683,7 +10748,7 @@ const productsData = [
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:05 a. m.",
@@ -9695,7 +10760,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $10.000 ➔ $12.500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "34",
@@ -9726,10 +10801,12 @@ const productsData = [
                                 "price": 21000,
                                 "cost_price": 10500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -9787,8 +10864,8 @@ const productsData = [
                 "last_modified": 1784773568612,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0,
-                "stock": 1,
+                "views": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:05 a. m.",
@@ -9800,7 +10877,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $8.000 ➔ $10.500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "35",
@@ -9832,10 +10919,12 @@ const productsData = [
                                 "price": 19000,
                                 "cost_price": 9500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -9942,7 +11031,18 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "36",
@@ -9972,10 +11072,12 @@ const productsData = [
                                 "price": 15000,
                                 "cost_price": 7500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -10082,7 +11184,18 @@ const productsData = [
                 ],
                 "last_modified": 1784162786027,
                 "primaryCatId": "Percheros",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "37",
@@ -10112,10 +11225,12 @@ const productsData = [
                                 "price": 12000,
                                 "cost_price": 7500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -10173,15 +11288,25 @@ const productsData = [
                 "last_modified": 1784773242756,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0,
-                "stock": 1,
+                "views": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:10 a. m.",
                         "type": "Costo Aumentó",
                         "detail": "Costo: $6.000 ➔ $7.500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "38",
@@ -10212,10 +11337,12 @@ const productsData = [
                                 "price": 17000,
                                 "cost_price": 8500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -10274,7 +11401,7 @@ const productsData = [
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:10 a. m.",
@@ -10286,7 +11413,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $6.500 ➔ $8.500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "39",
@@ -10313,7 +11450,8 @@ const productsData = [
                                 "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
-                                "cost_price": 7500
+                                "cost_price": 7500,
+                                "stock": 0
                             },
                             {
                                 "medida": "5 Ganchos",
@@ -10326,7 +11464,8 @@ const productsData = [
                                 "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
-                                "cost_price": 7500
+                                "cost_price": 7500,
+                                "stock": 0
                             },
                             {
                                 "medida": "7 Ganchos",
@@ -10339,10 +11478,12 @@ const productsData = [
                                 "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
-                                "cost_price": 7500
+                                "cost_price": 7500,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -10395,7 +11536,7 @@ const productsData = [
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
                 "views": 2,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:09 a. m.",
@@ -10407,7 +11548,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $7.500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             }
         ]
     },
@@ -10540,7 +11691,17 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 1
+                "views": 3,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "42",
@@ -10649,7 +11810,7 @@ const productsData = [
                 ],
                 "last_modified": 1787707117443,
                 "primaryCatId": "Organizadores",
-                "views": 0,
+                "views": 1,
                 "stock": 1,
                 "history": [
                     {
@@ -10662,7 +11823,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "43",
@@ -10691,10 +11862,12 @@ const productsData = [
                                 "legend": "",
                                 "showPrice": false,
                                 "cost_price": 2500,
-                                "price": 15000
+                                "price": 15000,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -10734,8 +11907,8 @@ const productsData = [
                 ],
                 "last_modified": 1783637106226,
                 "primaryCatId": "Organizadores",
-                "views": 0,
-                "stock": 1,
+                "views": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:39 a. m.",
@@ -10747,7 +11920,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "44",
@@ -10773,10 +11956,12 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -10819,7 +12004,18 @@ const productsData = [
                 ],
                 "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "45",
@@ -10843,10 +12039,12 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -10888,7 +12086,18 @@ const productsData = [
                 ],
                 "last_modified": 1783637126403,
                 "primaryCatId": "Organizadores",
-                "views": 1
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "46",
@@ -10978,7 +12187,17 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "47",
@@ -11002,10 +12221,12 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -11062,7 +12283,18 @@ const productsData = [
                 ],
                 "last_modified": 1783637154745,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "48",
@@ -11188,7 +12420,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637176778,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "49",
@@ -11273,7 +12515,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637306441,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4A",
@@ -11335,7 +12587,17 @@ const productsData = [
                 ],
                 "last_modified": 1783908158520,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4B",
@@ -11552,7 +12814,17 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4C",
@@ -11681,7 +12953,17 @@ const productsData = [
                 ],
                 "last_modified": 1787716545046,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4D",
@@ -11718,7 +13000,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786316089369,
                 "primaryCatId": "muebles",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4E",
@@ -11956,7 +13248,17 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 1
+                "views": 3,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4F",
@@ -11977,7 +13279,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4G",
@@ -12015,7 +13327,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786333409298,
                 "primaryCatId": "muebles",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "4H",
@@ -12053,7 +13375,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ]
     },
@@ -12094,7 +13426,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 60000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 1
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -12107,7 +13440,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 60000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -12120,7 +13454,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -12133,7 +13468,8 @@ const productsData = [
                                 "price": 27000,
                                 "cost_price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -12146,7 +13482,8 @@ const productsData = [
                                 "price": 27000,
                                 "cost_price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -12159,7 +13496,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 26000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -12172,7 +13510,8 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -12185,7 +13524,8 @@ const productsData = [
                                 "price": 24000,
                                 "cost_price": 24000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -12198,10 +13538,12 @@ const productsData = [
                                 "price": 23000,
                                 "cost_price": 23000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 1
                     },
                     {
                         "acabado_name": "Blanca",
@@ -12295,7 +13637,8 @@ const productsData = [
                                 "showPrice": true
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     },
                     {
                         "acabado_name": "Barnizado",
@@ -12389,7 +13732,8 @@ const productsData = [
                                 "showPrice": true
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -12473,7 +13817,18 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 6
+                "views": 44,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 1
             },
             {
                 "id": "52",
@@ -12502,7 +13857,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 3
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -12515,7 +13871,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -12528,7 +13885,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -12541,7 +13899,8 @@ const productsData = [
                                 "price": 27000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -12554,7 +13913,8 @@ const productsData = [
                                 "price": 27000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -12567,7 +13927,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -12580,7 +13941,8 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -12593,7 +13955,8 @@ const productsData = [
                                 "price": 23999,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -12606,10 +13969,12 @@ const productsData = [
                                 "price": 23000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 3
                     },
                     {
                         "acabado_name": "Blanca",
@@ -12635,7 +14000,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -12648,7 +14014,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -12661,7 +14028,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -12674,7 +14042,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -12687,7 +14056,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -12700,10 +14070,12 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     },
                     {
                         "acabado_name": "Barnizado",
@@ -12794,7 +14166,8 @@ const productsData = [
                                 "showPrice": true
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -12879,7 +14252,18 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 8,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 3
             },
             {
                 "id": "53",
@@ -13146,7 +14530,17 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "54",
@@ -13447,7 +14841,17 @@ const productsData = [
                 ],
                 "last_modified": 1784430041975,
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "55",
@@ -13475,7 +14879,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 1
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -13488,7 +14893,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -13501,10 +14907,12 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 1
                     },
                     {
                         "acabado_name": "Barnizado",
@@ -13541,7 +14949,8 @@ const productsData = [
                                 "showPrice": false
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     },
                     {
                         "acabado_name": "Blanco",
@@ -13578,7 +14987,8 @@ const productsData = [
                                 "showPrice": false
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -13628,7 +15038,18 @@ const productsData = [
                 ],
                 "last_modified": 1786057097023,
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 1
             },
             {
                 "id": "56",
@@ -13696,7 +15117,17 @@ const productsData = [
                 "primaryCatId": "Barandas",
                 "history": [],
                 "visible": true,
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "57",
@@ -13768,7 +15199,17 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "58",
@@ -13840,7 +15281,17 @@ const productsData = [
                 ],
                 "last_modified": 1783616746091,
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "59",
@@ -13911,7 +15362,17 @@ const productsData = [
                 ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             }
         ],
         "visible": true,
@@ -13950,7 +15411,8 @@ const productsData = [
                                 "price": 13000,
                                 "cost_price": 13000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 1
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x2)",
@@ -13963,7 +15425,8 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x3)",
@@ -13976,7 +15439,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -13989,7 +15453,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
                         "hidden": false
@@ -14159,7 +15624,18 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 1
             },
             {
                 "id": "62",
@@ -14185,7 +15661,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 1
                             },
                             {
                                 "medida": "Mediano",
@@ -14198,7 +15675,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             },
                             {
                                 "medida": "Combo",
@@ -14211,7 +15689,8 @@ const productsData = [
                                 "price": 22000,
                                 "cost_price": 11000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 10
                             },
                             {
                                 "medida": "Chico",
@@ -14224,10 +15703,12 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 11
                     }
                 ],
                 "tags": [
@@ -14259,7 +15740,18 @@ const productsData = [
                 "last_modified": 1783812077617,
                 "primaryCatId": "Estantes",
                 "visible": true,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 11
             },
             {
                 "id": "63",
@@ -14366,7 +15858,17 @@ const productsData = [
                     "organizador de libros",
                     "mueble para libros",
                     "estanteria madera"
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "64",
@@ -14415,7 +15917,17 @@ const productsData = [
                     "triangulos de madera",
                     "triangulos de pino",
                     "decoracion pared triangulo"
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "65",
@@ -14435,30 +15947,35 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508934203-estante-cuadrado-combo-x3un-_JM",
                                 "default": true,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "stock": 0
                             },
                             {
                                 "medida": "Grande",
                                 "link": "",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "stock": 0
                             },
                             {
                                 "medida": "Mediano",
                                 "link": "",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "stock": 0
                             },
                             {
                                 "medida": "Chico",
                                 "link": "",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "stock": 0
                             }
-                        ]
+                        ],
+                        "stock": 0
                     }
                 ],
                 "views": 0,
@@ -14485,7 +16002,18 @@ const productsData = [
                     "cuadrados de madera",
                     "cuadrados de pino",
                     "decoracion pared cuadrado"
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "66",
@@ -14614,7 +16142,17 @@ const productsData = [
                 ],
                 "last_modified": 1787716545046,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "67",
@@ -14705,7 +16243,17 @@ const productsData = [
                     "estantes de pino",
                     "repisas flotantes",
                     "estantes flotantes"
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "68",
@@ -14814,7 +16362,17 @@ const productsData = [
                 ],
                 "last_modified": 1787707117443,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "69",
@@ -14964,7 +16522,17 @@ const productsData = [
                 ],
                 "last_modified": 1783635269180,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "6A",
@@ -15181,7 +16749,17 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "6B",
@@ -15219,7 +16797,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ],
         "rubro": "carpinteria"
@@ -15308,7 +16896,17 @@ const productsData = [
                 ],
                 "last_modified": 1784411533338,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "72",
@@ -15388,7 +16986,17 @@ const productsData = [
                 ],
                 "last_modified": 1786811672934,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "73",
@@ -15480,7 +17088,17 @@ const productsData = [
                 ],
                 "last_modified": 1786811859567,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "74",
@@ -15567,7 +17185,17 @@ const productsData = [
                 ],
                 "last_modified": 1786811707863,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "75",
@@ -15646,7 +17274,17 @@ const productsData = [
                 ],
                 "last_modified": 1784411560841,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "76",
@@ -15725,7 +17363,17 @@ const productsData = [
                 ],
                 "last_modified": 1784411566442,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 1
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "77",
@@ -15804,7 +17452,17 @@ const productsData = [
                 ],
                 "last_modified": 1784411576658,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "78",
@@ -15883,7 +17541,17 @@ const productsData = [
                 ],
                 "last_modified": 1784411571657,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "79",
@@ -15909,10 +17577,12 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -15970,7 +17640,18 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             }
         ],
         "visible": true
@@ -16003,7 +17684,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786305162256,
                 "primaryCatId": "camas-madera-pino",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "82",
@@ -16029,10 +17720,12 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -16090,7 +17783,18 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             }
         ]
     },
@@ -16226,7 +17930,17 @@ const productsData = [
                 ],
                 "last_modified": 1783477948902,
                 "primaryCatId": "muebles",
-                "views": 4
+                "views": 4,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "92",
@@ -16276,7 +17990,17 @@ const productsData = [
                     "escalera pequeña",
                     "escalera fija",
                     "cajonera profesional"
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "93",
@@ -16313,7 +18037,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786316089369,
                 "primaryCatId": "muebles",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "94",
@@ -16351,7 +18085,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786333409298,
                 "primaryCatId": "muebles",
-                "views": 0
+                "views": 4,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ],
         "rubro": "carpinteria"
@@ -16385,23 +18129,27 @@ const productsData = [
                                 "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "stock": 1
                             },
                             {
                                 "medida": "70 x 28 x 12 cm",
                                 "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
                                 "default": true,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "stock": 0
                             },
                             {
                                 "medida": "60 x 28 x 9",
                                 "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "stock": 0
                             }
-                        ]
+                        ],
+                        "stock": 1
                     }
                 ],
                 "tags": [
@@ -16428,7 +18176,18 @@ const productsData = [
                 ],
                 "last_modified": 1782417151111,
                 "primaryCatId": "Steps",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 1
             },
             {
                 "id": "A2",
@@ -16562,7 +18321,17 @@ const productsData = [
                 ],
                 "last_modified": 1786332353302,
                 "primaryCatId": "Steps",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "A3",
@@ -16723,7 +18492,17 @@ const productsData = [
                 ],
                 "last_modified": 1786332262471,
                 "primaryCatId": "Steps",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "A4",
@@ -16884,7 +18663,17 @@ const productsData = [
                 ],
                 "last_modified": 1786330064427,
                 "primaryCatId": "Steps",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ]
     },
@@ -16957,7 +18746,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "B2",
@@ -16985,10 +18784,12 @@ const productsData = [
                                 "price": 68000,
                                 "cost_price": 34000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 2
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 2
                     },
                     {
                         "acabado_name": "100 x 40 x 40 cm",
@@ -17009,10 +18810,12 @@ const productsData = [
                                 "price": 72000,
                                 "cost_price": 36000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 2
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 2
                     },
                     {
                         "acabado_name": "60 x 40 x 40 cm",
@@ -17037,7 +18840,8 @@ const productsData = [
                                 "showPrice": true
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -17081,7 +18885,18 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "Organizadores",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 4
             },
             {
                 "id": "B3",
@@ -17119,7 +18934,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786333409298,
                 "primaryCatId": "muebles",
-                "views": 0
+                "views": 3,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "B4",
@@ -17154,7 +18979,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes",
-                "views": 1
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "B5",
@@ -17189,7 +19024,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839116557,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "B6",
@@ -17224,7 +19069,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839110101,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ],
         "rubro": "carpinteria"
@@ -17261,10 +19116,12 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -17281,7 +19138,18 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "C2",
@@ -17307,10 +19175,12 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -17367,7 +19237,18 @@ const productsData = [
                 ],
                 "last_modified": 1783635806092,
                 "primaryCatId": "sillas-sillones",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "C3",
@@ -17456,7 +19337,17 @@ const productsData = [
                 "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
                 "visible": true,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "C4",
@@ -17491,7 +19382,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839110101,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "C5",
@@ -17526,7 +19427,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839116557,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "C6",
@@ -17561,7 +19472,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786925906282,
                 "primaryCatId": "Juguetes",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ]
     },
@@ -17660,7 +19581,17 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "D2",
@@ -17694,7 +19625,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "D3",
@@ -17727,7 +19668,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637228097,
                 "primaryCatId": "Mesas-madera",
-                "views": 1
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "D4",
@@ -17967,7 +19918,17 @@ const productsData = [
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "D5",
@@ -18184,7 +20145,17 @@ const productsData = [
                 ],
                 "last_modified": 1786315987713,
                 "primaryCatId": "Estantes",
-                "views": 1
+                "views": 8,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "D6",
@@ -18209,7 +20180,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334411421,
                 "primaryCatId": "Hogar",
-                "views": 0
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "D7",
@@ -18246,7 +20227,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786811404439,
                 "primaryCatId": "Mesas-madera",
-                "views": 1
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ]
     },
@@ -18477,7 +20468,17 @@ const productsData = [
                 ],
                 "last_modified": 1786812318991,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "E2",
@@ -18745,7 +20746,17 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "E3",
@@ -18835,7 +20846,17 @@ const productsData = [
                 ],
                 "last_modified": 1786334565073,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "E4",
@@ -18914,7 +20935,17 @@ const productsData = [
                 ],
                 "last_modified": 1783637265113,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "E5",
@@ -19005,7 +21036,17 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "E6",
@@ -19026,7 +21067,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "jardin-patio",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ]
     },
@@ -19062,7 +21113,17 @@ const productsData = [
                 "primaryCatId": "Hogar",
                 "views": 0,
                 "stock": 1,
-                "history": []
+                "history": [],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "F2",
@@ -19085,7 +21146,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334775059,
                 "primaryCatId": "Hogar",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "F3",
@@ -19106,7 +21177,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334817654,
                 "primaryCatId": "Hogar",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "F4",
@@ -19128,7 +21209,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334918176,
                 "primaryCatId": "Hogar",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "F5",
@@ -19154,10 +21245,12 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -19215,7 +21308,18 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 0
+                "views": 3,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             },
             {
                 "id": "F6",
@@ -19253,7 +21357,17 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ]
     },
@@ -19290,10 +21404,12 @@ const productsData = [
                                 "price": 9000,
                                 "cost_price": 4500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 2
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 2
                     }
                 ],
                 "tags": [
@@ -19350,7 +21466,18 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 2
             },
             {
                 "id": "G2",
@@ -19366,7 +21493,8 @@ const productsData = [
                             "img/todo-algarrobo/Platos - Cuencos/1782610904423-imagen.webp"
                         ],
                         "medidas_variants": [],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 2
                     }
                 ],
                 "tags": [
@@ -19424,8 +21552,18 @@ const productsData = [
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
                 "views": 0,
-                "stock": 1,
-                "history": []
+                "stock": 2,
+                "history": [],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "G3",
@@ -19454,10 +21592,12 @@ const productsData = [
                                 "price": 9000,
                                 "cost_price": 4500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "stock": 0
                             }
                         ],
-                        "hidden": false
+                        "hidden": false,
+                        "stock": 0
                     }
                 ],
                 "tags": [
@@ -19514,7 +21654,18 @@ const productsData = [
                 ],
                 "last_modified": 1783907387290,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                },
+                "stock": 0
             }
         ]
     },
@@ -19547,7 +21698,8 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 35000,
-                                "price": 375000
+                                "price": 375000,
+                                "stock": 0
                             }
                         ]
                     }
@@ -19616,7 +21768,7 @@ const productsData = [
                 "last_modified": 1780774148299,
                 "primaryCatId": "Podios",
                 "views": 0,
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:38 a. m.",
@@ -19633,7 +21785,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $35.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "H2",
@@ -19722,7 +21884,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $10.000 ➔ $35.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             },
             {
                 "id": "H3",
@@ -19743,7 +21915,8 @@ const productsData = [
                                 "default": true,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 145000
+                                "price": 145000,
+                                "stock": 0
                             },
                             {
                                 "medida": "60 x 40 x 30",
@@ -19751,7 +21924,8 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 135000
+                                "price": 135000,
+                                "stock": 0
                             },
                             {
                                 "medida": "60 x 40 x 20",
@@ -19759,12 +21933,13 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 125000
+                                "price": 125000,
+                                "stock": 0
                             }
                         ]
                     }
                 ],
-                "views": 0,
+                "views": 2,
                 "tags": [
                     "podio",
                     "podios",
@@ -19801,7 +21976,7 @@ const productsData = [
                     "cajon jump",
                     "podios de madera"
                 ],
-                "stock": 1,
+                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:57 a. m.",
@@ -19823,7 +21998,17 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "[Natural - 60 x 40 x 20] Costo: $0 ➔ $25.000"
                     }
-                ]
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": false,
+                    "otroEnabled": false
+                }
             }
         ],
         "rubro": "carpinteria"

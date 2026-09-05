@@ -34,8 +34,14 @@ function updateAdminUrlTab(tabKey) {
     if (!tabKey) return;
     try {
         const url = new URL(window.location.href);
-        url.searchParams.set('tab', tabKey);
-        window.history.replaceState({ tab: tabKey }, '', url.toString());
+        const viewParam = url.searchParams.get('view');
+        const adminViewEl = document.getElementById('view-admin');
+        const isAdminActive = (viewParam === 'admin') || (adminViewEl && adminViewEl.classList.contains('active'));
+        
+        if (isAdminActive) {
+            url.searchParams.set('tab', tabKey);
+            window.history.replaceState({ tab: tabKey }, '', url.toString());
+        }
     } catch(e) {}
 }
 
@@ -65,10 +71,13 @@ function initAdminUX20() {
     // Leer la pestaña activa inicial desde la URL (?tab=...) o HASH (#tab)
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'stock', 'pages', 'orders', 'maintenance'];
+    const validTabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'maintenance'];
     if (tabFromUrl && validTabs.includes(tabFromUrl)) {
         currentAdminTab = tabFromUrl;
     }
+
+    // Asegurar que la URL mantenga el parámetro de la pestaña actual
+    updateAdminUrlTab(currentAdminTab);
 
     // --- LISTENERS DE CORE / NAVEGACIÓN (V2) ---
     validTabs.forEach(tab => {
@@ -350,8 +359,17 @@ function initAdminUX20() {
 
 function renderAdminUX() {
     initAdminUX20();
-        // Control visual de la barra de navegación del panel (V2)
-        const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'stock', 'pages', 'orders'];
+
+    // Asegurar lectura de URL en cada renderizado
+    const urlParams = new URLSearchParams(window.location.search);
+    const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
+    const validTabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'stock', 'pc-stock', 'pages', 'orders', 'maintenance'];
+    if (tabFromUrl && validTabs.includes(tabFromUrl)) {
+        currentAdminTab = tabFromUrl;
+    }
+
+    // Control visual de la barra de navegación del panel (V2)
+        const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'stock', 'pc-stock', 'pages', 'orders'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -370,7 +388,9 @@ function renderAdminUX() {
             catalog: { title: 'Catálogo de Productos', icon: 'inventory_2' },
             offers: { title: 'Ofertas & Combos', icon: 'local_offer' },
             shipping: { title: 'Envíos & Zonas Tarifarias', icon: 'local_shipping' },
+            payments: { title: 'Métodos & Pasarelas de Pago', icon: 'payments' },
             stock: { title: 'Control de Stock & Inventario', icon: 'inventory' },
+            'pc-stock': { title: 'Control de Stock PC (Escáner)', icon: 'desktop_windows' },
             pages: { title: 'Páginas & Banners', icon: 'view_quilt' },
             orders: { title: 'Gestión de Pedidos', icon: 'description' }
         };
@@ -387,7 +407,9 @@ function renderAdminUX() {
             catalog: 'admin-catalog-view',
             offers: 'admin-offers-view',
             shipping: 'admin-shipping-view',
+            payments: 'admin-payments-view',
             stock: 'admin-stock-view',
+            'pc-stock': 'admin-pc-stock-view',
             pages: 'admin-pages-view',
             orders: 'admin-orders-view'
         };
@@ -412,6 +434,10 @@ function renderAdminUX() {
             if (typeof window.renderAdminShipping === 'function') {
                 window.renderAdminShipping();
             }
+        } else if (currentAdminTab === 'payments') {
+            if (typeof window.renderAdminPayments === 'function') {
+                window.renderAdminPayments();
+            }
         } else if (currentAdminTab === 'orders') {
             if (typeof window.initOrdersIframeAutoHeight === 'function') {
                 setTimeout(window.initOrdersIframeAutoHeight, 100);
@@ -420,6 +446,10 @@ function renderAdminUX() {
         } else if (currentAdminTab === 'stock') {
             if (typeof window.initAdminStockNative === 'function') {
                 window.initAdminStockNative();
+            }
+        } else if (currentAdminTab === 'pc-stock') {
+            if (typeof window.initAdminPcStockModule === 'function') {
+                window.initAdminPcStockModule();
             }
         } else if (currentAdminTab === 'catalog') {
             const categoriesView = document.getElementById('admin-categories-view');
@@ -476,4 +506,18 @@ function renderAdminUX() {
             }
         } catch(e) {}
     };
+
+    window.addEventListener('message', (e) => {
+        if (e.data && e.data.action === 'scrollOrdersToTop') {
+            const adminMain = document.querySelector('.admin-main');
+            const ordersSection = document.getElementById('admin-orders-view');
+            if (ordersSection) {
+                ordersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (adminMain) {
+                adminMain.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+    });
 

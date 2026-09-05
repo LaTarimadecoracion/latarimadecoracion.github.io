@@ -3,6 +3,10 @@
 
 (function() {
     let currentShipMode = 'logistica'; // 'logistica' | 'flete' | 'otro'
+    let selectedShipProdIds = new Set();
+    let selectedShipOfferIds = new Set();
+
+    const formatCurr = (val) => new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(val || 0);
 
     // Catálogo inicial por defecto
     const defaultZoneCatalogs = {
@@ -263,6 +267,183 @@
             `;
         });
 
+        // ==================== TABLAS COLAPSABLES DE ENVÍOS POR PRODUCTO Y OFERTA ====================
+        html += `
+            <div style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem;">
+                
+                <!-- 3. COLAPSABLE: MÉTODOS DE ENVÍO POR PRODUCTO -->
+                <div class="admin-card" style="border: 1px solid #cbd5e1; border-radius: 16px; background: #ffffff; overflow: hidden; padding: 0;">
+                    <div onclick="window.toggleAdminShippingPanel('admin-ship-prods-wrapper', 'admin-ship-prods-icon')" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: #f8fafc; cursor: pointer; user-select: none; border-bottom: 1px solid #e2e8f0;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span id="admin-ship-prods-icon" class="material-symbols-outlined" style="color: #64748b; font-size: 22px; transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
+                            <span class="material-symbols-outlined" style="color: #0f172a; font-size: 24px;">inventory_2</span>
+                            <div>
+                                <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #0f172a;">📦 Asignación de Métodos de Envío por Producto (Catálogo)</h4>
+                                <div style="font-size: 0.72rem; color: #64748b;">Habilitá o deshabilitá Logística, Flete u Expreso individualmente para cada producto</div>
+                            </div>
+                        </div>
+                        <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; background: #e2e8f0; padding: 2px 10px; border-radius: 12px;" id="admin-ship-prods-count">0 Productos</span>
+                    </div>
+
+                    <div id="admin-ship-prods-wrapper" style="display: none; padding: 1.25rem;">
+                        <div style="margin-bottom: 0.75rem; display: flex; gap: 10px; align-items: center;">
+                            <input type="text" id="admin-ship-prod-search" placeholder="🔍 Buscar producto por título o categoría..." oninput="window.renderAdminShippingProducts(this.value)" style="flex: 3; min-width: 0; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 0.85rem; outline: none;">
+                            <button type="button" onclick="window.saveAdminShippingRatesSilently()" class="btn-primary" style="flex: 1; min-width: 0; font-size: 0.8rem; padding: 0.55rem 1rem; border-radius: 10px; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">save</span> Guardar Productos
+                            </button>
+                        </div>
+
+                        <!-- BARRA DE ACCIÓN MASIVA ENVÍOS PRODUCTOS -->
+                        <div id="admin-ship-prods-bulk-bar" style="display: none; margin-bottom: 0.85rem; background: #f8fafc; border: 1.5px solid #0284c7; border-radius: 12px; padding: 0.6rem 0.9rem; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.8rem; overflow-x: auto; transition: all 0.2s ease;">
+                            <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #0f172a; white-space: nowrap;">
+                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 20px;">checklist</span>
+                                <span id="admin-ship-prods-selected-count">0 seleccionados</span>
+                            </div>
+                            <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; white-space: nowrap;">
+                                <button type="button" onclick="window.selectAllShipProducts()" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Seleccionar todos los productos visibles">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">select_all</span> Seleccionar todo
+                                </button>
+                                <button type="button" onclick="window.clearShipProductSelection()" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Limpiar selección">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">deselect</span> Deseleccionar
+                                </button>
+                                <button type="button" onclick="window.bulkUpdateShipProductsAll(true)" style="background: #0f172a; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Activar todos los métodos de envío en seleccionados">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span> Todos ON
+                                </button>
+                                <button type="button" onclick="window.bulkUpdateShipProductsAll(false)" style="background: #64748b; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Desactivar todos los métodos de envío en seleccionados">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">cancel</span> Todos OFF
+                                </button>
+                            </div>
+                        </div>
+
+                        <div style="overflow-x: auto; max-height: 450px; overflow-y: auto;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
+                                <thead style="position: sticky; top: 0; z-index: 5;">
+                                    <tr style="background: #f1f5f9; color: #475569; font-weight: 800; text-transform: uppercase; font-size: 0.68rem; border-bottom: 1.5px solid #cbd5e1; user-select: none;">
+                                        <th style="padding: 10px 6px; width: 36px; text-align: center;">
+                                            <input type="checkbox" id="chk-select-all-ship-prods" onchange="window.toggleSelectAllShipProducts(this.checked)" title="Seleccionar/Deseleccionar todos" style="width: 16px; height: 16px; accent-color: #0284c7; cursor: pointer;">
+                                        </th>
+                                        <th style="padding: 10px 6px; width: 45px;">Foto</th>
+                                        <th style="padding: 10px 6px; min-width: 140px;">Título del Producto</th>
+                                        <th style="padding: 10px 6px; width: 85px;">Precio</th>
+                                        <th onclick="window.toggleShipColumnProducts('logisticaEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #e0f2fe; border-radius: 6px 0 0 0;" title="Tocar aquí para alternar Logística Courier (ON/OFF)">
+                                            📦 Log. <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                        </th>
+                                        <th style="padding: 10px 4px; width: 75px; text-align: center; background: #e0f2fe;" title="Máximo de unidades por paquete de envío (Logística)">
+                                            📦 Máx. uds
+                                        </th>
+                                        <th style="padding: 10px 4px; width: 85px; text-align: center; background: #e0f2fe;" title="Envío gratis (Logística) a partir de N unidades">
+                                            📦 Gratis desde
+                                        </th>
+                                        <th onclick="window.toggleShipColumnProducts('fleteEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #dcfce7;" title="Tocar aquí para alternar Flete Particular (ON/OFF)">
+                                            🚛 Flete <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                        </th>
+                                        <th style="padding: 10px 4px; width: 75px; text-align: center; background: #dcfce7;" title="Máximo de unidades por flete">
+                                            🚛 Máx. uds
+                                        </th>
+                                        <th style="padding: 10px 4px; width: 85px; text-align: center; background: #dcfce7;" title="Flete gratis a partir de N unidades">
+                                            🚛 Gratis desde
+                                        </th>
+                                        <th onclick="window.toggleShipColumnProducts('otroEnabled')" style="padding: 10px 6px; width: 85px; text-align: center; cursor: pointer; background: #fef3c7; border-radius: 0 6px 0 0;" title="Tocar aquí para alternar Otro / Expreso (ON/OFF)">
+                                            🚚 Expreso <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-ship-prods-tbody">
+                                    <!-- Inyectado dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. COLAPSABLE: MÉTODOS DE ENVÍO POR OFERTA -->
+                <div class="admin-card" style="border: 1px solid #cbd5e1; border-radius: 16px; background: #ffffff; overflow: hidden; padding: 0;">
+                    <div onclick="window.toggleAdminShippingPanel('admin-ship-offers-wrapper', 'admin-ship-offers-icon')" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: #f8fafc; cursor: pointer; user-select: none; border-bottom: 1px solid #e2e8f0;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span id="admin-ship-offers-icon" class="material-symbols-outlined" style="color: #64748b; font-size: 22px; transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
+                            <span class="material-symbols-outlined" style="color: #c0510a; font-size: 24px;">local_offer</span>
+                            <div>
+                                <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #0f172a;">🏷️ Asignación de Métodos de Envío por Oferta / Combo</h4>
+                                <div style="font-size: 0.72rem; color: #64748b;">Habilitá o deshabilitá opciones de envío directamente para cada oferta de la tienda</div>
+                            </div>
+                        </div>
+                        <span style="font-size: 0.75rem; font-weight: 700; color: #c0510a; background: #ffedd5; padding: 2px 10px; border-radius: 12px;" id="admin-ship-offers-count">0 Ofertas</span>
+                    </div>
+
+                    <div id="admin-ship-offers-wrapper" style="display: none; padding: 1.25rem;">
+                        <div style="margin-bottom: 0.75rem; display: flex; gap: 10px; align-items: center;">
+                            <input type="text" id="admin-ship-offer-search" placeholder="🔍 Buscar oferta por título..." oninput="window.renderAdminShippingOffers(this.value)" style="flex: 3; min-width: 0; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 0.85rem; outline: none;">
+                            <button type="button" onclick="window.saveAdminShippingRatesSilently()" class="btn-primary" style="flex: 1; min-width: 0; font-size: 0.8rem; padding: 0.55rem 1rem; border-radius: 10px; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 6px; background: #c0510a;">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">save</span> Guardar Ofertas
+                            </button>
+                        </div>
+
+                        <!-- BARRA DE ACCIÓN MASIVA ENVÍOS OFERTAS -->
+                        <div id="admin-ship-offers-bulk-bar" style="display: none; margin-bottom: 0.85rem; background: #fff7ed; border: 1.5px solid #c0510a; border-radius: 12px; padding: 0.6rem 0.9rem; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.8rem; overflow-x: auto; transition: all 0.2s ease;">
+                            <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #0f172a; white-space: nowrap;">
+                                <span class="material-symbols-outlined" style="color: #c0510a; font-size: 20px;">checklist</span>
+                                <span id="admin-ship-offers-selected-count">0 seleccionadas</span>
+                            </div>
+                            <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; white-space: nowrap;">
+                                <button type="button" onclick="window.selectAllShipOffers()" style="background: #ffedd5; color: #c0510a; border: 1px solid #fed7aa; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Seleccionar todas las ofertas visibles">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">select_all</span> Seleccionar todo
+                                </button>
+                                <button type="button" onclick="window.clearShipOfferSelection()" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Limpiar selección">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">deselect</span> Deseleccionar
+                                </button>
+                                <button type="button" onclick="window.bulkUpdateShipOffersAll(true)" style="background: #c0510a; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Activar todos los métodos de envío en seleccionadas">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span> Todos ON
+                                </button>
+                                <button type="button" onclick="window.bulkUpdateShipOffersAll(false)" style="background: #64748b; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Desactivar todos los métodos de envío en seleccionadas">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">cancel</span> Todos OFF
+                                </button>
+                            </div>
+                        </div>
+
+                        <div style="overflow-x: auto; max-height: 450px; overflow-y: auto;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
+                                <thead style="position: sticky; top: 0; z-index: 5;">
+                                    <tr style="background: #fff7ed; color: #c0510a; font-weight: 800; text-transform: uppercase; font-size: 0.68rem; border-bottom: 1.5px solid #fed7aa; user-select: none;">
+                                        <th style="padding: 10px 6px; width: 36px; text-align: center;">
+                                            <input type="checkbox" id="chk-select-all-ship-offers" onchange="window.toggleSelectAllShipOffers(this.checked)" title="Seleccionar/Deseleccionar todas" style="width: 16px; height: 16px; accent-color: #c0510a; cursor: pointer;">
+                                        </th>
+                                        <th style="padding: 10px 6px; width: 45px;">Foto</th>
+                                        <th style="padding: 10px 6px; min-width: 140px;">Título de la Oferta</th>
+                                        <th style="padding: 10px 6px; width: 85px;">Precio Oferta</th>
+                                        <th onclick="window.toggleShipColumnOffers('logisticaEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #fed7aa; border-radius: 6px 0 0 0;" title="Tocar aquí para alternar Logística Courier (ON/OFF)">
+                                            📦 Log. <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                        </th>
+                                        <th style="padding: 10px 4px; width: 75px; text-align: center; background: #fed7aa;" title="Máximo de unidades por paquete (Logística)">
+                                            📦 Máx. uds
+                                        </th>
+                                        <th style="padding: 10px 4px; width: 85px; text-align: center; background: #fed7aa;" title="Envío gratis (Logística) a partir de N unidades">
+                                            📦 Gratis desde
+                                        </th>
+                                        <th onclick="window.toggleShipColumnOffers('fleteEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #fde68a;" title="Tocar aquí para alternar Flete Particular (ON/OFF)">
+                                            🚛 Flete <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                        </th>
+                                        <th style="padding: 10px 4px; width: 75px; text-align: center; background: #fde68a;" title="Máximo de unidades por flete">
+                                            🚛 Máx. uds
+                                        </th>
+                                        <th style="padding: 10px 4px; width: 85px; text-align: center; background: #fde68a;" title="Flete gratis a partir de N unidades">
+                                            🚛 Gratis desde
+                                        </th>
+                                        <th onclick="window.toggleShipColumnOffers('otroEnabled')" style="padding: 10px 6px; width: 85px; text-align: center; cursor: pointer; background: #fef3c7; border-radius: 0 6px 0 0;" title="Tocar aquí para alternar Otro / Expreso (ON/OFF)">
+                                            🚚 Expreso <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-ship-offers-tbody">
+                                    <!-- Inyectado dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        `;
+
         container.innerHTML = html;
 
         // Escuchadores para GUARDADO AUTOMÁTICO EN TIEMPO REAL
@@ -277,6 +458,534 @@
         chksActive.forEach(chk => {
             chk.addEventListener('change', window.saveAdminShippingRatesSilently);
         });
+
+        // Render tablas de envíos por producto y oferta
+        window.renderAdminShippingProducts();
+        window.renderAdminShippingOffers();
+    };
+
+    // Toggle de paneles colapsables Envíos
+    window.toggleAdminShippingPanel = function(wrapperId, iconId) {
+        const wrapper = document.getElementById(wrapperId);
+        const icon = document.getElementById(iconId);
+        if (!wrapper) return;
+        const isHidden = wrapper.style.display === 'none';
+        wrapper.style.display = isHidden ? 'block' : 'none';
+        if (icon) {
+            icon.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(-90deg)';
+        }
+    };
+
+    // RENDER TABLA PRODUCTOS ENVÍOS
+    window.renderAdminShippingProducts = function(query = '') {
+        const tbody = document.getElementById('admin-ship-prods-tbody');
+        const countSpan = document.getElementById('admin-ship-prods-count');
+        if (!tbody) return;
+
+        const categories = window.sessionProducts || [];
+        let allProducts = [];
+
+        categories.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                allProducts.push({ ...prod, categoryName: cat.name });
+            });
+        });
+
+        if (countSpan) countSpan.textContent = `${allProducts.length} Productos`;
+
+        const q = (query || '').toLowerCase().trim();
+        const filtered = q ? allProducts.filter(p => (p.title || '').toLowerCase().includes(q) || (p.categoryName || '').toLowerCase().includes(q)) : allProducts;
+
+        if (filtered.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="11" style="padding: 1rem; text-align: center; color: #94a3b8; font-style: italic;">No se encontraron productos.</td></tr>';
+            window.updateShipProductsBulkBarUI();
+            return;
+        }
+
+        tbody.innerHTML = filtered.map(prod => {
+            const shipConf = prod.shippingConfig || {};
+            const isLog = shipConf.logisticaEnabled !== false;
+            const isFlete = shipConf.fleteEnabled !== false;
+            const isOtro = shipConf.otroEnabled !== false;
+            const isSelected = selectedShipProdIds.has(prod.id);
+
+            const imgSrc = Array.isArray(prod.image) ? prod.image[0] : (prod.image || 'img/logo_provisional.png');
+
+            return `
+                <tr style="border-bottom: 1px solid #e2e8f0; transition: background 0.15s; ${isSelected ? 'background: #f0f9ff;' : ''}" onmouseover="if(!${isSelected}) this.style.background='#f8fafc'" onmouseout="if(!${isSelected}) this.style.background='transparent'">
+                    <td style="padding: 6px; text-align: center;">
+                        <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="window.onShipProductSelectChange('${prod.id}', this.checked)" style="width: 16px; height: 16px; accent-color: #0284c7; cursor: pointer;">
+                    </td>
+                    <td style="padding: 6px;">
+                        <img src="${imgSrc}" style="width: 36px; height: 36px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1; cursor: pointer;" onclick="window.onShipProductSelectChange('${prod.id}', !${isSelected})">
+                    </td>
+                    <td style="padding: 6px;">
+                        <div style="font-weight: 700; color: #0f172a; cursor: pointer;" onclick="window.onShipProductSelectChange('${prod.id}', !${isSelected})" title="Tocar título para seleccionar/deseleccionar">${prod.title}</div>
+                        <div style="font-size: 0.68rem; color: #64748b;">${prod.categoryName || 'Catálogo'}</div>
+                    </td>
+                    <td style="padding: 6px; font-weight: 800; color: #059669; font-family: monospace;">
+                        ${formatCurr(prod.price)}
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #f0f9ff;">
+                        <input type="checkbox" ${isLog ? 'checked' : ''} onchange="window.updateProductShippingConfig('${prod.id}', 'logisticaEnabled', this.checked)" style="width: 18px; height: 18px; accent-color: #0284c7; cursor: pointer;">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #f0f9ff;">
+                        <input type="number" min="1" value="${shipConf.logisticaMaxUnits !== undefined ? shipConf.logisticaMaxUnits : ''}" placeholder="∞" onchange="window.updateProductShippingNumField('${prod.id}', 'logisticaMaxUnits', this.value)" style="width: 54px; padding: 3px 5px; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-align: center; outline: none;" title="Máximo de unidades de este producto por envío (Logística)">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #f0f9ff;">
+                        <input type="number" min="1" value="${shipConf.logisticaFreeMinUnits !== undefined ? shipConf.logisticaFreeMinUnits : ''}" placeholder="Sin gratis" onchange="window.updateProductShippingNumField('${prod.id}', 'logisticaFreeMinUnits', this.value)" style="width: 65px; padding: 3px 5px; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-align: center; outline: none;" title="Envío gratis (Logística) a partir de N unidades">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #f0fdf4;">
+                        <input type="checkbox" ${isFlete ? 'checked' : ''} onchange="window.updateProductShippingConfig('${prod.id}', 'fleteEnabled', this.checked)" style="width: 18px; height: 18px; accent-color: #059669; cursor: pointer;">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #f0fdf4;">
+                        <input type="number" min="1" value="${shipConf.fleteMaxUnits !== undefined ? shipConf.fleteMaxUnits : ''}" placeholder="∞" onchange="window.updateProductShippingNumField('${prod.id}', 'fleteMaxUnits', this.value)" style="width: 54px; padding: 3px 5px; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-align: center; outline: none;" title="Máximo de unidades de este producto por flete">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #f0fdf4;">
+                        <input type="number" min="1" value="${shipConf.fleteFreeMinUnits !== undefined ? shipConf.fleteFreeMinUnits : ''}" placeholder="Sin gratis" onchange="window.updateProductShippingNumField('${prod.id}', 'fleteFreeMinUnits', this.value)" style="width: 65px; padding: 3px 5px; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-align: center; outline: none;" title="Flete gratis a partir de N unidades">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #fffbebf0;">
+                        <input type="checkbox" ${isOtro ? 'checked' : ''} onchange="window.updateProductShippingConfig('${prod.id}', 'otroEnabled', this.checked)" style="width: 18px; height: 18px; accent-color: #d97706; cursor: pointer;">
+                    </td>
+                </tr>
+            `;
+        }).join('');
+
+        window.updateShipProductsBulkBarUI();
+    };
+
+    // FUNCIONES DE SELECCIÓN Y EDICIÓN MASIVA PRODUCTOS ENVÍOS
+    window.onShipProductSelectChange = function(prodId, isChecked) {
+        if (isChecked) {
+            selectedShipProdIds.add(prodId);
+        } else {
+            selectedShipProdIds.delete(prodId);
+        }
+        window.updateShipProductsBulkBarUI();
+        const query = document.getElementById('admin-ship-prod-search')?.value || '';
+        window.renderAdminShippingProducts(query);
+    };
+
+    window.toggleSelectAllShipProducts = function(isChecked) {
+        const categories = window.sessionProducts || [];
+        const query = (document.getElementById('admin-ship-prod-search')?.value || '').toLowerCase().trim();
+        categories.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                if (!query || (prod.title || '').toLowerCase().includes(query) || (cat.name || '').toLowerCase().includes(query)) {
+                    if (isChecked) {
+                        selectedShipProdIds.add(prod.id);
+                    } else {
+                        selectedShipProdIds.delete(prod.id);
+                    }
+                }
+            });
+        });
+        window.renderAdminShippingProducts(query);
+    };
+
+    window.selectAllShipProducts = function() {
+        const categories = window.sessionProducts || [];
+        categories.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                selectedShipProdIds.add(prod.id);
+            });
+        });
+        const query = document.getElementById('admin-ship-prod-search')?.value || '';
+        window.renderAdminShippingProducts(query);
+    };
+
+    window.clearShipProductSelection = function() {
+        selectedShipProdIds.clear();
+        const query = document.getElementById('admin-ship-prod-search')?.value || '';
+        window.renderAdminShippingProducts(query);
+    };
+
+    window.updateShipProductsBulkBarUI = function() {
+        const countSpan = document.getElementById('admin-ship-prods-selected-count');
+        const bulkBar = document.getElementById('admin-ship-prods-bulk-bar');
+        const count = selectedShipProdIds.size;
+        if (countSpan) {
+            countSpan.textContent = `${count} seleccionado${count === 1 ? '' : 's'}`;
+        }
+        if (bulkBar) {
+            bulkBar.style.display = count > 0 ? 'flex' : 'none';
+        }
+        const chkAll = document.getElementById('chk-select-all-ship-prods');
+        if (chkAll) {
+            const categories = window.sessionProducts || [];
+            let totalCount = 0;
+            categories.forEach(cat => { totalCount += (cat.products || []).length; });
+            chkAll.checked = totalCount > 0 && selectedShipProdIds.size >= totalCount;
+        }
+    };
+
+    window.toggleShipColumnProducts = function(fieldKey) {
+        const categories = window.sessionProducts || (typeof productsData !== 'undefined' ? productsData : []);
+        const targetSet = selectedShipProdIds.size > 0 ? selectedShipProdIds : null;
+        
+        let targetProds = [];
+        categories.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                if (!targetSet || targetSet.has(prod.id)) {
+                    targetProds.push(prod);
+                }
+            });
+        });
+
+        if (targetProds.length === 0) return;
+
+        const allActive = targetProds.every(prod => (prod.shippingConfig ? prod.shippingConfig[fieldKey] !== false : true));
+        const newValue = !allActive;
+
+        targetProds.forEach(prod => {
+            if (!prod.shippingConfig) prod.shippingConfig = { logisticaEnabled: true, fleteEnabled: true, otroEnabled: true };
+            prod.shippingConfig[fieldKey] = newValue;
+        });
+
+        window.sessionProducts = categories;
+        if (typeof productsData !== 'undefined') window.productsData = categories;
+        localStorage.setItem('sessionProducts', JSON.stringify(categories));
+        localStorage.setItem('sessionProductsAutonomo', JSON.stringify(categories));
+        if (typeof window.saveProductsToServer === 'function') {
+            window.saveProductsToServer();
+        } else {
+            try {
+                fetch('/api/save-products', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(categories)
+                });
+            } catch(e) {}
+        }
+        const query = document.getElementById('admin-ship-prod-search')?.value || '';
+        window.renderAdminShippingProducts(query);
+    };
+
+    window.bulkUpdateShipProductsAll = function(value) {
+        const categories = window.sessionProducts || (typeof productsData !== 'undefined' ? productsData : []);
+        const targetSet = selectedShipProdIds.size > 0 ? selectedShipProdIds : null;
+
+        categories.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                if (!targetSet || targetSet.has(prod.id)) {
+                    if (!prod.shippingConfig) prod.shippingConfig = {};
+                    prod.shippingConfig.logisticaEnabled = value;
+                    prod.shippingConfig.fleteEnabled = value;
+                    prod.shippingConfig.otroEnabled = value;
+                }
+            });
+        });
+        window.sessionProducts = categories;
+        if (typeof productsData !== 'undefined') window.productsData = categories;
+        localStorage.setItem('sessionProducts', JSON.stringify(categories));
+        localStorage.setItem('sessionProductsAutonomo', JSON.stringify(categories));
+        if (typeof window.saveProductsToServer === 'function') {
+            window.saveProductsToServer();
+        } else {
+            try {
+                fetch('/api/save-products', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(categories)
+                });
+            } catch(e) {}
+        }
+        const query = document.getElementById('admin-ship-prod-search')?.value || '';
+        window.renderAdminShippingProducts(query);
+    };
+
+    window.updateProductShippingConfig = function(prodId, fieldKey, isChecked) {
+        const categories = window.sessionProducts || (typeof productsData !== 'undefined' ? productsData : []);
+        categories.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                if (prod.id === prodId) {
+                    if (!prod.shippingConfig) prod.shippingConfig = { logisticaEnabled: true, fleteEnabled: true, otroEnabled: true };
+                    prod.shippingConfig[fieldKey] = isChecked;
+                }
+            });
+        });
+        window.sessionProducts = categories;
+        if (typeof productsData !== 'undefined') window.productsData = categories;
+        localStorage.setItem('sessionProducts', JSON.stringify(categories));
+        localStorage.setItem('sessionProductsAutonomo', JSON.stringify(categories));
+        if (typeof window.saveProductsToServer === 'function') {
+            window.saveProductsToServer();
+        } else {
+            try {
+                fetch('/api/save-products', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(categories)
+                });
+            } catch(e) {}
+        }
+    };
+
+    window.updateProductShippingNumField = function(prodId, fieldKey, val) {
+        const rawNum = parseInt(val, 10);
+        const parsed = (!val || isNaN(rawNum) || rawNum <= 0) ? undefined : rawNum;
+        const categories = window.sessionProducts || (typeof productsData !== 'undefined' ? productsData : []);
+        categories.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                if (prod.id === prodId) {
+                    if (!prod.shippingConfig) prod.shippingConfig = { logisticaEnabled: true, fleteEnabled: true, otroEnabled: true };
+                    if (parsed !== undefined) {
+                        prod.shippingConfig[fieldKey] = parsed;
+                    } else {
+                        delete prod.shippingConfig[fieldKey];
+                    }
+                }
+            });
+        });
+        window.sessionProducts = categories;
+        if (typeof productsData !== 'undefined') window.productsData = categories;
+        localStorage.setItem('sessionProducts', JSON.stringify(categories));
+        localStorage.setItem('sessionProductsAutonomo', JSON.stringify(categories));
+        if (typeof window.saveProductsToServer === 'function') {
+            window.saveProductsToServer();
+        } else {
+            try {
+                fetch('/api/save-products', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(categories)
+                });
+            } catch(e) {}
+        }
+    };
+
+    // RENDER TABLA OFERTAS ENVÍOS
+    window.renderAdminShippingOffers = function(query = '') {
+        const tbody = document.getElementById('admin-ship-offers-tbody');
+        const countSpan = document.getElementById('admin-ship-offers-count');
+        if (!tbody) return;
+
+        const offers = window.sessionOffers || (typeof offersData !== 'undefined' ? offersData : []);
+        if (countSpan) countSpan.textContent = `${offers.length} Ofertas`;
+
+        const q = (query || '').toLowerCase().trim();
+        const filtered = q ? offers.filter(o => (o.title || '').toLowerCase().includes(q)) : offers;
+
+        if (filtered.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="11" style="padding: 1rem; text-align: center; color: #94a3b8; font-style: italic;">No hay ofertas registradas.</td></tr>';
+            window.updateShipOffersBulkBarUI();
+            return;
+        }
+
+        tbody.innerHTML = filtered.map(offer => {
+            const shipConf = offer.shippingConfig || {};
+            const isLog = shipConf.logisticaEnabled !== false;
+            const isFlete = shipConf.fleteEnabled !== false;
+            const isOtro = shipConf.otroEnabled !== false;
+            const isSelected = selectedShipOfferIds.has(offer.id);
+
+            const imgSrc = offer.customCoverImage || (offer.product_items && offer.product_items[0]?.image) || 'img/logo_provisional.png';
+
+            return `
+                <tr style="border-bottom: 1px solid #fed7aa; transition: background 0.15s; ${isSelected ? 'background: #fff7ed;' : ''}" onmouseover="if(!${isSelected}) this.style.background='#fff7ed'" onmouseout="if(!${isSelected}) this.style.background='transparent'">
+                    <td style="padding: 6px; text-align: center;">
+                        <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="window.onShipOfferSelectChange('${offer.id}', this.checked)" style="width: 16px; height: 16px; accent-color: #c0510a; cursor: pointer;">
+                    </td>
+                    <td style="padding: 6px;">
+                        <img src="${imgSrc}" style="width: 36px; height: 36px; object-fit: cover; border-radius: 6px; border: 1px solid #fdba74; cursor: pointer;" onclick="window.onShipOfferSelectChange('${offer.id}', !${isSelected})">
+                    </td>
+                    <td style="padding: 6px;">
+                        <div style="font-weight: 800; color: #0f172a; cursor: pointer;" onclick="window.onShipOfferSelectChange('${offer.id}', !${isSelected})" title="Tocar título para seleccionar/deseleccionar">${offer.title}</div>
+                        <div style="font-size: 0.68rem; color: #c0510a;">Combo Promocional</div>
+                    </td>
+                    <td style="padding: 6px; font-weight: 800; color: #c0510a; font-family: monospace;">
+                        ${formatCurr(offer.offerPrice)}
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #fff7ed;">
+                        <input type="checkbox" ${isLog ? 'checked' : ''} onchange="window.updateOfferShippingConfig('${offer.id}', 'logisticaEnabled', this.checked)" style="width: 18px; height: 18px; accent-color: #0284c7; cursor: pointer;">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #fff7ed;">
+                        <input type="number" min="1" value="${shipConf.logisticaMaxUnits !== undefined ? shipConf.logisticaMaxUnits : ''}" placeholder="∞" onchange="window.updateOfferShippingNumField('${offer.id}', 'logisticaMaxUnits', this.value)" style="width: 54px; padding: 3px 5px; border: 1.5px solid #fed7aa; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-align: center; outline: none;" title="Máximo de unidades por paquete (Logística)">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #fff7ed;">
+                        <input type="number" min="1" value="${shipConf.logisticaFreeMinUnits !== undefined ? shipConf.logisticaFreeMinUnits : ''}" placeholder="Sin gratis" onchange="window.updateOfferShippingNumField('${offer.id}', 'logisticaFreeMinUnits', this.value)" style="width: 65px; padding: 3px 5px; border: 1.5px solid #fed7aa; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-align: center; outline: none;" title="Envío gratis (Logística) a partir de N unidades">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #fefce8;">
+                        <input type="checkbox" ${isFlete ? 'checked' : ''} onchange="window.updateOfferShippingConfig('${offer.id}', 'fleteEnabled', this.checked)" style="width: 18px; height: 18px; accent-color: #059669; cursor: pointer;">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #fefce8;">
+                        <input type="number" min="1" value="${shipConf.fleteMaxUnits !== undefined ? shipConf.fleteMaxUnits : ''}" placeholder="∞" onchange="window.updateOfferShippingNumField('${offer.id}', 'fleteMaxUnits', this.value)" style="width: 54px; padding: 3px 5px; border: 1.5px solid #fed7aa; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-align: center; outline: none;" title="Máximo de unidades por flete">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #fefce8;">
+                        <input type="number" min="1" value="${shipConf.fleteFreeMinUnits !== undefined ? shipConf.fleteFreeMinUnits : ''}" placeholder="Sin gratis" onchange="window.updateOfferShippingNumField('${offer.id}', 'fleteFreeMinUnits', this.value)" style="width: 65px; padding: 3px 5px; border: 1.5px solid #fed7aa; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-align: center; outline: none;" title="Flete gratis a partir de N unidades">
+                    </td>
+                    <td style="padding: 6px; text-align: center; background: #fffbebf0;">
+                        <input type="checkbox" ${isOtro ? 'checked' : ''} onchange="window.updateOfferShippingConfig('${offer.id}', 'otroEnabled', this.checked)" style="width: 18px; height: 18px; accent-color: #d97706; cursor: pointer;">
+                    </td>
+                </tr>
+            `;
+        }).join('');
+
+        window.updateShipOffersBulkBarUI();
+    };
+
+    // FUNCIONES DE SELECCIÓN Y EDICIÓN MASIVA OFERTAS ENVÍOS
+    window.onShipOfferSelectChange = function(offerId, isChecked) {
+        if (isChecked) {
+            selectedShipOfferIds.add(offerId);
+        } else {
+            selectedShipOfferIds.delete(offerId);
+        }
+        window.updateShipOffersBulkBarUI();
+        const query = document.getElementById('admin-ship-offer-search')?.value || '';
+        window.renderAdminShippingOffers(query);
+    };
+
+    window.toggleSelectAllShipOffers = function(isChecked) {
+        const offers = window.sessionOffers || [];
+        const query = (document.getElementById('admin-ship-offer-search')?.value || '').toLowerCase().trim();
+        offers.forEach(offer => {
+            if (!query || (offer.title || '').toLowerCase().includes(query)) {
+                if (isChecked) {
+                    selectedShipOfferIds.add(offer.id);
+                } else {
+                    selectedShipOfferIds.delete(offer.id);
+                }
+            }
+        });
+        window.renderAdminShippingOffers(query);
+    };
+
+    window.selectAllShipOffers = function() {
+        const offers = window.sessionOffers || [];
+        offers.forEach(offer => {
+            selectedShipOfferIds.add(offer.id);
+        });
+        const query = document.getElementById('admin-ship-offer-search')?.value || '';
+        window.renderAdminShippingOffers(query);
+    };
+
+    window.clearShipOfferSelection = function() {
+        selectedShipOfferIds.clear();
+        const query = document.getElementById('admin-ship-offer-search')?.value || '';
+        window.renderAdminShippingOffers(query);
+    };
+
+    window.updateShipOffersBulkBarUI = function() {
+        const countSpan = document.getElementById('admin-ship-offers-selected-count');
+        const bulkBar = document.getElementById('admin-ship-offers-bulk-bar');
+        const count = selectedShipOfferIds.size;
+        if (countSpan) {
+            countSpan.textContent = `${count} seleccionada${count === 1 ? '' : 's'}`;
+        }
+        if (bulkBar) {
+            bulkBar.style.display = count > 0 ? 'flex' : 'none';
+        }
+        const chkAll = document.getElementById('chk-select-all-ship-offers');
+        if (chkAll) {
+            const offers = window.sessionOffers || [];
+            chkAll.checked = offers.length > 0 && selectedShipOfferIds.size >= offers.length;
+        }
+    };
+
+    window.toggleShipColumnOffers = function(fieldKey) {
+        const offers = window.sessionOffers || (typeof offersData !== 'undefined' ? offersData : []);
+        const targetSet = selectedShipOfferIds.size > 0 ? selectedShipOfferIds : null;
+        
+        let targetOffers = offers.filter(o => !targetSet || targetSet.has(o.id));
+        if (targetOffers.length === 0) return;
+
+        const allActive = targetOffers.every(o => (o.shippingConfig ? o.shippingConfig[fieldKey] !== false : true));
+        const newValue = !allActive;
+
+        targetOffers.forEach(o => {
+            if (!o.shippingConfig) o.shippingConfig = { logisticaEnabled: true, fleteEnabled: true, otroEnabled: true };
+            o.shippingConfig[fieldKey] = newValue;
+        });
+
+        window.sessionOffers = offers;
+        if (typeof offersData !== 'undefined') window.offersData = offers;
+        localStorage.setItem('sessionOffers', JSON.stringify(offers));
+        localStorage.setItem('sessionOffersAutonomo', JSON.stringify(offers));
+        try {
+            fetch('/api/save-offers', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(offers)
+            });
+        } catch(e) {}
+        const query = document.getElementById('admin-ship-offer-search')?.value || '';
+        window.renderAdminShippingOffers(query);
+    };
+
+    window.bulkUpdateShipOffersAll = function(value) {
+        const offers = window.sessionOffers || (typeof offersData !== 'undefined' ? offersData : []);
+        const targetSet = selectedShipOfferIds.size > 0 ? selectedShipOfferIds : null;
+
+        offers.forEach(offer => {
+            if (!targetSet || targetSet.has(offer.id)) {
+                if (!offer.shippingConfig) offer.shippingConfig = {};
+                offer.shippingConfig.logisticaEnabled = value;
+                offer.shippingConfig.fleteEnabled = value;
+                offer.shippingConfig.otroEnabled = value;
+            }
+        });
+        window.sessionOffers = offers;
+        if (typeof offersData !== 'undefined') window.offersData = offers;
+        localStorage.setItem('sessionOffers', JSON.stringify(offers));
+        localStorage.setItem('sessionOffersAutonomo', JSON.stringify(offers));
+        try {
+            fetch('/api/save-offers', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(offers)
+            });
+        } catch(e) {}
+        const query = document.getElementById('admin-ship-offer-search')?.value || '';
+        window.renderAdminShippingOffers(query);
+    };
+
+    window.updateOfferShippingConfig = function(offerId, fieldKey, isChecked) {
+        const offers = window.sessionOffers || (typeof offersData !== 'undefined' ? offersData : []);
+        const offer = offers.find(o => o.id === offerId);
+        if (offer) {
+            if (!offer.shippingConfig) offer.shippingConfig = { logisticaEnabled: true, fleteEnabled: true, otroEnabled: true };
+            offer.shippingConfig[fieldKey] = isChecked;
+            window.sessionOffers = offers;
+            if (typeof offersData !== 'undefined') window.offersData = offers;
+            localStorage.setItem('sessionOffers', JSON.stringify(offers));
+            localStorage.setItem('sessionOffersAutonomo', JSON.stringify(offers));
+
+            try {
+                fetch('/api/save-offers', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(offers)
+                });
+            } catch(e) {}
+        }
+    };
+
+    window.updateOfferShippingNumField = function(offerId, fieldKey, val) {
+        const rawNum = parseInt(val, 10);
+        const parsed = (!val || isNaN(rawNum) || rawNum <= 0) ? undefined : rawNum;
+        const offers = window.sessionOffers || (typeof offersData !== 'undefined' ? offersData : []);
+        const offer = offers.find(o => o.id === offerId);
+        if (offer) {
+            if (!offer.shippingConfig) offer.shippingConfig = { logisticaEnabled: true, fleteEnabled: true, otroEnabled: true };
+            if (parsed !== undefined) {
+                offer.shippingConfig[fieldKey] = parsed;
+            } else {
+                delete offer.shippingConfig[fieldKey];
+            }
+            window.sessionOffers = offers;
+            if (typeof offersData !== 'undefined') window.offersData = offers;
+            localStorage.setItem('sessionOffers', JSON.stringify(offers));
+            localStorage.setItem('sessionOffersAutonomo', JSON.stringify(offers));
+
+            try {
+                fetch('/api/save-offers', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(offers)
+                });
+            } catch(e) {}
+        }
     };
 
     // Alternar Despliegue de Cascada al tocar el título

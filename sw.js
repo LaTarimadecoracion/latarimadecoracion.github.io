@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tarima-cache-v35';
+const CACHE_NAME = 'tarima-cache-v58';
 const STATIC_ASSETS = [
     './',
     './index.html',
@@ -25,6 +25,7 @@ const STATIC_ASSETS = [
     './js/admin-categories-form.js',
     './js/admin-products.js',
     './js/admin-products-form.js',
+    './js/admin-pc-stock.js',
     './js/admin-rentals.js',
     './js/admin-pages.js',
     './js/carrito.js',

@@ -1,0 +1,85 @@
+<!-- =============================================================================
+     partials/admin/modal-stock-edit.html
+     Modal Minimalista de Edición Rápida de Stock y Foto en Móvil (Admin)
+     Extraído de index.html — no modificar clases, IDs ni estilos inline
+     ============================================================================= -->
+
+                        <!-- Modal Pantalla Completa de Edición de Producto / Foto -->
+                        <div id="admin-stock-photo-modal" class="modal-overlay" style="display: none; z-index: 99999; backdrop-filter: blur(12px); background: rgba(15, 23, 42, 0.85); position: fixed; inset: 0;" onclick="if(event.target.id==='admin-stock-photo-modal') window.closeAdminStockPhotoModal()">
+                            <div class="modal-content" style="max-width: 100vw; width: 100vw; height: 100vh; min-height: 100vh; margin: 0; padding: 0; border-radius: 0; background: #0F172A; box-shadow: none; border: none; position: relative; display: flex; flex-direction: column; overflow-y: auto;">
+                                
+                                <!-- Botón de cierre elegante -->
+                                <button onclick="window.closeAdminStockPhotoModal()" style="position: fixed; top: 16px; right: 16px; border: none; background: rgba(0,0,0,0.6); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 100; backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.2);">
+                                    <span class="material-symbols-outlined" style="font-size: 24px;">close</span>
+                                </button>
+
+                                <!-- Imagen principal con degradado inferior -->
+                                <div style="position: relative; width: 100%; height: 320px; background: #020617; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                    <img id="admin-stock-modal-img" src="" alt="Foto" style="width: 100%; height: 100%; object-fit: cover;">
+                                    
+                                    <!-- Overlay de Degradado para texto -->
+                                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.6) 45%, transparent 100%); pointer-events: none;"></div>
+
+                                    <!-- Datos sobre el margen inferior de la imagen -->
+                                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem; z-index: 5; text-align: left;">
+                                        <span id="admin-stock-modal-code" style="font-family: monospace; font-weight: 800; color: #F97316; background: rgba(249, 115, 22, 0.15); border: 1px solid rgba(249, 115, 22, 0.3); padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; display: inline-block; margin-bottom: 6px;"></span>
+                                        <h4 id="admin-stock-modal-title" style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #FFFFFF; line-height: 1.25; text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></h4>
+                                    </div>
+                                </div>
+
+                                <!-- Panel de Edición Inferior Completo -->
+                                <div style="padding: 1.25rem; background: #0F172A;">
+                                    <!-- Selector / Lista de Variantes y Acabados -->
+                                    <div id="admin-stock-modal-variants-container" style="margin-bottom: 0.85rem;">
+                                        <!-- Inyectado dinámicamente si el producto posee variaciones -->
+                                    </div>
+
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+                                        <!-- Stock -->
+                                        <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                            <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Stock (u)</label>
+                                            <input type="number" id="admin-stock-modal-qty" min="0" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #FFFFFF; text-align: center; outline: none;">
+                                        </div>
+                                        <!-- Costo -->
+                                        <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                            <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Costo U. ($)</label>
+                                            <input type="number" id="admin-stock-modal-cost" min="0" step="100" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #38BDF8; text-align: center; outline: none;">
+                                        </div>
+                                        <!-- Venta -->
+                                        <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                            <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Venta Públ ($)</label>
+                                            <input type="number" id="admin-stock-modal-price" min="0" step="100" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #4ADE80; text-align: center; outline: none;">
+                                        </div>
+                                        <!-- Porcentaje de Ganancia -->
+                                        <div style="background: rgba(255,255,255,0.05); padding: 0.55rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                            <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Ganancia (%)</label>
+                                            <input type="number" id="admin-stock-modal-margin" min="0" step="1" style="width: 100%; background: transparent; border: none; font-size: 1.15rem; font-weight: 800; color: #FACC15; text-align: center; outline: none;">
+                                        </div>
+                                    </div>
+
+                                    <!-- Botones de Acción -->
+                                    <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.85rem;">
+                                        <button onclick="window.saveAdminStockModalEdit()" style="width: 100%; padding: 0.8rem; font-size: 0.92rem; font-weight: 800; border-radius: 12px; background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); color: white; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);">
+                                            💾 Guardar Cambios
+                                        </button>
+                                        
+                                        <button onclick="window.toggleAdminStockHistoryView()" style="width: 100%; padding: 0.65rem; font-size: 0.8rem; font-weight: 700; border-radius: 10px; background: rgba(255,255,255,0.06); color: #94A3B8; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                            <span class="material-symbols-outlined" style="font-size: 16px;">history</span>
+                                            <span id="admin-stock-history-toggle-btn-text">Ver Historial Completo</span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Historial Desplegable Extendido -->
+                                    <div id="admin-stock-modal-history-section" style="display: none; margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem;">
+                                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                                            <span style="font-size: 0.75rem; font-weight: 800; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em;">📜 Historial Extendido</span>
+                                            <span style="font-size: 0.7rem; color: #64748B; font-weight: 700;">Últimos 20 eventos</span>
+                                        </div>
+                                        <div id="admin-stock-modal-history-list" style="max-height: 180px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; padding-right: 4px;">
+                                            <!-- Inyectado dinámicamente -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>

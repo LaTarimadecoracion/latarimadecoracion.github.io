@@ -3,8 +3,211 @@
 
 (function() {
     window.adminStockExpandedCategories = new Set();
+    window.adminStockExpandedProducts = new Set();
+    window.adminStockExpandedFinishGroups = new Set();
     window.adminStockSearchQuery = '';
     window.adminStockAllHidden = true;
+
+    window.toggleAdminStockProdVariants = function(prodId) {
+        if (window.adminStockExpandedProducts.has(prodId)) {
+            window.adminStockExpandedProducts.delete(prodId);
+        } else {
+            window.adminStockExpandedProducts.add(prodId);
+        }
+        window.renderAdminStockModule();
+    };
+
+    window.toggleAdminStockFinishGroup = function(groupKey) {
+        if (window.adminStockExpandedFinishGroups.has(groupKey)) {
+            window.adminStockExpandedFinishGroups.delete(groupKey);
+        } else {
+            window.adminStockExpandedFinishGroups.add(groupKey);
+        }
+        window.renderAdminStockModule();
+    };
+
+    window.getAdminFinishGroupStock = function(p, g) {
+        if (!g) return parseInt(p && p.stock !== undefined ? p.stock : 1) || 0;
+        if (g.stock !== undefined) return parseInt(g.stock) || 0;
+        if (g.medidas_variants && Array.isArray(g.medidas_variants) && g.medidas_variants.length > 0) {
+            const hasExplicit = g.medidas_variants.some(m => m.stock !== undefined);
+            if (hasExplicit) {
+                let sum = 0;
+                g.medidas_variants.forEach(m => sum += parseInt(m.stock || 0) || 0);
+                return sum;
+            }
+        }
+        const numGroups = (p && p.acabados_groups && p.acabados_groups.length > 0) ? p.acabados_groups.length : 1;
+        const baseStock = parseInt(p && p.stock !== undefined ? p.stock : 1) || 0;
+        return Math.max(0, Math.floor(baseStock / numGroups));
+    };
+
+    window.getAdminMeasureStock = function(p, g, mIdx) {
+        if (g && g.medidas_variants && g.medidas_variants[mIdx]) {
+            const m = g.medidas_variants[mIdx];
+            if (m.stock !== undefined) return parseInt(m.stock) || 0;
+            const numM = g.medidas_variants.length;
+            const groupQty = window.getAdminFinishGroupStock(p, g);
+            const perM = Math.floor(groupQty / numM);
+            const rem = groupQty % numM;
+            return perM + (mIdx === 0 ? rem : 0);
+        }
+        return 0;
+    };
+
+    window.updateAdminStockFinishGroupQty = function(prodId, gIdx, newVal) {
+        const qty = Math.max(0, parseInt(newVal) || 0);
+        let found = false;
+        const catalog = window.sessionProducts || window.productsData || [];
+
+        if (Array.isArray(catalog)) {
+            for (const cat of catalog) {
+                if (cat.products && Array.isArray(cat.products)) {
+                    const matchingProds = cat.products.filter(p => p && String(p.id) === String(prodId));
+                    for (const prod of matchingProds) {
+                        if (prod.acabados_groups && Array.isArray(prod.acabados_groups)) {
+                            // 1. Inicializar stock de todos los grupos antes de modificar el seleccionado
+                            prod.acabados_groups.forEach(g => {
+                                if (g.stock === undefined) {
+                                    g.stock = window.getAdminFinishGroupStock(prod, g);
+                                }
+                            });
+
+                            // 2. Modificar el grupo destino
+                            if (prod.acabados_groups[gIdx]) {
+                                const targetGroup = prod.acabados_groups[gIdx];
+                                targetGroup.stock = qty;
+                                if (targetGroup.medidas_variants && Array.isArray(targetGroup.medidas_variants) && targetGroup.medidas_variants.length > 0) {
+                                    const numM = targetGroup.medidas_variants.length;
+                                    const perM = Math.floor(qty / numM);
+                                    const rem = qty % numM;
+                                    targetGroup.medidas_variants.forEach((m, idx) => {
+                                        m.stock = perM + (idx === 0 ? rem : 0);
+                                    });
+                                }
+                            }
+
+                            // 3. Recalcular stock total de prod
+                            let totalStock = 0;
+                            prod.acabados_groups.forEach(g => {
+                                totalStock += parseInt(g.stock || 0) || 0;
+                            });
+                            prod.stock = totalStock;
+                        } else {
+                            prod.stock = qty;
+                        }
+                        found = true;
+                    }
+                }
+            }
+        }
+
+        if (found) {
+            if (typeof window.sessionProducts !== 'undefined') window.sessionProducts = catalog;
+            if (typeof window.productsData !== 'undefined') window.productsData = catalog;
+            try {
+                localStorage.setItem('sessionProducts', JSON.stringify(catalog));
+                localStorage.setItem('sessionProductsAutonomo', JSON.stringify(catalog));
+            } catch(e) {}
+
+            try {
+                fetch('/api/save-products', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(catalog)
+                });
+            } catch(e) {}
+
+            if (typeof window.showAdminToast === 'function') {
+                window.showAdminToast('✅ Stock actualizado');
+            }
+            window.renderAdminStockModule();
+        }
+    };
+
+    window.updateAdminStockVariantQty = function(prodId, gIdx, mIdx, newVal) {
+        const qty = Math.max(0, parseInt(newVal) || 0);
+        let found = false;
+        const catalog = window.sessionProducts || window.productsData || [];
+
+        if (Array.isArray(catalog)) {
+            for (const cat of catalog) {
+                if (cat.products && Array.isArray(cat.products)) {
+                    const matchingProds = cat.products.filter(p => p && String(p.id) === String(prodId));
+                    for (const prod of matchingProds) {
+                        if (prod.acabados_groups && Array.isArray(prod.acabados_groups) && prod.acabados_groups[gIdx]) {
+                            // 1. Inicializar stock de todos los grupos
+                            prod.acabados_groups.forEach(g => {
+                                if (g.stock === undefined) {
+                                    g.stock = window.getAdminFinishGroupStock(prod, g);
+                                }
+                            });
+
+                            const targetGroup = prod.acabados_groups[gIdx];
+                            if (targetGroup.medidas_variants && Array.isArray(targetGroup.medidas_variants)) {
+                                // 2. Inicializar stock de todas las medidas del grupo destino
+                                targetGroup.medidas_variants.forEach((m, idx) => {
+                                    if (m.stock === undefined) {
+                                        m.stock = window.getAdminMeasureStock(prod, targetGroup, idx);
+                                    }
+                                });
+
+                                if (targetGroup.medidas_variants[mIdx]) {
+                                    targetGroup.medidas_variants[mIdx].stock = qty;
+                                }
+
+                                // 3. Recalcular g.stock del grupo
+                                let gSum = 0;
+                                targetGroup.medidas_variants.forEach(m => {
+                                    gSum += parseInt(m.stock || 0) || 0;
+                                });
+                                targetGroup.stock = gSum;
+                            }
+
+                            // 4. Recalcular prod.stock
+                            let totalStock = 0;
+                            prod.acabados_groups.forEach(g => {
+                                totalStock += parseInt(g.stock || 0) || 0;
+                            });
+                            prod.stock = totalStock;
+                        } else if (prod.medidas_variants && Array.isArray(prod.medidas_variants) && prod.medidas_variants[mIdx]) {
+                            prod.medidas_variants[mIdx].stock = qty;
+                            let totalStock = 0;
+                            prod.medidas_variants.forEach(m => {
+                                totalStock += parseInt(m.stock || 0) || 0;
+                            });
+                            prod.stock = totalStock;
+                        } else {
+                            prod.stock = qty;
+                        }
+                        found = true;
+                    }
+                }
+            }
+        }
+
+        if (found) {
+            if (typeof window.sessionProducts !== 'undefined') window.sessionProducts = catalog;
+            if (typeof window.productsData !== 'undefined') window.productsData = catalog;
+            try {
+                localStorage.setItem('sessionProducts', JSON.stringify(catalog));
+                localStorage.setItem('sessionProductsAutonomo', JSON.stringify(catalog));
+            } catch(e) {}
+
+            try {
+                fetch('/api/save-products', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(catalog)
+                });
+            } catch(e) {}
+
+            if (typeof window.showAdminToast === 'function') {
+                window.showAdminToast('✅ Stock de variante actualizado');
+            }
+            window.renderAdminStockModule();
+        }
+    };
 
     // Inicialización del Carrito de Faltantes / Compras desde localStorage
     // --- SISTEMA UNIFICADO DE COMPRAS Y PENDIENTES EN CADENA (NIVELES CONTINUOS) ---
@@ -68,6 +271,12 @@
         }
         window.saveAdminStockListsState();
         window.renderAdminStockModule();
+
+        // Desplegar la tarjeta de compras para que el usuario vea el producto agregado
+        const cartWrapper = document.getElementById('admin-stock-cart-content-wrapper');
+        const cartIcon = document.getElementById('admin-stock-cart-collapse-icon');
+        if (cartWrapper) cartWrapper.style.display = 'block';
+        if (cartIcon) cartIcon.style.transform = 'rotate(0deg)';
     };
 
     window.removeFromAdminStockCart = function(id) {
@@ -146,32 +355,64 @@
 
         keys.forEach(id => {
             const item = sourceListObj[id];
-            const acquired = parseInt(item.qtyAcquired) || 0;
+            const needed = parseInt(item.qtyNeeded) || 1;
+            const manualAcquired = parseInt(item.qtyAcquired) || 0;
+            const isChecked = Boolean(item.checked);
+
+            // Si está tildado ☑, se asume que se consiguió el 100% (qtyNeeded)
+            const acquired = isChecked ? needed : manualAcquired;
+
             if (acquired > 0) {
-                const costSpent = acquired * (parseFloat(item.cost) || 0);
+                const unitCost = parseFloat(item.cost) || 0;
+                const costSpent = acquired * unitCost;
                 totalSpent += costSpent;
                 acquiredItems.push({
+                    id: id,
                     title: item.title,
                     img: item.img,
                     qtyAcquired: acquired,
-                    costUnit: item.cost || 0,
+                    costUnit: unitCost,
                     costSpent: costSpent
                 });
             }
         });
 
-        if (acquiredItems.length > 0) {
+        if (acquiredItems.length === 0) return;
+
+        const todayDateStr = new Date().toLocaleDateString('es-AR');
+        
+        // Buscar si ya existe una entrada de compra registrada para la fecha de HOY
+        const existingRecord = (window.adminStockPurchasesHistory || []).find(rec => {
+            return rec.dateOnly === todayDateStr;
+        });
+
+        if (existingRecord) {
+            // Actualizar/Consolidar compra del mismo día
+            acquiredItems.forEach(newItem => {
+                const matchInRecord = existingRecord.items.find(it => it.id === newItem.id && it.costUnit === newItem.costUnit);
+                if (matchInRecord) {
+                    matchInRecord.qtyAcquired += newItem.qtyAcquired;
+                    matchInRecord.costSpent += newItem.costSpent;
+                } else {
+                    existingRecord.items.push(newItem);
+                }
+            });
+            existingRecord.totalSpent += totalSpent;
+            existingRecord.lastUpdate = new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+        } else {
+            // Crear nueva entrada diaria en el historial
             const newRecord = {
                 id: 'buy-' + Date.now(),
                 date: new Date().toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' }),
+                dateOnly: todayDateStr,
                 source: sourceLabel || 'Compras',
                 totalSpent: totalSpent,
                 items: acquiredItems
             };
-
             window.adminStockPurchasesHistory.unshift(newRecord);
-            window.saveAdminStockPurchasesHistoryState();
         }
+
+        window.saveAdminStockPurchasesHistoryState();
     };
 
     // --- BOTÓN PRINCIPAL: GENERAR LISTA DE PENDIENTES (CADENA CONTINUA) ---
@@ -272,7 +513,7 @@
         const keys = Object.keys(cartObj);
 
         if (badge) {
-            badge.textContent = `${keys.length} ${keys.length === 1 ? 'ítem' : 'ítems'}`;
+            badge.textContent = keys.length;
         }
 
         if (keys.length === 0) {
@@ -309,7 +550,7 @@
             totalCostNeeded += itemFullCost;
 
             html += `
-                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.65rem 0.75rem; background: ${isChecked ? 'var(--admin-success-light)' : (acquired > 0 ? '#FEF3C7' : 'var(--admin-surface-hover)')}; border: 1px solid ${isChecked ? 'var(--admin-success)' : (acquired > 0 ? '#D97706' : 'var(--admin-border-color)')}; border-radius: var(--admin-radius-sm); opacity: ${isChecked ? '0.75' : '1'}; transition: all 0.2s ease; flex-wrap: wrap;">
+                <div class="admin-stock-cart-row" style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.65rem 0.75rem; background: ${isChecked ? 'var(--admin-success-light)' : (acquired > 0 ? '#FEF3C7' : 'var(--admin-surface-hover)')}; border: 1px solid ${isChecked ? 'var(--admin-success)' : (acquired > 0 ? '#D97706' : 'var(--admin-border-color)')}; border-radius: var(--admin-radius-sm); opacity: ${isChecked ? '0.75' : '1'}; transition: all 0.2s ease; flex-wrap: wrap;">
                     
                     <div style="display: flex; align-items: center; gap: 0.6rem; flex: 1; min-width: 180px;">
                         <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="window.toggleAdminStockCartItemCheck('${item.id}')" title="Marcar ítem" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--admin-success); flex-shrink: 0;">
@@ -317,14 +558,14 @@
                         <div style="display: flex; flex-direction: column;">
                             <span style="font-weight: 700; font-size: 0.85rem; color: var(--admin-text-main); ${isFullyDone ? 'text-decoration: line-through;' : ''}">${item.title}</span>
                             <div style="display: flex; align-items: center; gap: 6px; margin-top: 2px;">
-                                <span style="font-size: 0.73rem; color: var(--admin-text-muted);">Costo: $${Number(unitCost).toLocaleString('es-AR')}</span>
+                                <span class="mobile-hide-details" style="font-size: 0.73rem; color: var(--admin-text-muted);">Costo: $${Number(unitCost).toLocaleString('es-AR')}</span>
                                 ${acquired > 0 && !isFullyDone ? `<span style="font-size: 0.71rem; font-weight: 700; color: #D97706; background: #FEF3C7; padding: 1px 5px; border-radius: 4px;">Parcial (${acquired}/${needed})</span>` : ''}
                                 ${isFullyDone ? `<span style="font-size: 0.71rem; font-weight: 700; color: var(--admin-success); background: var(--admin-success-light); padding: 1px 5px; border-radius: 4px;">Listo</span>` : ''}
                             </div>
                         </div>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 0.6rem; margin-left: auto; flex-shrink: 0;">
+                    <div class="cart-row-controls" style="display: flex; align-items: center; gap: 0.6rem; margin-left: auto; flex-shrink: 0;">
                         <div style="display: flex; align-items: center; gap: 3px;" title="Total de unidades necesarias a comprar">
                             <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-text-muted);">Busco:</span>
                             <input type="number" min="1" value="${needed}" onchange="window.updateAdminStockCartItemQty('${item.id}', this.value)" class="premium-input" style="width: 44px; padding: 0.2rem; text-align: center; font-weight: 700; font-size: 0.82rem;">
@@ -335,12 +576,12 @@
                             <input type="number" min="0" max="${needed}" value="${acquired}" onchange="window.updateAdminStockCartItemAcquired('${item.id}', this.value)" class="premium-input" style="width: 44px; padding: 0.2rem; text-align: center; font-weight: 700; font-size: 0.82rem; border-color: var(--admin-success);">
                         </div>
 
-                        <div style="display: flex; flex-direction: column; text-align: right; min-width: 65px;">
+                        <div class="mobile-hide-details" style="display: flex; flex-direction: column; text-align: right; min-width: 65px;">
                             <span style="font-weight: 800; font-size: 0.85rem; color: var(--admin-success);">$${Number(itemSpentCost).toLocaleString('es-AR')}</span>
                             ${acquired < needed ? `<span style="font-size: 0.68rem; color: var(--admin-text-muted);" title="Costo total si se comprara el 100%">de $${Number(itemFullCost).toLocaleString('es-AR')}</span>` : ''}
                         </div>
 
-                        <span class="material-symbols-outlined" onclick="window.removeFromAdminStockCart('${item.id}')" title="Quitar de la lista" style="font-size: 20px; color: #DC2626; cursor: pointer; user-select: none; flex-shrink: 0;">delete</span>
+                        <span class="material-symbols-outlined mobile-hide-details" onclick="window.removeFromAdminStockCart('${item.id}')" title="Quitar de la lista" style="font-size: 20px; color: #DC2626; cursor: pointer; user-select: none; flex-shrink: 0;">delete</span>
                     </div>
                 </div>
             `;
@@ -458,7 +699,7 @@
 
         const history = window.adminStockPurchasesHistory || [];
         if (badge) {
-            badge.textContent = `${history.length} ${history.length === 1 ? 'compra' : 'compras'}`;
+            badge.textContent = history.length;
         }
 
         if (history.length === 0) {
@@ -511,6 +752,38 @@
         container.innerHTML = html;
     };
 
+    window.toggleCardFullscreen = function(cardId, event) {
+        if (event) event.stopPropagation();
+        const card = document.getElementById(cardId);
+        if (!card) return;
+
+        const isFullscreen = card.classList.contains('card-fullscreen-mode');
+        
+        // Cerrar cualquier otra tarjeta en pantalla completa previa
+        document.querySelectorAll('.card-fullscreen-mode').forEach(c => {
+            c.classList.remove('card-fullscreen-mode');
+            const icon = c.querySelector('.fullscreen-card-btn .material-symbols-outlined');
+            if (icon) icon.textContent = 'fullscreen';
+        });
+
+        if (!isFullscreen) {
+            card.classList.add('card-fullscreen-mode');
+            const icon = card.querySelector('.fullscreen-card-btn .material-symbols-outlined');
+            if (icon) icon.textContent = 'fullscreen_exit';
+
+            // Si es la tabla de stock, desplegar las categorías para ver el contenido completo
+            if (cardId === 'admin-stock-table-panel' && window.adminStockAllHidden) {
+                window.toggleAllAdminStockCategoriesCollapse();
+            }
+
+            // Asegurar que el contenido interno de la tarjeta esté desplegado
+            const wrapper = card.querySelector('[id$="-content-wrapper"]');
+            if (wrapper) wrapper.style.display = 'block';
+            const collapseIcon = card.querySelector('[id$="-collapse-icon"]');
+            if (collapseIcon) collapseIcon.style.transform = 'rotate(0deg)';
+        }
+    };
+
     window.toggleAdminStockBuyCartCollapse = function() {
         const wrapper = document.getElementById('admin-stock-cart-content-wrapper');
         const icon = document.getElementById('admin-stock-cart-collapse-icon');
@@ -521,105 +794,14 @@
         if (isHidden) window.renderAdminStockCart();
     };
 
-    window.renderAdminStockCart = function() {
-        const container = document.getElementById('admin-stock-cart-items-container');
-        const badge = document.getElementById('admin-stock-cart-badge');
-        const totalQtyEl = document.getElementById('admin-stock-cart-total-qty');
-        const totalCostEl = document.getElementById('admin-stock-cart-total-cost');
-        if (!container) return;
 
-        const cartKeys = Object.keys(window.adminStockCart);
-        if (badge) {
-            badge.textContent = `${cartKeys.length} ${cartKeys.length === 1 ? 'ítem' : 'ítems'}`;
-        }
-
-        if (cartKeys.length === 0) {
-            container.innerHTML = `
-                <div style="text-align: center; padding: 2rem 1rem; color: var(--admin-text-muted);">
-                    <span class="material-symbols-outlined" style="font-size: 2.2rem; color: var(--admin-border-color);">remove_shopping_cart</span>
-                    <p style="margin: 0.4rem 0 0 0; font-size: 0.88rem; font-weight: 600;">El carrito de compras está vacío.</p>
-                    <p style="margin: 2px 0 0 0; font-size: 0.78rem;">Tocá el icono de carrito <span class="material-symbols-outlined" style="font-size: 14px; vertical-align: middle;">add_shopping_cart</span> en cualquier producto del stock para agregarlo a la lista de compras.</p>
-                </div>
-            `;
-            if (totalQtyEl) totalQtyEl.textContent = '0';
-            if (totalCostEl) totalCostEl.textContent = '$0';
-            return;
-        }
-
-        let totalQty = 0;
-        let totalCostSpent = 0;
-        let totalCostNeeded = 0;
-        let html = '';
-
-        cartKeys.forEach(id => {
-            const item = window.adminStockCart[id];
-            const needed = item.qtyNeeded || 1;
-            const acquired = item.qtyAcquired || 0;
-            const isChecked = Boolean(item.checked);
-            const isFullyDone = isChecked || (acquired >= needed && needed > 0);
-
-            const unitCost = item.cost || 0;
-            const itemSpentCost = unitCost * acquired; // Lo gastado en lo que ya se consiguió
-            const itemFullCost = unitCost * needed;   // Lo proyectado total
-
-            totalQty += needed;
-            totalCostSpent += itemSpentCost;
-            totalCostNeeded += itemFullCost;
-
-            html += `
-                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.65rem 0.75rem; background: ${isChecked ? 'var(--admin-success-light)' : (acquired > 0 ? 'var(--admin-warning-light)' : 'var(--admin-surface-hover)')}; border: 1px solid ${isChecked ? 'var(--admin-success)' : (acquired > 0 ? 'var(--admin-warning)' : 'var(--admin-border-color)')}; border-radius: var(--admin-radius-sm); opacity: ${isChecked ? '0.75' : '1'}; transition: all 0.2s ease; flex-wrap: wrap;">
-                    
-                    <!-- LADO IZQUIERDO: Checkbox, Foto, Titulo e Información -->
-                    <div style="display: flex; align-items: center; gap: 0.6rem; flex: 1; min-width: 180px;">
-                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="window.toggleAdminStockCartItemCheck('${item.id}')" title="Marcar ítem" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--admin-success); flex-shrink: 0;">
-                        <img src="${item.img}" alt="Foto" style="width: 36px; height: 36px; border-radius: 4px; object-fit: cover; border: 1px solid var(--admin-border-color); flex-shrink: 0;">
-                        <div style="display: flex; flex-direction: column;">
-                            <span style="font-weight: 700; font-size: 0.85rem; color: var(--admin-text-main); ${isFullyDone ? 'text-decoration: line-through;' : ''}">${item.title}</span>
-                            <div style="display: flex; align-items: center; gap: 6px; margin-top: 2px;">
-                                <span style="font-size: 0.73rem; color: var(--admin-text-muted);">Costo: $${Number(unitCost).toLocaleString('es-AR')}</span>
-                                ${acquired > 0 && !isFullyDone ? `<span style="font-size: 0.71rem; font-weight: 700; color: #D97706; background: #FEF3C7; padding: 1px 5px; border-radius: 4px;">Parcial (${acquired}/${needed})</span>` : ''}
-                                ${isFullyDone ? `<span style="font-size: 0.71rem; font-weight: 700; color: var(--admin-success); background: var(--admin-success-light); padding: 1px 5px; border-radius: 4px;">Listo</span>` : ''}
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- LADO DERECHO: Busco, Conseguí, Subtotal de Costo y Tacho de basura siempre visible -->
-                    <div style="display: flex; align-items: center; gap: 0.6rem; margin-left: auto; flex-shrink: 0;">
-                        <!-- Necesitados -->
-                        <div style="display: flex; align-items: center; gap: 3px;" title="Total de unidades necesarias a comprar">
-                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-text-muted);">Busco:</span>
-                            <input type="number" min="1" value="${needed}" onchange="window.updateAdminStockCartItemQty('${item.id}', this.value)" class="premium-input" style="width: 44px; padding: 0.2rem; text-align: center; font-weight: 700; font-size: 0.82rem;">
-                        </div>
-
-                        <!-- Conseguidos -->
-                        <div style="display: flex; align-items: center; gap: 3px;" title="Unidades ya compradas o conseguidas">
-                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-success);">Conseguí:</span>
-                            <input type="number" min="0" max="${needed}" value="${acquired}" onchange="window.updateAdminStockCartItemAcquired('${item.id}', this.value)" class="premium-input" style="width: 44px; padding: 0.2rem; text-align: center; font-weight: 700; font-size: 0.82rem; border-color: var(--admin-success);">
-                        </div>
-
-                        <!-- Costo real según lo conseguido -->
-                        <div style="display: flex; flex-direction: column; text-align: right; min-width: 65px;">
-                            <span style="font-weight: 800; font-size: 0.85rem; color: var(--admin-success);">$${Number(itemSpentCost).toLocaleString('es-AR')}</span>
-                            ${acquired < needed ? `<span style="font-size: 0.68rem; color: var(--admin-text-muted);" title="Costo total si se comprara el 100%">de $${Number(itemFullCost).toLocaleString('es-AR')}</span>` : ''}
-                        </div>
-
-                        <!-- Icono Tacho de Basura Rojo Solo (Sin Contenedor) -->
-                        <span class="material-symbols-outlined" onclick="window.removeFromAdminStockCart('${item.id}')" title="Quitar de la lista" style="font-size: 20px; color: #DC2626; cursor: pointer; user-select: none; flex-shrink: 0;">delete</span>
-                    </div>
-                </div>
-            `;
-        });
-
-        container.innerHTML = html;
-        if (totalQtyEl) totalQtyEl.textContent = totalQty;
-        if (totalCostEl) totalCostEl.innerHTML = `$${Number(totalCostSpent).toLocaleString('es-AR')} <span style="font-size: 0.75rem; color: var(--admin-text-muted); font-weight: 500;">(de $${Number(totalCostNeeded).toLocaleString('es-AR')})</span>`;
-    };
 
     window.toggleAdminCategoryCollapse = function(catSlug) {
-        if (window.adminStockExpandedCategories.has(catSlug)) {
-            window.adminStockExpandedCategories.delete(catSlug);
+        const key = catSlug + '_expanded';
+        if (window.adminStockExpandedCategories.has(key)) {
+            window.adminStockExpandedCategories.delete(key);
         } else {
-            window.adminStockExpandedCategories.add(catSlug);
+            window.adminStockExpandedCategories.add(key);
         }
         window.renderAdminStockModule();
     };
@@ -634,11 +816,12 @@
     window.updateAdminStockQty = function(prodId, newVal) {
         const qty = Math.max(0, parseInt(newVal) || 0);
         let found = false;
+        const catalog = window.sessionProducts || window.productsData || [];
 
-        if (Array.isArray(window.sessionProducts)) {
-            window.sessionProducts.forEach(cat => {
+        if (Array.isArray(catalog)) {
+            catalog.forEach(cat => {
                 if (cat.products && Array.isArray(cat.products)) {
-                    const prod = cat.products.find(p => p.id === prodId);
+                    const prod = cat.products.find(p => p && String(p.id) === String(prodId));
                     if (prod) {
                         prod.stock = qty;
                         found = true;
@@ -648,22 +831,24 @@
         }
 
         if (found) {
-            if (typeof window.productsData !== 'undefined') window.productsData = window.sessionProducts;
+            if (typeof window.sessionProducts !== 'undefined') window.sessionProducts = catalog;
+            if (typeof window.productsData !== 'undefined') window.productsData = catalog;
             try {
-                localStorage.setItem('sessionProductsAutonomo', JSON.stringify(window.sessionProducts));
+                localStorage.setItem('sessionProducts', JSON.stringify(catalog));
+                localStorage.setItem('sessionProductsAutonomo', JSON.stringify(catalog));
             } catch(e) {}
 
-            // Guardar cambios en servidor local si está activo
             try {
                 fetch('/api/save-products', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(window.sessionProducts)
+                    body: JSON.stringify(catalog)
                 });
             } catch(e) {}
             if (typeof window.showAdminToast === 'function') {
                 window.showAdminToast('✅ Stock actualizado');
             }
+            window.renderAdminStockModule();
         }
     };
 
@@ -677,7 +862,9 @@
 
         const catalogSource = window.sessionProducts || window.productsData || [];
 
-        // Agrupar por Categorías
+        const fallbackImg = 'img/logo_provisional.png';
+
+        // Agrupar por Categorías y Acabados Paralelos
         const grouped = {};
         let totalItemsCount = 0;
 
@@ -691,36 +878,87 @@
                 const catMatch = catName.toLowerCase().includes(query);
                 const idMatch = (p.id || '').toLowerCase().includes(query);
 
-                if (!query || titleMatch || catMatch || idMatch) {
-                    if (!grouped[catName]) grouped[catName] = [];
+                const acabadosGroups = (p.acabados_groups && Array.isArray(p.acabados_groups) && p.acabados_groups.length > 0)
+                    ? p.acabados_groups
+                    : [{ acabado_name: 'Estándar', cover_image: p.image, medidas_variants: [{ medida: 'Única', price: p.price || 0, cost_price: 0, stock: p.stock !== undefined ? p.stock : 1 }] }];
 
-                    let mainCost = 0;
-                    if (p.acabados_groups && Array.isArray(p.acabados_groups)) {
-                        for (const g of p.acabados_groups) {
-                            if (g.medidas_variants && Array.isArray(g.medidas_variants)) {
-                                for (const m of g.medidas_variants) {
-                                    const val = parseFloat(m.cost_price);
-                                    if (!isNaN(val) && val > 0) {
-                                        mainCost = val;
-                                        break;
-                                    }
+                const numAcabadosTotal = acabadosGroups.length;
+
+                acabadosGroups.forEach((g, gIdx) => {
+                    const acabName = g.acabado_name || 'Estándar';
+                    const finishTitle = (numAcabadosTotal > 1 || (acabName !== 'Estándar'))
+                        ? `${p.title} (${acabName})`
+                        : p.title;
+
+                    const finishImg = g.cover_image || p.image || fallbackImg;
+                    const groupKey = `${p.id}__g${gIdx}`;
+
+                    const finishShortCode = (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function')
+                        ? window.TarimaShortener.encodeShortCode(p.id, acabName, '', '', false)
+                        : p.id;
+                    const finishShortCodeDots = (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function')
+                        ? window.TarimaShortener.encodeShortCode(p.id, acabName, '', '', true)
+                        : p.id;
+
+                    // Buscar coincidencias con la medida o variante dentro del grupo
+                    let variantMatch = false;
+                    if (query) {
+                        if (finishTitle.toLowerCase().includes(query) || acabName.toLowerCase().includes(query) || finishShortCode.toLowerCase().includes(query) || finishShortCodeDots.toLowerCase().includes(query)) {
+                            variantMatch = true;
+                        }
+                        if (g.medidas_variants && Array.isArray(g.medidas_variants)) {
+                            for (const m of g.medidas_variants) {
+                                const varShortCode = (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function')
+                                    ? window.TarimaShortener.encodeShortCode(p.id, acabName, m.medida, '', false)
+                                    : '';
+                                const varShortCodeDots = (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function')
+                                    ? window.TarimaShortener.encodeShortCode(p.id, acabName, m.medida, '', true)
+                                    : '';
+
+                                if ((m.medida || '').toLowerCase().includes(query) || (varShortCode && varShortCode.toLowerCase().includes(query)) || (varShortCodeDots && varShortCodeDots.toLowerCase().includes(query))) {
+                                    variantMatch = true;
+                                    break;
                                 }
                             }
-                            if (mainCost > 0) break;
                         }
                     }
 
-                    grouped[catName].push({
-                        id: p.id,
-                        title: p.title,
-                        category: catName,
-                        qty: p.stock !== undefined ? p.stock : 1,
-                        cost: mainCost,
-                        visible: p.visible,
-                        img: p.image || 'img/logo_provisional.png'
-                    });
-                    totalItemsCount++;
-                }
+                    if (!query || titleMatch || catMatch || idMatch || variantMatch) {
+                        if (variantMatch && query) {
+                            window.adminStockExpandedFinishGroups.add(groupKey);
+                        }
+
+                        if (!grouped[catName]) grouped[catName] = [];
+
+                        let finishCost = 0;
+                        let finishStock = window.getAdminFinishGroupStock(p, g);
+
+                        if (g.medidas_variants && Array.isArray(g.medidas_variants)) {
+                            g.medidas_variants.forEach(m => {
+                                const val = parseFloat(m.cost_price);
+                                if (finishCost === 0 && !isNaN(val) && val > 0) {
+                                    finishCost = val;
+                                }
+                            });
+                        }
+
+                        grouped[catName].push({
+                            groupKey: groupKey,
+                            prodId: p.id,
+                            gIdx: gIdx,
+                            title: finishTitle,
+                            acabadoName: acabName,
+                            category: catName,
+                            qty: finishStock,
+                            cost: finishCost,
+                            visible: p.visible,
+                            img: finishImg,
+                            medidas: g.medidas_variants || [],
+                            rawProd: p
+                        });
+                        totalItemsCount++;
+                    }
+                });
             });
         });
 
@@ -729,9 +967,13 @@
         if (totalItemsEl) totalItemsEl.textContent = totalItemsCount;
 
         const globalIconEl = document.getElementById('admin-stock-global-collapse-icon');
+        const contentWrapperEl = document.getElementById('admin-stock-table-content-wrapper');
+        const isVisible = !window.adminStockAllHidden || Boolean(query);
         if (globalIconEl) {
-            const isVisible = !window.adminStockAllHidden || Boolean(query);
             globalIconEl.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(-90deg)';
+        }
+        if (contentWrapperEl) {
+            contentWrapperEl.style.display = isVisible ? 'block' : 'none';
         }
 
         if (Object.keys(grouped).length === 0) {
@@ -753,12 +995,11 @@
             return;
         }
 
-        const fallbackImg = 'img/logo_provisional.png';
-
         Object.keys(grouped).forEach(catName => {
             const items = grouped[catName];
             const catSlug = 'cat-' + catName;
-            const isCollapsed = query ? false : !window.adminStockExpandedCategories.has(catSlug);
+            // Plegado/Cerrado por defecto excepto que el usuario lo despliegue o haya una búsqueda
+            const isCollapsed = query ? false : !window.adminStockExpandedCategories.has(catSlug + '_expanded');
             const catTotalStock = items.reduce((sum, i) => sum + (parseInt(i.qty) || 0), 0);
 
             // Fila de Encabezado de Categoría
@@ -789,9 +1030,18 @@
             `;
             container.appendChild(headerTr);
 
-            // Filas de Productos
+            // Filas de Productos (por Acabado Paralelo)
             if (!isCollapsed) {
                 items.forEach(item => {
+                    const groupKey = item.groupKey;
+                    const isGroupExpanded = window.adminStockExpandedFinishGroups.has(groupKey);
+                    const medidas = item.medidas || [];
+                    const numMedidas = medidas.length;
+
+                    const finishShortCode = (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function')
+                        ? window.TarimaShortener.encodeShortCode(item.prodId, item.acabadoName)
+                        : item.prodId;
+
                     const tr = document.createElement('tr');
                     tr.style.borderBottom = '1px solid var(--admin-border-color)';
 
@@ -799,36 +1049,94 @@
 
                     const isVisible = item.visible !== false;
                     const statusBadge = isVisible 
-                        ? `<span onclick="window.openAdminStockLinksModal('${item.id}')" title="Ver producto en la web y enlaces disponibles" style="color: var(--admin-success); font-weight: 700; font-size: 0.75rem; background: var(--admin-success-light); border: 1px solid var(--admin-success); padding: 4px 10px; border-radius: var(--admin-radius-sm); cursor: pointer; user-select: none; display: inline-flex; align-items: center; gap: 4px;">Sincronizado <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`
-                        : `<span onclick="window.openAdminStockLinksModal('${item.id}')" title="Ver previsualización y enlaces del producto" style="color: var(--admin-warning); font-weight: 700; font-size: 0.75rem; background: var(--admin-warning-light); border: 1px solid var(--admin-warning); padding: 4px 10px; border-radius: var(--admin-radius-sm); display: inline-flex; align-items: center; gap: 4px; cursor: pointer; user-select: none;">🔒 Borrador <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`;
+                        ? `<span onclick="window.openAdminStockLinksModal('${item.prodId}')" title="Ver producto en la web y enlaces disponibles" style="color: var(--admin-success); font-weight: 700; font-size: 0.75rem; background: var(--admin-success-light); border: 1px solid var(--admin-success); padding: 4px 10px; border-radius: var(--admin-radius-sm); cursor: pointer; user-select: none; display: inline-flex; align-items: center; gap: 4px;">Sincronizado <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`
+                        : `<span onclick="window.openAdminStockLinksModal('${item.prodId}')" title="Ver previsualización y enlaces del producto" style="color: var(--admin-warning); font-weight: 700; font-size: 0.75rem; background: var(--admin-warning-light); border: 1px solid var(--admin-warning); padding: 4px 10px; border-radius: var(--admin-radius-sm); display: inline-flex; align-items: center; gap: 4px; cursor: pointer; user-select: none;">🔒 Borrador <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></span>`;
 
-                    const isInCart = Boolean(window.adminStockCart[item.id]);
+                    const activeCart = (window.adminStockLists && window.adminStockLists.length > 0) ? window.adminStockLists[0] : (window.adminStockCart || {});
+                    const isInCart = Boolean(activeCart && activeCart[groupKey]);
+
+                    const measuresBadgeBtn = (numMedidas > 1)
+                        ? `<button type="button" onclick="window.toggleAdminStockFinishGroup('${groupKey}')" style="border: 1px solid var(--admin-accent); background: ${isGroupExpanded ? 'var(--admin-accent)' : 'var(--admin-accent-light)'}; color: ${isGroupExpanded ? '#FFF' : 'var(--admin-accent)'}; padding: 2px 7px; border-radius: 10px; font-size: 0.72rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 3px;" title="Ver desglose de medidas">📐 ${numMedidas} medidas ${isGroupExpanded ? '▲' : '▼'}</button>`
+                        : '';
 
                     tr.innerHTML = `
                         <td style="padding: 0.65rem 0.85rem;">
                             <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                <img src="${item.img}" alt="Foto" style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); object-fit: cover; border: 1px solid var(--admin-border-color); cursor: pointer; flex-shrink: 0;" onclick="window.openAdminStockPhotoModal('${item.id}')" title="Toca para ver foto y editar stock/costo" onerror="this.src='${fallbackImg}'">
+                                <img src="${item.img}" alt="Foto" style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); object-fit: cover; border: 1px solid var(--admin-border-color); cursor: pointer; flex-shrink: 0;" onclick="window.openAdminStockPhotoModal('${item.prodId}')" title="Toca para ver foto y editar stock/costo" onerror="this.src='${fallbackImg}'">
                                 <div style="display: flex; flex-direction: column; flex: 1;">
                                     <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                                         <span style="font-weight: 700; color: var(--admin-text-main); font-size: 0.88rem;">${item.title}</span>
+                                        ${measuresBadgeBtn}
                                         <span class="col-status-mobile" style="display: none;">${statusBadge}</span>
                                     </div>
-                                    <span style="font-family: monospace; font-weight: 700; color: var(--admin-accent); background: var(--admin-accent-light); padding: 2px 6px; border-radius: 4px; display: inline-block; width: fit-content; margin-top: 2px; font-size: 0.75rem;">Código: ${item.id}</span>
+                                    <span class="mobile-hide-details" style="font-family: monospace; font-weight: 700; color: var(--admin-accent); background: var(--admin-accent-light); padding: 2px 6px; border-radius: 4px; display: inline-block; width: fit-content; margin-top: 2px; font-size: 0.75rem;">Código: ${finishShortCode}</span>
                                 </div>
-                                <button type="button" onclick="window.addToAdminStockCart('${item.id}', '${item.title.replace(/'/g, "\\'")}', '${item.img}', ${item.cost || 0})" title="Agregar al Carrito de Faltantes / Compras" style="border: 1px solid ${isInCart ? 'var(--admin-accent)' : 'var(--admin-border-color)'}; background: ${isInCart ? 'var(--admin-accent-light)' : 'transparent'}; color: ${isInCart ? 'var(--admin-accent)' : 'var(--admin-text-muted)'}; width: 32px; height: 32px; border-radius: var(--admin-radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease; flex-shrink: 0;">
+                                <button type="button" onclick="window.openAdminLabelModal('${item.title.replace(/'/g, "\\'")}', '${item.acabadoName.replace(/'/g, "\\'")}', '${finishShortCode}')" title="Imprimir Etiqueta con Código y QR" style="border: 1px solid #cbd5e1; background: #ffffff; color: #0f172a; width: 32px; height: 32px; border-radius: var(--admin-radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease; flex-shrink: 0;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">qr_code_2</span>
+                                </button>
+                                <button type="button" onclick="window.addToAdminStockCart('${groupKey}', '${item.title.replace(/'/g, "\\'")}', '${item.img}', ${item.cost || 0})" title="Agregar al Carrito de Faltantes / Compras" style="border: 1px solid ${isInCart ? 'var(--admin-accent)' : 'var(--admin-border-color)'}; background: ${isInCart ? 'var(--admin-accent-light)' : 'transparent'}; color: ${isInCart ? 'var(--admin-accent)' : 'var(--admin-text-muted)'}; width: 32px; height: 32px; border-radius: var(--admin-radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease; flex-shrink: 0;">
                                     <span class="material-symbols-outlined" style="font-size: 18px;">add_shopping_cart</span>
                                 </button>
                             </div>
                         </td>
                         <td class="col-stock-desktop" style="text-align: center; padding: 0.65rem;">
-                            <input type="number" min="0" value="${item.qty || 0}" onchange="window.updateAdminStockQty('${item.id}', this.value)" class="premium-input" style="width: 70px; padding: 0.3rem 0.5rem; text-align: center; font-weight: 700;">
+                            <input type="number" min="0" value="${item.qty || 0}" onchange="window.updateAdminStockFinishGroupQty('${item.prodId}', ${item.gIdx}, this.value)" onkeydown="if(event.key==='Enter') this.blur();" class="premium-input" style="width: 70px; padding: 0.3rem 0.5rem; text-align: center; font-weight: 700;">
                         </td>
-                        <td style="font-weight: 700; color: var(--admin-text-main); padding: 0.65rem; cursor: pointer;" onclick="window.openAdminStockPhotoModal('${item.id}')" title="Toca para editar stock y costo">${formattedCost}</td>
+                        <td style="font-weight: 700; color: var(--admin-text-main); padding: 0.65rem; cursor: pointer;" onclick="window.openAdminStockPhotoModal('${item.prodId}')" title="Toca para editar stock y costo">${formattedCost}</td>
                         <td class="col-status-desktop" style="text-align: center; padding: 0.65rem;">
                             ${statusBadge}
                         </td>
                     `;
                     container.appendChild(tr);
+
+                    // Si el acabado está desplegado y tiene MÁS DE 1 MEDIDA, renderizar sub-filas
+                    if (isGroupExpanded && medidas.length > 1) {
+                        medidas.forEach((m, mIdx) => {
+                            const medidaName = m.medida || 'Única';
+                            const varFullCartTitle = `${item.title} - ${medidaName}`;
+                            const variantCartId = `${item.prodId}__g${item.gIdx}_m${mIdx}`;
+                            const varCost = parseFloat(m.cost_price) || 0;
+                            const varPrice = parseFloat(m.price) || 0;
+                            const varStock = window.getAdminMeasureStock(item.rawProd, item.rawProd.acabados_groups ? item.rawProd.acabados_groups[item.gIdx] : null, mIdx);
+
+                            const varShortCode = (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function')
+                                ? window.TarimaShortener.encodeShortCode(item.prodId, item.acabadoName, medidaName)
+                                : `${finishShortCode}.${mIdx + 1}`;
+
+                            const isVarInCart = Boolean(activeCart && activeCart[variantCartId]);
+
+                            const varTr = document.createElement('tr');
+                            varTr.className = 'admin-stock-variant-row';
+                            varTr.style.background = 'rgba(56, 189, 248, 0.03)';
+                            varTr.style.borderBottom = '1px dashed var(--admin-border-color)';
+
+                            varTr.innerHTML = `
+                                <td style="padding: 0.5rem 0.85rem 0.5rem 2.5rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.6rem;">
+                                        <span style="color: var(--admin-accent); font-size: 14px; font-weight: bold;">↳</span>
+                                        <div style="display: flex; flex-direction: column; flex: 1;">
+                                            <span style="font-weight: 600; color: var(--admin-text-main); font-size: 0.85rem;">Medida: ${medidaName}</span>
+                                            <span class="mobile-hide-details" style="font-family: monospace; font-weight: 700; color: var(--admin-accent); background: var(--admin-accent-light); padding: 2px 6px; border-radius: 4px; display: inline-block; width: fit-content; margin-top: 2px; font-size: 0.72rem;">Código: ${varShortCode}</span>
+                                        </div>
+                                        <button type="button" onclick="window.openAdminLabelModal('${item.title.replace(/'/g, "\\'")}', '${item.acabadoName.replace(/'/g, "\\'")} - ${medidaName.replace(/'/g, "\\'")}', '${varShortCode}')" title="Imprimir Etiqueta con Código y QR" style="border: 1px solid #cbd5e1; background: #ffffff; color: #0f172a; width: 28px; height: 28px; border-radius: var(--admin-radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease; flex-shrink: 0;">
+                                            <span class="material-symbols-outlined" style="font-size: 16px;">qr_code_2</span>
+                                        </button>
+                                        <button type="button" onclick="window.addToAdminStockCart('${variantCartId}', '${varFullCartTitle.replace(/'/g, "\\'")}', '${item.img}', ${varCost})" title="Agregar medida al Carrito de Compras" style="border: 1px solid ${isVarInCart ? 'var(--admin-accent)' : 'var(--admin-border-color)'}; background: ${isVarInCart ? 'var(--admin-accent-light)' : 'transparent'}; color: ${isVarInCart ? 'var(--admin-accent)' : 'var(--admin-text-muted)'}; width: 28px; height: 28px; border-radius: var(--admin-radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease; flex-shrink: 0;">
+                                            <span class="material-symbols-outlined" style="font-size: 16px;">add_shopping_cart</span>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="col-stock-desktop" style="text-align: center; padding: 0.5rem;">
+                                    <input type="number" min="0" value="${varStock}" onchange="window.updateAdminStockVariantQty('${item.prodId}', ${item.gIdx}, ${mIdx}, this.value)" onkeydown="if(event.key==='Enter') this.blur();" class="premium-input" style="width: 60px; padding: 0.2rem 0.4rem; text-align: center; font-weight: 700; font-size: 0.82rem;">
+                                </td>
+                                <td style="font-weight: 600; color: var(--admin-text-main); padding: 0.5rem; font-size: 0.82rem;">${varCost ? '$' + Number(varCost).toLocaleString('es-AR') : '-'}</td>
+                                <td class="col-status-desktop" style="text-align: center; padding: 0.5rem; font-size: 0.72rem; color: var(--admin-text-muted);">
+                                    <span style="background: var(--admin-surface-hover); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--admin-border-color);">Medida</span>
+                                </td>
+                            `;
+                            container.appendChild(varTr);
+                        });
+                    }
                 });
             }
         });
@@ -1020,8 +1328,8 @@
         if (Array.isArray(window.sessionProducts)) {
             for (const cat of window.sessionProducts) {
                 if (cat.products && Array.isArray(cat.products)) {
-                    const prod = cat.products.find(p => p.id === prodId);
-                    if (prod) {
+                    const matchingProds = cat.products.filter(p => p && String(p.id) === String(prodId));
+                    for (const prod of matchingProds) {
                         const oldStock = prod.stock !== undefined ? prod.stock : 1;
                         prod.stock = Math.max(0, newQty);
                         
@@ -1041,6 +1349,50 @@
                         const targetVariantInfo = variants[activeVariantIndex];
 
                         if (prod.acabados_groups && Array.isArray(prod.acabados_groups)) {
+                            // 1. Inicializar stock de todos los grupos si estaban undefined
+                            prod.acabados_groups.forEach(g => {
+                                if (g.stock === undefined) {
+                                    g.stock = window.getAdminFinishGroupStock(prod, g);
+                                }
+                            });
+
+                            if (targetVariantInfo && prod.acabados_groups[targetVariantInfo.gIdx]) {
+                                const targetGroup = prod.acabados_groups[targetVariantInfo.gIdx];
+                                if (targetGroup.medidas_variants && targetGroup.medidas_variants[targetVariantInfo.mIdx]) {
+                                    targetGroup.medidas_variants.forEach((m, idx) => {
+                                        if (m.stock === undefined) {
+                                            m.stock = window.getAdminMeasureStock(prod, targetGroup, idx);
+                                        }
+                                    });
+                                    targetGroup.medidas_variants[targetVariantInfo.mIdx].stock = newQty;
+                                    let gSum = 0;
+                                    targetGroup.medidas_variants.forEach(m => gSum += parseInt(m.stock || 0) || 0);
+                                    targetGroup.stock = gSum;
+                                } else {
+                                    targetGroup.stock = newQty;
+                                }
+                            } else {
+                                const g = prod.acabados_groups[0];
+                                if (g) {
+                                    g.stock = newQty;
+                                    if (g.medidas_variants && g.medidas_variants.length > 0) {
+                                        const numM = g.medidas_variants.length;
+                                        const perMeasure = Math.floor(newQty / numM);
+                                        const remainder = newQty % numM;
+                                        g.medidas_variants.forEach((m, idx) => {
+                                            m.stock = perMeasure + (idx === 0 ? remainder : 0);
+                                        });
+                                    }
+                                }
+                            }
+
+                            // Recalcular stock total de prod
+                            let totalStock = 0;
+                            prod.acabados_groups.forEach(g => {
+                                totalStock += parseInt(g.stock || 0) || 0;
+                            });
+                            prod.stock = totalStock;
+
                             prod.acabados_groups.forEach((g, gIdx) => {
                                 if (g.medidas_variants && Array.isArray(g.medidas_variants)) {
                                     g.medidas_variants.forEach((m, mIdx) => {
@@ -1119,6 +1471,7 @@
             window.productsData = window.sessionProducts;
         }
         try {
+            localStorage.setItem('sessionProducts', JSON.stringify(window.sessionProducts));
             localStorage.setItem('sessionProductsAutonomo', JSON.stringify(window.sessionProducts));
         } catch(e) {}
 
@@ -1326,6 +1679,7 @@
         // Sincronizar memorias viva y local
         if (typeof window.productsData !== 'undefined') window.productsData = window.sessionProducts;
         try {
+            localStorage.setItem('sessionProducts', JSON.stringify(window.sessionProducts));
             localStorage.setItem('sessionProductsAutonomo', JSON.stringify(window.sessionProducts));
         } catch(err) {}
 
@@ -1423,9 +1777,275 @@
         if (modal) modal.style.display = 'flex';
     };
 
+    // --- SISTEMA DE IMPRESIÓN DE ETIQUETAS (CÓDIGO DE BARRAS & QR) ---
+    window.openAdminLabelModal = function(title, variant, code) {
+        const modal = document.getElementById('admin-label-print-modal');
+        const titleEl = document.getElementById('lbl-title');
+        const variantEl = document.getElementById('lbl-variant');
+        const codeEl = document.getElementById('lbl-code');
+        const svgEl = document.getElementById('lbl-barcode-svg');
+        const qrContainer = document.getElementById('lbl-qrcode-container');
+
+        if (!modal) return;
+
+        if (titleEl) titleEl.textContent = title || 'Producto';
+        if (variantEl) variantEl.textContent = variant || 'Estándar';
+        if (codeEl) codeEl.textContent = code || '-';
+
+        // 1. Generar Código de Barras Barcode (JsBarcode)
+        if (typeof JsBarcode === 'function' && svgEl) {
+            try {
+                JsBarcode(svgEl, String(code || '0000'), {
+                    format: "CODE128",
+                    lineColor: "#0f172a",
+                    width: 2,
+                    height: 42,
+                    displayValue: true,
+                    fontSize: 12,
+                    fontOptions: "bold",
+                    margin: 0
+                });
+            } catch(e) {
+                console.error("Error generando JsBarcode:", e);
+            }
+        }
+
+        // 2. Generar Código QR (qrcodejs)
+        if (qrContainer) {
+            qrContainer.innerHTML = '';
+            if (typeof QRCode === 'function') {
+                try {
+                    new QRCode(qrContainer, {
+                        text: String(code || '0000'),
+                        width: 60,
+                        height: 60,
+                        colorDark : "#0f172a",
+                        colorLight : "#ffffff",
+                        correctLevel : QRCode.CorrectLevel.M
+                    });
+                } catch(e) {
+                    console.error("Error generando QRCode:", e);
+                }
+            } else {
+                qrContainer.innerHTML = '<span style="font-size:0.6rem;color:#64748b;">QR N/D</span>';
+            }
+        }
+
+        modal.style.display = 'flex';
+    };
+
+    window.applyAdminLabelPreset = function(presetKey) {
+        const customBox = document.getElementById('lbl-custom-size-box');
+        const customW = document.getElementById('lbl-custom-w');
+        const customH = document.getElementById('lbl-custom-h');
+
+        const presets = {
+            '80x50': { w: 80, h: 50 },
+            '50x30': { w: 50, h: 30 },
+            '60x40': { w: 60, h: 40 },
+            '100x60': { w: 100, h: 60 }
+        };
+
+        if (presetKey === 'custom') {
+            if (customBox) customBox.style.display = 'flex';
+            window.updateAdminCustomLabelSize();
+        } else {
+            if (customBox) customBox.style.display = 'none';
+            const p = presets[presetKey] || presets['80x50'];
+            if (customW) customW.value = p.w;
+            if (customH) customH.value = p.h;
+            window.setAdminLabelCardDimensions(p.w, p.h);
+        }
+    };
+
+    window.updateAdminCustomLabelSize = function() {
+        const w = parseInt(document.getElementById('lbl-custom-w')?.value) || 80;
+        const h = parseInt(document.getElementById('lbl-custom-h')?.value) || 50;
+        window.setAdminLabelCardDimensions(w, h);
+    };
+
+    window.setAdminLabelCardDimensions = function(wMm, hMm) {
+        const card = document.getElementById('printable-label-card');
+        const indicator = document.getElementById('lbl-size-indicator');
+        if (!card) return;
+
+        // Escalar px aproximados en pantalla (4px por mm)
+        const pxW = Math.max(160, Math.min(480, wMm * 4));
+        const pxH = Math.max(100, Math.min(320, hMm * 4));
+
+        card.style.width = pxW + 'px';
+        card.style.minHeight = pxH + 'px';
+        card.dataset.mmW = wMm;
+        card.dataset.mmH = hMm;
+
+        if (indicator) {
+            indicator.textContent = `Formato: ${wMm} × ${hMm} mm`;
+        }
+    };
+
+    window.updateAdminLabelElementsVisibility = function() {
+        const showBarcode = document.getElementById('lbl-show-barcode')?.checked;
+        const showQr = document.getElementById('lbl-show-qr')?.checked;
+
+        const barcodeWrap = document.getElementById('lbl-barcode-wrapper');
+        const qrWrap = document.getElementById('lbl-qrcode-container');
+        const codesRow = document.getElementById('lbl-codes-row');
+
+        if (barcodeWrap) barcodeWrap.style.display = showBarcode ? 'flex' : 'none';
+        if (qrWrap) qrWrap.style.display = showQr ? 'flex' : 'none';
+
+        if (codesRow) {
+            if (!showBarcode && !showQr) {
+                codesRow.style.display = 'none';
+            } else {
+                codesRow.style.display = 'flex';
+            }
+        }
+    };
+
+    window.closeAdminLabelModal = function() {
+        const modal = document.getElementById('admin-label-print-modal');
+        if (modal) modal.style.display = 'none';
+    };
+
+    window.printAdminLabelCard = function() {
+        const card = document.getElementById('printable-label-card');
+        if (!card) return;
+
+        const mmW = parseInt(card.dataset.mmW) || 80;
+        const mmH = parseInt(card.dataset.mmH) || 50;
+        const copies = Math.max(1, parseInt(document.getElementById('lbl-quantity-input')?.value) || 1);
+        const paperType = document.getElementById('lbl-paper-type')?.value || 'roll';
+
+        const printWin = window.open('', '_blank', 'width=800,height=700');
+        if (!printWin) {
+            alert("Por favor permite las ventanas emergentes (popups) para imprimir.");
+            return;
+        }
+
+        // Clonar HTML de la tarjeta N veces
+        let cardsHtml = '';
+        for (let i = 0; i < copies; i++) {
+            cardsHtml += `<div class="single-label-wrapper">${card.outerHTML}</div>`;
+        }
+
+        let cssStyles = '';
+
+        if (paperType === 'a4') {
+            // MODO HOJA A4 (Grilla Múltiple con Sangría / Margen)
+            cssStyles = `
+                @page { 
+                    size: A4 portrait; 
+                    margin: 10mm; 
+                }
+                html, body { 
+                    margin: 0; 
+                    padding: 0; 
+                    background: #ffffff; 
+                    font-family: system-ui, -apple-system, sans-serif; 
+                }
+                .labels-container { 
+                    display: flex; 
+                    flex-wrap: wrap; 
+                    gap: 4mm; 
+                    align-items: flex-start;
+                }
+                .single-label-wrapper { 
+                    width: ${mmW}mm; 
+                    height: ${mmH}mm; 
+                    box-sizing: border-box; 
+                    page-break-inside: avoid;
+                    break-inside: avoid;
+                }
+                #printable-label-card { 
+                    width: 100% !important; 
+                    height: 100% !important; 
+                    box-sizing: border-box !important;
+                    border: 1px solid #0f172a !important; 
+                    padding: 5px !important; 
+                    border-radius: 4px !important; 
+                    text-align: center !important; 
+                    display: flex !important;
+                    flex-direction: column !important;
+                    justify-content: space-between !important;
+                }
+            `;
+        } else {
+            // MODO ROLLO TÉRMICO (1 Etiqueta por página del rollo)
+            cssStyles = `
+                @page { 
+                    size: ${mmW}mm ${mmH}mm; 
+                    margin: 0; 
+                }
+                html, body { 
+                    width: ${mmW}mm; 
+                    margin: 0; 
+                    padding: 0; 
+                    background: #ffffff; 
+                    font-family: system-ui, -apple-system, sans-serif; 
+                }
+                .labels-container {
+                    display: block;
+                }
+                .single-label-wrapper { 
+                    width: ${mmW}mm; 
+                    height: ${mmH}mm; 
+                    box-sizing: border-box; 
+                    display: flex; 
+                    justify-content: center; 
+                    align-items: center; 
+                    page-break-after: always;
+                    break-after: page;
+                }
+                #printable-label-card { 
+                    width: 95% !important; 
+                    height: 95% !important; 
+                    box-sizing: border-box !important;
+                    border: 1.5px solid #0f172a !important; 
+                    padding: 6px !important; 
+                    border-radius: 4px !important; 
+                    text-align: center !important; 
+                    display: flex !important;
+                    flex-direction: column !important;
+                    justify-content: space-between !important;
+                }
+            `;
+        }
+
+        printWin.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Imprimir ${copies} Etiqueta(s) ${mmW}x${mmH}mm</title>
+                <style>
+                    ${cssStyles}
+                    @media print {
+                        body { background: transparent; }
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="labels-container">
+                    ${cardsHtml}
+                </div>
+                <script>
+                    window.onload = function() {
+                        setTimeout(function() {
+                            window.print();
+                            window.close();
+                        }, 300);
+                    };
+                </script>
+            </body>
+            </html>
+        `);
+        printWin.document.close();
+    };
+
     window.initAdminStockNative = function() {
         const searchInput = document.getElementById('admin-stock-search-input');
-        if (searchInput) {
+        if (searchInput && !searchInput.dataset.hasListener) {
+            searchInput.dataset.hasListener = 'true';
             searchInput.addEventListener('input', () => {
                 window.renderAdminStockModule();
             });
@@ -1433,3 +2053,4 @@
         window.renderAdminStockModule();
     };
 })();
+

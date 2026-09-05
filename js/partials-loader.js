@@ -4,7 +4,8 @@
 
 async function loadPartial(url, targetSelector, position = 'beforeend') {
     try {
-        const response = await fetch(url);
+        const finalUrl = url.includes('?') ? url : `${url}?v=13`;
+        const response = await fetch(finalUrl, { cache: 'no-store' });
         if (!response.ok) throw new Error(`HTTP ${response.status} cargando ${url}`);
         const html = await response.text();
         const target = document.querySelector(targetSelector);

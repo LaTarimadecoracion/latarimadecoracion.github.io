@@ -28,62 +28,24 @@ window.safeAdminRun = function(fn) {
     // ═════════════════════════════════════════════════
     //  ADMIN — Link Icon Modal (Nuevo)
     // ═════════════════════════════════════════════════
-    const linkModal = document.getElementById('admin-link-modal');
-    const linkLabelInput = document.getElementById('admin-link-label');
-    const btnCancelLinkModal = document.getElementById('btn-cancel-link-modal');
-    const btnSaveLinkModal = document.getElementById('btn-save-link-modal');
-    
     let currentRowEditingLink = null;
-
-    if (linkModal) {
-        btnCancelLinkModal.addEventListener('click', () => {
-            linkModal.style.display = 'none';
-            currentRowEditingLink = null;
-        });
-
-        btnSaveLinkModal.addEventListener('click', () => {
-            if (currentRowEditingLink) {
-                const newLabel = linkLabelInput.value.trim();
-                const selectedIconEl = document.querySelector('input[name="admin_link_icon"]:checked');
-                const selectedIcon = selectedIconEl ? selectedIconEl.value : 'local_shipping';
-                const isHighlight = document.getElementById('admin-link-highlight').checked;
-                
-                currentRowEditingLink.dataset.linkLabel = newLabel;
-                currentRowEditingLink.dataset.iconType = selectedIcon;
-                currentRowEditingLink.dataset.highlight = isHighlight ? 'true' : 'false';
-            }
-            linkModal.style.display = 'none';
-            currentRowEditingLink = null;
-        });
-    }
 
     // ═════════════════════════════════════════════════
     //  ADMIN — Formulario de Producto (nuevo sistema limpio)
     // ═════════════════════════════════════════════════
-    const productModal      = document.getElementById('admin-product-modal');
-    const adminFormTitle    = document.getElementById('admin-form-title');
-    const btnCancelProduct  = document.getElementById('btn-cancel-product');
-    const adminAcabadosGroupsContainer = document.getElementById('admin-acabados-groups');
-    const btnAddAcabadoGroup = document.getElementById('btn-add-acabado-group');
-
     // Estado del formulario: array de objetos que representan cada grupo
     // Cada grupo en memoria tiene: id (dom), pendingFiles, existingImages, coverIndex
     let activeGroupsUI = [];
     let groupCounter = 0;
 
-    if (btnCancelProduct) {
-        btnCancelProduct.addEventListener('click', () => { productModal.style.display = 'none'; });
-    }
-
     // Lógica para cambiar el tamaño/resolución del modal del producto
-    const modalContent = document.getElementById('admin-product-modal-content');
-    const sizeTabs = document.querySelectorAll('.modal-size-tab');
-
     function applyModalSize(size) {
+        const modalContent = document.getElementById('admin-product-modal-content');
         if (!modalContent) return;
         modalContent.classList.remove('size-sm', 'size-md', 'size-lg');
         modalContent.classList.add(`size-${size}`);
 
+        const sizeTabs = document.querySelectorAll('.modal-size-tab');
         sizeTabs.forEach(tab => {
             if (tab.getAttribute('data-size') === size) {
                 tab.classList.add('active');
@@ -99,16 +61,58 @@ window.safeAdminRun = function(fn) {
         });
     }
 
-    // Cargar la preferencia de resolución guardada
-    const savedSize = localStorage.getItem('adminProductModalSize') || 'sm';
-    applyModalSize(savedSize);
+    // Cargar la preferencia de resolución guardada cuando el DOM está listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedSize = localStorage.getItem('adminProductModalSize') || 'sm';
+            applyModalSize(savedSize);
+        });
+    } else {
+        const savedSize = localStorage.getItem('adminProductModalSize') || 'sm';
+        applyModalSize(savedSize);
+    }
 
-    sizeTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const size = tab.getAttribute('data-size');
+    // Delegación global de eventos para modales y elementos dinámicos
+    document.addEventListener('click', (e) => {
+        // Cancelar edición de producto
+        if (e.target && e.target.closest('#btn-cancel-product')) {
+            const modal = document.getElementById('admin-product-modal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        // Pestañas de tamaño de modal de producto
+        const sizeTab = e.target && e.target.closest('.modal-size-tab');
+        if (sizeTab) {
+            const size = sizeTab.getAttribute('data-size');
             applyModalSize(size);
             localStorage.setItem('adminProductModalSize', size);
-        });
+        }
+
+        // Modal de edición de links - Cancelar
+        if (e.target && e.target.closest('#btn-cancel-link-modal')) {
+            const linkModal = document.getElementById('admin-link-modal');
+            if (linkModal) linkModal.style.display = 'none';
+            currentRowEditingLink = null;
+        }
+
+        // Modal de edición de links - Guardar
+        if (e.target && e.target.closest('#btn-save-link-modal')) {
+            if (currentRowEditingLink) {
+                const linkLabelInput = document.getElementById('admin-link-label');
+                const newLabel = linkLabelInput ? linkLabelInput.value.trim() : '';
+                const selectedIconEl = document.querySelector('input[name="admin_link_icon"]:checked');
+                const selectedIcon = selectedIconEl ? selectedIconEl.value : 'local_shipping';
+                const highlightEl = document.getElementById('admin-link-highlight');
+                const isHighlight = highlightEl ? highlightEl.checked : false;
+
+                currentRowEditingLink.dataset.linkLabel = newLabel;
+                currentRowEditingLink.dataset.iconType = selectedIcon;
+                currentRowEditingLink.dataset.highlight = isHighlight ? 'true' : 'false';
+            }
+            const linkModal = document.getElementById('admin-link-modal');
+            if (linkModal) linkModal.style.display = 'none';
+            currentRowEditingLink = null;
+        }
     });
 
     // Helper: Encontrar el elemento más cercano para arrastrar y soltar (Drag and Drop)

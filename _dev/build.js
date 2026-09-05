@@ -57,7 +57,7 @@ async function build() {
     };
 
     // 1. Copiar carpetas estáticas que no requieren minificación
-    const foldersToCopy = ['img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'pedidos', 'apps'];
+    const foldersToCopy = ['img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'pedidos', 'apps', 'partials'];
     for (const folder of foldersToCopy) {
         const folderSrc = path.join(srcDir, folder);
         if (fs.existsSync(folderSrc)) {

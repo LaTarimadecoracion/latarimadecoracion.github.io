@@ -446,6 +446,7 @@
 
     // Reordenar activeGroupsUI basándose en el orden real de las tarjetas en el DOM
     function reorderActiveGroupsUI() {
+        const adminAcabadosGroupsContainer = document.getElementById('admin-acabados-groups');
         if (!adminAcabadosGroupsContainer) return;
         const cards = Array.from(adminAcabadosGroupsContainer.querySelectorAll('.acabado-group-card'));
         const newActiveGroupsUI = [];
@@ -628,7 +629,8 @@
             createAcabadoGroupUI(cloneData);
 
             // Get the newly created card (it is the last child of container)
-            const newCard = adminAcabadosGroupsContainer.lastElementChild;
+            const adminAcabadosGroupsContainer = document.getElementById('admin-acabados-groups');
+            const newCard = adminAcabadosGroupsContainer ? adminAcabadosGroupsContainer.lastElementChild : null;
             if (newCard && newCard !== card) {
                 // Insert the new card exactly below the current card in the DOM
                 card.after(newCard);
@@ -731,28 +733,52 @@
             updateMedidaGroupColors(medidasContainer);
         }
 
-        adminAcabadosGroupsContainer.appendChild(card);
+        const adminAcabadosGroupsContainer = document.getElementById('admin-acabados-groups');
+        if (adminAcabadosGroupsContainer) {
+            adminAcabadosGroupsContainer.appendChild(card);
+        }
         renderGroupPreview(groupId);
     }
 
-    if (btnAddAcabadoGroup) {
-        btnAddAcabadoGroup.addEventListener('click', () => createAcabadoGroupUI());
-    }
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.closest('#btn-add-acabado-group')) {
+            createAcabadoGroupUI();
+        }
+    });
 
-    if (adminAcabadosGroupsContainer) {
-        adminAcabadosGroupsContainer.addEventListener('dragover', (e) => {
+    document.addEventListener('dragover', (e) => {
+        const container = document.getElementById('admin-acabados-groups');
+        if (container && e.target && container.contains(e.target)) {
             e.preventDefault();
-            const draggingCard = adminAcabadosGroupsContainer.querySelector('.acabado-group-card.dragging');
+            const draggingCard = container.querySelector('.acabado-group-card.dragging');
             if (!draggingCard) return;
-            
-            const afterElement = getDragAfterElement(adminAcabadosGroupsContainer, e.clientY, '.acabado-group-card');
+
+            const afterElement = getDragAfterElement(container, e.clientY, '.acabado-group-card');
             if (afterElement == null) {
-                adminAcabadosGroupsContainer.appendChild(draggingCard);
+                container.appendChild(draggingCard);
             } else {
-                adminAcabadosGroupsContainer.insertBefore(draggingCard, afterElement);
+                container.insertBefore(draggingCard, afterElement);
             }
-        });
-    }
+        }
+    });
+
+    // Toggle de visibilidad para inputs de costos de envío del producto
+    const bindProductShippingToggles = () => {
+        const setupToggle = (checkId, grpId, displayStyle = 'block') => {
+            const chk = document.getElementById(checkId);
+            const grp = document.getElementById(grpId);
+            if (chk && grp && !chk._hasToggleListener) {
+                chk._hasToggleListener = true;
+                chk.addEventListener('change', () => {
+                    grp.style.display = chk.checked ? displayStyle : 'none';
+                });
+            }
+        };
+        setupToggle('product-ship-logistica-enabled', 'product-ship-logistica-group', 'block');
+        setupToggle('product-ship-flete-enabled', 'product-ship-flete-group', 'block');
+        setupToggle('product-ship-otro-enabled', 'product-ship-otro-group', 'grid');
+    };
+    bindProductShippingToggles();
 
     // ── Abrir formulario ──
     let sourceCategoryIdx = null; // tracks which category the product came from
@@ -778,6 +804,7 @@
         }
 
         // Limpiar estado de grupos
+        const adminAcabadosGroupsContainer = document.getElementById('admin-acabados-groups');
         if (adminAcabadosGroupsContainer) adminAcabadosGroupsContainer.innerHTML = '';
         activeGroupsUI = [];
         groupCounter = 0;
@@ -817,8 +844,9 @@
                         assignedCategoryIds.push(cat.id);
                     }
                 });
-                if (!primaryCategoryId && assignedCategoryIds.length > 0) {
-                    primaryCategoryId = assignedCategoryIds[0];
+                const realAssigned = assignedCategoryIds.filter(id => !id.endsWith('-todos'));
+                if (!primaryCategoryId || primaryCategoryId.endsWith('-todos')) {
+                    primaryCategoryId = realAssigned.length > 0 ? realAssigned[0] : (assignedCategoryIds.length > 0 ? assignedCategoryIds[0] : null);
                 }
             } else {
                 let currentCatId = sessionProducts[cIdx]?.id;
@@ -898,8 +926,52 @@
         document.getElementById('admin-opt-label').value   = optV.label   || '';
         document.getElementById('admin-opt-options').value = optV.options ? optV.options.join(', ') : '';
 
-        // Etiquetas
-        document.getElementById('admin-tags').value = existingProd?.tags ? existingProd.tags.join(', ') : '';
+        // Configuración de Envíos del Producto
+        const shipConf = existingProd?.shippingConfig || {};
+        const logCheck = document.getElementById('product-ship-logistica-enabled');
+        const logCost = document.getElementById('product-ship-logistica-cost');
+        const logGrp = document.getElementById('product-ship-logistica-group');
+        const isLogEnabled = shipConf.logisticaEnabled !== false;
+        if (logCheck) logCheck.checked = isLogEnabled;
+        const logMaxU = document.getElementById('product-ship-logistica-max-units');
+        const logFreeMinU = document.getElementById('product-ship-logistica-free-min-units');
+        if (logCost) logCost.value = (shipConf.logisticaCost !== undefined && shipConf.logisticaCost !== null) ? shipConf.logisticaCost : '';
+        if (logMaxU) logMaxU.value = shipConf.logisticaMaxUnits || '';
+        if (logFreeMinU) logFreeMinU.value = shipConf.logisticaFreeMinUnits || '';
+        if (logGrp) logGrp.style.display = isLogEnabled ? 'flex' : 'none';
+
+        const fltCheck = document.getElementById('product-ship-flete-enabled');
+        const fltCost = document.getElementById('product-ship-flete-cost');
+        const fltMaxU = document.getElementById('product-ship-flete-max-units');
+        const fltFreeMinU = document.getElementById('product-ship-flete-free-min-units');
+        const fltGrp = document.getElementById('product-ship-flete-group');
+        const isFltEnabled = shipConf.fleteEnabled !== false;
+        if (fltCheck) fltCheck.checked = isFltEnabled;
+        if (fltCost) fltCost.value = (shipConf.fleteCost !== undefined && shipConf.fleteCost !== null) ? shipConf.fleteCost : '';
+        if (fltMaxU) fltMaxU.value = shipConf.fleteMaxUnits || '';
+        if (fltFreeMinU) fltFreeMinU.value = shipConf.fleteFreeMinUnits || '';
+        if (fltGrp) fltGrp.style.display = isFltEnabled ? 'flex' : 'none';
+
+        const otrCheck = document.getElementById('product-ship-otro-enabled');
+        const otrLbl = document.getElementById('product-ship-otro-label');
+        const otrCost = document.getElementById('product-ship-otro-cost');
+        const otrGrp = document.getElementById('product-ship-otro-group');
+        if (otrCheck) otrCheck.checked = !!shipConf.otroEnabled;
+        if (otrLbl) otrLbl.value = shipConf.otroLabel || '';
+        if (otrCost) otrCost.value = (shipConf.otroCost !== undefined && shipConf.otroCost !== null) ? shipConf.otroCost : '';
+        if (otrGrp) otrGrp.style.display = shipConf.otroEnabled ? 'grid' : 'none';
+
+        const freeCheck = document.getElementById('product-ship-is-free');
+        if (freeCheck) freeCheck.checked = !!shipConf.isFreeShipping;
+
+        // Configuración de Medios de Pago del Producto
+        const payConf = existingProd?.paymentConfig || {};
+        const payTransCheck = document.getElementById('product-pay-transfer-enabled');
+        const payLinkCheck = document.getElementById('product-pay-link-enabled');
+        const payCreditCheck = document.getElementById('product-pay-credit-enabled');
+        if (payTransCheck) payTransCheck.checked = payConf.transferEnabled !== false;
+        if (payLinkCheck) payLinkCheck.checked = payConf.linkEnabled !== false;
+        if (payCreditCheck) payCreditCheck.checked = payConf.creditEnabled !== false;
 
         // Poblar grupos de acabados
         if (existingProd && existingProd.acabados_groups && existingProd.acabados_groups.length > 0) {
@@ -929,9 +1001,13 @@
                 ? (isClon ? `📋 Clonando: ${existingProd.title}` : `Editando: ${existingProd.title}`)
                 : `Nuevo Producto en ${cIdx !== null ? sessionProducts[cIdx].name : 'Catálogo General'}`;
         }
-        adminFormTitle.textContent = titleText;
-        productModal.style.display = 'flex';
-        productModal.scrollIntoView({ behavior: 'smooth' });
+        const adminFormTitle = document.getElementById('admin-form-title');
+        const productModal = document.getElementById('admin-product-modal');
+        if (adminFormTitle) adminFormTitle.textContent = titleText;
+        if (productModal) {
+            productModal.style.display = 'flex';
+            productModal.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
     // ── Guardar producto ──
@@ -1020,6 +1096,34 @@
             const tagsList   = tagsRaw ? tagsRaw.split(',').map(s => s.trim()).filter(s => s) : [];
             const pVideo     = document.getElementById('admin-video').value.trim();
 
+            // Configuración de Envíos del Producto
+            const logMaxUnitsVal = parseInt(document.getElementById('product-ship-logistica-max-units')?.value);
+            const logFreeMinVal = parseInt(document.getElementById('product-ship-logistica-free-min-units')?.value);
+            const fltMaxUnitsVal = parseInt(document.getElementById('product-ship-flete-max-units')?.value);
+            const fltFreeMinVal = parseInt(document.getElementById('product-ship-flete-free-min-units')?.value);
+
+            const shippingConfig = {
+                logisticaEnabled: document.getElementById('product-ship-logistica-enabled')?.checked || false,
+                logisticaCost: parseFloat(document.getElementById('product-ship-logistica-cost')?.value) || 0,
+                logisticaMaxUnits: (!isNaN(logMaxUnitsVal) && logMaxUnitsVal > 0) ? logMaxUnitsVal : undefined,
+                logisticaFreeMinUnits: (!isNaN(logFreeMinVal) && logFreeMinVal > 0) ? logFreeMinVal : undefined,
+                fleteEnabled: document.getElementById('product-ship-flete-enabled')?.checked || false,
+                fleteCost: parseFloat(document.getElementById('product-ship-flete-cost')?.value) || 0,
+                fleteMaxUnits: (!isNaN(fltMaxUnitsVal) && fltMaxUnitsVal > 0) ? fltMaxUnitsVal : undefined,
+                fleteFreeMinUnits: (!isNaN(fltFreeMinVal) && fltFreeMinVal > 0) ? fltFreeMinVal : undefined,
+                otroEnabled: document.getElementById('product-ship-otro-enabled')?.checked || false,
+                otroLabel: document.getElementById('product-ship-otro-label')?.value.trim() || 'A convenir',
+                otroCost: parseFloat(document.getElementById('product-ship-otro-cost')?.value) || 0,
+                isFreeShipping: document.getElementById('product-ship-is-free')?.checked || false
+            };
+
+            // Configuración de Medios de Pago del Producto
+            const paymentConfig = {
+                transferEnabled: document.getElementById('product-pay-transfer-enabled')?.checked ?? true,
+                linkEnabled: document.getElementById('product-pay-link-enabled')?.checked ?? true,
+                creditEnabled: document.getElementById('product-pay-credit-enabled')?.checked ?? true
+            };
+
             const product = {
                 id:          idVal,
                 title:       document.getElementById('admin-title').value.trim(),
@@ -1028,6 +1132,8 @@
                 image:       finalAcabadosGroups[0]?.cover_image || 'img/logo_provisional.png',
                 acabados_groups: finalAcabadosGroups,
                 tags:        tagsList,
+                shippingConfig: shippingConfig,
+                paymentConfig: paymentConfig,
                 last_modified: Date.now()
             };
 
@@ -1126,7 +1232,8 @@
                     await window.saveRentalsToServer();
                 }
 
-                productModal.style.display = 'none';
+                const productModal = document.getElementById('admin-product-modal');
+                if (productModal) productModal.style.display = 'none';
                 renderAdminRentals();
 
                 btnGenerateJson.disabled    = false;
@@ -1138,7 +1245,8 @@
             const checkboxesContainer = document.getElementById('product-categories-checkboxes');
             let selectedCatIds = [...checkboxesContainer.querySelectorAll('.cat-checkbox:checked')].map(cb => cb.value);
             const primaryRadio = checkboxesContainer.querySelector('.cat-primary-radio:checked');
-            const primaryCatId = primaryRadio ? primaryRadio.value : null;
+            const realSelectedCatIds = selectedCatIds.filter(id => !id.endsWith('-todos'));
+            let primaryCatId = primaryRadio ? primaryRadio.value : (realSelectedCatIds.length > 0 ? realSelectedCatIds[0] : (selectedCatIds.length > 0 ? selectedCatIds[0] : null));
 
             if (!primaryCatId) {
                 alert('Debes elegir una categoría como la Principal.');
@@ -1294,7 +1402,8 @@
 
             await saveProductsToServer();
 
-            productModal.style.display = 'none';
+            const productModal = document.getElementById('admin-product-modal');
+            if (productModal) productModal.style.display = 'none';
             renderAdminUX();
 
             btnGenerateJson.disabled    = false;

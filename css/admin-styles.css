@@ -101,6 +101,15 @@
     font-weight: 700;
     color: #F5F5F4;
     line-height: 1.15;
+    text-shadow: none !important;
+    letter-spacing: normal !important;
+    animation: none !important;
+}
+
+.admin-brand .brand-title::before,
+.admin-brand .brand-title::after {
+    content: none !important;
+    display: none !important;
 }
 
 .admin-brand .brand-sub {
@@ -231,22 +240,23 @@
     padding: 0 !important;
 }
 
-/* Sidebar 100% Independiente y Flotante (Overlay) */
+/* Sidebar 100% Fijo e Independiente (Overlay) */
 .admin-sidebar-ml {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 60px;
     left: 0;
+    bottom: 0;
     width: 58px;
     background: #FFFFFF;
     border-right: 1px solid var(--admin-border-color);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.03);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0.75rem 0.4rem;
-    height: 100%;
-    min-height: calc(100vh - 60px);
+    height: calc(100vh - 60px);
     box-sizing: border-box;
-    z-index: 500;
+    z-index: 150;
     transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
     overflow: visible !important;
 }
@@ -1004,7 +1014,7 @@
         padding: 0.75rem 1rem 0;
     }
     .admin-content-area {
-        padding: 1rem;
+        padding: 0.75rem 0.6rem;
     }
     .pages-map-row {
         flex-direction: column;
@@ -1012,4 +1022,169 @@
     .page-card {
         max-width: 100%;
     }
+
+    /* --- OPTIMIZACIÓN MÓVIL DEDICADA PARA CONTROL DE STOCK & CARRITO --- */
+    .col-status-desktop,
+    .col-status-mobile,
+    .mobile-hide-details {
+        display: none !important;
+    }
+
+    .col-stock-desktop {
+        display: table-cell !important;
+        padding: 0.35rem 0.25rem !important;
+        text-align: center !important;
+        width: 70px !important;
+    }
+
+    .col-stock-desktop input {
+        width: 60px !important;
+        padding: 0.25rem 0.2rem !important;
+        font-size: 0.82rem !important;
+    th.col-stock-desktop {
+        display: table-cell !important;
+    }
+
+    .admin-table td {
+        padding: 0.6rem 0.5rem !important;
+    }
+
+    /* Alineación limpia del carrito en celular */
+    .admin-stock-cart-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.5rem !important;
+    }
+
+    .cart-row-controls {
+        margin-left: 0 !important;
+        justify-content: center !important;
+        width: 100% !important;
+        border-top: 1px dashed var(--admin-border-color);
+        padding-top: 0.4rem;
+    }
+
+    /* Adaptación táctil de las tarjetas de compra y pendientes */
+    #admin-stock-cart-summary {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 0.75rem;
+    }
+
+    #admin-stock-cart-summary > div:last-child {
+        margin-left: 0 !important;
+        width: 100%;
+    }
+
+    #admin-stock-cart-summary button {
+        flex: 1;
+        justify-content: center;
+        padding: 0.6rem 0.5rem !important;
+        font-size: 0.85rem !important;
+    }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   MODO PANTALLA COMPLETA INDIVIDUAL PARA TARJETAS EN CELULAR / ESCRITORIO
+   ═══════════════════════════════════════════════════════════════ */
+.admin-card.card-fullscreen-mode,
+.admin-table-wrapper.card-fullscreen-mode {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    background: #FFFFFF !important;
+    padding: 1.25rem 1rem !important;
+    overflow-y: auto !important;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3) !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+}
+
+.admin-card.card-fullscreen-mode [id$="-items-container"],
+.admin-card.card-fullscreen-mode [id$="-container"] {
+    max-height: calc(100vh - 160px) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTROL DE STOCK PC (DISEÑO CUADRADO, MINIMALISTA Y SOBRIO)
+   ═══════════════════════════════════════════════════════════════ */
+.pc-mode-tab {
+    border: none;
+    background: transparent;
+    color: #64748b;
+    padding: 7px 14px;
+    border-radius: 0;
+    font-weight: 700;
+    font-size: 0.84rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.pc-mode-tab:hover {
+    color: #0f172a;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.pc-mode-tab.active {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    border-radius: 0 !important;
+}
+
+.pc-control-btn {
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 0;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #334155;
+    font-size: 0.82rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.pc-control-btn.square-icon-btn {
+    width: 36px !important;
+    height: 36px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    border-radius: 0 !important;
+}
+
+.pc-control-btn:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+    color: #0f172a;
+}
+
+.pc-control-btn.dark {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+    border-radius: 0;
+}
+
+.pc-control-btn.dark:hover {
+    background: #1e293b;
+    border-color: #1e293b;
+}
+
+#admin-pc-scanner-input:focus {
+    outline: none !important;
+    border-color: #0f172a !important;
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08) !important;
+}
+
+
+
+

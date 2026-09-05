@@ -307,6 +307,7 @@
             if (offer) {
                 document.getElementById('offer-modal-title').textContent = 'Editar Oferta / Combo Especial';
                 document.getElementById('offer-title').value = offer.title || '';
+                document.getElementById('offer-subtitle').value = offer.subtitle || '';
                 document.getElementById('offer-description').value = offer.description || '';
                 document.getElementById('offer-stock-limit').value = offer.stockLimit || '';
                 document.getElementById('offer-discount-percent').value = offer.discountPercent || '';
@@ -319,17 +320,25 @@
 
                 const logCheck = document.getElementById('offer-ship-logistica-enabled');
                 const logCost = document.getElementById('offer-ship-logistica-cost');
+                const logMaxU = document.getElementById('offer-ship-logistica-max-units');
+                const logFreeMinU = document.getElementById('offer-ship-logistica-free-min-units');
                 const logGrp = document.getElementById('offer-ship-logistica-group');
                 if (logCheck) logCheck.checked = !!shipConf.logisticaEnabled;
                 if (logCost) logCost.value = shipConf.logisticaCost !== undefined && shipConf.logisticaCost !== null ? shipConf.logisticaCost : '';
-                if (logGrp) logGrp.style.display = shipConf.logisticaEnabled ? 'block' : 'none';
+                if (logMaxU) logMaxU.value = shipConf.logisticaMaxUnits || '';
+                if (logFreeMinU) logFreeMinU.value = shipConf.logisticaFreeMinUnits || '';
+                if (logGrp) logGrp.style.display = shipConf.logisticaEnabled ? 'flex' : 'none';
 
                 const fltCheck = document.getElementById('offer-ship-flete-enabled');
                 const fltCost = document.getElementById('offer-ship-flete-cost');
+                const fltMaxU = document.getElementById('offer-ship-flete-max-units');
+                const fltFreeMinU = document.getElementById('offer-ship-flete-free-min-units');
                 const fltGrp = document.getElementById('offer-ship-flete-group');
                 if (fltCheck) fltCheck.checked = !!shipConf.fleteEnabled;
                 if (fltCost) fltCost.value = shipConf.fleteCost !== undefined && shipConf.fleteCost !== null ? shipConf.fleteCost : '';
-                if (fltGrp) fltGrp.style.display = shipConf.fleteEnabled ? 'block' : 'none';
+                if (fltMaxU) fltMaxU.value = shipConf.fleteMaxUnits || '';
+                if (fltFreeMinU) fltFreeMinU.value = shipConf.fleteFreeMinUnits || '';
+                if (fltGrp) fltGrp.style.display = shipConf.fleteEnabled ? 'flex' : 'none';
 
                 const otrCheck = document.getElementById('offer-ship-otro-enabled');
                 const otrLbl = document.getElementById('offer-ship-otro-label');
@@ -357,6 +366,15 @@
                     document.getElementById('offer-cover-preview-wrapper').style.display = 'none';
                 }
 
+                const payConf = offer.paymentConfig || {};
+                const payTransCheck = document.getElementById('offer-pay-transfer-enabled');
+                const payLinkCheck = document.getElementById('offer-pay-link-enabled');
+                const payCreditCheck = document.getElementById('offer-pay-credit-enabled');
+
+                if (payTransCheck) payTransCheck.checked = payConf.transferEnabled !== false;
+                if (payLinkCheck) payLinkCheck.checked = payConf.linkEnabled !== false;
+                if (payCreditCheck) payCreditCheck.checked = payConf.creditEnabled !== false;
+
                 if (offer.product_items && Array.isArray(offer.product_items)) {
                     selectedComboItems = JSON.parse(JSON.stringify(offer.product_items));
                 }
@@ -373,6 +391,10 @@
             ['offer-ship-logistica-enabled', 'offer-ship-flete-enabled', 'offer-ship-otro-enabled', 'offer-ship-is-free'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.checked = false;
+            });
+            ['offer-pay-transfer-enabled', 'offer-pay-link-enabled', 'offer-pay-credit-enabled'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.checked = true;
             });
             ['offer-ship-logistica-cost', 'offer-ship-flete-cost', 'offer-ship-otro-cost', 'offer-ship-otro-label'].forEach(id => {
                 const el = document.getElementById(id);
@@ -555,6 +577,7 @@
 
     function autoFillOfferInfo(force = false) {
         const titleInput = document.getElementById('offer-title');
+        const subtitleInput = document.getElementById('offer-subtitle');
         const descInput = document.getElementById('offer-description');
         if (!titleInput || !descInput) return;
 
@@ -575,23 +598,28 @@
         });
 
         let generatedTitle = '';
+        let generatedSubtitle = '';
         let generatedDesc = '';
 
         if (selectedComboItems.length === 1) {
             const qty = parseInt(selectedComboItems[0].quantity, 10) || 1;
             if (qty > 1) {
                 generatedTitle = `Combo Promocional: Pack x${qty} ${titleParts[0].replace(/^x\d+\s*/, '')}`;
-                generatedDesc = `¡Llevate este súper pack de ${qty} unidades con un descuento promocional exclusivo por tiempo limitado!`;
+                generatedSubtitle = `¡Súper combo de ${qty} unidades con precio bonificado y ahorro directo!`;
+                generatedDesc = `¡Llevate este súper pack de ${qty} unidades con un descuento promocional exclusivo por tiempo limitado!\n\nFabricado en madera maciza de primera calidad con terminaciones pulidas a mano.`;
             } else {
                 generatedTitle = `Oferta Especial: ${titleParts[0]}`;
-                generatedDesc = `¡Llevate este ${titleParts[0]} con un descuento promocional exclusivo por tiempo limitado!`;
+                generatedSubtitle = `¡Descuento promocional exclusivo por tiempo limitado!`;
+                generatedDesc = `¡Llevate este ${titleParts[0]} con un descuento promocional exclusivo por tiempo limitado!\n\nFabricado en madera maciza de primera calidad.`;
             }
         } else {
             generatedTitle = `Combo Especial (Pack x${totalUnits}): ${titleParts.join(' + ')}`;
-            generatedDesc = `¡Súper combo de ${totalUnits} unidades de productos con precio bonificado y ahorro directo!`;
+            generatedSubtitle = `¡Súper combo de ${totalUnits} unidades de productos con precio bonificado y ahorro directo!`;
+            generatedDesc = `Combo promocional que incluye ${titleParts.join(', ')}.\n\nTodos los productos están construidos en madera maciza resistente con acabados naturales ideal para uso diario.`;
         }
 
         titleInput.value = generatedTitle;
+        if (subtitleInput) subtitleInput.value = generatedSubtitle;
         descInput.value = generatedDesc;
     }
 
@@ -916,24 +944,40 @@
         }
 
         const subtotal = parseFloat(document.getElementById('offer-subtotal-hidden').value) || 0;
-        const offerPrice = parseFloat(document.getElementById('offer-final-price').value) || subtotal;
-        const discountPercent = parseInt(document.getElementById('offer-discount-percent').value) || 0;
+        const subtitle = document.getElementById('offer-subtitle')?.value || '';
         const stampStyle = document.getElementById('offer-stamp-style').value || 'pro-gold';
         const stockLimitVal = document.getElementById('offer-stock-limit').value;
         const stockLimit = stockLimitVal ? parseInt(stockLimitVal) : null;
+        const offerPrice = parseFloat(document.getElementById('offer-final-price').value) || subtotal;
+        const discountPercent = parseInt(document.getElementById('offer-discount-percent').value) || 0;
         const shippingType = document.getElementById('offer-shipping-type').value || 'standard';
         const shippingCost = parseFloat(document.getElementById('offer-shipping-cost').value) || 0;
 
         // Configuración estructurada de envíos para la oferta (Logística, Flete, Otro, Gratis)
+        const logMaxUnitsVal = parseInt(document.getElementById('offer-ship-logistica-max-units')?.value);
+        const logFreeMinVal = parseInt(document.getElementById('offer-ship-logistica-free-min-units')?.value);
+        const fltMaxUnitsVal = parseInt(document.getElementById('offer-ship-flete-max-units')?.value);
+        const fltFreeMinVal = parseInt(document.getElementById('offer-ship-flete-free-min-units')?.value);
+
         const shippingConfig = {
             logisticaEnabled: document.getElementById('offer-ship-logistica-enabled')?.checked || false,
             logisticaCost: parseFloat(document.getElementById('offer-ship-logistica-cost')?.value) || 0,
+            logisticaMaxUnits: (!isNaN(logMaxUnitsVal) && logMaxUnitsVal > 0) ? logMaxUnitsVal : undefined,
+            logisticaFreeMinUnits: (!isNaN(logFreeMinVal) && logFreeMinVal > 0) ? logFreeMinVal : undefined,
             fleteEnabled: document.getElementById('offer-ship-flete-enabled')?.checked || false,
             fleteCost: parseFloat(document.getElementById('offer-ship-flete-cost')?.value) || 0,
+            fleteMaxUnits: (!isNaN(fltMaxUnitsVal) && fltMaxUnitsVal > 0) ? fltMaxUnitsVal : undefined,
+            fleteFreeMinUnits: (!isNaN(fltFreeMinVal) && fltFreeMinVal > 0) ? fltFreeMinVal : undefined,
             otroEnabled: document.getElementById('offer-ship-otro-enabled')?.checked || false,
             otroLabel: document.getElementById('offer-ship-otro-label')?.value.trim() || 'A convenir',
             otroCost: parseFloat(document.getElementById('offer-ship-otro-cost')?.value) || 0,
             isFreeShipping: document.getElementById('offer-ship-is-free')?.checked || false
+        };
+
+        const paymentConfig = {
+            transferEnabled: document.getElementById('offer-pay-transfer-enabled')?.checked ?? true,
+            linkEnabled: document.getElementById('offer-pay-link-enabled')?.checked ?? true,
+            creditEnabled: document.getElementById('offer-pay-credit-enabled')?.checked ?? true
         };
 
         const hasTimer = document.getElementById('offer-has-timer').checked;
@@ -946,6 +990,7 @@
         const offerObj = {
             id: offerId,
             title,
+            subtitle,
             description,
             stampStyle,
             stockLimit,
@@ -956,6 +1001,7 @@
             shippingType: shippingConfig.isFreeShipping ? 'free' : shippingType,
             shippingCost,
             shippingConfig,
+            paymentConfig,
             hasTimer,
             expirationDate,
             customCoverImage,

@@ -1,0 +1,39 @@
+<!-- =============================================================================
+     partials/modal-media-rentals.html
+     Modales de la Tienda (TikTok Fullscreen & Detalle de Alquiler)
+     Extraído de index.html — no modificar clases, IDs ni estilos inline
+     ============================================================================= -->
+
+        <!-- TikTok Style Fullscreen Modal -->
+        <div id="tiktok-video-modal" class="tiktok-modal" style="display: none;">
+            <!-- Botón de cerrar superior -->
+            <button id="tiktok-close-btn" class="tiktok-close">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            
+            <!-- Contenedor con Scroll Vertical inmersivo -->
+            <div id="tiktok-feed-container" class="tiktok-feed-container">
+                <!-- Los videos se inyectarán aquí dinámicamente -->
+            </div>
+        </div>
+
+        <!-- Modal de Detalle de Alquiler -->
+        <div id="rental-detail-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-content" style="max-width: 500px; padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div style="position: relative; padding-top: 66%; background: var(--bg-body, #f7f6f3);">
+                    <img id="rental-detail-image" src="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" alt="">
+                    <button id="btn-close-rental-detail" style="position: absolute; top: 12px; right: 12px; border: none; background: rgba(0,0,0,0.5); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">close</span>
+                    </button>
+                </div>
+                <div style="padding: 1.5rem; overflow-y: auto;">
+                    <h3 id="rental-detail-title" style="margin: 0 0 0.5rem 0; font-size: 1.4rem; color: var(--text-color);"></h3>
+                    <div id="rental-detail-price" style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 1rem;"></div>
+                    <p id="rental-detail-description" style="margin: 0 0 1.5rem 0; line-height: 1.5; color: var(--text-muted); font-size: 0.95rem;"></p>
+                    <a id="btn-rent-whatsapp" href="#" target="_blank" class="btn-primary giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; text-decoration: none;">
+                        <span class="material-symbols-outlined">chat</span>
+                        Consultar Alquiler por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>

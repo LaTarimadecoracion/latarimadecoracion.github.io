@@ -34,63 +34,26 @@ function getMaxRentalTimestamp(arr) {
 }
 
 // Estado global de Productos
-window.sessionProducts = typeof productsData !== 'undefined' ? [...productsData] : [];
-try {
-    const localProductsStr = localStorage.getItem('sessionProductsAutonomo');
-    if (localProductsStr) {
-        const localProducts = JSON.parse(localProductsStr);
-        const localMax = getMaxProductTimestamp(localProducts);
-        const serverMax = getMaxProductTimestamp(window.sessionProducts);
-        
-        if (localMax >= serverMax) {
-            window.sessionProducts = localProducts;
-            console.log('[Data fallback] Cargados productos de localStorage (versión local es más nueva o igual).');
-        } else {
-            console.log('[Data fallback] Ignorados productos de localStorage porque la base de datos del servidor es más nueva.');
-            localStorage.removeItem('sessionProductsAutonomo');
-        }
-    }
-} catch (e) {
-    console.error('Error loading sessionProducts fallback:', e);
-}
+window.sessionProducts = typeof productsData !== 'undefined' && Array.isArray(productsData) && productsData.length > 0
+    ? [...productsData]
+    : (localStorage.getItem('sessionProducts') ? JSON.parse(localStorage.getItem('sessionProducts')) : []);
 
-window.sessionRentals = typeof rentalsData !== 'undefined' ? [...rentalsData] : [];
-try {
-    const localRentalsStr = localStorage.getItem('sessionRentalsAutonomo');
-    if (localRentalsStr) {
-        const localRentals = JSON.parse(localRentalsStr);
-        const localMax = getMaxRentalTimestamp(localRentals);
-        const serverMax = getMaxRentalTimestamp(window.sessionRentals);
-        
-        if (localMax >= serverMax) {
-            window.sessionRentals = localRentals;
-            console.log('[Data fallback] Cargados alquileres de localStorage (versión local es más nueva o igual).');
-        } else {
-            console.log('[Data fallback] Ignorados alquileres de localStorage porque la base de datos del servidor es más nueva.');
-            localStorage.removeItem('sessionRentalsAutonomo');
-        }
-    }
-} catch (e) {
-    console.error('Error loading sessionRentals fallback:', e);
-}
+// Estado global de Alquileres
+window.sessionRentals = typeof rentalsData !== 'undefined' && Array.isArray(rentalsData) && rentalsData.length > 0
+    ? [...rentalsData]
+    : (localStorage.getItem('sessionRentals') ? JSON.parse(localStorage.getItem('sessionRentals')) : []);
 
-// Estado global de Ofertas
-window.sessionOffers = typeof offersData !== 'undefined' ? [...offersData] : [];
+// Estado global de Ofertas (Priorizar base de datos del servidor js/offers-data.js)
+window.sessionOffers = typeof offersData !== 'undefined' && Array.isArray(offersData) && offersData.length > 0
+    ? [...offersData]
+    : (localStorage.getItem('sessionOffers') ? JSON.parse(localStorage.getItem('sessionOffers')) : []);
+
+// Limpieza de claves obsoletas de respaldo
 try {
-    const localOffersStr = localStorage.getItem('sessionOffersAutonomo');
-    if (localOffersStr) {
-        const parsedOffers = JSON.parse(localOffersStr);
-        if (Array.isArray(parsedOffers) && parsedOffers.length > 0) {
-            window.sessionOffers = parsedOffers;
-            console.log('[Data fallback] Cargadas ofertas de localStorage.');
-        } else if (typeof offersData !== 'undefined' && offersData.length > 0) {
-            window.sessionOffers = [...offersData];
-            localStorage.removeItem('sessionOffersAutonomo');
-        }
-    }
-} catch (e) {
-    console.error('Error loading sessionOffers fallback:', e);
-}
+    localStorage.removeItem('sessionOffersAutonomo');
+    localStorage.removeItem('sessionProductsAutonomo');
+    localStorage.removeItem('sessionRentalsAutonomo');
+} catch (e) {}
 
 // Garantizar que existan las estructuras de siteConfig del servidor
 if (!window.siteConfig) {

@@ -2,6 +2,7 @@ const offersData = [
     {
         "id": "offer_1787973760484",
         "title": "Combo Especial (Pack x2): Desmontable Clásica + Escaleras para cama",
+        "subtitle": "",
         "description": "¡Súper combo de 2 unidades de productos con precio bonificado y ahorro directo!",
         "stampStyle": "combo",
         "stockLimit": null,
@@ -30,10 +31,26 @@ const offersData = [
         "discountPercent": 15,
         "shippingType": "standard",
         "shippingCost": 0,
+        "shippingConfig": {
+            "logisticaEnabled": true,
+            "logisticaCost": 0,
+            "fleteEnabled": true,
+            "fleteCost": 0,
+            "fleteMaxUnits": 1,
+            "otroEnabled": false,
+            "otroLabel": "A convenir",
+            "otroCost": 0,
+            "isFreeShipping": false
+        },
+        "paymentConfig": {
+            "transferEnabled": true,
+            "linkEnabled": false,
+            "creditEnabled": false
+        },
         "hasTimer": false,
         "expirationDate": null,
         "customCoverImage": "",
-        "active": false,
-        "created_at": 1787973760484
+        "active": true,
+        "created_at": 1788560691665
     }
 ];

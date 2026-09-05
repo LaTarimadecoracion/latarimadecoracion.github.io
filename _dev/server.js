@@ -22,6 +22,17 @@ if (!fs.existsSync(offersDbPath)) {
     fs.writeFileSync(offersDbPath, 'const offersData = [];\n', 'utf8');
 }
 
+// Ensure payment config database file exists
+const paymentConfigDbPath = path.join(ROOT_DIR, 'js', 'payment-config.js');
+if (!fs.existsSync(paymentConfigDbPath)) {
+    const defaultPaymentConfig = {
+        transfer: { active: true, alias: 'VENUS.PULMON.METRO', cbu: '0720048988000002273736', bank: 'Banco Santander', titular: 'Yonatan Lucas Orellana', cuit: '20-35281538-2', discountPercent: 0 },
+        mercadopago: { active: false, mode: 'sandbox', publicKey: '', accessToken: '', maxInstallments: 12 },
+        credit: { active: true, surchargePercent: 0 }
+    };
+    fs.writeFileSync(paymentConfigDbPath, '// js/payment-config.js\nwindow.sessionPaymentConfig = ' + JSON.stringify(defaultPaymentConfig, null, 4) + ';\n', 'utf8');
+}
+
 // Ensure orders database file exists
 const ordersDbPath = path.join(ROOT_DIR, 'js', 'orders-data.js');
 if (!fs.existsSync(ordersDbPath)) {
@@ -178,8 +189,8 @@ app.get(['/', '/index.html'], (req, res, next) => {
     next();
 });
 
-// Disable caching specifically for js/site-config.js to allow dynamic theme changes on localhost
-app.get('/js/site-config.js', (req, res, next) => {
+// Disable caching specifically for js/site-config.js & js/payment-config.js to allow dynamic changes on localhost
+app.get(['/js/site-config.js', '/js/payment-config.js'], (req, res, next) => {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     res.setHeader('Pragma', 'no-cache');
     res.setHeader('Expires', '0');
@@ -430,6 +441,27 @@ app.post('/api/save-site-config', (req, res) => {
     } catch (error) {
         console.error('❌ Error guardando configuración de sitio:', error);
         res.status(500).json({ success: false, message: 'Error interno del servidor al guardar configuración.' });
+    }
+});
+
+// API Endpoint to save paymentConfig JSON
+app.post('/api/save-payment-config', (req, res) => {
+    try {
+        const paymentConfig = req.body;
+        
+        if (typeof paymentConfig !== 'object' || paymentConfig === null) {
+            return res.status(400).json({ success: false, message: 'El payload debe ser un objeto válido.' });
+        }
+
+        const fileContent = '// js/payment-config.js\n// --- PAYMENT CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.sessionPaymentConfig = ' + JSON.stringify(paymentConfig, null, 4) + ';\n';
+        const filePath = path.join(ROOT_DIR, 'js', 'payment-config.js');
+        
+        fs.writeFileSync(filePath, fileContent, 'utf8');
+        console.log('✅ js/payment-config.js actualizado correctamente.');
+        res.json({ success: true, message: 'Configuración de pagos guardada exitosamente.' });
+    } catch (error) {
+        console.error('❌ Error guardando configuración de pagos:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor al guardar configuración de pagos.' });
     }
 });
 
