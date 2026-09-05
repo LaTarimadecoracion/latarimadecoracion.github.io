@@ -586,6 +586,29 @@ app.get('/api/views', (req, res) => {
     res.json(readViewsStats());
 });
 
+// API Endpoints para transmisión de escáner remoto en tiempo real (Celular -> PC)
+let lastRemoteScanCode = null;
+let lastRemoteScanTimestamp = 0;
+
+app.post('/api/remote-scan', (req, res) => {
+    const { code } = req.body || {};
+    if (!code) {
+        return res.status(400).json({ success: false, message: 'Código no provisto' });
+    }
+    lastRemoteScanCode = String(code).trim();
+    lastRemoteScanTimestamp = Date.now();
+    console.log(`📱 [Escáner Remoto] Recibido desde celular: ${lastRemoteScanCode}`);
+    res.json({ success: true, code: lastRemoteScanCode, ts: lastRemoteScanTimestamp });
+});
+
+app.get('/api/remote-scan/poll', (req, res) => {
+    const since = parseInt(req.query.since) || 0;
+    if (lastRemoteScanTimestamp > since && lastRemoteScanCode) {
+        return res.json({ success: true, code: lastRemoteScanCode, ts: lastRemoteScanTimestamp });
+    }
+    res.json({ success: false, code: null, ts: lastRemoteScanTimestamp });
+});
+
 // API Endpoint para registrar una visita de un producto
 app.post('/api/products/view', (req, res) => {
     const { productId } = req.body;

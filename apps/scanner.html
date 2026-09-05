@@ -139,6 +139,18 @@
             <div id="scan-last-code" class="scan-status-value">Apuntá al código de barras o QR</div>
             <div id="scan-total-count" class="count-badge">Total transmitidos: 0</div>
         </div>
+
+        <!-- Ajuste de Servidor / PC IP local -->
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 12px; margin-top: 10px; width: 100%; max-width: 440px;">
+            <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+                <span>🌐 IP / Servidor PC Local (Opcional):</span>
+                <span id="ip-saved-indicator" style="color: #4ade80; display: none;">Guardado ✓</span>
+            </div>
+            <div style="display: flex; gap: 6px;">
+                <input type="text" id="input-server-ip" placeholder="http://192.168.1.15:3000" style="flex: 1; background: #0f172a; border: 1px solid #475569; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;">
+                <button type="button" onclick="saveServerIp()" style="background: #38bdf8; color: #0f172a; border: none; border-radius: 6px; padding: 0 12px; font-weight: 800; font-size: 0.78rem; cursor: pointer;">Guardar</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -173,7 +185,18 @@
             document.getElementById('scan-total-count').textContent = `Total transmitidos: ${scanCounter}`;
             playBeep();
 
-            // 1. Emitir vía BroadcastChannel
+            // 1. Emitir vía API Server (HTTP / Red)
+            try {
+                const customServer = localStorage.getItem('tarima_remote_server_ip') || '';
+                const apiUrl = customServer ? (customServer.endsWith('/') ? customServer + 'api/remote-scan' : customServer + '/api/remote-scan') : '/api/remote-scan';
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: code })
+                }).catch(e => {});
+            } catch(e) {}
+
+            // 2. Emitir vía BroadcastChannel
             if ('BroadcastChannel' in window) {
                 try {
                     const bc = new BroadcastChannel('tarima_remote_scanner');
@@ -181,7 +204,7 @@
                 } catch(e) {}
             }
 
-            // 2. Emitir vía localStorage (Cross-tab)
+            // 3. Emitir vía localStorage (Cross-tab)
             try {
                 localStorage.setItem('tarima_remote_scan_signal', JSON.stringify({
                     code: code,
@@ -225,7 +248,27 @@
             });
         }
 
-        document.addEventListener('DOMContentLoaded', initScanner);
+        function saveServerIp() {
+            const input = document.getElementById('input-server-ip');
+            if (input) {
+                const val = (input.value || '').trim();
+                localStorage.setItem('tarima_remote_server_ip', val);
+                const ind = document.getElementById('ip-saved-indicator');
+                if (ind) {
+                    ind.style.display = 'inline';
+                    setTimeout(() => ind.style.display = 'none', 2000);
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('tarima_remote_server_ip');
+            if (saved) {
+                const input = document.getElementById('input-server-ip');
+                if (input) input.value = saved;
+            }
+            initScanner();
+        });
     </script>
 </body>
 </html>

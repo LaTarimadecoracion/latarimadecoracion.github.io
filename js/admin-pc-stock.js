@@ -1085,7 +1085,20 @@
         if (window.adminRemoteChannelInitialized) return;
         window.adminRemoteChannelInitialized = true;
 
-        // 1. Intentar usar BroadcastChannel para comunicación local entre ventanas/pestañas
+        // 1. Polling HTTP del Servidor (Funciona entre dispositivos independientes Celular -> PC)
+        let lastPollTs = Date.now();
+        setInterval(() => {
+            fetch(`/api/remote-scan/poll?since=${lastPollTs}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.success && data.code && data.ts > lastPollTs) {
+                        lastPollTs = data.ts;
+                        window.processRemoteScanCode(data.code);
+                    }
+                }).catch(e => {});
+        }, 1000);
+
+        // 2. Intentar usar BroadcastChannel para comunicación local entre ventanas/pestañas
         if ('BroadcastChannel' in window) {
             try {
                 window.adminRemoteChannel = new BroadcastChannel('tarima_remote_scanner');
@@ -1097,7 +1110,7 @@
             } catch(e) {}
         }
 
-        // 2. Fallback de localStorage (Cross-tab / Cross-device si comparten sesión)
+        // 3. Fallback de localStorage (Cross-tab / Cross-device)
         window.addEventListener('storage', function(e) {
             if (e.key === 'tarima_remote_scan_signal' && e.newValue) {
                 try {
