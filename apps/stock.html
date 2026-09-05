@@ -14,6 +14,7 @@
 
     <!-- Store Data Core for Auto-syncing Products -->
     <script src="../js/products-data.js"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 
     <style>
         html, body {
@@ -1402,7 +1403,44 @@
                 .replace(/'/g, "&#039;");
         }
 
-        document.addEventListener('DOMContentLoaded', loadStockData);
+        function sendScanToPcTerminal(code) {
+            if (!code) return;
+            try {
+                // 1. Enviar vía BroadcastChannel
+                if ('BroadcastChannel' in window) {
+                    const bc = new BroadcastChannel('tarima_remote_scanner');
+                    bc.postMessage({ code: code, ts: Date.now() });
+                }
+            } catch(e) {}
+
+            try {
+                // 2. Enviar vía localStorage signal (Cross-tab y Cross-window)
+                localStorage.setItem('tarima_remote_scan_signal', JSON.stringify({
+                    code: code,
+                    ts: Date.now(),
+                    rand: Math.random()
+                }));
+            } catch(e) {}
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStockData();
+            
+            // Si la URL contiene ?remote=pc_terminal_1 (abierto desde QR de vinculación)
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('remote')) {
+                const banner = document.createElement('div');
+                banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#0f172a;color:#ffffff;padding:10px 14px;z-index:99999;font-size:0.85rem;font-weight:700;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 6px -1px rgba(0,0,0,0.2);';
+                banner.innerHTML = `
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <span class="material-symbols-outlined" style="color:#38bdf8;font-size:20px;">phonelink</span>
+                        <span>Vinculado como Escáner Remoto de PC</span>
+                    </div>
+                    <span style="font-size:0.75rem;color:#4ade80;">🟢 EN VIVO</span>
+                `;
+                document.body.prepend(banner);
+            }
+        });
     </script>
 </body>
 </html>

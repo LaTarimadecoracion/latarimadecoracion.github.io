@@ -1040,6 +1040,97 @@
         window.focusAdminPcScannerInput();
     };
 
+    // --- SISTEMA DE ESCÁNER REMOTO (VINCULACIÓN POR QR DE CELULAR) ---
+    window.adminRemoteChannel = null;
+
+    window.openAdminRemotePairingModal = function() {
+        const modal = document.getElementById('admin-remote-pairing-modal');
+        const qrContainer = document.getElementById('admin-remote-qr-container');
+        if (!modal) return;
+
+        // Generar URL HTTPS para la aplicación de escáner en el celular
+        const remoteUrl = "https://latarimadecoracion.github.io/apps/stock.html?remote=pc_terminal_1";
+
+        if (qrContainer) {
+            qrContainer.innerHTML = '';
+            if (typeof QRCode === 'function') {
+                try {
+                    new QRCode(qrContainer, {
+                        text: remoteUrl,
+                        width: 160,
+                        height: 160,
+                        colorDark: "#0f172a",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.M
+                    });
+                } catch(e) {
+                    qrContainer.innerHTML = '<span style="font-size:0.75rem;color:#dc2626;">Error cargando QR</span>';
+                }
+            } else {
+                qrContainer.innerHTML = `<a href="${remoteUrl}" target="_blank" style="font-size:0.75rem;word-break:break-all;">${remoteUrl}</a>`;
+            }
+        }
+
+        window.initAdminRemoteChannel();
+        modal.style.display = 'flex';
+    };
+
+    window.closeAdminRemotePairingModal = function() {
+        const modal = document.getElementById('admin-remote-pairing-modal');
+        if (modal) modal.style.display = 'none';
+        window.focusAdminPcScannerInput();
+    };
+
+    window.initAdminRemoteChannel = function() {
+        if (window.adminRemoteChannelInitialized) return;
+        window.adminRemoteChannelInitialized = true;
+
+        // 1. Intentar usar BroadcastChannel para comunicación local entre ventanas/pestañas
+        if ('BroadcastChannel' in window) {
+            try {
+                window.adminRemoteChannel = new BroadcastChannel('tarima_remote_scanner');
+                window.adminRemoteChannel.onmessage = function(ev) {
+                    if (ev.data && ev.data.code) {
+                        window.processRemoteScanCode(ev.data.code);
+                    }
+                };
+            } catch(e) {}
+        }
+
+        // 2. Fallback de localStorage (Cross-tab / Cross-device si comparten sesión)
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'tarima_remote_scan_signal' && e.newValue) {
+                try {
+                    const data = JSON.parse(e.newValue);
+                    if (data && data.code && (Date.now() - data.ts) < 5000) {
+                        window.processRemoteScanCode(data.code);
+                    }
+                } catch(err) {}
+            }
+        });
+    };
+
+    window.processRemoteScanCode = function(code) {
+        const input = document.getElementById('admin-pc-scanner-input');
+        if (input) {
+            input.value = code;
+        }
+        window.processAdminPcScan();
+        window.playAdminPcBeep('success');
+
+        const statusEl = document.getElementById('admin-remote-pairing-status');
+        if (statusEl) {
+            statusEl.textContent = `⚡ Escaneado desde celular: ${code}`;
+            statusEl.style.background = '#dcfce7';
+            statusEl.style.color = '#15803d';
+            setTimeout(() => {
+                statusEl.textContent = '🟢 Esperando escaneos del celular...';
+                statusEl.style.background = '#f0fdf4';
+                statusEl.style.color = '#16a34a';
+            }, 2500);
+        }
+    };
+
     window.initAdminPcStockModule = function() {
         const input = document.getElementById('admin-pc-scanner-input');
         if (input) {
@@ -1062,6 +1153,7 @@
             };
         }
 
+        window.initAdminRemoteChannel();
         window.showAdminPcModePlaceholder(window.adminPcScanMode || 'pos');
         window.focusAdminPcScannerInput();
     };

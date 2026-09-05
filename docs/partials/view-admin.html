@@ -441,9 +441,13 @@
                                         <span class="material-symbols-outlined" style="position: absolute; left: 12px; color: #64748b; font-size: 22px;">barcode_reader</span>
                                         <input type="text" id="admin-pc-scanner-input" placeholder="Escanea código de barras o escribe código corto (ej. 121, 2521)..." style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1.05rem; font-weight: 700; color: #0f172a; background: #FFF; outline: none;" autocomplete="off">
                                     </div>
-                                    <button type="button" onclick="window.openAdminCameraScannerModal()" title="Escanear con Cámara del Celular / Laptop" style="height: 44px; padding: 0 16px; border-radius: 8px; border: none; background: #0f172a; color: #ffffff; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                                    <button type="button" onclick="window.openAdminRemotePairingModal()" title="Vincular Cámara del Celular por QR como Lector Remoto" style="height: 44px; padding: 0 14px; border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; color: #0f172a; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                                        <span class="material-symbols-outlined" style="font-size: 20px; color: #0f172a;">phonelink</span>
+                                        <span class="mobile-hide-details">Vincular Celular</span>
+                                    </button>
+                                    <button type="button" onclick="window.openAdminCameraScannerModal()" title="Escanear con Cámara Integrada" style="height: 44px; padding: 0 16px; border-radius: 8px; border: none; background: #0f172a; color: #ffffff; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;">
                                         <span class="material-symbols-outlined" style="font-size: 20px; color: #38bdf8;">photo_camera</span>
-                                        <span class="mobile-hide-details">Cámara Celular</span>
+                                        <span class="mobile-hide-details">Cámara Directa</span>
                                     </button>
                                 </div>
                             </div>
@@ -470,6 +474,36 @@
                                     </div>
                                     <div style="padding: 0.85rem 1.25rem; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end;">
                                         <button type="button" onclick="window.closeAdminCameraScannerModal()" style="padding: 0.5rem 1.25rem; border: 1px solid #cbd5e1; background: #ffffff; color: #334155; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer;">Cerrar Cámara</button>
+                                    </div>
+                                </div>
+                            <!-- MODAL DE VINCULACIÓN REMOTA POR QR PARA CELULAR -->
+                            <div id="admin-remote-pairing-modal" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.85); backdrop-filter: blur(6px); z-index: 99999; align-items: center; justify-content: center; padding: 1rem;">
+                                <div style="background: #ffffff; border-radius: 14px; width: 100%; max-width: 440px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column;">
+                                    <div style="padding: 1rem 1.25rem; background: #0f172a; color: #ffffff; display: flex; align-items: center; justify-content: space-between;">
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <span class="material-symbols-outlined" style="color: #38bdf8;">phonelink</span>
+                                            <h3 style="margin: 0; font-size: 1rem; font-weight: 700; color: #ffffff;">Vincular Celular como Escáner</h3>
+                                        </div>
+                                        <button type="button" onclick="window.closeAdminRemotePairingModal()" style="background: transparent; border: none; color: #94a3b8; cursor: pointer; display: flex; align-items: center;" title="Cerrar">
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </div>
+                                    <div style="padding: 1.5rem; background: #f8fafc; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center;">
+                                        <div style="font-size: 0.85rem; color: #0f172a; font-weight: 700;">1. Escaneá este código QR con la cámara de tu celular</div>
+                                        
+                                        <!-- Código QR de Vinculación Remota -->
+                                        <div id="admin-remote-qr-container" style="width: 180px; height: 180px; background: #ffffff; padding: 10px; border: 2px solid #0f172a; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);"></div>
+                                        
+                                        <div style="font-size: 0.78rem; color: #475569; max-width: 320px; line-height: 1.45;">
+                                            Se abrirá el escáner remoto en el celular con HTTPS. Todo lo que escanees allá **impactará inmediatamente aquí en tu PC**.
+                                        </div>
+
+                                        <div id="admin-remote-pairing-status" style="font-size: 0.78rem; font-weight: 800; color: #16a34a; background: #f0fdf4; padding: 4px 12px; border-radius: 20px; border: 1px solid #bbf7d0;">
+                                            🟢 Esperando escaneos del celular...
+                                        </div>
+                                    </div>
+                                    <div style="padding: 0.85rem 1.25rem; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end;">
+                                        <button type="button" onclick="window.closeAdminRemotePairingModal()" style="padding: 0.5rem 1.25rem; border: 1px solid #cbd5e1; background: #ffffff; color: #334155; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer;">Cerrar</button>
                                     </div>
                                 </div>
                             </div>
