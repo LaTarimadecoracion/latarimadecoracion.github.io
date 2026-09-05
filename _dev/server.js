@@ -33,6 +33,30 @@ if (!fs.existsSync(paymentConfigDbPath)) {
     fs.writeFileSync(paymentConfigDbPath, '// js/payment-config.js\nwindow.sessionPaymentConfig = ' + JSON.stringify(defaultPaymentConfig, null, 4) + ';\n', 'utf8');
 }
 
+// Ensure shipping config database file exists
+const shippingConfigDbPath = path.join(ROOT_DIR, 'js', 'shipping-config.js');
+if (!fs.existsSync(shippingConfigDbPath)) {
+    const defaultShippingData = {
+        logistica: {
+            caba: { active: true, baseCost: 4070 },
+            cordon_1: { active: true, baseCost: 5380 },
+            cordon_2: { active: true, baseCost: 8280 },
+            resto_provincias: { active: true, baseCost: 0, requireWA: true }
+        },
+        flete: {
+            flete_zona_1: { active: true, baseCost: 4500 },
+            flete_zona_2: { active: true, baseCost: 7500 },
+            flete_zona_3: { active: true, baseCost: 11000 },
+            flete_fuera_rango: { active: false, baseCost: 0, requireWA: true }
+        },
+        otro: {
+            otro_amba: { active: true, baseCost: 0 },
+            otro_interior: { active: true, baseCost: 0, requireWA: true }
+        }
+    };
+    fs.writeFileSync(shippingConfigDbPath, '// js/shipping-config.js\nwindow.sessionShippingFullData = ' + JSON.stringify(defaultShippingData, null, 4) + ';\n', 'utf8');
+}
+
 // Ensure orders database file exists
 const ordersDbPath = path.join(ROOT_DIR, 'js', 'orders-data.js');
 if (!fs.existsSync(ordersDbPath)) {
@@ -621,6 +645,23 @@ app.post('/api/products/view', (req, res) => {
     saveViewsStats(stats);
     
     res.json({ success: true, views: stats[productId] });
+});
+
+// API Endpoint para guardar tarifas de envíos en disco (js/shipping-config.js)
+app.post('/api/save-shipping-full', (req, res) => {
+    try {
+        const fullData = req.body;
+        if (!fullData || typeof fullData !== 'object') {
+            return res.status(400).json({ success: false, message: 'Datos de envío no válidos.' });
+        }
+        const fileContent = '// js/shipping-config.js\nwindow.sessionShippingFullData = ' + JSON.stringify(fullData, null, 4) + ';\n';
+        fs.writeFileSync(shippingConfigDbPath, fileContent, 'utf8');
+        console.log('✅ Tarifas de envío guardadas exitosamente en js/shipping-config.js');
+        res.json({ success: true, message: 'Tarifas guardadas exitosamente.' });
+    } catch (e) {
+        console.error('❌ Error guardando tarifas de envío:', e);
+        res.status(500).json({ success: false, message: 'Error interno al guardar tarifas.' });
+    }
 });
 
 // API Endpoint to upload an image
