@@ -3,20 +3,19 @@ window.sessionShippingFullData = {
     "logistica": {
         "caba": {
             "active": true,
-            "baseCost": 4070
+            "baseCost": 8000
         },
         "cordon_1": {
             "active": true,
-            "baseCost": 5380
+            "baseCost": 10000
         },
         "cordon_2": {
             "active": true,
-            "baseCost": 8280
+            "baseCost": 12000
         },
         "resto_provincias": {
             "active": true,
-            "baseCost": 0,
-            "requireWA": true
+            "baseCost": 0
         }
     },
     "flete": {

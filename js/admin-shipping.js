@@ -110,6 +110,10 @@
             window.sessionShippingZoneCatalogs = JSON.parse(JSON.stringify(defaultZoneCatalogs));
         }
 
+        if (window.sessionShippingFullData && Object.keys(window.sessionShippingFullData).length > 0) {
+            return;
+        }
+
         const storedData = localStorage.getItem('sessionShippingFullData');
         if (storedData) {
             try {
