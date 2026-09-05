@@ -1048,8 +1048,8 @@
         const qrContainer = document.getElementById('admin-remote-qr-container');
         if (!modal) return;
 
-        // Generar URL HTTPS para la aplicación de escáner en el celular
-        const remoteUrl = "https://latarimadecoracion.github.io/apps/stock.html?remote=pc_terminal_1";
+        // Generar URL HTTPS para la aplicación de escáner dedicada en el celular
+        const remoteUrl = "https://latarimadecoracion.github.io/apps/scanner.html";
 
         if (qrContainer) {
             qrContainer.innerHTML = '';
