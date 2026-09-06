@@ -1104,7 +1104,7 @@
                  if(!imgUrl) return;
                  galleryHTML += `
                      <div class="product-detail-slide">
-                         <div class="product-gallery-img-wrapper" style="position:relative;">
+                         <div class="product-gallery-img-wrapper" style="position:relative; width:100%; height:100%;">
                              <img src="${imgUrl}" class="product-detail-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
                          </div>
                          <span class="slide-indicator">${index + 1} / ${images.length}</span>
@@ -1124,8 +1124,44 @@
                     </button>
                 </div>
             `;
+
+            // Inyectar Botones de Acabado Semitransparentes sobre el pie de la imagen
+            if (grupos.length > 1 || (grupos.length === 1 && grupos[0].acabado_name !== 'Único')) {
+                const count = grupos.length;
+                let btnWidthPct = '100%';
+                if (count === 2) btnWidthPct = '50%';
+                else if (count >= 3) btnWidthPct = `${(100 / count).toFixed(3)}%`;
+
+                galleryHTML += `
+                    <div class="gallery-acabados-overlay" onclick="event.stopPropagation();">
+                        ${grupos.map((g, i) => {
+                            const imgUrl = g.cover_image || (g.images_list && g.images_list.length > 0 ? g.images_list[0] : null);
+                            return `
+                                <button type="button" class="gallery-acabado-btn ${i === currentGroupIndex ? 'active' : ''}" data-index="${i}" style="width: ${btnWidthPct} !important; min-width: ${btnWidthPct} !important; flex: 1 1 ${btnWidthPct} !important;" title="Ver acabado ${g.acabado_name}">
+                                    ${imgUrl ? `<img src="${imgUrl}" class="gallery-acabado-thumb" alt="${g.acabado_name}">` : ''}
+                                    <span class="gallery-acabado-label">${g.acabado_name}</span>
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            }
             
             detailImgContainer.innerHTML = galleryHTML;
+
+            // Escuchar clics en los botones de acabado de la galería
+            const acabadosOverlay = detailImgContainer.querySelector('.gallery-acabados-overlay');
+            if (acabadosOverlay) {
+                acabadosOverlay.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.gallery-acabado-btn');
+                    if (!btn) return;
+                    
+                    acabadosOverlay.querySelectorAll('.gallery-acabado-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    updateGroupView(parseInt(btn.dataset.index));
+                });
+            }
             
             const acabado = grupo.acabado_name || 'Único';
             setupGalleryActions(acabado);
@@ -1247,39 +1283,8 @@
             updateUrlWithVariants();
         }
 
-        // --- Render Selectors ---
-        // Acabado Selector (Horizontal Buttons sin label)
-        if (grupos.length > 1 || (grupos.length === 1 && grupos[0].acabado_name !== 'Único')) {
-            divAcabado.className = 'variant-selector-wrapper';
-            
-            // Si hay exactamente 2 acabados, dividimos al 50%. Si hay cualquier otro número, dividimos al 33.33%.
-            const btnWidth = grupos.length === 2 ? 'calc(50% - 4px)' : 'calc(33.333% - 6px)';
-            
-            divAcabado.innerHTML = `
-                <div class="variant-buttons-container" id="acabado-buttons-container" style="display: flex; flex-wrap: wrap; gap: 8px; overflow-x: visible;">
-                    ${grupos.map((g, i) => {
-                        const imgUrl = g.cover_image || (g.images_list && g.images_list.length > 0 ? g.images_list[0] : null);
-                        return `
-                            <button type="button" class="variant-btn ${i === currentGroupIndex ? 'active' : ''}" data-index="${i}" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.35rem 0.5rem; border-radius: 30px; flex: 0 0 ${btnWidth}; width: ${btnWidth}; max-width: ${btnWidth}; font-size: 0.82rem; white-space: nowrap; box-sizing: border-box;">
-                                ${imgUrl ? `<img src="${imgUrl}" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(255,255,255,0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.15); flex-shrink: 0;">` : ''}
-                                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${g.acabado_name}</span>
-                            </button>
-                        `;
-                    }).join('')}
-                </div>
-            `;
-            const btnContainer = divAcabado.querySelector('#acabado-buttons-container');
-
-            btnContainer.addEventListener('click', (e) => {
-                const btn = e.target.closest('.variant-btn');
-                if (!btn) return;
-                
-                btnContainer.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                updateGroupView(parseInt(btn.dataset.index));
-            });
-        }
+        // Acabado Selector (Integrado directamente sobre la foto del producto)
+        divAcabado.style.display = 'none';
 
         // Optional Variant Selector (Cascade)
         const optVariant = product.optional_variant;

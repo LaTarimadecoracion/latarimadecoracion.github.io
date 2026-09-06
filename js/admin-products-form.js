@@ -1010,12 +1010,14 @@
         }
     }
 
-    // ── Guardar producto ──
-    const btnGenerateJson = document.getElementById('btn-generate-json');
-    if (btnGenerateJson) {
-        btnGenerateJson.addEventListener('click', async () => {
-            let idVal = document.getElementById('admin-id').value.trim();
-            const pTitle = document.getElementById('admin-title').value.trim();
+    // ── Guardar producto con delegación de eventos global ──
+    document.addEventListener('click', async (e) => {
+        const btnGenerateJson = e.target.closest('#btn-generate-json');
+        if (!btnGenerateJson) return;
+
+        try {
+            let idVal = document.getElementById('admin-id')?.value?.trim() || '';
+            const pTitle = document.getElementById('admin-title')?.value?.trim() || '';
 
             if (!idVal) {
                 if (pTitle) {
@@ -1033,13 +1035,14 @@
                     idVal = 'borrador-' + Date.now();
                 }
                 // Actualizar el input visualmente en el formulario
-                document.getElementById('admin-id').value = idVal;
+                const adminIdInp = document.getElementById('admin-id');
+                if (adminIdInp) adminIdInp.value = idVal;
             }
 
             btnGenerateJson.disabled    = true;
             btnGenerateJson.textContent = 'Guardando...';
 
-            const catName = window.isRentalMode ? 'alquileres' : (targetCategoryIdForProduct !== null ? sessionProducts[targetCategoryIdForProduct].name : 'general');
+            const catName = window.isRentalMode ? 'alquileres' : (targetCategoryIdForProduct !== null && sessionProducts[targetCategoryIdForProduct] ? sessionProducts[targetCategoryIdForProduct].name : 'general');
 
             const finalAcabadosGroups = [];
 
@@ -1060,13 +1063,13 @@
                 gState.images = uploadedImages;
 
                 const medidasContainer = card.querySelector('.group-medidas-rows');
-                const medidasVariants = [...medidasContainer.querySelectorAll('.medida-admin-row')].map(row => {
+                const medidasVariants = medidasContainer ? [...medidasContainer.querySelectorAll('.medida-admin-row')].map(row => {
                     const priceVal = row.querySelector('.medida-precio') ? row.querySelector('.medida-precio').value.trim() : '';
                     const costVal = row.querySelector('.medida-costo') ? row.querySelector('.medida-costo').value.trim() : '';
                     return {
-                        medida: row.querySelector('.medida-valor').value.trim(),
-                        link:   row.querySelector('.medida-link').value.trim(),
-                        default: row.querySelector('.medida-default-radio').checked,
+                        medida: row.querySelector('.medida-valor')?.value?.trim() || '',
+                        link:   row.querySelector('.medida-link')?.value?.trim() || '',
+                        default: row.querySelector('.medida-default-radio')?.checked || false,
                         hidden: row.dataset.hidden === 'true',
                         linkLabel: row.dataset.linkLabel || '',
                         iconType: row.dataset.iconType || 'local_shipping',
@@ -1076,11 +1079,11 @@
                         legend: row.querySelector('.medida-leyenda') ? row.querySelector('.medida-leyenda').value.trim() : '',
                         showPrice: row.dataset.showPrice === 'true'
                     };
-                }).filter(r => r.medida !== '');
+                }).filter(r => r.medida !== '') : [];
 
 
                 finalAcabadosGroups.push({
-                    acabado_name: card.querySelector('.group-acabado-name').value.trim(),
+                    acabado_name: card.querySelector('.group-acabado-name')?.value?.trim() || '',
                     cover_image: gState.images[0] || 'img/logo_provisional.png',
                     images_list: gState.images.length > 0 ? [...gState.images] : [],
                     medidas_variants: medidasVariants,
@@ -1088,13 +1091,13 @@
                 });
             }
 
-            const optLabel   = document.getElementById('admin-opt-label').value.trim();
-            const optRaw     = document.getElementById('admin-opt-options').value.trim();
+            const optLabel   = document.getElementById('admin-opt-label')?.value?.trim() || '';
+            const optRaw     = document.getElementById('admin-opt-options')?.value?.trim() || '';
             const optOptions = optRaw ? optRaw.split(',').map(s => s.trim()).filter(s => s) : [];
 
-            const tagsRaw    = document.getElementById('admin-tags').value.trim();
+            const tagsRaw    = document.getElementById('admin-tags')?.value?.trim() || '';
             const tagsList   = tagsRaw ? tagsRaw.split(',').map(s => s.trim()).filter(s => s) : [];
-            const pVideo     = document.getElementById('admin-video').value.trim();
+            const pVideo     = document.getElementById('admin-video')?.value?.trim() || '';
 
             // Configuración de Envíos del Producto
             const logMaxUnitsVal = parseInt(document.getElementById('product-ship-logistica-max-units')?.value);
@@ -1112,7 +1115,7 @@
                 fleteMaxUnits: (!isNaN(fltMaxUnitsVal) && fltMaxUnitsVal > 0) ? fltMaxUnitsVal : undefined,
                 fleteFreeMinUnits: (!isNaN(fltFreeMinVal) && fltFreeMinVal > 0) ? fltFreeMinVal : undefined,
                 otroEnabled: document.getElementById('product-ship-otro-enabled')?.checked || false,
-                otroLabel: document.getElementById('product-ship-otro-label')?.value.trim() || 'A convenir',
+                otroLabel: document.getElementById('product-ship-otro-label')?.value?.trim() || 'A convenir',
                 otroCost: parseFloat(document.getElementById('product-ship-otro-cost')?.value) || 0,
                 isFreeShipping: document.getElementById('product-ship-is-free')?.checked || false
             };
@@ -1126,8 +1129,8 @@
 
             const product = {
                 id:          idVal,
-                title:       document.getElementById('admin-title').value.trim(),
-                description: document.getElementById('admin-description').value.trim(),
+                title:       document.getElementById('admin-title')?.value?.trim() || '',
+                description: document.getElementById('admin-description')?.value?.trim() || '',
                 video:       pVideo !== '' ? pVideo : undefined,
                 image:       finalAcabadosGroups[0]?.cover_image || 'img/logo_provisional.png',
                 acabados_groups: finalAcabadosGroups,
@@ -1243,8 +1246,8 @@
 
             // Obtener categorías seleccionadas y principal (solo modo normal)
             const checkboxesContainer = document.getElementById('product-categories-checkboxes');
-            let selectedCatIds = [...checkboxesContainer.querySelectorAll('.cat-checkbox:checked')].map(cb => cb.value);
-            const primaryRadio = checkboxesContainer.querySelector('.cat-primary-radio:checked');
+            let selectedCatIds = checkboxesContainer ? [...checkboxesContainer.querySelectorAll('.cat-checkbox:checked')].map(cb => cb.value) : [];
+            const primaryRadio = checkboxesContainer ? checkboxesContainer.querySelector('.cat-primary-radio:checked') : null;
             const realSelectedCatIds = selectedCatIds.filter(id => !id.endsWith('-todos'));
             let primaryCatId = primaryRadio ? primaryRadio.value : (realSelectedCatIds.length > 0 ? realSelectedCatIds[0] : (selectedCatIds.length > 0 ? selectedCatIds[0] : null));
 
@@ -1400,7 +1403,13 @@
 
             showAdminToast(editingProductId ? '✅ Producto actualizado en todas las categorías' : '✅ Producto agregado a las categorías');
 
-            await saveProductsToServer();
+            if (typeof window.saveProductsToServer === 'function') {
+                await window.saveProductsToServer();
+            } else if (typeof saveProductsToServer === 'function') {
+                await saveProductsToServer();
+            } else {
+                console.warn('saveProductsToServer no encontrada en window');
+            }
 
             const productModal = document.getElementById('admin-product-modal');
             if (productModal) productModal.style.display = 'none';
@@ -1408,8 +1417,13 @@
 
             btnGenerateJson.disabled    = false;
             btnGenerateJson.textContent = 'Guardar Producto en Servidor';
-        });
-    }
+        } catch (err) {
+            console.error('Error al guardar el producto:', err);
+            alert('Ocurrió un error al procesar el producto: ' + err.message);
+            btnGenerateJson.disabled    = false;
+            btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+        }
+    });
 
     // --- BUSCADOR CONSCIENTE DE LAS VARIANTES (ACABADOS) ---
     

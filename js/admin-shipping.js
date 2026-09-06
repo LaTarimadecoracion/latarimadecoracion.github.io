@@ -179,12 +179,15 @@
                     <p class="admin-header-desc">${currentMeta.subtitle}</p>
                 </div>
                 <div class="admin-header-actions">
+                    <button type="button" onclick="window.saveAdminShippingRatesToDiskExplicitly()" class="btn-primary" style="background:#16a34a;border-color:#16a34a;">
+                        <span class="material-symbols-outlined">save</span> 💾 Guardar Tarifas en Archivo
+                    </button>
                     <button type="button" onclick="window.addNewShippingZone('${currentShipMode}')" class="btn-outline">
                         <span class="material-symbols-outlined">add</span> Crear Zona
                     </button>
                     ${currentShipMode === 'logistica' ? `
-                        <button type="button" onclick="window.applyFluxDefaults()" class="btn-primary">
-                            ⚡ Precios Flux
+                        <button type="button" onclick="window.applyFluxDefaults()" class="btn-outline" title="Cargar precios base por defecto de Flux Logística">
+                            ⚡ Precios Base Flux
                         </button>
                     ` : ''}
                 </div>
@@ -1136,6 +1139,16 @@
             });
         } catch (e) {
             // Guardado en memoria local completado
+        }
+    };
+
+    // GUARDADO EXPLÍCITO DIRECTO AL ARCHIVO DEL PROYECTO (CON FEEDBACK)
+    window.saveAdminShippingRatesToDiskExplicitly = async function() {
+        await window.saveAdminShippingRatesSilently();
+        if (typeof window.showAdminToast === 'function') {
+            window.showAdminToast('✅ Tarifas guardadas exitosamente en el archivo js/shipping-config.js');
+        } else {
+            alert('✅ Tarifas guardadas exitosamente en el archivo js/shipping-config.js');
         }
     };
 

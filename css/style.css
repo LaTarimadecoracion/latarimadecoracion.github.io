@@ -1603,10 +1603,9 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 }
 .detail-img-container {
     width: 100%;
-    height: auto !important;
-    aspect-ratio: 1200 / 791; /* Reserve exact standard proportion to prevent layout shifts */
-    background: #f5f5f5;
     position: relative; /* Anchor floating action buttons */
+    background: transparent;
+    overflow: hidden;
 }
 
 .detail-img-container img {
@@ -1619,11 +1618,105 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 .gallery-floating-actions {
     position: absolute;
     right: 16px;
-    bottom: 35px; /* Positioned safely higher to prevent boundary clipping and improve ergonomics */
+    bottom: 55px; /* Positioned safely higher above the bottom acabados bar */
     display: flex;
     flex-direction: column;
     gap: 12px;
     z-index: 100;
+}
+
+/* ── BARRA DE ACABADOS INTEGRADA SEMITRANSPARENTE EN LA FOTO ── */
+.gallery-acabados-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15, 23, 42, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 95;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0 !important;
+}
+
+.gallery-acabado-btn {
+    flex: 1 1 0% !important;
+    background: transparent !important;
+    border: none !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 0 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    height: 100% !important;
+    padding: 0 0.5rem !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    transition: all 0.2s ease !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6) !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    box-shadow: none !important;
+}
+
+.gallery-acabado-btn:last-child {
+    border-right: none !important;
+}
+
+.gallery-acabado-btn:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+
+.gallery-acabado-btn.active {
+    background: rgba(255, 255, 255, 0.22) !important;
+    color: #ffffff !important;
+    font-weight: 900 !important;
+}
+
+.gallery-acabado-btn.active::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 3.5px !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9) !important;
+}
+
+.gallery-acabado-thumb {
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4) !important;
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+}
+
+/* En móviles: solo texto para un diseño ultra limpio sin saturar */
+@media (max-width: 600px) {
+    .gallery-acabado-thumb {
+        display: none !important;
+    }
+    .gallery-acabados-overlay {
+        height: 42px;
+    }
+    .gallery-acabado-btn {
+        padding: 0 0.25rem !important;
+        font-size: 0.8rem !important;
+    }
 }
 
 .btn-gallery-action {
@@ -2980,9 +3073,7 @@ body.in-iframe,
     scroll-snap-type: x mandatory; /* No !important so JS can disable it while dragging */
     scroll-behavior: smooth; /* Smooth scrolling when using arrows or snap */
     width: 100% !important;
-    height: auto !important; /* Altura elástica auto-adaptativa según la foto */
-    aspect-ratio: 1200 / 791; /* Mantiene la proporción física nítida */
-    background-color: #f5f5f5 !important; /* Fondo neutro por si la foto es clara */
+    background-color: transparent !important;
     scrollbar-width: none; /* Oculta la barra de scroll en navegadores modernos */
     -webkit-overflow-scrolling: touch; /* Scroll nativo ultra fluido con inercia en iPhone */
 }
@@ -2995,8 +3086,6 @@ body.in-iframe,
 .product-detail-slide {
     flex: 0 0 100% !important; /* Cada foto toma obligatoriamente el 100% del ancho disponible */
     width: 100% !important;
-    height: auto !important; /* Altura dinámica basada en la imagen */
-    aspect-ratio: 1200 / 791; /* Mantiene la proporción física nítida */
     scroll-snap-align: start !important; /* Punto de anclaje para el efecto imán */
     position: relative;
     display: flex;
@@ -3004,9 +3093,16 @@ body.in-iframe,
     align-items: center;
 }
 
+.product-gallery-img-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
 .product-detail-img {
     width: 100% !important;
-    height: auto !important; /* Altura determinada por la proporción física nítida de la imagen */
+    height: 100% !important;
+    object-fit: cover !important;
     display: block;
 }
 
