@@ -927,13 +927,24 @@
                             if (discountsList && discountsList.length > 0) {
                                 const tiersText = [...discountsList]
                                     .sort((a, b) => (a.minQty !== undefined ? a.minQty : a.minUnits) - (b.minQty !== undefined ? b.minQty : b.minUnits))
-                                    .map(d => `${d.minQty !== undefined ? d.minQty : d.minUnits}+ uds: ${d.discountPercent}% OFF`)
+                                    .map(d => {
+                                        const minU = d.minQty !== undefined ? d.minQty : d.minUnits;
+                                        const parts = [];
+                                        if (d.discountPercent > 0) parts.push(`${d.discountPercent}% OFF prod.`);
+                                        if (d.shippingDiscountPercent > 0) parts.push(d.shippingDiscountPercent >= 100 ? 'Envío GRATIS' : `${d.shippingDiscountPercent}% OFF envío`);
+                                        return `${minU}+ uds: ${parts.join(' + ') || (d.discountPercent + '% OFF')}`;
+                                    })
                                     .join(' | ');
 
                                 if (discountRule) {
                                     discountBanner.style.display = 'block';
                                     discountBanner.style.color = '#15803d';
-                                    discountBanner.innerHTML = `🎉 ¡Llevando ${qtyVal} uds tenés <strong>${discountPercent}% OFF</strong>!`;
+                                    const activeParts = [];
+                                    if (discountRule.discountPercent > 0) activeParts.push(`<strong>${discountRule.discountPercent}% OFF en producto</strong>`);
+                                    if (discountRule.shippingDiscountPercent > 0) {
+                                        activeParts.push(discountRule.shippingDiscountPercent >= 100 ? '<strong>ENVÍO GRATIS</strong>' : `<strong>${discountRule.shippingDiscountPercent}% OFF en envío</strong>`);
+                                    }
+                                    discountBanner.innerHTML = `🎉 ¡Llevando ${qtyVal} uds tenés ${activeParts.join(' + ') || 'descuento especial'}!`;
                                 } else {
                                     discountBanner.style.display = 'block';
                                     discountBanner.style.color = '#0284c7';

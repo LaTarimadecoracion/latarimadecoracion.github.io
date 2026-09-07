@@ -1,0 +1,126 @@
+=============================================================================
+PROPUESTA TÉCNICA Y ARQUITECTURA: SISTEMA DINÁMICO DE USUARIOS, ROLES Y DATOS
+PROYECTO: LA TARIMA 2.0
+FECHA: 7 DE SEPTIEMBRE DE 2026
+=============================================================================
+
+1. DIAGNÓSTICO Y ESTADO ACTUAL DE LA WEB
+-----------------------------------------------------------------------------
+Actualmente La Tarima 2.0 funciona como una SPA (Single Page Application) híbrida:
+- Persistencia estática basada en archivos JS (products-data.js, categories.js, 
+  shipping-config.js, orders-data.js).
+- Servidor Node.js local (_dev/server.js) que compila/minifica estáticos hacia /docs/.
+- El "Perfil" actual en la tienda es solo el Carrito / Favoritos guardado en localStorage.
+- NO existe autenticación real con base de datos, sesiones persistentes en la nube,
+  ni segmentación de precios según tipo de cliente.
+
+-----------------------------------------------------------------------------
+2. ESTRUCTURA Y JERARQUÍA DE ROLES (RBAC)
+-----------------------------------------------------------------------------
+Se definirán 5 niveles de usuario estructurados dentro de la base de datos:
+
+[Rol 1] SUPERADMIN (Administrador General)
+- Acceso 100% total al panel de control (/admin).
+- Gestión de usuarios, asignación de roles, finanzas, métricas de visitas,
+  configuración de medios de pago, tarifas de envío y publicación a producción.
+
+[Rol 2] COLABORADOR (Operador de Taller / Logística)
+- Acceso restringido al panel Admin.
+- Permiso exclusivo para: Ver lista de pedidos, actualizar estados de producción
+  (Recibido -> En Preparación -> Despachado), agregar N° de seguimiento y escáner PC.
+- SIN acceso a finanzas, costos de origen ni ajustes del negocio.
+
+[Rol 3] CLIENTE NIVEL 3 (Mayorista / Cliente VIP)
+- Inicio de sesión en la tienda.
+- Visualización automática del catálogo con precios diferenciados (descuentos por volumen).
+- Panel de cuenta corriente y seguimiento de pedidos mayoristas.
+
+[Rol 4] CLIENTE NIVEL 2 (Frecuente / Registrado)
+- Registro e inicio de sesión rápido (Email / WhatsApp / Google).
+- Guardado de carritos entre dispositivos (PC / Móvil).
+- Historial completo de compras pasadas y seguimiento automático de pedidos sin N° manual.
+- Acumulación de puntos / beneficios por compras frecuentes.
+
+[Rol 5] CLIENTE NIVEL 1 (Invitado / Usuario Final)
+- Navegación abierta del catálogo sin necesidad de loguearse.
+- Consulta rápida de Código Postal y carrito local.
+
+-----------------------------------------------------------------------------
+3. ESQUEMA DE BASE DE DATOS PROYECTADO (RELACIONAL)
+-----------------------------------------------------------------------------
+Se integrará una base de datos dinámica (SQLite / PostgreSQL con Prisma ORM):
+
+TABLA: USERS
+- id (UUID, PK)
+- email (String, Unique)
+- password_hash (String)
+- nombre_completo (String)
+- telefono_whatsapp (String)
+- role_id (FK -> ROLES)
+- client_tier (Enum: "regular", "frecuente", "mayorista")
+- status (Enum: "activo", "suspendido")
+- created_at / updated_at (Timestamps)
+
+TABLA: ROLES
+- id (UUID, PK)
+- name (String: "superadmin", "colaborador", "cliente")
+- permissions (JSON: ["manage_orders", "manage_catalog", "view_finances", etc.])
+
+TABLA: USER_SESSIONS
+- id (UUID, PK)
+- user_id (FK -> USERS)
+- token (String, JWT / Cookie HTTP-Only)
+- device_info (String)
+- expires_at (Timestamp)
+
+TABLA: USER_EVENTS (Recolección de Datos / Analytics)
+- id (UUID, PK)
+- user_id (FK -> USERS, Nullable)
+- session_token (String)
+- event_type (Enum: "view_product", "add_cart", "search_failed", "checkout_start", "abandon_cart")
+- payload (JSON: datos del producto, término de búsqueda, etc.)
+- created_at (Timestamp)
+
+TABLA: ORDERS (Vinculada)
+- id (UUID, PK)
+- user_id (FK -> USERS, Nullable para compras de invitados)
+- order_code (String: ej "ALT-1052")
+- total_amount (Float)
+- status (Enum: "pendiente", "pagado", "preparacion", "despachado", "completado")
+- shipping_data (JSON)
+- payment_data (JSON)
+
+-----------------------------------------------------------------------------
+4. RECOLECCIÓN DE DATOS Y RECOVERY (MARKETING & VENTAS)
+-----------------------------------------------------------------------------
+- Registro de Búsquedas Fallidas: El sistema captura qué términos escriben los usuarios
+  cuando no encuentran productos, permitiendo crear nuevas publicaciones estratégicas.
+- Recuperación de Carritos Abandonados: Si un cliente registrado o un invitado llega al
+  checkout e ingresa su WhatsApp/Email pero no finaliza la compra, el sistema genera
+  una alerta automática en el panel Admin para enviar un recordatorio por WhatsApp.
+- LTV (Life-Time Value): El Admin podrá ver cuánto dinero en total ha generado cada
+  cliente registrado a lo largo del tiempo.
+
+-----------------------------------------------------------------------------
+5. PLAN DE IMPLEMENTACIÓN PASO A PASO (PARA EL FIN DE SEMANA)
+-----------------------------------------------------------------------------
+PASO 1: Configurar la Base de Datos en Node.js (_dev/server.js)
+  - Instalar SQLite3 / Prisma ORM.
+  - Crear tablas de USERS, ROLES, SESSIONS y USER_EVENTS.
+
+PASO 2: Endpoints Backend de Autenticación
+  - POST /api/auth/register (Registro de usuarios).
+  - POST /api/auth/login (Inicio de sesión con JWT).
+  - GET  /api/auth/me (Verificación de sesión activa).
+
+PASO 3: Modales de Login / Registro en el Frontend
+  - Crear modal elegante de Iniciar Sesión / Registrarse en la tienda.
+  - Botón de "Mi Cuenta" en el header principal.
+
+PASO 4: Vista de Gestión de Usuarios en el Panel Admin
+  - Pestaña nueva "Usuarios & Permisos" en el sidebar del Admin.
+  - Tabla para promover clientes a Nivel Mayorista o asignar rol Colaborador.
+
+=============================================================================
+DOCUMENTO GENERADO AUTOMÁTICAMENTE PARA LA TARIMA 2.0
+=============================================================================

@@ -47,21 +47,25 @@
         });
     }
 
-    // Helper: Crear fila de Escala de Descuento por Cantidad
-    function createDiscountTierRow(minUnits = 3, discountPercent = 10) {
+    // Helper: Crear fila de Escala de Descuento por Cantidad (Precio y/o Envío)
+    function createDiscountTierRow(minUnits = 3, discountPercent = 10, shippingDiscountPercent = 0) {
         const row = document.createElement('div');
         row.className = 'discount-tier-row';
-        row.style.cssText = 'display: flex; align-items: center; gap: 8px; background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px 8px;';
+        row.style.cssText = 'display: flex; align-items: center; justify-content: space-between; gap: 8px; background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px 8px; flex-wrap: wrap;';
 
         row.innerHTML = `
-            <div style="flex: 1; display: flex; align-items: center; gap: 4px;">
-                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">Desde</span>
-                <input type="number" class="discount-tier-units" min="2" placeholder="Ej: 3" value="${minUnits}" style="width: 60px; font-size: 0.8rem; padding: 3px 6px; border: 1px solid #cbd5e1; border-radius: 4px;">
-                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">uds:</span>
+            <div style="display: flex; align-items: center; gap: 4px;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 700;">Desde</span>
+                <input type="number" class="discount-tier-units" min="2" placeholder="Ej: 3" value="${minUnits}" style="width: 52px; font-size: 0.8rem; padding: 3px 5px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 700;">uds:</span>
             </div>
-            <div style="flex: 1; display: flex; align-items: center; gap: 4px;">
-                <input type="number" class="discount-tier-percent" min="1" max="99" placeholder="Ej: 10" value="${discountPercent}" style="width: 60px; font-size: 0.8rem; padding: 3px 6px; border: 1px solid #cbd5e1; border-radius: 4px;">
-                <span style="font-size: 0.78rem; color: #16a34a; font-weight: 700;">% OFF</span>
+            <div style="display: flex; align-items: center; gap: 3px;" title="Descuento en el precio del producto">
+                <input type="number" class="discount-tier-percent" min="0" max="100" placeholder="0" value="${discountPercent}" style="width: 50px; font-size: 0.8rem; padding: 3px 5px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                <span style="font-size: 0.72rem; color: #16a34a; font-weight: 700;">% OFF Prod.</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 3px;" title="Descuento en el costo del envío (ej: 50% OFF o 100% OFF envío gratis)">
+                <input type="number" class="discount-tier-shipping-percent" min="0" max="100" placeholder="0" value="${shippingDiscountPercent}" style="width: 50px; font-size: 0.8rem; padding: 3px 5px; border: 1px solid #0284c7; border-radius: 4px; background: #f0f9ff;">
+                <span style="font-size: 0.72rem; color: #0284c7; font-weight: 700;">% OFF Envío</span>
             </div>
             <button type="button" class="btn-remove-discount-tier" style="background: none; border: none; color: #ef4444; font-size: 1.2rem; cursor: pointer; padding: 0 4px; line-height: 1;" title="Eliminar escala">&times;</button>
         `;
@@ -79,7 +83,7 @@
         if (btnAdd) {
             const container = document.getElementById('product-discounts-container');
             if (container) {
-                container.appendChild(createDiscountTierRow(3, 10));
+                container.appendChild(createDiscountTierRow(3, 10, 0));
             }
         }
     });
@@ -1052,7 +1056,8 @@
                             if (v.volumeDiscounts && v.volumeDiscounts.length > 0) {
                                 qDiscounts = v.volumeDiscounts.map(vd => ({
                                     minUnits: vd.minQty !== undefined ? vd.minQty : vd.minUnits,
-                                    discountPercent: vd.discountPercent
+                                    discountPercent: vd.discountPercent || 0,
+                                    shippingDiscountPercent: vd.shippingDiscountPercent || 0
                                 }));
                                 break;
                             }
@@ -1064,7 +1069,10 @@
 
             if (Array.isArray(qDiscounts) && qDiscounts.length > 0) {
                 qDiscounts.forEach(d => {
-                    discountsContainer.appendChild(createDiscountTierRow(d.minUnits, d.discountPercent));
+                    const minU = d.minUnits !== undefined ? d.minUnits : d.minQty;
+                    const pPercent = d.discountPercent !== undefined ? d.discountPercent : 0;
+                    const sPercent = d.shippingDiscountPercent !== undefined ? d.shippingDiscountPercent : 0;
+                    discountsContainer.appendChild(createDiscountTierRow(minU, pPercent, sPercent));
                 });
             }
         }
@@ -1180,7 +1188,8 @@
                     if (quantityDiscounts && quantityDiscounts.length > 0) {
                         vObj.volumeDiscounts = quantityDiscounts.map(d => ({
                             minQty: d.minUnits,
-                            discountPercent: d.discountPercent
+                            discountPercent: d.discountPercent || 0,
+                            shippingDiscountPercent: d.shippingDiscountPercent || 0
                         }));
                     }
 
@@ -1238,8 +1247,9 @@
             const quantityDiscounts = discountRows.map(row => {
                 const minUnits = parseInt(row.querySelector('.discount-tier-units')?.value) || 0;
                 const discountPercent = parseFloat(row.querySelector('.discount-tier-percent')?.value) || 0;
-                return { minUnits, discountPercent };
-            }).filter(d => d.minUnits > 1 && d.discountPercent > 0)
+                const shippingDiscountPercent = parseFloat(row.querySelector('.discount-tier-shipping-percent')?.value) || 0;
+                return { minUnits, discountPercent, shippingDiscountPercent };
+            }).filter(d => d.minUnits > 1 && (d.discountPercent > 0 || d.shippingDiscountPercent > 0))
               .sort((a, b) => a.minUnits - b.minUnits);
 
             const product = {
