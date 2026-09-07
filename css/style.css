@@ -1255,13 +1255,13 @@ body.theme-final-mundial .add-to-cart-btn:hover {
    PRODUCT FEED — Cinematic Immersive Feed (Social Style)
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-/* Contenedor del feed — Formato de Grilla Responsiva */
+/* Contenedor del feed — Formato de Grilla Responsiva (2 columnas en móvil) */
 .category-feed-list,
 .product-feed {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 1rem 12px 2.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 0.75rem 8px 2.5rem;
     width: 100%;
     box-sizing: border-box;
 }
@@ -1270,6 +1270,8 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     .category-feed-list,
     .product-feed {
         grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        padding: 1rem 12px 2.5rem;
     }
 }
 
@@ -1635,13 +1637,11 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(15, 23, 42, 0.25);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.15) 100%);
     z-index: 95;
     box-sizing: border-box;
     overflow: hidden;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 0 !important;
 }
 
@@ -1651,7 +1651,7 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     border: none !important;
     border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
     border-radius: 0 !important;
-    color: rgba(255, 255, 255, 0.85) !important;
+    color: #ffffff !important;
     height: 100% !important;
     padding: 0 0.5rem !important;
     font-size: 0.85rem !important;
@@ -1662,7 +1662,7 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     justify-content: center !important;
     gap: 8px !important;
     transition: all 0.2s ease !important;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.6) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 6px rgba(0, 0, 0, 0.7) !important;
     box-sizing: border-box !important;
     position: relative !important;
     box-shadow: none !important;
@@ -1673,12 +1673,12 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 }
 
 .gallery-acabado-btn:hover {
-    background: rgba(255, 255, 255, 0.15) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
     color: #ffffff !important;
 }
 
 .gallery-acabado-btn.active {
-    background: rgba(255, 255, 255, 0.22) !important;
+    background: rgba(255, 255, 255, 0.18) !important;
     color: #ffffff !important;
     font-weight: 900 !important;
 }
@@ -1689,9 +1689,9 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     bottom: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    height: 3.5px !important;
-    background: #ffffff !important;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9) !important;
+    height: 4px !important;
+    background: var(--primary-color, #A0715B) !important;
+    box-shadow: 0 0 10px rgba(160, 113, 91, 0.9), 0 0 4px #ffffff !important;
 }
 
 .gallery-acabado-thumb {

@@ -912,13 +912,15 @@
         if (isProductItem) {
             const grupoName = productContext?.grupo?.acabado_name || '';
             const medidaName = productContext?.medida || '';
+            const opcionName = productContext?.opcion || '';
             const variantPrice = productContext?.price !== undefined ? productContext.price : (parseFloat(offer.price) || 0);
             basePrice = variantPrice;
             const extraDetails = [];
-            if (grupoName) extraDetails.push(grupoName);
-            if (medidaName) extraDetails.push(medidaName);
+            if (grupoName && grupoName !== 'Único') extraDetails.push(`Acabado: ${grupoName}`);
+            if (medidaName) extraDetails.push(`Medida: ${medidaName}`);
+            if (opcionName) extraDetails.push(`${productContext?.opcionLabel || 'Opción'}: ${opcionName}`);
             if (extraDetails.length > 0) {
-                itemDisplayName = `${offer.title} (${extraDetails.join(' - ')})`;
+                itemDisplayName = `${offer.title} (${extraDetails.join(' · ')})`;
             }
         } else {
             basePrice = offer.offerPrice || 0;
@@ -974,10 +976,31 @@
                 <!-- ==================== PASO 1: ENTREGA Y CONTACTO ==================== -->
                 <div id="checkout-step-1-content" style="display: flex; flex-direction: column; gap: 1rem;">
                     
-                    <!-- 1. Forma de Entrega Preferida -->
+                    <!-- 1. Datos de Contacto del Cliente -->
                     <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box;">
                         <div style="font-size: 0.72rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
-                            🚚 1. Forma de Entrega Preferida:
+                            👤 1. Datos de Contacto para el Pedido:
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                            <div>
+                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
+                                    Nombre y Apellido *
+                                </label>
+                                <input type="text" id="pay-client-name" placeholder="Ej: María González" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
+                            </div>
+                            <div>
+                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
+                                    Teléfono / WhatsApp *
+                                </label>
+                                <input type="tel" id="pay-client-phone" placeholder="Ej: 11 1234 5678" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Forma de Entrega Preferida -->
+                    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box;">
+                        <div style="font-size: 0.72rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+                            🚚 2. Forma de Entrega Preferida:
                         </div>
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
@@ -994,10 +1017,6 @@
 
                         <!-- Menú Desplegable de Datos de Envío -->
                         <div id="pay-shipping-expand-menu" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
-                            <div style="font-size: 0.72rem; color: #0369a1; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 6px 10px;">
-                                📍 Dirección para entrega o despacho de tu pedido:
-                            </div>
-
                             <div>
                                 <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                     Dirección (Calle y Altura):
@@ -1028,27 +1047,6 @@
 
                             <!-- Resultado lookup CP + selector método de envío (Ocupa el 100% del ancho debajo de los campos) -->
                             <div id="pay-ship-lookup-result" style="display:none; margin-top:10px; width:100%; box-sizing:border-box;"></div>
-                        </div>
-                    </div>
-
-                    <!-- 2. Datos de Contacto del Cliente -->
-                    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box;">
-                        <div style="font-size: 0.72rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
-                            👤 2. Datos de Contacto para el Pedido:
-                        </div>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-                            <div>
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    Nombre y Apellido *
-                                </label>
-                                <input type="text" id="pay-client-name" placeholder="Ej: María González" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
-                            </div>
-                            <div>
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    Teléfono / WhatsApp *
-                                </label>
-                                <input type="tel" id="pay-client-phone" placeholder="Ej: 11 1234 5678" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1313,12 +1311,13 @@
 
         function saveUserDataToStorage() {
             try {
+                const cpVal = document.getElementById('pay-ship-cp')?.value || '';
                 const data = {
                     name: document.getElementById('pay-client-name')?.value || '',
                     phone: document.getElementById('pay-client-phone')?.value || '',
                     deliveryMode: document.getElementById('pay-mode-shipping')?.checked ? 'shipping' : 'pickup',
                     dir: document.getElementById('pay-ship-dir')?.value || '',
-                    cp: document.getElementById('pay-ship-cp')?.value || '',
+                    cp: cpVal,
                     ciudad: document.getElementById('pay-ship-ciudad')?.value || '',
                     provincia: document.getElementById('pay-ship-provincia')?.value || '',
                     razonSocial: document.getElementById('factura-razon-social')?.value || '',
@@ -1326,12 +1325,24 @@
                     dirFiscal: document.getElementById('factura-direccion-fiscal')?.value || ''
                 };
                 localStorage.setItem('latarima_checkout_user_data', JSON.stringify(data));
+
+                // Sincronizar también en la clave global userData si se ingresó un CP
+                if (cpVal.trim()) {
+                    let mainUserData = {};
+                    try {
+                        const rawMain = localStorage.getItem('userData');
+                        if (rawMain) mainUserData = JSON.parse(rawMain);
+                    } catch(err) {}
+                    mainUserData.zipCode = cpVal.trim();
+                    localStorage.setItem('userData', JSON.stringify(mainUserData));
+                }
             } catch (e) {}
         }
 
         const closeModal = () => {
             window.removeEventListener('keydown', handleKeyDown);
             saveUserDataToStorage();
+            window.dispatchEvent(new CustomEvent('latarima:cp-updated'));
             overlay.style.opacity = '0';
             card.style.transform = 'scale(0.92)';
             setTimeout(() => overlay.remove(), 250);
@@ -1570,8 +1581,7 @@
         window._checkoutSelectedShipCost = 0;
         window._checkoutSelectedShipLabel = '';
         let shipConf = (productContext && productContext.product && productContext.product.shippingConfig) || (offer && offer.shippingConfig);
-        if (!shipConf) {
-            // Valores predeterminados solo si el producto u oferta NUNCA fue guardado con configuración específica
+        if (!shipConf || (!shipConf.logisticaEnabled && !shipConf.fleteEnabled && !shipConf.otroEnabled && !shipConf.isFreeShipping)) {
             shipConf = {
                 logisticaEnabled: true,
                 logisticaCost: 0,
@@ -1690,8 +1700,20 @@
 
             const options = [];
 
-            // Solo incluir Logística si está activa para el CP
-            if (shipConf.logisticaEnabled && cpRes.logistica && cpRes.logistica.active !== false) {
+            // Solo incluir Logística si está activa para el CP y la variante activa no tiene deshabilitada la logística Flex
+            let isVariantLogisticaDisabled = false;
+            if (isProductItem) {
+                const activeGrupo = productContext?.grupo || (offer?.acabados_groups && offer.acabados_groups[0]) || {};
+                const activeMedidaStr = (productContext?.medida || '').trim();
+                const variantMatch = (activeGrupo.medidas_variants || []).find(m => (m.medida || '').trim() === activeMedidaStr) || (activeGrupo.medidas_variants || [])[0];
+                if (variantMatch) {
+                    if (variantMatch.logisticaEnabled === false || variantMatch.noFlex === true || variantMatch.disableFlex === true) {
+                        isVariantLogisticaDisabled = true;
+                    }
+                }
+            }
+
+            if (!isVariantLogisticaDisabled && shipConf.logisticaEnabled && cpRes.logistica && cpRes.logistica.active !== false) {
                 const manualCost = parseFloat(shipConf.logisticaCost) || 0;
                 const sysCost = cpRes.logistica.cost || 0;
                 const baseCost = manualCost > 0 ? manualCost : sysCost;
@@ -1966,14 +1988,16 @@
                 if (data.cuit && document.getElementById('factura-cuit')) document.getElementById('factura-cuit').value = data.cuit;
                 if (data.dirFiscal && document.getElementById('factura-direccion-fiscal')) document.getElementById('factura-direccion-fiscal').value = data.dirFiscal;
 
-                if (data.deliveryMode === 'shipping') {
+                if (data.deliveryMode === 'shipping' || (data.cp && data.cp.length >= 3)) {
                     const rShip = document.getElementById('pay-mode-shipping');
                     if (rShip) rShip.checked = true;
                     const shipMenu = document.getElementById('pay-shipping-expand-menu');
                     if (shipMenu) shipMenu.style.display = 'flex';
                     if (data.cp && data.cp.length >= 3) {
                         const res = window.lookupPostalCode ? window.lookupPostalCode(data.cp) : null;
-                        if (res) renderShipOptions(res);
+                        renderShipOptions(res);
+                        updateShipLine();
+                        updateTotalDisplay();
                     }
                 }
             } catch (e) {}
@@ -2129,8 +2153,8 @@
 
     window.openOfferDetailView = openOfferDetailView;
     window.showOfferPaymentModal = showOfferPaymentModal;
-    window.showProductPaymentModal = function(product, grupo, medida, price, qty = 1) {
-        showOfferPaymentModal(product, qty, { grupo, medida, price });
+    window.showProductPaymentModal = function(product, grupo, medida, price, qty = 1, opcion = '', opcionLabel = '') {
+        showOfferPaymentModal(product, qty, { grupo, medida, price, opcion, opcionLabel });
     };
 
     function showOfferDetailModal(offer) {

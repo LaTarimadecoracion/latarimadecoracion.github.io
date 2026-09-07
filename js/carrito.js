@@ -99,8 +99,9 @@
         }
     }
 
-    function toggleProductInCart(product, acabado, catName = 'Catálogo', medida = '', opcion = '', opcionLabel = '', price = null) {
+    function toggleProductInCart(product, acabado, catName = 'Catálogo', medida = '', opcion = '', opcionLabel = '', price = null, qty = 1) {
         try {
+            const parsedQty = parseInt(qty) > 0 ? parseInt(qty) : 1;
             const idx = cartItems.findIndex(item => 
                 item.id === product.id && 
                 (item.acabado || '').trim().toLowerCase() === (acabado || '').trim().toLowerCase() &&
@@ -109,8 +110,14 @@
             );
             
             if (idx !== -1) {
-                cartItems.splice(idx, 1);
-                console.log(`[Carrito] Quitado de favoritos: ${product.title} (${acabado})`);
+                if (parsedQty > 1 && cartItems[idx].qty !== parsedQty) {
+                    cartItems[idx].qty = parsedQty;
+                    if (price) cartItems[idx].price = price;
+                    console.log(`[Carrito] Cantidad actualizada: ${product.title} (${acabado}) x${parsedQty}`);
+                } else {
+                    cartItems.splice(idx, 1);
+                    console.log(`[Carrito] Quitado de favoritos: ${product.title} (${acabado})`);
+                }
             } else {
                 // Resolver imagen de la variante o fallback
                 let img = product.image;
@@ -129,10 +136,10 @@
                     opcionLabel: opcionLabel || '',
                     image: productCover,
                     catName: catName,
-                    qty: 1,
+                    qty: parsedQty,
                     price: price || null
                 });
-                console.log(`[Carrito] Agregado a favoritos: ${product.title} (${acabado})`);
+                console.log(`[Carrito] Agregado a favoritos: ${product.title} (${acabado}) x${parsedQty}`);
                 const navCartIcon = document.getElementById('nav-cart-icon');
                 if (navCartIcon) {
                     navCartIcon.classList.remove('cart-bounce-anim');
@@ -299,32 +306,53 @@
                     box-shadow: 0 8px 28px rgba(0,0,0,0.07);
                     border-color: rgba(192,81,10,0.2);
                 }
+                /* ── Estilos Mercado Libre Style ── */
+                .cart-section {
+                    margin-top: 0.5rem;
+                }
+                .cart-section-title {
+                    font-size: 0.95rem; font-weight: 800; color: #1e293b;
+                    margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: space-between;
+                }
+                .cart-item-row {
+                    background: #ffffff;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 14px;
+                    padding: 0.9rem 1rem;
+                    margin-bottom: 0.6rem;
+                    box-shadow: 0 2px 6px rgba(15,23,42,0.03);
+                    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+                }
+                .cart-item-row:hover {
+                    border-color: #cbd5e1;
+                    box-shadow: 0 4px 12px rgba(15,23,42,0.06);
+                }
                 /* Fila superior: imagen + datos + borrar */
                 .cart-item-top {
                     display: flex;
-                    align-items: center;
+                    align-items: flex-start;
                     gap: 0.85rem;
                 }
                 .cart-item-clickable-area {
                     display: flex;
-                    align-items: center;
+                    align-items: flex-start;
                     gap: 0.85rem;
                     flex: 1;
                     cursor: pointer;
                     overflow: hidden;
                 }
                 .cart-item-thumb {
-                    width: 72px; height: 72px;
-                    border-radius: 12px;
+                    width: 76px; height: 76px;
+                    border-radius: 10px;
                     background-size: cover;
                     background-position: center;
-                    border: 1px solid #F0EDE8;
+                    border: 1px solid #f1f5f9;
                     flex-shrink: 0;
                     transition: transform 0.25s ease;
-                    background-color: #fdf9f6;
+                    background-color: #f8fafc;
                 }
                 .cart-item-row:hover .cart-item-thumb {
-                    transform: scale(1.05);
+                    transform: scale(1.03);
                 }
                 .cart-item-details {
                     flex: 1;
@@ -332,35 +360,34 @@
                     text-align: left;
                 }
                 .cart-item-details h5 {
-                    margin: 0 0 3px 0;
-                    font-size: 0.93rem; font-weight: 700; color: #2c2520;
+                    margin: 0 0 4px 0;
+                    font-size: 0.92rem; font-weight: 700; color: #0f172a;
                     line-height: 1.3;
-                    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
                 }
                 .cart-item-details p {
-                    margin: 0;
-                    font-size: 0.76rem; color: #8c857b; line-height: 1.5;
+                    margin: 0 0 4px 0;
+                    font-size: 0.78rem; color: #64748b; line-height: 1.4;
                 }
                 .cart-item-details .item-tag {
                     display: inline-block;
-                    font-size: 0.68rem; color: #c0510a;
-                    background: #fff4ed; padding: 2px 7px;
-                    border-radius: 20px; margin-top: 4px;
+                    font-size: 0.68rem; color: #475569;
+                    background: #f1f5f9; padding: 2px 8px;
+                    border-radius: 6px; margin-top: 4px;
                     font-weight: 700; letter-spacing: 0.3px;
-                    border: 1px solid rgba(192,81,10,0.15);
+                    border: 1px solid #e2e8f0;
                 }
                 .cart-item-del-btn {
-                    background: #fff1f2; border: none;
-                    border-radius: 10px;
-                    width: 36px; height: 36px;
+                    background: #fef2f2; border: none;
+                    border-radius: 8px;
+                    width: 34px; height: 34px;
                     display: flex; align-items: center; justify-content: center;
-                    cursor: pointer; color: #e11d48;
+                    cursor: pointer; color: #ef4444;
                     transition: all 0.2s ease;
                     flex-shrink: 0;
                 }
                 .cart-item-del-btn:hover {
-                    background: #ffe4e6; color: #be123c;
-                    transform: scale(1.08);
+                    background: #fee2e2; color: #dc2626;
+                    transform: scale(1.05);
                 }
 
                 /* Fila inferior: precio unitario + qty + subtotal */
@@ -370,174 +397,212 @@
                     justify-content: space-between;
                     margin-top: 0.6rem;
                     padding-top: 0.6rem;
-                    border-top: 1px solid #F5F3EF;
+                    border-top: 1px solid #f1f5f9;
                     gap: 0.5rem;
                 }
-                .cart-item-price-label {
-                    font-size: 0.72rem; color: #94A3B8; font-weight: 500;
-                    white-space: nowrap;
-                }
                 .cart-item-unit-price {
-                    font-size: 0.82rem; color: #64748B; font-weight: 600;
+                    font-size: 0.8rem; color: #64748b; font-weight: 600;
                 }
                 .cart-item-qty-control {
                     display: flex; align-items: center; gap: 4px;
-                    background: #F7F5F2;
-                    border-radius: 30px;
-                    padding: 3px 6px;
-                    border: 1px solid #EAEBE9;
+                    background: #ffffff;
+                    border-radius: 8px;
+                    padding: 2px 4px;
+                    border: 1.5px solid #cbd5e1;
                 }
                 .qty-btn {
-                    background: white; border: none;
+                    background: #f8fafc; border: 1px solid #e2e8f0;
                     width: 26px; height: 26px;
                     display: flex; align-items: center; justify-content: center;
-                    cursor: pointer; color: #6d675b;
+                    cursor: pointer; color: #0f172a;
                     font-weight: 800; font-size: 14px;
-                    border-radius: 50%;
-                    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+                    border-radius: 6px;
                     transition: all 0.2s ease;
                 }
                 .qty-btn:hover {
-                    background: #c0510a; color: white;
-                    box-shadow: 0 3px 8px rgba(192,81,10,0.3);
+                    background: #0f172a; color: white; border-color: #0f172a;
                 }
                 .qty-val {
-                    font-size: 0.85rem; font-weight: 800;
-                    min-width: 22px; text-align: center; color: #2c2520;
+                    font-size: 0.88rem; font-weight: 800;
+                    min-width: 24px; text-align: center; color: #0f172a;
                 }
                 .cart-item-subtotal {
-                    font-size: 0.95rem; font-weight: 800; color: #c0510a;
+                    font-size: 0.98rem; font-weight: 800; color: #0f172a;
                     white-space: nowrap;
                 }
                 .cart-item-no-price {
-                    font-size: 0.72rem; color: #94A3B8; font-style: italic;
+                    font-size: 0.75rem; color: #94A3B8; font-style: italic;
                 }
 
-                /* Badge de disponibilidad */
-                .availability-badge {
-                    display: inline-flex; align-items: center; gap: 3px;
-                    font-size: 0.68rem; font-weight: 700;
-                    padding: 2px 7px; border-radius: 20px;
-                    letter-spacing: 0.2px;
-                }
-                .availability-badge.a-pedido {
-                    background: #FEF3C7; color: #92400E;
-                    border: 1px solid rgba(146,64,14,0.18);
-                }
-
-                /* ── Panel de Total ── */
-                .cart-total-panel {
-                    background: linear-gradient(135deg, #2c2520 0%, #3d3028 100%);
-                    border-radius: 18px;
-                    padding: 1.1rem 1.25rem;
-                    margin-top: 0.25rem;
-                    margin-bottom: 0.75rem;
-                    box-shadow: 0 8px 32px rgba(44,37,32,0.18);
-                    animation: scaleIn 0.3s ease;
-                }
-                .cart-total-row {
-                    display: flex; align-items: center;
-                    justify-content: space-between;
-                    gap: 0.5rem;
-                }
-                .cart-total-label {
-                    font-size: 0.8rem; color: rgba(255,255,255,0.55);
-                    font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
-                }
-                .cart-total-amount {
-                    font-size: 1.65rem; font-weight: 900;
-                    color: white; letter-spacing: -0.5px;
-                }
-                .cart-total-note {
-                    font-size: 0.7rem; color: rgba(255,255,255,0.4);
-                    margin-top: 0.3rem; font-style: italic;
-                }
-                .cart-total-items-count {
-                    background: rgba(255,255,255,0.1);
-                    border-radius: 20px;
-                    padding: 2px 10px;
-                    font-size: 0.75rem; color: rgba(255,255,255,0.7);
+                /* Notice & Limit Warnings */
+                .cart-unit-warning {
+                    background: #fffbe6;
+                    border: 1px solid #ffe58f;
+                    border-radius: 8px;
+                    padding: 6px 10px;
+                    font-size: 0.72rem;
+                    color: #d46b08;
+                    margin-top: 6px;
+                    display: flex; align-items: center; gap: 6px;
                     font-weight: 600;
                 }
-                .cart-total-no-price {
-                    font-size: 0.8rem; color: rgba(255,255,255,0.5); font-style: italic;
+
+                /* ── Mercado Libre Style Summary Breakdown ── */
+                .ml-cart-summary-card {
+                    background: #ffffff;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 16px;
+                    padding: 1.1rem 1.2rem;
+                    margin-top: 1rem;
+                    box-shadow: 0 4px 14px rgba(15,23,42,0.05);
+                }
+                .ml-summary-header {
+                    font-size: 0.9rem; font-weight: 800; color: #0f172a;
+                    margin-bottom: 0.85rem; padding-bottom: 0.5rem;
+                    border-bottom: 1px solid #f1f5f9;
+                    display: flex; align-items: center; justify-content: space-between;
+                }
+                .ml-summary-row {
+                    display: flex; align-items: center; justify-content: space-between;
+                    font-size: 0.85rem; color: #475569; margin-bottom: 0.6rem;
+                }
+                .ml-summary-row.total-row {
+                    border-top: 1.5px dashed #cbd5e1;
+                    padding-top: 0.75rem;
+                    margin-top: 0.75rem;
+                    margin-bottom: 0;
+                    font-size: 1.15rem; font-weight: 900; color: #0f172a;
                 }
 
-                /* ── Barra de Acciones ── */
+                /* Shipping Option Selector Cards */
+                .ml-shipping-options-group {
+                    display: flex; flex-direction: column; gap: 0.5rem;
+                    margin: 0.85rem 0;
+                }
+                .ml-shipping-card {
+                    border: 1.5px solid #e2e8f0;
+                    border-radius: 12px;
+                    padding: 0.75rem 0.9rem;
+                    background: #f8fafc;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+                }
+                .ml-shipping-card:hover {
+                    border-color: #cbd5e1;
+                    background: #ffffff;
+                }
+                .ml-shipping-card.selected {
+                    border-color: #2563eb;
+                    background: #eff6ff;
+                    box-shadow: 0 2px 8px rgba(37,99,235,0.12);
+                }
+                .ml-shipping-card.disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                    background: #f1f5f9;
+                    border-color: #e2e8f0;
+                }
+                .ml-shipping-left {
+                    display: flex; align-items: center; gap: 10px; min-width: 0;
+                }
+                .ml-shipping-radio {
+                    accent-color: #2563eb; width: 16px; height: 16px; flex-shrink: 0;
+                }
+                .ml-shipping-title {
+                    font-size: 0.83rem; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 6px;
+                }
+                .ml-shipping-sub {
+                    font-size: 0.72rem; color: #64748b; margin-top: 2px;
+                }
+                .ml-shipping-badge-free {
+                    background: #dcfce7; color: #166534; font-size: 0.68rem; font-weight: 800;
+                    padding: 2px 6px; border-radius: 4px; display: inline-block;
+                }
+                .ml-shipping-price {
+                    font-size: 0.9rem; font-weight: 800; color: #0f172a; white-space: nowrap;
+                }
+                .ml-shipping-price.free {
+                    color: #16a34a;
+                }
+
+                /* ── Barra de Acciones Mercado Libre ── */
                 .cart-actions-bar {
                     display: flex;
                     flex-direction: column;
                     gap: 0.65rem;
-                    margin-top: 0.25rem;
+                    margin-top: 1rem;
                 }
-                .cart-btn-main {
+                .cart-btn-buy {
                     display: flex; align-items: center; justify-content: center; gap: 8px;
-                    background: linear-gradient(135deg, #c0510a, #d4621c);
+                    background: #3483fa;
                     color: white; border: none;
-                    border-radius: 14px;
+                    border-radius: 12px;
                     padding: 0.9rem 1.2rem;
-                    font-weight: 700; font-size: 0.95rem;
+                    font-weight: 800; font-size: 0.98rem;
                     cursor: pointer;
-                    box-shadow: 0 4px 16px rgba(192,81,10,0.3);
-                    transition: all 0.25s ease;
+                    box-shadow: 0 4px 14px rgba(52,131,250,0.3);
+                    transition: all 0.2s ease;
                     width: 100%;
                 }
-                .cart-btn-main:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 24px rgba(192,81,10,0.4);
+                .cart-btn-buy:hover {
+                    background: #2968c8;
+                    transform: translateY(-1px);
+                    box-shadow: 0 6px 18px rgba(52,131,250,0.4);
                 }
-                .cart-btn-secondary {
+                .cart-btn-consult {
                     display: flex; align-items: center; justify-content: center; gap: 8px;
-                    background: white;
-                    color: #6d675b; border: 1.5px solid #E8E5DF;
-                    border-radius: 14px;
-                    padding: 0.75rem 1rem;
-                    font-weight: 600; font-size: 0.85rem;
+                    background: #fff8f0;
+                    color: #c0510a; border: 1.5px solid rgba(192,81,10,0.3);
+                    border-radius: 12px;
+                    padding: 0.8rem 1rem;
+                    font-weight: 800; font-size: 0.9rem;
                     cursor: pointer;
                     transition: all 0.2s ease;
                     width: 100%;
                 }
-                .cart-btn-secondary:hover {
-                    background: #faf8f5;
+                .cart-btn-consult:hover {
+                    background: #fff1e5;
                     border-color: #c0510a;
-                    color: #c0510a;
                 }
 
-                /* ── Datos de envío ── */
-                .cart-shipping-preview-card {
-                    padding: 0.9rem 1rem;
-                    background: #fafaf8;
-                    border-radius: 12px;
-                    border: 1.5px solid #EAEBE9;
-                    margin-bottom: 0.75rem;
-                    margin-top: 0.25rem;
-                    text-align: left;
-                }
-
-                /* ── Responsive ── */
+                /* Responsive */
                 @media (max-width: 600px) {
                     .profile-card-header { padding: 0.85rem 1rem; }
                     .cart-item-top { gap: 0.7rem; }
-                    .cart-item-thumb { width: 62px; height: 62px; }
-                    .cart-total-amount { font-size: 1.4rem; }
-                }
-
-                .giant-btn {
-                    border-radius: 14px;
-                    padding: 0.9rem 1.5rem;
-                    font-weight: 700; font-size: 0.9rem;
-                    letter-spacing: 0.3px;
-                    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-                }
-                .giant-btn:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+                    .cart-item-thumb { width: 66px; height: 66px; }
                 }
             `;
             document.head.appendChild(style);
         } catch (e) {
             console.error('[Carrito Module] Error injecting styles:', e);
         }
+    }
+
+    // Helper para buscar producto original en sessionProducts, sessionOffers o globales
+    function findCartProductDetails(item) {
+        if (!item || !item.id) return null;
+        if (window.sessionProducts) {
+            for (const cat of window.sessionProducts) {
+                if (cat.products) {
+                    const found = cat.products.find(p => p && String(p.id) === String(item.id));
+                    if (found) return found;
+                }
+            }
+        }
+        if (window.sessionOffers) {
+            const foundOffer = window.sessionOffers.find(o => o && String(o.id) === String(item.id));
+            if (foundOffer) return foundOffer;
+        }
+        if (window.products) {
+            const found = window.products.find(p => p && String(p.id) === String(item.id));
+            if (found) return found;
+        }
+        if (window.offers) {
+            const foundOffer = window.offers.find(o => o && String(o.id) === String(item.id));
+            if (foundOffer) return foundOffer;
+        }
+        return item;
     }
 
     // 4. Renderizado Dinámico de la Vista Integrada Perfil-Carrito
@@ -555,21 +620,17 @@
             let cartListHTML = '';
             if (cartItems.length === 0) {
                 cartListHTML = `
-                    <div class="cart-empty-motivator" style="padding: 2.5rem 1.5rem; text-align: center; border-radius: 20px; background: linear-gradient(145deg, var(--surface-color, #fff), var(--surface-raised, #fdfbf9)); border: 1px solid rgba(180,132,108,0.2); box-shadow: 0 10px 30px rgba(180,132,108,0.06); margin-top:1.5rem;">
-                        <div style="width: 80px; height: 80px; background: var(--secondary-color, #fff5ed); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
-                            <span class="material-symbols-outlined" style="font-size: 42px; color:var(--primary-color, #c0510a);">shopping_bag</span>
+                    <div class="cart-empty-motivator" style="padding: 2.5rem 1.5rem; text-align: center; border-radius: 20px; background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 16px rgba(0,0,0,0.04); margin-top:1.5rem;">
+                        <div style="width: 80px; height: 80px; background: #eff6ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
+                            <span class="material-symbols-outlined" style="font-size: 42px; color:#3483fa;">shopping_bag</span>
                         </div>
-                        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin:0 0 0.5rem 0;">¡Tu carrito está esperando!</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin:0 0 1.5rem 0; line-height:1.5;">Descubrí muebles únicos diseñados en madera maciza que transformarán tu hogar.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin:0 0 0.5rem 0;">¡Tu carrito está vacío!</h3>
+                        <p style="font-size: 0.9rem; color: #64748b; margin:0 0 1.5rem 0; line-height:1.5;">Explorá nuestros productos de madera maciza y sumalos a tu pedido.</p>
                         
                         <div style="display:flex; flex-direction:column; gap:0.75rem; max-width: 280px; margin: 0 auto;">
-                            <button type="button" class="btn-primary" onclick="if(window.navigateToView) window.navigateToView('view-catalogo')" style="display:flex; align-items:center; justify-content:center; gap:8px; border-radius: 50px; padding: 0.8rem 1rem; font-size:0.95rem; font-weight: 700; width: 100%;">
+                            <button type="button" class="cart-btn-buy" onclick="if(window.navigateToView) window.navigateToView('view-catalogo')" style="border-radius: 50px;">
                                 <span class="material-symbols-outlined" style="font-size: 1.2rem;">category</span>
                                 Explorar Catálogo
-                            </button>
-                            <button type="button" class="btn-outline" onclick="document.querySelector('.nav-item[data-target=\\'view-videos\\']').click()" style="display:flex; align-items:center; justify-content:center; gap:8px; border-radius: 50px; padding: 0.8rem 1rem; font-size:0.95rem; font-weight: 700; width: 100%; border-color: rgba(180,132,108,0.3); color: var(--primary-color, #c0510a);">
-                                <span class="material-symbols-outlined" style="font-size: 1.2rem;">play_circle</span>
-                                Ver Videos Inspiradores
                             </button>
                         </div>
                     </div>
@@ -577,20 +638,108 @@
             } else {
                 const formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 });
 
-                // Calcular total acumulado
-                let grandTotal = 0;
+                // Realizar cálculo de costos de envío y promociones de Flete Gratis
+                let productsSubtotal = 0;
                 let hasAnyPrice = false;
+
+                let logisticaAvailable = true;
+                let fleteAvailable = true;
+
+                let totalLogisticaPackages = 0;
+                let totalFletePackages = 0;
+                let isFleteFreeByQty = false;
+                let isFlexFreeByQty = false;
+
                 cartItems.forEach(item => {
+                    const qty = item.qty || 1;
                     if (item.price) {
-                        grandTotal += item.price * (item.qty || 1);
+                        productsSubtotal += item.price * qty;
                         hasAnyPrice = true;
                     }
+
+                    // Verificar promos y bultos del producto original
+                    const origProd = findCartProductDetails(item);
+                    const shipConf = origProd?.shippingConfig || item.shippingConfig || {};
+
+                    const logMax = parseInt(shipConf.logisticaMaxUnits) || 0;
+                    const fleteMax = parseInt(shipConf.fleteMaxUnits) || 0;
+
+                    // Verificar si la variante específica del item deshabilita Logística Flex
+                    if (origProd && origProd.acabados_groups) {
+                        const itemAcabadoStr = (item.acabado || '').trim();
+                        const itemMedidaStr = (item.medida || '').trim();
+                        let matchingGrp = origProd.acabados_groups.find(g => (g.acabado_name || '').trim() === itemAcabadoStr) || origProd.acabados_groups[0];
+                        if (matchingGrp && matchingGrp.medidas_variants) {
+                            let matchingVar = matchingGrp.medidas_variants.find(m => (m.medida || '').trim() === itemMedidaStr);
+                            if (matchingVar && (matchingVar.logisticaEnabled === false || matchingVar.noFlex === true || matchingVar.disableFlex === true)) {
+                                logisticaAvailable = false;
+                            }
+                        }
+                    }
+
+                    const isGlobalFree = !!(shipConf.isFreeShipping || shipConf.isFree || origProd?.shippingType === 'free' || item.shippingType === 'free');
+
+                    const logFreeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
+                    if (isGlobalFree || (logFreeMin > 0 && qty >= logFreeMin)) {
+                        isFlexFreeByQty = true;
+                    }
+
+                    const fleteFreeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
+                    if (isGlobalFree || (fleteFreeMin > 0 && qty >= fleteFreeMin)) {
+                        isFleteFreeByQty = true;
+                    }
+
+                    // Calcular bultos estimados
+                    totalLogisticaPackages += logMax > 0 ? Math.ceil(qty / logMax) : 1;
+                    totalFletePackages += fleteMax > 0 ? Math.ceil(qty / fleteMax) : 1;
                 });
+
+                // Cotizar envío según CP guardado
+                const userZip = (userData.zipCode || '').trim();
+                let cpLookupRes = null;
+                if (userZip && window.lookupPostalCode) {
+                    cpLookupRes = window.lookupPostalCode(userZip);
+                }
+
+                const hasValidCp = !!(cpLookupRes && cpLookupRes.hasLocalMatch !== false);
+
+                let flexRate = hasValidCp ? (cpLookupRes?.logistica?.cost !== undefined ? cpLookupRes.logistica.cost : null) : null;
+                let fleteRate = hasValidCp ? (cpLookupRes?.flete?.cost !== undefined ? cpLookupRes.flete.cost : null) : null;
+
+                if (cpLookupRes) {
+                    if (cpLookupRes.logistica?.active === false || flexRate === null) logisticaAvailable = false;
+                    if (cpLookupRes.flete?.active === false || fleteRate === null) fleteAvailable = false;
+                } else {
+                    logisticaAvailable = false;
+                    fleteAvailable = false;
+                }
+
+                const totalFlexCost = isFlexFreeByQty ? 0 : ((hasValidCp && logisticaAvailable) ? flexRate * Math.max(1, totalLogisticaPackages) : null);
+                const totalFleteCost = isFleteFreeByQty ? 0 : ((hasValidCp && fleteAvailable) ? fleteRate * Math.max(1, totalFletePackages) : null);
+
+                // Determinar opción seleccionada por defecto
+                let defaultSelMode = 'externa';
+                if (hasValidCp) {
+                    if (isFlexFreeByQty && logisticaAvailable) {
+                        defaultSelMode = 'flex';
+                    } else if (isFleteFreeByQty && fleteAvailable) {
+                        defaultSelMode = 'flete';
+                    } else if (logisticaAvailable) {
+                        defaultSelMode = 'flex';
+                    } else if (fleteAvailable) {
+                        defaultSelMode = 'flete';
+                    }
+                }
 
                 const totalItemsQty = cartItems.reduce((acc, item) => acc + (item.qty || 1), 0);
 
                 cartListHTML = `
                     <div style="display:flex; flex-direction:column; gap:0; margin-top:0.5rem;">
+                        <div class="cart-section-title">
+                            <span>Productos en tu carrito (${cartItems.length})</span>
+                            <span style="font-size:0.78rem; color:#64748b; font-weight:600;">${totalItemsQty} ${totalItemsQty === 1 ? 'unidad' : 'unidades'}</span>
+                        </div>
+
                         ${cartItems.map((item, idx) => {
                             const unitPrice = item.price || null;
                             const subtotal  = unitPrice ? unitPrice * (item.qty || 1) : null;
@@ -601,17 +750,16 @@
                             ].filter(Boolean).join(' · ');
 
                             return `
-                            <div class="cart-item-row" style="animation-delay: ${idx * 0.05}s;">
+                            <div class="cart-item-row">
                                 <!-- Fila superior: thumb + datos + borrar -->
                                 <div class="cart-item-top">
                                     <div class="cart-item-clickable-area" data-id="${item.id}" data-acabado="${item.acabado}" data-medida="${item.medida || ''}" data-opcion="${item.opcion || ''}" title="Ver producto">
                                         <div class="cart-item-thumb" style="background-image: url('${item.image}');"></div>
                                         <div class="cart-item-details">
                                             <h5>${item.title}</h5>
-                                            ${variantDetails ? `<p style="margin:0 0 4px 0;">${variantDetails}</p>` : ''}
+                                            ${variantDetails ? `<p>${variantDetails}</p>` : ''}
                                             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
                                                 <span class="item-tag">${item.catName}</span>
-                                                <span class="availability-badge a-pedido">🛠️ A pedido</span>
                                             </div>
                                         </div>
                                     </div>
@@ -639,52 +787,125 @@
                             `;
                         }).join('')}
 
-                        ${window.vacationConfig && window.vacationConfig.active ? `
-                            <div class="vacation-cart-warning">
-                                <span class="material-symbols-outlined vacation-icon">info</span>
-                                <div>
-                                    <strong>¡Taller de vacaciones!</strong><br>
-                                    Nuestras vacaciones son del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Retomamos las entregas/retiros a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>.<br>
-                                    <span style="color:#097969; font-weight:700;">✨ ¡Tu precio queda congelado!</span> Reservando hoy, te garantizamos el precio de lista actual sin aumentos futuros a nuestro regreso.
+                        <!-- Resumen Estilo Mercado Libre -->
+                        <div class="ml-cart-summary-card">
+                            <div class="ml-summary-header">
+                                <span>Resumen de compra</span>
+                                <button type="button" id="btn-edit-cart-shipping" style="background:none; border:none; color:#2563eb; font-weight:700; font-size:0.78rem; cursor:pointer; padding:0; display:flex; align-items:center; gap:3px;">
+                                    <span class="material-symbols-outlined" style="font-size:16px;">edit_location</span>
+                                    ${hasValidCp ? `${cpLookupRes.localidad || ('CP ' + cpLookupRes.cp)}` : '📍 Ingresar CP para cotizar envío'}
+                                </button>
+                            </div>
+
+                            <div class="ml-summary-row">
+                                <span>Productos (${totalItemsQty})</span>
+                                <span style="font-weight:700;">${hasAnyPrice ? formatter.format(productsSubtotal) : 'A consultar'}</span>
+                            </div>
+
+                            <div style="margin: 0.75rem 0 0.5rem 0;">
+                                <div style="font-size: 0.78rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px;">
+                                    Seleccionar forma de envío:
+                                </div>
+                                <div class="ml-shipping-options-group">
+                                    <!-- Opción Flex -->
+                                    <label class="ml-shipping-card ${defaultSelMode === 'flex' ? 'selected' : ''} ${hasValidCp && logisticaAvailable ? '' : 'disabled'}" id="lbl-ship-flex">
+                                        <div class="ml-shipping-left">
+                                            <input type="radio" name="cart-selected-shipping" value="flex" class="ml-shipping-radio" ${defaultSelMode === 'flex' ? 'checked' : ''} ${hasValidCp && logisticaAvailable ? '' : 'disabled'}>
+                                            <div>
+                                                <div class="ml-shipping-title">
+                                                    📦 Logística Flex / Express
+                                                    ${isFlexFreeByQty ? '<span class="ml-shipping-badge-free" style="background:#dcfce7; color:#166534;">¡Envío GRATIS!</span>' : '<span class="ml-shipping-badge-free">Rápido</span>'}
+                                                </div>
+                                                <div class="ml-shipping-sub">
+                                                    ${hasValidCp ? (logisticaAvailable ? (isFlexFreeByQty ? '¡Entrega bonificada por cantidad!' : `Entrega a domicilio (${totalLogisticaPackages > 1 ? totalLogisticaPackages + ' bultos' : 'bulto estándar'})`) : 'No disponible para tu zona') : 'Ingresá tu CP para cotizar'}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ml-shipping-price ${isFlexFreeByQty ? 'free' : ''}">
+                                            ${hasValidCp ? (logisticaAvailable ? (isFlexFreeByQty ? 'Gratis' : formatter.format(totalFlexCost)) : 'N/D') : 'Ingresar CP'}
+                                        </div>
+                                    </label>
+
+                                    <!-- Opción Flete Propio -->
+                                    <label class="ml-shipping-card ${defaultSelMode === 'flete' ? 'selected' : ''} ${hasValidCp && fleteAvailable ? '' : 'disabled'}" id="lbl-ship-flete">
+                                        <div class="ml-shipping-left">
+                                            <input type="radio" name="cart-selected-shipping" value="flete" class="ml-shipping-radio" ${defaultSelMode === 'flete' ? 'checked' : ''} ${hasValidCp && fleteAvailable ? '' : 'disabled'}>
+                                            <div>
+                                                <div class="ml-shipping-title">
+                                                    🚛 Flete Propio
+                                                    ${isFleteFreeByQty ? '<span class="ml-shipping-badge-free" style="background:#dcfce7; color:#166534;">¡Envío GRATIS por volumen!</span>' : ''}
+                                                </div>
+                                                <div class="ml-shipping-sub">
+                                                    ${hasValidCp ? (fleteAvailable ? (isFleteFreeByQty ? '¡Flete bonificado por cantidad!' : `Transporte directo (${totalFletePackages > 1 ? totalFletePackages + ' bultos/fletes' : 'flete directo'})`) : 'No disponible para tu zona') : 'Ingresá tu CP para cotizar'}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ml-shipping-price ${isFleteFreeByQty ? 'free' : ''}">
+                                            ${hasValidCp ? (fleteAvailable ? (isFleteFreeByQty ? 'Gratis' : formatter.format(totalFleteCost)) : 'N/D') : 'Ingresar CP'}
+                                        </div>
+                                    </label>
+
+                                    <!-- Opción Logística Externa / Consultar -->
+                                    <label class="ml-shipping-card ${defaultSelMode === 'externa' ? 'selected' : ''}" id="lbl-ship-externa">
+                                        <div class="ml-shipping-left">
+                                            <input type="radio" name="cart-selected-shipping" value="externa" class="ml-shipping-radio" ${defaultSelMode === 'externa' ? 'checked' : ''}>
+                                            <div>
+                                                <div class="ml-shipping-title">
+                                                    🚚 Logística Externa / Expreso (Interior)
+                                                </div>
+                                                <div class="ml-shipping-sub">
+                                                    Vía Cargo, Andreani o Expreso a convenir por WhatsApp
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ml-shipping-price free">
+                                            A consultar
+                                        </div>
+                                    </label>
+
+                                    <!-- Opción Retiro en Taller -->
+                                    <label class="ml-shipping-card" id="lbl-ship-pickup">
+                                        <div class="ml-shipping-left">
+                                            <input type="radio" name="cart-selected-shipping" value="pickup" class="ml-shipping-radio">
+                                            <div>
+                                                <div class="ml-shipping-title">
+                                                    🏪 Retiro Gratis en Taller (Hurlingham)
+                                                </div>
+                                                <div class="ml-shipping-sub">
+                                                    Coordinamos horario de retiro sin costo adicional
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ml-shipping-price free">
+                                            Gratis
+                                        </div>
+                                    </label>
                                 </div>
                             </div>
-                        ` : ''}
 
-                        <!-- Panel Total -->
-                        <div class="cart-total-panel">
-                            <div class="cart-total-row">
-                                <div>
-                                    <div class="cart-total-label">Total estimado</div>
-                                    ${hasAnyPrice
-                                        ? `<div class="cart-total-amount">${formatter.format(grandTotal)}</div>`
-                                        : `<div class="cart-total-no-price">Consultá precios por WhatsApp</div>`
-                                    }
-                                    <div class="cart-total-note">Efectivo / Transferencia · Sin impuestos ni envío</div>
-                                </div>
-                                <div style="text-align:right;">
-                                    <span class="cart-total-items-count">${totalItemsQty} ${totalItemsQty === 1 ? 'producto' : 'productos'}</span>
-                                    ${hasAnyPrice && cartItems.some(i => !i.price)
-                                        ? `<div style="font-size:0.65rem; color:rgba(255,255,255,0.35); margin-top:4px;">*Algunos ítems<br>no tienen precio</div>`
-                                        : ''
-                                    }
-                                </div>
+                            <div class="ml-summary-row total-row">
+                                <span>Total a pagar</span>
+                                <span id="cart-grand-total-val" style="color:#0f172a;">
+                                    ${hasAnyPrice ? formatter.format(productsSubtotal + (defaultSelMode === 'flex' ? totalFlexCost : (defaultSelMode === 'flete' ? totalFleteCost : 0))) : 'A consultar'}
+                                </span>
                             </div>
                         </div>
 
-                        <!-- Acciones -->
+                        <!-- Acciones Principales -->
                         <div class="cart-actions-bar">
-                            <button type="button" id="btn-cart-checkout-main" class="cart-btn-main">
-                                <span class="material-symbols-outlined" style="font-size:20px;">chat</span>
-                                Consultar por WhatsApp 💬
+                            <button type="button" id="btn-cart-buy-now" class="cart-btn-buy">
+                                <span class="material-symbols-outlined" style="font-size:22px;">shopping_cart_checkout</span>
+                                COMPRAR YA
                             </button>
-                            <button type="button" id="btn-cart-share" class="cart-btn-secondary">
-                                <span class="material-symbols-outlined" style="font-size:18px;">share</span>
-                                Compartir esta lista
+                            <button type="button" id="btn-cart-consult-wa" class="cart-btn-consult">
+                                <span class="material-symbols-outlined" style="font-size:20px; color:#c0510a;">chat</span>
+                                Consultar por WhatsApp
                             </button>
                         </div>
                     </div>
                 `;
             }
+
 
 
             let wholesaleBannerHTML = '';
@@ -1063,13 +1284,17 @@
                                 </div>
                                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                                     <div style="display:flex; flex-direction:column; gap:4px;">
+                                        <label style="font-size:0.75rem; font-weight:600; color:#475569;">Código Postal</label>
+                                        <input type="text" id="cart-ship-cp" placeholder="ej: 1712" value="${userData.zipCode || ''}" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; width:100%; box-sizing:border-box;">
+                                    </div>
+                                    <div style="display:flex; flex-direction:column; gap:4px;">
                                         <label style="font-size:0.75rem; font-weight:600; color:#475569;">Localidad</label>
                                         <input type="text" id="cart-ship-locality" placeholder="ej: Hurlingham" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; width:100%; box-sizing:border-box;">
                                     </div>
-                                    <div style="display:flex; flex-direction:column; gap:4px;">
-                                        <label style="font-size:0.75rem; font-weight:600; color:#475569;">Provincia</label>
-                                        <input type="text" id="cart-ship-province" placeholder="ej: Buenos Aires" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; width:100%; box-sizing:border-box;">
-                                    </div>
+                                </div>
+                                <div style="display:flex; flex-direction:column; gap:4px;">
+                                    <label style="font-size:0.75rem; font-weight:600; color:#475569;">Provincia</label>
+                                    <input type="text" id="cart-ship-province" placeholder="ej: Buenos Aires" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; width:100%; box-sizing:border-box;">
                                 </div>
                                 <div style="display:flex; gap: 8px; justify-content: flex-end; margin-top: 0.5rem;">
                                     <button type="button" id="btn-cancel-cart-ship" style="padding: 0.5rem 1rem; font-size: 0.85rem; background: #e2e8f0; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; color: #475569; font-family: var(--font-main);">Cancelar</button>
@@ -1078,6 +1303,25 @@
                             </div>
                         `;
                         document.body.appendChild(formOverlay);
+
+                        const cpInput = formOverlay.querySelector('#cart-ship-cp');
+                        const locInput = formOverlay.querySelector('#cart-ship-locality');
+                        const provInput = formOverlay.querySelector('#cart-ship-province');
+
+                        let timer = null;
+                        cpInput?.addEventListener('input', () => {
+                            clearTimeout(timer);
+                            timer = setTimeout(() => {
+                                const val = cpInput.value.trim();
+                                if (val.length >= 3 && window.lookupPostalCode) {
+                                    const res = window.lookupPostalCode(val);
+                                    if (res) {
+                                        if (res.localidad) locInput.value = res.localidad;
+                                        if (res.provincia) provInput.value = res.provincia;
+                                    }
+                                }
+                            }, 300);
+                        });
                         
                         formOverlay.querySelector('#btn-cancel-cart-ship').addEventListener('click', () => {
                             formOverlay.style.display = 'none';
@@ -1086,239 +1330,322 @@
                         formOverlay.querySelector('#btn-save-cart-ship').addEventListener('click', () => {
                             const nameVal = formOverlay.querySelector('#cart-ship-name').value.trim();
                             const addrVal = formOverlay.querySelector('#cart-ship-address').value.trim();
+                            const cpVal = formOverlay.querySelector('#cart-ship-cp').value.trim();
                             const locVal = formOverlay.querySelector('#cart-ship-locality').value.trim();
                             const provVal = formOverlay.querySelector('#cart-ship-province').value.trim();
                             
                             // Guardar datos
                             userData.name = nameVal;
                             userData.address = addrVal;
+                            userData.zipCode = cpVal;
                             userData.locality = locVal;
                             userData.province = provVal;
                             saveUserData();
                             
-                            // Actualizar resumen en DOM
-                            const summaryEl = document.getElementById('cart-shipping-summary');
-                            if (summaryEl) {
-                                summaryEl.innerHTML = `
-                                    ${nameVal ? `<strong>Destinatario:</strong> ${nameVal}<br>` : ''}
-                                    ${addrVal ? `<strong>Domicilio:</strong> ${addrVal}, ${locVal} (${provVal})` : '<span style="color:#e11d48; font-weight:600; display:flex; align-items:center; gap:4px;"><span class="material-symbols-outlined" style="font-size:16px;">warning</span> Falta completar dirección de envío</span>'}
-                                `;
-                            }
-                            
                             formOverlay.style.display = 'none';
+                            renderPerfilCarritoView();
                         });
                     }
                     
                     formOverlay.querySelector('#cart-ship-name').value = userData.name || '';
                     formOverlay.querySelector('#cart-ship-address').value = userData.address || '';
+                    formOverlay.querySelector('#cart-ship-cp').value = userData.zipCode || '';
                     formOverlay.querySelector('#cart-ship-locality').value = userData.locality || '';
                     formOverlay.querySelector('#cart-ship-province').value = userData.province || '';
                     formOverlay.style.display = 'flex';
                 });
             }
 
-            // --- Flujo de WhatsApp Unificado con Modal de Pre-calificación ---
-            const btnCartCheckoutMain = document.getElementById('btn-cart-checkout-main');
-            if (btnCartCheckoutMain) {
-                btnCartCheckoutMain.addEventListener('click', () => {
-                    loadUserData();
-                    
-                    // Función constructora del mensaje de WhatsApp para el carrito completo
-                    function buildCartWA(tipoEntrega, shippingData = {}) {
-                        const itemsText = cartItems.map(item => {
-                            let details = [];
-                            if (item.acabado && item.acabado !== 'Único') details.push(`Acabado: ${item.acabado}`);
-                            if (item.medida) details.push(`Medida: ${item.medida}`);
-                            if (item.opcion) details.push(`Opción: ${item.opcion}`);
-                            const detailStr = details.length > 0 ? ` (${details.join(', ')})` : '';
-                            return `• ${item.qty || 1}x *${item.title}*${detailStr}`;
-                        }).join('\n');
+            // --- Manejo de la Selección de Envío en Resumen ML ---
+            const shipCards = viewContainer.querySelectorAll('.ml-shipping-card');
+            const totalValEl = viewContainer.querySelector('#cart-grand-total-val');
+            const formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 });
 
-                        let parts = [itemsText];
+            function recalculateMLTotal() {
+                if (!totalValEl) return;
+                let productsSubtotal = 0;
+                let hasAnyPrice = false;
+                cartItems.forEach(item => {
+                    if (item.price) {
+                        productsSubtotal += item.price * (item.qty || 1);
+                        hasAnyPrice = true;
+                    }
+                });
 
-                        if (tipoEntrega === 'pickup') {
-                            parts.push('• Entrega: 🏪 Retiro por el taller');
-                        } else if (tipoEntrega === 'shipping') {
-                            parts.push('• Entrega: 🚚 Necesito envío a domicilio');
-                            const loc = shippingData.localidad || userData.locality || userData.zipCode || '';
-                            const dir = shippingData.direccion || userData.address || '';
-                            if (loc) parts.push(`• Destino/CP: ${loc}`);
-                            if (dir) parts.push(`• Dirección: ${dir}`);
-                        }
+                const checkedRadio = viewContainer.querySelector('input[name="cart-selected-shipping"]:checked');
+                const shipMode = checkedRadio ? checkedRadio.value : 'flex';
 
-                        let vacationNote = "";
-                        if (window.vacationConfig && window.vacationConfig.active) {
-                            const start = window.vacationConfig.startDate || "receso";
-                            const deliv = window.vacationConfig.deliveriesDate || "el regreso";
-                            vacationNote = `\n\n(Nota: Sé que están de vacaciones del ${start} y las entregas se retoman a partir del ${deliv}. El precio actual pactado queda congelado y mantenido).`;
-                        }
+                let shipCost = 0;
+                const userZip = (userData.zipCode || '').trim();
+                let cpLookupRes = null;
+                if (userZip && window.lookupPostalCode) {
+                    cpLookupRes = window.lookupPostalCode(userZip);
+                }
 
-                        return `¡Hola La Tarima! Quiero consultar por los siguientes productos de mi carrito:\n\n${parts.join('\n')}\n\n¿Me podés confirmar disponibilidad?${vacationNote}`;
+                const hasValidCp = !!(cpLookupRes && cpLookupRes.hasLocalMatch !== false);
+
+                let flexRate = hasValidCp ? (cpLookupRes?.logistica?.cost || 0) : 0;
+                let fleteRate = hasValidCp ? (cpLookupRes?.flete?.cost || 0) : 0;
+
+                let totalLogisticaPackages = 0;
+                let totalFletePackages = 0;
+                let isFleteFreeByQty = false;
+                let isFlexFreeByQty = false;
+
+                cartItems.forEach(item => {
+                    const qty = item.qty || 1;
+                    const origProd = findCartProductDetails(item);
+                    const shipConf = origProd?.shippingConfig || item.shippingConfig || {};
+                    const logMax = parseInt(shipConf.logisticaMaxUnits) || 0;
+                    const fleteMax = parseInt(shipConf.fleteMaxUnits) || 0;
+
+                    const isGlobalFree = !!(shipConf.isFreeShipping || shipConf.isFree || origProd?.shippingType === 'free' || item.shippingType === 'free');
+
+                    const logFreeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
+                    if (isGlobalFree || (logFreeMin > 0 && qty >= logFreeMin)) {
+                        isFlexFreeByQty = true;
                     }
 
-                    // Crear overlay del modal
-                    const existing = document.getElementById('delivery-modal-overlay');
-                    if (existing) existing.remove();
+                    const fleteFreeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
+                    if (isGlobalFree || (fleteFreeMin > 0 && qty >= fleteFreeMin)) {
+                        isFleteFreeByQty = true;
+                    }
 
-                    const overlay = document.createElement('div');
-                    overlay.id = 'delivery-modal-overlay';
-                    overlay.className = 'delivery-modal-overlay';
+                    totalLogisticaPackages += logMax > 0 ? Math.ceil(qty / logMax) : 1;
+                    totalFletePackages += fleteMax > 0 ? Math.ceil(qty / fleteMax) : 1;
+                });
 
-                    const sheet = document.createElement('div');
-                    sheet.className = 'delivery-modal-sheet';
-                    sheet.style.position = 'relative';
-                    sheet.innerHTML = `
-                        <button class="delivery-modal-back-arrow" id="dopt-back-arrow" title="Volver" style="display:none;">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                        </button>
-                        <button class="delivery-modal-close-x" id="dopt-close-x" title="Cerrar">&times;</button>
-                        <div class="delivery-modal-handle"></div>
-                        <p class="delivery-modal-eyebrow">Antes de continuar</p>
-                        <h3 class="delivery-modal-title">¿Necesitás envío?</h3>
-                        <p class="delivery-modal-subtitle">Elegí una de las opciones para poder continuar</p>
-                        <div class="delivery-modal-options">
-                            <button class="delivery-opt-btn delivery-opt-pickup" id="dopt-pickup">
-                                <span class="delivery-opt-icon">🏪</span>
-                                <span class="delivery-opt-label">Retirar por el taller</span>
-                                <span class="delivery-opt-desc">Mismo precio publicado en la web (Efectivo / Transferencia)</span>
-                            </button>
-                            <button class="delivery-opt-btn delivery-opt-shipping" id="dopt-shipping">
-                                <span class="delivery-opt-icon">🚚</span>
-                                <span class="delivery-opt-label">Necesito envío</span>
-                                <span class="delivery-opt-desc">Te cotizamos el envío por WhatsApp</span>
-                            </button>
-                        </div>
+                if (hasValidCp && shipMode === 'flex') {
+                    shipCost = isFlexFreeByQty ? 0 : (flexRate * Math.max(1, totalLogisticaPackages));
+                } else if (hasValidCp && shipMode === 'flete') {
+                    shipCost = isFleteFreeByQty ? 0 : (fleteRate * Math.max(1, totalFletePackages));
+                } else {
+                    shipCost = 0;
+                }
 
-                        <!-- Formulario desplegable opcional para datos de envío -->
-                        <div id="delivery-shipping-form" style="display:none; width:100%; flex-direction:column; gap:10px; margin-top:12px; text-align:left;">
-                            ${window.vacationConfig && window.vacationConfig.active ? `
-                                <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px; border-radius:8px; margin-bottom:4px; color:#E67700; font-size:0.8rem; line-height:1.4;">
-                                    <strong>⚠️ Envíos reprogramados:</strong> Estamos de vacaciones del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Los envíos se cotizarán y realizarán a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. ¡Mantenemos tu precio actual congelado!
-                                </div>
-                            ` : ''}
-                            <p style="font-size:0.82rem; color:#64748B; margin:0 0 2px 0;">📍 Datos para cotizar el envío <span style="color:#94A3B8;">(opcionales)</span>:</p>
-                            <input type="text" id="ship-loc" placeholder="Localidad o Código Postal (ej: Ramos Mejía / 1704)" value="${userData.locality || userData.zipCode || ''}" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
-                            <input type="text" id="ship-dir" placeholder="Dirección de entrega (ej: Av. de Mayo 123)" value="${userData.address || ''}" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
-                            <button id="btn-submit-shipping-wa" class="btn-primary giant-btn" style="width:100%; justify-content:center; margin-top:4px; font-size:0.92rem;">
-                                <span>Enviar consulta por WhatsApp</span>
-                            </button>
-                        </div>
+                if (hasAnyPrice) {
+                    totalValEl.textContent = formatter.format(productsSubtotal + shipCost);
+                } else {
+                    totalValEl.textContent = 'A consultar';
+                }
+            }
 
-                        <!-- Panel desplegable con información de Retiro por Taller -->
-                        <div id="delivery-pickup-info" style="display:none; width:100%; flex-direction:column; gap:12px; margin-top:10px; text-align:left;">
-                            <div style="background:#FFF8F5; border:1.5px solid rgba(160,113,91,0.25); padding:14px; border-radius:14px; font-size:0.85rem; color:#2D3748; line-height:1.5;">
-                                ${window.vacationConfig && window.vacationConfig.active ? `
-                                    <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px; border-radius:8px; margin-bottom:12px; color:#E67700; font-size:0.8rem; line-height:1.4;">
-                                        <strong>⚠️ Aviso de vacaciones:</strong> Taller cerrado del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Los retiros se coordinan a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. ¡Tu precio queda congelado sin aumentos!
-                                    </div>
-                                ` : ''}
-                                <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
-                                    <span>💡 Aclaraciones sobre el precio:</span>
-                                </p>
-                                <p style="margin:0 0 12px 0;">El precio publicado en la web se mantiene pagando en <strong>efectivo o transferencia</strong> <em>(no incluye impuestos ni costo de envío)</em>.</p>
-                                
-                                <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
-                                    <span>📍 Ubicación del taller:</span>
-                                </p>
-                                <p style="margin:0;">Hurlingham, Buenos Aires, Argentina<br><span style="color:#718096; font-size:0.8rem;">(Zona céntrica: cerca de Av. Vergara y Av. Jauretche)</span></p>
-                            </div>
+            shipCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (card.classList.contains('disabled')) return;
+                    const radio = card.querySelector('input[type="radio"]');
+                    if (radio && !radio.disabled) {
+                        radio.checked = true;
+                        shipCards.forEach(c => c.classList.remove('selected'));
+                        card.classList.add('selected');
+                        recalculateMLTotal();
+                    }
+                });
+            });
 
-                            <button id="btn-submit-pickup-wa" class="btn-primary giant-btn" style="width:100%; justify-content:center; font-size:0.92rem;">
-                                <span>Continuar a WhatsApp 💬</span>
-                            </button>
-                        </div>
-                    `;
-
-                    overlay.appendChild(sheet);
-                    document.body.appendChild(overlay);
-                    requestAnimationFrame(() => overlay.classList.add('open'));
-
-                    const closeModal = () => {
-                        overlay.classList.remove('open');
-                        setTimeout(() => overlay.remove(), 300);
+            // --- Botón COMPRAR YA (Dispara Wizard showProductPaymentModal) ---
+            const btnCartBuyNow = document.getElementById('btn-cart-buy-now');
+            if (btnCartBuyNow) {
+                btnCartBuyNow.addEventListener('click', () => {
+                    if (cartItems.length === 0) return;
+                    
+                    const firstItem = cartItems[0];
+                    const origProd = findCartProductDetails(firstItem);
+                    const prodToUse = origProd || {
+                        id: firstItem.id,
+                        title: firstItem.title,
+                        price: firstItem.price,
+                        image: firstItem.image
                     };
 
-                    const resetToInitialView = () => {
-                        const pickupInfo = document.getElementById('delivery-pickup-info');
-                        const shippingForm = document.getElementById('delivery-shipping-form');
-                        const optionsContainer = sheet.querySelector('.delivery-modal-options');
-                        const titleEl = sheet.querySelector('.delivery-modal-title');
-                        const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
-                        const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
-                        const backArrow = document.getElementById('dopt-back-arrow');
+                    const totalCartQty = cartItems.reduce((acc, i) => acc + (i.qty || 1), 0);
+                    let cartPriceSum = 0;
+                    cartItems.forEach(i => { if (i.price) cartPriceSum += i.price * (i.qty || 1); });
 
-                        if (pickupInfo) pickupInfo.style.display = 'none';
-                        if (shippingForm) shippingForm.style.display = 'none';
-                        if (optionsContainer) optionsContainer.style.display = 'flex';
-                        if (backArrow) backArrow.style.display = 'none';
+                    const comboTitles = cartItems.map(i => `${i.qty || 1}x ${i.title}${i.acabado ? ` (${i.acabado})` : ''}`).join(' + ');
 
-                        if (eyebrowEl) eyebrowEl.textContent = 'Antes de continuar';
-                        if (titleEl) titleEl.textContent = '¿Necesitás envío?';
-                        if (subtitleEl) subtitleEl.textContent = 'Elegí una de las opciones para poder continuar';
+                    const syntheticGrupo = {
+                        acabado_name: `Carrito (${cartItems.length} ítems)`,
+                        cover_image: firstItem.image
                     };
 
-                    overlay.addEventListener('click', (ev) => { if (ev.target === overlay) closeModal(); });
-                    document.getElementById('dopt-close-x')?.addEventListener('click', closeModal);
-                    document.getElementById('dopt-back-arrow')?.addEventListener('click', resetToInitialView);
+                    // Sincronizar selección de envío y CP ingresado con la persistencia del Modal Checkout
+                    const checkedRadio = viewContainer.querySelector('input[name="cart-selected-shipping"]:checked');
+                    const selectedShipVal = checkedRadio ? checkedRadio.value : 'flex';
+                    const isPickup = selectedShipVal === 'pickup';
 
-                    // Opción: Retirar por taller
-                    document.getElementById('dopt-pickup').addEventListener('click', () => {
-                        const pickupInfo = document.getElementById('delivery-pickup-info');
-                        const optionsContainer = sheet.querySelector('.delivery-modal-options');
-                        const titleEl = sheet.querySelector('.delivery-modal-title');
-                        const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
-                        const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
-                        const backArrow = document.getElementById('dopt-back-arrow');
+                    try {
+                        const currentCheckoutData = JSON.parse(localStorage.getItem('latarima_checkout_user_data') || '{}');
+                        currentCheckoutData.name = userData.name || currentCheckoutData.name || '';
+                        currentCheckoutData.phone = userData.phone || currentCheckoutData.phone || '';
+                        currentCheckoutData.dir = userData.address || currentCheckoutData.dir || '';
+                        currentCheckoutData.cp = userData.zipCode || currentCheckoutData.cp || '';
+                        currentCheckoutData.ciudad = userData.locality || currentCheckoutData.ciudad || '';
+                        currentCheckoutData.provincia = userData.province || currentCheckoutData.provincia || '';
+                        currentCheckoutData.deliveryMode = isPickup ? 'pickup' : 'shipping';
+                        localStorage.setItem('latarima_checkout_user_data', JSON.stringify(currentCheckoutData));
+                    } catch(e) {}
 
-                        if (pickupInfo && optionsContainer) {
-                            if (eyebrowEl) eyebrowEl.textContent = 'Retiro por taller';
-                            if (titleEl) titleEl.textContent = 'Retiro en Hurlingham';
-                            if (subtitleEl) subtitleEl.textContent = 'Ubicación y modalidad de entrega en el taller:';
-                            if (backArrow) backArrow.style.display = 'flex';
+                    if (window.showProductPaymentModal) {
+                        window.showProductPaymentModal(prodToUse, syntheticGrupo, comboTitles, cartPriceSum, 1);
+                    } else if (window.showOfferPaymentModal) {
+                        window.showOfferPaymentModal(prodToUse, 1, { grupo: syntheticGrupo, medida: comboTitles, price: cartPriceSum });
+                    }
+                });
+            }
 
-                            optionsContainer.style.display = 'none';
-                            pickupInfo.style.display = 'flex';
+            // --- Botón Consultar por WhatsApp ---
+            const btnCartConsultWa = document.getElementById('btn-cart-consult-wa');
+            if (btnCartConsultWa) {
+                btnCartConsultWa.addEventListener('click', () => {
+                    loadUserData();
+                    if (cartItems.length === 0) return;
 
-                            document.getElementById('btn-submit-pickup-wa')?.addEventListener('click', () => {
-                                closeModal();
-                                try {
-                                    if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA Carrito - Retiro Taller' });
-                                } catch (err) {}
-                                window.open(`https://wa.me/5491167007723?text=${encodeURIComponent(buildCartWA('pickup'))}`, '_blank');
-                            });
+                    const phone = '5491167007723';
+                    const formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 });
+
+                    let lines = [];
+                    lines.push("*CONSULTA Y PRESUPUESTO DE CARRITO*");
+                    lines.push("--------------------------------------");
+
+                    // 1. Detalle de productos
+                    let productsSubtotal = 0;
+                    let hasAnyPrice = false;
+
+                    lines.push("*Productos:*");
+                    cartItems.forEach(item => {
+                        const qty = item.qty || 1;
+                        const unitPrice = item.price || null;
+                        let subtotalText = "";
+
+                        if (unitPrice) {
+                            const subtotal = unitPrice * qty;
+                            productsSubtotal += subtotal;
+                            hasAnyPrice = true;
+                            subtotalText = ` -> *${formatter.format(subtotal)}*`;
+                        } else {
+                            subtotalText = " _(Precio a consultar)_";
                         }
+
+                        let variantDetails = [];
+                        if (item.acabado && item.acabado !== 'Único') variantDetails.push(`Acabado: ${item.acabado}`);
+                        if (item.medida) variantDetails.push(`Medida: ${item.medida}`);
+                        if (item.opcion) variantDetails.push(`${item.opcionLabel || 'Opción'}: ${item.opcion}`);
+
+                        const variantStr = variantDetails.length > 0 ? `\n   └ _${variantDetails.join(' · ')}_` : '';
+
+                        lines.push(`• *${qty}x* ${item.title}${subtotalText}${variantStr}`);
                     });
 
-                    // Opción: Necesito envío
-                    document.getElementById('dopt-shipping').addEventListener('click', () => {
-                        const formContainer = document.getElementById('delivery-shipping-form');
-                        const optionsContainer = sheet.querySelector('.delivery-modal-options');
-                        const titleEl = sheet.querySelector('.delivery-modal-title');
-                        const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
-                        const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
-                        const backArrow = document.getElementById('dopt-back-arrow');
+                    lines.push("--------------------------------------");
 
-                        if (formContainer) {
-                            if (eyebrowEl) eyebrowEl.textContent = 'Cotizá tu envío';
-                            if (titleEl) titleEl.textContent = 'Datos para el envío';
-                            if (subtitleEl) subtitleEl.textContent = 'Completá estos datos básicos (opcionales) para cotizar el costo de envío. Te lo recomendamos para agilizar tu compra 👌';
-                            if (backArrow) backArrow.style.display = 'flex';
+                    // 2. Subtotal productos
+                    if (hasAnyPrice) {
+                        lines.push(`*Subtotal Productos:* ${formatter.format(productsSubtotal)}`);
+                    }
 
-                            optionsContainer.style.display = 'none';
-                            formContainer.style.display = 'flex';
-                            document.getElementById('ship-loc')?.focus();
+                    // 3. Envío seleccionado
+                    const checkedRadio = viewContainer.querySelector('input[name="cart-selected-shipping"]:checked');
+                    const selectedShipVal = checkedRadio ? checkedRadio.value : 'flex';
 
-                            document.getElementById('btn-submit-shipping-wa').addEventListener('click', () => {
-                                const localidad = document.getElementById('ship-loc')?.value.trim() || '';
-                                const direccion = document.getElementById('ship-dir')?.value.trim() || '';
-                                closeModal();
-                                try {
-                                    if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA Carrito - Necesita Envio' });
-                                } catch (err) {}
-                                window.open(`https://wa.me/5491167007723?text=${encodeURIComponent(buildCartWA('shipping', { localidad, direccion }))}`, '_blank');
-                            });
-                        }
+                    const userZip = (userData.zipCode || '').trim();
+                    let cpLookupRes = null;
+                    if (userZip && window.lookupPostalCode) {
+                        cpLookupRes = window.lookupPostalCode(userZip);
+                    }
+                    const hasValidCp = !!(cpLookupRes && cpLookupRes.hasLocalMatch !== false);
+
+                    let totalLogisticaPackages = 0;
+                    let totalFletePackages = 0;
+                    let isFleteFreeByQty = false;
+                    let isFlexFreeByQty = false;
+
+                    cartItems.forEach(item => {
+                        const qty = item.qty || 1;
+                        const origProd = findCartProductDetails(item);
+                        const shipConf = origProd?.shippingConfig || item.shippingConfig || {};
+                        const logMax = parseInt(shipConf.logisticaMaxUnits) || 0;
+                        const fleteMax = parseInt(shipConf.fleteMaxUnits) || 0;
+
+                        const isGlobalFree = !!(shipConf.isFreeShipping || shipConf.isFree || origProd?.shippingType === 'free' || item.shippingType === 'free');
+                        const logFreeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
+                        if (isGlobalFree || (logFreeMin > 0 && qty >= logFreeMin)) isFlexFreeByQty = true;
+
+                        const fleteFreeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
+                        if (isGlobalFree || (fleteFreeMin > 0 && qty >= fleteFreeMin)) isFleteFreeByQty = true;
+
+                        totalLogisticaPackages += logMax > 0 ? Math.ceil(qty / logMax) : 1;
+                        totalFletePackages += fleteMax > 0 ? Math.ceil(qty / fleteMax) : 1;
                     });
+
+                    let flexRate = hasValidCp ? (cpLookupRes?.logistica?.cost || 0) : 0;
+                    let fleteRate = hasValidCp ? (cpLookupRes?.flete?.cost || 0) : 0;
+
+                    let shipText = "";
+                    let shipCost = 0;
+
+                    if (selectedShipVal === 'flex') {
+                        if (isFlexFreeByQty) {
+                            shipText = "Logística Flex / Express: *¡GRATIS!*";
+                            shipCost = 0;
+                        } else if (hasValidCp) {
+                            shipCost = flexRate * Math.max(1, totalLogisticaPackages);
+                            shipText = `Logística Flex / Express: *${formatter.format(shipCost)}*`;
+                        } else {
+                            shipText = "Logística Flex / Express _(A cotizar por CP)_";
+                        }
+                    } else if (selectedShipVal === 'flete') {
+                        if (isFleteFreeByQty) {
+                            shipText = "Flete Propio: *¡GRATIS!*";
+                            shipCost = 0;
+                        } else if (hasValidCp) {
+                            shipCost = fleteRate * Math.max(1, totalFletePackages);
+                            shipText = `Flete Propio: *${formatter.format(shipCost)}*`;
+                        } else {
+                            shipText = "Flete Propio _(A cotizar por CP)_";
+                        }
+                    } else if (selectedShipVal === 'externa') {
+                        shipText = "Logística Externa / Expreso _(A convenir por WhatsApp)_";
+                    } else if (selectedShipVal === 'pickup') {
+                        shipText = "Retiro Gratis en Taller (Hurlingham)";
+                        shipCost = 0;
+                    }
+
+                    lines.push(`*Opción de Envío:* ${shipText}`);
+
+                    // 4. Total Estimado
+                    if (hasAnyPrice) {
+                        const grandTotal = productsSubtotal + shipCost;
+                        lines.push(`*TOTAL ESTIMADO:* *${formatter.format(grandTotal)}*`);
+                    } else {
+                        lines.push(`*TOTAL ESTIMADO:* A consultar`);
+                    }
+
+                    // 5. Datos del cliente (si existen)
+                    let clientData = [];
+                    if (userData.name) clientData.push(`• Nombre: ${userData.name}`);
+                    if (userData.phone) clientData.push(`• Teléfono: ${userData.phone}`);
+                    if (userData.zipCode) clientData.push(`• CP: ${userData.zipCode}`);
+                    if (userData.locality) clientData.push(`• Localidad: ${userData.locality}`);
+                    if (userData.address) clientData.push(`• Dirección: ${userData.address}`);
+
+                    if (clientData.length > 0) {
+                        lines.push("--------------------------------------");
+                        lines.push("*Datos del Cliente:*");
+                        lines.push(clientData.join('\n'));
+                    }
+
+                    // 6. Vacaciones si aplica
+                    if (window.vacationConfig && window.vacationConfig.active) {
+                        const start = window.vacationConfig.startDate || "receso";
+                        const deliv = window.vacationConfig.deliveriesDate || "el regreso";
+                        lines.push(`\n_(Nota: Entendido receso del ${start}, entregas desde el ${deliv})_`);
+                    }
+
+                    lines.push("\n¡Hola! Les comparto mi presupuesto del carrito. ¿Me confirman disponibilidad y los pasos a seguir?");
+
+                    const waMsg = lines.join('\n');
+                    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
                 });
             }
 

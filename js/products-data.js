@@ -429,7 +429,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -865,7 +865,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 57,
+                "views": 58,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -902,9 +902,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 2
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "Vertical 150 a 200 cm",
@@ -915,9 +916,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
+                                "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "Inclinada 100 a 150 cm",
@@ -928,9 +930,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Vertical 100 a 150 cm",
@@ -941,9 +944,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 40000,
+                                "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Inclinada 0 a 100 cm",
@@ -954,9 +958,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Vertical 0 a 100 cm",
@@ -967,64 +972,35 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 30000,
+                                "cost_price": 30000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 2
+                        "hidden": false
                     }
                 ],
-                "tags": [
-                    "escalera",
-                    "escaleras",
-                    "escaleras pintor",
-                    "escalera madera",
-                    "escalera pino",
-                    "subir",
-                    "alcanzar",
-                    "plegable",
-                    "tijera",
-                    "pintor",
-                    "decorativa",
-                    "biblioteca",
-                    "escalones",
-                    "escalon",
-                    "peldaños",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "last_modified": 1783477948902,
-                "primaryCatId": "muebles",
-                "views": 4,
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "stock": 2
+                "last_modified": 1788738695697,
+                "primaryCatId": "muebles",
+                "history": []
             },
             {
                 "id": "31",
@@ -1189,14 +1165,14 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 2,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 },
@@ -1647,7 +1623,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 },
@@ -2152,7 +2128,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2879,14 +2855,14 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -3328,7 +3304,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 },
@@ -3465,9 +3441,10 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "fleteMaxUnits": 6
                 }
             },
             {
@@ -3559,14 +3536,14 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -3610,7 +3587,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -3653,7 +3630,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -3742,7 +3719,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -4101,7 +4078,7 @@ const productsData = [
                 ],
                 "last_modified": 1786057097023,
                 "primaryCatId": "Barandas",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4185,7 +4162,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4268,7 +4245,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616746091,
                 "primaryCatId": "Barandas",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4628,7 +4605,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4751,7 +4728,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 3,
+                "views": 4,
                 "stock": 0,
                 "history": [
                     {
@@ -4905,7 +4882,8 @@ const productsData = [
                 },
                 "last_modified": 1788655737766,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "21",
@@ -4979,7 +4957,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
-                ]
+                ],
+                "views": 46
             },
             {
                 "id": "22",
@@ -5087,7 +5066,8 @@ const productsData = [
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
-                    "logisticaMaxUnits": 1
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1
                 }
             },
             {
@@ -5177,7 +5157,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
-                "views": 2,
+                "views": 4,
                 "stock": 0,
                 "history": [
                     {
@@ -5195,7 +5175,8 @@ const productsData = [
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
-                    "logisticaMaxUnits": 1
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1
                 }
             },
             {
@@ -5304,7 +5285,8 @@ const productsData = [
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
-                    "logisticaMaxUnits": 1
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1
                 }
             },
             {
@@ -5384,14 +5366,14 @@ const productsData = [
                 ],
                 "last_modified": 1784411533338,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -5481,7 +5463,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -5583,7 +5565,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -5680,7 +5662,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -5769,7 +5751,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -5858,7 +5840,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -5947,7 +5929,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -6036,7 +6018,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -6697,7 +6679,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 4,
+                "views": 5,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -7073,7 +7055,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -7172,7 +7154,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 },
@@ -7265,14 +7247,14 @@ const productsData = [
                 "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
                 "visible": true,
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -7573,7 +7555,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -7660,7 +7642,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
                     "logisticaMaxUnits": 1
@@ -7761,7 +7743,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -8210,7 +8192,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -8805,7 +8787,7 @@ const productsData = [
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
-                    "logisticaMaxUnits": 1
+                    "logisticaMaxUnits": 2
                 }
             },
             {
@@ -8950,7 +8932,7 @@ const productsData = [
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
-                    "logisticaMaxUnits": 1
+                    "logisticaMaxUnits": 2
                 }
             },
             {
@@ -9064,7 +9046,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -9097,7 +9079,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -9161,7 +9143,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -9370,7 +9352,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -9415,7 +9397,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -9460,7 +9442,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -9552,7 +9534,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 1,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -9743,7 +9725,8 @@ const productsData = [
                 },
                 "last_modified": 1788655893942,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 10
             }
         ]
     },
@@ -9934,7 +9917,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
-                ]
+                ],
+                "views": 46
             },
             {
                 "id": "22",
@@ -10042,7 +10026,8 @@ const productsData = [
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
-                    "logisticaMaxUnits": 1
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1
                 }
             },
             {
@@ -10151,7 +10136,8 @@ const productsData = [
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
-                    "logisticaMaxUnits": 1
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1
                 }
             },
             {
@@ -10241,7 +10227,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
-                "views": 2,
+                "views": 4,
                 "stock": 0,
                 "history": [
                     {
@@ -10259,7 +10245,8 @@ const productsData = [
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
-                    "logisticaMaxUnits": 1
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1
                 }
             },
             {
@@ -10350,7 +10337,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 4,
+                "views": 5,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -10693,7 +10680,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 1,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -11100,7 +11087,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -11608,7 +11595,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 3,
+                "views": 4,
                 "stock": 0,
                 "history": [
                     {
@@ -11772,7 +11759,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -12265,14 +12252,14 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Mesas-madera",
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -12368,7 +12355,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 },
@@ -12505,9 +12492,10 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "fleteMaxUnits": 6
                 }
             },
             {
@@ -13904,7 +13892,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 57,
+                "views": 58,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -14340,7 +14328,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -14619,7 +14607,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15129,7 +15117,7 @@ const productsData = [
                 ],
                 "last_modified": 1786057097023,
                 "primaryCatId": "Barandas",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15216,7 +15204,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
                     "logisticaMaxUnits": 1
@@ -15292,7 +15280,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15375,7 +15363,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616746091,
                 "primaryCatId": "Barandas",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15720,7 +15708,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15964,7 +15952,8 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 3
                 }
             },
             {
@@ -16023,7 +16012,8 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 2
                 }
             },
             {
@@ -16108,7 +16098,8 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 2
                 },
                 "stock": 0
             },
@@ -16248,7 +16239,8 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 6
                 }
             },
             {
@@ -16367,7 +16359,8 @@ const productsData = [
                 },
                 "last_modified": 1788655893942,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 10
             },
             {
                 "id": "68",
@@ -16485,7 +16478,8 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 4
                 }
             },
             {
@@ -16616,7 +16610,8 @@ const productsData = [
                 },
                 "last_modified": 1788655737766,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "6A",
@@ -16842,7 +16837,8 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 2
                 }
             },
             {
@@ -16881,7 +16877,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 2,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -16890,7 +16886,8 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
                 }
             }
         ],
@@ -16980,14 +16977,14 @@ const productsData = [
                 ],
                 "last_modified": 1784411533338,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -17077,7 +17074,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -17179,7 +17176,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -17276,7 +17273,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -17365,7 +17362,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -17454,7 +17451,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -17543,7 +17540,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -17632,7 +17629,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -17731,7 +17728,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 },
@@ -17775,7 +17772,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -17867,7 +17864,7 @@ const productsData = [
                 "last_modified": 1786924556417,
                 "primaryCatId": "Hogar",
                 "visible": true,
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -17911,8 +17908,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
+                                "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "Vertical 150 a 200 cm",
@@ -17923,8 +17922,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 50000,
+                                "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "Inclinada 100 a 150 cm",
@@ -17935,8 +17936,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
+                                "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Vertical 100 a 150 cm",
@@ -17947,8 +17950,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 40000,
+                                "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Inclinada 0 a 100 cm",
@@ -17959,8 +17964,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Vertical 0 a 100 cm",
@@ -17971,61 +17978,35 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 30000,
+                                "cost_price": 30000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
-                "tags": [
-                    "escalera",
-                    "escaleras",
-                    "escaleras pintor",
-                    "escalera madera",
-                    "escalera pino",
-                    "subir",
-                    "alcanzar",
-                    "plegable",
-                    "tijera",
-                    "pintor",
-                    "decorativa",
-                    "biblioteca",
-                    "escalones",
-                    "escalon",
-                    "peldaños",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "last_modified": 1783477948902,
-                "primaryCatId": "muebles",
-                "views": 4,
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                }
+                "last_modified": 1788738695697,
+                "primaryCatId": "muebles",
+                "history": []
             },
             {
                 "id": "92",
@@ -18082,7 +18063,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": true,
+                    "logisticaEnabled": false,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -18122,7 +18103,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786316089369,
                 "primaryCatId": "muebles",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18131,7 +18112,8 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
                 }
             },
             {
@@ -18170,7 +18152,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786333409298,
                 "primaryCatId": "muebles",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18179,7 +18161,8 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 2
                 }
             }
         ],
@@ -18270,7 +18253,8 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
                 },
                 "stock": 1
             },
@@ -18416,7 +18400,7 @@ const productsData = [
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
-                    "logisticaMaxUnits": 1
+                    "logisticaMaxUnits": 2
                 }
             },
             {
@@ -18588,7 +18572,7 @@ const productsData = [
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false,
-                    "logisticaMaxUnits": 1
+                    "logisticaMaxUnits": 2
                 }
             },
             {
@@ -19075,7 +19059,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -19120,7 +19104,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -19165,7 +19149,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -19227,14 +19211,14 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 2,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 },
@@ -19427,14 +19411,14 @@ const productsData = [
                 "last_modified": 1783907160537,
                 "primaryCatId": "sillas-sillones",
                 "visible": true,
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -19479,7 +19463,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -19524,7 +19508,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -19569,7 +19553,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -19678,7 +19662,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -19722,7 +19706,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -19765,7 +19749,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -20015,7 +19999,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -20278,7 +20262,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -20839,7 +20823,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21037,7 +21021,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -21131,14 +21115,14 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -21169,7 +21153,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -21215,7 +21199,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -21248,7 +21232,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -21312,7 +21296,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -21411,7 +21395,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 },
@@ -21460,7 +21444,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -21866,7 +21850,7 @@ const productsData = [
                 ],
                 "last_modified": 1780774148299,
                 "primaryCatId": "Podios",
-                "views": 0,
+                "views": 1,
                 "stock": 0,
                 "history": [
                     {
@@ -21891,7 +21875,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -21990,7 +21974,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
@@ -22104,7 +22088,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }

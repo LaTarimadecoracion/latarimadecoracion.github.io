@@ -118,50 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {}
 
         allProducts = [];
-        const visibleRubros = rubrosList.filter(r => r.visible !== false);
-        const visibleRubroIds = new Set(visibleRubros.map(r => r.id));
+        let rawItems = [];
+        const getEngine = (window.parent && typeof window.parent.getNormalizedCatalogProducts === 'function')
+            ? window.parent.getNormalizedCatalogProducts
+            : (typeof window.getNormalizedCatalogProducts === 'function' ? window.getNormalizedCatalogProducts : null);
 
-        if (visibleRubros.length > 0 && !visibleRubroIds.has(activeCatalogRubro)) {
-            activeCatalogRubro = visibleRubros[0].id;
+        if (getEngine) {
+            rawItems = getEngine(activeCatalogRubro);
         }
 
-        const seenKeys = new Set();
-
-        sourceProducts.forEach(catObj => {
-            const catRubro = catObj.rubro || 'carpinteria';
-
-            // Descartar si el rubro no está visible en el sitio
-            if (visibleRubros.length > 0 && !visibleRubroIds.has(catRubro)) {
-                return;
-            }
-
-            // Si hay pestañas de rubros visibles, mostrar sólo el seleccionado
-            if (visibleRubros.length > 1 && catRubro !== activeCatalogRubro) {
-                return;
-            }
-
-            if (catObj.products && (catObj.visible !== false || catObj.id.endsWith('-todos'))) {
-                catObj.products.forEach(product => {
-                    const uniqueKey = product.id ? product.id : (product.title || '').trim().toLowerCase();
-
-                    if (product.visible !== false && !seenKeys.has(uniqueKey)) {
-                        seenKeys.add(uniqueKey);
-                        const rawImg = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
-                        allProducts.push({
-                            id: product.id,
-                            title: product.title,
-                            description: product.description || '',
-                            image: fixImagePath(rawImg),
-                            categoryName: catObj.name,
-                            acabados_groups: product.acabados_groups || [],
-                            medidas_variants: product.medidas_variants || [],
-                            optional_variant: product.optional_variant || null,
-                            tags: product.tags || []
-                        });
-                    }
-                });
-            }
-        });
+        allProducts = rawItems.map(item => ({
+            ...item,
+            image: fixImagePath(item.image)
+        }));
 
         // Ordenar alfabéticamente A-Z
         allProducts.sort((a, b) => a.title.localeCompare(b.title, 'es', { sensitivity: 'base' }));
@@ -281,14 +250,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (window.parent && typeof window.parent.showProductDetail === 'function' && typeof window.parent.findProductById === 'function') {
                         const foundData = window.parent.findProductById(product.id);
                         if (foundData) {
-                            window.parent.showProductDetail(foundData.product, foundData.catName);
+                            window.parent.showProductDetail(foundData.product, foundData.catName, product.selectedAcabado || '');
                             return;
                         }
                     }
                 } catch (err) {
                     console.error('Error opening product detail via parent:', err);
                 }
-                window.parent.location.href = detailUrl;
+                const urlSuffix = product.selectedAcabado ? `&${encodeURIComponent(product.selectedAcabado)}` : '';
+                window.parent.location.href = `${detailUrl}${urlSuffix}`;
             };
 
             // 1. Imagen (Thumbnail) con Badge de Carrito en la Esquina
@@ -469,39 +439,57 @@ document.addEventListener('DOMContentLoaded', () => {
             const actionsCol = document.createElement('div');
             actionsCol.className = 'catalog-actions-col';
 
-            // 3.1 Botón Envío (Mercado Libre)
-            const btnShipping = document.createElement('a');
-            btnShipping.className = 'catalog-btn catalog-btn-shipping';
-            btnShipping.target = '_blank';
-            btnShipping.innerHTML = `<span class="material-symbols-outlined" style="font-size:1.1rem;">local_shipping</span> Envío`;
-            if (currentShippingLink) {
-                btnShipping.href = currentShippingLink;
-                btnShipping.style.display = 'inline-flex';
-            } else {
-                btnShipping.style.display = 'none';
-            }
-            btnShipping.addEventListener('click', () => {
-                try {
-                    if (typeof gtag === 'function') {
-                        gtag('event', 'begin_checkout', {
-                            currency: 'ARS',
-                            items: [{
-                                item_id: product.id,
-                                item_name: product.title,
-                                item_category: product.categoryName
-                            }]
-                        });
-                    }
-                } catch (e) { }
-            });
-            actionsCol.appendChild(btnShipping);
+            // 3.1 Botón Comprar (Abre Checkout Wizard de Pago o Ficha de Producto)
+            const btnBuy = document.createElement('button');
+            btnBuy.type = 'button';
+            btnBuy.className = 'catalog-btn catalog-btn-shipping';
+            btnBuy.style.display = 'inline-flex';
+            btnBuy.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+            btnBuy.style.boxShadow = '0 4px 12px rgba(5, 150, 105, 0.25)';
+            btnBuy.innerHTML = `<span class="material-symbols-outlined" style="font-size:1.1rem;">bolt</span> Comprar`;
+            btnBuy.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
 
-            // 3.2 Botón Consultar (WhatsApp)
+                const selectEl = variantCol.querySelector('select');
+                const currentIdx = selectEl ? parseInt(selectEl.value) : defaultIdx;
+                const selectedVar = shippingVariants[currentIdx] || shippingVariants[0] || {};
+                
+                const medidaName = selectedVar.medida || '';
+                const acabadoName = selectedVar.acabado || product.selectedAcabado || 'Único';
+
+                // Buscar grupo correspondiente de acabados
+                const grupo = (product.acabados_groups || []).find(g => (g.acabado_name || '').trim().toLowerCase() === acabadoName.trim().toLowerCase()) 
+                    || (product.acabados_groups && product.acabados_groups[0]) 
+                    || {};
+
+                const variantPrice = selectedVar.price !== undefined && selectedVar.price !== null ? selectedVar.price : (parseFloat(product.price) || 0);
+
+                try {
+                    const pWin = window.parent && window.parent !== window ? window.parent : window;
+                    if (typeof pWin.showProductPaymentModal === 'function') {
+                        pWin.showProductPaymentModal(product, grupo, medidaName, variantPrice, 1);
+                    } else if (typeof pWin.showProductDetail === 'function' && typeof pWin.findProductById === 'function') {
+                        const foundData = pWin.findProductById(product.id);
+                        if (foundData) {
+                            pWin.showProductDetail(foundData.product, foundData.catName, acabadoName);
+                        }
+                    } else {
+                        window.parent.location.href = `./?prod=${product.id}`;
+                    }
+                } catch (err) {
+                    console.error('Error triggering buy modal from catalog:', err);
+                    window.parent.location.href = `./?prod=${product.id}`;
+                }
+            });
+            actionsCol.appendChild(btnBuy);
+
+            // 3.2 Botón Consultar (WhatsApp / Crema)
             const btnWpp = document.createElement('a');
             btnWpp.className = 'catalog-btn catalog-btn-wpp';
             btnWpp.href = currentWhatsAppLink;
             btnWpp.target = '_blank';
-            btnWpp.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" style="width: 14px; height: 14px; object-fit: cover; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));"> Consultar`;
+            btnWpp.innerHTML = `<span class="material-symbols-outlined" style="font-size:1.1rem; color:#c0510a;">chat</span> Consultar`;
             actionsCol.appendChild(btnWpp);
 
             // Event Listener de Cambio de Variante

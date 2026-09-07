@@ -121,6 +121,8 @@ window.initProductsAdmin = function() {
         const targetRubroId = isFilteringTodos ? selectedCategoryIdForProducts.replace('-todos', '') : '';
 
         sessionProducts.forEach((cat, catIdx) => {
+            if (cat.id && String(cat.id).endsWith('-todos')) return;
+
             let matches = false;
             if (selectedCategoryIdForProducts === 'all' || !selectedCategoryIdForProducts) {
                 matches = true;
@@ -132,11 +134,13 @@ window.initProductsAdmin = function() {
                 matches = (cat.id === selectedCategoryIdForProducts);
             }
 
-            if (matches) {
+            if (matches && cat.products) {
                 cat.products.forEach((prod, pIdx) => {
-                    // Evitar duplicar en la grilla del admin si el producto está en múltiples categorías (como la de resguardo y la real)
-                    const alreadyAdded = prods.some(p => p.id === prod.id);
-                    if (!alreadyAdded) {
+                    if (!prod || !prod.id) return;
+                    const existingIdx = prods.findIndex(p => p.id === prod.id);
+                    const isPrimary = prod.primaryCatId ? prod.primaryCatId === cat.id : true;
+
+                    if (existingIdx === -1) {
                         prods.push({
                             ...prod,
                             catIndex: catIdx,
@@ -144,6 +148,15 @@ window.initProductsAdmin = function() {
                             categoryName: cat.name,
                             categoryId: cat.id
                         });
+                    } else if (isPrimary) {
+                        // Reemplazar con la categoría primaria para mantener los índices de edición correctos
+                        prods[existingIdx] = {
+                            ...prod,
+                            catIndex: catIdx,
+                            prodIndex: pIdx,
+                            categoryName: cat.name,
+                            categoryId: cat.id
+                        };
                     }
                 });
             }
@@ -430,55 +443,10 @@ window.initProductsAdmin = function() {
     // ── Clonar Categoría ──
 
     function getIndexedProducts() {
-        const indexed = [];
-        // Usar sessionProducts como fuente de verdad activa si existe (para tener productos creados/editados)
-        const sourceProducts = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) 
-            ? sessionProducts 
-            : (typeof productsData !== 'undefined' ? productsData : []);
-
-        sourceProducts.forEach(cat => {
-            if (cat.visible === false && !cat.id.endsWith('-todos')) return;
-            if (!cat.products) return;
-            cat.products.forEach(product => {
-                if (product.visible === false) return;
-                let indexedAnyVariant = false;
-
-                // 1. Indexar cada variante/acabado virtual por separado
-                if (product.acabados_groups && Array.isArray(product.acabados_groups)) {
-                    product.acabados_groups.forEach(acabado => {
-                        if (acabado.acabado_name) {
-                            indexed.push({
-                                id: product.id,
-                                product: product,
-                                cat: cat,
-                                nombre: product.title,
-                                acabado: acabado.acabado_name,
-                                // Guardar la imagen específica de la variante para un resultado visual premium
-                                image: acabado.cover_image || product.image,
-                                tags: product.tags || [],
-                                medidas: acabado.medidas_variants ? acabado.medidas_variants.map(mv => mv.medida || '') : []
-                            });
-                            indexedAnyVariant = true;
-                        }
-                    });
-                }
-
-                // 2. Indexar el producto base original (solo si no se indexó ninguna variante con acabado)
-                if (!indexedAnyVariant) {
-                    indexed.push({
-                        id: product.id,
-                        product: product,
-                        cat: cat,
-                        nombre: product.title,
-                        acabado: '',
-                        image: product.image,
-                        tags: product.tags || [],
-                        medidas: product.medidas_variants ? product.medidas_variants.map(mv => mv.medida || '') : []
-                    });
-                }
-            });
-        });
-        return indexed;
+        if (typeof window.getNormalizedCatalogProducts === 'function') {
+            return window.getNormalizedCatalogProducts();
+        }
+        return [];
     }
 
     // Registrar clicks de búsqueda para rankear acabados en "Más Buscados"
@@ -677,6 +645,7 @@ window.initProductsAdmin = function() {
                 const directMatch = normalizeForSearch(item.nombre).includes(term) ||
                     (item.cat && item.cat.name && normalizeForSearch(item.cat.name).includes(term)) ||
                     (item.acabado && normalizeForSearch(item.acabado).includes(term)) ||
+                    (item.acabadosSearch && normalizeForSearch(item.acabadosSearch).includes(term)) ||
                     (item.product.description && normalizeForSearch(item.product.description).includes(term)) ||
                     (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(term))) ||
                     (item.medidas && item.medidas.some(medida => {
@@ -709,33 +678,24 @@ window.initProductsAdmin = function() {
             }
         };
 
-        // 2. Probar búsqueda tipo AND (todos los términos deben coincidir)
-        let matchedItems = rubroFiltered.filter(item => matchProductWithTerms(item, queryTerms, 'AND'));
+        let matchedItems = [];
         let usedOrLogic = false;
 
-        // 3. Si no hay resultados de tipo AND, usar tipo OR si hay más de un término
-        if (matchedItems.length === 0 && queryTerms.length > 1) {
-            matchedItems = rubroFiltered.filter(item => matchProductWithTerms(item, queryTerms, 'OR'));
-            usedOrLogic = true;
+        if (queryTerms.length === 0) {
+            matchedItems = rubroFiltered;
+        } else {
+            // 2. Probar búsqueda tipo AND (todos los términos deben coincidir)
+            matchedItems = rubroFiltered.filter(item => matchProductWithTerms(item, queryTerms, 'AND'));
+
+            // 3. Si no hay resultados de tipo AND, usar tipo OR si hay más de un término
+            if (matchedItems.length === 0 && queryTerms.length > 1) {
+                matchedItems = rubroFiltered.filter(item => matchProductWithTerms(item, queryTerms, 'OR'));
+                usedOrLogic = true;
+            }
         }
 
-        // Deduplicar variantes del mismo producto bajo la misma categoría
-        let results = [];
-        matchedItems.forEach(item => {
-            const key = `${item.id}::${item.acabado}`;
-            const existingIndex = results.findIndex(r => `${r.id}::${r.acabado}` === key);
-            if (existingIndex !== -1) {
-                const existingIsVirtual = results[existingIndex].cat.id.endsWith('-todos');
-                const currentIsVirtual = item.cat.id.endsWith('-todos');
-                const currentIsPrimary = item.product.primaryCatId === item.cat.id;
-                
-                if (currentIsPrimary || (existingIsVirtual && !currentIsVirtual)) {
-                    results[existingIndex] = item;
-                }
-            } else {
-                results.push(item);
-            }
-        });
+        // Resultados únicos de acabados (getIndexedProducts ya garantiza 1 tarjeta por acabado único)
+        let results = matchedItems;
 
         // Ordenar
         if (usedOrLogic) {

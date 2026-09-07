@@ -298,17 +298,20 @@ body {
     transform: translateY(1px);
 }
 
-/* Botón WhatsApp (Green Gradient) */
+/* Botón WhatsApp / Consultar (Estilo Crema Cálido) */
 .catalog-btn-wpp {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.22);
+    background: #fff7ed;
+    border: 1.5px solid #ffedd5;
+    color: #c0510a;
+    box-shadow: 0 2px 8px rgba(192, 81, 10, 0.08);
 }
 
 .catalog-btn-wpp:hover {
-    background: linear-gradient(135deg, #20ba59 0%, #0e7569 100%);
-    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
-    transform: translateY(-2px) scale(1.02);
+    background: #ffedd5;
+    border-color: #fed7aa;
+    color: #9a3412;
+    box-shadow: 0 4px 12px rgba(192, 81, 10, 0.16);
+    transform: translateY(-1px);
 }
 
 .catalog-btn-wpp:active {

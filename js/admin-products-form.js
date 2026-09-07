@@ -61,6 +61,7 @@
         row.dataset.iconType = iconType;
         row.dataset.highlight = highlight ? 'true' : 'false';
         row.dataset.showPrice = showPrice ? 'true' : 'false';
+        row.dataset.logisticaEnabled = (arguments[13] !== undefined && arguments[13] !== null) ? (arguments[13] ? 'true' : 'false') : 'true';
 
         let costPriceVal = costPrice;
         let priceVal = price;
@@ -78,6 +79,8 @@
                 multValue = parseFloat((pNum / cNum).toFixed(2));
             }
         }
+
+        const isVariantLogEnabled = row.dataset.logisticaEnabled !== 'false';
 
         row.innerHTML = `
             <div class="medida-drag-handle" title="Mantén presionado para arrastrar y reordenar" style="display: flex; align-items: center; justify-content: center; cursor: grab; padding: 4px; flex-shrink: 0;">
@@ -103,6 +106,10 @@
                 <div class="medida-margin-badge-container" style="font-size: 0.72rem; display: flex; gap: 8px; font-weight: 600; margin-top: 2px;"></div>
             </div>
             <div class="medida-actions" style="display: flex; gap: 0.25rem; align-items: center; flex-shrink: 0;">
+                <button type="button" class="btn-toggle-medida-flex"
+                        style="background:none;border:none;cursor:pointer;color:${isVariantLogEnabled ? '#0284c7' : '#94a3b8'};padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="${isVariantLogEnabled ? 'Logística Flex Permitida en esta variante (Clic para deshabilitar)' : 'Logística Flex Deshabilitada en esta variante (Clic para permitir)'}">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">${isVariantLogEnabled ? 'local_shipping' : 'no_sim'}</span>
+                </button>
                 <button type="button" class="btn-toggle-medida-visibility"
                         style="background:none;border:none;cursor:pointer;color:var(--text-muted);padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="${isHidden ? 'Mostrar link' : 'Ocultar link'}">
                     <span class="material-symbols-outlined" style="font-size: 18px;">${isHidden ? 'visibility_off' : 'visibility'}</span>
@@ -119,6 +126,24 @@
                         style="background:none;border:none;cursor:pointer;color:#EF4444;font-size:1.4rem;line-height:1;padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="Eliminar">&times;</button>
             </div>
         `;
+
+        const btnToggleFlex = row.querySelector('.btn-toggle-medida-flex');
+        if (btnToggleFlex) {
+            btnToggleFlex.addEventListener('click', () => {
+                const currentLogEnabled = row.dataset.logisticaEnabled !== 'false';
+                if (currentLogEnabled) {
+                    row.dataset.logisticaEnabled = 'false';
+                    btnToggleFlex.style.color = '#94a3b8';
+                    btnToggleFlex.querySelector('.material-symbols-outlined').textContent = 'no_sim';
+                    btnToggleFlex.title = 'Logística Flex Deshabilitada en esta variante (Clic para permitir)';
+                } else {
+                    row.dataset.logisticaEnabled = 'true';
+                    btnToggleFlex.style.color = '#0284c7';
+                    btnToggleFlex.querySelector('.material-symbols-outlined').textContent = 'local_shipping';
+                    btnToggleFlex.title = 'Logística Flex Permitida en esta variante (Clic para deshabilitar)';
+                }
+            });
+        }
 
         const btnToggleVis = row.querySelector('.btn-toggle-medida-visibility');
         btnToggleVis.addEventListener('click', () => {
@@ -728,7 +753,8 @@
 
         if (groupData && groupData.medidas_variants) {
             groupData.medidas_variants.forEach(m => {
-                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight, m.price !== undefined ? m.price : '', m.legend !== undefined ? m.legend : '', m.showPrice !== undefined ? m.showPrice : false, m.cost_price !== undefined ? m.cost_price : ''));
+                const isLog = m.logisticaEnabled !== false && m.noFlex !== true && m.disableFlex !== true;
+                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight, m.price !== undefined ? m.price : '', m.legend !== undefined ? m.legend : '', m.showPrice !== undefined ? m.showPrice : false, m.cost_price !== undefined ? m.cost_price : '', '', isLog));
             });
             updateMedidaGroupColors(medidasContainer);
         }
@@ -1077,7 +1103,8 @@
                         price: priceVal !== '' ? parseFloat(priceVal) : '',
                         cost_price: costVal !== '' ? parseFloat(costVal) : '',
                         legend: row.querySelector('.medida-leyenda') ? row.querySelector('.medida-leyenda').value.trim() : '',
-                        showPrice: row.dataset.showPrice === 'true'
+                        showPrice: row.dataset.showPrice === 'true',
+                        logisticaEnabled: row.dataset.logisticaEnabled !== 'false'
                     };
                 }).filter(r => r.medida !== '') : [];
 

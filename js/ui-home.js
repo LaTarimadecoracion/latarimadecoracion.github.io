@@ -562,7 +562,6 @@
     }
 
 
+window.setupInfiniteCarousel = setupInfiniteCarousel;
 window.renderHome = safeRender(renderHome, 'renderHome');
-
-
 window.renderSectionContent = safeRender(renderSectionContent, 'renderSectionContent');

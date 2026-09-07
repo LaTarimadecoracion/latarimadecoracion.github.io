@@ -416,6 +416,118 @@ window.saveContentRegistry = function(skipServerSync = false) {
     }
 };
 
+// Motor centralizado unificado de indexación de productos/acabados
+window.getNormalizedCatalogProducts = function(targetRubro = null) {
+    const indexed = [];
+    
+    // Obtener la fuente de verdad de productos (sessionProducts > productsData)
+    const sourceProducts = (typeof window.sessionProducts !== 'undefined' && Array.isArray(window.sessionProducts) && window.sessionProducts.length > 0)
+        ? window.sessionProducts
+        : (typeof productsData !== 'undefined' ? productsData : []);
+
+    const seenProductIds = new Set();
+
+    sourceProducts.forEach(catObj => {
+        if (!catObj || catObj.visible === false || (catObj.id && catObj.id.endsWith('-todos'))) return;
+
+        const catRubro = catObj.rubro || 'carpinteria';
+        if (targetRubro && catRubro !== targetRubro) return;
+
+        if (catObj.products && Array.isArray(catObj.products)) {
+            catObj.products.forEach(product => {
+                if (!product || product.visible === false) return;
+                if (seenProductIds.has(product.id)) return;
+
+                // Si tiene primaryCatId y no es esta categoría, esperar a que la iteración pase por su categoría principal oficial
+                if (product.primaryCatId && product.primaryCatId !== catObj.id) {
+                    const primaryCat = sourceProducts.find(c => c.id === product.primaryCatId && c.visible !== false);
+                    if (primaryCat) return;
+                }
+
+                seenProductIds.add(product.id);
+
+                let indexedAnyVariant = false;
+
+                // Indexar cada acabado visible como elemento independiente
+                if (product.acabados_groups && Array.isArray(product.acabados_groups) && product.acabados_groups.length > 0) {
+                    product.acabados_groups.forEach(acabado => {
+                        if (acabado && acabado.hidden !== true && acabado.acabado_name) {
+                            const acabMedidas = [];
+                            if (acabado.medidas_variants) {
+                                acabado.medidas_variants.forEach(mv => { if (mv.medida) acabMedidas.push(mv.medida); });
+                            }
+
+                            let acabImg = acabado.cover_image || (acabado.images_list && acabado.images_list[0]) || product.image;
+                            if (Array.isArray(acabImg)) acabImg = acabImg[0];
+
+                            const isUnico = acabado.acabado_name.toLowerCase() === 'único';
+                            const displayTitle = isUnico ? product.title : `${product.title} (${acabado.acabado_name})`;
+
+                            indexed.push({
+                                uniqueId: `${product.id}::${acabado.acabado_name}`,
+                                id: product.id,
+                                productId: product.id,
+                                product: product,
+                                cat: catObj,
+                                categoryName: catObj.name,
+                                title: displayTitle,
+                                baseTitle: product.title,
+                                nombre: product.title,
+                                description: product.description || '',
+                                acabado: isUnico ? '' : acabado.acabado_name,
+                                selectedAcabado: isUnico ? '' : acabado.acabado_name,
+                                image: acabImg || 'img/logo_provisional.png',
+                                acabados_groups: [acabado],
+                                all_acabados_groups: product.acabados_groups,
+                                medidas_variants: acabado.medidas_variants || product.medidas_variants || [],
+                                optional_variant: product.optional_variant || null,
+                                tags: product.tags || [],
+                                acabadosSearch: (product.acabados_groups || []).map(g => g.acabado_name).join(' '),
+                                medidas: acabMedidas
+                            });
+                            indexedAnyVariant = true;
+                        }
+                    });
+                }
+
+                // Fallback si no tiene grupos de acabados
+                if (!indexedAnyVariant) {
+                    const allMedidas = [];
+                    if (product.medidas_variants) {
+                        product.medidas_variants.forEach(mv => { if (mv.medida) allMedidas.push(mv.medida); });
+                    }
+                    let coverImg = product.image;
+                    if (Array.isArray(coverImg)) coverImg = coverImg[0];
+
+                    indexed.push({
+                        uniqueId: product.id,
+                        id: product.id,
+                        productId: product.id,
+                        product: product,
+                        cat: catObj,
+                        categoryName: catObj.name,
+                        title: product.title,
+                        baseTitle: product.title,
+                        nombre: product.title,
+                        description: product.description || '',
+                        acabado: '',
+                        selectedAcabado: '',
+                        image: coverImg || 'img/logo_provisional.png',
+                        acabados_groups: product.acabados_groups || [],
+                        medidas_variants: product.medidas_variants || [],
+                        optional_variant: product.optional_variant || null,
+                        tags: product.tags || [],
+                        acabadosSearch: '',
+                        medidas: allMedidas
+                    });
+                }
+            });
+        }
+    });
+
+    return indexed;
+};
+
 window.syncHomeOrder = function() {
     if (!window.homeConfig) return;
     if (!window.homeConfig.order) window.homeConfig.order = ['categorias', 'novedades', 'buscados'];

@@ -953,12 +953,163 @@
                 }
             }
 
+            // ── Render de Mejor Costo de Envío Inteligente debajo del precio ──────
+            const shipBadgeContainer = document.getElementById('detail-shipping-best-price-badge');
+            if (shipBadgeContainer) {
+                const isRental = categoryName === 'Alquileres' || product.primaryCatId === 'alquileres';
+                if (isRental) {
+                    shipBadgeContainer.style.display = 'none';
+                } else {
+                    shipBadgeContainer.style.display = 'block';
+                    const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName) || (grupo.medidas_variants || [])[0];
+                    const shipConf = product.shippingConfig || {};
+                    const isFlexDisabled = activeVariant && (activeVariant.logisticaEnabled === false || activeVariant.noFlex === true || activeVariant.disableFlex === true);
+
+                    // Obtener CP guardado del usuario (del carrito/userData/localStorage)
+                    let userZip = '';
+                    try {
+                        const savedData = localStorage.getItem('userData');
+                        if (savedData) {
+                            const parsed = JSON.parse(savedData);
+                            userZip = (parsed.zipCode || '').trim();
+                        }
+                    } catch(e) {}
+
+                    let cpRes = null;
+                    if (userZip && window.lookupPostalCode) {
+                        cpRes = window.lookupPostalCode(userZip);
+                    }
+
+                    const triggerCheckoutModal = () => {
+                        const selMedida = divMedida ? divMedida.querySelector('select') : null;
+                        const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : medidaName;
+                        const selOpt = divOpt ? divOpt.querySelector('select') : null;
+                        const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
+                        const optLabel = product.optional_variant?.label || '';
+                        const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
+                        const variantPrice = (activeVariant && activeVariant.price !== undefined && activeVariant.price !== '') ? activeVariant.price : (parseFloat(product.price) || 0);
+                        const qtyValEl = document.getElementById('qty-value');
+                        const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
+
+                        if (window.showProductPaymentModal) {
+                            window.showProductPaymentModal(product, grupo, medidaText, variantPrice, qtyVal, optText, optLabel);
+                        } else if (window.showOfferPaymentModal) {
+                            window.showOfferPaymentModal(product, qtyVal, { grupo, medida: medidaText, price: variantPrice, opcion: optText, opcionLabel: optLabel });
+                        }
+                    };
+
+                    if (!userZip || !cpRes || cpRes.hasLocalMatch === false) {
+                        // Solicitud de CP abriendo el mismo modal de COMPRAR YA
+                        shipBadgeContainer.innerHTML = `
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; gap: 6px; color: #475569; font-weight: 700;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px; color: #0284c7;">local_shipping</span>
+                                    <span>Medios de envío y costos</span>
+                                </div>
+                                <button type="button" id="btn-detail-cp-trigger" style="background: #e0f2fe; color: #0284c7; border: 1.5px solid #bae6fd; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                                    <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>
+                                    <span>Calcular costo de envío</span>
+                                </button>
+                            </div>
+                        `;
+
+                        document.getElementById('btn-detail-cp-trigger')?.addEventListener('click', triggerCheckoutModal);
+                    } else {
+                        // Usuario tiene un CP cargado -> Evaluar mejores opciones de envío
+                        const qtyValEl = document.getElementById('qty-value');
+                        const qty = qtyValEl ? (parseInt(qtyValEl.textContent, 10) || 1) : 1;
+                        let validOptions = [];
+
+                        // 1. Envío global gratis
+                        if (shipConf.isFreeShipping || shipConf.isFree || product.shippingType === 'free') {
+                            validOptions.push({ label: 'Envío gratis a domicilio', cost: 0, icon: 'local_shipping' });
+                        }
+
+                        // 2. Logística Flex (si no está deshabilitada para la variante)
+                        if (!isFlexDisabled && shipConf.logisticaEnabled !== false && cpRes.logistica && cpRes.logistica.active !== false) {
+                            const manualCost = parseFloat(shipConf.logisticaCost) || 0;
+                            const sysCost = cpRes.logistica.cost || 0;
+                            const baseCost = manualCost > 0 ? manualCost : sysCost;
+                            const freeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
+                            const maxUnits = parseInt(shipConf.logisticaMaxUnits) || 0;
+                            const isFreeByQty = (freeMin > 0 && qty >= freeMin);
+                            const packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
+                            const cost = isFreeByQty ? 0 : (baseCost * packages);
+                            validOptions.push({ label: isFreeByQty ? 'Logística Flex (Gratis por cantidad)' : 'Logística Flex / Courier', cost: cost, icon: 'local_shipping' });
+                        }
+
+                        // 3. Flete particular
+                        if (shipConf.fleteEnabled !== false && cpRes.flete && cpRes.flete.active !== false) {
+                            const manualCost = parseFloat(shipConf.fleteCost) || 0;
+                            const sysCost = cpRes.flete.cost || 0;
+                            const baseCost = manualCost > 0 ? manualCost : sysCost;
+                            const freeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
+                            const maxUnits = parseInt(shipConf.fleteMaxUnits) || 0;
+                            const isFreeByQty = (freeMin > 0 && qty >= freeMin);
+                            const packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
+                            const cost = isFreeByQty ? 0 : (baseCost * packages);
+                            validOptions.push({ label: isFreeByQty ? 'Flete Particular (Gratis por cantidad)' : 'Flete Particular', cost: cost, icon: 'fire_truck' });
+                        }
+
+                        const formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 });
+
+                        if (validOptions.length > 0) {
+                            // Encontrar la opción con menor costo
+                            validOptions.sort((a, b) => a.cost - b.cost);
+                            const best = validOptions[0];
+                            const costStr = best.cost === 0 ? '<b style="color:#15803d; text-transform:uppercase;">¡GRATIS!</b>' : `<b style="color:#0284c7; font-size: 0.95rem;">${formatter.format(best.cost)}</b>`;
+
+                            shipBadgeContainer.innerHTML = `
+                                <div id="btn-detail-cp-trigger-card" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; cursor: pointer;" title="Tocar para cambiar Código Postal o método de envío">
+                                    <div style="display: flex; align-items: center; gap: 4px; font-size: 0.82rem; color: #1e293b;">
+                                        <span class="material-symbols-outlined" style="font-size: 20px; color: #0284c7; flex-shrink: 0; margin-right: 2px;">${best.icon || 'local_shipping'}</span>
+                                        <span>Envío a <strong>${cpRes.localidad}</strong> (CP ${cpRes.cp})</span>
+                                        <span class="material-symbols-outlined" style="font-size: 16px; color: #0284c7; flex-shrink: 0; margin-left: 2px;" title="Modificar ubicación">edit</span>
+                                    </div>
+                                    <div style="text-align: right; font-size: 0.82rem; white-space: nowrap;">
+                                        ${costStr}
+                                    </div>
+                                </div>
+                            `;
+
+                            document.getElementById('btn-detail-cp-trigger-card')?.addEventListener('click', triggerCheckoutModal);
+                        } else {
+                            // No hay envío directo para este CP
+                            shipBadgeContainer.innerHTML = `
+                                <div id="btn-detail-cp-trigger-card" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; cursor: pointer;" title="Tocar para cambiar Código Postal">
+                                    <div style="display: flex; align-items: center; gap: 4px; font-size: 0.82rem; color: #9a3412;">
+                                        <span class="material-symbols-outlined" style="font-size: 20px; color: #ea580c; flex-shrink: 0; margin-right: 2px;">info</span>
+                                        <span>Envío a <strong>${cpRes.localidad}</strong> (CP ${cpRes.cp})</span>
+                                        <span class="material-symbols-outlined" style="font-size: 16px; color: #ea580c; flex-shrink: 0; margin-left: 2px;" title="Modificar ubicación">edit</span>
+                                    </div>
+                                    <div style="text-align: right; font-size: 0.82rem; color: #9a3412; font-weight: 700; white-space: nowrap;">
+                                        A convenir por WhatsApp
+                                    </div>
+                                </div>
+                            `;
+
+                            document.getElementById('btn-detail-cp-trigger-card')?.addEventListener('click', triggerCheckoutModal);
+                        }
+                    }
+                }
+            }
+
             // Capturar el link de ML de la variante activa para pasarlo al modal
             const activeMlVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
             const currentMlLink = (activeMlVariant && activeMlVariant.link) ? activeMlVariant.link.trim() : '';
 
             if (btnPickup) {
                 btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildWA(grupo, medidaName, 'pickup'))}`;
+            }
+
+            if (!window._cpUpdateListenerBound) {
+                window._cpUpdateListenerBound = true;
+                window.addEventListener('latarima:cp-updated', () => {
+                    const activeGrupo = grupos[currentGroupIndex] || grupos[0];
+                    const selMedida = divMedida ? divMedida.querySelector('select') : null;
+                    const mName = selMedida ? selMedida.value : '';
+                    updateBuyButton(activeGrupo, mName);
+                });
             }
         }
 
@@ -1334,6 +1485,10 @@
                 const selMedida = divMedida.querySelector('select');
                 const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
                 
+                const selOpt = divOpt.querySelector('select');
+                const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
+                const optLabel = product.optional_variant?.label || '';
+
                 const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
                 const variantPrice = (activeVariant && activeVariant.price !== undefined && activeVariant.price !== '') ? activeVariant.price : (parseFloat(product.price) || 0);
                 
@@ -1341,9 +1496,9 @@
                 const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
 
                 if (window.showProductPaymentModal) {
-                    window.showProductPaymentModal(product, grupo, medidaText, variantPrice, qtyVal);
+                    window.showProductPaymentModal(product, grupo, medidaText, variantPrice, qtyVal, optText, optLabel);
                 } else if (window.showOfferPaymentModal) {
-                    window.showOfferPaymentModal(product, qtyVal, { grupo, medida: medidaText, price: variantPrice });
+                    window.showOfferPaymentModal(product, qtyVal, { grupo, medida: medidaText, price: variantPrice, opcion: optText, opcionLabel: optLabel });
                 }
             };
         }
@@ -1366,7 +1521,10 @@
                     const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
                     const itemPrice = (activeVariant && activeVariant.showPrice === true && activeVariant.price) ? activeVariant.price : null;
 
-                    window.CarritoModule.toggle(product, acabadoName, categoryName, medidaText, optText, optLabel, itemPrice);
+                    const qtyValEl = document.getElementById('qty-value');
+                    const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
+
+                    window.CarritoModule.toggle(product, acabadoName, categoryName, medidaText, optText, optLabel, itemPrice, qtyVal);
                     updateFavState();
                 }
             };
@@ -1431,20 +1589,24 @@
                     .sort(() => 0.5 - Math.random())
                     .slice(0, 8);
 
-                randomSelections.forEach(({ product: p, catName }, idx) => {
+                const renderCarousel = (window.setupInfiniteCarousel && typeof window.setupInfiniteCarousel === 'function')
+                    ? window.setupInfiniteCarousel
+                    : (container, items, renderFn) => {
+                        container.innerHTML = '';
+                        items.forEach((it, i) => container.appendChild(renderFn(it, i)));
+                    };
+
+                renderCarousel(relatedList, randomSelections, ({ product: p, catName }, idx) => {
                     const pCard = document.createElement('div');
                     pCard.className = 'category-card';
-                    pCard.style.position = 'relative';
-                    pCard.style.overflow = 'hidden';
-                    pCard.style.borderRadius = '12px';
                     const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
                     const isEager = idx < 3;
                     pCard.innerHTML = `
-                        <div class="category-card-img-wrapper" style="position:relative; overflow:hidden; border-radius:12px;">
+                        <div class="category-card-img-wrapper" style="position:relative;">
                             <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${p.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
-                            <div class="category-overlay">
-                                <span>${p.title}</span>
-                            </div>
+                        </div>
+                        <div class="category-overlay">
+                            <span>${p.title}</span>
                         </div>
                     `;
                     pCard.addEventListener('click', () => {
@@ -1456,7 +1618,7 @@
                             if (appContainer) appContainer.scrollTop = 0;
                         }
                     });
-                    relatedList.appendChild(pCard);
+                    return pCard;
                 });
 
                 if (typeof window.enableDragToScroll === 'function') {

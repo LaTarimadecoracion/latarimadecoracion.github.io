@@ -483,6 +483,37 @@
         }
     };
 
+    function getProductEffectivePrice(prod) {
+        if (!prod) return 0;
+        if (prod.price !== undefined && prod.price !== null && prod.price !== '' && !isNaN(parseFloat(prod.price)) && parseFloat(prod.price) > 0) {
+            return parseFloat(prod.price);
+        }
+        if (prod.basePrice && !isNaN(parseFloat(prod.basePrice)) && parseFloat(prod.basePrice) > 0) return parseFloat(prod.basePrice);
+        if (prod.offerPrice && !isNaN(parseFloat(prod.offerPrice)) && parseFloat(prod.offerPrice) > 0) return parseFloat(prod.offerPrice);
+
+        if (Array.isArray(prod.acabados_groups)) {
+            for (const grupo of prod.acabados_groups) {
+                if (Array.isArray(grupo.medidas_variants)) {
+                    for (const v of grupo.medidas_variants) {
+                        if (v.price !== undefined && v.price !== null && v.price !== '' && !isNaN(parseFloat(v.price)) && parseFloat(v.price) > 0) {
+                            return parseFloat(v.price);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (Array.isArray(prod.variants)) {
+            for (const v of prod.variants) {
+                if (v.price !== undefined && v.price !== null && v.price !== '' && !isNaN(parseFloat(v.price)) && parseFloat(v.price) > 0) {
+                    return parseFloat(v.price);
+                }
+            }
+        }
+
+        return 0;
+    }
+
     // RENDER TABLA PRODUCTOS ENVÍOS
     window.renderAdminShippingProducts = function(query = '') {
         const tbody = document.getElementById('admin-ship-prods-tbody');
@@ -491,10 +522,15 @@
 
         const categories = window.sessionProducts || [];
         let allProducts = [];
+        const seenIds = new Set();
 
         categories.forEach(cat => {
+            if (cat.id && String(cat.id).endsWith('-todos')) return;
             (cat.products || []).forEach(prod => {
-                allProducts.push({ ...prod, categoryName: cat.name });
+                if (prod && prod.id && !seenIds.has(String(prod.id))) {
+                    seenIds.add(String(prod.id));
+                    allProducts.push({ ...prod, categoryName: cat.name || 'Catálogo' });
+                }
             });
         });
 
@@ -517,6 +553,7 @@
             const isSelected = selectedShipProdIds.has(prod.id);
 
             const imgSrc = Array.isArray(prod.image) ? prod.image[0] : (prod.image || 'img/logo_provisional.png');
+            const effPrice = getProductEffectivePrice(prod);
 
             return `
                 <tr style="border-bottom: 1px solid #e2e8f0; transition: background 0.15s; ${isSelected ? 'background: #f0f9ff;' : ''}" onmouseover="if(!${isSelected}) this.style.background='#f8fafc'" onmouseout="if(!${isSelected}) this.style.background='transparent'">
@@ -531,7 +568,7 @@
                         <div style="font-size: 0.68rem; color: #64748b;">${prod.categoryName || 'Catálogo'}</div>
                     </td>
                     <td style="padding: 6px; font-weight: 800; color: #059669; font-family: monospace;">
-                        ${formatCurr(prod.price)}
+                        ${effPrice > 0 ? formatCurr(effPrice) : 'A consultar'}
                     </td>
                     <td style="padding: 6px; text-align: center; background: #f0f9ff;">
                         <input type="checkbox" ${isLog ? 'checked' : ''} onchange="window.updateProductShippingConfig('${prod.id}', 'logisticaEnabled', this.checked)" style="width: 18px; height: 18px; accent-color: #0284c7; cursor: pointer;">
@@ -576,13 +613,18 @@
     window.toggleSelectAllShipProducts = function(isChecked) {
         const categories = window.sessionProducts || [];
         const query = (document.getElementById('admin-ship-prod-search')?.value || '').toLowerCase().trim();
+        const seenIds = new Set();
         categories.forEach(cat => {
+            if (cat.id && String(cat.id).endsWith('-todos')) return;
             (cat.products || []).forEach(prod => {
-                if (!query || (prod.title || '').toLowerCase().includes(query) || (cat.name || '').toLowerCase().includes(query)) {
-                    if (isChecked) {
-                        selectedShipProdIds.add(prod.id);
-                    } else {
-                        selectedShipProdIds.delete(prod.id);
+                if (prod && prod.id && !seenIds.has(String(prod.id))) {
+                    seenIds.add(String(prod.id));
+                    if (!query || (prod.title || '').toLowerCase().includes(query) || (cat.name || '').toLowerCase().includes(query)) {
+                        if (isChecked) {
+                            selectedShipProdIds.add(prod.id);
+                        } else {
+                            selectedShipProdIds.delete(prod.id);
+                        }
                     }
                 }
             });
@@ -592,9 +634,14 @@
 
     window.selectAllShipProducts = function() {
         const categories = window.sessionProducts || [];
+        const seenIds = new Set();
         categories.forEach(cat => {
+            if (cat.id && String(cat.id).endsWith('-todos')) return;
             (cat.products || []).forEach(prod => {
-                selectedShipProdIds.add(prod.id);
+                if (prod && prod.id && !seenIds.has(String(prod.id))) {
+                    seenIds.add(String(prod.id));
+                    selectedShipProdIds.add(prod.id);
+                }
             });
         });
         const query = document.getElementById('admin-ship-prod-search')?.value || '';
