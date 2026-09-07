@@ -145,6 +145,47 @@ window.initCategoriesFormAdmin = function() {
         const btnOpenAddCategory = document.getElementById('btn-open-add-category');
         const btnCreateCatInline = document.getElementById('btn-create-cat-inline');
 
+        const catImgFileInput = document.getElementById('admin-cat-image');
+        const catImgTriggerBtn = document.getElementById('btn-trigger-cat-image');
+        const catImgChangeBtn = document.getElementById('btn-change-cat-image');
+        const catImgRemoveBtn = document.getElementById('btn-remove-cat-image');
+        const catImgPreviewContainer = document.getElementById('admin-cat-image-preview-container');
+        const catImgPreviewEl = document.getElementById('admin-cat-image-preview');
+        const catImgFilenameEl = document.getElementById('admin-cat-image-filename');
+
+        const updateCategoryPhotoPreview = (fileOrUrl) => {
+            if (!fileOrUrl) {
+                if (catImgPreviewContainer) catImgPreviewContainer.style.display = 'none';
+                if (catImgTriggerBtn) catImgTriggerBtn.style.display = 'flex';
+                if (catImgFileInput) catImgFileInput.value = '';
+                return;
+            }
+            if (fileOrUrl instanceof File) {
+                const url = URL.createObjectURL(fileOrUrl);
+                if (catImgPreviewEl) catImgPreviewEl.src = url;
+                if (catImgFilenameEl) catImgFilenameEl.textContent = fileOrUrl.name;
+            } else if (typeof fileOrUrl === 'string') {
+                if (catImgPreviewEl) catImgPreviewEl.src = fileOrUrl;
+                if (catImgFilenameEl) catImgFilenameEl.textContent = fileOrUrl.split('/').pop() || 'Portada actual';
+            }
+            if (catImgPreviewContainer) catImgPreviewContainer.style.display = 'flex';
+            if (catImgTriggerBtn) catImgTriggerBtn.style.display = 'none';
+        };
+
+        if (catImgTriggerBtn) catImgTriggerBtn.addEventListener('click', () => catImgFileInput?.click());
+        if (catImgChangeBtn) catImgChangeBtn.addEventListener('click', () => catImgFileInput?.click());
+        if (catImgRemoveBtn) catImgRemoveBtn.addEventListener('click', () => updateCategoryPhotoPreview(null));
+
+        if (catImgFileInput) {
+            catImgFileInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files[0]) {
+                    updateCategoryPhotoPreview(e.target.files[0]);
+                }
+            });
+        }
+
+        window.updateCategoryPhotoPreview = updateCategoryPhotoPreview;
+
         const openCategoryModalHandler = () => {
             window.editingCategoryIndex = null;
             window.oldCategoryName = null;
@@ -158,6 +199,13 @@ window.initCategoriesFormAdmin = function() {
             if (idInput) idInput.disabled = false;
             if (nameInput) nameInput.disabled = false;
             if (rubroSelect) rubroSelect.disabled = false;
+
+            // Auto-generar ID numérico/slug único para nueva categoría
+            const catCount = sessionProducts.length + 1;
+            if (idInput) idInput.value = `cat-${catCount}-${Date.now().toString(36)}`;
+
+            // Resetear foto preview
+            updateCategoryPhotoPreview(null);
 
             // Cargar select de rubros por defecto en carpintería
             window.renderRubrosSelect('carpinteria');

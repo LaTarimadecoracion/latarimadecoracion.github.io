@@ -47,6 +47,43 @@
         });
     }
 
+    // Helper: Crear fila de Escala de Descuento por Cantidad
+    function createDiscountTierRow(minUnits = 3, discountPercent = 10) {
+        const row = document.createElement('div');
+        row.className = 'discount-tier-row';
+        row.style.cssText = 'display: flex; align-items: center; gap: 8px; background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px 8px;';
+
+        row.innerHTML = `
+            <div style="flex: 1; display: flex; align-items: center; gap: 4px;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">Desde</span>
+                <input type="number" class="discount-tier-units" min="2" placeholder="Ej: 3" value="${minUnits}" style="width: 60px; font-size: 0.8rem; padding: 3px 6px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">uds:</span>
+            </div>
+            <div style="flex: 1; display: flex; align-items: center; gap: 4px;">
+                <input type="number" class="discount-tier-percent" min="1" max="99" placeholder="Ej: 10" value="${discountPercent}" style="width: 60px; font-size: 0.8rem; padding: 3px 6px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                <span style="font-size: 0.78rem; color: #16a34a; font-weight: 700;">% OFF</span>
+            </div>
+            <button type="button" class="btn-remove-discount-tier" style="background: none; border: none; color: #ef4444; font-size: 1.2rem; cursor: pointer; padding: 0 4px; line-height: 1;" title="Eliminar escala">&times;</button>
+        `;
+
+        row.querySelector('.btn-remove-discount-tier')?.addEventListener('click', () => {
+            row.remove();
+        });
+
+        return row;
+    }
+
+    // Listener para el botón "+ Agregar Escala de Descuento"
+    document.addEventListener('click', (e) => {
+        const btnAdd = e.target.closest('#btn-add-discount-tier');
+        if (btnAdd) {
+            const container = document.getElementById('product-discounts-container');
+            if (container) {
+                container.appendChild(createDiscountTierRow(3, 10));
+            }
+        }
+    });
+
     // Helper: Crear fila de Medida con soporte Drag & Drop y diseño horizontal amplio de igual medida
     function createMedidaRow(groupId, medida = '', link = '', isDefault = false, isHidden = false, linkLabel = '', iconType = 'local_shipping', highlight = false, price = '', legend = '', showPrice = false, costPrice = '', multiplier = '') {
         const row = document.createElement('div');
@@ -947,10 +984,12 @@
             }
         }
 
-        // Variante opcional
+        // Variante opcional y Etiquetas
         const optV = existingProd?.optional_variant || {};
         document.getElementById('admin-opt-label').value   = optV.label   || '';
         document.getElementById('admin-opt-options').value = optV.options ? optV.options.join(', ') : '';
+        const tagsInput = document.getElementById('admin-tags');
+        if (tagsInput) tagsInput.value = existingProd?.tags ? existingProd.tags.join(', ') : '';
 
         // Configuración de Envíos del Producto
         const shipConf = existingProd?.shippingConfig || {};
@@ -964,7 +1003,7 @@
         if (logCost) logCost.value = (shipConf.logisticaCost !== undefined && shipConf.logisticaCost !== null) ? shipConf.logisticaCost : '';
         if (logMaxU) logMaxU.value = shipConf.logisticaMaxUnits || '';
         if (logFreeMinU) logFreeMinU.value = shipConf.logisticaFreeMinUnits || '';
-        if (logGrp) logGrp.style.display = isLogEnabled ? 'flex' : 'none';
+        if (logGrp) logGrp.style.display = isLogEnabled ? 'grid' : 'none';
 
         const fltCheck = document.getElementById('product-ship-flete-enabled');
         const fltCost = document.getElementById('product-ship-flete-cost');
@@ -976,7 +1015,7 @@
         if (fltCost) fltCost.value = (shipConf.fleteCost !== undefined && shipConf.fleteCost !== null) ? shipConf.fleteCost : '';
         if (fltMaxU) fltMaxU.value = shipConf.fleteMaxUnits || '';
         if (fltFreeMinU) fltFreeMinU.value = shipConf.fleteFreeMinUnits || '';
-        if (fltGrp) fltGrp.style.display = isFltEnabled ? 'flex' : 'none';
+        if (fltGrp) fltGrp.style.display = isFltEnabled ? 'grid' : 'none';
 
         const otrCheck = document.getElementById('product-ship-otro-enabled');
         const otrLbl = document.getElementById('product-ship-otro-label');
@@ -998,6 +1037,37 @@
         if (payTransCheck) payTransCheck.checked = payConf.transferEnabled !== false;
         if (payLinkCheck) payLinkCheck.checked = payConf.linkEnabled !== false;
         if (payCreditCheck) payCreditCheck.checked = payConf.creditEnabled !== false;
+
+        // Configuración de Descuentos por Cantidad / Volumen del Producto
+        const discountsContainer = document.getElementById('product-discounts-container');
+        if (discountsContainer) {
+            discountsContainer.innerHTML = '';
+            let qDiscounts = existingProd?.quantityDiscounts || [];
+
+            // Si no está cargado a nivel producto, buscar en las variantes (catálogo mayorista)
+            if ((!qDiscounts || qDiscounts.length === 0) && existingProd?.acabados_groups) {
+                for (const g of existingProd.acabados_groups) {
+                    if (g.medidas_variants) {
+                        for (const v of g.medidas_variants) {
+                            if (v.volumeDiscounts && v.volumeDiscounts.length > 0) {
+                                qDiscounts = v.volumeDiscounts.map(vd => ({
+                                    minUnits: vd.minQty !== undefined ? vd.minQty : vd.minUnits,
+                                    discountPercent: vd.discountPercent
+                                }));
+                                break;
+                            }
+                        }
+                    }
+                    if (qDiscounts.length > 0) break;
+                }
+            }
+
+            if (Array.isArray(qDiscounts) && qDiscounts.length > 0) {
+                qDiscounts.forEach(d => {
+                    discountsContainer.appendChild(createDiscountTierRow(d.minUnits, d.discountPercent));
+                });
+            }
+        }
 
         // Poblar grupos de acabados
         if (existingProd && existingProd.acabados_groups && existingProd.acabados_groups.length > 0) {
@@ -1092,7 +1162,7 @@
                 const medidasVariants = medidasContainer ? [...medidasContainer.querySelectorAll('.medida-admin-row')].map(row => {
                     const priceVal = row.querySelector('.medida-precio') ? row.querySelector('.medida-precio').value.trim() : '';
                     const costVal = row.querySelector('.medida-costo') ? row.querySelector('.medida-costo').value.trim() : '';
-                    return {
+                    const vObj = {
                         medida: row.querySelector('.medida-valor')?.value?.trim() || '',
                         link:   row.querySelector('.medida-link')?.value?.trim() || '',
                         default: row.querySelector('.medida-default-radio')?.checked || false,
@@ -1106,6 +1176,15 @@
                         showPrice: row.dataset.showPrice === 'true',
                         logisticaEnabled: row.dataset.logisticaEnabled !== 'false'
                     };
+
+                    if (quantityDiscounts && quantityDiscounts.length > 0) {
+                        vObj.volumeDiscounts = quantityDiscounts.map(d => ({
+                            minQty: d.minUnits,
+                            discountPercent: d.discountPercent
+                        }));
+                    }
+
+                    return vObj;
                 }).filter(r => r.medida !== '') : [];
 
 
@@ -1154,6 +1233,15 @@
                 creditEnabled: document.getElementById('product-pay-credit-enabled')?.checked ?? true
             };
 
+            // Configuración de Descuentos por Cantidad del Producto
+            const discountRows = [...(document.getElementById('product-discounts-container')?.querySelectorAll('.discount-tier-row') || [])];
+            const quantityDiscounts = discountRows.map(row => {
+                const minUnits = parseInt(row.querySelector('.discount-tier-units')?.value) || 0;
+                const discountPercent = parseFloat(row.querySelector('.discount-tier-percent')?.value) || 0;
+                return { minUnits, discountPercent };
+            }).filter(d => d.minUnits > 1 && d.discountPercent > 0)
+              .sort((a, b) => a.minUnits - b.minUnits);
+
             const product = {
                 id:          idVal,
                 title:       document.getElementById('admin-title')?.value?.trim() || '',
@@ -1164,6 +1252,7 @@
                 tags:        tagsList,
                 shippingConfig: shippingConfig,
                 paymentConfig: paymentConfig,
+                quantityDiscounts: quantityDiscounts,
                 last_modified: Date.now()
             };
 

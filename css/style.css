@@ -2164,8 +2164,8 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     top: 0; left: 0; right: 0; bottom: 0;
     background: #F4F6F9;
     z-index: 300;
-    overflow-y: auto;
-    padding-bottom: 3rem;
+    overflow: hidden !important;
+    padding-bottom: 0 !important;
 }
 
 /* ── Form Section ── */
@@ -5078,8 +5078,24 @@ details.form-group[open] {
 }
 
 /* Modal Sizing Controls & Grid Columns */
+.modal-content {
+    width: 75vw !important;
+    max-width: 1200px !important;
+    max-height: 90vh !important;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 100vh !important;
+        border-radius: 0 !important;
+        padding: 1rem !important;
+    }
+}
+
 .modal-content.size-sm {
-    max-width: 650px !important;
+    max-width: 750px !important;
 }
 
 .modal-content.size-md {
@@ -5090,6 +5106,13 @@ details.form-group[open] {
     max-width: 95% !important;
     width: 95% !important;
     max-height: 95vh !important;
+}
+
+/* Scroll suave y controlado para categorías */
+#product-categories-checkboxes {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 
 /* Modal size tab buttons styling */

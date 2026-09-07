@@ -93,129 +93,107 @@
                     <main class="admin-main">
                         <!-- 1. DASHBOARD MODULE -->
                         <div id="admin-dashboard-view" class="admin-section-view">
-                            <!-- Panel de métricas -->
-                            <div class="stats-grid">
-                                <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: var(--admin-accent-light); color: var(--admin-accent);">
-                                        <span class="material-symbols-outlined">folder</span>
+                            <!-- Panel de métricas de visitas full-width -->
+                            <div class="admin-card" style="padding: 1rem 1.25rem; margin-bottom: 1.25rem; background: var(--admin-surface); border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md);">
+                                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <div style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); background: var(--admin-accent-light); color: var(--admin-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                            <span class="material-symbols-outlined" style="font-size: 26px;">trending_up</span>
+                                        </div>
+                                        <div>
+                                            <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--admin-text-muted);">Métricas de Visitas</span>
+                                            <h3 style="margin: 0; font-size: 1.5rem; font-weight: 800; color: var(--admin-text-main);" id="stat-total-views">0 <span style="font-size: 0.8rem; font-weight: 600; color: var(--admin-text-muted);">visitas totales</span></h3>
+                                        </div>
                                     </div>
-                                    <div class="stat-card-info">
-                                        <span class="stat-label">Categorías</span>
-                                        <h3 id="stat-total-categories">0</h3>
-                                    </div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: var(--admin-accent-light); color: var(--admin-accent);">
-                                        <span class="material-symbols-outlined">inventory_2</span>
-                                    </div>
-                                    <div class="stat-card-info">
-                                        <span class="stat-label">Productos</span>
-                                        <h3 id="stat-total-products">0</h3>
-                                    </div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: var(--admin-accent-light); color: var(--admin-accent);">
-                                        <span class="material-symbols-outlined">palette</span>
-                                    </div>
-                                    <div class="stat-card-info">
-                                        <span class="stat-label">Tema Activo</span>
-                                        <h3 id="stat-active-theme">Clásico</h3>
-                                    </div>
-                                </div>
-                                <div class="stat-card">
-                                    <div class="stat-card-icon" style="background: var(--admin-accent-light); color: var(--admin-accent);">
-                                        <span class="material-symbols-outlined">trending_up</span>
-                                    </div>
-                                    <div class="stat-card-info">
-                                        <span class="stat-label">Visitas Totales</span>
-                                        <h3 id="stat-total-views">0</h3>
+
+                                    <!-- Comparativa Semanal & Mensual -->
+                                    <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                                        <div style="display: flex; align-items: center; gap: 8px; background: var(--admin-surface-hover); padding: 6px 14px; border-radius: 8px; border: 1px solid var(--admin-border-color);">
+                                            <span class="material-symbols-outlined" style="color: var(--admin-success); font-size: 18px;">calendar_view_week</span>
+                                            <div>
+                                                <div style="font-size: 0.68rem; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Esta Semana</div>
+                                                <div style="font-size: 0.9rem; font-weight: 800; color: var(--admin-text-main);" id="stat-weekly-views">+12.4% <span style="font-size: 0.72rem; font-weight: 600; color: var(--admin-success);">(vs sem. anterior)</span></div>
+                                            </div>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 8px; background: var(--admin-surface-hover); padding: 6px 14px; border-radius: 8px; border: 1px solid var(--admin-border-color);">
+                                            <span class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 18px;">calendar_month</span>
+                                            <div>
+                                                <div style="font-size: 0.68rem; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Este Mes</div>
+                                                <div style="font-size: 0.9rem; font-weight: 800; color: var(--admin-text-main);" id="stat-monthly-views">+28.5% <span style="font-size: 0.72rem; font-weight: 600; color: var(--admin-success);">(vs mes anterior)</span></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Dashboard Layout de 2 Columnas -->
                             <div class="dashboard-columns">
-                                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-                                    <!-- GitHub Publish Card -->
-                                    <div class="admin-card github-publish-panel">
-                                        <header class="admin-page-header">
-                                            <h3 class="admin-header-title">
-                                                <span class="material-symbols-outlined">cloud_upload</span>
-                                                Publicar a Internet
-                                            </h3>
-                                        </header>
-                                        <p class="admin-header-desc">Sube una copia minificada de tu web a GitHub Pages para que todos vean las actualizaciones en línea.</p>
-                                        <button type="button" id="dashboard-github-publish-btn" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 0.75rem;">
-                                            <span class="material-symbols-outlined">publish</span>
-                                            <span>Subir Cambios a Internet</span>
-                                        </button>
-                                        <div id="dashboard-publish-status-msg" class="publish-status-indicator" style="display: none;"></div>
-                                    </div>
-
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
                                     <!-- Acceso Rápido -->
                                     <div class="admin-card action-panel">
-                                        <header class="admin-page-header">
-                                            <h3 class="admin-header-title">
-                                                <span class="material-symbols-outlined">bolt</span>
+                                        <header class="admin-page-header" style="margin-bottom: 0.75rem; padding-bottom: 0.5rem;">
+                                            <h3 class="admin-header-title" style="font-size: 0.95rem;">
+                                                <span class="material-symbols-outlined" style="font-size: 20px;">bolt</span>
                                                 Acceso Rápido
                                             </h3>
                                         </header>
-                                        <div class="quick-shortcuts">
-                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-orders').click();">
-                                                <span class="material-symbols-outlined">description</span>
-                                                <span>Gestionar Pedidos</span>
-                                            </button>
-                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-catalog').click(); setTimeout(() => { const btn = document.getElementById('btn-open-add-category'); if (btn) btn.click(); }, 100);">
-                                                <span class="material-symbols-outlined">create_new_folder</span>
-                                                <span>Nueva Categoría</span>
-                                            </button>
-                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-catalog').click(); setTimeout(() => { window.currentAdminPhase = 'products'; window.renderAdminUX(); }, 100);">
-                                                <span class="material-symbols-outlined">add_box</span>
-                                                <span>Ver Productos</span>
-                                            </button>
-                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-pages').click();">
-                                                <span class="material-symbols-outlined">sort</span>
-                                                <span>Ordenar Home</span>
-                                            </button>
-                                            <button type="button" class="btn-shortcut" onclick="document.getElementById('tab-btn-shipping').click(); setTimeout(() => { const el = document.getElementById('admin-postal-search-input'); if (el) el.focus(); }, 150);">
-                                                <span class="material-symbols-outlined">pin_drop</span>
-                                                <span>Consultar C.P. &amp; Zonas</span>
-                                            </button>
-                                            <button type="button" class="btn-shortcut" onclick="window.open('https://analytics.google.com/analytics/web/', '_blank');">
-                                                <span class="material-symbols-outlined">analytics</span>
-                                                <span>Ver Estadísticas (GA)</span>
-                                            </button>
-                                        </div>
+                                         <div class="quick-shortcuts-list" style="display: flex; flex-direction: column; gap: 5px;">
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-orders').click();">
+                                                 <span class="material-symbols-outlined">description</span>
+                                                 <span>Gestionar Pedidos Activos</span>
+                                             </button>
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-offers').click();">
+                                                 <span class="material-symbols-outlined">local_offer</span>
+                                                 <span>Crear Oferta o Combo</span>
+                                             </button>
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-catalog').click(); setTimeout(() => { const btn = document.getElementById('btn-open-add-product'); if (btn) btn.click(); else { window.currentAdminPhase = 'products'; window.renderAdminUX(); } }, 100);">
+                                                 <span class="material-symbols-outlined">add_box</span>
+                                                 <span>Cargar Nuevo Producto</span>
+                                             </button>
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-stock').click();">
+                                                 <span class="material-symbols-outlined">inventory</span>
+                                                 <span>Ajustar Stock y Precios</span>
+                                             </button>
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-shipping').click();">
+                                                 <span class="material-symbols-outlined">local_shipping</span>
+                                                 <span>Configurar Tarifas de Envío</span>
+                                             </button>
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-payments').click();">
+                                                 <span class="material-symbols-outlined">payments</span>
+                                                 <span>Descuentos por Medio de Pago</span>
+                                             </button>
+                                         </div>
                                     </div>
 
                                     <!-- Tarjeta Modo Vacaciones -->
                                     <div class="admin-card vacation-selector-panel">
-                                        <header class="admin-page-header">
-                                            <h3 class="admin-header-title">
-                                                <span class="material-symbols-outlined" style="color: var(--admin-warning);">flight_takeoff</span>
+                                        <header class="admin-page-header" style="margin-bottom: 0.65rem; padding-bottom: 0.5rem;">
+                                            <h3 class="admin-header-title" style="font-size: 0.95rem;">
+                                                <span class="material-symbols-outlined" style="color: var(--admin-warning); font-size: 20px;">flight_takeoff</span>
                                                 Modo Vacaciones
                                             </h3>
                                         </header>
-                                        <p class="admin-header-desc">Activá el cartel de aviso. Las publicaciones y el carrito seguirán activos con los precios congelados.</p>
-                                        <div class="form-group" style="flex-direction: row; align-items: center; gap: 8px;">
-                                            <input type="checkbox" id="admin-vacation-active" style="width: 17px; height: 17px; cursor: pointer; accent-color: var(--admin-accent);">
-                                            <label for="admin-vacation-active" style="cursor: pointer; margin: 0; font-size: 0.86rem;">Activar Modo Vacaciones</label>
+                                        <p class="admin-header-desc" style="font-size: 0.76rem; margin-bottom: 0.75rem;">Activá el cartel de aviso manteniendo precios congelados.</p>
+                                        <div class="form-group" style="flex-direction: row; align-items: center; gap: 8px; margin-bottom: 0.65rem;">
+                                            <input type="checkbox" id="admin-vacation-active" style="width: 16px; height: 16px; cursor: pointer; accent-color: var(--admin-accent);">
+                                            <label for="admin-vacation-active" style="cursor: pointer; margin: 0; font-size: 0.82rem; font-weight: 700;">Activar Modo Vacaciones</label>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="admin-vacation-start-end">Período de Vacaciones:</label>
-                                            <input type="text" id="admin-vacation-start-end" class="premium-input" placeholder="ej: del 1 al 5 de Septiembre">
+                                        <div class="form-group" style="margin-bottom: 0.5rem;">
+                                            <label for="admin-vacation-start-end" style="font-size: 0.76rem;">Período de Vacaciones:</label>
+                                            <input type="text" id="admin-vacation-start-end" class="premium-input" placeholder="ej: del 1 al 5 de Septiembre" style="font-size: 0.8rem; padding: 0.4rem 0.65rem;">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="admin-vacation-deliveries">Fecha de Entregas:</label>
-                                            <input type="text" id="admin-vacation-deliveries" class="premium-input" placeholder="ej: a partir del 7 al 10 de Septiembre">
+                                        <div class="form-group" style="margin-bottom: 0.5rem;">
+                                            <label for="admin-vacation-deliveries" style="font-size: 0.76rem;">Fecha de Entregas:</label>
+                                            <input type="text" id="admin-vacation-deliveries" class="premium-input" placeholder="ej: a partir del 7 al 10 de Septiembre" style="font-size: 0.8rem; padding: 0.4rem 0.65rem;">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="admin-vacation-message">Mensaje adicional:</label>
-                                            <textarea id="admin-vacation-message" class="premium-input" style="min-height: 60px; resize: vertical;" placeholder="ej: Estamos de vacaciones, pero seguimos tomando pedidos con precios congelados."></textarea>
+                                        <div class="form-group" style="margin-bottom: 0.65rem;">
+                                            <label for="admin-vacation-message" style="font-size: 0.76rem;">Mensaje adicional:</label>
+                                            <textarea id="admin-vacation-message" class="premium-input" style="min-height: 50px; font-size: 0.8rem; padding: 0.4rem 0.65rem; resize: vertical;" placeholder="ej: Estamos de vacaciones, pero seguimos tomando pedidos con precios congelados."></textarea>
                                         </div>
-                                        <button type="button" id="admin-vacation-save-btn" class="btn-primary" style="width: 100%;">
-                                            <span class="material-symbols-outlined">save</span>
-                                            <span>Guardar Modo Vacaciones</span>
+                                        <button type="button" id="admin-vacation-save-btn" class="btn-primary" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.45rem 0.85rem;">
+                                            <span class="material-symbols-outlined" style="font-size: 16px;">save</span>
+                                            <span>Guardar Vacaciones</span>
                                         </button>
                                     </div>
                                 </div>
@@ -265,39 +243,39 @@
 
                         <!-- 1.6 SHIPPING & ZONES MODULE -->
                         <div id="admin-shipping-view" class="admin-section-view" style="display: none;">
-                            <!-- 🔍 BUSCADOR DE CÓDIGO POSTAL -->
-                            <div class="admin-card">
-                                <header class="admin-page-header">
-                                    <h3 class="admin-header-title">
-                                        <span class="material-symbols-outlined">pin_drop</span>
-                                        Consulta Rápida de Código Postal, Zonas y Precios
-                                    </h3>
-                                </header>
-
-                                <!-- Barra de buscador -->
-                                <div class="search-wrapper" style="width: 100%;">
-                                    <span class="material-symbols-outlined">search</span>
-                                    <input type="text" id="admin-postal-search-input" placeholder="Escribí el Código Postal (ej: 4400, 1704, 1686)..." autocomplete="off" style="width: 100%;" oninput="window.renderAdminPostalResult(this.value)" onkeydown="if(event.key==='Enter'||event.keyCode===13){ event.preventDefault(); window.renderAdminPostalResult(this.value); }">
+                            <!-- 🔍 BUSCADOR DE CÓDIGO POSTAL COMPACTO -->
+                            <div class="admin-card" style="padding: 0.75rem 1rem; margin-bottom: 0.75rem;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                                    <h4 class="admin-card-title" style="margin: 0; font-size: 0.88rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px; color: var(--admin-accent);">pin_drop</span>
+                                        Consulta Rápida de C.P., Zonas y Precios
+                                    </h4>
                                 </div>
 
-                                <!-- Panel que se despliega hacia abajo al escribir -->
-                                <div id="admin-postal-result-card" style="display: none; margin-top: 1rem;"></div>
+                                <!-- Barra de buscador -->
+                                <div class="search-wrapper" style="width: 100%; margin: 0;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">search</span>
+                                    <input type="text" id="admin-postal-search-input" placeholder="Ingresá Código Postal o Localidad (ej: 1686, Haedo)..." autocomplete="off" style="width: 100%; height: 36px; font-size: 0.84rem;" oninput="window.renderAdminPostalResult(this.value)" onkeydown="if(event.key==='Enter'||event.keyCode===13){ event.preventDefault(); window.renderAdminPostalResult(this.value); }">
+                                </div>
+
+                                <!-- Panel desplegable -->
+                                <div id="admin-postal-result-card" style="display: none; margin-top: 0.75rem;"></div>
                             </div>
 
-                            <!-- Sub-pestañas de Navegación por Modalidad de Envío -->
-                            <div id="admin-shipping-subtabs" class="admin-sub-tabs-bar">
-                                <button type="button" class="admin-shipping-subtab-btn active" data-ship-mode="logistica">
-                                    <span class="material-symbols-outlined">package_2</span> 📦 Panel Logística (Courier)
+                            <!-- Sub-pestañas de Navegación por Modalidad de Envío (1 fila, 33% cada una) -->
+                            <div id="admin-shipping-subtabs" style="display: flex; gap: 8px; width: 100%; margin-bottom: 0.75rem;">
+                                <button type="button" class="admin-shipping-subtab-btn active" data-ship-mode="logistica" style="flex: 1; min-width: 0; justify-content: center; padding: 0.6rem 0.5rem; font-size: 0.88rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">package_2</span> Logística
                                 </button>
-                                <button type="button" class="admin-shipping-subtab-btn" data-ship-mode="flete">
-                                    <span class="material-symbols-outlined">local_shipping</span> 🚛 Panel Flete Particular
+                                <button type="button" class="admin-shipping-subtab-btn" data-ship-mode="flete" style="flex: 1; min-width: 0; justify-content: center; padding: 0.6rem 0.5rem; font-size: 0.88rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+                                    <span class="material-symbols-outlined" style="color: #16a34a; font-size: 20px;">local_shipping</span> Flete
                                 </button>
-                                <button type="button" class="admin-shipping-subtab-btn" data-ship-mode="otro">
-                                    <span class="material-symbols-outlined">local_post_office</span> 🚚 Panel Otro / Expreso
+                                <button type="button" class="admin-shipping-subtab-btn" data-ship-mode="otro" style="flex: 1; min-width: 0; justify-content: center; padding: 0.6rem 0.5rem; font-size: 0.88rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+                                    <span class="material-symbols-outlined" style="color: #dc2626; font-size: 20px;">local_shipping</span> Expreso
                                 </button>
                             </div>
 
-                            <div id="admin-shipping-zones-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div id="admin-shipping-zones-container" style="display: flex; flex-direction: column; gap: 0.5rem;">
                                 <!-- Contenido inyectado dinámicamente desde js/admin-shipping.js -->
                             </div>
                         </div>

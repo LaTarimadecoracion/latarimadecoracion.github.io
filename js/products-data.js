@@ -1000,7 +1000,8 @@ const productsData = [
                 },
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
-                "history": []
+                "history": [],
+                "views": 7
             },
             {
                 "id": "31",
@@ -1091,7 +1092,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 7,
+                "views": 15,
                 "stock": 0,
                 "history": [
                     {
@@ -1165,7 +1166,7 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3116,7 +3117,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4927,7 +4928,8 @@ const productsData = [
                     "otroEnabled": false,
                     "otroLabel": "A convenir",
                     "otroCost": 0,
-                    "isFreeShipping": false
+                    "isFreeShipping": false,
+                    "logisticaFreeMinUnits": 1
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -4958,7 +4960,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 46
+                "views": 58
             },
             {
                 "id": "22",
@@ -5157,7 +5159,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
-                "views": 4,
+                "views": 6,
                 "stock": 0,
                 "history": [
                     {
@@ -9736,107 +9738,7 @@ const productsData = [
         "image": "img/borrador/portada-imagen.webp",
         "rubro": "carpinteria",
         "order": 1,
-        "products": [
-            {
-                "id": "11",
-                "title": "Estante Hexagonal x3",
-                "description": "",
-                "image": "img/logo_provisional.png",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/logo_provisional.png",
-                        "images_list": [],
-                        "medidas_variants": [
-                            {
-                                "medida": "Hexagonal x3",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": 11000,
-                                "legend": "",
-                                "showPrice": false,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "estante",
-                    "estantes",
-                    "repisa",
-                    "repisas",
-                    "madera",
-                    "pino",
-                    "flotante",
-                    "flotantes",
-                    "pared",
-                    "colgar",
-                    "mensulas",
-                    "invisible",
-                    "biblioteca",
-                    "libros",
-                    "fotos",
-                    "plantas",
-                    "organizador",
-                    "decorar",
-                    "decoracion",
-                    "minimalista",
-                    "moderno",
-                    "hogar",
-                    "casa",
-                    "sala",
-                    "cuarto",
-                    "estante flotante",
-                    "estante de madera",
-                    "estante de pino",
-                    "estante de pared",
-                    "repisa flotante",
-                    "repisa de madera",
-                    "repisa de pino",
-                    "repisa de pared",
-                    "estante hexagonal",
-                    "repisa hexagonal",
-                    "estante invisible",
-                    "repisa invisible",
-                    "estante con mensula",
-                    "repisas de pino",
-                    "repisas de madera",
-                    "estantes flotantes",
-                    "estantes de madera",
-                    "estantes de pino",
-                    "organizador de pared",
-                    "estante libros",
-                    "estante plantas",
-                    "estante fotos",
-                    "repisa decorativa",
-                    "estante de living",
-                    "estante de cuarto"
-                ],
-                "last_modified": 1783811849072,
-                "primaryCatId": "Borrador",
-                "visible": false,
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "stock": 0
-            }
-        ],
+        "products": [],
         "visible": false
     },
     {
@@ -9887,7 +9789,8 @@ const productsData = [
                     "otroEnabled": false,
                     "otroLabel": "A convenir",
                     "otroCost": 0,
-                    "isFreeShipping": false
+                    "isFreeShipping": false,
+                    "logisticaFreeMinUnits": 1
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -9918,7 +9821,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 46
+                "views": 58
             },
             {
                 "id": "22",
@@ -10227,7 +10130,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083083495,
                 "primaryCatId": "Vinotecas",
-                "views": 4,
+                "views": 6,
                 "stock": 0,
                 "history": [
                     {
@@ -10566,7 +10469,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 7,
+                "views": 15,
                 "stock": 0,
                 "history": [
                     {
@@ -12067,7 +11970,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637121354,
                 "primaryCatId": "Organizadores",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18006,7 +17909,8 @@ const productsData = [
                 },
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
-                "history": []
+                "history": [],
+                "views": 7
             },
             {
                 "id": "92",
@@ -19211,7 +19115,7 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,

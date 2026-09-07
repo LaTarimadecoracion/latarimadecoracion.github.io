@@ -38,13 +38,12 @@ window.sessionShippingFullData = {
     },
     "otro": {
         "otro_amba": {
-            "active": true,
+            "active": false,
             "baseCost": 0
         },
         "otro_interior": {
-            "active": true,
-            "baseCost": 0,
-            "requireWA": true
+            "active": false,
+            "baseCost": 0
         }
     }
 };

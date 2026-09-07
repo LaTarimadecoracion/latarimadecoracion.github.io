@@ -359,6 +359,11 @@
                 if (typeof window.renderRubrosSelect === 'function') {
                     window.renderRubrosSelect(cat.rubro || 'carpinteria');
                 }
+
+                // Cargar vista previa de la foto existente
+                if (typeof window.updateCategoryPhotoPreview === 'function') {
+                    window.updateCategoryPhotoPreview(cat.image || null);
+                }
                 
                 const formTitle = document.getElementById('admin-category-form-title');
                 if (formTitle) {

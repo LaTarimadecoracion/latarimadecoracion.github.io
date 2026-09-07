@@ -7,7 +7,7 @@ window.siteConfig = {
     "appConfig": {
         "home": {
             "title": "La Tarima",
-            "subtitle": "Diseño en madera",
+            "subtitle": "Decoración",
             "icon": "home",
             "visible": true,
             "contentStack": []
@@ -163,7 +163,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Repisa Biblioteca Estantes Montessori!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Repisa Biblioteca Estantes Montessori!",
             "mediaType": "image",
-            "image": "img/organizadores/repisa-biblioteca-estantes-montessori/1787709158727-imagen.webp",
+            "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -239,7 +239,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Juego de Mesa y Sillas Infantiles!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Juego de Mesa y Sillas Infantiles!",
             "mediaType": "image",
-            "image": "img/juguetes/juego-de-mesa-y-sillas-infantiles/1786838792263-imagen.webp",
+            "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -258,7 +258,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Soporte Para 12 Vinos Bodega Vinoteca!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Soporte Para 12 Vinos Bodega Vinoteca!",
             "mediaType": "image",
-            "image": "img/vinotecas---bodegas/soporte-para-12-vinos-bodega-vinoteca/1786828216763-imagen.webp",
+            "image": "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -486,7 +486,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Perchero 3 - Rustico!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 3 - Rustico!",
             "mediaType": "image",
-            "image": "img/borrador/perchero-3---rustico/1784347711326-imagen.webp",
+            "image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -568,11 +568,10 @@ window.siteConfig = {
         "mercadolibre": ""
     },
     "mayoristaConfig": {
-        "alias": "VENUS.PULMON.METRO",
-        "cbu": "0720048988000002273736",
-        "titular": "Yonatan Lucas Orellana",
-        "bank": "Banco Santander",
-        "cuit": "20-35281538-2",
+        "alias": "la.tarima.deco",
+        "cbu": "1234567890123456789012",
+        "titular": "Juan Pérez",
+        "bank": "Banco Nación",
         "paymentMethods": [
             {
                 "id": "efectivo",

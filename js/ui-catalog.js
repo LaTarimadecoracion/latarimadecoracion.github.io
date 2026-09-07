@@ -847,23 +847,32 @@
                         const qtyValEl = document.getElementById('qty-value');
                         const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
                         
-                        // Buscar descuento por volumen aplicable
+                        // Buscar descuento por volumen aplicable (a nivel variante o nivel producto)
                         let discountPercent = 0;
                         let discountValue = 0;
                         let totalDiscountAmount = 0;
                         let discountRule = null;
                         
-                        if (activeVariant.volumeDiscounts && Array.isArray(activeVariant.volumeDiscounts) && activeVariant.volumeDiscounts.length > 0) {
-                            const sortedRules = [...activeVariant.volumeDiscounts].sort((a, b) => b.minQty - a.minQty);
+                        const discountsList = (activeVariant.volumeDiscounts && Array.isArray(activeVariant.volumeDiscounts) && activeVariant.volumeDiscounts.length > 0)
+                            ? activeVariant.volumeDiscounts
+                            : (product.quantityDiscounts || []);
+                        
+                        if (discountsList && Array.isArray(discountsList) && discountsList.length > 0) {
+                            const sortedRules = [...discountsList].sort((a, b) => {
+                                const minA = a.minQty !== undefined ? a.minQty : a.minUnits;
+                                const minB = b.minQty !== undefined ? b.minQty : b.minUnits;
+                                return minB - minA;
+                            });
                             for (const rule of sortedRules) {
-                                if (qtyVal >= rule.minQty) {
+                                const minUnits = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                                if (qtyVal >= minUnits) {
                                     discountRule = rule;
-                                    if (rule.discountPercent !== undefined) {
+                                    if (rule.discountPercent !== undefined && rule.discountPercent > 0) {
                                         discountPercent = rule.discountPercent;
                                         totalDiscountAmount = (activeVariant.price * qtyVal) * (discountPercent / 100);
-                                    } else if (rule.discountValue !== undefined) {
+                                    } else if (rule.discountValue !== undefined && rule.discountValue > 0) {
                                         discountValue = rule.discountValue;
-                                        totalDiscountAmount = Math.floor(qtyVal / rule.minQty) * discountValue;
+                                        totalDiscountAmount = Math.floor(qtyVal / minUnits) * discountValue;
                                     }
                                     break;
                                 }
@@ -910,6 +919,29 @@
                                     </div>
                                 </div>
                             `;
+                        }
+
+                        // Actualizar banner informativo de descuentos por cantidad
+                        const discountBanner = document.getElementById('detail-qty-discount-banner');
+                        if (discountBanner) {
+                            if (discountsList && discountsList.length > 0) {
+                                const tiersText = [...discountsList]
+                                    .sort((a, b) => (a.minQty !== undefined ? a.minQty : a.minUnits) - (b.minQty !== undefined ? b.minQty : b.minUnits))
+                                    .map(d => `${d.minQty !== undefined ? d.minQty : d.minUnits}+ uds: ${d.discountPercent}% OFF`)
+                                    .join(' | ');
+
+                                if (discountRule) {
+                                    discountBanner.style.display = 'block';
+                                    discountBanner.style.color = '#15803d';
+                                    discountBanner.innerHTML = `🎉 ¡Llevando ${qtyVal} uds tenés <strong>${discountPercent}% OFF</strong>!`;
+                                } else {
+                                    discountBanner.style.display = 'block';
+                                    discountBanner.style.color = '#0284c7';
+                                    discountBanner.innerHTML = `🏷️ Descuentos por cantidad: <strong>${tiersText}</strong>`;
+                                }
+                            } else {
+                                discountBanner.style.display = 'none';
+                            }
                         }
 
                         // Funcionalidad interactiva del tooltip (hover + click en móviles)

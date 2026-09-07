@@ -161,35 +161,30 @@
         const currentModeData = fullData[currentShipMode] || defaultShippingData[currentShipMode] || {};
 
         const modeTitles = {
-            logistica: { title: '📦 Logística (Courier / Colectivo)', subtitle: 'Flux Logística: CABA $4070 | Cordón 1 $5380 | Cordón 2 $8280' },
-            flete: { title: '🚛 Flete Particular (Camioneta)', subtitle: 'Saliendo desde Hurlingham: Zona 1, Zona 2, Zona 3' },
-            otro: { title: '🚚 Otro / Expreso Personalizado', subtitle: 'Presupuestos e interior del país' }
+            logistica: { title: '📦 Logística', subtitle: 'Courier / Colectivo: CABA, Cordón 1 y Cordón 2' },
+            flete: { title: '🚛 Flete', subtitle: 'Flete Particular saliendo desde Hurlingham: Zona 1, 2 y 3' },
+            otro: { title: '🚚 Expreso', subtitle: 'Presupuestos personalizados para envíos al interior del país' }
         };
 
         const currentMeta = modeTitles[currentShipMode];
 
         let html = `
-            <!-- Fila Única de Cabecera -->
-            <div class="admin-page-header">
+            <!-- Header Compacto y Elegante -->
+            <div class="admin-page-header" style="margin-bottom: 0.5rem; padding-bottom: 0.4rem;">
                 <div>
-                    <h3 class="admin-header-title">
-                        <span class="material-symbols-outlined">local_shipping</span>
+                    <h3 class="admin-header-title" style="font-size: 1rem; display: flex; align-items: center; gap: 8px;">
+                        <span class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 20px;">local_shipping</span>
                         ${currentMeta.title}
                     </h3>
-                    <p class="admin-header-desc">${currentMeta.subtitle}</p>
+                    <p class="admin-header-desc" style="font-size: 0.75rem; margin-top: 1px;">${currentMeta.subtitle}</p>
                 </div>
-                <div class="admin-header-actions">
-                    <button type="button" onclick="window.saveAdminShippingRatesToDiskExplicitly()" class="btn-primary" style="background:#16a34a;border-color:#16a34a;">
-                        <span class="material-symbols-outlined">save</span> 💾 Guardar Tarifas en Archivo
+                <div class="admin-header-actions" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                    <button type="button" onclick="window.addNewShippingZone('${currentShipMode}')" class="btn-outline" style="padding: 0.35rem 0.65rem; font-size: 0.75rem;">
+                        <span class="material-symbols-outlined" style="font-size: 15px;">add</span> Crear Zona
                     </button>
-                    <button type="button" onclick="window.addNewShippingZone('${currentShipMode}')" class="btn-outline">
-                        <span class="material-symbols-outlined">add</span> Crear Zona
+                    <button type="button" onclick="window.saveAdminShippingRatesToDiskExplicitly()" class="btn-primary" style="background:#16a34a; border-color:#16a34a; padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                        <span class="material-symbols-outlined" style="font-size: 15px;">save</span> Guardar Archivo
                     </button>
-                    ${currentShipMode === 'logistica' ? `
-                        <button type="button" onclick="window.applyFluxDefaults()" class="btn-outline" title="Cargar precios base por defecto de Flux Logística">
-                            ⚡ Precios Base Flux
-                        </button>
-                    ` : ''}
                 </div>
             </div>
         `;
@@ -199,73 +194,68 @@
             const zVal = (currentModeData && currentModeData[zoneKey]) ? currentModeData[zoneKey] : { active: true, baseCost: 0 };
 
             html += `
-                <!-- Ficha Desplegable de 3 Líneas por Zona -->
-                <div class="shipping-zone-card-block admin-card" data-zone-key="${zoneKey}">
+                <!-- Ficha Compacta de Zona -->
+                <div class="shipping-zone-card-block admin-card" data-zone-key="${zoneKey}" style="padding: 0.5rem 0.75rem; margin-bottom: 0.35rem; border-radius: var(--admin-radius-sm);">
                     
-                    <!-- LÍNEA 1 (SIEMPRE VISIBLE): Título Desplegable + Habilitado + Costo ($) -->
-                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                    <!-- LÍNEA PRINCIPAL HORIZONTAL: Título Desplegable + Habilitado + Costo -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
                         
-                        <!-- Título de la Zona que despliega la Cascada al tocarlo -->
-                        <div onclick="window.toggleZoneCascade('${zoneKey}')" style="cursor: pointer; display: flex; align-items: center; gap: 8px; flex: 1; min-width: 220px;" title="Tocar para desplegar localidades">
-                            <span class="material-symbols-outlined" id="zone-icon-${zoneKey}" style="font-size: 20px; color: var(--admin-accent); transition: transform 0.2s;">expand_more</span>
+                        <!-- Título de la Zona + Indicador -->
+                        <div onclick="window.toggleZoneCascade('${zoneKey}')" style="cursor: pointer; display: flex; align-items: center; gap: 6px; flex: 1; min-width: 180px;" title="Tocar para desplegar localidades">
+                            <span class="material-symbols-outlined" id="zone-icon-${zoneKey}" style="font-size: 18px; color: var(--admin-accent); transition: transform 0.2s;">expand_more</span>
                             <div>
-                                <h4 style="margin: 0; font-size: 0.95rem; font-weight: 700; color: var(--admin-text-main); display: flex; align-items: center; gap: 6px;">
+                                <h4 style="margin: 0; font-size: 0.85rem; font-weight: 700; color: var(--admin-text-main); display: flex; align-items: center; gap: 6px;">
                                     ${zMeta.title}
-                                    <span style="font-size: 0.72rem; font-weight: 700; color: var(--admin-text-muted); background: var(--admin-surface-hover); padding: 2px 8px; border-radius: var(--admin-radius-sm);">${zMeta.cities.length} loc.</span>
+                                    <span style="font-size: 0.68rem; font-weight: 700; color: var(--admin-text-muted); background: var(--admin-surface-hover); padding: 1px 6px; border-radius: 8px; border: 1px solid var(--admin-border-color);">${zMeta.cities.length} loc.</span>
                                 </h4>
-                                <div style="font-size: 0.73rem; color: var(--admin-text-muted); margin-top: 1px;">
+                                <div style="font-size: 0.7rem; color: var(--admin-text-muted); margin-top: 1px;">
                                     ${zMeta.cpRange || 'C.P.'}
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Controles de Habilitado y Costo en Línea 1 -->
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; color: var(--admin-text-secondary); cursor: pointer;">
-                                <input type="checkbox" class="ship-zone-active-chk" data-mode="${currentShipMode}" data-zone="${zoneKey}" ${zVal.active !== false ? 'checked' : ''} style="width: 17px; height: 17px; accent-color: var(--admin-accent); cursor: pointer;">
+                        <!-- Controles de Habilitado y Costo -->
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <label style="display: flex; align-items: center; gap: 5px; font-size: 0.78rem; font-weight: 600; color: var(--admin-text-secondary); cursor: pointer;">
+                                <input type="checkbox" class="ship-zone-active-chk" data-mode="${currentShipMode}" data-zone="${zoneKey}" ${zVal.active !== false ? 'checked' : ''} style="width: 15px; height: 15px; accent-color: var(--admin-accent); cursor: pointer;">
                                 <span>Habilitado</span>
                             </label>
 
-                            <div style="display: flex; align-items: center; gap: 4px; background: var(--admin-surface-hover); border: 1.5px solid var(--admin-border-color); border-radius: var(--admin-radius-sm); padding: 0.25rem 0.6rem;">
-                                <span style="font-size: 0.78rem; font-weight: 800; color: var(--admin-text-muted);">$</span>
-                                <input type="number" class="ship-zone-cost-in" data-mode="${currentShipMode}" data-zone="${zoneKey}" value="${zVal.baseCost !== undefined ? zVal.baseCost : 0}" placeholder="0" style="width: 90px; border: none; background: transparent; font-size: 0.9rem; font-weight: 700; color: var(--admin-text-main); outline: none;">
+                            <div style="display: flex; align-items: center; gap: 2px; background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: 4px; padding: 0.15rem 0.4rem;">
+                                <span style="font-size: 0.72rem; font-weight: 800; color: var(--admin-text-muted);">$</span>
+                                <input type="number" class="ship-zone-cost-in" data-mode="${currentShipMode}" data-zone="${zoneKey}" value="${zVal.baseCost !== undefined ? zVal.baseCost : 0}" placeholder="0" style="width: 75px; border: none; background: transparent; font-size: 0.82rem; font-weight: 700; color: var(--admin-text-main); outline: none;">
                             </div>
                         </div>
 
                     </div>
 
-                    <!-- CONTENIDO EN CASCADA (DESPLEGABLE AL TOCAR EL TÍTULO) -->
-                    <div id="zone-cascade-${zoneKey}" style="display: none; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid var(--admin-border-color);">
+                    <!-- CONTENIDO DESPLEGABLE DE LOCALIDADES -->
+                    <div id="zone-cascade-${zoneKey}" style="display: none; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--admin-border-color);">
                         
-                        <!-- LÍNEA 2: Filtro / Buscador + Añadir Nueva Localidad -->
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.75rem; flex-wrap: wrap;">
-                            <input type="text" id="add-city-name-${zoneKey}" class="premium-input" placeholder="Localidad o Ciudad (Ej: Morón)" style="flex: 2; min-width: 140px;">
-                            <input type="text" id="add-city-cp-${zoneKey}" class="premium-input" placeholder="C.P. (Ej: 1708)" style="flex: 1; min-width: 80px;">
-                            <button type="button" onclick="window.addCityToZone('${currentShipMode}', '${zoneKey}')" class="btn-primary" style="padding: 0.55rem 0.9rem; font-size: 0.8rem;">
-                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span> Añadir
+                        <!-- Formulario compacto para añadir localidad -->
+                        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 0.65rem; flex-wrap: wrap;">
+                            <input type="text" id="add-city-name-${zoneKey}" class="premium-input" placeholder="Localidad / Ciudad (ej: Morón)" style="flex: 2; min-width: 130px; font-size: 0.8rem; padding: 0.4rem 0.7rem;">
+                            <input type="text" id="add-city-cp-${zoneKey}" class="premium-input" placeholder="C.P. (ej: 1708)" style="flex: 1; min-width: 75px; font-size: 0.8rem; padding: 0.4rem 0.7rem;">
+                            <button type="button" onclick="window.addCityToZone('${currentShipMode}', '${zoneKey}')" class="btn-primary" style="padding: 0.4rem 0.75rem; font-size: 0.78rem;">
+                                <span class="material-symbols-outlined" style="font-size: 15px;">add</span> Añadir
                             </button>
                         </div>
 
-                        <!-- LÍNEA 3: Lista en Cascada Vertical con Ícono de Lápiz (✏️) para Editar -->
-                        <div style="display: flex; flex-direction: column; gap: 4px; max-height: 220px; overflow-y: auto; padding-right: 4px;">
+                        <!-- Lista de Localidades Grid/Flex en Chips en vez de filas anchas apiladas -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 6px; max-height: 200px; overflow-y: auto; padding-right: 2px;">
                             ${zMeta.cities.map((city, idx) => `
-                                <div style="background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-sm); padding: 6px 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; font-weight: 600; color: var(--admin-text-main);">
-                                    <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${city}</span>
-                                    
-                                    <div style="display: flex; align-items: center; gap: 8px;">
-                                        <!-- Ícono de Lápiz para Editar Localidad / C.P. -->
-                                        <button type="button" onclick="window.editCityInZone('${currentShipMode}', '${zoneKey}', ${idx})" class="admin-action-btn edit" title="Editar localidad / C.P.">
-                                            <span class="material-symbols-outlined" style="font-size: 16px;">edit</span>
+                                <div style="background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: 6px; padding: 3px 8px 3px 10px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 600; color: var(--admin-text-main);">
+                                    <span>${city}</span>
+                                    <div style="display: flex; align-items: center; gap: 2px;">
+                                        <button type="button" onclick="window.editCityInZone('${currentShipMode}', '${zoneKey}', ${idx})" class="admin-action-btn edit" style="padding: 2px; height: auto;" title="Editar">
+                                            <span class="material-symbols-outlined" style="font-size: 14px;">edit</span>
                                         </button>
-                                        <!-- Ícono de Basura para Eliminar -->
-                                        <button type="button" onclick="window.removeCityFromZone('${currentShipMode}', '${zoneKey}', ${idx})" class="admin-action-btn delete" title="Eliminar localidad">
-                                            <span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
+                                        <button type="button" onclick="window.removeCityFromZone('${currentShipMode}', '${zoneKey}', ${idx})" class="admin-action-btn delete" style="padding: 2px; height: auto;" title="Eliminar">
+                                            <span class="material-symbols-outlined" style="font-size: 14px;">delete</span>
                                         </button>
                                     </div>
                                 </div>
                             `).join('')}
-                        </div>
-
                         </div>
 
                     </div>
