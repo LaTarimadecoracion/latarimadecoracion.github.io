@@ -1001,7 +1001,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 7
+                "views": 8
             },
             {
                 "id": "31",
@@ -4911,32 +4911,35 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
+                "estimatedWeight": 2.5,
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "logisticaCost": 0,
                     "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
                     "fleteEnabled": true,
                     "fleteCost": 0,
                     "fleteFreeMinUnits": 10,
                     "otroEnabled": false,
                     "otroLabel": "A convenir",
                     "otroCost": 0,
-                    "isFreeShipping": false,
-                    "logisticaFreeMinUnits": 1
+                    "isFreeShipping": false
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "last_modified": 1788655934102,
+                "quantityDiscounts": [],
+                "last_modified": 1788830406630,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -4959,8 +4962,7 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
-                ],
-                "views": 58
+                ]
             },
             {
                 "id": "22",
@@ -9772,32 +9774,35 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
+                "estimatedWeight": 2.5,
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "logisticaCost": 0,
                     "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
                     "fleteEnabled": true,
                     "fleteCost": 0,
                     "fleteFreeMinUnits": 10,
                     "otroEnabled": false,
                     "otroLabel": "A convenir",
                     "otroCost": 0,
-                    "isFreeShipping": false,
-                    "logisticaFreeMinUnits": 1
+                    "isFreeShipping": false
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "last_modified": 1788655934102,
+                "quantityDiscounts": [],
+                "last_modified": 1788830406630,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -9820,8 +9825,7 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
-                ],
-                "views": 58
+                ]
             },
             {
                 "id": "22",
@@ -17910,7 +17914,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 7
+                "views": 8
             },
             {
                 "id": "92",

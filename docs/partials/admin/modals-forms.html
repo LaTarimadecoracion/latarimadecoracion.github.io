@@ -245,6 +245,18 @@
                                             <span class="material-symbols-outlined expand-arrow" style="font-size: 18px; transition: transform 0.2s;">expand_more</span>
                                         </summary>
                                         <div style="padding-top:0.6rem; margin-top:0.6rem; border-top:1px solid #CBD5E1; display: flex; flex-direction: column; gap: 0.5rem; cursor: default;">
+                                             <!-- Peso Estimado por Unidad (FLUX / Logística) -->
+                                             <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 0.5rem 0.75rem;">
+                                                 <label style="display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; font-weight: 700; color: #0369a1; margin: 0;">
+                                                     <span style="display: flex; align-items: center; gap: 4px;">
+                                                         <span class="material-symbols-outlined" style="font-size: 16px;">scale</span>
+                                                         Peso Estimado por Unidad (kg)
+                                                     </span>
+                                                     <input type="number" id="product-estimated-weight" min="0.1" step="0.1" placeholder="ej: 2.5" style="width: 90px; font-size: 0.82rem; padding: 0.25rem 0.5rem; border-radius: 4px; border: 1.5px solid #0284c7; background: white; font-weight: 700; text-align: center;">
+                                                 </label>
+                                                 <small style="color: #0369a1; font-size: 0.7rem; display: block; margin-top: 2px;">Usado para calcular automáticamente el peso del paquete en etiquetas FLUX y presupuestos.</small>
+                                             </div>
+
                                             <!-- Logística (Courier / Colectivo) -->
                                             <div style="background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0.5rem 0.75rem;">
                                                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
@@ -567,8 +579,9 @@
                                     <div id="comp-banner-preview" style="margin-top:0.5rem; max-width:100%;"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Enlace / Link de Acción (Opcional)</label>
-                                    <input type="text" id="admin-comp-banner-link" placeholder="ej: https://maps.google.com/...">
+                                    <label>Enlace / Link de Acción al tocar el Banner (Opcional)</label>
+                                    <input type="text" id="admin-comp-banner-link" placeholder="ej: /catalogo o URL externa https://...">
+                                    <small style="color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; display:block;">Podés poner una sección de la web (ej: <code>#view-catalogo</code> o <code>https://wa.me/...</code>) para redirigir al cliente al hacer clic.</small>
                                 </div>
                             </div>
 

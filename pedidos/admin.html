@@ -2607,6 +2607,13 @@
             setTimeout(() => { isOrderFormDirty = false; }, 50);
         }
         
+        window.openModal = openModal;
+        try {
+            if (window.parent && window.parent !== window) {
+                window.parent.openModalFromIframe = openModal;
+            }
+        } catch(e) {}
+        
         function closeModal(force = false) {
             const modal = document.getElementById('order-modal');
             if (!modal || !modal.classList.contains('show')) return;
@@ -3107,12 +3114,21 @@
             if (!container) return;
             container.innerHTML = '';
 
-            // Filtrar pedidos listos o activos que tengan envío o datos para despacho
+            // Filtrar pedidos listos o pendientes
             const readyOrActive = allOrders.filter(o => o.status === 'listo' || o.status === 'pendiente');
 
             if (readyOrActive.length === 0) {
                 container.innerHTML = `<div style="font-size:0.85rem; color:#64748b; text-align:center; padding:1rem;">No hay pedidos pendientes o listos para generar etiquetas.</div>`;
                 return;
+            }
+
+            // Auto-seleccionar por defecto los pedidos de envío (no retira en taller) si es la primera apertura
+            if (selectedFluxOrderIds.size === 0) {
+                readyOrActive.forEach(o => {
+                    if (o.deliveryMethod === 'envio' || (o.address && o.address.trim() !== '')) {
+                        selectedFluxOrderIds.add(o.id);
+                    }
+                });
             }
 
             readyOrActive.forEach(order => {

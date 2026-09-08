@@ -819,6 +819,9 @@
             }
         } catch (e) {
             console.error('Error guardando en el servidor:', e);
+            if (typeof showAdminToast === 'function') {
+                showAdminToast('⚠️ No se pudo guardar en servidor. Se guardó localmente.', 'error');
+            }
         }
 
         if (btn) {

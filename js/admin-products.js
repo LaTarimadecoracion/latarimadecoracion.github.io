@@ -230,8 +230,7 @@ window.initProductsAdmin = function() {
             row.innerHTML = `
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
                     <div style="display: flex; align-items: center; gap: 0.6rem;">
-                        ${dragHandleHtml}
-                        <div style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); background-image: url('${p.image}'); background-size: cover; background-position: center; border: 1px solid var(--admin-border-color); flex-shrink: 0;"></div>
+                        <div class="product-thumb-drag" title="${showDragHandle ? 'Mantén presionado para arrastrar y reordenar' : ''}" style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); background-image: url('${p.image}'); background-size: cover; background-position: center; border: 1px solid var(--admin-border-color); flex-shrink: 0; cursor: ${showDragHandle ? 'grab' : 'default'};"></div>
                     </div>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
@@ -268,11 +267,13 @@ window.initProductsAdmin = function() {
                 row.className = 'product-admin-row';
                 row.setAttribute('data-index', p.prodIndex);
                 
-                const handle = row.querySelector('.product-drag-handle');
-                handle.addEventListener('mousedown', () => row.setAttribute('draggable', 'true'));
-                handle.addEventListener('touchstart', () => row.setAttribute('draggable', 'true'));
-                handle.addEventListener('mouseup', () => row.setAttribute('draggable', 'false'));
-                handle.addEventListener('touchend', () => row.setAttribute('draggable', 'false'));
+                const thumb = row.querySelector('.product-thumb-drag');
+                if (thumb) {
+                    thumb.addEventListener('mousedown', () => row.setAttribute('draggable', 'true'));
+                    thumb.addEventListener('touchstart', () => row.setAttribute('draggable', 'true'));
+                    thumb.addEventListener('mouseup', () => row.setAttribute('draggable', 'false'));
+                    thumb.addEventListener('touchend', () => row.setAttribute('draggable', 'false'));
+                }
                 
                 row.addEventListener('dragstart', (e) => {
                     row.classList.add('dragging');

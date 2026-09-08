@@ -883,6 +883,13 @@
                                 </div>
                             </div>
 
+                            <div style="margin-top: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.5rem 0.75rem; display: flex; align-items: center; gap: 8px;">
+                                <span class="material-symbols-outlined" style="font-size: 18px; color: #0284c7;">schedule</span>
+                                <div style="font-size: 0.75rem; color: #334155; font-weight: 600;">
+                                    Elaboración estimada en taller: <strong>7 a 10 días hábiles</strong>
+                                </div>
+                            </div>
+
                             <div class="ml-summary-row total-row">
                                 <span>Total a pagar</span>
                                 <span id="cart-grand-total-val" style="color:#0f172a;">
@@ -1624,6 +1631,7 @@
                     // 5. Datos del cliente (si existen)
                     let clientData = [];
                     if (userData.name) clientData.push(`• Nombre: ${userData.name}`);
+                    if (userData.dni) clientData.push(`• DNI/CUIT: ${userData.dni}`);
                     if (userData.phone) clientData.push(`• Teléfono: ${userData.phone}`);
                     if (userData.zipCode) clientData.push(`• CP: ${userData.zipCode}`);
                     if (userData.locality) clientData.push(`• Localidad: ${userData.locality}`);
@@ -1641,6 +1649,8 @@
                         const deliv = window.vacationConfig.deliveriesDate || "el regreso";
                         lines.push(`\n_(Nota: Entendido receso del ${start}, entregas desde el ${deliv})_`);
                     }
+
+                    lines.push(`*Plazo Estimado de Elaboración:* 7 a 10 días hábiles`);
 
                     lines.push("\n¡Hola! Les comparto mi presupuesto del carrito. ¿Me confirman disponibilidad y los pasos a seguir?");
 

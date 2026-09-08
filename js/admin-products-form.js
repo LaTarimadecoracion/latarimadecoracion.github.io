@@ -997,6 +997,8 @@
 
         // Configuración de Envíos del Producto
         const shipConf = existingProd?.shippingConfig || {};
+        const weightInput = document.getElementById('product-estimated-weight');
+        if (weightInput) weightInput.value = (existingProd?.estimatedWeight !== undefined && existingProd?.estimatedWeight !== null) ? existingProd.estimatedWeight : '';
         const logCheck = document.getElementById('product-ship-logistica-enabled');
         const logCost = document.getElementById('product-ship-logistica-cost');
         const logGrp = document.getElementById('product-ship-logistica-group');
@@ -1148,6 +1150,16 @@
 
             const catName = window.isRentalMode ? 'alquileres' : (targetCategoryIdForProduct !== null && sessionProducts[targetCategoryIdForProduct] ? sessionProducts[targetCategoryIdForProduct].name : 'general');
 
+            // Configuración de Descuentos por Cantidad del Producto
+            const discountRows = [...(document.getElementById('product-discounts-container')?.querySelectorAll('.discount-tier-row') || [])];
+            const quantityDiscounts = discountRows.map(row => {
+                const minUnits = parseInt(row.querySelector('.discount-tier-units')?.value) || 0;
+                const discountPercent = parseFloat(row.querySelector('.discount-tier-percent')?.value) || 0;
+                const shippingDiscountPercent = parseFloat(row.querySelector('.discount-tier-shipping-percent')?.value) || 0;
+                return { minUnits, discountPercent, shippingDiscountPercent };
+            }).filter(d => d.minUnits > 1 && (d.discountPercent > 0 || d.shippingDiscountPercent > 0))
+              .sort((a, b) => a.minUnits - b.minUnits);
+
             const finalAcabadosGroups = [];
 
             for (const gState of activeGroupsUI) {
@@ -1242,15 +1254,7 @@
                 creditEnabled: document.getElementById('product-pay-credit-enabled')?.checked ?? true
             };
 
-            // Configuración de Descuentos por Cantidad del Producto
-            const discountRows = [...(document.getElementById('product-discounts-container')?.querySelectorAll('.discount-tier-row') || [])];
-            const quantityDiscounts = discountRows.map(row => {
-                const minUnits = parseInt(row.querySelector('.discount-tier-units')?.value) || 0;
-                const discountPercent = parseFloat(row.querySelector('.discount-tier-percent')?.value) || 0;
-                const shippingDiscountPercent = parseFloat(row.querySelector('.discount-tier-shipping-percent')?.value) || 0;
-                return { minUnits, discountPercent, shippingDiscountPercent };
-            }).filter(d => d.minUnits > 1 && (d.discountPercent > 0 || d.shippingDiscountPercent > 0))
-              .sort((a, b) => a.minUnits - b.minUnits);
+            const prodWeightVal = parseFloat(document.getElementById('product-estimated-weight')?.value);
 
             const product = {
                 id:          idVal,
@@ -1260,6 +1264,7 @@
                 image:       finalAcabadosGroups[0]?.cover_image || 'img/logo_provisional.png',
                 acabados_groups: finalAcabadosGroups,
                 tags:        tagsList,
+                estimatedWeight: (!isNaN(prodWeightVal) && prodWeightVal > 0) ? prodWeightVal : undefined,
                 shippingConfig: shippingConfig,
                 paymentConfig: paymentConfig,
                 quantityDiscounts: quantityDiscounts,

@@ -6031,10 +6031,27 @@ a .material-symbols-outlined {
     100% { transform: scale(1); }
 }
 
-@keyframes pulseGlow {
-    0% { box-shadow: 0 0 4px rgba(220, 38, 38, 0.4); }
-    50% { box-shadow: 0 0 16px rgba(220, 38, 38, 0.8); }
-    100% { box-shadow: 0 0 4px rgba(220, 38, 38, 0.4); }
+/* ═══════════════════════════════════════════════════════════════
+   GRILLA DE VIDEOS (PC: 4 COLUMNAS, TABLET: 3 COLUMNAS, CELULAR: 2 COLUMNAS)
+   ═══════════════════════════════════════════════════════════════ */
+#videos-grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1rem !important;
+}
+
+@media (max-width: 1024px) {
+    #videos-grid-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.85rem !important;
+    }
+}
+
+@media (max-width: 640px) {
+    #videos-grid-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.65rem !important;
+    }
 }
 
 

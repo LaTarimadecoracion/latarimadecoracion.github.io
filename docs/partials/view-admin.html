@@ -46,14 +46,23 @@
                             <span class="material-symbols-outlined">chevron_right</span>
                         </button>
                         <nav class="admin-sidebar-nav">
+                            <!-- 1. Principal -->
                             <button type="button" id="tab-btn-dashboard" class="admin-sidebar-btn active" data-tooltip="Dashboard">
                                 <span class="material-symbols-outlined">dashboard</span>
                                 <span class="nav-label">Dashboard</span>
                             </button>
-                            <button type="button" id="tab-btn-settings" class="admin-sidebar-btn" data-tooltip="Ajustes del Negocio">
-                                <span class="material-symbols-outlined">settings</span>
-                                <span class="nav-label">Ajustes del Negocio</span>
+
+                            <!-- 2. Ventas & Operaciones -->
+                            <button type="button" id="tab-btn-orders" class="admin-sidebar-btn" data-tooltip="Pedidos">
+                                <span class="material-symbols-outlined">description</span>
+                                <span class="nav-label">Pedidos</span>
                             </button>
+                            <button type="button" id="tab-btn-quotes" class="admin-sidebar-btn" data-tooltip="Crear Presupuesto">
+                                <span class="material-symbols-outlined">request_quote</span>
+                                <span class="nav-label">Crear Presupuesto</span>
+                            </button>
+
+                            <!-- 3. Catálogo & Inventario -->
                             <button type="button" id="tab-btn-catalog" class="admin-sidebar-btn" data-tooltip="Catálogo">
                                 <span class="material-symbols-outlined">inventory_2</span>
                                 <span class="nav-label">Catálogo</span>
@@ -61,14 +70,6 @@
                             <button type="button" id="tab-btn-offers" class="admin-sidebar-btn" data-tooltip="Ofertas & Combos">
                                 <span class="material-symbols-outlined">local_offer</span>
                                 <span class="nav-label">Ofertas &amp; Combos</span>
-                            </button>
-                            <button type="button" id="tab-btn-shipping" class="admin-sidebar-btn" data-tooltip="Envíos & Zonas">
-                                <span class="material-symbols-outlined">local_shipping</span>
-                                <span class="nav-label">Envíos &amp; Zonas</span>
-                            </button>
-                            <button type="button" id="tab-btn-payments" class="admin-sidebar-btn" data-tooltip="Métodos de Pago">
-                                <span class="material-symbols-outlined">payments</span>
-                                <span class="nav-label">Métodos de Pago</span>
                             </button>
                             <button type="button" id="tab-btn-stock" class="admin-sidebar-btn" data-tooltip="Control de Stock">
                                 <span class="material-symbols-outlined">inventory</span>
@@ -78,13 +79,27 @@
                                 <span class="material-symbols-outlined">desktop_windows</span>
                                 <span class="nav-label">Stock PC / Escáner</span>
                             </button>
+
+                            <!-- 4. Configuración & Logística -->
+                            <button type="button" id="tab-btn-shipping" class="admin-sidebar-btn" data-tooltip="Envíos & Zonas">
+                                <span class="material-symbols-outlined">local_shipping</span>
+                                <span class="nav-label">Envíos &amp; Zonas</span>
+                            </button>
+                            <button type="button" id="tab-btn-payments" class="admin-sidebar-btn" data-tooltip="Métodos de Pago">
+                                <span class="material-symbols-outlined">payments</span>
+                                <span class="nav-label">Métodos de Pago</span>
+                            </button>
                             <button type="button" id="tab-btn-pages" class="admin-sidebar-btn" data-tooltip="Páginas & Banners">
                                 <span class="material-symbols-outlined">view_quilt</span>
                                 <span class="nav-label">Páginas &amp; Banners</span>
                             </button>
-                            <button type="button" id="tab-btn-orders" class="admin-sidebar-btn" data-tooltip="Pedidos">
-                                <span class="material-symbols-outlined">description</span>
-                                <span class="nav-label">Pedidos</span>
+                            <button type="button" id="tab-btn-settings" class="admin-sidebar-btn" data-tooltip="Ajustes del Negocio">
+                                <span class="material-symbols-outlined">settings</span>
+                                <span class="nav-label">Ajustes del Negocio</span>
+                            </button>
+                            <button type="button" id="tab-btn-users" class="admin-sidebar-btn" data-tooltip="Usuarios & Permisos">
+                                <span class="material-symbols-outlined">group</span>
+                                <span class="nav-label">Usuarios &amp; Permisos</span>
                             </button>
                         </nav>
                     </aside>
@@ -1311,7 +1326,17 @@
 
                         <!-- 5. GESTIÓN DE PEDIDOS (ORDERS) -->
                         <div id="admin-orders-view" class="admin-section-view" style="display: none; width: 100%; margin: 0; padding: 0;">
-                            <iframe id="admin-orders-iframe" src="pedidos/admin.html" style="width: 100%; min-height: 85vh; border: none; background: transparent; overflow: hidden; display: block; margin: 0; padding: 0;" scrolling="no" onload="if(window.initOrdersIframeAutoHeight) window.initOrdersIframeAutoHeight();"></iframe>
+                            <iframe id="admin-orders-iframe" src="pedidos/admin.html" style="width: 100%; height: 1000px; border: none; min-height: 800px; display: block;" onload="window.initOrdersIframeAutoHeight && window.initOrdersIframeAutoHeight()"></iframe>
+                        </div>
+
+                        <!-- 6. GENERADOR DE PRESUPUESTOS MODULE -->
+                        <div id="admin-quotes-view" class="admin-section-view" style="display: none;">
+                            <!-- Inyectado dinámicamente desde js/admin-quotes.js -->
+                        </div>
+
+                        <!-- 7. USUARIOS & PERMISOS MODULE -->
+                        <div id="admin-users-view" class="admin-section-view" style="display: none;">
+                            <!-- Inyectado dinámicamente desde js/admin-users.js -->
                         </div>
 
                         <!-- MODAL DE IMPRESIÓN DE ETIQUETA Y EDITOR DE FORMATO -->

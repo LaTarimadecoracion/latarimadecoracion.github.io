@@ -219,10 +219,7 @@
 
                     catBlock.innerHTML = `
                         <div class="cat-shelf-header" style="cursor: pointer;" data-cat-id="${cat.id}">
-                            <div class="cat-drag-handle" title="Mantén presionado para arrastrar y reordenar" style="margin-right: 0.6rem; display: flex; align-items: center; justify-content: center; cursor: grab; padding: 0.4rem; color: var(--text-muted); flex-shrink: 0;" onclick="event.stopPropagation();">
-                                <span class="material-symbols-outlined" style="font-size: 20px;">drag_indicator</span>
-                            </div>
-                            <div class="cat-shelf-cover" style="background-image: url('${cat.image}');"></div>
+                            <div class="cat-shelf-cover" style="background-image: url('${cat.image}'); cursor: grab;" title="Mantén presionado para arrastrar y reordenar"></div>
                             <div class="cat-shelf-meta" style="flex-grow: 1;">
                                 <h4 class="cat-shelf-name">${cat.name}</h4>
                                 <span class="cat-shelf-count" style="background: var(--primary-color); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.78rem; font-weight: 600; display: inline-block; margin-top: 4px;">
@@ -246,13 +243,13 @@
                         renderAdminUX();
                     });
 
-                    // Arrastre solo con el handle
-                    const handle = catBlock.querySelector('.cat-drag-handle');
-                    if (handle) {
-                        handle.addEventListener('mousedown', () => catBlock.setAttribute('draggable', 'true'));
-                        handle.addEventListener('touchstart', () => catBlock.setAttribute('draggable', 'true'));
-                        handle.addEventListener('mouseup', () => catBlock.setAttribute('draggable', 'false'));
-                        handle.addEventListener('touchend', () => catBlock.setAttribute('draggable', 'false'));
+                    // Arrastrar directamente manteniendo presionado el bloque/portada
+                    const cover = catBlock.querySelector('.cat-shelf-cover');
+                    if (cover) {
+                        cover.addEventListener('mousedown', () => catBlock.setAttribute('draggable', 'true'));
+                        cover.addEventListener('touchstart', () => catBlock.setAttribute('draggable', 'true'));
+                        cover.addEventListener('mouseup', () => catBlock.setAttribute('draggable', 'false'));
+                        cover.addEventListener('touchend', () => catBlock.setAttribute('draggable', 'false'));
                     }
 
                     catBlock.addEventListener('dragstart', (e) => {
