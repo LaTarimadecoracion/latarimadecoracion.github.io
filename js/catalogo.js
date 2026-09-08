@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const fmt = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 });
                     return minP === maxP ? fmt.format(minP) : `Desde ${fmt.format(minP)}`;
                 }
-                return '';
+                return 'Consultar precio';
             };
 
             let defaultIdx = shippingVariants.findIndex(v => v.isDefault);
@@ -344,7 +344,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const initialPriceText = getFormattedPriceText(shippingVariants[defaultIdx]);
             priceTag.textContent = initialPriceText;
-            if (!initialPriceText) priceTag.style.display = 'none';
+            if (initialPriceText === 'Consultar precio') {
+                priceTag.style.fontSize = '0.85rem';
+                priceTag.style.color = '#c0510a';
+                priceTag.style.fontWeight = '700';
+            }
 
             priceRow.appendChild(priceTag);
 

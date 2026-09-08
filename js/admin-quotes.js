@@ -321,6 +321,9 @@
                         <button type="button" id="btn-send-cbu-wa" style="background: #16a34a; color: white; border: none; padding: 0.65rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
                             <span class="material-symbols-outlined">account_balance</span> Enviar CBU / Cuentas
                         </button>
+                        <button type="button" id="btn-quote-export-flux" style="background: #eab308; color: #422006; border: none; padding: 0.65rem 1rem; border-radius: 8px; font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;" title="Generar planilla Excel / Etiqueta FLUX directamente de este presupuesto">
+                            <span class="material-symbols-outlined">local_shipping</span> Descargar Etiqueta FLUX
+                        </button>
                         <button type="button" id="btn-send-quote-email" style="background: #0284c7; color: white; border: none; padding: 0.65rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
                             <span class="material-symbols-outlined">mail</span> Enviar por Email
                         </button>
@@ -489,7 +492,7 @@
             const requestText = `¡Hola! 👋 Para poder armarte la ficha del pedido y coordinar el despacho/envío de forma directa, ¿podrías pasarnos por acá los siguientes datos?
 
 📌 Nombre y Apellido / Empresa:
-📌 DNI o CUIT (para despacho y factura):
+📌 DNI:
 📌 Teléfono de contacto:
 📌 Dirección de entrega (Calle y N°):
 📌 Piso / Dpto / Timbre (si aplica):
@@ -497,7 +500,7 @@
 📌 Código Postal:
 📌 Observaciones (ej. entrecalles, timbre, horario de entrega):
 
-¡Muchas gracias! 🪵✨`;
+¡Muchas gracias!`;
 
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(requestText).then(() => {
@@ -657,22 +660,28 @@
         if (!quoteRecord) return;
 
         // Formatear la orden para pasar a la vista de Pedidos
-        const itemsSummary = quoteRecord.items.map(i => `${i.title} (x${i.qty})${i.details ? ' [' + i.details + ']' : ''}`).join(', ');
+        const itemsSummary = (quoteRecord.items || []).map(i => `${i.title} (x${i.qty})${i.details ? ' [' + i.details + ']' : ''}`).join(', ');
+        const firstItem = (quoteRecord.items && quoteRecord.items.length === 1) ? quoteRecord.items[0] : null;
 
         // Calcular peso total estimado sumando cada item x cantidad
-        const totalWeight = quoteRecord.items.reduce((sum, item) => {
+        const totalWeight = (quoteRecord.items || []).reduce((sum, item) => {
             const w = parseFloat(item.weight) || 1;
             const q = parseInt(item.qty) || 1;
             return sum + (w * q);
         }, 0);
 
         const cuitStr = quoteRecord.clientCuit ? ` | CUIT/DNI: ${quoteRecord.clientCuit}` : '';
+        const orderId = quoteRecord.id ? quoteRecord.id.replace(/\D/g, '') : Math.floor(100000000 + Math.random() * 900000000).toString();
 
         const orderData = {
+            id: orderId,
             clientName: quoteRecord.clientName || 'Cliente',
             clientPhone: quoteRecord.clientPhone || '',
-            productType: 'custom',
-            productName: itemsSummary || 'Presupuesto Convertido',
+            productType: (firstItem && firstItem.productId) ? 'catalog' : 'custom',
+            productId: firstItem ? (firstItem.productId || '') : '',
+            productName: firstItem ? firstItem.title : (itemsSummary || 'Presupuesto Convertido'),
+            selectedFinish: firstItem ? (firstItem.acabado || '') : '',
+            selectedMeasure: firstItem ? (firstItem.medida || '') : '',
             description: `Presupuesto ${quoteRecord.id}${cuitStr}. ${quoteRecord.notes ? 'Notas: ' + quoteRecord.notes : ''}`,
             totalAmount: quoteRecord.totalAmount || 0,
             address: quoteRecord.clientAddress || '',
@@ -680,6 +689,14 @@
             zipCode: quoteRecord.clientZip || '',
             estimatedWeight: Math.round(totalWeight * 10) / 10 || 1,
             observations: (quoteRecord.clientCuit ? `CUIT/DNI: ${quoteRecord.clientCuit}. ` : '') + (quoteRecord.notes || ''),
+            deliveryMethod: (quoteRecord.clientAddress || quoteRecord.clientZip) ? 'envio' : 'retira',
+            dispatchInfo: {
+                courier: 'flux',
+                courierName: 'Logística FLUX',
+                trackingNumber: orderId,
+                trackingUrl: ''
+            },
+            image: firstItem ? (firstItem.image || '') : '',
             paidStatus: 'nada',
             status: 'pendiente'
         };
@@ -853,10 +870,111 @@
         document.getElementById('btn-send-cbu-wa')?.addEventListener('click', () => {
             sendCBUViaWhatsApp();
         });
+        document.getElementById('btn-quote-export-flux')?.addEventListener('click', () => {
+            exportFluxFromQuote(currentQuote);
+        });
         document.getElementById('btn-send-quote-email')?.addEventListener('click', () => {
             saveCurrentQuoteToHistory('enviado');
             sendEmailQuote();
         });
+    }
+
+    function exportFluxFromQuote(quoteData) {
+        if (!quoteData || (quoteData.items && quoteData.items.length === 0)) {
+            alert('Agregá al menos 1 producto para generar la etiqueta FLUX.');
+            return;
+        }
+
+        const subtotal = (quoteData.items || []).reduce((acc, item) => acc + (item.qty * item.price), 0);
+        const discountVal = Math.round(subtotal * ((quoteData.discountPercent || 0) / 100));
+        const total = Math.max(0, subtotal - discountVal + Number(quoteData.shippingCost || 0));
+
+        const totalWeight = (quoteData.items || []).reduce((sum, item) => {
+            const w = parseFloat(item.weight) || 1;
+            const q = parseInt(item.qty) || 1;
+            return sum + (w * q);
+        }, 0);
+
+        const trackingNum = quoteData.id || ('P-' + Math.floor(100000 + Math.random() * 900000));
+        const dateStr = new Date().toLocaleDateString('es-AR');
+        const declaredVal = total || 0;
+        const weightVal = Math.round(totalWeight * 10) / 10 || 1;
+        const destName = quoteData.clientName || 'Cliente';
+        const phone = quoteData.clientPhone || '';
+        const address = quoteData.clientAddress || '';
+        const locality = quoteData.clientLocality || '';
+        const zipCode = quoteData.clientZip || '';
+
+        const itemsSummary = (quoteData.items || []).map(i => `${i.title} (x${i.qty})${i.details ? ' [' + i.details + ']' : ''}`).join(', ');
+        const obs = (quoteData.clientCuit ? `CUIT/DNI: ${quoteData.clientCuit}. ` : '') + (quoteData.notes ? quoteData.notes + ' - ' : '') + itemsSummary;
+
+        const headers = [
+            'Numero de tracking',
+            'Fecha de venta',
+            'Valor declarado',
+            'Peso declarado',
+            'Destinatario',
+            'Teléfono de contacto',
+            'Dirección',
+            'Localidad',
+            'Código postal',
+            'Observaciones',
+            '4 campo de cobranzas',
+            '1 Logistica Inversa'
+        ];
+
+        const row = [
+            trackingNum,
+            dateStr,
+            declaredVal,
+            weightVal,
+            destName,
+            phone,
+            address,
+            locality,
+            zipCode,
+            obs,
+            '',
+            ''
+        ];
+
+        const now = new Date();
+        const timestamp = now.getFullYear() +
+            String(now.getMonth() + 1).padStart(2, '0') +
+            String(now.getDate()).padStart(2, '0') +
+            String(now.getHours()).padStart(2, '0') +
+            String(now.getMinutes()).padStart(2, '0');
+
+        const fileName = `modelo_subida_enviosNoFLex_${trackingNum}_${timestamp}.xls`;
+
+        if (typeof XLSX !== 'undefined') {
+            const worksheet = XLSX.utils.aoa_to_sheet([headers, row]);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, 'Simple');
+            XLSX.writeFile(workbook, fileName, { bookType: 'biff8' });
+        } else {
+            let excelContent = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body><table><thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>
+<tr>${row.map(c => `<td>${String(c)}</td>`).join('')}</tr>
+</tbody></table></body></html>`;
+
+            const blob = new Blob([excelContent], { type: 'application/vnd.ms-excel;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        if (typeof showAdminToast === 'function') {
+            showAdminToast(`📦 Planilla FLUX del presupuesto #${trackingNum} descargada.`);
+        } else {
+            alert(`📦 Planilla FLUX del presupuesto #${trackingNum} descargada.`);
+        }
     }
 
     function sendCBUViaWhatsApp() {

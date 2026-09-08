@@ -508,6 +508,8 @@
                         parts.push(`• Precio: ${formatter.format(unitPrice)}`);
                     }
                 }
+            } else {
+                parts.push(`• Precio: Consultar (A liquidar / Sin precio fijado)`);
             }
 
             // Línea de tipo de entrega (solo para productos de venta)
@@ -990,8 +992,17 @@
                             });
                         }
                     } else {
-                        priceDisplay.style.display = 'none';
-                        if (rowEl) rowEl.style.display = 'none';
+                        priceDisplay.style.display = 'flex';
+                        priceDisplay.style.justifyContent = 'flex-end';
+                        priceDisplay.style.alignItems = 'center';
+                        priceDisplay.style.position = 'relative';
+                        if (rowEl) rowEl.style.display = 'flex';
+                        
+                        priceDisplay.innerHTML = `
+                            <span style="font-size:1.1rem; font-weight:800; color:#c0510a; background: #FFF4E6; border: 1px solid #FFE8CC; padding: 4px 10px; border-radius: 8px; line-height: 1.2; display: inline-flex; align-items: center; gap: 4px;">
+                                💬 Consultar precio
+                            </span>
+                        `;
                     }
                 }
             }

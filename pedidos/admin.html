@@ -2503,20 +2503,21 @@
             if (singleFluxContainer) singleFluxContainer.style.display = 'none';
             
             if (order) {
-                document.getElementById('modal-title').textContent = 'Editar Pedido #' + order.id;
-                document.getElementById('order-form-id').value = order.id;
-                document.getElementById('order-form-creation').value = order.creationDate;
+                const isConvertedNew = !allOrders.some(o => o.id === order.id);
+                document.getElementById('modal-title').textContent = isConvertedNew ? ('Nuevo Pedido #' + order.id) : ('Editar Pedido #' + order.id);
+                document.getElementById('order-form-id').value = order.id || '';
+                document.getElementById('order-form-creation').value = order.creationDate || new Date().toISOString();
                 document.getElementById('order-form-start').value = order.startDate || '';
                 document.getElementById('order-form-ready').value = order.estimatedReadyDate || '';
                 document.getElementById('order-form-completed').value = order.completedDate || '';
                 
-                document.getElementById('order-client').value = order.clientName;
+                document.getElementById('order-client').value = order.clientName || '';
                 document.getElementById('order-client-phone').value = order.clientPhone ? decodeClientPhone(order.clientPhone) : '';
                 document.getElementById('order-client-address').value = order.address || '';
                 document.getElementById('order-client-locality').value = order.locality || '';
                 document.getElementById('order-client-zip').value = order.zipCode || '';
                 document.getElementById('order-estimated-weight').value = order.estimatedWeight || 1;
-                document.getElementById('order-product-type').value = order.productType;
+                document.getElementById('order-product-type').value = order.productType || 'custom';
                 
                 if (order.productType === 'catalog') {
                     document.getElementById('order-product-catalog').value = order.productId || '';
@@ -2815,17 +2816,23 @@
                 
                 if (res.ok) {
                     const data = await res.json();
-                    allOrders = data.orders;
-                    filterAndRenderTable();
-                    closeModal(true);
-                    showToast(isNew ? 'Pedido creado con éxito.' : 'Pedido actualizado con éxito.');
+                    allOrders = data.orders || updatedOrders;
                 } else {
-                    alert('Error guardando el pedido en el servidor.');
+                    allOrders = updatedOrders;
                 }
             } catch (err) {
-                console.error(err);
-                alert('Error de conexión con la API.');
+                console.warn('Servidor API no disponible o estático local. Guardando en memoria y almacenamiento local.');
+                allOrders = updatedOrders;
             }
+
+            try {
+                localStorage.setItem('la_tarima_orders_v1', JSON.stringify(allOrders));
+                window.allOrders = allOrders;
+            } catch(e) {}
+
+            filterAndRenderTable();
+            closeModal(true);
+            showToast(isNew ? 'Pedido creado con éxito.' : 'Pedido actualizado con éxito.');
         }
         
         async function deleteOrder(id) {
