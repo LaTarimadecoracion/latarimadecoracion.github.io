@@ -576,39 +576,46 @@
 
 
 
-    if (inputInfoImage && infoImagePreview) {
-        inputInfoImage.addEventListener('change', async (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
+    document.addEventListener('change', async (e) => {
+        const fileInput = e.target.closest('#admin-nosotros-image');
+        if (!fileInput) return;
+        const file = fileInput.files[0];
+        if (!file) return;
 
-            const btnSave = document.getElementById('btn-save-nosotros-block');
-            if (btnSave) {
-                btnSave.disabled = true;
-                btnSave.textContent = '⏳ Procesando imagen...';
-            }
+        const infoImagePreview = document.getElementById('nosotros-image-preview');
+        const btnSave = document.getElementById('btn-save-nosotros-block');
+        if (btnSave) {
+            btnSave.disabled = true;
+            btnSave.textContent = '⏳ Procesando imagen...';
+        }
 
-            try {
-                const { file: webpFile, dataUrl } = await convertImageToWebP(file);
+        try {
+            const { file: webpFile, dataUrl } = await convertImageToWebP(file);
+            if (infoImagePreview) {
                 infoImagePreview.innerHTML = `
                     <img src="${dataUrl}" style="width:100%; border-radius:8px; border:1px solid #ddd;">
                     <small style="color: #27ae60; font-size: 0.75rem;">✅ Convertida a WebP</small>
                 `;
-                const uploadedPath = await uploadImageToServer(webpFile, currentInfoTarget, 'bloque');
-                if (uploadedPath) {
-                    document.getElementById('admin-nosotros-image-url').value = uploadedPath;
-                }
-            } catch (err) {
-                console.error('Error convirtiendo imagen:', err);
-                infoImagePreview.innerHTML = '<small style="color:red;">⚠️ Error procesando imagen.</small>';
-            } finally {
-                const btnSaveEnd = document.getElementById('btn-save-nosotros-block');
-                if (btnSaveEnd) {
-                    btnSaveEnd.disabled = false;
-                    btnSaveEnd.textContent = 'Guardar Bloque de Nosotros';
-                }
             }
-        });
-    }
+            const uploadedPath = await uploadImageToServer(webpFile, currentInfoTarget, 'bloque');
+            if (uploadedPath) {
+                document.getElementById('admin-nosotros-image-url').value = uploadedPath;
+            } else if (dataUrl) {
+                document.getElementById('admin-nosotros-image-url').value = dataUrl;
+            }
+        } catch (err) {
+            console.error('Error convirtiendo imagen:', err);
+            if (infoImagePreview) {
+                infoImagePreview.innerHTML = '<small style="color:red;">⚠️ Error procesando imagen.</small>';
+            }
+        } finally {
+            const btnSaveEnd = document.getElementById('btn-save-nosotros-block');
+            if (btnSaveEnd) {
+                btnSaveEnd.disabled = false;
+                btnSaveEnd.textContent = 'Guardar Bloque de Nosotros';
+            }
+        }
+    });
 
 
 
