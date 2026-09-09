@@ -510,13 +510,16 @@
         const videoUrlInput    = document.getElementById('admin-nosotros-video-url');
         const mapQueryInput    = document.getElementById('admin-nosotros-map-query');
 
+        const fileInputEl = document.getElementById('admin-nosotros-image');
+        const imgPreviewEl = document.getElementById('nosotros-image-preview');
+
         titleInput.value       = '';
         descriptionInput.value = '';
         hiddenUrlInput.value   = '';
         if (videoUrlInput) videoUrlInput.value = '';
         if (mapQueryInput) mapQueryInput.value = '';
-        if (inputInfoImage) inputInfoImage.value = '';
-        if (infoImagePreview) infoImagePreview.innerHTML = '';
+        if (fileInputEl) fileInputEl.value = '';
+        if (imgPreviewEl) imgPreviewEl.innerHTML = '';
         
         const videoPreview = document.getElementById('nosotros-video-preview');
         const mapPreview   = document.getElementById('nosotros-map-preview');
@@ -536,8 +539,8 @@
 
             if (mediaType === 'image') {
                 hiddenUrlInput.value = block.image || '';
-                if (block.image && infoImagePreview) {
-                    infoImagePreview.innerHTML = `<img src="${block.image}" style="width:100%; border-radius:8px; border:1px solid #ddd;">`;
+                if (block.image && imgPreviewEl) {
+                    imgPreviewEl.innerHTML = `<img src="${block.image}" style="width:100%; border-radius:8px; border:1px solid #ddd;">`;
                 }
             } else if (mediaType === 'video') {
                 if (videoUrlInput) videoUrlInput.value = block.videoUrl || '';
@@ -578,9 +581,10 @@
             const file = e.target.files[0];
             if (!file) return;
 
-            if (btnSaveInfoBlock) {
-                btnSaveInfoBlock.disabled = true;
-                btnSaveInfoBlock.textContent = '⏳ Procesando imagen...';
+            const btnSave = document.getElementById('btn-save-nosotros-block');
+            if (btnSave) {
+                btnSave.disabled = true;
+                btnSave.textContent = '⏳ Procesando imagen...';
             }
 
             try {
@@ -597,9 +601,10 @@
                 console.error('Error convirtiendo imagen:', err);
                 infoImagePreview.innerHTML = '<small style="color:red;">⚠️ Error procesando imagen.</small>';
             } finally {
-                if (btnSaveInfoBlock) {
-                    btnSaveInfoBlock.disabled = false;
-                    btnSaveInfoBlock.textContent = 'Guardar Bloque';
+                const btnSaveEnd = document.getElementById('btn-save-nosotros-block');
+                if (btnSaveEnd) {
+                    btnSaveEnd.disabled = false;
+                    btnSaveEnd.textContent = 'Guardar Bloque de Nosotros';
                 }
             }
         });
@@ -642,10 +647,13 @@
 
 
 
-    if (btnSaveInfoBlock) {
-        btnSaveInfoBlock.addEventListener('click', async () => {
-            const activeTypeBtn = document.querySelector('#nosotros-media-type-selector .media-type-btn.active');
-            const mediaType = activeTypeBtn ? activeTypeBtn.dataset.type : 'image';
+    document.addEventListener('click', async (e) => {
+        const btnSave = e.target.closest('#btn-save-nosotros-block');
+        if (!btnSave) return;
+        e.preventDefault();
+
+        const activeTypeBtn = document.querySelector('#nosotros-media-type-selector .media-type-btn.active');
+        const mediaType = activeTypeBtn ? activeTypeBtn.dataset.type : 'image';
 
             const title       = document.getElementById('admin-nosotros-title').value.trim();
             const description = document.getElementById('admin-nosotros-description').value.trim();
@@ -715,8 +723,7 @@
             renderAdminInfoList(currentInfoTarget);
             renderInfoBlocksCliente(currentInfoTarget);
             alert(`✅ Bloque guardado exitosamente.`);
-        });
-    }
+    });
 
 
 

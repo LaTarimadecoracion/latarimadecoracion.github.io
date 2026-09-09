@@ -416,7 +416,7 @@ const ordersData = [
         "paidAmount": 45000,
         "totalAmount": 53000,
         "taxNotice": true,
-        "status": "listo",
+        "status": "entregado",
         "creationDate": "2026-09-08T14:26:30.206Z",
         "completedDate": "2026-09-08T14:26:30.206Z",
         "image": "",
