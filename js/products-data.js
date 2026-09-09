@@ -2592,8 +2592,8 @@ const productsData = [
                             "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903756-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903884-imagen.webp",
-                            "img/todo-algarrobo/mate/1788926279830-imagen.webp",
-                            "img/todo-algarrobo/mate/1788926280007-imagen.webp"
+                            "img/todo-algarrobo/mate/1788926732077-imagen.webp",
+                            "img/todo-algarrobo/mate/1788926732266-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2683,7 +2683,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788926280158,
+                "last_modified": 1788926732396,
                 "primaryCatId": "productos-algarrobo",
                 "history": []
             },
@@ -22925,8 +22925,8 @@ const productsData = [
                             "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903756-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903884-imagen.webp",
-                            "img/todo-algarrobo/mate/1788926279830-imagen.webp",
-                            "img/todo-algarrobo/mate/1788926280007-imagen.webp"
+                            "img/todo-algarrobo/mate/1788926732077-imagen.webp",
+                            "img/todo-algarrobo/mate/1788926732266-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -23016,7 +23016,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788926280158,
+                "last_modified": 1788926732396,
                 "primaryCatId": "productos-algarrobo",
                 "history": []
             }

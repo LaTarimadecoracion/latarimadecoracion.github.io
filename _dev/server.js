@@ -274,6 +274,22 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// API Endpoint to upload product/category image to disk
+app.post('/api/upload-image', upload.single('image'), (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ success: false, message: 'No se recibió ningún archivo de imagen.' });
+        }
+        // Retornar la ruta relativa amigable web (ej: img/carpinteria/combos/mate/1725838000-foto.webp)
+        const relativePath = path.relative(ROOT_DIR, req.file.path).replace(/\\/g, '/');
+        console.log(`📸 Imagen subida y procesada en: ${relativePath}`);
+        res.json({ success: true, imagePath: relativePath });
+    } catch (err) {
+        console.error('❌ Error guardando imagen en el servidor:', err);
+        res.status(500).json({ success: false, message: 'Error interno guardando la imagen.' });
+    }
+});
+
 // Function to generate SEO HTML stubs for WhatsApp/Facebook
 function generateSeoStubs(productsArray) {
     const pDir = path.join(ROOT_DIR, 'p');
