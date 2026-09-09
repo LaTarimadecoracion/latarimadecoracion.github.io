@@ -3884,11 +3884,13 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                             "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp"
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030031-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030175-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030314-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -15567,11 +15569,13 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                             "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp"
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030031-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030175-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780589030314-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
