@@ -1197,6 +1197,8 @@ let groupCounter = 0;
 
                 const uploadedImages = [];
                 for (const item of gState.images) {
+                    if (!item) continue;
+                    
                     const rawFile = item && item.file instanceof File ? item.file : (item instanceof File ? item : null);
                     if (rawFile) {
                         const cleanCatName = catName.replace(/[^a-zA-Z0-9\s-]/g, '').trim();
@@ -1204,16 +1206,17 @@ let groupCounter = 0;
                         const path = await uploadImageToServer(rawFile, cleanCatName, cleanTitle);
                         if (path) {
                             uploadedImages.push(path);
-                        } else if (item && item.dataUrl) {
-                            uploadedImages.push(item.dataUrl);
                         } else {
                             const { dataUrl } = await convertImageToWebP(rawFile);
-                            uploadedImages.push(dataUrl);
+                            if (dataUrl) uploadedImages.push(dataUrl);
                         }
+                    } else if (typeof item === 'string') {
+                        // Conservar exactamente la ruta original si ya es un string (ej: "img/carpinteria/...")
+                        uploadedImages.push(item);
                     } else if (typeof item === 'object' && item.dataUrl) {
                         uploadedImages.push(item.dataUrl);
-                    } else {
-                        uploadedImages.push(item);
+                    } else if (typeof item === 'object' && item.url && typeof item.url === 'string') {
+                        uploadedImages.push(item.url);
                     }
                 }
                 
