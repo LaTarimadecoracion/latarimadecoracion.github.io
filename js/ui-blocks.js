@@ -564,9 +564,10 @@
 
         switchMediaPanel(mediaType);
 
-        if (adminInfoModal) {
-            adminInfoModal.style.display = 'flex';
-            adminInfoModal.scrollIntoView({ behavior: 'smooth' });
+        const adminInfoModalEl = document.getElementById('admin-nosotros-modal');
+        if (adminInfoModalEl) {
+            adminInfoModalEl.style.display = 'flex';
+            adminInfoModalEl.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
@@ -709,7 +710,8 @@
             }
 
             saveInfoToLocalStorage();
-            if (adminInfoModal) adminInfoModal.style.display = 'none';
+            const modalEl = document.getElementById('admin-nosotros-modal');
+            if (modalEl) modalEl.style.display = 'none';
             renderAdminInfoList(currentInfoTarget);
             renderInfoBlocksCliente(currentInfoTarget);
             alert(`✅ Bloque guardado exitosamente.`);
