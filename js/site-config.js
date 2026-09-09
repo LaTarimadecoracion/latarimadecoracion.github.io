@@ -140,6 +140,13 @@ window.siteConfig = {
             "image": "",
             "videoUrl": "",
             "mapQuery": "",
+            "links": [
+                {
+                    "text": "Catalogo completo",
+                    "url": "/?view=catalogo",
+                    "newTab": false
+                }
+            ],
             "linkUrl": "/?view=catalogo",
             "linkText": "Catalogo completo",
             "linkNewTab": false

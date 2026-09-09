@@ -438,7 +438,7 @@ button, .btn-primary, .btn-outline {
     width: 87%;
     height: 87%;
     border-radius: 50%;
-    object-fit: contain;
+    object-fit: cover;
     z-index: 2;
     background: white;
     box-shadow: var(--shadow-lg);
