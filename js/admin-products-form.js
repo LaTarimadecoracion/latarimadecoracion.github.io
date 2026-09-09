@@ -887,13 +887,27 @@
             document.getElementById('admin-product-rental-price').value = existingProd?.price || '';
         }
 
-        // Campos globales (Auto-generar ID Base36 sin puntos si es un producto nuevo)
+        // Campos globales (Auto-generar ID Base36 único garantizado si es un producto nuevo)
         let autoId = existingProd?.id || '';
         if (!autoId && cIdx !== null && sessionProducts[cIdx]) {
             const catNum = (cIdx + 1).toString(36).toUpperCase();
-            const prodCount = (sessionProducts[cIdx].products || []).length + 1;
-            const prodNum = prodCount.toString(36).toUpperCase();
-            autoId = `${catNum}${prodNum}`;
+            let prodCount = (sessionProducts[cIdx].products || []).length + 1;
+            
+            // Recopilar todos los IDs de productos existentes en todas las categorías
+            const allExistingIds = new Set();
+            (window.sessionProducts || []).forEach(cat => {
+                (cat.products || []).forEach(p => {
+                    if (p && p.id) allExistingIds.add(p.id);
+                });
+            });
+
+            // Generar ID e incrementar si ya existe
+            let candidateId = `${catNum}${prodCount.toString(36).toUpperCase()}`;
+            while (allExistingIds.has(candidateId)) {
+                prodCount++;
+                candidateId = `${catNum}${prodCount.toString(36).toUpperCase()}`;
+            }
+            autoId = candidateId;
         }
         document.getElementById('admin-id').value          = autoId;
         document.getElementById('admin-title').value       = existingProd?.title       || '';

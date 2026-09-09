@@ -2685,7 +2685,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1788916270642,
                 "primaryCatId": "productos-algarrobo",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "G2",
@@ -9972,7 +9973,8 @@ const productsData = [
                 "last_modified": 1788916093301,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "G8",
@@ -9992,12 +9994,54 @@ const productsData = [
                             {
                                 "medida": "40 cm",
                                 "link": "https://www.mercadolibre.com.ar/palo-de-amasar-de-madera-mango-fijo-40-cm/up/MLAU5146280044?pdp_filters=item_id:MLA3927660378",
-                                "default": false,
+                                "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "medida": "30 Cm",
+                                "link": "https://www.mercadolibre.com.ar/palo-de-amasar-de-madera-mango-fijo-30-cm/up/MLAU5146287732?pdp_filters=item_id:MLA3927660894",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "medida": "50 cm",
+                                "link": "https://www.mercadolibre.com.ar/palo-de-amasar-de-madera-mango-fijo-50-cm/up/MLAU5145970482?pdp_filters=item_id:MLA2073267325",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 12000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -10038,9 +10082,10 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1788916680249,
+                "last_modified": 1788917627673,
                 "primaryCatId": "Hogar",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "G9",
@@ -10108,6 +10153,63 @@ const productsData = [
                 ],
                 "last_modified": 1788917344040,
                 "primaryCatId": "Hogar",
+                "history": [],
+                "views": 0
+            },
+            {
+                "id": "4I",
+                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
+                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
+                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Percherito",
+                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Alto 110 cm",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1788918811368,
+                "primaryCatId": "Percheros",
                 "history": []
             }
         ]
@@ -11926,6 +12028,62 @@ const productsData = [
                     "otroEnabled": false,
                     "logisticaMaxUnits": 3
                 }
+            },
+            {
+                "id": "4I",
+                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
+                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
+                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Percherito",
+                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Alto 110 cm",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1788918811368,
+                "primaryCatId": "Percheros",
+                "history": []
             }
         ]
     },
@@ -13857,7 +14015,8 @@ const productsData = [
                 "last_modified": 1788916093301,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 1
             }
         ]
     },
@@ -17469,7 +17628,8 @@ const productsData = [
                 "last_modified": 1788916093301,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 1
             }
         ],
         "rubro": "carpinteria"
@@ -19826,6 +19986,62 @@ const productsData = [
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
+            },
+            {
+                "id": "4I",
+                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
+                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
+                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Percherito",
+                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Alto 110 cm",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1788918811368,
+                "primaryCatId": "Percheros",
+                "history": []
             }
         ],
         "rubro": "carpinteria"
@@ -22255,7 +22471,8 @@ const productsData = [
                 "last_modified": 1788916093301,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "G8",
@@ -22275,12 +22492,54 @@ const productsData = [
                             {
                                 "medida": "40 cm",
                                 "link": "https://www.mercadolibre.com.ar/palo-de-amasar-de-madera-mango-fijo-40-cm/up/MLAU5146280044?pdp_filters=item_id:MLA3927660378",
-                                "default": false,
+                                "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 10000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "medida": "30 Cm",
+                                "link": "https://www.mercadolibre.com.ar/palo-de-amasar-de-madera-mango-fijo-30-cm/up/MLAU5146287732?pdp_filters=item_id:MLA3927660894",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "medida": "50 cm",
+                                "link": "https://www.mercadolibre.com.ar/palo-de-amasar-de-madera-mango-fijo-50-cm/up/MLAU5145970482?pdp_filters=item_id:MLA2073267325",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 12000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -22321,9 +22580,10 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1788916680249,
+                "last_modified": 1788917627673,
                 "primaryCatId": "Hogar",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "G9",
@@ -22391,6 +22651,63 @@ const productsData = [
                 ],
                 "last_modified": 1788917344040,
                 "primaryCatId": "Hogar",
+                "history": [],
+                "views": 0
+            },
+            {
+                "id": "4I",
+                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
+                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
+                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Percherito",
+                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Alto 110 cm",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1788918811368,
+                "primaryCatId": "Percheros",
                 "history": []
             }
         ]
@@ -22698,7 +23015,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1788916270642,
                 "primaryCatId": "productos-algarrobo",
-                "history": []
+                "history": [],
+                "views": 1
             }
         ]
     },

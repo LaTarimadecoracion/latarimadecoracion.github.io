@@ -160,6 +160,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Perchero De Pie Torneado 8 Ganchos Niños!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero De Pie Torneado 8 Ganchos Niños!",
+            "mediaType": "image",
+            "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=4I",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=4I",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1788918811368
+        },
+        {
             "title": "¡Nuevo Ingreso: Tabla Para Picada Mapa Argentina + Regalos!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Tabla Para Picada Mapa Argentina + Regalos!",
             "mediaType": "image",
