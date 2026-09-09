@@ -2583,14 +2583,14 @@ const productsData = [
                 "id": "G3",
                 "title": "Mate",
                 "description": "",
-                "image": "img/todo-algarrobo/mate/1788916270368-imagen.webp",
+                "image": "img/todo-algarrobo/mate/1788922905702-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
-                        "cover_image": "img/todo-algarrobo/mate/1788916270368-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/mate/1788922905702-imagen.webp",
                         "images_list": [
-                            "img/todo-algarrobo/mate/1788916270368-imagen.webp",
-                            "img/todo-algarrobo/mate/1788916270515-imagen.webp",
+                            "img/todo-algarrobo/mate/1788922905702-imagen.webp",
+                            "img/todo-algarrobo/mate/1788922905878-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903756-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903884-imagen.webp"
@@ -2683,10 +2683,9 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788916270642,
+                "last_modified": 1788922905994,
                 "primaryCatId": "productos-algarrobo",
-                "history": [],
-                "views": 1
+                "history": []
             },
             {
                 "id": "G2",
@@ -10154,7 +10153,7 @@ const productsData = [
                 "last_modified": 1788917344040,
                 "primaryCatId": "Hogar",
                 "history": [],
-                "views": 0
+                "views": 1
             },
             {
                 "id": "4I",
@@ -10210,7 +10209,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1788918811368,
                 "primaryCatId": "Percheros",
-                "history": []
+                "history": [],
+                "views": 1
             }
         ]
     },
@@ -12083,7 +12083,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1788918811368,
                 "primaryCatId": "Percheros",
-                "history": []
+                "history": [],
+                "views": 1
             }
         ]
     },
@@ -20041,7 +20042,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1788918811368,
                 "primaryCatId": "Percheros",
-                "history": []
+                "history": [],
+                "views": 1
             }
         ],
         "rubro": "carpinteria"
@@ -22652,7 +22654,7 @@ const productsData = [
                 "last_modified": 1788917344040,
                 "primaryCatId": "Hogar",
                 "history": [],
-                "views": 0
+                "views": 1
             },
             {
                 "id": "4I",
@@ -22708,7 +22710,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1788918811368,
                 "primaryCatId": "Percheros",
-                "history": []
+                "history": [],
+                "views": 1
             }
         ]
     },
@@ -22913,14 +22916,14 @@ const productsData = [
                 "id": "G3",
                 "title": "Mate",
                 "description": "",
-                "image": "img/todo-algarrobo/mate/1788916270368-imagen.webp",
+                "image": "img/todo-algarrobo/mate/1788922905702-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
-                        "cover_image": "img/todo-algarrobo/mate/1788916270368-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/mate/1788922905702-imagen.webp",
                         "images_list": [
-                            "img/todo-algarrobo/mate/1788916270368-imagen.webp",
-                            "img/todo-algarrobo/mate/1788916270515-imagen.webp",
+                            "img/todo-algarrobo/mate/1788922905702-imagen.webp",
+                            "img/todo-algarrobo/mate/1788922905878-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903756-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903884-imagen.webp"
@@ -23013,10 +23016,9 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788916270642,
+                "last_modified": 1788922905994,
                 "primaryCatId": "productos-algarrobo",
-                "history": [],
-                "views": 1
+                "history": []
             }
         ]
     },
