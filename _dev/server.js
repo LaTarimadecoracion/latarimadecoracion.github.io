@@ -301,6 +301,18 @@ app.post('/api/upload-image', upload.single('image'), (req, res) => {
         // Retornar la ruta relativa amigable web (ej: img/carpinteria/combos/mate/1725838000-foto.webp)
         const relativePath = path.relative(ROOT_DIR, req.file.path).replace(/\\/g, '/');
         console.log(`📸 Imagen subida y procesada en: ${relativePath}`);
+
+        // Si se subió un logo de tienda, actualizar automáticamente favicon.ico en la raíz
+        if (req.body.category === 'logos') {
+            try {
+                const faviconPath = path.join(ROOT_DIR, 'favicon.ico');
+                fs.copyFileSync(req.file.path, faviconPath);
+                console.log('📌 Favicon (favicon.ico) actualizado automáticamente desde el nuevo logo.');
+            } catch (favErr) {
+                console.warn('⚠️ No se pudo copiar el logo como favicon.ico:', favErr);
+            }
+        }
+
         res.json({ success: true, imagePath: relativePath, url: relativePath });
     } catch (err) {
         console.error('❌ Error guardando imagen en el servidor:', err);

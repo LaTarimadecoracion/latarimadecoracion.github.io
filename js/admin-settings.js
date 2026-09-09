@@ -144,11 +144,16 @@
                 const logoImg = document.getElementById('admin-settings-logo-preview');
                 if (logoImg) logoImg.src = data.url + '?v=' + Date.now();
 
-                // Cambiar el logo principal del sitio
+                // Cambiar el logo principal del sitio y favicon en tiempo real
                 const siteLogo = document.querySelector('.header-logo img, .splash-logo');
                 if (siteLogo) siteLogo.src = data.url + '?v=' + Date.now();
 
-                if (statusLabel) statusLabel.textContent = '¡Logo subido con éxito!';
+                const faviconLinks = document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]');
+                faviconLinks.forEach(link => {
+                    link.href = 'favicon.ico?v=' + Date.now();
+                });
+
+                if (statusLabel) statusLabel.textContent = '¡Logo y favicon subidos con éxito!';
             } else {
                 throw new Error(data.message);
             }
