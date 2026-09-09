@@ -734,7 +734,10 @@ let groupCounter = 0;
             }
 
             try {
-                const converted = await Promise.all(rawFiles.map(f => convertImageToWebP(f)));
+                const converted = await Promise.all(rawFiles.map(async f => {
+                    const res = await convertImageToWebP(f);
+                    return { file: res.file || f, dataUrl: res.dataUrl };
+                }));
                 gState.images = gState.images.concat(converted);
             } catch (err) {
                 console.error('Error convirtiendo imágenes del producto:', err);
