@@ -6,6 +6,150 @@
     window.oldCategoryName = null;
     let lastDragTime = 0; // Evita conflictos entre clic y arrastre en las miniaturas de fotos
 
+    // --- LÓGICA INTERACTIVA DEL MODULO INVENTARIO 3.0 (PARALELO) ---
+    // --- LÓGICA DE INVENTARIO 3.0 (UNIFICACIÓN DE CATÁLOGO + EDITOR + STOCK + MAYORISTA + ESCÁNER) ---
+    window.renderAdminInventoryV3 = function() {
+        populateV3CatFilter();
+        window.renderV3UnifiedGrid();
+    };
+
+    function populateV3CatFilter() {
+        const select = document.getElementById('v3-unified-cat-filter');
+        if (!select) return;
+
+        const currentVal = select.value || 'all';
+        select.innerHTML = '<option value="all">Todas las Categorías</option>';
+
+        const sourceData = (window.sessionProducts && Array.isArray(window.sessionProducts) && window.sessionProducts.length > 0)
+            ? window.sessionProducts
+            : ((typeof window.productsData !== 'undefined' && Array.isArray(window.productsData)) ? window.productsData : []);
+
+        sourceData.forEach(cat => {
+            const opt = document.createElement('option');
+            opt.value = cat.id;
+            opt.textContent = `${cat.name} (${(cat.products || []).length})`;
+            if (cat.id === currentVal) opt.selected = true;
+            select.appendChild(opt);
+        });
+    }
+
+    window.renderV3UnifiedGrid = function() {
+        const tbody = document.getElementById('v3-unified-table-body');
+        if (!tbody) return;
+
+        const searchQuery = (document.getElementById('v3-unified-search')?.value || '').toLowerCase().trim();
+        const selectedCat = document.getElementById('v3-unified-cat-filter')?.value || 'all';
+
+        const sourceData = (window.sessionProducts && Array.isArray(window.sessionProducts) && window.sessionProducts.length > 0)
+            ? window.sessionProducts
+            : ((typeof window.productsData !== 'undefined' && Array.isArray(window.productsData)) ? window.productsData : []);
+
+        let allProducts = [];
+        sourceData.forEach((cat, cIdx) => {
+            if (selectedCat !== 'all' && cat.id !== selectedCat) return;
+
+            (cat.products || []).forEach((p, pIdx) => {
+                allProducts.push({ ...p, categoryName: cat.name, cIdx, pIdx });
+            });
+        });
+
+        if (searchQuery) {
+            allProducts = allProducts.filter(p => 
+                (p.title && p.title.toLowerCase().includes(searchQuery)) ||
+                (p.id && p.id.toLowerCase().includes(searchQuery)) ||
+                (p.categoryName && p.categoryName.toLowerCase().includes(searchQuery))
+            );
+        }
+
+        if (allProducts.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="7" style="text-align: center; padding: 2.5rem; color: #64748b;">
+                        <span class="material-symbols-outlined" style="font-size: 36px; opacity: 0.4; display: block; margin-bottom: 6px;">search_off</span>
+                        No se encontraron productos en el inventario unificado.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        tbody.innerHTML = allProducts.map(p => `
+            <tr id="v3-row-${p.cIdx}-${p.pIdx}" style="border-bottom: 1px solid #f1f5f9; transition: background 0.15s ease;">
+                <td style="padding: 10px 14px; vertical-align: middle;">
+                    <div style="width: 42px; height: 42px; border-radius: 6px; background: #f8fafc; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="${p.image || 'img/logo_provisional.png'}" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="${p.title}">
+                    </div>
+                </td>
+                <td style="padding: 10px 14px; vertical-align: middle;">
+                    <strong style="color: #0f172a; font-size: 0.88rem; display: block;">${p.title}</strong>
+                    <span style="font-size: 0.72rem; color: #64748b; font-weight: 600; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 2px;">
+                        ${p.categoryName}
+                    </span>
+                </td>
+                <td style="padding: 10px 14px; vertical-align: middle; font-family: monospace; font-size: 0.82rem; font-weight: 700; color: #334155;">
+                    ${p.id || 'N/A'}
+                </td>
+                <td style="padding: 10px 14px; vertical-align: middle;">
+                    <input type="number" id="v3-stock-${p.cIdx}-${p.pIdx}" value="${p.stock ?? 0}" style="width: 80px; padding: 0.4rem; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 800; text-align: center;">
+                </td>
+                <td style="padding: 10px 14px; vertical-align: middle;">
+                    <input type="number" id="v3-price-${p.cIdx}-${p.pIdx}" value="${p.price ?? 0}" style="width: 120px; padding: 0.4rem; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 800; color: #16a34a;">
+                </td>
+                <td style="padding: 10px 14px; vertical-align: middle;">
+                    <input type="number" id="v3-wholesale-${p.cIdx}-${p.pIdx}" value="${p.wholesalePrice ?? p.price ?? 0}" style="width: 120px; padding: 0.4rem; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 800; color: #2563eb;">
+                </td>
+                <td style="padding: 10px 14px; vertical-align: middle; text-align: center;">
+                    <button type="button" onclick="window.openProductForm && window.openProductForm(${p.cIdx}, sessionProducts[${p.cIdx}].products[${p.pIdx}])" class="btn-outline" style="padding: 0.35rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" title="Editar Fotos y Detalles Avanzados">
+                        <span class="material-symbols-outlined" style="font-size: 15px;">edit</span>
+                        <span>Ficha</span>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    };
+
+    window.applyV3WholesaleRule = function() {
+        const pctInput = document.getElementById('v3-wholesale-discount-pct');
+        const pct = parseFloat(pctInput?.value || 0);
+
+        if (!window.sessionProducts || pct <= 0) return;
+
+        window.sessionProducts.forEach((cat, cIdx) => {
+            (cat.products || []).forEach((p, pIdx) => {
+                const priceEl = document.getElementById(`v3-price-${cIdx}-${pIdx}`);
+                const wholesaleEl = document.getElementById(`v3-wholesale-${cIdx}-${pIdx}`);
+
+                const currentPrice = priceEl ? parseFloat(priceEl.value) || (p.price || 0) : (p.price || 0);
+                const calculatedWholesale = Math.round(currentPrice * (1 - pct / 100));
+
+                if (wholesaleEl) wholesaleEl.value = calculatedWholesale;
+                p.wholesalePrice = calculatedWholesale;
+            });
+        });
+
+        if (typeof window.showAdminToast === 'function') window.showAdminToast(`⚡ Se calculó un ${pct}% OFF de precio mayorista`);
+    };
+
+    window.saveV3UnifiedChanges = async function() {
+        if (!window.sessionProducts) return;
+
+        window.sessionProducts.forEach((cat, cIdx) => {
+            (cat.products || []).forEach((p, pIdx) => {
+                const stockEl = document.getElementById(`v3-stock-${cIdx}-${pIdx}`);
+                const priceEl = document.getElementById(`v3-price-${cIdx}-${pIdx}`);
+                const wholesaleEl = document.getElementById(`v3-wholesale-${cIdx}-${pIdx}`);
+
+                if (stockEl) p.stock = parseInt(stockEl.value) || 0;
+                if (priceEl) p.price = parseFloat(priceEl.value) || 0;
+                if (wholesaleEl) p.wholesalePrice = parseFloat(wholesaleEl.value) || p.price;
+            });
+        });
+
+        if (typeof window.showAdminToast === 'function') window.showAdminToast('✅ ¡Inventario y Precios Unificados guardados!');
+        if (typeof window.saveProductsToServer === 'function') await window.saveProductsToServer();
+        window.renderV3UnifiedGrid();
+    };
+
     // ── Nosotros State & Defaults ──
     // SessionNosotros and defaultNosotros are managed in data.js
     
@@ -417,7 +561,8 @@ function renderAdminUX() {
             pages: 'admin-pages-view',
             orders: 'admin-orders-view',
             quotes: 'admin-quotes-view',
-            users: 'admin-users-view'
+            users: 'admin-users-view',
+            'inventory-v3': 'admin-inventory-v3-view'
         };
 
         Object.entries(viewIds).forEach(([key, id]) => {
@@ -468,6 +613,10 @@ function renderAdminUX() {
         } else if (currentAdminTab === 'users') {
             if (typeof window.renderAdminUsers === 'function') {
                 window.renderAdminUsers();
+            }
+        } else if (currentAdminTab === 'inventory-v3') {
+            if (typeof window.renderAdminInventoryV3 === 'function') {
+                window.renderAdminInventoryV3();
             }
         } else if (currentAdminTab === 'catalog') {
             const categoriesView = document.getElementById('admin-categories-view');

@@ -63,6 +63,10 @@
                             </button>
 
                             <!-- 3. Catálogo & Inventario -->
+                            <button type="button" id="tab-btn-inventory-v3" class="admin-sidebar-btn" data-tooltip="Inventario 3.0 (BETA)" style="background: rgba(37,99,235,0.08); border-left: 3px solid #2563eb;">
+                                <span class="material-symbols-outlined" style="color: #2563eb;">rocket_launch</span>
+                                <span class="nav-label" style="color: #1d4ed8; font-weight: 800;">Inventario 3.0 (BETA)</span>
+                            </button>
                             <button type="button" id="tab-btn-catalog" class="admin-sidebar-btn" data-tooltip="Catálogo">
                                 <span class="material-symbols-outlined">inventory_2</span>
                                 <span class="nav-label">Catálogo</span>
@@ -1426,6 +1430,84 @@
                         <!-- 7. USUARIOS & PERMISOS MODULE -->
                         <div id="admin-users-view" class="admin-section-view" style="display: none;">
                             <!-- Inyectado dinámicamente desde js/admin-users.js -->
+                        </div>
+
+                        <!-- 8. INVENTARIO 3.0 (PARALELO / UNIFICADO LA TARIMA 3.0) -->
+                        <div id="admin-inventory-v3-view" class="admin-section-view" style="display: none;">
+                            
+                            <!-- BARRA DE CONTROL SUPERIOR UNIFICADA -->
+                            <div style="background: #ffffff; padding: 1rem 1.25rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 1.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                                <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                                    <div>
+                                        <h3 style="margin: 0; font-size: 1.1rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
+                                            <span class="material-symbols-outlined" style="color: #2563eb;">inventory_2</span>
+                                            Inventario & Gestión Comercial Unificada
+                                        </h3>
+                                        <p style="margin: 2px 0 0 0; font-size: 0.78rem; color: #64748b;">
+                                            Edición directa de precios, mayoristas, stock y escáner en tiempo real sin cambiar de ventana.
+                                        </p>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <button type="button" onclick="window.saveV3UnifiedChanges && window.saveV3UnifiedChanges()" class="btn-primary" style="display: flex; align-items: center; gap: 6px; padding: 0.55rem 1.2rem; font-weight: 800; font-size: 0.85rem; background: #16a34a; border: none; box-shadow: 0 4px 12px rgba(22,163,74,0.25);">
+                                            <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
+                                            <span>Guardar Todos los Cambios</span>
+                                        </button>
+                                        <button type="button" onclick="window.openProductForm && window.openProductForm(0, null)" class="btn-outline" style="display: flex; align-items: center; gap: 6px; padding: 0.55rem 1rem; font-weight: 700; font-size: 0.85rem;">
+                                            <span class="material-symbols-outlined" style="font-size: 18px;">add_circle</span>
+                                            <span>Nuevo Producto</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- BUSCADOR INTELIGENTE Y ESCÁNER USB DIRECTO -->
+                                <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; background: #f8fafc; padding: 0.75rem; border-radius: 10px; border: 1px solid #e2e8f0;">
+                                    <div style="flex: 1; min-width: 280px; position: relative;">
+                                        <span class="material-symbols-outlined" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #2563eb; font-size: 20px;">qr_code_scanner</span>
+                                        <input type="text" id="v3-unified-search" oninput="window.renderV3UnifiedGrid && window.renderV3UnifiedGrid()" class="premium-input" placeholder="⚡ Escanear código de barras (SKU) o buscar por nombre..." style="padding-left: 40px; width: 100%; font-weight: 700; background: #ffffff;">
+                                    </div>
+                                    <select id="v3-unified-cat-filter" onchange="window.renderV3UnifiedGrid && window.renderV3UnifiedGrid()" class="premium-input" style="width: auto; min-width: 200px; background: #ffffff;">
+                                        <option value="all">Todas las Categorías</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- HERRAMIENTA DE APLICACIÓN MASIVA DE MARGEN / MAYORISTA -->
+                            <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.75rem 1rem; border-radius: 10px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span class="material-symbols-outlined" style="color: #2563eb; font-size: 20px;">calculate</span>
+                                    <span style="font-size: 0.82rem; font-weight: 700; color: #1e40af;">Regla Rápida Mayorista:</span>
+                                    <span style="font-size: 0.78rem; color: #1e3a8a;">Calcular Precio Mayorista automático restando un % al precio de lista</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="number" id="v3-wholesale-discount-pct" value="15" style="width: 60px; padding: 0.3rem 0.5rem; font-size: 0.82rem; border: 1px solid #93c5fd; border-radius: 6px; text-align: center; font-weight: 800;">
+                                    <span style="font-size: 0.8rem; font-weight: 800; color: #1e40af;">% OFF</span>
+                                    <button type="button" onclick="window.applyV3WholesaleRule && window.applyV3WholesaleRule()" class="btn-outline" style="padding: 0.35rem 0.85rem; font-size: 0.78rem; font-weight: 800; background: #ffffff; color: #1d4ed8; border-color: #93c5fd;">
+                                        Aplicar a Todo
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- GRILLA UNIFICADA E INTERACTIVA (PRODUCTO + FOTO + PRECIOS EDITABLES + STOCK) -->
+                            <div class="admin-card" style="padding: 0; background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden;">
+                                <div style="overflow-x: auto;">
+                                    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+                                        <thead>
+                                            <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0; color: #475569; font-weight: 800; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em;">
+                                                <th style="padding: 12px 14px; width: 60px;">Foto</th>
+                                                <th style="padding: 12px 14px;">Producto & Categoría</th>
+                                                <th style="padding: 12px 14px; width: 90px;">SKU</th>
+                                                <th style="padding: 12px 14px; width: 110px;">Stock</th>
+                                                <th style="padding: 12px 14px; width: 140px;">Precio Lista ($)</th>
+                                                <th style="padding: 12px 14px; width: 140px;">Precio Mayorista ($)</th>
+                                                <th style="padding: 12px 14px; width: 90px; text-align: center;">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="v3-unified-table-body">
+                                            <!-- Inyectado dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- MODAL DE IMPRESIÓN DE ETIQUETA Y EDITOR DE FORMATO -->
