@@ -247,30 +247,22 @@ const storage = multer.diskStorage({
             return cb(null, targetDir);
         }
 
-        // Obtenemos los datos sanitizados
-        const rubroFolder = req.body.rubro && req.body.rubro !== 'carpinteria' ? sanitizeFolderName(req.body.rubro) : '';
-        const catFolder = sanitizeFolderName(req.body.category) || 'general';
-        const prodFolder = sanitizeFolderName(req.body.title);
+        // Obtenemos los datos sanitizados forzados a minúsculas
+        const rubroFolder = req.body.rubro && req.body.rubro !== 'carpinteria' ? sanitizeFolderName(req.body.rubro).toLowerCase() : '';
+        const catFolder = (sanitizeFolderName(req.body.category) || 'general').toLowerCase();
+        const prodFolder = sanitizeFolderName(req.body.title).toLowerCase();
 
-        // Construimos la ruta base: img/[rubro]/[categoria] o img/[categoria]
+        // Construimos la ruta base: img/[rubro]/[categoria] o img/[categoria] (siempre 100% minúsculas)
         let baseFolder = rubroFolder 
             ? path.join(ROOT_DIR, 'img', rubroFolder, catFolder)
             : path.join(ROOT_DIR, 'img', catFolder);
 
-        // Si existe una carpeta previa con diferente mayúscula/minúscula (ej: Mate vs mate), reusar la carpeta real existente
         let targetDir = baseFolder;
         if (prodFolder) {
             targetDir = path.join(baseFolder, prodFolder);
-            if (fs.existsSync(baseFolder)) {
-                const existingItems = fs.readdirSync(baseFolder);
-                const matchedItem = existingItems.find(item => item.toLowerCase() === prodFolder.toLowerCase());
-                if (matchedItem) {
-                    targetDir = path.join(baseFolder, matchedItem);
-                }
-            }
         }
 
-        // Forzar la creación recursiva de las carpetas en el disco
+        // Forzar la creación recursiva de las carpetas en el disco en minúsculas
         fs.mkdirSync(targetDir, { recursive: true });
 
         cb(null, targetDir);
@@ -280,12 +272,12 @@ const storage = multer.diskStorage({
             return cb(null, 'logo_provisional.png');
         }
 
-        const prodFolder = sanitizeFolderName(req.body.title);
-        const cleanOriginal = file.originalname.replace(/\s+/g, '_').replace(/\.[^/.]+$/, "");
-        // Garantizar extensión .webp
+        const prodFolder = sanitizeFolderName(req.body.title).toLowerCase();
+        const cleanOriginal = file.originalname.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_-]/g, '').replace(/\.[^/.]+$/, "");
+        // Garantizar extensión .webp en minúsculas
         const uniqueName = prodFolder 
-            ? `${Date.now()}-${cleanOriginal}.webp`
-            : `portada-${cleanOriginal}.webp`;
+            ? `${Date.now()}-${cleanOriginal || 'imagen'}.webp`
+            : `portada-${cleanOriginal || 'imagen'}.webp`;
         cb(null, uniqueName);
     }
 });
