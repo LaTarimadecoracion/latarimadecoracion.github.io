@@ -360,6 +360,66 @@ app.post('/api/save-products', (req, res) => {
         
         // Generar archivos estáticos para Redes Sociales
         generateSeoStubs(productsArray);
+
+        // Limpieza de fotos huérfanas/eliminadas del servidor físico
+        try {
+            const activeImagePaths = new Set();
+            productsArray.forEach(cat => {
+                (cat.products || []).forEach(p => {
+                    if (typeof p.image === 'string') activeImagePaths.add(p.image.replace(/^[\/\\]/, ''));
+                    else if (Array.isArray(p.image)) p.image.forEach(img => typeof img === 'string' && activeImagePaths.add(img.replace(/^[\/\\]/, '')));
+                    if (p.acabados_groups) {
+                        p.acabados_groups.forEach(g => {
+                            if (typeof g.cover_image === 'string') activeImagePaths.add(g.cover_image.replace(/^[\/\\]/, ''));
+                            if (Array.isArray(g.images_list)) {
+                                g.images_list.forEach(img => typeof img === 'string' && activeImagePaths.add(img.replace(/^[\/\\]/, '')));
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Función recursiva para escanear y eliminar imágenes físicas que ya no están en productos
+            const cleanOrphanImages = (dirPath) => {
+                if (!fs.existsSync(dirPath)) return;
+                const items = fs.readdirSync(dirPath, { withFileTypes: true });
+                items.forEach(item => {
+                    const fullPath = path.join(dirPath, item.name);
+                    if (item.isDirectory()) {
+                        cleanOrphanImages(fullPath);
+                        // Si la carpeta quedó vacía la removemos
+                        if (fs.readdirSync(fullPath).length === 0) {
+                            try { fs.rmdirSync(fullPath); } catch (e) {}
+                        }
+                    } else {
+                        const relPath = path.relative(ROOT_DIR, fullPath).replace(/\\/g, '/');
+                        // Si es una imagen en img/ y no pertenece a ninguna categoría ni producto actual, eliminarla
+                        if (relPath.startsWith('img/') && !relPath.includes('portada-') && !activeImagePaths.has(relPath)) {
+                            try {
+                                fs.unlinkSync(fullPath);
+                                console.log(`🗑️ Foto eliminada del disco por no estar en uso: ${relPath}`);
+                            } catch (e) {}
+                        }
+                    }
+                });
+            };
+
+            cleanOrphanImages(path.join(ROOT_DIR, 'img'));
+        } catch (cleanErr) {
+            console.warn('⚠️ Error limpiando fotos huérfanas:', cleanErr);
+        }
+
+        // Auto-ejecutar build local para actualizar /docs/ de inmediato
+        try {
+            const { exec } = require('child_process');
+            exec('node _dev/build.js', { cwd: ROOT_DIR }, (err, stdout, stderr) => {
+                if (err) console.error('⚠️ Error ejecutando build automático:', err);
+                else console.log('⚡ [AutoBuild] Carpeta /docs/ sincronizada automáticamente.');
+            });
+        } catch (bErr) {
+            console.warn('⚠️ No se pudo disparar auto-build:', bErr);
+        }
+
         res.json({ success: true, message: 'Productos guardados exitosamente.' });
     } catch (error) {
         console.error('❌ Error guardando productos:', error);

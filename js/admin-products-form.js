@@ -1506,6 +1506,13 @@
                 }
             });
 
+            // Guardar inmediatamente en localStorage de respaldo
+            try {
+                localStorage.setItem('sessionProducts', JSON.stringify(window.sessionProducts));
+            } catch (lsErr) {
+                console.warn('No se pudo respaldar en localStorage:', lsErr);
+            }
+
             // Auto-crear aviso si es un producto totalmente nuevo
             if (!editingProductId) {
                 const autoAvisoCheck = document.getElementById('admin-product-auto-aviso');

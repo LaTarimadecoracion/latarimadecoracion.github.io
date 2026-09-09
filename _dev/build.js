@@ -56,13 +56,17 @@ async function build() {
         });
     };
 
-    // 1. Copiar carpetas estáticas que no requieren minificación
+    // 1. Copiar carpetas estáticas que no requieren minificación y limpiar huérfanos en docs/img
     const foldersToCopy = ['img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'pedidos', 'apps', 'partials'];
     for (const folder of foldersToCopy) {
         const folderSrc = path.join(srcDir, folder);
+        const folderDest = path.join(distDir, folder);
         if (fs.existsSync(folderSrc)) {
             console.log(`📂 Sincronizando carpeta ${folder}...`);
-            smartCopySync(folderSrc, path.join(distDir, folder));
+            if (folder === 'img') {
+                fs.emptyDirSync(folderDest); // Vaciar docs/img para eliminar fotos borradas
+            }
+            smartCopySync(folderSrc, folderDest);
         }
     }
 
