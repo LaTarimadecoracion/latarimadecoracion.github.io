@@ -128,9 +128,9 @@
         if (statusLabel) statusLabel.textContent = 'Subiendo y optimizando...';
 
         const formData = new FormData();
-        formData.append('image', file);
         formData.append('category', 'logos');
         formData.append('title', 'logo_provisional'); // Nombre clave para el logo
+        formData.append('image', file);
 
         try {
             const res = await fetch('/api/upload-image', {

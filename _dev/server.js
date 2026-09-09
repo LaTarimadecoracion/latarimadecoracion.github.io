@@ -241,7 +241,8 @@ const sanitizeFolderName = (name) => {
 // Multer storage configuration for image uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        if (req.body.category === 'logos') {
+        const cat = (req.body && req.body.category) || (req.query && req.query.category) || '';
+        if (cat === 'logos') {
             const targetDir = path.join(ROOT_DIR, 'img');
             fs.mkdirSync(targetDir, { recursive: true });
             return cb(null, targetDir);
@@ -268,7 +269,8 @@ const storage = multer.diskStorage({
         cb(null, targetDir);
     },
     filename: function (req, file, cb) {
-        if (req.body.category === 'logos') {
+        const cat = (req.body && req.body.category) || (req.query && req.query.category) || '';
+        if (cat === 'logos' || file.fieldname === 'logo') {
             return cb(null, 'logo_provisional.png');
         }
 
