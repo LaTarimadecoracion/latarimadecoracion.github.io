@@ -247,13 +247,21 @@ const storage = multer.diskStorage({
         const prodFolder = sanitizeFolderName(req.body.title);
 
         // Construimos la ruta base: img/[rubro]/[categoria] o img/[categoria]
-        let targetDir = rubroFolder 
+        let baseFolder = rubroFolder 
             ? path.join(ROOT_DIR, 'img', rubroFolder, catFolder)
             : path.join(ROOT_DIR, 'img', catFolder);
 
-        // Si es un producto, le sumamos su subcarpeta
+        // Si existe una carpeta previa con diferente mayúscula/minúscula (ej: Mate vs mate), reusar la carpeta real existente
+        let targetDir = baseFolder;
         if (prodFolder) {
-            targetDir = path.join(targetDir, prodFolder);
+            targetDir = path.join(baseFolder, prodFolder);
+            if (fs.existsSync(baseFolder)) {
+                const existingItems = fs.readdirSync(baseFolder);
+                const matchedItem = existingItems.find(item => item.toLowerCase() === prodFolder.toLowerCase());
+                if (matchedItem) {
+                    targetDir = path.join(baseFolder, matchedItem);
+                }
+            }
         }
 
         // Forzar la creación recursiva de las carpetas en el disco

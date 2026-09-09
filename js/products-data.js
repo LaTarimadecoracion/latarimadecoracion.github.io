@@ -2583,14 +2583,14 @@ const productsData = [
                 "id": "G3",
                 "title": "Mate",
                 "description": "",
-                "image": "img/todo-algarrobo/mate/1788927467064-imagen.webp",
+                "image": "img/todo-algarrobo/Mate/1788927467064-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
-                        "cover_image": "img/todo-algarrobo/mate/1788927467064-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/Mate/1788927467064-imagen.webp",
                         "images_list": [
-                            "img/todo-algarrobo/mate/1788927467064-imagen.webp",
-                            "img/todo-algarrobo/mate/1788927467272-imagen.webp",
+                            "img/todo-algarrobo/Mate/1788927467064-imagen.webp",
+                            "img/todo-algarrobo/Mate/1788927467272-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903884-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903756-imagen.webp"
@@ -22916,14 +22916,14 @@ const productsData = [
                 "id": "G3",
                 "title": "Mate",
                 "description": "",
-                "image": "img/todo-algarrobo/mate/1788927467064-imagen.webp",
+                "image": "img/todo-algarrobo/Mate/1788927467064-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
-                        "cover_image": "img/todo-algarrobo/mate/1788927467064-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/Mate/1788927467064-imagen.webp",
                         "images_list": [
-                            "img/todo-algarrobo/mate/1788927467064-imagen.webp",
-                            "img/todo-algarrobo/mate/1788927467272-imagen.webp",
+                            "img/todo-algarrobo/Mate/1788927467064-imagen.webp",
+                            "img/todo-algarrobo/Mate/1788927467272-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903884-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903756-imagen.webp"
