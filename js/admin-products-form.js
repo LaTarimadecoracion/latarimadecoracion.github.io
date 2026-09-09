@@ -722,6 +722,7 @@
         const processUploadedFiles = async (rawFiles) => {
             if (rawFiles.length === 0) return;
             
+            const btnGenerateJson = document.getElementById('btn-generate-json');
             if (btnGenerateJson) {
                 btnGenerateJson.disabled = true;
                 btnGenerateJson.textContent = '⏳ Procesando imágenes...';
@@ -735,7 +736,7 @@
             } finally {
                 if (btnGenerateJson) {
                     btnGenerateJson.disabled = false;
-                    btnGenerateJson.textContent = 'Guardar Producto';
+                    btnGenerateJson.textContent = 'Guardar Producto en Servidor';
                 }
                 renderGroupPreview(groupId);
             }

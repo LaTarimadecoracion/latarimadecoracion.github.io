@@ -1,0 +1,89 @@
+<!-- partials/admin-bulk-edit-view.html -->
+<!-- Editor Masivo de Precios & Productos (Estilo Mercado Libre Seller Grid) -->
+<div id="admin-bulk-edit-view" class="admin-section-view" style="display: none;">
+    <div style="background: var(--admin-surface); border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-lg); padding: 1.25rem; box-shadow: var(--admin-shadow-sm); margin-bottom: 1.25rem;">
+        
+        <!-- Cabecera y Descripción -->
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--admin-border-color);">
+            <div>
+                <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--admin-text-main); display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 1.5rem;">table_chart</span>
+                    Editor Masivo de Precios &amp; Productos
+                </h3>
+                <p style="margin: 4px 0 0 0; font-size: 0.82rem; color: var(--admin-text-muted);">
+                    Modificá precios, visibilidad y enlaces rápidamente estilo planilla Excel.
+                </p>
+            </div>
+            
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button type="button" id="btn-save-bulk-edit" onclick="window.saveBulkEditChanges()" class="btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.9rem; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; background: #059669; border: none; color: #ffffff; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 6px rgba(5,150,105,0.3);">
+                    <span class="material-symbols-outlined">save</span>
+                    <span>Guardar Todos los Cambios</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Barra de Herramientas de Edición por Lote (Aumento % y Acciones Rápidas) -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+            
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <span style="font-size: 0.82rem; font-weight: 800; color: #334155; text-transform: uppercase;">⚡ Modificación por Lote:</span>
+                <select id="admin-bulk-mass-type" style="padding: 6px 10px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.82rem; font-weight: 600; color: #1E293B;">
+                    <option value="percent_up">Aumentar Precio (%)</option>
+                    <option value="percent_down">Descontar Precio (%)</option>
+                    <option value="fixed_set">Fijar Precio ($)</option>
+                    <option value="fixed_add">Sumar Monto Fijo ($)</option>
+                </select>
+                <input type="number" id="admin-bulk-mass-val" placeholder="ej. 10" style="width: 80px; padding: 6px 8px; border: 1px solid #CBD5E1; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">
+                <button type="button" onclick="window.applyBulkMassiveChange()" style="padding: 6px 12px; background: #2563EB; color: #ffffff; border: none; border-radius: 6px; font-weight: 700; font-size: 0.82rem; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">bolt</span> Aplicar en Lote
+                </button>
+            </div>
+
+            <!-- Resumen de Métricas de la Selección -->
+            <div style="display: flex; align-items: center; gap: 12px; font-size: 0.82rem;">
+                <span style="color: var(--admin-text-muted); font-weight: 600;">Filas: <strong id="admin-bulk-total-count" style="color: var(--admin-text-main);">0</strong></span>
+                <span style="color: #D97706; font-weight: 700; background: #FFF9DB; padding: 2px 8px; border-radius: 12px; border: 1px solid #FFE8CC;">⚠️ Sin Precio: <strong id="admin-bulk-missing-count">0</strong></span>
+            </div>
+        </div>
+
+        <!-- Filtros Rápidos y Buscador -->
+        <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 10px; align-items: center; margin-bottom: 1rem;">
+            <div style="position: relative;">
+                <span class="material-symbols-outlined" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--admin-text-muted);">search</span>
+                <input type="text" id="admin-bulk-search" placeholder="Buscar por título o ID de producto..." style="width: 100%; padding: 8px 10px 8px 36px; border: 1px solid var(--admin-border-strong); border-radius: 8px; font-size: 0.85rem; box-sizing: border-box;">
+            </div>
+
+            <select id="admin-bulk-cat-filter" style="padding: 8px 12px; border: 1px solid var(--admin-border-strong); border-radius: 8px; font-size: 0.85rem; font-weight: 600;">
+                <option value="all">Todas las Categorías</option>
+            </select>
+
+            <label style="display: inline-flex; align-items: center; gap: 6px; background: #FFF9DB; border: 1px solid #FFE8CC; padding: 6px 12px; border-radius: 8px; font-size: 0.82rem; font-weight: 700; color: #D97706; cursor: pointer;">
+                <input type="checkbox" id="admin-bulk-missing-check" style="cursor: pointer;">
+                <span>⚠️ Mostrar solo sin precio</span>
+            </label>
+        </div>
+
+        <!-- Tabla Estilo Excel (Grid Interactivo) -->
+        <div class="admin-table-wrapper" style="max-height: 580px; overflow-y: auto; border: 1px solid var(--admin-border-color); border-radius: 8px;">
+            <table class="admin-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                <thead style="position: sticky; top: 0; background: #F1F5F9; z-index: 10;">
+                    <tr>
+                        <th style="width: 40px; text-align: center; padding: 10px 6px;">
+                            <input type="checkbox" onclick="window.toggleBulkSelectAll(this.checked)" title="Seleccionar Todos" style="cursor: pointer;">
+                        </th>
+                        <th style="width: 50px; text-align: center; padding: 10px 6px;">Foto</th>
+                        <th style="padding: 10px;">Producto / Categoría</th>
+                        <th style="width: 180px; padding: 10px;">Acabado / Medida</th>
+                        <th style="width: 140px; padding: 10px;">Precio Directo ($)</th>
+                        <th style="width: 100px; text-align: center; padding: 10px;">Visibilidad</th>
+                        <th style="padding: 10px;">Link Mercado Libre / Cobro</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-bulk-edit-tbody">
+                    <!-- Renderizado dinámico por admin-bulk-edit.js -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

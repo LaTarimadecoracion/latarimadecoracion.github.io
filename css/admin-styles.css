@@ -240,6 +240,14 @@
     box-sizing: border-box;
 }
 
+#admin-bulk-edit-view.fullwidth-active {
+    padding: 0.5rem 1rem !important;
+}
+
+#admin-bulk-edit-view.fullwidth-active .admin-table-wrapper {
+    max-height: calc(100vh - 210px) !important;
+}
+
 /* La vista de Pedidos (Iframe) mantiene 0 padding para verse edge-to-edge a 100% */
 #admin-orders-view.admin-section-view {
     padding: 0 !important;

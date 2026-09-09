@@ -1654,8 +1654,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 0
+                                "showPrice": true,
+                                "stock": 0,
+                                "price": 15000
                             }
                         ],
                         "hidden": false,
@@ -1773,7 +1774,7 @@ const productsData = [
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
-                                "link": "",
+                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero-para-frascos--la-tarima/up/MLAU4167320361?pdp_filters=item_id:MLA3530425840",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
@@ -1782,7 +1783,7 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
@@ -1837,7 +1838,7 @@ const productsData = [
                 ],
                 "last_modified": 1787707117443,
                 "primaryCatId": "Organizadores",
-                "views": 1,
+                "views": 2,
                 "stock": 1,
                 "history": [
                     {
@@ -2399,10 +2400,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 18000,
+                                "price": 20000,
                                 "cost_price": 9000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -2582,16 +2583,17 @@ const productsData = [
                 "id": "G3",
                 "title": "Mate",
                 "description": "",
-                "image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
+                "image": "img/todo-algarrobo/mate/1788916270368-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
-                        "cover_image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/mate/1788916270368-imagen.webp",
                         "images_list": [
+                            "img/todo-algarrobo/mate/1788916270368-imagen.webp",
+                            "img/todo-algarrobo/mate/1788916270515-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903756-imagen.webp",
-                            "img/todo-algarrobo/Mate/1780708903884-imagen.webp",
-                            "img/todo-algarrobo/Mate/1780708904016-imagen.webp"
+                            "img/todo-algarrobo/Mate/1780708903884-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2606,11 +2608,10 @@ const productsData = [
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -2665,21 +2666,26 @@ const productsData = [
                     "madera de pino",
                     "madera cepillada"
                 ],
-                "last_modified": 1783907387290,
-                "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 10,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 10
-                },
-                "stock": 0
+                "quantityDiscounts": [],
+                "last_modified": 1788916270642,
+                "primaryCatId": "productos-algarrobo",
+                "history": []
             },
             {
                 "id": "G2",
@@ -3069,8 +3075,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 0
+                                "showPrice": true,
+                                "stock": 0,
+                                "price": 20000
                             }
                         ],
                         "hidden": false,
@@ -3153,8 +3160,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 0
+                                "showPrice": true,
+                                "stock": 0,
+                                "price": 25000
                             }
                         ],
                         "hidden": false,
@@ -3236,8 +3244,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 0
+                                "showPrice": true,
+                                "stock": 0,
+                                "price": 35000
                             }
                         ],
                         "hidden": false,
@@ -3332,50 +3341,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
-                        "images_list": [
-                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Barnizado",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Tintado",
-                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
-                        "images_list": [
-                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Tintado",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -3433,20 +3403,27 @@ const productsData = [
                     "madera de pino",
                     "madera cepillada"
                 ],
-                "last_modified": 1783637176778,
-                "primaryCatId": "Organizadores",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 6,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "fleteMaxUnits": 6
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1788914164738,
+                "primaryCatId": "Organizadores",
+                "history": [],
+                "views": 0
             },
             {
                 "id": "E5",
@@ -3659,7 +3636,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 25000
                             },
                             {
                                 "medida": "Grande",
@@ -3670,7 +3648,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 7
                             },
                             {
                                 "medida": "Mediano",
@@ -3681,7 +3660,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 5
                             },
                             {
                                 "medida": "Chico",
@@ -3692,7 +3672,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 3
                             }
                         ],
                         "hidden": false
@@ -3748,7 +3729,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 9000
                             }
                         ],
                         "hidden": false
@@ -3808,7 +3790,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637306441,
                 "primaryCatId": "Organizadores",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3843,10 +3825,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13000,
+                                "price": 12500,
                                 "cost_price": 6500,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "28 Diam x 17 Alto",
@@ -3856,10 +3838,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 14000,
+                                "price": 12500,
                                 "cost_price": 7000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
@@ -3975,7 +3957,8 @@ const productsData = [
                                 "highlight": false,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 55000
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -3987,7 +3970,8 @@ const productsData = [
                                 "highlight": false,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 55000
                             }
                         ],
                         "hidden": false,
@@ -4013,7 +3997,8 @@ const productsData = [
                                 "highlight": false,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 75000
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -4025,7 +4010,8 @@ const productsData = [
                                 "highlight": false,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 75000
                             }
                         ],
                         "hidden": false,
@@ -4116,7 +4102,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 15000
                             }
                         ],
                         "hidden": false
@@ -4199,7 +4186,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 15000
                             }
                         ],
                         "hidden": false
@@ -4282,7 +4270,8 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 11000
                             }
                         ],
                         "hidden": false
@@ -4437,10 +4426,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 40000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "190 x 60 cm",
@@ -4450,10 +4439,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 40000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true
                             },
                             {
                                 "medida": "140 x 60 cm",
@@ -4962,7 +4951,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
-                ]
+                ],
+                "views": 60
             },
             {
                 "id": "22",
@@ -5052,7 +5042,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 2,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -6515,10 +6505,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 17000,
                                 "cost_price": 11000,
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "stock": 0
                             }
                         ],
@@ -6683,7 +6673,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 5,
+                "views": 6,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -6711,34 +6701,6 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Grande",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false,
-                                "stock": 1
-                            },
-                            {
-                                "medida": "Mediano",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false,
-                                "stock": 0
-                            },
-                            {
                                 "medida": "Combo",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1487292863-estantes-x3-set-repisas-madera-hexagonos-_JM",
                                 "default": true,
@@ -6750,25 +6712,10 @@ const productsData = [
                                 "cost_price": 11000,
                                 "legend": "",
                                 "showPrice": false,
-                                "stock": 10
-                            },
-                            {
-                                "medida": "Chico",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 11
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -6797,22 +6744,28 @@ const productsData = [
                     "hexagonos de pino",
                     "decoracion pared hexagono"
                 ],
-                "last_modified": 1783812077617,
-                "primaryCatId": "Estantes",
-                "visible": true,
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "stock": 11
+                "quantityDiscounts": [],
+                "last_modified": 1788913987169,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "D4",
@@ -7559,7 +7512,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -8437,7 +8390,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -8476,10 +8429,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 17000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8503,10 +8457,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 25000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8530,10 +8485,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 31000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8557,10 +8513,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 32000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": false,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8607,20 +8564,27 @@ const productsData = [
                     "escalera fija",
                     "cajonera profesional"
                 ],
-                "last_modified": 1786330064427,
-                "primaryCatId": "Steps",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1788908607231,
+                "primaryCatId": "Steps",
+                "history": [],
+                "views": 0
             },
             {
                 "id": "A3",
@@ -8648,10 +8612,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 17000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8675,10 +8640,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 24000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8702,10 +8668,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 32000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8729,10 +8696,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 40000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8779,20 +8747,27 @@ const productsData = [
                     "escalera fija",
                     "cajonera profesional"
                 ],
-                "last_modified": 1786332262471,
-                "primaryCatId": "Steps",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1788908470878,
+                "primaryCatId": "Steps",
+                "history": [],
+                "views": 0
             },
             {
                 "id": "A2",
@@ -8820,10 +8795,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 15000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8847,10 +8823,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 20000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8874,10 +8851,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 25000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -8924,20 +8902,27 @@ const productsData = [
                     "escalera fija",
                     "cajonera profesional"
                 ],
-                "last_modified": 1786332353302,
-                "primaryCatId": "Steps",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1788908106317,
+                "primaryCatId": "Steps",
+                "history": [],
+                "views": 0
             },
             {
                 "id": "4F",
@@ -9289,7 +9274,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 3,
+                "views": 4,
                 "stock": 0,
                 "history": [
                     {
@@ -9730,7 +9715,400 @@ const productsData = [
                 "last_modified": 1788655893942,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 10
+                "views": 11
+            },
+            {
+                "id": "A1",
+                "title": "Steps / Cajones / Profesionales",
+                "description": "Escalón de madera multiusos para ejercicios y más",
+                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892809-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1782417150808-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1782417150969-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "120 x 60 x 20 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 80000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "70 x 28 x 12 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "60 x 28 x 9",
+                                "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cajon",
+                    "cajones",
+                    "cajon profesional",
+                    "cajon madera",
+                    "cajon pino",
+                    "organizador",
+                    "guardado",
+                    "almacenamiento",
+                    "caja madera",
+                    "caja pino",
+                    "cajonera",
+                    "cajonera profesional",
+                    "cajon de pino",
+                    "cajon de madera",
+                    "organizador profesional",
+                    "cajonera de madera",
+                    "cajonera de pino",
+                    "caja de pino profesional",
+                    "caja de madera profesional",
+                    "caja de almacenamiento"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1788907898357,
+                "primaryCatId": "Steps",
+                "history": [],
+                "views": 2
+            },
+            {
+                "id": "65",
+                "title": "Cuadrados",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "image": "img/estantes/cuadrados/cuadrados.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/estantes/cuadrados/cuadrados.webp",
+                        "images_list": [
+                            "img/estantes/cuadrados/cuadrados.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Combo x3",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508934203-estante-cuadrado-combo-x3un-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "cuadrado",
+                    "cuadrados",
+                    "repisa",
+                    "repisas",
+                    "estante flotante",
+                    "estante madera",
+                    "estante pino",
+                    "colgar",
+                    "decoracion",
+                    "pared",
+                    "combo estantes",
+                    "repisa cuadrada",
+                    "repisa cuadrado",
+                    "estante cuadrado",
+                    "estantes cuadrados",
+                    "repisas cuadradas",
+                    "diseño cuadrado",
+                    "cuadrados de madera",
+                    "cuadrados de pino",
+                    "decoracion pared cuadrado"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1788914028441,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "views": 5
+            },
+            {
+                "id": "7C",
+                "title": "Repisa-estante de pared con toallero",
+                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
+                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                        "images_list": [
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Unico",
+                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2.5,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788916093301,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "visible": true
+            },
+            {
+                "id": "G8",
+                "title": "Palo De Amasar De Madera Mango Fijo 40 Cm",
+                "description": "Lo que tenés que saber de este producto\nLargo del mango: 7 cm\nLargo total: 40 cm\nDiámetro: 4.5 cm\nFabricado en madera.\nEs apto para lavavajillas.",
+                "image": "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916679797-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916679797-imagen.webp",
+                        "images_list": [
+                            "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916679797-imagen.webp",
+                            "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916679939-imagen.webp",
+                            "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916680073-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40 cm",
+                                "link": "https://www.mercadolibre.com.ar/palo-de-amasar-de-madera-mango-fijo-40-cm/up/MLAU5146280044?pdp_filters=item_id:MLA3927660378",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 5,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788916680249,
+                "primaryCatId": "Hogar",
+                "history": []
+            },
+            {
+                "id": "G9",
+                "title": "Tabla Para Picada Mapa Argentina + Regalos",
+                "description": "Lo que tenés que saber de este producto\nEspesor: 1.5 mm\nAncho: 14 cm\nLargo: 40 cm\nUnidades por pack: 1\nForma: MAPA ARGENTINA",
+                "image": "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
+                        "images_list": [
+                            "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
+                            "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343741-imagen.webp",
+                            "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343901-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Argentina!!!",
+                                "link": "https://www.mercadolibre.com.ar/tabla-para-picada-mapa-argentina/up/MLAU5145322972?pdp_filters=item_id:MLA3926974000",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 12000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 10,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788917344040,
+                "primaryCatId": "Hogar",
+                "history": []
             }
         ]
     },
@@ -9775,7 +10153,8 @@ const productsData = [
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -9825,7 +10204,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
-                ]
+                ],
+                "views": 60
             },
             {
                 "id": "22",
@@ -9853,7 +10233,8 @@ const productsData = [
                                 "price": 70000,
                                 "cost_price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -9915,7 +10296,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 2,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -9963,7 +10344,8 @@ const productsData = [
                                 "price": 80000,
                                 "cost_price": 31000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -10072,7 +10454,8 @@ const productsData = [
                                 "price": 90000,
                                 "cost_price": 36000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -10183,7 +10566,8 @@ const productsData = [
                                 "price": 22500,
                                 "cost_price": 15000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -10244,7 +10628,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 5,
+                "views": 6,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -10283,7 +10667,8 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 5000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -10338,7 +10723,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 7000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -10347,7 +10733,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 3,
+                "views": 4,
                 "stock": 0,
                 "history": [
                     {
@@ -10412,7 +10798,8 @@ const productsData = [
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Unidad",
@@ -10426,7 +10813,8 @@ const productsData = [
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -10526,7 +10914,8 @@ const productsData = [
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Unidad",
@@ -10540,7 +10929,8 @@ const productsData = [
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -10646,7 +11036,8 @@ const productsData = [
                                 "cost_price": 12500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -10764,7 +11155,8 @@ const productsData = [
                                 "cost_price": 10500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -10883,7 +11275,8 @@ const productsData = [
                                 "cost_price": 9500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -10994,7 +11387,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -11037,7 +11430,8 @@ const productsData = [
                                 "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -11191,7 +11585,8 @@ const productsData = [
                                 "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -11304,7 +11699,8 @@ const productsData = [
                                 "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -11414,11 +11810,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15000,
+                                "price": 9000,
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "cost_price": 7500,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "5 Ganchos",
@@ -11430,9 +11827,10 @@ const productsData = [
                                 "highlight": false,
                                 "price": 15000,
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "cost_price": 7500,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "7 Ganchos",
@@ -11442,11 +11840,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15000,
+                                "price": 17000,
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "cost_price": 7500,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -11563,7 +11962,8 @@ const productsData = [
                                 "price": 68000,
                                 "cost_price": 34000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -11587,7 +11987,8 @@ const productsData = [
                                 "price": 72000,
                                 "cost_price": 36000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -11612,7 +12013,8 @@ const productsData = [
                                 "price": 64000,
                                 "cost_price": 32000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -11697,7 +12099,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
@@ -11710,7 +12113,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
@@ -11723,7 +12127,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
@@ -11736,7 +12141,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -11778,7 +12184,7 @@ const productsData = [
                 ],
                 "last_modified": 1787707117443,
                 "primaryCatId": "Organizadores",
-                "views": 1,
+                "views": 2,
                 "stock": 1,
                 "history": [
                     {
@@ -11829,10 +12235,11 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "cost_price": 2500,
                                 "price": 15000,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -11926,8 +12333,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 0
+                                "showPrice": true,
+                                "stock": 0,
+                                "price": 15000,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -12010,8 +12419,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 0
+                                "showPrice": true,
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -12099,7 +12509,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 6500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -12193,8 +12604,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 0
+                                "showPrice": true,
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -12289,50 +12701,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
-                        "images_list": [
-                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Barnizado",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Tintado",
-                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
-                        "images_list": [
-                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Tintado",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -12340,7 +12714,7 @@ const productsData = [
                 ],
                 "tags": [
                     "esquinero",
-                    "organizadores",
+                    "carpintería",
                     "madera",
                     "pino",
                     "carpinteria",
@@ -12367,11 +12741,11 @@ const productsData = [
                     "esquinero de madera",
                     "esquinero de pino",
                     "mueble esquinero",
-                    "organizadores esquinero",
-                    "organizadores de madera",
-                    "organizadores de pino",
-                    "mueble organizadores",
-                    "organizadores organizadores",
+                    "carpintería  esquinero",
+                    "carpintería de madera",
+                    "carpintería de pino",
+                    "mueble carpintería",
+                    "carpintería  carpintería",
                     "mueble de madera",
                     "mueble de pino",
                     "carpinteria artesanal",
@@ -12390,20 +12764,27 @@ const productsData = [
                     "madera de pino",
                     "madera cepillada"
                 ],
-                "last_modified": 1783637176778,
-                "primaryCatId": "Organizadores",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 6,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "fleteMaxUnits": 6
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1788914164738,
+                "primaryCatId": "Organizadores",
+                "history": [],
+                "views": 0
             },
             {
                 "id": "49",
@@ -12428,7 +12809,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 9000,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -12488,7 +12871,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637306441,
                 "primaryCatId": "Organizadores",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -12523,10 +12906,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13000,
+                                "price": 15000,
                                 "cost_price": 6500,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "28 Diam x 17 Alto",
@@ -12536,10 +12920,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 14000,
+                                "price": 15000,
                                 "cost_price": 7000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -12598,7 +12983,8 @@ const productsData = [
                                 "price": 9000,
                                 "cost_price": 9000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -12611,7 +12997,8 @@ const productsData = [
                                 "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -12624,7 +13011,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -12637,7 +13025,8 @@ const productsData = [
                                 "price": 47998,
                                 "cost_price": 47998,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -12660,7 +13049,8 @@ const productsData = [
                                 "price": 10000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -12673,7 +13063,8 @@ const productsData = [
                                 "price": 18000,
                                 "cost_price": 18000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -12686,7 +13077,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -12699,7 +13091,8 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -12722,7 +13115,8 @@ const productsData = [
                                 "price": 11500,
                                 "cost_price": 11500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -12735,7 +13129,8 @@ const productsData = [
                                 "price": 22000,
                                 "cost_price": 22000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -12748,7 +13143,8 @@ const productsData = [
                                 "price": 43000,
                                 "cost_price": 43000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -12761,7 +13157,8 @@ const productsData = [
                                 "price": 62999,
                                 "cost_price": 62999,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -12826,7 +13223,8 @@ const productsData = [
                                 "price": 4500,
                                 "cost_price": 500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -12839,7 +13237,8 @@ const productsData = [
                                 "price": 8000,
                                 "cost_price": 5500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -12862,7 +13261,8 @@ const productsData = [
                                 "price": 4500,
                                 "cost_price": 4500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -12875,7 +13275,8 @@ const productsData = [
                                 "price": 8500,
                                 "cost_price": 8500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -12888,7 +13289,8 @@ const productsData = [
                                 "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -12901,7 +13303,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -12968,7 +13371,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -13017,7 +13421,8 @@ const productsData = [
                                 "price": 13000,
                                 "cost_price": 13000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x2)",
@@ -13030,7 +13435,8 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x3)",
@@ -13043,7 +13449,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -13056,7 +13463,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -13081,7 +13489,8 @@ const productsData = [
                                 "price": 14000,
                                 "cost_price": 14000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x2)",
@@ -13094,7 +13503,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 26000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x3)",
@@ -13107,7 +13517,8 @@ const productsData = [
                                 "price": 35998,
                                 "cost_price": 35998,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -13120,7 +13531,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -13145,7 +13557,8 @@ const productsData = [
                                 "price": 15000,
                                 "cost_price": 15000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x2)",
@@ -13158,7 +13571,8 @@ const productsData = [
                                 "price": 28000,
                                 "cost_price": 28000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x3)",
@@ -13171,7 +13585,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -13184,7 +13599,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -13226,7 +13642,7 @@ const productsData = [
                 ],
                 "last_modified": 1786317536131,
                 "primaryCatId": "Estantes",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -13298,7 +13714,8 @@ const productsData = [
                                 "price": 18000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -13347,7 +13764,8 @@ const productsData = [
                                 "price": 37000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -13368,6 +13786,78 @@ const productsData = [
                     "otroEnabled": false,
                     "logisticaMaxUnits": 1
                 }
+            },
+            {
+                "id": "7C",
+                "title": "Repisa-estante de pared con toallero",
+                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
+                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                        "images_list": [
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Unico",
+                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2.5,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788916093301,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "visible": true
             }
         ]
     },
@@ -13409,7 +13899,8 @@ const productsData = [
                                 "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 1
+                                "stock": 1,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -13423,7 +13914,8 @@ const productsData = [
                                 "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -13437,7 +13929,8 @@ const productsData = [
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -13451,7 +13944,8 @@ const productsData = [
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -13465,7 +13959,8 @@ const productsData = [
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -13479,7 +13974,8 @@ const productsData = [
                                 "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -13493,7 +13989,8 @@ const productsData = [
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -13507,7 +14004,8 @@ const productsData = [
                                 "cost_price": 24000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -13521,7 +14019,8 @@ const productsData = [
                                 "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -13551,7 +14050,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -13564,7 +14064,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -13577,7 +14078,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -13590,7 +14092,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -13603,7 +14106,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -13616,7 +14120,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -13646,7 +14151,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -13659,7 +14165,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -13672,7 +14179,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -13685,7 +14193,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -13698,7 +14207,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -13711,7 +14221,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -13841,7 +14352,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 3
+                                "stock": 3,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -13855,7 +14367,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -13869,7 +14382,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -13883,7 +14397,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -13897,7 +14412,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -13911,7 +14427,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -13925,7 +14442,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -13939,7 +14457,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -13953,7 +14472,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -13984,7 +14504,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -13998,7 +14519,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -14012,7 +14534,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -14026,7 +14549,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -14040,7 +14564,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -14054,7 +14579,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -14081,7 +14607,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -14094,7 +14621,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -14107,7 +14635,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -14120,7 +14649,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -14133,7 +14663,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -14146,7 +14677,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -14273,7 +14805,8 @@ const productsData = [
                                 "price": 85000,
                                 "cost_price": 85000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "190 x 60 cm",
@@ -14286,7 +14819,8 @@ const productsData = [
                                 "price": 85000,
                                 "cost_price": 85000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "140 x 60 cm",
@@ -14299,7 +14833,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 60000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -14312,7 +14847,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -14325,7 +14861,8 @@ const productsData = [
                                 "price": 30000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -14345,10 +14882,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 0,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "190 x 60 cm",
@@ -14358,10 +14896,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 0,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "140 x 60 cm",
@@ -14374,7 +14913,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -14387,7 +14927,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -14400,7 +14941,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -14425,7 +14967,8 @@ const productsData = [
                                 "highlight": false,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -14437,7 +14980,8 @@ const productsData = [
                                 "highlight": false,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -14553,7 +15097,8 @@ const productsData = [
                                 "price": 65000,
                                 "cost_price": 65000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -14566,7 +15111,8 @@ const productsData = [
                                 "price": 65000,
                                 "cost_price": 65000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -14579,7 +15125,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "130 x 45 cm",
@@ -14592,7 +15139,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -14605,7 +15153,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -14618,7 +15167,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -14631,7 +15181,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -14644,7 +15195,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -14670,7 +15222,8 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -14683,7 +15236,8 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -14696,7 +15250,8 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -14709,7 +15264,8 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -14734,7 +15290,8 @@ const productsData = [
                                 "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -14747,7 +15304,8 @@ const productsData = [
                                 "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -14760,7 +15318,8 @@ const productsData = [
                                 "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -14773,7 +15332,8 @@ const productsData = [
                                 "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -14866,7 +15426,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 1
+                                "stock": 1,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -14880,7 +15441,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -14894,7 +15456,8 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -14920,7 +15483,9 @@ const productsData = [
                                 "highlight": false,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5,
+                                "price": 45000
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -14932,7 +15497,9 @@ const productsData = [
                                 "highlight": false,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5,
+                                "price": 45000
                             }
                         ],
                         "hidden": false,
@@ -14958,7 +15525,9 @@ const productsData = [
                                 "highlight": false,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 65000,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -14970,7 +15539,9 @@ const productsData = [
                                 "highlight": false,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 65000,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -15065,7 +15636,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -15140,7 +15712,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5,
+                                "price": 15000
                             }
                         ],
                         "hidden": false
@@ -15223,7 +15797,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5,
+                                "price": 15000
                             }
                         ],
                         "hidden": false
@@ -15306,7 +15882,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5,
+                                "price": 15000
                             }
                         ],
                         "hidden": false
@@ -15403,7 +15981,8 @@ const productsData = [
                                 "cost_price": 13000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 1
+                                "stock": 1,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x2)",
@@ -15417,7 +15996,8 @@ const productsData = [
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x3)",
@@ -15431,7 +16011,8 @@ const productsData = [
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -15445,7 +16026,8 @@ const productsData = [
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -15470,7 +16052,8 @@ const productsData = [
                                 "price": 14000,
                                 "cost_price": 14000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x2)",
@@ -15483,7 +16066,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 26000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x3)",
@@ -15496,7 +16080,8 @@ const productsData = [
                                 "price": 35998,
                                 "cost_price": 35998,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -15509,7 +16094,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -15534,7 +16120,8 @@ const productsData = [
                                 "price": 15000,
                                 "cost_price": 15000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x2)",
@@ -15547,7 +16134,8 @@ const productsData = [
                                 "price": 28000,
                                 "cost_price": 28000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x3)",
@@ -15560,7 +16148,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -15573,7 +16162,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -15642,34 +16232,6 @@ const productsData = [
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Grande",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false,
-                                "stock": 1
-                            },
-                            {
-                                "medida": "Mediano",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false,
-                                "stock": 0
-                            },
-                            {
                                 "medida": "Combo",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1487292863-estantes-x3-set-repisas-madera-hexagonos-_JM",
                                 "default": true,
@@ -15680,26 +16242,12 @@ const productsData = [
                                 "price": 22000,
                                 "cost_price": 11000,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 10
-                            },
-                            {
-                                "medida": "Chico",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false,
-                                "stock": 0
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
-                        "hidden": false,
-                        "stock": 11
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -15728,22 +16276,28 @@ const productsData = [
                     "hexagonos de pino",
                     "decoracion pared hexagono"
                 ],
-                "last_modified": 1783812077617,
-                "primaryCatId": "Estantes",
-                "visible": true,
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "stock": 11
+                "quantityDiscounts": [],
+                "last_modified": 1788913987169,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "63",
@@ -15763,63 +16317,81 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1546524765-estante-flotante-nordico-madera-100x10cm-la-tarima-_JM",
                                 "default": true,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "weight": 2.5,
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 (Combo x2)",
                                 "link": "",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "weight": 2.5,
+                                "showPrice": true
                             },
                             {
                                 "medida": "100 (Combo x3)",
                                 "link": "",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "weight": 2.5,
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1546434559-estante-flotante-nordico-madera-80x10cm-la-tarima-_JM",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "weight": 2.5,
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 (Combo x2)",
                                 "link": "",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "weight": 2.5,
+                                "showPrice": true
                             },
                             {
                                 "medida": "80 (Combo x3)",
                                 "link": "",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "weight": 2.5,
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2066246148-estante-flotante-nordico-madera-60x10cm-la-tarima-_JM",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "weight": 2.5,
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 (Combo x2)",
                                 "link": "",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "weight": 2.5,
+                                "showPrice": true
                             },
                             {
                                 "medida": "60 (Combo x3)",
                                 "link": "",
                                 "default": false,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "weight": 2.5,
+                                "showPrice": true
                             }
                         ]
                     }
@@ -15881,7 +16453,10 @@ const productsData = [
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2278025688-estante-triangulo-x-3-unidades-_JM",
                                 "default": true,
                                 "volumeDiscounts": [],
-                                "cost_price": ""
+                                "cost_price": "",
+                                "price": 20000,
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ]
                     }
@@ -15940,39 +16515,21 @@ const productsData = [
                                 "medida": "Combo x3",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1508934203-estante-cuadrado-combo-x3un-_JM",
                                 "default": true,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
                                 "cost_price": "",
-                                "stock": 0
-                            },
-                            {
-                                "medida": "Grande",
-                                "link": "",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": "",
-                                "stock": 0
-                            },
-                            {
-                                "medida": "Mediano",
-                                "link": "",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": "",
-                                "stock": 0
-                            },
-                            {
-                                "medida": "Chico",
-                                "link": "",
-                                "default": false,
-                                "volumeDiscounts": [],
-                                "cost_price": "",
-                                "stock": 0
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
-                "views": 3,
                 "tags": [
                     "estante",
                     "estantes",
@@ -15997,18 +16554,27 @@ const productsData = [
                     "cuadrados de pino",
                     "decoracion pared cuadrado"
                 ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 0
+                "quantityDiscounts": [],
+                "last_modified": 1788914028441,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "views": 5
             },
             {
                 "id": "66",
@@ -16034,7 +16600,8 @@ const productsData = [
                                 "price": 4500,
                                 "cost_price": 500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -16047,7 +16614,8 @@ const productsData = [
                                 "price": 8000,
                                 "cost_price": 5500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -16070,7 +16638,8 @@ const productsData = [
                                 "price": 4500,
                                 "cost_price": 4500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -16083,7 +16652,8 @@ const productsData = [
                                 "price": 8500,
                                 "cost_price": 8500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -16096,7 +16666,8 @@ const productsData = [
                                 "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -16109,7 +16680,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -16174,7 +16746,8 @@ const productsData = [
                                 "price": 5800,
                                 "cost_price": 5800,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "20 x 80 cm",
@@ -16187,7 +16760,8 @@ const productsData = [
                                 "price": 7700,
                                 "cost_price": 7700,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "20 x 100 cm",
@@ -16200,7 +16774,8 @@ const productsData = [
                                 "price": 9700,
                                 "cost_price": 9700,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "30 x 60 cm",
@@ -16213,7 +16788,8 @@ const productsData = [
                                 "price": 8750,
                                 "cost_price": 8750,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "30 x 80 cm",
@@ -16226,7 +16802,8 @@ const productsData = [
                                 "price": 11600,
                                 "cost_price": 11600,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "30 x 100 cm",
@@ -16239,7 +16816,8 @@ const productsData = [
                                 "price": 14500,
                                 "cost_price": 14500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -16267,7 +16845,7 @@ const productsData = [
                 "last_modified": 1788655893942,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 10
+                "views": 11
             },
             {
                 "id": "68",
@@ -16295,7 +16873,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
@@ -16308,7 +16887,8 @@ const productsData = [
                                 "price": 18000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
@@ -16321,7 +16901,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
@@ -16334,7 +16915,8 @@ const productsData = [
                                 "price": 18000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -16413,7 +16995,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "20 x 80 cm",
@@ -16426,7 +17009,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "20 x 100 cm",
@@ -16439,7 +17023,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "30 x 60 cm",
@@ -16452,7 +17037,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "30 x 80 cm",
@@ -16465,7 +17051,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "30 x 100 cm",
@@ -16478,7 +17065,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Otras medidas",
@@ -16491,7 +17079,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -16544,7 +17133,8 @@ const productsData = [
                                 "price": 9000,
                                 "cost_price": 9000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -16557,7 +17147,8 @@ const productsData = [
                                 "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -16570,7 +17161,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -16583,7 +17175,8 @@ const productsData = [
                                 "price": 47998,
                                 "cost_price": 47998,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -16606,7 +17199,8 @@ const productsData = [
                                 "price": 10000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -16619,7 +17213,8 @@ const productsData = [
                                 "price": 18000,
                                 "cost_price": 18000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -16632,7 +17227,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -16645,7 +17241,8 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -16668,7 +17265,8 @@ const productsData = [
                                 "price": 11500,
                                 "cost_price": 11500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -16681,7 +17279,8 @@ const productsData = [
                                 "price": 22000,
                                 "cost_price": 22000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -16694,7 +17293,8 @@ const productsData = [
                                 "price": 43000,
                                 "cost_price": 43000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -16707,7 +17307,8 @@ const productsData = [
                                 "price": 62999,
                                 "cost_price": 62999,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -16775,7 +17376,8 @@ const productsData = [
                                 "price": 37000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -16796,6 +17398,78 @@ const productsData = [
                     "otroEnabled": false,
                     "logisticaMaxUnits": 1
                 }
+            },
+            {
+                "id": "7C",
+                "title": "Repisa-estante de pared con toallero",
+                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
+                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                        "images_list": [
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Unico",
+                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2.5,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788916093301,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "visible": true
             }
         ],
         "rubro": "carpinteria"
@@ -17010,7 +17684,8 @@ const productsData = [
                                 "price": 75000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -17113,7 +17788,8 @@ const productsData = [
                                 "price": 103500,
                                 "cost_price": 69000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -17566,7 +18242,8 @@ const productsData = [
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -17709,7 +18386,8 @@ const productsData = [
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -17818,7 +18496,8 @@ const productsData = [
                                 "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": false
+                                "logisticaEnabled": false,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Vertical 150 a 200 cm",
@@ -17832,7 +18511,8 @@ const productsData = [
                                 "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": false
+                                "logisticaEnabled": false,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Inclinada 100 a 150 cm",
@@ -17846,7 +18526,8 @@ const productsData = [
                                 "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Vertical 100 a 150 cm",
@@ -17860,7 +18541,8 @@ const productsData = [
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Inclinada 0 a 100 cm",
@@ -17874,7 +18556,8 @@ const productsData = [
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Vertical 0 a 100 cm",
@@ -17888,7 +18571,8 @@ const productsData = [
                                 "cost_price": 30000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18002,7 +18686,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18051,7 +18736,8 @@ const productsData = [
                                 "price": 18000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18104,28 +18790,49 @@ const productsData = [
                                 "medida": "120 x 60 x 20 cm",
                                 "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 80000,
                                 "cost_price": "",
-                                "stock": 1
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "70 x 28 x 12 cm",
                                 "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
-                                "default": true,
-                                "volumeDiscounts": [],
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
                                 "cost_price": "",
-                                "stock": 0
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "60 x 28 x 9",
                                 "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
-                                "default": false,
-                                "volumeDiscounts": [],
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
                                 "cost_price": "",
-                                "stock": 0
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
-                        "stock": 1
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -18150,21 +18857,27 @@ const productsData = [
                     "caja de madera profesional",
                     "caja de almacenamiento"
                 ],
-                "last_modified": 1782417151111,
-                "primaryCatId": "Steps",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "stock": 1
+                "quantityDiscounts": [],
+                "last_modified": 1788907898357,
+                "primaryCatId": "Steps",
+                "history": [],
+                "views": 2
             },
             {
                 "id": "A2",
@@ -18192,10 +18905,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 15000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18219,10 +18934,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 20000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18246,10 +18963,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 25000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18296,20 +19015,27 @@ const productsData = [
                     "escalera fija",
                     "cajonera profesional"
                 ],
-                "last_modified": 1786332353302,
-                "primaryCatId": "Steps",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1788908106317,
+                "primaryCatId": "Steps",
+                "history": [],
+                "views": 0
             },
             {
                 "id": "A3",
@@ -18337,10 +19063,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 17000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18364,10 +19092,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 24000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18391,10 +19121,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 32000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18418,10 +19150,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 40000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18468,20 +19202,27 @@ const productsData = [
                     "escalera fija",
                     "cajonera profesional"
                 ],
-                "last_modified": 1786332262471,
-                "primaryCatId": "Steps",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1788908470878,
+                "primaryCatId": "Steps",
+                "history": [],
+                "views": 0
             },
             {
                 "id": "A4",
@@ -18509,10 +19250,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 17000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18536,10 +19279,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 25000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18563,10 +19308,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 31000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18590,10 +19337,12 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 32000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18640,20 +19389,27 @@ const productsData = [
                     "escalera fija",
                     "cajonera profesional"
                 ],
-                "last_modified": 1786330064427,
-                "primaryCatId": "Steps",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1788908607231,
+                "primaryCatId": "Steps",
+                "history": [],
+                "views": 0
             }
         ]
     },
@@ -18685,7 +19441,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 20000,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18766,7 +19524,8 @@ const productsData = [
                                 "cost_price": 34000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 2
+                                "stock": 2,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -18792,7 +19551,8 @@ const productsData = [
                                 "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 2
+                                "stock": 2,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -18818,7 +19578,8 @@ const productsData = [
                                 "price": 64000,
                                 "cost_price": 32000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -18906,7 +19667,8 @@ const productsData = [
                                 "price": 18000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18951,7 +19713,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -18996,7 +19759,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -19041,7 +19805,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -19098,7 +19863,8 @@ const productsData = [
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -19156,8 +19922,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 0
+                                "showPrice": true,
+                                "stock": 0,
+                                "price": 20000,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -19258,7 +20026,8 @@ const productsData = [
                                 "price": 36000,
                                 "cost_price": 18000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -19355,7 +20124,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -19400,7 +20170,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -19445,7 +20216,8 @@ const productsData = [
                                 "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -19503,7 +20275,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 6500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -19687,7 +20460,8 @@ const productsData = [
                                 "price": 80000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Chica",
@@ -19700,7 +20474,8 @@ const productsData = [
                                 "price": 28000,
                                 "cost_price": 14000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Mediana",
@@ -19713,7 +20488,8 @@ const productsData = [
                                 "price": 34000,
                                 "cost_price": 17000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Grande",
@@ -19726,7 +20502,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -19750,7 +20527,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Chica",
@@ -19763,7 +20541,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Mediana",
@@ -19776,7 +20555,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Grande",
@@ -19789,7 +20569,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -19936,7 +20717,8 @@ const productsData = [
                                 "price": 9000,
                                 "cost_price": 9000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -19949,7 +20731,8 @@ const productsData = [
                                 "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -19962,7 +20745,8 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -19975,7 +20759,8 @@ const productsData = [
                                 "price": 47998,
                                 "cost_price": 47998,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -19998,7 +20783,8 @@ const productsData = [
                                 "price": 10000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -20011,7 +20797,8 @@ const productsData = [
                                 "price": 18000,
                                 "cost_price": 18000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -20024,7 +20811,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -20037,7 +20825,8 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20060,7 +20849,8 @@ const productsData = [
                                 "price": 11500,
                                 "cost_price": 11500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Un.",
@@ -20073,7 +20863,8 @@ const productsData = [
                                 "price": 22000,
                                 "cost_price": 22000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "4 Un.",
@@ -20086,7 +20877,8 @@ const productsData = [
                                 "price": 43000,
                                 "cost_price": 43000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "6 Un.",
@@ -20099,7 +20891,8 @@ const productsData = [
                                 "price": 62999,
                                 "cost_price": 62999,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20201,7 +20994,8 @@ const productsData = [
                                 "price": 17000,
                                 "cost_price": 16997,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20257,7 +21051,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "(Combo x2)",
@@ -20270,7 +21065,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "(Combo x3)",
@@ -20283,7 +21079,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20307,7 +21104,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "(2 Unidad)",
@@ -20320,7 +21118,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "(3 Unidad)",
@@ -20333,7 +21132,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20357,7 +21157,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "(Combo x2)",
@@ -20370,7 +21171,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "(Combo x3)",
@@ -20383,7 +21185,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20489,7 +21292,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Unidades",
@@ -20502,7 +21306,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "3 Unidades",
@@ -20515,7 +21320,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20538,7 +21344,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "30 x 30 cm (Combo x2)",
@@ -20551,7 +21358,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "30 x 30 cm (Combo x3)",
@@ -20564,7 +21372,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20587,7 +21396,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "40 x 40 cm (Combo x2)",
@@ -20600,7 +21410,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "40 x 40 cm (Combo x3)",
@@ -20613,7 +21424,8 @@ const productsData = [
                                 "price": "",
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20636,7 +21448,8 @@ const productsData = [
                                 "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "2 Unidades",
@@ -20649,7 +21462,8 @@ const productsData = [
                                 "price": 38000,
                                 "cost_price": 38000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "3 Unidades",
@@ -20662,7 +21476,8 @@ const productsData = [
                                 "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20768,10 +21583,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 18000,
+                                "price": 20000,
                                 "cost_price": 9000,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20868,7 +21684,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 20000,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Grande",
@@ -20879,7 +21697,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 7000,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Mediano",
@@ -20890,7 +21710,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 6500,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "Chico",
@@ -20901,7 +21723,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false
+                                "showPrice": true,
+                                "price": 6000,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20959,7 +21783,8 @@ const productsData = [
                                 "highlight": false,
                                 "price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -20983,7 +21808,8 @@ const productsData = [
                                 "highlight": false,
                                 "price": 85000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -21234,7 +22060,8 @@ const productsData = [
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "stock": 0,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -21336,7 +22163,8 @@ const productsData = [
                                 "price": 37000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -21356,6 +22184,214 @@ const productsData = [
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
+            },
+            {
+                "id": "7C",
+                "title": "Repisa-estante de pared con toallero",
+                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
+                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                        "images_list": [
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Unico",
+                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2.5,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788916093301,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "visible": true
+            },
+            {
+                "id": "G8",
+                "title": "Palo De Amasar De Madera Mango Fijo 40 Cm",
+                "description": "Lo que tenés que saber de este producto\nLargo del mango: 7 cm\nLargo total: 40 cm\nDiámetro: 4.5 cm\nFabricado en madera.\nEs apto para lavavajillas.",
+                "image": "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916679797-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916679797-imagen.webp",
+                        "images_list": [
+                            "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916679797-imagen.webp",
+                            "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916679939-imagen.webp",
+                            "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916680073-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40 cm",
+                                "link": "https://www.mercadolibre.com.ar/palo-de-amasar-de-madera-mango-fijo-40-cm/up/MLAU5146280044?pdp_filters=item_id:MLA3927660378",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 5,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788916680249,
+                "primaryCatId": "Hogar",
+                "history": []
+            },
+            {
+                "id": "G9",
+                "title": "Tabla Para Picada Mapa Argentina + Regalos",
+                "description": "Lo que tenés que saber de este producto\nEspesor: 1.5 mm\nAncho: 14 cm\nLargo: 40 cm\nUnidades por pack: 1\nForma: MAPA ARGENTINA",
+                "image": "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
+                        "images_list": [
+                            "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
+                            "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343741-imagen.webp",
+                            "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343901-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Argentina!!!",
+                                "link": "https://www.mercadolibre.com.ar/tabla-para-picada-mapa-argentina/up/MLAU5145322972?pdp_filters=item_id:MLA3926974000",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 12000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 10,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788917344040,
+                "primaryCatId": "Hogar",
+                "history": []
             }
         ]
     },
@@ -21393,7 +22429,8 @@ const productsData = [
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 2
+                                "stock": 2,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false,
@@ -21559,16 +22596,17 @@ const productsData = [
                 "id": "G3",
                 "title": "Mate",
                 "description": "",
-                "image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
+                "image": "img/todo-algarrobo/mate/1788916270368-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
-                        "cover_image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/mate/1788916270368-imagen.webp",
                         "images_list": [
+                            "img/todo-algarrobo/mate/1788916270368-imagen.webp",
+                            "img/todo-algarrobo/mate/1788916270515-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903756-imagen.webp",
-                            "img/todo-algarrobo/Mate/1780708903884-imagen.webp",
-                            "img/todo-algarrobo/Mate/1780708904016-imagen.webp"
+                            "img/todo-algarrobo/Mate/1780708903884-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -21583,17 +22621,15 @@ const productsData = [
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
                     "mate",
-                    "todo",
-                    "algarrobo",
+                    "carpintería",
                     "madera",
                     "pino",
                     "carpinteria",
@@ -21616,18 +22652,15 @@ const productsData = [
                     "util",
                     "practico",
                     "duradero",
+                    "excelente",
                     "mate de madera",
                     "mate de pino",
                     "mueble mate",
-                    "todo algarrobo mate",
-                    "todo de madera",
-                    "todo de pino",
-                    "mueble todo",
-                    "todo algarrobo todo",
-                    "algarrobo de madera",
-                    "algarrobo de pino",
-                    "mueble algarrobo",
-                    "todo algarrobo algarrobo",
+                    "carpintería  mate",
+                    "carpintería de madera",
+                    "carpintería de pino",
+                    "mueble carpintería",
+                    "carpintería  carpintería",
                     "mueble de madera",
                     "mueble de pino",
                     "carpinteria artesanal",
@@ -21640,23 +22673,32 @@ const productsData = [
                     "mueble util",
                     "mueble practico",
                     "muebles para casa",
-                    "envios a todo el pais"
+                    "envios a todo el pais",
+                    "directo de fabrica",
+                    "fabricacion nacional",
+                    "madera de pino",
+                    "madera cepillada"
                 ],
-                "last_modified": 1783907387290,
-                "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 10,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 10
-                },
-                "stock": 0
+                "quantityDiscounts": [],
+                "last_modified": 1788916270642,
+                "primaryCatId": "productos-algarrobo",
+                "history": []
             }
         ]
     },
@@ -21689,8 +22731,10 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 35000,
-                                "price": 375000,
-                                "stock": 0
+                                "price": 350000,
+                                "stock": 0,
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ]
                     }
@@ -21817,7 +22861,8 @@ const productsData = [
                                 "price": 250000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ],
                         "hidden": false
@@ -21906,8 +22951,10 @@ const productsData = [
                                 "default": true,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 145000,
-                                "stock": 0
+                                "price": 120000,
+                                "stock": 0,
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "60 x 40 x 30",
@@ -21915,8 +22962,10 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 135000,
-                                "stock": 0
+                                "price": 100000,
+                                "stock": 0,
+                                "showPrice": true,
+                                "weight": 2.5
                             },
                             {
                                 "medida": "60 x 40 x 20",
@@ -21924,8 +22973,10 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 125000,
-                                "stock": 0
+                                "price": 80000,
+                                "stock": 0,
+                                "showPrice": true,
+                                "weight": 2.5
                             }
                         ]
                     }

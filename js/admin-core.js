@@ -71,7 +71,7 @@ function initAdminUX20() {
     // Leer la pestaña activa inicial desde la URL (?tab=...) o HASH (#tab)
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
+    const validTabs = ['dashboard', 'settings', 'catalog', 'bulk-edit', 'offers', 'shipping', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
     if (tabFromUrl && validTabs.includes(tabFromUrl)) {
         currentAdminTab = tabFromUrl;
     }
@@ -98,7 +98,7 @@ function initAdminUX20() {
     if (!window._adminNavigationDelegated) {
         window._adminNavigationDelegated = true;
         document.addEventListener('click', (e) => {
-            const navBtn = e.target.closest('.admin-nav-btn');
+            const navBtn = e.target.closest('.admin-sidebar-btn, .admin-nav-btn');
             if (navBtn && navBtn.id && navBtn.id.startsWith('tab-btn-')) {
                 const tabKey = navBtn.id.replace('tab-btn-', '');
                 currentAdminTab = tabKey;
@@ -363,13 +363,13 @@ function renderAdminUX() {
     // Asegurar lectura de URL en cada renderizado
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
+    const validTabs = ['dashboard', 'settings', 'catalog', 'bulk-edit', 'offers', 'shipping', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
     if (tabFromUrl && validTabs.includes(tabFromUrl)) {
         currentAdminTab = tabFromUrl;
     }
 
     // Control visual de la barra de navegación del panel (V2)
-        const tabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users'];
+        const tabs = ['dashboard', 'settings', 'catalog', 'bulk-edit', 'offers', 'shipping', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -386,6 +386,7 @@ function renderAdminUX() {
             dashboard: { title: 'Panel de Control', icon: 'dashboard' },
             settings: { title: 'Ajustes del Negocio', icon: 'settings' },
             catalog: { title: 'Catálogo de Productos', icon: 'inventory_2' },
+            'bulk-edit': { title: 'Editor Masivo de Precios & Productos', icon: 'table_chart' },
             offers: { title: 'Ofertas & Combos', icon: 'local_offer' },
             shipping: { title: 'Envíos & Zonas Tarifarias', icon: 'local_shipping' },
             payments: { title: 'Métodos & Pasarelas de Pago', icon: 'payments' },
@@ -407,6 +408,7 @@ function renderAdminUX() {
             dashboard: 'admin-dashboard-view',
             settings: 'admin-settings-view',
             catalog: 'admin-catalog-view',
+            'bulk-edit': 'admin-bulk-edit-view',
             offers: 'admin-offers-view',
             shipping: 'admin-shipping-view',
             payments: 'admin-payments-view',
@@ -430,6 +432,10 @@ function renderAdminUX() {
             renderAdminDashboard();
             populateAdminTheme();
             if (typeof window.populateAdminVacation === 'function') window.populateAdminVacation();
+        } else if (currentAdminTab === 'bulk-edit') {
+            if (typeof window.initBulkEditAdmin === 'function') {
+                window.initBulkEditAdmin();
+            }
         } else if (currentAdminTab === 'offers') {
             if (typeof window.renderAdminOffers === 'function') {
                 window.renderAdminOffers();

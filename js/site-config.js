@@ -160,6 +160,63 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Tabla Para Picada Mapa Argentina + Regalos!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Tabla Para Picada Mapa Argentina + Regalos!",
+            "mediaType": "image",
+            "image": "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=G9",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=G9",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1788917344041
+        },
+        {
+            "title": "¡Nuevo Ingreso: Palo De Amasar De Madera Mango Fijo 40 Cm!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Palo De Amasar De Madera Mango Fijo 40 Cm!",
+            "mediaType": "image",
+            "image": "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916679797-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=G8",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=G8",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1788916680250
+        },
+        {
+            "title": "¡Nuevo Ingreso: Repisa-estante de pared con toallero!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Repisa-estante de pared con toallero!",
+            "mediaType": "image",
+            "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=7C",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=7C",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1788915855757
+        },
+        {
             "title": "¡Nuevo Ingreso: Repisa Biblioteca Estantes Montessori!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Repisa Biblioteca Estantes Montessori!",
             "mediaType": "image",
