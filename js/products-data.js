@@ -3880,17 +3880,16 @@ const productsData = [
                 "id": "55",
                 "title": "Baranda: Para camas Sommier - Triple",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
-                "image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                "image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
                         "images_list": [
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739244-imagen.webp",
                             "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589030031-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589030175-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589030314-imagen.webp"
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739261-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -3905,7 +3904,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 1
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -3919,7 +3918,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -3933,51 +3932,65 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 1
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739280-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/03.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/04.webp"
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739280-imagen.webp",
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739296-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739321-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "110 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 55000
-                            },
-                            {
-                                "medida": "70 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1348081575-baranda-de-seguridad-para-sommier-110-x-60-cm-blanca-_JM",
+                                "medida": "140 x 60 cm",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "cost_price": 10000,
+                                "price": 70000,
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 55000
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "110 x 60 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "70 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Blanco",
@@ -3997,10 +4010,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 75000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 75000
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -4010,14 +4024,14 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 75000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 75000
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -4065,21 +4079,27 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1786057097023,
-                "primaryCatId": "Barandas",
-                "views": 3,
+                "estimatedWeight": 3,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 1
+                "quantityDiscounts": [],
+                "last_modified": 1788928739326,
+                "primaryCatId": "Barandas",
+                "history": []
             },
             {
                 "id": "57",
@@ -15565,17 +15585,16 @@ const productsData = [
                 "id": "55",
                 "title": "Baranda: Para camas Sommier - Triple",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
-                "image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                "image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
                         "images_list": [
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739244-imagen.webp",
                             "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589030031-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589030175-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589030314-imagen.webp"
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739261-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -15590,8 +15609,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 1,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -15605,8 +15623,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -15620,54 +15637,65 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 1
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
+                        "cover_image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739280-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/03.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/04.webp"
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739280-imagen.webp",
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739296-imagen.webp",
+                            "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
+                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739321-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "110 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5,
-                                "price": 45000
-                            },
-                            {
-                                "medida": "70 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1348081575-baranda-de-seguridad-para-sommier-110-x-60-cm-blanca-_JM",
+                                "medida": "140 x 60 cm",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "cost_price": 10000,
+                                "price": 70000,
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
-                                "weight": 2.5,
-                                "price": 45000
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "110 x 60 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "70 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Blanco",
@@ -15687,11 +15715,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 75000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 65000,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -15701,15 +15729,14 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 75000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 65000,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -15757,21 +15784,27 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1786057097023,
-                "primaryCatId": "Barandas",
-                "views": 3,
+                "estimatedWeight": 3,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 1
+                "quantityDiscounts": [],
+                "last_modified": 1788928739326,
+                "primaryCatId": "Barandas",
+                "history": []
             },
             {
                 "id": "56",
