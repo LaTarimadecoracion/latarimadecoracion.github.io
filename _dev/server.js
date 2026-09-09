@@ -296,14 +296,18 @@ app.post('/api/upload-image', upload.single('image'), (req, res) => {
         const relativePath = path.relative(ROOT_DIR, req.file.path).replace(/\\/g, '/');
         console.log(`📸 Imagen subida y procesada en: ${relativePath}`);
 
-        // Si se subió un logo de tienda, actualizar automáticamente favicon.ico en la raíz
+        // Si se subió un logo de tienda, actualizar automáticamente favicon.ico y LOGO.png
         if (req.body.category === 'logos') {
             try {
                 const faviconPath = path.join(ROOT_DIR, 'favicon.ico');
                 fs.copyFileSync(req.file.path, faviconPath);
-                console.log('📌 Favicon (favicon.ico) actualizado automáticamente desde el nuevo logo.');
+                
+                const logoPngPath = path.join(ROOT_DIR, 'img', 'LOGO.png');
+                fs.copyFileSync(req.file.path, logoPngPath);
+                
+                console.log('📌 Favicon y LOGO.png actualizados automáticamente desde el nuevo logo.');
             } catch (favErr) {
-                console.warn('⚠️ No se pudo copiar el logo como favicon.ico:', favErr);
+                console.warn('⚠️ No se pudo copiar el logo como favicon/LOGO.png:', favErr);
             }
         }
 
