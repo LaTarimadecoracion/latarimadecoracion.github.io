@@ -241,6 +241,12 @@ const sanitizeFolderName = (name) => {
 // Multer storage configuration for image uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
+        if (req.body.category === 'logos') {
+            const targetDir = path.join(ROOT_DIR, 'img');
+            fs.mkdirSync(targetDir, { recursive: true });
+            return cb(null, targetDir);
+        }
+
         // Obtenemos los datos sanitizados
         const rubroFolder = req.body.rubro && req.body.rubro !== 'carpinteria' ? sanitizeFolderName(req.body.rubro) : '';
         const catFolder = sanitizeFolderName(req.body.category) || 'general';
@@ -270,6 +276,10 @@ const storage = multer.diskStorage({
         cb(null, targetDir);
     },
     filename: function (req, file, cb) {
+        if (req.body.category === 'logos') {
+            return cb(null, 'logo_provisional.png');
+        }
+
         const prodFolder = sanitizeFolderName(req.body.title);
         const cleanOriginal = file.originalname.replace(/\s+/g, '_').replace(/\.[^/.]+$/, "");
         // Garantizar extensión .webp
@@ -291,7 +301,7 @@ app.post('/api/upload-image', upload.single('image'), (req, res) => {
         // Retornar la ruta relativa amigable web (ej: img/carpinteria/combos/mate/1725838000-foto.webp)
         const relativePath = path.relative(ROOT_DIR, req.file.path).replace(/\\/g, '/');
         console.log(`📸 Imagen subida y procesada en: ${relativePath}`);
-        res.json({ success: true, imagePath: relativePath });
+        res.json({ success: true, imagePath: relativePath, url: relativePath });
     } catch (err) {
         console.error('❌ Error guardando imagen en el servidor:', err);
         res.status(500).json({ success: false, message: 'Error interno guardando la imagen.' });
