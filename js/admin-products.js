@@ -55,7 +55,11 @@ window.initProductsAdmin = function() {
                     const idx = sessionProducts.findIndex(c => c.id === selectedCategoryIdForProducts);
                     if (idx !== -1) catIdx = idx;
                 }
-                openProductForm(catIdx, null);
+                if (typeof window.openProductForm === 'function') {
+                    window.openProductForm(catIdx, null);
+                } else if (typeof openProductForm === 'function') {
+                    openProductForm(catIdx, null);
+                }
             });
         }
 
@@ -329,7 +333,11 @@ window.initProductsAdmin = function() {
                     }
                 }
                 
-                openProductForm(cIdx, updatedProd || sessionProducts[cIdx].products[pIdx]);
+                if (typeof window.openProductForm === 'function') {
+                    window.openProductForm(cIdx, updatedProd || sessionProducts[cIdx].products[pIdx]);
+                } else if (typeof openProductForm === 'function') {
+                    openProductForm(cIdx, updatedProd || sessionProducts[cIdx].products[pIdx]);
+                }
             });
 
             row.querySelector('.btn-clone-prod-new').addEventListener('click', (e) => {
@@ -429,7 +437,11 @@ window.initProductsAdmin = function() {
         cloned.isClone = true; // Marcar para que openProductForm sepa que es un clon
 
         // Abrir el formulario con los datos clonados pre-cargados
-        openProductForm(cIdx, cloned);
+        if (typeof window.openProductForm === 'function') {
+            window.openProductForm(cIdx, cloned);
+        } else if (typeof openProductForm === 'function') {
+            openProductForm(cIdx, cloned);
+        }
 
         // Forzar modo "nuevo producto" para que al guardar se inserte, no se sobreescriba
         editingProductId = null;

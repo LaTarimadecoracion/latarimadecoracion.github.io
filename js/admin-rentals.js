@@ -6,7 +6,11 @@
         if (btnOpenAddRental) {
             btnOpenAddRental.addEventListener('click', () => {
                 window.isRentalMode = true;
-                openProductForm(null, null);
+                if (typeof window.openProductForm === 'function') {
+                    window.openProductForm(null, null);
+                } else if (typeof openProductForm === 'function') {
+                    openProductForm(null, null);
+                }
             });
         }
 
@@ -215,7 +219,11 @@
 
             tr.querySelector('.btn-edit-rental').addEventListener('click', () => {
                 window.isRentalMode = true;
-                openProductForm(null, rental);
+                if (typeof window.openProductForm === 'function') {
+                    window.openProductForm(null, rental);
+                } else if (typeof openProductForm === 'function') {
+                    openProductForm(null, rental);
+                }
             });
 
             tr.querySelector('.btn-clone-rental').addEventListener('click', () => {
@@ -285,7 +293,11 @@
         cloned.title = `${cloned.title} (Copia)`;
 
         window.isRentalMode = true;
-        openProductForm(null, cloned);
+        if (typeof window.openProductForm === 'function') {
+            window.openProductForm(null, cloned);
+        } else if (typeof openProductForm === 'function') {
+            openProductForm(null, cloned);
+        }
 
         editingProductId = null;
 

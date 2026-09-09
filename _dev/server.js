@@ -263,10 +263,11 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         const prodFolder = sanitizeFolderName(req.body.title);
-        // Si es producto usa timestamp, si es categoría se llama portada
+        const cleanOriginal = file.originalname.replace(/\s+/g, '_').replace(/\.[^/.]+$/, "");
+        // Garantizar extensión .webp
         const uniqueName = prodFolder 
-            ? `${Date.now()}-${file.originalname.replace(/\s+/g, '_')}`
-            : `portada-${file.originalname.replace(/\s+/g, '_')}`;
+            ? `${Date.now()}-${cleanOriginal}.webp`
+            : `portada-${cleanOriginal}.webp`;
         cb(null, uniqueName);
     }
 });
@@ -364,8 +365,11 @@ app.post('/api/save-products', (req, res) => {
         // Limpieza de fotos huérfanas/eliminadas del servidor físico
         try {
             const activeImagePaths = new Set();
-            productsArray.forEach(cat => {
-                (cat.products || []).forEach(p => {
+            
+            // Función auxiliar para registrar imágenes de un array de productos
+            const addProductImages = (items) => {
+                items.forEach(p => {
+                    if (!p) return;
                     if (typeof p.image === 'string') activeImagePaths.add(p.image.replace(/^[\/\\]/, ''));
                     else if (Array.isArray(p.image)) p.image.forEach(img => typeof img === 'string' && activeImagePaths.add(img.replace(/^[\/\\]/, '')));
                     if (p.acabados_groups) {
@@ -377,7 +381,59 @@ app.post('/api/save-products', (req, res) => {
                         });
                     }
                 });
+            };
+
+            // 1. Productos regulares y portadas de categorías
+            productsArray.forEach(cat => {
+                if (typeof cat.image === 'string') activeImagePaths.add(cat.image.replace(/^[\/\\]/, ''));
+                if (cat.products) addProductImages(cat.products);
             });
+
+            // 2. Alquileres
+            try {
+                const rentalsPath = path.join(ROOT_DIR, 'js', 'rentals-data.js');
+                if (fs.existsSync(rentalsPath)) {
+                    const rawRentals = fs.readFileSync(rentalsPath, 'utf8');
+                    const match = rawRentals.match(/const\s+rentalsData\s*=\s*(\[.*?\]);?\s*$/s);
+                    if (match && match[1]) {
+                        addProductImages(JSON.parse(match[1]));
+                    }
+                }
+            } catch (e) { console.warn('Error parseando rentalsData', e); }
+
+            // 3. Ofertas
+            try {
+                const offersPath = path.join(ROOT_DIR, 'js', 'offers-data.js');
+                if (fs.existsSync(offersPath)) {
+                    const rawOffers = fs.readFileSync(offersPath, 'utf8');
+                    const match = rawOffers.match(/const\s+offersData\s*=\s*(\[.*?\]);?\s*$/s);
+                    if (match && match[1]) {
+                        addProductImages(JSON.parse(match[1]));
+                    }
+                }
+            } catch (e) { console.warn('Error parseando offersData', e); }
+
+            // 4. Configuración del sitio (Avisos, logos)
+            try {
+                const configPath = path.join(ROOT_DIR, 'js', 'site-config.js');
+                if (fs.existsSync(configPath)) {
+                    const rawConfig = fs.readFileSync(configPath, 'utf8');
+                    const match = rawConfig.match(/window\.siteConfig\s*=\s*(\{.*?\});?\s*$/s);
+                    if (match && match[1]) {
+                        const config = JSON.parse(match[1]);
+                        if (config.avisos) {
+                            config.avisos.forEach(a => {
+                                if (typeof a.image === 'string') activeImagePaths.add(a.image.replace(/^[\/\\]/, ''));
+                            });
+                        }
+                    }
+                }
+            } catch (e) { console.warn('Error parseando siteConfig', e); }
+
+            // Agregar imágenes seguras por defecto
+            activeImagePaths.add('img/logo_provisional.png');
+            activeImagePaths.add('img/logo-dark.png');
+            activeImagePaths.add('img/logo-light.png');
 
             // Función recursiva para escanear y eliminar imágenes físicas que ya no están en productos
             const cleanOrphanImages = (dirPath) => {
@@ -396,8 +452,16 @@ app.post('/api/save-products', (req, res) => {
                         // Si es una imagen en img/ y no pertenece a ninguna categoría ni producto actual, eliminarla
                         if (relPath.startsWith('img/') && !relPath.includes('portada-') && !activeImagePaths.has(relPath)) {
                             try {
-                                fs.unlinkSync(fullPath);
-                                console.log(`🗑️ Foto eliminada del disco por no estar en uso: ${relPath}`);
+                                // Proteger fotos recién subidas (menos de 1 hora de antigüedad)
+                                const stat = fs.statSync(fullPath);
+                                const isRecentlyUploaded = (Date.now() - stat.mtimeMs) < 3600000; // 1 hora
+                                
+                                if (!isRecentlyUploaded) {
+                                    fs.unlinkSync(fullPath);
+                                    console.log(`🗑️ Foto eliminada del disco por no estar en uso: ${relPath}`);
+                                } else {
+                                    console.log(`🛡️ Foto huérfana protegida por ser reciente: ${relPath}`);
+                                }
                             } catch (e) {}
                         }
                     }

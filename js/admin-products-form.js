@@ -1,6 +1,9 @@
 // js/admin-products-form.js
 // --- ADMIN PRODUCTS FORM MODULE ---
 
+let activeGroupsUI = [];
+let groupCounter = 0;
+
     function getDragAfterElement(container, y, selector = '.medida-admin-row') {
         const draggableElements = [...container.querySelectorAll(`${selector}:not(.dragging)`)];
         
@@ -1132,6 +1135,7 @@
             productModal.scrollIntoView({ behavior: 'smooth' });
         }
     }
+    window.openProductForm = openProductForm;
 
     // ── Guardar producto con delegación de eventos global ──
     document.addEventListener('click', async (e) => {
@@ -1165,7 +1169,15 @@
             btnGenerateJson.disabled    = true;
             btnGenerateJson.textContent = 'Guardando...';
 
-            const catName = window.isRentalMode ? 'alquileres' : (targetCategoryIdForProduct !== null && sessionProducts[targetCategoryIdForProduct] ? sessionProducts[targetCategoryIdForProduct].name : 'general');
+            // Obtener categorías seleccionadas y principal previamente para saber la carpeta de la imagen
+            const checkboxesContainer = document.getElementById('product-categories-checkboxes');
+            let selectedCatIds = checkboxesContainer ? [...checkboxesContainer.querySelectorAll('.cat-checkbox:checked')].map(cb => cb.value) : [];
+            let primaryRadio = checkboxesContainer ? checkboxesContainer.querySelector('.cat-primary-radio:checked') : null;
+            let realSelectedCatIds = selectedCatIds.filter(id => !id.endsWith('-todos'));
+            let primaryCatId = primaryRadio ? primaryRadio.value : (realSelectedCatIds.length > 0 ? realSelectedCatIds[0] : (selectedCatIds.length > 0 ? selectedCatIds[0] : null));
+
+            let primaryCatObj = sessionProducts.find(c => c.id === primaryCatId);
+            const catName = window.isRentalMode ? 'alquileres' : (primaryCatObj ? primaryCatObj.name : (targetCategoryIdForProduct !== null && sessionProducts[targetCategoryIdForProduct] ? sessionProducts[targetCategoryIdForProduct].name : 'general'));
 
             // Configuración de Descuentos por Cantidad del Producto
             const discountRows = [...(document.getElementById('product-discounts-container')?.querySelectorAll('.discount-tier-row') || [])];
@@ -1185,16 +1197,17 @@
 
                 const uploadedImages = [];
                 for (const item of gState.images) {
-                    if (item && item.file instanceof File) {
-                        const path = await uploadImageToServer(item.file, catName, pTitle);
-                        uploadedImages.push(path || item.dataUrl);
-                    } else if (item instanceof File) {
-                        const path = await uploadImageToServer(item, catName, pTitle);
+                    const rawFile = item && item.file instanceof File ? item.file : (item instanceof File ? item : null);
+                    if (rawFile) {
+                        const cleanCatName = catName.replace(/[^a-zA-Z0-9\s-]/g, '').trim();
+                        const cleanTitle = pTitle.replace(/[^a-zA-Z0-9\s-]/g, '').trim();
+                        const path = await uploadImageToServer(rawFile, cleanCatName, cleanTitle);
                         if (path) {
                             uploadedImages.push(path);
+                        } else if (item && item.dataUrl) {
+                            uploadedImages.push(item.dataUrl);
                         } else {
-                            // Fallback a Base64 dataUrl si el servidor no responde
-                            const { dataUrl } = await convertImageToWebP(item);
+                            const { dataUrl } = await convertImageToWebP(rawFile);
                             uploadedImages.push(dataUrl);
                         }
                     } else if (typeof item === 'object' && item.dataUrl) {
@@ -1404,11 +1417,11 @@
             }
 
             // Obtener categorías seleccionadas y principal (solo modo normal)
-            const checkboxesContainer = document.getElementById('product-categories-checkboxes');
-            let selectedCatIds = checkboxesContainer ? [...checkboxesContainer.querySelectorAll('.cat-checkbox:checked')].map(cb => cb.value) : [];
-            const primaryRadio = checkboxesContainer ? checkboxesContainer.querySelector('.cat-primary-radio:checked') : null;
-            const realSelectedCatIds = selectedCatIds.filter(id => !id.endsWith('-todos'));
-            let primaryCatId = primaryRadio ? primaryRadio.value : (realSelectedCatIds.length > 0 ? realSelectedCatIds[0] : (selectedCatIds.length > 0 ? selectedCatIds[0] : null));
+            if (checkboxesContainer) {
+                selectedCatIds = [...checkboxesContainer.querySelectorAll('.cat-checkbox:checked')].map(cb => cb.value);
+            }
+            primaryRadio = checkboxesContainer ? checkboxesContainer.querySelector('.cat-primary-radio:checked') : null;
+            primaryCatId = primaryRadio ? primaryRadio.value : (realSelectedCatIds.length > 0 ? realSelectedCatIds[0] : (selectedCatIds.length > 0 ? selectedCatIds[0] : null));
 
             if (!primaryCatId) {
                 alert('Debes elegir una categoría como la Principal.');
@@ -1418,7 +1431,7 @@
             }
 
             // Identificar rubro de la categoría principal para forzar su Todos los productos
-            const primaryCatObj = sessionProducts.find(c => c.id === primaryCatId);
+            primaryCatObj = sessionProducts.find(c => c.id === primaryCatId);
             const primaryRubroId = primaryCatObj ? (primaryCatObj.rubro || 'carpinteria') : 'carpinteria';
             const defaultTodosId = `${primaryRubroId}-todos`;
 

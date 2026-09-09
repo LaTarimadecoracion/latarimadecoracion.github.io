@@ -64,7 +64,31 @@ async function build() {
         if (fs.existsSync(folderSrc)) {
             console.log(`📂 Sincronizando carpeta ${folder}...`);
             if (folder === 'img') {
-                fs.emptyDirSync(folderDest); // Vaciar docs/img para eliminar fotos borradas
+                // Borrar archivos en docs/img que ya no existen en img/
+                const removeOrphans = (srcD, destD) => {
+                    if (!fs.existsSync(destD)) return;
+                    const items = fs.readdirSync(destD, { withFileTypes: true });
+                    for (const item of items) {
+                        const srcP = path.join(srcD, item.name);
+                        const destP = path.join(destD, item.name);
+                        if (item.isDirectory()) {
+                            if (!fs.existsSync(srcP)) {
+                                fs.removeSync(destP);
+                            } else {
+                                removeOrphans(srcP, destP);
+                                // Eliminar carpeta si quedó vacía
+                                if (fs.readdirSync(destP).length === 0) {
+                                    fs.removeSync(destP);
+                                }
+                            }
+                        } else {
+                            if (!fs.existsSync(srcP)) {
+                                fs.removeSync(destP);
+                            }
+                        }
+                    }
+                };
+                removeOrphans(folderSrc, folderDest);
             }
             smartCopySync(folderSrc, folderDest);
         }

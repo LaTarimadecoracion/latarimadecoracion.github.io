@@ -2583,17 +2583,17 @@ const productsData = [
                 "id": "G3",
                 "title": "Mate",
                 "description": "",
-                "image": "img/todo-algarrobo/mate/1788922905702-imagen.webp",
+                "image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
-                        "cover_image": "img/todo-algarrobo/mate/1788922905702-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                         "images_list": [
-                            "img/todo-algarrobo/mate/1788922905702-imagen.webp",
-                            "img/todo-algarrobo/mate/1788922905878-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903756-imagen.webp",
-                            "img/todo-algarrobo/Mate/1780708903884-imagen.webp"
+                            "img/todo-algarrobo/Mate/1780708903884-imagen.webp",
+                            "img/todo-algarrobo/mate/1788926279830-imagen.webp",
+                            "img/todo-algarrobo/mate/1788926280007-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2683,7 +2683,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788922905994,
+                "last_modified": 1788926280158,
                 "primaryCatId": "productos-algarrobo",
                 "history": []
             },
@@ -22916,17 +22916,17 @@ const productsData = [
                 "id": "G3",
                 "title": "Mate",
                 "description": "",
-                "image": "img/todo-algarrobo/mate/1788922905702-imagen.webp",
+                "image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
-                        "cover_image": "img/todo-algarrobo/mate/1788922905702-imagen.webp",
+                        "cover_image": "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                         "images_list": [
-                            "img/todo-algarrobo/mate/1788922905702-imagen.webp",
-                            "img/todo-algarrobo/mate/1788922905878-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903622-imagen.webp",
                             "img/todo-algarrobo/Mate/1780708903756-imagen.webp",
-                            "img/todo-algarrobo/Mate/1780708903884-imagen.webp"
+                            "img/todo-algarrobo/Mate/1780708903884-imagen.webp",
+                            "img/todo-algarrobo/mate/1788926279830-imagen.webp",
+                            "img/todo-algarrobo/mate/1788926280007-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -23016,7 +23016,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788922905994,
+                "last_modified": 1788926280158,
                 "primaryCatId": "productos-algarrobo",
                 "history": []
             }

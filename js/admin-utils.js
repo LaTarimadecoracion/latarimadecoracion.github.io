@@ -30,14 +30,6 @@ window.safeAdminRun = function(fn) {
     // ═════════════════════════════════════════════════
     let currentRowEditingLink = null;
 
-    // ═════════════════════════════════════════════════
-    //  ADMIN — Formulario de Producto (nuevo sistema limpio)
-    // ═════════════════════════════════════════════════
-    // Estado del formulario: array de objetos que representan cada grupo
-    // Cada grupo en memoria tiene: id (dom), pendingFiles, existingImages, coverIndex
-    let activeGroupsUI = [];
-    let groupCounter = 0;
-
     // Lógica para cambiar el tamaño/resolución del modal del producto
     function applyModalSize(size) {
         const modalContent = document.getElementById('admin-product-modal-content');
