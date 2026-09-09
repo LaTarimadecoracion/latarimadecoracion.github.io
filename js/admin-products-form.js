@@ -1202,19 +1202,26 @@ let groupCounter = 0;
                 for (const item of gState.images) {
                     if (!item) continue;
                     
-                    const rawFile = item && item.file instanceof File ? item.file : (item instanceof File ? item : null);
+                    let rawFile = null;
+                    if (item instanceof File) {
+                        rawFile = item;
+                    } else if (item && item.file instanceof File) {
+                        rawFile = item.file;
+                    }
+
                     if (rawFile) {
                         const cleanCatName = catName.replace(/[^a-zA-Z0-9\s-]/g, '').trim();
                         const cleanTitle = pTitle.replace(/[^a-zA-Z0-9\s-]/g, '').trim();
                         const path = await uploadImageToServer(rawFile, cleanCatName, cleanTitle);
                         if (path) {
                             uploadedImages.push(path);
+                        } else if (item && item.dataUrl) {
+                            uploadedImages.push(item.dataUrl);
                         } else {
                             const { dataUrl } = await convertImageToWebP(rawFile);
                             if (dataUrl) uploadedImages.push(dataUrl);
                         }
                     } else if (typeof item === 'string') {
-                        // Conservar exactamente la ruta original si ya es un string (ej: "img/carpinteria/...")
                         uploadedImages.push(item);
                     } else if (typeof item === 'object' && item.dataUrl) {
                         uploadedImages.push(item.dataUrl);
