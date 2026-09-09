@@ -397,8 +397,10 @@
         
         gState.images.forEach((item, idx) => {
             if (!item) return;
-            const isNew = item instanceof File;
-            const url = isNew ? URL.createObjectURL(item) : item;
+            const isFileObj = item && item.file instanceof File;
+            const isFileDirect = item instanceof File;
+            const isNew = isFileObj || isFileDirect;
+            const url = isFileObj ? (item.dataUrl || URL.createObjectURL(item.file)) : (isFileDirect ? URL.createObjectURL(item) : (typeof item === 'object' && item.dataUrl ? item.dataUrl : item));
             const isCover = idx === 0;
 
             const thumb = document.createElement('div');
@@ -730,7 +732,7 @@
 
             try {
                 const converted = await Promise.all(rawFiles.map(f => convertImageToWebP(f)));
-                gState.images = gState.images.concat(converted.map(r => r.file));
+                gState.images = gState.images.concat(converted);
             } catch (err) {
                 console.error('Error convirtiendo imágenes del producto:', err);
             } finally {
@@ -1183,9 +1185,20 @@
 
                 const uploadedImages = [];
                 for (const item of gState.images) {
-                    if (item instanceof File) {
+                    if (item && item.file instanceof File) {
+                        const path = await uploadImageToServer(item.file, catName, pTitle);
+                        uploadedImages.push(path || item.dataUrl);
+                    } else if (item instanceof File) {
                         const path = await uploadImageToServer(item, catName, pTitle);
-                        if (path) uploadedImages.push(path);
+                        if (path) {
+                            uploadedImages.push(path);
+                        } else {
+                            // Fallback a Base64 dataUrl si el servidor no responde
+                            const { dataUrl } = await convertImageToWebP(item);
+                            uploadedImages.push(dataUrl);
+                        }
+                    } else if (typeof item === 'object' && item.dataUrl) {
+                        uploadedImages.push(item.dataUrl);
                     } else {
                         uploadedImages.push(item);
                     }
