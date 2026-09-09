@@ -178,11 +178,22 @@
             }
         }
 
+        // Helper para crear slug amigable del título del producto
+        const cleanTitleSlug = (product.title || '')
+            .trim()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-zA-Z0-9\s-]/g, "")
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-');
+            
+        const prodParamVal = cleanTitleSlug ? cleanTitleSlug : product.id;
+
         // Actualizar URL en el historial si es necesario
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('prod') !== product.id) {
+        if (urlParams.get('prod') !== prodParamVal && urlParams.get('prod') !== product.id) {
             const initialParams = new URLSearchParams();
-            initialParams.set('prod', product.id);
+            initialParams.set('prod', prodParamVal);
             if (preselectedAcabado && preselectedAcabado !== 'Único') initialParams.set(preselectedAcabado, '');
             if (preselectedMedida) initialParams.set(preselectedMedida, '');
             if (preselectedOpcion) initialParams.set(preselectedOpcion, '');
@@ -278,8 +289,15 @@
                 }
             });
             
-            // Asegurar el prod
-            newParams.set('prod', product.id);
+            // Asegurar el prod con slug amigable si existe
+            const cleanTitleSlug = (product.title || '')
+                .trim()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-zA-Z0-9\s-]/g, "")
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-');
+            newParams.set('prod', cleanTitleSlug || product.id);
             
             // Añadir variantes como claves vacías
             const grupo = grupos[currentGroupIndex];
