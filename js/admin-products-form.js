@@ -922,6 +922,30 @@ let groupCounter = 0;
         document.getElementById('admin-description').value = existingProd?.description || '';
         document.getElementById('admin-video').value       = existingProd?.video       || '';
 
+        // ── Evaluar Modo de ID (Automático vs Manual / Escáner de Código de Barras según Rubro) ──
+        const targetRubroId = (cIdx !== null && sessionProducts[cIdx]) ? (sessionProducts[cIdx].rubro || 'carpinteria') : 'carpinteria';
+        const rubrosList = window.rubros || [];
+        const currentRubroObj = rubrosList.find(r => r.id === targetRubroId);
+        const isManualIdMode = currentRubroObj && currentRubroObj.idMode === 'manual';
+
+        const idInputEl = document.getElementById('admin-id');
+        const scanProdBtn = document.getElementById('btn-focus-scan-prod-id');
+
+        if (idInputEl) {
+            if (isManualIdMode) {
+                idInputEl.readOnly = false;
+                idInputEl.style.background = '#FFFFFF';
+                idInputEl.placeholder = 'Escanear código de barras o ingresar ID manual...';
+                if (!existingProd) idInputEl.value = '';
+                if (scanProdBtn) scanProdBtn.style.display = 'inline-flex';
+            } else {
+                idInputEl.readOnly = true;
+                idInputEl.style.background = '#F8FAFC';
+                idInputEl.placeholder = 'Autogenerado';
+                if (scanProdBtn) scanProdBtn.style.display = 'none';
+            }
+        }
+
         // ── Poblar checkboxes de categorías y marcar principal (solo si no es alquiler) ──
         const assignedCategoryIds = [];
         let primaryCategoryId = existingProd?.primaryCatId || null;

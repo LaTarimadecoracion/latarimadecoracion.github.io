@@ -2257,39 +2257,44 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 
 /* ── Rubros Grouping in Admin Tree ── */
 .admin-rubro-group {
-    background: var(--surface-color, white);
-    border: 1px solid var(--border-color, #E2E8F0);
-    border-radius: 12px;
-    margin-bottom: 1.25rem;
+    background: #FFFFFF;
+    border: 1px solid var(--admin-border-color, #E7E5E4);
+    border-radius: var(--admin-radius-md, 10px);
+    margin-bottom: 0.85rem;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.admin-rubro-group:hover {
+    border-color: var(--admin-border-strong, #D6D3D1);
 }
 .admin-rubro-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.85rem 1.25rem;
-    background: color-mix(in srgb, var(--text-main) 3%, var(--surface-color, #F8FAFC));
-    border-bottom: 1px solid var(--border-color, #E2E8F0);
+    padding: 0.65rem 1rem;
+    background: #FAF9F8;
+    border-bottom: 1px solid var(--admin-border-color, #E7E5E4);
     cursor: pointer;
     user-select: none;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.15s ease;
 }
 .admin-rubro-header:hover {
-    background-color: color-mix(in srgb, var(--primary-color) 4%, var(--surface-color, #F8FAFC));
+    background-color: #F3F1EF;
 }
 .admin-rubro-header .rubro-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text-main);
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--admin-text-main, #1C1917);
     display: flex;
     align-items: center;
     gap: 8px;
+    letter-spacing: -0.01em;
 }
 .admin-rubro-header .expand-arrow {
-    font-size: 20px;
-    color: var(--text-muted);
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 18px;
+    color: var(--admin-text-muted, #78716C);
+    transition: transform 0.2s ease;
 }
 .admin-rubro-group.collapsed .expand-arrow {
     transform: rotate(-90deg);
@@ -2298,41 +2303,45 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     display: none;
 }
 .admin-rubro-shelf-list {
-    padding: 0.75rem;
+    padding: 0.5rem 0.65rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    min-height: 40px; /* Soporte para drag & drop */
+    gap: 0.45rem;
+    min-height: 20px;
 }
 
 /* ━━━━━ CATEGORY SHELF ━━━━━ */
 .cat-shelf {
-    background: white;
-    border-radius: 16px;
-    border: 1.5px solid #E8ECF0;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #E7E5E4;
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
+    transition: all 0.15s ease;
+}
+.cat-shelf:hover {
+    border-color: var(--admin-accent, #A0715B);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 
 /* Shelf Header */
 .cat-shelf-header {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
-    padding: 1rem 1rem 1rem 1rem;
-    background: linear-gradient(135deg, #f8f9fb 0%, #ffffff 100%);
-    border-bottom: 1.5px solid #EEF0F3;
+    gap: 0.65rem;
+    padding: 0.5rem 0.75rem;
+    background: #FFFFFF;
+    border-bottom: 1px solid #F5F5F4;
 }
 
 .cat-shelf-cover {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
     background-size: cover;
     background-position: center;
-    background-color: var(--secondary-color);
+    background-color: #F5F5F4;
+    border: 1px solid #E7E5E4;
     flex-shrink: 0;
-    box-shadow: var(--shadow-sm);
 }
 
 .cat-shelf-meta {
@@ -2341,55 +2350,55 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 }
 
 .cat-shelf-name {
-    font-size: 1rem;
+    font-size: 0.88rem;
     font-weight: 700;
-    color: var(--text-main);
-    margin: 0 0 0.15rem;
+    color: #1C1917;
+    margin: 0 0 1px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .cat-shelf-count {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    font-weight: 500;
+    font-size: 0.73rem;
+    color: #78716C;
+    font-weight: 600;
 }
 
 .shelf-del-btn {
     background: transparent;
     border: none;
-    color: #CBD5E0;
+    color: #A8A29E;
     cursor: pointer;
-    padding: 0.4rem;
-    border-radius: 8px;
+    padding: 0.25rem;
+    border-radius: 6px;
     width: auto;
     max-width: none;
     display: flex;
     align-items: center;
-    transition: color 0.2s ease, background 0.2s ease;
+    transition: color 0.15s ease, background 0.15s ease;
 }
 
 .shelf-del-btn:hover,
 .shelf-del-btn:active {
-    color: #E53E3E;
-    background: rgba(229,62,62,0.08);
+    color: #DC2626;
+    background: rgba(220,38,38,0.08);
 }
 
 .shelf-del-btn .material-symbols-outlined {
-    font-size: 22px;
+    font-size: 18px;
 }
 
 /* Shelf Products List */
 .cat-shelf-products {
-    padding: 0.5rem 1rem;
+    padding: 0.35rem 0.75rem;
 }
 
 .cat-shelf-empty {
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    font-size: 0.8rem;
+    color: #78716C;
     text-align: center;
-    padding: 1rem 0;
+    padding: 0.65rem 0;
     font-style: italic;
 }
 

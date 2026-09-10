@@ -5,7 +5,7 @@ const productsData = [
         "rubro": "carpinteria",
         "image": "img/carpinteria-/portada-1783038461695-imagen.webp",
         "visible": false,
-        "order": 0,
+        "order": 1,
         "products": [
             {
                 "id": "52",
@@ -865,7 +865,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 58,
+                "views": 60,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2685,7 +2685,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1788928169150,
                 "primaryCatId": "productos-algarrobo",
-                "history": []
+                "history": [],
+                "views": 9
             },
             {
                 "id": "G2",
@@ -4099,7 +4100,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1788928739326,
                 "primaryCatId": "Barandas",
-                "history": []
+                "history": [],
+                "views": 8
             },
             {
                 "id": "57",
@@ -4974,7 +4976,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 60
+                "views": 61
             },
             {
                 "id": "22",
@@ -9737,7 +9739,7 @@ const productsData = [
                 "last_modified": 1788655893942,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 11
+                "views": 12
             },
             {
                 "id": "A1",
@@ -10232,7 +10234,7 @@ const productsData = [
                 "last_modified": 1788918811368,
                 "primaryCatId": "Percheros",
                 "history": [],
-                "views": 1
+                "views": 2
             }
         ]
     },
@@ -10241,7 +10243,7 @@ const productsData = [
         "name": "Borrador",
         "image": "img/borrador/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 1,
+        "order": 2,
         "products": [],
         "visible": false
     },
@@ -10249,7 +10251,7 @@ const productsData = [
         "id": "Vinotecas",
         "name": "Vinotecas - Bodegas",
         "image": "img/vinotecas---bodegas/portada-1780289410168-imagen.webp",
-        "order": 2,
+        "order": 3,
         "products": [
             {
                 "id": "21",
@@ -10329,7 +10331,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 60
+                "views": 61
             },
             {
                 "id": "22",
@@ -10892,7 +10894,7 @@ const productsData = [
         "name": "Percheros",
         "image": "img/percheros/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 3,
+        "order": 4,
         "products": [
             {
                 "id": "31",
@@ -12106,7 +12108,7 @@ const productsData = [
                 "last_modified": 1788918811368,
                 "primaryCatId": "Percheros",
                 "history": [],
-                "views": 1
+                "views": 2
             }
         ]
     },
@@ -12115,7 +12117,7 @@ const productsData = [
         "name": "Organizadores",
         "image": "img/organizadores/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 4,
+        "order": 5,
         "products": [
             {
                 "id": "41",
@@ -14047,7 +14049,7 @@ const productsData = [
         "id": "Barandas",
         "name": "Barandas para cama",
         "image": "img/barandas-para-cama/portada-1782437522433-imagen.webp",
-        "order": 5,
+        "order": 6,
         "products": [
             {
                 "id": "51",
@@ -14492,7 +14494,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 58,
+                "views": 60,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15804,7 +15806,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1788928739326,
                 "primaryCatId": "Barandas",
-                "history": []
+                "history": [],
+                "views": 8
             },
             {
                 "id": "56",
@@ -16148,7 +16151,7 @@ const productsData = [
         "id": "Estantes",
         "name": "Estantes",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 6,
+        "order": 7,
         "products": [
             {
                 "id": "61",
@@ -17042,7 +17045,7 @@ const productsData = [
                 "last_modified": 1788655893942,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 11
+                "views": 12
             },
             {
                 "id": "68",
@@ -17677,7 +17680,7 @@ const productsData = [
         "name": "Cunas",
         "image": "img/cunas/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 7,
+        "order": 8,
         "products": [
             {
                 "id": "71",
@@ -18524,7 +18527,7 @@ const productsData = [
         "name": "Camas para niños",
         "image": "img/camas-para-ninos/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 8,
+        "order": 9,
         "products": [
             {
                 "id": "81",
@@ -18666,7 +18669,7 @@ const productsData = [
         "id": "muebles",
         "name": "Escaleras",
         "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 9,
+        "order": 10,
         "products": [
             {
                 "id": "91",
@@ -18964,7 +18967,7 @@ const productsData = [
         "id": "Steps",
         "name": "Steps / Cajones",
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 10,
+        "order": 11,
         "products": [
             {
                 "id": "A1",
@@ -19615,7 +19618,7 @@ const productsData = [
         "id": "Juguetes",
         "name": "Juguetes",
         "image": "img/juguetes/portada-1783038439545-imagen.webp",
-        "order": 11,
+        "order": 12,
         "products": [
             {
                 "id": "B1",
@@ -20080,7 +20083,7 @@ const productsData = [
                 "last_modified": 1788918811368,
                 "primaryCatId": "Percheros",
                 "history": [],
-                "views": 1
+                "views": 2
             }
         ],
         "rubro": "carpinteria"
@@ -20090,7 +20093,7 @@ const productsData = [
         "name": "Sillas y sillones",
         "image": "img/sillas-y-sillones/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 12,
+        "order": 13,
         "products": [
             {
                 "id": "C1",
@@ -20500,7 +20503,7 @@ const productsData = [
         "name": "Mesas de madera",
         "image": "img/mesas-de-madera/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 13,
+        "order": 14,
         "products": [
             {
                 "id": "D1",
@@ -21279,7 +21282,7 @@ const productsData = [
         "name": "Jardín",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 14,
+        "order": 15,
         "products": [
             {
                 "id": "E1",
@@ -22154,7 +22157,7 @@ const productsData = [
         "name": "Hogar",
         "image": "img/hogar/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 15,
+        "order": 16,
         "products": [
             {
                 "id": "F1",
@@ -22748,7 +22751,7 @@ const productsData = [
                 "last_modified": 1788918811368,
                 "primaryCatId": "Percheros",
                 "history": [],
-                "views": 1
+                "views": 2
             }
         ]
     },
@@ -22757,7 +22760,7 @@ const productsData = [
         "name": "Todo Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 16,
+        "order": 17,
         "products": [
             {
                 "id": "G1",
@@ -23055,7 +23058,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1788928169150,
                 "primaryCatId": "productos-algarrobo",
-                "history": []
+                "history": [],
+                "views": 9
             }
         ]
     },
@@ -23063,7 +23067,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 17,
+        "order": 18,
         "products": [
             {
                 "id": "H1",

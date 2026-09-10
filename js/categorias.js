@@ -94,7 +94,7 @@ window.renderCategoriesMenu = function() {
     offersCard.innerHTML = `
         <div class="feed-card-photo-container" style="background: linear-gradient(135deg, #1a1a1a, #2d2a26);">
             <div class="feed-card-img-wrapper" style="position:relative; opacity: 0.85;">
-                <img src="img/logo_provisional.png" class="feed-card-img loaded" alt="Ofertas y Combos" loading="lazy">
+                <img src="img/borrador/portada-imagen.webp" class="feed-card-img loaded" alt="Ofertas y Combos" loading="lazy">
             </div>
             <div class="stamp-badge pro-gold" style="position: absolute; top: 10px; left: 10px; z-index: 5;">
                 🔥 OFERTA PRO GOLD

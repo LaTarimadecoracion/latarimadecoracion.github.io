@@ -1,0 +1,16 @@
+{
+  "rubros": [
+    {
+      "id": "carpinteria",
+      "name": "Carpintería",
+      "icon": "🪵"
+    },
+    {
+      "id": "pintureria",
+      "name": "Pinturería",
+      "icon": "🎨",
+      "idMode": "manual",
+      "visible": true
+    }
+  ]
+}

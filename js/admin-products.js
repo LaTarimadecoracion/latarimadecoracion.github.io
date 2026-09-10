@@ -350,9 +350,14 @@ window.initProductsAdmin = function() {
                 const cIdx = parseInt(e.currentTarget.getAttribute('data-cat'));
                 const pIdx = parseInt(e.currentTarget.getAttribute('data-prod'));
                 const catObj = sessionProducts[cIdx];
+                if (!catObj || !catObj.products || !catObj.products[pIdx]) return;
+
+                const targetProd = catObj.products[pIdx];
+                const prodTitle = targetProd.title;
+                const prodId = targetProd.id;
                 const catName = catObj.name;
                 const catRubro = catObj.rubro || 'carpinteria';
-                const prodTitle = catObj.products[pIdx].title;
+
                 if (confirm(`¿Eliminar "${prodTitle}"?`)) {
                     try {
                         await fetch('/api/products/delete', {
@@ -364,7 +369,13 @@ window.initProductsAdmin = function() {
                         console.error('Error al limpiar archivos de producto', error);
                     }
 
-                    sessionProducts[cIdx].products.splice(pIdx, 1);
+                    // Eliminar el producto de TODAS las categorías donde esté presente (por ID)
+                    sessionProducts.forEach(cat => {
+                        if (cat.products && Array.isArray(cat.products)) {
+                            cat.products = cat.products.filter(p => p.id !== prodId);
+                        }
+                    });
+
                     showAdminToast('Producto eliminado');
                     await saveProductsToServer();
                     renderAdminProducts();

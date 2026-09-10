@@ -1,0 +1,1266 @@
+[
+  {
+    "A": "520701003",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Profesional",
+    "D": "Blanco",
+    "E": "1 Lt.",
+    "F": "4348"
+  },
+  {
+    "A": "520701004",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Profesional",
+    "D": "Blanco",
+    "E": "4 Lts.",
+    "F": "13945"
+  },
+  {
+    "A": "520701005",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Profesional",
+    "D": "Blanco",
+    "E": "10 Lts.",
+    "F": "32517"
+  },
+  {
+    "A": "520701006",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Profesional",
+    "D": "Blanco",
+    "E": "20 Lts.",
+    "F": "60609"
+  },
+  {
+    "A": "514200203",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Amarillo",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514200204",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Amarillo",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514200205",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Amarillo",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514207803",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Avellana",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514207804",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Avellana",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514207805",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Avellana",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514207903",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Canela",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514207905",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Canela",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514207904",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Canela",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514207503",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Ceibo",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514207504",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Ceibo",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514207505",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Ceibo",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514207703",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Ciboulette",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514207704",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Ciboulette",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514207705",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Ciboulette",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514207403",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Cipr&#233;s",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514207404",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Cipr&#233;s",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514207405",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Cipr&#233;s",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514208703",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Gris Acero",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514208704",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Gris Acero",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514208705",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Gris Acero",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514207303",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Guaran&#225;",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514207304",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Guaran&#225;",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514207305",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Guaran&#225;",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514207003",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Guinda",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514207004",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Guinda",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514207005",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Guinda",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514206903",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Magenta",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514206904",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Magenta",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514206905",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Magenta",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514203003",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Naranja",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514203004",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Naranja",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514203005",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Naranja",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514203103",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Negro",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514203104",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Negro",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514203105",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Negro",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514207603",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Pistacho",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514207604",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Pistacho",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514207605",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Pistacho",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514208603",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Tabaco",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514208604",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Tabaco",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514208605",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Tabaco",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514208103",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Turquesa",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514208104",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Turquesa",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514208105",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Turquesa",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514206105",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Verde Manzana",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514206104",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Verde Manzana",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514206105",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Verde Manzana",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514206203",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Violeta",
+    "E": "1 Lt.",
+    "F": "6798.2"
+  },
+  {
+    "A": "514206204",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Violeta",
+    "E": "4 Lts.",
+    "F": "21814.7"
+  },
+  {
+    "A": "514206205",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color",
+    "D": "Violeta",
+    "E": "10 Lts.",
+    "F": "50245.3"
+  },
+  {
+    "A": "514207103",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color Premium",
+    "D": "Rojo Distinci&#243;n",
+    "E": "1 Lt.",
+    "F": "9319.4"
+  },
+  {
+    "A": "514207104",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color Premium",
+    "D": "Rojo Distinci&#243;n",
+    "E": "4 Lts.",
+    "F": "29903.9"
+  },
+  {
+    "A": "514207105",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color Premium",
+    "D": "Rojo Distinci&#243;n",
+    "E": "10 Lts.",
+    "F": "68875.3"
+  },
+  {
+    "A": "514207203",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color Premium",
+    "D": "Azul Distinci&#243;n",
+    "E": "1 Lt.",
+    "F": "9319.4"
+  },
+  {
+    "A": "514207204",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color Premium",
+    "D": "Azul Distinci&#243;n",
+    "E": "4 Lts.",
+    "F": "29903.9"
+  },
+  {
+    "A": "514207205",
+    "B": "L&#225;tex",
+    "C": "L&#225;tex Gold Color Premium",
+    "D": "Azul Distinci&#243;n",
+    "E": "10 Lts.",
+    "F": "68875.3"
+  },
+  {
+    "A": "10101001",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Brillante",
+    "E": "1/4 Lt.",
+    "F": "4042.8"
+  },
+  {
+    "A": "10101002",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Brillante",
+    "E": "1/2 Lt.",
+    "F": "6243.3"
+  },
+  {
+    "A": "10101003",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Brillante",
+    "E": "1 Lt.",
+    "F": "10723.5"
+  },
+  {
+    "A": "10101004",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Brillante",
+    "E": "4 Lts.",
+    "F": "42648.5"
+  },
+  {
+    "A": "10301001",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Mate",
+    "E": "1/4 Lt.",
+    "F": "3311.9"
+  },
+  {
+    "A": "10301002",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Mate",
+    "E": "1/2 Lt.",
+    "F": "5327.4"
+  },
+  {
+    "A": "10301003",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Mate",
+    "E": "1 Lt.",
+    "F": "9234"
+  },
+  {
+    "A": "10301004",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Mate",
+    "E": "4 Lts.",
+    "F": "33437.7"
+  },
+  {
+    "A": "10201001",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Satinado",
+    "E": "1/4 Lt.",
+    "F": "3903.5"
+  },
+  {
+    "A": "10201002",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Satinado",
+    "E": "1/2 Lt.",
+    "F": "6468"
+  },
+  {
+    "A": "10201003",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Satinado",
+    "E": "1 Lt.",
+    "F": "12270.2"
+  },
+  {
+    "A": "10201004",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Blanco Satinado",
+    "E": "4 Lts.",
+    "F": "43132.3"
+  },
+  {
+    "A": "10103101",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Brillante",
+    "E": "1/4 Lt.",
+    "F": "3171"
+  },
+  {
+    "A": "10103102",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Brillante",
+    "E": "1/2 Lt.",
+    "F": "4927.2"
+  },
+  {
+    "A": "10103103",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Brillante",
+    "E": "1 Lt.",
+    "F": "8544.200000000001"
+  },
+  {
+    "A": "10103104",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Brillante",
+    "E": "4 Lts.",
+    "F": "29801.5"
+  },
+  {
+    "A": "10303101",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Mate",
+    "E": "1/4 Lt.",
+    "F": "3012.1"
+  },
+  {
+    "A": "10303102",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Mate",
+    "E": "1/2 Lt.",
+    "F": "4722.9"
+  },
+  {
+    "A": "10303103",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Mate",
+    "E": "1 Lt.",
+    "F": "8264.6"
+  },
+  {
+    "A": "10303104",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Mate",
+    "E": "4 Lts.",
+    "F": "29919.4"
+  },
+  {
+    "A": "10203101",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Satinado",
+    "E": "1/4 Lt.",
+    "F": "3550.5"
+  },
+  {
+    "A": "10203102",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Satinado",
+    "E": "1/2 Lt.",
+    "F": "5635.9"
+  },
+  {
+    "A": "10203103",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Satinado",
+    "E": "1 Lt.",
+    "F": "9488.200000000001"
+  },
+  {
+    "A": "10203104",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1",
+    "D": "Negro Satinado",
+    "E": "4 Lts.",
+    "F": "34152.9"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1 (G1)",
+    "D": "Amarillo Claro / Medio / Bermell&#243;n / Naranja / Violeta / Carm&#237;n",
+    "E": "1/4 Lt.",
+    "F": "4042.8"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1 (G1)",
+    "D": "Amarillo Claro / Medio / Bermell&#243;n / Naranja / Violeta / Carm&#237;n",
+    "E": "1/2 Lt.",
+    "F": "6243.3"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1 (G1)",
+    "D": "Amarillo Claro / Medio / Bermell&#243;n / Naranja / Violeta / Carm&#237;n",
+    "E": "1 Lt.",
+    "F": "10723.5"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1 (G2)",
+    "D": "Azulejo / Azul Marino / Crema / Gris Hielo / Marfil / Ocre / Verdes / Vicu&#241;a",
+    "E": "1/4 Lt.",
+    "F": "3505.5"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1 (G2)",
+    "D": "Azulejo / Azul Marino / Crema / Gris Hielo / Marfil / Ocre / Verdes / Vicu&#241;a",
+    "E": "1/2 Lt.",
+    "F": "5350"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1 (G2)",
+    "D": "Azulejo / Azul Marino / Crema / Gris Hielo / Marfil / Ocre / Verdes / Vicu&#241;a",
+    "E": "1 Lt.",
+    "F": "9356.799999999999"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1 (G3)",
+    "D": "Beige / Casta&#241;o / Cedro / Celeste / Grises / Marr&#243;n / Tabaco",
+    "E": "1/4 Lt.",
+    "F": "3171"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1 (G3)",
+    "D": "Beige / Casta&#241;o / Cedro / Celeste / Grises / Marr&#243;n / Tabaco",
+    "E": "1/2 Lt.",
+    "F": "4927.2"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 5 en 1 (G3)",
+    "D": "Beige / Casta&#241;o / Cedro / Celeste / Grises / Marr&#243;n / Tabaco",
+    "E": "1 Lt.",
+    "F": "8544.200000000001"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 3 en 1 (L&#237;nea Joven)",
+    "D": "Amarillo Sol / Azul Distinci&#243;n / Magenta / Naranja / P&#250;rpura / etc.",
+    "E": "1/4 Lt.",
+    "F": "4210.9"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 3 en 1 (L&#237;nea Joven)",
+    "D": "Amarillo Sol / Azul Distinci&#243;n / Magenta / Naranja / P&#250;rpura / etc.",
+    "E": "1/2 Lt.",
+    "F": "6503.8"
+  },
+  {
+    "A": "-",
+    "B": "Sint&#233;ticos",
+    "C": "Sint&#233;tico 3 en 1 (L&#237;nea Joven)",
+    "D": "Amarillo Sol / Azul Distinci&#243;n / Magenta / Naranja / P&#250;rpura / etc.",
+    "E": "1 Lt.",
+    "F": "11170.6"
+  },
+  {
+    "A": "12403103",
+    "B": "Especiales",
+    "C": "Esmalte Alta Temperatura",
+    "D": "Negro",
+    "E": "1 Lt.",
+    "F": "13924.6"
+  },
+  {
+    "A": "100100201",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Amarillo",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100100501",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Azul Marino",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100100901",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Bermell&#243;n",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100101001",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Blanco",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100301001",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Blanco Mate",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100201001",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Blanco Satinado",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100102001",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Gris Espacial",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100102201",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Gris Oscuro",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100102301",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Gris Perla",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100102801",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Marr&#243;n",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100103101",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Negro",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100303101",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Negro Mate",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100203101",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Negro Satinado",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100104101",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Verde Ingl&#233;s",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100106201",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Violeta",
+    "E": "237 cc",
+    "F": "4293.86"
+  },
+  {
+    "A": "100105301",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Plata",
+    "E": "237 cc",
+    "F": "4534.4"
+  },
+  {
+    "A": "100105401",
+    "B": "Aerosoles",
+    "C": "Aerosol 5 en 1",
+    "D": "Oro",
+    "E": "237 cc",
+    "F": "5166.86"
+  },
+  {
+    "A": "100408001",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Amarillo Sol",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100409201",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Celeste Beb&#233;",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100408801",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Celeste Lavanda",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100408901",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Coral Marino",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100406901",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Magenta Intenso",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100408301",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Naranja Dulce",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100407101",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Rojo Distinci&#243;n",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100405901",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Rosa Beb&#233;",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100409001",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Salm&#243;n Rosado",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100408101",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Turquesa Caribe",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100408401",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Verde El&#233;ctrico",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100409301",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Verde Lima",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100406101",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Verde Manzana",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "100409101",
+    "B": "Aerosoles",
+    "C": "Aerosol 3 en 1 (L&#237;nea Joven)",
+    "D": "Verde Petr&#243;leo",
+    "E": "237 cc",
+    "F": "4851.03"
+  },
+  {
+    "A": "521400003",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Fijador al Agua 3+1",
+    "D": "Incoloro / Est&#225;ndar",
+    "E": "1 Lt.",
+    "F": "3278.8"
+  },
+  {
+    "A": "521400004",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Fijador al Agua 3+1",
+    "D": "Incoloro / Est&#225;ndar",
+    "E": "4 Lts.",
+    "F": "9718.1"
+  },
+  {
+    "A": "521400005",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Fijador al Agua 3+1",
+    "D": "Incoloro / Est&#225;ndar",
+    "E": "10 Lts.",
+    "F": "21437.4"
+  },
+  {
+    "A": "561700208",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Amarillo",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561700408",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Azul",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561700908",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Bermell&#243;n",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561701408",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Cedro",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561702808",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Marr&#243;n",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561703008",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Naranja",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561703108",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Negro",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561703208",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Ocre",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561703408",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Siena",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561703708",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Verde Claro",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561704308",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Verde Oscuro",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "561704608",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Entonador Universal",
+    "D": "Violeta",
+    "E": "120 cc",
+    "F": "4088.5"
+  },
+  {
+    "A": "32001603",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Anti&#243;xido al Cromato",
+    "D": "Colorado",
+    "E": "1 Lt.",
+    "F": "8191.1"
+  },
+  {
+    "A": "515001002",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Enduido Interior",
+    "D": "Est&#225;ndar",
+    "E": "1/2 Lt.",
+    "F": "2652.2"
+  },
+  {
+    "A": "515001003",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Enduido Interior",
+    "D": "Est&#225;ndar",
+    "E": "1 Lt.",
+    "F": "3711.9"
+  },
+  {
+    "A": "515001004",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Enduido Interior",
+    "D": "Est&#225;ndar",
+    "E": "4 Lts.",
+    "F": "10982.6"
+  },
+  {
+    "A": "515001005",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Enduido Interior",
+    "D": "Est&#225;ndar",
+    "E": "10 Lts.",
+    "F": "25153.4"
+  },
+  {
+    "A": "525001003",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Enduido Exterior",
+    "D": "Est&#225;ndar",
+    "E": "1 Lt.",
+    "F": "4661.7"
+  },
+  {
+    "A": "525001004",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Enduido Exterior",
+    "D": "Est&#225;ndar",
+    "E": "4 Lts.",
+    "F": "14386.7"
+  },
+  {
+    "A": "525001005",
+    "B": "Preparaci&#243;n de Superficies",
+    "C": "Enduido Exterior",
+    "D": "Est&#225;ndar",
+    "E": "10 Lts.",
+    "F": "32014.7"
+  },
+  {
+    "A": "20100002",
+    "B": "Maderas",
+    "C": "Barniz Sint&#233;tico",
+    "D": "Transparente",
+    "E": "1/2 Lt.",
+    "F": "4232.9"
+  },
+  {
+    "A": "20100003",
+    "B": "Maderas",
+    "C": "Barniz Sint&#233;tico",
+    "D": "Transparente",
+    "E": "1 Lt.",
+    "F": "7531.7"
+  },
+  {
+    "A": "20100004",
+    "B": "Maderas",
+    "C": "Barniz Sint&#233;tico",
+    "D": "Transparente",
+    "E": "4 Lts.",
+    "F": "26220"
+  },
+  {
+    "A": "22300002",
+    "B": "Maderas",
+    "C": "Barniz Marino c/ Filtro Solar Exterior",
+    "D": "Transparente",
+    "E": "1/2 Lt.",
+    "F": "4660.9"
+  },
+  {
+    "A": "22300003",
+    "B": "Maderas",
+    "C": "Barniz Marino c/ Filtro Solar Exterior",
+    "D": "Transparente",
+    "E": "1 Lt.",
+    "F": "8201.5"
+  },
+  {
+    "A": "22300004",
+    "B": "Maderas",
+    "C": "Barniz Marino c/ Filtro Solar Exterior",
+    "D": "Transparente",
+    "E": "4 Lts.",
+    "F": "27771.2"
+  }
+]

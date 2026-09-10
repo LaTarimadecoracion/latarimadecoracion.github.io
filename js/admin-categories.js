@@ -128,6 +128,9 @@
                     }
                     if (nameInput) nameInput.value = rubro.name;
                     
+                    const idModeSelect = document.getElementById('admin-rubro-id-mode');
+                    if (idModeSelect) idModeSelect.value = rubro.idMode || 'auto';
+
                     const modalTitle = document.getElementById('admin-rubro-modal-title');
                     if (modalTitle) modalTitle.textContent = 'Editar Rubro';
                     
@@ -192,6 +195,39 @@
                     </div>
                 `;
             } else {
+                // Buscador por Rubro
+                const rubroSearchWrapper = document.createElement('div');
+                rubroSearchWrapper.className = 'rubro-search-wrapper';
+                rubroSearchWrapper.style.cssText = 'padding: 0.35rem 0.2rem 0.5rem; display: flex; align-items: center; gap: 8px;';
+                rubroSearchWrapper.innerHTML = `
+                    <div style="position: relative; width: 100%;">
+                        <span class="material-symbols-outlined" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--admin-text-muted);">search</span>
+                        <input type="text" class="rubro-search-input" placeholder="Buscar categoría o producto en ${rubro.name}..." style="width: 100%; padding: 6px 12px 6px 34px; font-size: 0.82rem; border-radius: 6px; border: 1px solid var(--admin-border-color); background: var(--admin-surface); color: var(--admin-text-main); outline: none;">
+                    </div>
+                `;
+                shelfList.appendChild(rubroSearchWrapper);
+
+                const rubroSearchInput = rubroSearchWrapper.querySelector('.rubro-search-input');
+                rubroSearchInput.addEventListener('click', (e) => e.stopPropagation());
+                rubroSearchInput.addEventListener('input', (e) => {
+                    const term = e.target.value.toLowerCase().trim();
+                    const shelfCards = shelfList.querySelectorAll('.cat-shelf');
+                    shelfCards.forEach(card => {
+                        const catIndex = parseInt(card.getAttribute('data-index'));
+                        const cat = sessionProducts[catIndex];
+                        if (!cat) return;
+                        
+                        const catNameMatch = cat.name.toLowerCase().includes(term);
+                        const prodMatch = (cat.products || []).some(p => (p.title || '').toLowerCase().includes(term));
+                        
+                        if (!term || catNameMatch || prodMatch) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+
                 filteredCategories.forEach(({ cat, originalIndex }) => {
                     const catBlock = document.createElement('div');
                     catBlock.className = 'cat-shelf';

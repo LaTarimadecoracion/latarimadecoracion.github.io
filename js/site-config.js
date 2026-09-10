@@ -167,6 +167,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Estantes - Cortes!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Estantes - Cortes!",
+            "mediaType": "image",
+            "image": "img/latex/estantes-cortes/1789009178923-imagenwebp.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=K1",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=K1",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1789009178957
+        },
+        {
             "title": "¡Nuevo Ingreso: Perchero De Pie Torneado 8 Ganchos Niños!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero De Pie Torneado 8 Ganchos Niños!",
             "mediaType": "image",
