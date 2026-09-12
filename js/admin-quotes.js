@@ -113,11 +113,17 @@
                             1. Datos del Cliente
                         </h4>
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <button type="button" id="btn-copy-client-data-request" class="btn-outline" style="padding: 0.35rem; width: 32px; height: 32px; min-width: 32px; color: var(--admin-accent); border-color: var(--admin-accent); display: inline-flex; align-items: center; justify-content: center; border-radius: 6px;" title="Copiar plantilla de pedido de datos para enviar por WhatsApp">
+                            <button type="button" id="btn-copy-client-data-request" class="btn-outline" style="padding: 0.35rem 0.65rem; color: var(--admin-accent); border-color: var(--admin-accent); display: inline-flex; align-items: center; justify-content: center; gap: 4px; border-radius: 6px; font-size: 0.78rem; font-weight: 700;" title="Copiar plantilla de pedido de datos personales / despacho para WhatsApp">
                                 <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span>
+                                <span>Datos Envío</span>
                             </button>
-                            <button type="button" id="btn-copy-bank-transfer-details" class="btn-outline" style="padding: 0.35rem; width: 32px; height: 32px; min-width: 32px; color: #16a34a; border-color: #86efac; background: #f0fdf4; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px;" title="Copiar datos bancarios (CBU / ALIAS / Banco) para transferencia">
+                            <button type="button" id="btn-copy-billing-data-request" class="btn-outline" style="padding: 0.35rem 0.65rem; color: #2563eb; border-color: #93c5fd; background: #eff6ff; display: inline-flex; align-items: center; justify-content: center; gap: 4px; border-radius: 6px; font-size: 0.78rem; font-weight: 700;" title="Copiar plantilla de solicitud de datos de facturación (CUIT/Razon Social/Condición IVA) para WhatsApp">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">receipt</span>
+                                <span>Datos Facturación</span>
+                            </button>
+                            <button type="button" id="btn-copy-bank-transfer-details" class="btn-outline" style="padding: 0.35rem 0.65rem; color: #16a34a; border-color: #86efac; background: #f0fdf4; display: inline-flex; align-items: center; justify-content: center; gap: 4px; border-radius: 6px; font-size: 0.78rem; font-weight: 700;" title="Copiar datos bancarios (CBU / ALIAS / Banco) para transferencia">
                                 <span class="material-symbols-outlined" style="font-size: 18px;">account_balance</span>
+                                <span>Datos CBU</span>
                             </button>
                         </div>
                     </header>
@@ -318,6 +324,9 @@
                         <button type="button" id="btn-send-quote-wa" style="background: #25d366; color: white; border: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 800; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);">
                             <span class="material-symbols-outlined">send</span> Enviar por WhatsApp
                         </button>
+                        <button type="button" id="btn-send-billing-request-wa" style="background: #2563eb; color: white; border: none; padding: 0.65rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;" title="Copiar o enviar mensaje por WhatsApp solicitando datos de facturación">
+                            <span class="material-symbols-outlined">receipt</span> Pedir Datos Factura
+                        </button>
                         <button type="button" id="btn-send-cbu-wa" style="background: #16a34a; color: white; border: none; padding: 0.65rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
                             <span class="material-symbols-outlined">account_balance</span> Enviar CBU / Cuentas
                         </button>
@@ -516,6 +525,48 @@
                 prompt('Copiar texto de solicitud de datos:', requestText);
             }
         });
+
+        // Copiar y/o Enviar Solicitud de Datos de Facturación
+        const sendBillingDataHandler = (directSend = false) => {
+            const billingText = `📄 Solicitud de Datos para Facturación:
+Para poder confeccionar la factura correspondiente a tu compra, ¿podrías indicarnos los siguientes datos?
+
+📌 CUIT / CUIL / DNI:
+📌 Razón Social / Nombre Completo:
+📌 Condición frente al IVA (ej: Consumidor Final, Monotributo, Resp. Inscripto):
+📌 Domicilio Fiscal:
+📌 Email para envío del comprobante:
+
+¡Muchas gracias! 🪵✨`;
+
+            if (directSend && currentQuote.clientPhone) {
+                let cleanPhone = String(currentQuote.clientPhone).replace(/\D/g, '');
+                if (cleanPhone.length === 10) cleanPhone = '549' + cleanPhone;
+                const encodedMsg = encodeURIComponent(billingText);
+                window.open(`https://wa.me/${cleanPhone}?text=${encodedMsg}`, '_blank');
+                if (typeof showAdminToast === 'function') {
+                    showAdminToast('💬 Abriendo WhatsApp con solicitud de datos de facturación...');
+                }
+                return;
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(billingText).then(() => {
+                    if (typeof showAdminToast === 'function') {
+                        showAdminToast('📄 ¡Datos de facturación copiados! Pegalos en WhatsApp con el cliente.');
+                    } else {
+                        alert('📄 ¡Datos de facturación copiados! Pegalos en WhatsApp.');
+                    }
+                }).catch(() => {
+                    prompt('Copiar solicitud de datos de facturación:', billingText);
+                });
+            } else {
+                prompt('Copiar solicitud de datos de facturación:', billingText);
+            }
+        };
+
+        document.getElementById('btn-copy-billing-data-request')?.addEventListener('click', () => sendBillingDataHandler(false));
+        document.getElementById('btn-send-billing-request-wa')?.addEventListener('click', () => sendBillingDataHandler(true));
 
         // Copiar Datos Bancarios para Transferencia
         document.getElementById('btn-copy-bank-transfer-details')?.addEventListener('click', () => {

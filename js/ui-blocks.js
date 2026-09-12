@@ -259,7 +259,7 @@
             if (mType === 'image' && block.image) {
                 mediaHtml = `
                 <div class="block-image-wrapper" style="position:relative;">
-                    <img src="${block.image}" alt="${block.title}" class="nosotros-img lazy-img" loading="lazy" onload="this.classList.add('loaded')">
+                    <img src="${block.image}" alt="${block.title}" class="nosotros-img lazy-img" loading="lazy" onload="this.classList.add('loaded')" onerror="this.src='img/borrador/portada-imagen.webp'; this.classList.add('loaded');">
                 </div>`;
             } else if (mType === 'video' && block.videoUrl) {
                 const ytId = extractYouTubeId(block.videoUrl);
