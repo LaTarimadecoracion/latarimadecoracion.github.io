@@ -1606,6 +1606,7 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 }
 .detail-img-container {
     width: 100%;
+    aspect-ratio: 3 / 2; /* Fija la proporción 3:2 para que no cambie al cambiar de acabado */
     position: relative; /* Anchor floating action buttons */
     background: transparent;
     overflow: hidden;
@@ -3083,6 +3084,7 @@ body.in-iframe,
     scroll-snap-type: x mandatory; /* No !important so JS can disable it while dragging */
     scroll-behavior: smooth; /* Smooth scrolling when using arrows or snap */
     width: 100% !important;
+    height: 100% !important; /* Toma la altura completa del contenedor con aspect-ratio */
     background-color: transparent !important;
     scrollbar-width: none; /* Oculta la barra de scroll en navegadores modernos */
     -webkit-overflow-scrolling: touch; /* Scroll nativo ultra fluido con inercia en iPhone */
@@ -3096,6 +3098,7 @@ body.in-iframe,
 .product-detail-slide {
     flex: 0 0 100% !important; /* Cada foto toma obligatoriamente el 100% del ancho disponible */
     width: 100% !important;
+    height: 100% !important; /* Toma la altura completa */
     scroll-snap-align: start !important; /* Punto de anclaje para el efecto imán */
     position: relative;
     display: flex;
