@@ -665,7 +665,8 @@ window.initProductsAdmin = function() {
                     return a.substring(0, prefixLen) === b.substring(0, prefixLen);
                 };
 
-                // 1. Direct contains check
+                // 1. Direct contains check (Títulos, Categoría, Descripción, Acabados, Medidas)
+                const normTermNoSpaces = term.replace(/[\s\-\_cmx]/g, '');
                 const directMatch = normalizeForSearch(item.nombre).includes(term) ||
                     (item.cat && item.cat.name && normalizeForSearch(item.cat.name).includes(term)) ||
                     (item.acabado && normalizeForSearch(item.acabado).includes(term)) ||
@@ -673,8 +674,11 @@ window.initProductsAdmin = function() {
                     (item.product.description && normalizeForSearch(item.product.description).includes(term)) ||
                     (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(term))) ||
                     (item.medidas && item.medidas.some(medida => {
-                        const normMedida = normalizeForSearch(medida).replace(/\s+/g, '');
-                        return normMedida.includes(termNorm);
+                        const normMedida = normalizeForSearch(medida);
+                        if (normMedida.includes(term)) return true;
+                        // Comparación ultra-flexible sin espacios ni unidades (ej: "140x60" -> "14060")
+                        const normMedidaClean = normMedida.replace(/[\s\-\_cmx]/g, '');
+                        return normTermNoSpaces.length > 1 && normMedidaClean.includes(normTermNoSpaces);
                     }));
 
                 if (directMatch) return true;

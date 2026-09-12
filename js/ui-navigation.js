@@ -96,6 +96,9 @@
 
 
     function navigateToView(viewId, context = null, isBack = false) {
+        if (viewId === 'view-admin' && typeof window.loadAdminPartialsOnDemand === 'function') {
+            window.loadAdminPartialsOnDemand();
+        }
         const currentActiveView = Array.from(window.views).find(v => v.classList.contains('active'));
         const currentActiveViewId = currentActiveView ? currentActiveView.id : null;
 

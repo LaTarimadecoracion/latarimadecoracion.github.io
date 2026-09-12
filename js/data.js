@@ -454,7 +454,11 @@ window.getNormalizedCatalogProducts = function(targetRubro = null) {
                         if (acabado && acabado.hidden !== true && acabado.acabado_name) {
                             const acabMedidas = [];
                             if (acabado.medidas_variants) {
-                                acabado.medidas_variants.forEach(mv => { if (mv.medida) acabMedidas.push(mv.medida); });
+                                acabado.medidas_variants.forEach(mv => { 
+                                    if (mv.medida) acabMedidas.push(mv.medida); 
+                                    if (mv.linkLabel) acabMedidas.push(mv.linkLabel);
+                                    if (mv.legend) acabMedidas.push(mv.legend);
+                                });
                             }
 
                             let acabImg = acabado.cover_image || (acabado.images_list && acabado.images_list[0]) || product.image;
@@ -462,6 +466,9 @@ window.getNormalizedCatalogProducts = function(targetRubro = null) {
 
                             const isUnico = acabado.acabado_name.toLowerCase() === 'único';
                             const displayTitle = isUnico ? product.title : `${product.title} (${acabado.acabado_name})`;
+
+                            // Recopilar todos los nombres de acabados y leyendas para indexado inteligente
+                            const allAcabadosNames = (product.acabados_groups || []).map(g => g.acabado_name || '').join(' ');
 
                             indexed.push({
                                 uniqueId: `${product.id}::${acabado.acabado_name}`,
@@ -482,7 +489,7 @@ window.getNormalizedCatalogProducts = function(targetRubro = null) {
                                 medidas_variants: acabado.medidas_variants || product.medidas_variants || [],
                                 optional_variant: product.optional_variant || null,
                                 tags: product.tags || [],
-                                acabadosSearch: (product.acabados_groups || []).map(g => g.acabado_name).join(' '),
+                                acabadosSearch: allAcabadosNames,
                                 medidas: acabMedidas
                             });
                             indexedAnyVariant = true;

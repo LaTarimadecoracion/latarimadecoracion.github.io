@@ -57,6 +57,28 @@ if (!fs.existsSync(shippingConfigDbPath)) {
     fs.writeFileSync(shippingConfigDbPath, '// js/shipping-config.js\nwindow.sessionShippingFullData = ' + JSON.stringify(defaultShippingData, null, 4) + ';\n', 'utf8');
 }
 
+// Helper para incrementar la versión del Service Worker automáticamente tras modificaciones
+function bumpServiceWorkerVersion() {
+    try {
+        const swPaths = [
+            path.join(ROOT_DIR, 'sw.js'),
+            path.join(ROOT_DIR, 'docs', 'sw.js')
+        ];
+        const newVersion = `tarima-cache-v59-${Date.now()}`;
+        
+        swPaths.forEach(swPath => {
+            if (fs.existsSync(swPath)) {
+                let content = fs.readFileSync(swPath, 'utf8');
+                content = content.replace(/const CACHE_NAME = ['"][^'"]+['"];/, `const CACHE_NAME = '${newVersion}';`);
+                fs.writeFileSync(swPath, content, 'utf8');
+            }
+        });
+        console.log(`⚡ Versión de Service Worker actualizada automáticamente a: ${newVersion}`);
+    } catch (e) {
+        console.error('⚠️ Error actualizando versión de Service Worker:', e);
+    }
+}
+
 // Ensure orders database file exists
 const ordersDbPath = path.join(ROOT_DIR, 'js', 'orders-data.js');
 if (!fs.existsSync(ordersDbPath)) {
@@ -2649,8 +2671,210 @@ app.get(['/stock', '/mayorista', '/catalogo', '/musica', '/alquileres', '/admin'
     res.sendFile(path.join(ROOT_DIR, 'index.html'));
 });
 
+function generateSocialPreviewPages() {
+    try {
+        const pDir = path.join(ROOT_DIR, 'p');
+        if (!fs.existsSync(pDir)) {
+            fs.mkdirSync(pDir, { recursive: true });
+        }
+
+        const productsDbPath = path.join(ROOT_DIR, 'js', 'products-data.js');
+        if (!fs.existsSync(productsDbPath)) return;
+
+        const fileContent = fs.readFileSync(productsDbPath, 'utf8');
+        const jsonStr = fileContent.replace(/^\s*const\s+productsData\s*=\s*/, '').replace(/;\s*$/, '').trim();
+        const categories = JSON.parse(jsonStr);
+
+        const validCodes = new Set();
+        let count = 0;
+
+        categories.forEach(cat => {
+            if (cat.products && Array.isArray(cat.products)) {
+                cat.products.forEach(p => {
+                    if (!p || !p.id) return;
+                    const code = p.shortId || p.id;
+                    validCodes.add(`${code}.html`);
+
+                    const title = p.title || 'La Tarima Decoración';
+                    const desc = (p.description || '').replace(/"/g, '&quot;').substring(0, 160);
+                    
+                    let imgUrl = p.image || '';
+                    if (Array.isArray(imgUrl)) imgUrl = imgUrl[0] || '';
+                    if (imgUrl && !imgUrl.startsWith('http')) {
+                        imgUrl = `https://latarimadecoracion.github.io/${imgUrl.replace(/^\/+/, '')}`;
+                    }
+
+                    const html = `<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title} | LA TARIMA</title>
+    <meta name="description" content="${desc}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LA TARIMA DECORACIÓN">
+    <meta property="og:title" content="${title} - LA TARIMA">
+    <meta property="og:description" content="${desc}">
+    <meta property="og:image" content="${imgUrl}">
+    <meta property="og:image:secure_url" content="${imgUrl}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="791">
+    <meta property="og:url" content="https://latarimadecoracion.github.io/p/${code}.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${title} - LA TARIMA">
+    <meta name="twitter:description" content="${desc}">
+    <meta name="twitter:image" content="${imgUrl}">
+    <script>
+        (function() {
+            var q = window.location.search;
+            var target = "https://latarimadecoracion.github.io/?s=${code}";
+            window.location.replace(q ? target + "&" + q.substring(1) : target);
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirigiendo a <a href="https://latarimadecoracion.github.io/?s=${code}">${title}</a>...</p>
+</body>
+</html>`;
+
+                    fs.writeFileSync(path.join(pDir, `${code}.html`), html, 'utf8');
+                    count++;
+                });
+            }
+        });
+
+        // 🧹 Limpieza automática de HTMLs obsoletos o borrados en p/
+        const existingFiles = fs.readdirSync(pDir);
+        let deletedCount = 0;
+        existingFiles.forEach(file => {
+            if (file.endsWith('.html') && file !== 'carrito.html' && !validCodes.has(file)) {
+                try {
+                    fs.unlinkSync(path.join(pDir, file));
+                    deletedCount++;
+                } catch (e) {}
+            }
+        });
+
+        console.log(`✨ Vistas previas en /p/: ${count} activas | ${deletedCount} obsoletas eliminadas.`);
+    } catch (e) {
+        console.error('⚠️ Error procesando la carpeta /p/:', e.message);
+    }
+}
+
+function cleanOrphanImages() {
+    try {
+        const usedImages = new Set();
+
+        // 1. Recopilar imágenes del catálogo (products-data.js)
+        const productsDbPath = path.join(ROOT_DIR, 'js', 'products-data.js');
+        if (fs.existsSync(productsDbPath)) {
+            const content = fs.readFileSync(productsDbPath, 'utf8');
+            const jsonStr = content.replace(/^\s*const\s+productsData\s*=\s*/, '').replace(/;\s*$/, '').trim();
+            const categories = JSON.parse(jsonStr);
+
+            categories.forEach(cat => {
+                if (cat.image) usedImages.add(path.normalize(cat.image));
+                if (cat.products && Array.isArray(cat.products)) {
+                    cat.products.forEach(p => {
+                        if (typeof p.image === 'string') usedImages.add(path.normalize(p.image));
+                        else if (Array.isArray(p.image)) p.image.forEach(img => usedImages.add(path.normalize(img)));
+                        
+                        if (p.acabados_groups && Array.isArray(p.acabados_groups)) {
+                            p.acabados_groups.forEach(g => {
+                                if (g.cover_image) usedImages.add(path.normalize(g.cover_image));
+                                if (g.images_list && Array.isArray(g.images_list)) {
+                                    g.images_list.forEach(img => usedImages.add(path.normalize(img)));
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        // 2. Recopilar imágenes de Ofertas (offers-data.js)
+        const offersDbPath = path.join(ROOT_DIR, 'js', 'offers-data.js');
+        if (fs.existsSync(offersDbPath)) {
+            const content = fs.readFileSync(offersDbPath, 'utf8');
+            const jsonStr = content.replace(/^\s*const\s+offersData\s*=\s*/, '').replace(/;\s*$/, '').trim();
+            const offers = JSON.parse(jsonStr);
+            offers.forEach(o => {
+                if (o.image) usedImages.add(path.normalize(o.image));
+            });
+        }
+
+        // 3. Recopilar imágenes de Nosotros y Banners (site-config.js)
+        const siteConfigDbPath = path.join(ROOT_DIR, 'js', 'site-config.js');
+        if (fs.existsSync(siteConfigDbPath)) {
+            const content = fs.readFileSync(siteConfigDbPath, 'utf8');
+            const matchNosotros = content.match(/"image":\s*"([^"]+)"/g);
+            if (matchNosotros) {
+                matchNosotros.forEach(m => {
+                    const imgPath = m.replace(/"image":\s*"/, '').replace(/"$/, '');
+                    if (imgPath) usedImages.add(path.normalize(imgPath));
+                });
+            }
+        }
+
+        // Imágenes protegidas del sistema
+        const protectedImages = [
+            'img/logo_provisional.png',
+            'img/borrador/portada-imagen.webp',
+            'favicon.ico',
+            'LOGO.png'
+        ];
+        protectedImages.forEach(img => usedImages.add(path.normalize(img)));
+
+        // Escanear carpetas físicas dentro de img/
+        const imgDir = path.join(ROOT_DIR, 'img');
+        if (!fs.existsSync(imgDir)) return;
+
+        const trashDir = path.join(ROOT_DIR, '_dev', '_trash_img');
+        if (!fs.existsSync(trashDir)) {
+            fs.mkdirSync(trashDir, { recursive: true });
+        }
+
+        let movedCount = 0;
+
+        function scanAndCleanDir(dirPath) {
+            const items = fs.readdirSync(dirPath, { withFileTypes: true });
+            items.forEach(item => {
+                const fullPath = path.join(dirPath, item.name);
+                if (item.isDirectory()) {
+                    // Evitar escanear la carpeta borrador de sistema
+                    if (item.name !== 'borrador') {
+                        scanAndCleanDir(fullPath);
+                    }
+                } else if (item.isFile() && /\.(webp|jpg|jpeg|png)$/i.test(item.name)) {
+                    const relativePath = path.relative(ROOT_DIR, fullPath).replace(/\\/g, '/');
+                    const normalizedRel = path.normalize(relativePath);
+
+                    if (!usedImages.has(normalizedRel) && !usedImages.has(relativePath)) {
+                        // Mover imagen desusada a la papelera segura _trash_img
+                        const destPath = path.join(trashDir, item.name);
+                        try {
+                            fs.renameSync(fullPath, destPath);
+                            movedCount++;
+                        } catch (err) {}
+                    }
+                }
+            });
+        }
+
+        scanAndCleanDir(imgDir);
+        if (movedCount > 0) {
+            console.log(`📦 Papelera segura: Se movieron ${movedCount} imágenes huérfanas a _dev/_trash_img/`);
+        }
+    } catch (e) {
+        console.error('⚠️ Error escaneando imágenes huérfanas:', e.message);
+    }
+}
+
 app.listen(PORT, '0.0.0.0', () => {
+    bumpServiceWorkerVersion();
     regenerateAllClientPages();
+    generateSocialPreviewPages();
+    cleanOrphanImages();
     const ips = getLocalIPs();
     console.log(`
 =============================================

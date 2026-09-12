@@ -1317,7 +1317,7 @@
             const el = document.getElementById(containerId);
             if (!el) return;
 
-            loadLeafletIfNeeded(function() {
+            window.loadLeafletOnDemand().then(function() {
                 if (!window.L) return;
 
                 if (!window.activeAdminPostalMaps) window.activeAdminPostalMaps = {};

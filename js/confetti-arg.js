@@ -2,10 +2,15 @@
  * La Tarima — Confetti Argentino
  * Confetis y cintas celeste & blanco flotando sutilmente en el fondo.
  * Canvas transparente, siempre por debajo del contenido.
+ * Optimizado para 0% uso de CPU cuando no está activo.
  */
 
 (function () {
     'use strict';
+
+    // Verificar preferencia de movimiento reducido
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
 
     // ── Paleta Patria ──────────────────────────────────────────────
     const COLORS = [
@@ -18,35 +23,48 @@
     ];
 
     const PIECE_COUNT = 38; // cantidad de piezas simultáneas
-
-    // ── Canvas setup ───────────────────────────────────────────────
-    const canvas = document.createElement('canvas');
-    canvas.id = 'lt-confetti-canvas';
-    canvas.style.cssText = [
-        'position:fixed',
-        'top:0', 'left:0',
-        'width:100%', 'height:100%',
-        'pointer-events:none',
-        'z-index:99999',             // por encima de todo el contenido
-        'overflow:hidden',
-    ].join(';');
-    document.body.prepend(canvas);
-
-    const ctx = canvas.getContext('2d');
-
-    // ── Resize ─────────────────────────────────────────────────────
-    function resize() {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    // ── Tipos de pieza ─────────────────────────────────────────────
-    // 'rect'  → confeti cuadrado/rectangular
-    // 'ribbon'→ cinta larga y delgada
-    // 'circle'→ círculo pequeño (estrella del sol de mayo simplificada)
     const TYPES = ['rect', 'rect', 'ribbon', 'ribbon', 'circle'];
+
+    let canvas = null;
+    let ctx = null;
+    let pieces = [];
+    let isRunning = false;
+    let animationFrameId = null;
+
+    function isFestiveTheme() {
+        const theme = window.siteConfig ? window.siteConfig.activeTheme : (window.activeTheme || 'classic');
+        return theme === 'mundial' || theme === 'final-mundial';
+    }
+
+    function initCanvas() {
+        if (canvas) return;
+        canvas = document.createElement('canvas');
+        canvas.id = 'lt-confetti-canvas';
+        canvas.style.cssText = [
+            'position:fixed',
+            'top:0', 'left:0',
+            'width:100%', 'height:100%',
+            'pointer-events:none',
+            'z-index:99999',
+            'overflow:hidden',
+        ].join(';');
+        document.body.prepend(canvas);
+        ctx = canvas.getContext('2d');
+
+        function resize() {
+            if (!canvas) return;
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        pieces = Array.from({ length: PIECE_COUNT }, () => {
+            const p = new Piece();
+            p.y = Math.random() * (canvas ? canvas.height : window.innerHeight);
+            return p;
+        });
+    }
 
     // ── Clase Pieza ────────────────────────────────────────────────
     class Piece {
@@ -55,111 +73,78 @@
         }
 
         reset(initialY = null) {
-            const W = canvas.width;
-            const H = canvas.height;
+            const W = canvas ? canvas.width : window.innerWidth;
+            const H = canvas ? canvas.height : window.innerHeight;
 
-            const activeTheme = window.activeTheme || 'classic';
+            const theme = window.siteConfig ? window.siteConfig.activeTheme : (window.activeTheme || 'classic');
             let currentColors = COLORS;
             let currentTypes = TYPES;
 
-            if (activeTheme === 'final-mundial') {
+            if (theme === 'final-mundial') {
                 currentColors = [
-                    'rgba(117, 179, 220, 0.85)', // celeste bandera
-                    'rgba(255, 255, 255, 0.90)', // blanco
-                    'rgba(255, 215, 0, 0.85)',   // oro brillante (gold)
-                    'rgba(212, 175, 55, 0.85)',  // oro metálico
-                    'rgba(255, 223, 0, 0.75)',   // oro suave
-                    'rgba(176, 224, 230, 0.70)'  // celeste suave
+                    'rgba(117, 179, 220, 0.85)',
+                    'rgba(255, 255, 255, 0.90)',
+                    'rgba(255, 215, 0, 0.85)',
+                    'rgba(212, 175, 55, 0.85)',
+                    'rgba(255, 223, 0, 0.75)',
+                    'rgba(176, 224, 230, 0.70)'
                 ];
                 currentTypes = ['rect', 'ribbon', 'circle', 'star', 'star'];
-            } else {
-                currentColors = COLORS;
-                currentTypes = TYPES;
             }
 
             this.type  = currentTypes[Math.floor(Math.random() * currentTypes.length)];
             this.color = currentColors[Math.floor(Math.random() * currentColors.length)];
 
-            // Posición inicial: aleatoria en X, arriba del viewport
-            this.x = Math.random() * W;
-            this.y = initialY !== null ? initialY : -20 - Math.random() * H;
+            this.x     = Math.random() * W;
+            this.y     = initialY !== null ? initialY : -10;
 
-            // Tamaño según tipo
-            if (this.type === 'ribbon') {
-                this.w = 3 + Math.random() * 3;
-                this.h = 14 + Math.random() * 14;
-            } else if (this.type === 'circle') {
-                this.r = 3 + Math.random() * 4;
-                this.w = this.r * 2;
-                this.h = this.r * 2;
-            } else if (this.type === 'star') {
-                this.w = 5 + Math.random() * 5; // Radio de la estrella
-                this.h = this.w;
-            } else {
-                this.w = 6 + Math.random() * 6;
-                this.h = 6 + Math.random() * 6;
-            }
+            this.w     = this.type === 'ribbon' ? (4 + Math.random() * 3) : (8 + Math.random() * 8);
+            this.h     = this.type === 'ribbon' ? (14 + Math.random() * 10) : (8 + Math.random() * 8);
+            this.r     = Math.random() * 360;
 
-            // Velocidades muy suaves (flotando, no cayendo)
-            this.vx   = (Math.random() - 0.5) * 0.5;   // deriva lateral mínima
-            this.vy   =  0.35 + Math.random() * 0.55;   // caída muy lenta
-            this.rot  = Math.random() * Math.PI * 2;
-            this.vrot = (Math.random() - 0.5) * 0.025;  // rotación suave
+            this.vx    = (Math.random() - 0.5) * 1.2;
+            this.vy    = 0.6 + Math.random() * 1.2;
+            this.vr    = (Math.random() - 0.5) * 2.5;
 
-            // Oscilación sinusoidal horizontal (efecto "vuelo")
-            this.swingAmp   = 0.6 + Math.random() * 1.2;
-            this.swingSpeed = 0.01 + Math.random() * 0.015;
-            this.swingOffset= Math.random() * Math.PI * 2;
+            this.sway  = Math.random() * Math.PI * 2;
+            this.swaySpeed = 0.02 + Math.random() * 0.03;
 
-            this.opacity = 0.5 + Math.random() * 0.5;
-            this.tick    = 0;
+            this.opacity = 0.6 + Math.random() * 0.4;
         }
 
         update() {
-            this.tick++;
-            // Movimiento sinusoidal en X
-            this.x += this.vx + Math.sin(this.tick * this.swingSpeed + this.swingOffset) * this.swingAmp * 0.08;
+            const H = canvas ? canvas.height : window.innerHeight;
+            this.sway += this.swaySpeed;
+            this.x += this.vx + Math.sin(this.sway) * 0.6;
             this.y += this.vy;
-            this.rot += this.vrot;
+            this.r += this.vr;
 
-            // Reciclar cuando sale por abajo
-            if (this.y > canvas.height + 30) {
+            if (this.y > H + 20) {
                 this.reset();
             }
         }
 
         draw() {
+            if (!ctx) return;
             ctx.save();
             ctx.translate(this.x, this.y);
-            ctx.rotate(this.rot);
-            ctx.globalAlpha = this.opacity;
-            ctx.fillStyle   = this.color;
+            ctx.rotate((this.r * Math.PI) / 180);
+            ctx.fillStyle = this.color;
 
             if (this.type === 'circle') {
                 ctx.beginPath();
-                ctx.arc(0, 0, this.r, 0, Math.PI * 2);
+                ctx.arc(0, 0, this.w / 2, 0, Math.PI * 2);
                 ctx.fill();
-
             } else if (this.type === 'star') {
                 ctx.beginPath();
-                let rot = Math.PI / 2 * 3;
-                let step = Math.PI / 5;
-                let outer = this.w;
-                let inner = outer / 2;
-                ctx.moveTo(0, -outer);
                 for (let i = 0; i < 5; i++) {
-                    let x = Math.cos(rot) * outer;
-                    let y = Math.sin(rot) * outer;
-                    ctx.lineTo(x, y);
-                    rot += step;
-                    x = Math.cos(rot) * inner;
-                    y = Math.sin(rot) * inner;
-                    ctx.lineTo(x, y);
-                    rot += step;
+                    ctx.lineTo(Math.cos((18 + i * 72) * Math.PI / 180) * (this.w / 2),
+                               Math.sin((18 + i * 72) * Math.PI / 180) * (this.w / 2));
+                    ctx.lineTo(Math.cos((54 + i * 72) * Math.PI / 180) * (this.w / 4),
+                               Math.sin((54 + i * 72) * Math.PI / 180) * (this.w / 4));
                 }
                 ctx.closePath();
                 ctx.fill();
-
             } else if (this.type === 'ribbon') {
                 // Cinta con curvatura (efecto ondulado)
                 ctx.beginPath();
@@ -173,7 +158,6 @@
                     -this.w / 2, -this.h / 2
                 );
                 ctx.fill();
-
             } else {
                 // Rectángulo con esquinas ligeramente redondeadas
                 const rx = 1.5;
@@ -197,36 +181,53 @@
         }
     }
 
-    // ── Inicializar piezas distribuidas en toda la pantalla ────────
-    const pieces = Array.from({ length: PIECE_COUNT }, () => {
-        const p = new Piece();
-        // Distribución inicial en toda la altura para que no arranquen
-        // todas desde arriba al mismo tiempo
-        p.y = Math.random() * canvas.height;
-        return p;
-    });
-
-    // ── Loop de animación ──────────────────────────────────────────
+    // ── Loop de animación Optimizado ─────────────────────────────────
     function loop() {
-        const activeTheme = window.activeTheme || 'classic';
-        if (activeTheme !== 'mundial' && activeTheme !== 'final-mundial') {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            canvas.style.display = 'none';
-            requestAnimationFrame(loop);
+        if (!isFestiveTheme()) {
+            stopConfetti();
             return;
         }
 
-        canvas.style.display = 'block';
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        initCanvas();
+        if (canvas) canvas.style.display = 'block';
+        if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
         pieces.forEach(p => { p.update(); p.draw(); });
-        requestAnimationFrame(loop);
+
+        animationFrameId = requestAnimationFrame(loop);
     }
+
+    function startConfetti() {
+        if (isRunning) return;
+        if (!isFestiveTheme()) return;
+        isRunning = true;
+        loop();
+    }
+
+    function stopConfetti() {
+        isRunning = false;
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+        if (canvas) {
+            canvas.style.display = 'none';
+            if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }
+
+    window.checkConfettiStatus = function() {
+        if (isFestiveTheme()) {
+            startConfetti();
+        } else {
+            stopConfetti();
+        }
+    };
 
     // ── Arrancar cuando el DOM esté listo ─────────────────────────
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loop);
+        document.addEventListener('DOMContentLoaded', () => window.checkConfettiStatus());
     } else {
-        loop();
+        window.checkConfettiStatus();
     }
 
 })();

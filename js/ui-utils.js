@@ -231,3 +231,30 @@
             }, 300);
         }
     };
+
+    // Cargador asíncrono diferido de Leaflet Mapas (Lazy Loading)
+    window.loadLeafletOnDemand = function() {
+        return new Promise((resolve, reject) => {
+            if (typeof L !== 'undefined') {
+                return resolve();
+            }
+            if (!document.getElementById('leaflet-css')) {
+                const link = document.createElement('link');
+                link.id = 'leaflet-css';
+                link.rel = 'stylesheet';
+                link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+                document.head.appendChild(link);
+            }
+            if (!document.getElementById('leaflet-js')) {
+                const script = document.createElement('script');
+                script.id = 'leaflet-js';
+                script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+                script.onload = () => resolve();
+                script.onerror = (err) => reject(err);
+                document.head.appendChild(script);
+            } else {
+                const script = document.getElementById('leaflet-js');
+                script.addEventListener('load', () => resolve());
+            }
+        });
+    };

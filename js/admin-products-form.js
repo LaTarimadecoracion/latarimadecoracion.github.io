@@ -1332,10 +1332,22 @@ let groupCounter = 0;
                 creditEnabled: document.getElementById('product-pay-credit-enabled')?.checked ?? true
             };
 
-            const prodWeightVal = parseFloat(document.getElementById('product-estimated-weight')?.value);
+            // Preservar o generar shortId estático inmutable
+            let existingShortId = undefined;
+            if (targetCategory && targetCategory.products) {
+                const existingProd = targetCategory.products.find(p => p.id === (editingProductId || idVal));
+                if (existingProd && existingProd.shortId) {
+                    existingShortId = existingProd.shortId;
+                }
+            }
+            if (!existingShortId) {
+                let flatCount = (typeof window.TarimaShortener?.getAllProductsFlat === 'function' ? window.TarimaShortener.getAllProductsFlat().length : 50) + 1;
+                existingShortId = flatCount.toString(36).toUpperCase();
+            }
 
             const product = {
                 id:          idVal,
+                shortId:     existingShortId,
                 title:       document.getElementById('admin-title')?.value?.trim() || '',
                 description: document.getElementById('admin-description')?.value?.trim() || '',
                 video:       pVideo !== '' ? pVideo : undefined,

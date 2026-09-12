@@ -94,8 +94,17 @@
                     return;
                 }
 
+                // Generar catShortId estático e inmutable
+                let nextCatShortNum = sessionProducts.length + 1;
+                let nextCatShortId = nextCatShortNum.toString(36).toUpperCase();
+                while (sessionProducts.some(c => c.catShortId === nextCatShortId)) {
+                    nextCatShortNum++;
+                    nextCatShortId = nextCatShortNum.toString(36).toUpperCase();
+                }
+
                 sessionProducts.push({
                     id: id,
+                    catShortId: nextCatShortId,
                     name: name,
                     image: uploadedPath,
                     rubro: rubroVal, // Guardar rubro
