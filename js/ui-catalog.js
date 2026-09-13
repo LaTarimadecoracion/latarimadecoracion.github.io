@@ -1518,9 +1518,14 @@
                 if (matchedOptIdx !== -1) defaultOptIdx = matchedOptIdx;
             }
 
+            const cleanLabel = (optVariant.label || 'Opción')
+                .replace(/\(OPCIONAL\)/gi, '')
+                .trim();
+            const displayLabel = cleanLabel.charAt(0).toUpperCase() + cleanLabel.slice(1).toLowerCase();
+
             divOpt.className = 'variant-selector-wrapper mt-1';
             divOpt.innerHTML = `
-                <label class="variant-label">✨ ${optVariant.label || 'Opción'}</label>
+                <label class="variant-label" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">✨ ${displayLabel} <span style="font-size: 0.7rem; color: #94a3b8; font-weight: 500;">(Opcional)</span></label>
                 <select class="variant-select-cascade">
                     ${optVariant.options.map((o, i) => `
                         <option value="${i}" ${i === defaultOptIdx ? 'selected' : ''}>${o}</option>

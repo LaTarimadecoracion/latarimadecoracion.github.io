@@ -171,83 +171,87 @@
         
         <section id="view-product-detail" class="view detail-view">
             
-            <div id="detail-header-info" style="padding: 1.25rem 1.25rem 0.5rem; text-align: left;">
-                <h2 id="detail-title" style="margin: 0 0 0.25rem 0; font-size: 1.45rem; font-weight: 900; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
-                <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;"></span>
-            </div>
-
-            
-            <div class="detail-img-container" style="margin-bottom: 1.25rem;"></div>
-
-            
-            <div class="detail-content" style="padding: 0 1.25rem;">
+            <div class="detail-main-grid">
+                
+                <div id="detail-header-info" style="padding: 1.25rem 1.25rem 0.5rem; text-align: left;">
+                    <h2 id="detail-title" style="margin: 0 0 0.25rem 0; font-size: 1.45rem; font-weight: 900; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
+                    <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;"></span>
+                </div>
 
                 
-                <div id="detail-attributes-container" style="margin-bottom: 1.25rem;"></div>
+                <div class="detail-img-container" style="margin-bottom: 1.25rem;"></div>
 
                 
-                <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                        
-                        <div class="qty-selector-wrapper" style="margin: 0;">
-                            <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px;">
-                                <span style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Unidades:</span>
-                                <button type="button" class="qty-btn" id="btn-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">−</button>
-                                <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 28px; text-align: center;">1</span>
-                                <button type="button" class="qty-btn" id="btn-qty-plus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">+</button>
+                <div class="detail-content" style="padding: 0 1.25rem;">
+
+                    
+                    <div id="detail-attributes-container" style="margin-bottom: 1.25rem;"></div>
+
+                    
+                    <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                            
+                            <div class="qty-selector-wrapper" style="margin: 0;">
+                                <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px;">
+                                    <span class="qty-selector-label" style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Unidades:</span>
+                                    <button type="button" class="qty-btn" id="btn-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">−</button>
+                                    <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 28px; text-align: center;">1</span>
+                                    <button type="button" class="qty-btn" id="btn-qty-plus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">+</button>
+                                </div>
+                                <div id="detail-qty-discount-banner" style="display: none; margin-top: 4px; font-size: 0.72rem; font-weight: 700; color: #16a34a;"></div>
                             </div>
-                            <div id="detail-qty-discount-banner" style="display: none; margin-top: 4px; font-size: 0.72rem; font-weight: 700; color: #16a34a;"></div>
+
+                            
+                            <div id="detail-price-display" class="detail-price" style="margin: 0; display: none; text-align: right;"></div>
                         </div>
 
                         
-                        <div id="detail-price-display" class="detail-price" style="margin: 0; display: none; text-align: right;"></div>
+                        <div id="detail-shipping-best-price-badge" style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;"></div>
                     </div>
 
                     
-                    <div id="detail-shipping-best-price-badge" style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;"></div>
-                </div>
+                    <div class="detail-actions" id="detail-actions-container" style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem;">
+                        
+                        <button type="button" id="btn-buy-now-product" class="btn-primary giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.95rem; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 900; background: linear-gradient(135deg, #059669, #10b981); border: none; color: white; box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35); cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">
+                            <span class="material-symbols-outlined" style="font-size: 24px;">bolt</span>
+                            <span>COMPRAR YA</span>
+                        </button>
 
-                
-                <div class="detail-actions" id="detail-actions-container" style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem;">
+                        
+                        <button type="button" id="btn-add-cart-product" class="btn-outline giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #f0fdf4; border: 1.5px solid #86efac; color: #166534; text-decoration: none; cursor: pointer; transition: all 0.2s ease;">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">shopping_cart</span>
+                            <span id="btn-add-cart-text">Agregar al Carrito</span>
+                        </button>
+                    </div>
+
                     
-                    <button type="button" id="btn-buy-now-product" class="btn-primary giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.95rem; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 900; background: linear-gradient(135deg, #059669, #10b981); border: none; color: white; box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35); cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">
-                        <span class="material-symbols-outlined" style="font-size: 24px;">bolt</span>
-                        <span>COMPRAR YA</span>
-                    </button>
+                    <div class="info-badges-grid" style="margin-top: 0.75rem; margin-bottom: 0.5rem; width: 100%; box-sizing: border-box;">
+                        <button type="button" id="btn-product-modal-payments" title="Ver formas de pago">
+                            <span class="material-symbols-outlined" style="color: #16a34a; font-size: 20px; flex-shrink: 0;">payments</span>
+                            <div style="min-width: 0;">
+                                <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Formas de Pago</div>
+                                <div style="font-size: 0.68rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Transferencia / Link</div>
+                            </div>
+                        </button>
 
-                    
-                    <button type="button" id="btn-add-cart-product" class="btn-outline giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #f0fdf4; border: 1.5px solid #86efac; color: #166534; text-decoration: none; cursor: pointer; transition: all 0.2s ease;">
-                        <span class="material-symbols-outlined" style="font-size: 20px;">shopping_cart</span>
-                        <span id="btn-add-cart-text">Agregar al Carrito</span>
-                    </button>
+                        <button type="button" id="btn-product-modal-shipping" title="Ver envíos y retiros">
+                            <span class="material-symbols-outlined" style="color: #2563eb; font-size: 20px; flex-shrink: 0;">local_shipping</span>
+                            <div style="min-width: 0;">
+                                <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Envíos y Retiro</div>
+                                <div style="font-size: 0.68rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Taller Hurlingham / CP</div>
+                            </div>
+                        </button>
+
+                        <button type="button" id="btn-product-modal-warranty" title="Ver calidad y garantía">
+                            <span class="material-symbols-outlined" style="color: #8b5cf6; font-size: 20px; flex-shrink: 0;">verified</span>
+                            <div style="min-width: 0;">
+                                <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Calidad & Garantía</div>
+                                <div style="font-size: 0.65rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Madera Maciza 100%</div>
+                            </div>
+                        </button>
+                    </div>
                 </div>
-
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 1.5rem;">
-                    <button type="button" id="btn-product-modal-payments" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left;" title="Ver formas de pago">
-                        <span class="material-symbols-outlined" style="color: #16a34a; font-size: 20px;">payments</span>
-                        <div>
-                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a;">Formas de Pago</div>
-                            <div style="font-size: 0.68rem; color: #64748b;">Transferencia / Link</div>
-                        </div>
-                    </button>
-
-                    <button type="button" id="btn-product-modal-shipping" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left;" title="Ver envíos y retiros">
-                        <span class="material-symbols-outlined" style="color: #2563eb; font-size: 20px;">local_shipping</span>
-                        <div>
-                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a;">Envíos y Retiro</div>
-                            <div style="font-size: 0.68rem; color: #64748b;">Taller Hurlingham / CP</div>
-                        </div>
-                    </button>
-
-                    <button type="button" id="btn-product-modal-warranty" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left;" title="Ver calidad y garantía">
-                        <span class="material-symbols-outlined" style="color: #8b5cf6; font-size: 20px;">verified</span>
-                        <div>
-                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a;">Calidad & Garantía</div>
-                            <div style="font-size: 0.68rem; color: #64748b;">Madera Maciza 100%</div>
-                        </div>
-                    </button>
-                </div>
+            </div>
 
                 
                 <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.1rem; margin-bottom: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
@@ -261,7 +265,9 @@
                 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem; margin-bottom: 1.5rem;">
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
                         <div>
-                            <div style="font-size: 1.2rem;">🪵</div>
+                            <div style="display: flex; justify-content: center; align-items: center; height: 26px;">
+                                <span class="material-symbols-outlined" style="font-size: 22px; color: #b45309;">forest</span>
+                            </div>
                             <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; margin-top: 2px;">Material</div>
                             <div style="font-size: 0.7rem; color: #64748b;">100% Madera Maciza</div>
                         </div>

@@ -1953,6 +1953,16 @@
                 if (res) {
                     if (ciudadInput && !ciudadInput.value) ciudadInput.value = res.localidad;
                     if (provInput && !provInput.value) provInput.value = res.provincia;
+                    
+                    // Sincronizar en localStorage de la app para que todas las vistas se actualicen automáticamente
+                    try {
+                        let userData = {};
+                        const saved = localStorage.getItem('userData');
+                        if (saved) userData = JSON.parse(saved);
+                        userData.zipCode = query;
+                        localStorage.setItem('userData', JSON.stringify(userData));
+                        window.dispatchEvent(new CustomEvent('latarima:cp-updated', { detail: { zipCode: query } }));
+                    } catch(e) {}
                 }
                 renderShipOptions(res);
             }, 500);
