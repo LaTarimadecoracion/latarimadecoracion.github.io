@@ -6191,14 +6191,16 @@ a .material-symbols-outlined {
 
 /* Adaptación responsive inteligente para mini-tarjetas informativas */
 .info-badges-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)) !important;
-    gap: 8px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
     width: 100% !important;
     box-sizing: border-box !important;
 }
 
 .info-badges-grid button {
+    flex: 1 !important;
+    min-width: 0 !important;
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
@@ -6211,6 +6213,20 @@ a .material-symbols-outlined {
     cursor: pointer !important;
     text-align: left !important;
     min-height: 48px !important;
+}
+
+/* Blindaje para Especificaciones Rápidas (Material / Fabricación / Garantía) */
+.especificaciones-rapidas-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+}
+.especificaciones-rapidas-grid > div {
+    flex: 1 !important;
+    min-width: 0 !important;
+    text-align: center !important;
 }
 
 
