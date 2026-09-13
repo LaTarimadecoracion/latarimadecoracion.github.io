@@ -86,23 +86,6 @@
         const savedQuotes = getSavedQuotes();
 
         container.innerHTML = `
-            <div class="admin-card" style="padding: 1rem 1.25rem; margin-bottom: 1.25rem; background: var(--admin-surface); border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md);">
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-                    <div>
-                        <h3 class="admin-card-title" style="margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--admin-text-main); display: flex; align-items: center; gap: 8px;">
-                            <span class="material-symbols-outlined" style="color: var(--admin-accent);">request_quote</span>
-                            Generador Rápido de Presupuestos
-                        </h3>
-                        <p style="margin: 4px 0 0 0; font-size: 0.8rem; color: var(--admin-text-muted);">
-                            Armá presupuestos personalizados para clientes perezosos y guardalos automáticamente por 60 días para convertirlos en pedidos reales con 1 clic.
-                        </p>
-                    </div>
-                    <button type="button" id="btn-quote-reset" class="btn-outline" style="color: #ef4444; border-color: #fca5a5;">
-                        <span class="material-symbols-outlined">restart_alt</span> Limpiar Presupuesto
-                    </button>
-                </div>
-            </div>
-
             <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                 
                 <!-- Tarjeta 1: Datos del Cliente -->
@@ -113,17 +96,14 @@
                             1. Datos del Cliente
                         </h4>
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <button type="button" id="btn-copy-client-data-request" class="btn-outline" style="padding: 0.35rem 0.65rem; color: var(--admin-accent); border-color: var(--admin-accent); display: inline-flex; align-items: center; justify-content: center; gap: 4px; border-radius: 6px; font-size: 0.78rem; font-weight: 700;" title="Copiar plantilla de pedido de datos personales / despacho para WhatsApp">
+                            <button type="button" id="btn-copy-client-data-request" class="btn-outline" style="padding: 0.35rem 0.5rem; color: var(--admin-accent); border-color: var(--admin-accent); display: inline-flex; align-items: center; justify-content: center; border-radius: 6px;" title="Copiar Datos de Envío / Despacho">
                                 <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span>
-                                <span>Datos Envío</span>
                             </button>
-                            <button type="button" id="btn-copy-billing-data-request" class="btn-outline" style="padding: 0.35rem 0.65rem; color: #2563eb; border-color: #93c5fd; background: #eff6ff; display: inline-flex; align-items: center; justify-content: center; gap: 4px; border-radius: 6px; font-size: 0.78rem; font-weight: 700;" title="Copiar plantilla de solicitud de datos de facturación (CUIT/Razon Social/Condición IVA) para WhatsApp">
+                            <button type="button" id="btn-copy-billing-data-request" class="btn-outline" style="padding: 0.35rem 0.5rem; color: #2563eb; border-color: #93c5fd; background: #eff6ff; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px;" title="Copiar Datos de Facturación (CUIT/IVA)">
                                 <span class="material-symbols-outlined" style="font-size: 18px;">receipt</span>
-                                <span>Datos Facturación</span>
                             </button>
-                            <button type="button" id="btn-copy-bank-transfer-details" class="btn-outline" style="padding: 0.35rem 0.65rem; color: #16a34a; border-color: #86efac; background: #f0fdf4; display: inline-flex; align-items: center; justify-content: center; gap: 4px; border-radius: 6px; font-size: 0.78rem; font-weight: 700;" title="Copiar datos bancarios (CBU / ALIAS / Banco) para transferencia">
+                            <button type="button" id="btn-copy-bank-transfer-details" class="btn-outline" style="padding: 0.35rem 0.5rem; color: #16a34a; border-color: #86efac; background: #f0fdf4; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px;" title="Copiar Datos Bancarios (CBU / ALIAS)">
                                 <span class="material-symbols-outlined" style="font-size: 18px;">account_balance</span>
-                                <span>Datos CBU</span>
                             </button>
                         </div>
                     </header>
@@ -137,10 +117,6 @@
                             <input type="text" id="quote-client-phone" class="premium-input" placeholder="ej: 1167007723" value="${currentQuote.clientPhone}">
                         </div>
                         <div class="form-group" style="margin: 0;">
-                            <label for="quote-client-email" style="font-size: 0.78rem;">Correo Electrónico (Opcional)</label>
-                            <input type="email" id="quote-client-email" class="premium-input" placeholder="ej: lucia@gmail.com" value="${currentQuote.clientEmail}">
-                        </div>
-                        <div class="form-group" style="margin: 0;">
                             <label for="quote-client-cuit" style="font-size: 0.78rem;">DNI o CUIT (Para Factura / Envíos)</label>
                             <input type="text" id="quote-client-cuit" class="premium-input" placeholder="ej: 20-35281538-2 o 35281538" value="${currentQuote.clientCuit || ''}">
                         </div>
@@ -149,12 +125,12 @@
                             <input type="text" id="quote-client-address" class="premium-input" placeholder="ej: Av. Rivadavia 12345, 4 B" value="${currentQuote.clientAddress}">
                         </div>
                         <div class="form-group" style="margin: 0;">
-                            <label for="quote-client-locality" style="font-size: 0.78rem;">Localidad / Barrio</label>
-                            <input type="text" id="quote-client-locality" class="premium-input" placeholder="ej: Haedo" value="${currentQuote.clientLocality}">
-                        </div>
-                        <div class="form-group" style="margin: 0;">
                             <label for="quote-client-zip" style="font-size: 0.78rem;">Código Postal (Auto-cotiza flete)</label>
                             <input type="text" id="quote-client-zip" class="premium-input" placeholder="ej: 1706" value="${currentQuote.clientZip}">
+                        </div>
+                        <div class="form-group" style="margin: 0;">
+                            <label for="quote-client-locality" style="font-size: 0.78rem;">Localidad / Barrio (Auto-completa)</label>
+                            <input type="text" id="quote-client-locality" class="premium-input" placeholder="ej: Haedo" value="${currentQuote.clientLocality}">
                         </div>
                     </div>
                 </div>
@@ -415,6 +391,89 @@
         updateTotalsPreview();
     }
 
+    function recalculateAutoShippingCost() {
+        if (!currentQuote.clientZip || currentQuote.clientZip.length < 4 || typeof window.lookupPostalCode !== 'function') {
+            return;
+        }
+
+        const cpRes = window.lookupPostalCode(currentQuote.clientZip);
+        if (!cpRes) return;
+
+        let totalLogisticaCost = 0;
+        let totalFleteCost = 0;
+        let hasLogisticaOption = false;
+        let hasFleteOption = false;
+
+        const sourceData = (window.sessionProducts && window.sessionProducts.length > 0) ? window.sessionProducts : (window.productsData || []);
+
+        if (currentQuote.items && currentQuote.items.length > 0) {
+            currentQuote.items.forEach(item => {
+                const qty = parseInt(item.qty) || 1;
+                let foundProduct = null;
+
+                if (item.productId && sourceData) {
+                    sourceData.forEach(cat => {
+                        (cat.products || []).forEach(p => {
+                            if (p && String(p.id) === String(item.productId)) foundProduct = p;
+                        });
+                    });
+                }
+
+                const shipConf = (foundProduct && foundProduct.shippingConfig) ? foundProduct.shippingConfig : {};
+
+                // 1. EVALUAR LOGÍSTICA / COURIER PARA ESTE ÍTEM
+                if (cpRes.logistica && cpRes.logistica.active !== false && shipConf.logisticaEnabled !== false) {
+                    hasLogisticaOption = true;
+                    const manualCost = parseFloat(shipConf.logisticaCost) || 0;
+                    const sysCost = cpRes.logistica.cost || 0;
+                    const baseCost = manualCost > 0 ? manualCost : sysCost;
+
+                    const freeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
+                    const maxUnits = parseInt(shipConf.logisticaMaxUnits) || 0;
+
+                    const isFreeByQty = (freeMin > 0 && qty >= freeMin);
+                    if (!isFreeByQty) {
+                        const packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
+                        totalLogisticaCost += (baseCost * packages);
+                    }
+                }
+
+                // 2. EVALUAR FLETE PARTICULAR PARA ESTE ÍTEM
+                if (cpRes.flete && cpRes.flete.active !== false && shipConf.fleteEnabled !== false) {
+                    hasFleteOption = true;
+                    const manualCost = parseFloat(shipConf.fleteCost) || 0;
+                    const sysCost = cpRes.flete.cost || 0;
+                    const baseCost = manualCost > 0 ? manualCost : sysCost;
+
+                    const freeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
+                    const maxUnits = parseInt(shipConf.fleteMaxUnits) || 0;
+
+                    const isFreeByQty = (freeMin > 0 && qty >= freeMin);
+                    if (!isFreeByQty) {
+                        const packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
+                        totalFleteCost += (baseCost * packages);
+                    }
+                }
+            });
+        }
+
+        // Seleccionar el MEJOR PRECIO entre las modalidades de envío disponibles
+        let bestShippingCost = 0;
+        if (hasLogisticaOption && hasFleteOption) {
+            bestShippingCost = Math.min(totalLogisticaCost, totalFleteCost);
+        } else if (hasLogisticaOption) {
+            bestShippingCost = totalLogisticaCost;
+        } else if (hasFleteOption) {
+            bestShippingCost = totalFleteCost;
+        } else if (cpRes.logistica && cpRes.logistica.cost) {
+            bestShippingCost = cpRes.logistica.cost;
+        }
+
+        currentQuote.shippingCost = bestShippingCost;
+        const shipInp = document.getElementById('quote-shipping-cost');
+        if (shipInp) shipInp.value = bestShippingCost;
+    }
+
     function updateTotalsPreview() {
         const subtotal = currentQuote.items.reduce((acc, item) => acc + (item.qty * item.price), 0);
         const discountVal = Math.round(subtotal * (currentQuote.discountPercent / 100));
@@ -477,14 +536,11 @@
             if (typeof window.lookupPostalCode === 'function' && val.length >= 4) {
                 const res = window.lookupPostalCode(val);
                 if (res && res.localidad) {
-                    if (locInp && (!currentQuote.clientLocality || currentQuote.clientLocality.trim() === '')) {
+                    if (locInp) {
                         locInp.value = res.localidad;
                         currentQuote.clientLocality = res.localidad;
                     }
-                    if (res.logistica && res.logistica.cost > 0 && (!currentQuote.shippingCost || currentQuote.shippingCost === 0)) {
-                        currentQuote.shippingCost = res.logistica.cost;
-                        if (shipInp) shipInp.value = res.logistica.cost;
-                    }
+                    recalculateAutoShippingCost();
                 }
             }
             updateTotalsPreview();
@@ -612,20 +668,41 @@ Para poder confeccionar la factura correspondiente a tu compra, ¿podrías indic
             renderAdminQuotes();
         });
 
-        // Search product (Combos / Offers style product picker)
+        // Search product (Combos / Offers style product picker con algoritmo inteligente)
         const searchInput = document.getElementById('quote-product-search');
         const resultsDiv = document.getElementById('quote-search-results');
 
-        searchInput?.addEventListener('input', (e) => {
-            const q = e.target.value.toLowerCase().trim();
-            if (!q) { resultsDiv.style.display = 'none'; return; }
+        function normalizeSearchStr(str) {
+            return (str || '')
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .trim();
+        }
 
+        searchInput?.addEventListener('input', (e) => {
+            const rawQuery = e.target.value;
+            const normalizedQuery = normalizeSearchStr(rawQuery);
+            if (!normalizedQuery) { resultsDiv.style.display = 'none'; return; }
+
+            const queryWords = normalizedQuery.split(/\s+/).filter(w => w.length > 0);
             let matches = [];
             const sourceData = (window.sessionProducts && window.sessionProducts.length > 0) ? window.sessionProducts : (window.productsData || []);
+
             if (sourceData) {
                 sourceData.forEach(cat => {
                     (cat.products || []).forEach(p => {
-                        if (p && p.title && (p.title.toLowerCase().includes(q) || cat.name.toLowerCase().includes(q))) {
+                        if (!p || !p.title) return;
+                        const normTitle = normalizeSearchStr(p.title);
+                        const normCat = normalizeSearchStr(cat.name);
+                        const normDesc = normalizeSearchStr(p.description || '');
+
+                        const fullText = `${normTitle} ${normCat} ${normDesc}`;
+                        
+                        // Coincidencia inteligente: todas las palabras ingresadas deben coincidir en el producto
+                        const allWordsMatch = queryWords.every(word => fullText.includes(word));
+
+                        if (allWordsMatch) {
                             matches.push({ product: p, catName: cat.name });
                         }
                     });
@@ -836,6 +913,7 @@ Para poder confeccionar la factura correspondiente a tu compra, ¿podrías indic
             image: defaultImage
         });
 
+        recalculateAutoShippingCost();
         renderAdminQuotes();
     }
 
@@ -849,6 +927,7 @@ Para poder confeccionar la factura correspondiente a tu compra, ¿podrías indic
         document.querySelectorAll('.quote-item-qty').forEach(inp => {
             inp.addEventListener('input', (e) => {
                 currentQuote.items[inp.dataset.index].qty = parseInt(e.target.value) || 1;
+                recalculateAutoShippingCost();
                 renderAdminQuotes();
             });
         });
@@ -861,6 +940,7 @@ Para poder confeccionar la factura correspondiente a tu compra, ¿podrías indic
         document.querySelectorAll('.btn-remove-quote-item').forEach(btn => {
             btn.addEventListener('click', () => {
                 currentQuote.items.splice(btn.dataset.index, 1);
+                recalculateAutoShippingCost();
                 renderAdminQuotes();
             });
         });

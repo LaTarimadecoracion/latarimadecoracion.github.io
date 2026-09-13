@@ -504,6 +504,58 @@
         return 0;
     }
 
+    // Estado de filas expandidas en envíos
+    window.expandedShipProdIds = window.expandedShipProdIds || new Set();
+
+    window.toggleExpandShipProduct = function(prodId) {
+        if (window.expandedShipProdIds.has(prodId)) {
+            window.expandedShipProdIds.delete(prodId);
+        } else {
+            window.expandedShipProdIds.add(prodId);
+        }
+        const query = document.getElementById('admin-ship-prod-search')?.value || '';
+        window.renderAdminShippingProducts(query);
+    };
+
+    // Extraer medidas únicas de un producto (omitiendo acabados para que solo se configure la medida)
+    function getProductVariantsList(prod) {
+        let variantsMap = new Map();
+
+        const addVariant = (variant, groupName) => {
+            const medKey = (variant.medida || 'Única').trim();
+            if (!variantsMap.has(medKey)) {
+                variantsMap.set(medKey, {
+                    groupName,
+                    medida: medKey,
+                    price: variant.price || 0,
+                    shippingConfig: variant.shippingConfig || {},
+                    logisticaEnabled: variant.logisticaEnabled !== undefined ? variant.logisticaEnabled : (variant.shippingConfig ? variant.shippingConfig.logisticaEnabled : undefined),
+                    fleteEnabled: variant.fleteEnabled !== undefined ? variant.fleteEnabled : (variant.shippingConfig ? variant.shippingConfig.fleteEnabled : undefined),
+                    otroEnabled: variant.otroEnabled !== undefined ? variant.otroEnabled : (variant.shippingConfig ? variant.shippingConfig.otroEnabled : undefined),
+                    rawVariantObj: variant,
+                    rawGroupObj: groupName !== 'General' ? true : null
+                });
+            }
+        };
+
+        if (prod.acabados_groups && Array.isArray(prod.acabados_groups) && prod.acabados_groups.length > 0) {
+            prod.acabados_groups.forEach(group => {
+                const groupName = group.acabado_name || 'Estándar';
+                if (group.medidas_variants && Array.isArray(group.medidas_variants) && group.medidas_variants.length > 0) {
+                    group.medidas_variants.forEach(variant => {
+                        addVariant(variant, groupName);
+                    });
+                }
+            });
+        } else if (prod.medidas_variants && Array.isArray(prod.medidas_variants) && prod.medidas_variants.length > 0) {
+            prod.medidas_variants.forEach(variant => {
+                addVariant(variant, 'General');
+            });
+        }
+
+        return Array.from(variantsMap.values());
+    }
+
     // RENDER TABLA PRODUCTOS ENVÍOS
     window.renderAdminShippingProducts = function(query = '') {
         const tbody = document.getElementById('admin-ship-prods-tbody');
@@ -535,7 +587,9 @@
             return;
         }
 
-        tbody.innerHTML = filtered.map(prod => {
+        let html = '';
+
+        filtered.forEach(prod => {
             const shipConf = prod.shippingConfig || {};
             const isLog = shipConf.logisticaEnabled !== false;
             const isFlete = shipConf.fleteEnabled !== false;
@@ -544,8 +598,11 @@
 
             const imgSrc = Array.isArray(prod.image) ? prod.image[0] : (prod.image || 'img/logo_provisional.png');
             const effPrice = getProductEffectivePrice(prod);
+            const variants = getProductVariantsList(prod);
+            const hasVariants = variants.length > 0;
+            const isExpanded = window.expandedShipProdIds.has(prod.id);
 
-            return `
+            html += `
                 <tr style="border-bottom: 1px solid #e2e8f0; transition: background 0.15s; ${isSelected ? 'background: #f0f9ff;' : ''}" onmouseover="if(!${isSelected}) this.style.background='#f8fafc'" onmouseout="if(!${isSelected}) this.style.background='transparent'">
                     <td style="padding: 6px; text-align: center;">
                         <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="window.onShipProductSelectChange('${prod.id}', this.checked)" style="width: 16px; height: 16px; accent-color: #0284c7; cursor: pointer;">
@@ -554,7 +611,15 @@
                         <img src="${imgSrc}" style="width: 36px; height: 36px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1; cursor: pointer;" onclick="window.onShipProductSelectChange('${prod.id}', !${isSelected})">
                     </td>
                     <td style="padding: 6px;">
-                        <div style="font-weight: 700; color: #0f172a; cursor: pointer;" onclick="window.onShipProductSelectChange('${prod.id}', !${isSelected})" title="Tocar título para seleccionar/deseleccionar">${prod.title}</div>
+                        <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                            <div style="font-weight: 700; color: #0f172a; cursor: pointer;" onclick="window.onShipProductSelectChange('${prod.id}', !${isSelected})" title="Tocar título para seleccionar/deseleccionar">${prod.title}</div>
+                            ${hasVariants ? `
+                                <button type="button" onclick="window.toggleExpandShipProduct('${prod.id}')" style="background: ${isExpanded ? '#0284c7' : '#e2e8f0'}; color: ${isExpanded ? '#fff' : '#334155'}; border: none; border-radius: 12px; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 3px;" title="Ver/ocultar medidas específicas">
+                                    <span>${isExpanded ? '➖' : '➕'}</span>
+                                    <span>${variants.length} medida${variants.length === 1 ? '' : 's'}</span>
+                                </button>
+                            ` : ''}
+                        </div>
                         <div style="font-size: 0.68rem; color: #64748b;">${prod.categoryName || 'Catálogo'}</div>
                     </td>
                     <td style="padding: 6px; font-weight: 800; color: #059669; font-family: monospace;">
@@ -583,9 +648,183 @@
                     </td>
                 </tr>
             `;
-        }).join('');
 
+            // Subfilas para las medidas/variantes si está expandido (únicamente desglosado por medida)
+            if (hasVariants && isExpanded) {
+                variants.forEach((v, vIdx) => {
+                    const varLogEnabled = v.logisticaEnabled !== false;
+                    const varFleteEnabled = v.fleteEnabled !== false;
+                    const varOtroEnabled = v.otroEnabled !== false;
+
+                    const varLogMax = v.shippingConfig?.logisticaMaxUnits !== undefined ? v.shippingConfig.logisticaMaxUnits : '';
+                    const varLogFree = v.shippingConfig?.logisticaFreeMinUnits !== undefined ? v.shippingConfig.logisticaFreeMinUnits : '';
+                    const varFleteMax = v.shippingConfig?.fleteMaxUnits !== undefined ? v.shippingConfig.fleteMaxUnits : '';
+                    const varFleteFree = v.shippingConfig?.fleteFreeMinUnits !== undefined ? v.shippingConfig.fleteFreeMinUnits : '';
+
+                    html += `
+                        <tr style="background: #f1f5f9; border-bottom: 1px dashed #cbd5e1; font-size: 0.8rem;">
+                            <td></td>
+                            <td style="padding: 4px 6px; text-align: center; color: #64748b; font-weight: bold;">
+                                ↳
+                            </td>
+                            <td style="padding: 4px 6px; padding-left: 1rem;">
+                                <div style="font-weight: 600; color: #334155; display: flex; align-items: center; gap: 6px;">
+                                    <span style="background: #0284c7; color: #ffffff; border-radius: 4px; padding: 1px 6px; font-size: 0.7rem; font-weight: 700;">📏 Medida</span>
+                                    <span style="font-size: 0.88rem;"><strong>${v.medida}</strong></span>
+                                </div>
+                            </td>
+                            <td style="padding: 4px 6px; font-weight: 700; color: #047857; font-family: monospace; font-size: 0.78rem;">
+                                ${v.price > 0 ? formatCurr(v.price) : '-'}
+                            </td>
+                            <td style="padding: 4px; text-align: center; background: #e0f2fe;">
+                                <input type="checkbox" ${varLogEnabled ? 'checked' : ''} onchange="window.updateVariantShippingConfig('${prod.id}', '${v.medida}', 'logisticaEnabled', this.checked)" style="width: 16px; height: 16px; accent-color: #0284c7; cursor: pointer;" title="Habilitar/Deshabilitar Logística para la medida ${v.medida}">
+                            </td>
+                            <td style="padding: 4px; text-align: center; background: #e0f2fe;">
+                                <input type="number" min="1" value="${varLogMax}" placeholder="Prod." onchange="window.updateVariantShippingNumField('${prod.id}', '${v.medida}', 'logisticaMaxUnits', this.value)" style="width: 48px; padding: 2px 4px; border: 1px solid #94a3b8; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-align: center; outline: none;" title="Máx unidades Logística para la medida ${v.medida}">
+                            </td>
+                            <td style="padding: 4px; text-align: center; background: #e0f2fe;">
+                                <input type="number" min="1" value="${varLogFree}" placeholder="Prod." onchange="window.updateVariantShippingNumField('${prod.id}', '${v.medida}', 'logisticaFreeMinUnits', this.value)" style="width: 58px; padding: 2px 4px; border: 1px solid #94a3b8; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-align: center; outline: none;" title="Mínimo gratis Logística para la medida ${v.medida}">
+                            </td>
+                            <td style="padding: 4px; text-align: center; background: #dcfce7;">
+                                <input type="checkbox" ${varFleteEnabled ? 'checked' : ''} onchange="window.updateVariantShippingConfig('${prod.id}', '${v.medida}', 'fleteEnabled', this.checked)" style="width: 16px; height: 16px; accent-color: #059669; cursor: pointer;" title="Habilitar/Deshabilitar Flete para la medida ${v.medida}">
+                            </td>
+                            <td style="padding: 4px; text-align: center; background: #dcfce7;">
+                                <input type="number" min="1" value="${varFleteMax}" placeholder="Prod." onchange="window.updateVariantShippingNumField('${prod.id}', '${v.medida}', 'fleteMaxUnits', this.value)" style="width: 48px; padding: 2px 4px; border: 1px solid #94a3b8; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-align: center; outline: none;" title="Máx unidades Flete para la medida ${v.medida}">
+                            </td>
+                            <td style="padding: 4px; text-align: center; background: #dcfce7;">
+                                <input type="number" min="1" value="${varFleteFree}" placeholder="Prod." onchange="window.updateVariantShippingNumField('${prod.id}', '${v.medida}', 'fleteFreeMinUnits', this.value)" style="width: 58px; padding: 2px 4px; border: 1px solid #94a3b8; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-align: center; outline: none;" title="Mínimo gratis Flete para la medida ${v.medida}">
+                            </td>
+                            <td style="padding: 4px; text-align: center; background: #fef3c7;">
+                                <input type="checkbox" ${varOtroEnabled ? 'checked' : ''} onchange="window.updateVariantShippingConfig('${prod.id}', '${v.medida}', 'otroEnabled', this.checked)" style="width: 16px; height: 16px; accent-color: #d97706; cursor: pointer;" title="Habilitar/Deshabilitar Otros para la medida ${v.medida}">
+                            </td>
+                        </tr>
+                    `;
+                });
+            }
+        });
+
+        tbody.innerHTML = html;
         window.updateShipProductsBulkBarUI();
+    };
+
+    // FUNCIONES DE EDICIÓN INDIVIDUAL DE VARIANTES POR MEDIDA ÚNICA
+    window.updateVariantShippingConfig = function(prodId, medidaName, fieldKey, isChecked) {
+        const categories = window.sessionProducts || (typeof productsData !== 'undefined' ? productsData : []);
+        categories.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                if (prod.id === prodId) {
+                    const normMedida = (medidaName || '').trim().toLowerCase();
+                    let updatedAny = false;
+
+                    if (prod.acabados_groups && Array.isArray(prod.acabados_groups)) {
+                        prod.acabados_groups.forEach(grp => {
+                            if (grp.medidas_variants && Array.isArray(grp.medidas_variants)) {
+                                grp.medidas_variants.forEach(m => {
+                                    if ((m.medida || '').trim().toLowerCase() === normMedida) {
+                                        m[fieldKey] = isChecked;
+                                        if (!m.shippingConfig) m.shippingConfig = {};
+                                        m.shippingConfig[fieldKey] = isChecked;
+                                        if (fieldKey === 'logisticaEnabled') {
+                                            m.noFlex = !isChecked;
+                                            m.disableFlex = !isChecked;
+                                        }
+                                        updatedAny = true;
+                                    }
+                                });
+                            }
+                        });
+                    }
+
+                    if (prod.medidas_variants && Array.isArray(prod.medidas_variants)) {
+                        prod.medidas_variants.forEach(m => {
+                            if ((m.medida || '').trim().toLowerCase() === normMedida) {
+                                m[fieldKey] = isChecked;
+                                if (!m.shippingConfig) m.shippingConfig = {};
+                                m.shippingConfig[fieldKey] = isChecked;
+                                if (fieldKey === 'logisticaEnabled') {
+                                    m.noFlex = !isChecked;
+                                    m.disableFlex = !isChecked;
+                                }
+                                updatedAny = true;
+                            }
+                        });
+                    }
+                }
+            });
+        });
+        window.sessionProducts = categories;
+        if (typeof productsData !== 'undefined') window.productsData = categories;
+        localStorage.setItem('sessionProducts', JSON.stringify(categories));
+        localStorage.setItem('sessionProductsAutonomo', JSON.stringify(categories));
+        if (typeof window.saveProductsToServer === 'function') {
+            window.saveProductsToServer();
+        } else {
+            try {
+                fetch('/api/save-products', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(categories)
+                });
+            } catch(e) {}
+        }
+    };
+
+    window.updateVariantShippingNumField = function(prodId, medidaName, fieldKey, val) {
+        const rawNum = parseInt(val, 10);
+        const parsed = (!val || isNaN(rawNum) || rawNum <= 0) ? undefined : rawNum;
+        const normMedida = (medidaName || '').trim().toLowerCase();
+        const categories = window.sessionProducts || (typeof productsData !== 'undefined' ? productsData : []);
+        categories.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                if (prod.id === prodId) {
+                    const updateTarget = (targetVar) => {
+                        if (!targetVar.shippingConfig) targetVar.shippingConfig = {};
+                        if (parsed !== undefined) {
+                            targetVar.shippingConfig[fieldKey] = parsed;
+                            targetVar[fieldKey] = parsed;
+                        } else {
+                            delete targetVar.shippingConfig[fieldKey];
+                            delete targetVar[fieldKey];
+                        }
+                    };
+
+                    if (prod.acabados_groups && Array.isArray(prod.acabados_groups)) {
+                        prod.acabados_groups.forEach(grp => {
+                            if (grp.medidas_variants && Array.isArray(grp.medidas_variants)) {
+                                grp.medidas_variants.forEach(m => {
+                                    if ((m.medida || '').trim().toLowerCase() === normMedida) {
+                                        updateTarget(m);
+                                    }
+                                });
+                            }
+                        });
+                    }
+
+                    if (prod.medidas_variants && Array.isArray(prod.medidas_variants)) {
+                        prod.medidas_variants.forEach(m => {
+                            if ((m.medida || '').trim().toLowerCase() === normMedida) {
+                                updateTarget(m);
+                            }
+                        });
+                    }
+                }
+            });
+        });
+        window.sessionProducts = categories;
+        if (typeof productsData !== 'undefined') window.productsData = categories;
+        localStorage.setItem('sessionProducts', JSON.stringify(categories));
+        localStorage.setItem('sessionProductsAutonomo', JSON.stringify(categories));
+        if (typeof window.saveProductsToServer === 'function') {
+            window.saveProductsToServer();
+        } else {
+            try {
+                fetch('/api/save-products', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(categories)
+                });
+            } catch(e) {}
+        }
     };
 
     // FUNCIONES DE SELECCIÓN Y EDICIÓN MASIVA PRODUCTOS ENVÍOS

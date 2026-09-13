@@ -183,7 +183,7 @@
         banner.innerHTML = `
             <button id="lt-pwa-close" aria-label="Cerrar">${ICON_CLOSE}</button>
             <div id="lt-pwa-icon">
-                <img src="img/icon-192.png" alt="La Tarima" loading="lazy">
+                <img src="img/logo_provisional.png" alt="La Tarima" loading="lazy">
             </div>
             <div id="lt-pwa-content">
                 <div id="lt-pwa-text">
