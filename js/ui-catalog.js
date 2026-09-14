@@ -226,7 +226,7 @@
                 if (data) {
                     const arr = JSON.parse(data);
                     return arr.some(item => 
-                        item.id === productId && 
+                        String(item.id) === String(productId) && 
                         (item.acabado || '').trim().toLowerCase() === (acabado || '').trim().toLowerCase() &&
                         (item.medida || '').trim().toLowerCase() === (medida || '').trim().toLowerCase() &&
                         (item.opcion || '').trim().toLowerCase() === (opcion || '').trim().toLowerCase()
@@ -244,10 +244,10 @@
             const grupo = grupos[currentGroupIndex] || {};
             const acabado = grupo.acabado_name || 'Único';
             
-            const selMedida = divMedida.querySelector('select');
+            const selMedida = divMedida ? divMedida.querySelector('select') : null;
             const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
 
-            const selOpt = divOpt.querySelector('select');
+            const selOpt = divOpt ? divOpt.querySelector('select') : null;
             const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
 
             const inFav = isProductInFavorites(product.id, acabado, medidaText, optText);
@@ -447,7 +447,7 @@
         }
 
 
-        function buildWA(grupo, medidaName, tipoEntrega = '', shippingData = {}) {
+        function buildWA(grupo, medidaName) {
             const selOpt = divOpt.querySelector('select');
             const optText = selOpt ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
             const optLabel = product.optional_variant?.label || '';
@@ -455,91 +455,31 @@
             const qtyValEl = document.getElementById('qty-value');
             const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
 
-            // Si es un alquiler
-            if (categoryName === 'Alquileres' || product.primaryCatId === 'alquileres') {
-                const price = product.price || 'Consultar';
-                let parts = [`• Producto: *${product.title}*`];
-                if (grupo.acabado_name && grupo.acabado_name !== 'Único') parts.push(`• Acabado: ${grupo.acabado_name}`);
-                if (medidaName) parts.push(`• Medida: ${medidaName}`);
-                if (optText && optLabel) parts.push(`• ${optLabel}: ${optText}`);
-                if (qtyVal > 1) parts.push(`• Cantidad: ${qtyVal}`);
-                parts.push(`• Precio: ${price}`);
-
-                return `¡Hola La Tarima! Quiero consultar para alquilar:\n\n${parts.join('\n')}\n\n¿Está disponible?`;
-            }
-
-            // Si es un producto de venta
-            let parts = [`• Producto: *${product.title}*`];
-            if (grupo.acabado_name && grupo.acabado_name !== 'Único') {
-                parts.push(`• Acabado: ${grupo.acabado_name}`);
+            let details = [];
+            if (grupo && grupo.acabado_name && grupo.acabado_name !== 'Único') {
+                details.push(`• Acabado: ${grupo.acabado_name}`);
             }
             if (medidaName) {
-                parts.push(`• Medida: ${medidaName}`);
+                details.push(`• Medida: ${medidaName}`);
             }
             if (optText && optLabel) {
-                parts.push(`• ${optLabel}: ${optText}`);
+                details.push(`• ${optLabel}: ${optText}`);
             }
             if (qtyVal > 1) {
-                parts.push(`• Cantidad: ${qtyVal}`);
+                details.push(`• Cantidad: ${qtyVal}`);
             }
 
-            // Buscar si la variante tiene un precio visible configurado
-            const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
-            if (activeVariant && activeVariant.showPrice === true && activeVariant.price !== undefined && activeVariant.price !== '') {
-                const formatter = new Intl.NumberFormat('es-AR', {
-                    style: 'currency',
-                    currency: 'ARS',
-                    minimumFractionDigits: 0
-                });
-                
-                const unitPrice = activeVariant.price;
-                
-                // Buscar descuento por volumen aplicable
-                let discountPercent = 0;
-                let discountRule = null;
-                if (activeVariant.volumeDiscounts && Array.isArray(activeVariant.volumeDiscounts) && activeVariant.volumeDiscounts.length > 0) {
-                    const sortedRules = [...activeVariant.volumeDiscounts].sort((a, b) => b.minQty - a.minQty);
-                    for (const rule of sortedRules) {
-                        if (qtyVal >= rule.minQty) {
-                            discountRule = rule;
-                            discountPercent = rule.discountPercent;
-                            break;
-                        }
-                    }
-                }
-                
-                if (discountPercent > 0) {
-                    const discountedUnitPrice = unitPrice * (1 - discountPercent / 100);
-                    const totalPrice = discountedUnitPrice * qtyVal;
-                    const originalTotalPrice = unitPrice * qtyVal;
-                    
-                    parts.push(`• Precio Unitario (Lista): ${formatter.format(unitPrice)}`);
-                    parts.push(`• Descuento aplicado: ${discountPercent}% OFF (a partir de ${discountRule.minQty} un.)`);
-                    parts.push(`• Precio Unitario (c/desc): ${formatter.format(discountedUnitPrice)}`);
-                    parts.push(`• Precio Total: ${formatter.format(totalPrice)} (antes: ${formatter.format(originalTotalPrice)})`);
-                } else {
-                    const totalPrice = unitPrice * qtyVal;
-                    if (qtyVal > 1) {
-                        parts.push(`• Precio Unitario: ${formatter.format(unitPrice)}`);
-                        parts.push(`• Precio Total: ${formatter.format(totalPrice)}`);
-                    } else {
-                        parts.push(`• Precio: ${formatter.format(unitPrice)}`);
-                    }
-                }
-            } else {
-                parts.push(`• Precio: Consultar (A liquidar / Sin precio fijado)`);
-            }
+            const detailsStr = details.length > 0 ? ` (${details.map(d => d.replace('• ', '')).join(', ')})` : '';
 
-            // Línea de tipo de entrega (solo para productos de venta)
-            if (tipoEntrega === 'pickup') {
-                parts.push('• Entrega: 🏪 Retiro por el taller');
-            } else if (tipoEntrega === 'shipping') {
-                parts.push('• Entrega: 🚚 Necesito envío a domicilio');
-                if (shippingData.localidad) {
-                    parts.push(`• Destino/CP: ${shippingData.localidad}`);
-                }
-                if (shippingData.direccion) {
-                    parts.push(`• Dirección: ${shippingData.direccion}`);
+            // Obtener link corto del producto usando el acortador nativo (TarimaShortener)
+            let productUrl = window.location.href;
+            if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
+                const acabName = (grupo && grupo.acabado_name) ? grupo.acabado_name : '';
+                const shortCode = window.TarimaShortener.encodeShortCode(product.id, acabName, medidaName, optText, false);
+                if (shortCode) {
+                    const origin = window.location.origin;
+                    const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+                    productUrl = `${origin}${path}/p/${shortCode}.html`;
                 }
             }
 
@@ -547,209 +487,19 @@
             if (window.vacationConfig && window.vacationConfig.active) {
                 const start = window.vacationConfig.startDate || "receso";
                 const deliv = window.vacationConfig.deliveriesDate || "el regreso";
-                vacationNote = `\n\n(Nota: Sé que están de vacaciones del ${start} y las entregas se retoman a partir del ${deliv}. El precio actual pactado queda congelado y mantenido).`;
+                vacationNote = `\n\n(Nota: Sé que están de vacaciones del ${start} y las entregas se retoman a partir del ${deliv}).`;
             }
 
-            return `¡Hola La Tarima! Quiero consultar por el siguiente producto:\n\n${parts.join('\n')}\n\n¿Me podés pasar más info y disponibilidad?${vacationNote}`;
+            return `¡Hola! Quisiera consultar más información sobre el producto *${product.title}*${detailsStr}.\n\nLink al producto: ${productUrl}${vacationNote}`;
         }
 
-        // ── Modal de pre-calificación de entrega ──────────────────────────────
+        // ── Direct WhatsApp Consultation (Bypassing Modal) ──────────────────────────────
         function showDeliveryModal(grupo, medidaName, mlLink) {
-            // Eliminar modal previo si existe
-            const existing = document.getElementById('delivery-modal-overlay');
-            if (existing) existing.remove();
-
-            const isRental = categoryName === 'Alquileres' || product.primaryCatId === 'alquileres';
-
-            // Los alquileres no tienen este flujo, ir directo a WA
-            if (isRental) {
-                const waMsg = buildWA(grupo, medidaName);
-                try {
-                    if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WhatsApp Producto' });
-                } catch(e) {}
-                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
-                return;
-            }
-
-            // Crear overlay
-            const overlay = document.createElement('div');
-            overlay.id = 'delivery-modal-overlay';
-            overlay.className = 'delivery-modal-overlay';
-
-            const sheet = document.createElement('div');
-            sheet.className = 'delivery-modal-sheet';
-            sheet.style.position = 'relative';
-            sheet.innerHTML = `
-                <button class="delivery-modal-back-arrow" id="dopt-back-arrow" title="Volver" style="display:none;">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                </button>
-                <button class="delivery-modal-close-x" id="dopt-close-x" title="Cerrar">&times;</button>
-                <div class="delivery-modal-handle"></div>
-                <p class="delivery-modal-eyebrow">Antes de continuar</p>
-                <h3 class="delivery-modal-title">¿Necesitás envío?</h3>
-                <p class="delivery-modal-subtitle">Elegí una de las opciones para poder continuar</p>
-                ${window.vacationConfig && window.vacationConfig.active ? `
-                    <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px 12px; border-radius:10px; margin-bottom:12px; color:#E67700; font-size:0.8rem; line-height:1.4; text-align:left;">
-                        <strong>🌴 ¡Taller de vacaciones!</strong> Retomamos las entregas a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. Reservando hoy por WhatsApp te garantizamos el **precio congelado** sin aumentos.
-                    </div>
-                ` : ''}
-                <div class="delivery-modal-options">
-                    <button class="delivery-opt-btn delivery-opt-pickup" id="dopt-pickup">
-                        <span class="delivery-opt-icon">🏪</span>
-                        <span class="delivery-opt-label">Retirar por el taller</span>
-                        <span class="delivery-opt-desc">Mismo precio publicado en la web (Efectivo / Transferencia)</span>
-                    </button>
-                    <button class="delivery-opt-btn delivery-opt-shipping" id="dopt-shipping">
-                        <span class="delivery-opt-icon">🚚</span>
-                        <span class="delivery-opt-label">Necesito envío</span>
-                        <span class="delivery-opt-desc">${mlLink ? (window.vacationConfig && window.vacationConfig.active ? '⚠️ Envío externo (publicación ML podría estar pausada). Guardar en Favoritos o consultanos por WhatsApp.' : 'Comprar en Mercado Libre (aplica costos de plataforma y envío)') : 'Te cotizamos el envío por WhatsApp'}</span>
-                    </button>
-                </div>
-
-                <!-- Formulario desplegable opcional para datos de envío -->
-                <div id="delivery-shipping-form" style="display:none; width:100%; flex-direction:column; gap:10px; margin-top:12px; text-align:left;">
-                    ${window.vacationConfig && window.vacationConfig.active ? `
-                        <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px; border-radius:8px; margin-bottom:4px; color:#E67700; font-size:0.8rem; line-height:1.4;">
-                            <strong>⚠️ Envíos reprogramados:</strong> Estamos de vacaciones del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Los envíos se cotizarán y realizarán a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. ¡Tu precio queda congelado sin aumentos!
-                        </div>
-                    ` : ''}
-                    <p style="font-size:0.82rem; color:#64748B; margin:0 0 2px 0;">📍 Datos para cotizar el envío <span style="color:#94A3B8;">(opcionales)</span>:</p>
-                    <input type="text" id="ship-loc" placeholder="Localidad o Código Postal (ej: Ramos Mejía / 1704)" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
-                    <input type="text" id="ship-dir" placeholder="Dirección de entrega (ej: Av. de Mayo 123)" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #CBD5E1; font-size:0.88rem; box-sizing:border-box;">
-                    <button id="btn-submit-shipping-wa" class="btn-primary giant-btn" style="width:100%; justify-content:center; margin-top:4px; font-size:0.92rem;">
-                        <span>Enviar consulta por WhatsApp</span>
-                    </button>
-                </div>
-
-                <!-- Panel desplegable con información de Retiro por Taller -->
-                <div id="delivery-pickup-info" style="display:none; width:100%; flex-direction:column; gap:12px; margin-top:10px; text-align:left;">
-                    <div style="background:#FFF8F5; border:1.5px solid rgba(160,113,91,0.25); padding:14px; border-radius:14px; font-size:0.85rem; color:#2D3748; line-height:1.5;">
-                        ${window.vacationConfig && window.vacationConfig.active ? `
-                            <div style="background:#FFF9DB; border:1.5px dashed #FCC419; padding:10px; border-radius:8px; margin-bottom:12px; color:#E67700; font-size:0.8rem; line-height:1.4;">
-                                <strong>⚠️ Aviso de vacaciones:</strong> Taller cerrado del <strong>${window.vacationConfig.startDate || 'receso'}</strong>. Los retiros se coordinan a partir del <strong>${window.vacationConfig.deliveriesDate || 'regreso'}</strong>. ¡Tu precio queda congelado sin aumentos!
-                            </div>
-                        ` : ''}
-                        <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
-                            <span>💡 Aclaraciones sobre el precio:</span>
-                        </p>
-                        <p style="margin:0 0 12px 0;">El precio publicado en la web se mantiene pagando en <strong>efectivo o transferencia</strong> <em>(no incluye impuestos ni costo de envío)</em>.</p>
-                        
-                        <p style="margin:0 0 6px 0; font-weight:700; color:#A0715B; display:flex; align-items:center; gap:6px;">
-                            <span>📍 Ubicación del taller:</span>
-                        </p>
-                        <p style="margin:0;">Hurlingham, Buenos Aires, Argentina<br><span style="color:#718096; font-size:0.8rem;">(Zona céntrica: cerca de Av. Vergara y Av. Jauretche)</span></p>
-                    </div>
-
-                    <button id="btn-submit-pickup-wa" class="btn-primary giant-btn" style="width:100%; justify-content:center; font-size:0.92rem;">
-                        <span>Continuar a WhatsApp 💬</span>
-                    </button>
-                </div>
-            `;
-
-            overlay.appendChild(sheet);
-            document.body.appendChild(overlay);
-
-            // Animar entrada
-            requestAnimationFrame(() => overlay.classList.add('open'));
-
-            const closeModal = () => {
-                overlay.classList.remove('open');
-                setTimeout(() => overlay.remove(), 300);
-            };
-
-            const resetToInitialView = () => {
-                const pickupInfo = document.getElementById('delivery-pickup-info');
-                const shippingForm = document.getElementById('delivery-shipping-form');
-                const optionsContainer = sheet.querySelector('.delivery-modal-options');
-                const titleEl = sheet.querySelector('.delivery-modal-title');
-                const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
-                const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
-                const backArrow = document.getElementById('dopt-back-arrow');
-
-                if (pickupInfo) pickupInfo.style.display = 'none';
-                if (shippingForm) shippingForm.style.display = 'none';
-                if (optionsContainer) optionsContainer.style.display = 'flex';
-                if (backArrow) backArrow.style.display = 'none';
-
-                if (eyebrowEl) eyebrowEl.textContent = 'Antes de continuar';
-                if (titleEl) titleEl.textContent = '¿Necesitás envío?';
-                if (subtitleEl) subtitleEl.textContent = 'Elegí una de las opciones para poder continuar';
-            };
-
-            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-            document.getElementById('dopt-close-x')?.addEventListener('click', closeModal);
-            document.getElementById('dopt-back-arrow')?.addEventListener('click', resetToInitialView);
-
-            // Opción: Retirar por taller → desplegar panel de información de retiro
-            document.getElementById('dopt-pickup').addEventListener('click', () => {
-                const pickupInfo = document.getElementById('delivery-pickup-info');
-                const optionsContainer = sheet.querySelector('.delivery-modal-options');
-                const titleEl = sheet.querySelector('.delivery-modal-title');
-                const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
-                const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
-                const backArrow = document.getElementById('dopt-back-arrow');
-
-                if (pickupInfo && optionsContainer) {
-                    if (eyebrowEl) eyebrowEl.textContent = 'Retiro por taller';
-                    if (titleEl) titleEl.textContent = 'Retiro en Hurlingham';
-                    if (subtitleEl) subtitleEl.textContent = 'Ubicación y modalidad de entrega en el taller:';
-                    if (backArrow) backArrow.style.display = 'flex';
-
-                    optionsContainer.style.display = 'none';
-                    pickupInfo.style.display = 'flex';
-
-                    document.getElementById('btn-submit-pickup-wa')?.addEventListener('click', () => {
-                        closeModal();
-                        const waMsg = buildWA(grupo, medidaName, 'pickup');
-                        try {
-                            if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA - Retiro Taller' });
-                        } catch(e) {}
-                        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
-                    });
-                }
-            });
-
-            // Opción: Necesito envío
-            document.getElementById('dopt-shipping').addEventListener('click', () => {
-                if (mlLink) {
-                    closeModal();
-                    // Producto con link ML → ir directo, sin pasar por WA
-                    try {
-                        if (typeof gtag === 'function') gtag('event', 'begin_checkout', { currency: 'ARS', items: [{ item_id: product.id, item_name: product.title, item_category: categoryName }] });
-                    } catch(e) {}
-                    window.open(mlLink, '_blank');
-                } else {
-                    // Sin link ML → mostrar inputs opcionales de envío dentro del modal
-                    const formContainer = document.getElementById('delivery-shipping-form');
-                    const optionsContainer = sheet.querySelector('.delivery-modal-options');
-                    const titleEl = sheet.querySelector('.delivery-modal-title');
-                    const subtitleEl = sheet.querySelector('.delivery-modal-subtitle');
-                    const eyebrowEl = sheet.querySelector('.delivery-modal-eyebrow');
-                    const backArrow = document.getElementById('dopt-back-arrow');
-
-                    if (formContainer) {
-                        if (eyebrowEl) eyebrowEl.textContent = 'Cotizá tu envío';
-                        if (titleEl) titleEl.textContent = 'Datos para el envío';
-                        if (subtitleEl) subtitleEl.textContent = 'Completá estos datos básicos (opcionales) para cotizar el costo de envío. Te lo recomendamos para agilizar tu compra 👌';
-                        if (backArrow) backArrow.style.display = 'flex';
-
-                        optionsContainer.style.display = 'none';
-                        formContainer.style.display = 'flex';
-                        document.getElementById('ship-loc')?.focus();
-
-                        document.getElementById('btn-submit-shipping-wa').addEventListener('click', () => {
-                            const localidad = document.getElementById('ship-loc')?.value.trim() || '';
-                            const direccion = document.getElementById('ship-dir')?.value.trim() || '';
-                            closeModal();
-                            const waMsg = buildWA(grupo, medidaName, 'shipping', { localidad, direccion });
-                            try {
-                                if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WA - Necesita Envio' });
-                            } catch(e) {}
-                            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
-                        });
-                    }
-                }
-            });
+            const waMsg = buildWA(grupo, medidaName);
+            try {
+                if (typeof gtag === 'function') gtag('event', 'contact', { method: 'WhatsApp', event_category: 'Engagement', event_label: 'Consultar WhatsApp Producto' });
+            } catch(e) {}
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
         }
 
         function updateBuyButton(grupo, medidaName) {
@@ -1171,7 +921,7 @@
             const currentMlLink = (activeMlVariant && activeMlVariant.link) ? activeMlVariant.link.trim() : '';
 
             if (btnPickup) {
-                btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildWA(grupo, medidaName, 'pickup'))}`;
+                btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildWA(grupo, medidaName))}`;
             }
 
             if (!window._cpUpdateListenerBound) {
@@ -1198,10 +948,10 @@
                 if (window.CarritoModule && window.CarritoModule.toggle) {
                     const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
                     const acabadoName = grupo.acabado_name || acabado || 'Único';
-                    const selMedida = divMedida.querySelector('select');
+                    const selMedida = divMedida ? divMedida.querySelector('select') : null;
                     const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
 
-                    const selOpt = divOpt.querySelector('select');
+                    const selOpt = divOpt ? divOpt.querySelector('select') : null;
                     const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
                     const optLabel = product.optional_variant?.label || '';
 
@@ -1588,10 +1338,10 @@
                 if (window.CarritoModule && window.CarritoModule.toggle) {
                     const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
                     const acabadoName = grupo.acabado_name || 'Único';
-                    const selMedida = divMedida.querySelector('select');
+                    const selMedida = divMedida ? divMedida.querySelector('select') : null;
                     const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
 
-                    const selOpt = divOpt.querySelector('select');
+                    const selOpt = divOpt ? divOpt.querySelector('select') : null;
                     const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
                     const optLabel = product.optional_variant?.label || '';
 

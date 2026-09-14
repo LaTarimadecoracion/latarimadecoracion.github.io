@@ -88,7 +88,7 @@
     function isProductInCart(productId, acabado, medida = '', opcion = '') {
         try {
             return cartItems.some(item => 
-                item.id === productId && 
+                String(item.id) === String(productId) && 
                 (item.acabado || '').trim().toLowerCase() === (acabado || '').trim().toLowerCase() &&
                 (item.medida || '').trim().toLowerCase() === (medida || '').trim().toLowerCase() &&
                 (item.opcion || '').trim().toLowerCase() === (opcion || '').trim().toLowerCase()
@@ -103,7 +103,7 @@
         try {
             const parsedQty = parseInt(qty) > 0 ? parseInt(qty) : 1;
             const idx = cartItems.findIndex(item => 
-                item.id === product.id && 
+                String(item.id) === String(product.id) && 
                 (item.acabado || '').trim().toLowerCase() === (acabado || '').trim().toLowerCase() &&
                 (item.medida || '').trim().toLowerCase() === (medida || '').trim().toLowerCase() &&
                 (item.opcion || '').trim().toLowerCase() === (opcion || '').trim().toLowerCase()
@@ -608,7 +608,10 @@
     // 4. Renderizado Dinámico de la Vista Integrada Perfil-Carrito
     function renderPerfilCarritoView() {
         try {
-            const viewContainer = document.querySelector('#view-profile .view-content');
+            let viewContainer = document.querySelector('#view-profile .view-content');
+            if (!viewContainer) {
+                viewContainer = document.getElementById('view-profile');
+            }
             if (!viewContainer) return;
 
             loadUserData();
@@ -647,8 +650,8 @@
 
                 let totalLogisticaPackages = 0;
                 let totalFletePackages = 0;
-                let isFleteFreeByQty = false;
-                let isFlexFreeByQty = false;
+                let allItemsFlexFree = cartItems.length > 0;
+                let allItemsFleteFree = cartItems.length > 0;
 
                 cartItems.forEach(item => {
                     const qty = item.qty || 1;
@@ -678,7 +681,21 @@
                     }
 
                     // Obtener la configuración efectiva (variante especifica > producto general)
-                    const shipConf = getEffectiveItemShippingConfig(item);
+                    if (itemVariantObj) {
+                        const vShipConf = itemVariantObj.shippingConfig || {};
+                        shipConf = {
+                            ...shipConf,
+                            ...vShipConf,
+                            logisticaEnabled: itemVariantObj.logisticaEnabled !== undefined ? itemVariantObj.logisticaEnabled : (vShipConf.logisticaEnabled !== undefined ? vShipConf.logisticaEnabled : shipConf.logisticaEnabled),
+                            fleteEnabled: itemVariantObj.fleteEnabled !== undefined ? itemVariantObj.fleteEnabled : (vShipConf.fleteEnabled !== undefined ? vShipConf.fleteEnabled : shipConf.fleteEnabled),
+                            otroEnabled: itemVariantObj.otroEnabled !== undefined ? itemVariantObj.otroEnabled : (vShipConf.otroEnabled !== undefined ? vShipConf.otroEnabled : shipConf.otroEnabled),
+                            logisticaMaxUnits: vShipConf.logisticaMaxUnits !== undefined ? vShipConf.logisticaMaxUnits : (itemVariantObj.logisticaMaxUnits !== undefined ? itemVariantObj.logisticaMaxUnits : shipConf.logisticaMaxUnits),
+                            logisticaFreeMinUnits: vShipConf.logisticaFreeMinUnits !== undefined ? vShipConf.logisticaFreeMinUnits : (itemVariantObj.logisticaFreeMinUnits !== undefined ? itemVariantObj.logisticaFreeMinUnits : shipConf.logisticaFreeMinUnits),
+                            fleteMaxUnits: vShipConf.fleteMaxUnits !== undefined ? vShipConf.fleteMaxUnits : (itemVariantObj.fleteMaxUnits !== undefined ? itemVariantObj.fleteMaxUnits : shipConf.fleteMaxUnits),
+                            fleteFreeMinUnits: vShipConf.fleteFreeMinUnits !== undefined ? vShipConf.fleteFreeMinUnits : (itemVariantObj.fleteFreeMinUnits !== undefined ? itemVariantObj.fleteFreeMinUnits : shipConf.fleteFreeMinUnits),
+                            noFlex: itemVariantObj.noFlex || itemVariantObj.disableFlex
+                        };
+                    }
 
                     if (shipConf.logisticaEnabled === false || shipConf.noFlex === true || shipConf.disableFlex === true) {
                         logisticaAvailable = false;
@@ -693,19 +710,28 @@
                     const isGlobalFree = !!(shipConf.isFreeShipping || shipConf.isFree || origProd?.shippingType === 'free' || item.shippingType === 'free');
 
                     const logFreeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
-                    if (isGlobalFree || (logFreeMin > 0 && qty >= logFreeMin)) {
-                        isFlexFreeByQty = true;
+                    const isFlexFreeItem = isGlobalFree || (logFreeMin > 0 && qty >= logFreeMin);
+                    if (!isFlexFreeItem) {
+                        allItemsFlexFree = false;
                     }
 
                     const fleteFreeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
-                    if (isGlobalFree || (fleteFreeMin > 0 && qty >= fleteFreeMin)) {
-                        isFleteFreeByQty = true;
+                    const isFleteFreeItem = isGlobalFree || (fleteFreeMin > 0 && qty >= fleteFreeMin);
+                    if (!isFleteFreeItem) {
+                        allItemsFleteFree = false;
                     }
 
-                    // Calcular bultos estimados
-                    totalLogisticaPackages += logMax > 0 ? Math.ceil(qty / logMax) : 1;
-                    totalFletePackages += fleteMax > 0 ? Math.ceil(qty / fleteMax) : 1;
+                    // Calcular bultos estimados SOLO para los productos que NO tienen envío gratis
+                    if (!isFlexFreeItem) {
+                        totalLogisticaPackages += logMax > 0 ? Math.ceil(qty / logMax) : 1;
+                    }
+                    if (!isFleteFreeItem) {
+                        totalFletePackages += fleteMax > 0 ? Math.ceil(qty / fleteMax) : 1;
+                    }
                 });
+
+                isFlexFreeByQty = allItemsFlexFree;
+                isFleteFreeByQty = allItemsFleteFree;
 
                 // Cotizar envío según CP guardado
                 const userZip = (userData.zipCode || '').trim();
@@ -1409,46 +1435,62 @@
 
                 let totalLogisticaPackages = 0;
                 let totalFletePackages = 0;
-                let isFleteFreeByQty = false;
-                let isFlexFreeByQty = false;
+                let allItemsFlexFree = cartItems.length > 0;
+                let allItemsFleteFree = cartItems.length > 0;
 
-    function getEffectiveItemShippingConfig(item) {
-        const origProd = findCartProductDetails(item);
-        let shipConf = origProd?.shippingConfig || item.shippingConfig || {};
+                cartItems.forEach(item => {
+                    const qty = item.qty || 1;
+                    const origProd = findCartProductDetails(item);
+                    let shipConf = origProd?.shippingConfig || item.shippingConfig || {};
 
-        let itemVariantObj = null;
-        if (origProd) {
-            const itemAcabadoStr = (item.acabado || '').trim();
-            const itemMedidaStr = (item.medida || '').trim();
-            if (origProd.acabados_groups && Array.isArray(origProd.acabados_groups)) {
-                let matchingGrp = origProd.acabados_groups.find(g => (g.acabado_name || '').trim() === itemAcabadoStr) || origProd.acabados_groups[0];
-                if (matchingGrp && matchingGrp.medidas_variants) {
-                    itemVariantObj = matchingGrp.medidas_variants.find(m => (m.medida || '').trim() === itemMedidaStr);
-                }
-            }
-            if (!itemVariantObj && origProd.medidas_variants && Array.isArray(origProd.medidas_variants)) {
-                itemVariantObj = origProd.medidas_variants.find(m => (m.medida || '').trim() === itemMedidaStr);
-            }
-        }
+                    let itemVariantObj = null;
+                    if (origProd) {
+                        const itemAcabadoStr = (item.acabado || '').trim();
+                        const itemMedidaStr = (item.medida || '').trim();
+                        if (origProd.acabados_groups && Array.isArray(origProd.acabados_groups)) {
+                            let matchingGrp = origProd.acabados_groups.find(g => (g.acabado_name || '').trim() === itemAcabadoStr) || origProd.acabados_groups[0];
+                            if (matchingGrp && matchingGrp.medidas_variants) {
+                                itemVariantObj = matchingGrp.medidas_variants.find(m => (m.medida || '').trim() === itemMedidaStr);
+                            }
+                        }
+                        if (!itemVariantObj && origProd.medidas_variants && Array.isArray(origProd.medidas_variants)) {
+                            itemVariantObj = origProd.medidas_variants.find(m => (m.medida || '').trim() === itemMedidaStr);
+                        }
+                    }
 
-        if (itemVariantObj) {
-            const vShipConf = itemVariantObj.shippingConfig || {};
-            return {
-                ...shipConf,
-                ...vShipConf,
-                logisticaEnabled: itemVariantObj.logisticaEnabled !== undefined ? itemVariantObj.logisticaEnabled : (vShipConf.logisticaEnabled !== undefined ? vShipConf.logisticaEnabled : shipConf.logisticaEnabled),
-                fleteEnabled: itemVariantObj.fleteEnabled !== undefined ? itemVariantObj.fleteEnabled : (vShipConf.fleteEnabled !== undefined ? vShipConf.fleteEnabled : shipConf.fleteEnabled),
-                otroEnabled: itemVariantObj.otroEnabled !== undefined ? itemVariantObj.otroEnabled : (vShipConf.otroEnabled !== undefined ? vShipConf.otroEnabled : shipConf.otroEnabled),
-                logisticaMaxUnits: vShipConf.logisticaMaxUnits !== undefined ? vShipConf.logisticaMaxUnits : (itemVariantObj.logisticaMaxUnits !== undefined ? itemVariantObj.logisticaMaxUnits : shipConf.logisticaMaxUnits),
-                logisticaFreeMinUnits: vShipConf.logisticaFreeMinUnits !== undefined ? vShipConf.logisticaFreeMinUnits : (itemVariantObj.logisticaFreeMinUnits !== undefined ? itemVariantObj.logisticaFreeMinUnits : shipConf.logisticaFreeMinUnits),
-                fleteMaxUnits: vShipConf.fleteMaxUnits !== undefined ? vShipConf.fleteMaxUnits : (itemVariantObj.fleteMaxUnits !== undefined ? itemVariantObj.fleteMaxUnits : shipConf.fleteMaxUnits),
-                fleteFreeMinUnits: vShipConf.fleteFreeMinUnits !== undefined ? vShipConf.fleteFreeMinUnits : (itemVariantObj.fleteFreeMinUnits !== undefined ? itemVariantObj.fleteFreeMinUnits : shipConf.fleteFreeMinUnits),
-                noFlex: itemVariantObj.noFlex || itemVariantObj.disableFlex
-            };
-        }
+                    if (itemVariantObj) {
+                        const vShipConf = itemVariantObj.shippingConfig || {};
+                        shipConf = {
+                            ...shipConf,
+                            ...vShipConf,
+                            logisticaMaxUnits: vShipConf.logisticaMaxUnits !== undefined ? vShipConf.logisticaMaxUnits : (itemVariantObj.logisticaMaxUnits !== undefined ? itemVariantObj.logisticaMaxUnits : shipConf.logisticaMaxUnits),
+                            logisticaFreeMinUnits: vShipConf.logisticaFreeMinUnits !== undefined ? vShipConf.logisticaFreeMinUnits : (itemVariantObj.logisticaFreeMinUnits !== undefined ? itemVariantObj.logisticaFreeMinUnits : shipConf.logisticaFreeMinUnits),
+                            fleteMaxUnits: vShipConf.fleteMaxUnits !== undefined ? vShipConf.fleteMaxUnits : (itemVariantObj.fleteMaxUnits !== undefined ? itemVariantObj.fleteMaxUnits : shipConf.fleteMaxUnits),
+                            fleteFreeMinUnits: vShipConf.fleteFreeMinUnits !== undefined ? vShipConf.fleteFreeMinUnits : (itemVariantObj.fleteFreeMinUnits !== undefined ? itemVariantObj.fleteFreeMinUnits : shipConf.fleteFreeMinUnits)
+                        };
+                    }
+                    const logMax = parseInt(shipConf.logisticaMaxUnits) || 0;
+                    const fleteMax = parseInt(shipConf.fleteMaxUnits) || 0;
+                    const isGlobalFree = !!(shipConf.isFreeShipping || shipConf.isFree || origProd?.shippingType === 'free' || item.shippingType === 'free');
 
-        return shipConf;
-    }
+                    const logFreeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
+                    const isFlexFreeItem = isGlobalFree || (logFreeMin > 0 && qty >= logFreeMin);
+                    if (!isFlexFreeItem) allItemsFlexFree = false;
+
+                    const fleteFreeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
+                    const isFleteFreeItem = isGlobalFree || (fleteFreeMin > 0 && qty >= fleteFreeMin);
+                    if (!isFleteFreeItem) allItemsFleteFree = false;
+
+                    if (!isFlexFreeItem) {
+                        totalLogisticaPackages += logMax > 0 ? Math.ceil(qty / logMax) : 1;
+                    }
+                    if (!isFleteFreeItem) {
+                        totalFletePackages += fleteMax > 0 ? Math.ceil(qty / fleteMax) : 1;
+                    }
+                });
+
+                const isFlexFreeByQty = allItemsFlexFree;
+                const isFleteFreeByQty = allItemsFleteFree;
 
                 if (hasValidCp && shipMode === 'flex') {
                     shipCost = isFlexFreeByQty ? 0 : (flexRate * Math.max(1, totalLogisticaPackages));

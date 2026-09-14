@@ -308,10 +308,10 @@
             } else if (viewId === 'view-rentals') {
                 renderRentals();
             } else if (viewId === 'view-profile') {
-                if (window.CarritoModule && window.CarritoModule.render) {
-                    window.CarritoModule.render();
-                } else if (typeof window.renderPerfilCarritoView === 'function') {
+                if (typeof window.renderPerfilCarritoView === 'function') {
                     window.renderPerfilCarritoView();
+                } else if (window.CarritoModule && window.CarritoModule.render) {
+                    window.CarritoModule.render();
                 }
             } else if (viewId === 'view-admin') {
                 const urlParams = new URLSearchParams(window.location.search);

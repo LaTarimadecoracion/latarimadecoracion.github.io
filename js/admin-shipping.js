@@ -128,8 +128,51 @@
 
     loadShippingData();
 
+    let currentShipMainTab = 'rates'; // 'rates' | 'products'
+
+    window.switchAdminShippingMainTab = function(tabKey) {
+        currentShipMainTab = tabKey || 'rates';
+        const ratesSection = document.getElementById('admin-shipping-section-rates');
+        const prodsSection = document.getElementById('admin-shipping-section-products');
+
+        const btnRates = document.getElementById('btn-ship-tab-rates');
+        const btnProds = document.getElementById('btn-ship-tab-products');
+
+        if (btnRates && btnProds) {
+            if (currentShipMainTab === 'rates') {
+                btnRates.classList.add('active');
+                btnRates.style.background = '#0f172a';
+                btnRates.style.color = '#ffffff';
+                btnRates.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+
+                btnProds.classList.remove('active');
+                btnProds.style.background = 'transparent';
+                btnProds.style.color = '#64748b';
+                btnProds.style.boxShadow = 'none';
+            } else {
+                btnProds.classList.add('active');
+                btnProds.style.background = '#0f172a';
+                btnProds.style.color = '#ffffff';
+                btnProds.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+
+                btnRates.classList.remove('active');
+                btnRates.style.background = 'transparent';
+                btnRates.style.color = '#64748b';
+                btnRates.style.boxShadow = 'none';
+            }
+        }
+
+        if (ratesSection && prodsSection) {
+            ratesSection.style.display = currentShipMainTab === 'rates' ? 'block' : 'none';
+            prodsSection.style.display = currentShipMainTab === 'products' ? 'block' : 'none';
+        }
+
+        window.renderAdminShipping();
+    };
+
     window.renderAdminShipping = function() {
         const container = document.getElementById('admin-shipping-zones-container');
+        const productsContainer = document.getElementById('admin-shipping-section-products');
         if (!container) return;
 
         // Subpestañas minimalistas
@@ -168,7 +211,7 @@
 
         const currentMeta = modeTitles[currentShipMode];
 
-        let html = `
+        let htmlRates = `
             <!-- Header Compacto y Elegante -->
             <div class="admin-page-header" style="margin-bottom: 0.5rem; padding-bottom: 0.4rem;">
                 <div>
@@ -193,7 +236,7 @@
             const zMeta = activeCatalog[zoneKey];
             const zVal = (currentModeData && currentModeData[zoneKey]) ? currentModeData[zoneKey] : { active: true, baseCost: 0 };
 
-            html += `
+            htmlRates += `
                 <!-- Ficha Compacta de Zona -->
                 <div class="shipping-zone-card-block admin-card" data-zone-key="${zoneKey}" style="padding: 0.5rem 0.75rem; margin-bottom: 0.35rem; border-radius: var(--admin-radius-sm);">
                     
@@ -241,7 +284,7 @@
                             </button>
                         </div>
 
-                        <!-- Lista de Localidades Grid/Flex en Chips en vez de filas anchas apiladas -->
+                        <!-- Lista de Localidades Grid/Flex en Chips -->
                         <div style="display: flex; flex-wrap: wrap; gap: 6px; max-height: 200px; overflow-y: auto; padding-right: 2px;">
                             ${zMeta.cities.map((city, idx) => `
                                 <div style="background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: 6px; padding: 3px 8px 3px 10px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 600; color: var(--admin-text-main);">
@@ -264,184 +307,185 @@
             `;
         });
 
-        // ==================== TABLAS COLAPSABLES DE ENVÍOS POR PRODUCTO Y OFERTA ====================
-        html += `
-            <div style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem;">
-                
-                <!-- 3. COLAPSABLE: MÉTODOS DE ENVÍO POR PRODUCTO -->
-                <div class="admin-card" style="border: 1px solid #cbd5e1; border-radius: 16px; background: #ffffff; overflow: hidden; padding: 0;">
-                    <div onclick="window.toggleAdminShippingPanel('admin-ship-prods-wrapper', 'admin-ship-prods-icon')" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: #f8fafc; cursor: pointer; user-select: none; border-bottom: 1px solid #e2e8f0;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span id="admin-ship-prods-icon" class="material-symbols-outlined" style="color: #64748b; font-size: 22px; transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
-                            <span class="material-symbols-outlined" style="color: #0f172a; font-size: 24px;">inventory_2</span>
-                            <div>
-                                <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #0f172a;">📦 Asignación de Métodos de Envío por Producto (Catálogo)</h4>
-                                <div style="font-size: 0.72rem; color: #64748b;">Habilitá o deshabilitá Logística, Flete u Expreso individualmente para cada producto</div>
+        container.innerHTML = htmlRates;
+
+        // ==================== TABLAS DE ENVÍOS POR PRODUCTO Y OFERTA (VISTA SEPARADA) ====================
+        if (productsContainer) {
+            let htmlProds = `
+                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    
+                    <!-- 3. MÉTODOS DE ENVÍO POR PRODUCTO -->
+                    <div class="admin-card" style="border: 1px solid #cbd5e1; border-radius: 16px; background: #ffffff; overflow: hidden; padding: 0;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 24px;">inventory_2</span>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #0f172a;">📦 Asignación de Métodos de Envío por Producto (Catálogo)</h4>
+                                    <div style="font-size: 0.72rem; color: #64748b;">Habilitá o deshabilitá Logística, Flete u Expreso e individualmente por medida</div>
+                                </div>
+                            </div>
+                            <span style="font-size: 0.75rem; font-weight: 700; color: #0369a1; background: #e0f2fe; padding: 3px 12px; border-radius: 12px;" id="admin-ship-prods-count">0 Productos</span>
+                        </div>
+
+                        <div id="admin-ship-prods-wrapper" style="padding: 1.25rem;">
+                            <div style="margin-bottom: 0.75rem; display: flex; gap: 10px; align-items: center;">
+                                <input type="text" id="admin-ship-prod-search" placeholder="🔍 Buscar producto por título o categoría..." oninput="window.renderAdminShippingProducts(this.value)" style="flex: 3; min-width: 0; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 0.85rem; outline: none;">
+                                <button type="button" onclick="window.saveAdminShippingRatesSilently()" class="btn-primary" style="flex: 1; min-width: 0; font-size: 0.8rem; padding: 0.55rem 1rem; border-radius: 10px; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">save</span> Guardar Productos
+                                </button>
+                            </div>
+
+                            <!-- BARRA DE ACCIÓN MASIVA ENVÍOS PRODUCTOS -->
+                            <div id="admin-ship-prods-bulk-bar" style="display: none; margin-bottom: 0.85rem; background: #f8fafc; border: 1.5px solid #0284c7; border-radius: 12px; padding: 0.6rem 0.9rem; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.8rem; overflow-x: auto; transition: all 0.2s ease;">
+                                <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #0f172a; white-space: nowrap;">
+                                    <span class="material-symbols-outlined" style="color: #0284c7; font-size: 20px;">checklist</span>
+                                    <span id="admin-ship-prods-selected-count">0 seleccionados</span>
+                                </div>
+                                <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; white-space: nowrap;">
+                                    <button type="button" onclick="window.selectAllShipProducts()" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Seleccionar todos los productos visibles">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">select_all</span> Seleccionar todo
+                                    </button>
+                                    <button type="button" onclick="window.clearShipProductSelection()" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Limpiar selección">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">deselect</span> Deseleccionar
+                                    </button>
+                                    <button type="button" onclick="window.bulkUpdateShipProductsAll(true)" style="background: #0f172a; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Activar todos los métodos de envío en seleccionados">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span> Todos ON
+                                    </button>
+                                    <button type="button" onclick="window.bulkUpdateShipProductsAll(false)" style="background: #64748b; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Desactivar todos los métodos de envío en seleccionados">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">cancel</span> Todos OFF
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div style="overflow-x: auto; max-height: 450px; overflow-y: auto;">
+                                <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
+                                    <thead style="position: sticky; top: 0; z-index: 5;">
+                                        <tr style="background: #f1f5f9; color: #475569; font-weight: 800; text-transform: uppercase; font-size: 0.68rem; border-bottom: 1.5px solid #cbd5e1; user-select: none;">
+                                            <th style="padding: 10px 6px; width: 36px; text-align: center;">
+                                                <input type="checkbox" id="chk-select-all-ship-prods" onchange="window.toggleSelectAllShipProducts(this.checked)" title="Seleccionar/Deseleccionar todos" style="width: 16px; height: 16px; accent-color: #0284c7; cursor: pointer;">
+                                            </th>
+                                            <th style="padding: 10px 6px; width: 45px;">Foto</th>
+                                            <th style="padding: 10px 6px; min-width: 140px;">Título del Producto / Categoría</th>
+                                            <th style="padding: 10px 6px; width: 85px;">Precio Base</th>
+                                            <th onclick="window.toggleShipColumnProducts('logisticaEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #e0f2fe; border-radius: 6px 0 0 0;" title="Tocar aquí para alternar Logística Courier (ON/OFF)">
+                                                📦 Log. <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                            </th>
+                                            <th style="padding: 10px 4px; width: 75px; text-align: center; background: #e0f2fe;" title="Máximo de unidades por paquete (Logística)">
+                                                📦 Máx. uds
+                                            </th>
+                                            <th style="padding: 10px 4px; width: 85px; text-align: center; background: #e0f2fe;" title="Envío gratis (Logística) a partir de N unidades">
+                                                📦 Gratis desde
+                                            </th>
+                                            <th onclick="window.toggleShipColumnProducts('fleteEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #dcfce7;" title="Tocar aquí para alternar Flete Particular (ON/OFF)">
+                                                🚛 Flete <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                            </th>
+                                            <th style="padding: 10px 4px; width: 75px; text-align: center; background: #dcfce7;" title="Máximo de unidades por flete">
+                                                🚛 Máx. uds
+                                            </th>
+                                            <th style="padding: 10px 4px; width: 85px; text-align: center; background: #dcfce7;" title="Flete gratis a partir de N unidades">
+                                                🚛 Gratis desde
+                                            </th>
+                                            <th onclick="window.toggleShipColumnProducts('otroEnabled')" style="padding: 10px 6px; width: 85px; text-align: center; cursor: pointer; background: #fffbebf0; border-radius: 0 6px 0 0;" title="Tocar aquí para alternar Otro / Expreso (ON/OFF)">
+                                                🚚 Expreso <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-ship-prods-tbody">
+                                        <!-- Inyectado dinámicamente -->
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; background: #e2e8f0; padding: 2px 10px; border-radius: 12px;" id="admin-ship-prods-count">0 Productos</span>
                     </div>
 
-                    <div id="admin-ship-prods-wrapper" style="display: none; padding: 1.25rem;">
-                        <div style="margin-bottom: 0.75rem; display: flex; gap: 10px; align-items: center;">
-                            <input type="text" id="admin-ship-prod-search" placeholder="🔍 Buscar producto por título o categoría..." oninput="window.renderAdminShippingProducts(this.value)" style="flex: 3; min-width: 0; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 0.85rem; outline: none;">
-                            <button type="button" onclick="window.saveAdminShippingRatesSilently()" class="btn-primary" style="flex: 1; min-width: 0; font-size: 0.8rem; padding: 0.55rem 1rem; border-radius: 10px; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 6px;">
-                                <span class="material-symbols-outlined" style="font-size: 18px;">save</span> Guardar Productos
-                            </button>
+                    <!-- 4. MÉTODOS DE ENVÍO POR OFERTA -->
+                    <div class="admin-card" style="border: 1px solid #fed7aa; border-radius: 16px; background: #ffffff; overflow: hidden; padding: 0;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: #fff7ed; border-bottom: 1px solid #fed7aa;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="material-symbols-outlined" style="color: #c0510a; font-size: 24px;">local_offer</span>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #c0510a;">🏷️ Asignación de Métodos de Envío por Oferta / Combo</h4>
+                                    <div style="font-size: 0.72rem; color: #9a3412;">Habilitá o deshabilitá opciones de envío para tus ofertas especiales</div>
+                                </div>
+                            </div>
+                            <span style="font-size: 0.75rem; font-weight: 700; color: #c0510a; background: #ffedd5; padding: 3px 12px; border-radius: 12px;" id="admin-ship-offers-count">0 Ofertas</span>
                         </div>
 
-                        <!-- BARRA DE ACCIÓN MASIVA ENVÍOS PRODUCTOS -->
-                        <div id="admin-ship-prods-bulk-bar" style="display: none; margin-bottom: 0.85rem; background: #f8fafc; border: 1.5px solid #0284c7; border-radius: 12px; padding: 0.6rem 0.9rem; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.8rem; overflow-x: auto; transition: all 0.2s ease;">
-                            <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #0f172a; white-space: nowrap;">
-                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 20px;">checklist</span>
-                                <span id="admin-ship-prods-selected-count">0 seleccionados</span>
-                            </div>
-                            <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; white-space: nowrap;">
-                                <button type="button" onclick="window.selectAllShipProducts()" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Seleccionar todos los productos visibles">
-                                    <span class="material-symbols-outlined" style="font-size: 16px;">select_all</span> Seleccionar todo
-                                </button>
-                                <button type="button" onclick="window.clearShipProductSelection()" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Limpiar selección">
-                                    <span class="material-symbols-outlined" style="font-size: 16px;">deselect</span> Deseleccionar
-                                </button>
-                                <button type="button" onclick="window.bulkUpdateShipProductsAll(true)" style="background: #0f172a; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Activar todos los métodos de envío en seleccionados">
-                                    <span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span> Todos ON
-                                </button>
-                                <button type="button" onclick="window.bulkUpdateShipProductsAll(false)" style="background: #64748b; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Desactivar todos los métodos de envío en seleccionados">
-                                    <span class="material-symbols-outlined" style="font-size: 16px;">cancel</span> Todos OFF
+                        <div id="admin-ship-offers-wrapper" style="padding: 1.25rem;">
+                            <div style="margin-bottom: 0.75rem; display: flex; gap: 10px; align-items: center;">
+                                <input type="text" id="admin-ship-offer-search" placeholder="🔍 Buscar oferta por título..." oninput="window.renderAdminShippingOffers(this.value)" style="flex: 3; min-width: 0; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 0.85rem; outline: none;">
+                                <button type="button" onclick="window.saveAdminShippingRatesSilently()" class="btn-primary" style="flex: 1; min-width: 0; font-size: 0.8rem; padding: 0.55rem 1rem; border-radius: 10px; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 6px; background: #c0510a; border-color: #c0510a;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">save</span> Guardar Ofertas
                                 </button>
                             </div>
-                        </div>
 
-                        <div style="overflow-x: auto; max-height: 450px; overflow-y: auto;">
-                            <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
-                                <thead style="position: sticky; top: 0; z-index: 5;">
-                                    <tr style="background: #f1f5f9; color: #475569; font-weight: 800; text-transform: uppercase; font-size: 0.68rem; border-bottom: 1.5px solid #cbd5e1; user-select: none;">
-                                        <th style="padding: 10px 6px; width: 36px; text-align: center;">
-                                            <input type="checkbox" id="chk-select-all-ship-prods" onchange="window.toggleSelectAllShipProducts(this.checked)" title="Seleccionar/Deseleccionar todos" style="width: 16px; height: 16px; accent-color: #0284c7; cursor: pointer;">
-                                        </th>
-                                        <th style="padding: 10px 6px; width: 45px;">Foto</th>
-                                        <th style="padding: 10px 6px; min-width: 140px;">Título del Producto</th>
-                                        <th style="padding: 10px 6px; width: 85px;">Precio</th>
-                                        <th onclick="window.toggleShipColumnProducts('logisticaEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #e0f2fe; border-radius: 6px 0 0 0;" title="Tocar aquí para alternar Logística Courier (ON/OFF)">
-                                            📦 Log. <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
-                                        </th>
-                                        <th style="padding: 10px 4px; width: 75px; text-align: center; background: #e0f2fe;" title="Máximo de unidades por paquete de envío (Logística)">
-                                            📦 Máx. uds
-                                        </th>
-                                        <th style="padding: 10px 4px; width: 85px; text-align: center; background: #e0f2fe;" title="Envío gratis (Logística) a partir de N unidades">
-                                            📦 Gratis desde
-                                        </th>
-                                        <th onclick="window.toggleShipColumnProducts('fleteEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #dcfce7;" title="Tocar aquí para alternar Flete Particular (ON/OFF)">
-                                            🚛 Flete <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
-                                        </th>
-                                        <th style="padding: 10px 4px; width: 75px; text-align: center; background: #dcfce7;" title="Máximo de unidades por flete">
-                                            🚛 Máx. uds
-                                        </th>
-                                        <th style="padding: 10px 4px; width: 85px; text-align: center; background: #dcfce7;" title="Flete gratis a partir de N unidades">
-                                            🚛 Gratis desde
-                                        </th>
-                                        <th onclick="window.toggleShipColumnProducts('otroEnabled')" style="padding: 10px 6px; width: 85px; text-align: center; cursor: pointer; background: #fef3c7; border-radius: 0 6px 0 0;" title="Tocar aquí para alternar Otro / Expreso (ON/OFF)">
-                                            🚚 Expreso <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody id="admin-ship-prods-tbody">
-                                    <!-- Inyectado dinámicamente -->
-                                </tbody>
-                            </table>
+                            <!-- BARRA DE ACCIÓN MASIVA ENVÍOS OFERTAS -->
+                            <div id="admin-ship-offers-bulk-bar" style="display: none; margin-bottom: 0.85rem; background: #fff7ed; border: 1.5px solid #c0510a; border-radius: 12px; padding: 0.6rem 0.9rem; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.8rem; overflow-x: auto; transition: all 0.2s ease;">
+                                <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #0f172a; white-space: nowrap;">
+                                    <span class="material-symbols-outlined" style="color: #c0510a; font-size: 20px;">checklist</span>
+                                    <span id="admin-ship-offers-selected-count">0 seleccionadas</span>
+                                </div>
+                                <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; white-space: nowrap;">
+                                    <button type="button" onclick="window.selectAllShipOffers()" style="background: #ffedd5; color: #c0510a; border: 1px solid #fed7aa; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Seleccionar todas las ofertas visibles">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">select_all</span> Seleccionar todo
+                                    </button>
+                                    <button type="button" onclick="window.clearShipOfferSelection()" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Limpiar selección">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">deselect</span> Deseleccionar
+                                    </button>
+                                    <button type="button" onclick="window.bulkUpdateShipOffersAll(true)" style="background: #c0510a; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Activar todos los métodos de envío en seleccionadas">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span> Todos ON
+                                    </button>
+                                    <button type="button" onclick="window.bulkUpdateShipOffersAll(false)" style="background: #64748b; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Desactivar todos los métodos de envío en seleccionadas">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">cancel</span> Todos OFF
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div style="overflow-x: auto; max-height: 450px; overflow-y: auto;">
+                                <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
+                                    <thead style="position: sticky; top: 0; z-index: 5;">
+                                        <tr style="background: #fff7ed; color: #c0510a; font-weight: 800; text-transform: uppercase; font-size: 0.68rem; border-bottom: 1.5px solid #fed7aa; user-select: none;">
+                                            <th style="padding: 10px 6px; width: 36px; text-align: center;">
+                                                <input type="checkbox" id="chk-select-all-ship-offers" onchange="window.toggleSelectAllShipOffers(this.checked)" title="Seleccionar/Deseleccionar todas" style="width: 16px; height: 16px; accent-color: #c0510a; cursor: pointer;">
+                                            </th>
+                                            <th style="padding: 10px 6px; width: 45px;">Foto</th>
+                                            <th style="padding: 10px 6px; min-width: 140px;">Título de la Oferta</th>
+                                            <th style="padding: 10px 6px; width: 85px;">Precio Oferta</th>
+                                            <th onclick="window.toggleShipColumnOffers('logisticaEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #fed7aa; border-radius: 6px 0 0 0;" title="Tocar aquí para alternar Logística Courier (ON/OFF)">
+                                                📦 Log. <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                            </th>
+                                            <th style="padding: 10px 4px; width: 75px; text-align: center; background: #fed7aa;" title="Máximo de unidades por paquete (Logística)">
+                                                📦 Máx. uds
+                                            </th>
+                                            <th style="padding: 10px 4px; width: 85px; text-align: center; background: #fed7aa;" title="Envío gratis (Logística) a partir de N unidades">
+                                                📦 Gratis desde
+                                            </th>
+                                            <th onclick="window.toggleShipColumnOffers('fleteEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #fde68a;" title="Tocar aquí para alternar Flete Particular (ON/OFF)">
+                                                🚛 Flete <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                            </th>
+                                            <th style="padding: 10px 4px; width: 75px; text-align: center; background: #fde68a;" title="Máximo de unidades por flete">
+                                                🚛 Máx. uds
+                                            </th>
+                                            <th style="padding: 10px 4px; width: 85px; text-align: center; background: #fde68a;" title="Flete gratis a partir de N unidades">
+                                                🚛 Gratis desde
+                                            </th>
+                                            <th onclick="window.toggleShipColumnOffers('otroEnabled')" style="padding: 10px 6px; width: 85px; text-align: center; cursor: pointer; background: #fef3c7; border-radius: 0 6px 0 0;" title="Tocar aquí para alternar Otro / Expreso (ON/OFF)">
+                                                🚚 Expreso <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-ship-offers-tbody">
+                                        <!-- Inyectado dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-
-                <!-- 4. COLAPSABLE: MÉTODOS DE ENVÍO POR OFERTA -->
-                <div class="admin-card" style="border: 1px solid #cbd5e1; border-radius: 16px; background: #ffffff; overflow: hidden; padding: 0;">
-                    <div onclick="window.toggleAdminShippingPanel('admin-ship-offers-wrapper', 'admin-ship-offers-icon')" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: #f8fafc; cursor: pointer; user-select: none; border-bottom: 1px solid #e2e8f0;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span id="admin-ship-offers-icon" class="material-symbols-outlined" style="color: #64748b; font-size: 22px; transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
-                            <span class="material-symbols-outlined" style="color: #c0510a; font-size: 24px;">local_offer</span>
-                            <div>
-                                <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #0f172a;">🏷️ Asignación de Métodos de Envío por Oferta / Combo</h4>
-                                <div style="font-size: 0.72rem; color: #64748b;">Habilitá o deshabilitá opciones de envío directamente para cada oferta de la tienda</div>
-                            </div>
-                        </div>
-                        <span style="font-size: 0.75rem; font-weight: 700; color: #c0510a; background: #ffedd5; padding: 2px 10px; border-radius: 12px;" id="admin-ship-offers-count">0 Ofertas</span>
-                    </div>
-
-                    <div id="admin-ship-offers-wrapper" style="display: none; padding: 1.25rem;">
-                        <div style="margin-bottom: 0.75rem; display: flex; gap: 10px; align-items: center;">
-                            <input type="text" id="admin-ship-offer-search" placeholder="🔍 Buscar oferta por título..." oninput="window.renderAdminShippingOffers(this.value)" style="flex: 3; min-width: 0; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.9rem; font-size: 0.85rem; outline: none;">
-                            <button type="button" onclick="window.saveAdminShippingRatesSilently()" class="btn-primary" style="flex: 1; min-width: 0; font-size: 0.8rem; padding: 0.55rem 1rem; border-radius: 10px; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 6px; background: #c0510a;">
-                                <span class="material-symbols-outlined" style="font-size: 18px;">save</span> Guardar Ofertas
-                            </button>
-                        </div>
-
-                        <!-- BARRA DE ACCIÓN MASIVA ENVÍOS OFERTAS -->
-                        <div id="admin-ship-offers-bulk-bar" style="display: none; margin-bottom: 0.85rem; background: #fff7ed; border: 1.5px solid #c0510a; border-radius: 12px; padding: 0.6rem 0.9rem; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.8rem; overflow-x: auto; transition: all 0.2s ease;">
-                            <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #0f172a; white-space: nowrap;">
-                                <span class="material-symbols-outlined" style="color: #c0510a; font-size: 20px;">checklist</span>
-                                <span id="admin-ship-offers-selected-count">0 seleccionadas</span>
-                            </div>
-                            <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; white-space: nowrap;">
-                                <button type="button" onclick="window.selectAllShipOffers()" style="background: #ffedd5; color: #c0510a; border: 1px solid #fed7aa; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Seleccionar todas las ofertas visibles">
-                                    <span class="material-symbols-outlined" style="font-size: 16px;">select_all</span> Seleccionar todo
-                                </button>
-                                <button type="button" onclick="window.clearShipOfferSelection()" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Limpiar selección">
-                                    <span class="material-symbols-outlined" style="font-size: 16px;">deselect</span> Deseleccionar
-                                </button>
-                                <button type="button" onclick="window.bulkUpdateShipOffersAll(true)" style="background: #c0510a; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Activar todos los métodos de envío en seleccionadas">
-                                    <span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span> Todos ON
-                                </button>
-                                <button type="button" onclick="window.bulkUpdateShipOffersAll(false)" style="background: #64748b; color: #ffffff; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;" title="Desactivar todos los métodos de envío en seleccionadas">
-                                    <span class="material-symbols-outlined" style="font-size: 16px;">cancel</span> Todos OFF
-                                </button>
-                            </div>
-                        </div>
-
-                        <div style="overflow-x: auto; max-height: 450px; overflow-y: auto;">
-                            <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
-                                <thead style="position: sticky; top: 0; z-index: 5;">
-                                    <tr style="background: #fff7ed; color: #c0510a; font-weight: 800; text-transform: uppercase; font-size: 0.68rem; border-bottom: 1.5px solid #fed7aa; user-select: none;">
-                                        <th style="padding: 10px 6px; width: 36px; text-align: center;">
-                                            <input type="checkbox" id="chk-select-all-ship-offers" onchange="window.toggleSelectAllShipOffers(this.checked)" title="Seleccionar/Deseleccionar todas" style="width: 16px; height: 16px; accent-color: #c0510a; cursor: pointer;">
-                                        </th>
-                                        <th style="padding: 10px 6px; width: 45px;">Foto</th>
-                                        <th style="padding: 10px 6px; min-width: 140px;">Título de la Oferta</th>
-                                        <th style="padding: 10px 6px; width: 85px;">Precio Oferta</th>
-                                        <th onclick="window.toggleShipColumnOffers('logisticaEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #fed7aa; border-radius: 6px 0 0 0;" title="Tocar aquí para alternar Logística Courier (ON/OFF)">
-                                            📦 Log. <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
-                                        </th>
-                                        <th style="padding: 10px 4px; width: 75px; text-align: center; background: #fed7aa;" title="Máximo de unidades por paquete (Logística)">
-                                            📦 Máx. uds
-                                        </th>
-                                        <th style="padding: 10px 4px; width: 85px; text-align: center; background: #fed7aa;" title="Envío gratis (Logística) a partir de N unidades">
-                                            📦 Gratis desde
-                                        </th>
-                                        <th onclick="window.toggleShipColumnOffers('fleteEnabled')" style="padding: 10px 6px; width: 75px; text-align: center; cursor: pointer; background: #fde68a;" title="Tocar aquí para alternar Flete Particular (ON/OFF)">
-                                            🚛 Flete <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
-                                        </th>
-                                        <th style="padding: 10px 4px; width: 75px; text-align: center; background: #fde68a;" title="Máximo de unidades por flete">
-                                            🚛 Máx. uds
-                                        </th>
-                                        <th style="padding: 10px 4px; width: 85px; text-align: center; background: #fde68a;" title="Flete gratis a partir de N unidades">
-                                            🚛 Gratis desde
-                                        </th>
-                                        <th onclick="window.toggleShipColumnOffers('otroEnabled')" style="padding: 10px 6px; width: 85px; text-align: center; cursor: pointer; background: #fef3c7; border-radius: 0 6px 0 0;" title="Tocar aquí para alternar Otro / Expreso (ON/OFF)">
-                                            🚚 Expreso <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody id="admin-ship-offers-tbody">
-                                    <!-- Inyectado dinámicamente -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        `;
-
-        container.innerHTML = html;
+            `;
+            productsContainer.innerHTML = htmlProds;
+        }
 
         // Escuchadores para GUARDADO AUTOMÁTICO EN TIEMPO REAL
         const inputsCost = container.querySelectorAll('.ship-zone-cost-in');

@@ -32,7 +32,7 @@ const offersData = [
         "shippingType": "standard",
         "shippingCost": 0,
         "shippingConfig": {
-            "logisticaEnabled": true,
+            "logisticaEnabled": false,
             "logisticaCost": 0,
             "fleteEnabled": true,
             "fleteCost": 0,
