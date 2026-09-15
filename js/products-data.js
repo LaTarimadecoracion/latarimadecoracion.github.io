@@ -5,7 +5,7 @@ const productsData = [
         "rubro": "carpinteria",
         "image": "img/carpinteria-/portada-1783038461695-imagen.webp",
         "visible": false,
-        "order": 1,
+        "order": 0,
         "products": [
             {
                 "id": "52",
@@ -10405,7 +10405,7 @@ const productsData = [
         "name": "Borrador",
         "image": "img/borrador/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 2,
+        "order": 1,
         "products": [],
         "visible": false
     },
@@ -10413,7 +10413,7 @@ const productsData = [
         "id": "Vinotecas",
         "name": "Vinotecas - Bodegas",
         "image": "img/vinotecas---bodegas/portada-1780289410168-imagen.webp",
-        "order": 3,
+        "order": 2,
         "products": [
             {
                 "id": "21",
@@ -11055,7 +11055,7 @@ const productsData = [
         "name": "Percheros",
         "image": "img/percheros/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 4,
+        "order": 3,
         "products": [
             {
                 "id": "31",
@@ -12274,2003 +12274,10 @@ const productsData = [
         ]
     },
     {
-        "id": "Organizadores",
-        "name": "Organizadores",
-        "image": "img/organizadores/portada-imagen.webp",
-        "rubro": "carpinteria",
-        "order": 5,
-        "products": [
-            {
-                "id": "41",
-                "title": "Baúl de madera de pino",
-                "description": "",
-                "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "80 x 40 x 40 cm",
-                        "cover_image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1782607702751-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1782607702897-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "80 x 40 x 40 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 68000,
-                                "cost_price": 34000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "100 x 40 x 40 cm",
-                        "cover_image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1783801106027-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "100 x 40 x 40 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 72000,
-                                "cost_price": 36000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "60 x 40 x 40 cm",
-                        "cover_image": "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1783801038614-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1783801038778-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "60 x 40 x 40 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 64000,
-                                "cost_price": 32000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "baul",
-                    "cofre",
-                    "organizar",
-                    "juguetes",
-                    "ropa",
-                    "baules",
-                    "baul madera",
-                    "baul pino",
-                    "baul mediano",
-                    "baul juguetes",
-                    "guardado",
-                    "juguetero",
-                    "almacenamiento",
-                    "organizacion",
-                    "caja madera",
-                    "cajon madera",
-                    "banco baul",
-                    "mueble guardado",
-                    "bahul",
-                    "bahules",
-                    "baul de madera",
-                    "baul de pino",
-                    "organizador de juguetes",
-                    "caja de madera",
-                    "cofre de madera",
-                    "baul infantil",
-                    "mueble de guardado",
-                    "baul rustico",
-                    "juguetero de pino",
-                    "guardajuguetes",
-                    "banco de madera",
-                    "banco baul madera",
-                    "caja de pino",
-                    "guardado de juguetes",
-                    "cajon de juguetes",
-                    "baulera de madera",
-                    "baulera pino"
-                ],
-                "last_modified": 1783906817810,
-                "primaryCatId": "Organizadores",
-                "views": 5,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                }
-            },
-            {
-                "id": "42",
-                "title": "Especiero",
-                "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-                "image": "img/organizadores/especiero/1782487819564-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/especiero/1782487819564-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/especiero/1782487819564-imagen.webp",
-                            "img/organizadores/especiero/1782487819702-imagen.webp",
-                            "img/organizadores/especiero/1782487819842-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30 x 30 x 10 cm",
-                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 11000,
-                                "cost_price": 2500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "30 x 60 x 10 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 11000,
-                                "cost_price": 2500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "34 x 34 x 10 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 11000,
-                                "cost_price": 2500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "34 x 60 x 10 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 11000,
-                                "cost_price": 2500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "Estante",
-                    "especiero",
-                    "condimentos",
-                    "organizador",
-                    "cocina",
-                    "mueble",
-                    "decorativo",
-                    "ordenar",
-                    "especieros",
-                    "especiero cocina",
-                    "especiero madera",
-                    "especiero pino",
-                    "organizar",
-                    "especias",
-                    "porta condimentos",
-                    "estante cocina",
-                    "pared cocina",
-                    "organizacion cocina",
-                    "organizador cocina",
-                    "despensa",
-                    "ordenador de cocina",
-                    "especiero de pino",
-                    "especiero de madera",
-                    "porta especias",
-                    "mueble cocina pared",
-                    "especieros madera",
-                    "estante de especias",
-                    "decoracion cocina",
-                    "estante de pino cocina",
-                    "especiero rustico",
-                    "repisa de cocina",
-                    "repisa para condimentos"
-                ],
-                "last_modified": 1787707117443,
-                "primaryCatId": "Organizadores",
-                "views": 2,
-                "stock": 1,
-                "history": [
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Precio Venta Bajó",
-                        "detail": "Venta: $18.000 ➔ $11.000"
-                    },
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Costo Aumentó",
-                        "detail": "Costo: $0 ➔ $2500"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 6
-                }
-            },
-            {
-                "id": "43",
-                "title": "Verdulero Clasico",
-                "description": "Verdulero con estante superior",
-                "image": "img/organizadores/estantes-montessori/1.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/organizadores/estantes-montessori/1.webp",
-                            "img/organizadores/estantes-montessori/2.webp",
-                            "img/organizadores/verdulero-clasico/3.webp",
-                            "img/organizadores/verdulero-clasico/4.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Cargando...",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "cost_price": 2500,
-                                "price": 15000,
-                                "stock": 0,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "verduleros",
-                    "verdulero clasico",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "verdulería",
-                    "frutería",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "carro verdulero",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas"
-                ],
-                "last_modified": 1783637106226,
-                "primaryCatId": "Organizadores",
-                "views": 1,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Precio Venta Subió",
-                        "detail": "Venta: $0 ➔ $15.000"
-                    },
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Costo Aumentó",
-                        "detail": "Costo: $0 ➔ $2500"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                }
-            },
-            {
-                "id": "44",
-                "title": "Verdule para Mesada",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Chico",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "price": 15000,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "candry",
-                    "bar",
-                    "verduleros",
-                    "verdulero mesada",
-                    "verdulero mini",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "panera",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas",
-                    "panera de madera",
-                    "panera de pino"
-                ],
-                "last_modified": 1783637121354,
-                "primaryCatId": "Organizadores",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 0
-            },
-            {
-                "id": "45",
-                "title": "Verdulero Mediano",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdulero-mediano/1780708412753-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818831-organizador-verdulero-frutero-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "candry",
-                    "bar",
-                    "verduleros",
-                    "verdulero mediano",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "verdulería",
-                    "frutería",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "carro verdulero",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas"
-                ],
-                "last_modified": 1783637126403,
-                "primaryCatId": "Organizadores",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "stock": 0
-            },
-            {
-                "id": "46",
-                "title": "Mueble Multifunción - Estilo Nórdico",
-                "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
-                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
-                "image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094497-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094652-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094874-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "60 x 45 x 30 cm",
-                                "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 26000,
-                                "cost_price": 6500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mueble",
-                    "multifunción",
-                    "estilo",
-                    "nórdico",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "mueble mueble",
-                    "carpintería  mueble",
-                    "multifunción de madera",
-                    "multifunción de pino",
-                    "mueble multifunción",
-                    "carpintería  multifunción",
-                    "estilo de madera",
-                    "estilo de pino",
-                    "mueble estilo",
-                    "carpintería  estilo",
-                    "nórdico de madera",
-                    "nórdico de pino",
-                    "mueble nórdico",
-                    "carpintería  nórdico",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano"
-                ],
-                "last_modified": 1785084728300,
-                "primaryCatId": "Mesas-madera",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                }
-            },
-            {
-                "id": "47",
-                "title": "Verdulero x3",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdulero-x3/1780708453865-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2414802538-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "organizadores",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "excelente",
-                    "verdulero de madera",
-                    "verdulero de pino",
-                    "mueble verdulero",
-                    "organizadores verdulero",
-                    "organizadores de madera",
-                    "organizadores de pino",
-                    "mueble organizadores",
-                    "organizadores organizadores",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais",
-                    "directo de fabrica",
-                    "fabricacion nacional",
-                    "madera de pino",
-                    "madera cepillada"
-                ],
-                "last_modified": 1783637154745,
-                "primaryCatId": "Organizadores",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 0
-            },
-            {
-                "id": "48",
-                "title": "Esquinero x3",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
-                        "images_list": [
-                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2168998242-estante-esquinero-torneado-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "esquinero",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "excelente",
-                    "esquinero de madera",
-                    "esquinero de pino",
-                    "mueble esquinero",
-                    "carpintería  esquinero",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais",
-                    "directo de fabrica",
-                    "fabricacion nacional",
-                    "madera de pino",
-                    "madera cepillada"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 6,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788914164738,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "views": 0
-            },
-            {
-                "id": "49",
-                "title": "Organizador Tribuna X3",
-                "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
-                            "img/organizadores/organizador-tribuna-x3/1780323408690-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 9000,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "organizador",
-                    "tribuna",
-                    "organizadores",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "organizador de madera",
-                    "organizador de pino",
-                    "mueble organizador",
-                    "organizadores organizador",
-                    "tribuna de madera",
-                    "tribuna de pino",
-                    "mueble tribuna",
-                    "organizadores tribuna",
-                    "organizadores de madera",
-                    "organizadores de pino",
-                    "mueble organizadores",
-                    "organizadores organizadores",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais"
-                ],
-                "last_modified": 1783637306441,
-                "primaryCatId": "Organizadores",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 10
-                }
-            },
-            {
-                "id": "4A",
-                "title": "Posa Torta De Madera Torneado Candy Bar",
-                "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
-                "image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
-                            "img/organizadores/Posa-Tortas/1782622590872-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "22 Diam X 21 Alto",
-                                "link": "https://www.mercadolibre.com.ar/posa-torta-de-madera-torneado-candy-bar-22-diam-x-21-alto/up/MLAU3618805830?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=15&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7&wid=MLA1590370469&sid=search",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": 6500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "28 Diam x 17 Alto",
-                                "link": "https://www.mercadolibre.com.ar/soporte-para-tortas-torneado-de-madera-candy-bar/up/MLAU3610970883",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": 7000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "posa",
-                    "tortas",
-                    "candy",
-                    "bar",
-                    "decoracion",
-                    "pasteles",
-                    "fiesta",
-                    "15 años",
-                    "bebes",
-                    "cumpleaños",
-                    "torneado",
-                    "madera"
-                ],
-                "last_modified": 1783908158520,
-                "primaryCatId": "Organizadores",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                }
-            },
-            {
-                "id": "4B",
-                "title": "Ménsulas para escritorios",
-                "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
-                "image": "img/organizadores/mensulas/mensulas.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "40 x 40 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 9000,
-                                "cost_price": 9000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": 17000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 47998,
-                                "cost_price": 47998,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "45 x 45 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": 18000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": 35000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 50000,
-                                "cost_price": 50000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "50 x 50 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 11500,
-                                "cost_price": 11500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 22000,
-                                "cost_price": 22000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 43000,
-                                "cost_price": 43000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 62999,
-                                "cost_price": 62999,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mensula",
-                    "mensulas",
-                    "soporte",
-                    "soportes",
-                    "mensula madera",
-                    "mensula pino",
-                    "colgar estante",
-                    "estante mensula",
-                    "mensula de pino",
-                    "mensula de madera",
-                    "mensulas de pino",
-                    "mensulas de madera",
-                    "mensula estante",
-                    "soporte estante",
-                    "soporte mensula",
-                    "mensula rustica",
-                    "mensulas rusticas",
-                    "mensula decorativa"
-                ],
-                "last_modified": 1786315987713,
-                "primaryCatId": "Estantes",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 5
-                }
-            },
-            {
-                "id": "4C",
-                "title": "Ménsulas para estantes",
-                "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/organizadores/mensulas/mensulas.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "20 x 20 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "https://www.mercadolibre.com.ar/mensula-soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960167374",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 4500,
-                                "cost_price": 500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "https://www.mercadolibre.com.ar/2-mensulas--soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960301854",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 8000,
-                                "cost_price": 5500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "30 x 30 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 4500,
-                                "cost_price": 4500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 8500,
-                                "cost_price": 8500,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": 17000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mensula",
-                    "mensulas",
-                    "soporte",
-                    "soportes",
-                    "mensula madera",
-                    "mensula pino",
-                    "colgar estante",
-                    "estante mensula",
-                    "mensula de pino",
-                    "mensula de madera",
-                    "mensulas de pino",
-                    "mensulas de madera",
-                    "mensula estante",
-                    "soporte estante",
-                    "soporte mensula",
-                    "mensula rustica",
-                    "mensulas rusticas",
-                    "mensula decorativa"
-                ],
-                "last_modified": 1787716545046,
-                "primaryCatId": "Estantes",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 5
-                }
-            },
-            {
-                "id": "4D",
-                "title": "Banco Escalera De Pino 3 Escalones",
-                "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
-                "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
-                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275705-imagen.webp",
-                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275851-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "60 x 40 x 35 cm",
-                                "link": "https://www.mercadolibre.com.ar/banco-escalera-de-pino-3-escalones/up/MLAU3289044905",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786316089369,
-                "primaryCatId": "muebles",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                }
-            },
-            {
-                "id": "4E",
-                "title": "Estantes Montessori",
-                "description": "Organización creativa y estilo para tus paredes.",
-                "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
-                "image": "img/organizadores/estantes-montessori/1.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "60 CM",
-                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/organizadores/estantes-montessori/1.webp",
-                            "img/organizadores/estantes-montessori/2.webp",
-                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "10 x 10 x 60 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 13000,
-                                "cost_price": 13000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "10 x 10 x 60 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": 25000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "10 x 10 x 60 (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": 35000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "Combo x3 (60, 80, 100cm)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "80 CM",
-                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/organizadores/estantes-montessori/1.webp",
-                            "img/organizadores/estantes-montessori/2.webp",
-                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "10 x 10 x 80 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 14000,
-                                "cost_price": 14000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "10 x 10 x 80 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 26000,
-                                "cost_price": 26000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "10 x 10 x 80 (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35998,
-                                "cost_price": 35998,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "Combo x3 (60, 80, 100cm)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "100 cm",
-                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/organizadores/estantes-montessori/1.webp",
-                            "img/organizadores/estantes-montessori/2.webp",
-                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "10 x 10 x 100 (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": 15000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "10 x 10 x 100 (Combo x2)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 28000,
-                                "cost_price": 28000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "10 x 10 x 100 (Combo x3)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "Combo x3 (60, 80, 100cm)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "estante",
-                    "estantes",
-                    "estantes montessori",
-                    "estante niños",
-                    "repisa",
-                    "repisas",
-                    "librero",
-                    "estanteria",
-                    "libros",
-                    "infantil",
-                    "colgar",
-                    "madera",
-                    "pino",
-                    "organizador infantil",
-                    "pared",
-                    "estilo montessori",
-                    "repisa de madera",
-                    "repisa de pino",
-                    "estante de madera",
-                    "estante de pino",
-                    "repisa flotante",
-                    "estante flotante",
-                    "organizador de libros",
-                    "biblioteca infantil",
-                    "librero infantil",
-                    "estante montessori",
-                    "repisa de pared pino",
-                    "repisas flotantes",
-                    "estantes flotantes",
-                    "decoracion pared",
-                    "estanteria madera",
-                    "organizador pared"
-                ],
-                "last_modified": 1786317536131,
-                "primaryCatId": "Estantes",
-                "views": 4,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                }
-            },
-            {
-                "id": "4F",
-                "title": "Caballetes de madera",
-                "description": "",
-                "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Steve",
-                        "cover_image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786332743079,
-                "primaryCatId": "jardin-patio",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                }
-            },
-            {
-                "id": "4G",
-                "title": "Banco Banquito Escalera Niños Infantil",
-                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
-                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x23x20",
-                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786333409298,
-                "primaryCatId": "muebles",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                }
-            },
-            {
-                "id": "4H",
-                "title": "Repisa Biblioteca Estantes Montessori",
-                "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
-                "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
-                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158882-imagen.webp",
-                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159002-imagen.webp",
-                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159125-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "75 x 60 x 15 cm",
-                                "link": "https://www.mercadolibre.com.ar/repisa-biblioteca-estantes-montessori/up/MLAU4928059473",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 37000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "weight": 2.5
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1787715147118,
-                "primaryCatId": "Estantes",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                }
-            },
-            {
-                "id": "7C",
-                "title": "Repisa-estante de pared con toallero",
-                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
-                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
-                        "images_list": [
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Unico",
-                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 25,
-                                        "shippingDiscountPercent": 0
-                                    }
-                                ]
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "estimatedWeight": 2.5,
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [
-                    {
-                        "minUnits": 10,
-                        "discountPercent": 25,
-                        "shippingDiscountPercent": 0
-                    }
-                ],
-                "last_modified": 1788916093301,
-                "primaryCatId": "Estantes",
-                "history": [],
-                "visible": true,
-                "views": 1
-            },
-            {
-                "id": "7D",
-                "shortId": "37",
-                "title": "Estante Repisa Casita X 3 Unidades",
-                "description": "Lo que tenés que saber de este producto\nCantidad de estantes: 3\nMaterial: Madera\nProfundidad: 10 cm\nAltura: 33.5 cm\nLargo: 40 cm\nHecho en madera.",
-                "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Casita X3",
-                        "cover_image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
-                        "images_list": [
-                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
-                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426288-edit_1789446407783webp.webp",
-                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426300-edit_1789446413436webp.webp",
-                            "img/estantes/estante-repisa-casita-x-3-unidades/1789445834349-edit_1789445806152webp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Casita X 3",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 3,
-                    "logisticaFreeMinUnits": 30,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteFreeMinUnits": 30,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1789446426308,
-                "primaryCatId": "Estantes",
-                "history": []
-            }
-        ]
-    },
-    {
         "id": "Barandas",
         "name": "Barandas para cama",
         "image": "img/barandas-para-cama/portada-1782437522433-imagen.webp",
-        "order": 6,
+        "order": 4,
         "products": [
             {
                 "id": "51",
@@ -16471,10 +14478,2003 @@ const productsData = [
         "rubro": "carpinteria"
     },
     {
+        "id": "Organizadores",
+        "name": "Organizadores",
+        "image": "img/organizadores/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 5,
+        "products": [
+            {
+                "id": "41",
+                "title": "Baúl de madera de pino",
+                "description": "",
+                "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "80 x 40 x 40 cm",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1782607702751-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "80 x 40 x 40 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 68000,
+                                "cost_price": 34000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "100 x 40 x 40 cm",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801106027-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "100 x 40 x 40 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 72000,
+                                "cost_price": 36000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "60 x 40 x 40 cm",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801038614-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801038778-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 40 x 40 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 64000,
+                                "cost_price": 32000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "baul",
+                    "cofre",
+                    "organizar",
+                    "juguetes",
+                    "ropa",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado",
+                    "bahul",
+                    "bahules",
+                    "baul de madera",
+                    "baul de pino",
+                    "organizador de juguetes",
+                    "caja de madera",
+                    "cofre de madera",
+                    "baul infantil",
+                    "mueble de guardado",
+                    "baul rustico",
+                    "juguetero de pino",
+                    "guardajuguetes",
+                    "banco de madera",
+                    "banco baul madera",
+                    "caja de pino",
+                    "guardado de juguetes",
+                    "cajon de juguetes",
+                    "baulera de madera",
+                    "baulera pino"
+                ],
+                "last_modified": 1783906817810,
+                "primaryCatId": "Organizadores",
+                "views": 5,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                }
+            },
+            {
+                "id": "42",
+                "title": "Especiero",
+                "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
+                "image": "img/organizadores/especiero/1782487819564-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/especiero/1782487819564-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/especiero/1782487819564-imagen.webp",
+                            "img/organizadores/especiero/1782487819702-imagen.webp",
+                            "img/organizadores/especiero/1782487819842-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30 x 30 x 10 cm",
+                                "link": "https://www.mercadolibre.com.ar/especiero-condimentero--frascos--la-tarima/up/MLAU3318838885?pdp_filters=item_id:MLA1511558959",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11000,
+                                "cost_price": 2500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "30 x 60 x 10 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11000,
+                                "cost_price": 2500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "34 x 34 x 10 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11000,
+                                "cost_price": 2500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "34 x 60 x 10 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11000,
+                                "cost_price": 2500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Estante",
+                    "especiero",
+                    "condimentos",
+                    "organizador",
+                    "cocina",
+                    "mueble",
+                    "decorativo",
+                    "ordenar",
+                    "especieros",
+                    "especiero cocina",
+                    "especiero madera",
+                    "especiero pino",
+                    "organizar",
+                    "especias",
+                    "porta condimentos",
+                    "estante cocina",
+                    "pared cocina",
+                    "organizacion cocina",
+                    "organizador cocina",
+                    "despensa",
+                    "ordenador de cocina",
+                    "especiero de pino",
+                    "especiero de madera",
+                    "porta especias",
+                    "mueble cocina pared",
+                    "especieros madera",
+                    "estante de especias",
+                    "decoracion cocina",
+                    "estante de pino cocina",
+                    "especiero rustico",
+                    "repisa de cocina",
+                    "repisa para condimentos"
+                ],
+                "last_modified": 1787707117443,
+                "primaryCatId": "Organizadores",
+                "views": 2,
+                "stock": 1,
+                "history": [
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Precio Venta Bajó",
+                        "detail": "Venta: $18.000 ➔ $11.000"
+                    },
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $2500"
+                    }
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 6
+                }
+            },
+            {
+                "id": "43",
+                "title": "Verdulero Clasico",
+                "description": "Verdulero con estante superior",
+                "image": "img/organizadores/estantes-montessori/1.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/verdulero-clasico/3.webp",
+                            "img/organizadores/verdulero-clasico/4.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Cargando...",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "legend": "",
+                                "showPrice": true,
+                                "cost_price": 2500,
+                                "price": 15000,
+                                "stock": 0,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 0
+                    }
+                ],
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "verduleros",
+                    "verdulero clasico",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "verdulería",
+                    "frutería",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "carro verdulero",
+                    "berdulero",
+                    "berdulería",
+                    "verdulero de pino",
+                    "verdulero de madera",
+                    "verdulería de cocina",
+                    "cesta de verduras",
+                    "cajonera de pino",
+                    "carro de cocina",
+                    "mueble para verduras",
+                    "cajon verdulero",
+                    "organizacion de alimentos",
+                    "despensa de pino",
+                    "verdulero rustico",
+                    "verdulero con cajones",
+                    "cesta de frutas"
+                ],
+                "last_modified": 1783637106226,
+                "primaryCatId": "Organizadores",
+                "views": 1,
+                "stock": 0,
+                "history": [
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $0 ➔ $15.000"
+                    },
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $2500"
+                    }
+                ],
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 3
+                }
+            },
+            {
+                "id": "44",
+                "title": "Verdule para Mesada",
+                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                            "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
+                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Chico",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 0,
+                                "price": 15000,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 0
+                    }
+                ],
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "candry",
+                    "bar",
+                    "verduleros",
+                    "verdulero mesada",
+                    "verdulero mini",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "panera",
+                    "berdulero",
+                    "berdulería",
+                    "verdulero de pino",
+                    "verdulero de madera",
+                    "verdulería de cocina",
+                    "cesta de verduras",
+                    "cajonera de pino",
+                    "carro de cocina",
+                    "mueble para verduras",
+                    "cajon verdulero",
+                    "organizacion de alimentos",
+                    "despensa de pino",
+                    "verdulero rustico",
+                    "verdulero con cajones",
+                    "cesta de frutas",
+                    "panera de madera",
+                    "panera de pino"
+                ],
+                "last_modified": 1783637121354,
+                "primaryCatId": "Organizadores",
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 2
+                },
+                "stock": 0
+            },
+            {
+                "id": "45",
+                "title": "Verdulero Mediano",
+                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+                "image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/verdulero-mediano/1780708412753-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818831-organizador-verdulero-frutero-pino-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 0,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 0
+                    }
+                ],
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "candry",
+                    "bar",
+                    "verduleros",
+                    "verdulero mediano",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "verdulería",
+                    "frutería",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "carro verdulero",
+                    "berdulero",
+                    "berdulería",
+                    "verdulero de pino",
+                    "verdulero de madera",
+                    "verdulería de cocina",
+                    "cesta de verduras",
+                    "cajonera de pino",
+                    "carro de cocina",
+                    "mueble para verduras",
+                    "cajon verdulero",
+                    "organizacion de alimentos",
+                    "despensa de pino",
+                    "verdulero rustico",
+                    "verdulero con cajones",
+                    "cesta de frutas"
+                ],
+                "last_modified": 1783637126403,
+                "primaryCatId": "Organizadores",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
+                },
+                "stock": 0
+            },
+            {
+                "id": "46",
+                "title": "Mueble Multifunción - Estilo Nórdico",
+                "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
+                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
+                "image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094497-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094652-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094874-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 45 x 30 cm",
+                                "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 26000,
+                                "cost_price": 6500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mueble",
+                    "multifunción",
+                    "estilo",
+                    "nórdico",
+                    "carpintería",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "mueble mueble",
+                    "carpintería  mueble",
+                    "multifunción de madera",
+                    "multifunción de pino",
+                    "mueble multifunción",
+                    "carpintería  multifunción",
+                    "estilo de madera",
+                    "estilo de pino",
+                    "mueble estilo",
+                    "carpintería  estilo",
+                    "nórdico de madera",
+                    "nórdico de pino",
+                    "mueble nórdico",
+                    "carpintería  nórdico",
+                    "carpintería de madera",
+                    "carpintería de pino",
+                    "mueble carpintería",
+                    "carpintería  carpintería",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano"
+                ],
+                "last_modified": 1785084728300,
+                "primaryCatId": "Mesas-madera",
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
+                }
+            },
+            {
+                "id": "47",
+                "title": "Verdulero x3",
+                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+                "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/verdulero-x3/1780708453865-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2414802538-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 0,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 0
+                    }
+                ],
+                "tags": [
+                    "verdulero",
+                    "organizadores",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "duradero",
+                    "excelente",
+                    "verdulero de madera",
+                    "verdulero de pino",
+                    "mueble verdulero",
+                    "organizadores verdulero",
+                    "organizadores de madera",
+                    "organizadores de pino",
+                    "mueble organizadores",
+                    "organizadores organizadores",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal",
+                    "mueble util",
+                    "mueble practico",
+                    "muebles para casa",
+                    "envios a todo el pais",
+                    "directo de fabrica",
+                    "fabricacion nacional",
+                    "madera de pino",
+                    "madera cepillada"
+                ],
+                "last_modified": 1783637154745,
+                "primaryCatId": "Organizadores",
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 0
+            },
+            {
+                "id": "48",
+                "title": "Esquinero x3",
+                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+                "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
+                        "images_list": [
+                            "img/organizadores/esquinero-x3/Esquinero x3.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2168998242-estante-esquinero-torneado-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "esquinero",
+                    "carpintería",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "duradero",
+                    "excelente",
+                    "esquinero de madera",
+                    "esquinero de pino",
+                    "mueble esquinero",
+                    "carpintería  esquinero",
+                    "carpintería de madera",
+                    "carpintería de pino",
+                    "mueble carpintería",
+                    "carpintería  carpintería",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal",
+                    "mueble util",
+                    "mueble practico",
+                    "muebles para casa",
+                    "envios a todo el pais",
+                    "directo de fabrica",
+                    "fabricacion nacional",
+                    "madera de pino",
+                    "madera cepillada"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 6,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1788914164738,
+                "primaryCatId": "Organizadores",
+                "history": [],
+                "views": 0
+            },
+            {
+                "id": "49",
+                "title": "Organizador Tribuna X3",
+                "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+                            "img/organizadores/organizador-tribuna-x3/1780323408690-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "legend": "",
+                                "showPrice": true,
+                                "price": 9000,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "organizador",
+                    "tribuna",
+                    "organizadores",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "duradero",
+                    "organizador de madera",
+                    "organizador de pino",
+                    "mueble organizador",
+                    "organizadores organizador",
+                    "tribuna de madera",
+                    "tribuna de pino",
+                    "mueble tribuna",
+                    "organizadores tribuna",
+                    "organizadores de madera",
+                    "organizadores de pino",
+                    "mueble organizadores",
+                    "organizadores organizadores",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal",
+                    "mueble util",
+                    "mueble practico",
+                    "muebles para casa",
+                    "envios a todo el pais"
+                ],
+                "last_modified": 1783637306441,
+                "primaryCatId": "Organizadores",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 10
+                }
+            },
+            {
+                "id": "4A",
+                "title": "Posa Torta De Madera Torneado Candy Bar",
+                "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
+                "image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
+                            "img/organizadores/Posa-Tortas/1782622590872-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "22 Diam X 21 Alto",
+                                "link": "https://www.mercadolibre.com.ar/posa-torta-de-madera-torneado-candy-bar-22-diam-x-21-alto/up/MLAU3618805830?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=15&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7&wid=MLA1590370469&sid=search",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 15000,
+                                "cost_price": 6500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "28 Diam x 17 Alto",
+                                "link": "https://www.mercadolibre.com.ar/soporte-para-tortas-torneado-de-madera-candy-bar/up/MLAU3610970883",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 15000,
+                                "cost_price": 7000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "posa",
+                    "tortas",
+                    "candy",
+                    "bar",
+                    "decoracion",
+                    "pasteles",
+                    "fiesta",
+                    "15 años",
+                    "bebes",
+                    "cumpleaños",
+                    "torneado",
+                    "madera"
+                ],
+                "last_modified": 1783908158520,
+                "primaryCatId": "Organizadores",
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 3
+                }
+            },
+            {
+                "id": "4B",
+                "title": "Ménsulas para escritorios",
+                "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
+                "image": "img/organizadores/mensulas/mensulas.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "40 x 40 cm",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/organizadores/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": 9000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": 17000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 47998,
+                                "cost_price": 47998,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "45 x 45 cm",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/organizadores/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": 18000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": 35000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "cost_price": 50000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50 x 50 cm",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/organizadores/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11500,
+                                "cost_price": 11500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22000,
+                                "cost_price": 22000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 43000,
+                                "cost_price": 43000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 62999,
+                                "cost_price": 62999,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula",
+                    "mensula de pino",
+                    "mensula de madera",
+                    "mensulas de pino",
+                    "mensulas de madera",
+                    "mensula estante",
+                    "soporte estante",
+                    "soporte mensula",
+                    "mensula rustica",
+                    "mensulas rusticas",
+                    "mensula decorativa"
+                ],
+                "last_modified": 1786315987713,
+                "primaryCatId": "Estantes",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 5
+                }
+            },
+            {
+                "id": "4C",
+                "title": "Ménsulas para estantes",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "image": "img/organizadores/mensulas/mensulas.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "20 x 20 cm",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/organizadores/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "https://www.mercadolibre.com.ar/mensula-soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960167374",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 4500,
+                                "cost_price": 500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "https://www.mercadolibre.com.ar/2-mensulas--soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960301854",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 8000,
+                                "cost_price": 5500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 30 cm",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/organizadores/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 4500,
+                                "cost_price": 4500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 8500,
+                                "cost_price": 8500,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": 17000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula",
+                    "mensula de pino",
+                    "mensula de madera",
+                    "mensulas de pino",
+                    "mensulas de madera",
+                    "mensula estante",
+                    "soporte estante",
+                    "soporte mensula",
+                    "mensula rustica",
+                    "mensulas rusticas",
+                    "mensula decorativa"
+                ],
+                "last_modified": 1787716545046,
+                "primaryCatId": "Estantes",
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 5
+                }
+            },
+            {
+                "id": "4D",
+                "title": "Banco Escalera De Pino 3 Escalones",
+                "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
+                "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275705-imagen.webp",
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275851-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 40 x 35 cm",
+                                "link": "https://www.mercadolibre.com.ar/banco-escalera-de-pino-3-escalones/up/MLAU3289044905",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786316089369,
+                "primaryCatId": "muebles",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
+                }
+            },
+            {
+                "id": "4E",
+                "title": "Estantes Montessori",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
+                "image": "img/organizadores/estantes-montessori/1.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "60 CM",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 60 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1493678535-repisa-estante-montessori-infantil-60cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 13000,
+                                "cost_price": 13000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "10 x 10 x 60 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-879117338-repisa-estante-montessori-infantil-x-2un-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "10 x 10 x 60 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1507820713-repisa-estante-montessori-infantil-x-3un-60-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": 35000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "80 CM",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 80 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422364710-repisa-estante-montessori-infantil-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 14000,
+                                "cost_price": 14000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399578-repisa-estante-montessori-infantil-x-2un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 26000,
+                                "cost_price": 26000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "10 x 10 x 80 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151042000-repisa-estante-montessori-infantil-x-3un-80cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35998,
+                                "cost_price": 35998,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "100 cm",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/estantes-montessori/Estantes Montessori.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "10 x 10 x 100 (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1422199184-repisa-estante-montessori-infantil-100cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 15000,
+                                "cost_price": 15000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x2)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149386462-repisa-estante-montessori-infantil-x-2un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 28000,
+                                "cost_price": 28000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "10 x 10 x 100 (Combo x3)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149399932-repisa-estante-montessori-infantil-x-3un-100cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            },
+                            {
+                                "medida": "Combo x3 (60, 80, 100cm)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2151722386-set-3-repisas-estantes-montessori-infantil-x-3un-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "estantes montessori",
+                    "estante niños",
+                    "repisa",
+                    "repisas",
+                    "librero",
+                    "estanteria",
+                    "libros",
+                    "infantil",
+                    "colgar",
+                    "madera",
+                    "pino",
+                    "organizador infantil",
+                    "pared",
+                    "estilo montessori",
+                    "repisa de madera",
+                    "repisa de pino",
+                    "estante de madera",
+                    "estante de pino",
+                    "repisa flotante",
+                    "estante flotante",
+                    "organizador de libros",
+                    "biblioteca infantil",
+                    "librero infantil",
+                    "estante montessori",
+                    "repisa de pared pino",
+                    "repisas flotantes",
+                    "estantes flotantes",
+                    "decoracion pared",
+                    "estanteria madera",
+                    "organizador pared"
+                ],
+                "last_modified": 1786317536131,
+                "primaryCatId": "Estantes",
+                "views": 4,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 3
+                }
+            },
+            {
+                "id": "4F",
+                "title": "Caballetes de madera",
+                "description": "",
+                "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Steve",
+                        "cover_image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786332743079,
+                "primaryCatId": "jardin-patio",
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
+                }
+            },
+            {
+                "id": "4G",
+                "title": "Banco Banquito Escalera Niños Infantil",
+                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
+                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x23x20",
+                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786333409298,
+                "primaryCatId": "muebles",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
+                }
+            },
+            {
+                "id": "4H",
+                "title": "Repisa Biblioteca Estantes Montessori",
+                "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
+                "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158882-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159002-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159125-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "75 x 60 x 15 cm",
+                                "link": "https://www.mercadolibre.com.ar/repisa-biblioteca-estantes-montessori/up/MLAU4928059473",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 37000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true,
+                                "weight": 2.5
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1787715147118,
+                "primaryCatId": "Estantes",
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
+                }
+            },
+            {
+                "id": "7C",
+                "title": "Repisa-estante de pared con toallero",
+                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
+                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                        "images_list": [
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Unico",
+                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2.5,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788916093301,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "visible": true,
+                "views": 1
+            },
+            {
+                "id": "7D",
+                "shortId": "37",
+                "title": "Estante Repisa Casita X 3 Unidades",
+                "description": "Lo que tenés que saber de este producto\nCantidad de estantes: 3\nMaterial: Madera\nProfundidad: 10 cm\nAltura: 33.5 cm\nLargo: 40 cm\nHecho en madera.",
+                "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Casita X3",
+                        "cover_image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                        "images_list": [
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426288-edit_1789446407783webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426300-edit_1789446413436webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789445834349-edit_1789445806152webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Casita X 3",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "logisticaFreeMinUnits": 30,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteFreeMinUnits": 30,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789446426308,
+                "primaryCatId": "Estantes",
+                "history": []
+            }
+        ]
+    },
+    {
         "id": "Estantes",
         "name": "Estantes",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 7,
+        "order": 6,
         "products": [
             {
                 "id": "61",
@@ -18062,7 +18062,7 @@ const productsData = [
         "name": "Cunas",
         "image": "img/cunas/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 8,
+        "order": 7,
         "products": [
             {
                 "id": "71",
@@ -18909,7 +18909,7 @@ const productsData = [
         "name": "Camas para niños",
         "image": "img/camas-para-ninos/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 9,
+        "order": 8,
         "products": [
             {
                 "id": "81",
@@ -19051,7 +19051,7 @@ const productsData = [
         "id": "muebles",
         "name": "Escaleras",
         "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 10,
+        "order": 9,
         "products": [
             {
                 "id": "91",
@@ -19349,7 +19349,7 @@ const productsData = [
         "id": "Steps",
         "name": "Steps / Cajones",
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 11,
+        "order": 10,
         "products": [
             {
                 "id": "A1",
@@ -20000,7 +20000,7 @@ const productsData = [
         "id": "Juguetes",
         "name": "Juguetes",
         "image": "img/juguetes/portada-1783038439545-imagen.webp",
-        "order": 12,
+        "order": 11,
         "products": [
             {
                 "id": "B1",
@@ -20475,7 +20475,7 @@ const productsData = [
         "name": "Sillas y sillones",
         "image": "img/sillas-y-sillones/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 13,
+        "order": 12,
         "products": [
             {
                 "id": "C1",
@@ -20885,7 +20885,7 @@ const productsData = [
         "name": "Mesas de madera",
         "image": "img/mesas-de-madera/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 14,
+        "order": 13,
         "products": [
             {
                 "id": "D1",
@@ -21664,7 +21664,7 @@ const productsData = [
         "name": "Jardín",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 15,
+        "order": 14,
         "products": [
             {
                 "id": "E1",
@@ -22598,7 +22598,7 @@ const productsData = [
         "name": "Hogar",
         "image": "img/hogar/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 16,
+        "order": 15,
         "products": [
             {
                 "id": "F1",
@@ -23260,7 +23260,7 @@ const productsData = [
         "name": "Todo Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 17,
+        "order": 16,
         "products": [
             {
                 "id": "G1",
@@ -23567,7 +23567,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 18,
+        "order": 17,
         "products": [
             {
                 "id": "H1",
