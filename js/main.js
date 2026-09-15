@@ -241,7 +241,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-        const urlParams = new URLSearchParams(window.location.search);
+        const hashSearch = window.location.hash.includes('?') ? window.location.hash.substring(window.location.hash.indexOf('?')) : '';
+        const urlParams = new URLSearchParams(window.location.search + (hashSearch ? '&' + hashSearch.substring(1) : ''));
         
         // 1. Detectar parámetro de URL ultra corta (?s=CODE o ruta directa /1.A)
         let shortCode = urlParams.get('s');

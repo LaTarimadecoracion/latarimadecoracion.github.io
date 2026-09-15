@@ -10397,6 +10397,88 @@ const productsData = [
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
                 "history": []
+            },
+            {
+                "id": "64",
+                "shortId": "38",
+                "title": "Triangulos",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
+                        "images_list": [
+                            "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
+                            "img/estantes/triangulos/1789446728644-edit_1789446684459webp.webp",
+                            "img/estantes/triangulos/1789446648531-imagenwebp.webp",
+                            "img/estantes/triangulos/1789446728650-edit_1789446696377webp.webp",
+                            "img/estantes/triangulos/1789446760217-edit_1789446756212webp.webp",
+                            "img/estantes/triangulos/1789446728660-edit_1789446720905webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Combo x3",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2278025688-estante-triangulo-x-3-unidades-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "triangulo",
+                    "triangulos",
+                    "repisa",
+                    "repisas",
+                    "estante flotante",
+                    "estante madera",
+                    "estante pino",
+                    "colgar",
+                    "decoracion",
+                    "pared",
+                    "geometrico",
+                    "repisa triangular",
+                    "repisa triangulo",
+                    "estante triangular",
+                    "estantes triangulares",
+                    "repisas triangulares",
+                    "diseño triangular",
+                    "triangulos de madera",
+                    "triangulos de pino",
+                    "decoracion pared triangulo"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789446760226,
+                "primaryCatId": "Estantes",
+                "history": []
             }
         ]
     },
@@ -16960,31 +17042,41 @@ const productsData = [
             },
             {
                 "id": "64",
-                "title": "Triángulos",
+                "shortId": "38",
+                "title": "Triangulos",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/estantes/triangulos/triangulos.webp",
+                "image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/estantes/triangulos/triangulos.webp",
+                        "cover_image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
                         "images_list": [
-                            "img/estantes/triangulos/triangulos.webp"
+                            "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
+                            "img/estantes/triangulos/1789446728644-edit_1789446684459webp.webp",
+                            "img/estantes/triangulos/1789446648531-imagenwebp.webp",
+                            "img/estantes/triangulos/1789446728650-edit_1789446696377webp.webp",
+                            "img/estantes/triangulos/1789446760217-edit_1789446756212webp.webp",
+                            "img/estantes/triangulos/1789446728660-edit_1789446720905webp.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Combo x3",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2278025688-estante-triangulo-x-3-unidades-_JM",
                                 "default": true,
-                                "volumeDiscounts": [],
-                                "cost_price": "",
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
                                 "showPrice": true,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 0,
                 "tags": [
                     "estante",
                     "estantes",
@@ -17009,17 +17101,26 @@ const productsData = [
                     "triangulos de pino",
                     "decoracion pared triangulo"
                 ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1789446760226,
+                "primaryCatId": "Estantes",
+                "history": []
             },
             {
                 "id": "65",

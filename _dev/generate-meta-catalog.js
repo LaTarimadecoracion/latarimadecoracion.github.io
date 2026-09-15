@@ -74,8 +74,8 @@ categories.forEach(cat => {
             imgUrl = `${BASE_URL}/${imgUrl.replace(/^\//, '')}`;
         }
 
-        // Link de compra / producto
-        const link = `${BASE_URL}/#catalog?prod=${prod.id}`;
+        // Link de compra / producto (URL ultra corta y limpia ?s=ID)
+        const link = `${BASE_URL}/?s=${prod.id}`;
 
         const row = [
             escapeCSV(prod.id),
