@@ -145,15 +145,20 @@
         "1270": { "localidad": "Barracas", "departamento": "Comuna 4", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1280": { "localidad": "Barracas", "departamento": "Comuna 4", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1290": { "localidad": "Barracas", "departamento": "Comuna 4", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
+        "1400": { "localidad": "Villa Urquiza", "departamento": "Comuna 12", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
+        "1401": { "localidad": "Parque Chacabuco", "departamento": "Comuna 7", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1405": { "localidad": "Caballito", "departamento": "Comuna 6", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1406": { "localidad": "Flores", "departamento": "Comuna 7", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1407": { "localidad": "Floresta", "departamento": "Comuna 10", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1408": { "localidad": "Liniers", "departamento": "Comuna 9", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
+        "1409": { "localidad": "Villa del Parque", "departamento": "Comuna 11", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
+        "1413": { "localidad": "Palermo / Villa Crespo / Flores", "departamento": "Comuna 7", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1414": { "localidad": "Palermo", "departamento": "Comuna 14", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1416": { "localidad": "Villa Crespo", "departamento": "Comuna 15", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1417": { "localidad": "Villa del Parque", "departamento": "Comuna 11", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1418": { "localidad": "Chacarita", "departamento": "Comuna 15", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1419": { "localidad": "Villa Devoto", "departamento": "Comuna 11", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
+        "1420": { "localidad": "Belgrano R", "departamento": "Comuna 13", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1424": { "localidad": "Parque Chacabuco", "departamento": "Comuna 7", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1425": { "localidad": "Palermo", "departamento": "Comuna 14", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
         "1426": { "localidad": "Belgrano", "departamento": "Comuna 13", "provincia": "CABA (Capital Federal)", "logisticaZone": "caba", "fleteZone": "flete_zona_3" },
@@ -621,18 +626,79 @@
         let match = null;
         if (cleanDigits && ARG_POSTAL_DATASET[cleanDigits]) {
             match = { ...ARG_POSTAL_DATASET[cleanDigits], cp: cleanDigits };
-        } else if (!cleanDigits || cleanDigits.length < 4) {
+        } else {
             const lower = strQuery.toLowerCase();
             for (const key in ARG_POSTAL_DATASET) {
                 const item = ARG_POSTAL_DATASET[key];
-                if (item.localidad.toLowerCase().includes(lower) || item.departamento.toLowerCase().includes(lower) || item.provincia.toLowerCase().includes(lower)) {
+                if (item.localidad.toLowerCase().includes(lower) || 
+                    (item.departamento && item.departamento.toLowerCase().includes(lower)) || 
+                    (item.provincia && item.provincia.toLowerCase().includes(lower))) {
                     match = { ...item, cp: key };
                     break;
                 }
             }
         }
 
-        // Si no está en el dataset estático 1 a 1 => return null (Sin plantillas ni fallbacks inventados)
+        // 2. Fallback Inteligente por Rangos de CP y Cobertura de Zonas
+        if (!match && cleanDigits && cleanDigits.length >= 4) {
+            const cpNum = parseInt(cleanDigits.substring(0, 4), 10);
+            if (!isNaN(cpNum)) {
+                if (cpNum >= 1000 && cpNum <= 1499) {
+                    // CABA
+                    match = {
+                        cp: String(cpNum),
+                        localidad: 'CABA / Capital Federal',
+                        departamento: 'CABA',
+                        provincia: 'CABA (Capital Federal)',
+                        logisticaZone: 'caba',
+                        fleteZone: 'flete_zona_3'
+                    };
+                } else if (cpNum >= 1600 && cpNum <= 1899) {
+                    // GBA - Determinación de Cordón 1 vs Cordón 2 por prefijo / partido
+                    // Cordón 1 Flete / Logística Cercana:
+                    // 1636-1643 (Vicente López / San Isidro), 1644-1646 (San Fernando), 1650-1657 (San Martín),
+                    // 1672-1678 (Tres de Febrero), 1686-1688 (Hurlingham), 1702-1712 (Morón/Haedo/Castelar/Ramos), 1714 (Ituzaingó),
+                    // 1824-1826 (Lanús), 1832-1836 (Lomas), 1870-1875 (Avellaneda)
+                    let isCordon1 = false;
+                    let isHurlinghamLocal = (cpNum === 1686 || cpNum === 1688);
+                    let isFleteZona2 = ([1682, 1708, 1712, 1714, 1650, 1663, 1678, 1704, 1706].includes(cpNum));
+
+                    if ((cpNum >= 1636 && cpNum <= 1657) ||
+                        (cpNum >= 1672 && cpNum <= 1688) ||
+                        (cpNum >= 1702 && cpNum <= 1714) ||
+                        (cpNum >= 1824 && cpNum <= 1836) ||
+                        (cpNum >= 1870 && cpNum <= 1875)) {
+                        isCordon1 = true;
+                    }
+
+                    const logZone = isCordon1 ? 'cordon_1' : 'cordon_2';
+                    let fleteZone = 'flete_zona_3';
+                    if (isHurlinghamLocal) fleteZone = 'flete_zona_1';
+                    else if (isFleteZona2) fleteZone = 'flete_zona_2';
+
+                    match = {
+                        cp: String(cpNum),
+                        localidad: isCordon1 ? 'GBA Cordón 1 (Zona Cercana)' : 'GBA Cordón 2 (Zona Extendida)',
+                        departamento: 'Gran Buenos Aires',
+                        provincia: 'BUENOS AIRES',
+                        logisticaZone: logZone,
+                        fleteZone: fleteZone
+                    };
+                } else {
+                    // Resto del País / Provincias (CP >= 1900 o Fuera de GBA)
+                    match = {
+                        cp: String(cpNum),
+                        localidad: 'Interior del País / Provincia',
+                        departamento: 'Provincia',
+                        provincia: 'RESTO DEL PAÍS',
+                        logisticaZone: 'resto_provincias',
+                        fleteZone: 'flete_fuera_rango'
+                    };
+                }
+            }
+        }
+
+        // Si no se pudo clasificar
         if (!match) return null;
 
         const logZoneKey = match.logisticaZone || 'resto_provincias';

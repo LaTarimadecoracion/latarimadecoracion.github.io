@@ -3,6 +3,70 @@
 
 let activeGroupsUI = [];
 let groupCounter = 0;
+let cropperCallback = null;
+
+function openCropperModal(imageUrl, onConfirm) {
+    const modal = document.getElementById('admin-cropper-modal');
+    const iframe = document.getElementById('cropper-editor-iframe');
+    if (!modal || !iframe) return;
+
+    cropperCallback = onConfirm;
+    modal.style.display = 'flex';
+
+    // Cargar apps/editor-fotos.html en el iframe con la imagen como parámetro
+    iframe.src = `apps/editor-fotos.html?embed=1&img=${encodeURIComponent(imageUrl)}`;
+}
+
+// Binds de controles y comunicación postMessage con el editor de fotos
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('admin-cropper-modal');
+    const btnCancel = document.getElementById('btn-cancel-crop');
+    const iframe = document.getElementById('cropper-editor-iframe');
+
+    window.closeCropperModal = function() {
+        const modal = document.getElementById('admin-cropper-modal');
+        const iframe = document.getElementById('cropper-editor-iframe');
+        if (modal) modal.style.display = 'none';
+        if (iframe) iframe.src = 'about:blank';
+        cropperCallback = null;
+    };
+
+    if (btnCancel) btnCancel.onclick = window.closeCropperModal;
+
+    // Delegación global por si el partial se inyectó dinámicamente
+    document.addEventListener('click', (e) => {
+        if (e.target && (e.target.id === 'btn-cancel-crop' || e.target.closest('#btn-cancel-crop'))) {
+            window.closeCropperModal();
+        }
+    });
+
+    // Escuchar el evento postMessage que envía el editor de fotos al confirmar la imagen editada
+    window.addEventListener('message', (event) => {
+        if (!event.data || typeof event.data !== 'object') return;
+        
+        if (event.data.type === 'TARIMA_PHOTO_EDITED' && event.data.dataUrl) {
+            if (cropperCallback) {
+                // Convertir dataUrl a File para que se suba normalmente
+                fetch(event.data.dataUrl)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        const file = new File([blob], `edit_${Date.now()}.webp`, { type: 'image/webp' });
+                        cropperCallback(file, event.data.dataUrl);
+                        window.closeCropperModal();
+                    })
+                    .catch(err => {
+                        console.error('Error procesando imagen editada:', err);
+                        cropperCallback(null, event.data.dataUrl);
+                        window.closeCropperModal();
+                    });
+            } else {
+                window.closeCropperModal();
+            }
+        } else if (event.data.type === 'TARIMA_PHOTO_CANCEL') {
+            window.closeCropperModal();
+        }
+    });
+});
 
     function getDragAfterElement(container, y, selector = '.medida-admin-row') {
         const draggableElements = [...container.querySelectorAll(`${selector}:not(.dragging)`)];
@@ -416,6 +480,7 @@ let groupCounter = 0;
                 <img src="${url}" alt="foto ${idx}">
                 <span class="cover-badge">Portada</span>
                 ${isNew ? '<span class="new-badge">Nueva</span>' : ''}
+                <button type="button" class="btn-crop-thumb" title="Encuadrar / Recortar 3:2" style="position: absolute; bottom: 6px; right: 6px; background: rgba(15,23,42,0.85); color: #ffffff; border: none; border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 5;"><span class="material-symbols-outlined" style="font-size: 15px;">crop</span></button>
                 <button type="button" class="preview-remove" title="Eliminar foto">&times;</button>
                 <div class="thumb-nav-buttons" onclick="event.stopPropagation();">
                     ${idx > 0 ? `<button type="button" class="btn-thumb-move btn-thumb-left" title="Mover a la izquierda"><span class="material-symbols-outlined">chevron_left</span></button>` : '<span></span>'}
@@ -423,6 +488,35 @@ let groupCounter = 0;
                 </div>
             `;
             
+            // Botón de Recorte / Encuadre 3:2
+            const btnCrop = thumb.querySelector('.btn-crop-thumb');
+            if (btnCrop) {
+                btnCrop.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    let targetSrc = url;
+                    if (isFileDirect) {
+                        targetSrc = await new Promise(res => {
+                            const r = new FileReader();
+                            r.onload = ev => res(ev.target.result);
+                            r.readAsDataURL(item);
+                        });
+                    } else if (isFileObj && item.file) {
+                        targetSrc = item.dataUrl || await new Promise(res => {
+                            const r = new FileReader();
+                            r.onload = ev => res(ev.target.result);
+                            r.readAsDataURL(item.file);
+                        });
+                    } else if (typeof targetSrc === 'string' && !targetSrc.startsWith('data:') && !targetSrc.startsWith('http')) {
+                        targetSrc = window.location.origin + '/' + targetSrc.replace(/^\//, '');
+                    }
+                    
+                    openCropperModal(targetSrc, (croppedFile, croppedDataUrl) => {
+                        gState.images[idx] = { file: croppedFile, dataUrl: croppedDataUrl };
+                        renderGroupPreview(groupId);
+                    });
+                });
+            }
+
             // Botones de navegación (izquierda/derecha)
             const btnLeft = thumb.querySelector('.btn-thumb-left');
             const btnRight = thumb.querySelector('.btn-thumb-right');
@@ -1304,6 +1398,8 @@ let groupCounter = 0;
             const tagsList   = tagsRaw ? tagsRaw.split(',').map(s => s.trim()).filter(s => s) : [];
             const pVideo     = document.getElementById('admin-video')?.value?.trim() || '';
 
+            const prodWeightVal = parseFloat(document.getElementById('product-ship-weight')?.value);
+
             // Configuración de Envíos del Producto
             const logMaxUnitsVal = parseInt(document.getElementById('product-ship-logistica-max-units')?.value);
             const logFreeMinVal = parseInt(document.getElementById('product-ship-logistica-free-min-units')?.value);
@@ -1334,10 +1430,14 @@ let groupCounter = 0;
 
             // Preservar o generar shortId estático inmutable
             let existingShortId = undefined;
-            if (targetCategory && targetCategory.products) {
-                const existingProd = targetCategory.products.find(p => p.id === (editingProductId || idVal));
-                if (existingProd && existingProd.shortId) {
-                    existingShortId = existingProd.shortId;
+            const allCategoriesToSearch = [...(window.sessionProducts || []), { id: 'alquileres', products: window.sessionRentals || [] }];
+            for (const cat of allCategoriesToSearch) {
+                if (cat && Array.isArray(cat.products)) {
+                    const existingProd = cat.products.find(p => p.id === (editingProductId || idVal));
+                    if (existingProd && existingProd.shortId) {
+                        existingShortId = existingProd.shortId;
+                        break;
+                    }
                 }
             }
             if (!existingShortId) {

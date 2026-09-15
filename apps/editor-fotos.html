@@ -2,8 +2,10 @@
 <html lang="es">
 <head>
     <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const isEmbedded = urlParams.get('embed') === '1' || window.self !== window.top;
         // Redirigir a la SPA principal si se abre directamente fuera de un iframe
-        if (window.self === window.top) {
+        if (!isEmbedded && window.self === window.top) {
             var basePath = '/';
             var segments = window.location.pathname.split('/').filter(Boolean);
             if (segments.length > 0 && segments[0].toLowerCase() === 'latarimadecoracion.github.io') {
@@ -751,7 +753,7 @@
                                 </label>
                                 <div class="zoom-slider-container">
                                     <span class="material-symbols-outlined" style="font-size: 18px; color: #64748B;">zoom_out</span>
-                                    <input type="range" id="zoom-slider" class="zoom-slider" min="1" max="100" step="0.01" value="1">
+                                    <input type="range" id="zoom-slider" class="zoom-slider" min="0.2" max="10" step="0.01" value="1">
                                     <span class="material-symbols-outlined" style="font-size: 18px; color: #64748B;">zoom_in</span>
                                 </div>
                             </div>
@@ -1172,6 +1174,77 @@
                 }
             }
 
+            // Adaptar UI cuando se abre embebido en el modal de productos
+            if (isEmbedded) {
+                if (btnDownloadCurrent) {
+                    btnDownloadCurrent.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Usar Foto Editada en Producto';
+                    btnDownloadCurrent.style.background = 'var(--primary-color, #c0510a)';
+                    btnDownloadCurrent.style.color = '#ffffff';
+                }
+                const toolTitle = document.querySelector('.tool-title');
+                if (toolTitle) toolTitle.innerHTML = '<span class="material-symbols-outlined">auto_fix_high</span> Editor de Foto del Producto';
+                const toolSubtitle = document.querySelector('.tool-subtitle');
+                if (toolSubtitle) toolSubtitle.textContent = 'Ajustá el encuadre 3:2, cambiá el fondo o agregá tu marca de agua. Al terminar presiona "Usar Foto Editada".';
+            }
+
+            // Detección de parámetro ?img= para carga automática cuando viene desde el editor de productos
+            const initialImgUrl = urlParams.get('img');
+            if (initialImgUrl) {
+                const loadImageIntoEditor = (src) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        images = [{
+                            id: Date.now() + '-embed',
+                            name: 'foto_producto.webp',
+                            file: null,
+                            src: src,
+                            width: img.width || 800,
+                            height: img.height || 600,
+                            zoom: 1.0,
+                            panX: 0,
+                            panY: 0,
+                            rotation: 0,
+                            aspect: currentRatioValue,
+                            cropped: false
+                        }];
+                        dropZone.style.display = 'none';
+                        editorWorkspace.style.display = 'flex';
+                        activeIndex = 0;
+                        updateCarousel();
+                        loadActiveImage();
+                    };
+                    img.onerror = (err) => {
+                        console.warn('[Editor] Error con crossOrigin anonymous, intentando directo...', err);
+                        const fallbackImg = new Image();
+                        fallbackImg.onload = () => {
+                            images = [{
+                                id: Date.now() + '-embed',
+                                name: 'foto_producto.webp',
+                                file: null,
+                                src: src,
+                                width: fallbackImg.width || 800,
+                                height: fallbackImg.height || 600,
+                                zoom: 1.0,
+                                panX: 0,
+                                panY: 0,
+                                rotation: 0,
+                                aspect: currentRatioValue,
+                                cropped: false
+                            }];
+                            dropZone.style.display = 'none';
+                            editorWorkspace.style.display = 'flex';
+                            activeIndex = 0;
+                            updateCarousel();
+                            loadActiveImage();
+                        };
+                        fallbackImg.src = src;
+                    };
+                    img.src = src;
+                };
+
+                loadImageIntoEditor(initialImgUrl);
+            }
+
             function updateCarousel() {
                 carouselThumbs.innerHTML = '';
                 images.forEach((img, idx) => {
@@ -1309,8 +1382,8 @@
                 const scaledW = w * zoom;
                 const scaledH = h * zoom;
                 
-                const maxX = Math.max(0, (scaledW - viewportWidth) / 2);
-                const maxY = Math.max(0, (scaledH - viewportHeight) / 2);
+                const maxX = scaledW > viewportWidth ? (scaledW - viewportWidth) / 2 : 0;
+                const maxY = scaledH > viewportHeight ? (scaledH - viewportHeight) / 2 : 0;
                 
                 img.panX = Math.min(maxX, Math.max(-maxX, img.panX));
                 img.panY = Math.min(maxY, Math.max(-maxY, img.panY));
@@ -1343,7 +1416,7 @@
                 const zoomStep = 0.08 * currentVal; 
                 let newVal = currentVal + (e.deltaY < 0 ? zoomStep : -zoomStep);
                 
-                newVal = Math.max(1, Math.min(100, newVal));
+                newVal = Math.max(0.2, Math.min(10, newVal));
                 
                 zoomSlider.value = newVal;
                 zoomVal.textContent = Math.round(newVal * 100) + '%';
@@ -1882,10 +1955,21 @@
                 if (activeIndex === -1) return;
                 saveCurrentTransformState();
                 
-                showOverlay('Procesando foto actual...', 'Generando WebP de alta calidad');
+                showOverlay('Procesando foto...', 'Generando WebP de alta calidad');
                 try {
                     const blob = await cropImageToBlob(images[activeIndex]);
-                    downloadBlob(blob, renameFileExtension(images[activeIndex].name, activeIndex));
+                    if (isEmbedded && window.parent) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                            window.parent.postMessage({
+                                type: 'TARIMA_PHOTO_EDITED',
+                                dataUrl: reader.result
+                            }, '*');
+                        };
+                        reader.readAsDataURL(blob);
+                    } else {
+                        downloadBlob(blob, renameFileExtension(images[activeIndex].name, activeIndex));
+                    }
                 } catch (e) {
                     console.error(e);
                     alert('Hubo un error al recortar la imagen.');

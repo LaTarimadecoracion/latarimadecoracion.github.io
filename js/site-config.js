@@ -167,6 +167,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Estante Repisa Casita X 3 Unidades!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Estante Repisa Casita X 3 Unidades!",
+            "mediaType": "image",
+            "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789442893970-imagenwebp.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=7D",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=7D",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1789442894010
+        },
+        {
             "title": "¡Nuevo Ingreso: Estantes - Cortes!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Estantes - Cortes!",
             "mediaType": "image",

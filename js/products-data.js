@@ -2186,7 +2186,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3572,7 +3572,7 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4180,7 +4180,7 @@ const productsData = [
                 "last_modified": 1788928739326,
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 58
+                "views": 61
             },
             {
                 "id": "57",
@@ -5004,6 +5004,7 @@ const productsData = [
             },
             {
                 "id": "21",
+                "shortId": "37",
                 "title": "Vinoteca - 5 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
@@ -5035,7 +5036,6 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "estimatedWeight": 2.5,
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "logisticaCost": 0,
@@ -5055,7 +5055,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788830406630,
+                "last_modified": 1789442399047,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -5079,7 +5079,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 77
+                "views": 85
             },
             {
                 "id": "22",
@@ -5169,7 +5169,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 4,
+                "views": 5,
                 "stock": 0,
                 "history": [
                     {
@@ -5388,7 +5388,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 2,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -6800,7 +6800,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 8,
+                "views": 9,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -7132,7 +7132,7 @@ const productsData = [
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 7,
+                "views": 8,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -7483,7 +7483,7 @@ const productsData = [
                 ],
                 "last_modified": 1784162786027,
                 "primaryCatId": "Percheros",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -9650,7 +9650,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 4,
+                "views": 5,
                 "stock": 0,
                 "history": [
                     {
@@ -10338,6 +10338,65 @@ const productsData = [
                 "primaryCatId": "Percheros",
                 "history": [],
                 "views": 3
+            },
+            {
+                "id": "7D",
+                "shortId": "37",
+                "title": "Estante Repisa Casita X 3 Unidades",
+                "description": "Lo que tenés que saber de este producto\nCantidad de estantes: 3\nMaterial: Madera\nProfundidad: 10 cm\nAltura: 33.5 cm\nLargo: 40 cm\nHecho en madera.",
+                "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Casita X3",
+                        "cover_image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                        "images_list": [
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426288-edit_1789446407783webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426300-edit_1789446413436webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789445834349-edit_1789445806152webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Casita X 3",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "logisticaFreeMinUnits": 30,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteFreeMinUnits": 30,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789446426308,
+                "primaryCatId": "Estantes",
+                "history": []
             }
         ]
     },
@@ -10358,6 +10417,7 @@ const productsData = [
         "products": [
             {
                 "id": "21",
+                "shortId": "37",
                 "title": "Vinoteca - 5 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
@@ -10382,15 +10442,13 @@ const productsData = [
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "estimatedWeight": 2.5,
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "logisticaCost": 0,
@@ -10410,7 +10468,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788830406630,
+                "last_modified": 1789442399047,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -10434,7 +10492,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 77
+                "views": 85
             },
             {
                 "id": "22",
@@ -10525,7 +10583,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 4,
+                "views": 5,
                 "stock": 0,
                 "history": [
                     {
@@ -10636,7 +10694,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 2,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -10857,7 +10915,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 8,
+                "views": 9,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -11206,7 +11264,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 4,
+                "views": 5,
                 "stock": 0,
                 "history": [
                     {
@@ -11771,7 +11829,7 @@ const productsData = [
                 ],
                 "last_modified": 1784162786027,
                 "primaryCatId": "Percheros",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -14146,6 +14204,65 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "views": 1
+            },
+            {
+                "id": "7D",
+                "shortId": "37",
+                "title": "Estante Repisa Casita X 3 Unidades",
+                "description": "Lo que tenés que saber de este producto\nCantidad de estantes: 3\nMaterial: Madera\nProfundidad: 10 cm\nAltura: 33.5 cm\nLargo: 40 cm\nHecho en madera.",
+                "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Casita X3",
+                        "cover_image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                        "images_list": [
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426288-edit_1789446407783webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426300-edit_1789446413436webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789445834349-edit_1789445806152webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Casita X 3",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "logisticaFreeMinUnits": 30,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteFreeMinUnits": 30,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789446426308,
+                "primaryCatId": "Estantes",
+                "history": []
             }
         ]
     },
@@ -16013,7 +16130,7 @@ const productsData = [
                 "last_modified": 1788928739326,
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 58
+                "views": 61
             },
             {
                 "id": "56",
@@ -17877,6 +17994,65 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "views": 1
+            },
+            {
+                "id": "7D",
+                "shortId": "37",
+                "title": "Estante Repisa Casita X 3 Unidades",
+                "description": "Lo que tenés que saber de este producto\nCantidad de estantes: 3\nMaterial: Madera\nProfundidad: 10 cm\nAltura: 33.5 cm\nLargo: 40 cm\nHecho en madera.",
+                "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Casita X3",
+                        "cover_image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                        "images_list": [
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426288-edit_1789446407783webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426300-edit_1789446413436webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789445834349-edit_1789445806152webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Casita X 3",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "logisticaFreeMinUnits": 30,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteFreeMinUnits": 30,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789446426308,
+                "primaryCatId": "Estantes",
+                "history": []
             }
         ],
         "rubro": "carpinteria"
@@ -19153,7 +19329,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786333409298,
                 "primaryCatId": "muebles",
-                "views": 5,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21145,7 +21321,7 @@ const productsData = [
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 7,
+                "views": 8,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22010,7 +22186,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22313,7 +22489,7 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22355,6 +22531,65 @@ const productsData = [
                     "fleteEnabled": true,
                     "otroEnabled": false
                 }
+            },
+            {
+                "id": "7D",
+                "shortId": "37",
+                "title": "Estante Repisa Casita X 3 Unidades",
+                "description": "Lo que tenés que saber de este producto\nCantidad de estantes: 3\nMaterial: Madera\nProfundidad: 10 cm\nAltura: 33.5 cm\nLargo: 40 cm\nHecho en madera.",
+                "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Casita X3",
+                        "cover_image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                        "images_list": [
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426288-edit_1789446407783webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426300-edit_1789446413436webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789445834349-edit_1789445806152webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Casita X 3",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "logisticaFreeMinUnits": 30,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteFreeMinUnits": 30,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789446426308,
+                "primaryCatId": "Estantes",
+                "history": []
             }
         ]
     },
@@ -22958,6 +23193,65 @@ const productsData = [
                 "primaryCatId": "Percheros",
                 "history": [],
                 "views": 3
+            },
+            {
+                "id": "7D",
+                "shortId": "37",
+                "title": "Estante Repisa Casita X 3 Unidades",
+                "description": "Lo que tenés que saber de este producto\nCantidad de estantes: 3\nMaterial: Madera\nProfundidad: 10 cm\nAltura: 33.5 cm\nLargo: 40 cm\nHecho en madera.",
+                "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Casita X3",
+                        "cover_image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                        "images_list": [
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426288-edit_1789446407783webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789446426300-edit_1789446413436webp.webp",
+                            "img/estantes/estante-repisa-casita-x-3-unidades/1789445834349-edit_1789445806152webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Casita X 3",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "logisticaFreeMinUnits": 30,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteFreeMinUnits": 30,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789446426308,
+                "primaryCatId": "Estantes",
+                "history": []
             }
         ]
     },
