@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!shortCode) {
             const segments = window.location.pathname.split('/').filter(Boolean);
             const lastSegment = segments.length > 0 ? segments[segments.length - 1].replace('.html', '').trim() : '';
-            if (/^[0-9a-z]{1,4}(\.[0-9a-z]{1,4})+$/i.test(lastSegment)) {
+            if (/^([0-9a-z]{1,4}(\.[0-9a-z]{1,4})+|[0-9a-z]{2,12})$/i.test(lastSegment)) {
                 shortCode = lastSegment;
             }
         }
@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!shortCode) {
             const segments = window.location.pathname.split('/').filter(Boolean);
             const lastSegment = segments.length > 0 ? segments[segments.length - 1].replace('.html', '').trim() : '';
-            if (/^[0-9a-z]{1,4}(\.[0-9a-z]{1,4})+$/i.test(lastSegment) || /^O\.[0-9A-Z]+$/i.test(lastSegment)) {
+            if (/^([0-9a-z]{1,4}(\.[0-9a-z]{1,4})+|[0-9a-z]{2,12})$/i.test(lastSegment) || /^O\.[0-9A-Z]+$/i.test(lastSegment)) {
                 shortCode = lastSegment;
             }
         }

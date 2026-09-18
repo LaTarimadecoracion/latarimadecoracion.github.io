@@ -28,6 +28,204 @@
         return fallback;
     }
 
+    function openProductLightbox(images, initialIndex = 0, productTitle = '') {
+        if (!images || images.length === 0) return;
+
+        let currentIndex = initialIndex;
+        let zoomScale = 1.0;
+
+        let modal = document.getElementById('product-lightbox-modal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'product-lightbox-modal';
+            modal.className = 'lightbox-overlay';
+            modal.innerHTML = `
+                <div class="lightbox-card">
+                    <div class="lightbox-header">
+                        <div class="lightbox-title-box">
+                            <h3 class="lightbox-title"></h3>
+                            <span class="lightbox-counter"></span>
+                        </div>
+                        <button type="button" class="lightbox-close-btn" title="Cerrar (Esc)">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+
+                    <div class="lightbox-stage">
+                        <button type="button" class="lightbox-nav-btn lightbox-prev" title="Foto anterior">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <div class="lightbox-img-canvas">
+                            <img src="" class="lightbox-img" alt="Zoom Producto">
+                        </div>
+                        <button type="button" class="lightbox-nav-btn lightbox-next" title="Foto siguiente">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+
+                    <div class="lightbox-thumbnails-strip"></div>
+
+                    <div class="lightbox-footer">
+                        <div class="lightbox-zoom-bar">
+                            <button type="button" class="lightbox-tool-btn btn-zoom-out" title="Disminuir zoom (-25%)">
+                                <span class="material-symbols-outlined">zoom_out</span>
+                            </button>
+                            <span class="lightbox-zoom-badge">100%</span>
+                            <button type="button" class="lightbox-tool-btn btn-zoom-in" title="Aumentar zoom (+25%)">
+                                <span class="material-symbols-outlined">zoom_in</span>
+                            </button>
+                            <button type="button" class="lightbox-tool-btn btn-zoom-reset" title="Restablecer tamaño">
+                                <span class="material-symbols-outlined">restart_alt</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        const titleEl = modal.querySelector('.lightbox-title');
+        const counterEl = modal.querySelector('.lightbox-counter');
+        const closeBtn = modal.querySelector('.lightbox-close-btn');
+        const prevBtn = modal.querySelector('.lightbox-prev');
+        const nextBtn = modal.querySelector('.lightbox-next');
+        const imgEl = modal.querySelector('.lightbox-img');
+        const imgCanvas = modal.querySelector('.lightbox-img-canvas');
+        const thumbnailsStrip = modal.querySelector('.lightbox-thumbnails-strip');
+        const zoomOutBtn = modal.querySelector('.btn-zoom-out');
+        const zoomInBtn = modal.querySelector('.btn-zoom-in');
+        const zoomResetBtn = modal.querySelector('.btn-zoom-reset');
+        const zoomBadgeEl = modal.querySelector('.lightbox-zoom-badge');
+
+        function updateZoomUI() {
+            imgEl.style.transform = `scale(${zoomScale})`;
+            zoomBadgeEl.textContent = `${Math.round(zoomScale * 100)}%`;
+            if (zoomScale > 1) {
+                imgEl.classList.add('is-zoomed');
+                imgEl.title = 'Hacé clic para reducir';
+            } else {
+                imgEl.classList.remove('is-zoomed');
+                imgEl.title = 'Hacé clic para aplicar zoom (+25%)';
+            }
+        }
+
+        function renderThumbnails() {
+            if (!thumbnailsStrip) return;
+            thumbnailsStrip.innerHTML = '';
+            if (!images || images.length <= 1) {
+                thumbnailsStrip.style.display = 'none';
+                return;
+            }
+            thumbnailsStrip.style.display = 'flex';
+            images.forEach((url, i) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `lightbox-thumb-btn ${i === currentIndex ? 'active' : ''}`;
+                btn.title = `Ver foto ${i + 1}`;
+                btn.innerHTML = `<img src="${url}" alt="Miniatura ${i + 1}">`;
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    showImage(i);
+                };
+                thumbnailsStrip.appendChild(btn);
+            });
+        }
+
+        function showImage(index) {
+            if (index < 0) index = images.length - 1;
+            if (index >= images.length) index = 0;
+            currentIndex = index;
+
+            imgEl.src = images[currentIndex];
+            titleEl.textContent = productTitle || 'Detalle del producto';
+            counterEl.textContent = `${currentIndex + 1} de ${images.length}`;
+
+            if (images.length <= 1) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+            }
+
+            renderThumbnails();
+            zoomScale = 1.0;
+            updateZoomUI();
+        }
+
+        // Toggle zoom en clic (+25% / 1.25x)
+        imgEl.onclick = (e) => {
+            e.stopPropagation();
+            if (zoomScale === 1.0) {
+                zoomScale = 1.25;
+            } else {
+                zoomScale = 1.0;
+            }
+            updateZoomUI();
+        };
+
+        zoomInBtn.onclick = (e) => {
+            e.stopPropagation();
+            zoomScale = Math.min(zoomScale + 0.25, 2.5);
+            updateZoomUI();
+        };
+
+        zoomOutBtn.onclick = (e) => {
+            e.stopPropagation();
+            zoomScale = Math.max(zoomScale - 0.25, 1.0);
+            updateZoomUI();
+        };
+
+        zoomResetBtn.onclick = (e) => {
+            e.stopPropagation();
+            zoomScale = 1.0;
+            updateZoomUI();
+        };
+
+        prevBtn.onclick = (e) => {
+            e.stopPropagation();
+            showImage(currentIndex - 1);
+        };
+
+        nextBtn.onclick = (e) => {
+            e.stopPropagation();
+            showImage(currentIndex + 1);
+        };
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+
+        closeBtn.onclick = (e) => {
+            e.stopPropagation();
+            closeModal();
+        };
+
+        modal.onclick = (e) => {
+            if (e.target === modal || e.target === imgCanvas) {
+                closeModal();
+            }
+        };
+
+        function handleKeyDown(e) {
+            if (!modal.classList.contains('active')) return;
+            if (e.key === 'Escape') {
+                closeModal();
+            } else if (e.key === 'ArrowLeft') {
+                showImage(currentIndex - 1);
+            } else if (e.key === 'ArrowRight') {
+                showImage(currentIndex + 1);
+            }
+        }
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        showImage(initialIndex);
+        modal.classList.add('active');
+    }
+    window.openProductLightbox = openProductLightbox;
+
 
 
     function getProductTimestamp(product) {
@@ -1121,6 +1319,17 @@
             }
             
             detailImgContainer.innerHTML = galleryHTML;
+
+            // Escuchar clics en la imagen de la galería para abrir Lightbox / Fullscreen estilo Mercado Libre
+            const imgWrappers = detailImgContainer.querySelectorAll('.product-gallery-img-wrapper');
+            imgWrappers.forEach((wrapper, idx) => {
+                wrapper.style.cursor = 'zoom-in';
+                wrapper.title = 'Hacé clic para ampliar en pantalla completa';
+                wrapper.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openProductLightbox(images, idx, product.title);
+                });
+            });
 
             // Escuchar clics en los botones de acabado de la galería
             const acabadosOverlay = detailImgContainer.querySelector('.gallery-acabados-overlay');

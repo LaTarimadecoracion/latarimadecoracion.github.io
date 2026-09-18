@@ -39,9 +39,10 @@
                 return;
             }
 
-            // 🔗 Detectar si el último segmento de la URL es un código corto Base36 (ej: /1.A, /1.A.2)
-            var shortCodeRegex = /^[0-9a-z]{1,4}(\.[0-9a-z]{1,4})+$/i;
-            if (shortCodeRegex.test(lastSegment)) {
+            // 🔗 Detectar si la URL es de la carpeta /p/ o si el último segmento es un código corto Base36 (ej: /p/12I11.html, /1.A.2)
+            var isPFolder = segments.length >= 2 && (segments[segments.length - 2].toLowerCase() === 'p');
+            var shortCodeRegex = /^([0-9a-z]{1,4}(\.[0-9a-z]{1,4})+|[0-9a-z]{2,12})$/i;
+            if (isPFolder || shortCodeRegex.test(lastSegment)) {
                 window.location.replace(window.location.origin + basePath + '?s=' + lastSegment);
                 return;
             }

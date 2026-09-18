@@ -109,7 +109,7 @@ window.siteConfig = {
             "title": "Pasión por la madera",
             "description": "Somos una carpintería especializada en crear productos únicos, seguros y con diseño para tu hogar. Ubicados en Hurlingham, Buenos Aires.",
             "mediaType": "image",
-            "image": "img/nosotros/bloque/1789188163102-imagenwebp.webp",
+            "image": "img/nosotros/bloque/1789698048156-imagenwebp.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -170,7 +170,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Estante Repisa Casita X 3 Unidades!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Estante Repisa Casita X 3 Unidades!",
             "mediaType": "image",
-            "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789442893970-imagenwebp.webp",
+            "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
