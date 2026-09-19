@@ -118,8 +118,14 @@
             <input type="text" id="search-input" placeholder="Buscar..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && activeView.id !== 'view-calculator' && activeView.id !== 'view-mayorista' && window.navigateToView) window.navigateToView('view-search');" style="font-size: 0.9rem; padding: 0;">
         </div>
 
-        <!-- Derecha: Acciones (Catálogo, Notificaciones) -->
+        <!-- Derecha: Acciones (Ubicación/CP, Catálogo, Notificaciones) -->
         <div class="header-actions" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+            <!-- Indicador de Ubicación / CP -->
+            <button id="header-user-cp-btn" class="btn-outline" style="height: 32px; padding: 0 8px; border-radius: 16px; display: flex; align-items: center; gap: 4px; border: 1.5px solid #bbf7d0; background-color: #f0fdf4; color: #166534; font-size: 0.75rem; font-weight: 800; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.04); transition: transform 0.2s ease;" title="Modificar ubicación / CP de envío">
+                <span class="material-symbols-outlined" style="font-size: 16px; color: #16a34a;">location_on</span>
+                <span id="header-user-cp-label">CP</span>
+            </button>
+
             <!-- Catálogo A-Z -->
             <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-catalogo');" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" title="Catálogo A-Z">
                 <span class="material-symbols-outlined" style="font-size: 18px;">list_alt</span>
@@ -381,15 +387,57 @@
         <!-- View: Ofertas y Combos -->
         <section id="view-offers" class="view">
             <div class="view-content" style="padding: 1rem;">
-                <div style="text-align: center; margin-bottom: 1.25rem;">
+                <div style="text-align: center; margin-bottom: 1rem;">
                     <h2 style="font-size: 1.35rem; font-weight: 900; color: var(--text-main); margin: 0 0 4px 0; display: flex; align-items: center; justify-content: center; gap: 8px;">
                         <span>🏷️</span> OFERTAS & COMBOS ESPECIALES
                     </h2>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Aprovechá nuestros paquetes de productos y descuentos por tiempo limitado.</p>
                 </div>
 
+                <!-- Validador de CP exclusivo para Ofertas y Envíos -->
+                <div id="offers-cp-bar" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 1.5px solid #86efac; border-radius: 12px; padding: 0.75rem 1rem; margin-bottom: 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; box-shadow: 0 3px 10px rgba(34,197,94,0.08);">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="material-symbols-outlined" style="color: #16a34a; font-size: 1.3rem;">local_shipping</span>
+                        <div>
+                            <div style="font-size: 0.85rem; font-weight: 800; color: #14532d; line-height: 1.2;">¿Tenés Envío Gratis en tu localidad?</div>
+                            <div id="offers-cp-status-text" style="font-size: 0.75rem; color: #166534; margin-top: 2px;">Ingresá tu Código Postal para verificar la cobertura real.</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 6px; width: 100%; max-width: 260px;">
+                        <input type="text" id="offers-cp-input" placeholder="Ej: 1425" maxlength="5" style="flex: 1; padding: 6px 10px; font-size: 0.85rem; font-weight: 700; border: 1.5px solid #86efac; border-radius: 8px; outline: none; background: #ffffff; color: #0f172a; text-align: center;">
+                        <button id="btn-offers-cp-apply" type="button" style="background: #16a34a; color: #ffffff; font-size: 0.8rem; font-weight: 800; padding: 7px 12px; border: none; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: background 0.2s ease;">Validar CP</button>
+                    </div>
+                </div>
+
+                <!-- Pestañas de Rubros para Ofertas -->
+                <div id="offers-rubros-tabs-container" class="rubros-tabs-bar" style="margin-bottom: 1rem;"></div>
+
                 <div id="offers-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
                     <!-- Inyectado dinámicamente por ui-offers.js -->
+                </div>
+
+                <!-- Tarjeta de Aclaraciones y Condiciones de Envío -->
+                <div class="offers-clarifications-card" style="margin-top: 2rem; background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 14px; padding: 1.25rem 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.75rem; color: #1e293b;">
+                        <span class="material-symbols-outlined" style="color: #16a34a; font-size: 1.4rem;">info</span>
+                        <h4 style="margin: 0; font-size: 0.98rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px;">Información Importante sobre Envíos & Promociones</h4>
+                    </div>
+
+                    <ul style="margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: #475569; line-height: 1.45;">
+                        <li>
+                            <strong style="color: #0f172a;">📍 Zona de Cobertura y Logística Propia:</strong> Contamos con flete directo y logística propia en <strong>Buenos Aires (AMBA y zonas aledañas)</strong> con envíos sin complicación.
+                        </li>
+                        <li>
+                            <strong style="color: #0f172a;">🚚 Publicaciones con Envío Gratis:</strong> El beneficio de envío gratis directo o por cantidad puede estar sujeto a limitaciones de transporte para envíos al interior del país o distancias de larga distancia.
+                        </li>
+                        <li>
+                            <strong style="color: #0f172a;">📦 Publicaciones de Mercado Libre:</strong> Algunas promociones o envíos gratis aplican exclusivamente comprando a través de nuestras publicaciones oficiales en Mercado Libre según sus términos de transporte.
+                        </li>
+                        <li>
+                            <strong style="color: #0f172a;">💬 Cotizaciones Personalizadas:</strong> Si estás en el interior o tenés dudas con el costo de envío a tu localidad, ¡consultanos por WhatsApp antes de comprar y coordinamos la mejor alternativa de transporte!
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>

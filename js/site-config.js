@@ -173,6 +173,44 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Kit Instalación Materiales Eléctricos Cables Completo Full!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Kit Instalación Materiales Eléctricos Cables Completo Full!",
+            "mediaType": "image",
+            "image": "img/kits-electricos/kit-instalacin-materiales-elctricos-cables-completo-full/1789848498770-imagenwebp.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=L4",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=L4",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1789848498818
+        },
+        {
+            "title": "¡Nuevo Ingreso: Kit Materiales Eléctricos Domiciliarios C/cables 3 Ambientes!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Kit Materiales Eléctricos Domiciliarios C/cables 3 Ambientes!",
+            "mediaType": "image",
+            "image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-3-ambientes/1789839502383-imagenwebp.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=L3",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=L3",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1789839455857
+        },
+        {
             "title": "¡Nuevo Ingreso: Kit Materiales Eléctricos Domiciliarios C/cables 2 Ambientes!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Kit Materiales Eléctricos Domiciliarios C/cables 2 Ambientes!",
             "mediaType": "image",
@@ -195,7 +233,7 @@ window.siteConfig = {
             "title": "¡Nuevo Ingreso: Kit Instalación Electrica Domiciliario Termica Y Diyuntor!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Kit Instalación Electrica Domiciliario Termica Y Diyuntor!",
             "mediaType": "image",
-            "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+            "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [

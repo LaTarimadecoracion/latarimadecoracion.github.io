@@ -5,8 +5,34 @@
     let timerInterval = null;
     let selectedOfferForModal = null;
 
+    window.getGlobalUserZipCode = function() {
+        let cp = localStorage.getItem('user_offers_cp') || '';
+        if (!cp) {
+            try {
+                const rawUserData = localStorage.getItem('userData');
+                if (rawUserData) {
+                    const parsed = JSON.parse(rawUserData);
+                    if (parsed && parsed.zipCode) cp = String(parsed.zipCode).trim();
+                }
+            } catch(e) {}
+        }
+        if (!cp) {
+            try {
+                const rawCheckout = localStorage.getItem('latarima_checkout_user_data');
+                if (rawCheckout) {
+                    const parsed = JSON.parse(rawCheckout);
+                    if (parsed && (parsed.cp || parsed.zipCode)) cp = String(parsed.cp || parsed.zipCode).trim();
+                }
+            } catch(e) {}
+        }
+        return cp;
+    };
+
+    window.offersValidatedCP = window.getGlobalUserZipCode();
+
     window.initOffersFrontend = function() {
         startOffersCountdownTimer();
+        setupOffersCPValidator();
         window.renderOffersFrontend();
 
         const closeModalBtn = document.getElementById('btn-close-offer-detail-modal');
@@ -25,7 +51,89 @@
                 }
             });
         }
+
+        window.addEventListener('latarima:cp-updated', (e) => {
+            const updatedCp = (e && e.detail && e.detail.zipCode) ? e.detail.zipCode : window.getGlobalUserZipCode();
+            if (updatedCp) {
+                window.offersValidatedCP = updatedCp;
+                localStorage.setItem('user_offers_cp', updatedCp);
+                const cpInput = document.getElementById('offers-cp-input');
+                if (cpInput) cpInput.value = updatedCp;
+                updateOffersCPStatusDisplay();
+                window.renderOffersFrontend();
+            }
+        });
     };
+
+    function setupOffersCPValidator() {
+        const cpInput = document.getElementById('offers-cp-input');
+        const btnApply = document.getElementById('btn-offers-cp-apply');
+        const statusText = document.getElementById('offers-cp-status-text');
+
+        window.offersValidatedCP = window.getGlobalUserZipCode();
+        if (cpInput && window.offersValidatedCP) {
+            cpInput.value = window.offersValidatedCP;
+            updateOffersCPStatusDisplay();
+        }
+
+        if (!cpInput || !btnApply) return;
+
+        const handleApply = () => {
+            const rawCp = (cpInput.value || '').trim();
+            if (!rawCp) {
+                window.offersValidatedCP = '';
+                localStorage.removeItem('user_offers_cp');
+                updateOffersCPStatusDisplay();
+                window.renderOffersFrontend();
+                return;
+            }
+
+            window.offersValidatedCP = rawCp;
+            localStorage.setItem('user_offers_cp', rawCp);
+            
+            // Sincronizar en el perfil del usuario global (userData)
+            try {
+                let userData = {};
+                const saved = localStorage.getItem('userData');
+                if (saved) userData = JSON.parse(saved);
+                userData.zipCode = rawCp;
+                localStorage.setItem('userData', JSON.stringify(userData));
+                window.dispatchEvent(new CustomEvent('latarima:cp-updated', { detail: { zipCode: rawCp } }));
+            } catch(e) {}
+
+            updateOffersCPStatusDisplay();
+            window.renderOffersFrontend();
+        };
+
+        btnApply.onclick = handleApply;
+        cpInput.onkeydown = (e) => {
+            if (e.key === 'Enter') handleApply();
+        };
+    }
+
+    function updateOffersCPStatusDisplay() {
+        const statusText = document.getElementById('offers-cp-status-text');
+        if (!statusText) return;
+
+        if (!window.offersValidatedCP) {
+            statusText.innerHTML = 'Ingresá tu Código Postal para verificar la cobertura real.';
+            statusText.style.color = '#166534';
+            return;
+        }
+
+        if (typeof window.lookupPostalCode === 'function') {
+            const res = window.lookupPostalCode(window.offersValidatedCP);
+            if (res && res.hasLocalMatch !== false) {
+                statusText.innerHTML = `✅ <strong>${res.localidad}</strong> (CP ${res.cp}): Cobertura confirmada con Logística Directa / Flete.`;
+                statusText.style.color = '#15803d';
+            } else {
+                statusText.innerHTML = `📦 <strong>CP ${window.offersValidatedCP}</strong>: Sin cobertura de flete directo local. Envíos coordinados vía Mercado Libre o Transporte.`;
+                statusText.style.color = '#b45309';
+            }
+        } else {
+            statusText.innerHTML = `CP ingresado: <strong>${window.offersValidatedCP}</strong>`;
+        }
+    }
 
     function startOffersCountdownTimer() {
         if (timerInterval) clearInterval(timerInterval);
@@ -255,16 +363,49 @@
         const priceVal = extractProductLivePrice(product);
         const formattedPrice = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(priceVal || 0);
 
-        const shipBadgeText = isDirectFree 
-            ? '🚚 ENVÍO GRATIS' 
-            : `🚚 ENVÍO GRATIS (Mín. ${minUnits} U.)`;
+        // Evaluar si el CP validado en la sección Ofertas califica para envío gratis local
+        let cpQualified = null; // null = no verificado aun
+        if (window.offersValidatedCP && typeof window.lookupPostalCode === 'function') {
+            const cpRes = window.lookupPostalCode(window.offersValidatedCP);
+            cpQualified = (cpRes && cpRes.hasLocalMatch !== false);
+        }
+
+        let shipBadgeHTML = '';
+        if (cpQualified === true) {
+            // CP Validado en zona AMBA / Flete propio
+            const shipBadgeText = isDirectFree 
+                ? '🎉 ENVÍO GRATIS EN TU ZONA' 
+                : `🎉 ENVÍO GRATIS (Mín. ${minUnits} U.)`;
+            
+            shipBadgeHTML = `
+                <div style="position: absolute; top: 8px; left: 8px; z-index: 5; background: #16a34a; color: #ffffff; font-weight: 800; font-size: 0.68rem; padding: 3px 8px; border-radius: 20px; box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4); display: flex; align-items: center; gap: 4px;">
+                    ${shipBadgeText}
+                </div>
+            `;
+        } else if (cpQualified === false) {
+            // CP Validado fuera de zona local (Interior)
+            shipBadgeHTML = `
+                <div style="position: absolute; top: 8px; left: 8px; z-index: 5; background: #d97706; color: #ffffff; font-weight: 800; font-size: 0.68rem; padding: 3px 8px; border-radius: 20px; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3); display: flex; align-items: center; gap: 4px;">
+                    📦 ENVÍO POR ML / TRANSPORTE
+                </div>
+            `;
+        } else {
+            // Sin CP cargado aún (Estado inicial general de la oferta)
+            const shipBadgeText = isDirectFree 
+                ? '🚚 BENEFICIO DE ENVÍO' 
+                : `🚚 BENEFICIO ENVÍO (Mín. ${minUnits} U.)`;
+
+            shipBadgeHTML = `
+                <div style="position: absolute; top: 8px; left: 8px; z-index: 5; background: #0284c7; color: #ffffff; font-weight: 800; font-size: 0.68rem; padding: 3px 8px; border-radius: 20px; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3); display: flex; align-items: center; gap: 4px;">
+                    ${shipBadgeText}
+                </div>
+            `;
+        }
 
         card.innerHTML = `
             <div class="category-card-img-wrapper" style="position: relative; height: 180px; overflow: hidden; background: #f8fafc;">
                 <img src="${productCover}" class="category-card-img loaded" alt="${product.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-                <div style="position: absolute; top: 8px; left: 8px; z-index: 5; background: #16a34a; color: #ffffff; font-weight: 800; font-size: 0.68rem; padding: 3px 8px; border-radius: 20px; box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4); display: flex; align-items: center; gap: 4px;">
-                    ${shipBadgeText}
-                </div>
+                ${shipBadgeHTML}
             </div>
 
             <div style="padding: 0.85rem 1rem; display: flex; flex-direction: column; gap: 4px; background: #ffffff;">
@@ -282,6 +423,78 @@
         });
 
         return card;
+    };
+
+    window.activeOffersRubro = 'todas';
+
+    window.renderOffersRubrosTabs = function(activeOffers, uniqueFreeShipItems) {
+        const tabsContainer = document.getElementById('offers-rubros-tabs-container');
+        if (!tabsContainer) return;
+
+        // Obtener lista oficial de rubros del sitio
+        let rubrosList = [];
+        try {
+            if (window.parent && window.parent.siteConfig && window.parent.siteConfig.rubros) {
+                rubrosList = window.parent.siteConfig.rubros;
+            } else if (window.siteConfig && window.siteConfig.rubros) {
+                rubrosList = window.siteConfig.rubros;
+            }
+        } catch (e) {
+            if (window.siteConfig && window.siteConfig.rubros) {
+                rubrosList = window.siteConfig.rubros;
+            }
+        }
+
+        if (!Array.isArray(rubrosList) || rubrosList.length === 0) {
+            rubrosList = [{ id: 'carpinteria', name: 'Carpintería' }];
+        }
+
+        const visibleRubros = rubrosList.filter(r => r.visible !== false);
+
+        if (visibleRubros.length <= 1) {
+            tabsContainer.classList.add('single-rubro');
+            tabsContainer.innerHTML = '';
+            tabsContainer.style.display = 'none';
+            if (visibleRubros.length === 1) {
+                window.activeOffersRubro = visibleRubros[0].id;
+            }
+            return;
+        } else {
+            tabsContainer.classList.remove('single-rubro');
+            tabsContainer.style.display = 'flex';
+        }
+
+        // Construir arreglo de pestañas incluyendo la pestaña TODAS al inicio
+        const allTabs = [{ id: 'todas', name: 'TODAS' }, ...visibleRubros];
+
+        // Asegurar que activeOffersRubro coincida con un rubro visible existente o 'todas'
+        const activeStillVisible = allTabs.some(r => r.id === window.activeOffersRubro);
+        if (!activeStillVisible && allTabs.length > 0) {
+            window.activeOffersRubro = 'todas';
+        }
+
+        tabsContainer.innerHTML = '';
+        allTabs.forEach(r => {
+            const isActive = r.id === window.activeOffersRubro;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = isActive ? 'rubros-tab active' : 'rubros-tab';
+            
+            // Forzar ancho geométrico exacto por JS inline como en categorias / catalogo / buscador
+            const pct = (100 / allTabs.length).toFixed(4);
+            btn.style.width = pct + '%';
+            btn.style.flex = `0 0 ${pct}%`;
+
+            btn.innerHTML = r.name;
+            btn.addEventListener('click', () => {
+                if (window.activeOffersRubro !== r.id) {
+                    window.activeOffersRubro = r.id;
+                    window.renderOffersRubrosTabs(activeOffers, uniqueFreeShipItems);
+                    window.renderOffersFrontend();
+                }
+            });
+            tabsContainer.appendChild(btn);
+        });
     };
 
     window.renderOffersFrontend = function() {
@@ -319,12 +532,63 @@
 
         const uniqueFreeShipItems = freeShipItems.filter(item => !offerProductIds.has(item.product.id));
 
-        if (activeOffers.length === 0 && uniqueFreeShipItems.length === 0) {
+        // Renderizar barra de pestañas de rubros dinámicas
+        if (window.renderOffersRubrosTabs) {
+            window.renderOffersRubrosTabs(activeOffers, uniqueFreeShipItems);
+        }
+
+        // Auxiliar para resolver el id del rubro del producto/categoría
+        const getRubroIdForProduct = (prodId, catObj) => {
+            let categoryRubro = null;
+            if (prodId && typeof window.findProductById === 'function') {
+                const res = window.findProductById(prodId);
+                if (res && res.category) {
+                    categoryRubro = res.category.rubro || res.category.rubroId || null;
+                }
+            }
+            if (!categoryRubro && typeof window.sessionProducts !== 'undefined' && Array.isArray(window.sessionProducts)) {
+                for (const cat of window.sessionProducts) {
+                    if (Array.isArray(cat.products) && cat.products.some(p => p.id === prodId)) {
+                        categoryRubro = cat.rubro || cat.rubroId || null;
+                        break;
+                    }
+                }
+            }
+            if (!categoryRubro && catObj) {
+                categoryRubro = catObj.rubro || catObj.rubroId || null;
+            }
+
+            // Default a 'carpinteria' si no se especifica rubro en la categoría
+            return categoryRubro ? String(categoryRubro).trim().toLowerCase() : 'carpinteria';
+        };
+
+        const currentRubro = window.activeOffersRubro || 'todas';
+
+        const filteredOffers = activeOffers.filter(offer => {
+            if (currentRubro === 'todas' || currentRubro === 'todos') return true;
+            let r = offer.rubro || offer.rubroId;
+            if (!r && Array.isArray(offer.product_items) && offer.product_items.length > 0) {
+                for (const item of offer.product_items) {
+                    r = getRubroIdForProduct(item.id || item.productId);
+                    if (r) break;
+                }
+            }
+            const offerRubroId = r ? String(r).trim().toLowerCase() : 'carpinteria';
+            return offerRubroId === currentRubro;
+        });
+
+        const filteredFreeShipItems = uniqueFreeShipItems.filter(item => {
+            if (currentRubro === 'todas' || currentRubro === 'todos') return true;
+            const itemRubroId = getRubroIdForProduct(item.product?.id, item.product?.category);
+            return itemRubroId === currentRubro;
+        });
+
+        if (filteredOffers.length === 0 && filteredFreeShipItems.length === 0) {
             container.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
                     <span class="material-symbols-outlined" style="font-size: 56px; opacity: 0.4;">local_offer</span>
-                    <h3 style="margin: 0.5rem 0 0.25rem; font-weight: 700; color: var(--text-main);">No hay ofertas vigentes</h3>
-                    <p style="font-size: 0.9rem;">Pronto tendremos nuevos combos, descuentos y beneficios de envío gratis. ¡Volvé a consultar más tarde!</p>
+                    <h3 style="margin: 0.5rem 0 0.25rem; font-weight: 700; color: var(--text-main);">No hay ofertas vigentes en este rubro</h3>
+                    <p style="font-size: 0.9rem;">Probá seleccionar otra pestaña o volvé a consultar más tarde.</p>
                 </div>
             `;
             return;
@@ -332,14 +596,14 @@
 
         container.innerHTML = '';
 
-        // 1. Renderizar ofertas / combos principales
-        activeOffers.forEach(offer => {
+        // 1. Renderizar ofertas / combos principales filtrados
+        filteredOffers.forEach(offer => {
             const card = createOfferCardElement(offer);
             container.appendChild(card);
         });
 
-        // 2. Renderizar productos con Envío Gratis (Modo 1 & Modo 2)
-        uniqueFreeShipItems.forEach(item => {
+        // 2. Renderizar productos con Envío Gratis filtrados
+        filteredFreeShipItems.forEach(item => {
             const card = window.createFreeShippingProductCardElement(item);
             container.appendChild(card);
         });

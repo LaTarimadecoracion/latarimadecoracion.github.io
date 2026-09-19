@@ -1,4 +1,22 @@
 
+    window.updateHeaderCPBadge = function() {
+        const cpLabel = document.getElementById('header-user-cp-label');
+        if (!cpLabel) return;
+
+        let userCp = '';
+        if (typeof window.getGlobalUserZipCode === 'function') {
+            userCp = window.getGlobalUserZipCode();
+        } else {
+            userCp = localStorage.getItem('user_offers_cp') || '';
+        }
+
+        if (userCp) {
+            cpLabel.textContent = `CP ${userCp}`;
+        } else {
+            cpLabel.textContent = 'CP';
+        }
+    };
+
     window.updateFavoritesBadge = function() {
         const badgeEl = document.getElementById('fav-badge');
         if (!badgeEl) return;
@@ -21,6 +39,8 @@
         } catch (e) {
             console.error('[UI Module] Error actualizando badge de favoritos:', e);
         }
+
+        if (window.updateHeaderCPBadge) window.updateHeaderCPBadge();
     };
 
 
@@ -346,6 +366,7 @@
                 'view-rentals': 'alquileres',
                 'view-admin': 'admin',
                 'view-catalogo': 'catalogo',
+                'view-offers': 'ofertas',
                 'view-categories': 'categorias',
                 'view-videos': 'videos',
                 'view-cart': 'carrito',
@@ -361,7 +382,7 @@
             };
             
             let basePath = window.location.pathname.replace(/\/index\.html$/, '/');
-            basePath = basePath.replace(/\/(alquiles|alquileres|rentas|rentales|stock|mayorista|catalogo|musica|admin)\/?$/, '/');
+            basePath = basePath.replace(/\/(alquiles|alquileres|rentas|rentales|stock|mayorista|catalogo|musica|admin|ofertas)\/?$/, '/');
             
             let query = '';
             if (prettyNames[viewId]) {
@@ -416,6 +437,27 @@ document.addEventListener('click', (e) => {
         if (window.navigateToView) window.navigateToView('view-home');
         if (window.renderHome) window.renderHome();
     }
+
+    const btnCpHeader = e.target.closest('#header-user-cp-btn');
+    if (btnCpHeader) {
+        e.preventDefault();
+        if (window.navigateToView) window.navigateToView('view-offers');
+        setTimeout(() => {
+            const input = document.getElementById('offers-cp-input');
+            if (input) {
+                input.focus();
+                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, 150);
+    }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.updateHeaderCPBadge) window.updateHeaderCPBadge();
+});
+
+window.addEventListener('latarima:cp-updated', () => {
+    if (window.updateHeaderCPBadge) window.updateHeaderCPBadge();
 });
 
     // Reenvío de gestos de scroll/touch al iframe activo cuando se arrastra por fuera

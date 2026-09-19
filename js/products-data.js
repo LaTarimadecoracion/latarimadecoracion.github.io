@@ -13,7 +13,7 @@ const productsData = [
         "name": "Todos los productos",
         "rubro": "electricidad",
         "image": "img/logo_provisional.png",
-        "visible": true,
+        "visible": false,
         "order": 1,
         "products": [
             {
@@ -125,6 +125,119 @@ const productsData = [
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1789839031552,
+                "primaryCatId": "cat-21-mu7q9i7y",
+                "history": []
+            },
+            {
+                "id": "L3",
+                "shortId": "3A",
+                "title": "Kit Materiales Eléctricos Domiciliarios C/cables 3 Ambientes",
+                "description": "KIT INSTALACIÓN ELÉCTRICA\n\nEste kit tiene la particularidad de estar hecho a medida para una vivienda, lo que significa que se utiliza el 100% de los materiales sin producir un gasto innecesario. Asimismo, cuenta con la posibilidad de dejar la casa o departamento completamente habitable en lo que a la parte eléctrica respecta.\n\nMATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n2 = CAÑO CORRUGADO BLANCO 3/4 (IGNÍFUGO) ROLLO X 25 mts.\n1 = CAJA DE EMBUTIR P/TÉRMICA + DISYUNTOR\n1 = TÉRMICA SICA BIPOLAR (2 X 32A.)\n1 = DISYUNTOR SICA BIPOLAR (2 X 40A.)\n20 = CAJA RECTANGULAR METÁLICA 10X5\n6 = CAJA OCTOGONAL METÁLICA\n6 = PORTALÁMPARAS\n6 = LÁMPARA LED 9W (LUZ DÍA)\n50 = CONECTOR 3/4 PVC\n1 = CINTA AISLADORA TACSA X 20 mts.\n1 = BUSCAPOLO SICA\n60 mts. = CABLE 1 X 2,5 mm CELESTE (NORMALIZADO)\n60 mts. = CABLE 1 X 2,5 mm MARRÓN (NORMALIZADO)\n60 mts. = CABLE 1 X 2,5 mm VERDE/AMARILLO (NORMALIZADO)\n30 mts. = CABLE 1 X 1,5 mm NEGRO (NORMALIZADO)\n15 = TAPA TAAD ARMADA (2 MÓDULOS TOMAS)\n4 = TAPA TAAD ARMADA (1 TECLA + 1 TOMA)\n1 = TAPA TAAD ARMADA (2 TECLAS)\n\nLOS CABLES SON NORMALIZADOS, RESPETAN 100% LA CANTIDAD DE COBRE (la mayoría de los que publican no lo hacen).\n\nSomos LA TARIMA. Estamos en Hurlingham con atención al público y hacemos Mercado Envíos a todo el país.\nTrabajamos como revendedores seleccionando marcas de confianza; todos nuestros productos son normalizados y cumplen con los más altos estándares de calidad.\nRealizamos facturas A y B.\n\nAviso legal:\n\nCable no propagador de incendio.\n\nCumple con norma IRAM.\n\nGarantía de fábrica: 3 meses",
+                "image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-3-ambientes/1789839502383-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-3-ambientes/1789839502383-imagenwebp.webp",
+                        "images_list": [
+                            "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-3-ambientes/1789839502383-imagenwebp.webp",
+                            "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-3-ambientes/1789839502389-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Kit",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 390000,
+                                "cost_price": 390000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": false,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789839502393,
+                "primaryCatId": "cat-21-mu7q9i7y",
+                "history": [],
+                "visible": true
+            },
+            {
+                "id": "L4",
+                "shortId": "3B",
+                "title": "Kit Instalación Materiales Eléctricos Cables Completo Full",
+                "description": "MATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n4 = CAÑO CORRUGADO BLANCO 3/4 (IGNÍFUGO) ROLLO X 25 mts.\n1 = CAJA DE EMBUTIR/EXTERIOR 3 TÉRMICAS + 1 DISYUNTOR\n1 = TÉRMICA SICA BIPOLAR (2 X 25A.)\n1 = TÉRMICA SICA BIPOLAR (2 X 20A.)\n1 = TÉRMICA SICA BIPOLAR (2 X 15A.)\n1 = DISYUNTOR SICA BIPOLAR (2 X 25A.)\n25 = CAJA RECTANGULAR METÁLICA 10X5\n15 = CAJA OCTOGONAL METÁLICA\n10 = PORTALÁMPARAS\n10 = LÁMPARA LED 9W (LUZ DÍA)\n75 = CONECTOR 3/4 PVC\n1 = CINTA AISLADORA TACSA X 10 mts.\n1 = BUSCAPOLO SICA\n100 mts. = CABLE 1 X 2,5 mm CELESTE (NORMALIZADO)\n100 mts. = CABLE 1 X 2,5 mm MARRÓN (NORMALIZADO)\n100 mts. = CABLE 1 X 2,5 mm VERDE/AMARILLO (NORMALIZADO)\n50 mts. = CABLE 1 X 1,5 mm NEGRO (NORMALIZADO)\n50 mts. = CABLE 1 X 1,5 mm CELESTE (NORMALIZADO)\n17 = TAPA TAAD ARMADA (2 MÓDULOS TOMAS)\n6 = TAPA TAAD ARMADA (1 TECLA)\n2 = TAPA TAAD ARMADA (2 TECLAS)\n1 = CINTA PASACABLE PVC X 10 mts.\n\nLOS CABLES SON NORMALIZADOS, RESPETAN 100% LA CANTIDAD DE COBRE (la mayoría de los que publican no lo hacen).\n\nSomos LA TARIMA. Estamos en Hurlingham con atención al público y hacemos Mercado Envíos a todo el país.\nTrabajamos como revendedores seleccionando marcas de confianza; todos nuestros productos son normalizados y cumplen con los más altos estándares de calidad.\nRealizamos facturas A y B.\n\nAviso legal:\n\nCable no propagador de incendio.\n\nCumple con norma IRAM.\n\nGarantía de fábrica: 3 meses",
+                "image": "img/kits-electricos/kit-instalacin-materiales-elctricos-cables-completo-full/1789848498770-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/kits-electricos/kit-instalacin-materiales-elctricos-cables-completo-full/1789848498770-imagenwebp.webp",
+                        "images_list": [
+                            "img/kits-electricos/kit-instalacin-materiales-elctricos-cables-completo-full/1789848498770-imagenwebp.webp",
+                            "img/kits-electricos/kit-instalacin-materiales-elctricos-cables-completo-full/1789848498788-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Kit",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 599000,
+                                "cost_price": 599000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789849249639,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": []
             }
@@ -24273,7 +24386,121 @@ const productsData = [
                 "last_modified": 1789839031552,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": []
+            },
+            {
+                "id": "L3",
+                "shortId": "3A",
+                "title": "Kit Materiales Eléctricos Domiciliarios C/cables 3 Ambientes",
+                "description": "KIT INSTALACIÓN ELÉCTRICA\n\nEste kit tiene la particularidad de estar hecho a medida para una vivienda, lo que significa que se utiliza el 100% de los materiales sin producir un gasto innecesario. Asimismo, cuenta con la posibilidad de dejar la casa o departamento completamente habitable en lo que a la parte eléctrica respecta.\n\nMATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n2 = CAÑO CORRUGADO BLANCO 3/4 (IGNÍFUGO) ROLLO X 25 mts.\n1 = CAJA DE EMBUTIR P/TÉRMICA + DISYUNTOR\n1 = TÉRMICA SICA BIPOLAR (2 X 32A.)\n1 = DISYUNTOR SICA BIPOLAR (2 X 40A.)\n20 = CAJA RECTANGULAR METÁLICA 10X5\n6 = CAJA OCTOGONAL METÁLICA\n6 = PORTALÁMPARAS\n6 = LÁMPARA LED 9W (LUZ DÍA)\n50 = CONECTOR 3/4 PVC\n1 = CINTA AISLADORA TACSA X 20 mts.\n1 = BUSCAPOLO SICA\n60 mts. = CABLE 1 X 2,5 mm CELESTE (NORMALIZADO)\n60 mts. = CABLE 1 X 2,5 mm MARRÓN (NORMALIZADO)\n60 mts. = CABLE 1 X 2,5 mm VERDE/AMARILLO (NORMALIZADO)\n30 mts. = CABLE 1 X 1,5 mm NEGRO (NORMALIZADO)\n15 = TAPA TAAD ARMADA (2 MÓDULOS TOMAS)\n4 = TAPA TAAD ARMADA (1 TECLA + 1 TOMA)\n1 = TAPA TAAD ARMADA (2 TECLAS)\n\nLOS CABLES SON NORMALIZADOS, RESPETAN 100% LA CANTIDAD DE COBRE (la mayoría de los que publican no lo hacen).\n\nSomos LA TARIMA. Estamos en Hurlingham con atención al público y hacemos Mercado Envíos a todo el país.\nTrabajamos como revendedores seleccionando marcas de confianza; todos nuestros productos son normalizados y cumplen con los más altos estándares de calidad.\nRealizamos facturas A y B.\n\nAviso legal:\n\nCable no propagador de incendio.\n\nCumple con norma IRAM.\n\nGarantía de fábrica: 3 meses",
+                "image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-3-ambientes/1789839502383-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-3-ambientes/1789839502383-imagenwebp.webp",
+                        "images_list": [
+                            "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-3-ambientes/1789839502383-imagenwebp.webp",
+                            "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-3-ambientes/1789839502389-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Kit",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 390000,
+                                "cost_price": 390000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": false,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789839502393,
+                "primaryCatId": "cat-21-mu7q9i7y",
+                "history": [],
+                "visible": true
+            },
+            {
+                "id": "L4",
+                "shortId": "3B",
+                "title": "Kit Instalación Materiales Eléctricos Cables Completo Full",
+                "description": "MATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n4 = CAÑO CORRUGADO BLANCO 3/4 (IGNÍFUGO) ROLLO X 25 mts.\n1 = CAJA DE EMBUTIR/EXTERIOR 3 TÉRMICAS + 1 DISYUNTOR\n1 = TÉRMICA SICA BIPOLAR (2 X 25A.)\n1 = TÉRMICA SICA BIPOLAR (2 X 20A.)\n1 = TÉRMICA SICA BIPOLAR (2 X 15A.)\n1 = DISYUNTOR SICA BIPOLAR (2 X 25A.)\n25 = CAJA RECTANGULAR METÁLICA 10X5\n15 = CAJA OCTOGONAL METÁLICA\n10 = PORTALÁMPARAS\n10 = LÁMPARA LED 9W (LUZ DÍA)\n75 = CONECTOR 3/4 PVC\n1 = CINTA AISLADORA TACSA X 10 mts.\n1 = BUSCAPOLO SICA\n100 mts. = CABLE 1 X 2,5 mm CELESTE (NORMALIZADO)\n100 mts. = CABLE 1 X 2,5 mm MARRÓN (NORMALIZADO)\n100 mts. = CABLE 1 X 2,5 mm VERDE/AMARILLO (NORMALIZADO)\n50 mts. = CABLE 1 X 1,5 mm NEGRO (NORMALIZADO)\n50 mts. = CABLE 1 X 1,5 mm CELESTE (NORMALIZADO)\n17 = TAPA TAAD ARMADA (2 MÓDULOS TOMAS)\n6 = TAPA TAAD ARMADA (1 TECLA)\n2 = TAPA TAAD ARMADA (2 TECLAS)\n1 = CINTA PASACABLE PVC X 10 mts.\n\nLOS CABLES SON NORMALIZADOS, RESPETAN 100% LA CANTIDAD DE COBRE (la mayoría de los que publican no lo hacen).\n\nSomos LA TARIMA. Estamos en Hurlingham con atención al público y hacemos Mercado Envíos a todo el país.\nTrabajamos como revendedores seleccionando marcas de confianza; todos nuestros productos son normalizados y cumplen con los más altos estándares de calidad.\nRealizamos facturas A y B.\n\nAviso legal:\n\nCable no propagador de incendio.\n\nCumple con norma IRAM.\n\nGarantía de fábrica: 3 meses",
+                "image": "img/kits-electricos/kit-instalacin-materiales-elctricos-cables-completo-full/1789848498770-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/kits-electricos/kit-instalacin-materiales-elctricos-cables-completo-full/1789848498770-imagenwebp.webp",
+                        "images_list": [
+                            "img/kits-electricos/kit-instalacin-materiales-elctricos-cables-completo-full/1789848498770-imagenwebp.webp",
+                            "img/kits-electricos/kit-instalacin-materiales-elctricos-cables-completo-full/1789848498788-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Kit",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 599000,
+                                "cost_price": 599000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789849249639,
+                "primaryCatId": "cat-21-mu7q9i7y",
+                "history": []
             }
-        ]
+        ],
+        "visible": true
     }
 ];

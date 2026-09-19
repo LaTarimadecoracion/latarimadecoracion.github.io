@@ -303,20 +303,21 @@
 
                     const totalPromos = activeOffers.length + freeShipItems.length;
 
-                    // Renderizar únicamente si hay ofertas o beneficios de envío gratis activos (Banner CTA Horizontal)
-                    if (totalPromos > 0) {
-                        const ctaWrapper = document.createElement('div');
-                        ctaWrapper.className = 'home-section full-width section-ofertas-cta';
-                        ctaWrapper.style.cssText = 'margin: 0.6rem 0 0.8rem 0; padding: 0 1.25rem;';
+                    // Renderizar el Banner CTA Horizontal siempre presente para llamado a la acción
+                    const ctaWrapper = document.createElement('div');
+                    ctaWrapper.className = 'home-section full-width section-ofertas-cta';
+                    ctaWrapper.style.cssText = 'margin: 0.6rem 0 0.8rem 0; padding: 0 1.25rem;';
 
-                        let countText = '';
-                        if (activeOffers.length > 0 && freeShipItems.length > 0) {
-                            countText = `${activeOffers.length} oferta${activeOffers.length > 1 ? 's' : ''} y ${freeShipItems.length} beneficio${freeShipItems.length > 1 ? 's' : ''} de envío gratis`;
-                        } else if (freeShipItems.length > 0) {
-                            countText = `${freeShipItems.length} producto${freeShipItems.length > 1 ? 's' : ''} con beneficio de envío gratis`;
-                        } else {
-                            countText = activeOffers.length === 1 ? '1 oferta imperdible disponible' : `${activeOffers.length} ofertas y combos imperdibles`;
-                        }
+                    let countText = '';
+                    if (activeOffers.length > 0 && freeShipItems.length > 0) {
+                        countText = `${activeOffers.length} oferta${activeOffers.length > 1 ? 's' : ''} y ${freeShipItems.length} beneficio${freeShipItems.length > 1 ? 's' : ''} de envío`;
+                    } else if (freeShipItems.length > 0) {
+                        countText = `${freeShipItems.length} producto${freeShipItems.length > 1 ? 's' : ''} con beneficio de envío`;
+                    } else if (activeOffers.length > 0) {
+                        countText = activeOffers.length === 1 ? '1 oferta imperdible disponible' : `${activeOffers.length} ofertas y combos imperdibles`;
+                    } else {
+                        countText = 'Promociones, combos y beneficios de envío';
+                    }
 
                         if (!document.getElementById('offers-cta-style')) {
                             const styleEl = document.createElement('style');
@@ -421,7 +422,6 @@
                         });
 
                         homeContent.appendChild(ctaWrapper);
-                    }
                     return; // Evitar crear la cabecera estándar de sección
                 }
 
