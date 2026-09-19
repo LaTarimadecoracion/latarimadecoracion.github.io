@@ -1,11 +1,86 @@
 const productsData = [
     {
+        "id": "pintureria-todos",
+        "name": "Todos los productos",
+        "rubro": "pintureria",
+        "image": "img/logo_provisional.png",
+        "visible": true,
+        "order": 0,
+        "products": []
+    },
+    {
+        "id": "electricidad-todos",
+        "name": "Todos los productos",
+        "rubro": "electricidad",
+        "image": "img/logo_provisional.png",
+        "visible": true,
+        "order": 1,
+        "products": [
+            {
+                "id": "L1",
+                "shortId": "38",
+                "title": "Kit Instalación Electrica Domiciliario Termica Y Diyuntor",
+                "description": "MATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n1 x Caño corrugado blanco 3/4\" (ignífugo) - Rollo x 25 mts.\n1 x Caja de embutir para térmica y disyuntor\n1 x Térmica Sica bipolar (2 x 32A.)\n1 x Disyuntor Sica bipolar (2 x 40A.)\n10 x Caja rectangular metálica 10x5\n3 x Caja octogonal metálica\n3 x Portalámparas\n3 x Lámpara LED 9W (luz día)\n25 x Conector 3/4\" PVC\n1 x Cinta aisladora Tacsa x 10 mts.\n1 x Buscapolo Sica\n8 x Tapa TAAD armada (2 módulos tomas)\n1 x Tapa TAAD armada (1 tecla + 1 toma)\n1 x Tapa TAAD armada (2 teclas)\n\nLA TARIMA\n\nComercializamos una selección de artículos de marcas líderes para ofrecerte soluciones prácticas y confiables.\nCalidad garantizada: Todos los productos con los que trabajamos son normalizados y cumplen con los más altos estándares de seguridad y calidad del mercado.\nEnvíos: Realizamos Envíos a todo el país.\n\nGarantía de fábrica: 3 meses",
+                "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                        "images_list": [
+                            "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                            "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660611-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Kit 001",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 123500,
+                                "cost_price": 123500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789784153216,
+                "primaryCatId": "cat-21-mu7q9i7y",
+                "history": []
+            }
+        ]
+    },
+    {
         "id": "carpinteria-todos",
         "name": "Carpintería ",
         "rubro": "carpinteria",
         "image": "img/carpinteria-/portada-1783038461695-imagen.webp",
         "visible": false,
-        "order": 0,
+        "order": 2,
         "products": [
             {
                 "id": "52",
@@ -5079,7 +5154,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 85
+                "views": 89
             },
             {
                 "id": "22",
@@ -10396,7 +10471,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 9
             },
             {
                 "id": "64",
@@ -10478,7 +10554,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789446760226,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 4
             }
         ]
     },
@@ -10487,7 +10564,7 @@ const productsData = [
         "name": "Borrador",
         "image": "img/borrador/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 1,
+        "order": 3,
         "products": [],
         "visible": false
     },
@@ -10495,7 +10572,7 @@ const productsData = [
         "id": "Vinotecas",
         "name": "Vinotecas - Bodegas",
         "image": "img/vinotecas---bodegas/portada-1780289410168-imagen.webp",
-        "order": 2,
+        "order": 4,
         "products": [
             {
                 "id": "21",
@@ -10574,7 +10651,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 85
+                "views": 89
             },
             {
                 "id": "22",
@@ -11137,7 +11214,7 @@ const productsData = [
         "name": "Percheros",
         "image": "img/percheros/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 3,
+        "order": 5,
         "products": [
             {
                 "id": "31",
@@ -12359,7 +12436,7 @@ const productsData = [
         "id": "Barandas",
         "name": "Barandas para cama",
         "image": "img/barandas-para-cama/portada-1782437522433-imagen.webp",
-        "order": 4,
+        "order": 6,
         "products": [
             {
                 "id": "51",
@@ -14564,7 +14641,7 @@ const productsData = [
         "name": "Organizadores",
         "image": "img/organizadores/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 5,
+        "order": 7,
         "products": [
             {
                 "id": "41",
@@ -16548,7 +16625,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 9
             }
         ]
     },
@@ -16556,7 +16634,7 @@ const productsData = [
         "id": "Estantes",
         "name": "Estantes",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 6,
+        "order": 8,
         "products": [
             {
                 "id": "61",
@@ -17120,7 +17198,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789446760226,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 4
             },
             {
                 "id": "65",
@@ -18153,7 +18232,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 9
             }
         ],
         "rubro": "carpinteria"
@@ -18163,7 +18243,7 @@ const productsData = [
         "name": "Cunas",
         "image": "img/cunas/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 7,
+        "order": 9,
         "products": [
             {
                 "id": "71",
@@ -19010,7 +19090,7 @@ const productsData = [
         "name": "Camas para niños",
         "image": "img/camas-para-ninos/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 8,
+        "order": 10,
         "products": [
             {
                 "id": "81",
@@ -19152,7 +19232,7 @@ const productsData = [
         "id": "muebles",
         "name": "Escaleras",
         "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 9,
+        "order": 11,
         "products": [
             {
                 "id": "91",
@@ -19450,7 +19530,7 @@ const productsData = [
         "id": "Steps",
         "name": "Steps / Cajones",
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 10,
+        "order": 12,
         "products": [
             {
                 "id": "A1",
@@ -20101,7 +20181,7 @@ const productsData = [
         "id": "Juguetes",
         "name": "Juguetes",
         "image": "img/juguetes/portada-1783038439545-imagen.webp",
-        "order": 11,
+        "order": 13,
         "products": [
             {
                 "id": "B1",
@@ -20576,7 +20656,7 @@ const productsData = [
         "name": "Sillas y sillones",
         "image": "img/sillas-y-sillones/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 12,
+        "order": 14,
         "products": [
             {
                 "id": "C1",
@@ -20986,7 +21066,7 @@ const productsData = [
         "name": "Mesas de madera",
         "image": "img/mesas-de-madera/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 13,
+        "order": 15,
         "products": [
             {
                 "id": "D1",
@@ -21765,7 +21845,7 @@ const productsData = [
         "name": "Jardín",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 14,
+        "order": 16,
         "products": [
             {
                 "id": "E1",
@@ -22690,7 +22770,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 9
             }
         ]
     },
@@ -22699,7 +22780,7 @@ const productsData = [
         "name": "Hogar",
         "image": "img/hogar/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 15,
+        "order": 17,
         "products": [
             {
                 "id": "F1",
@@ -23352,7 +23433,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 9
             }
         ]
     },
@@ -23361,7 +23443,7 @@ const productsData = [
         "name": "Todo Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 16,
+        "order": 18,
         "products": [
             {
                 "id": "G1",
@@ -23668,7 +23750,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 17,
+        "order": 19,
         "products": [
             {
                 "id": "H1",
@@ -24016,5 +24098,70 @@ const productsData = [
             }
         ],
         "rubro": "carpinteria"
+    },
+    {
+        "id": "cat-21-mu7q9i7y",
+        "name": "Kits Electricos",
+        "image": "img/kits-electricos/portada-imagenwebp.webp",
+        "rubro": "electricidad",
+        "order": 20,
+        "products": [
+            {
+                "id": "L1",
+                "shortId": "38",
+                "title": "Kit Instalación Electrica Domiciliario Termica Y Diyuntor",
+                "description": "MATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n1 x Caño corrugado blanco 3/4\" (ignífugo) - Rollo x 25 mts.\n1 x Caja de embutir para térmica y disyuntor\n1 x Térmica Sica bipolar (2 x 32A.)\n1 x Disyuntor Sica bipolar (2 x 40A.)\n10 x Caja rectangular metálica 10x5\n3 x Caja octogonal metálica\n3 x Portalámparas\n3 x Lámpara LED 9W (luz día)\n25 x Conector 3/4\" PVC\n1 x Cinta aisladora Tacsa x 10 mts.\n1 x Buscapolo Sica\n8 x Tapa TAAD armada (2 módulos tomas)\n1 x Tapa TAAD armada (1 tecla + 1 toma)\n1 x Tapa TAAD armada (2 teclas)\n\nLA TARIMA\n\nComercializamos una selección de artículos de marcas líderes para ofrecerte soluciones prácticas y confiables.\nCalidad garantizada: Todos los productos con los que trabajamos son normalizados y cumplen con los más altos estándares de seguridad y calidad del mercado.\nEnvíos: Realizamos Envíos a todo el país.\n\nGarantía de fábrica: 3 meses",
+                "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                        "images_list": [
+                            "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                            "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660611-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Kit 001",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 123500,
+                                "cost_price": 123500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789784153216,
+                "primaryCatId": "cat-21-mu7q9i7y",
+                "history": []
+            }
+        ]
     }
 ];

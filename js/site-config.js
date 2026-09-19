@@ -167,6 +167,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Kit Instalación Electrica Domiciliario Termica Y Diyuntor!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Kit Instalación Electrica Domiciliario Termica Y Diyuntor!",
+            "mediaType": "image",
+            "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=L1",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=L1",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1789783660620
+        },
+        {
             "title": "¡Nuevo Ingreso: Estante Repisa Casita X 3 Unidades!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Estante Repisa Casita X 3 Unidades!",
             "mediaType": "image",
@@ -726,6 +745,18 @@ window.siteConfig = {
         {
             "id": "carpinteria",
             "name": "Carpintería"
+        },
+        {
+            "id": "pintureria",
+            "name": "Pinturería",
+            "idMode": "auto",
+            "visible": false
+        },
+        {
+            "id": "electricidad",
+            "name": "Electricidad",
+            "idMode": "auto",
+            "visible": true
         }
     ]
 };
