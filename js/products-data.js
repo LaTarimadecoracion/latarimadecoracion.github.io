@@ -21,13 +21,13 @@ const productsData = [
                 "shortId": "38",
                 "title": "Kit Instalación Electrica Domiciliario Termica Y Diyuntor",
                 "description": "MATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n1 x Caño corrugado blanco 3/4\" (ignífugo) - Rollo x 25 mts.\n1 x Caja de embutir para térmica y disyuntor\n1 x Térmica Sica bipolar (2 x 32A.)\n1 x Disyuntor Sica bipolar (2 x 40A.)\n10 x Caja rectangular metálica 10x5\n3 x Caja octogonal metálica\n3 x Portalámparas\n3 x Lámpara LED 9W (luz día)\n25 x Conector 3/4\" PVC\n1 x Cinta aisladora Tacsa x 10 mts.\n1 x Buscapolo Sica\n8 x Tapa TAAD armada (2 módulos tomas)\n1 x Tapa TAAD armada (1 tecla + 1 toma)\n1 x Tapa TAAD armada (2 teclas)\n\nLA TARIMA\n\nComercializamos una selección de artículos de marcas líderes para ofrecerte soluciones prácticas y confiables.\nCalidad garantizada: Todos los productos con los que trabajamos son normalizados y cumplen con los más altos estándares de seguridad y calidad del mercado.\nEnvíos: Realizamos Envíos a todo el país.\n\nGarantía de fábrica: 3 meses",
-                "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                        "cover_image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
                         "images_list": [
-                            "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                            "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
                             "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660611-imagenwebp.webp"
                         ],
                         "medidas_variants": [
@@ -68,7 +68,63 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789784153216,
+                "last_modified": 1789839131712,
+                "primaryCatId": "cat-21-mu7q9i7y",
+                "history": []
+            },
+            {
+                "id": "L2",
+                "shortId": "39",
+                "title": "Kit Materiales Eléctricos Domiciliarios C/cables 2 Ambientes",
+                "description": "MATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n1 = CAÑO CORRUGADO BLANCO 3/4 (IGNÍFUGO) ROLLO X 25 mts.\n1 = CAJA DE EMBUTIR P/TÉRMICA + DISYUNTOR\n1 = TÉRMICA SICA BIPOLAR (2 X 32A.)\n1 = DISYUNTOR SICA BIPOLAR (2 X 40A.)\n10 = CAJA RECTANGULAR METÁLICA 10X5\n3 = CAJA OCTOGONAL METÁLICA\n3 = PORTALÁMPARAS\n3 = LÁMPARA LED 9W (LUZ DÍA)\n25 = CONECTOR 3/4 PVC\n1 = CINTA AISLADORA TACSA X 10 mts.\n1 = BUSCAPOLO\n30 mts. = CABLE 1 X 2,5 mm CELESTE (NORMALIZADO)\n30 mts. = CABLE 1 X 2,5 mm MARRÓN (NORMALIZADO)\n30 mts. = CABLE 1 X 2,5 mm VERDE/AMARILLO (NORMALIZADO)\n15 mts. = CABLE 1 X 1,5 mm NEGRO (NORMALIZADO)\n8 = TAPA TAAD ARMADA (2 MÓDULOS TOMAS)\n1 = TAPA TAAD ARMADA (1 TECLA + 1 TOMA)\n1 = TAPA TAAD ARMADA (2 TECLAS)\n\nLOS CABLES SON NORMALIZADOS, RESPETA 100% LA CANTIDAD DE COBRE (la mayoría de los que publican no lo hacen).\n\nSomos LA TARIMA. Estamos en Hurlingham con atención al público y hacemos Mercado Envíos a todo el país.\nTrabajamos exclusivamente como revendedores seleccionando marcas de confianza; todos nuestros productos son normalizados y cumplen con los más altos estándares de calidad.\n\nAviso legal:\n\nCable no propagador de incendio.\nCumple con norma IRAM.\nGarantía de fábrica: 6 meses",
+                "image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-2-ambientes/1789839031531-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Kit",
+                        "cover_image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-2-ambientes/1789839031531-imagenwebp.webp",
+                        "images_list": [
+                            "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-2-ambientes/1789839031531-imagenwebp.webp",
+                            "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-2-ambientes/1789839031547-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Kit",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 250000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": false,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789839031552,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": []
             }
@@ -1609,7 +1665,7 @@ const productsData = [
                 ],
                 "last_modified": 1784430041975,
                 "primaryCatId": "Barandas",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -14037,7 +14093,7 @@ const productsData = [
                 ],
                 "last_modified": 1784430041975,
                 "primaryCatId": "Barandas",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24111,13 +24167,13 @@ const productsData = [
                 "shortId": "38",
                 "title": "Kit Instalación Electrica Domiciliario Termica Y Diyuntor",
                 "description": "MATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n1 x Caño corrugado blanco 3/4\" (ignífugo) - Rollo x 25 mts.\n1 x Caja de embutir para térmica y disyuntor\n1 x Térmica Sica bipolar (2 x 32A.)\n1 x Disyuntor Sica bipolar (2 x 40A.)\n10 x Caja rectangular metálica 10x5\n3 x Caja octogonal metálica\n3 x Portalámparas\n3 x Lámpara LED 9W (luz día)\n25 x Conector 3/4\" PVC\n1 x Cinta aisladora Tacsa x 10 mts.\n1 x Buscapolo Sica\n8 x Tapa TAAD armada (2 módulos tomas)\n1 x Tapa TAAD armada (1 tecla + 1 toma)\n1 x Tapa TAAD armada (2 teclas)\n\nLA TARIMA\n\nComercializamos una selección de artículos de marcas líderes para ofrecerte soluciones prácticas y confiables.\nCalidad garantizada: Todos los productos con los que trabajamos son normalizados y cumplen con los más altos estándares de seguridad y calidad del mercado.\nEnvíos: Realizamos Envíos a todo el país.\n\nGarantía de fábrica: 3 meses",
-                "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
-                        "cover_image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                        "cover_image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
                         "images_list": [
-                            "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660587-imagenwebp.webp",
+                            "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
                             "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660611-imagenwebp.webp"
                         ],
                         "medidas_variants": [
@@ -24158,7 +24214,63 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789784153216,
+                "last_modified": 1789839131712,
+                "primaryCatId": "cat-21-mu7q9i7y",
+                "history": []
+            },
+            {
+                "id": "L2",
+                "shortId": "39",
+                "title": "Kit Materiales Eléctricos Domiciliarios C/cables 2 Ambientes",
+                "description": "MATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n1 = CAÑO CORRUGADO BLANCO 3/4 (IGNÍFUGO) ROLLO X 25 mts.\n1 = CAJA DE EMBUTIR P/TÉRMICA + DISYUNTOR\n1 = TÉRMICA SICA BIPOLAR (2 X 32A.)\n1 = DISYUNTOR SICA BIPOLAR (2 X 40A.)\n10 = CAJA RECTANGULAR METÁLICA 10X5\n3 = CAJA OCTOGONAL METÁLICA\n3 = PORTALÁMPARAS\n3 = LÁMPARA LED 9W (LUZ DÍA)\n25 = CONECTOR 3/4 PVC\n1 = CINTA AISLADORA TACSA X 10 mts.\n1 = BUSCAPOLO\n30 mts. = CABLE 1 X 2,5 mm CELESTE (NORMALIZADO)\n30 mts. = CABLE 1 X 2,5 mm MARRÓN (NORMALIZADO)\n30 mts. = CABLE 1 X 2,5 mm VERDE/AMARILLO (NORMALIZADO)\n15 mts. = CABLE 1 X 1,5 mm NEGRO (NORMALIZADO)\n8 = TAPA TAAD ARMADA (2 MÓDULOS TOMAS)\n1 = TAPA TAAD ARMADA (1 TECLA + 1 TOMA)\n1 = TAPA TAAD ARMADA (2 TECLAS)\n\nLOS CABLES SON NORMALIZADOS, RESPETA 100% LA CANTIDAD DE COBRE (la mayoría de los que publican no lo hacen).\n\nSomos LA TARIMA. Estamos en Hurlingham con atención al público y hacemos Mercado Envíos a todo el país.\nTrabajamos exclusivamente como revendedores seleccionando marcas de confianza; todos nuestros productos son normalizados y cumplen con los más altos estándares de calidad.\n\nAviso legal:\n\nCable no propagador de incendio.\nCumple con norma IRAM.\nGarantía de fábrica: 6 meses",
+                "image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-2-ambientes/1789839031531-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Kit",
+                        "cover_image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-2-ambientes/1789839031531-imagenwebp.webp",
+                        "images_list": [
+                            "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-2-ambientes/1789839031531-imagenwebp.webp",
+                            "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-2-ambientes/1789839031547-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Kit",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 250000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": false,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789839031552,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": []
             }

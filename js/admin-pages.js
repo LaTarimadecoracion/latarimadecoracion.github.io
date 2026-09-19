@@ -778,7 +778,7 @@ window.initPagesAdmin = function() {
                 const section = sectionsData[sectionId] || { title: sectionId, subtitle: '', icon: 'folder' };
                 
                 let extraInputs = '';
-                if (sectionId === 'categorias' || sectionId === 'novedades' || sectionId === 'buscados') {
+                if (sectionId === 'categorias' || sectionId === 'ofertas' || sectionId === 'novedades' || sectionId === 'buscados') {
                     const showLimit = (sectionId === 'novedades' || sectionId === 'buscados');
                     const currentLimit = section.limit || (sectionId === 'novedades' ? 5 : 8);
                     const rubrosList = window.rubros || [];

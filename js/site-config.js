@@ -81,6 +81,7 @@ window.siteConfig = {
     "homeConfig": {
         "order": [
             "categorias",
+            "ofertas",
             "novedades",
             "buscados"
         ],
@@ -89,6 +90,11 @@ window.siteConfig = {
                 "title": "Categorías",
                 "subtitle": "Nuestras líneas de productos",
                 "icon": "table_restaurant"
+            },
+            "ofertas": {
+                "title": "Ofertas Especiales",
+                "subtitle": "Promociones y combos por tiempo limitado",
+                "icon": "local_offer"
             },
             "novedades": {
                 "title": "Nuevos Diseños 2026",
@@ -166,6 +172,25 @@ window.siteConfig = {
         }
     ],
     "sessionAvisos": [
+        {
+            "title": "¡Nuevo Ingreso: Kit Materiales Eléctricos Domiciliarios C/cables 2 Ambientes!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Kit Materiales Eléctricos Domiciliarios C/cables 2 Ambientes!",
+            "mediaType": "image",
+            "image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-2-ambientes/1789839031531-imagenwebp.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=L2",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=L2",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1789839031558
+        },
         {
             "title": "¡Nuevo Ingreso: Kit Instalación Electrica Domiciliario Termica Y Diyuntor!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Kit Instalación Electrica Domiciliario Termica Y Diyuntor!",

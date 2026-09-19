@@ -68,6 +68,222 @@
         });
     }
 
+    window.getFreeShippingProducts = function() {
+        const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0)
+            ? window.sessionProducts
+            : (typeof productsData !== 'undefined' ? productsData : []);
+
+        const freeShipProducts = [];
+        const seenIds = new Set();
+
+        if (Array.isArray(sourceData)) {
+            sourceData.forEach(cat => {
+                if (cat && cat.visible === false) return;
+                if (Array.isArray(cat.products)) {
+                    cat.products.forEach(prod => {
+                        if (!prod || prod.visible === false || seenIds.has(prod.id)) return;
+                        
+                        const shipConf = prod.shippingConfig || {};
+
+                        // Modo 1: Envío gratis directo habilitado
+                        const isDirectFree = !!(
+                            shipConf.isFreeShipping === true ||
+                            prod.isFreeShipping === true ||
+                            prod.shippingType === 'free' ||
+                            shipConf.isFree === true ||
+                            (Array.isArray(prod.variants) && prod.variants.some(v => v.shippingConfig?.isFreeShipping || v.isFreeShipping))
+                        );
+
+                        // Modo 2: Envío gratis por logística o flete según cantidad de unidades
+                        let minUnits = parseInt(shipConf.logisticaFreeMinUnits) || parseInt(shipConf.fleteFreeMinUnits) || parseInt(prod.logisticaFreeMinUnits) || parseInt(prod.fleteFreeMinUnits) || 0;
+
+                        if (!minUnits && Array.isArray(prod.variants)) {
+                            for (const v of prod.variants) {
+                                const vMin = parseInt(v.shippingConfig?.logisticaFreeMinUnits) || parseInt(v.shippingConfig?.fleteFreeMinUnits) || parseInt(v.logisticaFreeMinUnits) || parseInt(v.fleteFreeMinUnits) || 0;
+                                if (vMin > 0) {
+                                    minUnits = vMin;
+                                    break;
+                                }
+                            }
+                        }
+
+                        const isQuantityFree = minUnits > 0;
+
+                        if (isDirectFree || isQuantityFree) {
+                            seenIds.add(prod.id);
+                            freeShipProducts.push({
+                                product: prod,
+                                catName: cat.name || '',
+                                isDirectFree: isDirectFree,
+                                minUnits: minUnits
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        return freeShipProducts;
+    };
+
+    window.extractProductLivePrice = function(product, acabadoName = '', medidaName = '') {
+        if (!product) return 0;
+
+        // 1. Precios directos
+        let pVal = parseFloat(product.price || product.precio || product.base_price || product.price_base) || 0;
+        if (pVal > 0 && !acabadoName && !medidaName) return pVal;
+
+        // 2. Buscar en acabados_groups
+        if (Array.isArray(product.acabados_groups) && product.acabados_groups.length > 0) {
+            let group = null;
+            if (acabadoName) {
+                group = product.acabados_groups.find(g => (g.acabado_name || '').trim().toLowerCase() === acabadoName.trim().toLowerCase());
+            }
+            if (!group) group = product.acabados_groups[0];
+
+            if (group && Array.isArray(group.medidas_variants) && group.medidas_variants.length > 0) {
+                let variant = null;
+                if (medidaName) {
+                    variant = group.medidas_variants.find(m => (m.medida || m.name || '').trim().toLowerCase() === medidaName.trim().toLowerCase());
+                }
+                if (!variant) variant = group.medidas_variants.find(m => m.default) || group.medidas_variants[0];
+
+                if (variant) {
+                    const vPrice = parseFloat(variant.price || variant.precio || variant.cost_price) || 0;
+                    if (vPrice > 0) return vPrice;
+                }
+            }
+        }
+
+        // 3. Buscar en variants array plano
+        if (Array.isArray(product.variants) && product.variants.length > 0) {
+            let variant = null;
+            if (medidaName || acabadoName) {
+                variant = product.variants.find(v => 
+                    (v.medida || v.name || '').trim().toLowerCase() === (medidaName || acabadoName).trim().toLowerCase()
+                );
+            }
+            if (!variant) variant = product.variants[0];
+            if (variant) {
+                const vPrice = parseFloat(variant.price || variant.precio || variant.cost_price) || 0;
+                if (vPrice > 0) return vPrice;
+            }
+        }
+
+        return pVal;
+    }
+
+    window.syncOfferLivePrices = function(offer) {
+        if (!offer || !offer.product_items || !Array.isArray(offer.product_items) || offer.product_items.length === 0) {
+            return offer;
+        }
+
+        let liveSubtotal = 0;
+
+        offer.product_items.forEach(item => {
+            const prodId = item.id || item.productId;
+            if (!prodId) return;
+
+            let liveProduct = null;
+            if (typeof window.findProductById === 'function') {
+                const res = window.findProductById(prodId);
+                if (res) liveProduct = res.product;
+            }
+
+            if (!liveProduct && typeof window.sessionProducts !== 'undefined' && Array.isArray(window.sessionProducts)) {
+                for (const cat of window.sessionProducts) {
+                    if (Array.isArray(cat.products)) {
+                        const found = cat.products.find(p => p.id === prodId);
+                        if (found) { liveProduct = found; break; }
+                    }
+                }
+            }
+
+            if (liveProduct) {
+                const liveUnitPrice = extractProductLivePrice(liveProduct, item.acabado || item.variant, item.medida);
+                if (liveUnitPrice > 0) {
+                    item.unitPrice = liveUnitPrice;
+                    item.price = liveUnitPrice;
+                }
+
+                // Sincronizar imagen si cambió en el catálogo
+                const liveCover = Array.isArray(liveProduct.image) ? liveProduct.image[0] : liveProduct.image;
+                if (liveCover) {
+                    item.image = liveCover;
+                }
+            }
+
+            const itemQty = parseInt(item.quantity, 10) || 1;
+            const itemPrice = item.unitPrice || item.price || 0;
+            liveSubtotal += itemPrice * itemQty;
+        });
+
+        if (liveSubtotal > 0) {
+            const oldSubtotal = offer.subtotalPrice || liveSubtotal;
+            const oldOfferPrice = offer.offerPrice || liveSubtotal;
+
+            offer.subtotalPrice = liveSubtotal;
+
+            if (offer.discountPercent && Number(offer.discountPercent) > 0) {
+                offer.offerPrice = Math.round(liveSubtotal * (1 - Number(offer.discountPercent) / 100));
+            } else if (oldSubtotal > 0 && oldOfferPrice < oldSubtotal) {
+                const ratio = oldOfferPrice / oldSubtotal;
+                offer.offerPrice = Math.round(liveSubtotal * ratio);
+                offer.discountPercent = Math.round((1 - ratio) * 100);
+            } else {
+                offer.offerPrice = liveSubtotal;
+            }
+        }
+
+        return offer;
+    };
+
+    window.createFreeShippingProductCardElement = function(item) {
+        let { product, catName, isDirectFree, minUnits } = item;
+        
+        // Sincronizar producto vivo desde el catálogo
+        if (typeof window.findProductById === 'function' && product && product.id) {
+            const liveRes = window.findProductById(product.id);
+            if (liveRes && liveRes.product) product = liveRes.product;
+        }
+
+        const card = document.createElement('div');
+        card.className = 'offer-card category-card';
+        card.style.cssText = 'position: relative; cursor: pointer; border-radius: var(--radius-md); overflow: hidden; background: #ffffff; border: 1.5px solid #bbf7d0; box-shadow: 0 4px 14px rgba(34, 197, 94, 0.12); transition: transform 0.2s ease, box-shadow 0.2s ease;';
+
+        const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+        const priceVal = extractProductLivePrice(product);
+        const formattedPrice = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(priceVal || 0);
+
+        const shipBadgeText = isDirectFree 
+            ? '🚚 ENVÍO GRATIS' 
+            : `🚚 ENVÍO GRATIS (Mín. ${minUnits} U.)`;
+
+        card.innerHTML = `
+            <div class="category-card-img-wrapper" style="position: relative; height: 180px; overflow: hidden; background: #f8fafc;">
+                <img src="${productCover}" class="category-card-img loaded" alt="${product.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; top: 8px; left: 8px; z-index: 5; background: #16a34a; color: #ffffff; font-weight: 800; font-size: 0.68rem; padding: 3px 8px; border-radius: 20px; box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4); display: flex; align-items: center; gap: 4px;">
+                    ${shipBadgeText}
+                </div>
+            </div>
+
+            <div style="padding: 0.85rem 1rem; display: flex; flex-direction: column; gap: 4px; background: #ffffff;">
+                <span style="font-size: 0.7rem; color: var(--text-muted, #64748b); font-weight: 600; text-transform: uppercase;">${catName || 'Producto con Beneficio'}</span>
+                <h3 style="font-size: 0.92rem; font-weight: 700; color: var(--text-main, #0f172a); margin: 0; line-clamp: 2; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.3;">${product.title}</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px;">
+                    <span style="font-size: 1.05rem; font-weight: 800; color: var(--primary-color, #c0510a);">${formattedPrice}</span>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #15803d; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 3px 8px; border-radius: 6px;">Ver producto →</span>
+                </div>
+            </div>
+        `;
+
+        card.addEventListener('click', () => {
+            if (window.showProductDetail) window.showProductDetail(product, catName);
+        });
+
+        return card;
+    };
+
     window.renderOffersFrontend = function() {
         const container = document.getElementById('offers-grid-container');
         if (!container) return;
@@ -85,20 +301,46 @@
             return true;
         });
 
-        if (activeOffers.length === 0) {
+        // Sincronizar precios de las ofertas con los productos vivos del catálogo
+        activeOffers.forEach(o => {
+            if (window.syncOfferLivePrices) window.syncOfferLivePrices(o);
+        });
+
+        // Obtener productos con Envío Gratis activo (Modo 1 y Modo 2)
+        const freeShipItems = window.getFreeShippingProducts ? window.getFreeShippingProducts() : [];
+
+        // Prevenir duplicación si una oferta ya contiene ese producto
+        const offerProductIds = new Set();
+        activeOffers.forEach(o => {
+            if (Array.isArray(o.product_items)) {
+                o.product_items.forEach(pi => { if (pi.id) offerProductIds.add(pi.id); });
+            }
+        });
+
+        const uniqueFreeShipItems = freeShipItems.filter(item => !offerProductIds.has(item.product.id));
+
+        if (activeOffers.length === 0 && uniqueFreeShipItems.length === 0) {
             container.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
                     <span class="material-symbols-outlined" style="font-size: 56px; opacity: 0.4;">local_offer</span>
                     <h3 style="margin: 0.5rem 0 0.25rem; font-weight: 700; color: var(--text-main);">No hay ofertas vigentes</h3>
-                    <p style="font-size: 0.9rem;">Pronto tendremos nuevos combos y descuentos relámpago. ¡Volvé a consultar más tarde!</p>
+                    <p style="font-size: 0.9rem;">Pronto tendremos nuevos combos, descuentos y beneficios de envío gratis. ¡Volvé a consultar más tarde!</p>
                 </div>
             `;
             return;
         }
 
         container.innerHTML = '';
+
+        // 1. Renderizar ofertas / combos principales
         activeOffers.forEach(offer => {
             const card = createOfferCardElement(offer);
+            container.appendChild(card);
+        });
+
+        // 2. Renderizar productos con Envío Gratis (Modo 1 & Modo 2)
+        uniqueFreeShipItems.forEach(item => {
+            const card = window.createFreeShippingProductCardElement(item);
             container.appendChild(card);
         });
 
@@ -106,6 +348,7 @@
     };
 
     window.createOfferCardElement = function(offer, isCarousel = false) {
+        if (window.syncOfferLivePrices) window.syncOfferLivePrices(offer);
         const stampLabels = {
             'pro-gold': '⭐ PRO GOLD',
             'oportunidad': '🏆 OPORTUNIDAD ÚNICA',
@@ -384,6 +627,7 @@
 
     function openOfferDetailView(offer) {
         if (!offer) return;
+        if (window.syncOfferLivePrices) window.syncOfferLivePrices(offer);
         selectedOfferForModal = offer;
         let offerPackQty = 1;
 

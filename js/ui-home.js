@@ -248,9 +248,10 @@
         // Garantizar que homeConfig esté disponible
         if (typeof homeConfig === 'undefined' || !homeConfig.order) {
             window.homeConfig = {
-                order: ['categorias', 'novedades', 'buscados'],
+                order: ['categorias', 'ofertas', 'novedades', 'buscados'],
                 sections: {
                     categorias: { title: "Categorías", subtitle: "Nuestras líneas de productos", icon: "grid_view" },
+                    ofertas: { title: "Ofertas Especiales", subtitle: "Promociones y combos por tiempo limitado", icon: "local_offer" },
                     novedades: { title: "Nuevos Diseños 2026", subtitle: "Novedades del taller", icon: "celebration" },
                     buscados: { title: "Los más buscados", subtitle: "Los preferidos de nuestros clientes", icon: "star" }
                 }
@@ -275,6 +276,153 @@
                         }
                     }
                     return; // Continuar con la siguiente sección
+                }
+
+                if (sectionId === 'ofertas') {
+                    // Obtener ofertas activas y no vencidas
+                    const offersSource = (window.sessionOffers && window.sessionOffers.length > 0)
+                        ? window.sessionOffers
+                        : (typeof offersData !== 'undefined' ? offersData : []);
+
+                    let activeOffers = [];
+                    if (Array.isArray(offersSource) && offersSource.length > 0) {
+                        activeOffers = offersSource.filter(o => {
+                            if (o.active === false) return false;
+                            if (o.hasTimer && o.expirationDate) {
+                                const expTime = new Date(o.expirationDate).getTime();
+                                if (!isNaN(expTime) && expTime <= Date.now()) return false;
+                            }
+                            return true;
+                        });
+                    }
+
+                    // Obtener productos con Envío Gratis activo (Modo 1 y Modo 2)
+                    const freeShipItems = (typeof window.getFreeShippingProducts === 'function') 
+                        ? window.getFreeShippingProducts() 
+                        : [];
+
+                    const totalPromos = activeOffers.length + freeShipItems.length;
+
+                    // Renderizar únicamente si hay ofertas o beneficios de envío gratis activos (Banner CTA Horizontal)
+                    if (totalPromos > 0) {
+                        const ctaWrapper = document.createElement('div');
+                        ctaWrapper.className = 'home-section full-width section-ofertas-cta';
+                        ctaWrapper.style.cssText = 'margin: 0.6rem 0 0.8rem 0; padding: 0 1.25rem;';
+
+                        let countText = '';
+                        if (activeOffers.length > 0 && freeShipItems.length > 0) {
+                            countText = `${activeOffers.length} oferta${activeOffers.length > 1 ? 's' : ''} y ${freeShipItems.length} beneficio${freeShipItems.length > 1 ? 's' : ''} de envío gratis`;
+                        } else if (freeShipItems.length > 0) {
+                            countText = `${freeShipItems.length} producto${freeShipItems.length > 1 ? 's' : ''} con beneficio de envío gratis`;
+                        } else {
+                            countText = activeOffers.length === 1 ? '1 oferta imperdible disponible' : `${activeOffers.length} ofertas y combos imperdibles`;
+                        }
+
+                        if (!document.getElementById('offers-cta-style')) {
+                            const styleEl = document.createElement('style');
+                            styleEl.id = 'offers-cta-style';
+                            styleEl.textContent = `
+                                @keyframes offersPulseGreen {
+                                    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+                                    50% { transform: scale(1.08); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+                                }
+                                @keyframes topBarShimmer {
+                                    0% { background-position: 0% 50%; }
+                                    100% { background-position: 200% 50%; }
+                                }
+                                @keyframes badgeGlow {
+                                    0%, 100% { filter: brightness(1); }
+                                    50% { filter: brightness(1.3); }
+                                }
+                            `;
+                            document.head.appendChild(styleEl);
+                        }
+
+                        ctaWrapper.innerHTML = `
+                            <div class="offers-cta-banner" style="
+                                position: relative;
+                                width: 100%;
+                                background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+                                border: 1.5px solid rgba(34, 197, 94, 0.45);
+                                border-radius: var(--radius-md, 14px);
+                                padding: 0.85rem 1.15rem;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                gap: 12px;
+                                cursor: pointer;
+                                box-shadow: 0 4px 20px rgba(34, 197, 94, 0.18), 0 4px 18px rgba(15, 23, 42, 0.25);
+                                overflow: hidden;
+                                transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+                                box-sizing: border-box;
+                            " onmouseover="this.style.transform='scale(1.015)'; this.style.boxShadow='0 6px 24px rgba(34, 197, 94, 0.35)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 20px rgba(34, 197, 94, 0.18)'">
+                                <!-- Línea superior animada multicolor con Verde Esperanza destacado -->
+                                <div style="
+                                    position: absolute; 
+                                    top: 0; left: 0; right: 0; 
+                                    height: 3.5px; 
+                                    background: linear-gradient(90deg, #22c55e, #eab308, #ef4444, #22c55e, #10b981);
+                                    background-size: 200% 100%;
+                                    animation: topBarShimmer 3s linear infinite;
+                                "></div>
+
+                                <div style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+                                    <div style="
+                                        width: 44px;
+                                        height: 44px;
+                                        min-width: 44px;
+                                        border-radius: 50%;
+                                        background: linear-gradient(135deg, #22c55e, #15803d);
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        animation: offersPulseGreen 2.2s ease-in-out infinite;
+                                    ">
+                                        <span class="material-symbols-outlined" style="color: #ffffff; font-size: 1.45rem;">local_offer</span>
+                                    </div>
+
+                                    <div style="display: flex; flex-direction: column; min-width: 0;">
+                                        <div style="display: flex; align-items: center; gap: 6px;">
+                                            <span style="font-size: 0.98rem; font-weight: 800; color: #ffffff; letter-spacing: -0.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                                🔥 Ofertas & Descuentos
+                                            </span>
+                                            <span style="background: #22c55e; color: #ffffff; font-size: 0.65rem; font-weight: 900; padding: 2px 7px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px; animation: badgeGlow 1.8s ease-in-out infinite;">
+                                                ACTIVO
+                                            </span>
+                                        </div>
+                                        <span style="font-size: 0.78rem; color: #cbd5e1; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                            ${countText} • ¡Entrá y conocé todas las promociones!
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 5px;
+                                    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+                                    color: #ffffff;
+                                    font-size: 0.8rem;
+                                    font-weight: 800;
+                                    padding: 0.5rem 0.95rem;
+                                    border-radius: 50px;
+                                    white-space: nowrap;
+                                    flex-shrink: 0;
+                                    box-shadow: 0 3px 12px rgba(34, 197, 94, 0.45);
+                                ">
+                                    <span>Ver Ofertas</span>
+                                    <span class="material-symbols-outlined" style="font-size: 1.1rem; font-weight: 800;">arrow_forward</span>
+                                </div>
+                            </div>
+                        `;
+
+                        ctaWrapper.addEventListener('click', () => {
+                            if (window.navigateToView) window.navigateToView('view-offers');
+                        });
+
+                        homeContent.appendChild(ctaWrapper);
+                    }
+                    return; // Evitar crear la cabecera estándar de sección
                 }
 
                 const config = homeConfig.sections[sectionId] || { title: sectionId, subtitle: '', icon: 'folder' };
@@ -353,6 +501,8 @@
                         containerEl.innerHTML = '<p class="text-muted">No hay categorías disponibles.</p>';
                     }
 
+
+
                 } else if (sectionId === 'novedades') {
                     containerEl.id = 'home-new-designs-list';
                     containerEl.className = 'carousel-categories';
@@ -391,76 +541,7 @@
                             .sort((a, b) => getProductTimestamp(b.product) - getProductTimestamp(a.product))
                             .slice(0, limit);
 
-                        // Merged items list combining active offers and latest products
-                        let mergedCarouselItems = [];
-
-                        // Add active offers first into the carousel
-                        const offersSource = (window.sessionOffers && window.sessionOffers.length > 0)
-                            ? window.sessionOffers
-                            : (typeof offersData !== 'undefined' ? offersData : []);
-
-                        if (Array.isArray(offersSource) && offersSource.length > 0) {
-                            const activeOffers = offersSource.filter(o => {
-                                if (o.active === false) return false;
-                                if (o.hasTimer && o.expirationDate) {
-                                    const expTime = new Date(o.expirationDate).getTime();
-                                    if (!isNaN(expTime) && expTime <= Date.now()) return false;
-                                }
-                                return true;
-                            });
-
-                            activeOffers.forEach(offer => {
-                                mergedCarouselItems.push({ isOffer: true, offer });
-                            });
-                        }
-
-                        latestProducts.forEach(item => {
-                            mergedCarouselItems.push({ isOffer: false, product: item.product, catName: item.catName });
-                        });
-
-                        setupInfiniteCarousel(containerEl, mergedCarouselItems, (item, idx) => {
-                            if (item && item.isOffer) {
-                                if (typeof window.createOfferCardElement === 'function') {
-                                    const offerEl = window.createOfferCardElement(item.offer, true);
-                                    if (offerEl) return offerEl;
-                                }
-
-                                const offer = item.offer;
-                                const card = document.createElement('div');
-                                card.className = 'category-card offer-carousel-card';
-                                card.style.cssText = 'position: relative; cursor: pointer; border-radius: var(--radius-md); overflow: hidden;';
-
-                                let coverImg = offer.customCoverImage;
-                                if (!coverImg && offer.product_items && offer.product_items[0]) {
-                                    coverImg = offer.product_items[0].image;
-                                }
-                                if (!coverImg) coverImg = 'img/logo_provisional.png';
-
-                                const fmtSub = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(offer.subtotalPrice || 0);
-                                const fmtPrice = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(offer.offerPrice || 0);
-
-                                card.innerHTML = `
-                                    <div class="category-card-img-wrapper" style="position: relative;">
-                                        <img src="${coverImg}" class="category-card-img loaded" alt="${offer.title}" loading="lazy">
-                                    </div>
-                                    <div class="stamp-badge ${offer.stampStyle || 'pro-gold'}" style="position: absolute; top: 8px; left: 8px; z-index: 5; font-size: 0.65rem; padding: 0.2rem 0.5rem;">
-                                        ⭐ PRO GOLD
-                                    </div>
-                                    ${offer.discountPercent ? `<div style="position: absolute; top: 8px; right: 8px; z-index: 5; background: #dc2626; color: white; font-weight: 900; font-size: 0.7rem; padding: 2px 7px; border-radius: 20px;">-${offer.discountPercent}% OFF</div>` : ''}
-                                    <div class="category-overlay" style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; text-align: left; padding: 0.5rem 0.75rem; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);">
-                                        <div style="font-size: 0.92rem; font-weight: 800; color: #ffffff; width: 100%; line-clamp: 1; -webkit-line-clamp: 1; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">${offer.title}</div>
-                                        <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 2px;">
-                                            <span style="font-size: 0.72rem; text-decoration: line-through; color: rgba(255,255,255,0.75);">${fmtSub}</span>
-                                            <span style="font-size: 1.05rem; font-weight: 900; color: #fef08a;">${fmtPrice}</span>
-                                        </div>
-                                    </div>
-                                `;
-                                card.addEventListener('click', () => {
-                                    if (window.navigateToView) window.navigateToView('view-offers');
-                                });
-                                return card;
-                            }
-
+                        setupInfiniteCarousel(containerEl, latestProducts, (item, idx) => {
                             const { product, catName } = item || {};
                             if (!product) {
                                 const placeholderCard = document.createElement('div');

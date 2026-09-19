@@ -74,9 +74,10 @@ if (!window.siteConfig) {
         sessionNosotros: [],
         sessionAvisos: [],
         homeConfig: {
-            order: ['categorias', 'novedades', 'buscados'],
+            order: ['categorias', 'ofertas', 'novedades', 'buscados'],
             sections: {
                 categorias: { title: "Categorías", subtitle: "Nuestras líneas de productos", icon: "table_restaurant" },
+                ofertas: { title: "Ofertas Especiales", subtitle: "Promociones y combos por tiempo limitado", icon: "local_offer" },
                 novedades: { title: "Nuevos Diseños 2026", subtitle: "Novedades del taller", icon: "auto_awesome" },
                 buscados: { title: "Los más buscados", subtitle: "Los preferidos de nuestros clientes", icon: "favorite" }
             }
@@ -311,9 +312,10 @@ if (Array.isArray(window.sessionAvisos)) {
 
 // 4. CONFIGURACIÓN DE ORDEN Y CONTROL DE SECCIONES DEL HOME
 window.homeConfig = window.siteConfig.homeConfig || {
-    order: ['categorias', 'novedades', 'buscados'],
+    order: ['categorias', 'ofertas', 'novedades', 'buscados'],
     sections: {
         categorias: { title: "Categorías", subtitle: "Nuestras líneas de productos", icon: "table_restaurant" },
+        ofertas: { title: "Ofertas Especiales", subtitle: "Promociones y combos por tiempo limitado", icon: "local_offer" },
         novedades: { title: "Nuevos Diseños 2026", subtitle: "Novedades del taller", icon: "auto_awesome" },
         buscados: { title: "Los más buscados", subtitle: "Los preferidos de nuestros clientes", icon: "favorite" }
     }
@@ -537,14 +539,14 @@ window.getNormalizedCatalogProducts = function(targetRubro = null) {
 
 window.syncHomeOrder = function() {
     if (!window.homeConfig) return;
-    if (!window.homeConfig.order) window.homeConfig.order = ['categorias', 'novedades', 'buscados'];
+    if (!window.homeConfig.order) window.homeConfig.order = ['categorias', 'ofertas', 'novedades', 'buscados'];
     
     const homeStack = (typeof contentRegistry !== 'undefined' && contentRegistry.home) ? contentRegistry.home : [];
     const activeCompIds = homeStack.map(c => c.id);
     
     // 1. Filtrar IDs inexistentes (manteniendo solo fijos o components existentes)
     window.homeConfig.order = window.homeConfig.order.filter(id => 
-        ['categorias', 'novedades', 'buscados'].includes(id) || activeCompIds.includes(id)
+        ['categorias', 'ofertas', 'novedades', 'buscados'].includes(id) || activeCompIds.includes(id)
     );
     
     // 2. Añadir nuevos components al final si no figuran en el orden
