@@ -190,31 +190,38 @@ window.defaultNosotros = [
     }
 ];
 
-window.sessionNosotros = window.siteConfig.sessionNosotros && window.siteConfig.sessionNosotros.length 
-    ? window.siteConfig.sessionNosotros 
-    : [...window.defaultNosotros];
-
+// Priorizar localStorage sobre siteConfig para no perder cambios locales en Nosotros
+let savedNosotros = null;
 try {
     const localNosotros = localStorage.getItem('sessionNosotros');
-    if (localNosotros && (!window.siteConfig.sessionNosotros || !window.siteConfig.sessionNosotros.length)) {
-        window.sessionNosotros = JSON.parse(localNosotros);
+    if (localNosotros) {
+        savedNosotros = JSON.parse(localNosotros);
     }
 } catch(e) {
     console.error("Error loading sessionNosotros fallback:", e);
 }
 
-window.sessionAvisos = window.siteConfig.sessionAvisos && window.siteConfig.sessionAvisos.length 
-    ? window.siteConfig.sessionAvisos 
-    : [];
+window.sessionNosotros = (savedNosotros && savedNosotros.length)
+    ? savedNosotros
+    : ((window.siteConfig.sessionNosotros && window.siteConfig.sessionNosotros.length) 
+        ? window.siteConfig.sessionNosotros 
+        : [...window.defaultNosotros]);
 
+let savedAvisos = null;
 try {
-    const localAvisos = localStorage.getItem('sessionAvisosAutonomo'); // Legacy fallback
-    if (localAvisos && (!window.siteConfig.sessionAvisos || !window.siteConfig.sessionAvisos.length)) {
-        window.sessionAvisos = JSON.parse(localAvisos);
+    const localAvisos = localStorage.getItem('sessionAvisosAutonomo');
+    if (localAvisos) {
+        savedAvisos = JSON.parse(localAvisos);
     }
 } catch(e) {
     console.error("Error loading sessionAvisos fallback:", e);
 }
+
+window.sessionAvisos = (savedAvisos && savedAvisos.length)
+    ? savedAvisos
+    : ((window.siteConfig.sessionAvisos && window.siteConfig.sessionAvisos.length) 
+        ? window.siteConfig.sessionAvisos 
+        : []);
 
 // De-duplicar y sincronizar imágenes de avisos vinculados a productos
 if (Array.isArray(window.sessionAvisos)) {
@@ -617,3 +624,91 @@ window.initThemeSelector = function() {
 document.addEventListener('DOMContentLoaded', () => {
     window.initThemeSelector();
 });
+
+// --- UNIFIED LOCAL USER DATA MANAGER (UserDataManager) ---
+(function() {
+    window.UserDataManager = {
+        get: function() {
+            let data = { avatar: '👤', name: '', phone: '', email: '', zipCode: '', address: '', locality: '', province: '', deliveryNotes: '', razonSocial: '', cuit: '', dirFiscal: '' };
+            
+            // 1. Base primaria en userData
+            try {
+                const raw = localStorage.getItem('userData');
+                if (raw) Object.assign(data, JSON.parse(raw));
+            } catch(e) {}
+
+            // 2. Respaldo en checkout data
+            try {
+                const rawChk = localStorage.getItem('latarima_checkout_user_data');
+                if (rawChk) {
+                    const parsed = JSON.parse(rawChk);
+                    if (parsed.name && !data.name) data.name = parsed.name;
+                    if (parsed.phone && !data.phone) data.phone = parsed.phone;
+                    if ((parsed.cp || parsed.zipCode) && !data.zipCode) data.zipCode = parsed.cp || parsed.zipCode;
+                    if (parsed.direccion && !data.address) data.address = parsed.direccion;
+                }
+            } catch(e) {}
+
+            // 3. Respaldo en user_offers_cp
+            try {
+                const offersCp = localStorage.getItem('user_offers_cp');
+                if (offersCp && !data.zipCode) data.zipCode = offersCp;
+            } catch(e) {}
+
+            return data;
+        },
+
+        save: function(newData) {
+            if (!newData || typeof newData !== 'object') return;
+            const current = this.get();
+            const updated = Object.assign({}, current, newData);
+
+            try {
+                localStorage.setItem('userData', JSON.stringify(updated));
+                if (updated.zipCode) {
+                    localStorage.setItem('user_offers_cp', updated.zipCode);
+                }
+                
+                // Disparar evento global para sincronizar interfaz en tiempo real
+                window.dispatchEvent(new CustomEvent('latarima:cp-updated', { 
+                    detail: { zipCode: updated.zipCode, userData: updated } 
+                }));
+            } catch(e) {
+                console.error('[UserDataManager] Error guardando datos locales:', e);
+            }
+
+            return updated;
+        },
+
+        getZipCode: function() {
+            return (this.get().zipCode || '').trim();
+        },
+
+        hasCompleteProfile: function() {
+            const d = this.get();
+            return !!(
+                (d.name || '').trim() &&
+                (d.phone || '').trim() &&
+                (d.email || '').trim() &&
+                (d.address || '').trim() &&
+                (d.zipCode || '').trim() &&
+                (d.locality || '').trim() &&
+                (d.province || '').trim()
+            );
+        },
+
+        clear: function() {
+            try {
+                localStorage.removeItem('userData');
+                localStorage.removeItem('user_offers_cp');
+                localStorage.removeItem('latarima_checkout_user_data');
+                window.dispatchEvent(new CustomEvent('latarima:cp-updated', { 
+                    detail: { zipCode: '', userData: this.get() } 
+                }));
+            } catch(e) {
+                console.error('[UserDataManager] Error limpiando datos locales:', e);
+            }
+            return this.get();
+        }
+    };
+})();

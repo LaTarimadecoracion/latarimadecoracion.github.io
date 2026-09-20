@@ -260,6 +260,12 @@
 
         homeConfig.order.forEach(sectionId => {
             try {
+                // Verificar si la sección está configurada como no visible
+                const secConfig = homeConfig.sections ? homeConfig.sections[sectionId] : null;
+                if (secConfig && secConfig.visible === false) {
+                    return;
+                }
+
                 if (sectionId.startsWith('comp-')) {
                     // Componentes dinámicos del View Builder (renderizados individualmente)
                     const homeStack = (typeof window.contentRegistry !== 'undefined' && window.contentRegistry.home) ? window.contentRegistry.home : [];
@@ -506,69 +512,138 @@
                 } else if (sectionId === 'novedades') {
                     containerEl.id = 'home-new-designs-list';
                     containerEl.className = 'carousel-categories';
+
+                    // Ajustar la cabecera para que la fila de pills ocupe todo el ancho disponible
+                    headerEl.style.flexDirection = 'column';
+                    headerEl.style.alignItems = 'flex-start';
+                    headerEl.style.gap = '4px';
+
+                    const titleRow = document.createElement('div');
+                    titleRow.style.cssText = 'display: flex; align-items: center; gap: 8px; width: 100%;';
+                    titleRow.innerHTML = `
+                        <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a); font-size: 1.5rem; vertical-align: middle;">${config.icon}</span>
+                        <h2 class="section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; padding:0;">${titleToShow}</h2>
+                    `;
+
+                    // Reemplazar HTML de la cabecera limpia
+                    headerEl.innerHTML = '';
+                    headerEl.appendChild(titleRow);
+
+                    // Reemplazar subtítulo por mini botones/pills de rubros (sin botón TODOS)
+                    const rubrosList = (window.rubros && Array.isArray(window.rubros) && window.rubros.length > 0)
+                        ? window.rubros.filter(r => r.visible !== false)
+                        : [{ id: 'carpinteria', name: 'Carpintería', icon: '🪵' }];
+
+                    let activeNovedadesRubro = rubrosList[0] ? rubrosList[0].id : 'carpinteria';
+
+                    const pillsWrapper = document.createElement('div');
+                    pillsWrapper.className = 'novedades-rubros-pills';
+                    pillsWrapper.style.cssText = 'display: flex; gap: 6px; margin-top: 4px; flex-wrap: nowrap; align-items: center; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 4px; width: 100%; max-width: 100%; box-sizing: border-box;';
+
+                    const renderPills = () => {
+                        pillsWrapper.innerHTML = rubrosList.map(r => {
+                            const isSelected = r.id === activeNovedadesRubro;
+                            const bg = isSelected ? '#16a34a' : '#f1f5f9';
+                            const color = isSelected ? '#ffffff' : '#475569';
+                            const border = isSelected ? '#16a34a' : '#e2e8f0';
+                            return `
+                                <button type="button" class="novedades-rubro-pill" data-rubro="${r.id}" style="background: ${bg}; color: ${color}; border: 1px solid ${border}; box-shadow: ${isSelected ? '0 2px 6px rgba(22, 163, 74, 0.25)' : 'none'};">
+                                    ${r.icon ? `<span>${r.icon}</span>` : ''}
+                                    <span>${r.name}</span>
+                                </button>
+                            `;
+                        }).join('');
+
+                        pillsWrapper.querySelectorAll('.novedades-rubro-pill').forEach(btn => {
+                            btn.onclick = (e) => {
+                                e.stopPropagation();
+                                const selectedId = btn.dataset.rubro;
+                                if (selectedId && selectedId !== activeNovedadesRubro) {
+                                    activeNovedadesRubro = selectedId;
+                                    renderPills();
+                                    renderNovedadesProducts();
+                                }
+                            };
+                        });
+                    };
+
+                    headerEl.appendChild(pillsWrapper);
+                    renderPills();
+
                     sectionEl.appendChild(containerEl);
                     homeContent.appendChild(sectionEl);
 
-                    // Rellenar novedades
-                    const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
-                    if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
-                        let allProducts = [];
-                        const seenIds = new Set();
-                        
-                        const targetRubros = config.rubros || (config.rubro && config.rubro !== 'all' ? [config.rubro] : null);
+                    // Función para cargar y renderizar productos del rubro activo
+                    const renderNovedadesProducts = () => {
+                        const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
+                        if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
+                            let allProducts = [];
+                            const seenIds = new Set();
 
-                        sourceData.forEach(cat => {
-                            if (cat.visible === false) return;
-                            
-                            // Validar rubro de la categoría
-                            const catRubro = cat.rubro || 'carpinteria';
-                            if (targetRubros && !targetRubros.includes(catRubro)) return;
+                            sourceData.forEach(cat => {
+                                if (cat.visible === false) return;
+                                
+                                // Validar pertenencia del rubro activo
+                                const catRubro = cat.rubro || 'carpinteria';
+                                if (catRubro !== activeNovedadesRubro) return;
 
-                            if (cat.products) {
-                                cat.products.forEach(product => {
-                                    if (product.visible === false) return;
-                                    if (!seenIds.has(product.id)) {
-                                        seenIds.add(product.id);
-                                        const res = findProductById(product.id);
-                                        allProducts.push({ product, catName: res ? res.catName : cat.name });
-                                    }
-                                });
-                            }
-                        });
-
-                        const limit = config.limit ? parseInt(config.limit, 10) : 6;
-                        const latestProducts = [...allProducts]
-                            .sort((a, b) => getProductTimestamp(b.product) - getProductTimestamp(a.product))
-                            .slice(0, limit);
-
-                        setupInfiniteCarousel(containerEl, latestProducts, (item, idx) => {
-                            const { product, catName } = item || {};
-                            if (!product) {
-                                const placeholderCard = document.createElement('div');
-                                placeholderCard.style.display = 'none';
-                                return placeholderCard;
-                            }
-
-                            const card = document.createElement('div');
-                            card.className = 'category-card';
-                            const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
-                            const isEager = idx < 3;
-                            card.innerHTML = `
-                                <div class="category-card-img-wrapper" style="position:relative;">
-                                    <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${product.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
-                                </div>
-                                <div class="category-overlay">
-                                    <span>${product.title}</span>
-                                </div>
-                            `;
-                            card.addEventListener('click', () => {
-                                if (window.showProductDetail) window.showProductDetail(product, catName);
+                                if (cat.products) {
+                                    cat.products.forEach(product => {
+                                        if (product.visible === false) return;
+                                        if (!seenIds.has(product.id)) {
+                                            seenIds.add(product.id);
+                                            const res = findProductById(product.id);
+                                            allProducts.push({ product, catName: res ? res.catName : cat.name });
+                                        }
+                                    });
+                                }
                             });
-                            return card;
-                        });
-                    } else {
-                        containerEl.innerHTML = '<p class="text-muted">No hay novedades disponibles.</p>';
-                    }
+
+                            const limit = config.limit ? parseInt(config.limit, 10) : 6;
+                            const latestProducts = [...allProducts]
+                                .sort((a, b) => getProductTimestamp(b.product) - getProductTimestamp(a.product))
+                                .slice(0, limit);
+
+                            if (latestProducts.length === 0) {
+                                containerEl.innerHTML = `
+                                    <div style="padding: 1.2rem 1rem; text-align: center; color: #64748b; font-size: 0.8rem; font-weight: 600;">
+                                        ✨ No hay novedades en este rubro por el momento.
+                                    </div>
+                                `;
+                                return;
+                            }
+
+                            setupInfiniteCarousel(containerEl, latestProducts, (item, idx) => {
+                                const { product, catName } = item || {};
+                                if (!product) {
+                                    const placeholderCard = document.createElement('div');
+                                    placeholderCard.style.display = 'none';
+                                    return placeholderCard;
+                                }
+
+                                const card = document.createElement('div');
+                                card.className = 'category-card';
+                                const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                                const isEager = idx < 3;
+                                card.innerHTML = `
+                                    <div class="category-card-img-wrapper" style="position:relative;">
+                                        <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${product.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                                    </div>
+                                    <div class="category-overlay">
+                                        <span>${product.title}</span>
+                                    </div>
+                                `;
+                                card.addEventListener('click', () => {
+                                    if (window.showProductDetail) window.showProductDetail(product, catName);
+                                });
+                                return card;
+                            });
+                        } else {
+                            containerEl.innerHTML = '<p class="text-muted">No hay novedades disponibles.</p>';
+                        }
+                    };
+
+                    renderNovedadesProducts();
 
                 } else if (sectionId === 'buscados') {
                     containerEl.id = 'home-product-list';

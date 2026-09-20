@@ -118,14 +118,8 @@
             <input type="text" id="search-input" placeholder="Buscar..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && activeView.id !== 'view-calculator' && activeView.id !== 'view-mayorista' && window.navigateToView) window.navigateToView('view-search');" style="font-size: 0.9rem; padding: 0;">
         </div>
 
-        <!-- Derecha: Acciones (Ubicación/CP, Catálogo, Notificaciones) -->
+        <!-- Derecha: Acciones (Catálogo, Notificaciones) -->
         <div class="header-actions" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
-            <!-- Indicador de Ubicación / CP -->
-            <button id="header-user-cp-btn" class="btn-outline" style="height: 32px; padding: 0 8px; border-radius: 16px; display: flex; align-items: center; gap: 4px; border: 1.5px solid #bbf7d0; background-color: #f0fdf4; color: #166534; font-size: 0.75rem; font-weight: 800; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.04); transition: transform 0.2s ease;" title="Modificar ubicación / CP de envío">
-                <span class="material-symbols-outlined" style="font-size: 16px; color: #16a34a;">location_on</span>
-                <span id="header-user-cp-label">CP</span>
-            </button>
-
             <!-- Catálogo A-Z -->
             <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-catalogo');" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" title="Catálogo A-Z">
                 <span class="material-symbols-outlined" style="font-size: 18px;">list_alt</span>
@@ -394,26 +388,32 @@
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Aprovechá nuestros paquetes de productos y descuentos por tiempo limitado.</p>
                 </div>
 
-                <!-- Validador de CP exclusivo para Ofertas y Envíos -->
-                <div id="offers-cp-bar" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 1.5px solid #86efac; border-radius: 12px; padding: 0.75rem 1rem; margin-bottom: 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; box-shadow: 0 3px 10px rgba(34,197,94,0.08);">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <span class="material-symbols-outlined" style="color: #16a34a; font-size: 1.3rem;">local_shipping</span>
+                <!-- Banner de Estado de Cobertura & Botón Configurar Perfil / CP -->
+                <div id="offers-cp-bar" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #064e3b 100%); border: 2px solid #22c55e; border-radius: 16px; padding: 1.1rem 1.35rem; margin-bottom: 1.25rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; box-shadow: 0 8px 24px rgba(34, 197, 94, 0.25); position: relative; overflow: hidden;">
+                    <!-- Destello / Glow superior -->
+                    <div style="position: absolute; top: -50px; right: -50px; width: 120px; height: 120px; background: rgba(34, 197, 94, 0.2); filter: blur(30px); border-radius: 50%; pointer-events: none;"></div>
+                    
+                    <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 260px; z-index: 1;">
+                        <div id="offers-cp-icon-badge" style="width: 46px; height: 46px; min-width: 46px; border-radius: 50%; background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(34, 197, 94, 0.5); animation: pulseGlow 2s infinite ease-in-out;">
+                            <span class="material-symbols-outlined" style="font-size: 1.5rem;">distance</span>
+                        </div>
                         <div>
-                            <div style="font-size: 0.85rem; font-weight: 800; color: #14532d; line-height: 1.2;">¿Tenés Envío Gratis en tu localidad?</div>
-                            <div id="offers-cp-status-text" style="font-size: 0.75rem; color: #166534; margin-top: 2px;">Ingresá tu Código Postal para verificar la cobertura real.</div>
+                            <div id="offers-cp-status-text" style="font-size: 0.92rem; font-weight: 800; color: #ffffff; line-height: 1.35;">
+                                📍 Cargá tus datos para activar descuentos automáticos según tu ubicación.
+                            </div>
                         </div>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 6px; width: 100%; max-width: 260px;">
-                        <input type="text" id="offers-cp-input" placeholder="Ej: 1425" maxlength="5" style="flex: 1; padding: 6px 10px; font-size: 0.85rem; font-weight: 700; border: 1.5px solid #86efac; border-radius: 8px; outline: none; background: #ffffff; color: #0f172a; text-align: center;">
-                        <button id="btn-offers-cp-apply" type="button" style="background: #16a34a; color: #ffffff; font-size: 0.8rem; font-weight: 800; padding: 7px 12px; border: none; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: background 0.2s ease;">Validar CP</button>
-                    </div>
+                    <button id="btn-open-user-profile-modal" type="button" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: #ffffff; font-size: 0.86rem; font-weight: 900; padding: 10px 18px; border: none; border-radius: 12px; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(34, 197, 94, 0.4); transition: transform 0.2s ease, filter 0.2s ease; z-index: 1;" onmouseenter="this.style.transform='scale(1.04)'" onmouseleave="this.style.transform='scale(1)'">
+                        <span class="material-symbols-outlined" style="font-size: 20px; color: #ffffff;">tune</span>
+                        <span id="btn-profile-label">⚡ Cargar mis Datos de Entrega</span>
+                    </button>
                 </div>
 
                 <!-- Pestañas de Rubros para Ofertas -->
                 <div id="offers-rubros-tabs-container" class="rubros-tabs-bar" style="margin-bottom: 1rem;"></div>
 
-                <div id="offers-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
+                <div id="offers-grid-container" class="offers-grid-layout">
                     <!-- Inyectado dinámicamente por ui-offers.js -->
                 </div>
 

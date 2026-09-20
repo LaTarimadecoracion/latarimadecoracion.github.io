@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tarima-cache-v59-1789782261094';
+const CACHE_NAME = 'tarima-cache-v59-1789854530273';
 const STATIC_ASSETS = [
     './',
     './index.html',

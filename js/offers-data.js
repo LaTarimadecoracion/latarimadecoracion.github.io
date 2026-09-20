@@ -14,7 +14,8 @@ const offersData = [
                 "acabado": "Natural",
                 "medida": "110 x 45 cm",
                 "unitPrice": 27000,
-                "quantity": 1
+                "quantity": 1,
+                "price": 27000
             },
             {
                 "productId": "91",
@@ -23,7 +24,8 @@ const offersData = [
                 "acabado": "Natural",
                 "medida": "Inclinada 100 a 150 cm",
                 "unitPrice": 45000,
-                "quantity": 1
+                "quantity": 1,
+                "price": 45000
             }
         ],
         "subtotalPrice": 72000,

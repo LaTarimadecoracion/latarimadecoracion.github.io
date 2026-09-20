@@ -1,11 +1,88 @@
 const productsData = [
     {
+        "id": "herrajes-todos",
+        "name": "Todos los productos",
+        "rubro": "herrajes",
+        "image": "img/logo_provisional.png",
+        "visible": false,
+        "order": 0,
+        "products": [
+            {
+                "id": "N1",
+                "shortId": "3C",
+                "title": "Tornillo Punta Aguja 6 X 1 1/2 Drywall P/ Madera",
+                "description": "El Tornillo Punta Aguja 6 x 1 1/2\" Drywall para Madera es la solución ideal para la fijación de placas de yeso a estructuras de madera. Con un diámetro de 3.5 mm y una forma de cabeza trompeta, este tornillo ofrece un agarre firme y estable, asegurando un ensamblaje duradero. Su punta aguja permite una penetración precisa en la madera, facilitando el trabajo en proyectos de construcción y renovación.\n\nEste tornillo destaca por su rosca helicoidal, diseñada para proporcionar un apriete eficiente y seguro, siendo compatible con el sistema PH2. Fabricado en acero con recubrimiento negro anticorrosivo, garantiza resistencia frente a la corrosión, lo que lo convierte en una elección confiable para aplicaciones tanto interiores como exteriores. Viene en un paquete de 1000 unidades, lo que asegura contar con el material suficiente para llevar a cabo grandes proyectos sin preocupaciones.\n\nLa superficie recomendada para su uso son las placas de yeso y la madera, lo que amplía su versatilidad en diferentes trabajos. Ideal tanto para profesionales de la construcción como para aficionados al bricolaje, estos tornillos son esenciales en la caja de herramientas de cualquier persona que busque calidad y eficacia en sus fijaciones. Cada proyecto se ejecutará con precisión y seguridad.\n\nSomos LA TARIMA. Estamos en Hurlingham con atención al público y hacemos Mercado Envíos a todo el país.\nTrabajamos como revendedores seleccionando marcas de confianza; todos nuestros productos son normalizados y cumplen con los más altos estándares de calidad.\nRealizamos facturas A y B.",
+                "image": "img/tornillos/tornillo-punta-aguja-6-x-1-12-drywall-p-madera/1789865946940-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/tornillos/tornillo-punta-aguja-6-x-1-12-drywall-p-madera/1789865946940-imagenwebp.webp",
+                        "images_list": [
+                            "img/tornillos/tornillo-punta-aguja-6-x-1-12-drywall-p-madera/1789865946940-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1000 un",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "500 un",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": 17000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789865946949,
+                "primaryCatId": "cat-23-mu93q76a",
+                "history": []
+            }
+        ]
+    },
+    {
         "id": "pintureria-todos",
         "name": "Todos los productos",
         "rubro": "pintureria",
         "image": "img/logo_provisional.png",
         "visible": true,
-        "order": 0,
+        "order": 1,
         "products": []
     },
     {
@@ -14,7 +91,7 @@ const productsData = [
         "rubro": "electricidad",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 1,
+        "order": 2,
         "products": [
             {
                 "id": "L1",
@@ -70,7 +147,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789839131712,
                 "primaryCatId": "cat-21-mu7q9i7y",
-                "history": []
+                "history": [],
+                "views": 14
             },
             {
                 "id": "L2",
@@ -126,7 +204,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789839031552,
                 "primaryCatId": "cat-21-mu7q9i7y",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "L3",
@@ -183,7 +262,8 @@ const productsData = [
                 "last_modified": 1789839502393,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "L4",
@@ -239,7 +319,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789849249639,
                 "primaryCatId": "cat-21-mu7q9i7y",
-                "history": []
+                "history": [],
+                "views": 7
             }
         ]
     },
@@ -249,7 +330,7 @@ const productsData = [
         "rubro": "carpinteria",
         "image": "img/carpinteria-/portada-1783038461695-imagen.webp",
         "visible": false,
-        "order": 2,
+        "order": 3,
         "products": [
             {
                 "id": "52",
@@ -5323,7 +5404,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 89
+                "views": 95
             },
             {
                 "id": "22",
@@ -5413,7 +5494,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 5,
+                "views": 6,
                 "stock": 0,
                 "history": [
                     {
@@ -5632,7 +5713,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 3,
+                "views": 4,
                 "stock": 0,
                 "history": [
                     {
@@ -7044,7 +7125,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 9,
+                "views": 10,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -9894,7 +9975,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 5,
+                "views": 7,
                 "stock": 0,
                 "history": [
                     {
@@ -10733,7 +10814,7 @@ const productsData = [
         "name": "Borrador",
         "image": "img/borrador/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 3,
+        "order": 4,
         "products": [],
         "visible": false
     },
@@ -10741,7 +10822,7 @@ const productsData = [
         "id": "Vinotecas",
         "name": "Vinotecas - Bodegas",
         "image": "img/vinotecas---bodegas/portada-1780289410168-imagen.webp",
-        "order": 4,
+        "order": 5,
         "products": [
             {
                 "id": "21",
@@ -10820,7 +10901,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 89
+                "views": 95
             },
             {
                 "id": "22",
@@ -10911,7 +10992,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 5,
+                "views": 6,
                 "stock": 0,
                 "history": [
                     {
@@ -11022,7 +11103,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 3,
+                "views": 4,
                 "stock": 0,
                 "history": [
                     {
@@ -11243,7 +11324,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 9,
+                "views": 10,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -11383,7 +11464,7 @@ const productsData = [
         "name": "Percheros",
         "image": "img/percheros/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 5,
+        "order": 6,
         "products": [
             {
                 "id": "31",
@@ -11592,7 +11673,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 5,
+                "views": 7,
                 "stock": 0,
                 "history": [
                     {
@@ -12605,7 +12686,7 @@ const productsData = [
         "id": "Barandas",
         "name": "Barandas para cama",
         "image": "img/barandas-para-cama/portada-1782437522433-imagen.webp",
-        "order": 6,
+        "order": 7,
         "products": [
             {
                 "id": "51",
@@ -14810,7 +14891,7 @@ const productsData = [
         "name": "Organizadores",
         "image": "img/organizadores/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 7,
+        "order": 8,
         "products": [
             {
                 "id": "41",
@@ -16803,7 +16884,7 @@ const productsData = [
         "id": "Estantes",
         "name": "Estantes",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 8,
+        "order": 9,
         "products": [
             {
                 "id": "61",
@@ -18412,7 +18493,7 @@ const productsData = [
         "name": "Cunas",
         "image": "img/cunas/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 9,
+        "order": 10,
         "products": [
             {
                 "id": "71",
@@ -19259,7 +19340,7 @@ const productsData = [
         "name": "Camas para niños",
         "image": "img/camas-para-ninos/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 10,
+        "order": 11,
         "products": [
             {
                 "id": "81",
@@ -19401,7 +19482,7 @@ const productsData = [
         "id": "muebles",
         "name": "Escaleras",
         "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 11,
+        "order": 12,
         "products": [
             {
                 "id": "91",
@@ -19699,7 +19780,7 @@ const productsData = [
         "id": "Steps",
         "name": "Steps / Cajones",
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 12,
+        "order": 13,
         "products": [
             {
                 "id": "A1",
@@ -20350,7 +20431,7 @@ const productsData = [
         "id": "Juguetes",
         "name": "Juguetes",
         "image": "img/juguetes/portada-1783038439545-imagen.webp",
-        "order": 13,
+        "order": 14,
         "products": [
             {
                 "id": "B1",
@@ -20825,7 +20906,7 @@ const productsData = [
         "name": "Sillas y sillones",
         "image": "img/sillas-y-sillones/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 14,
+        "order": 15,
         "products": [
             {
                 "id": "C1",
@@ -21235,7 +21316,7 @@ const productsData = [
         "name": "Mesas de madera",
         "image": "img/mesas-de-madera/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 15,
+        "order": 16,
         "products": [
             {
                 "id": "D1",
@@ -22014,7 +22095,7 @@ const productsData = [
         "name": "Jardín",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 16,
+        "order": 17,
         "products": [
             {
                 "id": "E1",
@@ -22949,7 +23030,7 @@ const productsData = [
         "name": "Hogar",
         "image": "img/hogar/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 17,
+        "order": 18,
         "products": [
             {
                 "id": "F1",
@@ -23612,7 +23693,7 @@ const productsData = [
         "name": "Todo Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 18,
+        "order": 19,
         "products": [
             {
                 "id": "G1",
@@ -23919,7 +24000,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 19,
+        "order": 20,
         "products": [
             {
                 "id": "H1",
@@ -24273,7 +24354,7 @@ const productsData = [
         "name": "Kits Electricos",
         "image": "img/kits-electricos/portada-imagenwebp.webp",
         "rubro": "electricidad",
-        "order": 20,
+        "order": 21,
         "products": [
             {
                 "id": "L1",
@@ -24329,7 +24410,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789839131712,
                 "primaryCatId": "cat-21-mu7q9i7y",
-                "history": []
+                "history": [],
+                "views": 14
             },
             {
                 "id": "L2",
@@ -24385,7 +24467,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789839031552,
                 "primaryCatId": "cat-21-mu7q9i7y",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "L3",
@@ -24442,7 +24525,8 @@ const productsData = [
                 "last_modified": 1789839502393,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 0
             },
             {
                 "id": "L4",
@@ -24498,6 +24582,84 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789849249639,
                 "primaryCatId": "cat-21-mu7q9i7y",
+                "history": [],
+                "views": 7
+            }
+        ],
+        "visible": true
+    },
+    {
+        "id": "cat-23-mu93q76a",
+        "name": "Tornillos",
+        "image": "img/herrajes/tornillos/portada-imagenwebp.webp",
+        "rubro": "herrajes",
+        "order": 22,
+        "products": [
+            {
+                "id": "N1",
+                "shortId": "3C",
+                "title": "Tornillo Punta Aguja 6 X 1 1/2 Drywall P/ Madera",
+                "description": "El Tornillo Punta Aguja 6 x 1 1/2\" Drywall para Madera es la solución ideal para la fijación de placas de yeso a estructuras de madera. Con un diámetro de 3.5 mm y una forma de cabeza trompeta, este tornillo ofrece un agarre firme y estable, asegurando un ensamblaje duradero. Su punta aguja permite una penetración precisa en la madera, facilitando el trabajo en proyectos de construcción y renovación.\n\nEste tornillo destaca por su rosca helicoidal, diseñada para proporcionar un apriete eficiente y seguro, siendo compatible con el sistema PH2. Fabricado en acero con recubrimiento negro anticorrosivo, garantiza resistencia frente a la corrosión, lo que lo convierte en una elección confiable para aplicaciones tanto interiores como exteriores. Viene en un paquete de 1000 unidades, lo que asegura contar con el material suficiente para llevar a cabo grandes proyectos sin preocupaciones.\n\nLa superficie recomendada para su uso son las placas de yeso y la madera, lo que amplía su versatilidad en diferentes trabajos. Ideal tanto para profesionales de la construcción como para aficionados al bricolaje, estos tornillos son esenciales en la caja de herramientas de cualquier persona que busque calidad y eficacia en sus fijaciones. Cada proyecto se ejecutará con precisión y seguridad.\n\nSomos LA TARIMA. Estamos en Hurlingham con atención al público y hacemos Mercado Envíos a todo el país.\nTrabajamos como revendedores seleccionando marcas de confianza; todos nuestros productos son normalizados y cumplen con los más altos estándares de calidad.\nRealizamos facturas A y B.",
+                "image": "img/tornillos/tornillo-punta-aguja-6-x-1-12-drywall-p-madera/1789865946940-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/tornillos/tornillo-punta-aguja-6-x-1-12-drywall-p-madera/1789865946940-imagenwebp.webp",
+                        "images_list": [
+                            "img/tornillos/tornillo-punta-aguja-6-x-1-12-drywall-p-madera/1789865946940-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1000 un",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "500 un",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": 17000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1789865946949,
+                "primaryCatId": "cat-23-mu93q76a",
                 "history": []
             }
         ],

@@ -6487,4 +6487,79 @@ a .material-symbols-outlined {
     font-family: var(--font-main, sans-serif);
 }
 
+/* ── GRILLA DE OFERTAS RESPONSIVA (2 COLUMNAS EN MÓVIL / ESTILO CATÁLOGO EN PC) ── */
+.offers-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+    .offers-grid-layout {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.25rem;
+    }
+}
+
+/* Marco de visualización 3:2 estricto para todas las imágenes de ofertas */
+.offers-grid-layout .offer-photo-wrapper,
+.offers-grid-layout .category-card-img-wrapper {
+    width: 100% !important;
+    aspect-ratio: 3 / 2 !important;
+    height: auto !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.offers-grid-layout .offer-photo-wrapper img,
+.offers-grid-layout .category-card-img-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* ── MINI BOTONES RESPONSIVOS POR RUBRO (NUEVOS DISEÑOS) ── */
+.novedades-rubros-pills {
+    display: flex;
+    gap: 6px;
+    margin-top: 2px;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 2px 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.novedades-rubros-pills::-webkit-scrollbar {
+    display: none;
+}
+.novedades-rubro-pill {
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    outline: none;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    width: fit-content;
+    line-height: 1.2;
+    touch-action: manipulation;
+}
+@media (min-width: 640px) {
+    .novedades-rubro-pill {
+        padding: 3px 10px;
+        font-size: 0.72rem;
+        gap: 4px;
+    }
+}
+
 

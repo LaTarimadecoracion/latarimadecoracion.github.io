@@ -814,17 +814,25 @@ window.initPagesAdmin = function() {
                     `;
                 }
                 
+                const isSectionVisible = section.visible !== false;
+                
                 card.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; ${!isSectionVisible ? 'opacity: 0.6;' : ''}">
                         <div style="display: flex; align-items: center; gap: 8px;">
                             <div class="section-drag-handle" title="Mantén presionado para arrastrar y reordenar" style="display: flex; align-items: center; justify-content: center; cursor: grab; padding: 0.2rem; color: var(--text-muted); flex-shrink: 0;">
                                 <span class="material-symbols-outlined" style="font-size: 18px;">drag_indicator</span>
                             </div>
-                            <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a); font-size: 1.35rem; vertical-align: middle;">${section.icon}</span>
+                            <span class="material-symbols-outlined" style="color: ${isSectionVisible ? 'var(--primary-color, #c0510a)' : '#94a3b8'}; font-size: 1.35rem; vertical-align: middle;">${section.icon}</span>
                             <strong style="color: var(--text-main); font-size: 0.95rem;">${section.title} <span style="font-weight: normal; color: var(--text-muted); font-size: 0.8rem;">(ID: ${sectionId})</span></strong>
                         </div>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: ${isSectionVisible ? '#16a34a' : '#64748b'}; cursor: pointer; user-select: none; background: ${isSectionVisible ? '#f0fdf4' : '#f1f5f9'}; border: 1px solid ${isSectionVisible ? '#bbf7d0' : '#cbd5e1'}; padding: 4px 10px; border-radius: 20px; transition: all 0.2s;">
+                                <input type="checkbox" class="input-section-visible-check" ${isSectionVisible ? 'checked' : ''} style="cursor: pointer; accent-color: #16a34a; width: 15px; height: 15px;" data-id="${sectionId}">
+                                <span>${isSectionVisible ? '👁️ Visible' : '🙈 Oculto'}</span>
+                            </label>
+                        </div>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; ${!isSectionVisible ? 'opacity: 0.7;' : ''}">
                         <div>
                             <label style="font-size: 0.72rem; font-weight:600; display:block; margin-bottom: 4px; color: var(--text-muted);">Título</label>
                             <input type="text" class="input-section-title" value="${section.title}" style="width:100%; padding:0.5rem 0.75rem; font-size:0.8rem; border:1.5px solid #E2E8F0; border-radius:8px; font-family:var(--font-main);" data-id="${sectionId}">
@@ -857,6 +865,16 @@ window.initPagesAdmin = function() {
                     handleInputChange('icon', e);
                     renderAdminHomeSectionsList();
                 });
+
+                const visibleCheck = card.querySelector('.input-section-visible-check');
+                if (visibleCheck) {
+                    visibleCheck.addEventListener('change', (e) => {
+                        homeConfig.sections[sectionId].visible = e.target.checked;
+                        saveHomeConfig();
+                        if (window.renderHome) window.renderHome();
+                        renderAdminHomeSectionsList();
+                    });
+                }
                 
                 const limitInput = card.querySelector('.input-section-limit');
                 if (limitInput) {

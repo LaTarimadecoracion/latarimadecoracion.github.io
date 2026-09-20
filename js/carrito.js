@@ -982,121 +982,48 @@
             } catch(e) {}
 
             // Estructura de cabecera de perfil centrado + engranaje en esquina superior derecha
+            const fullUserData = window.UserDataManager ? window.UserDataManager.get() : {};
+            const userAvatar = fullUserData.avatar || 'face';
+            const userNameDisplay = (fullUserData.name || '').trim() || 'Cliente La Tarima';
+            const userSubDisplay = (fullUserData.locality || '').trim() 
+                ? `📍 ${fullUserData.locality}${(fullUserData.province || '').trim() ? ', ' + fullUserData.province : ''}`
+                : ((fullUserData.phone || '').trim() ? `📞 ${fullUserData.phone}` : 'Configurá tus datos');
+
+            let avatarHTML = '';
+            if (userAvatar && userAvatar.startsWith('data:image')) {
+                avatarHTML = `<div class="profile-avatar-circle" style="background-image: url('${userAvatar}'); background-size: cover; background-position: center; border: 2px solid #16a34a;"></div>`;
+            } else {
+                avatarHTML = `
+                    <div class="profile-avatar-circle" style="background: #f0fdf4; color: #16a34a; border: 2px solid #86efac; display: flex; align-items: center; justify-content: center;">
+                        <span class="material-symbols-outlined" style="font-size: 26px;">${userAvatar || 'face'}</span>
+                    </div>
+                `;
+            }
+
             viewContainer.innerHTML = `
                 ${wholesaleBannerHTML}
                 <!-- Cabecera de Perfil Compacta (Avatar y datos a la izq, config a la derecha) -->
-                <div class="profile-card-header">
+                <div class="profile-card-header" id="btn-open-user-profile-from-cart" style="cursor: pointer; transition: transform 0.15s ease;">
                     <div class="profile-header-left">
                         <!-- Avatar Compacto -->
-                        ${userData.photo ? `
-                            <div class="profile-avatar-circle" style="background-image: url('${userData.photo}'); border: 2px solid var(--primary-color, #c0510a);"></div>
-                        ` : `
-                            <div class="profile-avatar-circle" style="background: ${curPreset.gradient};">
-                                <span class="material-symbols-outlined" style="font-size: 24px;">${curPreset.icon}</span>
-                            </div>
-                        `}
+                        ${avatarHTML}
                         <!-- Datos del Perfil -->
                         <div class="profile-info">
-                            <h3>${displayName}</h3>
-                            <p>${userData.phone.trim() ? `📞 ${userData.phone.trim()}` : 'Sin celular configurado'}</p>
+                            <h3 style="display: flex; align-items: center; gap: 6px;">
+                                ${userNameDisplay}
+                                <span class="material-symbols-outlined" style="font-size: 16px; color: #16a34a;">verified</span>
+                            </h3>
+                            <p>${userSubDisplay}</p>
                         </div>
                     </div>
-                    <!-- Botón de Engranaje de Configuración a la Derecha -->
-                    <button type="button" class="profile-settings-btn" id="btn-toggle-profile-settings" title="Configurar Perfil">
-                        <span class="material-symbols-outlined" style="font-size: 20px;">settings</span>
+                    <!-- Botón de Engranaje para Editar Perfil (Abre Modal Completo) -->
+                    <button type="button" class="profile-settings-btn" id="btn-toggle-profile-settings" title="Editar Perfil" style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d;">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">edit_note</span>
                     </button>
                 </div>
 
-                <!-- Formulario de Configuración de Datos (Oculto por defecto, campos ordenados por despacho) -->
-                <div class="profile-edit-form" id="profile-expandable-form" style="display:none;">
-                    <h4 style="font-size:0.85rem; margin:0; color:var(--text-main, #334155); font-weight:700; display:flex; align-items:center; gap:4px;">
-                        <span class="material-symbols-outlined" style="font-size:16px;">person_outline</span>
-                        Tus Datos Locales
-                    </h4>
-                    <!-- Aviso de Privacidad Estricto y Crítico -->
-                    <p style="font-size: 0.7rem; color: #64748b; margin: 0 0 0.2rem 0; line-height: 1.35;">
-                        Tu información se almacena 100% local en tu dispositivo y no se comparte con nadie. La usamos solo para agilizar tu pedido.
-                    </p>
-
-                    <!-- Selector de Foto Custom -->
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Foto de Perfil</label>
-                        <div style="display:flex; align-items:center; gap:12px; margin-bottom: 4px;">
-                            <div id="photo-preview-circle" style="width: 54px; height: 54px; border-radius: 50%; background-size: cover; background-position: center; background-image: ${userData.photo ? `url('${userData.photo}')` : 'none'}; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1.5px solid #E8ECF0; flex-shrink:0;">
-                                ${!userData.photo ? `<span class="material-symbols-outlined" style="color: #94a3b8; font-size: 20px;">add_a_photo</span>` : ''}
-                            </div>
-                            <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
-                                <input type="file" id="edit-user-photo" accept="image/*" style="font-size:0.78rem; font-family:var(--font-main); color:var(--text-muted); width: 100%;">
-                                ${userData.photo ? `
-                                    <button type="button" id="btn-remove-user-photo" style="background:none; border:none; color:#e11d48; font-size:0.72rem; cursor:pointer; text-align:left; padding:0; font-weight:600; width: fit-content; display:flex; align-items:center; gap:2px; margin-top:2px;">
-                                        <span class="material-symbols-outlined" style="font-size:12px;">delete</span> Eliminar Foto
-                                    </button>
-                                ` : ''}
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Campos del Formulario ordenados por despacho -->
-                    <div class="profile-form-grid">
-                        <div style="display:flex; flex-direction:column; gap:4px;">
-                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Nombre y Apellido / Apodo</label>
-                            <input type="text" id="edit-user-name" value="${userData.name}" placeholder="ej: Juan Pérez" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                        </div>
-                        <div style="display:flex; flex-direction:column; gap:4px;">
-                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">DNI (Despacho / Facturación)</label>
-                            <input type="text" id="edit-user-dni" value="${userData.dni}" placeholder="ej: 34.567.890" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                        </div>
-                        <div style="display:flex; flex-direction:column; gap:4px;">
-                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Celular (WhatsApp)</label>
-                            <input type="tel" id="edit-user-phone" value="${userData.phone}" placeholder="ej: 11 6700 7723" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                        </div>
-                        <div style="display:flex; flex-direction:column; gap:4px;">
-                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Teléfono Alternativo / Fijo</label>
-                            <input type="tel" id="edit-user-tel" value="${userData.tel}" placeholder="ej: 011 4452-1234" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                        </div>
-                        <div style="display:flex; flex-direction:column; gap:4px; grid-column: 1 / -1;">
-                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Correo Electrónico</label>
-                            <input type="email" id="edit-user-email" value="${userData.email}" placeholder="ej: juan@mail.com" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                        </div>
-                        <div style="display:flex; flex-direction:column; gap:4px; grid-column: 1 / -1;">
-                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Domicilio Particular Completo y entre calles</label>
-                            <input type="text" id="edit-user-address" value="${userData.address}" placeholder="ej: Av. Vergara 1234, e/ Paso y Arenales" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                        </div>
-                        <div style="display:flex; flex-direction:column; gap:4px;">
-                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Localidad</label>
-                            <input type="text" id="edit-user-locality" value="${userData.locality}" placeholder="ej: Hurlingham" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                        </div>
-                        <div style="display:flex; flex-direction:column; gap:4px;">
-                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Provincia</label>
-                            <input type="text" id="edit-user-province" value="${userData.province}" placeholder="ej: Buenos Aires" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                        </div>
-                        <div style="display:flex; flex-direction:column; gap:4px; grid-column: 1 / -1;">
-                            <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">Código Postal</label>
-                            <input type="text" id="edit-user-zipCode" value="${userData.zipCode}" placeholder="ej: 1686" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; font-family:var(--font-main);">
-                        </div>
-                    </div>
-                    
-                    <div style="display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:0.75rem; font-weight:600; color:var(--text-main, #334155);">O elegí un Avatar temático</label>
-                        <div class="avatar-selector-grid">
-                            ${avatarPresets.map(preset => `
-                                <div class="avatar-option ${userData.avatarId === preset.id ? 'selected' : ''}" 
-                                     data-id="${preset.id}" 
-                                     style="background: ${preset.gradient};" 
-                                     title="${preset.label}">
-                                    <span class="material-symbols-outlined">${preset.icon}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <hr style="margin: 2rem 0; border:none; border-top: 1.5px solid #EEF0F3; width: 100%;">
-
-                    <button type="button" id="btn-save-profile-local" class="btn-primary" style="margin-top:0.4rem; padding:0.6rem; font-size:0.85rem; font-weight:bold;">Guardar Datos</button>
-                </div>
-
                 <!-- Sección de Favoritos (Carrito Integrado) -->
-                <div class="cart-section">
+                <div class="cart-section" style="margin-top: 1rem;">
                     <h4>
                         <span class="material-symbols-outlined" style="font-size:16px; color:var(--primary-color, #c0510a);">favorite</span>
                         MI LISTA DE DESEOS (${cartItems.length})
@@ -1106,110 +1033,11 @@
             `;
 
             // --- Registrar Eventos del Perfil ---
-            const gearTrigger = document.getElementById('btn-toggle-profile-settings');
-            const formExpand = document.getElementById('profile-expandable-form');
-            if (gearTrigger && formExpand) {
-                gearTrigger.addEventListener('click', (e) => {
-                    try {
-                        e.stopPropagation();
-                        const isHidden = formExpand.style.display === 'none';
-                        formExpand.style.display = isHidden ? 'flex' : 'none';
-                        if (isHidden) {
-                            formExpand.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
-                    } catch (err) {
-                        console.error('[Carrito Module] Error toggling gear panel:', err);
-                    }
-                });
-            }
-
-            // Subida y Procesamiento de Foto (FileReader)
-            const photoInput = document.getElementById('edit-user-photo');
-            const previewCircle = document.getElementById('photo-preview-circle');
-            let tempPhotoBase64 = userData.photo || '';
-
-            if (photoInput) {
-                photoInput.addEventListener('change', (e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                        if (file.size > 1.5 * 1024 * 1024) {
-                            alert('La imagen seleccionada supera el tamaño máximo recomendado (1.5 MB). Elegí otra.');
-                            photoInput.value = '';
-                            return;
-                        }
-                        const reader = new FileReader();
-                        reader.onload = function(evt) {
-                            tempPhotoBase64 = evt.target.result;
-                            if (previewCircle) {
-                                previewCircle.style.backgroundImage = `url('${tempPhotoBase64}')`;
-                                previewCircle.innerHTML = '';
-                            }
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-            }
-
-            const removePhotoBtn = document.getElementById('btn-remove-user-photo');
-            if (removePhotoBtn) {
-                removePhotoBtn.addEventListener('click', () => {
-                    tempPhotoBase64 = '';
-                    if (previewCircle) {
-                        previewCircle.style.backgroundImage = 'none';
-                        previewCircle.innerHTML = `<span class="material-symbols-outlined" style="color: #94a3b8; font-size: 20px;">add_a_photo</span>`;
-                    }
-                    if (photoInput) photoInput.value = '';
-                    removePhotoBtn.style.display = 'none';
-                });
-            }
-
-            // Selección de Avatar Preset
-            const presetsOptions = viewContainer.querySelectorAll('.avatar-option');
-            let selectedAvatarId = userData.avatarId;
-            presetsOptions.forEach(opt => {
-                opt.addEventListener('click', () => {
-                    presetsOptions.forEach(o => o.classList.remove('selected'));
-                    opt.classList.add('selected');
-                    selectedAvatarId = opt.dataset.id;
-                });
-            });
-
-            // Guardado del Perfil
-            const saveProfileBtn = document.getElementById('btn-save-profile-local');
-            if (saveProfileBtn) {
-                saveProfileBtn.addEventListener('click', () => {
-                    const name = document.getElementById('edit-user-name').value.trim();
-                    const dni = document.getElementById('edit-user-dni').value.trim();
-                    const phone = document.getElementById('edit-user-phone').value.trim();
-                    const tel = document.getElementById('edit-user-tel').value.trim();
-                    const email = document.getElementById('edit-user-email').value.trim();
-                    const address = document.getElementById('edit-user-address').value.trim();
-                    const locality = document.getElementById('edit-user-locality').value.trim();
-                    const province = document.getElementById('edit-user-province').value.trim();
-                    const zipCode = document.getElementById('edit-user-zipCode').value.trim();
-
-                    userData = {
-                        name,
-                        dni,
-                        phone,
-                        tel,
-                        email,
-                        address,
-                        locality,
-                        province,
-                        zipCode,
-                        avatarId: selectedAvatarId,
-                        photo: tempPhotoBase64
-                    };
-
-                    saveUserData();
-                    renderPerfilCarritoView();
-                    
-                    const toast = document.getElementById('admin-toast');
-                    if (toast) {
-                        toast.textContent = "¡Perfil actualizado localmente!";
-                        toast.classList.add('show');
-                        setTimeout(() => toast.classList.remove('show'), 2000);
+            const openProfileBtn = document.getElementById('btn-open-user-profile-from-cart');
+            if (openProfileBtn) {
+                openProfileBtn.addEventListener('click', () => {
+                    if (typeof window.openUserProfileModal === 'function') {
+                        window.openUserProfileModal();
                     }
                 });
             }

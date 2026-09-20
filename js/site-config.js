@@ -94,7 +94,8 @@ window.siteConfig = {
             "ofertas": {
                 "title": "Ofertas Especiales",
                 "subtitle": "Promociones y combos por tiempo limitado",
-                "icon": "local_offer"
+                "icon": "local_offer",
+                "visible": false
             },
             "novedades": {
                 "title": "Nuevos Diseños 2026",
@@ -115,7 +116,7 @@ window.siteConfig = {
             "title": "Pasión por la madera",
             "description": "Somos una carpintería especializada en crear productos únicos, seguros y con diseño para tu hogar. Ubicados en Hurlingham, Buenos Aires.",
             "mediaType": "image",
-            "image": "img/nosotros/bloque/1789698048156-imagenwebp.webp",
+            "image": "img/nosotros/bloque/1789872288195-imagenwebp.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
@@ -172,6 +173,25 @@ window.siteConfig = {
         }
     ],
     "sessionAvisos": [
+        {
+            "title": "¡Nuevo Ingreso: Tornillo Punta Aguja 6 X 1 1/2 Drywall P/ Madera!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Tornillo Punta Aguja 6 X 1 1/2 Drywall P/ Madera!",
+            "mediaType": "image",
+            "image": "img/tornillos/tornillo-punta-aguja-6-x-1-12-drywall-p-madera/1789865946940-imagenwebp.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=N1",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=N1",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1789865946955
+        },
         {
             "title": "¡Nuevo Ingreso: Kit Instalación Materiales Eléctricos Cables Completo Full!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Kit Instalación Materiales Eléctricos Cables Completo Full!",
@@ -818,6 +838,12 @@ window.siteConfig = {
         {
             "id": "electricidad",
             "name": "Electricidad",
+            "idMode": "auto",
+            "visible": true
+        },
+        {
+            "id": "herrajes",
+            "name": "Herrajes",
             "idMode": "auto",
             "visible": true
         }
