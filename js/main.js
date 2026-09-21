@@ -246,7 +246,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 1. Detectar parámetro de URL ultra corta (?s=CODE o ruta directa /1.A)
         let shortCode = urlParams.get('s');
-        if (!shortCode) {
+        if (shortCode && (shortCode.toLowerCase() === 'calcular' || shortCode.toLowerCase() === 'calculador')) {
+            setTimeout(() => {
+                if (window.navigateToView) {
+                    console.log(`[Router] Acceso directo a calculadora vía s=${shortCode}`);
+                    window.navigateToView('view-calculator');
+                }
+            }, 150);
+            shortCode = null;
+        } else if (!shortCode) {
             const segments = window.location.pathname.split('/').filter(Boolean);
             const lastSegment = segments.length > 0 ? segments[segments.length - 1].replace('.html', '').trim() : '';
             if (/^([0-9a-z]{1,4}(\.[0-9a-z]{1,4})+|[0-9a-z]{2,12})$/i.test(lastSegment)) {
@@ -438,7 +446,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         
         let shortCode = urlParams.get('s');
-        if (!shortCode) {
+        if (shortCode && (shortCode.toLowerCase() === 'calcular' || shortCode.toLowerCase() === 'calculador')) {
+            if (window.navigateToView) {
+                return window.navigateToView('view-calculator');
+            }
+        } else if (!shortCode) {
             const segments = window.location.pathname.split('/').filter(Boolean);
             const lastSegment = segments.length > 0 ? segments[segments.length - 1].replace('.html', '').trim() : '';
             if (/^([0-9a-z]{1,4}(\.[0-9a-z]{1,4})+|[0-9a-z]{2,12})$/i.test(lastSegment) || /^O\.[0-9A-Z]+$/i.test(lastSegment)) {
