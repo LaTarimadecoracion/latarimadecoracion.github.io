@@ -174,6 +174,44 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Exhibidor Organizador 4 Estantes De Madera!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Exhibidor Organizador 4 Estantes De Madera!",
+            "mediaType": "image",
+            "image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=9K",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=9K",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1790381108433
+        },
+        {
+            "title": "¡Nuevo Ingreso: Porta Rollo De Cocina Con Base Madera!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Porta Rollo De Cocina Con Base Madera!",
+            "mediaType": "image",
+            "image": "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=JC",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=JC",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1790378932972
+        },
+        {
             "title": "¡Nuevo Ingreso: Tornillo Punta Aguja 6 X 1 1/2 Drywall P/ Madera!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Tornillo Punta Aguja 6 X 1 1/2 Drywall P/ Madera!",
             "mediaType": "image",

@@ -72,7 +72,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789865946949,
                 "primaryCatId": "cat-23-mu93q76a",
-                "history": []
+                "history": [],
+                "views": 1
             }
         ]
     },
@@ -2013,6 +2014,7 @@ const productsData = [
             },
             {
                 "id": "C2",
+                "shortId": "3E",
                 "title": "Silla infantil",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
                 "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
@@ -2022,8 +2024,7 @@ const productsData = [
                         "cover_image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
                         "images_list": [
                             "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
-                            "img/sillas-y-sillones/silla-infantil/Silla infantil.webp",
-                            "img/sillas-y-sillones/silla-infantil/1780323571488-imagen.webp"
+                            "img/sillas-y-sillones/silla-infantil/1790379461985-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2034,14 +2035,14 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 20000,
+                                "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "price": 15000
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -2096,21 +2097,26 @@ const productsData = [
                     "muebles para casa",
                     "envios a todo el pais"
                 ],
-                "last_modified": 1783635806092,
-                "primaryCatId": "sillas-sillones",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 0
+                "quantityDiscounts": [],
+                "last_modified": 1790379461990,
+                "primaryCatId": "sillas-sillones",
+                "history": []
             },
             {
                 "id": "42",
@@ -3523,33 +3529,37 @@ const productsData = [
             },
             {
                 "id": "45",
-                "title": "Verdulero Mediano",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
+                "shortId": "3E",
+                "title": "Exhibidor Organizador 3 Estantes De Madera",
+                "description": "",
+                "image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
+                        "cover_image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
                         "images_list": [
-                            "img/organizadores/verdulero-mediano/1780708412753-imagen.webp"
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546875-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546905-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546912-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Único",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818831-organizador-verdulero-frutero-pino-3-estantes-_JM",
+                                "link": "https://www.mercadolibre.com.ar/exhibidor-organizador-3-estantes-de-madera/p/MLA2107815138?pdp_filters=item_id:MLA2124213415",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 20000,
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "price": 25000
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -3589,21 +3599,26 @@ const productsData = [
                     "verdulero con cajones",
                     "cesta de frutas"
                 ],
-                "last_modified": 1783637126403,
-                "primaryCatId": "Organizadores",
-                "views": 1,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "stock": 0
+                "quantityDiscounts": [],
+                "last_modified": 1790380546917,
+                "primaryCatId": "Organizadores",
+                "history": []
             },
             {
                 "id": "47",
@@ -3998,65 +4013,33 @@ const productsData = [
             },
             {
                 "id": "E4",
+                "shortId": "3D",
                 "title": "Fanal",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
                 "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
-                "image": "img/jardin/fanal/Fanal.webp",
+                "image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/jardin/fanal/Fanal.webp",
+                        "cover_image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
                         "images_list": [
-                            "img/jardin/fanal/Fanal.webp"
+                            "img/jardn/fanal/1790378363366-imagenwebp.webp",
+                            "img/jardn/fanal/1790378363377-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "x3 Un",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 25000
-                            },
-                            {
-                                "medida": "Grande",
-                                "link": "",
+                                "medida": "Fanal",
+                                "link": "https://www.mercadolibre.com.ar/fanal-madera-pino-por-tres-unidades/up/MLAU3276284211",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 15000,
+                                "cost_price": 3,
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 7
-                            },
-                            {
-                                "medida": "Mediano",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 5
-                            },
-                            {
-                                "medida": "Chico",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 3
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -4075,19 +4058,25 @@ const productsData = [
                     "imagen",
                     "altar"
                 ],
-                "last_modified": 1783637265113,
-                "primaryCatId": "jardin-patio",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1790378363386,
+                "primaryCatId": "jardin-patio",
+                "history": []
             },
             {
                 "id": "49",
@@ -5404,7 +5393,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 95
+                "views": 96
             },
             {
                 "id": "22",
@@ -5494,7 +5483,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 6,
+                "views": 7,
                 "stock": 0,
                 "history": [
                     {
@@ -9527,6 +9516,7 @@ const productsData = [
             },
             {
                 "id": "F3",
+                "shortId": "3D",
                 "title": "Mesita de luz - Angosta",
                 "description": "Mesita de luz - Angosta",
                 "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
@@ -9535,27 +9525,49 @@ const productsData = [
                         "acabado_name": "Natural",
                         "cover_image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
                         "images_list": [
-                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp"
+                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+                            "img/hogar/mesita-de-luz-angosta/1790378658840-imagenwebp.webp"
                         ],
-                        "medidas_variants": [],
+                        "medidas_variants": [
+                            {
+                                "medida": "Mesita",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-1-cajon/up/MLAU5310445256",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786334817654,
-                "primaryCatId": "Hogar",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1790378658845,
+                "primaryCatId": "Hogar",
+                "history": []
             },
             {
                 "id": "F4",
@@ -10806,6 +10818,172 @@ const productsData = [
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 4
+            },
+            {
+                "id": "JC",
+                "shortId": "3D",
+                "title": "Porta Rollo De Cocina Con Base Madera",
+                "description": "Lo que tenés que saber de este producto\nLa base mide 12cm.\nHecho de: pino.",
+                "image": "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
+                        "images_list": [
+                            "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
+                            "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932957-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Porta Rollo",
+                                "link": "https://www.mercadolibre.com.ar/porta-rollo-de-cocina-con-base-madera/up/MLAU5309185446?pdp_filters=item_id:MLA3995248568",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 8000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1790378932962,
+                "primaryCatId": "Hogar",
+                "history": []
+            },
+            {
+                "id": "94",
+                "shortId": "3E",
+                "title": "Banco Banquito Escalera Niños Infantil",
+                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
+                "image": "img/escaleras/banco-banquito-escalera-nios-infantil/1790379205193-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/escaleras/banco-banquito-escalera-nios-infantil/1790379205193-imagenwebp.webp",
+                        "images_list": [
+                            "img/escaleras/banco-banquito-escalera-nios-infantil/1790379205193-imagenwebp.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x23x20",
+                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1790379205197,
+                "primaryCatId": "muebles",
+                "history": []
+            },
+            {
+                "id": "9K",
+                "shortId": "3E",
+                "title": "Exhibidor Organizador 4 Estantes De Madera",
+                "description": "",
+                "image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+                        "images_list": [
+                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108420-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Natural",
+                                "link": "https://www.mercadolibre.com.ar/exhibidor-organizador-4-estantes-de-madera/up/MLAU5177919188?pdp_filters=item_id:MLA3941252298",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 23000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1790381108425,
+                "primaryCatId": "Organizadores",
+                "history": []
             }
         ]
     },
@@ -10901,7 +11079,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 95
+                "views": 96
             },
             {
                 "id": "22",
@@ -10992,7 +11170,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 6,
+                "views": 7,
                 "stock": 0,
                 "history": [
                     {
@@ -15356,33 +15534,37 @@ const productsData = [
             },
             {
                 "id": "45",
-                "title": "Verdulero Mediano",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
+                "shortId": "3E",
+                "title": "Exhibidor Organizador 3 Estantes De Madera",
+                "description": "",
+                "image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/verdulero-mediano/1780708412753-imagen.webp",
+                        "cover_image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
                         "images_list": [
-                            "img/organizadores/verdulero-mediano/1780708412753-imagen.webp"
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546875-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546905-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546912-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Único",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818831-organizador-verdulero-frutero-pino-3-estantes-_JM",
+                                "link": "https://www.mercadolibre.com.ar/exhibidor-organizador-3-estantes-de-madera/p/MLA2107815138?pdp_filters=item_id:MLA2124213415",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 20000,
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -15422,21 +15604,26 @@ const productsData = [
                     "verdulero con cajones",
                     "cesta de frutas"
                 ],
-                "last_modified": 1783637126403,
-                "primaryCatId": "Organizadores",
-                "views": 1,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "stock": 0
+                "quantityDiscounts": [],
+                "last_modified": 1790380546917,
+                "primaryCatId": "Organizadores",
+                "history": []
             },
             {
                 "id": "46",
@@ -16877,6 +17064,60 @@ const productsData = [
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 9
+            },
+            {
+                "id": "9K",
+                "shortId": "3E",
+                "title": "Exhibidor Organizador 4 Estantes De Madera",
+                "description": "",
+                "image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+                        "images_list": [
+                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108420-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Natural",
+                                "link": "https://www.mercadolibre.com.ar/exhibidor-organizador-4-estantes-de-madera/up/MLAU5177919188?pdp_filters=item_id:MLA3941252298",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 23000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1790381108425,
+                "primaryCatId": "Organizadores",
+                "history": []
             }
         ]
     },
@@ -19725,14 +19966,16 @@ const productsData = [
             },
             {
                 "id": "94",
+                "shortId": "3E",
                 "title": "Banco Banquito Escalera Niños Infantil",
                 "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
-                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                "image": "img/escaleras/banco-banquito-escalera-nios-infantil/1790379205193-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                        "cover_image": "img/escaleras/banco-banquito-escalera-nios-infantil/1790379205193-imagenwebp.webp",
                         "images_list": [
+                            "img/escaleras/banco-banquito-escalera-nios-infantil/1790379205193-imagenwebp.webp",
                             "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
                             "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
                             "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
@@ -19751,27 +19994,33 @@ const productsData = [
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786333409298,
-                "primaryCatId": "muebles",
-                "views": 6,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1790379205197,
+                "primaryCatId": "muebles",
+                "history": []
             }
         ],
         "rubro": "carpinteria"
@@ -20971,6 +21220,7 @@ const productsData = [
             },
             {
                 "id": "C2",
+                "shortId": "3E",
                 "title": "Silla infantil",
                 "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
                 "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
@@ -20980,8 +21230,7 @@ const productsData = [
                         "cover_image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
                         "images_list": [
                             "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
-                            "img/sillas-y-sillones/silla-infantil/Silla infantil.webp",
-                            "img/sillas-y-sillones/silla-infantil/1780323571488-imagen.webp"
+                            "img/sillas-y-sillones/silla-infantil/1790379461985-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -20992,84 +21241,88 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 20000,
+                                "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "price": 20000,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
-                    "sillon",
-                    "sillones",
                     "silla",
-                    "sillas",
-                    "gervasoni",
+                    "infantil",
+                    "carpintería",
                     "madera",
                     "pino",
-                    "individual",
-                    "living",
-                    "exterior",
-                    "jardin",
-                    "patio",
-                    "comodo",
-                    "asiento",
-                    "asientos",
-                    "descanso",
-                    "deco",
-                    "hogar",
-                    "casa",
-                    "terraza",
-                    "balcon",
+                    "carpinteria",
                     "rustico",
                     "natural",
-                    "madera",
-                    "pino",
-                    "sillon gervasoni",
-                    "sillon de madera",
-                    "sillon de pino",
-                    "silla gervasoni",
-                    "sillon individual",
-                    "sillon de jardin",
-                    "sillon de exterior",
-                    "sillon de living",
-                    "sillones gervasoni",
-                    "sillones de madera",
-                    "sillones de pino",
-                    "sillones de jardin",
-                    "sillon comodo",
-                    "asiento de madera",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "duradero",
                     "silla de madera",
                     "silla de pino",
-                    "sillon de terraza",
-                    "sillon de de balcon",
-                    "sillon de descanso",
-                    "sillon gervasoni chico",
-                    "gervasoni de madera",
-                    "gervasoni de pino",
-                    "juego de jardin",
-                    "muebles de exterior",
-                    "muebles de living"
+                    "mueble silla",
+                    "carpintería  silla",
+                    "infantil de madera",
+                    "infantil de pino",
+                    "mueble infantil",
+                    "carpintería  infantil",
+                    "carpintería de madera",
+                    "carpintería de pino",
+                    "mueble carpintería",
+                    "carpintería  carpintería",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal",
+                    "mueble util",
+                    "mueble practico",
+                    "muebles para casa",
+                    "envios a todo el pais"
                 ],
-                "last_modified": 1783635806092,
-                "primaryCatId": "sillas-sillones",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 0
+                "quantityDiscounts": [],
+                "last_modified": 1790379461990,
+                "primaryCatId": "sillas-sillones",
+                "history": []
             },
             {
                 "id": "C3",
@@ -22734,69 +22987,33 @@ const productsData = [
             },
             {
                 "id": "E4",
+                "shortId": "3D",
                 "title": "Fanal",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
                 "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
-                "image": "img/jardin/fanal/Fanal.webp",
+                "image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/jardin/fanal/Fanal.webp",
+                        "cover_image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
                         "images_list": [
-                            "img/jardin/fanal/Fanal.webp"
+                            "img/jardn/fanal/1790378363366-imagenwebp.webp",
+                            "img/jardn/fanal/1790378363377-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "x3 Un",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 20000,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "Grande",
-                                "link": "",
+                                "medida": "Fanal",
+                                "link": "https://www.mercadolibre.com.ar/fanal-madera-pino-por-tres-unidades/up/MLAU3276284211",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 15000,
+                                "cost_price": 3,
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 7000,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "Mediano",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 6500,
-                                "weight": 2.5
-                            },
-                            {
-                                "medida": "Chico",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 6000,
-                                "weight": 2.5
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -22815,19 +23032,25 @@ const productsData = [
                     "imagen",
                     "altar"
                 ],
-                "last_modified": 1783637265113,
-                "primaryCatId": "jardin-patio",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1790378363386,
+                "primaryCatId": "jardin-patio",
+                "history": []
             },
             {
                 "id": "E5",
@@ -23104,6 +23327,7 @@ const productsData = [
             },
             {
                 "id": "F3",
+                "shortId": "3D",
                 "title": "Mesita de luz - Angosta",
                 "description": "Mesita de luz - Angosta",
                 "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
@@ -23112,27 +23336,49 @@ const productsData = [
                         "acabado_name": "Natural",
                         "cover_image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
                         "images_list": [
-                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp"
+                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+                            "img/hogar/mesita-de-luz-angosta/1790378658840-imagenwebp.webp"
                         ],
-                        "medidas_variants": [],
+                        "medidas_variants": [
+                            {
+                                "medida": "Mesita",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-1-cajon/up/MLAU5310445256",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786334817654,
-                "primaryCatId": "Hogar",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                }
+                "quantityDiscounts": [],
+                "last_modified": 1790378658845,
+                "primaryCatId": "Hogar",
+                "history": []
             },
             {
                 "id": "F4",
@@ -23685,6 +23931,60 @@ const productsData = [
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 9
+            },
+            {
+                "id": "JC",
+                "shortId": "3D",
+                "title": "Porta Rollo De Cocina Con Base Madera",
+                "description": "Lo que tenés que saber de este producto\nLa base mide 12cm.\nHecho de: pino.",
+                "image": "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
+                        "images_list": [
+                            "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
+                            "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932957-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Porta Rollo",
+                                "link": "https://www.mercadolibre.com.ar/porta-rollo-de-cocina-con-base-madera/up/MLAU5309185446?pdp_filters=item_id:MLA3995248568",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 8000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1790378932962,
+                "primaryCatId": "Hogar",
+                "history": []
             }
         ]
     },
@@ -24096,7 +24396,7 @@ const productsData = [
                 ],
                 "last_modified": 1780774148299,
                 "primaryCatId": "Podios",
-                "views": 1,
+                "views": 2,
                 "stock": 0,
                 "history": [
                     {
@@ -24660,7 +24960,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1789865946949,
                 "primaryCatId": "cat-23-mu93q76a",
-                "history": []
+                "history": [],
+                "views": 1
             }
         ],
         "visible": true
