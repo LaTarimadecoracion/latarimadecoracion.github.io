@@ -1961,12 +1961,12 @@
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
                             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: #0f172a; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 10px;">
-                                <input type="radio" name="pay-delivery-mode" id="pay-mode-pickup" value="pickup" checked style="accent-color: #0f172a; cursor: pointer;">
+                                <input type="radio" name="pay-delivery-mode" id="pay-mode-pickup" value="pickup" style="accent-color: #0f172a; cursor: pointer;">
                                 <span>🏬 Retiro por Taller / Local (Hurlingham)</span>
                             </label>
 
                             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: #0f172a; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 10px;">
-                                <input type="radio" name="pay-delivery-mode" id="pay-mode-shipping" value="shipping" style="accent-color: #0f172a; cursor: pointer;">
+                                <input type="radio" name="pay-delivery-mode" id="pay-mode-shipping" value="shipping" checked style="accent-color: #0f172a; cursor: pointer;">
                                 <span>🚚 Envío a Domicilio / Flete / Expreso</span>
                             </label>
                         </div>
@@ -2655,85 +2655,141 @@
             }
 
             const options = [];
+            const cartShipCtx = productContext?.cartShippingContext;
 
-            // Solo incluir Logística si está activa para el CP y la variante activa no tiene deshabilitada la logística Flex
-            let isVariantLogisticaDisabled = false;
-            if (isProductItem) {
-                const activeGrupo = productContext?.grupo || (offer?.acabados_groups && offer.acabados_groups[0]) || {};
-                const activeMedidaStr = (productContext?.medida || '').trim();
-                const variantMatch = (activeGrupo.medidas_variants || []).find(m => (m.medida || '').trim() === activeMedidaStr) || (activeGrupo.medidas_variants || [])[0];
-                if (variantMatch) {
-                    if (variantMatch.logisticaEnabled === false || variantMatch.noFlex === true || variantMatch.disableFlex === true) {
-                        isVariantLogisticaDisabled = true;
+            if (cartShipCtx && cartShipCtx.isCartSummary) {
+                // Sincronizar opciones con el cálculo exacto del Carrito (Multi-producto, bultos y deshabilitaciones)
+                if (cartShipCtx.logisticaAvailable && cpRes.logistica && cpRes.logistica.active !== false) {
+                    const cost = cartShipCtx.totalFlexCost || 0;
+                    const isFreeByQty = cartShipCtx.isFlexFreeByQty;
+                    const packages = cartShipCtx.totalLogisticaPackages || 1;
+                    let zoneName = cpRes.logistica.zoneName || 'Zona';
+                    let detailText = zoneName;
+                    if (isFreeByQty) {
+                        detailText += ` · 🎉 ¡Envío GRATIS por volumen de productos!`;
+                    } else if (packages > 1) {
+                        detailText += ` · ${packages} bultos combinados del carrito`;
+                    } else {
+                        detailText += ` · 1 bulto estándar del carrito`;
+                    }
+
+                    options.push({
+                        key: 'logistica',
+                        label: isFreeByQty ? '📦 Logística Flex / Express (¡Envío GRATIS!)' : '📦 Logística Flex / Express',
+                        cleanLabel: 'Logística Flex / Express',
+                        detail: detailText,
+                        cost,
+                        packages,
+                        isFreeByQty,
+                        active: true
+                    });
+                }
+
+                if (cartShipCtx.fleteAvailable && cpRes.flete && cpRes.flete.active !== false) {
+                    const cost = cartShipCtx.totalFleteCost || 0;
+                    const isFreeByQty = cartShipCtx.isFleteFreeByQty;
+                    const packages = cartShipCtx.totalFletePackages || 1;
+                    let zoneName = cpRes.flete.zoneName || 'Zona';
+                    let detailText = zoneName;
+                    if (isFreeByQty) {
+                        detailText += ` · 🎉 ¡Flete GRATIS por volumen de productos!`;
+                    } else if (packages > 1) {
+                        detailText += ` · ${packages} fletes (${packages} bultos/fletes necesarios)`;
+                    } else {
+                        detailText += ` · Transporte directo (1 flete)`;
+                    }
+
+                    options.push({
+                        key: 'flete',
+                        label: isFreeByQty ? '🚛 Flete Propio (¡Flete GRATIS!)' : '🚛 Flete Propio',
+                        cleanLabel: 'Flete Propio',
+                        detail: detailText,
+                        cost,
+                        packages,
+                        isFreeByQty,
+                        active: true
+                    });
+                }
+            } else {
+                // Solo incluir Logística si está activa para el CP y la variante activa no tiene deshabilitada la logística Flex
+                let isVariantLogisticaDisabled = false;
+                if (isProductItem) {
+                    const activeGrupo = productContext?.grupo || (offer?.acabados_groups && offer.acabados_groups[0]) || {};
+                    const activeMedidaStr = (productContext?.medida || '').trim();
+                    const variantMatch = (activeGrupo.medidas_variants || []).find(m => (m.medida || '').trim() === activeMedidaStr) || (activeGrupo.medidas_variants || [])[0];
+                    if (variantMatch) {
+                        if (variantMatch.logisticaEnabled === false || variantMatch.noFlex === true || variantMatch.disableFlex === true) {
+                            isVariantLogisticaDisabled = true;
+                        }
                     }
                 }
-            }
 
-            if (!isVariantLogisticaDisabled && shipConf.logisticaEnabled && cpRes.logistica && cpRes.logistica.active !== false) {
-                const manualCost = parseFloat(shipConf.logisticaCost) || 0;
-                const sysCost = cpRes.logistica.cost || 0;
-                const baseCost = manualCost > 0 ? manualCost : sysCost;
+                if (!isVariantLogisticaDisabled && shipConf.logisticaEnabled && cpRes.logistica && cpRes.logistica.active !== false) {
+                    const manualCost = parseFloat(shipConf.logisticaCost) || 0;
+                    const sysCost = cpRes.logistica.cost || 0;
+                    const baseCost = manualCost > 0 ? manualCost : sysCost;
 
-                const qty = window._checkoutSelectedQty || productContext?.quantity || packQty || 1;
-                const freeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
-                const maxUnits = parseInt(shipConf.logisticaMaxUnits) || 0;
+                    const qty = window._checkoutSelectedQty || productContext?.quantity || packQty || 1;
+                    const freeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
+                    const maxUnits = parseInt(shipConf.logisticaMaxUnits) || 0;
 
-                let isFreeByQty = (freeMin > 0 && qty >= freeMin);
-                let packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
-                let cost = isFreeByQty ? 0 : (baseCost * packages);
+                    let isFreeByQty = (freeMin > 0 && qty >= freeMin);
+                    let packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
+                    let cost = isFreeByQty ? 0 : (baseCost * packages);
 
-                let zoneName = cpRes.logistica.zoneName || 'Zona';
-                let detailText = zoneName;
-                if (isFreeByQty) {
-                    detailText += ` · 🎉 ¡Envío GRATIS por compra de ${freeMin}+ uds!`;
-                } else if (packages > 1) {
-                    detailText += ` · ${packages} bultos ($${baseCost.toLocaleString('es-AR')} c/u - Máx. ${maxUnits} ud/paquete)`;
+                    let zoneName = cpRes.logistica.zoneName || 'Zona';
+                    let detailText = zoneName;
+                    if (isFreeByQty) {
+                        detailText += ` · 🎉 ¡Envío GRATIS por compra de ${freeMin}+ uds!`;
+                    } else if (packages > 1) {
+                        detailText += ` · ${packages} bultos ($${baseCost.toLocaleString('es-AR')} c/u - Máx. ${maxUnits} ud/paquete)`;
+                    }
+
+                    options.push({
+                        key: 'logistica',
+                        label: isFreeByQty ? '📦 Logística (¡Envío GRATIS por volumen!)' : '📦 Logística (Courier)',
+                        cleanLabel: 'Logística',
+                        detail: detailText,
+                        cost,
+                        packages,
+                        isFreeByQty,
+                        active: true
+                    });
                 }
 
-                options.push({
-                    key: 'logistica',
-                    label: isFreeByQty ? '📦 Logística (¡Envío GRATIS por volumen!)' : '📦 Logística (Courier)',
-                    cleanLabel: 'Logística',
-                    detail: detailText,
-                    cost,
-                    packages,
-                    isFreeByQty,
-                    active: true
-                });
-            }
+                // Solo incluir Flete si está activo para el CP
+                if (shipConf.fleteEnabled && cpRes.flete && cpRes.flete.active !== false) {
+                    const manualCost = parseFloat(shipConf.fleteCost) || 0;
+                    const sysCost = cpRes.flete.cost || 0;
+                    const baseCost = manualCost > 0 ? manualCost : sysCost;
 
-            // Solo incluir Flete si está activo para el CP
-            if (shipConf.fleteEnabled && cpRes.flete && cpRes.flete.active !== false) {
-                const manualCost = parseFloat(shipConf.fleteCost) || 0;
-                const sysCost = cpRes.flete.cost || 0;
-                const baseCost = manualCost > 0 ? manualCost : sysCost;
+                    const qty = window._checkoutSelectedQty || productContext?.quantity || packQty || 1;
+                    const freeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
+                    const maxUnits = parseInt(shipConf.fleteMaxUnits) || 0;
 
-                const qty = window._checkoutSelectedQty || productContext?.quantity || packQty || 1;
-                const freeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
-                const maxUnits = parseInt(shipConf.fleteMaxUnits) || 0;
+                    let isFreeByQty = (freeMin > 0 && qty >= freeMin);
+                    let packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
+                    let cost = isFreeByQty ? 0 : (baseCost * packages);
 
-                let isFreeByQty = (freeMin > 0 && qty >= freeMin);
-                let packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
-                let cost = isFreeByQty ? 0 : (baseCost * packages);
+                    let zoneName = cpRes.flete.zoneName || 'Zona';
+                    let detailText = zoneName;
+                    if (isFreeByQty) {
+                        detailText += ` · 🎉 ¡Flete GRATIS por compra de ${freeMin}+ uds!`;
+                    } else if (packages > 1) {
+                        detailText += ` · ${packages} fletes ($${baseCost.toLocaleString('es-AR')} c/u - Máx. ${maxUnits} ud/flete)`;
+                    }
 
-                let zoneName = cpRes.flete.zoneName || 'Zona';
-                let detailText = zoneName;
-                if (isFreeByQty) {
-                    detailText += ` · 🎉 ¡Flete GRATIS por compra de ${freeMin}+ uds!`;
-                } else if (packages > 1) {
-                    detailText += ` · ${packages} fletes ($${baseCost.toLocaleString('es-AR')} c/u - Máx. ${maxUnits} ud/flete)`;
+                    options.push({
+                        key: 'flete',
+                        label: isFreeByQty ? '🚛 Flete Particular (¡Flete GRATIS por volumen!)' : '🚛 Flete Particular',
+                        cleanLabel: 'Flete Particular',
+                        detail: detailText,
+                        cost,
+                        packages,
+                        isFreeByQty,
+                        active: true
+                    });
                 }
-
-                options.push({
-                    key: 'flete',
-                    label: isFreeByQty ? '🚛 Flete Particular (¡Flete GRATIS por volumen!)' : '🚛 Flete Particular',
-                    cleanLabel: 'Flete Particular',
-                    detail: detailText,
-                    cost,
-                    packages,
-                    isFreeByQty,
-                    active: true
-                });
             }
 
             if (shipConf.otroEnabled) {
@@ -2768,11 +2824,17 @@
             html += '<div style="font-size:0.68rem;font-weight:800;color:#475569;text-transform:uppercase;margin-bottom:5px;">Elegí el método de envío:</div>';
             html += '<div style="display:flex;flex-direction:column;gap:6px;" id="ship-options-list">';
 
+            // Determinar la opción a preseleccionar según la preferencia elegida en el carrito (flex vs flete)
+            const preferredKey = (cartShipCtx && cartShipCtx.selectedShipVal === 'flete') ? 'flete' : ((cartShipCtx && cartShipCtx.selectedShipVal === 'flex') ? 'logistica' : (options[0]?.key || ''));
+            let defaultOptIdx = options.findIndex(o => o.key === preferredKey);
+            if (defaultOptIdx === -1) defaultOptIdx = 0;
+
             options.forEach((opt, idx) => {
                 const costLabel = opt.cost > 0 ? formatCurr(opt.cost) : 'Cotizar por WA';
-                html += `<label style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:8px 12px;cursor:pointer;" data-cost="${opt.cost}" data-label="${opt.cleanLabel}">
+                const isChecked = idx === defaultOptIdx;
+                html += `<label style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:${isChecked ? '#f0f9ff' : '#f8fafc'};border:1.5px solid ${isChecked ? '#0284c7' : '#e2e8f0'};border-radius:10px;padding:8px 12px;cursor:pointer;" data-cost="${opt.cost}" data-label="${opt.cleanLabel}">
                     <span style="display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:#0f172a;">
-                        <input type="radio" name="ship-method-choice" value="${opt.key}" ${idx === 0 ? 'checked' : ''} style="accent-color:#0f172a;cursor:pointer;">
+                        <input type="radio" name="ship-method-choice" value="${opt.key}" ${isChecked ? 'checked' : ''} style="accent-color:#0f172a;cursor:pointer;">
                         <span>${opt.label}<br><span style="font-size:0.68rem;font-weight:600;color:#64748b;">${opt.detail}</span></span>
                     </span>
                     <span style="font-size:0.88rem;font-weight:900;color:${opt.cost > 0 ? '#0284c7' : '#64748b'};white-space:nowrap;">${costLabel}</span>
@@ -2787,10 +2849,10 @@
             container.innerHTML = html;
             container.style.display = 'block';
 
-            // Preseleccionar primera opción
-            if (options.length > 0 && options[0].active) {
-                window._checkoutSelectedShipCost = options[0].cost;
-                window._checkoutSelectedShipLabel = options[0].cleanLabel;
+            // Preseleccionar opción activa
+            if (options.length > 0 && options[defaultOptIdx]?.active) {
+                window._checkoutSelectedShipCost = options[defaultOptIdx].cost;
+                window._checkoutSelectedShipLabel = options[defaultOptIdx].cleanLabel;
                 updateShipLine();
                 updateTotalDisplay();
             }
@@ -2954,7 +3016,16 @@
                 if (data.cuit && document.getElementById('factura-cuit')) document.getElementById('factura-cuit').value = data.cuit;
                 if (data.dirFiscal && document.getElementById('factura-direccion-fiscal')) document.getElementById('factura-direccion-fiscal').value = data.dirFiscal;
 
-                if (data.deliveryMode === 'shipping' || (data.cp && data.cp.length >= 3)) {
+                if (data.deliveryMode === 'pickup') {
+                    const rPickup = document.getElementById('pay-mode-pickup');
+                    if (rPickup) rPickup.checked = true;
+                    const shipMenu = document.getElementById('pay-shipping-expand-menu');
+                    if (shipMenu) shipMenu.style.display = 'none';
+                    window._checkoutSelectedShipCost = 0;
+                    window._checkoutSelectedShipLabel = '';
+                    updateShipLine();
+                    updateTotalDisplay();
+                } else if (data.deliveryMode === 'shipping' || (data.cp && data.cp.length >= 3)) {
                     const rShip = document.getElementById('pay-mode-shipping');
                     if (rShip) rShip.checked = true;
                     const shipMenu = document.getElementById('pay-shipping-expand-menu');
@@ -2985,6 +3056,7 @@
         document.getElementById('pay-mode-shipping')?.addEventListener('change', saveUserDataToStorage);
 
         restoreUserDataFromStorage();
+        updateWizardView();
 
         // Eventos de botones "Copiar" con Micro-Interacción Verde Esmeralda (Opción 4)
         const handleCopyEffect = (btnId, lblId, iconId, textToCopy, defaultLabel) => {
@@ -3019,78 +3091,106 @@
         document.getElementById('btn-copy-alias')?.addEventListener('click', () => handleCopyEffect('btn-copy-alias', 'copy-alias-lbl', 'copy-alias-icon', alias, 'Copiar'));
         document.getElementById('btn-copy-cbu')?.addEventListener('click', () => handleCopyEffect('btn-copy-cbu', 'copy-cbu-lbl', 'copy-cbu-icon', cbu, 'Copiar'));
 
-        // Evento Enviar Comprobante por WhatsApp (Formato Sobrio en Lista sin Iconos)
-        document.getElementById('btn-submit-receipt-wa')?.addEventListener('click', () => {
-            const isFacturaA = chkFacturaA?.checked || false;
-            const isShipping = radioShipping?.checked || false;
-            const userNotes = document.getElementById('pay-modal-notes')?.value.trim() || '';
-            
-            const shipCostVal = window._checkoutSelectedShipCost || 0;
-            let finalPriceVal = totalOfferVal + shipCostVal;
-            if (isFacturaA) {
-                finalPriceVal = (totalOfferVal + shipCostVal) * 1.245;
-            }
-            const finalPriceFormatted = formatCurr(finalPriceVal);
-
-            let msgLines = [];
-            msgLines.push("Hola La Tarima. Adjunto el comprobante de pago de mi pedido.");
-            msgLines.push("");
-            msgLines.push("Detalle de compra:");
-            msgLines.push(`- ${isProductItem ? 'Producto' : 'Combo'}: ${itemDisplayName} ${packQty > 1 ? `(Pack x${packQty})` : ''}`);
-            msgLines.push(`- Monto abonado: ${finalPriceFormatted}`);
-            if (isFacturaA) {
-                msgLines.push("- Comprobante solicitado: Factura A (Responsable Inscripto)");
-            }
-
-            if (isFacturaA) {
-                const razon = document.getElementById('factura-razon-social')?.value.trim() || 'No especificada';
-                const cuitEmp = document.getElementById('factura-cuit')?.value.trim() || 'No especificado';
-                const dirFiscal = document.getElementById('factura-direccion-fiscal')?.value.trim() || 'No especificada';
+        // Evento Enviar Comprobante por WhatsApp (Texto Plano Limpio sin Asteriscos)
+        const waSubmitBtn = document.getElementById('btn-submit-receipt-wa');
+        if (waSubmitBtn) {
+            waSubmitBtn.onclick = (e) => {
+                e.preventDefault();
+                const isFacturaA = chkFacturaA?.checked || false;
+                const isShipping = radioShipping?.checked || false;
+                const userNotes = document.getElementById('pay-modal-notes')?.value.trim() || '';
                 
+                const shipCostVal = window._checkoutSelectedShipCost || 0;
+                let finalPriceVal = totalOfferVal + shipCostVal;
+                if (isFacturaA) {
+                    finalPriceVal = (totalOfferVal + shipCostVal) * 1.245;
+                }
+                const finalPriceFormatted = formatCurr(finalPriceVal);
+
+                let msgLines = [];
+                msgLines.push("Hola La Tarima. Adjunto el comprobante de pago de mi pedido.");
                 msgLines.push("");
-                msgLines.push("Datos de facturacion:");
-                msgLines.push(`- Razon Social: ${razon}`);
-                msgLines.push(`- CUIT: ${cuitEmp}`);
-                msgLines.push(`- Direccion Fiscal: ${dirFiscal}`);
-            }
+                msgLines.push("Detalle de compra:");
+                if (productContext && productContext.medida && productContext.medida.includes('\n')) {
+                    msgLines.push("- Productos del Carrito:");
+                    const cartParts = productContext.medida.split('\n');
+                    cartParts.forEach(part => {
+                        if (part.startsWith('   ')) {
+                            msgLines.push(part);
+                        } else if (part.trim()) {
+                            msgLines.push(`  • ${part.trim()}`);
+                        }
+                    });
+                } else if (isProductItem) {
+                    const grupoName = productContext?.grupo?.acabado_name || '';
+                    const medidaName = productContext?.medida || '';
+                    const opcionName = productContext?.opcion || '';
+                    
+                    msgLines.push(`  • ${packQty > 1 ? `${packQty}x ` : '1x '}${offer.title}${grupoName && grupoName !== 'Único' ? ` - ${grupoName}` : ''}`);
+                    let singleDetails = [];
+                    if (medidaName) singleDetails.push(medidaName);
+                    if (opcionName) singleDetails.push(opcionName);
+                    if (singleDetails.length > 0) {
+                        msgLines.push(`   ${singleDetails.join(' - ')}`);
+                    }
+                } else {
+                    msgLines.push(`  • Combo: ${itemDisplayName} ${packQty > 1 ? `(Pack x${packQty})` : ''}`);
+                }
+                msgLines.push(`- Monto abonado: ${finalPriceFormatted}`);
+                if (isFacturaA) {
+                    msgLines.push("- Comprobante solicitado: Factura A (Responsable Inscripto)");
+                }
 
-            msgLines.push("");
-            msgLines.push("Datos de entrega:");
-            if (isShipping) {
-                const dir = document.getElementById('pay-ship-dir')?.value.trim() || 'No especificada';
-                const cp = document.getElementById('pay-ship-cp')?.value.trim() || 'No especificado';
-                const ciudad = document.getElementById('pay-ship-ciudad')?.value.trim() || 'No especificada';
-                const prov = document.getElementById('pay-ship-provincia')?.value.trim() || 'No especificada';
-                
-                msgLines.push("- Metodo: Envio a domicilio / flete");
-                msgLines.push(`- Envio: ${window._checkoutSelectedShipLabel || 'A confirmar'} — ${window._checkoutSelectedShipCost > 0 ? formatCurr(window._checkoutSelectedShipCost) : 'A cotizar'}`);
-                msgLines.push(`- Direccion: ${dir}`);
-                msgLines.push(`- CP: ${cp}`);
-                msgLines.push(`- Localidad: ${ciudad}`);
-                msgLines.push(`- Provincia: ${prov}`);
-            } else {
-                msgLines.push("- Metodo: Retiro por taller / local (Hurlingham)");
-            }
+                if (isFacturaA) {
+                    const razon = document.getElementById('factura-razon-social')?.value.trim() || 'No especificada';
+                    const cuitEmp = document.getElementById('factura-cuit')?.value.trim() || 'No especificado';
+                    const dirFiscal = document.getElementById('factura-direccion-fiscal')?.value.trim() || 'No especificada';
+                    
+                    msgLines.push("");
+                    msgLines.push("Datos de facturación:");
+                    msgLines.push(`- Razón Social: ${razon}`);
+                    msgLines.push(`- CUIT: ${cuitEmp}`);
+                    msgLines.push(`- Dirección Fiscal: ${dirFiscal}`);
+                }
 
-            const clientName = document.getElementById('pay-client-name')?.value.trim();
-            const clientPhone = document.getElementById('pay-client-phone')?.value.trim();
-            if (clientName || clientPhone) {
                 msgLines.push("");
-                msgLines.push("Datos de contacto:");
-                if (clientName) msgLines.push(`- Nombre: ${clientName}`);
-                if (clientPhone) msgLines.push(`- Telefono: ${clientPhone}`);
-            }
+                msgLines.push("Datos de entrega:");
+                if (isShipping) {
+                    const dir = document.getElementById('pay-ship-dir')?.value.trim() || 'No especificada';
+                    const cp = document.getElementById('pay-ship-cp')?.value.trim() || 'No especificado';
+                    const ciudad = document.getElementById('pay-ship-ciudad')?.value.trim() || 'No especificada';
+                    const prov = document.getElementById('pay-ship-provincia')?.value.trim() || 'No especificada';
+                    
+                    msgLines.push("- Método: Envío a domicilio / flete");
+                    msgLines.push(`- Envío: ${window._checkoutSelectedShipLabel || 'A confirmar'} — ${window._checkoutSelectedShipCost > 0 ? formatCurr(window._checkoutSelectedShipCost) : 'A cotizar'}`);
+                    msgLines.push(`- Dirección: ${dir}`);
+                    msgLines.push(`- CP: ${cp}`);
+                    msgLines.push(`- Localidad: ${ciudad}`);
+                    msgLines.push(`- Provincia: ${prov}`);
+                } else {
+                    msgLines.push("- Método: Retiro por taller / local (Hurlingham)");
+                }
 
-            if (userNotes) {
-                msgLines.push("");
-                msgLines.push("Aclaraciones:");
-                msgLines.push(`- ${userNotes}`);
-            }
+                const clientName = document.getElementById('pay-client-name')?.value.trim();
+                const clientPhone = document.getElementById('pay-client-phone')?.value.trim();
+                if (clientName || clientPhone) {
+                    msgLines.push("");
+                    msgLines.push("Datos de contacto:");
+                    if (clientName) msgLines.push(`- Nombre: ${clientName}`);
+                    if (clientPhone) msgLines.push(`- Teléfono: ${clientPhone}`);
+                }
 
-            const waText = msgLines.join("\n");
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waText)}`, '_blank');
-            closeModal();
-        });
+                if (userNotes) {
+                    msgLines.push("");
+                    msgLines.push("Aclaraciones:");
+                    msgLines.push(`- ${userNotes}`);
+                }
+
+                const waText = msgLines.join("\n");
+                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waText)}`, '_blank');
+                closeModal();
+            };
+        }
     }
 
     function renderRelatedOffers(currentOfferId) {
@@ -3119,8 +3219,8 @@
 
     window.openOfferDetailView = openOfferDetailView;
     window.showOfferPaymentModal = showOfferPaymentModal;
-    window.showProductPaymentModal = function(product, grupo, medida, price, qty = 1, opcion = '', opcionLabel = '') {
-        showOfferPaymentModal(product, qty, { grupo, medida, price, opcion, opcionLabel });
+    window.showProductPaymentModal = function(product, grupo, medida, price, qty = 1, opcion = '', opcionLabel = '', cartShippingContext = null) {
+        showOfferPaymentModal(product, qty, { grupo, medida, price, opcion, opcionLabel, cartShippingContext });
     };
 
     function showOfferDetailModal(offer) {
