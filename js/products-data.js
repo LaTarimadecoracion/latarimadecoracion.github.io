@@ -2116,7 +2116,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790379461990,
                 "primaryCatId": "sillas-sillones",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "42",
@@ -3618,7 +3619,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790380546917,
                 "primaryCatId": "Organizadores",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "47",
@@ -4076,7 +4078,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790378363386,
                 "primaryCatId": "jardin-patio",
-                "history": []
+                "history": [],
+                "views": 0
             },
             {
                 "id": "49",
@@ -5393,7 +5396,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 96
+                "views": 97
             },
             {
                 "id": "22",
@@ -9567,7 +9570,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790378658845,
                 "primaryCatId": "Hogar",
-                "history": []
+                "history": [],
+                "views": 0
             },
             {
                 "id": "F4",
@@ -10871,7 +10875,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790378932962,
                 "primaryCatId": "Hogar",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "94",
@@ -10929,7 +10934,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790379205197,
                 "primaryCatId": "muebles",
-                "history": []
+                "history": [],
+                "views": 6
             },
             {
                 "id": "9K",
@@ -10943,7 +10949,7 @@ const productsData = [
                         "cover_image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
                         "images_list": [
                             "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
-                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108420-imagenwebp.webp"
+                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790738317690-edit_1790738316527webp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -10955,7 +10961,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 23000,
-                                "cost_price": "",
+                                "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true
@@ -10981,7 +10987,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1790381108425,
+                "last_modified": 1790738317696,
                 "primaryCatId": "Organizadores",
                 "history": []
             }
@@ -11079,7 +11085,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 96
+                "views": 97
             },
             {
                 "id": "22",
@@ -11761,6 +11767,63 @@ const productsData = [
                     "logisticaMaxUnits": 1
                 },
                 "visible": true
+            },
+            {
+                "id": "4I",
+                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
+                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
+                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Percherito",
+                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Alto 110 cm",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1788918811368,
+                "primaryCatId": "Percheros",
+                "history": [],
+                "views": 3
             },
             {
                 "id": "32",
@@ -12800,63 +12863,6 @@ const productsData = [
                     "otroEnabled": false,
                     "logisticaMaxUnits": 3
                 }
-            },
-            {
-                "id": "4I",
-                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
-                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
-                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Percherito",
-                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                        "images_list": [
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Alto 110 cm",
-                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 30000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "estimatedWeight": 2,
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788918811368,
-                "primaryCatId": "Percheros",
-                "history": [],
-                "views": 3
             }
         ]
     },
@@ -15623,7 +15629,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790380546917,
                 "primaryCatId": "Organizadores",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "46",
@@ -17077,7 +17084,7 @@ const productsData = [
                         "cover_image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
                         "images_list": [
                             "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
-                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108420-imagenwebp.webp"
+                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790738317690-edit_1790738316527webp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17089,7 +17096,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 23000,
-                                "cost_price": "",
+                                "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true
@@ -17115,7 +17122,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1790381108425,
+                "last_modified": 1790738317696,
                 "primaryCatId": "Organizadores",
                 "history": []
             }
@@ -20020,7 +20027,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790379205197,
                 "primaryCatId": "muebles",
-                "history": []
+                "history": [],
+                "views": 6
             }
         ],
         "rubro": "carpinteria"
@@ -21322,7 +21330,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790379461990,
                 "primaryCatId": "sillas-sillones",
-                "history": []
+                "history": [],
+                "views": 1
             },
             {
                 "id": "C3",
@@ -23050,7 +23059,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790378363386,
                 "primaryCatId": "jardin-patio",
-                "history": []
+                "history": [],
+                "views": 0
             },
             {
                 "id": "E5",
@@ -23378,7 +23388,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790378658845,
                 "primaryCatId": "Hogar",
-                "history": []
+                "history": [],
+                "views": 0
             },
             {
                 "id": "F4",
@@ -23984,7 +23995,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1790378932962,
                 "primaryCatId": "Hogar",
-                "history": []
+                "history": [],
+                "views": 1
             }
         ]
     },

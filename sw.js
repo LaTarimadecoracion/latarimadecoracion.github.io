@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tarima-cache-v59-1790569934410';
+const CACHE_NAME = 'tarima-cache-v60-1790736780172';
 const STATIC_ASSETS = [
     './',
     './index.html',
@@ -59,6 +59,10 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
+    // Solo limpiamos cachés viejos. NO llamamos clients.claim() para evitar
+    // que el SW tome control forzoso de pestañas ya abiertas, lo que causaba
+    // la doble carga al entrar a la web. La recarga controlada se maneja
+    // desde el cliente en index.html con el listener 'controllerchange'.
     event.waitUntil(
         caches.keys().then((keyList) => {
             return Promise.all(keyList.map((key) => {
@@ -69,7 +73,6 @@ self.addEventListener('activate', (event) => {
             }));
         })
     );
-    event.waitUntil(self.clients.claim());
 });
 
 self.addEventListener('fetch', (event) => {

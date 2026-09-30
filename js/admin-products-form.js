@@ -5,67 +5,82 @@ let activeGroupsUI = [];
 let groupCounter = 0;
 let cropperCallback = null;
 
+// Helper: resolver el path base del editor para evitar problemas con paths relativos
+// dependiendo de desde dónde se sirva la app (localhost, GitHub Pages, etc.)
+function getEditorBasePath() {
+    // Siempre usar la raíz del origen actual para rutas absolutas
+    const origin = window.location.origin;
+    const pathname = window.location.pathname;
+    // Detectar subfolder (GitHub Pages: /latarimadecoracion.github.io/)
+    const parts = pathname.split('/').filter(Boolean);
+    const subfolder = (parts.length > 0 && !parts[0].includes('.')) ? '/' + parts[0] + '/' : '/';
+    return origin + subfolder;
+}
+
 function openCropperModal(imageUrl, onConfirm) {
+    // Buscar el modal en el momento de usar (lazy), no al cargar el script.
+    // El partial modals-forms.html se inyecta DESPUÉS del DOMContentLoaded,
+    // por eso no podemos capturar estos elementos antes.
     const modal = document.getElementById('admin-cropper-modal');
     const iframe = document.getElementById('cropper-editor-iframe');
-    if (!modal || !iframe) return;
+
+    if (!modal || !iframe) {
+        console.warn('[Cropper] Modal o iframe no encontrado. ¿Se cargó el partial modals-forms.html?');
+        return;
+    }
 
     cropperCallback = onConfirm;
     modal.style.display = 'flex';
 
-    // Cargar apps/editor-fotos.html en el iframe con la imagen como parámetro
-    iframe.src = `apps/editor-fotos.html?embed=1&img=${encodeURIComponent(imageUrl)}`;
+    // Path absoluto para evitar resoluciones incorrectas de URL relativa
+    const base = getEditorBasePath();
+    iframe.src = `${base}apps/editor-fotos.html?embed=1&img=${encodeURIComponent(imageUrl)}`;
 }
 
-// Binds de controles y comunicación postMessage con el editor de fotos
-document.addEventListener('DOMContentLoaded', () => {
+// closeCropperModal: lazy también, definida globalmente para ser llamable desde cualquier lugar
+window.closeCropperModal = function() {
     const modal = document.getElementById('admin-cropper-modal');
-    const btnCancel = document.getElementById('btn-cancel-crop');
     const iframe = document.getElementById('cropper-editor-iframe');
+    if (modal) modal.style.display = 'none';
+    if (iframe) iframe.src = 'about:blank';
+    cropperCallback = null;
+};
 
-    window.closeCropperModal = function() {
-        const modal = document.getElementById('admin-cropper-modal');
-        const iframe = document.getElementById('cropper-editor-iframe');
-        if (modal) modal.style.display = 'none';
-        if (iframe) iframe.src = 'about:blank';
-        cropperCallback = null;
-    };
+// Delegación global de click para el botón "Cerrar Editor".
+// Usamos delegación en document para que funcione aunque el partial
+// se haya inyectado dinámicamente después del DOMContentLoaded.
+document.addEventListener('click', (e) => {
+    if (e.target && (e.target.id === 'btn-cancel-crop' || e.target.closest('#btn-cancel-crop'))) {
+        window.closeCropperModal();
+    }
+});
 
-    if (btnCancel) btnCancel.onclick = window.closeCropperModal;
+// Escuchar el evento postMessage que envía el editor de fotos al confirmar la imagen editada.
+// Este listener se registra una sola vez, fuera de DOMContentLoaded,
+// porque window siempre existe y no depende del DOM del partial.
+window.addEventListener('message', (event) => {
+    if (!event.data || typeof event.data !== 'object') return;
 
-    // Delegación global por si el partial se inyectó dinámicamente
-    document.addEventListener('click', (e) => {
-        if (e.target && (e.target.id === 'btn-cancel-crop' || e.target.closest('#btn-cancel-crop'))) {
+    if (event.data.type === 'TARIMA_PHOTO_EDITED' && event.data.dataUrl) {
+        if (cropperCallback) {
+            fetch(event.data.dataUrl)
+                .then(res => res.blob())
+                .then(blob => {
+                    const file = new File([blob], `edit_${Date.now()}.webp`, { type: 'image/webp' });
+                    cropperCallback(file, event.data.dataUrl);
+                    window.closeCropperModal();
+                })
+                .catch(err => {
+                    console.error('[Cropper] Error procesando imagen editada:', err);
+                    cropperCallback(null, event.data.dataUrl);
+                    window.closeCropperModal();
+                });
+        } else {
             window.closeCropperModal();
         }
-    });
-
-    // Escuchar el evento postMessage que envía el editor de fotos al confirmar la imagen editada
-    window.addEventListener('message', (event) => {
-        if (!event.data || typeof event.data !== 'object') return;
-        
-        if (event.data.type === 'TARIMA_PHOTO_EDITED' && event.data.dataUrl) {
-            if (cropperCallback) {
-                // Convertir dataUrl a File para que se suba normalmente
-                fetch(event.data.dataUrl)
-                    .then(res => res.blob())
-                    .then(blob => {
-                        const file = new File([blob], `edit_${Date.now()}.webp`, { type: 'image/webp' });
-                        cropperCallback(file, event.data.dataUrl);
-                        window.closeCropperModal();
-                    })
-                    .catch(err => {
-                        console.error('Error procesando imagen editada:', err);
-                        cropperCallback(null, event.data.dataUrl);
-                        window.closeCropperModal();
-                    });
-            } else {
-                window.closeCropperModal();
-            }
-        } else if (event.data.type === 'TARIMA_PHOTO_CANCEL') {
-            window.closeCropperModal();
-        }
-    });
+    } else if (event.data.type === 'TARIMA_PHOTO_CANCEL') {
+        window.closeCropperModal();
+    }
 });
 
     function getDragAfterElement(container, y, selector = '.medida-admin-row') {

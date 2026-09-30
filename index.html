@@ -723,6 +723,17 @@
     <script src="js/pwa-banner.js?v=2" defer></script>
     <script src="js/assistant.js?v=7" defer></script>
     <script>
+        // Limpiar el parámetro ?u= de bypass de caché si quedó residual en la URL tras una actualización del SW.
+        (function() {
+            try {
+                const url = new URL(window.location.href);
+                if (url.searchParams.has('u')) {
+                    url.searchParams.delete('u');
+                    window.history.replaceState(null, '', url.toString());
+                }
+            } catch(e) {}
+        })();
+
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 // Registramos sw.js directamente sin query strings con updateViaCache: 'none'
@@ -744,21 +755,19 @@
                 });
             });
 
-            // 3. Detectar cuando el nuevo Service Worker toma el control de la página (actualización completada)
+            // 3. Detectar cuando el nuevo Service Worker toma el control de la página (actualización completada).
+            // IMPORTANTE: hasController se evalúa ANTES del registro para saber si ya había un SW activo.
+            // Si no había controller (primera visita o SW eliminado), controllerchange NO dispara una recarga.
+            // Solo recarga cuando hay una actualización real (ya existía un SW controlando la pestaña).
             let refreshing = false;
             const hasController = !!navigator.serviceWorker.controller;
 
             navigator.serviceWorker.addEventListener('controllerchange', () => {
                 if (refreshing) return;
-                
-                // Si ya había un Service Worker activo controlando la página, significa que es una nueva versión.
-                // Recargamos la página con un timestamp para evitar servir archivos viejos cacheantes.
                 if (hasController) {
                     refreshing = true;
-                    console.log('[PWA] Nueva versión activada. Recargando con bypass de caché...');
-                    const newUrl = new URL(window.location.href);
-                    newUrl.searchParams.set('u', Date.now().toString());
-                    window.location.replace(newUrl.toString());
+                    console.log('[PWA] Nueva versión del SW activada. Recargando para aplicar actualización...');
+                    window.location.reload();
                 }
             });
         }

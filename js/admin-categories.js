@@ -202,7 +202,7 @@
                 rubroSearchWrapper.innerHTML = `
                     <div style="position: relative; width: 100%;">
                         <span class="material-symbols-outlined" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--admin-text-muted);">search</span>
-                        <input type="text" class="rubro-search-input" placeholder="Buscar categoría o producto en ${rubro.name}..." style="width: 100%; padding: 6px 12px 6px 34px; font-size: 0.82rem; border-radius: 6px; border: 1px solid var(--admin-border-color); background: var(--admin-surface); color: var(--admin-text-main); outline: none;">
+                        <input type="text" class="rubro-search-input" placeholder="Buscar producto para editar (o nombre de categoría)..." style="width: 100%; padding: 6px 12px 6px 34px; font-size: 0.82rem; border-radius: 6px; border: 1px solid var(--admin-border-color); background: var(--admin-surface); color: var(--admin-text-main); outline: none;">
                     </div>
                 `;
                 shelfList.appendChild(rubroSearchWrapper);
@@ -212,19 +212,52 @@
                 rubroSearchInput.addEventListener('input', (e) => {
                     const term = e.target.value.toLowerCase().trim();
                     const shelfCards = shelfList.querySelectorAll('.cat-shelf');
+
+                    if (!term) {
+                        // Sin término: mostrar todas las categorías
+                        shelfCards.forEach(card => card.style.display = '');
+                        return;
+                    }
+
+                    // Verificar si hay productos que matcheen el término en todo el rubro
+                    const rubroCats = sessionProducts.filter(cat => (cat.rubro || 'carpinteria') === rubro.id);
+                    const prodMatchesInRubro = rubroCats.some(cat =>
+                        (cat.products || []).some(p => (p.title || '').toLowerCase().includes(term) || (p.id || '').toLowerCase().includes(term))
+                    );
+
+                    if (prodMatchesInRubro) {
+                        // Hay productos que coinciden: ir directo a la vista de productos con búsqueda aplicada
+                        rubroSearchInput.value = '';
+                        selectedCategoryIdForProducts = 'all';
+                        currentAdminPhase = 'products';
+                        adminCurrentPage = 1;
+                        adminSearchQuery = term;
+
+                        // Sincronizar el buscador de la vista de productos
+                        const mainSearch = document.getElementById('admin-search');
+                        if (mainSearch) mainSearch.value = term;
+
+                        renderAdminUX();
+
+                        // Enfocar el buscador de productos para que el usuario pueda seguir refinando
+                        setTimeout(() => {
+                            const mainSearch2 = document.getElementById('admin-search');
+                            if (mainSearch2) {
+                                mainSearch2.focus();
+                                const len = mainSearch2.value.length;
+                                mainSearch2.setSelectionRange(len, len);
+                            }
+                        }, 80);
+                        return;
+                    }
+
+                    // Sin match de productos: filtrar solo las tarjetas de categoría visualmente
                     shelfCards.forEach(card => {
                         const catIndex = parseInt(card.getAttribute('data-index'));
                         const cat = sessionProducts[catIndex];
                         if (!cat) return;
-                        
                         const catNameMatch = cat.name.toLowerCase().includes(term);
-                        const prodMatch = (cat.products || []).some(p => (p.title || '').toLowerCase().includes(term));
-                        
-                        if (!term || catNameMatch || prodMatch) {
-                            card.style.display = '';
-                        } else {
-                            card.style.display = 'none';
-                        }
+                        card.style.display = catNameMatch ? '' : 'none';
                     });
                 });
 
