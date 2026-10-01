@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&display=swap');
-
+/* Fuentes cargadas de forma óptima en el <head> de index.html con preconnect */
 :root {
     /* Color Palette */
     --bg-color: #FDFCF9; /* Alabastro limpio y cálido */

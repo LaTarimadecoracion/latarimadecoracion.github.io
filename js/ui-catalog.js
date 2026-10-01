@@ -271,14 +271,16 @@
 
     function updateActionLinks(linkMercadoLibre, whatsappMessage) {
         btnBuyShipping.href = linkMercadoLibre || '#';
-        const phone = "5491167007723"; 
+        // Leer teléfono desde siteConfig para no hardcodear — editable desde el admin
+        const waUrl = window.siteConfig?.socialLinks?.whatsapp || 'https://wa.me/5491167007723';
+        const phone = waUrl.replace('https://wa.me/', '');
         const text = encodeURIComponent(whatsappMessage);
         btnBuyPickup.href = `https://wa.me/${phone}?text=${text}`;
     }
 
 
 
-    function updateMetaTags(title, desc, imageUrl) {
+    function updateMetaTags(title, desc, imageUrl, product = null) {
         document.title = title ? `${title} | LA TARIMA - Decoración` : 'LA TARIMA - Decoración';
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDesc = document.querySelector('meta[property="og:description"]');
@@ -289,6 +291,56 @@
         if (ogImage && imageUrl) {
             const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `${window.location.origin}/${imageUrl.replace(/^[\/\\]/, '')}`;
             ogImage.setAttribute('content', absoluteImageUrl);
+        }
+
+        // Schema.org JSON-LD estructurado para SEO y Google Shopping
+        let ldScript = document.getElementById('product-schema-ld');
+        if (!ldScript) {
+            ldScript = document.createElement('script');
+            ldScript.id = 'product-schema-ld';
+            ldScript.type = 'application/ld+json';
+            document.head.appendChild(ldScript);
+        }
+
+        if (product) {
+            let bestPrice = 0;
+            const firstGroup = (product.acabados_groups || []).find(g => !g.hidden);
+            if (firstGroup && firstGroup.medidas_variants && firstGroup.medidas_variants.length > 0) {
+                const firstVariant = firstGroup.medidas_variants.find(v => !v.hidden && v.price > 0);
+                if (firstVariant) bestPrice = firstVariant.price;
+            }
+            if (!bestPrice && product.price) bestPrice = product.price;
+
+            const absUrl = (url) => !url ? null : (url.startsWith('http') ? url : `${window.location.origin}/${url.replace(/^[\/\\]/, '')}`);
+            const images = [];
+            (product.acabados_groups || []).filter(g => !g.hidden).forEach(g => {
+                if (g.cover_image) images.push(absUrl(g.cover_image));
+                (g.images_list || []).forEach(img => {
+                    const u = absUrl(img);
+                    if (u && !images.includes(u)) images.push(u);
+                });
+            });
+            if (images.length === 0 && imageUrl) images.push(absUrl(imageUrl));
+
+            const schemaData = {
+                '@context': 'https://schema.org',
+                '@type': 'Product',
+                'name': product.title || title,
+                'description': (product.description || desc || '').substring(0, 500),
+                'image': images.filter(Boolean),
+                'brand': { '@type': 'Brand', 'name': 'La Tarima' },
+                'offers': {
+                    '@type': 'Offer',
+                    'priceCurrency': 'ARS',
+                    'price': bestPrice || 0,
+                    'availability': 'https://schema.org/InStock',
+                    'seller': { '@type': 'Organization', 'name': 'La Tarima Decoración' },
+                    'url': window.location.href
+                }
+            };
+            ldScript.textContent = JSON.stringify(schemaData);
+        } else {
+            ldScript.textContent = '';
         }
     }
 
@@ -385,7 +437,7 @@
         else if (product.acabados_groups && product.acabados_groups.length > 0) imageUrl = product.acabados_groups[0].cover_image;
         
         const safeDesc = (product.description || '').replace(/<[^>]*>?/gm, '');
-        updateMetaTags(product.title, safeDesc, imageUrl);
+        updateMetaTags(product.title, safeDesc, imageUrl, product);
 
         const detailImgContainer = document.querySelector('.detail-img-container');
         const detailDescription = document.getElementById('detail-description');
@@ -497,7 +549,10 @@
         const priceDisplay = document.getElementById('detail-price-display');
         const btnShipping = document.getElementById('btn-buy-shipping');
         const btnPickup = document.getElementById('btn-buy-pickup');
-        const phone = '5491167007723';
+        const phone = (() => {
+            const waUrl = window.siteConfig?.socialLinks?.whatsapp || 'https://wa.me/5491167007723';
+            return waUrl.replace('https://wa.me/', '');
+        })();
 
         // Vincular eventos de conversión de Google Analytics
         if (btnShipping) {

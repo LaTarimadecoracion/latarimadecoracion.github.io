@@ -428,8 +428,14 @@ app.post('/api/save-products', (req, res) => {
         fs.writeFileSync(filePath, fileContent, 'utf8');
         console.log('✅ js/products-data.js actualizado correctamente.');
         
-        // Generar archivos estáticos para Redes Sociales
-        generateSeoStubs(productsArray);
+        // Generar archivos estáticos para Redes Sociales y Sitemap completo para Google
+        try {
+            const { execSync } = require('child_process');
+            execSync('node _dev/update_seo.js', { cwd: ROOT_DIR, stdio: 'inherit' });
+        } catch (seoErr) {
+            console.warn('⚠️ Error ejecutando update_seo.js:', seoErr);
+            generateSeoStubs(productsArray);
+        }
 
         // Limpieza de fotos huérfanas/eliminadas del servidor físico
         try {
