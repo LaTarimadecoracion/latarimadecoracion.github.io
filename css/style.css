@@ -3702,11 +3702,11 @@ body.in-iframe,
         max-width: 100% !important;
     }
 
-    /* Carrusel de categorías en PC: tarjetas más cómodas */
+    /* Carrusel de categorías en PC: misma altura y presencia que en móvil */
     .carousel-categories .category-card {
-        width: 280px !important;
-        min-width: 280px !important;
-        max-width: 320px !important;
+        width: 360px !important;
+        min-width: 360px !important;
+        max-width: 360px !important;
     }
     
     /* Carrusel central "Nuevos Diseños" en PC */
@@ -3718,10 +3718,10 @@ body.in-iframe,
 
     /* Carruseles y feeds en PC */
     .los-mas-buscados-container .feed-card {
-        flex: 0 0 340px !important;
-        width: 340px !important;
-        min-width: 340px !important;
-        max-width: 380px !important;
+        flex: 0 0 360px !important;
+        width: 360px !important;
+        min-width: 360px !important;
+        max-width: 360px !important;
     }
 
     /* Vista de feeds y búsquedas: 3 columnas en pantallas medianas y 4 en PC amplia */
