@@ -3637,27 +3637,35 @@ body.in-iframe,
     color: #0F172A;
 }
 
-/* ── Optimización Premium para Pantallas Grandes (Desktop App Shell) ── */
+/* ── Optimización Premium para Pantallas Grandes (Desktop E-commerce Amplio) ── */
 @media (min-width: 800px) {
     html {
-        background-color: #E6E3DE !important; /* Tono lino neutro y elegante para fuera del marco */
+        background-color: #FAF8F5 !important; /* Tono lino muy suave y limpio */
     }
     
     body {
-        max-width: 1000px !important; /* Medida límite premium para App Shell */
+        max-width: 1320px !important; /* Ampliado para PC moderna estilo e-commerce */
         margin: 0 auto !important;
         position: relative !important;
-        box-shadow: 0 0 40px rgba(0, 0, 0, 0.15) !important;
-        border-left: 1px solid rgba(0, 0, 0, 0.05);
-        border-right: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.08) !important;
+        border-left: 1px solid rgba(0, 0, 0, 0.06);
+        border-right: 1px solid rgba(0, 0, 0, 0.06);
+        background-color: var(--bg-color, #FFFFFF);
     }
-    
+
+    .main-header-bar {
+        max-width: 1320px !important;
+        margin: 0 auto !important;
+        padding: 0.85rem 2rem !important;
+    }
+
     .bottom-nav {
         left: 50% !important;
         right: auto !important;
         transform: translateX(-50%) !important;
         width: 100% !important;
-        max-width: 1000px !important;
+        max-width: 1320px !important;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.06) !important;
     }
 
     .admin-view {
@@ -3665,7 +3673,7 @@ body.in-iframe,
         right: auto !important;
         transform: translateX(-50%) !important;
         width: 100% !important;
-        max-width: 1000px !important;
+        max-width: 1320px !important;
     }
 
     #splash-screen {
@@ -3673,33 +3681,60 @@ body.in-iframe,
         right: auto !important;
         transform: translateX(-50%) !important;
         width: 100% !important;
-        max-width: 1000px !important;
+        max-width: 1320px !important;
     }
 
+    /* Carrusel de categorías en PC: tarjetas más cómodas */
     .carousel-categories .category-card {
-        width: calc((800px - 35px) / 2.125) !important;
-        min-width: calc((800px - 35px) / 2.125) !important;
-        max-width: calc((800px - 35px) / 2.125) !important;
+        width: 280px !important;
+        min-width: 280px !important;
+        max-width: 320px !important;
     }
     
+    /* Carrusel central "Nuevos Diseños" en PC */
     #home-new-designs-list .category-card {
-        width: calc(800px - 40px) !important;
-        min-width: calc(800px - 40px) !important;
-        max-width: calc(800px - 40px) !important;
+        width: 620px !important;
+        min-width: 620px !important;
+        max-width: 680px !important;
     }
 
-    /* Mantener carrusel de más buscados con el tamaño actual de sus tarjetas */
+    /* Carruseles y feeds en PC */
     .los-mas-buscados-container .feed-card {
-        flex: 0 0 600px !important;
-        width: 600px !important;
-        min-width: 600px !important;
-        max-width: 600px !important;
+        flex: 0 0 340px !important;
+        width: 340px !important;
+        min-width: 340px !important;
+        max-width: 380px !important;
     }
 
-    /* Mantener el carrusel de fotos del detalle de producto con el tamaño actual centrado */
-    .detail-img-container {
-        max-width: 800px !important;
-        margin: 0 auto !important;
+    /* Vista de feeds y búsquedas: 3 columnas en pantallas medianas y 4 en PC amplia */
+    .category-feed-list,
+    .product-feed {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 20px !important;
+        padding: 1.5rem 1rem 3rem !important;
+    }
+
+    .categories-grid-responsive {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 18px !important;
+    }
+}
+
+@media (min-width: 1150px) {
+    /* En monitores de escritorio normales/grandes: 4 columnas fluidas en catálogos */
+    .category-feed-list,
+    .product-feed {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 22px !important;
+    }
+
+    .offers-grid-layout {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important;
+    }
+
+    #view-product-detail.detail-view {
+        max-width: 1250px !important;
     }
 }
 
@@ -6048,15 +6083,22 @@ a .material-symbols-outlined {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   GRILLA DE VIDEOS (PC: 4 COLUMNAS, TABLET: 3 COLUMNAS, CELULAR: 2 COLUMNAS)
+   GRILLA DE VIDEOS (PC GRANDE: 5 COLUMNAS, DESKTOP: 4, TABLET: 3, CELULAR: 2)
    ═══════════════════════════════════════════════════════════════ */
 #videos-grid-container {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 1rem !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 1.15rem !important;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1150px) {
+    #videos-grid-container {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
+    }
+}
+
+@media (max-width: 900px) {
     #videos-grid-container {
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 0.85rem !important;

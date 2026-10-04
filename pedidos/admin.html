@@ -417,6 +417,44 @@
             color: #475569;
             border: 1px solid #e2e8f0;
         }
+
+        /* ── BOTONES DE ACCIÓN RÁPIDA DE ESTADO ── */
+        .action-btn.quick-status {
+            font-weight: 700;
+            border-radius: 6px;
+            padding: 0.35rem 0.65rem;
+            transition: all 0.15s ease;
+        }
+        .action-btn.quick-status.btn-status-pendiente {
+            color: #b45309;
+            background: #fef3c7;
+            border-color: #fde68a;
+        }
+        .action-btn.quick-status.btn-status-pendiente:hover {
+            background: #fde68a;
+            border-color: #f59e0b;
+            color: #78350f;
+        }
+        .action-btn.quick-status.btn-status-listo {
+            color: #15803d;
+            background: #dcfce7;
+            border-color: #bbf7d0;
+        }
+        .action-btn.quick-status.btn-status-listo:hover {
+            background: #bbf7d0;
+            border-color: #22c55e;
+            color: #14532d;
+        }
+        .action-btn.quick-status.btn-status-entregado {
+            color: #475569;
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+        .action-btn.quick-status.btn-status-entregado:hover {
+            background: #e2e8f0;
+            border-color: #94a3b8;
+            color: #0f172a;
+        }
         
         .actions-cell {
             display: flex;
@@ -2327,7 +2365,30 @@
                                 ${rawPhone ? `<span style="font-size: 0.75rem; color: #16a34a; font-weight: 700; background: #dcfce7; border: 1px solid #86efac; padding: 2px 8px; border-radius: 50px; display: inline-flex; align-items: center; gap: 3px;" title="Celular encriptado 🔒"><span class="material-symbols-outlined" style="font-size: 13px;">lock</span> ${rawPhone}</span>` : ''}
                             </div>
                             <div style="display: flex; align-items: center; gap: 8px;">
-                                <span class="status-badge status-${order.status}">${statusLabel}</span>
+                                <!-- Botones rápidos de estado directo en el encabezado -->
+                                <div style="display: inline-flex; background: #f1f5f9; padding: 2px; border-radius: 8px; gap: 2px;" onclick="event.stopPropagation();">
+                                    <button type="button" 
+                                            class="action-btn quick-status btn-status-pendiente ${order.status === 'pendiente' ? 'active-status' : ''}" 
+                                            style="${order.status === 'pendiente' ? 'background: #f59e0b; color: white; border-color: #d97706; box-shadow: 0 1px 3px rgba(245,158,11,0.4);' : 'opacity: 0.65;'}" 
+                                            onclick="quickUpdateOrderStatus('${order.id}', 'pendiente', event)" 
+                                            title="Marcar como Pendiente">
+                                        <span class="material-symbols-outlined" style="font-size: 14px !important;">hourglass_top</span> Pendiente
+                                    </button>
+                                    <button type="button" 
+                                            class="action-btn quick-status btn-status-listo ${order.status === 'listo' ? 'active-status' : ''}" 
+                                            style="${order.status === 'listo' ? 'background: #16a34a; color: white; border-color: #15803d; box-shadow: 0 1px 3px rgba(22,163,74,0.4);' : 'opacity: 0.65;'}" 
+                                            onclick="quickUpdateOrderStatus('${order.id}', 'listo', event)" 
+                                            title="Marcar como Listo para Retirar / Enviar">
+                                        <span class="material-symbols-outlined" style="font-size: 14px !important;">check_circle</span> Listo
+                                    </button>
+                                    <button type="button" 
+                                            class="action-btn quick-status btn-status-entregado ${order.status === 'entregado' ? 'active-status' : ''}" 
+                                            style="${order.status === 'entregado' ? 'background: #475569; color: white; border-color: #334155; box-shadow: 0 1px 3px rgba(71,85,105,0.4);' : 'opacity: 0.65;'}" 
+                                            onclick="quickUpdateOrderStatus('${order.id}', 'entregado', event)" 
+                                            title="Marcar como Entregado">
+                                        <span class="material-symbols-outlined" style="font-size: 14px !important;">task_alt</span> Entregado
+                                    </button>
+                                </div>
                                 <span class="order-expand-icon material-symbols-outlined" style="color: #64748b; font-size: 22px; transition: transform 0.2s ease;">expand_more</span>
                             </div>
                         </div>
@@ -2833,6 +2894,66 @@
             filterAndRenderTable();
             closeModal(true);
             showToast(isNew ? 'Pedido creado con éxito.' : 'Pedido actualizado con éxito.');
+        }
+
+        // ── Cambio Rápido de Estado desde la Tarjeta ──
+        async function quickUpdateOrderStatus(id, newStatus, event) {
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+
+            const existingIdx = allOrders.findIndex(o => o.id === id);
+            if (existingIdx === -1) return;
+
+            const currentOrder = allOrders[existingIdx];
+            if (currentOrder.status === newStatus) return; // Ya tiene este estado
+
+            // Clonar pedido y actualizar estado
+            const updatedOrder = { ...currentOrder, status: newStatus };
+            
+            // Si pasa a listo y no tenía fecha de listo, asignarle la actual
+            if (newStatus === 'listo' && !updatedOrder.readyDate) {
+                updatedOrder.readyDate = new Date().toISOString();
+            }
+
+            const updatedOrders = [...allOrders];
+            updatedOrders[existingIdx] = updatedOrder;
+
+            // Actualización optimista inmediata en interfaz
+            allOrders = updatedOrders;
+            window.allOrders = allOrders;
+            filterAndRenderTable();
+
+            const statusNames = {
+                'pendiente': 'Pendiente ⏳',
+                'listo': 'Listo para Retirar / Enviar ✅',
+                'entregado': 'Entregado 🏁'
+            };
+            showToast(`Pedido #${id} marcado como ${statusNames[newStatus] || newStatus}`);
+
+            try {
+                const res = await fetch('/api/save-orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orders: updatedOrders, modifiedOrder: updatedOrder })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.orders) {
+                        allOrders = data.orders;
+                        window.allOrders = allOrders;
+                        filterAndRenderTable();
+                    }
+                }
+            } catch (err) {
+                console.warn('Guardado en servidor falló o estamos en modo estático. Guardando en localStorage.', err);
+            }
+
+            try {
+                localStorage.setItem('la_tarima_orders_v1', JSON.stringify(allOrders));
+            } catch (e) {}
         }
         
         async function deleteOrder(id) {
