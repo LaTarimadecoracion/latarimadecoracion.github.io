@@ -3637,35 +3637,53 @@ body.in-iframe,
     color: #0F172A;
 }
 
-/* ── Optimización Premium para Pantallas Grandes (Desktop E-commerce Amplio) ── */
+/* ── Optimización Premium para Pantallas Grandes (Desktop E-commerce Amplio Full-Width) ── */
 @media (min-width: 800px) {
     html {
-        background-color: #FAF8F5 !important; /* Tono lino muy suave y limpio */
+        background-color: var(--bg-color, #FFFFFF) !important;
     }
     
     body {
-        max-width: 1320px !important; /* Ampliado para PC moderna estilo e-commerce */
-        margin: 0 auto !important;
-        position: relative !important;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 0.08) !important;
-        border-left: 1px solid rgba(0, 0, 0, 0.06);
-        border-right: 1px solid rgba(0, 0, 0, 0.06);
-        background-color: var(--bg-color, #FFFFFF);
-    }
-
-    .main-header-bar {
-        max-width: 1320px !important;
-        margin: 0 auto !important;
-        padding: 0.85rem 2rem !important;
-    }
-
-    .bottom-nav {
-        left: 50% !important;
-        right: auto !important;
-        transform: translateX(-50%) !important;
+        max-width: 100% !important; /* El fondo abarca toda la pantalla sin márgenes artificiales */
         width: 100% !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        background-color: var(--bg-color, #FFFFFF) !important;
+    }
+
+    /* La cabecera se expande de lado a lado con su fondo, pero su contenido interior se mantiene centrado y ordenado */
+    .main-header-bar {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem)) !important;
+        padding-right: max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem)) !important;
+        box-sizing: border-box !important;
+    }
+
+    /* El contenedor principal de las vistas mantiene el contenido hasta 1320px centrado elegantemente */
+    #app-container,
+    .view,
+    .home-content,
+    .view-content {
         max-width: 1320px !important;
-        box-shadow: 0 -4px 20px rgba(0,0,0,0.06) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* La barra inferior se extiende de borde a borde al 100%, pero con los iconos centrados en 1320px */
+    .bottom-nav {
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: max(0px, calc((100vw - 1320px) / 2)) !important;
+        padding-right: max(0px, calc((100vw - 1320px) / 2)) !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.06) !important;
     }
 
     .admin-view {
@@ -3677,11 +3695,11 @@ body.in-iframe,
     }
 
     #splash-screen {
-        left: 50% !important;
-        right: auto !important;
-        transform: translateX(-50%) !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
         width: 100% !important;
-        max-width: 1320px !important;
+        max-width: 100% !important;
     }
 
     /* Carrusel de categorías en PC: tarjetas más cómodas */
