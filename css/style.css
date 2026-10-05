@@ -17,6 +17,21 @@
     /* Spacing & Layout */
     --nav-height: 70px;
     --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
+    /* Anchos de página (única fuente de verdad) */
+    --container-max: 1320px;    /* Vista pública, cabecera, barra inferior y admin */
+    --container-narrow: 1100px; /* Vistas de lectura/compra (detalle de producto) */
+    --gutter: 1.5rem;           /* Margen lateral mínimo del contenido */
+
+    /* ── ESCALA DE BREAKPOINTS (mobile-first) ──────────────────────────
+       Las variables CSS no funcionan dentro de @media, así que la escala
+       se documenta aquí y se respeta en TODO el proyecto:
+         sm  →  @media (min-width: 600px)    Tablet vertical / celular grande
+         md  →  @media (min-width: 900px)    "Modo escritorio" (layout PC)
+         lg  →  @media (min-width: 1200px)   Monitores amplios
+       Si hace falta un "hasta", usar el valor - 0.02px para no solaparse:
+         (max-width: 599.98px) · (max-width: 899.98px) · (max-width: 1199.98px)
+       ──────────────────────────────────────────────────────────────── */
     
     /* Shadows & Effects (Suavizados y Modernizados) */
     --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
@@ -309,7 +324,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     overflow: hidden; /* For SPA feel */
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     height: 100dvh; /* Dynamic viewport height */
     display: flex;
@@ -411,8 +426,8 @@ button, .btn-primary, .btn-outline {
 
 .loader-saw-container {
     position: relative;
-    width: 340px;
-    height: 340px;
+    width: min(340px, 78vw);   /* Fluido: reemplaza al breakpoint suelto de 380px */
+    height: min(340px, 78vw);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -446,13 +461,6 @@ button, .btn-primary, .btn-outline {
 @keyframes spin-saw {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-@media (max-width: 380px) {
-    .loader-saw-container {
-        width: 270px;
-        height: 270px;
-    }
 }
 
 .splash-title {
@@ -889,12 +897,12 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     border-radius: var(--radius-md);
 }
 
-/* Regla única y obligatoria para TODAS las tarjetas de carrusel en la Home */
+/* Regla única para tarjetas de carrusel en la Home */
 .carousel-categories .category-card {
-    /* Ancho idéntico de 2 portadas completas y 1/8 de la tercera foto en pantalla móvil */
-    width: calc((100vw - 35px) / 2.125) !important;
-    min-width: calc((100vw - 35px) / 2.125) !important;
-    max-width: calc((800px - 35px) / 2.125) !important;  /* Límite en PC */
+    /* Móvil: muestra 2 tarjetas y asoma la 3ª. En pantallas más anchas se estabiliza con fluidez */
+    width: clamp(160px, calc((100% - 35px) / 2.2), 340px) !important;
+    min-width: clamp(160px, calc((100% - 35px) / 2.2), 340px) !important;
+    max-width: 360px !important;
     
     /* Alto auto-adaptativo basado en la proporción exacta de su imagen */
     height: auto !important;
@@ -912,24 +920,24 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     box-shadow: var(--shadow-sm);
 }
 
-/* Excepción: Carrusel central "Nuevos Diseños" muestra solo 1 tarjeta gigante a la vez */
+/* Excepción: Carrusel central "Nuevos Diseños" muestra tarjeta destacada */
 #home-new-designs-list .category-card {
-    /* 1 foto ocupando casi toda la pantalla (deja asomar la siguiente 10px para UX de scroll) */
-    width: calc(100vw - 40px) !important;
-    min-width: calc(100vw - 40px) !important;
-    max-width: calc(800px - 40px) !important;
+    /* Fluido y progresivo: en móvil ocupa la pantalla dejando asomar la siguiente,
+       y a medida que crece se expande armónicamente hasta 680px sin saltos hacia atrás */
+    width: clamp(280px, 86vw, 680px) !important;
+    min-width: clamp(280px, 86vw, 680px) !important;
+    max-width: 680px !important;
     
-    /* Alto auto-adaptativo basado en la proporción exacta de su imagen */
     height: auto !important;
     min-height: unset !important;
     max-height: unset !important;
 }
 
-/* Excepción: Carrusel "Los Más Buscados" en detalle de producto muestra 3 tarjetas a la vez */
+/* Excepción: Carrusel "Los Más Buscados" en detalle de producto */
 #detail-related-product-list .category-card {
-    width: calc((100vw - 65px) / 3.15) !important;
-    min-width: calc((100vw - 65px) / 3.15) !important;
-    max-width: calc((800px - 65px) / 3.15) !important;
+    width: clamp(130px, calc((100% - 50px) / 3.2), 240px) !important;
+    min-width: clamp(130px, calc((100% - 50px) / 3.2), 240px) !important;
+    max-width: 260px !important;
     height: auto !important;
     min-height: unset !important;
     max-height: unset !important;
@@ -982,10 +990,10 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 .carousel-gallery::-webkit-scrollbar { display: none; }
 
 .gallery-banner {
-    min-width: 100vw;
+    flex: 0 0 100%;             /* Ocupa el ancho del contenedor, no del viewport (100vw desbordaba en PC) */
     width: 100%;
-    height: 25dvh;              /* 25% del alto de la pantalla — se encoge en celuares petisas */
     height: 25vh;               /* Fallback para navegadores sin soporte dvh */
+    height: 25dvh;              /* 25% del alto de la pantalla — se encoge en celulares petisos */
     aspect-ratio: auto;         /* El alto lo manda el vh, no la proporción */
     background-size: contain;
     background-position: center;
@@ -1082,7 +1090,8 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 .carousel-full::-webkit-scrollbar { display: none; }
 
 .hero-card {
-    min-width: 100vw;
+    flex: 0 0 100%;
+    min-width: 100%;
     height: 250px;
     background: linear-gradient(135deg, #d4a373, #e5a97d);
     position: relative;
@@ -1266,6 +1275,7 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     box-sizing: border-box;
 }
 
+/* sm: celular grande / tablet vertical — 2 columnas con más aire */
 @media (min-width: 600px) {
     .category-feed-list,
     .product-feed {
@@ -1275,10 +1285,22 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     }
 }
 
+/* md: modo escritorio — 3 columnas */
 @media (min-width: 900px) {
     .category-feed-list,
     .product-feed {
         grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 1.5rem 1rem 3rem;
+    }
+}
+
+/* lg: monitores amplios — 4 columnas */
+@media (min-width: 1200px) {
+    .category-feed-list,
+    .product-feed {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
     }
 }
 
@@ -1708,7 +1730,7 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 }
 
 /* En móviles: solo texto para un diseño ultra limpio sin saturar */
-@media (max-width: 600px) {
+@media (max-width: 599.98px) {
     .gallery-acabado-thumb {
         display: none !important;
     }
@@ -2788,17 +2810,31 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     z-index: 10;
 }
 
-/* Grilla Responsiva para Menú de Categorías */
+/* Grilla con dimensiones estables y 4 columnas base en escritorio */
 .categories-grid-responsive {
     display: grid;
+    /* Móvil: 2 columnas */
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 12px;
+    justify-content: center;
 }
 
-@media (min-width: 768px) {
+/* Tablet (desde 640px): 3 columnas estables */
+@media (min-width: 640px) {
     .categories-grid-responsive {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+        grid-template-columns: repeat(3, 220px);
+        gap: 18px;
+        justify-content: center;
+    }
+}
+
+/* Escritorio (desde 900px en adelante): 4 COLUMNAS BASE que ocupan el ancho natural de la web */
+@media (min-width: 900px) {
+    .categories-grid-responsive {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 
@@ -3638,18 +3674,9 @@ body.in-iframe,
 }
 
 /* ── Optimización Premium para Pantallas Grandes (Desktop E-commerce Amplio Full-Width) ── */
-@media (min-width: 800px) {
+/* md: "modo escritorio". Ver escala de breakpoints en :root */
+@media (min-width: 900px) {
     html {
-        background-color: var(--bg-color, #FFFFFF) !important;
-    }
-    
-    body {
-        max-width: 100% !important; /* El fondo abarca toda la pantalla sin márgenes artificiales */
-        width: 100% !important;
-        margin: 0 !important;
-        box-shadow: none !important;
-        border-left: none !important;
-        border-right: none !important;
         background-color: var(--bg-color, #FFFFFF) !important;
     }
 
@@ -3657,31 +3684,31 @@ body.in-iframe,
     .main-header-bar {
         width: 100% !important;
         max-width: 100% !important;
-        padding-left: max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem)) !important;
-        padding-right: max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem)) !important;
+        padding-left: max(var(--gutter), calc((100% - var(--container-max)) / 2 + var(--gutter))) !important;
+        padding-right: max(var(--gutter), calc((100% - var(--container-max)) / 2 + var(--gutter))) !important;
         box-sizing: border-box !important;
     }
 
-    /* El contenedor principal de las vistas mantiene el contenido hasta 1320px centrado elegantemente */
-    #app-container,
+    /* #app-container (el que hace scroll) ocupa todo el ancho para que la rueda del mouse
+       funcione también sobre los márgenes laterales; solo las vistas internas se limitan. */
     .view,
     .home-content,
     .view-content {
-        max-width: 1320px !important;
+        max-width: var(--container-max) !important;
         margin-left: auto !important;
         margin-right: auto !important;
         box-sizing: border-box !important;
     }
 
-    /* La barra inferior se extiende de borde a borde al 100%, pero con los iconos centrados en 1320px */
+    /* La barra inferior se extiende de borde a borde al 100%, pero con los iconos centrados en el ancho de página */
     .bottom-nav {
         left: 0 !important;
         right: 0 !important;
         transform: none !important;
         width: 100% !important;
         max-width: 100% !important;
-        padding-left: max(0px, calc((100vw - 1320px) / 2)) !important;
-        padding-right: max(0px, calc((100vw - 1320px) / 2)) !important;
+        padding-left: max(0px, calc((100% - var(--container-max)) / 2)) !important;
+        padding-right: max(0px, calc((100% - var(--container-max)) / 2)) !important;
         box-sizing: border-box !important;
         box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.06) !important;
     }
@@ -3691,7 +3718,7 @@ body.in-iframe,
         right: auto !important;
         transform: translateX(-50%) !important;
         width: 100% !important;
-        max-width: 1320px !important;
+        max-width: var(--container-max) !important;
     }
 
     #splash-screen {
@@ -3702,57 +3729,26 @@ body.in-iframe,
         max-width: 100% !important;
     }
 
-    /* Carrusel de categorías en PC: misma altura y presencia que en móvil */
+    /* Carrusel de categorías en PC: ancho óptimo estético */
     .carousel-categories .category-card {
-        width: 360px !important;
-        min-width: 360px !important;
-        max-width: 360px !important;
+        width: 320px !important;
+        min-width: 320px !important;
+        max-width: 320px !important;
     }
     
     /* Carrusel central "Nuevos Diseños" en PC */
     #home-new-designs-list .category-card {
-        width: 620px !important;
-        min-width: 620px !important;
+        width: 680px !important;
+        min-width: 680px !important;
         max-width: 680px !important;
     }
 
     /* Carruseles y feeds en PC */
     .los-mas-buscados-container .feed-card {
-        flex: 0 0 360px !important;
-        width: 360px !important;
-        min-width: 360px !important;
-        max-width: 360px !important;
-    }
-
-    /* Vista de feeds y búsquedas: 3 columnas en pantallas medianas y 4 en PC amplia */
-    .category-feed-list,
-    .product-feed {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 20px !important;
-        padding: 1.5rem 1rem 3rem !important;
-    }
-
-    .categories-grid-responsive {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 18px !important;
-    }
-}
-
-@media (min-width: 1150px) {
-    /* En monitores de escritorio normales/grandes: 4 columnas fluidas en catálogos */
-    .category-feed-list,
-    .product-feed {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 22px !important;
-    }
-
-    .offers-grid-layout {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 20px !important;
-    }
-
-    #view-product-detail.detail-view {
-        max-width: 1250px !important;
+        flex: 0 0 320px !important;
+        width: 320px !important;
+        min-width: 320px !important;
+        max-width: 320px !important;
     }
 }
 
@@ -4085,7 +4081,7 @@ body.in-iframe,
     flex: 1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     /* Mantenemos el diseño horizontal de móvil pero centrado y más amplio */
     .admin-layout {
         flex-direction: column;
@@ -4188,7 +4184,7 @@ body.in-iframe,
     grid-template-columns: 1fr;
     gap: 1.5rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .dashboard-columns {
         grid-template-columns: 2fr 3fr;
     }
@@ -4404,7 +4400,7 @@ body.in-iframe,
     grid-template-columns: 1fr;
     gap: 1rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .form-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -4767,7 +4763,7 @@ body.in-iframe,
     gap: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 899.98px) {
     .admin-card {
         padding: 1rem;
     }
@@ -5148,33 +5144,34 @@ details.form-group[open] {
 
 /* Modal Sizing Controls & Grid Columns */
 .modal-content {
-    width: 75vw !important;
-    max-width: 1200px !important;
-    max-height: 90vh !important;
+    width: min(92vw, 650px);
+    max-height: 90vh;
+    max-height: 90dvh;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 599.98px) {
     .modal-content {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-height: 100vh !important;
-        border-radius: 0 !important;
-        padding: 1rem !important;
+        width: 95vw;
+        max-height: 92dvh;
+        padding: 1.25rem;
     }
 }
 
+/* Modales amplios configurables (utilizados principalmente en el Panel de Administración) */
 .modal-content.size-sm {
-    max-width: 750px !important;
+    width: min(92vw, 560px) !important;
+    max-width: 560px !important;
 }
 
 .modal-content.size-md {
-    max-width: 1000px !important;
+    width: min(94vw, 840px) !important;
+    max-width: 840px !important;
 }
 
 .modal-content.size-lg {
-    max-width: 95% !important;
-    width: 95% !important;
-    max-height: 95vh !important;
+    width: min(96vw, 1100px) !important;
+    max-width: 1100px !important;
+    max-height: 94dvh !important;
 }
 
 /* Scroll suave y controlado para categorías */
@@ -5210,7 +5207,7 @@ details.form-group[open] {
     display: none !important;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
 
 
     /* Selector de ancho del panel de administración en PC */
@@ -5222,13 +5219,13 @@ details.form-group[open] {
         display: flex !important;
     }
 
-    /* Override normal max-width of .admin-view from 800px to 1200px or 100% */
+    /* Ancho "normal" del admin = mismo ancho de página que la web pública */
     .admin-view.width-normal {
         left: 50% !important;
         right: auto !important;
         transform: translateX(-50%) !important;
         width: 100% !important;
-        max-width: 1200px !important;
+        max-width: var(--container-max) !important;
     }
 
     .admin-view.width-full {
@@ -5239,9 +5236,9 @@ details.form-group[open] {
         max-width: 100% !important;
     }
 
-    /* Ancho estándar centrado (1200px) */
+    /* Ancho estándar centrado */
     .admin-layout.width-normal .admin-content-inner {
-        max-width: 1200px !important;
+        max-width: var(--container-max) !important;
         margin: 0 auto !important;
     }
 
@@ -5371,7 +5368,7 @@ details.form-group[open] {
     animation: pulseBadgeGlow 1.6s ease-in-out infinite;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 899.98px) {
     .toast-notification {
         right: 1rem;
         left: 1rem;
@@ -5471,7 +5468,7 @@ body.theme-final-mundial .block-image-wrapper::after {
     right: 30px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 899.98px) {
     #lt-speaker-btn {
         bottom: calc(var(--nav-height) + 88px + var(--safe-area-bottom));
         right: 20px;
@@ -5895,7 +5892,7 @@ body.theme-final-mundial .block-image-wrapper::after {
 }
 
 /* Responsividad Móvil */
-@media (max-width: 768px) {
+@media (max-width: 899.98px) {
     .tracking-fab {
         bottom: 96px;
         right: 20px;
@@ -6104,49 +6101,49 @@ a .material-symbols-outlined {
    GRILLA DE VIDEOS (PC GRANDE: 5 COLUMNAS, DESKTOP: 4, TABLET: 3, CELULAR: 2)
    ═══════════════════════════════════════════════════════════════ */
 #videos-grid-container {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important;
-    gap: 1.15rem !important;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
 }
 
-@media (max-width: 1150px) {
+@media (min-width: 600px) {
     #videos-grid-container {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 1rem !important;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.85rem;
     }
 }
 
-@media (max-width: 900px) {
+@media (min-width: 900px) {
     #videos-grid-container {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 0.85rem !important;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
     }
 }
 
-@media (max-width: 640px) {
+@media (min-width: 1200px) {
     #videos-grid-container {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.65rem !important;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.15rem;
     }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   DISPOSICIÓN E-COMMERCE DESKTOP PARA VISTA DE PRODUCTO (>= 800px)
+   DISPOSICIÓN E-COMMERCE DESKTOP PARA VISTA DE PRODUCTO (md: >= 900px)
    ═══════════════════════════════════════════════════════════════ */
-@media (min-width: 800px) {
+@media (min-width: 900px) {
     #view-product-detail.detail-view {
-        max-width: 1100px !important;
+        max-width: var(--container-narrow) !important;
         margin: 0 auto !important;
         padding-left: 2.5rem !important;
         padding-right: 2.5rem !important;
         box-sizing: border-box !important;
     }
 
-    /* Envoltorio principal superior en 2 columnas */
+    /* Envoltorio principal superior en 2 columnas: la columna de compra nunca baja de 350px para no comprimir controles */
     #view-product-detail .detail-main-grid {
         display: grid !important;
-        grid-template-columns: 56% 40% !important;
-        column-gap: 4% !important;
+        grid-template-columns: minmax(0, 1.25fr) minmax(350px, 1fr) !important;
+        column-gap: 2rem !important;
         align-items: start !important; /* Mantiene la proporción 3:2 intocable sin estirar verticalmente */
         padding: 1rem 0 !important;
     }
@@ -6553,10 +6550,16 @@ a .material-symbols-outlined {
     gap: 0.85rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 600px) {
     .offers-grid-layout {
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         gap: 1.25rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .offers-grid-layout {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -6613,7 +6616,7 @@ a .material-symbols-outlined {
     line-height: 1.2;
     touch-action: manipulation;
 }
-@media (min-width: 640px) {
+@media (min-width: 600px) {
     .novedades-rubro-pill {
         padding: 3px 10px;
         font-size: 0.72rem;

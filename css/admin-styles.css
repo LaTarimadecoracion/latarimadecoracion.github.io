@@ -1020,7 +1020,7 @@
    11. RESPONSIVE
    ═══════════════════════════════════════════════════════════════ */
 
-@media (max-width: 1024px) {
+@media (max-width: 1199.98px) {
     .dashboard-columns {
         grid-template-columns: 1fr;
     }
@@ -1032,7 +1032,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 899.98px) {
     /* Layout & Header */
     .admin-layout {
         margin: 0;
@@ -1341,7 +1341,7 @@
 /* ═══════════════════════════════════════════════════════════════
    ADAPTACIÓN TABLET (iPad, Galaxy Tab, 768px - 1024px)
    ═══════════════════════════════════════════════════════════════ */
-@media (min-width: 641px) and (max-width: 1024px) {
+@media (min-width: 600px) and (max-width: 1199.98px) {
     .pc-stock-layout-grid {
         grid-template-columns: 1fr !important;
         gap: 1rem !important;

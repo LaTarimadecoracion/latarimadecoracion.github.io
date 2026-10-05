@@ -256,7 +256,7 @@
                     grid-template-columns: 1fr;
                     gap: 1rem 1.5rem;
                 }
-                @media (min-width: 768px) {
+                @media (min-width: 900px) {
                     .profile-form-grid { grid-template-columns: 1fr 1fr; }
                 }
                 .avatar-selector-grid {
@@ -567,7 +567,7 @@
                 }
 
                 /* Responsive */
-                @media (max-width: 600px) {
+                @media (max-width: 599.98px) {
                     .profile-card-header { padding: 0.85rem 1rem; }
                     .cart-item-top { gap: 0.7rem; }
                     .cart-item-thumb { width: 66px; height: 66px; }
