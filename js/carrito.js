@@ -1170,6 +1170,10 @@
                                     <label style="font-size:0.75rem; font-weight:600; color:#475569;">Provincia</label>
                                     <input type="text" id="cart-ship-province" placeholder="ej: Buenos Aires" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; width:100%; box-sizing:border-box;">
                                 </div>
+                                <div style="display:flex; flex-direction:column; gap:4px;">
+                                    <label style="font-size:0.75rem; font-weight:600; color:#475569;">Correo Electrónico (para seguimiento)</label>
+                                    <input type="email" id="cart-ship-email" placeholder="ej: tunombre@gmail.com" style="padding:0.5rem 0.7rem; font-size:0.85rem; border:1.5px solid #cbd5e1; border-radius:8px; width:100%; box-sizing:border-box;">
+                                </div>
                                 <div style="display:flex; gap: 8px; justify-content: flex-end; margin-top: 0.5rem;">
                                     <button type="button" id="btn-cancel-cart-ship" style="padding: 0.5rem 1rem; font-size: 0.85rem; background: #e2e8f0; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; color: #475569; font-family: var(--font-main);">Cancelar</button>
                                     <button type="button" id="btn-save-cart-ship" style="padding: 0.5rem 1rem; font-size: 0.85rem; background: var(--primary-color, #c0510a); border: none; border-radius: 8px; font-weight: 600; cursor: pointer; color: white; font-family: var(--font-main);">Guardar</button>
@@ -1207,6 +1211,7 @@
                             const cpVal = formOverlay.querySelector('#cart-ship-cp').value.trim();
                             const locVal = formOverlay.querySelector('#cart-ship-locality').value.trim();
                             const provVal = formOverlay.querySelector('#cart-ship-province').value.trim();
+                            const emailVal = formOverlay.querySelector('#cart-ship-email')?.value.trim() || '';
                             
                             // Guardar datos
                             userData.name = nameVal;
@@ -1214,6 +1219,7 @@
                             userData.zipCode = cpVal;
                             userData.locality = locVal;
                             userData.province = provVal;
+                            userData.email = emailVal;
                             saveUserData();
                             
                             formOverlay.style.display = 'none';
@@ -1226,6 +1232,7 @@
                     formOverlay.querySelector('#cart-ship-cp').value = userData.zipCode || '';
                     formOverlay.querySelector('#cart-ship-locality').value = userData.locality || '';
                     formOverlay.querySelector('#cart-ship-province').value = userData.province || '';
+                    if (formOverlay.querySelector('#cart-ship-email')) formOverlay.querySelector('#cart-ship-email').value = userData.email || '';
                     formOverlay.style.display = 'flex';
                 });
             }
@@ -1394,6 +1401,7 @@
                         currentCheckoutData.cp = userData.zipCode || currentCheckoutData.cp || '';
                         currentCheckoutData.ciudad = userData.locality || currentCheckoutData.ciudad || '';
                         currentCheckoutData.provincia = userData.province || currentCheckoutData.provincia || '';
+                        currentCheckoutData.email = userData.email || currentCheckoutData.email || '';
                         currentCheckoutData.deliveryMode = isPickup ? 'pickup' : 'shipping';
                         localStorage.setItem('latarima_checkout_user_data', JSON.stringify(currentCheckoutData));
                     } catch(e) {}

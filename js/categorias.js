@@ -70,8 +70,12 @@ window.renderCategoriesMenu = function() {
         return;
     }
 
-    // Ordenar categorías según su orden configurado
-    const sortedCategories = [...sourceData].sort((a, b) => (a.order || 0) - (b.order || 0));
+    // Ordenar categorías estrictamente en orden alfabético A-Z (independiente del editor admin)
+    const sortedCategories = [...sourceData].sort((a, b) => {
+        const nameA = (a.name || '').trim();
+        const nameB = (b.name || '').trim();
+        return nameA.localeCompare(nameB, 'es', { sensitivity: 'base', numeric: true });
+    });
 
     // Obtener lista de rubros visibles para saber si filtramos
     const rubrosList = (window.siteConfig && window.siteConfig.rubros) || [{ id: 'carpinteria', name: 'Carpintería' }];

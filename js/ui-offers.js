@@ -2001,10 +2001,21 @@
                                 </div>
                             </div>
 
-                            <!-- Resultado lookup CP + selector método de envío (Ocupa el 100% del ancho debajo de los campos) -->
+                            <!-- Correo Electrónico (para notificaciones y seguimiento del envío) -->
+                            <div style="margin-top: 2px;">
+                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
+                                    Correo Electrónico (para seguimiento del envío):
+                                </label>
+                                <input type="email" id="pay-ship-email" placeholder="Ej: tunombre@gmail.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                            </div>
+
+                            <!-- Resultado lookup CP + selector método de envío (Ocupa el 100% del ancho debajo de todos los campos a mano) -->
                             <div id="pay-ship-lookup-result" style="display:none; margin-top:10px; width:100%; box-sizing:border-box;"></div>
                         </div>
                     </div>
+
+                    <!-- Tarjeta Separada: Otras plataformas de venta (Siempre Visible) -->
+                    <div id="checkout-external-platforms-container" style="display:none; width: 100%; box-sizing: border-box;"></div>
                 </div>
 
                 <!-- ==================== PASO 2: PAGO Y FACTURACIÓN ==================== -->
@@ -2276,6 +2287,7 @@
                     cp: cpVal,
                     ciudad: document.getElementById('pay-ship-ciudad')?.value || '',
                     provincia: document.getElementById('pay-ship-provincia')?.value || '',
+                    email: document.getElementById('pay-ship-email')?.value || '',
                     razonSocial: document.getElementById('factura-razon-social')?.value || '',
                     cuit: document.getElementById('factura-cuit')?.value || '',
                     dirFiscal: document.getElementById('factura-direccion-fiscal')?.value || ''
@@ -2548,97 +2560,106 @@
             };
         }
 
+        // Tarjeta Independiente de Plataformas Externas (Siempre Visible en el Paso 1)
+        const renderExternalPlatformsCard = () => {
+            const container = document.getElementById('checkout-external-platforms-container');
+            if (!container) return;
+
+            let externalLinks = [];
+
+            if (isProductItem) {
+                const grupo = productContext?.grupo || (offer.acabados_groups && offer.acabados_groups[0]) || {};
+                const medida = (productContext?.medida || '').trim();
+                let relevantVariants = (grupo.medidas_variants || []).filter(m => m.hidden !== true && m.link && m.link.trim());
+                if (medida) {
+                    const exact = relevantVariants.filter(m => (m.medida || '').trim() === medida);
+                    if (exact.length > 0) relevantVariants = exact;
+                }
+                relevantVariants.forEach(v => {
+                    if (v.link && v.link.trim()) {
+                        externalLinks.push({ link: v.link.trim(), label: v.linkLabel, legend: v.legend });
+                    }
+                });
+            }
+
+            if (externalLinks.length === 0) {
+                const fallbackLink = (offer && (offer.link || offer.mercadolibre_link || offer.mlLink)) || (productContext?.product && (productContext.product.link || productContext.product.mercadolibre_link));
+                if (fallbackLink && String(fallbackLink).trim()) {
+                    externalLinks.push({ link: String(fallbackLink).trim() });
+                }
+            }
+
+            if (externalLinks.length === 0) {
+                container.style.display = 'none';
+                container.innerHTML = '';
+                return;
+            }
+
+            let out = `
+                <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.9rem 1rem; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
+                    <div style="font-size: 0.72rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+                        <span>🌐 ¿Preferís comprar por otra plataforma con envío?</span>
+                    </div>
+            `;
+
+            externalLinks.forEach(v => {
+                const url = v.link.trim();
+                const urlLower = url.toLowerCase();
+                let platformName = "Mercado Libre";
+                let platformIcon = "shopping_bag";
+                let platformBg = "#fff059";
+                let platformColor = "#2d3277";
+                let platformBorder = "#e5d836";
+                let desc = "Compralo con Mercado Envíos a todo el país y cuotas";
+
+                if (urlLower.includes('tiendanube.com') || urlLower.includes('mitiendanube.com')) {
+                    platformName = "Tienda Nube";
+                    platformIcon = "storefront";
+                    platformBg = "#2c3b87";
+                    platformColor = "#ffffff";
+                    platformBorder = "#1e2968";
+                    desc = "Compralo directamente desde nuestra Tienda Nube oficial";
+                } else if (!urlLower.includes('mercadolibre.com') && !urlLower.includes('mercadolibre.com.ar') && !urlLower.includes('ml.com') && !urlLower.includes('mpago.')) {
+                    platformName = v.label || "Plataforma Externa";
+                    platformIcon = "open_in_new";
+                    platformBg = "#f1f5f9";
+                    platformColor = "#0f172a";
+                    platformBorder = "#cbd5e1";
+                    desc = v.legend || "Compralo a través de este enlace externo";
+                }
+
+                out += `
+                    <a href="${url}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: ${platformBg}; color: ${platformColor}; border: 1.5px solid ${platformBorder}; border-radius: 12px; padding: 10px 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); transition: transform 0.15s ease;" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+                            <span class="material-symbols-outlined" style="font-size: 22px; flex-shrink: 0;">${platformIcon}</span>
+                            <div style="min-width: 0;">
+                                <div style="font-size: 0.82rem; font-weight: 800; line-height: 1.2;">Comprar por ${platformName}</div>
+                                <div style="font-size: 0.68rem; opacity: 0.85; margin-top: 2px; line-height: 1.2;">${desc}</div>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined" style="font-size: 20px; flex-shrink: 0;">arrow_forward</span>
+                    </a>
+                `;
+            });
+
+            out += `</div>`;
+            container.innerHTML = out;
+            container.style.display = 'block';
+        };
+
+        // Renderizar inmediatamente la tarjeta independiente de plataformas externas al abrir el modal
+        renderExternalPlatformsCard();
+
         function renderShipOptions(cpRes) {
             const container = document.getElementById('pay-ship-lookup-result');
             if (!container) return;
 
-            // Helper para renderizar los botones de plataformas externas (Mercado Libre, Tienda Nube, etc.)
-            const renderExternalPlatformsHtml = () => {
-                let externalLinks = [];
-
-                if (isProductItem) {
-                    const grupo = productContext?.grupo || (offer.acabados_groups && offer.acabados_groups[0]) || {};
-                    const medida = (productContext?.medida || '').trim();
-                    let relevantVariants = (grupo.medidas_variants || []).filter(m => m.hidden !== true && m.link && m.link.trim());
-                    if (medida) {
-                        const exact = relevantVariants.filter(m => (m.medida || '').trim() === medida);
-                        if (exact.length > 0) relevantVariants = exact;
-                    }
-                    relevantVariants.forEach(v => {
-                        if (v.link && v.link.trim()) {
-                            externalLinks.push({ link: v.link.trim(), label: v.linkLabel, legend: v.legend });
-                        }
-                    });
-                }
-
-                if (externalLinks.length === 0) {
-                    const fallbackLink = (offer && (offer.link || offer.mercadolibre_link || offer.mlLink)) || (productContext?.product && (productContext.product.link || productContext.product.mercadolibre_link));
-                    if (fallbackLink && String(fallbackLink).trim()) {
-                        externalLinks.push({ link: String(fallbackLink).trim() });
-                    }
-                }
-
-                if (externalLinks.length === 0) return '';
-
-                let out = `
-                    <div style="margin-top: 12px; padding-top: 12px; border-top: 1.5px dashed #cbd5e1; display: flex; flex-direction: column; gap: 8px;">
-                        <div style="font-size: 0.72rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
-                            <span>🌐 ¿Preferís comprar por otra plataforma con envío?</span>
-                        </div>
-                `;
-
-                externalLinks.forEach(v => {
-                    const url = v.link.trim();
-                    const urlLower = url.toLowerCase();
-                    let platformName = "Mercado Libre";
-                    let platformIcon = "shopping_bag";
-                    let platformBg = "#fff059";
-                    let platformColor = "#2d3277";
-                    let platformBorder = "#e5d836";
-                    let desc = "Compralo con Mercado Envíos a todo el país y cuotas";
-
-                    if (urlLower.includes('tiendanube.com') || urlLower.includes('mitiendanube.com')) {
-                        platformName = "Tienda Nube";
-                        platformIcon = "storefront";
-                        platformBg = "#2c3b87";
-                        platformColor = "#ffffff";
-                        platformBorder = "#1e2968";
-                        desc = "Compralo directamente desde nuestra Tienda Nube oficial";
-                    } else if (!urlLower.includes('mercadolibre.com') && !urlLower.includes('mercadolibre.com.ar') && !urlLower.includes('ml.com') && !urlLower.includes('mpago.')) {
-                        platformName = v.label || "Plataforma Externa";
-                        platformIcon = "open_in_new";
-                        platformBg = "#f1f5f9";
-                        platformColor = "#0f172a";
-                        platformBorder = "#cbd5e1";
-                        desc = v.legend || "Compralo a través de este enlace externo";
-                    }
-
-                    out += `
-                        <a href="${url}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: ${platformBg}; color: ${platformColor}; border: 1.5px solid ${platformBorder}; border-radius: 12px; padding: 10px 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); transition: transform 0.15s ease;" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
-                                <span class="material-symbols-outlined" style="font-size: 22px; flex-shrink: 0;">${platformIcon}</span>
-                                <div style="min-width: 0;">
-                                    <div style="font-size: 0.82rem; font-weight: 800; line-height: 1.2;">Comprar por ${platformName}</div>
-                                    <div style="font-size: 0.68rem; opacity: 0.85; margin-top: 2px; line-height: 1.2;">${desc}</div>
-                                </div>
-                            </div>
-                            <span class="material-symbols-outlined" style="font-size: 20px; flex-shrink: 0;">arrow_forward</span>
-                        </a>
-                    `;
-                });
-
-                out += `</div>`;
-                return out;
-            };
-
             if (!cpRes) {
                 container.style.display = 'block';
-                const extHtml = renderExternalPlatformsHtml();
                 container.innerHTML = `
                     <div style="background:#fef9c3;border:1px solid #fde047;border-radius:8px;padding:6px 10px;font-size:0.75rem;color:#854d0e;">
                         ⚠️ Ingresá tu Código Postal arriba para cotizar la logística directa o flete particular.
                     </div>
-                    ${extHtml}
                 `;
                 return;
             }
@@ -2801,12 +2822,7 @@
             // Si no hay opciones directas activas
             if (options.length === 0) {
                 container.style.display = 'block';
-                const extHtml = renderExternalPlatformsHtml();
-                if (extHtml) {
-                    container.innerHTML = extHtml;
-                } else {
-                    container.innerHTML = '<div style="background:#fff7ed;border:1px solid #ffedd5;border-radius:8px;padding:8px 12px;font-size:0.75rem;color:#c0510a;font-weight:700;">💬 Te cotizamos el envío particular o por expreso directamente por WhatsApp al enviar tu consulta.</div>';
-                }
+                container.innerHTML = '<div style="background:#fff7ed;border:1px solid #ffedd5;border-radius:8px;padding:8px 12px;font-size:0.75rem;color:#c0510a;font-weight:700;">💬 Te cotizamos el envío particular o por expreso directamente por WhatsApp al enviar tu consulta.</div>';
                 window._checkoutSelectedShipCost = 0;
                 window._checkoutSelectedShipLabel = 'A convenir';
                 updateShipLine();
@@ -2842,9 +2858,6 @@
             });
 
             html += '</div>';
-
-            // Si el producto tiene enlaces externos (Mercado Libre, Tienda Nube, etc.), ofrecerlos como alternativas de compra directa
-            html += renderExternalPlatformsHtml();
 
             container.innerHTML = html;
             container.style.display = 'block';
@@ -3012,6 +3025,7 @@
                 if (data.cp && document.getElementById('pay-ship-cp')) document.getElementById('pay-ship-cp').value = data.cp;
                 if (data.ciudad && document.getElementById('pay-ship-ciudad')) document.getElementById('pay-ship-ciudad').value = data.ciudad;
                 if (data.provincia && document.getElementById('pay-ship-provincia')) document.getElementById('pay-ship-provincia').value = data.provincia;
+                if (data.email && document.getElementById('pay-ship-email')) document.getElementById('pay-ship-email').value = data.email;
                 if (data.razonSocial && document.getElementById('factura-razon-social')) document.getElementById('factura-razon-social').value = data.razonSocial;
                 if (data.cuit && document.getElementById('factura-cuit')) document.getElementById('factura-cuit').value = data.cuit;
                 if (data.dirFiscal && document.getElementById('factura-direccion-fiscal')) document.getElementById('factura-direccion-fiscal').value = data.dirFiscal;
@@ -3042,7 +3056,7 @@
 
         const fieldsToAutoSave = [
             'pay-client-name', 'pay-client-phone', 'pay-ship-dir',
-            'pay-ship-cp', 'pay-ship-ciudad', 'pay-ship-provincia',
+            'pay-ship-cp', 'pay-ship-ciudad', 'pay-ship-provincia', 'pay-ship-email',
             'factura-razon-social', 'factura-cuit', 'factura-direccion-fiscal'
         ];
         fieldsToAutoSave.forEach(id => {
@@ -3160,6 +3174,7 @@
                     const cp = document.getElementById('pay-ship-cp')?.value.trim() || 'No especificado';
                     const ciudad = document.getElementById('pay-ship-ciudad')?.value.trim() || 'No especificada';
                     const prov = document.getElementById('pay-ship-provincia')?.value.trim() || 'No especificada';
+                    const email = document.getElementById('pay-ship-email')?.value.trim() || '';
                     
                     msgLines.push("- Método: Envío a domicilio / flete");
                     msgLines.push(`- Envío: ${window._checkoutSelectedShipLabel || 'A confirmar'} — ${window._checkoutSelectedShipCost > 0 ? formatCurr(window._checkoutSelectedShipCost) : 'A cotizar'}`);
@@ -3167,6 +3182,7 @@
                     msgLines.push(`- CP: ${cp}`);
                     msgLines.push(`- Localidad: ${ciudad}`);
                     msgLines.push(`- Provincia: ${prov}`);
+                    if (email) msgLines.push(`- Correo: ${email}`);
                 } else {
                     msgLines.push("- Método: Retiro por taller / local (Hurlingham)");
                 }
