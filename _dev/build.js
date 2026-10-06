@@ -57,7 +57,7 @@ async function build() {
     };
 
     // 1. Copiar carpetas estáticas que no requieren minificación y limpiar huérfanos en docs/img
-    const foldersToCopy = ['img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'pedidos', 'apps', 'partials'];
+    const foldersToCopy = ['data', 'img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'pedidos', 'apps', 'partials'];
     for (const folder of foldersToCopy) {
         const folderSrc = path.join(srcDir, folder);
         const folderDest = path.join(distDir, folder);
@@ -143,33 +143,43 @@ async function build() {
         }
     }
 
-    // 5. Procesar y Minificar JS (Mangle: False)
+    // 5. Procesar y Minificar JS (Mangle: False) recursivamente
     console.log('⚡ Procesando archivos de lógica JS...');
     const jsSrcDir = path.join(srcDir, 'js');
     const jsDistDir = path.join(distDir, 'js');
     fs.ensureDirSync(jsDistDir);
 
-    if (fs.existsSync(jsSrcDir)) {
-        const jsFiles = fs.readdirSync(jsSrcDir).filter(f => f.endsWith('.js'));
-        for (const file of jsFiles) {
-            const filePath = path.join(jsSrcDir, file);
-            const content = fs.readFileSync(filePath, 'utf8');
-            try {
-                // MANGLE: FALSE es vital para no romper nombres de variables globales entre archivos SPA
-                const minified = await minify(content, {
-                    mangle: false,
-                    compress: {
-                        passes: 2
-                    }
-                });
-                fs.writeFileSync(path.join(jsDistDir, file), minified.code);
-                console.log(`   ⚡ JS Minificado: ${file}`);
-            } catch (err) {
-                console.error(`   ❌ Error minificando JS ${file}:`, err.message);
-                // Fallback: copiar original si falla Terser
-                fs.copySync(filePath, path.join(jsDistDir, file));
+    const processJsDirectory = async (currentSrc, currentDist) => {
+        fs.ensureDirSync(currentDist);
+        const entries = fs.readdirSync(currentSrc, { withFileTypes: true });
+        for (const entry of entries) {
+            const srcPath = path.join(currentSrc, entry.name);
+            const distPath = path.join(currentDist, entry.name);
+
+            if (entry.isDirectory()) {
+                await processJsDirectory(srcPath, distPath);
+            } else if (entry.name.endsWith('.js')) {
+                const content = fs.readFileSync(srcPath, 'utf8');
+                try {
+                    const minified = await minify(content, {
+                        mangle: false,
+                        compress: { passes: 2 }
+                    });
+                    fs.writeFileSync(distPath, minified.code);
+                    const relName = path.relative(jsSrcDir, srcPath).replace(/\\/g, '/');
+                    console.log(`   ⚡ JS Minificado: ${relName}`);
+                } catch (err) {
+                    console.error(`   ❌ Error minificando JS ${entry.name}:`, err.message);
+                    fs.copySync(srcPath, distPath);
+                }
+            } else if (entry.name.endsWith('.json')) {
+                fs.copySync(srcPath, distPath);
             }
         }
+    };
+
+    if (fs.existsSync(jsSrcDir)) {
+        await processJsDirectory(jsSrcDir, jsDistDir);
     }
 
     // 6. Crear el archivo iniciar.bat de conveniencia en la carpeta docs

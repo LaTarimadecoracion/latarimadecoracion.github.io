@@ -11,19 +11,19 @@ const app = express();
 const PORT = 7000;
 
 // Ensure rentals database file exists
-const rentalsDbPath = path.join(ROOT_DIR, 'js', 'rentals-data.js');
+const rentalsDbPath = path.join(ROOT_DIR, 'js', 'data', 'rentals-data.js');
 if (!fs.existsSync(rentalsDbPath)) {
     fs.writeFileSync(rentalsDbPath, 'const rentalsData = [];\n', 'utf8');
 }
 
 // Ensure offers database file exists
-const offersDbPath = path.join(ROOT_DIR, 'js', 'offers-data.js');
+const offersDbPath = path.join(ROOT_DIR, 'js', 'data', 'offers-data.js');
 if (!fs.existsSync(offersDbPath)) {
     fs.writeFileSync(offersDbPath, 'const offersData = [];\n', 'utf8');
 }
 
 // Ensure payment config database file exists
-const paymentConfigDbPath = path.join(ROOT_DIR, 'js', 'payment-config.js');
+const paymentConfigDbPath = path.join(ROOT_DIR, 'js', 'data', 'payment-config.js');
 if (!fs.existsSync(paymentConfigDbPath)) {
     const defaultPaymentConfig = {
         transfer: { active: true, alias: 'VENUS.PULMON.METRO', cbu: '0720048988000002273736', bank: 'Banco Santander', titular: 'Yonatan Lucas Orellana', cuit: '20-35281538-2', discountPercent: 0 },
@@ -34,7 +34,7 @@ if (!fs.existsSync(paymentConfigDbPath)) {
 }
 
 // Ensure shipping config database file exists
-const shippingConfigDbPath = path.join(ROOT_DIR, 'js', 'shipping-config.js');
+const shippingConfigDbPath = path.join(ROOT_DIR, 'js', 'data', 'shipping-config.js');
 if (!fs.existsSync(shippingConfigDbPath)) {
     const defaultShippingData = {
         logistica: {
@@ -80,13 +80,13 @@ function bumpServiceWorkerVersion() {
 }
 
 // Ensure orders database file exists
-const ordersDbPath = path.join(ROOT_DIR, 'js', 'orders-data.js');
+const ordersDbPath = path.join(ROOT_DIR, 'js', 'data', 'orders-data.js');
 if (!fs.existsSync(ordersDbPath)) {
     fs.writeFileSync(ordersDbPath, 'const ordersData = [];\n', 'utf8');
 }
 
 // Ensure orders config file exists
-const ordersConfigDbPath = path.join(ROOT_DIR, 'js', 'orders-config.js');
+const ordersConfigDbPath = path.join(ROOT_DIR, 'js', 'data', 'orders-config.js');
 const defaultOrdersConfig = {
     milestones: {
         readyDesc: '¡Tu pedido ya está listo! ✅',
@@ -144,7 +144,7 @@ const serveIndexWithOG = (req, res) => {
             // If there's a product query parameter, we want to inject metadata
             const prodParam = req.query.prod || req.query.product || req.query.p;
             if (prodParam) {
-                const databasePath = path.join(ROOT_DIR, 'js', 'products-data.js');
+                const databasePath = path.join(ROOT_DIR, 'js', 'data', 'products-data.js');
                 if (fs.existsSync(databasePath)) {
                     const rawFile = fs.readFileSync(databasePath, 'utf8');
                     const jsonStr = rawFile
@@ -506,7 +506,7 @@ app.post('/api/save-product-single', (req, res) => {
 
         // 3. Mantener actualizado js/products-data.js como respaldo de compatibilidad
         try {
-            const legacyPath = path.join(ROOT_DIR, 'js', 'products-data.js');
+            const legacyPath = path.join(ROOT_DIR, 'js', 'data', 'products-data.js');
             if (fs.existsSync(legacyPath)) {
                 let code = fs.readFileSync(legacyPath, 'utf8');
                 code = code.replace(/^\s*const\s+productsData\s*=/, 'global.tempLegacy =');
@@ -567,7 +567,7 @@ app.post('/api/save-products', (req, res) => {
         }
 
         const fileContent = 'const productsData = ' + JSON.stringify(productsArray, null, 4) + ';\n';
-        const filePath = path.join(ROOT_DIR, 'js', 'products-data.js');
+        const filePath = path.join(ROOT_DIR, 'js', 'data', 'products-data.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
         console.log('✅ js/products-data.js actualizado correctamente.');
@@ -618,7 +618,7 @@ app.post('/api/save-products', (req, res) => {
 
             // 2. Alquileres
             try {
-                const rentalsPath = path.join(ROOT_DIR, 'js', 'rentals-data.js');
+                const rentalsPath = path.join(ROOT_DIR, 'js', 'data', 'rentals-data.js');
                 if (fs.existsSync(rentalsPath)) {
                     const rawRentals = fs.readFileSync(rentalsPath, 'utf8');
                     const match = rawRentals.match(/const\s+rentalsData\s*=\s*(\[.*?\]);?\s*$/s);
@@ -630,7 +630,7 @@ app.post('/api/save-products', (req, res) => {
 
             // 3. Ofertas
             try {
-                const offersPath = path.join(ROOT_DIR, 'js', 'offers-data.js');
+                const offersPath = path.join(ROOT_DIR, 'js', 'data', 'offers-data.js');
                 if (fs.existsSync(offersPath)) {
                     const rawOffers = fs.readFileSync(offersPath, 'utf8');
                     const match = rawOffers.match(/const\s+offersData\s*=\s*(\[.*?\]);?\s*$/s);
@@ -642,7 +642,7 @@ app.post('/api/save-products', (req, res) => {
 
             // 4. Configuración del sitio (Avisos, logos)
             try {
-                const configPath = path.join(ROOT_DIR, 'js', 'site-config.js');
+                const configPath = path.join(ROOT_DIR, 'js', 'data', 'site-config.js');
                 if (fs.existsSync(configPath)) {
                     const rawConfig = fs.readFileSync(configPath, 'utf8');
                     const match = rawConfig.match(/window\.siteConfig\s*=\s*(\{.*?\});?\s*$/s);
@@ -766,7 +766,7 @@ app.post('/api/save-rentals', (req, res) => {
         }
 
         const fileContent = 'const rentalsData = ' + JSON.stringify(rentalsArray, null, 4) + ';\n';
-        const filePath = path.join(ROOT_DIR, 'js', 'rentals-data.js');
+        const filePath = path.join(ROOT_DIR, 'js', 'data', 'rentals-data.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
         console.log('✅ js/rentals-data.js actualizado correctamente.');
@@ -787,7 +787,7 @@ app.post('/api/save-offers', (req, res) => {
         }
 
         const fileContent = 'const offersData = ' + JSON.stringify(offersArray, null, 4) + ';\n';
-        const filePath = path.join(ROOT_DIR, 'js', 'offers-data.js');
+        const filePath = path.join(ROOT_DIR, 'js', 'data', 'offers-data.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
         console.log('✅ js/offers-data.js actualizado correctamente.');
@@ -808,7 +808,7 @@ app.post('/api/save-site-config', (req, res) => {
         }
 
         const fileContent = '// js/site-config.js\n// --- SITE CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.siteConfig = ' + JSON.stringify(siteConfig, null, 4) + ';\n';
-        const filePath = path.join(ROOT_DIR, 'js', 'site-config.js');
+        const filePath = path.join(ROOT_DIR, 'js', 'data', 'site-config.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
         console.log('✅ js/site-config.js actualizado correctamente.');
@@ -829,7 +829,7 @@ app.post('/api/save-payment-config', (req, res) => {
         }
 
         const fileContent = '// js/payment-config.js\n// --- PAYMENT CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.sessionPaymentConfig = ' + JSON.stringify(paymentConfig, null, 4) + ';\n';
-        const filePath = path.join(ROOT_DIR, 'js', 'payment-config.js');
+        const filePath = path.join(ROOT_DIR, 'js', 'data', 'payment-config.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
         console.log('✅ js/payment-config.js actualizado correctamente.');
@@ -1199,7 +1199,7 @@ app.post('/api/categories/delete', (req, res) => {
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 app.post('/api/maintenance/clean-and-convert', async (req, res) => {
     const log = [];
-    const databasePath = path.join(ROOT_DIR, 'js', 'products-data.js');
+    const databasePath = path.join(ROOT_DIR, 'js', 'data', 'products-data.js');
     const imgDir       = path.join(ROOT_DIR, 'img');
 
     try {
@@ -1236,7 +1236,7 @@ app.post('/api/maintenance/clean-and-convert', async (req, res) => {
         });
 
         // ── 2b. Mapear y normalizar rutas en site-config.js ──
-        const configPath = path.join(ROOT_DIR, 'js', 'site-config.js');
+        const configPath = path.join(ROOT_DIR, 'js', 'data', 'site-config.js');
         let siteConfig = null;
         if (fs.existsSync(configPath)) {
             try {
@@ -1525,7 +1525,7 @@ function cleanExpiredOrders(orders) {
 
 function getSocialLinks() {
     try {
-        const configPath = path.join(ROOT_DIR, 'js', 'site-config.js');
+        const configPath = path.join(ROOT_DIR, 'js', 'data', 'site-config.js');
         if (fs.existsSync(configPath)) {
             const rawFile = fs.readFileSync(configPath, 'utf8');
             const getLink = (name) => {
@@ -2836,7 +2836,7 @@ function generateSocialPreviewPages() {
             fs.mkdirSync(pDir, { recursive: true });
         }
 
-        const productsDbPath = path.join(ROOT_DIR, 'js', 'products-data.js');
+        const productsDbPath = path.join(ROOT_DIR, 'js', 'data', 'products-data.js');
         if (!fs.existsSync(productsDbPath)) return;
 
         const fileContent = fs.readFileSync(productsDbPath, 'utf8');
@@ -2924,7 +2924,7 @@ function cleanOrphanImages() {
         const usedImages = new Set();
 
         // 1. Recopilar imágenes del catálogo (products-data.js)
-        const productsDbPath = path.join(ROOT_DIR, 'js', 'products-data.js');
+        const productsDbPath = path.join(ROOT_DIR, 'js', 'data', 'products-data.js');
         if (fs.existsSync(productsDbPath)) {
             const content = fs.readFileSync(productsDbPath, 'utf8');
             const jsonStr = content.replace(/^\s*const\s+productsData\s*=\s*/, '').replace(/;\s*$/, '').trim();
@@ -2951,7 +2951,7 @@ function cleanOrphanImages() {
         }
 
         // 2. Recopilar imágenes de Ofertas (offers-data.js)
-        const offersDbPath = path.join(ROOT_DIR, 'js', 'offers-data.js');
+        const offersDbPath = path.join(ROOT_DIR, 'js', 'data', 'offers-data.js');
         if (fs.existsSync(offersDbPath)) {
             const content = fs.readFileSync(offersDbPath, 'utf8');
             const jsonStr = content.replace(/^\s*const\s+offersData\s*=\s*/, '').replace(/;\s*$/, '').trim();
@@ -2962,7 +2962,7 @@ function cleanOrphanImages() {
         }
 
         // 3. Recopilar imágenes de Nosotros y Banners (site-config.js)
-        const siteConfigDbPath = path.join(ROOT_DIR, 'js', 'site-config.js');
+        const siteConfigDbPath = path.join(ROOT_DIR, 'js', 'data', 'site-config.js');
         if (fs.existsSync(siteConfigDbPath)) {
             const content = fs.readFileSync(siteConfigDbPath, 'utf8');
             const matchNosotros = content.match(/"image":\s*"([^"]+)"/g);

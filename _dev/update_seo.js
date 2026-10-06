@@ -1,8 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-// 1. Leer archivo products-data.js
-const productsContent = fs.readFileSync(path.join(__dirname, '..', 'js', 'products-data.js'), 'utf8');
+// 1. Leer archivo products-data.js (desde js/data/ con fallback a js/)
+const productsPath = fs.existsSync(path.join(__dirname, '..', 'js', 'data', 'products-data.js'))
+    ? path.join(__dirname, '..', 'js', 'data', 'products-data.js')
+    : path.join(__dirname, '..', 'js', 'products-data.js');
+const productsContent = fs.readFileSync(productsPath, 'utf8');
 
 let productsArray = [];
 try {

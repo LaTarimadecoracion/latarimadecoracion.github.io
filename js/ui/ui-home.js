@@ -1,0 +1,723 @@
+    function setupInfiniteCarousel(containerEl, itemsArray, renderItemFunc) {
+        if (!itemsArray || itemsArray.length === 0) return false;
+        
+        // Limpiamos el contenedor para evitar duplicados residuales
+        containerEl.innerHTML = '';
+
+        // En lugar de triplicar y forzar saltos (lo cual causa flickering grave en celulares
+        // por conflicto con el momentum scrolling nativo), usamos una lista nativa simple.
+        const fragment = document.createDocumentFragment();
+        itemsArray.forEach((item, index) => {
+            fragment.appendChild(renderItemFunc(item, index));
+        });
+        containerEl.appendChild(fragment);
+
+        return true;
+    }
+
+    function renderSectionContent(sectionId, containerEl, customStack = null) {
+        if (!containerEl) return;
+        
+        const stack = customStack || window.contentRegistry[sectionId];
+        if (!stack || stack.length === 0) {
+            return false; // Indicates empty stack
+        }
+
+        containerEl.innerHTML = '';
+
+
+        stack.forEach(comp => {
+            if (comp.type === 'banner' && comp.image) {
+                const banner = document.createElement('div');
+                banner.className = 'promo-banner';
+                banner.style.cssText = `
+                    position: relative;
+                    width: 100%;
+                    height: 180px;
+                    background-image: url('${comp.image}');
+                    background-size: cover;
+                    background-position: center;
+                    border-radius: var(--radius-md);
+                    margin-bottom: 1.25rem;
+                    cursor: ${comp.link ? 'pointer' : 'default'};
+                    overflow: hidden;
+                    box-shadow: var(--shadow-sm);
+                `;
+                if (comp.link) {
+                    banner.addEventListener('click', () => {
+                        window.open(comp.link, '_blank');
+                    });
+                }
+                containerEl.appendChild(banner);
+
+            } else if (comp.type === 'product' && comp.productId) {
+                // Buscar en window.sessionProducts primero (datos enriquecidos), luego en productsData
+                const res = findProductById(comp.productId);
+                if (res) {
+                    const { product, catName } = res;
+                    const card = document.createElement('div');
+                    card.className = 'feed-card';
+                    card.style.cssText = 'margin-bottom: 1.25rem; position: relative;';
+                    // Resolver imagen: puede ser array (variantes) o string directo
+                    const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                    const badgeText = comp.badge || 'Destacado';
+                    
+                    let catObj = null;
+                    if (product.primaryCatId && typeof window.sessionProducts !== 'undefined') {
+                        catObj = window.sessionProducts.find(c => c.id === product.primaryCatId);
+                    }
+                    if (!catObj && typeof window.sessionProducts !== 'undefined' && catName) {
+                        catObj = window.sessionProducts.find(c => c.name.toLowerCase() === catName.toLowerCase());
+                    }
+                    const catId = catObj ? catObj.id : (product.primaryCatId || '');
+
+                    card.innerHTML = `
+                        <div class="feed-card-photo-container">
+                            <div class="feed-card-img-wrapper" style="position:relative;">
+                                <img src="${productCover}" class="feed-card-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
+                            </div>
+                            <div class="feed-card-gradient"></div>
+                            <div class="feed-card-info">
+                                <span class="feed-card-cat" ${catId ? `data-category-id="${catId}"` : ''}>${catName}</span>
+                                <h3 class="feed-card-title">${product.title}</h3>
+                            </div>
+                            <span class="feed-card-variants-badge" style="background: var(--primary-color, #c0510a); color: white; border: none; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; font-size: 0.72rem; padding: 0.3rem 0.75rem; border-radius: 50px; box-shadow: 0 2px 8px rgba(0,0,0,0.25);">
+                                ${badgeText}
+                            </span>
+                        </div>
+                    `;
+                    card.addEventListener('click', () => {
+                        showProductDetail(product, catName);
+                    });
+                    containerEl.appendChild(card);
+                } else {
+                    // Producto no encontrado — mostrar card de placeholder
+                    const placeholder = document.createElement('div');
+                    placeholder.style.cssText = `padding: 1rem; background: #fff8f0; border: 1.5px dashed #f5c299; border-radius: var(--radius-md); margin-bottom: 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;`;
+                    placeholder.innerHTML = `<span class="material-symbols-outlined" style="display:block; font-size:24px; margin-bottom:0.25rem; opacity:0.4;">image_not_supported</span>Producto no disponible (ID: ${comp.productId})`;
+                    containerEl.appendChild(placeholder);
+                }
+
+            } else if (comp.type === 'video' && comp.url) {
+                const ytId = extractYouTubeId(comp.url);
+                if (ytId) {
+                    const wrapper = document.createElement('div');
+                    wrapper.style.cssText = `
+                        position: relative;
+                        width: 100%;
+                        height: 200px;
+                        border-radius: var(--radius-md);
+                        overflow: hidden;
+                        margin-bottom: 1.25rem;
+                        box-shadow: var(--shadow-sm);
+                    `;
+                    wrapper.innerHTML = `
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=0&modestbranding=1&rel=0"
+                            allow="autoplay; encrypted-media"
+                            allowfullscreen
+                            style="width: 100%; height: 100%; border: none;"
+                        ></iframe>
+                        <div style="position: absolute; top:0; left:0; width:100%; height:100%; background:transparent; z-index:10;"></div>
+                    `;
+                    containerEl.appendChild(wrapper);
+                }
+            }
+        });
+
+        return true; // Indicates successfully rendered stack
+    }
+
+
+
+    window.loadProductViews = async function() {
+        let globalViews = {};
+        
+        // 1. Intentar cargar del servidor con timeout ultrarrápido para no congelar la app
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 200);
+            const res = await fetch('/api/views', { signal: controller.signal });
+            clearTimeout(timeoutId);
+            if (res.ok) {
+                globalViews = await res.json();
+            }
+        } catch (e) {
+            // Silenciar errores de timeout o hosting estático
+        }
+        
+        // 2. Intentar cargar de LocalStorage como respaldo
+        let localViews = {};
+        try {
+            const data = localStorage.getItem('product_views');
+            if (data) {
+                localViews = JSON.parse(data);
+            }
+        } catch (e) {
+            console.error('[Tracking] Error leyendo product_views de LocalStorage:', e);
+        }
+        
+        // 3. Unificar las vistas en window.sessionProducts y productsData
+        const mergeViews = (productsArray) => {
+            if (!productsArray || !Array.isArray(productsArray)) return;
+            productsArray.forEach(cat => {
+                if (cat.products && Array.isArray(cat.products)) {
+                    cat.products.forEach(p => {
+                        const serverVal = globalViews[p.id] || 0;
+                        const localVal = localViews[p.id] || 0;
+                        p.views = Math.max(serverVal, localVal);
+                    });
+                }
+            });
+        };
+        
+        if (window.sessionProducts) mergeViews(window.sessionProducts);
+        if (window.productsData) mergeViews(window.productsData);
+    };
+
+
+
+    window.trackProductView = async function(productId) {
+        if (!productId) return;
+
+        // 1. Incrementar en memoria local
+        try {
+            const incrementLocal = (productsArray) => {
+                if (!productsArray || !Array.isArray(productsArray)) return;
+                for (const cat of productsArray) {
+                    if (cat.products && Array.isArray(cat.products)) {
+                        const p = cat.products.find(prod => prod.id === productId);
+                        if (p) {
+                            p.views = (p.views || 0) + 1;
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            };
+            incrementLocal(window.sessionProducts);
+            incrementLocal(window.productsData);
+        } catch (e) {
+            console.error('[Tracking] Error incrementando contador en memoria:', e);
+        }
+
+        // 2. Incrementar en LocalStorage
+        try {
+            const localViews = localStorage.getItem('product_views') ? JSON.parse(localStorage.getItem('product_views')) : {};
+            localViews[productId] = (localViews[productId] || 0) + 1;
+            localStorage.setItem('product_views', JSON.stringify(localViews));
+        } catch (e) {
+            console.error('[Tracking] Error guardando vista en LocalStorage:', e);
+        }
+
+        // 3. Intentar actualizar en servidor
+        try {
+            await fetch('/api/products/view', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ productId })
+            });
+        } catch (e) {
+            console.warn('[Tracking] No se pudo conectar al servidor para registrar la vista:', e);
+        }
+
+        // 4. Registrar vista en Google Analytics
+        if (typeof gtag === 'function') {
+            gtag('event', 'view_item', {
+                currency: 'ARS',
+                items: [{
+                    item_id: productId,
+                    item_name: productId
+                }]
+            });
+        }
+    };
+
+
+
+    function renderHome() {
+        const homeContent = document.querySelector('#view-home .home-content');
+        if (!homeContent) return;
+
+        // Sincronizar orden antes de dibujar
+        if (window.syncHomeOrder) window.syncHomeOrder();
+
+        homeContent.style.padding = '0 0 2rem 0';
+        homeContent.innerHTML = ''; // Limpiar contenido previo para inyección limpia ordenada
+
+        // Garantizar que homeConfig esté disponible
+        if (typeof homeConfig === 'undefined' || !homeConfig.order) {
+            window.homeConfig = {
+                order: ['categorias', 'ofertas', 'novedades', 'buscados'],
+                sections: {
+                    categorias: { title: "Categorías", subtitle: "Nuestras líneas de productos", icon: "grid_view" },
+                    ofertas: { title: "Ofertas Especiales", subtitle: "Promociones y combos por tiempo limitado", icon: "local_offer" },
+                    novedades: { title: "Nuevos Diseños 2026", subtitle: "Novedades del taller", icon: "celebration" },
+                    buscados: { title: "Los más buscados", subtitle: "Los preferidos de nuestros clientes", icon: "star" }
+                }
+            };
+        }
+
+        homeConfig.order.forEach(sectionId => {
+            try {
+                // Verificar si la sección está configurada como no visible
+                const secConfig = homeConfig.sections ? homeConfig.sections[sectionId] : null;
+                if (secConfig && secConfig.visible === false) {
+                    return;
+                }
+
+                if (sectionId.startsWith('comp-')) {
+                    // Componentes dinámicos del View Builder (renderizados individualmente)
+                    const homeStack = (typeof window.contentRegistry !== 'undefined' && window.contentRegistry.home) ? window.contentRegistry.home : [];
+                    const comp = homeStack.find(c => c.id === sectionId);
+                    
+                    if (comp) {
+                        const sectionEl = document.createElement('section');
+                        sectionEl.className = `home-section full-width section-dynamic`;
+                        sectionEl.style.cssText = 'margin-bottom: 0.75rem; padding: 0 1.25rem;';
+                        homeContent.appendChild(sectionEl);
+
+                        if (window.renderSectionContent) {
+                            window.renderSectionContent('home', sectionEl, [comp]);
+                        }
+                    }
+                    return; // Continuar con la siguiente sección
+                }
+
+                if (sectionId === 'ofertas') {
+                    // Obtener ofertas activas y no vencidas
+                    const offersSource = (window.sessionOffers && window.sessionOffers.length > 0)
+                        ? window.sessionOffers
+                        : (typeof offersData !== 'undefined' ? offersData : []);
+
+                    let activeOffers = [];
+                    if (Array.isArray(offersSource) && offersSource.length > 0) {
+                        activeOffers = offersSource.filter(o => {
+                            if (o.active === false) return false;
+                            if (o.hasTimer && o.expirationDate) {
+                                const expTime = new Date(o.expirationDate).getTime();
+                                if (!isNaN(expTime) && expTime <= Date.now()) return false;
+                            }
+                            return true;
+                        });
+                    }
+
+                    // Obtener productos con Envío Gratis activo (Modo 1 y Modo 2)
+                    const freeShipItems = (typeof window.getFreeShippingProducts === 'function') 
+                        ? window.getFreeShippingProducts() 
+                        : [];
+
+                    const totalPromos = activeOffers.length + freeShipItems.length;
+
+                    // Renderizar el Banner CTA Horizontal siempre presente para llamado a la acción
+                    const ctaWrapper = document.createElement('div');
+                    ctaWrapper.className = 'home-section full-width section-ofertas-cta';
+                    ctaWrapper.style.cssText = 'margin: 0.6rem 0 0.8rem 0; padding: 0 1.25rem;';
+
+                    let countText = '';
+                    if (activeOffers.length > 0 && freeShipItems.length > 0) {
+                        countText = `${activeOffers.length} oferta${activeOffers.length > 1 ? 's' : ''} y ${freeShipItems.length} beneficio${freeShipItems.length > 1 ? 's' : ''} de envío`;
+                    } else if (freeShipItems.length > 0) {
+                        countText = `${freeShipItems.length} producto${freeShipItems.length > 1 ? 's' : ''} con beneficio de envío`;
+                    } else if (activeOffers.length > 0) {
+                        countText = activeOffers.length === 1 ? '1 oferta imperdible disponible' : `${activeOffers.length} ofertas y combos imperdibles`;
+                    } else {
+                        countText = 'Promociones, combos y beneficios de envío';
+                    }
+
+                        if (!document.getElementById('offers-cta-style')) {
+                            const styleEl = document.createElement('style');
+                            styleEl.id = 'offers-cta-style';
+                            styleEl.textContent = `
+                                @keyframes offersPulseGreen {
+                                    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+                                    50% { transform: scale(1.08); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+                                }
+                                @keyframes topBarShimmer {
+                                    0% { background-position: 0% 50%; }
+                                    100% { background-position: 200% 50%; }
+                                }
+                                @keyframes badgeGlow {
+                                    0%, 100% { filter: brightness(1); }
+                                    50% { filter: brightness(1.3); }
+                                }
+                            `;
+                            document.head.appendChild(styleEl);
+                        }
+
+                        ctaWrapper.innerHTML = `
+                            <div class="offers-cta-banner" style="
+                                position: relative;
+                                width: 100%;
+                                background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+                                border: 1.5px solid rgba(34, 197, 94, 0.45);
+                                border-radius: var(--radius-md, 14px);
+                                padding: 0.85rem 1.15rem;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                gap: 12px;
+                                cursor: pointer;
+                                box-shadow: 0 4px 20px rgba(34, 197, 94, 0.18), 0 4px 18px rgba(15, 23, 42, 0.25);
+                                overflow: hidden;
+                                transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+                                box-sizing: border-box;
+                            " onmouseover="this.style.transform='scale(1.015)'; this.style.boxShadow='0 6px 24px rgba(34, 197, 94, 0.35)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 20px rgba(34, 197, 94, 0.18)'">
+                                <!-- Línea superior animada multicolor con Verde Esperanza destacado -->
+                                <div style="
+                                    position: absolute; 
+                                    top: 0; left: 0; right: 0; 
+                                    height: 3.5px; 
+                                    background: linear-gradient(90deg, #22c55e, #eab308, #ef4444, #22c55e, #10b981);
+                                    background-size: 200% 100%;
+                                    animation: topBarShimmer 3s linear infinite;
+                                "></div>
+
+                                <div style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+                                    <div style="
+                                        width: 44px;
+                                        height: 44px;
+                                        min-width: 44px;
+                                        border-radius: 50%;
+                                        background: linear-gradient(135deg, #22c55e, #15803d);
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        animation: offersPulseGreen 2.2s ease-in-out infinite;
+                                    ">
+                                        <span class="material-symbols-outlined" style="color: #ffffff; font-size: 1.45rem;">local_offer</span>
+                                    </div>
+
+                                    <div style="display: flex; flex-direction: column; min-width: 0;">
+                                        <div style="display: flex; align-items: center; gap: 6px;">
+                                            <span style="font-size: 0.98rem; font-weight: 800; color: #ffffff; letter-spacing: -0.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                                🔥 Ofertas & Descuentos
+                                            </span>
+                                            <span style="background: #22c55e; color: #ffffff; font-size: 0.65rem; font-weight: 900; padding: 2px 7px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px; animation: badgeGlow 1.8s ease-in-out infinite;">
+                                                ACTIVO
+                                            </span>
+                                        </div>
+                                        <span style="font-size: 0.78rem; color: #cbd5e1; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                            ${countText} • ¡Entrá y conocé todas las promociones!
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 5px;
+                                    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+                                    color: #ffffff;
+                                    font-size: 0.8rem;
+                                    font-weight: 800;
+                                    padding: 0.5rem 0.95rem;
+                                    border-radius: 50px;
+                                    white-space: nowrap;
+                                    flex-shrink: 0;
+                                    box-shadow: 0 3px 12px rgba(34, 197, 94, 0.45);
+                                ">
+                                    <span>Ver Ofertas</span>
+                                    <span class="material-symbols-outlined" style="font-size: 1.1rem; font-weight: 800;">arrow_forward</span>
+                                </div>
+                            </div>
+                        `;
+
+                        ctaWrapper.addEventListener('click', () => {
+                            if (window.navigateToView) window.navigateToView('view-offers');
+                        });
+
+                        homeContent.appendChild(ctaWrapper);
+                    return; // Evitar crear la cabecera estándar de sección
+                }
+
+                const config = homeConfig.sections[sectionId] || { title: sectionId, subtitle: '', icon: 'folder' };
+                
+                // Crear el contenedor de la sección
+                const sectionEl = document.createElement('section');
+                sectionEl.className = `home-section full-width section-${sectionId}`;
+                sectionEl.style.cssText = 'margin-bottom: 0.75rem;';
+
+                // Determinar título dinámico si es la sección de novedades
+                let titleToShow = config.title;
+                if (sectionId === 'novedades') {
+                    const latestYear = getLatestModificationYear();
+                    titleToShow = config.title.replace(/\b\d{4}\b/g, latestYear);
+                }
+
+                // Crear cabecera premium de la sección
+                const headerEl = document.createElement('div');
+                headerEl.className = 'section-header-premium';
+                headerEl.style.cssText = 'padding: 0.75rem 1.5rem 0.4rem; display: flex; align-items: center; gap: 8px;';
+                headerEl.innerHTML = `
+                    <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a); font-size: 1.5rem; vertical-align: middle;">${config.icon}</span>
+                    <div>
+                        <h2 class="section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; padding:0;">${titleToShow}</h2>
+                        ${config.subtitle ? `<p class="section-subtitle" style="font-size: 0.8rem; color: var(--text-muted); margin: 2px 0 0 0; padding:0;">${config.subtitle}</p>` : ''}
+                    </div>
+                `;
+                sectionEl.appendChild(headerEl);
+
+                // Crear contenedor específico para la sección
+                const containerEl = document.createElement('div');
+                containerEl.style.cssText = 'padding: 0 1.25rem 0.5rem;';
+
+                if (sectionId === 'categorias') {
+                    containerEl.id = 'carousel-categories';
+                    containerEl.className = 'carousel-categories';
+                    sectionEl.appendChild(containerEl);
+                    homeContent.appendChild(sectionEl);
+
+                    // Rellenar categorías
+                    const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
+                    if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
+                        const targetRubros = config.rubros || (config.rubro && config.rubro !== 'all' ? [config.rubro] : null);
+                        const sortedCategories = [...sourceData].sort((a, b) => (a.order || 0) - (b.order || 0));
+                        const visibleCategories = sortedCategories.filter(cat => {
+                            if (cat.visible === false) return false;
+                            
+                            // Excluir la categoría virtual de resguardo del carrusel principal de la Home
+                            if (cat.id.endsWith('-todos')) return false;
+
+                            // Validar pertenencia de rubro
+                            const catRubro = cat.rubro || 'carpinteria';
+                            if (targetRubros && !targetRubros.includes(catRubro)) return false;
+
+                            return true;
+                        });
+                        setupInfiniteCarousel(containerEl, visibleCategories, (cat, idx) => {
+                            const catCard = document.createElement('div');
+                            catCard.className = 'category-card';
+                            const catCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
+                            const isEager = idx < 3;
+                            catCard.innerHTML = `
+                                <div class="category-card-img-wrapper" style="position:relative;">
+                                    <img src="${catCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${cat.name}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                                </div>
+                                <div class="category-overlay">
+                                    <span>${cat.name}</span>
+                                </div>
+                            `;
+                            catCard.addEventListener('click', () => {
+                                if (window.navigateToCategoryFeed) window.navigateToCategoryFeed(cat.id);
+                            });
+                            return catCard;
+                        });
+                    } else {
+                        containerEl.innerHTML = '<p class="text-muted">No hay categorías disponibles.</p>';
+                    }
+
+
+
+                } else if (sectionId === 'novedades') {
+                    containerEl.id = 'home-new-designs-list';
+                    containerEl.className = 'carousel-categories';
+
+                    // Ajustar la cabecera para que la fila de pills ocupe todo el ancho disponible
+                    headerEl.style.flexDirection = 'column';
+                    headerEl.style.alignItems = 'flex-start';
+                    headerEl.style.gap = '4px';
+
+                    const titleRow = document.createElement('div');
+                    titleRow.style.cssText = 'display: flex; align-items: center; gap: 8px; width: 100%;';
+                    titleRow.innerHTML = `
+                        <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a); font-size: 1.5rem; vertical-align: middle;">${config.icon}</span>
+                        <h2 class="section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; padding:0;">${titleToShow}</h2>
+                    `;
+
+                    // Reemplazar HTML de la cabecera limpia
+                    headerEl.innerHTML = '';
+                    headerEl.appendChild(titleRow);
+
+                    // Reemplazar subtítulo por mini botones/pills de rubros (sin botón TODOS)
+                    const rubrosList = (window.rubros && Array.isArray(window.rubros) && window.rubros.length > 0)
+                        ? window.rubros.filter(r => r.visible !== false)
+                        : [{ id: 'carpinteria', name: 'Carpintería', icon: '🪵' }];
+
+                    let activeNovedadesRubro = rubrosList[0] ? rubrosList[0].id : 'carpinteria';
+
+                    const pillsWrapper = document.createElement('div');
+                    pillsWrapper.className = 'novedades-rubros-pills';
+                    pillsWrapper.style.cssText = 'display: flex; gap: 6px; margin-top: 4px; flex-wrap: nowrap; align-items: center; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 4px; width: 100%; max-width: 100%; box-sizing: border-box;';
+
+                    const renderPills = () => {
+                        pillsWrapper.innerHTML = rubrosList.map(r => {
+                            const isSelected = r.id === activeNovedadesRubro;
+                            const bg = isSelected ? '#16a34a' : '#f1f5f9';
+                            const color = isSelected ? '#ffffff' : '#475569';
+                            const border = isSelected ? '#16a34a' : '#e2e8f0';
+                            return `
+                                <button type="button" class="novedades-rubro-pill" data-rubro="${r.id}" style="background: ${bg}; color: ${color}; border: 1px solid ${border}; box-shadow: ${isSelected ? '0 2px 6px rgba(22, 163, 74, 0.25)' : 'none'};">
+                                    ${r.icon ? `<span>${r.icon}</span>` : ''}
+                                    <span>${r.name}</span>
+                                </button>
+                            `;
+                        }).join('');
+
+                        pillsWrapper.querySelectorAll('.novedades-rubro-pill').forEach(btn => {
+                            btn.onclick = (e) => {
+                                e.stopPropagation();
+                                const selectedId = btn.dataset.rubro;
+                                if (selectedId && selectedId !== activeNovedadesRubro) {
+                                    activeNovedadesRubro = selectedId;
+                                    renderPills();
+                                    renderNovedadesProducts();
+                                }
+                            };
+                        });
+                    };
+
+                    headerEl.appendChild(pillsWrapper);
+                    renderPills();
+
+                    sectionEl.appendChild(containerEl);
+                    homeContent.appendChild(sectionEl);
+
+                    // Función para cargar y renderizar productos del rubro activo
+                    const renderNovedadesProducts = () => {
+                        const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
+                        if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
+                            let allProducts = [];
+                            const seenIds = new Set();
+
+                            sourceData.forEach(cat => {
+                                if (cat.visible === false) return;
+                                
+                                // Validar pertenencia del rubro activo
+                                const catRubro = cat.rubro || 'carpinteria';
+                                if (catRubro !== activeNovedadesRubro) return;
+
+                                if (cat.products) {
+                                    cat.products.forEach(product => {
+                                        if (product.visible === false) return;
+                                        if (!seenIds.has(product.id)) {
+                                            seenIds.add(product.id);
+                                            const res = findProductById(product.id);
+                                            allProducts.push({ product, catName: res ? res.catName : cat.name });
+                                        }
+                                    });
+                                }
+                            });
+
+                            const limit = config.limit ? parseInt(config.limit, 10) : 6;
+                            const latestProducts = [...allProducts]
+                                .sort((a, b) => getProductTimestamp(b.product) - getProductTimestamp(a.product))
+                                .slice(0, limit);
+
+                            if (latestProducts.length === 0) {
+                                containerEl.innerHTML = `
+                                    <div style="padding: 1.2rem 1rem; text-align: center; color: #64748b; font-size: 0.8rem; font-weight: 600;">
+                                        ✨ No hay novedades en este rubro por el momento.
+                                    </div>
+                                `;
+                                return;
+                            }
+
+                            setupInfiniteCarousel(containerEl, latestProducts, (item, idx) => {
+                                const { product, catName } = item || {};
+                                if (!product) {
+                                    const placeholderCard = document.createElement('div');
+                                    placeholderCard.style.display = 'none';
+                                    return placeholderCard;
+                                }
+
+                                const card = document.createElement('div');
+                                card.className = 'category-card';
+                                const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                                const isEager = idx < 3;
+                                card.innerHTML = `
+                                    <div class="category-card-img-wrapper" style="position:relative;">
+                                        <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${product.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                                    </div>
+                                    <div class="category-overlay">
+                                        <span>${product.title}</span>
+                                    </div>
+                                `;
+                                card.addEventListener('click', () => {
+                                    if (window.showProductDetail) window.showProductDetail(product, catName);
+                                });
+                                return card;
+                            });
+                        } else {
+                            containerEl.innerHTML = '<p class="text-muted">No hay novedades disponibles.</p>';
+                        }
+                    };
+
+                    renderNovedadesProducts();
+
+                } else if (sectionId === 'buscados') {
+                    containerEl.id = 'home-product-list';
+                    containerEl.className = 'carousel-categories';
+                    sectionEl.appendChild(containerEl);
+                    homeContent.appendChild(sectionEl);
+
+                    // Rellenar más buscados
+                    const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
+                    if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
+                        let allProducts = [];
+                        const seenIds = new Set();
+                        
+                        const targetRubros = config.rubros || (config.rubro && config.rubro !== 'all' ? [config.rubro] : null);
+
+                        sourceData.forEach(cat => {
+                            if (cat.visible === false) return;
+
+                            // Validar rubro de la categoría
+                            const catRubro = cat.rubro || 'carpinteria';
+                            if (targetRubros && !targetRubros.includes(catRubro)) return;
+
+                            if (cat.products) {
+                                cat.products.forEach(product => {
+                                    if (product.visible === false) return;
+                                    if (!seenIds.has(product.id)) {
+                                        seenIds.add(product.id);
+                                        const res = findProductById(product.id);
+                                        allProducts.push({ product, catName: res ? res.catName : cat.name });
+                                    }
+                                });
+                            }
+                        });
+
+                        // Selección aleatoria para mantener el home dinámico (sin base de datos)
+                        const limit = config.limit ? parseInt(config.limit, 10) : 8;
+                        const randomSelections = [...allProducts]
+                            .sort(() => 0.5 - Math.random())
+                            .slice(0, limit);
+                        setupInfiniteCarousel(containerEl, randomSelections, ({ product, catName }, idx) => {
+                            const pCard = document.createElement('div');
+                            pCard.className = 'category-card';
+                            const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                            const isEager = idx < 3;
+                            pCard.innerHTML = `
+                                <div class="category-card-img-wrapper" style="position:relative;">
+                                    <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${product.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                                </div>
+                                <div class="category-overlay">
+                                    <span>${product.title}</span>
+                                </div>
+                            `;
+                            pCard.addEventListener('click', () => {
+                                if (window.showProductDetail) window.showProductDetail(product, catName);
+                            });
+                            return pCard;
+                        });
+                    } else {
+                        containerEl.innerHTML = '<p class="text-muted">No hay productos disponibles.</p>';
+                    }
+                }
+
+            } catch (err) {
+                console.error(`[Fault Tolerance] Error renderizando sección '${sectionId}':`, err);
+            }
+        });
+
+        // Re-inicializar drag-to-scroll en todos los carruseles creados
+        if (typeof window.enableDragToScroll === 'function') {
+            document.querySelectorAll('.carousel-categories').forEach(el => window.enableDragToScroll(el));
+        }
+    }
+
+
+window.setupInfiniteCarousel = setupInfiniteCarousel;
+window.renderHome = safeRender(renderHome, 'renderHome');
+window.renderSectionContent = safeRender(renderSectionContent, 'renderSectionContent');
