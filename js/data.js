@@ -425,6 +425,93 @@ window.saveContentRegistry = function(skipServerSync = false) {
     }
 };
 
+// --- CACHÉ Y CARGADOR DE PRODUCTOS DESACOPLADOS (Bajo Demanda) ---
+window.productDetailCache = window.productDetailCache || new Map();
+
+/**
+ * Carga la ficha técnica completa individual de un producto (data/products/p-{id}.json).
+ * Si ya está en memoria o en window.sessionProducts, la retorna de inmediato (0ms).
+ */
+window.fetchProductDetailAsync = async function(productId) {
+    if (!productId) return null;
+    const cleanId = String(productId).trim();
+
+    // 1. Revisar caché en memoria
+    if (window.productDetailCache.has(cleanId)) {
+        return window.productDetailCache.get(cleanId);
+    }
+
+    // 2. Buscar si ya existe en window.sessionProducts en memoria completa
+    if (Array.isArray(window.sessionProducts)) {
+        for (const cat of window.sessionProducts) {
+            if (cat && Array.isArray(cat.products)) {
+                const found = cat.products.find(p => p && String(p.id).trim() === cleanId);
+                if (found) {
+                    window.productDetailCache.set(cleanId, found);
+                    return found;
+                }
+            }
+        }
+    }
+
+    // 3. Carga bajo demanda desde data/products/[rubro]/[categoria]/p-{id}.json
+    try {
+        const isApps = window.location.pathname.includes('/apps/');
+        const prefix = isApps ? '../' : '';
+
+        // Si tenemos el índice en memoria o podemos consultar catalog-index.json
+        if (!window.catalogIndex) {
+            try {
+                const idxRes = await fetch(`${prefix}data/catalog-index.json`);
+                if (idxRes.ok) window.catalogIndex = await idxRes.json();
+            } catch (e) {}
+        }
+
+        let targetRelPath = null;
+        if (Array.isArray(window.catalogIndex)) {
+            const entry = window.catalogIndex.find(item => item && (String(item.id).trim() === cleanId || String(item.shortId).trim() === cleanId));
+            if (entry && entry.file) {
+                targetRelPath = entry.file;
+            }
+        }
+
+        const candidateUrls = [];
+        if (targetRelPath) {
+            candidateUrls.push(`${prefix}${targetRelPath}`);
+        }
+        // Fallback directo a data/products/p-{id}.json
+        candidateUrls.push(`${prefix}data/products/p-${cleanId}.json`);
+
+        for (const url of candidateUrls) {
+            try {
+                const response = await fetch(url);
+                if (response.ok) {
+                    const product = await response.json();
+                    window.productDetailCache.set(cleanId, product);
+
+                    // Inyectar en window.sessionProducts para mantener compatibilidad
+                    if (Array.isArray(window.sessionProducts)) {
+                        const catId = product.primaryCatId || (product.categories && product.categories[0]);
+                        let targetCat = window.sessionProducts.find(c => c.id === catId);
+                        if (targetCat) {
+                            if (!Array.isArray(targetCat.products)) targetCat.products = [];
+                            const existsIdx = targetCat.products.findIndex(p => p && String(p.id).trim() === cleanId);
+                            if (existsIdx >= 0) targetCat.products[existsIdx] = product;
+                            else targetCat.products.push(product);
+                        }
+                    }
+
+                    return product;
+                }
+            } catch (fetchErr) {}
+        }
+    } catch (err) {
+        console.warn(`[ProductLoader] No se pudo cargar el producto ${cleanId}:`, err);
+    }
+
+    return null;
+};
+
 // Motor centralizado unificado de indexación de productos/acabados
 window.getNormalizedCatalogProducts = function(targetRubro = null) {
     const indexed = [];

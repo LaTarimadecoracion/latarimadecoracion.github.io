@@ -1,0 +1,51 @@
+{
+  "id": "B6",
+  "title": "Juego de Mesa y Sillas Infantiles (Colonial)",
+  "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
+  "image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Pino",
+      "cover_image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
+      "images_list": [
+        "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "(Combo 1)",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 60000,
+          "cost_price": 40000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786839110101,
+  "primaryCatId": "Juguetes",
+  "views": 1,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Juguetes",
+    "sillas-sillones"
+  ],
+  "rubro": "carpinteria"
+}

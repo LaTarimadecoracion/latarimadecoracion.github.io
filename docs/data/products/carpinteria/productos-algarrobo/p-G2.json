@@ -1,0 +1,93 @@
+{
+  "id": "G2",
+  "title": "Cuencos",
+  "description": "",
+  "image": "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
+      "images_list": [
+        "img/todo-algarrobo/Platos - Cuencos/1782610904255-imagen.webp",
+        "img/todo-algarrobo/Platos - Cuencos/1782610904423-imagen.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false,
+      "stock": 2
+    }
+  ],
+  "tags": [
+    "plato",
+    "platos",
+    "asado",
+    "asados",
+    "madera",
+    "algarrobo",
+    "rectangular",
+    "redondo",
+    "copetin",
+    "copetinero",
+    "picada",
+    "picadas",
+    "carne",
+    "asador",
+    "cocina",
+    "mesa",
+    "comer",
+    "parrilla",
+    "cubiertos",
+    "regalo",
+    "quincho",
+    "madera",
+    "algarrobo",
+    "asado",
+    "parrilla",
+    "plato de madera",
+    "plato de algarrobo",
+    "platos de madera",
+    "platos de algarrobo",
+    "plato para asado",
+    "platos para asado",
+    "plato de asado",
+    "plato rectangular",
+    "copetinero de madera",
+    "copetinero de algarrobo",
+    "plato para picada",
+    "platos para picada",
+    "tabla de asado",
+    "tabla de picada",
+    "tabla de madera",
+    "tabla de algarrobo",
+    "tabla para carne",
+    "regalo para asador",
+    "plato copetinero",
+    "plato rectangular asado",
+    "plato madera algarrobo",
+    "plato asador algarrobo",
+    "vajilla de madera",
+    "vajilla de algarrobo",
+    "plato rustico"
+  ],
+  "last_modified": 1783636741117,
+  "primaryCatId": "productos-algarrobo",
+  "views": 0,
+  "stock": 2,
+  "history": [],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 10
+  },
+  "categories": [
+    "carpinteria-todos",
+    "productos-algarrobo",
+    "bazar-cocina"
+  ],
+  "rubro": "carpinteria"
+}

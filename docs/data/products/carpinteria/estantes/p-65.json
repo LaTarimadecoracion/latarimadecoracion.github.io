@@ -1,0 +1,82 @@
+{
+  "id": "65",
+  "title": "Cuadrados",
+  "description": "Organización creativa y estilo para tus paredes.",
+  "image": "img/estantes/cuadrados/cuadrados.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/estantes/cuadrados/cuadrados.webp",
+      "images_list": [
+        "img/estantes/cuadrados/cuadrados.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Combo x3",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1508934203-estante-cuadrado-combo-x3un-_JM",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "estante",
+    "estantes",
+    "cuadrado",
+    "cuadrados",
+    "repisa",
+    "repisas",
+    "estante flotante",
+    "estante madera",
+    "estante pino",
+    "colgar",
+    "decoracion",
+    "pared",
+    "combo estantes",
+    "repisa cuadrada",
+    "repisa cuadrado",
+    "estante cuadrado",
+    "estantes cuadrados",
+    "repisas cuadradas",
+    "diseño cuadrado",
+    "cuadrados de madera",
+    "cuadrados de pino",
+    "decoracion pared cuadrado"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 2,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1788914028441,
+  "primaryCatId": "Estantes",
+  "history": [],
+  "views": 5,
+  "categories": [
+    "carpinteria-todos",
+    "Estantes"
+  ],
+  "rubro": "carpinteria"
+}

@@ -1,0 +1,105 @@
+{
+  "id": "43",
+  "title": "Verdulero Clasico",
+  "description": "Verdulero con estante superior",
+  "image": "img/organizadores/estantes-montessori/1.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/organizadores/estantes-montessori/1.webp",
+      "images_list": [
+        "img/organizadores/estantes-montessori/1.webp",
+        "img/organizadores/estantes-montessori/2.webp",
+        "img/organizadores/verdulero-clasico/3.webp",
+        "img/organizadores/verdulero-clasico/4.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Cargando...",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "legend": "",
+          "showPrice": false,
+          "cost_price": 2500,
+          "price": 15000,
+          "stock": 0
+        }
+      ],
+      "hidden": false,
+      "stock": 0
+    }
+  ],
+  "tags": [
+    "verdulero",
+    "verduras",
+    "organizar",
+    "mueble de cocina",
+    "cosina",
+    "frutas",
+    "frutero",
+    "verduleros",
+    "verdulero clasico",
+    "verdulero madera",
+    "verdulero pino",
+    "cocina",
+    "cajones",
+    "verdulería",
+    "frutería",
+    "organizador cocina",
+    "mueble cocina",
+    "carro verdulero",
+    "berdulero",
+    "berdulería",
+    "verdulero de pino",
+    "verdulero de madera",
+    "verdulería de cocina",
+    "cesta de verduras",
+    "cajonera de pino",
+    "carro de cocina",
+    "mueble para verduras",
+    "cajon verdulero",
+    "organizacion de alimentos",
+    "despensa de pino",
+    "verdulero rustico",
+    "verdulero con cajones",
+    "cesta de frutas"
+  ],
+  "last_modified": 1783637106226,
+  "primaryCatId": "bazar-cocina",
+  "views": 1,
+  "stock": 0,
+  "history": [
+    {
+      "date": "27/8, 12:39 a. m.",
+      "type": "Precio Venta Subió",
+      "detail": "Venta: $0 ➔ $15.000"
+    },
+    {
+      "date": "27/8, 12:39 a. m.",
+      "type": "Costo Aumentó",
+      "detail": "Costo: $0 ➔ $2500"
+    }
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 3
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores",
+    "bazar-cocina",
+    "cajones-madera"
+  ],
+  "rubro": "carpinteria"
+}

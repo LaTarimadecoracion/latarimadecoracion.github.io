@@ -1,0 +1,93 @@
+{
+  "id": "44",
+  "title": "Verdule para Mesada",
+  "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+  "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+      "images_list": [
+        "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+        "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
+        "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Chico",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "legend": "",
+          "showPrice": true,
+          "stock": 0,
+          "price": 20000
+        }
+      ],
+      "hidden": false,
+      "stock": 0
+    }
+  ],
+  "tags": [
+    "verdulero",
+    "verduras",
+    "organizar",
+    "mueble de cocina",
+    "cosina",
+    "frutas",
+    "frutero",
+    "candry",
+    "bar",
+    "verduleros",
+    "verdulero mesada",
+    "verdulero mini",
+    "verdulero madera",
+    "verdulero pino",
+    "cocina",
+    "cajones",
+    "organizador cocina",
+    "mueble cocina",
+    "panera",
+    "berdulero",
+    "berdulería",
+    "verdulero de pino",
+    "verdulero de madera",
+    "verdulería de cocina",
+    "cesta de verduras",
+    "cajonera de pino",
+    "carro de cocina",
+    "mueble para verduras",
+    "cajon verdulero",
+    "organizacion de alimentos",
+    "despensa de pino",
+    "verdulero rustico",
+    "verdulero con cajones",
+    "cesta de frutas",
+    "panera de madera",
+    "panera de pino"
+  ],
+  "last_modified": 1783637121354,
+  "primaryCatId": "bazar-cocina",
+  "views": 2,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 2
+  },
+  "stock": 0,
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores",
+    "bazar-cocina"
+  ],
+  "rubro": "carpinteria"
+}

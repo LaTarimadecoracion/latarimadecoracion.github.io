@@ -1,0 +1,66 @@
+{
+  "id": "92",
+  "title": "Escaleras para altillos",
+  "description": "",
+  "image": "img/escaleras/escalera-altillo/1780287625467-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/escaleras/escalera-altillo/1780287625467-imagen.webp",
+      "images_list": [
+        "img/escaleras/escalera-altillo/1780287625467-imagen.webp",
+        "img/escaleras/escalera-altillo/1780287625629-imagen.webp"
+      ],
+      "medidas_variants": []
+    }
+  ],
+  "views": 0,
+  "tags": [
+    "escalera",
+    "escaleras",
+    "escalera altillo",
+    "escalera techo",
+    "escalera madera",
+    "escalera pino",
+    "subir",
+    "alcanzar",
+    "altillo",
+    "techo",
+    "fija",
+    "escalones",
+    "peldaños",
+    "acceso altillo",
+    "escalera de pintor",
+    "escalera de madera",
+    "escalera de pino",
+    "escalera plegable",
+    "escalera de tijera",
+    "banquito de madera",
+    "banquito de pino",
+    "taburete de madera",
+    "subida altillo",
+    "escalon pino",
+    "escalon madera",
+    "banquito escalon",
+    "escalera biblioteca",
+    "escalera pequeña",
+    "escalera fija",
+    "cajonera profesional"
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "muebles"
+  ],
+  "primaryCatId": "muebles",
+  "rubro": "carpinteria"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "4D",
+  "title": "Banco Escalera De Pino 3 Escalones",
+  "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
+  "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+      "images_list": [
+        "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+        "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275705-imagen.webp",
+        "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275851-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "60 x 40 x 35 cm",
+          "link": "https://www.mercadolibre.com.ar/banco-escalera-de-pino-3-escalones/up/MLAU3289044905",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 33000,
+          "cost_price": 33000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786316089369,
+  "primaryCatId": "muebles",
+  "views": 1,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 1
+  },
+  "categories": [
+    "carpinteria-todos",
+    "muebles"
+  ],
+  "rubro": "carpinteria"
+}

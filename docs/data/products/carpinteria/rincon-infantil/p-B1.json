@@ -1,0 +1,84 @@
+{
+  "id": "B1",
+  "title": "Jenga",
+  "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
+  "image": "img/juguetes/jenga/jenga.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/juguetes/jenga/jenga.webp",
+      "images_list": [
+        "img/juguetes/jenga/jenga.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "63 Piezas",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1514956491-yenga-torre-alta-de-madera-63-piezas-la-carpinteria-_JM#polycard_client=search-nordic&search_layout=grid&position=2&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636&wid=MLA1514956491&sid=search",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "legend": "",
+          "showPrice": false,
+          "stock": 2
+        }
+      ],
+      "hidden": false,
+      "stock": 2
+    }
+  ],
+  "tags": [
+    "jenga",
+    "yenga",
+    "madera",
+    "juguetes",
+    "juegos de mesa",
+    "mesa",
+    "juegos",
+    "piezas",
+    "maderitas",
+    "juego",
+    "juego mesa",
+    "juego madera",
+    "diversion",
+    "familiar",
+    "bloques",
+    "torres",
+    "gigante",
+    "infantil",
+    "entretenimiento",
+    "bloques de madera",
+    "yenga gigante",
+    "jenga gigante",
+    "juego de madera",
+    "juego de mesa",
+    "juego familiar",
+    "torre de madera",
+    "juego de bloques",
+    "entretenimiento madera",
+    "yenga madera",
+    "juguete de madera",
+    "jenga madera"
+  ],
+  "last_modified": 1783637073874,
+  "primaryCatId": "Juguetes",
+  "views": 0,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 6
+  },
+  "stock": 2,
+  "categories": [
+    "carpinteria-todos",
+    "Juguetes"
+  ],
+  "rubro": "carpinteria"
+}

@@ -1,0 +1,85 @@
+{
+  "id": "62",
+  "title": "Hexagonales",
+  "description": "Organización creativa y estilo para tus paredes.",
+  "image": "img/estantes/hexagonales/hexagonales.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/estantes/hexagonales/hexagonales.webp",
+      "images_list": [
+        "img/estantes/hexagonales/hexagonales.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Combo",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1487292863-estantes-x3-set-repisas-madera-hexagonos-_JM",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 22000,
+          "cost_price": 11000,
+          "legend": "",
+          "showPrice": false,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "estante",
+    "estantes",
+    "hexagonal",
+    "hexagonos",
+    "repisa",
+    "repisas",
+    "estante flotante",
+    "estante madera",
+    "estante pino",
+    "colgar",
+    "decoracion",
+    "pared",
+    "estilo nordico",
+    "diseño hexagonal",
+    "geometrico",
+    "repisa hexagonal",
+    "repisa hexagono",
+    "estante hexagonal",
+    "estantes hexagonales",
+    "repisas hexagonales",
+    "mueble hexagonal",
+    "hexagonos de madera",
+    "hexagonos de pino",
+    "decoracion pared hexagono"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 3,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1788913987169,
+  "primaryCatId": "Estantes",
+  "history": [],
+  "visible": true,
+  "views": 0,
+  "categories": [
+    "carpinteria-todos",
+    "Estantes"
+  ],
+  "rubro": "carpinteria"
+}

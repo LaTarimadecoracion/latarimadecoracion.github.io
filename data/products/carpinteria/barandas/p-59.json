@@ -1,0 +1,88 @@
+{
+  "id": "59",
+  "title": "Baranda Fija: Simple",
+  "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
+  "image": "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
+      "images_list": [
+        "img/barandas-para-cama/baranda-simple/1780542765336-imagen.webp",
+        "img/barandas-para-cama/baranda-simple/1780542765537-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "35 x 60 cm",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1380333706-baranda-de-seguridad-para-cama-infantil-60x35cm-_JM",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "legend": "",
+          "showPrice": true,
+          "price": 11000
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "baranda",
+    "barandas",
+    "baranda simple",
+    "baranda cama",
+    "baranda madera",
+    "baranda pino",
+    "niños",
+    "bebes",
+    "proteccion",
+    "seguridad",
+    "anticaida",
+    "infantil",
+    "sommier",
+    "cuna",
+    "barrera",
+    "barandilla",
+    "varanda",
+    "varandas",
+    "barada",
+    "baradas",
+    "proteccion cuna",
+    "seguridad cuna",
+    "defensa cuna",
+    "barrera cuna",
+    "baranda colecho",
+    "baranda de seguridad",
+    "reja de cama",
+    "barandilla cuna",
+    "barandilla cama",
+    "barrera anticaida",
+    "protector de cama",
+    "baranda de pino",
+    "baranda de madera",
+    "anticaidas cuna",
+    "protector cuna",
+    "barandas de pino"
+  ],
+  "last_modified": 1783616752912,
+  "primaryCatId": "Barandas",
+  "views": 1,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 2
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Barandas"
+  ],
+  "rubro": "carpinteria"
+}

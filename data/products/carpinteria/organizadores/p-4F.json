@@ -1,0 +1,38 @@
+{
+  "id": "4F",
+  "title": "Caballetes de madera",
+  "description": "",
+  "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Steve",
+      "cover_image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
+      "images_list": [
+        "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786332743079,
+  "primaryCatId": "Organizadores",
+  "views": 2,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 1
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores",
+    "Mesas-madera"
+  ],
+  "rubro": "carpinteria"
+}

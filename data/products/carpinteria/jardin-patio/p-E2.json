@@ -1,0 +1,284 @@
+{
+  "id": "E2",
+  "title": "Deck cuadrado",
+  "description": "Embellece tus espacios exteriores con madera de primera calidad.\nUtilizamos listones de Pino de 1 pulgada de espesor (22mm aprox)\n\nSi la medida que deseas no esta publicada, no dudes en hacer tu consulta por nuestro canal de wpp",
+  "image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "25 x 25 cm",
+      "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
+      "images_list": [
+        "img/jardin/deck-cuadrado/deckcuadrado.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "1 Unidad",
+          "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-25-x-25-cm/up/MLAU3454515164?pdp_filters=item_id:MLA2399572790",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false
+        },
+        {
+          "medida": "2 Unidades",
+          "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-25-x-25-cm-x2-un/up/MLAU3466094368?pdp_filters=item_id:MLA2416155670",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false
+        },
+        {
+          "medida": "3 Unidades",
+          "link": "https://www.mercadolibre.com.ar/deck-base-macetas-madera-25-x-25-cm-x-3-un/up/MLAU3459333947?pdp_filters=item_id:MLA2415986866",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "acabado_name": "30 x 30 cm",
+      "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
+      "images_list": [
+        "img/jardin/deck-cuadrado/deckcuadrado.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "30 x 30 cm (1 Unidad)",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1483178333-deck-base-macetas-madera-30-x-30-cm-_JM",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false
+        },
+        {
+          "medida": "30 x 30 cm (Combo x2)",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2415999608-deck-base-macetas-madera-30-x-30-cm-x2-un-_JM",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false
+        },
+        {
+          "medida": "30 x 30 cm (Combo x3)",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2169149306-base-soporte-madera-30-x-30-cm-combo-3-un-_JM?searchVariation=188911092757#polycard_client=search-nordic&searchVariation=188911092757&search_layout=grid&position=1&type=item&tracking_id=dcafe487-8840-497e-958e-97ad9fc8552d",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "acabado_name": "40 x 40 cm",
+      "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
+      "images_list": [
+        "img/jardin/deck-cuadrado/deckcuadrado.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "40 x 40 cm (1 Unidad)",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2308177372-deck-base-macetas-madera-40-x-40-cm-_JM",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false
+        },
+        {
+          "medida": "40 x 40 cm (Combo x2)",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2416155916-deck-base-macetas-madera-40-x-40-cm-x2-un-_JM",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false
+        },
+        {
+          "medida": "40 x 40 cm (Combo x3)",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2416156026-deck-base-macetas-madera-40-x-40-cm-x3-un-_JM",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "acabado_name": "50 x 50 cm",
+      "cover_image": "img/jardin/deck-cuadrado/deckcuadrado.webp",
+      "images_list": [
+        "img/jardin/deck-cuadrado/deckcuadrado.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "1 Unidad",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 20000,
+          "cost_price": 20000,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "2 Unidades",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 38000,
+          "cost_price": 38000,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "3 Unidades",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 55000,
+          "cost_price": 55000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "Base de madera para macetas",
+    "Deck para plantas",
+    "Portamacetero de madera",
+    "Soporte para macetas madera",
+    "Tarima para plantas",
+    "Elevador de macetas madera",
+    "Portamacetero nordico",
+    "Decoracion con plantas balcon",
+    "Deck de pino para macetas",
+    "Estilo rustico jardin",
+    "Huerta y jardin madera",
+    "Portamacetas minimalista",
+    "Organizador de macetas exterior",
+    "Base madera para balcon",
+    "Muebles de jardin madera",
+    "Tarima para plantas interior",
+    "Protector de piso para macetas",
+    "Porta macetas",
+    "Porta maceteros madera",
+    "Base para plantas exterior",
+    "Deck de madera",
+    "Tarimas de madera",
+    "Decoracion de exteriores",
+    "Jardin urbano",
+    "Organizador de plantas",
+    "Estantes para macetas",
+    "deck",
+    "decks",
+    "deck cuadrado",
+    "baldosa",
+    "baldosas",
+    "madera",
+    "eucalipto",
+    "jardin",
+    "patio",
+    "balcon",
+    "exterior",
+    "terraza",
+    "piso",
+    "impregnado",
+    "piso madera",
+    "baldosas deck",
+    "deck eucalipto",
+    "deck de madera",
+    "deck de eucalipto",
+    "piso exterior",
+    "piso balcon",
+    "piso terraza",
+    "baldosa deck",
+    "baldosa de madera",
+    "deck impregnado",
+    "baldosa exterior",
+    "piso exterior deck",
+    "piso de eucalipto",
+    "piso de madera exterior",
+    "deck cuadrado madera",
+    "baldosas de eucalipto",
+    "piso jardin",
+    "deck jardin"
+  ],
+  "last_modified": 1786812326311,
+  "primaryCatId": "jardin-patio",
+  "views": 2,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 5
+  },
+  "categories": [
+    "carpinteria-todos",
+    "jardin-patio"
+  ],
+  "rubro": "carpinteria"
+}

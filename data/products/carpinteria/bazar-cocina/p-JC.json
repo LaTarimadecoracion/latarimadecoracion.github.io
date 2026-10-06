@@ -1,0 +1,61 @@
+{
+  "id": "JC",
+  "shortId": "3D",
+  "title": "Porta Rollo De Cocina Con Base Madera",
+  "description": "Lo que tenés que saber de este producto\nLa base mide 12cm.\nHecho de: pino.",
+  "image": "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
+      "images_list": [
+        "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
+        "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932957-imagenwebp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Porta Rollo",
+          "link": "https://www.mercadolibre.com.ar/porta-rollo-de-cocina-con-base-madera/up/MLAU5309185446?pdp_filters=item_id:MLA3995248568",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 8000,
+          "cost_price": "",
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1790378932962,
+  "primaryCatId": "bazar-cocina",
+  "history": [],
+  "views": 1,
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores",
+    "bazar-cocina"
+  ],
+  "rubro": "carpinteria"
+}

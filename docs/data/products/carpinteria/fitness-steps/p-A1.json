@@ -1,0 +1,114 @@
+{
+  "id": "A1",
+  "title": "Steps / Cajones / Profesionales",
+  "description": "Escalón de madera multiusos para ejercicios y más",
+  "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+      "images_list": [
+        "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+        "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
+        "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp",
+        "img/steps-cajones/cajones-profesional/1780589892809-imagen.webp",
+        "img/steps-cajones/cajones-profesional/1782417150808-imagen.webp",
+        "img/steps-cajones/cajones-profesional/1782417150969-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "120 x 60 x 20 cm",
+          "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 80000,
+          "cost_price": "",
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        },
+        {
+          "medida": "70 x 28 x 12 cm",
+          "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 40000,
+          "cost_price": "",
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        },
+        {
+          "medida": "60 x 28 x 9",
+          "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 35000,
+          "cost_price": "",
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "cajon",
+    "cajones",
+    "cajon profesional",
+    "cajon madera",
+    "cajon pino",
+    "organizador",
+    "guardado",
+    "almacenamiento",
+    "caja madera",
+    "caja pino",
+    "cajonera",
+    "cajonera profesional",
+    "cajon de pino",
+    "cajon de madera",
+    "organizador profesional",
+    "cajonera de madera",
+    "cajonera de pino",
+    "caja de pino profesional",
+    "caja de madera profesional",
+    "caja de almacenamiento"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 1,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1788907898357,
+  "primaryCatId": "Steps",
+  "history": [],
+  "views": 3,
+  "categories": [
+    "carpinteria-todos",
+    "Steps",
+    "cajones-madera"
+  ],
+  "rubro": "carpinteria"
+}

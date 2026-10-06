@@ -1,0 +1,146 @@
+{
+  "id": "4C",
+  "title": "Ménsulas para estantes",
+  "description": "Organización creativa y estilo para tus paredes.",
+  "image": "img/organizadores/mensulas/mensulas.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "20 x 20 cm",
+      "cover_image": "img/organizadores/mensulas/mensulas.webp",
+      "images_list": [
+        "img/organizadores/mensulas/mensulas.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "1 Un.",
+          "link": "https://www.mercadolibre.com.ar/mensula-soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960167374",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 4500,
+          "cost_price": 500,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "2 Un.",
+          "link": "https://www.mercadolibre.com.ar/2-mensulas--soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960301854",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 8000,
+          "cost_price": 5500,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "acabado_name": "30 x 30 cm",
+      "cover_image": "img/organizadores/mensulas/mensulas.webp",
+      "images_list": [
+        "img/organizadores/mensulas/mensulas.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "1 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 4500,
+          "cost_price": 4500,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "2 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 8500,
+          "cost_price": 8500,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "4 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 17000,
+          "cost_price": 17000,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "6 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "mensula",
+    "mensulas",
+    "soporte",
+    "soportes",
+    "mensula madera",
+    "mensula pino",
+    "colgar estante",
+    "estante mensula",
+    "mensula de pino",
+    "mensula de madera",
+    "mensulas de pino",
+    "mensulas de madera",
+    "mensula estante",
+    "soporte estante",
+    "soporte mensula",
+    "mensula rustica",
+    "mensulas rusticas",
+    "mensula decorativa"
+  ],
+  "last_modified": 1787716545046,
+  "primaryCatId": "Organizadores",
+  "views": 0,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 5
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores",
+    "Estantes"
+  ],
+  "rubro": "carpinteria"
+}

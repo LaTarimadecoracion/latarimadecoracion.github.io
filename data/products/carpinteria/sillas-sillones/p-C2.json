@@ -1,0 +1,113 @@
+{
+  "id": "C2",
+  "shortId": "3E",
+  "title": "Silla infantil",
+  "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
+  "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
+      "images_list": [
+        "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
+        "img/sillas-y-sillones/silla-infantil/1790379461985-imagenwebp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Colonial (1 Unidad)",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1516454739-silla-infantil-colonial-_JM?searchVariation=189959819515#polycard_client=search-nordic&searchVariation=189959819515&search_layout=grid&position=3&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 20000,
+          "cost_price": 15000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "silla",
+    "infantil",
+    "carpintería",
+    "madera",
+    "pino",
+    "carpinteria",
+    "rustico",
+    "natural",
+    "mueble",
+    "hogar",
+    "casa",
+    "decoracion",
+    "calidad",
+    "diseño",
+    "artesanal",
+    "comprar",
+    "tienda",
+    "envio",
+    "seguro",
+    "fuerte",
+    "resistente",
+    "lindo",
+    "util",
+    "practico",
+    "duradero",
+    "silla de madera",
+    "silla de pino",
+    "mueble silla",
+    "carpintería  silla",
+    "infantil de madera",
+    "infantil de pino",
+    "mueble infantil",
+    "carpintería  infantil",
+    "carpintería de madera",
+    "carpintería de pino",
+    "mueble carpintería",
+    "carpintería  carpintería",
+    "mueble de madera",
+    "mueble de pino",
+    "carpinteria artesanal",
+    "decoracion del hogar",
+    "mueble rustico",
+    "mueble natural",
+    "hecho a mano",
+    "muebles de calidad",
+    "diseño artesanal",
+    "mueble util",
+    "mueble practico",
+    "muebles para casa",
+    "envios a todo el pais"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 2,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1790379461990,
+  "primaryCatId": "sillas-sillones",
+  "history": [],
+  "views": 1,
+  "categories": [
+    "carpinteria-todos",
+    "Juguetes",
+    "sillas-sillones"
+  ],
+  "rubro": "carpinteria"
+}

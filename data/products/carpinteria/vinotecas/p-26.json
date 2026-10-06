@@ -1,0 +1,61 @@
+{
+  "id": "26",
+  "title": "Soporte Para 6 Vinos Bodega Vinoteca",
+  "description": "56,5 cm. de alto\n12 cm. de ancho\n29,5 cm. de profundidad",
+  "image": "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "cover_image": "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
+      "images_list": [
+        "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
+        "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828055071-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "6 Vinos",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 25000,
+          "cost_price": 5000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786828055190,
+  "primaryCatId": "Vinotecas",
+  "visible": true,
+  "views": 3,
+  "stock": 0,
+  "history": [
+    {
+      "date": "27/8, 12:03 a. m.",
+      "type": "Costo Bajó",
+      "detail": "Costo: $25.000 ➔ $5.000"
+    }
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 1
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Vinotecas"
+  ],
+  "rubro": "carpinteria"
+}

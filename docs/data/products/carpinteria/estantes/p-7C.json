@@ -1,0 +1,80 @@
+{
+  "id": "7C",
+  "title": "Repisa-estante de pared con toallero",
+  "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
+  "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+      "images_list": [
+        "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+        "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
+        "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
+        "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
+        "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Unico",
+          "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 20000,
+          "cost_price": 20000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "volumeDiscounts": [
+            {
+              "minQty": 10,
+              "discountPercent": 25,
+              "shippingDiscountPercent": 0
+            }
+          ]
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "estimatedWeight": 2.5,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 2,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [
+    {
+      "minUnits": 10,
+      "discountPercent": 25,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1788916093301,
+  "primaryCatId": "Estantes",
+  "history": [],
+  "visible": true,
+  "views": 1,
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores",
+    "Estantes",
+    "Hogar"
+  ],
+  "rubro": "carpinteria"
+}

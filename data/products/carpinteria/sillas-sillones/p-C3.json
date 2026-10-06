@@ -1,0 +1,105 @@
+{
+  "id": "C3",
+  "title": "Sillon Gervasoni - Chicos",
+  "description": "",
+  "image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
+      "images_list": [
+        "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
+        "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814276080-imagen.webp",
+        "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814276253-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Chico",
+          "link": "https://www.mercadolibre.com.ar/silla-gervasoni-pino-natural-1-cuerpo-con-apoyabrazos-ninos/up/MLAU4284162507?pdp_filters=item_id:MLA3596352006",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 36000,
+          "cost_price": 18000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "sillon",
+    "sillones",
+    "silla",
+    "sillas",
+    "gervasoni",
+    "madera",
+    "pino",
+    "individual",
+    "living",
+    "exterior",
+    "jardin",
+    "patio",
+    "comodo",
+    "asiento",
+    "asientos",
+    "descanso",
+    "deco",
+    "hogar",
+    "casa",
+    "terraza",
+    "balcon",
+    "rustico",
+    "natural",
+    "madera",
+    "pino",
+    "sillon gervasoni",
+    "sillon de madera",
+    "sillon de pino",
+    "silla gervasoni",
+    "sillon individual",
+    "sillon de jardin",
+    "sillon de exterior",
+    "sillon de living",
+    "sillones gervasoni",
+    "sillones de madera",
+    "sillones de pino",
+    "sillones de jardin",
+    "sillon comodo",
+    "asiento de madera",
+    "silla de madera",
+    "silla de pino",
+    "sillon de terraza",
+    "sillon de de balcon",
+    "sillon de descanso",
+    "sillon gervasoni chico",
+    "gervasoni de madera",
+    "gervasoni de pino",
+    "juego de jardin",
+    "muebles de exterior",
+    "muebles de living"
+  ],
+  "last_modified": 1783907160537,
+  "primaryCatId": "sillas-sillones",
+  "visible": true,
+  "views": 1,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Juguetes",
+    "sillas-sillones"
+  ],
+  "rubro": "carpinteria"
+}

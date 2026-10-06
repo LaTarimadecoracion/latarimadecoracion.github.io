@@ -1,0 +1,65 @@
+{
+  "id": "27",
+  "title": "Soporte Para 12 Vinos Bodega Vinoteca",
+  "description": "» MEDIDAS\n56,5 cm. de alto\n22,5 cm. de ancho\n29,5 cm. de profundidad",
+  "image": "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "cover_image": "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp",
+      "images_list": [
+        "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "12 Vinos",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 45000,
+          "cost_price": 7000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786828216883,
+  "primaryCatId": "Vinotecas",
+  "views": 6,
+  "stock": 0,
+  "history": [
+    {
+      "date": "27/8, 12:03 a. m.",
+      "type": "Precio Venta Subió",
+      "detail": "Venta: $29.000 ➔ $45.000"
+    },
+    {
+      "date": "27/8, 12:03 a. m.",
+      "type": "Costo Aumentó",
+      "detail": "Costo: $0 ➔ $7.000"
+    }
+  ],
+  "visible": true,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 1
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Vinotecas"
+  ],
+  "rubro": "carpinteria"
+}

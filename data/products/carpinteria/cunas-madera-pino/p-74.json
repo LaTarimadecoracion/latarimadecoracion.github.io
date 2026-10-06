@@ -1,0 +1,102 @@
+{
+  "id": "74",
+  "title": "Cuna: Eco rebatible",
+  "description": "",
+  "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+      "images_list": [
+        "img/cunas/eco-rebatible/1783750834642-imagen.webp",
+        "img/cunas/eco-rebatible/1783750834793-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Eco Revatible",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 103500,
+          "cost_price": 69000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "cuna",
+    "cunas",
+    "cunita",
+    "cunitas",
+    "kuna",
+    "kunas",
+    "bebe",
+    "bebes",
+    "infantil",
+    "niño",
+    "niños",
+    "madera",
+    "pino",
+    "maciza",
+    "mueble",
+    "moises",
+    "colecho",
+    "retro",
+    "corral",
+    "corralito",
+    "rebatible",
+    "baranda",
+    "cajones",
+    "cajonera",
+    "romano",
+    "cuna de pino",
+    "cuna de madera",
+    "cuna para bebe",
+    "cunas de madera",
+    "cunas de pino",
+    "colecho retro",
+    "colecho vintage",
+    "corralito de madera",
+    "cuna con cajones",
+    "cuna funcional",
+    "cuna de apego",
+    "apego seguro",
+    "habitacion de bebe",
+    "dormitorio infantil",
+    "cuna romana",
+    "cuna sol",
+    "cuna rebatible",
+    "baranda rebatible",
+    "cuna funcional cajones",
+    "cuna de madera maciza",
+    "cunas funcionales",
+    "mini cuna",
+    "moises de pino",
+    "corral de madera",
+    "corral funcional"
+  ],
+  "last_modified": 1786811707863,
+  "primaryCatId": "cunas-madera-pino",
+  "views": 1,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "cunas-madera-pino"
+  ],
+  "rubro": "carpinteria"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "F2",
+  "title": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+  "description": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+  "image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
+      "images_list": [
+        "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
+        "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774793-imagen.webp",
+        "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774926-imagen.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786334775059,
+  "primaryCatId": "Hogar",
+  "views": 0,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "camas-madera-pino",
+    "Hogar"
+  ],
+  "rubro": "carpinteria"
+}

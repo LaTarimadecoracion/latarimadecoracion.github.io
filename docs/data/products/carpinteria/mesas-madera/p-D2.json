@@ -1,0 +1,51 @@
+{
+  "id": "D2",
+  "title": "Mesa Plegabe",
+  "description": "",
+  "image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
+      "images_list": [
+        "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
+        "img/mesas-de-madera/mesa-plegabe/1782601058954-imagen.webp",
+        "img/mesas-de-madera/mesa-plegabe/1782601059141-imagen.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "mesa",
+    "mesita",
+    "madera",
+    "plegable",
+    "jardin",
+    "playa",
+    "picnic",
+    "salida",
+    "bosque",
+    "viaje"
+  ],
+  "last_modified": 1783637216140,
+  "primaryCatId": "Mesas-madera",
+  "views": 2,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Mesas-madera",
+    "jardin-patio",
+    "Hogar"
+  ],
+  "rubro": "carpinteria"
+}

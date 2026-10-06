@@ -1,0 +1,41 @@
+{
+  "id": "D6",
+  "title": "Escritorio para PC - Soporte Gabinete",
+  "description": "",
+  "image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
+      "images_list": [
+        "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
+        "img/mesas-de-madera/Escritorio-PC-PRO/1786334410946-imagen.webp",
+        "img/mesas-de-madera/Escritorio-PC-PRO/1786334411078-imagen.webp",
+        "img/mesas-de-madera/Escritorio-PC-PRO/1786334411190-imagen.webp",
+        "img/mesas-de-madera/Escritorio-PC-PRO/1786334411310-imagen.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786334411421,
+  "primaryCatId": "Mesas-madera",
+  "views": 2,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Mesas-madera",
+    "Hogar"
+  ],
+  "rubro": "carpinteria"
+}

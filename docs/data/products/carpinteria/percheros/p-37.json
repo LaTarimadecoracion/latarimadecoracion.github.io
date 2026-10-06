@@ -1,0 +1,117 @@
+{
+  "id": "37",
+  "title": "Perchero 5 - Minimalista",
+  "description": "Medidas:\n50 x 13 cm",
+  "image": "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "cover_image": "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
+      "images_list": [
+        "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
+        "img/percheros/perchero-madera-tuvitos5/1784389644962-imagen.webp",
+        "img/percheros/perchero-madera-tuvitos5/1784389645099-imagen.webp",
+        "img/percheros/perchero-madera-tuvitos5/1784389645246-imagen.webp",
+        "img/percheros/perchero-madera-tuvitos5/1784389645362-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "5 Ganchitos",
+          "link": "https://www.mercadolibre.com.ar/perchero-5-ganchos--minimalista/up/MLAU4410348762?pdp_filters=item_id:MLA3651569262",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 12000,
+          "cost_price": 7500,
+          "legend": "",
+          "showPrice": true,
+          "stock": 0
+        }
+      ],
+      "hidden": false,
+      "stock": 0
+    }
+  ],
+  "tags": [
+    "perchero",
+    "percheros",
+    "madera",
+    "pino",
+    "rustico",
+    "minimalista",
+    "pared",
+    "colgar",
+    "perchas",
+    "organizador",
+    "llaves",
+    "recibidor",
+    "entrada",
+    "percha",
+    "gancho",
+    "ganchos",
+    "toallas",
+    "bolsos",
+    "camperas",
+    "sacos",
+    "orden",
+    "casa",
+    "hogar",
+    "deco",
+    "diseño",
+    "perchero de pared",
+    "perchero de madera",
+    "perchero de pino",
+    "perchero rustico",
+    "perchero minimalista",
+    "colgar camperas",
+    "organizador de entrada",
+    "perchero con ganchos",
+    "perchero recibidor",
+    "percheros de pared",
+    "percheros de madera",
+    "ganchos de colgar",
+    "perchero infantil",
+    "perchero para ropa",
+    "perchero de madera rustico",
+    "perchero minimalistico",
+    "colgar llaves",
+    "organizador de llaves",
+    "perchero de entrada",
+    "perchero de casa",
+    "decoracion de pared",
+    "ganchos toallas",
+    "perchero para bolsos",
+    "perchero toallero",
+    "perchero baño"
+  ],
+  "last_modified": 1784773242756,
+  "primaryCatId": "Percheros",
+  "visible": true,
+  "views": 1,
+  "stock": 0,
+  "history": [
+    {
+      "date": "27/8, 12:10 a. m.",
+      "type": "Costo Aumentó",
+      "detail": "Costo: $6.000 ➔ $7.500"
+    }
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 5
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Percheros"
+  ],
+  "rubro": "carpinteria"
+}

@@ -1,0 +1,91 @@
+{
+  "id": "58",
+  "title": "Baranda Fija: Montessori",
+  "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
+  "image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
+      "images_list": [
+        "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
+        "img/barandas-para-cama/baranda-montessori/1780542646603-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "45 x 60 cm",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1145213600-baranda-para-cama-barral-seguridad-_JM",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "legend": "",
+          "showPrice": true,
+          "price": 15000
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "baranda",
+    "barandas",
+    "baranda montessori",
+    "baranda cama",
+    "baranda madera",
+    "baranda pino",
+    "niños",
+    "bebes",
+    "proteccion",
+    "seguridad",
+    "anticaida",
+    "infantil",
+    "sommier",
+    "cuna",
+    "barrera",
+    "barandilla",
+    "estilo montessori",
+    "varanda",
+    "varandas",
+    "barada",
+    "baradas",
+    "proteccion cuna",
+    "seguridad cuna",
+    "defensa cuna",
+    "barrera cuna",
+    "baranda colecho",
+    "baranda de seguridad",
+    "reja de cama",
+    "barandilla cuna",
+    "barandilla cama",
+    "barrera anticaida",
+    "protector de cama",
+    "baranda de pino",
+    "baranda de madera",
+    "anticaidas cuna",
+    "protector cuna",
+    "barandas de pino"
+  ],
+  "last_modified": 1783616746091,
+  "primaryCatId": "Barandas",
+  "views": 3,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 2
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Barandas",
+    "cunas-madera-pino",
+    "camas-madera-pino"
+  ],
+  "rubro": "carpinteria"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "81",
+  "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+  "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
+  "image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+      "images_list": [
+        "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+        "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161963-imagen.webp",
+        "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305162112-imagen.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786305162256,
+  "primaryCatId": "camas-madera-pino",
+  "views": 0,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "camas-madera-pino"
+  ],
+  "rubro": "carpinteria"
+}

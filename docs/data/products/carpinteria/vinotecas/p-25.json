@@ -1,0 +1,109 @@
+{
+  "id": "25",
+  "title": "Bodega 6 Vinos",
+  "description": "Medidas\nAlto: 40 cm\nAncho: 30 cm\nProfundidad: 23 cm",
+  "image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "cover_image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
+      "images_list": [
+        "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
+        "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190322-imagen.webp",
+        "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190438-imagen.webp",
+        "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190550-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "bodega 6 Vinos",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 22500,
+          "cost_price": 15000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "bodega",
+    "bodegas",
+    "vinoteca",
+    "vinotecas",
+    "vino",
+    "vinos",
+    "botella",
+    "botellas",
+    "copas",
+    "copero",
+    "madera",
+    "pino",
+    "rustico",
+    "colgar",
+    "pared",
+    "estante",
+    "bar",
+    "bebida",
+    "bebidas",
+    "mesa",
+    "organizador",
+    "vinera",
+    "quincho",
+    "madera",
+    "pino",
+    "bodega de madera",
+    "bodega de pino",
+    "bodega de pared",
+    "vinoteca de madera",
+    "vinoteca de pino",
+    "vinoteca de pared",
+    "estante para vinos",
+    "organizador de botellas",
+    "porta botellas",
+    "porta copas",
+    "copero de madera",
+    "copero de pino",
+    "bodega rustica",
+    "vinoteca rustica",
+    "bodega 6 vinos",
+    "vinoteca 6 vinos",
+    "mueble para vinos",
+    "estante de vino",
+    "bodega de colgar",
+    "vinoteca de colgar",
+    "regalos para asado",
+    "bar de pared",
+    "barra de tragos",
+    "guarda botellas",
+    "guarda vinos"
+  ],
+  "last_modified": 1784391201352,
+  "primaryCatId": "Vinotecas",
+  "visible": true,
+  "views": 10,
+  "stock": 0,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 1
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Vinotecas",
+    "Hogar",
+    "bazar-cocina"
+  ],
+  "rubro": "carpinteria"
+}

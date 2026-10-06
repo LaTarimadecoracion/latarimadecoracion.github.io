@@ -1,0 +1,102 @@
+{
+  "id": "49",
+  "title": "Organizador Tribuna X3",
+  "description": "Fanales, bandejas y complementos artesanales únicos.",
+  "image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+      "images_list": [
+        "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+        "img/organizadores/organizador-tribuna-x3/1780323408690-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Único",
+          "link": "",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "legend": "",
+          "showPrice": true,
+          "price": 9000
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "organizador",
+    "tribuna",
+    "carpintería",
+    "madera",
+    "pino",
+    "carpinteria",
+    "rustico",
+    "natural",
+    "mueble",
+    "hogar",
+    "casa",
+    "decoracion",
+    "calidad",
+    "diseño",
+    "artesanal",
+    "comprar",
+    "tienda",
+    "envio",
+    "seguro",
+    "fuerte",
+    "resistente",
+    "lindo",
+    "util",
+    "practico",
+    "duradero",
+    "organizador de madera",
+    "organizador de pino",
+    "mueble organizador",
+    "carpintería  organizador",
+    "tribuna de madera",
+    "tribuna de pino",
+    "mueble tribuna",
+    "carpintería  tribuna",
+    "carpintería de madera",
+    "carpintería de pino",
+    "mueble carpintería",
+    "carpintería  carpintería",
+    "mueble de madera",
+    "mueble de pino",
+    "carpinteria artesanal",
+    "decoracion del hogar",
+    "mueble rustico",
+    "mueble natural",
+    "hecho a mano",
+    "muebles de calidad",
+    "diseño artesanal",
+    "mueble util",
+    "mueble practico",
+    "muebles para casa",
+    "envios a todo el pais"
+  ],
+  "last_modified": 1783637306441,
+  "primaryCatId": "Organizadores",
+  "views": 1,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 10
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores"
+  ],
+  "rubro": "carpinteria"
+}

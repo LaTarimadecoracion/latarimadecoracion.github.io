@@ -1,0 +1,126 @@
+{
+  "id": "H3",
+  "title": "Podios individuales",
+  "description": "Podios modulares resistentes para eventos y premiaciones.",
+  "image": "img/podios-de-premiacion/podios-individuales/Podio premiacion (3 modulos).webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/podios-de-premiacion/podios-individuales/Podio premiacion (3 modulos).webp",
+      "images_list": [
+        "img/podios-de-premiacion/podios-individuales/Podio premiacion (3 modulos).webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "60 x 40 x 40",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2351358716-podio-de-premiacion-profesional-60-x-40-x-40-cm-n-1-_JM?has_official_store=false&highlight=false&searchVariation=190710551513&headerTopBrand=false#polycard_client=search-nordic&searchVariation=190710551513&search_layout=grid&position=2&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec",
+          "default": true,
+          "volumeDiscounts": [],
+          "cost_price": 25000,
+          "price": 120000,
+          "stock": 0,
+          "showPrice": true,
+          "weight": 2.5
+        },
+        {
+          "medida": "60 x 40 x 30",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2242326346-podio-de-premiacion-profesional-60-x-40-x-30-cm-n-2-_JM?has_official_store=false&highlight=false&searchVariation=184697351002&headerTopBrand=false#polycard_client=search-nordic&searchVariation=184697351002&search_layout=grid&position=3&type=item&tracking_id=6f0708c6-218c-4507-9655-b6e9a4f594ec",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": 25000,
+          "price": 100000,
+          "stock": 0,
+          "showPrice": true,
+          "weight": 2.5
+        },
+        {
+          "medida": "60 x 40 x 20",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2351255318-podio-de-premiacion-profesional-60-x-40-x-20-cm-n-3-_JM",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": 25000,
+          "price": 80000,
+          "stock": 0,
+          "showPrice": true,
+          "weight": 2.5
+        }
+      ]
+    }
+  ],
+  "views": 3,
+  "tags": [
+    "podio",
+    "podios",
+    "podios individuales",
+    "premiacion",
+    "medallas",
+    "trofeo",
+    "trofeos",
+    "competencia",
+    "ganador",
+    "eventos",
+    "crossfit",
+    "gimnasio",
+    "box",
+    "madera",
+    "pino",
+    "cajon",
+    "cajones",
+    "saltar",
+    "podio de premiacion",
+    "podio de madera",
+    "podio crossfit",
+    "cajon crossfit",
+    "cajon de salto",
+    "cajon de madera",
+    "cajon de premiacion",
+    "podio primer puesto",
+    "plataforma de premiacion",
+    "podio de eventos",
+    "cajon pliometrico",
+    "pliometria",
+    "cajon para saltar",
+    "box jump",
+    "cajon jump",
+    "podios de madera"
+  ],
+  "stock": 0,
+  "history": [
+    {
+      "date": "27/8, 12:57 a. m.",
+      "type": "Precio Venta Subió",
+      "detail": "[Natural - 60 x 40 x 40] Venta: $0 ➔ $145.000"
+    },
+    {
+      "date": "27/8, 12:57 a. m.",
+      "type": "Costo Aumentó",
+      "detail": "[Natural - 60 x 40 x 40] Costo: $0 ➔ $25.000"
+    },
+    {
+      "date": "27/8, 12:56 a. m.",
+      "type": "Precio Venta Subió",
+      "detail": "[Natural - 60 x 40 x 20] Venta: $0 ➔ $125.000"
+    },
+    {
+      "date": "27/8, 12:56 a. m.",
+      "type": "Costo Aumentó",
+      "detail": "[Natural - 60 x 40 x 20] Costo: $0 ➔ $25.000"
+    }
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Podios"
+  ],
+  "primaryCatId": "Podios",
+  "rubro": "carpinteria"
+}

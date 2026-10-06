@@ -1,0 +1,142 @@
+{
+  "id": "63",
+  "title": "Librero",
+  "description": "Organización creativa y estilo para tus paredes.",
+  "image": "img/estantes/librero/librero.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/estantes/librero/librero.webp",
+      "images_list": [
+        "img/estantes/librero/librero.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "100 (1 Unidad)",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1546524765-estante-flotante-nordico-madera-100x10cm-la-tarima-_JM",
+          "default": true,
+          "volumeDiscounts": [],
+          "cost_price": "",
+          "weight": 2.5,
+          "showPrice": true
+        },
+        {
+          "medida": "100 (Combo x2)",
+          "link": "",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": "",
+          "weight": 2.5,
+          "showPrice": true
+        },
+        {
+          "medida": "100 (Combo x3)",
+          "link": "",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": "",
+          "weight": 2.5,
+          "showPrice": true
+        },
+        {
+          "medida": "80 (1 Unidad)",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1546434559-estante-flotante-nordico-madera-80x10cm-la-tarima-_JM",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": "",
+          "weight": 2.5,
+          "showPrice": true
+        },
+        {
+          "medida": "80 (Combo x2)",
+          "link": "",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": "",
+          "weight": 2.5,
+          "showPrice": true
+        },
+        {
+          "medida": "80 (Combo x3)",
+          "link": "",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": "",
+          "weight": 2.5,
+          "showPrice": true
+        },
+        {
+          "medida": "60 (1 Unidad)",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2066246148-estante-flotante-nordico-madera-60x10cm-la-tarima-_JM",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": "",
+          "weight": 2.5,
+          "showPrice": true
+        },
+        {
+          "medida": "60 (Combo x2)",
+          "link": "",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": "",
+          "weight": 2.5,
+          "showPrice": true
+        },
+        {
+          "medida": "60 (Combo x3)",
+          "link": "",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": "",
+          "weight": 2.5,
+          "showPrice": true
+        }
+      ]
+    }
+  ],
+  "views": 0,
+  "tags": [
+    "estante",
+    "estantes",
+    "librero",
+    "biblioteca",
+    "estanteria",
+    "libros",
+    "repisa",
+    "repisas",
+    "madera",
+    "pino",
+    "organizacion",
+    "mueble libros",
+    "organizador",
+    "repisa de madera",
+    "repisa de pino",
+    "estante de madera",
+    "estante de pino",
+    "librero de pino",
+    "librero de madera",
+    "biblioteca de madera",
+    "biblioteca de pino",
+    "organizador de libros",
+    "mueble para libros",
+    "estanteria madera"
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 3
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Estantes"
+  ],
+  "primaryCatId": "Estantes",
+  "rubro": "carpinteria"
+}

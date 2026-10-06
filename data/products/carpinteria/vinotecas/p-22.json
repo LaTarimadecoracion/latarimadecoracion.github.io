@@ -1,0 +1,116 @@
+{
+  "id": "22",
+  "title": "Vinoteca - 9 Vinos",
+  "description": "Cavas y bodegas rústicas de madera.",
+  "image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Tintado",
+      "cover_image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
+      "images_list": [
+        "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
+        "img/vinotecas-bodegas/9-vinos/1783741401450-imagen.webp",
+        "img/vinotecas-bodegas/9-vinos/1783741401599-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "9 Vinos",
+          "link": "https://www.mercadolibre.com.ar/vinoteca-cava-bodega-madera-mueble-9-vinos-rustica-campo/up/MLAU3969313254",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 70000,
+          "cost_price": 27000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "vinos",
+    "vino",
+    "vinoteca",
+    "bodega",
+    "bodegon",
+    "organizar",
+    "chupi",
+    "botellas",
+    "fernet",
+    "cerveza",
+    "decorar",
+    "papa",
+    "regalo",
+    "vinotecas",
+    "vinoteca 9 vinos",
+    "vinoteca grande",
+    "vinoteca madera",
+    "vinoteca pino",
+    "cava",
+    "cavas",
+    "bodegas",
+    "botellero",
+    "copas",
+    "copero",
+    "portacopas",
+    "bar",
+    "barra",
+    "bebidas",
+    "estante vinos",
+    "porta botellas",
+    "decoracion bar",
+    "cava vinos",
+    "mueble bar",
+    "binoteca",
+    "binotecas",
+    "mueble para vinos",
+    "organizador de vinos",
+    "porta copas",
+    "mueble rustico",
+    "decoracion hogar",
+    "regalo hombre",
+    "bodega madera",
+    "cava madera",
+    "vinoteca de pared",
+    "estante de botellas",
+    "vinoteca de pino",
+    "mueble de pino",
+    "mueble de madera",
+    "barra bar",
+    "mini bar casa",
+    "cava de pino",
+    "portabotellas de pared"
+  ],
+  "last_modified": 1784083095519,
+  "primaryCatId": "Vinotecas",
+  "views": 10,
+  "stock": 0,
+  "history": [
+    {
+      "date": "26/8, 11:55 p. m.",
+      "type": "Costo Bajó",
+      "detail": "Costo: $35.000 ➔ $27.000"
+    }
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 1,
+    "logisticaFreeMinUnits": 1
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Vinotecas",
+    "Hogar"
+  ],
+  "rubro": "carpinteria"
+}

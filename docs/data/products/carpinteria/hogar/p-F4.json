@@ -1,0 +1,38 @@
+{
+  "id": "F4",
+  "title": "Tender",
+  "description": "",
+  "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Único",
+      "cover_image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
+      "images_list": [
+        "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
+        "img/hogar/tendre-ropa-madera/1786334918048-imagen.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786334918176,
+  "primaryCatId": "Hogar",
+  "views": 2,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores",
+    "Hogar"
+  ],
+  "rubro": "carpinteria"
+}

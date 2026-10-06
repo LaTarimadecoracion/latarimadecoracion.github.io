@@ -1,0 +1,105 @@
+{
+  "id": "H2",
+  "title": "Podio premiación Profesional",
+  "description": "Podios modulares resistentes para eventos y premiaciones.\n\nMódulo 1: 80 x 40 x 50 cm\nMódulo 2: 80 x 40 x 35 cm\nMódulo 3: 80 x 40 x 20 cm\n\nEnvió gratis a las zonas 1 2 y 3, se puede ver en la ultima foto de la publicación.",
+  "image": "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
+      "images_list": [
+        "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
+        "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911040-imagen.webp",
+        "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911168-imagen.webp",
+        "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911301-imagen.webp",
+        "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774911452-imagen.webp",
+        "img/podios-de-premiacion/podio-premiacion--3-modulos-/1784645593411-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Único combo",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2235353348-podio-de-premiacion-profesional-3-niveles-reforzados-_JM",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 250000,
+          "cost_price": 35000,
+          "legend": "",
+          "showPrice": true,
+          "stock": 0
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "podio",
+    "podios",
+    "premiacion",
+    "3 modulos",
+    "medallas",
+    "trofeo",
+    "trofeos",
+    "competencia",
+    "ganador",
+    "eventos",
+    "crossfit",
+    "gimnasio",
+    "box",
+    "madera",
+    "pino",
+    "cajon",
+    "cajones",
+    "saltar",
+    "podio de premiacion",
+    "podio de madera",
+    "podio crossfit",
+    "cajon crossfit",
+    "cajon de salto",
+    "cajon de madera",
+    "cajon de premiacion",
+    "podio primer puesto",
+    "plataforma de premiacion",
+    "podio de eventos",
+    "cajon pliometrico",
+    "pliometria",
+    "cajon para saltar",
+    "box jump",
+    "cajon jump",
+    "podios individuales",
+    "podios de madera"
+  ],
+  "last_modified": 1784645695698,
+  "primaryCatId": "Podios",
+  "views": 2,
+  "stock": 0,
+  "history": [
+    {
+      "date": "27/8, 12:38 a. m.",
+      "type": "Precio Venta Bajó",
+      "detail": "Venta: $275.000 ➔ $140.000"
+    },
+    {
+      "date": "27/8, 12:30 a. m.",
+      "type": "Costo Aumentó",
+      "detail": "Costo: $10.000 ➔ $35.000"
+    }
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Podios"
+  ],
+  "rubro": "carpinteria"
+}

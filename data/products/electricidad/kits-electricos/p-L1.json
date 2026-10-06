@@ -1,0 +1,62 @@
+{
+  "id": "L1",
+  "shortId": "38",
+  "title": "Kit Instalación Electrica Domiciliario Termica Y Diyuntor",
+  "description": "MATERIALES INCLUIDOS EN LA PUBLICACIÓN:\n\n1 x Caño corrugado blanco 3/4\" (ignífugo) - Rollo x 25 mts.\n1 x Caja de embutir para térmica y disyuntor\n1 x Térmica Sica bipolar (2 x 32A.)\n1 x Disyuntor Sica bipolar (2 x 40A.)\n10 x Caja rectangular metálica 10x5\n3 x Caja octogonal metálica\n3 x Portalámparas\n3 x Lámpara LED 9W (luz día)\n25 x Conector 3/4\" PVC\n1 x Cinta aisladora Tacsa x 10 mts.\n1 x Buscapolo Sica\n8 x Tapa TAAD armada (2 módulos tomas)\n1 x Tapa TAAD armada (1 tecla + 1 toma)\n1 x Tapa TAAD armada (2 teclas)\n\nLA TARIMA\n\nComercializamos una selección de artículos de marcas líderes para ofrecerte soluciones prácticas y confiables.\nCalidad garantizada: Todos los productos con los que trabajamos son normalizados y cumplen con los más altos estándares de seguridad y calidad del mercado.\nEnvíos: Realizamos Envíos a todo el país.\n\nGarantía de fábrica: 3 meses",
+  "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "cover_image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
+      "images_list": [
+        "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
+        "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789783660611-imagenwebp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Kit 001",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 123500,
+          "cost_price": 123500,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 1,
+    "logisticaFreeMinUnits": 1,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1789839131712,
+  "primaryCatId": "cat-21-mu7q9i7y",
+  "history": [],
+  "views": 14,
+  "categories": [
+    "electricidad-todos",
+    "cat-21-mu7q9i7y"
+  ],
+  "rubro": "electricidad"
+}

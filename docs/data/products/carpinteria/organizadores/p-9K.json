@@ -1,0 +1,60 @@
+{
+  "id": "9K",
+  "shortId": "3E",
+  "title": "Exhibidor Organizador 4 Estantes De Madera",
+  "description": "",
+  "image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "cover_image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+      "images_list": [
+        "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+        "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790738317690-edit_1790738316527webp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Natural",
+          "link": "https://www.mercadolibre.com.ar/exhibidor-organizador-4-estantes-de-madera/up/MLAU5177919188?pdp_filters=item_id:MLA3941252298",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 23000,
+          "cost_price": 23000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1790738317696,
+  "primaryCatId": "Organizadores",
+  "history": [],
+  "views": 24,
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores"
+  ],
+  "rubro": "carpinteria"
+}

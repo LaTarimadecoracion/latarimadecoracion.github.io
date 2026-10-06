@@ -1,0 +1,126 @@
+{
+  "id": "33",
+  "title": "Perchero 5 - Rustico",
+  "description": "Medidas:\n63 x 13 cm",
+  "image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "cover_image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
+      "images_list": [
+        "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
+        "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037492-imagen.webp",
+        "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037651-imagen.webp",
+        "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037806-imagen.webp",
+        "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347037966-imagen.webp",
+        "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038106-imagen.webp",
+        "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038278-imagen.webp",
+        "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038433-imagen.webp",
+        "img/percheros/Perchero 5 - Rusctio - campo decorado/1784347038614-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Rustico 5 Ganchos",
+          "link": "https://www.mercadolibre.com.ar/perchero-5-ganchos--rustico/up/MLAU4387056305",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 25000,
+          "cost_price": 12500,
+          "legend": "",
+          "showPrice": true,
+          "stock": 0
+        }
+      ],
+      "hidden": false,
+      "stock": 0
+    }
+  ],
+  "tags": [
+    "perchero",
+    "percheros",
+    "madera",
+    "pino",
+    "rustico",
+    "minimalista",
+    "pared",
+    "colgar",
+    "perchas",
+    "organizador",
+    "llaves",
+    "recibidor",
+    "entrada",
+    "percha",
+    "gancho",
+    "ganchos",
+    "toallas",
+    "bolsos",
+    "camperas",
+    "sacos",
+    "orden",
+    "casa",
+    "hogar",
+    "deco",
+    "diseño",
+    "perchero de pared",
+    "perchero de madera",
+    "perchero de pino",
+    "perchero rustico",
+    "perchero minimalista",
+    "colgar camperas",
+    "organizador de entrada",
+    "perchero con ganchos",
+    "perchero recibidor",
+    "percheros de pared",
+    "percheros de madera",
+    "ganchos de colgar",
+    "perchero infantil",
+    "perchero para ropa",
+    "perchero de madera rustico",
+    "perchero minimalistico",
+    "colgar llaves",
+    "organizador de llaves",
+    "perchero de entrada",
+    "perchero de casa",
+    "decoracion de pared",
+    "ganchos toallas",
+    "perchero para bolsos",
+    "perchero toallero",
+    "perchero baño"
+  ],
+  "last_modified": 1784773922188,
+  "primaryCatId": "Percheros",
+  "visible": true,
+  "views": 1,
+  "stock": 0,
+  "history": [
+    {
+      "date": "27/8, 12:05 a. m.",
+      "type": "Precio Venta Subió",
+      "detail": "Venta: $20.000 ➔ $25.000"
+    },
+    {
+      "date": "27/8, 12:05 a. m.",
+      "type": "Costo Aumentó",
+      "detail": "Costo: $10.000 ➔ $12.500"
+    }
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 3
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Percheros"
+  ],
+  "rubro": "carpinteria"
+}

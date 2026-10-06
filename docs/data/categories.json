@@ -1,0 +1,188 @@
+[
+  {
+    "id": "carpinteria-todos",
+    "name": "Carpintería ",
+    "rubro": "carpinteria",
+    "image": "img/carpinteria-/portada-1783038461695-imagen.webp",
+    "visible": false,
+    "order": 0
+  },
+  {
+    "id": "Borrador",
+    "name": "Borrador",
+    "image": "img/borrador/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 1,
+    "visible": false
+  },
+  {
+    "id": "Vinotecas",
+    "name": "Vinotecas - Bodegas",
+    "image": "img/vinotecas---bodegas/portada-1780289410168-imagen.webp",
+    "order": 2,
+    "rubro": "carpinteria"
+  },
+  {
+    "id": "Percheros",
+    "name": "Percheros",
+    "image": "img/percheros/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 3
+  },
+  {
+    "id": "Barandas",
+    "name": "Barandas para cama",
+    "image": "img/barandas-para-cama/portada-1782437522433-imagen.webp",
+    "order": 4,
+    "visible": true,
+    "rubro": "carpinteria"
+  },
+  {
+    "id": "Organizadores",
+    "name": "Organizadores",
+    "image": "img/organizadores/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 5
+  },
+  {
+    "id": "Estantes",
+    "name": "Repisas & Estantes",
+    "image": "img/estantes/portada-1780775756126-imagen.webp",
+    "order": 6,
+    "rubro": "carpinteria"
+  },
+  {
+    "id": "cunas-madera-pino",
+    "name": "Cunas & Sueños",
+    "image": "img/cunas/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 7,
+    "visible": true
+  },
+  {
+    "id": "camas-madera-pino",
+    "name": "Camas & Cuchetas",
+    "image": "img/camas-para-ninos/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 8
+  },
+  {
+    "id": "muebles",
+    "name": "Escaleras",
+    "image": "img/escaleras/portada-1780288150186-imagen.webp",
+    "order": 9,
+    "rubro": "carpinteria"
+  },
+  {
+    "id": "Steps",
+    "name": "Fitness & Steps",
+    "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
+    "order": 10,
+    "rubro": "carpinteria"
+  },
+  {
+    "id": "Juguetes",
+    "name": "Rincón Infantil",
+    "image": "img/juguetes/portada-1783038439545-imagen.webp",
+    "order": 11,
+    "rubro": "carpinteria"
+  },
+  {
+    "id": "sillas-sillones",
+    "name": "Sillas y sillones",
+    "image": "img/sillas-y-sillones/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 12
+  },
+  {
+    "id": "Mesas-madera",
+    "name": "Mesas & Escritorios",
+    "image": "img/mesas-de-madera/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 13
+  },
+  {
+    "id": "jardin-patio",
+    "name": "Jardín",
+    "image": "img/jardin/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 14
+  },
+  {
+    "id": "Hogar",
+    "name": "Muebles de Hogar",
+    "image": "img/hogar/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 15
+  },
+  {
+    "id": "productos-algarrobo",
+    "name": "Línea Algarrobo",
+    "image": "img/todo-algarrobo/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 16
+  },
+  {
+    "id": "bazar-cocina",
+    "name": "Bazar & Cocina",
+    "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 17,
+    "visible": true
+  },
+  {
+    "id": "cajones-madera",
+    "name": "Cajones de Madera",
+    "image": "img/organizadores/baul-de-madera-de-pino/1782487445775-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 18,
+    "visible": true
+  },
+  {
+    "id": "Podios",
+    "name": "Podios de Premiacion",
+    "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
+    "order": 19,
+    "rubro": "carpinteria"
+  },
+  {
+    "id": "pintureria-todos",
+    "name": "Todos los productos",
+    "rubro": "pintureria",
+    "image": "img/logo_provisional.png",
+    "visible": true,
+    "order": 20
+  },
+  {
+    "id": "electricidad-todos",
+    "name": "Todos los productos",
+    "rubro": "electricidad",
+    "image": "img/logo_provisional.png",
+    "visible": false,
+    "order": 21
+  },
+  {
+    "id": "cat-21-mu7q9i7y",
+    "name": "Kits Electricos",
+    "image": "img/kits-electricos/portada-imagenwebp.webp",
+    "rubro": "electricidad",
+    "order": 22,
+    "visible": true
+  },
+  {
+    "id": "herrajes-todos",
+    "name": "Todos los productos",
+    "rubro": "herrajes",
+    "image": "img/logo_provisional.png",
+    "visible": false,
+    "order": 23
+  },
+  {
+    "id": "cat-23-mu93q76a",
+    "name": "Tornillos",
+    "image": "img/herrajes/tornillos/portada-imagenwebp.webp",
+    "rubro": "herrajes",
+    "order": 24,
+    "visible": true
+  }
+]

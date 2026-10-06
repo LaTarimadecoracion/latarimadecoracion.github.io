@@ -1,0 +1,66 @@
+{
+  "id": "7D",
+  "shortId": "37",
+  "title": "Estante Repisa Casita X 3 Unidades",
+  "description": "Lo que tenés que saber de este producto\nCantidad de estantes: 3\nMaterial: Madera\nProfundidad: 10 cm\nAltura: 33.5 cm\nLargo: 40 cm\nHecho en madera.",
+  "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Casita X3",
+      "cover_image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+      "images_list": [
+        "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
+        "img/estantes/estante-repisa-casita-x-3-unidades/1789446426288-edit_1789446407783webp.webp",
+        "img/estantes/estante-repisa-casita-x-3-unidades/1789446426300-edit_1789446413436webp.webp",
+        "img/estantes/estante-repisa-casita-x-3-unidades/1789445834349-edit_1789445806152webp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Casita X 3",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 20000,
+          "cost_price": 20000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 3,
+    "logisticaFreeMinUnits": 30,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "fleteFreeMinUnits": 30,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1789446426308,
+  "primaryCatId": "Estantes",
+  "history": [],
+  "views": 10,
+  "categories": [
+    "carpinteria-todos",
+    "Estantes",
+    "Juguetes"
+  ],
+  "rubro": "carpinteria"
+}

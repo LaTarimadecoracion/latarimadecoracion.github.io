@@ -1,0 +1,234 @@
+{
+  "id": "4B",
+  "title": "Ménsulas para escritorios",
+  "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
+  "image": "img/organizadores/mensulas/mensulas.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "40 x 40 cm",
+      "cover_image": "img/organizadores/mensulas/mensulas.webp",
+      "images_list": [
+        "img/organizadores/mensulas/mensulas.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "1 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 9000,
+          "cost_price": 9000,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "2 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 17000,
+          "cost_price": 17000,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "4 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 33000,
+          "cost_price": 33000,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "6 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 47998,
+          "cost_price": 47998,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "acabado_name": "45 x 45 cm",
+      "cover_image": "img/organizadores/mensulas/mensulas.webp",
+      "images_list": [
+        "img/organizadores/mensulas/mensulas.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "1 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 10000,
+          "cost_price": "",
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "2 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 18000,
+          "cost_price": 18000,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "4 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 35000,
+          "cost_price": 35000,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "6 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 50000,
+          "cost_price": 50000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "acabado_name": "50 x 50 cm",
+      "cover_image": "img/organizadores/mensulas/mensulas.webp",
+      "images_list": [
+        "img/organizadores/mensulas/mensulas.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "1 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 11500,
+          "cost_price": 11500,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "2 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 22000,
+          "cost_price": 22000,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "4 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 43000,
+          "cost_price": 43000,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "6 Un.",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 62999,
+          "cost_price": 62999,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "mensula",
+    "mensulas",
+    "soporte",
+    "soportes",
+    "mensula madera",
+    "mensula pino",
+    "colgar estante",
+    "estante mensula",
+    "mensula de pino",
+    "mensula de madera",
+    "mensulas de pino",
+    "mensulas de madera",
+    "mensula estante",
+    "soporte estante",
+    "soporte mensula",
+    "mensula rustica",
+    "mensulas rusticas",
+    "mensula decorativa"
+  ],
+  "last_modified": 1786315987713,
+  "primaryCatId": "Organizadores",
+  "views": 1,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 5
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores",
+    "Mesas-madera"
+  ],
+  "rubro": "carpinteria"
+}

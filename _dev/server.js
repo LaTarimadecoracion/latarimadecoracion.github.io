@@ -413,6 +413,150 @@ function generateSeoStubs(productsArray) {
     console.log('✅ SEO Stubs estáticos generados en la carpeta /p');
 }
 
+// API Endpoint para guardar un producto individual de forma desacoplada
+app.post('/api/save-product-single', (req, res) => {
+    try {
+        const product = req.body;
+        if (!product || !product.id) {
+            return res.status(400).json({ success: false, message: 'Producto inválido o sin ID.' });
+        }
+
+        const pid = String(product.id).trim();
+
+        // Determinar rubro y categoría limpia
+        let primaryCat = product.primaryCatId;
+        if (!primaryCat || primaryCat.endsWith('-todos')) {
+            primaryCat = (product.categories && product.categories.find(c => !c.endsWith('-todos'))) || (product.categories && product.categories[0]) || 'carpinteria-todos';
+            product.primaryCatId = primaryCat;
+        }
+
+        const CAT_SLUGS = {
+            'Vinotecas': 'vinotecas', 'Percheros': 'percheros', 'Barandas': 'barandas',
+            'Organizadores': 'organizadores', 'Estantes': 'estantes', 'cunas-madera-pino': 'cunas-madera-pino',
+            'camas-madera-pino': 'camas-madera-pino', 'muebles': 'escaleras', 'Steps': 'fitness-steps',
+            'Juguetes': 'rincon-infantil', 'sillas-sillones': 'sillas-sillones', 'Mesas-madera': 'mesas-madera',
+            'jardin-patio': 'jardin-patio', 'Hogar': 'hogar', 'productos-algarrobo': 'productos-algarrobo',
+            'bazar-cocina': 'bazar-cocina', 'cajones-madera': 'cajones-madera', 'Podios': 'podios',
+            'Borrador': 'borrador', 'cat-21-mu7q9i7y': 'kits-electricos', 'cat-23-mu93q76a': 'tornillos'
+        };
+
+        const catSlug = CAT_SLUGS[primaryCat] || String(primaryCat).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9_-]/g, '-').replace(/--+/g, '-').replace(/^-|-$/g, '') || 'general';
+        let rubro = 'carpinteria';
+        if (primaryCat === 'cat-21-mu7q9i7y' || primaryCat === 'electricidad-todos') rubro = 'electricidad';
+        else if (primaryCat === 'cat-23-mu93q76a' || primaryCat === 'herrajes-todos') rubro = 'herrajes';
+        else if (primaryCat && primaryCat.startsWith('pintureria')) rubro = 'pintureria';
+        product.rubro = rubro;
+
+        const dataProductsDir = path.join(ROOT_DIR, 'data', 'products', rubro, catSlug);
+        const docsProductsDir = path.join(ROOT_DIR, 'docs', 'data', 'products', rubro, catSlug);
+        [dataProductsDir, docsProductsDir].forEach(d => {
+            if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
+        });
+
+        // 1. Guardar ficha individual
+        const relFilePath = `data/products/${rubro}/${catSlug}/p-${pid}.json`;
+        const singleJson = JSON.stringify(product, null, 2);
+        fs.writeFileSync(path.join(dataProductsDir, `p-${pid}.json`), singleJson, 'utf8');
+        fs.writeFileSync(path.join(docsProductsDir, `p-${pid}.json`), singleJson, 'utf8');
+        console.log(`✅ Ficha individual guardada: ${relFilePath}`);
+
+        // 2. Actualizar catalog-index.json
+        const indexPath = path.join(ROOT_DIR, 'data', 'catalog-index.json');
+        const docsIndexPath = path.join(ROOT_DIR, 'docs', 'data', 'catalog-index.json');
+        let indexList = [];
+        if (fs.existsSync(indexPath)) {
+            try { indexList = JSON.parse(fs.readFileSync(indexPath, 'utf8')); } catch (e) {}
+        }
+
+        const firstAcabado = (product.acabados_groups && product.acabados_groups.find(g => !g.hidden)) ||
+                             (product.acabados_groups && product.acabados_groups[0]) || {};
+        const firstMedida = (firstAcabado.medidas_variants && firstAcabado.medidas_variants.find(m => !m.hidden && m.price > 0)) ||
+                            (firstAcabado.medidas_variants && firstAcabado.medidas_variants[0]) || {};
+
+        let coverImg = firstAcabado.cover_image || '';
+        if (!coverImg && product.image) {
+            coverImg = Array.isArray(product.image) ? product.image[0] : product.image;
+        }
+
+        const indexEntry = {
+            id: product.id,
+            shortId: product.shortId || null,
+            title: product.title,
+            rubro: rubro,
+            primaryCatId: product.primaryCatId,
+            categories: product.categories || [],
+            subcategoria: product.subcategoria || '',
+            price: firstMedida.price || product.price || 0,
+            image: coverImg,
+            tags: product.tags || [],
+            visible: product.visible !== false,
+            file: relFilePath
+        };
+
+        const existingIdx = indexList.findIndex(item => String(item.id).trim() === pid);
+        if (existingIdx >= 0) {
+            indexList[existingIdx] = indexEntry;
+        } else {
+            indexList.push(indexEntry);
+        }
+
+        const indexJson = JSON.stringify(indexList, null, 2);
+        fs.writeFileSync(indexPath, indexJson, 'utf8');
+        fs.writeFileSync(docsIndexPath, indexJson, 'utf8');
+
+        // 3. Mantener actualizado js/products-data.js como respaldo de compatibilidad
+        try {
+            const legacyPath = path.join(ROOT_DIR, 'js', 'products-data.js');
+            if (fs.existsSync(legacyPath)) {
+                let code = fs.readFileSync(legacyPath, 'utf8');
+                code = code.replace(/^\s*const\s+productsData\s*=/, 'global.tempLegacy =');
+                eval(code);
+                const categories = global.tempLegacy || [];
+                let modified = false;
+
+                categories.forEach(cat => {
+                    if (Array.isArray(cat.products)) {
+                        const pIdx = cat.products.findIndex(p => p && String(p.id).trim() === pid);
+                        const belongs = (product.categories && product.categories.includes(cat.id)) || (product.primaryCatId === cat.id);
+                        if (pIdx >= 0) {
+                            if (belongs) {
+                                cat.products[pIdx] = product;
+                                modified = true;
+                            } else {
+                                cat.products.splice(pIdx, 1);
+                                modified = true;
+                            }
+                        } else if (belongs) {
+                            cat.products.push(product);
+                            modified = true;
+                        }
+                    }
+                });
+
+                if (modified) {
+                    fs.writeFileSync(legacyPath, 'const productsData = ' + JSON.stringify(categories, null, 4) + ';\n', 'utf8');
+                    console.log('✅ js/products-data.js de respaldo actualizado.');
+                }
+            }
+        } catch (legacyErr) {
+            console.warn('⚠️ Error sincronizando js/products-data.js de respaldo:', legacyErr);
+        }
+
+        // 4. Actualizar SEO
+        try {
+            const { execSync } = require('child_process');
+            execSync('node _dev/update_seo.js', { cwd: ROOT_DIR, stdio: 'inherit' });
+        } catch (seoErr) {
+            console.warn('⚠️ Error ejecutando update_seo.js:', seoErr);
+        }
+
+        return res.json({ success: true, message: `Producto ${pid} guardado exitosamente.` });
+    } catch (err) {
+        console.error('❌ Error en /api/save-product-single:', err);
+        return res.status(500).json({ success: false, message: err.message });
+    }
+});
+
 // API Endpoint to save productsData JSON
 app.post('/api/save-products', (req, res) => {
     try {
@@ -427,6 +571,14 @@ app.post('/api/save-products', (req, res) => {
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
         console.log('✅ js/products-data.js actualizado correctamente.');
+
+        // Sincronizar automáticamente data/products/ y data/catalog-index.json
+        try {
+            const { execSync } = require('child_process');
+            execSync('node _dev/split_products.js', { cwd: ROOT_DIR, stdio: 'inherit' });
+        } catch (splitErr) {
+            console.warn('⚠️ Error ejecutando split_products.js:', splitErr);
+        }
         
         // Generar archivos estáticos para Redes Sociales y Sitemap completo para Google
         try {

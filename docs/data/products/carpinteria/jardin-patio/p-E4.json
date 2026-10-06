@@ -1,0 +1,74 @@
+{
+  "id": "E4",
+  "shortId": "3D",
+  "title": "Fanal",
+  "description": "Fanales, bandejas y complementos artesanales únicos.",
+  "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
+  "image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
+      "images_list": [
+        "img/jardn/fanal/1790378363366-imagenwebp.webp",
+        "img/jardn/fanal/1790378363377-imagenwebp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Fanal",
+          "link": "https://www.mercadolibre.com.ar/fanal-madera-pino-por-tres-unidades/up/MLAU3276284211",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 15000,
+          "cost_price": 3,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "decorar",
+    "jardin",
+    "fanales",
+    "candy",
+    "bar",
+    "blanco",
+    "negro",
+    "iluminacion",
+    "santos",
+    "imagen",
+    "altar"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1790378363386,
+  "primaryCatId": "jardin-patio",
+  "history": [],
+  "views": 0,
+  "categories": [
+    "carpinteria-todos",
+    "jardin-patio",
+    "Hogar"
+  ],
+  "rubro": "carpinteria"
+}

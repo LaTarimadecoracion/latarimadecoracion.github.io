@@ -1,0 +1,107 @@
+{
+  "id": "73",
+  "title": "Cuna: Eco fija - Modelo único",
+  "description": "Eco fija - 100 x 50 cm - Modelo único",
+  "image": "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "cover_image": "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp",
+      "images_list": [
+        "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Unida medida",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 75000,
+          "cost_price": 50000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "cuna",
+    "cunas",
+    "cunita",
+    "cunitas",
+    "kuna",
+    "kunas",
+    "bebe",
+    "bebes",
+    "infantil",
+    "niño",
+    "niños",
+    "madera",
+    "pino",
+    "madera maciza",
+    "mueble infantil",
+    "cuna eco",
+    "cuna economica",
+    "cuna barata",
+    "cuna fija",
+    "cuna simple",
+    "cuna clasica",
+    "cuna standard",
+    "cuna pino economica",
+    "cuna segura",
+    "cuna pequeña",
+    "cuna funcional",
+    "cuna portatil",
+    "cuna liviana",
+    "cuna fija pino",
+    "cuna eco fija",
+    "100x50",
+    "100x50cm",
+    "modelo unico",
+    "cuna chiquita",
+    "cuna mediana",
+    "cuna barata madera",
+    "cuna barata pino",
+    "moises grande",
+    "cuna de pino barata",
+    "cuna economica madera",
+    "nene",
+    "nena",
+    "recien nacido",
+    "cuna de apego",
+    "moises de pino",
+    "moises madera",
+    "colecho baranda",
+    "cuna baranda",
+    "dormitorio bebe",
+    "habitacion bebe",
+    "cuna natural",
+    "cuna rustica",
+    "cuna de madera",
+    "cuna de pino",
+    "cunas de madera",
+    "cunas de pino"
+  ],
+  "last_modified": 1786811859567,
+  "primaryCatId": "cunas-madera-pino",
+  "views": 1,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "cunas-madera-pino"
+  ],
+  "rubro": "carpinteria"
+}

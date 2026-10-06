@@ -1,0 +1,84 @@
+{
+  "id": "56",
+  "title": "Baranda: Desmontable con bulones - Especial",
+  "description": "",
+  "image": "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
+      "images_list": [
+        "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630546-imagen.webp",
+        "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630822-imagen.webp",
+        "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399630951-imagen.webp",
+        "img/barandas-para-cama/baranda-reforzada-geriatricos/1782399631066-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "170 x 55 cm",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": 10000,
+          "legend": "",
+          "showPrice": false
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "baranda",
+    "barandas",
+    "baranda reforzada",
+    "baranda geriatricos",
+    "baranda adultos",
+    "baranda ancianos",
+    "seguridad",
+    "anticaida",
+    "madera",
+    "pino",
+    "cama ortopedica",
+    "reforzado",
+    "clinica",
+    "hospital",
+    "barrera",
+    "varanda",
+    "varandas",
+    "barada",
+    "baradas",
+    "baranda de seguridad adultos",
+    "barrera adultos",
+    "protector adultos",
+    "reja para cuna",
+    "barandilla adultos",
+    "baranda ortopedica",
+    "baranda reforzada pino",
+    "baranda reforzada madera"
+  ],
+  "last_modified": 1788028292941,
+  "primaryCatId": "Barandas",
+  "history": [],
+  "visible": true,
+  "views": 3,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 1
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Barandas"
+  ],
+  "rubro": "carpinteria"
+}

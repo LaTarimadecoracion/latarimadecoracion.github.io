@@ -1,0 +1,129 @@
+{
+  "id": "H1",
+  "title": "Podio profesional | Grande",
+  "description": "",
+  "image": "img/podios-de-premiacion/podio-profesional/1780774147587-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Negro",
+      "cover_image": "img/podios-de-premiacion/podio-profesional/1780774147587-imagen.webp",
+      "images_list": [
+        "img/podios-de-premiacion/podio-profesional/1780774147587-imagen.webp",
+        "img/podios-de-premiacion/podio-profesional/1780774147784-imagen.webp",
+        "img/podios-de-premiacion/podio-profesional/1780774147917-imagen.webp",
+        "img/podios-de-premiacion/podio-profesional/1780774148049-imagen.webp",
+        "img/podios-de-premiacion/podio-profesional/1780774148175-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Grande",
+          "link": "https://www.mercadolibre.com.ar/podio-de-premiacion-profesional--3-niveles/up/MLAU3923567631",
+          "default": false,
+          "volumeDiscounts": [],
+          "cost_price": 35000,
+          "price": 350000,
+          "stock": 0,
+          "showPrice": true,
+          "weight": 2.5
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "Podio de premiación",
+    "3 niveles",
+    "profesional",
+    "color negro",
+    "tarima de campeones",
+    "bloques independientes",
+    "estructura modular",
+    "eventos deportivos",
+    "entrega de premios",
+    "podio escalonado",
+    "acabado premium",
+    "alta resistencia",
+    "minimalista",
+    "moderno",
+    "corporativo",
+    "competencias",
+    "primer puesto",
+    "segundo puesto",
+    "tercer puesto",
+    "podio deportivo",
+    "tarima de premiación",
+    "pintura negra matizada",
+    "uso rudo",
+    "eventos corporativos",
+    "podio",
+    "podios",
+    "podio profesional",
+    "premiacion",
+    "medallas",
+    "trofeo",
+    "trofeos",
+    "competencia",
+    "ganador",
+    "eventos",
+    "crossfit",
+    "gimnasio",
+    "box",
+    "madera",
+    "pino",
+    "cajon",
+    "cajones",
+    "saltar",
+    "podio de premiacion",
+    "podio de madera",
+    "podio crossfit",
+    "cajon crossfit",
+    "cajon de salto",
+    "cajon de madera",
+    "cajon de premiacion",
+    "podio primer puesto",
+    "plataforma de premiacion",
+    "podio de eventos",
+    "cajon pliometrico",
+    "pliometria",
+    "cajon para saltar",
+    "box jump",
+    "cajon jump",
+    "podios individuales",
+    "podios de madera"
+  ],
+  "last_modified": 1780774148299,
+  "primaryCatId": "Podios",
+  "views": 2,
+  "stock": 0,
+  "history": [
+    {
+      "date": "27/8, 12:38 a. m.",
+      "type": "Precio Venta Subió",
+      "detail": "Venta: $70.000 ➔ $375.000"
+    },
+    {
+      "date": "27/8, 12:37 a. m.",
+      "type": "Precio Venta Subió",
+      "detail": "Venta: $0 ➔ $70.000"
+    },
+    {
+      "date": "27/8, 12:37 a. m.",
+      "type": "Costo Aumentó",
+      "detail": "Costo: $0 ➔ $35.000"
+    }
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Podios"
+  ],
+  "rubro": "carpinteria"
+}

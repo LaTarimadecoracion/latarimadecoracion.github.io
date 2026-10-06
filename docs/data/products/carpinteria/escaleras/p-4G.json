@@ -1,0 +1,55 @@
+{
+  "id": "4G",
+  "title": "Banco Banquito Escalera Niños Infantil",
+  "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
+  "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+      "images_list": [
+        "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+        "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
+        "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
+        "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "30x23x20",
+          "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 18000,
+          "cost_price": 33000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786333409298,
+  "primaryCatId": "muebles",
+  "views": 1,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 1
+  },
+  "categories": [
+    "carpinteria-todos",
+    "muebles",
+    "Juguetes"
+  ],
+  "rubro": "carpinteria"
+}

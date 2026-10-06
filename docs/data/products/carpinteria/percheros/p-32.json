@@ -1,0 +1,118 @@
+{
+  "id": "32",
+  "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
+  "description": "Funcionalidad y elegancia para organizar tu entrada.",
+  "image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
+      "images_list": [
+        "img/percheros/perchero-1-2/1786839959391-imagen.webp",
+        "img/percheros/perchero-1-2/1786839928203-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "1 Unidad",
+          "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-reforzado-8-ganchos/up/MLAU4772440234",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 39000,
+          "cost_price": 20000,
+          "legend": "",
+          "showPrice": true,
+          "stock": 0
+        },
+        {
+          "medida": "2 Unidad",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 39000,
+          "cost_price": 20000,
+          "legend": "",
+          "showPrice": true,
+          "stock": 0
+        }
+      ],
+      "hidden": false,
+      "stock": 0
+    }
+  ],
+  "tags": [
+    "perchero",
+    "percheros",
+    "perchero pared",
+    "perchero madera",
+    "perchero pino",
+    "colgar",
+    "perchas",
+    "abrigo",
+    "camperas",
+    "entrada",
+    "recibidor",
+    "pared",
+    "colgar ropa",
+    "gancho",
+    "ganchos",
+    "organizacion",
+    "perchero de pared",
+    "perchero de madera",
+    "perchero de pino",
+    "colgador",
+    "colgador de ropa",
+    "ganchos para colgar",
+    "organizador entrada",
+    "recibidor de madera",
+    "mueble recibidor",
+    "perchero rustico",
+    "colgar camperas",
+    "colgar abrigos",
+    "colgar bolsos",
+    "perchero infantil",
+    "perchero clasico",
+    "perchero doble",
+    "porta abrigos",
+    "colgador pared",
+    "percheros rusticos",
+    "percheros de pino"
+  ],
+  "last_modified": 1786923534481,
+  "primaryCatId": "Percheros",
+  "views": 7,
+  "stock": 0,
+  "history": [
+    {
+      "date": "27/8, 12:04 a. m.",
+      "type": "Precio Venta Bajó",
+      "detail": "Venta: $78.000 ➔ $39.000"
+    },
+    {
+      "date": "27/8, 12:04 a. m.",
+      "type": "Costo Bajó",
+      "detail": "Costo: $26.000 ➔ $20.000"
+    }
+  ],
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 1
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Percheros"
+  ],
+  "rubro": "carpinteria"
+}

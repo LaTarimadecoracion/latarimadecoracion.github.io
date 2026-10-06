@@ -1,0 +1,55 @@
+{
+  "id": "D7",
+  "title": "Mesita Matera",
+  "description": "",
+  "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
+      "images_list": [
+        "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
+        "img/mesas-de-madera/mesita-matera/1786665063420-imagen.webp",
+        "img/mesas-de-madera/mesita-matera/1786665063603-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Mesita",
+          "link": "https://www.mercadolibre.com.ar/mesita-matera-plegable/up/MLAU4758741308?pdp_filters=item_id:MLA1995151329",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 17000,
+          "cost_price": 16997,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "last_modified": 1786811404439,
+  "primaryCatId": "Mesas-madera",
+  "views": 2,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false,
+    "logisticaMaxUnits": 1
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Mesas-madera",
+    "Hogar",
+    "bazar-cocina"
+  ],
+  "rubro": "carpinteria"
+}

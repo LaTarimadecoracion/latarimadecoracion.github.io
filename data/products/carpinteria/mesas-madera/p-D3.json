@@ -1,0 +1,50 @@
+{
+  "id": "D3",
+  "title": "Mesa Plegable - Redonda",
+  "description": "",
+  "image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
+      "images_list": [
+        "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
+        "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636382-imagen.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "mesa",
+    "mesita",
+    "madera",
+    "plegable",
+    "jardin",
+    "playa",
+    "picnic",
+    "salida",
+    "bosque",
+    "viaje"
+  ],
+  "last_modified": 1783637228097,
+  "primaryCatId": "Mesas-madera",
+  "views": 1,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "categories": [
+    "carpinteria-todos",
+    "Mesas-madera",
+    "jardin-patio",
+    "Hogar"
+  ],
+  "rubro": "carpinteria"
+}
