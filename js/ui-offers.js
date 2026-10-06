@@ -532,27 +532,27 @@
 
         if (!window.offersValidatedCP) {
             if (statusText) {
-                statusText.innerHTML = '📍 Cargá tus datos para activar descuentos automáticos según tu ubicación.';
+                statusText.innerHTML = '📍 Ingresá tu CP para activar envíos y beneficios';
                 statusText.style.color = '#ffffff';
             }
-            if (btnProfileLabel) btnProfileLabel.textContent = '⚡ Cargar mis Datos';
+            if (btnProfileLabel) btnProfileLabel.textContent = '⚡ Cargar Datos';
             if (cpBar) {
-                cpBar.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #064e3b 100%)';
+                cpBar.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)';
                 cpBar.style.borderColor = '#22c55e';
             }
             if (iconBadge) {
                 iconBadge.style.background = 'linear-gradient(135deg, #22c55e 0%, #15803d 100%)';
-                iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 1.5rem;">distance</span>';
+                iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">distance</span>';
             }
             return;
         }
 
-        if (btnProfileLabel) btnProfileLabel.textContent = `Perfil (CP ${window.offersValidatedCP})`;
+        if (btnProfileLabel) btnProfileLabel.textContent = `CP ${window.offersValidatedCP}`;
 
         if (typeof window.lookupPostalCode === 'function') {
             const res = window.lookupPostalCode(window.offersValidatedCP);
             if (res && res.hasLocalMatch !== false) {
-                statusText.innerHTML = `🎉 <strong>¡Envío Gratis Confirmado para ${res.localidad}!</strong> (CP ${res.cp})`;
+                statusText.innerHTML = `🎉 <strong>¡Envío Gratis para ${res.localidad}!</strong> (CP ${res.cp})`;
                 statusText.style.color = '#14532d';
                 if (cpBar) {
                     cpBar.style.background = 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)';
@@ -560,7 +560,7 @@
                 }
                 if (iconBadge) {
                     iconBadge.style.background = '#16a34a';
-                    iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 1.35rem;">verified</span>';
+                    iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">verified</span>';
                 }
             } else {
                 statusText.innerHTML = `📦 <strong>Envíos al Interior (CP ${window.offersValidatedCP})</strong> vía Mercado Libre / Transporte.`;
@@ -571,7 +571,7 @@
                 }
                 if (iconBadge) {
                     iconBadge.style.background = '#d97706';
-                    iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 1.35rem;">inventory_2</span>';
+                    iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">inventory_2</span>';
                 }
             }
         } else {

@@ -6543,6 +6543,92 @@ a .material-symbols-outlined {
     font-family: var(--font-main, sans-serif);
 }
 
+/* ── BARRA DE COBERTURA / CP EN OFERTAS (COMPACTA Y ADAPTABLE) ── */
+.offers-cp-bar {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border: 1.5px solid #22c55e;
+    border-radius: 12px;
+    padding: 0.5rem 0.85rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.offers-cp-info-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+}
+
+.offers-cp-icon-badge {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.offers-cp-status-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #f8fafc;
+    line-height: 1.3;
+    min-width: 0;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.offers-cp-action-btn {
+    background: #22c55e;
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.offers-cp-action-btn:hover {
+    transform: scale(1.02);
+    background: #16a34a;
+}
+
+@media (max-width: 599px) {
+    .offers-cp-bar {
+        padding: 0.55rem 0.75rem;
+        gap: 8px;
+    }
+    .offers-cp-status-text {
+        font-size: 0.74rem;
+        line-height: 1.25;
+    }
+    .offers-cp-action-btn {
+        padding: 5px 9px;
+        font-size: 0.72rem;
+    }
+}
+
 /* ── GRILLA DE OFERTAS RESPONSIVA (2 COLUMNAS EN MÓVIL / ESTILO CATÁLOGO EN PC) ── */
 .offers-grid-layout {
     display: grid;
