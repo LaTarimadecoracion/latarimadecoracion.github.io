@@ -1,0 +1,93 @@
+                                <div id="cortes-modpanel-usos" class="cortes-module-panel" style="display: none;">
+                                    <!-- Grilla de 2 Bloques: Precios Base y Acabados -->
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+                                        
+                                        <!-- Bloque 1: Condiciones Generales de Taller -->
+                                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+                                            <div>
+                                                <h4 style="margin: 0 0 0.85rem 0; font-size: 0.95rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 6px;">
+                                                    <span class="material-symbols-outlined" style="font-size: 20px; color: #16A34A;">price_check</span>
+                                                    Condición Base de Taller
+                                                </h4>
+
+                                                <div>
+                                                    <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Mínimo de Corte / Fraccionamiento ($):</label>
+                                                    <input type="number" id="inp-cortes-minimo" class="admin-input" value="3500" step="100" oninput="window.updateCortesAdminSimulator()">
+                                                    <small style="font-size: 0.7rem; color: #64748B; display: block; margin-top: 4px;">Piso mínimo garantizado para cualquier corte chico (prendida de máquinas y calibrado).</small>
+                                                </div>
+                                            </div>
+
+                                            <div style="background: #E2E8F0; padding: 0.5rem 0.75rem; border-radius: 8px; font-size: 0.72rem; color: #334155; margin-top: 10px;">
+                                                ℹ️ <em>Los precios y costos por m² se configuran individualmente en cada madera en la pestaña 1.</em>
+                                            </div>
+                                        </div>
+
+                                        <!-- Bloque 2: Adicionales por Acabado -->
+                                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.15rem;">
+                                            <h4 style="margin: 0 0 0.85rem 0; font-size: 0.95rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 6px;">
+                                                <span class="material-symbols-outlined" style="font-size: 20px; color: #2563EB;">palette</span>
+                                                Adicionales de Acabado
+                                            </h4>
+
+                                            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                                <div>
+                                                    <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Encerado / Tinte (Venta / Costo):</label>
+                                                    <div style="display: flex; gap: 6px;">
+                                                        <input type="number" id="inp-cortes-encerado-venta" class="admin-input" placeholder="Venta" value="2000" title="Precio Venta">
+                                                        <input type="number" id="inp-cortes-encerado-costo" class="admin-input" placeholder="Costo" value="800" title="Costo Taller">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Barniz Satinado (Venta / Costo):</label>
+                                                    <div style="display: flex; gap: 6px;">
+                                                        <input type="number" id="inp-cortes-barniz-venta" class="admin-input" placeholder="Venta" value="3800" title="Precio Venta">
+                                                        <input type="number" id="inp-cortes-barniz-costo" class="admin-input" placeholder="Costo" value="1500" title="Costo Taller">
+                                                    </div>
+                                                </div>
+                                                <small style="font-size: 0.7rem; color: #64748B;">Natural cepillado siempre es $0 adicional.</small>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- TIPOS DE DESTINO / DETECCIÓN AUTOMÁTICA DINÁMICA POR MEDIDAS Y REGLAS DE CORTE -->
+                                    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+                                        <div style="margin-bottom: 0.85rem;">
+                                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                                                <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 8px;">
+                                                    <span class="material-symbols-outlined" style="font-size: 22px; color: #4338CA;">radar</span>
+                                                    Detección Inteligente por Medidas (Anti-Avivadas en Cortes a Medida)
+                                                </h4>
+                                                <button type="button" class="btn-secondary" onclick="window.addCortesUsoRow()" style="font-size: 0.78rem; padding: 0.4rem 0.8rem; display: flex; align-items: center; gap: 4px; border-radius: 8px;">
+                                                    <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                                    <span>Nuevo Tipo de Corte / Destino</span>
+                                                </button>
+                                            </div>
+                                            <p style="margin: 4px 0 0 0; font-size: 0.78rem; color: #64748B;">
+                                                El cliente no elige si es estante, escritorio o listón. El cotizador evalúa las dimensiones físicas reales ingresadas y aplica las condiciones de taller configuradas acá.
+                                            </p>
+                                        </div>
+
+                                        <div id="cortes-usos-container" style="display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.25rem;">
+                                            <!-- Tarjetas dinámicas inyectadas por renderUsosUI() -->
+                                        </div>
+
+                                        <!-- DETECTOR EN VIVO: PRODUCTOS PREDETERMINADOS VINCULADOS A ESTA SECCIÓN -->
+                                        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 1rem;">
+                                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 8px;">
+                                                <h5 style="margin: 0; font-size: 0.9rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 6px;">
+                                                    <span class="material-symbols-outlined" style="font-size: 18px; color: #16A34A;">inventory_2</span>
+                                                    Productos Predeterminados Detectados en "Cortes de Madera"
+                                                </h5>
+                                                <span id="cortes-pred-count" class="admin-badge-success" style="font-size: 0.72rem;">Detectando...</span>
+                                            </div>
+                                            <p style="margin: 0 0 0.85rem 0; font-size: 0.75rem; color: #64748B;">
+                                                Estos productos están activos en la categoría <strong>Cortes de Madera</strong> del catálogo para clientes que buscan medidas estándar listas para comprar sin cotizador a medida.
+                                            </p>
+                                            <div id="cortes-pred-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem;">
+                                                <!-- Inyectado dinámicamente con las tarjetas de productos cargados -->
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>

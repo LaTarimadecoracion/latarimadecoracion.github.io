@@ -1,0 +1,48 @@
+                                <div id="cortes-modpanel-simulador" class="cortes-module-panel" style="display: none;">
+                                    <div style="background: #F1F5F9; border: 1.5px dashed #CBD5E1; border-radius: 14px; padding: 1.35rem;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 8px;">
+                                            <div>
+                                                <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #1E293B; display: flex; align-items: center; gap: 7px;">
+                                                    <span class="material-symbols-outlined" style="font-size: 22px; color: #EC4899;">calculate</span>
+                                                    Simulador de Prueba de Taller en Vivo
+                                                </h4>
+                                                <p style="margin: 3px 0 0 0; font-size: 0.78rem; color: #64748B;">
+                                                    Verificá el comportamiento de los cálculos, márgenes de ganancia y viabilidad de transporte para cualquier pieza antes de guardar cambios.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; background: #FFFFFF; padding: 1rem; border-radius: 10px; border: 1px solid #E2E8F0; margin-bottom: 1rem;">
+                                            <div style="display: flex; align-items: center; gap: 6px;">
+                                                <label style="font-size: 0.8rem; font-weight: 700;">Madera:</label>
+                                                <select id="sim-cortes-mat" class="admin-input" style="padding: 4px 8px; font-weight: 700;" onchange="window.updateCortesAdminSimulator()">
+                                                    <!-- Llenado dinámicamente con las maderas activas -->
+                                                </select>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 6px;">
+                                                <label style="font-size: 0.8rem; font-weight: 700;">Uso:</label>
+                                                <select id="sim-cortes-uso" class="admin-input" style="padding: 4px 8px; font-weight: 700;" onchange="window.updateCortesAdminSimulator()">
+                                                    <option value="estante">Estante (Base)</option>
+                                                    <option value="escritorio_mesa">Tapa Escritorio / Mesa (+Acabado fino)</option>
+                                                    <option value="escalon">Escalón (Tránsito)</option>
+                                                </select>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 6px;">
+                                                <label style="font-size: 0.8rem; font-weight: 700;">Largo:</label>
+                                                <input type="number" id="sim-cortes-largo" class="admin-input" value="80" style="width: 70px;" oninput="window.updateCortesAdminSimulator()"> cm
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 6px;">
+                                                <label style="font-size: 0.8rem; font-weight: 700;">Ancho:</label>
+                                                <input type="number" id="sim-cortes-ancho" class="admin-input" value="30" style="width: 70px;" oninput="window.updateCortesAdminSimulator()"> cm
+                                            </div>
+                                        </div>
+
+                                        <div style="background: #FFFFFF; padding: 1rem; border-radius: 10px; border: 1px solid #E2E8F0; display: flex; gap: 16px; align-items: center; font-size: 0.9rem; font-weight: 700; flex-wrap: wrap;">
+                                            <span>Superficie: <strong id="sim-res-sup" style="color: #0F172A;">0.24 m²</strong></span>
+                                            <span>Costo Taller: <strong id="sim-res-costo" style="color:#64748B;">$6.480</strong></span>
+                                            <span>Precio Venta: <strong id="sim-res-venta" style="color:#16A34A;">$11.640</strong></span>
+                                            <span>Margen Bruto: <strong id="sim-res-ganancia" style="color:#0284C7;">+$5.160</strong></span>
+                                            <span id="sim-res-envio" class="admin-badge-success" style="font-size: 0.8rem; padding: 4px 10px;">Apto Courier Flex</span>
+                                        </div>
+                                    </div>
+                                </div>

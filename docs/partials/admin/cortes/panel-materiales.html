@@ -1,0 +1,23 @@
+                                <div id="cortes-modpanel-materiales" class="cortes-module-panel" style="display: block;">
+                                    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 8px;">
+                                            <div>
+                                                <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 8px;">
+                                                    <span class="material-symbols-outlined" style="font-size: 22px; color: #854D0E;">forest</span>
+                                                    Materiales & Tableros (Dimensiones Máximas y Precios)
+                                                </h4>
+                                                <p style="margin: 3px 0 0 0; font-size: 0.78rem; color: #64748B;">
+                                                    Configurá cada madera o placa disponible. Si el cliente pide una medida mayor al límite físico del tablero, el cotizador le avisa automáticamente.
+                                                </p>
+                                            </div>
+                                            <button type="button" class="btn-secondary" onclick="window.addCortesMaterialRow()" style="font-size: 0.78rem; padding: 0.4rem 0.8rem; display: flex; align-items: center; gap: 4px; border-radius: 8px;">
+                                                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                                                <span>Nuevo Material</span>
+                                            </button>
+                                        </div>
+
+                                        <div id="cortes-materiales-container" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                            <!-- Filas de materiales generadas dinámicamente -->
+                                        </div>
+                                    </div>
+                                </div>

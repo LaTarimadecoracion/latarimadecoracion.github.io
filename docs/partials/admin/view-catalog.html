@@ -1,0 +1,112 @@
+                        <div id="admin-catalog-view" class="admin-section-view" style="display: none;">
+                            <!-- Fase 1: Árbol de Categorías -->
+                            <div id="admin-categories-view">
+                                <div class="admin-section-block" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
+                                    <!-- Toolbar superior unificada y compacta -->
+                                    <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-bottom: 1rem;">
+                                        <button type="button" id="btn-admin-add-rubro" class="btn-outline" style="height: 38px; padding: 0 0.9rem; font-size: 0.82rem; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; border-color: var(--admin-accent); color: var(--admin-accent);">
+                                            <span class="material-symbols-outlined" style="font-size: 18px; color: var(--admin-accent);">category</span>
+                                            <span>Nuevo Rubro</span>
+                                        </button>
+                                        <button type="button" id="btn-open-add-category" class="btn-primary" style="height: 38px; padding: 0 1rem; font-size: 0.82rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+                                            <span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                                            <span>Nueva Categoría</span>
+                                        </button>
+                                    </div>
+                                    <div id="admin-category-tree" class="category-tree-container">
+                                        <!-- Árbol inyectado dinámicamente -->
+                                    </div>
+                                </div>
+
+                                <!-- Fase 1b: Gestión de Alquileres -->
+                                <div id="admin-rentals-view" class="admin-section-block">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">key</span>
+                                            Alquileres (Sistema Aparte)
+                                        </h3>
+                                        <div class="admin-header-actions">
+                                            <button type="button" id="btn-open-add-rental" class="btn-primary" style="height: 38px; padding: 0 1rem; font-size: 0.82rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+                                                <span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                                                <span>Nuevo Alquiler</span>
+                                            </button>
+                                        </div>
+                                    </header>
+                                    <div class="admin-table-responsive">
+                                        <table class="admin-products-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Foto</th>
+                                                    <th>Producto</th>
+                                                    <th>Precio</th>
+                                                    <th style="text-align: center;">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="admin-rentals-table-body">
+                                                <!-- Alquileres inyectados dinámicamente -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fase 2: Vista de Productos -->
+                            <div id="admin-products-view" class="admin-section-block" style="display: none;">
+                                <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 0.75rem;">
+                                    <button type="button" id="btn-back-to-categories" class="btn-outline" style="padding: 0.4rem 1rem; width: auto; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span> Volver
+                                    </button>
+                                    <button type="button" id="btn-add-product-main" class="btn-primary">➕ Nuevo Producto</button>
+                                </div>
+
+                                <!-- Barra de búsqueda y filtro -->
+                                <div class="admin-filters-bar">
+                                    <div class="search-wrapper">
+                                        <span class="material-symbols-outlined">search</span>
+                                        <input type="text" id="admin-search" placeholder="Buscar por nombre o SKU...">
+                                    </div>
+                                    <div class="filter-wrapper">
+                                        <select id="admin-category-filter">
+                                            <!-- Categorías cargadas dinámicamente -->
+                                        </select>
+                                    </div>
+                                    <div class="filter-wrapper">
+                                        <select id="admin-status-filter" title="Filtrar por estado de visibilidad o fotos">
+                                            <option value="all">Todos los estados</option>
+                                            <option value="visibles">👁️ Visibles (Activos)</option>
+                                            <option value="ocultos">👁️ Off (Ocultos)</option>
+                                            <option value="borradores">👻 Borradores (Sin fotos)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Tabla de productos -->
+                                <div class="admin-table-responsive">
+                                    <table class="admin-products-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Foto</th>
+                                                <th>Producto / SKU</th>
+                                                <th>Categoría</th>
+                                                <th style="text-align: center;">Variantes</th>
+                                                <th style="text-align: center;">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="admin-products-table-body">
+                                            <!-- Filas inyectadas por JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Controles de paginación -->
+                                <div class="admin-pagination-container">
+                                    <button type="button" id="btn-admin-prev" class="btn-outline">
+                                        <span class="material-symbols-outlined">chevron_left</span> Anterior
+                                    </button>
+                                    <span id="admin-page-indicator">Página 1 de 1</span>
+                                    <button type="button" id="btn-admin-next" class="btn-outline">
+                                        Siguiente <span class="material-symbols-outlined">chevron_right</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>

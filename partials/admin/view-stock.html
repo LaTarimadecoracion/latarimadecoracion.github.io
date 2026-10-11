@@ -1,0 +1,101 @@
+                        <div id="admin-stock-view" class="admin-section-view" style="display: none;">
+                            <!-- 1. TARJETA PRODUCTO / CÓDIGO (COLAPSABLE) -->
+                            <div id="admin-stock-table-panel" class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1rem 1.25rem; margin-bottom: 1.25rem; box-shadow: var(--admin-shadow-sm);">
+                                <div onclick="window.toggleAllAdminStockCategoriesCollapse()" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; user-select: none; flex-wrap: wrap;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span id="admin-stock-global-collapse-icon" class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 22px; transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
+                                        <span class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 22px;">inventory_2</span>
+                                        <h3 class="admin-card-title" style="margin: 0; font-size: 1.02rem; font-weight: 700; color: var(--admin-text-main); white-space: nowrap;">PRODUCTO / CÓDIGO</h3>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; flex: 1; justify-content: flex-end; max-width: 500px;" onclick="event.stopPropagation()">
+                                        <div class="search-wrapper" style="flex: 1; margin: 0;">
+                                            <span class="material-symbols-outlined">search</span>
+                                            <input type="text" id="admin-stock-search-input" placeholder="Buscar por producto, categoría o código..." style="height: 36px; padding-top: 0; padding-bottom: 0;">
+                                        </div>
+                                        <button type="button" onclick="window.openAdminStockCreateModal()" class="btn-primary" title="Cargar Producto Rápido" style="width: 36px; height: 36px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: var(--admin-radius-sm); flex-shrink: 0;">
+                                            <span class="material-symbols-outlined" style="font-size: 20px; margin: 0;">add</span>
+                                        </button>
+                                        <button type="button" class="fullscreen-card-btn" onclick="window.toggleCardFullscreen('admin-stock-table-panel', event)" title="Ampliar a Pantalla Completa" style="background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: 6px; cursor: pointer; color: var(--admin-text-muted); width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s ease; flex-shrink: 0;">
+                                            <span class="material-symbols-outlined" style="font-size: 18px;">aspect_ratio</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="admin-stock-table-content-wrapper" class="admin-table-wrapper" style="display: none;">
+                                    <table class="admin-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Categoría / Producto</th>
+                                                <th class="col-stock-desktop" style="width: 100px; text-align: center;">Stock</th>
+                                                <th style="width: 110px;">Costo U.</th>
+                                                <th class="col-status-desktop" style="width: 120px; text-align: center;">Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="admin-stock-table-body">
+                                            <!-- Inyectado nativamente por js/admin-stock-native.js -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- 2. TARJETA COMPRAR/REPONER (COLAPSABLE) -->
+                            <div id="admin-stock-cart-panel" class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1rem 1.25rem; margin-top: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+                                <div onclick="window.toggleAdminStockBuyCartCollapse()" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span id="admin-stock-cart-collapse-icon" class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 22px; transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
+                                        <span class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 22px;">shopping_cart</span>
+                                        <h3 class="admin-card-title" style="margin: 0; font-size: 1.02rem; font-weight: 700; color: var(--admin-text-main);">Comprar/reponer</h3>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 6px;">
+                                        <span id="admin-stock-cart-badge" class="admin-count-badge" style="padding: 2px 8px; font-size: 0.78rem;">0</span>
+                                        <button type="button" class="fullscreen-card-btn" onclick="window.toggleCardFullscreen('admin-stock-cart-panel', event)" title="Ampliar a Pantalla Completa" style="background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: 6px; cursor: pointer; color: var(--admin-text-muted); width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s ease;">
+                                            <span class="material-symbols-outlined" style="font-size: 17px;">aspect_ratio</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="admin-stock-cart-content-wrapper" style="display: none; margin-top: 1rem; border-top: 1px solid var(--admin-border-color); padding-top: 1rem;">
+                                    <div id="admin-stock-cart-items-container" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 380px; overflow-y: auto;">
+                                        <!-- Inyectado dinámicamente -->
+                                    </div>
+
+                                    <div id="admin-stock-cart-summary" style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--admin-border-color); display: flex; align-items: center; justify-content: space-between; font-size: 0.88rem; font-weight: 700; flex-wrap: wrap; gap: 0.75rem;">
+                                        <div style="display: flex; gap: 1rem; align-items: center;">
+                                            <span style="color: var(--admin-text-muted);">Total a Comprar: <span id="admin-stock-cart-total-qty" style="color: var(--admin-accent);">0</span></span>
+                                            <span style="color: var(--admin-text-main);">Invertido: <span id="admin-stock-cart-total-cost" style="color: var(--admin-success); font-size: 0.95rem;">$0</span></span>
+                                        </div>
+                                        <div style="display: flex; gap: 0.5rem; align-items: center; margin-left: auto;">
+                                            <button type="button" onclick="window.generateAdminStockPendingList()" class="btn-primary" style="padding: 0.4rem 0.85rem; font-size: 0.82rem;">
+                                                <span>📋 Generar Lista de Pendientes</span>
+                                            </button>
+                                            <button type="button" onclick="window.clearAdminStockCart()" class="btn-outline" style="padding: 0.4rem 0.75rem; font-size: 0.82rem; color: #DC2626; border-color: rgba(220, 38, 38, 0.3);">
+                                                <span>🗑 Eliminar Lista</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. TARJETA HISTORIAL DE COMPRAS (COLAPSABLE) -->
+                            <div id="admin-stock-purchases-history-panel" class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1rem 1.25rem; margin-top: 1.25rem; box-shadow: var(--admin-shadow-sm);">
+                                <div onclick="window.toggleAdminStockPurchasesHistoryCollapse()" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span id="admin-stock-purchases-history-collapse-icon" class="material-symbols-outlined" style="color: var(--admin-success); font-size: 22px; transition: transform 0.2s ease; transform: rotate(-90deg);">expand_more</span>
+                                        <span class="material-symbols-outlined" style="color: var(--admin-success); font-size: 22px;">receipt_long</span>
+                                        <h3 class="admin-card-title" style="margin: 0; font-size: 1.02rem; font-weight: 700; color: var(--admin-text-main);">Historial de Compras Realizadas</h3>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 6px;">
+                                        <span id="admin-stock-purchases-history-badge" class="admin-count-badge" style="padding: 2px 8px; font-size: 0.78rem; background: var(--admin-success-light); color: var(--admin-success); border-color: rgba(34, 197, 94, 0.3);">0</span>
+                                        <button type="button" class="fullscreen-card-btn" onclick="window.toggleCardFullscreen('admin-stock-purchases-history-panel', event)" title="Ampliar a Pantalla Completa" style="background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: 6px; cursor: pointer; color: var(--admin-text-muted); width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s ease;">
+                                            <span class="material-symbols-outlined" style="font-size: 17px;">aspect_ratio</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="admin-stock-purchases-history-content-wrapper" style="display: none; margin-top: 1rem; border-top: 1px solid var(--admin-border-color); padding-top: 1rem;">
+                                    <div id="admin-stock-purchases-history-container" style="display: flex; flex-direction: column; gap: 0.85rem; max-height: 420px; overflow-y: auto;">
+                                        <!-- Inyectado dinámicamente -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

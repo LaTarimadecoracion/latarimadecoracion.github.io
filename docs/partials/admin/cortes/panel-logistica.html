@@ -1,0 +1,352 @@
+                                <div id="cortes-modpanel-logistica" class="cortes-module-panel" style="display: none;">
+                                    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px;">
+                                            <div>
+                                                <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 8px;">
+                                                    <span class="material-symbols-outlined" style="font-size: 22px; color: #D97706;">local_shipping</span>
+                                                    Configuración de Fletes y Logística para Cortes
+                                                </h4>
+                                                <p style="margin: 3px 0 0 0; font-size: 0.78rem; color: #64748B;">
+                                                    Configurá las condiciones, límites físicos y costos para las 3 modalidades de entrega de cortes y tableros.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Barra de 3 Sub-Solapas de Logística -->
+                                        <div id="cortes-shipping-tabs" style="display: flex; gap: 6px; width: 100%; margin-bottom: 1.25rem; background: #F1F5F9; padding: 4px; border-radius: 10px; border: 1px solid #E2E8F0;">
+                                            <button type="button" class="cortes-ship-tab-btn active" id="btn-cortes-tab-flex" onclick="window.switchCortesShippingTab('flex')" style="flex: 1; min-width: 0; justify-content: center; padding: 0.55rem 0.75rem; font-size: 0.84rem; font-weight: 700; border-radius: 8px; border: none; background: #0F172A; color: #FFFFFF; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                                                <span class="material-symbols-outlined" style="font-size: 18px; color: #38BDF8;">package_2</span>
+                                                <span>A. Logística (Flex / Moto)</span>
+                                            </button>
+                                            <button type="button" class="cortes-ship-tab-btn" id="btn-cortes-tab-flete" onclick="window.switchCortesShippingTab('flete')" style="flex: 1; min-width: 0; justify-content: center; padding: 0.55rem 0.75rem; font-size: 0.84rem; font-weight: 700; border-radius: 8px; border: none; background: transparent; color: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s ease;">
+                                                <span class="material-symbols-outlined" style="font-size: 18px; color: #16A34A;">local_shipping</span>
+                                                <span>B. Flete Propio (AMBA / Hurlingham)</span>
+                                            </button>
+                                            <button type="button" class="cortes-ship-tab-btn" id="btn-cortes-tab-externas" onclick="window.switchCortesShippingTab('externas')" style="flex: 1; min-width: 0; justify-content: center; padding: 0.55rem 0.75rem; font-size: 0.84rem; font-weight: 700; border-radius: 8px; border: none; background: transparent; color: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s ease;">
+                                                <span class="material-symbols-outlined" style="font-size: 18px; color: #EA580C;">rv_hookup</span>
+                                                <span>C. Logísticas Externas (Expresos)</span>
+                                            </button>
+                                        </div>
+
+                                        <!-- Panel Sub-Solapa 1: LOGÍSTICA FLEX / COURIER -->
+                                        <div id="cortes-ship-panel-flex" class="cortes-ship-panel" style="display: block;">
+                                            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.15rem;">
+                                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                                    <h5 style="margin: 0; font-size: 0.9rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 6px;">
+                                                        <span class="material-symbols-outlined" style="font-size: 18px; color: #0284C7;">tune</span>
+                                                        Límites Físicos para Envío Flex / Moto
+                                                    </h5>
+                                                    <span class="admin-badge-success" style="font-size: 0.72rem;">Bultos Pequeños y Medianos</span>
+                                                </div>
+                                                <p style="margin: 0 0 1rem 0; font-size: 0.75rem; color: #64748B;">
+                                                    Si el corte supera estas medidas, el cotizador del catálogo automáticamente deshabilita Courier Flex y exige Flete Propio o Expreso.
+                                                </p>
+
+                                                <!-- Límites de Medidas y Peso por Bulto / Paquete Flex -->
+                                                <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 1rem; margin-bottom: 1rem;">
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 6px;">
+                                                        <div>
+                                                            <span style="font-size: 0.78rem; font-weight: 800; color: #0F172A; text-transform: uppercase;">Dimensiones y Peso Máximo por Paquete / Bulto</span>
+                                                            <small style="display: block; font-size: 0.7rem; color: #64748B;">Si el pedido supera este peso o medidas, el cotizador lo divide automáticamente en 2 o más bultos (o exige Flete si excede).</small>
+                                                        </div>
+                                                        <span class="admin-badge-success" style="font-size: 0.68rem; padding: 3px 8px;">📦 Control Anti-Sobrecarga</span>
+                                                    </div>
+
+                                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px;">
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.7rem; font-weight: 700; color: #475569; margin-bottom: 2px;">Largo Máx Bulto (cm):</label>
+                                                            <input type="number" id="inp-cortes-flex-max-largo" class="admin-input" value="140" min="10" step="5">
+                                                        </div>
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.7rem; font-weight: 700; color: #475569; margin-bottom: 2px;">Ancho Máx Bulto (cm):</label>
+                                                            <input type="number" id="inp-cortes-flex-max-ancho" class="admin-input" value="60" min="10" step="5">
+                                                        </div>
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.7rem; font-weight: 700; color: #475569; margin-bottom: 2px;">Espesor / Alto Máx (cm):</label>
+                                                            <input type="number" id="inp-cortes-flex-max-alto" class="admin-input" value="20" min="5" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #0369A1; margin-bottom: 2px;">⚖️ Peso Máx x Bulto (kg):</label>
+                                                            <input type="number" id="inp-cortes-flex-max-peso" class="admin-input" value="12" min="1" step="0.5" style="font-weight: 800; border-color: #7DD3FC; color: #0369A1;">
+                                                        </div>
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.7rem; font-weight: 700; color: #475569; margin-bottom: 2px;">Máx Tablas x Bulto (u.):</label>
+                                                            <input type="number" id="inp-cortes-flex-max-unidades" class="admin-input" value="5" min="1" max="20" style="font-weight: 700;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.85rem; margin-bottom: 1rem;">
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 6px;">
+                                                        <div style="display: flex; align-items: center; gap: 6px;">
+                                                            <span class="material-symbols-outlined" style="font-size: 18px; color: #0284C7;">sync_alt</span>
+                                                            <strong style="font-size: 0.78rem; color: #0F172A;">Tarifas Zonales de Flex (Sincronizadas con la pestaña "Envíos & Zonas")</strong>
+                                                        </div>
+                                                        <span class="admin-badge-success" style="font-size: 0.68rem; padding: 3px 8px;">🔄 Sincronizado en Vivo</span>
+                                                    </div>
+                                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px;">
+                                                        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 6px 10px;">
+                                                            <span style="font-size: 0.68rem; color: #64748B; font-weight: 700; display: block;">🏙️ CABA:</span>
+                                                            <strong id="lbl-cortes-flex-caba" style="font-size: 0.88rem; color: #0F172A;">$8.000</strong>
+                                                            <input type="hidden" id="inp-cortes-flex-caba" value="8000">
+                                                        </div>
+                                                        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 6px 10px;">
+                                                            <span style="font-size: 0.68rem; color: #64748B; font-weight: 700; display: block;">🟣 Cordón 1 (Cercano):</span>
+                                                            <strong id="lbl-cortes-flex-cordon1" style="font-size: 0.88rem; color: #0F172A;">$10.000</strong>
+                                                            <input type="hidden" id="inp-cortes-flex-cordon1" value="10000">
+                                                        </div>
+                                                        <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 6px 10px;">
+                                                            <span style="font-size: 0.68rem; color: #64748B; font-weight: 700; display: block;">🟠 Cordón 2 (Extendido):</span>
+                                                            <strong id="lbl-cortes-flex-cordon2" style="font-size: 0.88rem; color: #0F172A;">$12.000</strong>
+                                                            <input type="hidden" id="inp-cortes-flex-cordon2" value="12000">
+                                                        </div>
+                                                    </div>
+                                                    <small style="display: block; font-size: 0.68rem; color: #64748B; margin-top: 6px;">
+                                                        ℹ️ <em>Para modificar los precios de cada zona o códigos postales, editalos desde la pestaña principal <strong>"Envíos & Zonas Tarifarias"</strong> y se actualizarán acá de inmediato.</em>
+                                                    </small>
+                                                </div>
+
+                                                <div style="margin-top: 1rem; padding-top: 0.85rem; border-top: 1.5px dashed #CBD5E1;">
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 8px;">
+                                                        <div>
+                                                            <h6 style="margin: 0; font-size: 0.82rem; font-weight: 800; color: #0284C7; display: flex; align-items: center; gap: 5px;">
+                                                                <span class="material-symbols-outlined" style="font-size: 16px;">redeem</span>
+                                                                Beneficios y Descuentos por Cantidad en Flex / Moto
+                                                            </h6>
+                                                            <small style="font-size: 0.68rem; color: #64748B;">Configurá escalas de descuento progresivas en el valor del envío o envío gratis por volumen.</small>
+                                                        </div>
+                                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                                            <button type="button" class="btn-secondary" onclick="window.addCortesFlexDiscountScaleRow()" style="font-size: 0.7rem; padding: 3px 8px; border-radius: 6px; display: inline-flex; align-items: center; gap: 3px;">
+                                                                <span class="material-symbols-outlined" style="font-size: 14px;">add</span>
+                                                                <span>Agregar Escala</span>
+                                                            </button>
+                                                            <div style="display: flex; align-items: center; gap: 4px;">
+                                                                <input type="checkbox" id="chk-cortes-flex-beneficios-activo" checked style="width: 15px; height: 15px; cursor: pointer;">
+                                                                <label for="chk-cortes-flex-beneficios-activo" style="font-size: 0.72rem; font-weight: 700; cursor: pointer;">Activo</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 0.75rem; margin-bottom: 0.75rem;">
+                                                        <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #15803D; margin-bottom: 3px;">🎁 Envío 100% GRATIS (Totalmente bonificado):</label>
+                                                        <div style="display: flex; gap: 6px; align-items: center;">
+                                                            <span style="font-size: 0.74rem; color: #475569;">A partir de:</span>
+                                                            <input type="number" id="inp-cortes-flex-envio-gratis-min" class="admin-input" value="6" min="1" max="99" style="width: 75px; font-weight: 700;">
+                                                            <span style="font-size: 0.74rem; color: #475569;">tablas / unidades (0 = desactivado)</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Contenedor dinámico de escalas de descuento % -->
+                                                    <div id="cortes-flex-escalas-container" style="display: flex; flex-direction: column; gap: 6px;">
+                                                        <!-- Filas generadas dinámicamente -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Panel Sub-Solapa 2: FLETE PROPIO -->
+                                        <div id="cortes-ship-panel-flete" class="cortes-ship-panel" style="display: none;">
+                                            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.15rem;">
+                                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                                    <h5 style="margin: 0; font-size: 0.9rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 6px;">
+                                                        <span class="material-symbols-outlined" style="font-size: 18px; color: #16A34A;">directions_car</span>
+                                                        Flete Directo Propio (Tableros Grandes, Escritorios y Mesas)
+                                                    </h5>
+                                                    <span class="admin-badge-success" style="font-size: 0.72rem; background: #DCFCE7; color: #15803D;">Origen: Hurlingham</span>
+                                                </div>
+                                                <p style="margin: 0 0 1rem 0; font-size: 0.75rem; color: #64748B;">
+                                                    Tarifas zonales para traslados directos en furgón/camioneta desde nuestro taller a domicilio sin riesgo de quiebre.
+                                                </p>
+
+                                                <!-- Límites Físicos y Capacidad de Carga para Flete Propio -->
+                                                <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 1rem; margin-bottom: 1rem;">
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 6px;">
+                                                        <div>
+                                                            <span style="font-size: 0.78rem; font-weight: 800; color: #0F172A; text-transform: uppercase;">Dimensiones y Capacidad Máxima de Carga del Flete</span>
+                                                            <small style="display: block; font-size: 0.7rem; color: #64748B;">Límites físicos del vehículo (furgón/camioneta) para planchas y cortes de gran formato.</small>
+                                                        </div>
+                                                        <span class="admin-badge-success" style="font-size: 0.68rem; padding: 3px 8px; background: #DCFCE7; color: #15803D;">🚛 Control de Capacidad Flete</span>
+                                                    </div>
+
+                                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px;">
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.7rem; font-weight: 700; color: #475569; margin-bottom: 2px;">Largo Máx Carga (cm):</label>
+                                                            <input type="number" id="inp-cortes-flete-max-largo" class="admin-input" value="300" min="50" step="10">
+                                                        </div>
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.7rem; font-weight: 700; color: #475569; margin-bottom: 2px;">Ancho Máx Carga (cm):</label>
+                                                            <input type="number" id="inp-cortes-flete-max-ancho" class="admin-input" value="130" min="30" step="5">
+                                                        </div>
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.7rem; font-weight: 700; color: #475569; margin-bottom: 2px;">Espesor / Alto Máx (cm):</label>
+                                                            <input type="number" id="inp-cortes-flete-max-alto" class="admin-input" value="120" min="10" step="5">
+                                                        </div>
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #15803D; margin-bottom: 2px;">⚖️ Peso Máx Carga (kg):</label>
+                                                            <input type="number" id="inp-cortes-flete-max-peso" class="admin-input" value="450" min="10" step="10" style="font-weight: 800; border-color: #86EFAC; color: #15803D;">
+                                                        </div>
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.7rem; font-weight: 700; color: #475569; margin-bottom: 2px;">Máx Placas x Viaje (u.):</label>
+                                                            <input type="number" id="inp-cortes-flete-max-unidades" class="admin-input" value="25" min="1" max="100" style="font-weight: 700;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.85rem; margin-bottom: 1rem;">
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 6px;">
+                                                        <div style="display: flex; align-items: center; gap: 6px;">
+                                                            <span class="material-symbols-outlined" style="font-size: 18px; color: #16A34A;">sync_alt</span>
+                                                            <strong style="font-size: 0.78rem; color: #0F172A;">Tarifas Zonales de Flete Propio (Sincronizadas con "Envíos & Zonas")</strong>
+                                                        </div>
+                                                        <span class="admin-badge-success" style="font-size: 0.68rem; padding: 3px 8px;">🔄 Sincronizado en Vivo</span>
+                                                    </div>
+                                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
+                                                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 6px 10px;">
+                                                            <span style="font-size: 0.68rem; color: #64748B; font-weight: 700; display: block;">🟡 Zona 1 - Hurlingham Local:</span>
+                                                            <strong id="lbl-cortes-flete-z1" style="font-size: 0.88rem; color: #0F172A;">$4.500</strong>
+                                                            <small style="font-size: 0.65rem; color: #64748B; display: block;">Hurlingham, Villa Tesei, W. Morris.</small>
+                                                            <input type="hidden" id="inp-cortes-flete-z1" value="4500">
+                                                        </div>
+                                                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 6px 10px;">
+                                                            <span style="font-size: 0.68rem; color: #64748B; font-weight: 700; display: block;">🟢 Zona 2 - Cordón Cercano:</span>
+                                                            <strong id="lbl-cortes-flete-z2" style="font-size: 0.88rem; color: #0F172A;">$20.000</strong>
+                                                            <small style="font-size: 0.65rem; color: #64748B; display: block;">Morón, Ituzaingó, San Martín, 3 de Febrero.</small>
+                                                            <input type="hidden" id="inp-cortes-flete-z2" value="20000">
+                                                        </div>
+                                                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 6px 10px;">
+                                                            <span style="font-size: 0.68rem; color: #64748B; font-weight: 700; display: block;">🔵 Zona 3 - CABA & GBA Extendido:</span>
+                                                            <strong id="lbl-cortes-flete-z3" style="font-size: 0.88rem; color: #0F172A;">$55.000</strong>
+                                                            <small style="font-size: 0.65rem; color: #64748B; display: block;">CABA, Tigre, San Isidro, Vicente López, Moreno.</small>
+                                                            <input type="hidden" id="inp-cortes-flete-z3" value="55000">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-top: 0.75rem; border-top: 1px dashed #CBD5E1; margin-bottom: 1rem;">
+                                                    <div>
+                                                        <label style="display: block; font-size: 0.74rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Mensaje para Destinos Fuera de Rango:</label>
+                                                        <input type="text" id="inp-cortes-flete-fuera" class="admin-input" value="Consultar cotización a medida para distancias mayores.">
+                                                    </div>
+                                                    <div>
+                                                        <label style="display: block; font-size: 0.74rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Opción Retiro por Taller:</label>
+                                                        <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
+                                                            <input type="checkbox" id="chk-cortes-retiro-taller" checked style="width: 18px; height: 18px; cursor: pointer;">
+                                                            <label for="chk-cortes-retiro-taller" style="font-size: 0.8rem; font-weight: 600; color: #1E293B; cursor: pointer;">Habilitar Retiro Gratis en Taller Hurlingham</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Beneficios Propios de Flete Propio (Escalas Progresivas y Envío Gratis) -->
+                                                <div style="margin-top: 1rem; padding-top: 0.85rem; border-top: 1.5px dashed #CBD5E1;">
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 8px;">
+                                                        <div>
+                                                            <h6 style="margin: 0; font-size: 0.82rem; font-weight: 800; color: #16A34A; display: flex; align-items: center; gap: 5px;">
+                                                                <span class="material-symbols-outlined" style="font-size: 16px;">redeem</span>
+                                                                Beneficios y Descuentos por Cantidad en Flete Propio
+                                                            </h6>
+                                                            <small style="font-size: 0.68rem; color: #64748B;">Configurá escalas de descuento progresivas en el valor del flete o envío gratis por volumen de obra.</small>
+                                                        </div>
+                                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                                            <button type="button" class="btn-secondary" onclick="window.addCortesFleteDiscountScaleRow()" style="font-size: 0.7rem; padding: 3px 8px; border-radius: 6px; display: inline-flex; align-items: center; gap: 3px;">
+                                                                <span class="material-symbols-outlined" style="font-size: 14px;">add</span>
+                                                                <span>Agregar Escala</span>
+                                                            </button>
+                                                            <div style="display: flex; align-items: center; gap: 4px;">
+                                                                <input type="checkbox" id="chk-cortes-flete-beneficios-activo" checked style="width: 15px; height: 15px; cursor: pointer;">
+                                                                <label for="chk-cortes-flete-beneficios-activo" style="font-size: 0.72rem; font-weight: 700; cursor: pointer;">Activo</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 0.75rem; margin-bottom: 0.75rem;">
+                                                        <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #15803D; margin-bottom: 3px;">🎁 Flete 100% GRATIS (Bonificado en Obra/Volumen):</label>
+                                                        <div style="display: flex; gap: 6px; align-items: center;">
+                                                            <span style="font-size: 0.74rem; color: #475569;">A partir de:</span>
+                                                            <input type="number" id="inp-cortes-flete-envio-gratis-min" class="admin-input" value="10" min="1" max="99" style="width: 75px; font-weight: 700;">
+                                                            <span style="font-size: 0.74rem; color: #475569;">placas / cortes (0 = desactivado)</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Contenedor dinámico de escalas de descuento % para Flete -->
+                                                    <div id="cortes-flete-escalas-container" style="display: flex; flex-direction: column; gap: 6px;">
+                                                        <!-- Filas generadas dinámicamente -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Panel Sub-Solapa 3: LOGÍSTICAS EXTERNAS / EXPRESOS -->
+                                        <div id="cortes-ship-panel-externas" class="cortes-ship-panel" style="display: none;">
+                                            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.15rem;">
+                                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                                    <h5 style="margin: 0; font-size: 0.9rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 6px;">
+                                                        <span class="material-symbols-outlined" style="font-size: 18px; color: #EA580C;">local_post_office</span>
+                                                        Logísticas Externas & Encomiendas (Interior del País)
+                                                    </h5>
+                                                    <span class="admin-badge-warning" style="font-size: 0.72rem;">Pago en Destino</span>
+                                                </div>
+                                                <p style="margin: 0 0 1rem 0; font-size: 0.75rem; color: #64748B;">
+                                                    Configurá las empresas de transporte autorizadas, costos de embalaje rígido especial y tiempos de despacho a receptoría.
+                                                </p>
+
+                                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                                                    <div>
+                                                        <label style="display: block; font-size: 0.74rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Recargo Embalaje Protector Especial ($):</label>
+                                                        <input type="number" id="inp-cortes-recargo-embalaje" class="admin-input" value="3500" step="500">
+                                                        <small style="font-size: 0.68rem; color: #64748B;">Cartón corrugado doble, esquineros y pluribol.</small>
+                                                    </div>
+                                                    <div>
+                                                        <label style="display: block; font-size: 0.74rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Empresas de Encomienda Habilitadas:</label>
+                                                        <input type="text" id="inp-cortes-empresas-externas" class="admin-input" value="Vía Cargo, Andreani, Correo Argentino">
+                                                        <small style="font-size: 0.68rem; color: #64748B;">Separadas por coma para mostrar al cliente.</small>
+                                                    </div>
+                                                </div>
+
+                                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-top: 0.75rem; border-top: 1px dashed #CBD5E1; margin-bottom: 1rem;">
+                                                    <div>
+                                                        <label style="display: block; font-size: 0.74rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Nota de Despacho & Cobro de Encomienda:</label>
+                                                        <input type="text" id="inp-cortes-nota-despacho" class="admin-input" value="Despachamos desde receptoría en 24-48 hs hábiles. El costo de encomienda se abona en destino al retirar en sucursal o recibir en domicilio.">
+                                                    </div>
+                                                    <div>
+                                                        <label style="display: block; font-size: 0.74rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Garantía / Aviso de Roturas:</label>
+                                                        <input type="text" id="inp-cortes-aviso-roturas" class="admin-input" value="Embalaje reforzado con esquineros y pluribol para máxima protección.">
+                                                    </div>
+                                                </div>
+
+                                                <!-- Beneficios de Expreso (Bonificación de Embalaje por Cantidad) -->
+                                                <div style="padding-top: 0.85rem; border-top: 1.5px dashed #CBD5E1;">
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                                                        <h6 style="margin: 0; font-size: 0.82rem; font-weight: 800; color: #EA580C; display: flex; align-items: center; gap: 5px;">
+                                                            <span class="material-symbols-outlined" style="font-size: 16px;">redeem</span>
+                                                            Beneficios en Expresos (Bonificación de Embalaje Especial)
+                                                        </h6>
+                                                        <div style="display: flex; align-items: center; gap: 5px;">
+                                                            <input type="checkbox" id="chk-cortes-externas-beneficios-activo" checked style="width: 15px; height: 15px; cursor: pointer;">
+                                                            <label for="chk-cortes-externas-beneficios-activo" style="font-size: 0.72rem; font-weight: 700; cursor: pointer;">Activo</label>
+                                                        </div>
+                                                    </div>
+                                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #475569; margin-bottom: 2px;">Embalaje 100% GRATIS a partir de:</label>
+                                                            <div style="display: flex; gap: 4px; align-items: center;">
+                                                                <input type="number" id="inp-cortes-externas-embalaje-gratis-min" class="admin-input" value="4" min="1">
+                                                                <span style="font-size: 0.74rem; color: #475569;">u.</span>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #475569; margin-bottom: 2px;">Descuento en Embalaje (%):</label>
+                                                            <input type="number" id="inp-cortes-externas-desc-pct" class="admin-input" value="50" min="0" max="100">
+                                                        </div>
+                                                        <div>
+                                                            <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #475569; margin-bottom: 2px;">A partir de:</label>
+                                                            <div style="display: flex; gap: 4px; align-items: center;">
+                                                                <input type="number" id="inp-cortes-externas-desc-min" class="admin-input" value="2" min="1">
+                                                                <span style="font-size: 0.74rem; color: #475569;">u.</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>

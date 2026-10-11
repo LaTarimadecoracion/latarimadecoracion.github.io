@@ -1934,42 +1934,6 @@
     "file": "data/products/carpinteria/estantes/p-65.json"
   },
   {
-    "id": "67",
-    "shortId": null,
-    "title": "Cortes de Madera para Estantes",
-    "rubro": "carpinteria",
-    "primaryCatId": "cortes-madera",
-    "categories": [
-      "carpinteria-todos",
-      "Estantes",
-      "cortes-madera"
-    ],
-    "subcategoria": "",
-    "price": 5800,
-    "image": "img/estantes/estantes/estantes.webp",
-    "tags": [],
-    "visible": true,
-    "file": "data/products/carpinteria/cortes-madera/p-67.json"
-  },
-  {
-    "id": "69",
-    "shortId": null,
-    "title": "Cortes de Madera a Medida (Personalizado)",
-    "rubro": "carpinteria",
-    "primaryCatId": "cortes-madera",
-    "categories": [
-      "carpinteria-todos",
-      "Estantes",
-      "cortes-madera"
-    ],
-    "subcategoria": "",
-    "price": 3500,
-    "image": "img/estantes/estantes/estantes.webp",
-    "tags": [],
-    "visible": true,
-    "file": "data/products/carpinteria/cortes-madera/p-69.json"
-  },
-  {
     "id": "7C",
     "shortId": null,
     "title": "Repisa-estante de pared con toallero",
@@ -4953,6 +4917,72 @@
     "file": "data/products/carpinteria/vinotecas/p-27.json"
   },
   {
+    "id": "67",
+    "shortId": null,
+    "title": "Cortes de Madera para Estantes",
+    "rubro": "carpinteria",
+    "primaryCatId": "cortes-madera",
+    "categories": [
+      "carpinteria-todos",
+      "Estantes",
+      "cortes-madera"
+    ],
+    "subcategoria": "",
+    "price": 5800,
+    "image": "img/estantes/estantes/estantes.webp",
+    "tags": [],
+    "visible": true,
+    "file": "data/products/carpinteria/cortes-madera/p-67.json"
+  },
+  {
+    "id": "68",
+    "shortId": null,
+    "title": "Cortes de Madera para Escritorios y Mesas",
+    "rubro": "carpinteria",
+    "primaryCatId": "cortes-madera",
+    "categories": [
+      "carpinteria-todos",
+      "cortes-madera"
+    ],
+    "subcategoria": "",
+    "price": 27500,
+    "image": "img/estantes/estantes/estantes.webp",
+    "tags": [
+      "escritorio",
+      "mesa",
+      "tapa",
+      "tablero",
+      "corte",
+      "madera",
+      "pino"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/cortes-madera/p-68.json"
+  },
+  {
+    "id": "69",
+    "shortId": "2Z",
+    "title": "Cortes de Madera a Medida",
+    "rubro": "carpinteria",
+    "primaryCatId": "cortes-madera",
+    "categories": [],
+    "subcategoria": "",
+    "price": 3500,
+    "image": "img/estantes/estantes/estantes.webp",
+    "tags": [
+      "corte",
+      "a medida",
+      "personalizado",
+      "tablas",
+      "recortes",
+      "escalon",
+      "mesada",
+      "pino"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/cortes-madera/p-69.json"
+  },
+  {
     "id": "L1",
     "shortId": "38",
     "title": "Kit Instalación Electrica Domiciliario Termica Y Diyuntor",
@@ -5036,29 +5066,5 @@
     "tags": [],
     "visible": true,
     "file": "data/products/herrajes/tornillos/p-N1.json"
-  },
-  {
-    "id": "68",
-    "shortId": null,
-    "title": "Cortes de Madera para Escritorios y Mesas",
-    "rubro": "carpinteria",
-    "primaryCatId": "cortes-madera",
-    "categories": [
-      "carpinteria-todos",
-      "cortes-madera"
-    ],
-    "subcategoria": "",
-    "price": 27500,
-    "image": "img/estantes/estantes/estantes.webp",
-    "tags": [
-      "escritorio",
-      "mesa",
-      "tapa",
-      "tablero",
-      "corte",
-      "madera"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/cortes-madera/p-68.json"
   }
 ]

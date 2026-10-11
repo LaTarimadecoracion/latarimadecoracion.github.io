@@ -37,8 +37,8 @@ window.cortesConfig = {
             "max_ancho": 40,
             "min_largo": 0,
             "max_largo": 120,
-            "factor_precio": 1,
-            "recargo_fijo": 0,
+            "factor_precio": 50,
+            "recargo_fijo": 2500,
             "desc": "Cortes estándar para estantes y repisas. Lijado y cepillado de taller.",
             "activo": true,
             "is_default": true
@@ -50,7 +50,7 @@ window.cortesConfig = {
             "max_ancho": 80,
             "min_largo": 0,
             "max_largo": 120,
-            "factor_precio": 1.25,
+            "factor_precio": 75,
             "recargo_fijo": 2500,
             "desc": "Selección de vetas sin nudos abiertos, escuadrado de precisión y calibrado con lijado fino al tacto para uso diario.",
             "activo": true,
@@ -63,7 +63,7 @@ window.cortesConfig = {
             "max_ancho": 120,
             "min_largo": 0,
             "max_largo": 240,
-            "factor_precio": 1.35,
+            "factor_precio": 80,
             "recargo_fijo": 3500,
             "desc": "Corte estándar de taller.",
             "activo": true,
@@ -146,14 +146,23 @@ window.cortesConfig = {
             "aviso_flex": "Válido para paquetes compactos que entran en moto o furgón Flex.",
             "beneficios": {
                 "activo": true,
-                "envioGratisMin": 3,
-                "descuentoTarifaPct": 25,
-                "descuentoTarifaMin": 2
+                "envioGratisMin": 20,
+                "escalas": [
+                    {
+                        "minQty": 10,
+                        "discountPercent": 50
+                    }
+                ]
             }
         },
         "flete": {
             "activo": true,
             "origen": "Taller Hurlingham",
+            "max_largo": 300,
+            "max_ancho": 130,
+            "max_alto": 120,
+            "max_peso_bulto": 450,
+            "max_unidades": 25,
             "costo_zona_1": 4500,
             "costo_zona_2": 20000,
             "costo_zona_3": 55000,
@@ -174,10 +183,14 @@ window.cortesConfig = {
                 }
             ],
             "beneficios": {
-                "activo": true,
+                "activo": false,
                 "envioGratisMin": 10,
-                "descuentoTarifaPct": 50,
-                "descuentoTarifaMin": 5
+                "escalas": [
+                    {
+                        "minQty": 5,
+                        "discountPercent": 50
+                    }
+                ]
             }
         },
         "externas": {
@@ -201,7 +214,7 @@ window.cortesConfig = {
                 }
             ],
             "beneficios": {
-                "activo": true,
+                "activo": false,
                 "embalajeGratisMin": 4,
                 "descuentoEmbalajePct": 50,
                 "descuentoEmbalajeMin": 2

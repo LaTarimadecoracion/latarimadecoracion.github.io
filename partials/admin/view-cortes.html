@@ -1,0 +1,51 @@
+<!-- =============================================================================
+     partials/admin/view-cortes.html
+     Módulo Maestro: Cortes de Madera & Precios (#admin-cortes-view)
+     Los 5 subpaneles se inyectan limpiamente desde partials/admin/cortes/
+     ============================================================================= -->
+<div id="admin-cortes-view" class="admin-section-view" style="display: none;">
+    <div class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 10px;">
+            <div>
+                <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--admin-text-main); display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--primary-color);">carpenter</span>
+                    Configuración de Cortes de Madera & Precios
+                </h3>
+                <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: var(--admin-text-muted);">
+                    Controlá los precios de venta, costos de taller por metro cuadrado y límites de tamaño para flete.
+                </p>
+            </div>
+            <button type="button" id="btn-save-cortes-config" onclick="window.saveCortesConfigFromUI()" class="btn-primary" style="display: flex; align-items: center; gap: 6px; padding: 0.6rem 1.25rem; font-weight: 800; border-radius: 10px; cursor: pointer;">
+                <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
+                <span>Guardar Configuración</span>
+            </button>
+        </div>
+
+        <!-- BARRA DE PESTAÑAS PRINCIPALES DEL MÓDULO CORTES -->
+        <div id="cortes-module-tabs" style="display: flex; gap: 8px; width: 100%; margin-bottom: 1.5rem; background: #F1F5F9; padding: 6px; border-radius: 12px; border: 1px solid #E2E8F0; flex-wrap: wrap;">
+            <button type="button" class="cortes-main-tab-btn active" id="btn-cortes-mtab-materiales" onclick="window.switchCortesModuleTab('materiales')" style="flex: 1; min-width: 150px; justify-content: center; padding: 0.6rem 0.9rem; font-size: 0.85rem; font-weight: 700; border-radius: 9px; border: none; background: #0F172A; color: #FFFFFF; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #FBBF24;">forest</span>
+                <span>1. Maderas & Tableros</span>
+            </button>
+            <button type="button" class="cortes-main-tab-btn" id="btn-cortes-mtab-usos" onclick="window.switchCortesModuleTab('usos')" style="flex: 1; min-width: 150px; justify-content: center; padding: 0.6rem 0.9rem; font-size: 0.85rem; font-weight: 700; border-radius: 9px; border: none; background: transparent; color: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s ease;">
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #6366F1;">chair</span>
+                <span>2. Usos & Precios Taller</span>
+            </button>
+            <button type="button" class="cortes-main-tab-btn" id="btn-cortes-mtab-logistica" onclick="window.switchCortesModuleTab('logistica')" style="flex: 1; min-width: 150px; justify-content: center; padding: 0.6rem 0.9rem; font-size: 0.85rem; font-weight: 700; border-radius: 9px; border: none; background: transparent; color: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s ease;">
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #0284C7;">local_shipping</span>
+                <span>3. Fletes & Envíos</span>
+            </button>
+            <button type="button" class="cortes-main-tab-btn" id="btn-cortes-mtab-descuentos" onclick="window.switchCortesModuleTab('descuentos')" style="flex: 1; min-width: 150px; justify-content: center; padding: 0.6rem 0.9rem; font-size: 0.85rem; font-weight: 700; border-radius: 9px; border: none; background: transparent; color: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s ease;">
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #10B981;">sell</span>
+                <span>4. Descuentos por Cantidad</span>
+            </button>
+            <button type="button" class="cortes-main-tab-btn" id="btn-cortes-mtab-simulador" onclick="window.switchCortesModuleTab('simulador')" style="flex: 1; min-width: 150px; justify-content: center; padding: 0.6rem 0.9rem; font-size: 0.85rem; font-weight: 700; border-radius: 9px; border: none; background: transparent; color: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s ease;">
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #EC4899;">calculate</span>
+                <span>5. Simulador de Taller</span>
+            </button>
+        </div>
+
+        <!-- CONTENEDOR DE SUBPANELES INYECTADOS MODULARMENTE -->
+        <div id="cortes-subpanels-container"></div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+                        <div id="admin-settings-view" class="admin-section-view" style="display: none;">
+
+                            <div class="admin-card">
+                                <header class="admin-page-header">
+                                    <h3 class="admin-header-title">
+                                        <span class="material-symbols-outlined">badge</span>
+                                        Identidad & Aspecto
+                                    </h3>
+                                </header>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem;">
+                                    <div class="form-group">
+                                        <label for="admin-settings-title">Título de la Tienda</label>
+                                        <input type="text" id="admin-settings-title" class="premium-input" placeholder="Ej: La Tarima">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-settings-subtitle">Subtítulo o Eslogan</label>
+                                        <input type="text" id="admin-settings-subtitle" class="premium-input" placeholder="Ej: Diseño en madera">
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; align-items: center;">
+                                    <div class="form-group">
+                                        <label>Logotipo de la Tienda</label>
+                                        <div style="display: flex; align-items: center; gap: 1rem;">
+                                            <img id="admin-settings-logo-preview" src="img/logo_provisional.png" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--admin-border-color);" onerror="this.src='img/logo_provisional.png';">
+                                            <div>
+                                                <input type="file" id="admin-settings-logo-input" accept="image/*" style="display: none;">
+                                                <button type="button" class="btn-outline" onclick="document.getElementById('admin-settings-logo-input').click();" style="font-size:0.82rem;">Subir nuevo logo</button>
+                                                <p id="admin-settings-logo-status" style="font-size: 0.72rem; color: var(--admin-text-muted); margin: 4px 0 0 0;"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="admin-settings-theme-select">Skin / Tema Activo</label>
+                                        <select id="admin-settings-theme-select" class="premium-select">
+                                            <option value="classic">🌲 Madera Clásica (Default)</option>
+                                            <option value="sobrio">⚫ Sobrio V1 (Negro, Blanco y Gris)</option>
+                                            <option value="mundial">⚽ Mes Mundialista (Celeste y Blanco)</option>
+                                            <option value="final-mundial">🏆 ¡Final del Mundial! (Celeste y Oro Premium)</option>
+                                            <option value="navidad">🎅 Navidad (Rojo y Verde)</option>
+                                            <option value="halloween">🎃 Halloween (Naranja y Negro)</option>
+                                            <option value="valentin">💖 San Valentín (Rosado y Rojo)</option>
+                                            <option value="imperial">✨ Elegancia Imperial (Dorado y Azul Marino)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="admin-card">
+                                <header class="admin-page-header">
+                                    <h3 class="admin-header-title">
+                                        <span class="material-symbols-outlined">contact_phone</span>
+                                        Redes Sociales & Canales de Venta
+                                    </h3>
+                                </header>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+                                    <div class="form-group">
+                                        <label for="admin-settings-whatsapp">Enlace de WhatsApp</label>
+                                        <input type="text" id="admin-settings-whatsapp" class="premium-input" placeholder="https://wa.me/5491167007723">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-settings-instagram">Instagram URL</label>
+                                        <input type="text" id="admin-settings-instagram" class="premium-input" placeholder="https://instagram.com/nombre_cuenta">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-settings-tiktok">TikTok URL</label>
+                                        <input type="text" id="admin-settings-tiktok" class="premium-input" placeholder="https://tiktok.com/@nombre_cuenta">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-settings-facebook">Facebook URL</label>
+                                        <input type="text" id="admin-settings-facebook" class="premium-input" placeholder="https://facebook.com/pagina_cuenta">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-settings-youtube">YouTube Channel URL</label>
+                                        <input type="text" id="admin-settings-youtube" class="premium-input" placeholder="https://youtube.com/@canal_cuenta">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-settings-mercadolibre">MercadoLibre Shop URL</label>
+                                        <input type="text" id="admin-settings-mercadolibre" class="premium-input" placeholder="https://eshops.mercadolibre.com.ar/...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="admin-card">
+                                <header class="admin-page-header">
+                                    <h3 class="admin-header-title">
+                                        <span class="material-symbols-outlined" style="color: var(--admin-warning);">flight_takeoff</span>
+                                        Configuración de Vacaciones
+                                    </h3>
+                                </header>
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; background: rgba(217,119,6,0.06); padding: 0.75rem; border-radius: var(--admin-radius-sm); border: 1px solid rgba(217,119,6,0.18);">
+                                    <input type="checkbox" id="admin-settings-vacation-active" style="width: 17px; height: 17px; cursor: pointer; accent-color: var(--admin-accent);">
+                                    <label for="admin-settings-vacation-active" style="font-weight: 700; color: var(--admin-warning); font-size: 0.88rem; cursor: pointer; user-select: none;">Activar el Modo Vacaciones (bloquea compras y muestra cartel de aviso)</label>
+                                </div>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+                                    <div class="form-group">
+                                        <label for="admin-settings-vacation-start-end">Duración de Vacaciones</label>
+                                        <input type="text" id="admin-settings-vacation-start-end" class="premium-input" placeholder="ej: del 1 al 15 de Septiembre">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin-settings-vacation-deliveries">Retorno de Entregas</label>
+                                        <input type="text" id="admin-settings-vacation-deliveries" class="premium-input" placeholder="ej: a partir del 20 de Septiembre">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="margin-top: 1rem;">
+                                    <label for="admin-settings-vacation-message">Mensaje para los clientes</label>
+                                    <textarea id="admin-settings-vacation-message" class="premium-input" rows="3" placeholder="Ej: Estamos de vacaciones de invierno, pero seguimos tomando pedidos con precios congelados."></textarea>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+                                <button type="button" id="admin-settings-save-btn" class="btn-primary" style="padding: 0.75rem 2.5rem; font-size: 0.95rem;">
+                                    <span class="material-symbols-outlined">save</span>
+                                    <span>Guardar Ajustes</span>
+                                </button>
+                            </div>
+                        </div>

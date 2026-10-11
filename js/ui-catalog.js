@@ -849,7 +849,10 @@
                         if (rowEl) rowEl.style.display = 'none';
                     }
                 } else {
-                    const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
+                    let activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
+                    if (!activeVariant && (product.isCustomCutting === true || product.id === '69') && grupo.medidas_variants && grupo.medidas_variants.length > 0) {
+                        activeVariant = grupo.medidas_variants[0];
+                    }
                     if (activeVariant && activeVariant.showPrice === true && activeVariant.price !== undefined && activeVariant.price !== '') {
                         priceDisplay.style.display = 'flex';
                         priceDisplay.style.justifyContent = 'flex-end';
@@ -1661,6 +1664,17 @@
                     });
                     const unifiedMatsList = Array.from(groupedMatsMap.values());
 
+                    // Encontrar índice del material si viene preseleccionado por URL
+                    let preselectedGroupIdx = 0;
+                    if (preselectedMedida) {
+                        const cleanPre = preselectedMedida.toLowerCase();
+                        const foundIdx = unifiedMatsList.findIndex(g => {
+                            const gName = g.name.toLowerCase();
+                            return cleanPre.includes(gName) || gName.includes(cleanPre) || (g.id && cleanPre.includes(g.id.toLowerCase()));
+                        });
+                        if (foundIdx !== -1) preselectedGroupIdx = foundIdx;
+                    }
+
                     divMedida.className = 'variant-selector-wrapper mt-1';
                     divMedida.innerHTML = `
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
@@ -1673,7 +1687,7 @@
                             <label style="display:block; font-size:0.72rem; font-weight:700; color:#475569; margin-bottom:3px; text-transform:uppercase;">1. Madera / Tablero:</label>
                             <select id="detail-custom-cut-material" class="admin-input" style="width:100%; font-weight:700; border-radius:8px;">
                                 ${unifiedMatsList.map((g, idx) => `
-                                    <option value="${g.name}" data-group-index="${idx}" ${idx === 0 ? 'selected' : ''}>
+                                    <option value="${g.name}" data-group-index="${idx}" ${idx === preselectedGroupIdx ? 'selected' : ''}>
                                         ${g.name} (Hasta ${g.max_largo} × ${g.max_ancho} cm)
                                     </option>
                                 `).join('')}
@@ -1819,7 +1833,14 @@
                         }) || availableUsos[0];
 
                         if (matchedUso) {
-                            factorUso = matchedUso.factor_precio || 1.0;
+                            const rawFactor = Number(matchedUso.factor_precio) || 0;
+                            if (rawFactor > 0 && rawFactor <= 3) {
+                                // Soporte retrocompatible para decimales viejos (ej 1.25)
+                                factorUso = rawFactor;
+                            } else {
+                                // Porcentaje amigable directo: 0% -> 1.0, 25% -> 1.25, 50% -> 1.50
+                                factorUso = 1.0 + (rawFactor / 100);
+                            }
                             recargoFijoUso = matchedUso.recargo_fijo || 0;
                             detectedLabel = matchedUso.name || 'Corte Estándar';
                         }
@@ -1851,10 +1872,13 @@
                         const calcPrice = Math.max(minimo, Math.round(m2 * precioM2Final + recargoFijoUso));
 
                         const medidaDesc = `${autoL} × ${autoW} cm (${optMat?.text.split('(')[0].trim()} - ${detectedLabel})`;
+                        defaultMedidaName = medidaDesc;
 
                         if (grupo.medidas_variants && grupo.medidas_variants[0]) {
                             grupo.medidas_variants[0].price = calcPrice;
                             grupo.medidas_variants[0].medida = medidaDesc;
+                            grupo.medidas_variants[0].showPrice = true;
+                            grupo.medidas_variants[0].hidden = false;
                         }
 
                         updateBuyButton(grupo, medidaDesc);
@@ -1885,7 +1909,6 @@
 
                     // Inicializar opciones de espesor según material por defecto
                     updateEspesoresForSelectedMaterial();
-                    defaultMedidaName = "80 × 30 cm (A medida)";
                     calcCut();
                 } else {
                     divMedida.className = 'variant-selector-wrapper mt-1';
@@ -1908,8 +1931,11 @@
                 divMedida.style.display = 'none';
             }
 
-            // Initial button update for this group
-            updateBuyButton(grupo, defaultMedidaName);
+            // Initial button update for this group (usar la variante activa calculada o la por defecto)
+            const initialMedida = (product.isCustomCutting === true || product.id === '69')
+                ? (grupo.medidas_variants && grupo.medidas_variants[0] ? grupo.medidas_variants[0].medida : defaultMedidaName)
+                : defaultMedidaName;
+            updateBuyButton(grupo, initialMedida);
 
             // Update Favorites button state
             updateFavState();

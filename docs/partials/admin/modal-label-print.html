@@ -1,0 +1,109 @@
+                        <div id="admin-label-print-modal" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(4px); z-index: 99999; align-items: center; justify-content: center; padding: 1rem;">
+                            <div style="background: #ffffff; border-radius: 12px; width: 100%; max-width: 620px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); overflow: hidden; display: flex; flex-direction: column;">
+                                <div style="padding: 1rem 1.25rem; background: #0f172a; color: #ffffff; display: flex; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span class="material-symbols-outlined" style="color: #38bdf8;">tune</span>
+                                        <h3 style="margin: 0; font-size: 1rem; font-weight: 700; color: #ffffff;">Imprimir y Diseñar Etiqueta</h3>
+                                    </div>
+                                    <button type="button" onclick="window.closeAdminLabelModal()" style="background: transparent; border: none; color: #94a3b8; cursor: pointer; display: flex; align-items: center;" title="Cerrar">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                </div>
+
+                                <!-- Contenedor con Controles a la Izquierda y Previsualización a la Derecha -->
+                                <div style="display: grid; grid-template-columns: 240px 1fr; gap: 1rem; padding: 1.25rem; background: #f8fafc; align-items: start;">
+                                    <!-- Panel de Ajustes / Presets de Tamaño -->
+                                    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; gap: 10px;">
+                                        <div style="font-size: 0.78rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Formato de Etiqueta</div>
+                                        
+                                        <div class="form-group" style="margin: 0;">
+                                            <label style="font-size: 0.75rem; font-weight: 700; color: #475569;">Tamaño Estándar</label>
+                                            <select id="lbl-preset-select" onchange="window.applyAdminLabelPreset(this.value)" style="width: 100%; padding: 0.4rem; font-size: 0.8rem; border: 1px solid #cbd5e1; border-radius: 4px; font-weight: 600;">
+                                                <option value="80x50">Térmica 80 × 50 mm (Estándar)</option>
+                                                <option value="50x30">Térmica 50 × 30 mm (Pequeña)</option>
+                                                <option value="60x40">Térmica 60 × 40 mm (Mediana)</option>
+                                                <option value="100x60">Térmica 100 × 60 mm (Grande)</option>
+                                                <option value="custom">Personalizada (mm)</option>
+                                            </select>
+                                        </div>
+
+                                        <div id="lbl-custom-size-box" style="display: flex; gap: 6px;">
+                                            <div style="flex: 1;">
+                                                <label style="font-size: 0.7rem; font-weight: 600; color: #64748b;">Ancho (mm)</label>
+                                                <input type="number" id="lbl-custom-w" value="80" oninput="window.updateAdminCustomLabelSize()" style="width: 100%; padding: 0.3rem; font-size: 0.8rem; border: 1px solid #cbd5e1; border-radius: 4px; text-align: center; font-weight: 700;">
+                                            </div>
+                                            <div style="flex: 1;">
+                                                <label style="font-size: 0.7rem; font-weight: 600; color: #64748b;">Alto (mm)</label>
+                                                <input type="number" id="lbl-custom-h" value="50" oninput="window.updateAdminCustomLabelSize()" style="width: 100%; padding: 0.3rem; font-size: 0.8rem; border: 1px solid #cbd5e1; border-radius: 4px; text-align: center; font-weight: 700;">
+                                            </div>
+                                        </div>
+
+                                        <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;">
+                                            <label style="font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Cantidad de Copias</label>
+                                            <div style="display: flex; align-items: center; gap: 6px;">
+                                                <input type="number" id="lbl-quantity-input" value="1" min="1" max="100" style="width: 70px; padding: 0.3rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 4px; text-align: center; font-weight: 800;">
+                                                <span style="font-size: 0.75rem; color: #64748b;">etiqueta(s)</span>
+                                            </div>
+                                        </div>
+
+                                        <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;">
+                                            <label style="font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">Tipo de Papel / Impresora</label>
+                                            <select id="lbl-paper-type" style="width: 100%; padding: 0.35rem; font-size: 0.78rem; border: 1px solid #cbd5e1; border-radius: 4px; font-weight: 600;">
+                                                <option value="roll">Rollo Térmico (1 por hoja)</option>
+                                                <option value="a4">Hoja A4 (Grilla Múltiple)</option>
+                                            </select>
+                                        </div>
+
+                                        <div style="border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;">
+                                            <label style="font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">Opciones de Visibilidad</label>
+                                            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #334155; cursor: pointer; user-select: none;">
+                                                <input type="checkbox" id="lbl-show-barcode" checked onchange="window.updateAdminLabelElementsVisibility()" style="accent-color: #0f172a;"> Mostrar Código de Barras
+                                            </label>
+                                            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #334155; cursor: pointer; user-select: none; margin-top: 4px;">
+                                                <input type="checkbox" id="lbl-show-qr" checked onchange="window.updateAdminLabelElementsVisibility()" style="accent-color: #0f172a;"> Mostrar Código QR
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Previsualización de la Etiqueta -->
+                                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 240px; background: #e2e8f0; border-radius: 8px; padding: 1rem; overflow: auto;">
+                                        <div id="printable-label-card" style="width: 320px; min-height: 180px; background: #ffffff; border: 2px solid #0f172a; padding: 12px; border-radius: 6px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); text-align: center; color: #000000; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box; transition: all 0.2s ease;">
+                                            <!-- Marca Superior -->
+                                            <div style="font-size: 0.65rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; color: #475569; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px; margin-bottom: 8px;">LA TARIMA · CARPINTERÍA</div>
+                                            
+                                            <!-- Título de Producto -->
+                                            <div id="lbl-title" style="font-weight: 800; font-size: 1.05rem; line-height: 1.2; color: #0f172a; margin-bottom: 4px;">Nombre del Producto</div>
+                                            
+                                            <!-- Acabado / Variante -->
+                                            <div id="lbl-variant" style="font-size: 0.82rem; font-weight: 600; color: #334155; margin-bottom: 6px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; display: inline-block;">Acabado - Variante</div>
+                                            
+                                            <!-- Código Corto Humano -->
+                                            <div style="font-size: 0.78rem; font-weight: 700; color: #0f172a; margin-bottom: 8px;">
+                                                COD: <span id="lbl-code" style="font-family: monospace; font-size: 0.95rem; background: #e2e8f0; padding: 1px 6px; border-radius: 3px;">123</span>
+                                            </div>
+                                            
+                                            <!-- Grilla con Código de Barras y QR -->
+                                            <div id="lbl-codes-row" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px dashed #cbd5e1; padding-top: 8px;">
+                                                <!-- Código de Barras Barcode -->
+                                                <div id="lbl-barcode-wrapper" style="flex: 1; display: flex; flex-direction: column; align-items: center; overflow: hidden;">
+                                                    <svg id="lbl-barcode-svg" style="max-width: 100%; height: 46px;"></svg>
+                                                </div>
+                                                <!-- Código QR -->
+                                                <div id="lbl-qrcode-container" style="width: 58px; height: 58px; background: #ffffff; padding: 2px; border: 1px solid #cbd5e1; flex-shrink: 0; display: flex; align-items: center; justify-content: center;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 1rem 1.25rem; background: #ffffff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+                                    <span id="lbl-size-indicator" style="font-size: 0.75rem; color: #64748b; font-weight: 700;">Formato: 80 × 50 mm</span>
+                                    <div style="display: flex; gap: 8px;">
+                                        <button type="button" onclick="window.closeAdminLabelModal()" style="padding: 0.5rem 1rem; border: 1px solid #cbd5e1; background: #ffffff; color: #334155; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer;">Cancelar</button>
+                                        <button type="button" onclick="window.printAdminLabelCard()" style="padding: 0.5rem 1.25rem; border: none; background: #0f172a; color: #ffffff; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                                            <span class="material-symbols-outlined" style="font-size: 18px;">print</span>
+                                            <span>Imprimir</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

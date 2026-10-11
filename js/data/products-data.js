@@ -2159,7 +2159,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2932,7 +2932,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3027,7 +3027,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3089,7 +3089,8 @@ const productsData = [
                     "carpinteria-todos",
                     "cajones-madera"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 4
             },
             {
                 "id": "81",
@@ -5328,7 +5329,7 @@ const productsData = [
                 "last_modified": 1788908106317,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 0,
+                "views": 1,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -7096,7 +7097,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 2,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -8937,7 +8938,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 5,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -9324,7 +9325,7 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0,
+                "views": 1,
                 "stock": 0,
                 "history": [
                     {
@@ -10833,7 +10834,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 99,
+                "views": 101,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -11540,7 +11541,7 @@ const productsData = [
                 "last_modified": 1788655893942,
                 "primaryCatId": "cortes-madera",
                 "history": [],
-                "views": 12,
+                "views": 16,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -11647,76 +11648,7 @@ const productsData = [
                 "last_modified": 1788655893945,
                 "primaryCatId": "cortes-madera",
                 "history": [],
-                "views": 5,
-                "categories": [
-                    "carpinteria-todos",
-                    "cortes-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "69",
-                "title": "Cortes de Madera a Medida (Personalizado)",
-                "description": "Calculá tu corte exacto al milímetro para cualquier proyecto: escalones, mesadas, tapas especiales o estantes a medida. Madera maciza de pino seleccionada.",
-                "image": "img/estantes/estantes/estantes.webp",
-                "isCustomCutting": true,
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/estantes/estantes/estantes.webp",
-                        "images_list": [
-                            "img/estantes/estantes/estantes.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "A Medida Exacta (cm)",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "straighten",
-                                "highlight": true,
-                                "price": 3500,
-                                "cost_price": 2000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "corte",
-                    "a medida",
-                    "personalizado",
-                    "tablas",
-                    "recortes",
-                    "escalon",
-                    "mesada",
-                    "pino"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 3,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "fleteFreeMinUnits": 100,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "last_modified": 1788655893950,
-                "primaryCatId": "cortes-madera",
-                "history": [],
-                "views": 25,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "cortes-madera"
@@ -11818,7 +11750,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 99,
+                "views": 101,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -13047,7 +12979,7 @@ const productsData = [
                 ],
                 "last_modified": 1784163988629,
                 "primaryCatId": "Percheros",
-                "views": 5,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -13434,7 +13366,7 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 0,
+                "views": 1,
                 "stock": 0,
                 "history": [
                     {
@@ -15831,7 +15763,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -16534,7 +16466,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -16629,7 +16561,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18638,144 +18570,7 @@ const productsData = [
                 "last_modified": 1788655893942,
                 "primaryCatId": "cortes-madera",
                 "history": [],
-                "views": 12,
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes",
-                    "cortes-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "69",
-                "title": "Cortes de madera",
-                "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/estantes/estantes/estantes.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/estantes/estantes/estantes.webp",
-                        "images_list": [
-                            "img/estantes/estantes/estantes.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "20 x 60 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "20 x 80 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "20 x 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "30 x 60 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "30 x 80 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "30 x 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            },
-                            {
-                                "medida": "Otras medidas",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 3,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "last_modified": 1788655737766,
-                "primaryCatId": "cortes-madera",
-                "history": [],
-                "views": 1,
+                "views": 16,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -19313,7 +19108,7 @@ const productsData = [
                 "last_modified": 1788655893942,
                 "primaryCatId": "cortes-madera",
                 "history": [],
-                "views": 12,
+                "views": 16,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -19420,7 +19215,7 @@ const productsData = [
                 "last_modified": 1788655893945,
                 "primaryCatId": "cortes-madera",
                 "history": [],
-                "views": 5,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "cortes-madera"
@@ -19429,13 +19224,15 @@ const productsData = [
             },
             {
                 "id": "69",
-                "title": "Cortes de Madera a Medida (Personalizado)",
+                "shortId": "2Z",
+                "title": "Cortes de Madera a Medida",
                 "description": "Calculá tu corte exacto al milímetro para cualquier proyecto: escalones, mesadas, tapas especiales o estantes a medida. Madera maciza de pino seleccionada.",
                 "image": "img/estantes/estantes/estantes.webp",
                 "isCustomCutting": true,
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/estantes/estantes/estantes.webp",
                         "images_list": [
                             "img/estantes/estantes/estantes.webp"
@@ -19452,7 +19249,8 @@ const productsData = [
                                 "price": 3500,
                                 "cost_price": 2000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -19486,14 +19284,11 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "last_modified": 1788655893950,
+                "quantityDiscounts": [],
+                "last_modified": 1791687942039,
                 "primaryCatId": "cortes-madera",
                 "history": [],
-                "views": 25,
-                "categories": [
-                    "carpinteria-todos",
-                    "cortes-madera"
-                ],
+                "visible": true,
                 "rubro": "carpinteria"
             }
         ]
@@ -22023,7 +21818,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22118,7 +21913,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23102,7 +22897,7 @@ const productsData = [
                 "last_modified": 1788908106317,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 0,
+                "views": 1,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -25481,7 +25276,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 2,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27023,7 +26818,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 2,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27534,7 +27329,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 2,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27776,7 +27571,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 99,
+                "views": 101,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -30220,7 +30015,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -30315,7 +30110,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -30377,7 +30172,8 @@ const productsData = [
                     "carpinteria-todos",
                     "cajones-madera"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 4
             },
             {
                 "id": "A1",
@@ -30646,7 +30442,7 @@ const productsData = [
                 "last_modified": 1788908106317,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 0,
+                "views": 1,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",

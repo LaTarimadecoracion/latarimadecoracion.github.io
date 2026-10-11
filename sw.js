@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tarima-cache-v59-1791498006405';
+const CACHE_NAME = 'tarima-cache-v60-1791691723653';
 const STATIC_ASSETS = [
     './',
     './index.html',
@@ -138,8 +138,10 @@ self.addEventListener('fetch', (event) => {
             }
             // Si es una navegación HTML y falló la red, servir el index.html cacheado
             if (event.request.mode === 'navigate' || (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'))) {
-                return (await caches.match('./index.html')) || (await caches.match('./'));
+                const fallbackHtml = (await caches.match('./index.html')) || (await caches.match('./'));
+                if (fallbackHtml) return fallbackHtml;
             }
+            return new Response('', { status: 408, statusText: 'Request timed out or offline' });
         })
     );
 });

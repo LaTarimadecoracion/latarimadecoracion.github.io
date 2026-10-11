@@ -35,24 +35,39 @@ function getMaxRentalTimestamp(arr) {
 
 // Estado global de Productos
 window.sessionProducts = (() => {
-    let list = (typeof productsData !== 'undefined' && Array.isArray(productsData) && productsData.length > 0)
-        ? [...productsData]
-        : (localStorage.getItem('sessionProducts') ? JSON.parse(localStorage.getItem('sessionProducts')) : []);
+    let localList = null;
+    try {
+        const stored = localStorage.getItem('sessionProducts');
+        if (stored) localList = JSON.parse(stored);
+    } catch (e) {}
 
-    // Sincronizar categorías nuevas del servidor si localStorage estaba desactualizado
-    if (typeof productsData !== 'undefined' && Array.isArray(productsData)) {
-        productsData.forEach(serverCat => {
-            const exists = list.find(c => c.id === serverCat.id);
-            if (!exists) {
-                list.push(serverCat);
-            } else if (serverCat.id === 'cortes-madera' || (serverCat.products && serverCat.products.length > (exists.products ? exists.products.length : 0))) {
-                exists.products = serverCat.products;
-                exists.name = serverCat.name;
-                exists.visible = serverCat.visible;
-            }
-        });
+    const hasServerData = typeof productsData !== 'undefined' && Array.isArray(productsData) && productsData.length > 0;
+    if (!localList || !Array.isArray(localList) || localList.length === 0) {
+        return hasServerData ? [...productsData] : [];
     }
-    return list;
+
+    if (!hasServerData) return localList;
+
+    const serverMaxTime = getMaxProductTimestamp(productsData);
+    const localMaxTime = getMaxProductTimestamp(localList);
+
+    // Si los datos del servidor son iguales o más nuevos, o si localStorage no tiene la última versión
+    if (serverMaxTime >= localMaxTime) {
+        return [...productsData];
+    }
+
+    // Si localStorage tiene cambios locales más recientes, aún así sincronizar categorías o productos faltantes
+    productsData.forEach(serverCat => {
+        const exists = localList.find(c => c.id === serverCat.id);
+        if (!exists) {
+            localList.push(serverCat);
+        } else if (serverCat.id === 'cortes-madera') {
+            exists.products = serverCat.products;
+            exists.name = serverCat.name;
+            exists.visible = serverCat.visible;
+        }
+    });
+    return localList;
 })();
 
 // Estado global de Alquileres

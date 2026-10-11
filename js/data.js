@@ -34,9 +34,41 @@ function getMaxRentalTimestamp(arr) {
 }
 
 // Estado global de Productos
-window.sessionProducts = typeof productsData !== 'undefined' && Array.isArray(productsData) && productsData.length > 0
-    ? [...productsData]
-    : (localStorage.getItem('sessionProducts') ? JSON.parse(localStorage.getItem('sessionProducts')) : []);
+window.sessionProducts = (() => {
+    let localList = null;
+    try {
+        const stored = localStorage.getItem('sessionProducts');
+        if (stored) localList = JSON.parse(stored);
+    } catch (e) {}
+
+    const hasServerData = typeof productsData !== 'undefined' && Array.isArray(productsData) && productsData.length > 0;
+    if (!localList || !Array.isArray(localList) || localList.length === 0) {
+        return hasServerData ? [...productsData] : [];
+    }
+
+    if (!hasServerData) return localList;
+
+    const serverMaxTime = getMaxProductTimestamp(productsData);
+    const localMaxTime = getMaxProductTimestamp(localList);
+
+    // Si los datos del servidor son iguales o más nuevos, o si localStorage no tiene la última versión
+    if (serverMaxTime >= localMaxTime) {
+        return [...productsData];
+    }
+
+    // Si localStorage tiene cambios locales más recientes, aún así sincronizar categorías o productos faltantes
+    productsData.forEach(serverCat => {
+        const exists = localList.find(c => c.id === serverCat.id);
+        if (!exists) {
+            localList.push(serverCat);
+        } else if (serverCat.id === 'cortes-madera') {
+            exists.products = serverCat.products;
+            exists.name = serverCat.name;
+            exists.visible = serverCat.visible;
+        }
+    });
+    return localList;
+})();
 
 // Estado global de Alquileres
 window.sessionRentals = typeof rentalsData !== 'undefined' && Array.isArray(rentalsData) && rentalsData.length > 0

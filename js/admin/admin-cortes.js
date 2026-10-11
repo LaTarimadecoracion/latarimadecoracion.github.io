@@ -459,6 +459,17 @@
             card.className = 'cortes-uso-card';
             card.style.cssText = 'background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.85rem; display: flex; flex-direction: column; gap: 8px;';
 
+            // Conversión transparente: Si viene como multiplicador decimal viejo (ej 1.25 -> 25%, 1.0 -> 0%), lo convertimos a porcentaje amigable
+            let rawFactor = (uso.factor_precio !== undefined && uso.factor_precio !== null) ? Number(uso.factor_precio) : 0;
+            let displayPct = 0;
+            if (rawFactor > 0 && rawFactor <= 3) {
+                // Decimal clásico tipo 1.25 (+25%) o 1.0 (+0%)
+                displayPct = Math.round((rawFactor - 1.0) * 100);
+            } else {
+                // Ya guardado como porcentaje directo (ej: 0, 25, 50, 75, 80)
+                displayPct = Math.round(rawFactor);
+            }
+
             card.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <div style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 220px;">
@@ -493,12 +504,15 @@
                         <input type="number" class="admin-input uso-inp-max-largo" value="${uso.max_largo || 999}" min="0" oninput="window.updateCortesAdminSimulator()">
                     </div>
                     <div>
-                        <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #4338CA; margin-bottom: 2px;">Multiplicador (+%):</label>
-                        <input type="number" class="admin-input uso-inp-factor" value="${uso.factor_precio || 1.0}" step="0.05" min="0.5" title="1.0 = base, 1.25 = +25%" style="font-weight: 700;">
+                        <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #4338CA; margin-bottom: 2px;">Ganancia / Margen (+%):</label>
+                        <div style="display: flex; align-items: center; position: relative;">
+                            <input type="number" class="admin-input uso-inp-factor" value="${displayPct}" step="5" min="-50" max="500" placeholder="0" title="Ej: 25 para +25%, 50 para +50%, 0 para precio base" style="font-weight: 800; padding-right: 24px; color: #4338CA;" oninput="window.updateCortesAdminSimulator()">
+                            <span style="position: absolute; right: 8px; font-size: 0.75rem; font-weight: 800; color: #6366F1; pointer-events: none;">%</span>
+                        </div>
                     </div>
                     <div>
                         <label style="display: block; font-size: 0.68rem; font-weight: 700; color: #16A34A; margin-bottom: 2px;">Plus Preparación ($):</label>
-                        <input type="number" class="admin-input uso-inp-fijo" value="${uso.recargo_fijo || 0}" step="100" min="0" style="font-weight: 700;">
+                        <input type="number" class="admin-input uso-inp-fijo" value="${uso.recargo_fijo || 0}" step="100" min="0" style="font-weight: 700;" oninput="window.updateCortesAdminSimulator()">
                     </div>
                 </div>
 
@@ -522,7 +536,7 @@
             max_ancho: 120,
             min_largo: 0,
             max_largo: 240,
-            factor_precio: 1.0,
+            factor_precio: 0, // 0% de ganancia extra por defecto
             recargo_fijo: 0,
             desc: 'Corte estándar de taller.',
             activo: true
@@ -558,7 +572,8 @@
             const maxAncho = parseFloat(card.querySelector('.uso-inp-max-ancho')?.value) || 999;
             const minLargo = parseFloat(card.querySelector('.uso-inp-min-largo')?.value) || 0;
             const maxLargo = parseFloat(card.querySelector('.uso-inp-max-largo')?.value) || 999;
-            const factor = parseFloat(card.querySelector('.uso-inp-factor')?.value) || 1.0;
+            const pctVal = parseFloat(card.querySelector('.uso-inp-factor')?.value);
+            const factor = isNaN(pctVal) ? 0 : pctVal; // Se guarda directamente el número de porcentaje (ej: 0, 25, 50, 75)
             const fijo = parseFloat(card.querySelector('.uso-inp-fijo')?.value) || 0;
             const desc = card.querySelector('.uso-inp-desc')?.value.trim() || '';
 
@@ -789,6 +804,89 @@
 
         return result.sort((a, b) => a.minQty - b.minQty);
     }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // RENDERIZADO Y CONTROL DE ESCALAS DE DESCUENTO DINÁMICAS EN FLETE PROPIO
+    // ═══════════════════════════════════════════════════════════════════════════
+    let currentFleteDiscountScales = [
+        { minQty: 5, discountPercent: 25 },
+        { minQty: 10, discountPercent: 50 }
+    ];
+
+    function renderFleteDiscountScalesUI() {
+        const container = document.getElementById('cortes-flete-escalas-container');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        if (!currentFleteDiscountScales || currentFleteDiscountScales.length === 0) {
+            container.innerHTML = `<div style="padding: 0.5rem; text-align: center; color: #64748B; font-size: 0.72rem; background: #F8FAFC; border-radius: 6px; border: 1px dashed #CBD5E1;">No hay escalas de descuento configuradas. Hacé clic en "Agregar Escala".</div>`;
+            return;
+        }
+
+        currentFleteDiscountScales.forEach((esc, idx) => {
+            const row = document.createElement('div');
+            row.style.cssText = 'display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: center; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 6px 10px;';
+
+            row.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <label style="font-size: 0.7rem; font-weight: 700; color: #475569; white-space: nowrap;">A partir de:</label>
+                    <input type="number" class="admin-input flete-esc-inp-qty" value="${esc.minQty || 5}" min="1" max="999" style="width: 70px; padding: 4px 6px; font-size: 0.75rem; font-weight: 700;">
+                    <span style="font-size: 0.7rem; color: #64748B;">tablas</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <label style="font-size: 0.7rem; font-weight: 700; color: #0284C7; white-space: nowrap;">Descuento:</label>
+                    <input type="number" class="admin-input flete-esc-inp-pct" value="${esc.discountPercent || 25}" min="1" max="100" style="width: 70px; padding: 4px 6px; font-size: 0.75rem; font-weight: 700;">
+                    <span style="font-size: 0.7rem; color: #64748B;">% OFF</span>
+                </div>
+                <button type="button" class="btn-danger" onclick="window.removeCortesFleteDiscountScaleRow(${idx})" style="padding: 3px 6px; border-radius: 6px;" title="Eliminar escala">
+                    <span class="material-symbols-outlined" style="font-size: 15px;">delete</span>
+                </button>
+            `;
+
+            container.appendChild(row);
+        });
+    }
+
+    window.addCortesFleteDiscountScaleRow = function() {
+        currentFleteDiscountScales = getFleteDiscountScalesFromUI();
+        if (!Array.isArray(currentFleteDiscountScales)) currentFleteDiscountScales = [];
+        const lastQty = currentFleteDiscountScales.length > 0 ? (currentFleteDiscountScales[currentFleteDiscountScales.length - 1].minQty + 5) : 5;
+        const lastPct = currentFleteDiscountScales.length > 0 ? Math.min(100, currentFleteDiscountScales[currentFleteDiscountScales.length - 1].discountPercent + 25) : 25;
+
+        currentFleteDiscountScales.push({ minQty: lastQty, discountPercent: lastPct });
+        renderFleteDiscountScalesUI();
+    };
+
+    window.removeCortesFleteDiscountScaleRow = function(idx) {
+        currentFleteDiscountScales = getFleteDiscountScalesFromUI();
+        if (!Array.isArray(currentFleteDiscountScales) || idx < 0 || idx >= currentFleteDiscountScales.length) return;
+        currentFleteDiscountScales.splice(idx, 1);
+        renderFleteDiscountScalesUI();
+    };
+
+    function getFleteDiscountScalesFromUI() {
+        const container = document.getElementById('cortes-flete-escalas-container');
+        if (!container) return currentFleteDiscountScales;
+
+        const rows = container.children;
+        const result = [];
+
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            const inQty = row.querySelector('.flete-esc-inp-qty');
+            const inPct = row.querySelector('.flete-esc-inp-pct');
+            if (inQty && inPct) {
+                const q = parseInt(inQty.value) || 0;
+                const p = parseFloat(inPct.value) || 0;
+                if (q > 0 && p > 0) {
+                    result.push({ minQty: q, discountPercent: p });
+                }
+            }
+        }
+
+        return result.sort((a, b) => a.minQty - b.minQty);
+    }
     function loadCortesConfigToUI() {
         const conf = window.cortesConfig || {
             precios: { precio_m2_venta: 48500, costo_m2_base: 27000, minimo_corte_taller: 3500 },
@@ -966,19 +1064,41 @@
         if (lblFleteZ2) lblFleteZ2.textContent = `$${Number(fleteTarifaZ2).toLocaleString('es-AR')}`;
         if (lblFleteZ3) lblFleteZ3.textContent = `$${Number(fleteTarifaZ3).toLocaleString('es-AR')}`;
 
-        const fleteBen = conf.logistica?.flete?.beneficios || { activo: true, envioGratisMin: 10, descuentoTarifaPct: 50, descuentoTarifaMin: 5 };
+        // Límites Físicos Flete Propio
+        const inFleteMaxL = document.getElementById('inp-cortes-flete-max-largo');
+        const inFleteMaxW = document.getElementById('inp-cortes-flete-max-ancho');
+        const inFleteMaxH = document.getElementById('inp-cortes-flete-max-alto');
+        const inFleteMaxPeso = document.getElementById('inp-cortes-flete-max-peso');
+        const inFleteMaxUnits = document.getElementById('inp-cortes-flete-max-unidades');
+
+        if (inFleteMaxL) inFleteMaxL.value = conf.logistica?.flete?.max_largo ?? 300;
+        if (inFleteMaxW) inFleteMaxW.value = conf.logistica?.flete?.max_ancho ?? 130;
+        if (inFleteMaxH) inFleteMaxH.value = conf.logistica?.flete?.max_alto ?? 120;
+        if (inFleteMaxPeso) inFleteMaxPeso.value = conf.logistica?.flete?.max_peso_bulto ?? (conf.logistica?.flete?.max_peso ?? 450);
+        if (inFleteMaxUnits) inFleteMaxUnits.value = conf.logistica?.flete?.max_unidades ?? 25;
+
+        // Beneficios en Flete: Envío gratis y escalas dinámicas de descuento
+        const fleteBen = conf.logistica?.flete?.beneficios || { activo: true, envioGratisMin: 10, escalas: [{ minQty: 5, discountPercent: 25 }, { minQty: 10, discountPercent: 50 }] };
         const chkFleteBen = document.getElementById('chk-cortes-flete-beneficios-activo');
         const inFleteGratisMin = document.getElementById('inp-cortes-flete-envio-gratis-min');
-        const inFleteDescPct = document.getElementById('inp-cortes-flete-desc-pct');
-        const inFleteDescMin = document.getElementById('inp-cortes-flete-desc-min');
 
         if (inFleteFuera) inFleteFuera.value = conf.logistica?.flete?.fuera_rango_mensaje || "Consultar cotización a medida para distancias mayores.";
         if (chkRetiro) chkRetiro.checked = conf.logistica?.flete?.permite_retiro_taller !== false;
 
         if (chkFleteBen) chkFleteBen.checked = fleteBen.activo !== false;
         if (inFleteGratisMin) inFleteGratisMin.value = fleteBen.envioGratisMin ?? 10;
-        if (inFleteDescPct) inFleteDescPct.value = fleteBen.descuentoTarifaPct ?? 50;
-        if (inFleteDescMin) inFleteDescMin.value = fleteBen.descuentoTarifaMin ?? 5;
+
+        if (Array.isArray(fleteBen.escalas) && fleteBen.escalas.length > 0) {
+            currentFleteDiscountScales = [...fleteBen.escalas];
+        } else if (fleteBen.descuentoTarifaMin && fleteBen.descuentoTarifaPct) {
+            currentFleteDiscountScales = [{ minQty: fleteBen.descuentoTarifaMin, discountPercent: fleteBen.descuentoTarifaPct }];
+        } else {
+            currentFleteDiscountScales = [
+                { minQty: 5, discountPercent: 25 },
+                { minQty: 10, discountPercent: 50 }
+            ];
+        }
+        renderFleteDiscountScalesUI();
 
         // Solapa 3: Logísticas Externas
         const inRecargo = document.getElementById('inp-cortes-recargo-embalaje');
@@ -1168,32 +1288,34 @@
         const matMaxLargo = parseFloat(optMat?.getAttribute('data-largo')) || 300;
         const matMaxAncho = parseFloat(optMat?.getAttribute('data-ancho')) || 120;
 
-        // Umbrales de detección inteligente
-        const estanteMaxAncho = parseFloat(document.getElementById('inp-cortes-uso-estante-max-ancho')?.value) || 35;
-        const escritorioMinAncho = parseFloat(document.getElementById('inp-cortes-uso-escritorio-min-ancho')?.value) || 36;
-
-        // Detectar automáticamente el uso por dimensiones
-        const selUso = document.getElementById('sim-cortes-uso');
-        let detectedUso = 'estante';
-        if (selUso && selUso.value === 'escalon') {
-            detectedUso = 'escalon';
-        } else if (simAncho >= escritorioMinAncho || (simAncho > estanteMaxAncho)) {
-            detectedUso = 'escritorio_mesa';
-            if (selUso) selUso.value = 'escritorio_mesa';
-        } else {
-            detectedUso = 'estante';
-            if (selUso && selUso.value !== 'escalon') selUso.value = 'estante';
+        // Evaluar usos dinámicos configurados en la lista de Detección Inteligente
+        const usosList = getUsosFromUI();
+        let matchedUso = null;
+        for (const u of usosList) {
+            if (u.activo === false) continue;
+            const minW = u.min_ancho || 0;
+            const maxW = u.max_ancho !== undefined ? u.max_ancho : 999;
+            const minL = u.min_largo || 0;
+            const maxL = u.max_largo !== undefined ? u.max_largo : 999;
+            const simMay = Math.max(simLargo, simAncho);
+            const simMen = Math.min(simLargo, simAncho);
+            if (simMen >= minW && simMen <= maxW && simMay >= minL && simMay <= maxL) {
+                matchedUso = u;
+                break;
+            }
         }
+        if (!matchedUso && usosList.length > 0) matchedUso = usosList[0];
 
         let factorUso = 1.0;
         let fijoUso = 0;
-
-        if (detectedUso === 'escritorio_mesa') {
-            factorUso = parseFloat(document.getElementById('inp-cortes-uso-escritorio-factor')?.value) || 1.25;
-            fijoUso = parseFloat(document.getElementById('inp-cortes-uso-escritorio-fijo')?.value) || 2500;
-        } else if (detectedUso === 'escalon') {
-            factorUso = parseFloat(document.getElementById('inp-cortes-uso-escalon-factor')?.value) || 1.15;
-            fijoUso = parseFloat(document.getElementById('inp-cortes-uso-escalon-fijo')?.value) || 1800;
+        if (matchedUso) {
+            const rawVal = Number(matchedUso.factor_precio) || 0;
+            if (rawVal > 0 && rawVal <= 3) {
+                factorUso = rawVal;
+            } else {
+                factorUso = 1.0 + (rawVal / 100);
+            }
+            fijoUso = matchedUso.recargo_fijo || 0;
         }
 
         // Evaluar tramos de dimensiones en Flex
@@ -1349,6 +1471,11 @@
                 flete: {
                     activo: true,
                     origen: "Taller Hurlingham",
+                    max_largo: parseFloat(document.getElementById('inp-cortes-flete-max-largo')?.value) || 300,
+                    max_ancho: parseFloat(document.getElementById('inp-cortes-flete-max-ancho')?.value) || 130,
+                    max_alto: parseFloat(document.getElementById('inp-cortes-flete-max-alto')?.value) || 120,
+                    max_peso_bulto: parseFloat(document.getElementById('inp-cortes-flete-max-peso')?.value) || 450,
+                    max_unidades: parseInt(document.getElementById('inp-cortes-flete-max-unidades')?.value) || 25,
                     costo_zona_1: parseFloat(document.getElementById('inp-cortes-flete-z1')?.value) || 4500,
                     costo_zona_2: parseFloat(document.getElementById('inp-cortes-flete-z2')?.value) || 20000,
                     costo_zona_3: parseFloat(document.getElementById('inp-cortes-flete-z3')?.value) || 55000,
@@ -1360,9 +1487,8 @@
                     ],
                     beneficios: {
                         activo: document.getElementById('chk-cortes-flete-beneficios-activo')?.checked !== false,
-                        envioGratisMin: parseInt(document.getElementById('inp-cortes-flete-envio-gratis-min')?.value) || 10,
-                        descuentoTarifaPct: parseFloat(document.getElementById('inp-cortes-flete-desc-pct')?.value) || 50,
-                        descuentoTarifaMin: parseInt(document.getElementById('inp-cortes-flete-desc-min')?.value) || 5
+                        envioGratisMin: parseInt(document.getElementById('inp-cortes-flete-envio-gratis-min')?.value) || 0,
+                        escalas: getFleteDiscountScalesFromUI()
                     }
                 },
                 externas: {

@@ -227,6 +227,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     preselectedMedida = matchedMed.medida;
                 }
             }
+
+            // Si es un producto de cortes a medida y el parámetro no era el acabado ni una variante exacta,
+            // asignarlo a preselectedMedida para que el selector de material reconozca la madera/placa de la URL
+            if (!preselectedMedida && (product.isCustomCutting || product.id === '69' || (product.primaryCatId === 'cortes-madera'))) {
+                if (cleanKey !== (preselectedAcabado || '').toLowerCase()) {
+                    preselectedMedida = key;
+                }
+            }
             
             const opt = product.optional_variant;
             if (opt && opt.options) {

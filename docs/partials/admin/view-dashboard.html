@@ -1,0 +1,135 @@
+                        <div id="admin-dashboard-view" class="admin-section-view">
+                            <!-- Panel de métricas de visitas full-width -->
+                            <div class="admin-card" style="padding: 1rem 1.25rem; margin-bottom: 1.25rem; background: var(--admin-surface); border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md);">
+                                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <div style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); background: var(--admin-accent-light); color: var(--admin-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                            <span class="material-symbols-outlined" style="font-size: 26px;">trending_up</span>
+                                        </div>
+                                        <div>
+                                            <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--admin-text-muted);">Métricas de Visitas</span>
+                                            <h3 style="margin: 0; font-size: 1.5rem; font-weight: 800; color: var(--admin-text-main);" id="stat-total-views">0 <span style="font-size: 0.8rem; font-weight: 600; color: var(--admin-text-muted);">visitas totales</span></h3>
+                                        </div>
+                                    </div>
+
+                                    <!-- Comparativa Semanal & Mensual -->
+                                    <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                                        <div style="display: flex; align-items: center; gap: 8px; background: var(--admin-surface-hover); padding: 6px 14px; border-radius: 8px; border: 1px solid var(--admin-border-color);">
+                                            <span class="material-symbols-outlined" style="color: var(--admin-success); font-size: 18px;">calendar_view_week</span>
+                                            <div>
+                                                <div style="font-size: 0.68rem; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Esta Semana</div>
+                                                <div style="font-size: 0.9rem; font-weight: 800; color: var(--admin-text-main);" id="stat-weekly-views">+12.4% <span style="font-size: 0.72rem; font-weight: 600; color: var(--admin-success);">(vs sem. anterior)</span></div>
+                                            </div>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 8px; background: var(--admin-surface-hover); padding: 6px 14px; border-radius: 8px; border: 1px solid var(--admin-border-color);">
+                                            <span class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 18px;">calendar_month</span>
+                                            <div>
+                                                <div style="font-size: 0.68rem; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Este Mes</div>
+                                                <div style="font-size: 0.9rem; font-weight: 800; color: var(--admin-text-main);" id="stat-monthly-views">+28.5% <span style="font-size: 0.72rem; font-weight: 600; color: var(--admin-success);">(vs mes anterior)</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Dashboard Layout de 2 Columnas -->
+                            <div class="dashboard-columns">
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <!-- Acceso Rápido -->
+                                    <div class="admin-card action-panel">
+                                        <header class="admin-page-header" style="margin-bottom: 0.75rem; padding-bottom: 0.5rem;">
+                                            <h3 class="admin-header-title" style="font-size: 0.95rem;">
+                                                <span class="material-symbols-outlined" style="font-size: 20px;">bolt</span>
+                                                Acceso Rápido
+                                            </h3>
+                                        </header>
+                                         <div class="quick-shortcuts-list" style="display: flex; flex-direction: column; gap: 5px;">
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-orders').click();">
+                                                 <span class="material-symbols-outlined">description</span>
+                                                 <span>Gestionar Pedidos Activos</span>
+                                             </button>
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-offers').click();">
+                                                 <span class="material-symbols-outlined">local_offer</span>
+                                                 <span>Crear Oferta o Combo</span>
+                                             </button>
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-catalog').click(); setTimeout(() => { const btn = document.getElementById('btn-open-add-product'); if (btn) btn.click(); else { window.currentAdminPhase = 'products'; window.renderAdminUX(); } }, 100);">
+                                                 <span class="material-symbols-outlined">add_box</span>
+                                                 <span>Cargar Nuevo Producto</span>
+                                             </button>
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-stock').click();">
+                                                 <span class="material-symbols-outlined">inventory</span>
+                                                 <span>Ajustar Stock y Precios</span>
+                                             </button>
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-shipping').click();">
+                                                 <span class="material-symbols-outlined">local_shipping</span>
+                                                 <span>Configurar Tarifas de Envío</span>
+                                             </button>
+                                             <button type="button" class="btn-shortcut-row" onclick="document.getElementById('tab-btn-payments').click();">
+                                                 <span class="material-symbols-outlined">payments</span>
+                                                 <span>Descuentos por Medio de Pago</span>
+                                             </button>
+                                         </div>
+                                    </div>
+
+                                    <!-- Tarjeta Modo Vacaciones -->
+                                    <div class="admin-card vacation-selector-panel">
+                                        <header class="admin-page-header" style="margin-bottom: 0.65rem; padding-bottom: 0.5rem;">
+                                            <h3 class="admin-header-title" style="font-size: 0.95rem;">
+                                                <span class="material-symbols-outlined" style="color: var(--admin-warning); font-size: 20px;">flight_takeoff</span>
+                                                Modo Vacaciones
+                                            </h3>
+                                        </header>
+                                        <p class="admin-header-desc" style="font-size: 0.76rem; margin-bottom: 0.75rem;">Activá el cartel de aviso manteniendo precios congelados.</p>
+                                        <div class="form-group" style="flex-direction: row; align-items: center; gap: 8px; margin-bottom: 0.65rem;">
+                                            <input type="checkbox" id="admin-vacation-active" style="width: 16px; height: 16px; cursor: pointer; accent-color: var(--admin-accent);">
+                                            <label for="admin-vacation-active" style="cursor: pointer; margin: 0; font-size: 0.82rem; font-weight: 700;">Activar Modo Vacaciones</label>
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 0.5rem;">
+                                            <label for="admin-vacation-start-end" style="font-size: 0.76rem;">Período de Vacaciones:</label>
+                                            <input type="text" id="admin-vacation-start-end" class="premium-input" placeholder="ej: del 1 al 5 de Septiembre" style="font-size: 0.8rem; padding: 0.4rem 0.65rem;">
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 0.5rem;">
+                                            <label for="admin-vacation-deliveries" style="font-size: 0.76rem;">Fecha de Entregas:</label>
+                                            <input type="text" id="admin-vacation-deliveries" class="premium-input" placeholder="ej: a partir del 7 al 10 de Septiembre" style="font-size: 0.8rem; padding: 0.4rem 0.65rem;">
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 0.65rem;">
+                                            <label for="admin-vacation-message" style="font-size: 0.76rem;">Mensaje adicional:</label>
+                                            <textarea id="admin-vacation-message" class="premium-input" style="min-height: 50px; font-size: 0.8rem; padding: 0.4rem 0.65rem; resize: vertical;" placeholder="ej: Estamos de vacaciones, pero seguimos tomando pedidos con precios congelados."></textarea>
+                                        </div>
+                                        <button type="button" id="admin-vacation-save-btn" class="btn-primary" style="width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.45rem 0.85rem;">
+                                            <span class="material-symbols-outlined" style="font-size: 16px;">save</span>
+                                            <span>Guardar Vacaciones</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="admin-card popular-panel">
+                                    <header class="admin-page-header">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">trending_up</span>
+                                            Productos Más Visitados
+                                        </h3>
+                                    </header>
+                                    <div class="popular-products-list" id="dashboard-top-products-list">
+                                        <div class="dashboard-empty-state">
+                                            <span class="material-symbols-outlined">monitoring</span>
+                                            <p>No hay datos de visitas registrados todavía.</p>
+                                        </div>
+                                    </div>
+
+                                    <header class="admin-page-header" style="margin-top: 1.75rem;">
+                                        <h3 class="admin-header-title">
+                                            <span class="material-symbols-outlined">pie_chart</span>
+                                            Visitas por Categoría
+                                        </h3>
+                                    </header>
+                                    <div class="popular-products-list" id="dashboard-categories-views-list">
+                                        <div class="dashboard-empty-state">
+                                            <span class="material-symbols-outlined">pie_chart</span>
+                                            <p>No hay visitas registradas todavía.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
