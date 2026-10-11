@@ -873,9 +873,15 @@
                         let totalDiscountAmount = 0;
                         let discountRule = null;
                         
-                        const discountsList = (activeVariant.volumeDiscounts && Array.isArray(activeVariant.volumeDiscounts) && activeVariant.volumeDiscounts.length > 0)
+                        let discountsList = (activeVariant.volumeDiscounts && Array.isArray(activeVariant.volumeDiscounts) && activeVariant.volumeDiscounts.length > 0)
                             ? activeVariant.volumeDiscounts
                             : (product.quantityDiscounts || []);
+                        
+                        // Si es producto de la categoría Cortes de Madera, integrar escala global de cortesConfig
+                        const isCortesProduct = product.isCustomCutting || product.category === 'cortes-madera' || product.rubro === 'cortes-madera' || product.id === '67' || product.id === '68' || product.id === '69';
+                        if (isCortesProduct && window.cortesConfig?.descuentos?.activo !== false && window.cortesConfig?.descuentos?.escalas) {
+                            discountsList = window.cortesConfig.descuentos.escalas;
+                        }
                         
                         if (discountsList && Array.isArray(discountsList) && discountsList.length > 0) {
                             const sortedRules = [...discountsList].sort((a, b) => {
@@ -1097,17 +1103,106 @@
                             validOptions.push({ label: 'Envío gratis a domicilio', cost: 0, icon: 'local_shipping' });
                         }
 
-                        // 2. Logística Flex (si no está deshabilitada para la variante)
-                        if (!isFlexDisabled && shipConf.logisticaEnabled !== false && cpRes.logistica && cpRes.logistica.active !== false) {
+                        // 2. Logística Flex (evaluando medidas de bulto, peso de la madera y división en paquetes)
+                        let isFlexExcludedBySize = false;
+                        let flexPackagesCount = 1;
+                        let flexTotalWeightKg = 0;
+
+                        if (product.isCustomCutting || product.id === '69') {
+                            const conf = window.cortesConfig?.logistica?.flex;
+                            const inL = document.getElementById('detail-custom-cut-largo');
+                            const inW = document.getElementById('detail-custom-cut-ancho');
+                            const selMat = document.getElementById('detail-custom-cut-material');
+
+                            const rawL = parseFloat(inL?.value) || 80;
+                            const rawW = parseFloat(inW?.value) || 30;
+                            // Auto-orientación inteligente (largo mayor, ancho menor)
+                            const l = Math.max(rawL, rawW);
+                            const w = Math.min(rawL, rawW);
+
+                            // Límites físicos configurados en el panel de Flex
+                            const maxBultoLargo = conf?.max_largo || 140;
+                            const maxBultoAncho = conf?.max_ancho || 60;
+                            const maxBultoPeso = conf?.max_peso_bulto || 12;
+                            const maxUnitsPerPkg = conf?.max_unidades || 5;
+
+                            // Si una sola tabla excede el largo o ancho del bulto de moto, se excluye Flex
+                            if (l > maxBultoLargo || w > maxBultoAncho) {
+                                isFlexExcludedBySize = true;
+                            } else {
+                                // Obtener densidad de la madera seleccionada
+                                const optMat = selMat?.options[selMat?.selectedIndex];
+                                const matId = optMat?.value;
+                                const curMat = (window.cortesConfig?.materiales || []).find(m => m.id === matId);
+                                const pesoM2 = curMat?.peso_m2 || 10; // kg/m2 base
+                                const pieceM2 = (l * w) / 10000;
+                                const pieceWeight = pieceM2 * pesoM2;
+                                flexTotalWeightKg = pieceWeight * qty;
+
+                                // Si una sola pieza ya pesa más de lo que puede llevar una moto completa (ej > 15 kg), excluir Flex
+                                if (pieceWeight > maxBultoPeso * 1.5) {
+                                    isFlexExcludedBySize = true;
+                                } else {
+                                    // Paquetes necesarios por cantidad de unidades
+                                    const pkgsByQty = Math.ceil(qty / maxUnitsPerPkg);
+                                    // Paquetes necesarios por peso total acumulado
+                                    const pkgsByWeight = Math.ceil(flexTotalWeightKg / maxBultoPeso);
+                                    // Se toma el que requiera más paquetes para no sobrecargar
+                                    flexPackagesCount = Math.max(pkgsByQty, pkgsByWeight, 1);
+
+                                    // Si excede 4 paquetes (ej más de 48 kg), una moto no lo puede trasladar
+                                    if (flexPackagesCount > 4 || flexTotalWeightKg > (maxBultoPeso * 4)) {
+                                        isFlexExcludedBySize = true;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Beneficios específicos de envío por tipo de transporte (Cortes de Madera)
+                        const isCortesForShipping = product.isCustomCutting || product.category === 'cortes-madera' || product.rubro === 'cortes-madera' || product.id === '67' || product.id === '68' || product.id === '69';
+                        const logCortes = (isCortesForShipping && window.cortesConfig?.logistica) ? window.cortesConfig.logistica : null;
+
+                        // Beneficios propios para Logística Flex (pequeños bultos, escalas progresivas de descuento y envío gratis)
+                        const flexBen = logCortes?.flex?.beneficios;
+                        const isFlexFreeShipping = flexBen && flexBen.activo !== false && (flexBen.envioGratisMin > 0) && qty >= flexBen.envioGratisMin;
+                        
+                        let flexDiscountPct = 0;
+                        if (flexBen && flexBen.activo !== false && !isFlexFreeShipping) {
+                            if (Array.isArray(flexBen.escalas) && flexBen.escalas.length > 0) {
+                                // Buscar la escala más alta que cumpla la cantidad comprada
+                                const sortedScales = [...flexBen.escalas].sort((a, b) => b.minQty - a.minQty);
+                                const matchedScale = sortedScales.find(s => qty >= s.minQty);
+                                if (matchedScale) flexDiscountPct = matchedScale.discountPercent || 0;
+                            } else if (flexBen.descuentoTarifaMin && flexBen.descuentoTarifaPct && qty >= flexBen.descuentoTarifaMin) {
+                                flexDiscountPct = flexBen.descuentoTarifaPct || 0;
+                            }
+                        }
+
+                        // Beneficios propios para Flete Propio (grandes volúmenes, obras, hasta 100 placas)
+                        const fleteBen = logCortes?.flete?.beneficios;
+                        const isFleteFreeShipping = fleteBen && fleteBen.activo !== false && qty >= (fleteBen.envioGratisMin || 10);
+                        const fleteDiscountPct = (fleteBen && fleteBen.activo !== false && qty >= (fleteBen.descuentoTarifaMin || 5)) ? (fleteBen.descuentoTarifaPct || 0) : 0;
+
+                        if (!isFlexDisabled && !isFlexExcludedBySize && shipConf.logisticaEnabled !== false && cpRes.logistica && cpRes.logistica.active !== false) {
                             const manualCost = parseFloat(shipConf.logisticaCost) || 0;
                             const sysCost = cpRes.logistica.cost || 0;
                             const baseCost = manualCost > 0 ? manualCost : sysCost;
                             const freeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
                             const maxUnits = parseInt(shipConf.logisticaMaxUnits) || 0;
-                            const isFreeByQty = (freeMin > 0 && qty >= freeMin);
-                            const packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
-                            const cost = isFreeByQty ? 0 : (baseCost * packages);
-                            validOptions.push({ label: isFreeByQty ? 'Logística Flex (Gratis por cantidad)' : 'Logística Flex / Courier', cost: cost, icon: 'local_shipping' });
+                            const isFreeByQty = (freeMin > 0 && qty >= freeMin) || isFlexFreeShipping;
+
+                            // Multiplicación automática por paquetes según medidas y peso
+                            const packages = (product.isCustomCutting || product.id === '69') ? flexPackagesCount : (maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1);
+                            let cost = isFreeByQty ? 0 : (baseCost * packages);
+                            if (cost > 0 && flexDiscountPct > 0) {
+                                cost = Math.round(cost * (1 - flexDiscountPct / 100));
+                            }
+                            const pkgBadge = packages > 1 ? ` (${packages} paquetes)` : '';
+                            validOptions.push({ 
+                                label: isFreeByQty ? `Logística Flex (¡Envío GRATIS por cantidad!)${pkgBadge}` : (flexDiscountPct > 0 ? `Logística Flex (${flexDiscountPct}% OFF)${pkgBadge}` : `Logística Flex / Courier${pkgBadge}`), 
+                                cost: cost, 
+                                icon: 'local_shipping' 
+                            });
                         }
 
                         // 3. Flete particular
@@ -1117,10 +1212,17 @@
                             const baseCost = manualCost > 0 ? manualCost : sysCost;
                             const freeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
                             const maxUnits = parseInt(shipConf.fleteMaxUnits) || 0;
-                            const isFreeByQty = (freeMin > 0 && qty >= freeMin);
+                            const isFreeByQty = (freeMin > 0 && qty >= freeMin) || isFleteFreeShipping;
                             const packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
-                            const cost = isFreeByQty ? 0 : (baseCost * packages);
-                            validOptions.push({ label: isFreeByQty ? 'Flete Particular (Gratis por cantidad)' : 'Flete Particular', cost: cost, icon: 'fire_truck' });
+                            let cost = isFreeByQty ? 0 : (baseCost * packages);
+                            if (cost > 0 && fleteDiscountPct > 0) {
+                                cost = Math.round(cost * (1 - fleteDiscountPct / 100));
+                            }
+                            validOptions.push({ 
+                                label: isFreeByQty ? 'Flete Particular (¡Envío GRATIS por cantidad!)' : (fleteDiscountPct > 0 ? `Flete Particular (${fleteDiscountPct}% OFF en flete)` : 'Flete Particular'), 
+                                cost: cost, 
+                                icon: 'fire_truck' 
+                            });
                         }
 
                         const formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 });
@@ -1460,6 +1562,19 @@
                 }
             }
 
+            // Actualizar descripción dinámica (descripción específica del acabado o la base del producto)
+            if (detailDescription) {
+                const targetDesc = (grupo.description && grupo.description.trim()) ? grupo.description.trim() : (product.description || '');
+                if (detailDescription.textContent !== targetDesc) {
+                    detailDescription.style.transition = 'opacity 0.15s ease';
+                    detailDescription.style.opacity = '0.3';
+                    setTimeout(() => {
+                        detailDescription.textContent = targetDesc;
+                        detailDescription.style.opacity = '1';
+                    }, 150);
+                }
+            }
+
             // 1. Re-render Gallery
             renderGallery(grupo);
 
@@ -1488,21 +1603,307 @@
                     }
                 }
 
-                divMedida.className = 'variant-selector-wrapper mt-1';
-                divMedida.innerHTML = `
-                    <label class="variant-label">📏 Medida / Variantes</label>
-                    <select class="variant-select-cascade">
-                        ${uniqueMedidas.map(name => `
-                            <option value="${name}" ${name === defaultMedidaName ? 'selected' : ''}>${name}</option>
-                        `).join('')}
-                    </select>
-                `;
-                divMedida.style.display = 'block';
-                divMedida.querySelector('select').addEventListener('change', (e) => {
-                    updateBuyButton(grupo, e.target.value);
-                    updateFavState();
-                    updateUrlWithVariants();
-                });
+                if (product.isCustomCutting === true || product.id === '69') {
+                    // MODO CORTE INTERACTIVO A MEDIDA: Inyectar selector con Material, Uso, Espesor y casilleros de largo/ancho
+                    const conf = window.cortesConfig || {
+                        precios: { precio_m2_venta: 48500, minimo_corte_taller: 3500 },
+                        materiales: [
+                            { id: "pino_macizo", name: "Pino Macizo / Finger Joint", precio_m2: 48500, max_largo: 300, max_ancho: 120, activo: true, is_default: true },
+                            { id: "eucalipto_tablillado", name: "Eucalipto Alistonado / Tablillado", precio_m2: 68000, max_largo: 240, max_ancho: 60, limite_mensaje: "El tablero de Eucalipto viene en ancho máx. de 60 cm y largo de 240 cm.", activo: true, is_default: false },
+                            { id: "paraiso_alistonado", name: "Paraíso Alistonado", precio_m2: 82000, max_largo: 240, max_ancho: 60, limite_mensaje: "El tablero de Paraíso viene en ancho máx. de 60 cm y largo de 240 cm.", activo: true, is_default: false }
+                        ],
+                        usos: [
+                            { id: "estante", name: "Estantería / Repisa", factor_precio: 1.0, recargo_fijo: 0, is_default: true },
+                            { id: "escritorio_mesa", name: "Tapa de Escritorio / Mesa", factor_precio: 1.25, recargo_fijo: 2500, is_default: false },
+                            { id: "escalon", name: "Escalón / Tránsito Pesado", factor_precio: 1.15, recargo_fijo: 1800, is_default: false }
+                        ],
+                        espesores: [
+                            { id: "1_pulgada", name: "1 Pulgada (~2.2 cm)", factor_precio: 1.0, is_default: true },
+                            { id: "1_5_pulgadas", name: "1.5 Pulgadas (~3.2 cm)", factor_precio: 1.45, is_default: false },
+                            { id: "2_pulgadas", name: "2 Pulgadas (~4.2 cm)", factor_precio: 1.95, is_default: false }
+                        ]
+                    };
+
+                    const activeMats = (Array.isArray(conf.materiales) && conf.materiales.length > 0)
+                        ? conf.materiales.filter(m => m.activo !== false)
+                        : [{ id: "pino_macizo", name: "Pino Macizo / Finger Joint", precio_m2: conf.precios?.precio_m2_venta || 48500, max_largo: 300, max_ancho: 120 }];
+
+                    const activeUsos = (Array.isArray(conf.usos) && conf.usos.length > 0)
+                        ? conf.usos
+                        : [
+                            { id: "estante", name: "Estantería / Repisa", factor_precio: 1.0, recargo_fijo: 0 },
+                            { id: "escritorio_mesa", name: "Tapa de Escritorio / Mesa", factor_precio: 1.25, recargo_fijo: 2500 },
+                            { id: "escalon", name: "Escalón / Tránsito Pesado", factor_precio: 1.15, recargo_fijo: 1800 }
+                        ];
+
+                    const activeEspesores = (Array.isArray(conf.espesores) && conf.espesores.length > 0)
+                        ? conf.espesores
+                        : [{ id: "1_pulgada", name: "1 Pulgada (~2.2 cm)", factor_precio: 1.0 }];
+
+                    // Agrupar materiales por nombre para que el cliente NUNCA vea dos opciones con el mismo nombre
+                    const groupedMatsMap = new Map();
+                    activeMats.forEach(m => {
+                        const cleanName = (m.name || 'Madera').trim();
+                        if (!groupedMatsMap.has(cleanName)) {
+                            groupedMatsMap.set(cleanName, {
+                                name: cleanName,
+                                id: m.id,
+                                max_largo: m.max_largo || 300,
+                                max_ancho: m.max_ancho || 120,
+                                limite_mensaje: m.limite_mensaje || '',
+                                items: []
+                            });
+                        }
+                        const entry = groupedMatsMap.get(cleanName);
+                        entry.items.push(m);
+                        if (m.max_largo > entry.max_largo) entry.max_largo = m.max_largo;
+                        if (m.max_ancho > entry.max_ancho) entry.max_ancho = m.max_ancho;
+                    });
+                    const unifiedMatsList = Array.from(groupedMatsMap.values());
+
+                    divMedida.className = 'variant-selector-wrapper mt-1';
+                    divMedida.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                            <label class="variant-label" style="margin-bottom:0;">📐 Configurar Corte a Medida:</label>
+                            <span id="cortes-badge-mode" style="font-size:0.75rem; font-weight:800; color:var(--primary-color);">Cálculo Milimétrico</span>
+                        </div>
+
+                        <!-- Selector de Material / Tablero (Sin nombres duplicados) -->
+                        <div style="margin-bottom:8px;">
+                            <label style="display:block; font-size:0.72rem; font-weight:700; color:#475569; margin-bottom:3px; text-transform:uppercase;">1. Madera / Tablero:</label>
+                            <select id="detail-custom-cut-material" class="admin-input" style="width:100%; font-weight:700; border-radius:8px;">
+                                ${unifiedMatsList.map((g, idx) => `
+                                    <option value="${g.name}" data-group-index="${idx}" ${idx === 0 ? 'selected' : ''}>
+                                        ${g.name} (Hasta ${g.max_largo} × ${g.max_ancho} cm)
+                                    </option>
+                                `).join('')}
+                            </select>
+                        </div>
+
+                        <!-- Selector de Espesor -->
+                        <div style="margin-bottom:8px;">
+                            <label style="display:block; font-size:0.72rem; font-weight:700; color:#475569; margin-bottom:3px; text-transform:uppercase;">2. Espesor del Tablero:</label>
+                            <select id="detail-custom-cut-espesor" class="admin-input" style="width:100%; font-weight:700; border-radius:8px;">
+                            </select>
+                        </div>
+
+                        <!-- Grilla de Medidas Largo x Ancho -->
+                        <div class="custom-cut-inputs-grid" style="background:#F8FAFC; border:1.5px dashed #CBD5E1; border-radius:12px; padding:0.85rem; display:flex; flex-direction:column; gap:8px;">
+                            <div class="custom-cut-row" style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                                <div class="custom-cut-col" style="display:flex; flex-direction:column; gap:3px;">
+                                    <label style="font-size:0.72rem; font-weight:700; color:#475569; text-transform:uppercase;">Largo (cm):</label>
+                                    <div style="position:relative; display:flex; align-items:center;">
+                                        <input type="number" id="detail-custom-cut-largo" value="80" min="15" max="300" step="1" class="admin-input" style="width:100%; padding:6px 22px 6px 8px; font-weight:700; border:1.5px solid #CBD5E1; border-radius:8px; box-sizing:border-box;">
+                                        <span style="position:absolute; right:6px; font-size:0.75rem; font-weight:700; color:#94A3B8; pointer-events:none;">cm</span>
+                                    </div>
+                                </div>
+                                <div class="custom-cut-col" style="display:flex; flex-direction:column; gap:3px;">
+                                    <label style="font-size:0.72rem; font-weight:700; color:#475569; text-transform:uppercase;">Ancho / Prof. (cm):</label>
+                                    <div style="position:relative; display:flex; align-items:center;">
+                                        <input type="number" id="detail-custom-cut-ancho" value="30" min="10" max="120" step="1" class="admin-input" style="width:100%; padding:6px 22px 6px 8px; font-weight:700; border:1.5px solid #CBD5E1; border-radius:8px; box-sizing:border-box;">
+                                        <span style="position:absolute; right:6px; font-size:0.75rem; font-weight:700; color:#94A3B8; pointer-events:none;">cm</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Alerta de Medidas Excedidas para el Material -->
+                            <div id="detail-custom-cut-warning" style="display:none; background:#FEF2F2; border:1px solid #FCA5A5; color:#991B1B; padding:0.6rem; border-radius:8px; font-size:0.75rem; line-height:1.35; font-weight:600;">
+                            </div>
+
+                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.72rem; color:#64748B;">
+                                <span id="detail-custom-cut-m2">📐 Superficie: 0.24 m²</span>
+                                <span id="detail-custom-cut-spec" style="color:#16A34A; font-weight:700;">Corte Rectificado</span>
+                            </div>
+                        </div>
+                    `;
+                    divMedida.style.display = 'block';
+
+                    // Actualizar selector de espesores para la madera seleccionada
+                    // Cada espesor sabe a qué precio_m2 y límites corresponde exactamente
+                    const updateEspesoresForSelectedMaterial = () => {
+                        const selMat = document.getElementById('detail-custom-cut-material');
+                        const selEsp = document.getElementById('detail-custom-cut-espesor');
+                        if (!selMat || !selEsp) return;
+
+                        const selectedGroupIndex = parseInt(selMat.options[selMat.selectedIndex]?.getAttribute('data-group-index') || '0');
+                        const curGroup = unifiedMatsList[selectedGroupIndex] || unifiedMatsList[0];
+                        if (!curGroup) return;
+
+                        const currentEspVal = selEsp.value;
+                        const espesorOptions = [];
+
+                        // Recorrer las placas que forman este grupo
+                        curGroup.items.forEach(matItem => {
+                            const rawEspList = Array.isArray(matItem.espesores_disponibles) && matItem.espesores_disponibles.length > 0
+                                ? matItem.espesores_disponibles
+                                : [matItem.espesor || '18 mm'];
+
+                            rawEspList.forEach(espText => {
+                                const cleanEsp = espText.trim();
+                                if (!cleanEsp) return;
+                                if (!espesorOptions.some(o => o.text === cleanEsp)) {
+                                    espesorOptions.push({
+                                        text: cleanEsp,
+                                        precio_m2: matItem.precio_m2 || 48500,
+                                        max_largo: matItem.max_largo || curGroup.max_largo,
+                                        max_ancho: matItem.max_ancho || curGroup.max_ancho,
+                                        msg: matItem.limite_mensaje || curGroup.limite_mensaje
+                                    });
+                                }
+                            });
+                        });
+
+                        if (espesorOptions.length === 0) {
+                            espesorOptions.push({
+                                text: '18 mm',
+                                precio_m2: curGroup.items[0]?.precio_m2 || 48500,
+                                max_largo: curGroup.max_largo,
+                                max_ancho: curGroup.max_ancho,
+                                msg: curGroup.limite_mensaje
+                            });
+                        }
+
+                        selEsp.innerHTML = espesorOptions.map(opt => `
+                            <option value="${opt.text}" data-precio="${opt.precio_m2}" data-max-largo="${opt.max_largo}" data-max-ancho="${opt.max_ancho}" data-msg="${opt.msg || ''}" ${opt.text === currentEspVal ? 'selected' : ''}>
+                                ${opt.text}
+                            </option>
+                        `).join('');
+
+                        if (!espesorOptions.some(o => o.text === currentEspVal)) {
+                            selEsp.selectedIndex = 0;
+                        }
+                    };
+
+                    const calcCut = () => {
+                        const inL = document.getElementById('detail-custom-cut-largo');
+                        const inW = document.getElementById('detail-custom-cut-ancho');
+                        const selMat = document.getElementById('detail-custom-cut-material');
+                        const selEsp = document.getElementById('detail-custom-cut-espesor');
+                        const warnBox = document.getElementById('detail-custom-cut-warning');
+
+                        const rawL = parseFloat(inL?.value) || 15;
+                        const rawW = parseFloat(inW?.value) || 10;
+                        
+                        // Auto-Orientación Inteligente:
+                        // La pieza es físicamente la misma sin importar si el cliente puso el número más grande en 'Largo' o en 'Ancho'.
+                        // autoL siempre es el lado mayor (largo/frente) y autoW es el lado menor (ancho/profundidad).
+                        const autoL = Math.max(rawL, rawW);
+                        const autoW = Math.min(rawL, rawW);
+
+                        const m2 = (autoL * autoW) / 10000;
+
+                        const optMat = selMat?.options[selMat.selectedIndex];
+                        const optEsp = selEsp?.options[selEsp.selectedIndex];
+
+                        // Los límites y precio m2 ahora vienen asociados al espesor/tablero elegido
+                        const maxL = parseFloat(optEsp?.getAttribute('data-max-largo')) || parseFloat(optMat?.getAttribute('data-max-largo')) || 300;
+                        const maxW = parseFloat(optEsp?.getAttribute('data-max-ancho')) || parseFloat(optMat?.getAttribute('data-max-ancho')) || 120;
+                        const precioM2Base = parseFloat(optEsp?.getAttribute('data-precio')) || parseFloat(optMat?.getAttribute('data-precio')) || (conf.precios?.precio_m2_venta || 48500);
+                        const limitMsg = optEsp?.getAttribute('data-msg') || optMat?.getAttribute('data-msg') || '';
+
+                        // Detección automática invisible evaluando la lista dinámica de usos/tipos de corte
+                        let factorUso = 1.0;
+                        let recargoFijoUso = 0;
+                        let detectedLabel = 'Corte Estándar Cepillado';
+
+                        const availableUsos = Array.isArray(conf.usos) ? conf.usos.filter(u => u.activo !== false) : [];
+                        
+                        // Buscar el uso que calce con las dimensiones autoW (ancho/profundidad) y autoL (largo)
+                        // Se evalúan los más específicos primero (los que tengan min_ancho o recargos)
+                        const matchedUso = availableUsos.find(u => {
+                            const minW = u.min_ancho || 0;
+                            const maxW_uso = u.max_ancho !== undefined ? u.max_ancho : 999;
+                            const minL = u.min_largo || 0;
+                            const maxL_uso = u.max_largo !== undefined ? u.max_largo : 999;
+                            return (autoW >= minW && autoW <= maxW_uso && autoL >= minL && autoL <= maxL_uso);
+                        }) || availableUsos[0];
+
+                        if (matchedUso) {
+                            factorUso = matchedUso.factor_precio || 1.0;
+                            recargoFijoUso = matchedUso.recargo_fijo || 0;
+                            detectedLabel = matchedUso.name || 'Corte Estándar';
+                        }
+
+                        // Validar límites de dimensiones físicas de la placa evaluando la pieza ya orientada
+                        let isExceeded = false;
+                        if (autoL > maxL || autoW > maxW) {
+                            isExceeded = true;
+                            if (warnBox) {
+                                warnBox.style.display = 'block';
+                                warnBox.innerHTML = `
+                                    ⚠️ <strong>Medida fuera de límite:</strong> Este tablero (${optMat?.text.split('(')[0].trim()} en ${optEsp?.text.trim()}) viene en placas de hasta <strong>${maxL} cm de largo × ${maxW} cm de ancho</strong>.<br>
+                                    ${limitMsg ? `<em>${limitMsg}</em><br>` : ''}
+                                    Tu corte es de <strong>${autoL} × ${autoW} cm</strong>. Por favor ajustá los centímetros o elegí otro material.
+                                `;
+                            }
+                        } else {
+                            if (warnBox) warnBox.style.display = 'none';
+                        }
+
+                        const lblM2 = document.getElementById('detail-custom-cut-m2');
+                        if (lblM2) lblM2.textContent = `📐 Superficie: ${m2.toFixed(2)} m²`;
+
+                        const lblSpec = document.getElementById('detail-custom-cut-spec');
+                        if (lblSpec) lblSpec.textContent = `${detectedLabel} (${optEsp?.text.split('(')[0].trim()})`;
+
+                        const minimo = conf.precios?.minimo_corte_taller || 3500;
+                        const precioM2Final = precioM2Base * factorUso;
+                        const calcPrice = Math.max(minimo, Math.round(m2 * precioM2Final + recargoFijoUso));
+
+                        const medidaDesc = `${autoL} × ${autoW} cm (${optMat?.text.split('(')[0].trim()} - ${detectedLabel})`;
+
+                        if (grupo.medidas_variants && grupo.medidas_variants[0]) {
+                            grupo.medidas_variants[0].price = calcPrice;
+                            grupo.medidas_variants[0].medida = medidaDesc;
+                        }
+
+                        updateBuyButton(grupo, medidaDesc);
+
+                        // Si excede la placa, deshabilitar botón de comprar/agregar
+                        const btnBuy = document.getElementById('btn-modal-add-to-cart');
+                        if (btnBuy) {
+                            if (isExceeded) {
+                                btnBuy.disabled = true;
+                                btnBuy.style.opacity = '0.5';
+                                btnBuy.style.pointerEvents = 'none';
+                            } else {
+                                btnBuy.disabled = false;
+                                btnBuy.style.opacity = '1';
+                                btnBuy.style.pointerEvents = 'auto';
+                            }
+                        }
+                    };
+
+                    document.getElementById('detail-custom-cut-largo')?.addEventListener('input', calcCut);
+                    document.getElementById('detail-custom-cut-ancho')?.addEventListener('input', calcCut);
+                    document.getElementById('detail-custom-cut-material')?.addEventListener('change', () => {
+                        updateEspesoresForSelectedMaterial();
+                        calcCut();
+                    });
+                    document.getElementById('detail-custom-cut-uso')?.addEventListener('change', calcCut);
+                    document.getElementById('detail-custom-cut-espesor')?.addEventListener('change', calcCut);
+
+                    // Inicializar opciones de espesor según material por defecto
+                    updateEspesoresForSelectedMaterial();
+                    defaultMedidaName = "80 × 30 cm (A medida)";
+                    calcCut();
+                } else {
+                    divMedida.className = 'variant-selector-wrapper mt-1';
+                    divMedida.innerHTML = `
+                        <label class="variant-label">📏 Medida / Variantes</label>
+                        <select class="variant-select-cascade">
+                            ${uniqueMedidas.map(name => `
+                                <option value="${name}" ${name === defaultMedidaName ? 'selected' : ''}>${name}</option>
+                            `).join('')}
+                        </select>
+                    `;
+                    divMedida.style.display = 'block';
+                    divMedida.querySelector('select').addEventListener('change', (e) => {
+                        updateBuyButton(grupo, e.target.value);
+                        updateFavState();
+                        updateUrlWithVariants();
+                    });
+                }
             } else {
                 divMedida.style.display = 'none';
             }

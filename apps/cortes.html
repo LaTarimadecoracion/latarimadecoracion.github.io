@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tablas y Cortes de Madera a Medida | LA TARIMA</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../img/icon-180.png">
+    
+    <!-- Fonts & Material Icons Oficiales de La Tarima -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <!-- CSS Maestro del Proyecto + Complemento de Cortes -->
+    <link rel="stylesheet" href="../css/style.css?v=26">
+    <link rel="stylesheet" href="../css/cortes.css?v=3">
+    
+    <style>
+        body {
+            background-color: var(--surface-color, #F7F5F0) !important;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main, 'Outfit', sans-serif);
+        }
+        #view-product-detail {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Script Anti-FOUC para Temáticas de la Tienda -->
+    <script>
+        (function() {
+            try {
+                var userSelected = localStorage.getItem('userSelectedTheme');
+                var localTheme = localStorage.getItem('activeTheme');
+                var themeToApply = userSelected || localTheme || 'classic';
+                if (themeToApply && themeToApply !== 'classic') {
+                    document.body.classList.add('theme-' + themeToApply);
+                }
+            } catch(e) {}
+        })();
+    </script>
+
+    <!-- Header Estilo SPA La Tarima 2.0 -->
+    <header class="main-header-bar">
+        <a href="../index.html" class="back-nav-btn" title="Volver al Catálogo">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <div class="header-titles-wrapper">
+            <h1 class="brand-title">LA TARIMA</h1>
+            <p class="brand-subtitle">Carpintería & Decoración</p>
+        </div>
+    </header>
+
+    <!-- MAIN: ESTRUCTURA Y CLASES IDÉNTICAS AL MODAL DE PRODUCTO DE LA TARIMA (#view-product-detail) -->
+    <main>
+        <section id="view-product-detail" class="view detail-view">
+            <!-- Bloque Superior Destacado (2 columnas en Desktop) -->
+            <div class="detail-main-grid">
+                
+                <!-- 1 & 2. Header Info: Título y Categoría Sobria -->
+                <div id="detail-header-info" style="padding: 1.25rem 1.25rem 0.5rem; text-align: left;">
+                    <h2 id="detail-title" style="margin: 0 0 0.25rem 0; font-size: 1.45rem; font-weight: 900; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);">
+                        Tablas y Cortes de Madera a Medida
+                    </h2>
+                    <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Carpintería • Cortes de Madera
+                    </span>
+                </div>
+
+                <!-- 3. Carrusel / Galería de Fotos del Producto (Idéntica con Barra de Acabados en Foto) -->
+                <div class="detail-img-container" style="margin-bottom: 1.25rem;">
+                    <img id="detail-cover-image" src="../img/estantes/estantes/estantes.webp" alt="Tablas y Cortes de Madera a Medida">
+                    
+                    <!-- Barra de Acabados Integrada en la foto (idéntica a la tienda) -->
+                    <div class="gallery-acabados-overlay">
+                        <div class="gallery-acabados-title" style="padding-left: 12px; color: #FFFFFF; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">palette</span>
+                            <span id="label-acabado-overlay">Natural Cepillado</span>
+                        </div>
+                        <div style="padding-right: 12px; color: rgba(255,255,255,0.85); font-size: 0.72rem; font-weight: 600;">
+                            Pino Macizo 1"
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuerpo del Detalle (Columna Derecha en Desktop / Flujo Natural en Mobile) -->
+                <div class="detail-content" style="padding: 0 1.25rem;">
+
+                    <!-- 4 & 5. Selectores de Variantes / Acabados y Medidas (Mismo Contenedor de la Tienda) -->
+                    <div id="detail-attributes-container" style="margin-bottom: 1.25rem;">
+                        
+                        <!-- Selector de Acabados (Variant Buttons Swatches) -->
+                        <div class="variant-selector-wrapper">
+                            <span class="variant-label">Acabado:</span>
+                            <div class="variant-buttons-container" id="acabados-container">
+                                <button type="button" class="variant-btn active" data-extra="0" data-name="Natural Cepillado" onclick="selectAcabadoBtn(this)">
+                                    Natural
+                                </button>
+                                <button type="button" class="variant-btn" data-extra="2000" data-name="Tinte / Encerado" onclick="selectAcabadoBtn(this)">
+                                    Encerado (+ $2.000)
+                                </button>
+                                <button type="button" class="variant-btn" data-extra="3800" data-name="Barnizado Satinado" onclick="selectAcabadoBtn(this)">
+                                    Barnizado (+ $3.800)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Selector de Medidas (Dropdown Cascada + Modo Personalizado) -->
+                        <div class="selectors-row">
+                            <div class="variant-selector-wrapper" style="margin-bottom: 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                                    <span class="variant-label" style="margin-bottom: 0;">Medida:</span>
+                                    <!-- Tabs rápidas estándar / a medida -->
+                                    <div class="medidas-mode-tabs">
+                                        <button type="button" class="medidas-mode-btn active" id="tab-mode-std" onclick="setMedidaMode('standard')">Estándar</button>
+                                        <button type="button" class="medidas-mode-btn" id="tab-mode-custom" onclick="setMedidaMode('custom')">A Medida</button>
+                                    </div>
+                                </div>
+
+                                <!-- Dropdown Cascada Nativo de la Tienda -->
+                                <select class="variant-select-cascade" id="select-medida-standard" onchange="onStandardMedidaChange()">
+                                    <option value="5800" data-l="60" data-w="20">20 × 60 cm — $5.800</option>
+                                    <option value="7700" data-l="80" data-w="20">20 × 80 cm — $7.700</option>
+                                    <option value="9700" data-l="100" data-w="20">20 × 100 cm — $9.700</option>
+                                    <option value="8750" data-l="60" data-w="30">30 × 60 cm — $8.750</option>
+                                    <option value="11600" data-l="80" data-w="30" selected>30 × 80 cm — $11.600</option>
+                                    <option value="14500" data-l="100" data-w="30">30 × 100 cm — $14.500</option>
+                                </select>
+
+                                <!-- Inputs milimétricos (Modo A Medida) -->
+                                <div class="custom-cut-inputs-grid" id="container-custom-inputs" style="display: none;">
+                                    <div class="custom-cut-row">
+                                        <div class="custom-cut-col">
+                                            <label for="inp-custom-largo">Largo:</label>
+                                            <div class="custom-cut-wrapper">
+                                                <input type="number" id="inp-custom-largo" value="80" min="15" max="300" step="1" oninput="onCustomDimensionsInput()">
+                                                <span class="unit-tag">cm</span>
+                                            </div>
+                                        </div>
+                                        <div class="custom-cut-col">
+                                            <label for="inp-custom-ancho">Ancho / Prof.:</label>
+                                            <div class="custom-cut-wrapper">
+                                                <input type="number" id="inp-custom-ancho" value="30" min="10" max="120" step="1" oninput="onCustomDimensionsInput()">
+                                                <span class="unit-tag">cm</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-cut-helper">
+                                        <span id="lbl-custom-m2">📐 Superficie: 0.24 m²</span>
+                                        <span style="color:#16a34a; font-weight:700;">Corte a medida exacta</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 6. Tarjeta Destacada de Precio Total y Cantidad (Estilo Idéntico a Ofertas / Tienda) -->
+                    <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                            <!-- Selector de Cantidad -->
+                            <div class="qty-selector-wrapper" style="margin: 0;">
+                                <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px;">
+                                    <span class="qty-selector-label" style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Unidades:</span>
+                                    <button type="button" class="qty-btn" id="btn-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;" onclick="modifyQty(-1)">−</button>
+                                    <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 28px; text-align: center;">1</span>
+                                    <button type="button" class="qty-btn" id="btn-qty-plus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;" onclick="modifyQty(1)">+</button>
+                                </div>
+                                <div id="detail-qty-discount-banner" style="display: none; margin-top: 4px; font-size: 0.72rem; font-weight: 700; color: #16a34a;"></div>
+                            </div>
+
+                            <!-- Precio a la derecha con Tooltip Nativo de la Tienda -->
+                            <div id="detail-price-display" class="detail-price" style="margin: 0; display: block; text-align: right;">
+                                <div style="display: flex; align-items: center; gap: 4px; justify-content: flex-end;">
+                                    <span id="price-main-number" style="font-size:1.65rem; font-weight:900; color:#c0510a; line-height: 1.2;">$11.600</span>
+                                    <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
+                                        <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; padding: 4px;">help_outline</span>
+                                        <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 250px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; box-sizing: border-box;">
+                                            Precio en efectivo/transferencia para retirar por el taller en Hurlingham (no incluye flete).
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="price-sub-calc" style="font-size: 0.75rem; color: #64748B; font-weight: 600;">$11.600 c/u</div>
+                            </div>
+                        </div>
+
+                        <!-- Cotizador / Mejor Precio de Envío debajo del precio -->
+                        <div id="detail-shipping-best-price-badge" style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                                <span id="shipping-result-label" style="color: #475569;">
+                                    📍 <strong>Hurlingham (Taller):</strong> Retiro sin cargo o calculá tu envío:
+                                </span>
+                            </div>
+                            <div class="shipping-quick-calc">
+                                <input type="text" id="inp-cp-fast" placeholder="Ingresá tu CP (ej. 1686, 1425, 1708)" maxlength="8">
+                                <button type="button" onclick="calcQuickShipping()">Calcular</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7 & 8. Botonera Principal: COMPRAR YA y AGREGAR AL CARRITO (Misma de la Tienda) -->
+                    <div class="detail-actions" id="detail-actions-container" style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem;">
+                        <!-- Botón Principal: PEDIR POR WHATSAPP (Abre WhatsApp con la cotización estructurada) -->
+                        <button type="button" id="btn-buy-now-product" class="btn-primary giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.95rem; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 900; background: linear-gradient(135deg, #059669, #10b981); border: none; color: white; box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35); cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;" onclick="triggerWhatsAppOrder()">
+                            <span class="material-symbols-outlined" style="font-size: 24px;">chat</span>
+                            <span>PEDIR POR WHATSAPP</span>
+                        </button>
+
+                        <!-- Botón Secundario: AGREGAR AL CARRITO -->
+                        <button type="button" id="btn-add-cart-product" class="btn-outline giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #f0fdf4; border: 1.5px solid #86efac; color: #166534; text-decoration: none; cursor: pointer; transition: all 0.2s ease;" onclick="triggerWhatsAppOrder()">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">shopping_cart</span>
+                            <span id="btn-add-cart-text">Consultar Stock Inmediato</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 9. Mini-Tarjetas Informativas (Formas de Pago / Envíos / Garantía) (Idénticas a la Tienda) -->
+            <div class="info-badges-grid" style="margin-top: 1.25rem; margin-bottom: 1.25rem; width: 100%; box-sizing: border-box;">
+                <button type="button" id="btn-product-modal-payments" title="Ver formas de pago">
+                    <span class="material-symbols-outlined" style="color: #16a34a; font-size: 20px; flex-shrink: 0;">payments</span>
+                    <div style="min-width: 0;">
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Formas de Pago</div>
+                        <div style="font-size: 0.68rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Transferencia / Efectivo</div>
+                    </div>
+                </button>
+
+                <button type="button" id="btn-product-modal-shipping" title="Ver envíos y retiros">
+                    <span class="material-symbols-outlined" style="color: #2563eb; font-size: 20px; flex-shrink: 0;">local_shipping</span>
+                    <div style="min-width: 0;">
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Envíos y Retiro</div>
+                        <div style="font-size: 0.68rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Taller Hurlingham / CP</div>
+                    </div>
+                </button>
+
+                <button type="button" id="btn-product-modal-warranty" title="Ver calidad y garantía">
+                    <span class="material-symbols-outlined" style="color: #8b5cf6; font-size: 20px; flex-shrink: 0;">verified</span>
+                    <div style="min-width: 0;">
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Calidad & Garantía</div>
+                        <div style="font-size: 0.65rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Madera Maciza 100%</div>
+                    </div>
+                </button>
+            </div>
+
+            <!-- 10. Descripción del Producto (Misma Caja y Tipografía) -->
+            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.1rem; margin-bottom: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.6rem 0; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a);">description</span> Descripción del Producto
+                </h3>
+                <p id="detail-description" class="detail-description product-description-text" style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0; white-space: pre-line;">
+Tablas de madera maciza de pino secadas en horno, cepilladas y lijadas a mano en nuestro taller. Ideales para estantes flotantes, tapas de escritorios, mesadas o recortes a medida para proyectos personales.
+
+• Madera maciza seleccionada de 1 pulgada (~2.2 cm de espesor real).
+• Bordes rectos y pulidos, listos para colocar o pintar.
+• Fabricación artesanal en Hurlingham, Buenos Aires.
+                </p>
+            </div>
+
+            <!-- 11. Especificaciones Rápidas: Material - Fabricación - Garantía -->
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem; margin-bottom: 1.5rem;">
+                <div class="especificaciones-rapidas-grid" style="display: flex !important; flex-direction: row !important; justify-content: space-around !important; align-items: flex-start !important; width: 100% !important;">
+                    <div>
+                        <div style="display: flex; justify-content: center; align-items: center; height: 26px;">
+                            <span class="material-symbols-outlined" style="font-size: 22px; color: #b45309;">forest</span>
+                        </div>
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; margin-top: 2px;">Material</div>
+                        <div style="font-size: 0.7rem; color: #64748b;">100% Pino Macizo</div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: center; align-items: center; height: 26px;">
+                            <span class="material-symbols-outlined" style="font-size: 22px; color: #b45309;">handyman</span>
+                        </div>
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; margin-top: 2px;">Fabricación</div>
+                        <div style="font-size: 0.7rem; color: #64748b;">Artesanal Propia</div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: center; align-items: center; height: 26px;">
+                            <span class="material-symbols-outlined" style="font-size: 22px; color: #b45309;">verified</span>
+                        </div>
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; margin-top: 2px;">Garantía</div>
+                        <div style="font-size: 0.7rem; color: #64748b;">Taller Hurlingham</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Scripts de Logística y Datos de la Tienda -->
+    <script src="../js/shipping-config.js"></script>
+    <script src="../js/postal-lookup.js"></script>
+
+    <!-- Lógica de la Publicación -->
+    <script>
+        const PRECIO_M2_BASE = 48500;
+        let isCustomMode = false;
+        let selectedLargo = 80;
+        let selectedAncho = 30;
+        let baseUnitPrice = 11600;
+        let extraAcabado = 0;
+        let currentAcabadoName = 'Natural Cepillado';
+        let currentQty = 1;
+        let shippingResult = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedCp = localStorage.getItem('userPostalCode');
+            if (savedCp) {
+                document.getElementById('inp-cp-fast').value = savedCp;
+                calcQuickShipping();
+            } else {
+                updateFullPrice();
+            }
+        });
+
+        // Selección de Acabado (Swatches)
+        function selectAcabadoBtn(btn) {
+            document.querySelectorAll('#acabados-container .variant-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            extraAcabado = parseFloat(btn.dataset.extra) || 0;
+            currentAcabadoName = btn.dataset.name;
+            document.getElementById('label-acabado-overlay').textContent = currentAcabadoName;
+            updateFullPrice();
+        }
+
+        // Alternar modo de medidas: standard / custom
+        function setMedidaMode(mode) {
+            const btnStd = document.getElementById('tab-mode-std');
+            const btnCst = document.getElementById('tab-mode-custom');
+            const selStd = document.getElementById('select-medida-standard');
+            const boxCst = document.getElementById('container-custom-inputs');
+
+            if (mode === 'standard') {
+                isCustomMode = false;
+                btnStd.classList.add('active');
+                btnCst.classList.remove('active');
+                selStd.style.display = 'block';
+                boxCst.style.display = 'none';
+                onStandardMedidaChange();
+            } else {
+                isCustomMode = true;
+                btnStd.classList.remove('active');
+                btnCst.classList.add('active');
+                selStd.style.display = 'none';
+                boxCst.style.display = 'flex';
+                onCustomDimensionsInput();
+            }
+        }
+
+        // Cambio en dropdown estándar
+        function onStandardMedidaChange() {
+            const sel = document.getElementById('select-medida-standard');
+            const opt = sel.options[sel.selectedIndex];
+            baseUnitPrice = parseFloat(opt.value);
+            selectedLargo = parseFloat(opt.dataset.l);
+            selectedAncho = parseFloat(opt.dataset.w);
+            updateFullPrice();
+        }
+
+        // Cambio en inputs a medida
+        function onCustomDimensionsInput() {
+            const inLargo = document.getElementById('inp-custom-largo');
+            const inAncho = document.getElementById('inp-custom-ancho');
+
+            selectedLargo = parseFloat(inLargo.value) || 15;
+            selectedAncho = parseFloat(inAncho.value) || 10;
+
+            const m2 = (selectedLargo * selectedAncho) / 10000;
+            document.getElementById('lbl-custom-m2').textContent = `📐 Superficie: ${m2.toFixed(2)} m²`;
+
+            // Base proporcional por m² con mínimo de corte
+            baseUnitPrice = Math.max(3500, Math.round(m2 * PRECIO_M2_BASE));
+            updateFullPrice();
+        }
+
+        // Cantidad (+ / -)
+        function modifyQty(delta) {
+            currentQty = Math.max(1, Math.min(50, currentQty + delta));
+            document.getElementById('qty-value').textContent = currentQty;
+            updateFullPrice();
+        }
+
+        // Recálculo y formateo visual de precios
+        function updateFullPrice() {
+            const unitPrice = baseUnitPrice + extraAcabado;
+            const totalPrice = unitPrice * currentQty;
+
+            document.getElementById('price-main-number').textContent = `$${totalPrice.toLocaleString('es-AR')}`;
+            if (currentQty > 1) {
+                document.getElementById('price-sub-calc').textContent = `$${unitPrice.toLocaleString('es-AR')} c/u ($${totalPrice.toLocaleString('es-AR')} total)`;
+            } else {
+                document.getElementById('price-sub-calc').textContent = `$${unitPrice.toLocaleString('es-AR')} c/u`;
+            }
+        }
+
+        // Cotizador de CP
+        function calcQuickShipping() {
+            const inp = document.getElementById('inp-cp-fast');
+            const lbl = document.getElementById('shipping-result-label');
+            const rawCp = inp.value.trim();
+
+            if (!rawCp) {
+                lbl.innerHTML = '📍 <strong>Hurlingham (Taller):</strong> Retiro sin cargo o calculá tu envío:';
+                shippingResult = null;
+                return;
+            }
+
+            if (typeof window.lookupPostalCode === 'function') {
+                const res = window.lookupPostalCode(rawCp);
+                if (res && res.hasLocalMatch) {
+                    localStorage.setItem('userPostalCode', res.cp);
+                    shippingResult = res;
+                    let text = `🚚 <strong>${res.localidad} (${res.provincia}):</strong> `;
+                    if (res.flete && res.flete.cost > 0) {
+                        text += `Flete propio $${res.flete.cost.toLocaleString('es-AR')}`;
+                    } else if (res.logistica && res.logistica.cost > 0) {
+                        text += `Courier $${res.logistica.cost.toLocaleString('es-AR')}`;
+                    } else {
+                        text += `Retiro sin cargo por taller o expreso`;
+                    }
+                    lbl.innerHTML = text;
+                } else {
+                    lbl.innerHTML = `📍 CP ${rawCp}: Envío por Expreso a coordinar o retiro por Hurlingham.`;
+                    shippingResult = { cp: rawCp, localidad: 'A coordinar', cost: 0 };
+                }
+            } else {
+                lbl.innerHTML = `📍 CP ${rawCp}: Envío a coordinar con el taller.`;
+            }
+        }
+
+        // Disparar WhatsApp con mensaje de compra
+        function triggerWhatsAppOrder() {
+            const unitPrice = baseUnitPrice + extraAcabado;
+            const totalPrice = unitPrice * currentQty;
+            const destino = shippingResult ? `${shippingResult.localidad || 'CP ' + shippingResult.cp}` : 'Retiro por Hurlingham / A coordinar';
+
+            const msg = `¡Hola La Tarima! Quiero consultar por esta publicación:
+
+🪵 *Producto:* Tablas y Cortes de Madera a Medida
+📐 *Medidas:* ${selectedLargo} × ${selectedAncho} cm (${isCustomMode ? 'Corte a medida exacta' : 'Medida estándar'})
+🎨 *Acabado:* ${currentAcabadoName}
+🔢 *Cantidad:* ${currentQty} ${currentQty === 1 ? 'unidad' : 'unidades'}
+💰 *Precio Total:* $${totalPrice.toLocaleString('es-AR')}
+📍 *Entrega:* ${destino}
+
+¿Tienen disponibilidad para prepararlo? ¡Muchas gracias!`;
+
+            const phone = "5491136894060";
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tarima-cache-v60-reorg-folders';
+const CACHE_NAME = 'tarima-cache-v59-1791498006405';
 const STATIC_ASSETS = [
     './',
     './index.html',

@@ -140,8 +140,13 @@
                 let cleanTitle = (block.title || '').replace(/^¡?Nuevo (Ingreso|Alquiler):\s*/i, '').trim();
                 if (!cleanTitle) cleanTitle = block.title || 'Aviso';
 
-                // Coordinación exacta con la base de datos de productos
+                // Si el aviso está vinculado a un producto/alquiler o es un auto-ingreso pero el producto ya no existe, no renderizarlo
+                let targetUrl = block.linkUrl || (block.links && block.links[0] ? block.links[0].url : '');
+                const hasProductRef = Boolean(targetUrl && targetUrl.match(/(?:prod|product|p|s)=/)) || /^¡?Nuevo (Ingreso|Alquiler)/i.test(block.title || '');
                 const matched = findProductForAviso(block);
+                if (hasProductRef && !matched) {
+                    return; // Producto eliminado o inexistente: omitir de la vista
+                }
                 
                 let displayImg = null;
                 if (matched) {

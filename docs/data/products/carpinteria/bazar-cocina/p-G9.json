@@ -1,0 +1,74 @@
+{
+  "id": "G9",
+  "title": "Tabla Para Picada Mapa Argentina + Regalos",
+  "description": "Lo que tenés que saber de este producto\nEspesor: 1.5 mm\nAncho: 14 cm\nLargo: 40 cm\nUnidades por pack: 1\nForma: MAPA ARGENTINA",
+  "image": "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "cover_image": "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
+      "images_list": [
+        "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
+        "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343741-imagen.webp",
+        "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343901-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Argentina!!!",
+          "link": "https://www.mercadolibre.com.ar/tabla-para-picada-mapa-argentina/up/MLAU5145322972?pdp_filters=item_id:MLA3926974000",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 12000,
+          "cost_price": "",
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "volumeDiscounts": [
+            {
+              "minQty": 10,
+              "discountPercent": 25,
+              "shippingDiscountPercent": 0
+            }
+          ]
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 10,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [
+    {
+      "minUnits": 10,
+      "discountPercent": 25,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1788917344040,
+  "primaryCatId": "bazar-cocina",
+  "history": [],
+  "views": 1,
+  "categories": [
+    "carpinteria-todos",
+    "bazar-cocina"
+  ],
+  "rubro": "carpinteria"
+}

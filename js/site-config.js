@@ -174,6 +174,25 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
+            "title": "¡Nuevo Ingreso: Cajon GYM!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Cajon GYM!",
+            "mediaType": "image",
+            "image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
+            "videoUrl": "",
+            "mapQuery": "",
+            "links": [
+                {
+                    "text": "Ver Producto",
+                    "url": "?view=view-product-detail&prod=J8",
+                    "newTab": false
+                }
+            ],
+            "linkUrl": "?view=view-product-detail&prod=J8",
+            "linkText": "Ver Producto",
+            "linkNewTab": false,
+            "timestamp": 1791374134276
+        },
+        {
             "title": "¡Nuevo Ingreso: Exhibidor Organizador 4 Estantes De Madera!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Exhibidor Organizador 4 Estantes De Madera!",
             "mediaType": "image",
@@ -723,25 +742,6 @@ window.siteConfig = {
             "linkText": "Ver Producto",
             "linkNewTab": false,
             "timestamp": 1783811755487
-        },
-        {
-            "title": "¡Nuevo Ingreso: Perchero 3 - Minimalista!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Perchero 3 - Minimalista!",
-            "mediaType": "image",
-            "image": "img/borrador/perchero-6---minimalista/1784390037823-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=perchero-madera-tuvitos",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=perchero-madera-tuvitos",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1783811686087
         },
         {
             "title": "¡Nuevo Ingreso: Perchero 3 - Rustico!",

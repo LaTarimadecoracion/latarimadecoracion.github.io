@@ -1,0 +1,44 @@
+{
+  "id": "J8",
+  "shortId": "2V",
+  "title": "Cajon GYM",
+  "description": "",
+  "image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "cover_image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
+      "images_list": [
+        "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1791374134268,
+  "primaryCatId": "cajones-madera",
+  "history": [],
+  "visible": false,
+  "categories": [
+    "carpinteria-todos",
+    "cajones-madera"
+  ],
+  "rubro": "carpinteria"
+}

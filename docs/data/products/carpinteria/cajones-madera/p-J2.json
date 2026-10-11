@@ -1,0 +1,95 @@
+{
+  "id": "J2",
+  "title": "Baúl de madera de pino - Grande (100 cm)",
+  "description": "Baúl extra grande de madera de pino macizo. Medidas: 100 cm de largo (1 metro) x 40 cm de profundidad x 40 cm de alto. Excelente capacidad de guardado, ideal para pie de cama sommier de dos plazas o baulera de herramientas/juguetes.",
+  "image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "description": "Pino seleccionado cepillado y pulido de 1 pulgada, gran resistencia.",
+      "cover_image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+      "images_list": [
+        "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+        "img/organizadores/baul-madera-mediano/1783801106027-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "100 x 40 x 40 cm",
+          "link": "",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 72000,
+          "cost_price": 36000,
+          "legend": "",
+          "showPrice": true,
+          "stock": 1
+        }
+      ],
+      "hidden": false,
+      "stock": 1
+    }
+  ],
+  "tags": [
+    "baul",
+    "cofre",
+    "organizar",
+    "juguetes",
+    "ropa",
+    "baules",
+    "baul madera",
+    "baul pino",
+    "baul mediano",
+    "baul juguetes",
+    "guardado",
+    "juguetero",
+    "almacenamiento",
+    "organizacion",
+    "caja madera",
+    "cajon madera",
+    "banco baul",
+    "mueble guardado",
+    "bahul",
+    "bahules",
+    "baul de madera",
+    "baul de pino",
+    "organizador de juguetes",
+    "caja de madera",
+    "cofre de madera",
+    "baul infantil",
+    "mueble de guardado",
+    "baul rustico",
+    "juguetero de pino",
+    "guardajuguetes",
+    "banco de madera",
+    "banco baul madera",
+    "caja de pino",
+    "guardado de juguetes",
+    "cajon de juguetes",
+    "baulera de madera",
+    "baulera pino"
+  ],
+  "last_modified": 1783906817810,
+  "primaryCatId": "cajones-madera",
+  "views": 6,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "fleteEnabled": true,
+    "otroEnabled": false
+  },
+  "stock": 1,
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores",
+    "camas-madera-pino",
+    "cajones-madera"
+  ],
+  "rubro": "carpinteria"
+}

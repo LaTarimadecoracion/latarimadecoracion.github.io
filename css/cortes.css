@@ -1,0 +1,156 @@
+/* css/cortes.css */
+/* ═══════════════════════════════════════════════════════════════════════════
+   CORTES DE MADERA - INTEGRACIÓN TOTAL CON EL CSS DE PUBLICACIÓN DE PRODUCTOS
+   Mapeo exacto de: .detail-view, .detail-main-grid, .detail-img-container,
+   .detail-content, .selectors-row, .variant-selector-wrapper, .info-badges-grid
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Ajustes complementarios específicos para el modo corte dentro de la arquitectura de la tienda */
+#view-product-detail.detail-view {
+    padding-bottom: 2.5rem;
+}
+
+/* Selector estilizado para modo medidas estándar vs personalizadas */
+.medidas-mode-tabs {
+    display: flex;
+    background: #F1F5F9;
+    padding: 3px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    gap: 4px;
+}
+
+.medidas-mode-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748B;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+}
+
+.medidas-mode-btn.active {
+    background: #FFFFFF;
+    color: var(--primary-color, #c0510a);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Caja de dimensiones personalizadas con la misma estética de inputs de la tienda */
+.custom-cut-inputs-grid {
+    background: #F8FAFC;
+    border: 1.5px dashed #CBD5E1;
+    border-radius: 12px;
+    padding: 0.85rem;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.custom-cut-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.custom-cut-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.custom-cut-col label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.custom-cut-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.custom-cut-wrapper input {
+    width: 100%;
+    padding: 8px 24px 8px 10px;
+    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0F172A;
+    background: #FFFFFF;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 8px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+.custom-cut-wrapper input:focus {
+    border-color: var(--primary-color, #c0510a);
+}
+
+.custom-cut-wrapper .unit-tag {
+    position: absolute;
+    right: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94A3B8;
+    pointer-events: none;
+}
+
+.custom-cut-helper {
+    font-size: 0.72rem;
+    color: #64748B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* CP Postal Bar idéntica a la del modal de producto */
+.shipping-quick-calc {
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+}
+
+.shipping-quick-calc input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    outline: none;
+    background: #FFFFFF;
+}
+
+.shipping-quick-calc button {
+    background: var(--primary-color, #c0510a);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 0 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font-main, 'Outfit', sans-serif);
+}
+
+/* Tooltip nativo de precios de la tienda */
+.price-info-wrapper:hover .price-tooltip {
+    display: block !important;
+    opacity: 1 !important;
+}

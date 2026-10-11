@@ -1,0 +1,69 @@
+{
+  "id": "69",
+  "title": "Cortes de Madera a Medida (Personalizado)",
+  "description": "Calculá tu corte exacto al milímetro para cualquier proyecto: escalones, mesadas, tapas especiales o estantes a medida. Madera maciza de pino seleccionada.",
+  "image": "img/estantes/estantes/estantes.webp",
+  "isCustomCutting": true,
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/estantes/estantes/estantes.webp",
+      "images_list": [
+        "img/estantes/estantes/estantes.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "A Medida Exacta (cm)",
+          "link": "",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "straighten",
+          "highlight": true,
+          "price": 3500,
+          "cost_price": 2000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "corte",
+    "a medida",
+    "personalizado",
+    "tablas",
+    "recortes",
+    "escalon",
+    "mesada",
+    "pino"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 3,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "fleteMaxUnits": 10,
+    "fleteFreeMinUnits": 100,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "last_modified": 1788655893950,
+  "primaryCatId": "cortes-madera",
+  "history": [],
+  "views": 25,
+  "categories": [
+    "carpinteria-todos",
+    "cortes-madera"
+  ],
+  "rubro": "carpinteria"
+}

@@ -1,0 +1,106 @@
+{
+  "id": "68",
+  "title": "Cortes de Madera para Escritorios y Mesas",
+  "description": "Tableros de pino macizo de gran formato, cepillados y pulidos a mano. Ideales para armar escritorios, mesas de comedor, mesadas o escritorios home office.",
+  "image": "img/estantes/estantes/estantes.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "cover_image": "img/estantes/estantes/estantes.webp",
+      "images_list": [
+        "img/estantes/estantes/estantes.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "50 x 100 cm",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 27500,
+          "cost_price": 16500,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "60 x 120 cm",
+          "link": "",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": true,
+          "price": 39600,
+          "cost_price": 23500,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "60 x 140 cm",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 46200,
+          "cost_price": 27500,
+          "legend": "",
+          "showPrice": true
+        },
+        {
+          "medida": "70 x 140 cm",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 53900,
+          "cost_price": 32000,
+          "legend": "",
+          "showPrice": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "escritorio",
+    "mesa",
+    "tapa",
+    "tablero",
+    "corte",
+    "madera",
+    "pino"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 1,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "fleteMaxUnits": 5,
+    "fleteFreeMinUnits": 100,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "last_modified": 1788655893945,
+  "primaryCatId": "cortes-madera",
+  "history": [],
+  "views": 5,
+  "categories": [
+    "carpinteria-todos",
+    "cortes-madera"
+  ],
+  "rubro": "carpinteria"
+}

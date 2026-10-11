@@ -1,0 +1,162 @@
+================================================================================
+  PROYECTO: MODO DIOS (VISUAL INLINE CMS / EDITOR EN VIVO) - LA TARIMA 2.0
+================================================================================
+Fecha de creación: 07/10/2026
+Estado: En etapa de diseño y planificación arquitectónica
+Ubicación del documento: /proyectos/MODO_DIOS_ESPECIFICACIONES.txt
+
+--------------------------------------------------------------------------------
+1. RESUMEN DEL CONCEPTO
+--------------------------------------------------------------------------------
+El "Modo DIOS" es un sistema de edición en vivo (Visual Inline CMS / WYSIWYG)
+que permite al administrador recorrer toda la tienda pública (o el panel)
+exactamente como la ve un cliente o usuario, pero con la capacidad de hacer clic 
+sobre cualquier texto en pantalla, editarlo directamente en el lugar y guardar 
+los cambios de forma permanente en los archivos de configuración y datos del sitio.
+
+Elimina la necesidad de adivinar qué archivo tocar o buscar en qué formulario
+está cada título, subtítulo, botón, leyenda o descripción.
+
+
+--------------------------------------------------------------------------------
+2. UBICACIÓN DEL INTERRUPTOR Y EXPERIENCIA DE USUARIO (UX)
+--------------------------------------------------------------------------------
+A) ACCESO AL MODO DIOS:
+   - Se ubica un botón destacado en la barra superior del Panel Admin (junto al
+     botón "Publicar Web" y el selector de ancho):
+     [⚡ Modo DIOS] (estilo botón dorado / ámbar con ícono de rayo).
+   - Acceso rápido por atajo de teclado: Ctrl + Shift + E (opcional para velocidad).
+
+B) BARRA FLOTANTE DE CONTROL EN VIVO:
+   Al activarse, la web cambia a modo edición y se despliega una barra fija 
+   superior delgada en la parte más alta de la pantalla:
+   ----------------------------------------------------------------------------
+   [⚡ MODO DIOS ACTIVO] | Textos modificados: (3) | [💾 Guardar Cambios] | [❌ Salir]
+   ----------------------------------------------------------------------------
+   - La barra siempre queda flotando visible arriba sin tapar el contenido.
+   - Tiene un contador dinámico que muestra cuántos textos cambiaste en la sesión.
+   - Botón "Guardar Cambios" con feedback visual (Guardando... -> Guardado con éxito).
+   - Botón "Salir" para apagar el modo y restaurar la navegación normal de cliente.
+
+
+--------------------------------------------------------------------------------
+3. COMPORTAMIENTO VISUAL DURANTE LA EDICIÓN
+--------------------------------------------------------------------------------
+1. Resaltado Inteligente:
+   - Al pasar el cursor sobre cualquier texto editable, el elemento se ilumina
+     con un borde punteado sutil (dorado o azul cobalto) y un pequeño tooltip:
+     "✏️ Clic para editar".
+
+2. Edición Directa (contenteditable):
+   - Al hacer clic, el texto se convierte inmediatamente en un campo editable.
+   - Se desactivan temporalmente los eventos de navegación (no te abre enlaces ni
+     te saca de la página si hacés clic en un botón o link para cambiarle el texto).
+   - Podés escribir con el teclado, borrar, pegar texto, etc.
+
+3. Detección de Cambios en Vivo:
+   - Si modificás un texto y salís del elemento (blur), el texto modificado queda 
+     marcado con un borde verde suave o una pequeña tilde que indica: "Cambio pendiente de guardar".
+   - El contador de la barra superior sube automáticamente (+1).
+
+
+--------------------------------------------------------------------------------
+4. ALCANCE: ¿QUÉ TEXTOS PERMITIRÁ EDITAR?
+--------------------------------------------------------------------------------
+El Modo DIOS abarcará 3 niveles de contenido:
+
+NIVEL 1: TEXTOS ESTÁTICOS Y DE INTERFAZ (UI)
+- Títulos y subtítulos principales de la cabecera (Header).
+- Nombre de secciones del Home ("Categorías", "Ofertas Especiales", "Novedades").
+- Subtítulos de secciones, leyendas informativas y badges.
+- Textos de botones ("Ver Producto", "Comprar con envío", "Consultar por WhatsApp").
+- Textos institucionales de la sección "Nosotros" y datos de contacto.
+- Textos y leyendas de la sección "Avisos".
+- Mensajes del Carrito de Compras y Checkout.
+
+NIVEL 2: TEXTOS DEL CATÁLOGO Y PRODUCTOS
+- Títulos de productos y subtítulos.
+- Descripciones completas de los productos.
+- Descripciones específicas de cada acabado (días de preparación, terminación).
+- Nombres de acabados y leyendas de medidas.
+
+NIVEL 3: TEXTOS DEL PANEL ADMINISTRATIVO
+- Títulos de pestañas, textos de ayuda y etiquetas de formularios.
+
+
+--------------------------------------------------------------------------------
+5. ARQUITECTURA TÉCNICA Y PERSISTENCIA DE DATOS
+--------------------------------------------------------------------------------
+A) DICCIONARIO CENTRAL DE TEXTOS:
+   - Se creará un archivo central de textos:
+     `data/site-texts.json` (espejado con `docs/data/site-texts.json` para GitHub Pages).
+   - O bien integrado directamente dentro de `siteConfig.uiTexts` en `site-config.js`.
+
+B) IDENTIFICACIÓN DE ELEMENTOS (DATA ATTRIBUTES):
+   En el HTML o templates se colocan etiquetas identificadoras:
+   Ejemplos:
+     <h1 data-god-key="home.hero.title">Muebles & Diseños en Madera</h1>
+     <p data-god-key="home.hero.subtitle">Fabricación artesanal para tu hogar</p>
+     <span data-god-key="header.subtitle">Carpintería artesanal & Deco</span>
+   
+   Para productos existentes:
+     <h2 data-god-prod-id="21" data-god-field="title">Vinoteca 5 Vinos</h2>
+     <p data-god-prod-id="21" data-god-field="description">Cavas y bodegas rústicas...</p>
+
+C) ENDPOINT EN EL SERVIDOR NODE (_dev/server.js):
+   - Se creará el endpoint:
+     `POST /api/god-mode/save`
+   - El cliente envía la lista de claves y nuevos textos:
+     {
+       "texts": {
+         "home.hero.title": "Nuevo Título Elegido",
+         "header.subtitle": "Nuevo Subtítulo"
+       },
+       "products": [
+         { "id": "21", "title": "...", "description": "..." }
+       ]
+     }
+   - El servidor escribe los cambios automáticamente en:
+     1. `data/site-texts.json` (y copia a `docs/data/site-texts.json`).
+     2. `js/data/site-config.js` y `js/site-config.js`.
+     3. Si incluye productos, actualiza los JSON individuales en `data/products/...`
+        y ejecuta `split_products.js` para mantener el árbol sincronizado.
+
+D) RETROCOMPATIBILIDAD CON GITHUB PAGES (MODO PRODUCCIÓN ESTÁTICO):
+   - En local (puerto 7000): Guarda físicamente en el disco al instante.
+   - Para producción: Al presionar "Publicar Web" en el Admin, los textos
+     modificados ya quedan compilados en `docs/` y se suben a GitHub Pages.
+
+
+--------------------------------------------------------------------------------
+6. FASES DE DESARROLLO SUGERIDAS (ROADMAP)
+--------------------------------------------------------------------------------
+- FASE 1: Motor Visual e Interruptor
+  * Creación del botón en la barra superior del Admin.
+  * Creación de la barra flotante de Modo DIOS.
+  * Inyección del script `js/admin/admin-god-mode.js`.
+  * Lógica de resaltado con bordes y activación de `contenteditable`.
+
+- FASE 2: Mapeo de Textos de Interfaz
+  * Etiquetar los textos clave del Home, Header, Nosotros y Footer con `data-god-key`.
+  * Estructurar el diccionario `site-texts.json`.
+
+- FASE 3: Endpoint y Guardado en Servidor
+  * Crear el endpoint `/api/god-mode/save` en `_dev/server.js`.
+  * Persistir cambios en archivos de configuración y datos.
+  * Sistema de notificaciones toast: "Cambios guardados con éxito".
+
+- FASE 4: Extensión a Productos y Catálogo
+  * Permitir que títulos y descripciones de productos abiertos en vivo también
+    sean editables con el mismo sistema y se guarden en su ficha JSON correspondiente.
+
+
+--------------------------------------------------------------------------------
+7. CONCLUSIÓN Y BENEFICIOS CLAVE
+--------------------------------------------------------------------------------
+- Facilidad Total: Cualquier cambio de texto se hace en 2 segundos haciendo clic
+  directamente sobre lo que se quiere modificar.
+- Vista Real: No hay posibilidad de que un texto quede desalineado o corte una línea
+  mal, porque lo estás viendo en vivo en la pantalla mientras lo escribís.
+- No invasivo: Los clientes comunes nunca ven el Modo DIOS ni se enteran de su código;
+  solo se activa mediante sesión de administrador.
+================================================================================

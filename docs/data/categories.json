@@ -52,6 +52,14 @@
     "rubro": "carpinteria"
   },
   {
+    "id": "cortes-madera",
+    "name": "Cortes de Madera",
+    "rubro": "carpinteria",
+    "image": "img/estantes-repisas/portada-1783038461695-imagen.webp",
+    "visible": true,
+    "order": 6
+  },
+  {
     "id": "cunas-madera-pino",
     "name": "Cunas & Sueños",
     "image": "img/cunas/portada-imagen.webp",
@@ -61,7 +69,7 @@
   },
   {
     "id": "camas-madera-pino",
-    "name": "Camas & Cuchetas",
+    "name": "Camas & Mesas de Luz",
     "image": "img/camas-para-ninos/portada-imagen.webp",
     "rubro": "carpinteria",
     "order": 8
@@ -133,7 +141,7 @@
   {
     "id": "cajones-madera",
     "name": "Cajones de Madera",
-    "image": "img/organizadores/baul-de-madera-de-pino/1782487445775-imagen.webp",
+    "image": "img/cajones-de-madera/portada-1791337634850-imagen.webp",
     "rubro": "carpinteria",
     "order": 18,
     "visible": true

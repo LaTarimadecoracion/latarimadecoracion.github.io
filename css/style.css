@@ -5174,6 +5174,96 @@ details.form-group[open] {
     max-height: 94dvh !important;
 }
 
+/* ── Modal de Producto como PÁGINA COMPLETA ── */
+#admin-product-modal.modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background: #F8FAFC !important; /* Fondo de aplicación limpio sin oscurecimiento */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 2000 !important;
+    overflow: hidden !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+}
+
+#admin-product-modal-content {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    animation: none !important;
+}
+
+/* Barra superior fija de la página de edición de producto */
+#admin-product-modal-content .modal-header-row {
+    background: #FFFFFF !important;
+    border-bottom: 1.5px solid #E2E8F0 !important;
+    padding: 0.85rem 1.5rem !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+    z-index: 10 !important;
+}
+
+/* Área de desplazamiento del formulario de producto */
+#admin-product-modal-content form#admin-form {
+    flex-grow: 1 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 1.75rem 1.5rem 3.5rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    transition: max-width 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ── Márgenes según medida seleccionada (Chico / Medio / Completo) ── */
+#admin-product-modal-content.size-sm form#admin-form {
+    max-width: 680px !important;
+}
+
+#admin-product-modal-content.size-md form#admin-form {
+    max-width: 980px !important;
+}
+
+#admin-product-modal-content.size-lg form#admin-form {
+    max-width: var(--container-max, 1320px) !important;
+}
+
+/* El formulario se mantiene SIEMPRE en 1 sola columna para apreciar todo amplio y grande */
+#admin-product-modal-content .admin-form-columns {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+}
+
+#admin-product-modal-content .admin-form-col-left,
+#admin-product-modal-content .admin-form-col-right {
+    width: 100% !important;
+}
+
 /* Scroll suave y controlado para categorías */
 #product-categories-checkboxes {
     scroll-behavior: smooth;

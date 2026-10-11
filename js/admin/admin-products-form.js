@@ -692,6 +692,14 @@ window.addEventListener('message', (event) => {
                 </div>
 
                 <div class="form-group" style="margin-bottom:1rem;">
+                    <label style="font-size:0.85rem; display:flex; justify-content:space-between; align-items:center;">
+                        <span>Descripción / Tiempo de Preparación de este Acabado</span>
+                        <small style="color:var(--text-muted); font-weight:normal;">(Opcional - Si está vacía, usa la del producto)</small>
+                    </label>
+                    <textarea class="group-acabado-description" rows="2" placeholder="ej: Pintado a mano en hidroesmalte satinado. Tiempo de preparación: 5 a 7 días hábiles..." style="width:100%; border:1px solid #CBD5E1; border-radius:6px; padding:0.5rem; font-size:0.85rem; font-family:inherit; resize:vertical;">${groupData ? (groupData.description || '') : ''}</textarea>
+                </div>
+
+                <div class="form-group" style="margin-bottom:1rem;">
                     <label style="font-size:0.85rem; margin-bottom: 0.4rem; display: block;">Fotos de este Acabado <small style="font-weight:400;">(Clic para elegir portada)</small></label>
                     <div class="image-drop-zone" id="drop-zone-${groupId}" style="border: 2px dashed #CBD5E1; border-radius: 12px; padding: 1.5rem; text-align: center; background: #FAF9F6; transition: all 0.2s ease; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;">
                         <span class="material-symbols-outlined" style="font-size: 32px; color: var(--primary-color, #c0510a); opacity: 0.7;">upload_file</span>
@@ -798,8 +806,10 @@ window.addEventListener('message', (event) => {
             });
 
             // Gather images and pending files
+            const descInput = card.querySelector('.group-acabado-description');
             const cloneData = {
                 acabado_name: nameInput.value.trim() ? `${nameInput.value.trim()} Copia` : 'Copia de Acabado',
+                description: descInput ? descInput.value.trim() : '',
                 images_list: gState.images ? [...gState.images] : [],
                 medidas_variants: clonedMedidas,
                 hidden: card.classList.contains('is-hidden-acabado')
@@ -1275,8 +1285,22 @@ window.addEventListener('message', (event) => {
 
     // ── Guardar producto con delegación de eventos global ──
     document.addEventListener('click', async (e) => {
-        const btnGenerateJson = e.target.closest('#btn-generate-json');
-        if (!btnGenerateJson) return;
+        const btnClicked = e.target.closest('#btn-generate-json, #btn-top-save-product');
+        if (!btnClicked) return;
+
+        const btnTopSave = document.getElementById('btn-top-save-product');
+        const btnBottomSave = document.getElementById('btn-generate-json');
+
+        const resetSaveButtons = () => {
+            if (btnBottomSave) {
+                btnBottomSave.disabled = false;
+                btnBottomSave.textContent = 'Guardar Producto en Servidor';
+            }
+            if (btnTopSave) {
+                btnTopSave.disabled = false;
+                btnTopSave.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px;">save</span><span>Guardar</span>';
+            }
+        };
 
         try {
             let idVal = document.getElementById('admin-id')?.value?.trim() || '';
@@ -1302,8 +1326,14 @@ window.addEventListener('message', (event) => {
                 if (adminIdInp) adminIdInp.value = idVal;
             }
 
-            btnGenerateJson.disabled    = true;
-            btnGenerateJson.textContent = 'Guardando...';
+            if (btnBottomSave) {
+                btnBottomSave.disabled = true;
+                btnBottomSave.textContent = 'Guardando...';
+            }
+            if (btnTopSave) {
+                btnTopSave.disabled = true;
+                btnTopSave.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px;">hourglass_top</span><span>Guardando...</span>';
+            }
 
             // Obtener categorías seleccionadas y principal previamente para saber la carpeta de la imagen
             const checkboxesContainer = document.getElementById('product-categories-checkboxes');
@@ -1398,6 +1428,7 @@ window.addEventListener('message', (event) => {
 
                 finalAcabadosGroups.push({
                     acabado_name: card.querySelector('.group-acabado-name')?.value?.trim() || '',
+                    description: card.querySelector('.group-acabado-description')?.value?.trim() || '',
                     cover_image: gState.images[0] || 'img/logo_provisional.png',
                     images_list: gState.images.length > 0 ? [...gState.images] : [],
                     medidas_variants: medidasVariants,
@@ -1589,8 +1620,7 @@ window.addEventListener('message', (event) => {
 
             if (!primaryCatId) {
                 alert('Debes elegir una categoría como la Principal.');
-                btnGenerateJson.disabled = false;
-                btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+                resetSaveButtons();
                 return;
             }
 
@@ -1606,15 +1636,13 @@ window.addEventListener('message', (event) => {
 
             if (selectedCatIds.length === 0) {
                 alert('Debes seleccionar al menos una categoría.');
-                btnGenerateJson.disabled = false;
-                btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+                resetSaveButtons();
                 return;
             }
 
             if (!primaryCatId || !selectedCatIds.includes(primaryCatId)) {
                 alert('Debes elegir una de las categorías seleccionadas como la Principal.');
-                btnGenerateJson.disabled = false;
-                btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+                resetSaveButtons();
                 return;
             }
 
@@ -1634,8 +1662,7 @@ window.addEventListener('message', (event) => {
                 }
                 if (idExists) {
                     alert(`Ya existe un producto con el ID "${product.id}" en la categoría "${existingInCat}". Cambiá el ID e intentá de nuevo.`);
-                    btnGenerateJson.disabled = false;
-                    btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+                    resetSaveButtons();
                     return;
                 }
             }
@@ -1780,13 +1807,11 @@ window.addEventListener('message', (event) => {
             if (productModal) productModal.style.display = 'none';
             renderAdminUX();
 
-            btnGenerateJson.disabled    = false;
-            btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+            resetSaveButtons();
         } catch (err) {
             console.error('Error al guardar el producto:', err);
             alert('Ocurrió un error al procesar el producto: ' + err.message);
-            btnGenerateJson.disabled    = false;
-            btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+            resetSaveButtons();
         }
     });
 

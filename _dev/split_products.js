@@ -16,9 +16,11 @@ const DOCS_DATA_DIR = path.join(ROOT_DIR, 'docs', 'data');
 const DOCS_PRODUCTS_DIR = path.join(DOCS_DATA_DIR, 'products');
 
 // 1. Leer el archivo fuente actual
-const sourceFile = path.join(ROOT_DIR, 'js', 'products-data.js');
+const sourceFile = fs.existsSync(path.join(ROOT_DIR, 'js', 'products-data.js'))
+    ? path.join(ROOT_DIR, 'js', 'products-data.js')
+    : path.join(ROOT_DIR, 'js', 'data', 'products-data.js');
 if (!fs.existsSync(sourceFile)) {
-    console.error('❌ No se encontró js/products-data.js');
+    console.error('❌ No se encontró js/products-data.js ni js/data/products-data.js');
     process.exit(1);
 }
 

@@ -376,6 +376,30 @@ window.initProductsAdmin = function() {
                         }
                     });
 
+                    // Eliminar avisos vinculados a este producto de sessionAvisos
+                    if (window.sessionAvisos && Array.isArray(window.sessionAvisos)) {
+                        const normProdTitle = (prodTitle || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+                        window.sessionAvisos = window.sessionAvisos.filter(a => {
+                            if (!a) return false;
+                            let targetUrl = a.linkUrl || (a.links && a.links[0] ? a.links[0].url : '');
+                            let pParam = null;
+                            if (targetUrl) {
+                                const m = targetUrl.match(/(?:prod|product|p|s)=([^&]+)/);
+                                if (m) pParam = decodeURIComponent(m[1]).trim();
+                            }
+                            const isIdMatch = pParam && (pParam === prodId || pParam.toLowerCase() === prodId.toLowerCase());
+                            const normATitle = (a.title || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/^¡?nuevo\s+(ingreso|alquiler):\s*/i, '').replace(/[^a-z0-9]/g, '');
+                            const isTitleMatch = normProdTitle && (normATitle === normProdTitle || (normProdTitle.length > 5 && normATitle.includes(normProdTitle)));
+                            return !(isIdMatch || isTitleMatch);
+                        });
+                        try {
+                            localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
+                        } catch (e) {}
+                        if (window.syncSiteConfigWithServer) {
+                            window.syncSiteConfigWithServer();
+                        }
+                    }
+
                     showAdminToast('Producto eliminado');
                     await saveProductsToServer();
                     renderAdminProducts();
@@ -813,7 +837,14 @@ window.initProductsAdmin = function() {
         const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : productsData;
         if (typeof sourceData === 'undefined') return;
 
-        const cat = sourceData.find(c => c.id === categoryId);
+        let cat = sourceData.find(c => c.id === categoryId);
+        // Fallback dinámico si sessionProducts en localStorage quedó viejo
+        if (!cat && typeof productsData !== 'undefined') {
+            cat = productsData.find(c => c.id === categoryId);
+            if (cat && window.sessionProducts) {
+                window.sessionProducts.push(cat);
+            }
+        }
         if (!cat) return;
 
         if (isBack) {

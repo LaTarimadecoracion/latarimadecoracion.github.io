@@ -312,8 +312,71 @@ if (Array.isArray(window.sessionAvisos)) {
         }
     });
 
-    if (avisosMigrated) {
-        localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
+    // Depurar avisos huérfanos vinculados a productos/alquileres inexistentes
+    const initialAvisosCount = window.sessionAvisos.length;
+    window.sessionAvisos = window.sessionAvisos.filter(aviso => {
+        if (!aviso) return false;
+        let targetUrl = aviso.linkUrl || (aviso.links && aviso.links[0] ? aviso.links[0].url : '');
+        let prodParam = null;
+        if (targetUrl) {
+            const match = targetUrl.match(/(?:prod|product|p|s)=([^&]+)/);
+            if (match) prodParam = decodeURIComponent(match[1]).trim().toLowerCase();
+        }
+        const isAutoNotice = Boolean(prodParam) || /^¡?Nuevo (Ingreso|Alquiler)/i.test(aviso.title || '');
+        if (!isAutoNotice) return true; // Mantener avisos informativos generales
+
+        const normATitle = (aviso.title || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/^¡?nuevo\s+(ingreso|alquiler):\s*/i, "").replace(/[^a-z0-9]/g, "");
+
+        // Verificar existencia en productos
+        if (window.sessionProducts && Array.isArray(window.sessionProducts)) {
+            for (const cat of window.sessionProducts) {
+                if (cat.products && Array.isArray(cat.products)) {
+                    for (const p of cat.products) {
+                        if (!p) continue;
+                        const pId = (p.id || '').trim().toLowerCase();
+                        const pTitle = (p.title || '').trim().toLowerCase();
+                        const normPTitle = pTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+                        if (prodParam && (pId === prodParam || normPTitle === prodParam)) return true;
+                        if (normATitle && (normPTitle === normATitle || (normPTitle.length > 5 && normATitle.includes(normPTitle)))) return true;
+                    }
+                }
+            }
+        }
+
+        // Verificar existencia en ofertas
+        if (window.sessionOffers && Array.isArray(window.sessionOffers)) {
+            for (const o of window.sessionOffers) {
+                if (!o) continue;
+                const oId = (o.id || '').trim().toLowerCase();
+                const oTitle = (o.title || '').trim().toLowerCase();
+                const normOTitle = oTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+                if (prodParam && (oId === prodParam || normOTitle === prodParam)) return true;
+                if (normATitle && (normOTitle === normATitle || (normOTitle.length > 5 && normATitle.includes(normOTitle)))) return true;
+            }
+        }
+
+        // Verificar existencia en alquileres
+        if (window.sessionRentals && Array.isArray(window.sessionRentals)) {
+            for (const r of window.sessionRentals) {
+                if (!r) continue;
+                const rId = (r.id || '').trim().toLowerCase();
+                const rTitle = (r.title || '').trim().toLowerCase();
+                const normRTitle = rTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+                if (prodParam && (rId === prodParam || normRTitle === prodParam)) return true;
+                if (normATitle && (normRTitle === normATitle || (normRTitle.length > 5 && normATitle.includes(normRTitle)))) return true;
+            }
+        }
+
+        return false; // Es un aviso de producto pero el producto ya no existe: eliminar
+    });
+
+    if (avisosMigrated || window.sessionAvisos.length !== initialAvisosCount) {
+        try {
+            localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
+        } catch (e) {}
+        if (window.syncSiteConfigWithServer) {
+            window.syncSiteConfigWithServer();
+        }
     }
 }
 

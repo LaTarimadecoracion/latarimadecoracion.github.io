@@ -73,7 +73,7 @@ function initAdminUX20() {
     // Leer la pestaña activa inicial desde la URL (?tab=...) o HASH (#tab)
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'bulk-edit', 'offers', 'shipping', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
+    const validTabs = ['dashboard', 'settings', 'catalog', 'bulk-edit', 'offers', 'shipping', 'cortes', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
     if (tabFromUrl && validTabs.includes(tabFromUrl)) {
         currentAdminTab = tabFromUrl;
     }
@@ -365,13 +365,13 @@ function renderAdminUX() {
     // Asegurar lectura de URL en cada renderizado
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'bulk-edit', 'offers', 'shipping', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
+    const validTabs = ['dashboard', 'settings', 'catalog', 'bulk-edit', 'offers', 'shipping', 'cortes', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
     if (tabFromUrl && validTabs.includes(tabFromUrl)) {
         currentAdminTab = tabFromUrl;
     }
 
     // Control visual de la barra de navegación del panel (V2)
-        const tabs = ['dashboard', 'settings', 'catalog', 'bulk-edit', 'offers', 'shipping', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users'];
+        const tabs = ['dashboard', 'settings', 'catalog', 'bulk-edit', 'offers', 'shipping', 'cortes', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -391,6 +391,7 @@ function renderAdminUX() {
             'bulk-edit': { title: 'Editor Masivo de Precios & Productos', icon: 'table_chart' },
             offers: { title: 'Ofertas & Combos', icon: 'local_offer' },
             shipping: { title: 'Envíos & Zonas Tarifarias', icon: 'local_shipping' },
+            cortes: { title: 'Cortes de Madera & Precios', icon: 'carpenter' },
             payments: { title: 'Métodos & Pasarelas de Pago', icon: 'payments' },
             stock: { title: 'Control de Stock & Inventario', icon: 'inventory' },
             'pc-stock': { title: 'Control de Stock PC (Escáner)', icon: 'desktop_windows' },
@@ -413,6 +414,7 @@ function renderAdminUX() {
             'bulk-edit': 'admin-bulk-edit-view',
             offers: 'admin-offers-view',
             shipping: 'admin-shipping-view',
+            cortes: 'admin-cortes-view',
             payments: 'admin-payments-view',
             stock: 'admin-stock-view',
             'pc-stock': 'admin-pc-stock-view',
@@ -446,6 +448,10 @@ function renderAdminUX() {
         } else if (currentAdminTab === 'shipping') {
             if (typeof window.renderAdminShipping === 'function') {
                 window.renderAdminShipping();
+            }
+        } else if (currentAdminTab === 'cortes') {
+            if (typeof window.loadCortesConfigToUI === 'function') {
+                window.loadCortesConfigToUI();
             }
         } else if (currentAdminTab === 'payments') {
             if (typeof window.renderAdminPayments === 'function') {

@@ -316,7 +316,7 @@
             } else if (viewId === 'view-admin') {
                 const urlParams = new URLSearchParams(window.location.search);
                 const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-                const validTabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'stock', 'pages', 'orders', 'maintenance'];
+                const validTabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'cortes', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
                 if (tabFromUrl && validTabs.includes(tabFromUrl)) {
                     window.currentAdminTab = tabFromUrl;
                 } else if (!window.currentAdminTab) {

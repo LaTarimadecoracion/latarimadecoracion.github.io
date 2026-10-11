@@ -568,9 +568,11 @@ app.post('/api/save-products', (req, res) => {
 
         const fileContent = 'const productsData = ' + JSON.stringify(productsArray, null, 4) + ';\n';
         const filePath = path.join(ROOT_DIR, 'js', 'data', 'products-data.js');
+        const legacyPath = path.join(ROOT_DIR, 'js', 'products-data.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
-        console.log('✅ js/products-data.js actualizado correctamente.');
+        try { fs.writeFileSync(legacyPath, fileContent, 'utf8'); } catch (e) {}
+        console.log('✅ js/data/products-data.js y js/products-data.js actualizados correctamente.');
 
         // Sincronizar automáticamente data/products/ y data/catalog-index.json
         try {
@@ -809,13 +811,46 @@ app.post('/api/save-site-config', (req, res) => {
 
         const fileContent = '// js/site-config.js\n// --- SITE CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.siteConfig = ' + JSON.stringify(siteConfig, null, 4) + ';\n';
         const filePath = path.join(ROOT_DIR, 'js', 'data', 'site-config.js');
+        const legacyPath = path.join(ROOT_DIR, 'js', 'site-config.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
-        console.log('✅ js/site-config.js actualizado correctamente.');
+        try { fs.writeFileSync(legacyPath, fileContent, 'utf8'); } catch (e) {}
+        console.log('✅ js/data/site-config.js y js/site-config.js actualizados correctamente.');
         res.json({ success: true, message: 'Configuración de sitio guardada exitosamente.' });
     } catch (error) {
         console.error('❌ Error guardando configuración de sitio:', error);
         res.status(500).json({ success: false, message: 'Error interno del servidor al guardar configuración.' });
+    }
+});
+
+// API Endpoint to save cortesConfig JSON
+app.post('/api/save-cortes-config', (req, res) => {
+    try {
+        const cortesConfig = req.body;
+        
+        if (typeof cortesConfig !== 'object' || cortesConfig === null) {
+            return res.status(400).json({ success: false, message: 'El payload debe ser un objeto válido.' });
+        }
+
+        const fileContent = '// js/data/cortes-config.js\n// --- CORTES DE MADERA CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.cortesConfig = ' + JSON.stringify(cortesConfig, null, 4) + ';\n';
+        const filePath = path.join(ROOT_DIR, 'js', 'data', 'cortes-config.js');
+        const legacyPath = path.join(ROOT_DIR, 'js', 'cortes-config.js');
+        const docsPath = path.join(ROOT_DIR, 'docs', 'js', 'cortes-config.js');
+        
+        fs.writeFileSync(filePath, fileContent, 'utf8');
+        try { fs.writeFileSync(legacyPath, fileContent, 'utf8'); } catch (e) {}
+        try { 
+            const docsDir = path.join(ROOT_DIR, 'docs', 'js');
+            if (fs.existsSync(docsDir)) {
+                fs.writeFileSync(docsPath, fileContent, 'utf8');
+            }
+        } catch (e) {}
+
+        console.log('✅ js/data/cortes-config.js guardado exitosamente.');
+        res.json({ success: true, message: 'Configuración de cortes guardada exitosamente.' });
+    } catch (error) {
+        console.error('❌ Error guardando configuración de cortes:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor al guardar configuración de cortes.' });
     }
 });
 
@@ -3008,6 +3043,14 @@ function cleanOrphanImages() {
                     const normalizedRel = path.normalize(relativePath);
 
                     if (!usedImages.has(normalizedRel) && !usedImages.has(relativePath)) {
+                        // Proteger imágenes recién subidas (menos de 2 horas)
+                        try {
+                            const stat = fs.statSync(fullPath);
+                            if (Date.now() - stat.mtimeMs < 7200000) {
+                                return; // Es una imagen recién subida, no mover
+                            }
+                        } catch (e) {}
+
                         // Mover imagen desusada a la papelera segura _trash_img
                         const destPath = path.join(trashDir, item.name);
                         try {

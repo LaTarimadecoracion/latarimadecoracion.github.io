@@ -627,6 +627,7 @@
 
         const freeShipProducts = [];
         const seenIds = new Set();
+        const cortesConf = window.cortesConfig || null;
 
         if (Array.isArray(sourceData)) {
             sourceData.forEach(cat => {
@@ -659,15 +660,59 @@
                             }
                         }
 
+                        // Modo 3: Cortes de Madera (categoría cortes-madera o isCustomCutting)
+                        const isCortes = (
+                            prod.isCustomCutting === true ||
+                            prod.id === '67' || prod.id === '68' || prod.id === '69' ||
+                            prod.primaryCatId === 'cortes-madera' ||
+                            (Array.isArray(prod.categories) && prod.categories.includes('cortes-madera')) ||
+                            cat.id === 'cortes-madera' || cat.slug === 'cortes-madera'
+                        );
+
+                        let cortesFreeShipping = false;
+                        let cortesMinUnits = 0;
+                        let cortesPromoLabel = '';
+                        let cortesDiscountLabel = '';
+
+                        if (isCortes && cortesConf) {
+                            // Beneficios de flete / logística configurados en Panel de Cortes
+                            const flexBen = cortesConf.logistica?.flex?.beneficios;
+                            const fleteBen = cortesConf.logistica?.flete?.beneficios;
+                            const flexActivo = cortesConf.logistica?.flex?.activo !== false;
+                            const fleteActivo = cortesConf.logistica?.flete?.activo !== false;
+
+                            if (flexActivo && flexBen && flexBen.activo !== false && flexBen.envioGratisMin > 0) {
+                                cortesFreeShipping = true;
+                                cortesMinUnits = flexBen.envioGratisMin;
+                                cortesPromoLabel = `Envío Gratis desde ${flexBen.envioGratisMin} u. (Flex)`;
+                            } else if (fleteActivo && fleteBen && fleteBen.activo !== false && fleteBen.envioGratisMin > 0) {
+                                cortesFreeShipping = true;
+                                cortesMinUnits = fleteBen.envioGratisMin;
+                                cortesPromoLabel = `Envío Gratis desde ${fleteBen.envioGratisMin} u. (Flete)`;
+                            }
+
+                            // Descuentos por cantidad en cortes
+                            const descConf = cortesConf.descuentos;
+                            if (descConf && descConf.activo !== false && Array.isArray(descConf.escalas) && descConf.escalas.length > 0) {
+                                const maxEscala = descConf.escalas.reduce((prev, curr) => (curr.discountPercent > prev.discountPercent) ? curr : prev, descConf.escalas[0]);
+                                if (maxEscala && maxEscala.discountPercent > 0) {
+                                    cortesDiscountLabel = `Hasta ${maxEscala.discountPercent}% OFF x cantidad`;
+                                }
+                            }
+                        }
+
                         const isQuantityFree = minUnits > 0;
 
-                        if (isDirectFree || isQuantityFree) {
+                        if (isDirectFree || isQuantityFree || cortesFreeShipping || (isCortes && cortesDiscountLabel)) {
                             seenIds.add(prod.id);
                             freeShipProducts.push({
                                 product: prod,
                                 catName: cat.name || '',
                                 isDirectFree: isDirectFree,
-                                minUnits: minUnits
+                                minUnits: minUnits || cortesMinUnits,
+                                isCortes: isCortes,
+                                promoLabel: cortesPromoLabel,
+                                discountLabel: cortesDiscountLabel
                             });
                         }
                     });
@@ -791,7 +836,7 @@
     };
 
     window.createFreeShippingProductCardElement = function(item) {
-        let { product, catName, isDirectFree, minUnits } = item;
+        let { product, catName, isDirectFree, minUnits, isCortes, promoLabel, discountLabel } = item;
         
         // Sincronizar producto vivo desde el catálogo
         if (typeof window.findProductById === 'function' && product && product.id) {
@@ -814,29 +859,61 @@
             cpQualified = (cpRes && cpRes.hasLocalMatch !== false);
         }
 
-        let shipBadgeHTML = '';
-        if (cpQualified === true) {
-            // CP Validado y coincide con ruta de envío gratis local
+        let badgesHTML = '';
+        if (isCortes) {
+            // Badges específicos para productos de Cortes de Madera
+            let badgesList = [];
+            if (discountLabel) {
+                badgesList.push(`
+                    <div style="background: #dc2626; color: #ffffff; font-weight: 800; font-size: 0.68rem; padding: 3px 8px; border-radius: 20px; box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4); display: flex; align-items: center; gap: 4px;">
+                        🔥 ${discountLabel}
+                    </div>
+                `);
+            }
+            if (promoLabel) {
+                badgesList.push(`
+                    <div style="background: #16a34a; color: #ffffff; font-weight: 800; font-size: 0.68rem; padding: 3px 8px; border-radius: 20px; box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4); display: flex; align-items: center; gap: 4px;">
+                        🚚 ${promoLabel}
+                    </div>
+                `);
+            } else if (cpQualified === true && minUnits > 0) {
+                badgesList.push(`
+                    <div style="background: #16a34a; color: #ffffff; font-weight: 800; font-size: 0.68rem; padding: 3px 8px; border-radius: 20px; box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4); display: flex; align-items: center; gap: 4px;">
+                        🎉 ENVÍO GRATIS (Mín. ${minUnits} U.)
+                    </div>
+                `);
+            }
+            if (badgesList.length > 0) {
+                badgesHTML = `
+                    <div style="position: absolute; top: 8px; left: 8px; z-index: 5; display: flex; flex-direction: column; gap: 4px;">
+                        ${badgesList.join('')}
+                    </div>
+                `;
+            }
+        } else if (cpQualified === true) {
+            // CP Validado y coincide con ruta de envío gratis local estándar
             const shipBadgeText = isDirectFree 
                 ? '🎉 ENVÍO GRATIS EN TU ZONA' 
                 : `🎉 ENVÍO GRATIS (Mín. ${minUnits} U.)`;
             
-            shipBadgeHTML = `
+            badgesHTML = `
                 <div style="position: absolute; top: 8px; left: 8px; z-index: 5; background: #16a34a; color: #ffffff; font-weight: 800; font-size: 0.68rem; padding: 3px 8px; border-radius: 20px; box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4); display: flex; align-items: center; gap: 4px;">
                     ${shipBadgeText}
                 </div>
             `;
         }
-        // Si no hay datos de CP cargados o no coincide con envío gratis local, NO se muestra ningún cartel.
 
         const cardSubdesc = product.subtitle || product.description || 'Producto destacado con beneficio de envío.';
+        const promoTagBottom = isCortes
+            ? (discountLabel ? `⚡ ${discountLabel}` : '🪵 Corte en Taller')
+            : '⚡ Precio Promocional';
 
         card.innerHTML = `
             <div class="offer-photo-wrapper" style="position: relative; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; background: #1a1a1a;">
                 <img src="${productCover}" class="category-card-img loaded" alt="${product.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
                 <div class="offer-gradient-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);"></div>
 
-                ${shipBadgeHTML}
+                ${badgesHTML}
             </div>
 
             <div style="padding: 1rem; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
@@ -851,7 +928,7 @@
                     </div>
 
                     <div style="margin-top: 2px; font-size: 0.78rem; color: #16a34a; font-weight: 800; text-align: right;">
-                        ⚡ Precio Promocional
+                        ${promoTagBottom}
                     </div>
                 </div>
             </div>
