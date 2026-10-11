@@ -4965,7 +4965,9 @@
     "title": "Cortes de Madera a Medida",
     "rubro": "carpinteria",
     "primaryCatId": "cortes-madera",
-    "categories": [],
+    "categories": [
+      "cortes-madera"
+    ],
     "subcategoria": "",
     "price": 3500,
     "image": "img/estantes/estantes/estantes.webp",

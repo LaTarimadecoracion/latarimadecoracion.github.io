@@ -56,7 +56,7 @@
     "name": "Cortes de Madera",
     "rubro": "carpinteria",
     "image": "img/estantes-repisas/portada-1783038461695-imagen.webp",
-    "visible": true,
+    "visible": false,
     "order": 6
   },
   {
@@ -144,7 +144,7 @@
     "image": "img/cajones-de-madera/portada-1791337634850-imagen.webp",
     "rubro": "carpinteria",
     "order": 18,
-    "visible": true
+    "visible": false
   },
   {
     "id": "Podios",

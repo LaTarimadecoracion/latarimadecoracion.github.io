@@ -4,6 +4,7 @@
   "title": "Cortes de Madera a Medida",
   "description": "Calculá tu corte exacto al milímetro para cualquier proyecto: escalones, mesadas, tapas especiales o estantes a medida. Madera maciza de pino seleccionada.",
   "image": "img/estantes/estantes/estantes.webp",
+  "isCustomCutting": true,
   "acabados_groups": [
     {
       "acabado_name": "Natural",
@@ -64,5 +65,9 @@
   "primaryCatId": "cortes-madera",
   "history": [],
   "visible": true,
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "views": 62,
+  "categories": [
+    "cortes-madera"
+  ]
 }

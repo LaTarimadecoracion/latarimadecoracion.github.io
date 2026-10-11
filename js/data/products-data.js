@@ -18988,7 +18988,7 @@ const productsData = [
         "name": "Cortes de Madera",
         "rubro": "carpinteria",
         "image": "img/estantes-repisas/portada-1783038461695-imagen.webp",
-        "visible": true,
+        "visible": false,
         "order": 6,
         "products": [
             {
@@ -19289,7 +19289,8 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 62
             }
         ]
     },
@@ -29631,7 +29632,7 @@ const productsData = [
         "image": "img/cajones-de-madera/portada-1791337634850-imagen.webp",
         "rubro": "carpinteria",
         "order": 18,
-        "visible": true,
+        "visible": false,
         "products": [
             {
                 "id": "43",
